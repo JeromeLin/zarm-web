@@ -1,0 +1,27 @@
+
+.ui-toast {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  user-select: none;
+
+  >.ui-toast-container {
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    animation: slide-top 0.3s ease-out;
+    z-index: 1301;
+
+    >.ui-toast-body {
+      /*padding: 20px;*/
+      font-size: 16px;
+      overflow: auto;
+      user-select: auto;
+    }
+  }
+}

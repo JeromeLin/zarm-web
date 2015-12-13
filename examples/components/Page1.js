@@ -1,0 +1,140 @@
+
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
+
+import {
+  Mask,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Alert,
+  Confirm,
+  Toast,
+  Loading,
+  Button,
+  Swipe,
+  Cell,
+} from '../../lib';
+
+import '../../styles/index.scss';
+import '../styles/Page1.scss';
+
+class Page1 extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal     : false,
+      confirm   : false,
+      alert     : false,
+      mask      : false,
+      toast     : false,
+      loading   : false,
+    };
+  }
+
+  _onClickOpen(key) {
+    this.setState({
+      [`${ key }`]: true
+    });
+  }
+
+  _onClickClose(key) {
+    this.setState({
+      [`${ key }`]: false
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Swipe>
+          <div className="ui-swipe-item">
+            <div className="ui-swipe-pic">
+              <a href="http://www.baidu.com">
+                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E4%BD%B3%E4%B9%90%E9%94%AD.png" />
+              </a>
+            </div>
+            <div className="ui-swipe-info">
+              <div className="ui-swipe-title">百度</div>
+            </div>
+          </div>
+          <div className="ui-swipe-item">
+            <div className="ui-swipe-pic">
+              <a href="http://www.taobao.com">
+                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E8%96%AF%E7%89%87-0.png" />
+              </a>
+            </div>
+            <div className="ui-swipe-info">
+              <div className="ui-swipe-title">淘宝</div>
+            </div>
+          </div>
+          <div className="ui-swipe-item">
+            <div className="ui-swipe-pic">
+              <a href="http://www.qq.com">
+                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E9%BB%84%E6%B2%B9%E8%96%AF%E7%89%87-0.png" />
+              </a>
+            </div>
+            <div className="ui-swipe-info">
+              <div className="ui-swipe-title">腾讯</div>
+            </div>
+          </div>
+        </Swipe>
+
+        <p>This is Page1</p>
+        <p><Link to="/page2">=> Goto Page2</Link></p>
+        <p className="buttons">
+          <Button size="xl" onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
+          <Button theme="primary" size="lg" onClick={() => this._onClickOpen('modal')}>模态框</Button>
+          <Button theme="info" onClick={() => this._onClickOpen('confirm')}>确认框</Button>
+          <Button theme="success" size="sm" onClick={() => this._onClickOpen('alert')}>警告框</Button>
+          <Button theme="warning" size="xs" onClick={() => this._onClickOpen('loading')}>加载中</Button>
+          <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
+        </p>
+
+        { this.state.mask ?
+          <Mask onClose={() => this._onClickClose('mask')} />
+        : null }
+
+        { this.state.modal ?
+          <Modal width={270} onMaskClick={() => this._onClickClose('modal')}>
+            <ModalHeader title="标题" onClose={() => this._onClickClose('modal')}></ModalHeader>
+            <ModalBody height={1000}>
+              我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
+            </ModalBody>
+            <ModalFooter>
+              <button type="button" onClick={() => this._onClickClose('modal')}>取消</button>
+              <button type="button" onClick={() => this._onClickOpen('alert')}>选项一</button>
+              <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+            </ModalFooter>
+          </Modal>
+        : null }
+
+        { this.state.confirm ?
+          <Confirm
+            message="确定要删除吗？"
+            onOk={() => this._onClickOpen('alert')}
+            onCancel={() => this._onClickClose('confirm')}>
+          </Confirm>
+        : null }
+
+        { this.state.alert ?
+          <Alert message="这是一个警告框！" onClose={() => this._onClickClose('alert')} />
+        : null }
+
+        { this.state.toast ?
+          <Toast message="这是一个提示信息！" onMaskClick={() => this._onClickClose('toast')} />
+        : null }
+
+        { this.state.loading ?
+          <Loading message="付款中" />
+        : null }
+
+      </div>
+    );
+  }
+}
+
+export default Page1;
