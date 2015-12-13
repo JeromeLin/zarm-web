@@ -1,0 +1,29 @@
+
+.ui-modal-header {
+  position: relative;
+  height: 50px;
+  border-bottom: 1px solid #dfdede;
+  padding: 0 20px;
+
+  .ui-modal-title {
+    font-size: 16px;
+    line-height: 50px;
+  }
+
+  .ui-modal-more {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #999;
+    text-align: center; 
+    cursor: pointer;
+
+    &:hover {
+      color: #666;
+    }
+  }
+}
