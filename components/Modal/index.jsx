@@ -19,14 +19,9 @@ class Modal extends Component {
 
   componentDidMount() {
     // console.log('componentDidMount');
-
-    const dom = this.refs.container;
-    this.setState({
-      offset: {
-        width  : dom.offsetWidth,
-        height : dom.offsetHeight,
-      }
-    });
+    this._updateResize();
+    // window.addEventListener("orientationchange", () => this._updateResize());
+    window.addEventListener("resize", () => this._updateResize());
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -47,9 +42,21 @@ class Modal extends Component {
   //   console.log('componentDidUpdate');
   // }
 
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount');
-  // }
+  componentWillUnmount() {
+    // console.log('componentWillUnmount');
+    window.removeEventListener("orientationchange", () => this._updateResize());
+  }
+
+  _updateResize() {
+    // alert(window.orientation)
+    const dom = this.refs.container;
+    this.setState({
+      offset: {
+        width  : dom.offsetWidth,
+        height : dom.offsetHeight,
+      }
+    });
+  }
 
   _onContainerClick(e) {
     e.stopPropagation();
@@ -61,34 +68,36 @@ class Modal extends Component {
     const offset = this.state.offset;
     const style = {};
 
+    console.log(offset.width);
+
     style.modal = {};
-    style.wrapper = {
-      'width'  : '100%',
-      'height' : '100%',
-    };
+    // style.wrapper = {
+    //   'width'  : '100%',
+    //   'height' : '100%',
+    // };
     style.container = {
-      'position'   : 'absolute',
-      'left'       : '50%',
-      'top'        : '50%',
-      'marginLeft' : - offset.width / 2,
-      'marginTop'  : - offset.height / 2,
+      // 'position'   : 'absolute',
+      // 'left'       : '50%',
+      // 'top'        : '50%',
+      // 'marginLeft' : - offset.width / 2,
+      // 'marginTop'  : - offset.height / 2,
       'width'      : width,
     };
 
-    if (offset.height > window.innerHeight) {
-      style.modal.WebkitOverflowScrolling = 'touch';
-      style.wrapper = {};
-      style.container.position = 'relative';
-      style.container.top = 0;
-      style.container.marginTop = 0;
-    }
+    // if (offset.height > window.innerHeight) {
+    //   style.modal.WebkitOverflowScrolling = 'touch';
+    //   style.wrapper = {};
+    //   style.container.position = 'relative';
+    //   style.container.top = 0;
+    //   style.container.marginTop = 0;
+    // }
 
-    if (width > window.innerWidth) {
-      style.modal.WebkitOverflowScrolling = 'touch';
-      style.container.position = 'relative';
-      style.container.left = 0;
-      style.container.marginLeft = 0;
-    }
+    // if (offset.width > window.innerWidth) {
+    //   style.modal.WebkitOverflowScrolling = 'touch';
+    //   style.container.position = 'relative';
+    //   style.container.left = 0;
+    //   style.container.marginLeft = 0;
+    // }
 
     return (
       <div className="ui-modal" style={style.modal} onClick={onMaskClick}>

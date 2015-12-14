@@ -16,7 +16,7 @@ import {
   Button,
   Swipe,
   Cell,
-} from '../../lib';
+} from '../../components';
 
 import '../../styles/index.scss';
 import '../styles/Page1.scss';
@@ -99,7 +99,7 @@ class Page1 extends Component {
         : null }
 
         { this.state.modal ?
-          <Modal width={270} onMaskClick={() => this._onClickClose('modal')}>
+          <Modal width={'70%'} onMaskClick={() => this._onClickClose('modal')}>
             <ModalHeader title="标题" onClose={() => this._onClickClose('modal')}></ModalHeader>
             <ModalBody height={1000}>
               我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
