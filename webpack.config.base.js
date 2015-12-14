@@ -16,14 +16,14 @@ module.exports = {
         test: /\.scss$/, 
         loader: ExtractTextPlugin.extract(
           "style-loader",
-          "css-loader?sourceMap!sass-loader"
+          "css-loader?sourceMap&-minimize!sass-loader"
         )
       },
       { 
         test: /\.css$/, 
         loader: ExtractTextPlugin.extract(
           "style-loader",
-          "css-loader?sourceMap"
+          "css-loader?sourceMap&-minimize"
         )
       },
       { 
@@ -34,7 +34,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].min.css')
   ],
   
   resolve: {
