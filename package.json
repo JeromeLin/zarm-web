@@ -1,6 +1,6 @@
 {
   "name": "dragon-ui",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run deploy && npm run dev",
@@ -8,7 +8,7 @@
     "dev": "node examples/dev.server.js",
     "deploy": "rm -rf node_modules && npm install && npm run build",
     "build:lib": "babel components --out-dir lib",
-    "build:style": "webpack --config webpack.config.style.js",
+    "build:style": "webpack -p --config webpack.config.style.js",
     "build:umd": "webpack components/index.js dist/dragon-ui.js --config webpack.config.umd.js",
     "build:umd:min": "webpack -p components/index.js dist/dragon-ui.min.js --config webpack.config.umd.js",
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min && npm run build:style"
