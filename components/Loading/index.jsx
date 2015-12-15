@@ -5,7 +5,7 @@ import Mask from '../Mask';
 class Loading extends Component {
 
   render () {
-    const { width, height, message } = this.props;
+    const { visible, width, height, message, ...others } = this.props;
     const bodyStyle = {
       'position'   : 'absolute',
       'left'       : '50%',
@@ -16,26 +16,28 @@ class Loading extends Component {
       'height'     : height,
     };
 
-    return (
-      <div className="ui-loading">
+    return visible ? (
+      <div className="ui-loading" {...others}>
         <div className="ui-loading-body" style={bodyStyle}>
           <br />
           {message}
         </div>
-        <Mask type="light" />
+        <Mask visible={visible} type="light" />
       </div>
-    );
+    ) : null;
   }
 
 }
 
 Loading.propTypes = {
+  visible : PropTypes.bool,
   message : PropTypes.string,
   width   : PropTypes.number,
   height  : PropTypes.number,
 };
 
 Loading.defaultProps = {
+  visible : false,
   message : '加载中',
   width   : 80,
   height  : 80,

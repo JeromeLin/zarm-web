@@ -18,7 +18,7 @@ class Document extends Component {
   }
 
   render () {
-    const { title, demo, code } = this.props;
+    const { title, demo, code, ...others } = this.props;
     const style = {
       code: {},
       pre: {},
@@ -32,7 +32,7 @@ class Document extends Component {
     };
 
     return (
-      <div className="ui-doc">
+      <div className="ui-doc" {...others}>
         <div className="doc-title">{title}</div>
         <div className="doc-body">
           <div className="doc-demo">{demo}</div>

@@ -7,34 +7,19 @@ class Toast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      offset: {
-        width  : 0,
-        height : 0
-      },
       timer: undefined
     };
   }
 
   componentDidMount() {
-    const dom = this.refs.container;
-    this.setState({
-      offset: {
-        width  : dom.offsetWidth,
-        height : dom.offsetHeight,
-      }
-    });
-
     var timer = setTimeout(() => {
+      this.props.onClose();
       this.props.onMaskClick();
     }, 3000);
     
     this.setState({
       timer : timer
     });
-  }
-
-  shouldComponentUpdate() {
-    return (this.state.offset.height === 0);
   }
 
   componentWillUnmount() {
@@ -46,53 +31,36 @@ class Toast extends Component {
   }
 
   render () {
-    const style = {};
-
-    style.toast = {};
-    style.container = {
-      'position'   : 'absolute',
-      'left'       : '50%',
-      'top'        : '50%',
-      'marginLeft' : - this.state.offset.width / 2,
-      'marginTop'  : - this.state.offset.height / 2,
-      'width'      : this.props.width,
+    const { visible, message, width, onMaskClick, ...others } = this.props;
+    const containerStyle = {
+      'width' : width,
     };
 
-    if (this.state.height > window.innerHeight) {
-      style.toast.WebkitOverflowScrolling = 'touch';
-      style.container.position = 'relative';
-      style.container.top = 0;
-      style.container.marginTop = 0;
-    }
-
-    if (this.props.width > window.innerWidth) {
-      style.toast.WebkitOverflowScrolling = 'touch';
-      style.container.position = 'relative';
-      style.container.left = 0;
-      style.container.marginLeft = 0;
-    }
-
-    return (
-      <div className="ui-toast" style={style.toast}>
-        <div className="ui-toast-container" ref="container" style={style.container} onClick={this._onContainerClick}>
-          <div className="ui-toast-body">
-            <p style={{textAlign: 'center'}}>{this.props.message}</p>
+    return visible ? (
+      <div className="ui-toast" {...others}>
+        <div className="ui-toast-wrapper" style={containerStyle} onClick={this._onContainerClick}>
+          <div className="ui-toast-container">
+            {message}
           </div>
         </div>
-        <Mask type="transparent" onClose={this.props.onMaskClick} />
+        <Mask visible={visible} type="transparent" onClose={onMaskClick} />
       </div>
-    );
+    ) : null;
   }
 
 }
 
-Toast.propTypes = { 
+Toast.propTypes = {
+  visible     : PropTypes.bool,
   width       : PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  onClose     : PropTypes.func,
   onMaskClick : PropTypes.func,
 };
 
 Toast.defaultProps = {
-  width       : '70%',
+  visible     : false,
+  width       : '100%',
+  onClose     : function () {},
   onMaskClick : function () {},
 };
 

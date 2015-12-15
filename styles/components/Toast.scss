@@ -6,20 +6,25 @@
   width: 100%;
   height: 100%;
   overflow: auto;
+  animation: fade-in 0.3s ease-out;
   user-select: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1300;
 
-  >.ui-toast-container {
+  > .ui-toast-wrapper {
     margin: 0 auto;
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    border-radius: 6px;
     overflow: hidden;
     animation: slide-top 0.3s ease-out;
     z-index: 1301;
 
-    >.ui-toast-body {
-      /*padding: 20px;*/
-      font-size: 16px;
+    > .ui-toast-container {
+      height: 50px;
+      font-size: 14px;
+      text-align: center;
       overflow: auto;
       user-select: auto;
     }

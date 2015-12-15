@@ -21,6 +21,8 @@ import {
 import '../../styles/index.scss';
 import '../styles/Page1.scss';
 
+Modal.defaultProps.isRadius = true;
+
 class Page1 extends Component {
 
   constructor(props) {
@@ -94,44 +96,42 @@ class Page1 extends Component {
           <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
         </p>
 
-        { this.state.mask ?
-          <Mask onClose={() => this._onClickClose('mask')} />
-        : null }
+        <Modal visible={this.state.modal} radius width={'70%'} onMaskClick={() => this._onClickClose('modal')}>
+          <ModalHeader title="标题" onClose={() => this._onClickClose('modal')}></ModalHeader>
+          <ModalBody>
+            我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
+          </ModalBody>
+          <ModalFooter>
+            <button type="button" onClick={() => this._onClickClose('modal')}>取消</button>
+            <button type="button" onClick={() => this._onClickOpen('alert')}>选项一</button>
+            <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+          </ModalFooter>
+        </Modal>
 
-        { this.state.modal ?
-          <Modal width={'70%'} onMaskClick={() => this._onClickClose('modal')}>
-            <ModalHeader title="标题" onClose={() => this._onClickClose('modal')}></ModalHeader>
-            <ModalBody>
-              我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
-            </ModalBody>
-            <ModalFooter>
-              <button type="button" onClick={() => this._onClickClose('modal')}>取消</button>
-              <button type="button" onClick={() => this._onClickOpen('alert')}>选项一</button>
-              <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
-            </ModalFooter>
-          </Modal>
-        : null }
+        <Confirm
+          visible={this.state.confirm}
+          message="确定要删除吗？"
+          onOk={() => this._onClickOpen('alert')}
+          onCancel={() => this._onClickClose('confirm')} />
 
-        { this.state.confirm ?
-          <Confirm
-            message="确定要删除吗？"
-            onOk={() => this._onClickOpen('alert')}
-            onCancel={() => this._onClickClose('confirm')}>
-          </Confirm>
-        : null }
+        <Alert
+          visible={this.state.alert}
+          message="这是一个警告框！"
+          onClose={() => this._onClickClose('alert')} />
+        
+        <Toast
+          visible={this.state.toast}
+          message="这是一个提示信息！"
+          onMaskClick={() => this._onClickClose('toast')} />
+        
+        <Loading
+          visible={this.state.loading}
+          message="付款中" />
 
-        { this.state.alert ?
-          <Alert message="这是一个警告框！" onClose={() => this._onClickClose('alert')} />
-        : null }
-
-        { this.state.toast ?
-          <Toast message="这是一个提示信息！" onMaskClick={() => this._onClickClose('toast')} />
-        : null }
-
-        { this.state.loading ?
-          <Loading message="付款中" />
-        : null }
-
+        <Mask
+          visible={this.state.mask}
+          onClose={() => this._onClickClose('mask')} />
+          
       </div>
     );
   }

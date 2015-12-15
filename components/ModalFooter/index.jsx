@@ -4,7 +4,7 @@ import React, { Component, PropTypes, Children } from 'react';
 class ModalFooter extends Component {
 
   render () { 
-    const { children } = this.props; 
+    const { children, ...others } = this.props; 
     const itemStyle = {
       width : 100 / Children.count(children) + '%',
     };
@@ -13,7 +13,7 @@ class ModalFooter extends Component {
     });
 
     return (
-      <div className="ui-modal-footer">
+      <div className="ui-modal-footer" {...others}>
         <ul>
           {items}
         </ul>
