@@ -2,7 +2,7 @@
 .ui-modal-header {
   position: relative;
   height: 50px;
-  border-bottom: 1px solid #dfdede;
+  border-bottom: 1px solid #e9e9e9;
   padding: 0 20px;
 
   .ui-modal-title {
@@ -10,20 +10,48 @@
     line-height: 50px;
   }
 
-  .ui-modal-more {
+  .ui-modal-close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 15px;
-    color: #999;
-    text-align: center; 
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 16px;
+        top: 50%;
+        left: 50%;
+        margin-top: -1px;
+        margin-left: -8px;
+        background: #999;
+        border-radius: 100%;
+    }
+    &:before {
+        transform: rotate(45deg);
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
     &:hover {
-      color: #666;
+        &:before,
+        &:after {
+            background: #666;
+        }
+        /*animation: modal-close-rotate .2s ease-out;*/
     }
   }
 }
+
+/*@keyframes modal-close-rotate {
+  0% { 
+    transform: rotate(0);
+  }
+  100% { 
+    transform: rotate(90deg);
+  }
+}*/

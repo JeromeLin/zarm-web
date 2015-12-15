@@ -6,7 +6,7 @@ class ModalHeader extends Component {
   render () { 
     const { title, onClose, ...others } = this.props;
     const btnClose = onClose
-                   ? <div className="ui-modal-more" onClick={onClose}>x</div>
+                   ? <div className="ui-modal-close" onClick={onClose}></div>
                    : null;
 
     return (
