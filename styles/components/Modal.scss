@@ -1,3 +1,4 @@
+
 /*
 .ui-modal {
   position: fixed;
@@ -37,10 +38,23 @@
   background: rgba(0, 0, 0, 0.5);
   animation: fade-in 0.3s ease-out;
   user-select: none;
-  z-index: 1100;
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1100;
+
+  &.radius {
+    .ui-modal-container {
+      border-radius: $modal-radius;
+    }
+  }
+
+  &.round {
+    .ui-modal-container {
+      border-radius: $modal-round;
+    }
+  }
 
   >.ui-modal-wrapper {
     margin: auto 0;
@@ -48,7 +62,6 @@
     >.ui-modal-container {
       margin: 60px auto;
       background: #fff;
-      border-radius: 6px;
       overflow: hidden;
       animation: scale-up 0.3s ease-out;
     }

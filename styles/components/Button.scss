@@ -70,7 +70,7 @@
 .ui-btn {
   display: inline-block;
   margin-bottom: 0;
-  @include button-size(r(6), r(14), r(16), $line-height, $radius-aa);
+  @include button-size(r(6), r(14), r(16), $line-height, $radius);
   font-weight: 400;
   text-align: center;
   white-space: nowrap;

@@ -11,7 +11,7 @@ $theme-danger:    #d9534f !default;
 
 $radius-xl:       .25rem !default;
 $radius-lg:       .25rem !default;
-$radius-aa:       .2rem !default;
+$radius:          .2rem !default;
 $radius-sm:       .2rem !default;
 $radius-xs:       .2rem !default;
 
@@ -44,3 +44,6 @@ $btn-warning-border:             $btn-warning-bg !default;
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $theme-danger !default;
 $btn-danger-border:              $btn-danger-bg !default;
+
+$modal-radius:    .3rem !default;
+$modal-round:     1rem !default;

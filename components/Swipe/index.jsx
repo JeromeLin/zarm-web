@@ -230,7 +230,7 @@ class Swipe extends Component {
   }
 
   render () {
-    const { height, children } = this.props;
+    const { height, children, autoplay, ...others } = this.props;
     const style = {
       items      : {},
       pagination : {},
@@ -246,7 +246,7 @@ class Swipe extends Component {
     }
 
     return (
-      <div className="ui-swipe">
+      <div className="ui-swipe" {...others}>
         <div ref="swipeItems"
           className="ui-swipe-items"
           style={style.items}
