@@ -119,10 +119,12 @@ class Page1 extends Component {
           message="这是一个警告框！"
           onClose={() => this._onClickClose('alert')} />
         
-        <Toast
-          visible={this.state.toast}
-          message="这是一个提示信息！"
-          onMaskClick={() => this._onClickClose('toast')} />
+        { this.state.toast ?
+          <Toast
+            visible={this.state.toast}
+            message="这是一个提示信息！"
+            onMaskClick={() => this._onClickClose('toast')} />
+        : null }
         
         <Loading
           visible={this.state.loading}
@@ -131,7 +133,7 @@ class Page1 extends Component {
         <Mask
           visible={this.state.mask}
           onClose={() => this._onClickClose('mask')} />
-          
+
       </div>
     );
   }
