@@ -139,7 +139,6 @@ class Modal extends Component {
 
     return (
       <div className={classes.modal} style={style.modal} onClick={onMaskClick} {...others}>
-        <div className="ui-modal-mask" />
         <div className="ui-modal-wrapper">
           <div className={classes.dialog} ref="dialog" style={style.dialog} onClick={this._onContainerClick}>
             {children}
