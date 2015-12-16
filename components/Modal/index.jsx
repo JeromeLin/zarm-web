@@ -2,16 +2,15 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-
-import Animation from '../Animation';
+import addEndEventListener  from '../utils/animationEvents';
 
 class Modal extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isShow    : false,
-      isClosing : false,
+      isShow         : false,
+      animationState : 'leave',
     };
   }
 
@@ -21,29 +20,55 @@ class Modal extends Component {
 
   componentDidMount() {
     // console.log('componentDidMount');
-    // console.log(this.refs.dialog);
-    this.refs.dialog.addEventListener("webkitAnimationEnd", () => {
-      console.log('end');
-      if (this.state.isClosing) {
-        this.setState({
-          isShow : false,
-        });
-      }
-    });
+    this.animationEvents = addEndEventListener(this.refs.dialog, this.animationEnd.bind(this));
+
+    if (this.props.visible) {
+      this.enter();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.animationEvents) {
+      this.animationEvents.remove();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     // console.log('componentWillReceiveProps');
+    if (!this.props.visible && nextProps.visible) {
+      this.enter();
+    } else if (this.props.visible && !nextProps.visible) {
+      this.leave();
+    }
+  }
 
-    if (nextProps.visible) {
+  animationEnd(e) {
+    let node = this.refs.dialog;
+    if (e && e.target !== node) {
+      return;
+    }
+
+    if (this.state.animationState === 'leave') {
+      this.setState({ isShow: false });
+    }
+  }
+
+  enter() {
+    this.setState({
+      isShow: true,
+      animationState: 'enter'
+    });
+  }
+
+  leave() {
+    if (this.animationEvents) {
       this.setState({
-        isShow    : true,
-        isClosing : false,
+        animationState: 'leave'
       });
     } else {
       this.setState({
-        isClosing : true,
-      });
+        isShow: false
+      })
     }
   }
 
@@ -70,29 +95,26 @@ class Modal extends Component {
 
   render () {
     // console.log('render');
-    const props = this.props;
-    const { visible, animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = props;
-
+    const { visible, animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
+    const { isShow, animationState } = this.state;
 
     const classes = {
       modal:  classnames({
-                'ui-modal'   : true,
-                'radius'     : ('radius' in props || isRadius),
-                'round'      : ('round' in props || isRound),
-                'fade-enter' : visible,
-                'fade-leave' : !visible,
-                [className]  : className,
+                'ui-modal'                 : true,
+                'radius'                   : ('radius' in this.props || isRadius),
+                'round'                    : ('round' in this.props || isRound),
+                ['fade-' + animationState] : true,
+                [className]                : className,
               }),
       dialog: classnames({
-                'ui-modal-container'       : true,
-                [animationType + '-enter'] : visible,
-                [animationType + '-leave'] : !visible,
+                'ui-modal-container'                   : true,
+                [animationType + '-' + animationState] : true,
               })
     }
 
     const style = {
       modal: {
-        display                 : this.state.isShow ? 'flex' : 'none',
+        // visibility              : isShow ? 'visible' : 'hidden',
         WebkitAnimationDuration : animationDuration + 'ms',
         MozAnimationDuration    : animationDuration + 'ms',
         msAnimationDuration     : animationDuration + 'ms',
@@ -111,8 +133,13 @@ class Modal extends Component {
       }
     };
 
+    if (!isShow) {
+      style.modal.display = 'none';
+    }
+
     return (
       <div className={classes.modal} style={style.modal} onClick={onMaskClick} {...others}>
+        <div className="ui-modal-mask" />
         <div className="ui-modal-wrapper">
           <div className={classes.dialog} ref="dialog" style={style.dialog} onClick={this._onContainerClick}>
             {children}

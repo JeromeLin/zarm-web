@@ -96,7 +96,7 @@ class Page1 extends Component {
           <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
         </p>
 
-        <Modal visible={this.state.modal} radius width={'70%'} onMaskClick={() => this._onClickClose('modal')}>
+        <Modal visible={this.state.modal} radius onMaskClick={() => this._onClickClose('modal')}>
           <ModalHeader title="标题" onClose={() => this._onClickClose('modal')}></ModalHeader>
           <ModalBody>
             我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
