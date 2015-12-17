@@ -2,6 +2,8 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
+import '../styles/Document.scss';
+
 class Document extends Component {
 
   constructor(props) {

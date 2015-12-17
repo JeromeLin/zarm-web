@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react';
 import hljs from 'highlight.js';
-import Document from '../../components/Document';
+import Document from './Document';
 import Button from '../../components/Button';
-import '../../styles/index.scss';
 
-import '../styles/ButtonPage.scss';
+import '../../styles/index.scss';
+import '../styles/example.scss';
 
 class ButtonPage extends Component {
 
@@ -16,7 +16,7 @@ class ButtonPage extends Component {
   render() {
 
     return (
-      <div>
+      <div className="example">
         <div className="title">
           <h1>Button</h1>
           <p>按钮</p>

@@ -16,7 +16,7 @@ const rootRoute = {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/Page1'))
+          cb(null, require('./components/Page1'));
         }, 'Page1');
       }
     },
@@ -24,7 +24,7 @@ const rootRoute = {
       path: 'page2',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/Page2'))
+          cb(null, require('./components/Page2'));
         }, 'Page2');
       }
     },
@@ -32,15 +32,23 @@ const rootRoute = {
       path: 'button',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/ButtonPage'))
+          cb(null, require('./components/ButtonPage'));
         }, 'ButtonPage');
+      }
+    },
+    {
+      path: 'modal',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./components/ModalPage'));
+        }, 'ModalPage');
       }
     },
     {
       path: '*',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/NotFoundPage'))
+          cb(null, require('./components/NotFoundPage'));
         }, 'NotFoundPage');
       }
     }
@@ -48,7 +56,7 @@ const rootRoute = {
   indexRoute: {
     getComponent(location, cb) {
       require.ensure([], (require) => {
-        cb(null, require('./components/Page1'))
+        cb(null, require('./components/Page1'));
       }, 'Page1');
     }
   }

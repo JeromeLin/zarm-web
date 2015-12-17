@@ -141,7 +141,7 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   visible           : false,
-  animationType     : 'rotate',
+  animationType     : 'zoom',
   animationDuration : 300,
   width             : '70%',
   minWidth          : 270,
