@@ -1,5 +1,5 @@
 
-@keyframes scale-enter {
+@keyframes zoom-enter {
   from {
     transform: scale3d(.3, .3, .3);
   }
@@ -7,11 +7,11 @@
     transform: scale3d(1, 1, 1);
   }
 }
-.scale-enter {
-  animation: scale-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.zoom-enter {
+  animation: zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@keyframes scale-leave {
+@keyframes zoom-leave {
   from {
     transform: scale3d(1, 1, 1);
   }
@@ -19,6 +19,6 @@
     transform: scale3d(.3, .3, .3);
   }
 }
-.scale-leave {
-  animation: scale-leave both;
+.zoom-leave {
+  animation: zoom-leave both;
 }
