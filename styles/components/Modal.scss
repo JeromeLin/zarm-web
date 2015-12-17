@@ -14,13 +14,13 @@
   z-index: 1100;
 
   &.radius {
-    .ui-modal-container {
+    .ui-modal-dialog {
       border-radius: $modal-radius;
     }
   }
 
   &.round {
-    .ui-modal-container {
+    .ui-modal-dialog {
       border-radius: $modal-round;
     }
   }
@@ -29,7 +29,7 @@
     width: 100%;
     margin: auto 0;
   
-    > .ui-modal-container {
+    > .ui-modal-dialog {
       position: relative;
       margin: 60px auto;
       background: #fff;

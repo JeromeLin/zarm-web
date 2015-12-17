@@ -14,12 +14,7 @@ class Modal extends Component {
     };
   }
 
-  // componentWillMount() {
-  //   console.log('componentWillMount');
-  // }
-
   componentDidMount() {
-    // console.log('componentDidMount');
     this.animationEvents = addEndEventListener(this.refs.dialog, this.animationEnd.bind(this));
 
     if (this.props.visible) {
@@ -34,7 +29,6 @@ class Modal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log('componentWillReceiveProps');
     if (!this.props.visible && nextProps.visible) {
       this.enter();
     } else if (this.props.visible && !nextProps.visible) {
@@ -49,52 +43,40 @@ class Modal extends Component {
     }
 
     if (this.state.animationState === 'leave') {
-      this.setState({ isShow: false });
+      this.setState({
+        isShow: false
+      });
     }
   }
 
   enter() {
     this.setState({
       isShow: true,
-      animationState: 'enter'
+      animationState: 'enter',
     });
   }
 
   leave() {
     if (this.animationEvents) {
       this.setState({
-        animationState: 'leave'
+        animationState: 'leave',
       });
     } else {
       this.setState({
-        isShow: false
+        isShow: false,
       })
     }
   }
 
-  // shouldComponentUpdate() {
-  //   console.log('shouldComponentUpdate');
-  //   return false;
-  // }
-
-  // componentWillUpdate() {
-  //   console.log('componentWillUpdate');
-  // }
-
-  // componentDidUpdate() {
-  //   console.log('componentDidUpdate');
-  // }
-
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount');
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    return !!(this.state.isShow || nextState.isShow);
+  }
 
   _onContainerClick(e) {
     e.stopPropagation();
   }
 
   render () {
-    // console.log('render');
     const { visible, animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
     const { isShow, animationState } = this.state;
 
@@ -107,20 +89,18 @@ class Modal extends Component {
                 [className]                : className,
               }),
       dialog: classnames({
-                'ui-modal-container'                   : true,
+                'ui-modal-dialog'                      : true,
                 [animationType + '-' + animationState] : true,
               })
     }
 
     const style = {
       modal: {
-        // visibility              : isShow ? 'visible' : 'hidden',
         WebkitAnimationDuration : animationDuration + 'ms',
         MozAnimationDuration    : animationDuration + 'ms',
         msAnimationDuration     : animationDuration + 'ms',
         OAnimationDuration      : animationDuration + 'ms',
         animationDuration       : animationDuration + 'ms',
-
       },
       dialog: {
         width                   : width,
@@ -152,7 +132,7 @@ class Modal extends Component {
 
 Modal.propTypes = { 
   visible           : PropTypes.bool,
-  animationType     : PropTypes.oneOf(['fade', 'scale', 'slide', 'rotate']),
+  animationType     : PropTypes.oneOf(['fade', 'door', 'flip', 'rotate', 'zoom', 'slideUp', 'slideDown', 'slideLeft', 'slideRight']),
   animationDuration : PropTypes.number,
   width             : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   minWidth          : PropTypes.number,
@@ -161,7 +141,7 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   visible           : false,
-  animationType     : 'scale',
+  animationType     : 'rotate',
   animationDuration : 300,
   width             : '70%',
   minWidth          : 270,
