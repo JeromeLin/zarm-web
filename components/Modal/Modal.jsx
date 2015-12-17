@@ -1,6 +1,5 @@
 
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import addEndEventListener  from '../utils/animationEvents';
 
@@ -127,7 +126,6 @@ class Modal extends Component {
       </div>
     );
   }
-
 }
 
 Modal.propTypes = { 
@@ -136,6 +134,8 @@ Modal.propTypes = {
   animationDuration : PropTypes.number,
   width             : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   minWidth          : PropTypes.number,
+  isRadius          : PropTypes.bool,
+  isRound           : PropTypes.bool,
   onMaskClick       : PropTypes.func,
 };
 
@@ -145,6 +145,8 @@ Modal.defaultProps = {
   animationDuration : 300,
   width             : '70%',
   minWidth          : 270,
+  isRadius          : false,
+  isRound           : false,
   onMaskClick       : function () {},
 };
 

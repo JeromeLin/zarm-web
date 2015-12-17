@@ -43,8 +43,7 @@
     "react",
     "react-component",
     "dragon-ui",
-    "dragon",
-    "ui"
+    "dragon"
   ],
   "description": "UI for react.js",
   "author": "Jerome.Lin <16908091@qq.com>",

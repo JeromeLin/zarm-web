@@ -1,8 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import Modal from '../Modal';
-import ModalBody from '../ModalBody';
-import ModalFooter from '../ModalFooter';
+import Modal from './Modal';
 
 class Confirm extends Component {
 
@@ -11,13 +9,13 @@ class Confirm extends Component {
     
     return (
       <Modal {...others}>
-        <ModalBody>
+        <Modal.Body>
           <p style={{textAlign: 'center'}}>{message}</p>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+        <Modal.Footer>
           <button type="button" onClick={onCancel}>取消</button>
           <button type="button" onClick={onOk}>确定</button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }

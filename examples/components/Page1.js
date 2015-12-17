@@ -6,9 +6,6 @@ import { Link } from 'react-router';
 import {
   Mask,
   Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Alert,
   Confirm,
   Toast,
@@ -97,15 +94,15 @@ class Page1 extends Component {
         </p>
 
         <Modal visible={this.state.modal} radius onMaskClick={() => this._onClickClose('modal')}>
-          <ModalHeader title="标题" onClose={() => this._onClickClose('modal')}></ModalHeader>
-          <ModalBody>
+          <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
+          <Modal.Body>
             我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
-          </ModalBody>
-          <ModalFooter>
+          </Modal.Body>
+          <Modal.Footer>
             <button type="button" onClick={() => this._onClickClose('modal')}>取消</button>
             <button type="button" onClick={() => this._onClickOpen('alert')}>选项一</button>
             <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
-          </ModalFooter>
+          </Modal.Footer>
         </Modal>
 
         <Confirm

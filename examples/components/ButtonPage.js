@@ -17,6 +17,10 @@ class ButtonPage extends Component {
 
     return (
       <div>
+        <div className="title">
+          <h1>Button</h1>
+          <p>按钮</p>
+        </div>
 
         <Document title="按钮主题" 
           demo={
@@ -32,18 +36,19 @@ class ButtonPage extends Component {
             </div>
           }
           code={
-            `import { Button } from '../../components';\n\n` +
-            `ReactDOM.render(\n` +
-            `  <div>\n` +
-            `    <Button>Default</Button>\n` +
-            `    <Button theme="primary">Primary</Button>\n` +
-            `    <Button theme="info">Info</Button>\n` +
-            `    <Button theme="success">Success</Button>\n` +
-            `    <Button theme="warning">Warning</Button>\n` +
-            `    <Button theme="danger">Danger</Button>\n` +
-            `  </div>\n` +
-            `, document.getElementById('button-theme-demo'));`
-          } />
+`import { Button } from 'dragon-ui';
+
+ReactDOM.render(
+  <div>
+    <Button>Default</Button>
+    <Button theme="primary">Primary</Button>
+    <Button theme="info">Info</Button>
+    <Button theme="success">Success</Button>
+    <Button theme="warning">Warning</Button>
+    <Button theme="danger">Danger</Button>
+  </div>
+, document.getElementById('button-theme-demo'));`
+        } />
 
         <Document title="圆角按钮"
           demo={
@@ -59,17 +64,18 @@ class ButtonPage extends Component {
             </div>
           }
           code={
-            `import { Button } from '../../components';\n\n` +
-            `ReactDOM.render(\n` +
-            `  <div>\n` +
-            `    <Button radius>Default</Button>\n` +
-            `    <Button radius theme="primary">Primary</Button>\n` +
-            `    <Button radius theme="info">Info</Button>\n` +
-            `    <Button radius theme="success">Success</Button>\n` +
-            `    <Button radius theme="warning">Warning</Button>\n` +
-            `    <Button radius theme="danger">Danger</Button>\n` +
-            `  </div>\n` +
-            `, document.getElementById('button-radius-demo'));`
+`import { Button } from 'dragon-ui';
+
+ReactDOM.render(
+  <div>
+    <Button radius>Default</Button>
+    <Button radius theme="primary">Primary</Button>
+    <Button radius theme="info">Info</Button>
+    <Button radius theme="success">Success</Button>
+    <Button radius theme="warning">Warning</Button>
+    <Button radius theme="danger">Danger</Button>
+  </div>
+, document.getElementById('button-radius-demo'));`
           } />
 
         <Document title="椭圆按钮"
@@ -86,17 +92,18 @@ class ButtonPage extends Component {
             </div>
           }
           code={
-            `import { Button } from '../../components';\n\n` +
-            `ReactDOM.render(\n` +
-            `  <div>\n` +
-            `    <Button round>Default</Button>\n` +
-            `    <Button round theme="primary">Primary</Button>\n` +
-            `    <Button round theme="info">Info</Button>\n` +
-            `    <Button round theme="success">Success</Button>\n` +
-            `    <Button round theme="warning">Warning</Button>\n` +
-            `    <Button round theme="danger">Danger</Button>\n` +
-            `  </div>\n` +
-            `, document.getElementById('button-round-demo'));`
+`import { Button } from 'dragon-ui';
+
+ReactDOM.render(
+  <div>
+    <Button round>Default</Button>
+    <Button round theme="primary">Primary</Button>
+    <Button round theme="info">Info</Button>
+    <Button round theme="success">Success</Button>
+    <Button round theme="warning">Warning</Button>
+    <Button round theme="danger">Danger</Button>
+  </div>
+, document.getElementById('button-round-demo'));`
           } />
 
         <Document title="块级显示"
@@ -111,13 +118,14 @@ class ButtonPage extends Component {
             </div>
           }
           code={
-            `import { Button } from '../../components';\n\n` +
-            `ReactDOM.render(\n` +
-            `  <div>\n` +
-            `    <Button block>Default - block</Button>\n` +
-            `    <Button block theme="primary">Primary - block</Button>\n` +
-            `  </div>\n` +
-            `, document.getElementById('button-block-demo'));`
+`import { Button } from 'dragon-ui';
+
+ReactDOM.render(
+  <div>
+    <Button block>Default - block</Button>
+    <Button block theme="primary">Primary - block</Button>
+  </div>
+, document.getElementById('button-block-demo'));`
           } />
 
         <Document title="禁用状态"
@@ -130,13 +138,14 @@ class ButtonPage extends Component {
             </div>
           }
           code={
-            `import { Button } from '../../components';\n\n` +
-            `ReactDOM.render(\n` +
-            `  <div>\n` +
-            `    <Button disabled>Default - disabled</Button>\n` +
-            `    <Button disabled theme="primary">Primary - disabled</Button>\n` +
-            `  </div>\n` +
-            `, document.getElementById('button-disabled-demo'));`
+`import { Button } from 'dragon-ui';
+
+ReactDOM.render(
+  <div>
+    <Button disabled>Default - disabled</Button>
+    <Button disabled theme="primary">Primary - disabled</Button>
+  </div>
+, document.getElementById('button-disabled-demo'));`
           } />
 
         <Document title="激活状态"
@@ -149,13 +158,14 @@ class ButtonPage extends Component {
             </div>
           }
           code={
-            `import { Button } from '../../components';\n\n` +
-            `ReactDOM.render(\n` +
-            `  <div>\n` +
-            `    <Button active>Default - active</Button>\n` +
-            `    <Button active theme="primary">Primary - active</Button>\n` +
-            `  </div>\n` +
-            `, document.getElementById('button-active-demo'));`
+`import { Button } from 'dragon-ui';
+
+ReactDOM.render(
+  <div>
+    <Button active>Default - active</Button>
+    <Button active theme="primary">Primary - active</Button>
+  </div>
+, document.getElementById('button-active-demo'));`
           } />
 
         <Document title="按钮尺寸"
@@ -184,29 +194,30 @@ class ButtonPage extends Component {
             </div>
           }
           code={
-            `import { Button } from '../../components';\n\n` +
-            `ReactDOM.render(\n` +
-            `  <div>\n` +
-            `    <Button size="xl">Default - xl</Button>\n` +
-            `    <Button theme="primary" size="xl">Primary - xl</Button>\n` +
-            `  </div>\n` +
-            `  <div>\n` +
-            `    <Button size="lg">Default - lg</Button>\n` +
-            `    <Button theme="primary" size="lg">Primary - lg</Button>\n` +
-            `  </div>\n` +
-            `  <div>\n` +
-            `    <Button>Default</Button>\n` +
-            `    <Button theme="primary">Primary</Button>\n` +
-            `  </div>\n` +
-            `  <div>\n` +
-            `    <Button size="sm">Default - sm</Button>\n` +
-            `    <Button theme="primary" size="sm">Primary - sm</Button>\n` +
-            `  </div>\n` +
-            `  <div>\n` +
-            `    <Button size="xs">Default - xs</Button>\n` +
-            `    <Button theme="primary" size="xs">Primary - xs</Button>\n` +
-            `  </div>\n` +
-            `, document.getElementById('button-size-demo'));`
+`import { Button } from 'dragon-ui';
+
+ReactDOM.render(
+  <div>
+    <Button size="xl">Default - xl</Button>
+    <Button theme="primary" size="xl">Primary - xl</Button>
+  </div>
+  <div>
+    <Button size="lg">Default - lg</Button>
+    <Button theme="primary" size="lg">Primary - lg</Button>
+  </div>
+  <div>
+    <Button>Default</Button>
+    <Button theme="primary">Primary</Button>
+  </div>
+  <div>
+    <Button size="sm">Default - sm</Button>
+    <Button theme="primary" size="sm">Primary - sm</Button>
+  </div>
+  <div>
+    <Button size="xs">Default - xs</Button>
+    <Button theme="primary" size="xs">Primary - xs</Button>
+  </div>
+, document.getElementById('button-size-demo'));`
           } />
 
       </div>
