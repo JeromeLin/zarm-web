@@ -1,6 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import Mask from '../Mask';
+import Mask from './Mask';
 
 class Loading extends Component {
 

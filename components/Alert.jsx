@@ -1,8 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import Modal from '../Modal';
-import ModalBody from '../ModalBody';
-import ModalFooter from '../ModalFooter';
+import Modal from './Modal';
 
 class Alert extends Component {
 
@@ -11,12 +9,12 @@ class Alert extends Component {
     
     return (
       <Modal {...others}>
-        <ModalBody>
+        <Modal.Body>
           <p style={{textAlign: 'center'}}>{message}</p>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+        <Modal.Footer>
           <button type="button" onClick={onClose}>关闭</button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }

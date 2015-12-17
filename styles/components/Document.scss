@@ -60,8 +60,8 @@
       pre {
         margin: 0;
         width: auto;
-        animation: fade-in 0.5s ease-out;
-
+        animation: fade-enter .3s;
+        
         code {
           -webkit-overflow-scrolling: touch;
         }
