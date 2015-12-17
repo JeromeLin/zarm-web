@@ -82,8 +82,9 @@ class Page1 extends Component {
           </div>
         </Swipe>
 
-        <p>This is Page1</p>
-        <p><Link to="/page2">=> Goto Page2</Link></p>
+        <Link to="/button"><Cell title="Button" /></Link>
+        <Link to="/modal"><Cell title="Modal" /></Link>
+
         <p className="buttons">
           <Button size="xl" onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
           <Button theme="primary" size="lg" onClick={() => this._onClickOpen('modal')}>模态框</Button>

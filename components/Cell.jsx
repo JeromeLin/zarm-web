@@ -7,10 +7,10 @@ class Cell extends Component {
     const { title, description, ...others } = this.props;
 
     return (
-      <a className="ui-cell" href="javascript:;" {...others}>
+      <div className="ui-cell" {...others}>
         <div className="title">{title}</div>
         <div className="description">{description}</div>
-      </a>
+      </div>
     );
   }
 
