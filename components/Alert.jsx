@@ -33,4 +33,3 @@ Alert.defaultProps = {
 };
 
 export default Alert;
-
