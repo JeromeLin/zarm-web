@@ -82,8 +82,7 @@ class Page1 extends Component {
           </div>
         </Swipe>
 
-        <Link to="/button"><Cell title="Button" /></Link>
-        <Link to="/modal"><Cell title="Modal" /></Link>
+        <Cell title="Button" onClick={()=> { alert(111); }} />
 
         <p className="buttons">
           <Button size="xl" onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
