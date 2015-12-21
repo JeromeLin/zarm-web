@@ -94,8 +94,8 @@ ReactDOM.render(
 , document.getElementById('button-theme-demo'));`
         } />
 
-{/* 圆角模态框 */}
-        <Document title="圆角模态框"
+{/* 圆角/椭圆模态框 */}
+        <Document title="圆角/椭圆模态框"
           demo={
             <div>
               <div className="demo-inline">
@@ -205,6 +205,44 @@ ReactDOM.render(
                 </Modal.Body>
                 <Modal.Footer>
                   <button type="button" onClick={() => this._onClickClose('widthModal')}>取消</button>
+                  <button type="button" onClick={() => { alert('你点了选项一') }}>选项一</button>
+                  <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+                </Modal.Footer>
+              </Modal>
+            </div>
+          }
+          code={``} />
+
+{/* 不同进出场动画的模态框 */}
+        <Document title="不同进出场动画的模态框"
+          demo={
+            <div>
+              <div className="demo-inline">
+                <Button onClick={() => this._onClickOpen('zoomModal')}>Open Zoom Modal</Button>
+                <Button onClick={() => this._onClickOpen('fadeModal')}>Open Fade Modal</Button>
+                <Button onClick={() => this._onClickOpen('doorModal')}>Open Door Modal</Button>
+                <Button onClick={() => this._onClickOpen('flipModal')}>Open Flip Modal</Button>
+                <Button onClick={() => this._onClickOpen('rotateModal')}>Open Rotate Modal</Button>
+                <Button onClick={() => this._onClickOpen('slideUp')}>Open SlideUp Modal</Button>
+                <Button onClick={() => this._onClickOpen('slideDown')}>Open SlideDown Modal</Button>
+                <Button onClick={() => this._onClickOpen('slideLeft')}>Open slideLeft Modal</Button>
+                <Button onClick={() => this._onClickOpen('slideRight')}>Open slideRight Modal</Button>
+              </div>
+              <Modal 
+                visible={this.state.zoomModal}
+                animationType={this.state.zoomModal}
+                width={270}
+                onMaskClick={() => this._onClickClose('zoomModal')}>
+                <Modal.Header title="固定宽度的模态框" onClose={() => this._onClickClose('zoomModal')}></Modal.Header>
+                <Modal.Body>
+                  模态框内容<br />
+                  模态框内容<br />
+                  模态框内容<br />
+                  模态框内容<br />
+                  模态框内容<br />
+                </Modal.Body>
+                <Modal.Footer>
+                  <button type="button" onClick={() => this._onClickClose('zoomModal')}>取消</button>
                   <button type="button" onClick={() => { alert('你点了选项一') }}>选项一</button>
                   <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
                 </Modal.Footer>
