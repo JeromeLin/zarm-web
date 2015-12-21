@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import addEndEventListener  from '../utils/animationEvents';
+import addEndEventListener from '../utils/animationEvents';
 
 class Modal extends Component {
 

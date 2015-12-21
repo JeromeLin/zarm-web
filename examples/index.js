@@ -10,13 +10,13 @@ let history = createBrowserHistory({
 
 const rootRoute = {
   path: '/',
-  component: require('./components/App'),
+  component: require('./pages/App'),
   childRoutes: [
     {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/Page1'));
+          cb(null, require('./pages/Page1'));
         }, 'Page1');
       }
     },
@@ -24,7 +24,7 @@ const rootRoute = {
       path: 'page2',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/Page2'));
+          cb(null, require('./pages/Page2'));
         }, 'Page2');
       }
     },
@@ -32,7 +32,7 @@ const rootRoute = {
       path: 'button',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/ButtonPage'));
+          cb(null, require('./pages/ButtonPage'));
         }, 'ButtonPage');
       }
     },
@@ -40,7 +40,7 @@ const rootRoute = {
       path: 'modal',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/ModalPage'));
+          cb(null, require('./pages/ModalPage'));
         }, 'ModalPage');
       }
     },
@@ -48,7 +48,7 @@ const rootRoute = {
       path: '*',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./components/NotFoundPage'));
+          cb(null, require('./pages/NotFoundPage'));
         }, 'NotFoundPage');
       }
     }
@@ -56,7 +56,7 @@ const rootRoute = {
   indexRoute: {
     getComponent(location, cb) {
       require.ensure([], (require) => {
-        cb(null, require('./components/Page1'));
+        cb(null, require('./pages/Page1'));
       }, 'Page1');
     }
   }
