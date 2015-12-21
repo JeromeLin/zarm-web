@@ -16,7 +16,7 @@ import {
 } from '../../components';
 
 import '../../styles/index.scss';
-import '../styles/Page1.scss';
+import '../styles/pages/Page1.scss';
 
 Modal.defaultProps.isRadius = true;
 
@@ -81,8 +81,6 @@ class Page1 extends Component {
             </div>
           </div>
         </Swipe>
-
-        <Cell title="Button" onClick={()=> { alert(111); }} />
 
         <p className="buttons">
           <Button size="xl" onClick={() => this._onClickOpen('mask')}>遮罩层</Button>

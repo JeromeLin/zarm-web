@@ -1,8 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-
-import '../styles/Document.scss';
+import '../styles/components/Document.scss';
 
 class Document extends Component {
 

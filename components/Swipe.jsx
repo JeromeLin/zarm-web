@@ -1,6 +1,7 @@
 
 import React, { Component, PropTypes, Children } from 'react';
 import classnames from 'classnames';
+import addEndEventListener from './utils/transitionEvents';
 
 class Swipe extends Component {
 
@@ -10,7 +11,6 @@ class Swipe extends Component {
       items        : [],
       activeIndex  : this.props.activeIndex,
       translateX   : 0,
-      moveInterval : undefined,
       pointStart   : 0,
       pointEnd     : 0,
       timeStart    : new Date(),
@@ -33,6 +33,8 @@ class Swipe extends Component {
   componentDidMount() {
     // 监听窗口变化
     window.addEventListener("resize", () => this._updateResize());
+    this.transitionEvents = addEndEventListener(this.refs.swipeItems, this._transitionEnd.bind(this));
+
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
     // 自动轮播开始
@@ -44,6 +46,10 @@ class Swipe extends Component {
     this.pauseAutoplay();
     // 移除监听窗口变化
     window.removeEventListener("resize", () => this._updateResize());
+
+    if (this.transitionEvents) {
+      this.transitionEvents.remove();
+    }
   }
 
   // 滑动到指定编号
@@ -58,7 +64,7 @@ class Swipe extends Component {
 
   // 自动轮播开始
   startAutoplay() {
-    const interval = (this.props.autoplay && setInterval(() => {
+    this.moveInterval = (this.props.autoplay && setInterval(() => {
 
       let activeIndex = this.state.activeIndex,
           maxLength = this.props.children.length;
@@ -78,18 +84,15 @@ class Swipe extends Component {
       } else {
         this.onSlideTo(activeIndex);
       }
-
+      this.onSlideTo(activeIndex);
     }, this.props.autoplayIntervalTime));
 
-    this.setState({
-      moveInterval: interval,
-    });
   }
 
   // 暂停自动轮播
   pauseAutoplay() {
-    if (this.state.moveInterval) { 
-      clearInterval(this.state.moveInterval);
+    if (this.moveInterval) { 
+      clearInterval(this.moveInterval);
     }
   }
 
@@ -128,12 +131,23 @@ class Swipe extends Component {
     dom.style.mozTransitionDuration = duration + "ms";
     dom.style.oTransitionDuration = duration + "ms";
     dom.style.transitionDuration = duration + "ms";
-    dom.style.webkitTransform = "translate(" + x + "px, " + y + "px)";
-    dom.style.mozTransform = "translate(" + x + "px, " + y + "px)";
-    dom.style.oTransform = "translate(" + x + "px, " + y + "px)";
-    dom.style.transform = "translate(" + x + "px, " + y + "px)"; 
+    dom.style.webkitTransform = "translate3d(" + x + "px, " + y + "px, 0)";
+    dom.style.mozTransform = "translate3d(" + x + "px, " + y + "px, 0)";
+    dom.style.oTransform = "translate3d(" + x + "px, " + y + "px, 0)";
+    dom.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
   }
 
+  _transitionEnd() {
+    let activeIndex = this.state.activeIndex,
+        maxLength = this.props.children.length;
+
+    if (activeIndex > maxLength - 1) {
+      this.onJumpTo(0);
+    } else if (activeIndex < 0) {
+      this.onJumpTo(maxLength - 1);
+    }
+  }
+  
   // 触屏事件
   _onTouchStart(event) {
     this.pauseAutoplay();
@@ -169,6 +183,7 @@ class Swipe extends Component {
   }
 
   _onTouchEnd(event) {
+
     const px = (this.state.pointEnd !== 0)
              ? this.state.pointEnd - this.state.pointStart
              : 0,
@@ -188,16 +203,12 @@ class Swipe extends Component {
                   : (this.state.activeIndex + 1);
 
       this.onSlideTo(activeIndex);
-
-      if (activeIndex > maxLength - 1) {
-        activeIndex = 0;
-      } else if (activeIndex < 0) {
-        activeIndex = maxLength - 1;
-      }
-
     } else {
       this.onSlideTo(activeIndex);
     }
+
+    // dom.removeEventListener("transitionend", () => this._aaa());
+
 
     // 恢复自动轮播
     this.startAutoplay();

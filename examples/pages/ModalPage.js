@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import hljs from 'highlight.js';
-import Document from './Document';
+import Document from '../components/Document';
 import {
   Button,
   Modal, 
@@ -10,7 +10,7 @@ import {
 } from '../../components';
 
 import '../../styles/index.scss';
-import '../styles/example.scss';
+import '../styles/pages/example.scss';
 
 class ModalPage extends Component {
 
