@@ -8,3 +8,9 @@ export Loading from './Loading';
 export Button from './Button';
 export Swipe from './Swipe';
 export Cell from './Cell';
+export Picker from './Picker';
+export Selector from './Selector';
+export Switch from './Switch';
+
+
+
