@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import addEndEventListener from '../utils/animationEvents';
 
-class Modal extends Component {
+class Selector extends Component {
 
   constructor(props) {
     super(props);
@@ -76,34 +76,30 @@ class Modal extends Component {
   }
 
   render () {
-    const { visible, animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
+    const { visible, animationType, animationDuration, className, onMaskClick, children, ...others } = this.props;
     const { isShow, animationState } = this.state;
 
     const classes = {
-      modal:  classnames({
-                'ui-modal'                 : true,
-                'radius'                   : ('radius' in this.props || isRadius),
-                'round'                    : ('round' in this.props || isRound),
+      selector:  classnames({
+                'ui-selector'              : true,
                 ['fade-' + animationState] : true,
                 [className]                : className,
               }),
-      dialog: classnames({
-                'ui-modal-dialog'                      : true,
+      wrapper: classnames({
+                'ui-selector-wrapper'                      : true,
                 [animationType + '-' + animationState] : true,
               })
     }
 
     const style = {
-      modal: {
+      selector: {
         WebkitAnimationDuration : animationDuration + 'ms',
         MozAnimationDuration    : animationDuration + 'ms',
         msAnimationDuration     : animationDuration + 'ms',
         OAnimationDuration      : animationDuration + 'ms',
         animationDuration       : animationDuration + 'ms',
       },
-      dialog: {
-        width                   : width,
-        minWidth                : minWidth,
+      wrapper: {
         WebkitAnimationDuration : animationDuration + 'ms',
         MozAnimationDuration    : animationDuration + 'ms',
         msAnimationDuration     : animationDuration + 'ms',
@@ -113,14 +109,23 @@ class Modal extends Component {
     };
 
     if (!isShow) {
-      style.modal.display = 'none';
+      style.selector.display = 'none';
     }
 
     return (
-      <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
-        <div className="ui-modal-wrapper">
-          <div className={classes.dialog} ref="dialog" style={style.dialog} {...others} onClick={this._onContainerClick}>
-            {children}
+      <div className={classes.selector} style={style.selector} onClick={onMaskClick}>
+        <div className={classes.wrapper} ref="dialog" style={style.wrapper} {...others} onClick={this._onContainerClick}>
+          <div className="ui-selector-header">
+            <span><a href="">取消</a></span>
+            <span><a href="">确定</a></span>
+          </div>
+          <div className="ui-selector-mask-top">
+            <div className="ui-selector-mask-bottom">
+              <div className="ui-selector-dialog" {...others}>
+                <div className="ui-selector-selected"></div>
+                {children}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -128,7 +133,7 @@ class Modal extends Component {
   }
 }
 
-Modal.propTypes = { 
+Selector.propTypes = { 
   visible           : PropTypes.bool,
   animationType     : PropTypes.oneOf([
                         'fade', 'door', 'flip', 'rotate', 'zoom',
@@ -136,23 +141,15 @@ Modal.propTypes = {
                         'slideUp', 'slideDown', 'slideLeft', 'slideRight'
                       ]),
   animationDuration : PropTypes.number,
-  width             : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  minWidth          : PropTypes.number,
-  isRadius          : PropTypes.bool,
-  isRound           : PropTypes.bool,
   onMaskClick       : PropTypes.func,
 };
 
-Modal.defaultProps = {
+Selector.defaultProps = {
   visible           : false,
-  animationType     : 'zoom',
+  animationType     : 'slideUp',
   animationDuration : 300,
-  width             : '70%',
-  minWidth          : 270,
-  isRadius          : false,
-  isRound           : false,
   onMaskClick       : function () {},
 };
 
-export default Modal;
+export default Selector;
 
