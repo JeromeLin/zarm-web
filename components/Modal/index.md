@@ -5,14 +5,14 @@
 ## 何时使用
 
 - 需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 Modal 在当前页面正中打开一个悬浮层，承载相应的操作。
-- 另外，结合`Modal.Header``Modal.Body``Modal.Footer`使用可以设置模态框的各个组成部分。
+- 另外，结合`Modal.Header` `Modal.Body` `Modal.Footer`使用可以设置模态框的各个组成部分。
 
 ## API
 
 | 参数               | 必选 | 说明                                            | 类型     | 默认值 |
 |-------------------|-----|------------------------------------------------|----------|-------|
 | visible           | 否 | 对话框是否可见                                     | Boolean     | false    |
-| animationType     | 否 | 动画效果，可选项为`zoom``fade``door``flip`<br/>`rotate``moveUp``moveDown``moveLeft``moveRight`<br/>`slideUp``slideDown``slideLeft``slideRight`  | String   | zoom    |
+| animationType     | 否 | 动画效果，可选项为`zoom` `fade` `door` `flip`<br/>`rotate` `moveUp` `moveDown` `moveLeft` `moveRight`<br/>`slideUp` `slideDown` `slideLeft` `slideRight`  | String   | zoom    |
 | animationDuration | 否 | 动画执行时长，单位：ms                              | Number              | 300    |
 | width             | 否 | 对话框宽度，可以为String类型的百分比格式               | Number or String    | 600    |
 | minWidth          | 否 | 对话框最小宽度                                     | Number              | 270    |
