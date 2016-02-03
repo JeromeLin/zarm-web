@@ -1,11 +1,12 @@
 
 import React, { Component, PropTypes } from 'react';
 import Modal from './Modal';
+import Button from './Button';
 
 class Confirm extends Component {
 
   render () {
-    const { message, onOk, onCancel, ...others } = this.props;
+    const { message, okText, cancelText, onOk, onCancel, ...others } = this.props;
     
     return (
       <Modal {...others}>
@@ -13,8 +14,8 @@ class Confirm extends Component {
           <p style={{textAlign: 'center'}}>{message}</p>
         </Modal.Body>
         <Modal.Footer>
-          <button type="button" onClick={onCancel}>取消</button>
-          <button type="button" onClick={onOk}>确定</button>
+          <Button size="lg" onClick={onCancel}>{cancelText}</Button>
+          <Button size="lg" theme="success" onClick={onOk}>{okText}</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -22,17 +23,21 @@ class Confirm extends Component {
 }
 
 Confirm.propTypes = {
-  message  : PropTypes.string,
-  width    : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onOk     : PropTypes.func,
-  onCancel : PropTypes.func,
+  message   : PropTypes.string,
+  width     : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  okText    : PropTypes.string,
+  cancelText: PropTypes.string,
+  onOk      : PropTypes.func,
+  onCancel  : PropTypes.func,
 };
 
 Confirm.defaultProps = {
-  message  : '',
-  width    : 270,
-  onOk     : function () {},
-  onCancel : function () {},
+  message   : '',
+  width     : 270,
+  okText    : '确定',
+  cancelText: '取消',
+  onOk      : function () {},
+  onCancel  : function () {},
 };
 
 export default Confirm;

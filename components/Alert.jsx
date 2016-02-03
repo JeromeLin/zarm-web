@@ -1,6 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import Modal from './Modal';
+import Button from './Button';
 
 class Alert extends Component {
 
@@ -13,7 +14,7 @@ class Alert extends Component {
           <p style={{textAlign: 'center'}}>{message}</p>
         </Modal.Body>
         <Modal.Footer>
-          <button type="button" onClick={onClose}>关闭</button>
+          <Button size="lg" onClick={onClose}>关闭</Button>
         </Modal.Footer>
       </Modal>
     );

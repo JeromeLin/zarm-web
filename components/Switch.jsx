@@ -7,37 +7,69 @@ class Switch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      checked: false
     };
   }
 
-  _onClick() {
+  componentDidMount() {
+    const props = this.props;
+    let checked = false;
+    if ('checked' in props) {
+      checked = !!props.checked;
+    } else {
+      checked = !!props.defaultChecked;
+    }
     this.setState({
-      active: !this.state.active,
+      checked: checked,
     });
-    this.props.onChange(!this.state.active);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ('checked' in nextProps) {
+      this.setState({
+        checked: !!nextProps.checked
+      });
+    }
+  }
+
+  _onClick() {
+    const checked = !this.state.checked;
+    this.setState({
+      checked: checked
+    });
+    this.props.onChange(checked);
   }
 
   render() {
-    const { name, ...others } = this.props;
+    const { size, isCheckedText, unCheckedText, ...others } = this.props;
+    const { checked } = this.state;
+
     const cls = classnames({
-      'ui-switch': true,
-      'active'   : this.state.active,
+      'ui-switch'        : true,
+      ['size-' + size]   : size,
+      'ui-switch-checked': checked,
     });
 
     return (
-      <div className={cls} onClick={() => this._onClick()} {...others}></div>
+      <div className={cls} onClick={() => this._onClick()} {...others}>
+        <span className="ui-switch-inner">{ checked ? isCheckedText : unCheckedText }</span>
+      </div>
     );
   }
 }
 
 Switch.propTypes = {
+  size         : PropTypes.oneOf(['sm']),
   defaultValue : PropTypes.bool,
+  isCheckedText: PropTypes.string,
+  unCheckedText: PropTypes.string,
   onChange     : PropTypes.func,
 };
 
 Switch.defaultProps = {
   defaultValue : false,
+  isCheckedText: '',
+  unCheckedText: '',
   onChange     : function () {},
 };
 

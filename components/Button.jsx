@@ -34,8 +34,9 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  type  : 'button',
-  theme : 'default',
+  type     : 'button',
+  theme    : 'default',
+  isRadius : true
 };
 
 export default Button;

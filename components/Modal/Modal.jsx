@@ -149,7 +149,7 @@ Modal.defaultProps = {
   animationDuration : 300,
   width             : '70%',
   minWidth          : 270,
-  isRadius          : false,
+  isRadius          : true,
   isRound           : false,
   onMaskClick       : function () {},
 };
