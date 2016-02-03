@@ -51,12 +51,10 @@
   }
 }
 
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-  padding: $padding-y $padding-x;
+@mixin button-size($padding, $font-size, $border-radius) {
+  padding: $padding;
   font-size: $font-size;
-  padding: $padding-y $padding-x;
-  font-size: $font-size;
-  line-height: $line-height;
+  line-height: 1.5;
 
   &.radius {
     border-radius: $border-radius;
@@ -70,7 +68,7 @@
 .ui-btn {
   display: inline-block;
   margin-bottom: 0;
-  @include button-size(r(6), r(14), r(16), $line-height, $radius);
+  @include button-size(4px 11px, 12px, $radius);
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
@@ -101,19 +99,16 @@
   // Button Sizes
   //
   &.size-xl {
-    @include button-size(r(10), r(20), r(20), $line-height-xl, $radius-xl);
+    @include button-size(9px 18px 8px 18px, 14px, $radius-xl);
   }
-
   &.size-lg {
-    @include button-size(r(8), r(18), r(18), $line-height-lg, $radius-lg);
+    @include button-size(5px 12px 4px 12px, 14px, $radius-lg);
   }
-
   &.size-sm {
-    @include button-size(r(5), r(12), r(14), $line-height-sm, $radius-sm);
+    @include button-size(2px 6px, 12px, $radius-sm);
   }
-
   &.size-xs {
-    @include button-size(r(4), r(10), r(12), $line-height-xs, $radius-xs);
+    @include button-size(1px 4px, 10px, $radius-xs);
   }
 
   //

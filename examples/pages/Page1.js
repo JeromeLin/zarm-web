@@ -12,88 +12,11 @@ import {
   Loading,
   Button,
   Swipe,
-  Cell,
-  Picker,
-  Selector,
   Switch
 } from '../../components';
 
 import '../../styles/index.scss';
 import '../styles/pages/Page1.scss';
-
-
-const addressData = [
-  { 
-    value: 'bj',
-    name : '北京',
-    children: [
-      {
-        value: 'bjs',
-        name: '北京市',
-        children: [
-          {
-            value: 'hdq',
-            name: '海淀区',
-          },
-          {
-            value: 'xcq',
-            name: '西城区',
-          },
-          {
-            value: 'cwq',
-            name: '崇文区',
-          },
-          {
-            value: 'dcq',
-            name: '东城区',
-          },
-          {
-            value: 'cyq',
-            name: '朝阳区',
-          }
-        ]
-      }
-    ]
-  },
-  { 
-    value: 'fj',
-    name : '福建省',
-    children: [
-      {
-        value: 'sms',
-        name: '三明市',
-        children: [
-          {
-            value: 'sx',
-            name: '沙县',
-          },
-          {
-            value: 'nh',
-            name: '宁化县',
-          },
-          {
-            value: 'tn',
-            name: '泰宁县',
-          }
-        ]
-      },
-      {
-        value: 'fzs',
-        name: '福州市',
-        children: [
-          {
-            value: 'fdx',
-            name: '福鼎县',
-          },
-          {
-            value: 'clx',
-            name: '长乐县',
-          }
-        ]
-      }
-    ]
-  }
-];
 
 class Page1 extends Component {
 
@@ -106,14 +29,7 @@ class Page1 extends Component {
       mask      : false,
       toast     : false,
       loading   : false,
-      selector  : false,
-
-      province     : 'fj',
-      city         : 'sms',
-      country      : 'tn',
-      provinceData : addressData,
-      cityData     : addressData[0].children,
-      countryData  : addressData[0].children[0].children,
+      switchChecked : false,
     };
   }
 
@@ -166,53 +82,29 @@ class Page1 extends Component {
           </div>
         </Swipe>
 
-        <Switch onChange={(data) => {
-          console.log(data)
+        <Switch isCheckedText="是" unCheckedText="否" checked={this.state.switchChecked} onChange={(data) => {
+          this.setState({
+            switchChecked: data
+          });
         }}></Switch>
-
-        <p>province: {this.state.province}</p>
-        <p>city: {this.state.city}</p>
-        <p>country: {this.state.country}</p>
 
         <p className="buttons">
           <Button size="xl" onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
-          <Button theme="primary" size="lg" onClick={() => this._onClickOpen('modal')}>模态框</Button>
+          <Button size="lg" theme="primary" onClick={() => this._onClickOpen('modal')}>模态框</Button>
           <Button theme="info" onClick={() => this._onClickOpen('confirm')}>确认框</Button>
-          <Button theme="success" size="sm" onClick={() => this._onClickOpen('alert')}>警告框</Button>
-          <Button theme="warning" size="xs" onClick={() => this._onClickOpen('loading')}>加载中</Button>
+          <Button size="sm" theme="success" onClick={() => this._onClickOpen('alert')}>警告框</Button>
+          <Button size="xs" theme="warning" onClick={() => this._onClickOpen('loading')}>加载中</Button>
           <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
-          <Button onClick={() => this._onClickOpen('selector')}>城市选择器</Button>
         </p>
 
-        <Selector visible={this.state.selector} onMaskClick={() => this._onClickClose('selector')}>
-          <Selector.Group data={this.state.provinceData} defaultValue={this.state.province} onChange={(data) => {
-            this.setState({
-              province   : data.value,
-              cityData   : this.state.provinceData[data.index].children,
-            });
-          }} />
-          <Selector.Group data={this.state.cityData} defaultValue={this.state.city} onChange={(data) => {
-            this.setState({
-              city       : data.value,
-              countryData: this.state.cityData[data.index].children
-            });
-          }} />
-          <Selector.Group data={this.state.countryData} defaultValue={this.state.country} onChange={(data) => {
-            this.setState({
-              country    : data.value,
-            });
-          }} />
-        </Selector>
-
-        <Modal visible={this.state.modal} radius onMaskClick={() => this._onClickClose('modal')}>
+        <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
           <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
-          <Modal.Body>
+          <Modal.Body height={400}>
             我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
           </Modal.Body>
           <Modal.Footer>
-            <button type="button" onClick={() => this._onClickClose('modal')}>取消</button>
-            <button type="button" onClick={() => this._onClickOpen('alert')}>选项一</button>
-            <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+            <Button size="lg" onClick={() => this._onClickClose('modal')}>取消</Button>
+            <Button size="lg" theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
           </Modal.Footer>
         </Modal>
 
