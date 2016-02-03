@@ -12,7 +12,7 @@
 | 参数               | 必选 | 说明                                            | 类型     | 默认值 |
 |-------------------|-----|------------------------------------------------|----------|-------|
 | visible           | 否 | 对话框是否可见                                     | Boolean     | false    |
-| animationType     | 否 | 动画效果，可选项为`zoom`、`fade`、`door`、`flip`、`rotate`、`moveUp`、`moveDown`、`moveLeft`、`moveRight`、`slideUp`、`slideDown`、`slideLeft`、`slideRight`  | String   | zoom    |
+| animationType     | 否 | 动画效果，可选项为`zoom`、`fade`、`door`、`flip`、<br/>`rotate`、`moveUp`、`moveDown`、`moveLeft`、`moveRight`、<br/>`slideUp`、`slideDown`、`slideLeft`、`slideRight`  | String   | zoom    |
 | animationDuration | 否 | 动画执行时长，单位：ms                              | Number              | 300    |
 | width             | 否 | 对话框宽度，可以为String类型的百分比格式               | Number or String    | 600    |
 | minWidth          | 否 | 对话框最小宽度                                     | Number              | 270    |
@@ -31,6 +31,6 @@
 
 | 参数               | 必选 | 说明                                            | 类型     | 默认值 |
 |-------------------|-----|------------------------------------------------|----------|-------|
-| height            | 否 | 对话框内容区域的高度                                 | Number or String    | 无    |
+| height            | 否 | 对话框内容区域的高度，可以为String类型的百分比格式  | Number or String    | 无    |
 
 ### Modal.Footer
