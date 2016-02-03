@@ -147,7 +147,7 @@ Modal.defaultProps = {
   visible           : false,
   animationType     : 'zoom',
   animationDuration : 300,
-  width             : '70%',
+  width             : 600,
   minWidth          : 270,
   isRadius          : true,
   isRound           : false,
