@@ -34,7 +34,8 @@ class Page1 extends Component {
       toast     : false,
       loading   : false,
 
-      checked   : false,
+      switchValue: false,
+      radioValue : 'S',
     };
   }
 
@@ -66,24 +67,31 @@ class Page1 extends Component {
           </Form.Item>
 
           <Form.Item label="是否在职">
-            <Switch isCheckedText="是" unCheckedText="否" checked={this.state.checked} onChange={(checked) => {
-              console.log('switch to ' + checked);
+            <Switch isCheckedText="是" unCheckedText="否" defaultValue={true} onChange={(value) => {
+              console.log('switch to ' + value);
               this.setState({
-                checked: checked,
+                switchValue: value,
               });
             }}></Switch>
-            <Switch size="sm" checked={this.state.checked}></Switch>
+            <Switch size="sm" value={this.state.switchValue}></Switch>
           </Form.Item>
 
           <Form.Item label="性别">
-            <Radio value="F">女</Radio>
-          </Form.Item>
-
-          <Form.Item label="性别">
-            <Radio.Group onChange={(e) => {
+            <Radio.Group defaultValue={this.state.radioValue} onChange={(e) => {
                 console.log('radio to ' + e.target.value);
+                this.setState({
+                  radioValue: e.target.value,
+                });
               }}>
-              <Radio value="">保密</Radio>
+              <Radio value="S">保密</Radio>
+              <Radio value="M">男</Radio>
+              <Radio value="F">女</Radio>
+            </Radio.Group>
+          </Form.Item>
+
+          <Form.Item label="性别">
+            <Radio.Group value={this.state.radioValue}>
+              <Radio value="S">保密</Radio>
               <Radio value="M">男</Radio>
               <Radio value="F" disabled>女</Radio>
             </Radio.Group>
