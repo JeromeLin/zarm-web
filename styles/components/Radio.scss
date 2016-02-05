@@ -1,0 +1,94 @@
+
+.ui-radio-group {
+  display: inline-block;
+
+  label {
+    margin-right: 16px;
+  }
+}
+
+/* 一般状态 */
+.ui-radio {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+
+  .ui-radio-inner {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 14px;
+    border-color: #d9d9d9;
+    background-color: #fff;
+    transition: border-color .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+
+    &:after {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      left: 3px;
+      top: 3px;
+      border-radius: 6px;
+      display: table;
+      border-top: 0;
+      border-left: 0;
+      content: ' ';
+      background-color: #2db7f5;
+      opacity: 0;
+      transition: transform .3s cubic-bezier(.78, .14, .15, .86),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+    }
+  }
+
+  .ui-radio-input {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  & + span {
+    margin-left: 5px;
+  }
+}
+
+/* 选中状态 */
+.ui-radio-checked {
+  .ui-radio-inner {
+    border-color: #d9d9d9;
+
+    &:after {
+      transform: scale(1);
+      opacity: 1;
+      transition: transform .3s cubic-bezier(.12, .4, .29, 1.46),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+    }
+  }
+}
+
+/* 禁用状态 */
+.ui-radio-disabled {
+
+  .ui-radio-inner {
+    border-color: #d9d9d9;
+    background-color: #f3f3f3;
+
+    &:after {
+      background-color: #ccc;
+    }
+  }
+
+  .ui-radio-input {
+    cursor: not-allowed;
+  }
+}

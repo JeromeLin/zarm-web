@@ -39,6 +39,8 @@
   
   &.disabled,
   &:disabled {
+    cursor: not-allowed;
+    
     &:focus,
     &.focus {
       background-color: $background;
@@ -51,7 +53,7 @@
   }
 }
 
-@mixin button-size($padding, $font-size, $border-radius) {
+@mixin button-size($height, $padding, $font-size, $border-radius) {
   padding: $padding;
   font-size: $font-size;
   line-height: 1.5;
@@ -63,13 +65,26 @@
   &.round {
     border-radius: 1000px;
   }
+
+  &.circle {
+    width: $height;
+    height: $height;
+    padding: 0;
+    font-size: $font-size + 2;
+    border-radius: 50%;
+  }
+
+  .ui-icon + span,
+  span + .ui-icon {
+    margin-left: $height / 10;
+  }
 }
 
 .ui-btn {
   display: inline-block;
   margin-bottom: 0;
-  @include button-size(4px 11px, 12px, $radius);
-  font-weight: 400;
+  @include button-size(28px, 5px 10px 3px 10px, 14px, $radius);
+  font-weight: normal;
   text-align: center;
   white-space: nowrap;
   background-image: none;
@@ -80,6 +95,7 @@
   user-select: none;
   transition: background-color 300ms ease-out, border-color 300ms ease-out;
   
+  /* disabled Button */
   &.disabled,
   &:disabled {
     cursor: not-allowed;
@@ -87,33 +103,27 @@
     box-shadow: none;
   }
 
-  //
-  // Block Button
-  //
+  /* block Button */
   &.block {
     width: 100%;
     display: block;
   }
 
-  //
-  // Button Sizes
-  //
+  /* Button sizes */
   &.size-xl {
-    @include button-size(9px 18px 8px 18px, 14px, $radius-xl);
+    @include button-size(40px, 6px 14px 5px 14px, 18px, $radius-xl);
   }
   &.size-lg {
-    @include button-size(5px 12px 4px 12px, 14px, $radius-lg);
+    @include button-size(32px, 5px 11px 4px 11px, 16px, $radius-lg);
   }
   &.size-sm {
-    @include button-size(2px 6px, 12px, $radius-sm);
+    @include button-size(24px, 2px 7px, 12px, $radius-sm);
   }
   &.size-xs {
-    @include button-size(1px 4px, 10px, $radius-xs);
+    @include button-size(20px, 2px 4px 1px 4px, 10px, $radius-xs);
   }
 
-  //
-  // Button Themes
-  //
+  /* Button themes */
   &.theme-default {
     @include button-theme($btn-default-color, $btn-default-bg, $btn-default-border);
   }

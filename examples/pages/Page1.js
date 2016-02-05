@@ -12,7 +12,11 @@ import {
   Loading,
   Button,
   Swipe,
-  Switch
+  Switch,
+  Input,
+  Icon,
+  Form,
+  Radio
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -29,7 +33,8 @@ class Page1 extends Component {
       mask      : false,
       toast     : false,
       loading   : false,
-      switchChecked : false,
+
+      checked   : false,
     };
   }
 
@@ -48,53 +53,57 @@ class Page1 extends Component {
   render() {
 
     return (
-      <div>
-        <Swipe>
-          <div className="ui-swipe-item">
-            <div className="ui-swipe-pic">
-              <a href="http://www.baidu.com">
-                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E4%BD%B3%E4%B9%90%E9%94%AD.png" />
-              </a>
-            </div>
-            <div className="ui-swipe-info">
-              <div className="ui-swipe-title">百度</div>
-            </div>
-          </div>
-          <div className="ui-swipe-item">
-            <div className="ui-swipe-pic">
-              <a href="http://www.taobao.com">
-                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E8%96%AF%E7%89%87-0.png" />
-              </a>
-            </div>
-            <div className="ui-swipe-info">
-              <div className="ui-swipe-title">淘宝</div>
-            </div>
-          </div>
-          <div className="ui-swipe-item">
-            <div className="ui-swipe-pic">
-              <a href="http://www.qq.com">
-                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E9%BB%84%E6%B2%B9%E8%96%AF%E7%89%87-0.png" />
-              </a>
-            </div>
-            <div className="ui-swipe-info">
-              <div className="ui-swipe-title">腾讯</div>
-            </div>
-          </div>
-        </Swipe>
+      <div className="demo">
 
-        <Switch isCheckedText="是" unCheckedText="否" checked={this.state.switchChecked} onChange={(data) => {
-          this.setState({
-            switchChecked: data
-          });
-        }}></Switch>
+        <Form>
+
+          <Form.Item label="姓名">
+            <Input placeholder="请输入..." />
+          </Form.Item>
+
+          <Form.Item label="座右铭">
+            <Input type="textarea" rows="3" />
+          </Form.Item>
+
+          <Form.Item label="是否在职">
+            <Switch isCheckedText="是" unCheckedText="否" checked={this.state.checked} onChange={(checked) => {
+              console.log('switch to ' + checked);
+              this.setState({
+                checked: checked,
+              });
+            }}></Switch>
+            <Switch size="sm" checked={this.state.checked}></Switch>
+          </Form.Item>
+
+          <Form.Item label="性别">
+            <Radio value="F">女</Radio>
+          </Form.Item>
+
+          <Form.Item label="性别">
+            <Radio.Group onChange={(e) => {
+                console.log('radio to ' + e.target.value);
+              }}>
+              <Radio value="">保密</Radio>
+              <Radio value="M">男</Radio>
+              <Radio value="F" disabled>女</Radio>
+            </Radio.Group>
+          </Form.Item>
+
+        </Form>
 
         <p className="buttons">
-          <Button size="xl" onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
-          <Button size="lg" theme="primary" onClick={() => this._onClickOpen('modal')}>模态框</Button>
-          <Button theme="info" onClick={() => this._onClickOpen('confirm')}>确认框</Button>
-          <Button size="sm" theme="success" onClick={() => this._onClickOpen('alert')}>警告框</Button>
-          <Button size="xs" theme="warning" onClick={() => this._onClickOpen('loading')}>加载中</Button>
-          <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
+          <Button size="xl" circle><Icon type="search" /></Button>
+          <Button size="lg" circle><Icon type="search" /></Button>
+          <Button circle><Icon type="search" /></Button>
+          <Button size="sm" circle><Icon type="search" /></Button>
+          <Button size="xs" circle><Icon type="search" /></Button>
+
+          <Button size="xl" onClick={() => this._onClickOpen('mask')}><Icon type="search" />遮罩层</Button>
+          <Button size="lg" theme="primary" onClick={() => this._onClickOpen('modal')}><Icon type="search" />模态框</Button>
+          <Button theme="info" onClick={() => this._onClickOpen('confirm')}><Icon type="search" />确认框</Button>
+          <Button size="sm" theme="success" onClick={() => this._onClickOpen('alert')}><Icon type="search" />警告框</Button>
+          <Button size="xs" theme="warning" onClick={() => this._onClickOpen('loading')}><Icon type="search" />加载中</Button>
+          <Button theme="danger" onClick={() => this._onClickOpen('toast')}><Icon type="search" />提示信息</Button>
         </p>
 
         <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>

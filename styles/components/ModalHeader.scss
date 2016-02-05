@@ -12,46 +12,16 @@
 
   .ui-modal-close {
     position: absolute;
-    top: 15px;
+    top: 0;
     right: 15px;
-    width: 20px;
-    height: 20px;
+    font-size: 16px;
+    line-height: 50px;
+    color: #999;
     cursor: pointer;
 
-    &:before,
-    &:after {
-      position: absolute;
-      content: '';
-      height: 2px;
-      width: 16px;
-      top: 50%;
-      left: 50%;
-      margin-top: -1px;
-      margin-left: -8px;
-      background: #999;
-      border-radius: 100%;
-    }
-    &:before {
-      transform: rotate(45deg);
-    }
-    &:after {
-      transform: rotate(-45deg);
-    }
     &:hover {
-      &:before,
-      &:after {
-          background: #666;
-      }
-      /*animation: modal-close-rotate .2s ease-out;*/
+      color: #666;
+      /*animation: rotate360 .2s ease-out;*/
     }
   }
 }
-
-/*@keyframes modal-close-rotate {
-  0% { 
-    transform: rotate(0);
-  }
-  100% { 
-    transform: rotate(90deg);
-  }
-}*/

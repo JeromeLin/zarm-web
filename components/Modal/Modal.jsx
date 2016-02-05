@@ -35,44 +35,8 @@ class Modal extends Component {
     }
   }
 
-  animationEnd(e) {
-    let node = this.refs.dialog;
-    if (e && e.target !== node) {
-      return;
-    }
-
-    if (this.state.animationState === 'leave') {
-      this.setState({
-        isShow: false
-      });
-    }
-  }
-
-  enter() {
-    this.setState({
-      isShow: true,
-      animationState: 'enter',
-    });
-  }
-
-  leave() {
-    if (this.animationEvents) {
-      this.setState({
-        animationState: 'leave',
-      });
-    } else {
-      this.setState({
-        isShow: false,
-      })
-    }
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     return !!(this.state.isShow || nextState.isShow);
-  }
-
-  _onContainerClick(e) {
-    e.stopPropagation();
   }
 
   render () {
@@ -119,12 +83,48 @@ class Modal extends Component {
     return (
       <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
         <div className="ui-modal-wrapper">
-          <div className={classes.dialog} ref="dialog" style={style.dialog} {...others} onClick={this._onContainerClick}>
+          <div className={classes.dialog} ref="dialog" style={style.dialog} {...others} onClick={(e) => this.onContainerClick(e)}>
             {children}
           </div>
         </div>
       </div>
     );
+  }
+
+  animationEnd(e) {
+    let node = this.refs.dialog;
+    if (e && e.target !== node) {
+      return;
+    }
+
+    if (this.state.animationState === 'leave') {
+      this.setState({
+        isShow: false
+      });
+    }
+  }
+
+  enter() {
+    this.setState({
+      isShow: true,
+      animationState: 'enter',
+    });
+  }
+
+  leave() {
+    if (this.animationEvents) {
+      this.setState({
+        animationState: 'leave',
+      });
+    } else {
+      this.setState({
+        isShow: false,
+      })
+    }
+  }
+
+  onContainerClick(e) {
+    e.stopPropagation();
   }
 }
 

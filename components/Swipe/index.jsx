@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes, Children } from 'react';
 import classnames from 'classnames';
-import addEndEventListener from './utils/transitionEvents';
+import addEndEventListener from '../utils/transitionEvents';
 
 class Swipe extends Component {
 
@@ -50,6 +50,45 @@ class Swipe extends Component {
     if (this.transitionEvents) {
       this.transitionEvents.remove();
     }
+  }
+
+  render () {
+    const { height, children, autoplay, ...others } = this.props;
+    const style = {
+      items      : {},
+      pagination : {},
+    };
+
+    if (!this._isDirectionX()) {
+      style.items.height = height;
+      style.pagination.marginTop = 3;
+    } else {
+      style.items.whiteSpace = 'nowrap';
+      style.pagination.display = 'inline-block';
+      style.pagination.marginRight = 3;
+    }
+
+    return (
+      <div className="ui-swipe" {...others}>
+        <div ref="swipeItems"
+          className="ui-swipe-items"
+          style={style.items}
+          onTouchStart={(event) => this._onTouchStart(event)}
+          onTouchMove={(event) => this._onTouchMove(event)}
+          onTouchEnd={(event) => this._onTouchEnd(event)}>
+          { this.state.items }
+        </div>
+        <div className="ui-swipe-pagination">
+          <ul>
+            {
+              Children.map(children, (result, index) => {
+                return <li key={"pagination-" + index} className={classnames({'active': index == this.state.activeIndex})} style={style.pagination} onClick={() => this.onSlideTo(index)} />
+              })
+            }
+          </ul>
+        </div>
+      </div>
+    );
   }
 
   // 滑动到指定编号
@@ -239,46 +278,6 @@ class Swipe extends Component {
             : false;
     return dir;
   }
-
-  render () {
-    const { height, children, autoplay, ...others } = this.props;
-    const style = {
-      items      : {},
-      pagination : {},
-    };
-
-    if (!this._isDirectionX()) {
-      style.items.height = height;
-      style.pagination.marginTop = 3;
-    } else {
-      style.items.whiteSpace = 'nowrap';
-      style.pagination.display = 'inline-block';
-      style.pagination.marginRight = 3;
-    }
-
-    return (
-      <div className="ui-swipe" {...others}>
-        <div ref="swipeItems"
-          className="ui-swipe-items"
-          style={style.items}
-          onTouchStart={(event) => this._onTouchStart(event)}
-          onTouchMove={(event) => this._onTouchMove(event)}
-          onTouchEnd={(event) => this._onTouchEnd(event)}>
-          { this.state.items }
-        </div>
-        <div className="ui-swipe-pagination">
-          <ul>
-            {
-              Children.map(children, (result, index) => {
-                return <li key={"pagination-" + index} className={classnames({'active': index == this.state.activeIndex})} style={style.pagination} onClick={() => this.onSlideTo(index)} />
-              })
-            }
-          </ul>
-        </div>
-      </div>
-    );
-  }
-
 }
 
 Swipe.propTypes = {

@@ -7,22 +7,22 @@ class Switch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
+      checked: props.checked || props.defaultChecked,
     };
   }
 
-  componentDidMount() {
-    const props = this.props;
-    let checked = false;
-    if ('checked' in props) {
-      checked = !!props.checked;
-    } else {
-      checked = !!props.defaultChecked;
-    }
-    this.setState({
-      checked: checked,
-    });
-  }
+  // componentDidMount() {
+  //   const props = this.props;
+  //   let checked = false;
+  //   if ('checked' in props) {
+  //     checked = !!props.checked;
+  //   } else {
+  //     checked = !!props.defaultChecked;
+  //   }
+  //   this.setState({
+  //     checked: checked,
+  //   });
+  // }
 
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
@@ -30,14 +30,6 @@ class Switch extends Component {
         checked: !!nextProps.checked
       });
     }
-  }
-
-  _onClick() {
-    const checked = !this.state.checked;
-    this.setState({
-      checked: checked
-    });
-    this.props.onChange(checked);
   }
 
   render() {
@@ -51,22 +43,32 @@ class Switch extends Component {
     });
 
     return (
-      <div className={cls} onClick={() => this._onClick()} {...others}>
+      <span className={cls} onClick={() => this._onClick()} {...others}>
         <span className="ui-switch-inner">{ checked ? isCheckedText : unCheckedText }</span>
-      </div>
+      </span>
     );
+  }
+
+  _onClick() {
+    const checked = !this.state.checked;
+    this.setState({
+      checked: checked
+    });
+    this.props.onChange(checked);
   }
 }
 
 Switch.propTypes = {
   size         : PropTypes.oneOf(['sm']),
+  checked      : PropTypes.bool,
   defaultValue : PropTypes.bool,
-  isCheckedText: PropTypes.string,
-  unCheckedText: PropTypes.string,
+  isCheckedText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  unCheckedText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   onChange     : PropTypes.func,
 };
 
 Switch.defaultProps = {
+  size         : null,
   defaultValue : false,
   isCheckedText: '',
   unCheckedText: '',

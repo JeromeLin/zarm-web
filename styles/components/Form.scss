@@ -1,0 +1,34 @@
+
+.ui-form {
+
+  .ui-form-item {
+    font-size: 12px;
+    margin-bottom: 24px;
+    color: #666;
+
+    > label {
+      color: #666;
+      text-align: right;
+      vertical-align: middle;
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+  }
+
+  &.ui-form-horizontal {
+    .ui-form-item {
+      position: relative;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      height: auto;
+    }
+  }
+
+  &.ui-form-inline {
+    .ui-form-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+}

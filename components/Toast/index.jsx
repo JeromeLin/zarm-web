@@ -1,6 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import Mask from './Mask';
+import Mask from '../Mask';
 
 class Toast extends Component {
 
@@ -26,10 +26,6 @@ class Toast extends Component {
     clearTimeout(this.state.timer);
   }
 
-  _onContainerClick(e) {
-    e.stopPropagation();
-  }
-
   render () {
     const { visible, message, width, onMaskClick, ...others } = this.props;
     const containerStyle = {
@@ -38,7 +34,7 @@ class Toast extends Component {
 
     return visible ? (
       <div className="ui-toast" {...others}>
-        <div className="ui-toast-wrapper" style={containerStyle} onClick={this._onContainerClick}>
+        <div className="ui-toast-wrapper" style={containerStyle} onClick={(e) => this._onContainerClick(e)}>
           <div className="ui-toast-container">
             {message}
           </div>
@@ -48,6 +44,9 @@ class Toast extends Component {
     ) : null;
   }
 
+  _onContainerClick(e) {
+    e.stopPropagation();
+  }
 }
 
 Toast.propTypes = {
