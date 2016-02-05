@@ -62,8 +62,8 @@ class RadioGroup extends Component {
 }
 
 RadioGroup.propTypes = {
-  value        : PropTypes.bool,
-  defaultValue : PropTypes.bool,
+  value        : PropTypes.string,
+  defaultValue : PropTypes.string,
   onChange     : PropTypes.func,
 };
 

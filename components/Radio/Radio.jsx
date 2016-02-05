@@ -11,19 +11,6 @@ class Radio extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   const props = this.props;
-  //   let checked = false;
-  //   if ('checked' in props) {
-  //     checked = !!props.checked;
-  //   } else {
-  //     checked = !!props.defaultChecked;
-  //   }
-  //   this.setState({
-  //     checked: checked,
-  //   });
-  // }
-
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
@@ -62,14 +49,15 @@ class Radio extends Component {
 }
 
 Radio.propTypes = {
-  checked      : PropTypes.bool,
-  defaultValue : PropTypes.bool,
-  onChange     : PropTypes.func,
+  defaultChecked: PropTypes.bool,
+  isDisabled    : PropTypes.bool,
+  onChange      : PropTypes.func,
 };
 
 Radio.defaultProps = {
-  defaultValue : false,
-  onChange     : function () {},
+  defaultChecked: false,
+  isDisabled    : false,
+  onChange      : function () {},
 };
 
 export default Radio;
