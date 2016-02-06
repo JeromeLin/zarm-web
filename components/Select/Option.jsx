@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-class Radio extends Component {
+class Option extends Component {
 
   constructor(props) {
     super(props);
@@ -25,24 +25,14 @@ class Radio extends Component {
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-radio'         : true,
-      'ui-radio-checked' : this.state.checked,
-      'ui-radio-disabled': disabled,
+      'ui-select-dropdown': true,
     });
 
     const inputDisabled = disabled
                         ? 'disabled'
                         : null;
 
-    return (
-      <label className="ui-radio">
-        <span className={cls}>
-          <input type="radio" value={value} className="ui-radio-input" onChange={(e) => this._onClick(e)} disabled={inputDisabled} {...others} />
-          <span className="ui-radio-inner"></span>
-        </span>
-        {children}
-      </label>
-    );
+    return <li onClick={(e) => this._onClick(e)} disabled={inputDisabled} {...others}>{value}</li>;
   }
 
   _onClick(e) {
@@ -53,16 +43,16 @@ class Radio extends Component {
   }
 }
 
-Radio.propTypes = {
+Option.propTypes = {
   defaultChecked: PropTypes.bool,
   isDisabled    : PropTypes.bool,
   onChange      : PropTypes.func,
 };
 
-Radio.defaultProps = {
+Option.defaultProps = {
   defaultChecked: false,
   isDisabled    : false,
   onChange      : function () {},
 };
 
-export default Radio;
+export default Option;

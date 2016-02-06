@@ -12,6 +12,8 @@ export Input from './Input';
 export Icon from './Icon';
 export Form from './Form';
 export Radio from './Radio';
+export Select from './Select';
+
 
 
 
