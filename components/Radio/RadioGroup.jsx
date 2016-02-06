@@ -39,11 +39,12 @@ class RadioGroup extends Component {
     });
 
     let children = React.Children.map(props.children, (radio) => {
-      return <Radio
-        {...radio.props}
-        onChange={(e) => this.onRadioChange(e)}
-        checked={this.state.value === radio.props.value}
-      />
+      return (
+        <Radio {...radio.props}
+          onChange={(e) => this.onRadioChange(e)}
+          checked={this.state.value === radio.props.value}>
+        </Radio>
+      );
     });
 
     return (

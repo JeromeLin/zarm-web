@@ -16,7 +16,8 @@ import {
   Input,
   Icon,
   Form,
-  Radio
+  Radio,
+  Select
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -35,7 +36,8 @@ class Page1 extends Component {
       loading   : false,
 
       switchValue: false,
-      radioValue : 'S',
+      radioValue : 'A',
+      selectValue: 'A'
     };
   }
 
@@ -76,25 +78,36 @@ class Page1 extends Component {
             <Switch size="sm" value={this.state.switchValue}></Switch>
           </Form.Item>
 
-          <Form.Item label="性别">
+          <Form.Item label="单选选择">
             <Radio.Group defaultValue={this.state.radioValue} onChange={(e) => {
                 console.log('radio to ' + e.target.value);
                 this.setState({
                   radioValue: e.target.value,
                 });
               }}>
-              <Radio value="S">保密</Radio>
-              <Radio value="M">男</Radio>
-              <Radio value="F">女</Radio>
+              <Radio value="a">A</Radio>
+              <Radio value="b">B</Radio>
+              <Radio value="c">C</Radio>
+              <Radio value="d">D</Radio>
             </Radio.Group>
           </Form.Item>
 
-          <Form.Item label="性别">
+          <Form.Item label="单选绑定">
             <Radio.Group value={this.state.radioValue}>
-              <Radio value="S">保密</Radio>
-              <Radio value="M">男</Radio>
-              <Radio value="F" disabled>女</Radio>
+              <Radio value="a">A</Radio>
+              <Radio value="b">B</Radio>
+              <Radio value="c" disabled>C</Radio>
+              <Radio value="d">D</Radio>
             </Radio.Group>
+          </Form.Item>
+
+          <Form.Item label="下拉选择">
+            <Select style={{width: 120}} value={this.state.selectValue}>
+              <Select.Option value="a">A</Select.Option>
+              <Select.Option value="b">B</Select.Option>
+              <Select.Option value="c">C</Select.Option>
+              <Select.Option value="d">D</Select.Option>
+            </Select>
           </Form.Item>
 
         </Form>
