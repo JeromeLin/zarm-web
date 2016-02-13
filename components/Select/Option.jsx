@@ -32,7 +32,7 @@ class Option extends Component {
                         ? 'disabled'
                         : null;
 
-    return <li onClick={(e) => this._onClick(e)} disabled={inputDisabled} {...others}>{value}</li>;
+    return <li onClick={(e) => this._onClick(e)} disabled={inputDisabled} {...others}>{children}</li>;
   }
 
   _onClick(e) {

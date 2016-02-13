@@ -24,6 +24,14 @@ class Select extends Component {
     };
   }
 
+  componentDidMount() {
+    document.body.addEventListener("click", () => {
+      this.setState({
+        dropdown: true,
+      });
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || getCheckedValue(nextProps.children)) {
       this.setState({
@@ -34,10 +42,11 @@ class Select extends Component {
 
   render () {
     const props = this.props;
-    const { value, isDisabled, ...others } = props;
+    const { isDisabled, ...others } = props;
 
     const cls = classnames({
       'ui-select'         : true,
+      'ui-select-open'    : !this.state.dropdown,
       'ui-select-disabled': ('disabled' in props || isDisabled),
     });
 
@@ -46,19 +55,25 @@ class Select extends Component {
       'ui-select-dropdown-hidden': this.state.dropdown,
     });
 
-    let children = React.Children.map(props.children, (option) => {
+    let valueText;
+
+    let children = React.Children.map(props.children, (option, index) => {
+      if (this.state.value == option.props.value) {
+        valueText = option.props.children;
+      }
+
       return (
         <Option {...option.props}
-          onChange={(e) => this.onOptionChange(e)}
+          onChange={() => this.onOptionChange(option.props, index)}
           checked={this.state.value === option.props.value}>
         </Option>
       );
     });
 
     return (
-      <span className="ui-select" {...others} onClick={() => this.onSelectClick()}>
-        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false">
-          <span className="ui-select-text">{value}</span>
+      <span className={cls} {...others}>
+        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
+          <span className="ui-select-text">{valueText}</span>
           <span className="ui-select-arrow">
             <Icon type="unfold" />
           </span>
@@ -72,17 +87,30 @@ class Select extends Component {
     );
   }
 
-  onSelectClick() {
+  onSelectClick(e) {
+    e.stopPropagation();
+
     this.setState({
       dropdown: !this.state.dropdown,
     });
   }
 
-  onOptionChange(e) {
+  onOptionChange(props, index) {
+    if (this.state.value === props.value) return;
+
+    console.log(1)
     this.setState({
-      value: e.target.value
+      value: props.value,
     });
-    this.props.onChange(e);
+
+    const selected = {
+      index: index,
+      value: props.value,
+      text : props.children,
+    }
+
+    console.log(2)
+    this.props.onChange(selected);
   }
 }
 

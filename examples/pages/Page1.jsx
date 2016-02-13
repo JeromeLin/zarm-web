@@ -37,7 +37,8 @@ class Page1 extends Component {
 
       switchValue: false,
       radioValue : 'A',
-      selectValue: 'A'
+      selectValue: 'a',
+      selectValue2: 'a'
     };
   }
 
@@ -102,7 +103,20 @@ class Page1 extends Component {
           </Form.Item>
 
           <Form.Item label="下拉选择">
-            <Select style={{width: 120}} value={this.state.selectValue}>
+            <Select style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
+              this.setState({
+                selectValue2: data.value,
+              });
+            }}>
+              <Select.Option value="a">A</Select.Option>
+              <Select.Option value="b">B</Select.Option>
+              <Select.Option value="c">C</Select.Option>
+              <Select.Option value="d">D</Select.Option>
+            </Select>
+
+            <Select style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
+              console.log(data);
+            }}>
               <Select.Option value="a">A</Select.Option>
               <Select.Option value="b">B</Select.Option>
               <Select.Option value="c">C</Select.Option>
