@@ -61,25 +61,48 @@ class Page1 extends Component {
 
         <Form>
 
-          <Form.Item label="姓名">
+          <Form.Item label="icon图标">
+            <Icon type="search" style={{fontSize: 30}} />
+            <Icon type="check" style={{fontSize: 30}} />
+            <Icon type="close" style={{fontSize: 30}} />
+          </Form.Item>
+
+          <Form.Item label="图标按钮">
+            <Button size="xl" circle><Icon type="search" /></Button>
+            <Button size="lg" circle><Icon type="search" /></Button>
+            <Button circle><Icon type="search" /></Button>
+            <Button size="sm" circle><Icon type="search" /></Button>
+            <Button size="xs" circle><Icon type="search" /></Button>
+          </Form.Item>
+
+          <Form.Item label="文字按钮">
+            <Button size="xl" onClick={() => this._onClickOpen('mask')}><Icon type="search" />遮罩层</Button>
+            <Button size="lg" theme="primary" onClick={() => this._onClickOpen('modal')}><Icon type="search" />模态框</Button>
+            <Button theme="info" onClick={() => this._onClickOpen('confirm')}><Icon type="search" />确认框</Button>
+            <Button size="sm" theme="success" onClick={() => this._onClickOpen('alert')}><Icon type="search" />警告框</Button>
+            <Button size="xs" theme="warning" onClick={() => this._onClickOpen('loading')}><Icon type="search" />加载中</Button>
+            <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
+          </Form.Item>
+
+          <Form.Item label="输入框">
             <Input placeholder="请输入..." />
           </Form.Item>
 
-          <Form.Item label="座右铭">
+          <Form.Item label="文本框">
             <Input type="textarea" rows="3" />
           </Form.Item>
 
-          <Form.Item label="是否在职">
-            <Switch isCheckedText="是" unCheckedText="否" defaultValue={true} onChange={(value) => {
+          <Form.Item label="开关">
+            <Switch isCheckedText="是" unCheckedText="否" defaultValue={false} onChange={(value) => {
               console.log('switch to ' + value);
               this.setState({
                 switchValue: value,
               });
             }}></Switch>
-            <Switch size="sm" value={this.state.switchValue}></Switch>
+            <Switch size="sm" defaultValue={false} value={this.state.switchValue}></Switch>
           </Form.Item>
 
-          <Form.Item label="单选选择">
+          <Form.Item label="单选">
             <Radio.Group defaultValue={this.state.radioValue} onChange={(e) => {
                 console.log('radio to ' + e.target.value);
                 this.setState({
@@ -105,7 +128,8 @@ class Page1 extends Component {
           <Form.Item label="下拉选择">
             <Select style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
               this.setState({
-                selectValue2: data.value,
+                selectValue : data.value,
+                selectValue2: data.value
               });
             }}>
               <Select.Option value="a">A</Select.Option>
@@ -115,7 +139,9 @@ class Page1 extends Component {
             </Select>
 
             <Select style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
-              console.log(data);
+              this.setState({
+                selectValue2: data.value
+              });
             }}>
               <Select.Option value="a">A</Select.Option>
               <Select.Option value="b">B</Select.Option>
@@ -125,21 +151,6 @@ class Page1 extends Component {
           </Form.Item>
 
         </Form>
-
-        <p className="buttons">
-          <Button size="xl" circle><Icon type="search" /></Button>
-          <Button size="lg" circle><Icon type="search" /></Button>
-          <Button circle><Icon type="search" /></Button>
-          <Button size="sm" circle><Icon type="search" /></Button>
-          <Button size="xs" circle><Icon type="search" /></Button>
-
-          <Button size="xl" onClick={() => this._onClickOpen('mask')}><Icon type="search" />遮罩层</Button>
-          <Button size="lg" theme="primary" onClick={() => this._onClickOpen('modal')}><Icon type="search" />模态框</Button>
-          <Button theme="info" onClick={() => this._onClickOpen('confirm')}><Icon type="search" />确认框</Button>
-          <Button size="sm" theme="success" onClick={() => this._onClickOpen('alert')}><Icon type="search" />警告框</Button>
-          <Button size="xs" theme="warning" onClick={() => this._onClickOpen('loading')}><Icon type="search" />加载中</Button>
-          <Button theme="danger" onClick={() => this._onClickOpen('toast')}><Icon type="search" />提示信息</Button>
-        </p>
 
         <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
           <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>

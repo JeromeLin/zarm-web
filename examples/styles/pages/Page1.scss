@@ -13,6 +13,15 @@ p.buttons {
   padding: 50px 20px;
 
   .ui-form {
-    max-width: 540px;
+    max-width: 650px;
+
+    .ui-form-item {
+      > .ui-button,
+      > .ui-switch,
+      > .ui-select {
+        margin-right: 10px;
+      } 
+    }
+    
   }
 }
