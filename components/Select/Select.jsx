@@ -1,6 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import * as Events from '../utils/events';
 import Option from './Option';
 import Icon from '../Icon';
 
@@ -20,16 +21,8 @@ class Select extends Component {
     super(props);
     this.state = {
       value   : props.value || props.defaultValue || getCheckedValue(props.children),
-      dropdown: true,
+      dropdown: false,
     };
-  }
-
-  componentDidMount() {
-    document.body.addEventListener("click", () => {
-      this.setState({
-        dropdown: true,
-      });
-    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,13 +39,13 @@ class Select extends Component {
 
     const cls = classnames({
       'ui-select'         : true,
-      'ui-select-open'    : !this.state.dropdown,
+      'ui-select-open'    : this.state.dropdown,
       'ui-select-disabled': ('disabled' in props || isDisabled),
     });
 
     const dropdownCls = classnames({
       'ui-select-dropdown'       : true,
-      'ui-select-dropdown-hidden': this.state.dropdown,
+      'ui-select-dropdown-hidden': !this.state.dropdown,
     });
 
     let valueText;
@@ -63,10 +56,11 @@ class Select extends Component {
       }
 
       return (
-        <Option {...option.props}
+        <Option
+          {...option.props}
           onChange={() => this.onOptionChange(option.props, index)}
-          checked={this.state.value === option.props.value}>
-        </Option>
+          checked={this.state.value === option.props.value}
+        />
       );
     });
 
@@ -87,18 +81,27 @@ class Select extends Component {
     );
   }
 
+  onClose() {
+    this.setState({
+      dropdown: false,
+    });
+
+    Events.off(document.body, 'click', () => this.onClose());
+  }
+
   onSelectClick(e) {
     e.stopPropagation();
 
     this.setState({
       dropdown: !this.state.dropdown,
     });
+
+    Events.on(document.body, 'click', () => this.onClose());
   }
 
   onOptionChange(props, index) {
     if (this.state.value === props.value) return;
 
-    console.log(1)
     this.setState({
       value: props.value,
     });
@@ -109,7 +112,6 @@ class Select extends Component {
       text : props.children,
     }
 
-    console.log(2)
     this.props.onChange(selected);
   }
 }

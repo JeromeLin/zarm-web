@@ -9,7 +9,7 @@ class Button extends Component {
     const { type, theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isDisabled, className, children, ...others } = this.props;
 
     const classes = classnames({
-      'ui-btn'           : true,
+      'ui-button'        : true,
       'block'            : ('block' in props || isBlock),
       'radius'           : ('radius' in props || isRadius),
       'round'            : ('round' in props || isRound),
