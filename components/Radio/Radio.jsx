@@ -28,16 +28,13 @@ class Radio extends Component {
       'ui-radio'         : true,
       'ui-radio-checked' : this.state.checked,
       'ui-radio-disabled': disabled,
+      [className]        : !!className,
     });
 
-    const inputDisabled = disabled
-                        ? 'disabled'
-                        : null;
-
     return (
-      <label className="ui-radio">
+      <label>
         <span className={cls}>
-          <input type="radio" value={value} className="ui-radio-input" onChange={(e) => this._onClick(e)} disabled={inputDisabled} {...others} />
+          <input type="radio" value={value} className="ui-radio-input" onChange={(e) => this._onClick(e)} checked={this.state.checked} disabled={disabled} {...others} />
           <span className="ui-radio-inner"></span>
         </span>
         {children}

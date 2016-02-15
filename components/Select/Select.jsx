@@ -60,8 +60,7 @@ class Select extends Component {
         <Option
           {...option.props}
           onChange={(e) => this.onOptionChange(e, option.props, index)}
-          checked={this.state.value === option.props.value}
-        />
+          checked={this.state.value === option.props.value} />
       );
     });
 
@@ -82,14 +81,12 @@ class Select extends Component {
     );
   }
 
-  onClose(e) {
-    console.log(e.target);
-
+  onClose() {
     this.setState({
       dropdown: false,
     });
 
-    Events.off(document.body, 'click', (e) => this.onClose(e));
+    Events.off(document.body, 'click', () => this.onClose());
   }
 
   onSelectClick(e) {
@@ -99,7 +96,7 @@ class Select extends Component {
       dropdown: !this.state.dropdown,
     });
 
-    Events.on(document.body, 'click', (e) => this.onClose(e));
+    Events.on(document.body, 'click', () => this.onClose());
   }
 
   onOptionChange(e, props, index) {

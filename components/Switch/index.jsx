@@ -11,19 +11,6 @@ class Switch extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   const props = this.props;
-  //   let checked = false;
-  //   if ('checked' in props) {
-  //     checked = !!props.checked;
-  //   } else {
-  //     checked = !!props.defaultChecked;
-  //   }
-  //   this.setState({
-  //     checked: checked,
-  //   });
-  // }
-
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({

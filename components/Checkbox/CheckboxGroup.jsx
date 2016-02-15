@@ -1,32 +1,21 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-
 import Checkbox from './Checkbox';
-
-function getCheckedValue(children) {
-  let checkedValue = [];
-  React.Children.forEach(children, (checkbox) => {
-    if (checkbox.props && checkbox.props.checked) {
-      checkedValue.push(checkbox.props.value);
-    }
-  });
-  return checkedValue;
-}
 
 class CheckboxGroup extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || getCheckedValue(props.children),
+      value: props.value || props.defaultValue || this.getCheckedValue(props.children),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || getCheckedValue(nextProps.children)
+        value: nextProps.value || this.getCheckedValue(nextProps.children)
       });
     }
   }
@@ -39,13 +28,10 @@ class CheckboxGroup extends Component {
     });
 
     let children = React.Children.map(props.children, (checkbox) => {
-      const checked = this.state.value.indexOf(checkbox.props.value);
-      console.log(this.state.value);
       return (
         <Checkbox {...checkbox.props}
           onChange={(e) => this.onCheckboxChange(e)}
-          checked={this.state.value.indexOf(checkbox.props.value) > -1}>
-        </Checkbox>
+          checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)} />
       );
     });
 
@@ -56,9 +42,25 @@ class CheckboxGroup extends Component {
     );
   }
 
+  getCheckedValue(children) {
+    let checkedValue = [];
+    React.Children.forEach(children, (checkbox) => {
+      if (checkbox.props && checkbox.props.checked) {
+        checkedValue.push(checkbox.props.value);
+      }
+    });
+    return checkedValue;
+  }
+
   onCheckboxChange(e) {
-    let value = this.state.value;
-    value.push(e.target.value);
+    let value = this.state.value,
+        index = value.indexOf(e.target.value);
+
+    if (index < 0) {
+      value.push(e.target.value);
+    } else {
+      value.splice(index, 1);
+    }
 
     this.setState({
       value: value
