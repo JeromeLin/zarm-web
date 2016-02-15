@@ -1,3 +1,12 @@
+@mixin select-size($height, $font-size, $border-radius) {
+  height: $height;
+  font-size: $font-size;
+  border-radius: $border-radius;
+
+  .ui-select-text {
+    line-height: $height - 2;
+  }
+}
 
 .ui-select {
   display: inline-block;
@@ -8,6 +17,7 @@
   color: #666;
 
   .ui-select-selection {
+    @include select-size($base-height, $base-fontSize, $base-radius)
     outline: none;
     user-select: none;
     box-sizing: border-box;
@@ -16,7 +26,8 @@
     border-radius: 6px;
     border: 1px solid #d9d9d9;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
-    height: 28px;
+    height: 32px;
+    box-shadow: inset 0 1px 3px #e3e3e3;
     cursor: pointer;
 
     &:hover {
@@ -34,29 +45,32 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      padding-left: 8px;
-      padding-right: 24px;
-      line-height: 26px;
+      padding-left: 10px;
+      padding-right: 28px;
+      line-height: 30px;
     }
 
     .ui-select-arrow {
       position: absolute;
       top: 50%;
-      right: 8px;
+      right: 10px;
       margin-top: -8px;
       color: #d9d9d9;
       transition: transform .2s ease;
+      line-height: normal;
     }
   }
 
   .ui-select-dropdown {
     position: absolute;
     left: 0;
-    top : 32px;
-    width: 120px;
-    height: 200px;
-    background: #fff;
+    top: 36px;
+    min-width: 120px;
+    background-color: #fff;
     border: 1px solid #d9d9d9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0,0,0,0.17);
+    border-radius: 6px;
+    z-index: 100;
 
     &.ui-select-dropdown-hidden {
       display: none;

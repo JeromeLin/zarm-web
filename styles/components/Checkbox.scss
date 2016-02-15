@@ -1,5 +1,5 @@
 
-.ui-radio-group {
+.ui-checkbox-group {
   display: inline-block;
 
   label {
@@ -8,7 +8,7 @@
 }
 
 /* 一般状态 */
-.ui-radio {
+.ui-checkbox {
   display: inline-block;
   position: relative;
   font-size: 14px;
@@ -17,7 +17,7 @@
   white-space: nowrap;
   outline: none;
 
-  .ui-radio-inner {
+  .ui-checkbox-inner {
     position: relative;
     top: 0;
     left: 0;
@@ -26,29 +26,28 @@
     height: 14px;
     border-width: 1px;
     border-style: solid;
-    border-radius: 14px;
+    border-radius: 3px;
     border-color: #d9d9d9;
     background-color: #fff;
-    transition: border-color .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+    transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46),background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
 
     &:after {
+      transform: rotate(45deg) scale(0);
       position: absolute;
-      width: 6px;
-      height: 6px;
-      left: 3px;
-      top: 3px;
-      border-radius: 6px;
+      left: 4px;
+      top: 1px;
       display: table;
+      width: 5px;
+      height: 8px;
+      border: 2px solid #fff;
       border-top: 0;
       border-left: 0;
       content: ' ';
-      background-color: #2db7f5;
-      opacity: 0;
-      transition: transform .3s cubic-bezier(.78, .14, .15, .86),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+      transition: all .1s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
 
-  .ui-radio-input {
+  .ui-checkbox-input {
     position: absolute;
     left: 0;
     z-index: 1;
@@ -65,22 +64,22 @@
 }
 
 /* 选中状态 */
-.ui-radio-checked {
-  .ui-radio-inner {
-    border-color: #d9d9d9;
+.ui-checkbox-checked {
+  .ui-checkbox-inner {
+    border-color: #2db7f5;
+    background-color: #2db7f5;
 
     &:after {
-      transform: scale(1);
-      opacity: 1;
-      transition: transform .3s cubic-bezier(.12, .4, .29, 1.46),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+      transform: rotate(45deg) scale(1);
+      transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
     }
   }
 }
 
 /* 禁用状态 */
-.ui-radio-disabled {
+.ui-checkbox-disabled {
 
-  .ui-radio-inner {
+  .ui-checkbox-inner {
     border-color: #d9d9d9;
     background-color: #f3f3f3;
 
@@ -89,7 +88,7 @@
     }
   }
 
-  .ui-radio-input {
+  .ui-checkbox-input {
     cursor: not-allowed;
   }
 }

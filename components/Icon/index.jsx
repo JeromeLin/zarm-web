@@ -8,7 +8,7 @@ class Icon extends Component {
     const { type, ...others } = this.props;
     const cls = classnames({
       'ui-icon'          : true,
-      ['ui-icon-' + type]: type,
+      [`ui-icon-${type}`]: !!type,
     });
     
     return (
@@ -19,11 +19,11 @@ class Icon extends Component {
 }
 
 Icon.propTypes = {
-  type        : PropTypes.string,
+  type: PropTypes.string,
 };
 
 Icon.defaultProps = {
-  type: 'text',
+  type: '',
 };
 
 export default Icon;

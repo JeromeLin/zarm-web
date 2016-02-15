@@ -6,11 +6,10 @@
 }
 
 .ui-input {
-  @include input-size(28px, 4px 7px, 12px, 6px);
+  @include input-size($base-height, 4px 7px, $base-fontSize, $base-radius);
   position: relative;
   display: inline-block;
   width: 100%;
-  cursor: text;
   line-height: 1.5;
   color: #666;
   background-color: #fff;
@@ -19,6 +18,7 @@
   transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1),
               background .2s cubic-bezier(0.645, 0.045, 0.355, 1),
               box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  box-shadow: inset 0 1px 3px #e3e3e3;
 
   &:focus {
     border-color: #57c5f7;
@@ -31,25 +31,39 @@
     border-color: #57c5f7;
   }
 
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    background: #eee;
+    
+    &:focus,
+    &.focus {
+      border-color: #ccc;
+    }
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+
   /* Input sizes */
   &.size-xl {
-    @include input-size(40px, 6px 14px 5px 14px, 18px, $radius-xl);
+    @include input-size($base-height-xl, 6px 14px 5px 14px, $base-fontSize-xl, $base-radius-xl);
   }
   &.size-lg {
-    @include input-size(32px, 5px 11px 4px 11px, 16px, $radius-lg);
+    @include input-size($base-height-lg, 5px 11px 4px 11px, $base-fontSize-lg, $base-radius-lg);
   }
   &.size-sm {
-    @include input-size(24px, 2px 7px, 12px, $radius-sm);
+    @include input-size($base-height-sm, 2px 7px, $base-fontSize-sm, $base-radius-sm);
   }
   &.size-xs {
-    @include input-size(20px, 2px 4px 1px 4px, 10px, $radius-xs);
+    @include input-size($base-height-xs, 2px 4px 1px 4px, $base-fontSize-xs, $base-radius-xs);
   }
 }
 
 textarea {
   &.ui-input {
     max-width: 100%;
-    height: auto;
+    height: auto !important;
     vertical-align: bottom;
   }
 }

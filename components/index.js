@@ -12,12 +12,6 @@ export Input from './Input';
 export Icon from './Icon';
 export Form from './Form';
 export Radio from './Radio';
+export Checkbox from './Checkbox';
 export Select from './Select';
-
-
-
-
-
-
-
-
+export Menu from './Menu';

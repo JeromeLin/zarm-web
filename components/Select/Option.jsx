@@ -2,6 +2,8 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
+import Menu from '../Menu';
+
 class Option extends Component {
 
   constructor(props) {
@@ -21,18 +23,13 @@ class Option extends Component {
 
   render () {
     const props = this.props;
-    const { value, checked, isDisabled, className, children, ...others } = props;
-    const disabled = 'disabled' in props || isDisabled;
+    const { children, ...others } = props;
 
     const cls = classnames({
       'ui-select-dropdown': true,
     });
 
-    const inputDisabled = disabled
-                        ? 'disabled'
-                        : null;
-
-    return <li onClick={(e) => props.onChange(e) } disabled={inputDisabled} {...others}>{children}</li>;
+    return <Menu.Item onClick={(e) => props.onChange(e) } {...others}>{children}</Menu.Item>;
   }
 
   _onClick(e) {

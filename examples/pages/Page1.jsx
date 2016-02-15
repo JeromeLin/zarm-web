@@ -17,6 +17,7 @@ import {
   Icon,
   Form,
   Radio,
+  Checkbox,
   Select
 } from '../../components';
 
@@ -36,9 +37,10 @@ class Page1 extends Component {
       loading   : false,
 
       switchValue: false,
-      radioValue : 'A',
+      radioValue : '',
       selectValue: 'a',
-      selectValue2: 'a'
+      selectValue2: 'a',
+      checkboxValue: ['a'],
     };
   }
 
@@ -76,20 +78,20 @@ class Page1 extends Component {
           </Form.Item>
 
           <Form.Item label="文字按钮">
-            <Button size="xl" onClick={() => this._onClickOpen('mask')}><Icon type="search" />遮罩层</Button>
-            <Button size="lg" theme="primary" onClick={() => this._onClickOpen('modal')}><Icon type="search" />模态框</Button>
-            <Button theme="info" onClick={() => this._onClickOpen('confirm')}><Icon type="search" />确认框</Button>
-            <Button size="sm" theme="success" onClick={() => this._onClickOpen('alert')}><Icon type="search" />警告框</Button>
-            <Button size="xs" theme="warning" onClick={() => this._onClickOpen('loading')}><Icon type="search" />加载中</Button>
-            <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
+            <Button size="xl">特大号按钮</Button>
+            <Button size="lg" theme="primary">大号按钮</Button>
+            <Button theme="info">普通按钮</Button>
+            <Button size="sm" theme="success">小号按钮</Button>
+            <Button size="xs" theme="warning">特小号按钮</Button>
+            <Button theme="danger" onClick={() => alert('你点击了按钮')}><Icon type="search" />带图标的按钮</Button>
           </Form.Item>
 
-          <Form.Item label="输入框">
-            <Input placeholder="请输入..." />
+          <Form.Item label="输入框" help="写点提示信息吧">
+            <Input placeholder="请输入..." id="title" />
           </Form.Item>
 
           <Form.Item label="文本框">
-            <Input type="textarea" rows="3" />
+            <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
           </Form.Item>
 
           <Form.Item label="开关">
@@ -125,6 +127,20 @@ class Page1 extends Component {
             </Radio.Group>
           </Form.Item>
 
+          <Form.Item label="多选">
+            <Checkbox.Group defaultValue={this.state.checkboxValue} onChange={(data) => {
+                console.log(data);
+                this.setState({
+                  checkboxValue: data,
+                });
+              }}>
+              <Checkbox value="a">A</Checkbox>
+              <Checkbox value="b">B</Checkbox>
+              <Checkbox value="c">C</Checkbox>
+              <Checkbox value="d">D</Checkbox>
+            </Checkbox.Group>
+          </Form.Item>
+
           <Form.Item label="下拉选择">
             <Select style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
               this.setState({
@@ -132,10 +148,10 @@ class Page1 extends Component {
                 selectValue2: data.value
               });
             }}>
-              <Select.Option value="a">A</Select.Option>
-              <Select.Option value="b">B</Select.Option>
-              <Select.Option value="c">C</Select.Option>
-              <Select.Option value="d">D</Select.Option>
+              <Select.Option value="a">我是A</Select.Option>
+              <Select.Option value="b" disabled>我是B</Select.Option>
+              <Select.Option value="c">我是C</Select.Option>
+              <Select.Option value="d">我是D</Select.Option>
             </Select>
 
             <Select style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
@@ -143,11 +159,21 @@ class Page1 extends Component {
                 selectValue2: data.value
               });
             }}>
-              <Select.Option value="a">A</Select.Option>
-              <Select.Option value="b">B</Select.Option>
-              <Select.Option value="c">C</Select.Option>
-              <Select.Option value="d">D</Select.Option>
+              <Select.Option value="a">我是A</Select.Option>
+              <Select.Option value="b">我是B</Select.Option>
+              <Select.Option value="c">我是C</Select.Option>
+              <Select.Option value="d">我是D</Select.Option>
             </Select>
+            <Button>确定</Button>
+          </Form.Item>
+
+          <Form.Item label="模态框">
+            <Button onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
+            <Button onClick={() => this._onClickOpen('modal')}>模态框</Button>
+            <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
+            <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
+            <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
+            <Button onClick={() => this._onClickOpen('toast')}>提示信息</Button>
           </Form.Item>
 
         </Form>

@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import * as Events from '../utils/events';
 import Option from './Option';
+import Menu from '../Menu';
 import Icon from '../Icon';
 
 function getCheckedValue(children) {
@@ -58,7 +59,7 @@ class Select extends Component {
       return (
         <Option
           {...option.props}
-          onChange={() => this.onOptionChange(option.props, index)}
+          onChange={(e) => this.onOptionChange(e, option.props, index)}
           checked={this.state.value === option.props.value}
         />
       );
@@ -73,33 +74,36 @@ class Select extends Component {
           </span>
         </span>
         <div className={dropdownCls}>
-          <ul>
+          <Menu>
             {children}
-          </ul>
+          </Menu>
         </div>
       </span>
     );
   }
 
-  onClose() {
+  onClose(e) {
+    console.log(e.target);
+
     this.setState({
       dropdown: false,
     });
 
-    Events.off(document.body, 'click', () => this.onClose());
+    Events.off(document.body, 'click', (e) => this.onClose(e));
   }
 
   onSelectClick(e) {
-    e.stopPropagation();
+    e.preventDefault();
 
     this.setState({
       dropdown: !this.state.dropdown,
     });
 
-    Events.on(document.body, 'click', () => this.onClose());
+    Events.on(document.body, 'click', (e) => this.onClose(e));
   }
 
-  onOptionChange(props, index) {
+  onOptionChange(e, props, index) {
+    e.preventDefault();
     if (this.state.value === props.value) return;
 
     this.setState({
