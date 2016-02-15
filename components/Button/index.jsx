@@ -19,7 +19,7 @@ class Button extends Component {
       'disabled'         : ('disabled' in props || isDisabled),
       ['theme-' + theme] : theme,
       ['size-' + size]   : size,
-      [className]        : className,
+      [className]        : !!className,
     });
 
     return (

@@ -36,11 +36,12 @@ class Page1 extends Component {
       toast     : false,
       loading   : false,
 
-      switchValue: false,
-      radioValue : '',
-      selectValue: 'a',
-      selectValue2: 'a',
-      checkboxValue: ['a'],
+      switchValue  : false,
+      radioValue   : '',
+      radioValue2  : '',
+      selectValue  : 'a',
+      selectValue2 : 'a',
+      checkboxValue: [],
     };
   }
 
@@ -94,7 +95,7 @@ class Page1 extends Component {
             <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
           </Form.Item>
 
-          <Form.Item label="开关">
+          <Form.Item label="开关" status="error" help={`您选择了( ${this.state.switchValue} )`}>
             <Switch isCheckedText="是" unCheckedText="否" defaultValue={false} onChange={(value) => {
               console.log('switch to ' + value);
               this.setState({
@@ -104,11 +105,12 @@ class Page1 extends Component {
             <Switch size="sm" defaultValue={false} value={this.state.switchValue}></Switch>
           </Form.Item>
 
-          <Form.Item label="单选">
+          <Form.Item label="单选" status="error" help={`您选择了( ${this.state.radioValue} )`}>
             <Radio.Group defaultValue={this.state.radioValue} onChange={(e) => {
                 console.log('radio to ' + e.target.value);
                 this.setState({
                   radioValue: e.target.value,
+                  radioValue2: e.target.value,
                 });
               }}>
               <Radio value="a">A</Radio>
@@ -118,30 +120,33 @@ class Page1 extends Component {
             </Radio.Group>
           </Form.Item>
 
-          <Form.Item label="单选绑定">
-            <Radio.Group value={this.state.radioValue}>
+          <Form.Item label="单选联动" status="error" help={`您选择了( ${this.state.radioValue2} )`}>
+            <Radio.Group value={this.state.radioValue2} onChange={(e) => {
+              this.setState({
+                radioValue2: e.target.value,
+              });
+            }}>
               <Radio value="a">A</Radio>
               <Radio value="b">B</Radio>
-              <Radio value="c" disabled>C</Radio>
+              <Radio value="c" isDisabled={true}>C</Radio>
               <Radio value="d">D</Radio>
             </Radio.Group>
           </Form.Item>
 
-          <Form.Item label="多选">
-            <Checkbox.Group defaultValue={this.state.checkboxValue} onChange={(data) => {
-                console.log(data);
+          <Form.Item label="多选" status="error" help={`您选择了( ${this.state.checkboxValue} )`}>
+            <Checkbox.Group value={this.state.checkboxValue} onChange={(data) => {
                 this.setState({
-                  checkboxValue: data,
+                  checkboxValue: data
                 });
               }}>
               <Checkbox value="a">A</Checkbox>
-              <Checkbox value="b">B</Checkbox>
+              <Checkbox value="b" disabled>B</Checkbox>
               <Checkbox value="c">C</Checkbox>
               <Checkbox value="d">D</Checkbox>
             </Checkbox.Group>
           </Form.Item>
 
-          <Form.Item label="下拉选择">
+          <Form.Item label="下拉选择" status="error" help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
             <Select style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
               this.setState({
                 selectValue : data.value,
@@ -174,6 +179,12 @@ class Page1 extends Component {
             <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
             <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
             <Button onClick={() => this._onClickOpen('toast')}>提示信息</Button>
+          </Form.Item>
+
+          <Form.Item label="&nbsp;">
+            <Button theme="info" onClick={() => {
+              alert(JSON.stringify(this.state))
+            }}>查看表单值</Button>
           </Form.Item>
 
         </Form>
