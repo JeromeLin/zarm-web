@@ -6,17 +6,20 @@ class FormItem extends Component {
 
   render () {
     const props = this.props;
-    const { id, label, className, children } = props;
+    const { id, label, help, className, children } = props;
 
     const cls = classnames({
-      'ui-form-item'     : true,
-      [className]        : className,
+      'ui-form-item'      : true,
+      [className]         : !!className,
     });
 
     return (
       <div className={cls}>
         {this._renderLabel()}
-        {children}
+        <div className="ui-form-item-control" style={{width: '70%'}}>
+          {children}
+          <div className="ui-form-explain">{help}</div>
+        </div>
       </div>
     );
   }
@@ -29,19 +32,11 @@ class FormItem extends Component {
     const { id, label } = this.props;
 
     return label ? (
-      <label htmlFor={id || this._getId()} style={{width: '30%'}}>
+      <label htmlFor={id || this._getId()} style={{width: '25%'}}>
         {label}
       </label>
     ) : null;
   }
 }
-
-FormItem.propTypes = {
-  className : PropTypes.string,
-};
-
-FormItem.defaultProps = {
-  className : null,
-};
 
 export default FormItem;

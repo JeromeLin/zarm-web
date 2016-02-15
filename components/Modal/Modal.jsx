@@ -45,34 +45,34 @@ class Modal extends Component {
 
     const classes = {
       modal:  classnames({
-                'ui-modal'                 : true,
-                'radius'                   : ('radius' in this.props || isRadius),
-                'round'                    : ('round' in this.props || isRound),
-                ['fade-' + animationState] : true,
-                [className]                : className,
+                'ui-modal'                : true,
+                'radius'                  : ('radius' in this.props || isRadius),
+                'round'                   : ('round' in this.props || isRound),
+                [`fade-${animationState}`]: true,
+                [className]               : !!className,
               }),
       dialog: classnames({
-                'ui-modal-dialog'                      : true,
-                [animationType + '-' + animationState] : true,
+                'ui-modal-dialog'                     : true,
+                [`${animationType}-${animationState}`]: true,
               })
     }
 
     const style = {
       modal: {
-        WebkitAnimationDuration : animationDuration + 'ms',
-        MozAnimationDuration    : animationDuration + 'ms',
-        msAnimationDuration     : animationDuration + 'ms',
-        OAnimationDuration      : animationDuration + 'ms',
-        animationDuration       : animationDuration + 'ms',
+        WebkitAnimationDuration : `${animationDuration}ms`,
+        MozAnimationDuration    : `${animationDuration}ms`,
+        msAnimationDuration     : `${animationDuration}ms`,
+        OAnimationDuration      : `${animationDuration}ms`,
+        animationDuration       : `${animationDuration}ms`,
       },
       dialog: {
         width                   : width,
         minWidth                : minWidth,
-        WebkitAnimationDuration : animationDuration + 'ms',
-        MozAnimationDuration    : animationDuration + 'ms',
-        msAnimationDuration     : animationDuration + 'ms',
-        OAnimationDuration      : animationDuration + 'ms',
-        animationDuration       : animationDuration + 'ms',
+        WebkitAnimationDuration : `${animationDuration}ms`,
+        MozAnimationDuration    : `${animationDuration}ms`,
+        msAnimationDuration     : `${animationDuration}ms`,
+        OAnimationDuration      : `${animationDuration}ms`,
+        animationDuration       : `${animationDuration}ms`,
       }
     };
 

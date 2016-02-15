@@ -8,9 +8,9 @@ class Form extends Component {
     const { type, className, children } = this.props;
 
     const cls = classnames({
-      'ui-form'           : true,
-      ['ui-form-' + type]   : true,
-      [className]        : className,
+      'ui-form'          : true,
+      [`ui-form-${type}`]: true,
+      [className]        : !!className,
     });
 
     return (

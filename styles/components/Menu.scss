@@ -1,0 +1,48 @@
+
+.ui-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 250px;
+  outline: none;
+  overflow: auto;
+}
+
+.ui-menu-item {
+  position: relative;
+  display: block;
+  padding: 7px 10px;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: background .3s ease;
+
+  &:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  &:hover,
+  .ui-menu-item-active {
+    background-color: #eaf8fe;
+  }
+
+  &.ui-menu-item-selected {
+    background: #d5f1fd;
+  }
+
+  &.ui-menu-item-disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+}

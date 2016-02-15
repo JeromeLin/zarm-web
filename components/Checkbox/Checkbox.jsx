@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-class Radio extends Component {
+class Checkbox extends Component {
 
   constructor(props) {
     super(props);
@@ -25,9 +25,9 @@ class Radio extends Component {
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-radio'         : true,
-      'ui-radio-checked' : this.state.checked,
-      'ui-radio-disabled': disabled,
+      'ui-checkbox'         : true,
+      'ui-checkbox-checked' : this.state.checked,
+      'ui-checkbox-disabled': disabled,
     });
 
     const inputDisabled = disabled
@@ -35,10 +35,10 @@ class Radio extends Component {
                         : null;
 
     return (
-      <label className="ui-radio">
+      <label className="ui-checkbox">
         <span className={cls}>
-          <input type="radio" value={value} className="ui-radio-input" onChange={(e) => this._onClick(e)} disabled={inputDisabled} {...others} />
-          <span className="ui-radio-inner"></span>
+          <input type="checkbox" value={value} className="ui-checkbox-input" onChange={(e) => this._onClick(e)} disabled={inputDisabled} {...others} />
+          <span className="ui-checkbox-inner"></span>
         </span>
         {children}
       </label>
@@ -53,16 +53,16 @@ class Radio extends Component {
   }
 }
 
-Radio.propTypes = {
+Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
   isDisabled    : PropTypes.bool,
   onChange      : PropTypes.func,
 };
 
-Radio.defaultProps = {
+Checkbox.defaultProps = {
   defaultChecked: false,
   isDisabled    : false,
   onChange      : function () {},
 };
 
-export default Radio;
+export default Checkbox;

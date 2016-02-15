@@ -2,44 +2,56 @@
 $browser-default-font-size: 14;
 $browser-default-font-size-px: 14px !default;
 
-$theme-default:       #e6e6e6 !default;
-$theme-primary:       #0e90d2 !default;
-$theme-success:       #5cb85c !default;
-$theme-info:          #2db7f5 !default;
-$theme-warning:       #f0ad4e !default;
-$theme-danger:        #d9534f !default;
+$base-theme-default:       #e6e6e6 !default;
+$base-theme-primary:       #0e90d2 !default;
+$base-theme-success:       #5cb85c !default;
+$base-theme-info:          #2db7f5 !default;
+$base-theme-warning:       #f0ad4e !default;
+$base-theme-danger:        #d9534f !default;
 
-$radius-xl:           8px !default;
-$radius-lg:           6px !default;
-$radius:              6px !default;
-$radius-sm:           4px !default;
-$radius-xs:           3px !default;
+$base-radius-xl:           6px !default;
+$base-radius-lg:           5px !default;
+$base-radius:              4px !default;
+$base-radius-sm:           3px !default;
+$base-radius-xs:           2px !default;
 
-$btn-default-color:   #444 !default;
-$btn-default-bg:      $theme-default !default;
-$btn-default-border:  $btn-default-bg !default;
+$base-height-xl:           40px !default;
+$base-height-lg:           36px !default;
+$base-height:              32px !default;
+$base-height-sm:           28px !default;
+$base-height-xs:           24px !default;
 
-$btn-primary-color:   #fff !default;
-$btn-primary-bg:      $theme-primary !default;
-$btn-primary-border:  $btn-primary-bg !default;
+$base-fontSize-xl:         18px !default;
+$base-fontSize-lg:         16px !default;
+$base-fontSize:            14px !default;
+$base-fontSize-sm:         12px !default;
+$base-fontSize-xs:         10px !default;
 
-$btn-info-color:      #fff !default;
-$btn-info-bg:         $theme-info !default;
-$btn-info-border:     $btn-info-bg !default;
+$base-btn-default-color:   #444 !default;
+$base-btn-default-bg:      $base-theme-default !default;
+$base-btn-default-border:  $base-btn-default-bg !default;
 
-$btn-success-color:   #fff !default;
-$btn-success-bg:      $theme-success !default;
-$btn-success-border:  $btn-success-bg !default;
+$base-btn-primary-color:   #fff !default;
+$base-btn-primary-bg:      $base-theme-primary !default;
+$base-btn-primary-border:  $base-btn-primary-bg !default;
 
-$btn-warning-color:   #fff !default;
-$btn-warning-bg:      $theme-warning !default;
-$btn-warning-border:  $btn-warning-bg !default;
+$base-btn-info-color:      #fff !default;
+$base-btn-info-bg:         $base-theme-info !default;
+$base-btn-info-border:     $base-btn-info-bg !default;
 
-$btn-danger-color:    #fff !default;
-$btn-danger-bg:       $theme-danger !default;
-$btn-danger-border:   $btn-danger-bg !default;
+$base-btn-success-color:   #fff !default;
+$base-btn-success-bg:      $base-theme-success !default;
+$base-btn-success-border:  $base-btn-success-bg !default;
 
-$modal-radius:        6px !default;
-$modal-round:         20px !default;
+$base-btn-warning-color:   #fff !default;
+$base-btn-warning-bg:      $base-theme-warning !default;
+$base-btn-warning-border:  $base-btn-warning-bg !default;
 
-$icon-url:            'http://at.alicdn.com/t/font_1454518253_3128793';
+$base-btn-danger-color:    #fff !default;
+$base-btn-danger-bg:       $base-theme-danger !default;
+$base-btn-danger-border:   $base-btn-danger-bg !default;
+
+$base-modal-radius:        6px !default;
+$base-modal-round:         20px !default;
+
+$base-icon-url:            'http://at.alicdn.com/t/font_1454518253_3128793';
