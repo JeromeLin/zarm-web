@@ -1,37 +1,26 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-
 import Radio from './Radio';
-
-function getCheckedValue(children) {
-  let checkedValue = null;
-  React.Children.forEach(children, (radio) => {
-    if (radio.props && radio.props.checked) {
-      checkedValue = radio.props.value;
-    }
-  });
-  return checkedValue;
-}
 
 class RadioGroup extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || getCheckedValue(props.children),
+      value: props.value || props.defaultValue || this.getCheckedValue(props.children),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || getCheckedValue(nextProps.children)
+        value: nextProps.value || this.getCheckedValue(nextProps.children)
       });
     }
   }
 
-  render () {    
+  render() {    
     const props = this.props;
 
     const cls = classnames({
@@ -52,6 +41,16 @@ class RadioGroup extends Component {
         {children}
       </div>
     );
+  }
+
+  getCheckedValue(children) {
+    let checkedValue = null;
+    React.Children.forEach(children, (radio) => {
+      if (radio.props && radio.props.checked) {
+        checkedValue = radio.props.value;
+      }
+    });
+    return checkedValue;
   }
 
   onRadioChange(e) {

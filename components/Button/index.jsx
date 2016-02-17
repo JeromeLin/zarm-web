@@ -17,8 +17,8 @@ class Button extends Component {
       'active'           : ('active' in props || isActive),
       'focus'            : ('focus' in props || isFocus),
       'disabled'         : ('disabled' in props || isDisabled),
-      ['theme-' + theme] : theme,
-      ['size-' + size]   : size,
+      [`theme-${theme}`] : !!theme,
+      [`size-${size}`]   : !!size,
       [className]        : !!className,
     });
 
@@ -30,7 +30,7 @@ class Button extends Component {
 
 Button.propTypes = {
   type      : PropTypes.string,
-  theme     : PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'danger']),
+  theme     : PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   size      : PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   isBlock   : PropTypes.bool,
   isRadius  : PropTypes.bool,
@@ -47,7 +47,7 @@ Button.defaultProps = {
   theme     : 'default',
   size      : null,
   isBlock   : false,
-  isRadius  : true,
+  isRadius  : false,
   isRound   : false,
   isCircle  : false,
   isActive  : false,

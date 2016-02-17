@@ -37,7 +37,7 @@ class Page1 extends Component {
       loading   : false,
 
       switchValue  : false,
-      radioValue   : '',
+      radioValue   : 'b',
       radioValue2  : '',
       selectValue  : 'a',
       selectValue2 : 'a',
@@ -62,6 +62,22 @@ class Page1 extends Component {
     return (
       <div className="demo">
 
+        <h4>Form inline</h4>
+        <Form type="inline" style={{maxWidth: '100%', textAlign: 'center'}}>
+
+          <Form.Item label="账号">
+            <Input placeholder="请输入..." id="account" />
+          </Form.Item>
+          <Form.Item label="密码">
+            <Input placeholder="请输入..." id="password" />
+          </Form.Item>
+          <Form.Item>
+            <Button theme="success">登录</Button>
+          </Form.Item>
+
+        </Form>
+
+        <h4>Form horizontal</h4>
         <Form>
 
           <Form.Item label="icon图标">
@@ -80,11 +96,16 @@ class Page1 extends Component {
 
           <Form.Item label="文字按钮">
             <Button size="xl">特大号按钮</Button>
-            <Button size="lg" theme="primary">大号按钮</Button>
-            <Button theme="info">普通按钮</Button>
-            <Button size="sm" theme="success">小号按钮</Button>
-            <Button size="xs" theme="warning">特小号按钮</Button>
-            <Button theme="danger" onClick={() => alert('你点击了按钮')}><Icon type="search" />带图标的按钮</Button>
+            <Button size="lg" theme="info">大号按钮</Button>
+            <Button theme="success">普通按钮</Button>
+            <Button size="sm" theme="warning">小号按钮</Button>
+            <Button size="xs" theme="error">特小号按钮</Button>
+            <Button>直角按钮</Button>
+            <Button radius>圆角按钮</Button>
+            <Button round>椭圆角按钮</Button>
+            <Button onClick={() => alert('你点击了按钮')}><Icon type="search" />带图标的按钮</Button>
+            <Button disabled>禁用状态</Button>
+            <Button active>激活状态</Button>
           </Form.Item>
 
           <Form.Item label="输入框" help="写点提示信息吧">
@@ -95,17 +116,27 @@ class Page1 extends Component {
             <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
           </Form.Item>
 
-          <Form.Item label="开关" status="error" help={`您选择了( ${this.state.switchValue} )`}>
-            <Switch isCheckedText="是" unCheckedText="否" defaultValue={false} onChange={(value) => {
-              console.log('switch to ' + value);
+          <Form.Item label="开关" theme="error" help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
+            <Switch /> 普通开关
+            <br />
+            <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
+            <br />
+            <Switch defaultValue={true} /> 设定默认值为true
+            <br />
+            <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
+            <br />
+            <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
               this.setState({
                 switchValue: value,
               });
-            }}></Switch>
-            <Switch size="sm" defaultValue={false} value={this.state.switchValue}></Switch>
+            }} /> 小开关
           </Form.Item>
 
-          <Form.Item label="单选" status="error" help={`您选择了( ${this.state.radioValue} )`}>
+          <Form.Item label="单选" theme="error" help={`您选择了( ${this.state.radioValue} )`}>
+            <Radio value="a" onChange={(e) => {
+              console.log(e.target.value);
+            }}>单独使用</Radio>
+            <br />
             <Radio.Group defaultValue={this.state.radioValue} onChange={(e) => {
                 console.log('radio to ' + e.target.value);
                 this.setState({
@@ -115,25 +146,16 @@ class Page1 extends Component {
               }}>
               <Radio value="a">A</Radio>
               <Radio value="b">B</Radio>
-              <Radio value="c">C</Radio>
+              <Radio value="c" disabled>C</Radio>
               <Radio value="d">D</Radio>
-            </Radio.Group>
+            </Radio.Group> 组合使用
           </Form.Item>
 
-          <Form.Item label="单选联动" status="error" help={`您选择了( ${this.state.radioValue2} )`}>
-            <Radio.Group value={this.state.radioValue2} onChange={(e) => {
-              this.setState({
-                radioValue2: e.target.value,
-              });
-            }}>
-              <Radio value="a">A</Radio>
-              <Radio value="b">B</Radio>
-              <Radio value="c" isDisabled={true}>C</Radio>
-              <Radio value="d">D</Radio>
-            </Radio.Group>
-          </Form.Item>
-
-          <Form.Item label="多选" status="error" help={`您选择了( ${this.state.checkboxValue} )`}>
+          <Form.Item label="多选" theme="error" help={`您选择了( ${this.state.checkboxValue} )`}>
+            <Checkbox onChange={(e) => {
+              console.log(e.target.checked);
+            }}>单独使用</Checkbox>
+            <br />
             <Checkbox.Group value={this.state.checkboxValue} onChange={(data) => {
                 this.setState({
                   checkboxValue: data
@@ -143,10 +165,10 @@ class Page1 extends Component {
               <Checkbox value="b" disabled>B</Checkbox>
               <Checkbox value="c">C</Checkbox>
               <Checkbox value="d">D</Checkbox>
-            </Checkbox.Group>
+            </Checkbox.Group> 组合使用
           </Form.Item>
 
-          <Form.Item label="下拉选择" status="error" help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
+          <Form.Item label="下拉选择" theme="error" help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
             <Select style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
               this.setState({
                 selectValue : data.value,
@@ -178,7 +200,7 @@ class Page1 extends Component {
             <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
             <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
             <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
-            <Button onClick={() => this._onClickOpen('toast')}>提示信息</Button>
+            <Button onClick={() => this._onClickOpen('toast')}>消息提示</Button>
           </Form.Item>
 
           <Form.Item label="&nbsp;">
@@ -195,8 +217,8 @@ class Page1 extends Component {
             我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
           </Modal.Body>
           <Modal.Footer>
-            <Button size="lg" onClick={() => this._onClickClose('modal')}>取消</Button>
-            <Button size="lg" theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
+            <Button onClick={() => this._onClickClose('modal')}>取消</Button>
+            <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
           </Modal.Footer>
         </Modal>
 

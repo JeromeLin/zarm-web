@@ -6,30 +6,20 @@ import Option from './Option';
 import Menu from '../Menu';
 import Icon from '../Icon';
 
-function getCheckedValue(children) {
-  let checkedValue = null;
-  React.Children.forEach(children, (option) => {
-    if (option.props && option.props.checked) {
-      checkedValue = option.props.value;
-    }
-  });
-  return checkedValue;
-}
-
 class Select extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      value   : props.value || props.defaultValue || getCheckedValue(props.children),
+      value   : props.value || props.defaultValue || this.getCheckedValue(props.children),
       dropdown: false,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || getCheckedValue(nextProps.children)
+        value: nextProps.value || this.getCheckedValue(nextProps.children)
       });
     }
   }
@@ -79,6 +69,16 @@ class Select extends Component {
         </div>
       </span>
     );
+  }
+
+  getCheckedValue(children) {
+    let checkedValue = null;
+    React.Children.forEach(children, (option) => {
+      if (option.props && option.props.checked) {
+        checkedValue = option.props.value;
+      }
+    });
+    return checkedValue;
   }
 
   onClose() {

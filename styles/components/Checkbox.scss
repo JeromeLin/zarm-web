@@ -29,7 +29,7 @@
     border-radius: 3px;
     border-color: #d9d9d9;
     background-color: #fff;
-    transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46),background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
+    transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
 
     &:after {
       transform: rotate(45deg) scale(0);
@@ -66,8 +66,8 @@
 /* 选中状态 */
 .ui-checkbox-checked {
   .ui-checkbox-inner {
-    border-color: #2db7f5;
-    background-color: #2db7f5;
+    border-color: $base-theme-info;
+    background-color: $base-theme-info;
 
     &:after {
       transform: rotate(45deg) scale(1);

@@ -26,9 +26,13 @@ module.exports = {
           "css-loader?sourceMap&-minimize"
         )
       },
-      { 
-        test: /\.(png|jpg)$/, 
-        loader: 'url?limit=8192' 
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+        loader: 'url-loader?limit=8192'
+      },
+      {
+        test: /\.(eot|ttf|wav|mp3)$/,
+        loader: 'file-loader'
       }
     ]
   },

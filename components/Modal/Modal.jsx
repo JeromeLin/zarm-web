@@ -40,7 +40,7 @@ class Modal extends Component {
   }
 
   render () {
-    const { visible, animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
+    const { animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
     const { isShow, animationState } = this.state;
 
     const classes = {
@@ -83,7 +83,7 @@ class Modal extends Component {
     return (
       <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
         <div className="ui-modal-wrapper">
-          <div className={classes.dialog} ref="dialog" style={style.dialog} {...others} onClick={(e) => this.onContainerClick(e)}>
+          <div {...others} className={classes.dialog} ref="dialog" style={style.dialog} onClick={(e) => this.onContainerClick(e)}>
             {children}
           </div>
         </div>
@@ -149,7 +149,7 @@ Modal.defaultProps = {
   animationDuration : 300,
   width             : 600,
   minWidth          : 270,
-  isRadius          : true,
+  isRadius          : false,
   isRound           : false,
   onMaskClick       : function () {},
 };

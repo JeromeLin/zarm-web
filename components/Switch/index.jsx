@@ -20,17 +20,20 @@ class Switch extends Component {
   }
 
   render() {
-    const { size, isCheckedText, unCheckedText, ...others } = this.props;
+    const props = this.props;
+    const { size, isCheckedText, unCheckedText, isDisabled, ...others } = props;
     const { value } = this.state;
+    const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-switch'        : true,
-      ['size-' + size]   : size,
-      'ui-switch-checked': value,
+      'ui-switch'         : true,
+      [`size-${size}`]    : !!size,
+      'ui-switch-checked' : value,
+      'ui-switch-disabled': disabled,
     });
 
     return (
-      <span className={cls} onClick={() => this._onClick()} {...others}>
+      <span className={cls} onClick={() => !disabled && this._onClick()} {...others}>
         <span className="ui-switch-inner">{ value ? isCheckedText : unCheckedText }</span>
       </span>
     );

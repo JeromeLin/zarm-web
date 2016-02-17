@@ -27,11 +27,10 @@ class ButtonPage extends Component {
             <div>
               <div className="demo-inline">
                 <Button>Default</Button>
-                <Button theme="primary">Primary</Button>
                 <Button theme="info">Info</Button>
                 <Button theme="success">Success</Button>
                 <Button theme="warning">Warning</Button>
-                <Button theme="danger">Danger</Button>
+                <Button theme="error">Danger</Button>
               </div>
             </div>
           }
@@ -41,11 +40,10 @@ class ButtonPage extends Component {
 ReactDOM.render(
   <div>
     <Button>Default</Button>
-    <Button theme="primary">Primary</Button>
     <Button theme="info">Info</Button>
     <Button theme="success">Success</Button>
     <Button theme="warning">Warning</Button>
-    <Button theme="danger">Danger</Button>
+    <Button theme="error">Danger</Button>
   </div>
 , document.getElementById('button-theme-demo'));`
         } />
@@ -55,11 +53,10 @@ ReactDOM.render(
             <div>
               <div className="demo-inline">
                 <Button radius>Default</Button>
-                <Button radius theme="primary">Primary</Button>
                 <Button radius theme="info">Info</Button>
                 <Button radius theme="success">Success</Button>
                 <Button radius theme="warning">Warning</Button>
-                <Button radius theme="danger">Danger</Button>
+                <Button radius theme="error">Danger</Button>
               </div>
             </div>
           }
@@ -69,11 +66,10 @@ ReactDOM.render(
 ReactDOM.render(
   <div>
     <Button radius>Default</Button>
-    <Button radius theme="primary">Primary</Button>
     <Button radius theme="info">Info</Button>
     <Button radius theme="success">Success</Button>
     <Button radius theme="warning">Warning</Button>
-    <Button radius theme="danger">Danger</Button>
+    <Button radius theme="error">Danger</Button>
   </div>
 , document.getElementById('button-radius-demo'));`
           } />
@@ -83,11 +79,10 @@ ReactDOM.render(
             <div>
               <div className="demo-inline">
                 <Button round>Default</Button>
-                <Button round theme="primary">Primary</Button>
                 <Button round theme="info">Info</Button>
                 <Button round theme="success">Success</Button>
                 <Button round theme="warning">Warning</Button>
-                <Button round theme="danger">Danger</Button>
+                <Button round theme="error">Danger</Button>
               </div>
             </div>
           }
@@ -97,11 +92,10 @@ ReactDOM.render(
 ReactDOM.render(
   <div>
     <Button round>Default</Button>
-    <Button round theme="primary">Primary</Button>
     <Button round theme="info">Info</Button>
     <Button round theme="success">Success</Button>
     <Button round theme="warning">Warning</Button>
-    <Button round theme="danger">Danger</Button>
+    <Button round theme="error">Danger</Button>
   </div>
 , document.getElementById('button-round-demo'));`
           } />
@@ -113,7 +107,7 @@ ReactDOM.render(
                 <Button block>Default - block</Button>
               </div>
               <div className="demo-inline">
-                <Button block theme="primary">Primary - block</Button>
+                <Button block theme="info">Info - block</Button>
               </div>
             </div>
           }
@@ -123,7 +117,7 @@ ReactDOM.render(
 ReactDOM.render(
   <div>
     <Button block>Default - block</Button>
-    <Button block theme="primary">Primary - block</Button>
+    <Button block theme="info">Info - block</Button>
   </div>
 , document.getElementById('button-block-demo'));`
           } />
@@ -133,7 +127,7 @@ ReactDOM.render(
             <div>
               <div className="demo-inline">
                 <Button disabled>Default - disabled</Button>
-                <Button disabled theme="primary">Primary - disabled</Button>
+                <Button disabled theme="info">Info - disabled</Button>
               </div>
             </div>
           }
@@ -143,7 +137,7 @@ ReactDOM.render(
 ReactDOM.render(
   <div>
     <Button disabled>Default - disabled</Button>
-    <Button disabled theme="primary">Primary - disabled</Button>
+    <Button disabled theme="info">Info - disabled</Button>
   </div>
 , document.getElementById('button-disabled-demo'));`
           } />
@@ -153,7 +147,7 @@ ReactDOM.render(
             <div>
               <div className="demo-inline">
                 <Button active>Default - active</Button>
-                <Button active theme="primary">Primary - active</Button>
+                <Button active theme="info">Info - active</Button>
               </div>
             </div>
           }
@@ -163,7 +157,7 @@ ReactDOM.render(
 ReactDOM.render(
   <div>
     <Button active>Default - active</Button>
-    <Button active theme="primary">Primary - active</Button>
+    <Button active theme="info">Info - active</Button>
   </div>
 , document.getElementById('button-active-demo'));`
           } />
@@ -173,23 +167,23 @@ ReactDOM.render(
             <div>
               <div className="demo-inline">
                 <Button size="xl">Default - xl</Button>
-                <Button theme="primary" size="xl">Primary - xl</Button>
+                <Button theme="info" size="xl">Info - xl</Button>
               </div>
               <div className="demo-inline">
                 <Button size="lg">Default - lg</Button>
-                <Button theme="primary" size="lg">Primary - lg</Button>
+                <Button theme="info" size="lg">Info - lg</Button>
               </div>
               <div className="demo-inline">
                 <Button>Default</Button>
-                <Button theme="primary">Primary</Button>
+                <Button theme="info">Info</Button>
               </div>
               <div className="demo-inline">
                 <Button size="sm">Default - sm</Button>
-                <Button theme="primary" size="sm">Primary - sm</Button>
+                <Button theme="info" size="sm">Info - sm</Button>
               </div>
               <div className="demo-inline">
                 <Button size="xs">Default - xs</Button>
-                <Button theme="primary" size="xs">Primary - xs</Button>
+                <Button theme="info" size="xs">Info - xs</Button>
               </div>
             </div>
           }
@@ -199,23 +193,23 @@ ReactDOM.render(
 ReactDOM.render(
   <div>
     <Button size="xl">Default - xl</Button>
-    <Button theme="primary" size="xl">Primary - xl</Button>
+    <Button theme="info" size="xl">Info - xl</Button>
   </div>
   <div>
     <Button size="lg">Default - lg</Button>
-    <Button theme="primary" size="lg">Primary - lg</Button>
+    <Button theme="info" size="lg">Info - lg</Button>
   </div>
   <div>
     <Button>Default</Button>
-    <Button theme="primary">Primary</Button>
+    <Button theme="info">Info</Button>
   </div>
   <div>
     <Button size="sm">Default - sm</Button>
-    <Button theme="primary" size="sm">Primary - sm</Button>
+    <Button theme="info" size="sm">Info - sm</Button>
   </div>
   <div>
     <Button size="xs">Default - xs</Button>
-    <Button theme="primary" size="xs">Primary - xs</Button>
+    <Button theme="info" size="xs">Info - xs</Button>
   </div>
 , document.getElementById('button-size-demo'));`
           } />

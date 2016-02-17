@@ -64,7 +64,7 @@ class ModalPage extends Component {
         <Document title="普通模态框" 
           demo={
             <div>
-              <Button theme="primary" onClick={() => this._onClickOpen('modal')}>Open Modal</Button>
+              <Button theme="info" onClick={() => this._onClickOpen('modal')}>Open Modal</Button>
               <Modal visible={this.state.modal} width={600} onMaskClick={() => this._onClickClose('modal')}>
                 <Modal.Header title="普通模态框" onClose={() => this._onClickClose('modal')}></Modal.Header>
                 <Modal.Body>
@@ -100,7 +100,7 @@ ReactDOM.render(
             <div>
               <div className="demo-inline">
                 <Button onClick={() => this._onClickOpen('radiusModal')}>Open Radius Modal</Button>
-                <Button theme="primary" onClick={() => this._onClickOpen('roundModal')}>Open Round Modal</Button>
+                <Button theme="info" onClick={() => this._onClickOpen('roundModal')}>Open Round Modal</Button>
               </div>
               <Modal 
                 visible={this.state.radiusModal}
@@ -174,7 +174,7 @@ ReactDOM.render(
         <Document title="带底部的模态框"
           demo={
             <div>
-              <Button theme="primary" onClick={() => this._onClickOpen('footerModal')}>Open Modal</Button>
+              <Button theme="info" onClick={() => this._onClickOpen('footerModal')}>Open Modal</Button>
               <Modal 
                 visible={this.state.footerModal}
                 width={600}
@@ -188,9 +188,9 @@ ReactDOM.render(
                   模态框内容<br />
                 </Modal.Body>
                 <Modal.Footer>
-                  <button type="button" onClick={() => this._onClickClose('footerModal')}>取消</button>
-                  <button type="button" onClick={() => { alert('你点了选项一') }}>选项一</button>
-                  <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+                  <Button onClick={() => this._onClickClose('footerModal')}>取消</Button>
+                  <Button theme="info" onClick={() => { alert('你点了选项一') }}>选项一</Button>
+                  <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
                 </Modal.Footer>
               </Modal>
             </div>
@@ -212,9 +212,9 @@ ReactDOM.render(
     模态框内容<br />
   </Modal.Body>
   <Modal.Footer>
-    <button type="button" onClick={() => this._onClickClose('footerModal')}>取消</button>
-    <button type="button" onClick={() => { alert('你点了选项一') }}>选项一</button>
-    <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+    <Button onClick={() => this._onClickClose('footerModal')}>取消</Button>
+    <Button theme="info" onClick={() => { alert('你点了选项一') }}>选项一</Button>
+    <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
   </Modal.Footer>
 </Modal>
 , document.getElementById('modal-footer-demo'));`
@@ -224,7 +224,7 @@ ReactDOM.render(
         <Document title="固定宽高的模态框"
           demo={
             <div>
-              <Button theme="primary" onClick={() => this._onClickOpen('widthModal')}>Open Modal</Button>
+              <Button theme="info" onClick={() => this._onClickOpen('widthModal')}>Open Modal</Button>
               <Modal 
                 visible={this.state.widthModal}
                 width={600}
@@ -289,9 +289,8 @@ ReactDOM.render(
                   模态框内容<br />
                 </Modal.Body>
                 <Modal.Footer>
-                  <button type="button" onClick={() => this._onClickClose('aniModal')}>取消</button>
-                  <button type="button" onClick={() => { alert('你点了选项一') }}>选项一</button>
-                  <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+                  <Button onClick={() => this._onClickClose('aniModal')}>取消</Button>
+                  <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
                 </Modal.Footer>
               </Modal>
             </div>
