@@ -1,5 +1,6 @@
 @mixin input-size($height, $padding, $font-size, $border-radius) {
   height: $height;
+  line-height: $height;
   padding: $padding;
   font-size: $font-size;
   border-radius: $border-radius;
@@ -10,7 +11,6 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  line-height: 1.5;
   color: #666;
   background-color: #fff;
   background-image: none;
@@ -64,6 +64,7 @@ textarea {
   &.ui-input {
     max-width: 100%;
     height: auto !important;
+    line-height: 1.5;
     vertical-align: bottom;
   }
 }

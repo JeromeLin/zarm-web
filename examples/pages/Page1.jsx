@@ -77,8 +77,22 @@ class Page1 extends Component {
 
         </Form>
 
+        <Form style={{maxWidth: '100%'}}>
+
+          <Form.Item label="账号">
+            <Input placeholder="请输入..." id="account" />
+          </Form.Item>
+          <Form.Item label="密码">
+            <Input placeholder="请输入..." id="password" />
+          </Form.Item>
+          <Form.Item>
+            <Button theme="success">登录</Button>
+          </Form.Item>
+
+        </Form>
+
         <h4>Form horizontal</h4>
-        <Form>
+        <Form type="horizontal">
 
           <Form.Item label="icon图标">
             <Icon type="search" style={{fontSize: 30}} />
