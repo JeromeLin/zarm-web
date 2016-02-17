@@ -25,11 +25,7 @@ class Option extends Component {
     const props = this.props;
     const { children, ...others } = props;
 
-    const cls = classnames({
-      'ui-select-dropdown': true,
-    });
-
-    return <Menu.Item onClick={(e) => props.onChange(e) } {...others}>{children}</Menu.Item>;
+    return <Menu.Item {...others} onClick={(e) => props.onChange(e) }>{children}</Menu.Item>;
   }
 
   _onClick(e) {

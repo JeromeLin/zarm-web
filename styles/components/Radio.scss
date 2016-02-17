@@ -29,7 +29,7 @@
     border-radius: 14px;
     border-color: #d9d9d9;
     background-color: #fff;
-    transition: border-color .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+    transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
     &:after {
       position: absolute;
@@ -42,9 +42,10 @@
       border-top: 0;
       border-left: 0;
       content: ' ';
-      background-color: #2db7f5;
+      background-color: $base-theme-info;
       opacity: 0;
-      transition: transform .3s cubic-bezier(.78, .14, .15, .86),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+      transform: scale(0);
+      transition: transform .3s cubic-bezier(.78, .14, .15, .86), opacity .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
     }
   }
 

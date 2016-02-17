@@ -1,63 +1,16 @@
 
-.ui-form {
-
-  .ui-form-item {
-    font-size: 14px;
-    margin-bottom: 24px;
-    color: #333;
-    zoom: 1;
-
-    > label {
-      color: #333;
-      text-align: right;
-      vertical-align: middle;
-      line-height: 32px;
-
-      position: relative;
-      display: block;
-      float: left;
-      flex: 0 0 auto;
-      padding-left: 0;
-      padding-right: 10px;
-    }
-
-    .ui-form-item-control {
-      position: relative;
-      display: block;
-      float: left;
-      flex: 0 0 auto;
-      padding-left: 0;
-      padding-right: 0;
-      line-height: 32px;
-
-      &.has-error {
-        .ui-form-explain {
-          color: #f50;
-        }
-      }
-    }
-
-    .ui-form-explain {
-      line-height: 1.5;
-      margin-top: 3px;
-      color: gray;
-    }
-
-    &:before {
-      content: " ";
-      display: table;
-    }
-
-    &:after {
-      content: " ";
-      display: table;
-      clear: both;
-      visibility: hidden;
-      font-size: 0;
-      height: 0;
-    }
+@mixin form-item-control-theme($theme) {
+  $shadow-color: lighten($theme, 20%);
+  .ui-input {
+    border-color: $theme;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px $shadow-color;
   }
-
+  .ui-form-explain {
+    color: $theme;
+  }
+}
+/* ui-form */
+.ui-form {
   &.ui-form-horizontal {
     .ui-form-item {
       position: relative;
@@ -65,6 +18,14 @@
       margin-left: 0;
       margin-right: 0;
       height: auto;
+
+      > label {
+        width: 25%;
+      }
+
+      > .ui-form-item-control {
+        width: 75%;
+      }
     }
   }
 
@@ -73,5 +34,68 @@
       display: inline-block;
       margin-right: 10px;
     }
+  }
+}
+
+/* ui-form-item */
+.ui-form-item {
+  font-size: 14px;
+  margin-bottom: 24px;
+  color: #333;
+  zoom: 1;
+
+  > label {
+    color: #333;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 32px;
+
+    position: relative;
+    display: block;
+    float: left;
+    flex: 0 0 auto;
+    padding-left: 0;
+    padding-right: 10px;
+  }
+
+  .ui-form-item-control {
+    position: relative;
+    display: block;
+    float: left;
+    flex: 0 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 32px;
+
+    /* form-item-control theme */
+    &.theme-default {
+      @include form-item-control-theme($base-theme-default);
+    }
+    &.theme-error {
+      @include form-item-control-theme($base-theme-error);
+    }
+    &.theme-warning {
+      @include form-item-control-theme($base-theme-warning);
+    }
+  }
+
+  .ui-form-explain {
+    line-height: 1.5;
+    margin-top: 5px;
+    color: gray;
+  }
+
+  &:before {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
   }
 }

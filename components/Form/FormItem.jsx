@@ -6,7 +6,7 @@ class FormItem extends Component {
 
   render () {
     const props = this.props;
-    const { id, label, help, status, className, children } = props;
+    const { help, theme, className, children } = props;
 
     const cls = classnames({
       'ui-form-item': true,
@@ -15,13 +15,13 @@ class FormItem extends Component {
 
     const controlCls = classnames({
       'ui-form-item-control': true,
-      'has-error'           : (status == 'error'),
+      [`theme-${theme}`]    : !!theme,
     });
 
     return (
       <div className={cls}>
         {this._renderLabel()}
-        <div className={controlCls} style={{width: '75%'}}>
+        <div className={controlCls}>
           {children}
           <div className="ui-form-explain">{help}</div>
         </div>
@@ -37,7 +37,7 @@ class FormItem extends Component {
     const { id, label } = this.props;
 
     return label ? (
-      <label htmlFor={id || this._getId()} style={{width: '25%'}}>
+      <label htmlFor={id || this._getId()}>
         {label}
       </label>
     ) : null;
@@ -45,7 +45,7 @@ class FormItem extends Component {
 }
 
 FormItem.propTypes = {
-  status: PropTypes.oneOf(['success', 'warning', 'error', 'validating']),
+  theme: PropTypes.oneOf(['success', 'warning', 'error', 'validating']),
 };
 
 // FormItem.defaultProps = {

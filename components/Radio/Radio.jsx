@@ -34,7 +34,7 @@ class Radio extends Component {
     return (
       <label>
         <span className={cls}>
-          <input type="radio" value={value} className="ui-radio-input" onChange={(e) => this._onClick(e)} checked={this.state.checked} disabled={disabled} {...others} />
+          <input {...others} type="radio" value={value} className="ui-radio-input" onChange={(e) => this._onClick(e)} checked={this.state.checked} disabled={disabled} />
           <span className="ui-radio-inner"></span>
         </span>
         {children}

@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from '../Modal';
 import Button from '../Button';
+import Icon from '../Icon';
 
 class Alert extends Component {
 
@@ -11,10 +12,13 @@ class Alert extends Component {
     return (
       <Modal {...others}>
         <Modal.Body>
-          <p style={{textAlign: 'center'}}>{message}</p>
+          <div className="ui-alert">
+            <Icon type="info" />
+            <span>{message}</span>
+          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button size="lg" onClick={onClose}>关闭</Button>
+          <Button onClick={onClose}>关闭</Button>
         </Modal.Footer>
       </Modal>
     );

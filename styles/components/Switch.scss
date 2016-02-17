@@ -54,15 +54,9 @@
     }
   }
 
-  &.ui-switch-disabled {
-    cursor: not-allowed;
-    background: #f4f4f4;
-    border-color: #f4f4f4;
-  }
-
   &.ui-switch-checked {
-    border: 1px solid #2db7f5;
-    background-color: #2db7f5;
+    border: 1px solid $base-theme-info;
+    background-color: $base-theme-info;
 
     &:after {
       left: 22px;
@@ -70,6 +64,15 @@
 
     .ui-switch-inner {
       left: 6px;
+    }
+  }
+
+  &.ui-switch-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:after {
+      cursor: not-allowed;
     }
   }
 

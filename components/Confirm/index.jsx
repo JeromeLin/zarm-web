@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from '../Modal';
 import Button from '../Button';
+import Icon from '../Icon';
 
 class Confirm extends Component {
 
@@ -11,11 +12,14 @@ class Confirm extends Component {
     return (
       <Modal {...others}>
         <Modal.Body>
-          <p style={{textAlign: 'center'}}>{message}</p>
+          <div className="ui-confirm">
+            <Icon type="question" />
+            <span>{message}</span>
+          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button size="lg" onClick={onCancel}>{cancelText}</Button>
-          <Button size="lg" theme="success" onClick={onOk}>{okText}</Button>
+          <Button onClick={onCancel}>{cancelText}</Button>
+          <Button theme="success" onClick={onOk}>{okText}</Button>
         </Modal.Footer>
       </Modal>
     );

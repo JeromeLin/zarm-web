@@ -53,7 +53,7 @@ class Swipe extends Component {
   }
 
   render () {
-    const { height, children, autoplay, ...others } = this.props;
+    const { height, children, ...others } = this.props;
     const style = {
       items      : {},
       pagination : {},
@@ -229,8 +229,7 @@ class Swipe extends Component {
           timeSpan = new Date().getTime() - this.state.timeStart.getTime(),
           dom = this.refs.swipeItems;
 
-    let activeIndex = this.state.activeIndex,
-        maxLength = this.props.children.length;
+    let activeIndex = this.state.activeIndex;
 
     // 判断滑动临界点
     // 1.滑动距离比超过moveDistanceRatio
