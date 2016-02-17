@@ -9,7 +9,7 @@ class Form extends Component {
 
     const cls = classnames({
       'ui-form'          : true,
-      [`ui-form-${type}`]: true,
+      [`ui-form-${type}`]: ('type' in this.props),
       [className]        : !!className,
     });
 
@@ -28,7 +28,6 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  type      : 'horizontal',
   className : null,
 };
 
