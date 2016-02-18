@@ -21,8 +21,8 @@
   .ui-form-item {
 
     > label {
-      width: 25%;
-      float: left;
+      // width: 25%;
+      // float: left;
 
       padding: 8px 10px 0 0;
       margin-bottom: 0;
@@ -30,14 +30,16 @@
     }
 
     > .ui-form-item-control {
-      width: 75%;
-      float: left;
+      // width: 75%;
+      // float: left;
     }
   }
 }
 
 .ui-form-inline {
   .ui-form-item {
+    display: inline-block;
+    margin-right: 10px;
 
     > label {
       padding: 8px 6px 0 0;
@@ -55,15 +57,15 @@
   }
 }
 
-@media (min-width: 768px) {
-  .ui-form-inline {
-    > .ui-form-item {
-      display: inline-block;
-      margin-bottom: 0;
-      vertical-align: middle;
-    }
-  }
-}
+// @media (min-width: 768px) {
+//   .ui-form-inline {
+//     > .ui-form-item {
+//       display: inline-block;
+//       margin-bottom: 0;
+//       vertical-align: middle;
+//     }
+//   }
+// }
 
 
 /* ui-form-item */
