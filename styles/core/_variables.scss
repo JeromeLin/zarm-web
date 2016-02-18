@@ -21,10 +21,10 @@ $base-height:              32px !default;
 $base-height-sm:           28px !default;
 $base-height-xs:           24px !default;
 
-$base-fontSize-xl:         18px !default;
-$base-fontSize-lg:         16px !default;
-$base-fontSize:            14px !default;
-$base-fontSize-sm:         12px !default;
+$base-fontSize-xl:         16px !default;
+$base-fontSize-lg:         14px !default;
+$base-fontSize:            12px !default;
+$base-fontSize-sm:         11px !default;
 $base-fontSize-xs:         10px !default;
 
 $base-btn-default-color:   #444 !default;
@@ -51,3 +51,38 @@ $base-modal-radius:        6px !default;
 $base-modal-round:         20px !default;
 
 $base-icon-url:            'http://at.alicdn.com/t/font_1454518253_3128793';
+
+$screen-xs:                  480px !default;
+
+$screen-xs-min:              $screen-xs !default;
+$screen-phone:               $screen-xs-min !default;
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+$screen-tablet:              $screen-sm-min !default;
+
+$screen-md:                  992px !default;
+$screen-md-min:              $screen-md !default;
+$screen-desktop:             $screen-md-min !default;
+
+$screen-lg:                  1200px !default;
+$screen-lg-min:              $screen-lg !default;
+$screen-lg-desktop:          $screen-lg-min !default;
+
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
+
+
+$grid-columns:              12 !default;
+$grid-gutter-width:         30px !default;
+$grid-float-breakpoint:     $screen-sm-min !default;
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+$container-tablet:             (720px + $grid-gutter-width) !default;
+$container-sm:                 $container-tablet !default;
+
+$container-desktop:            (940px + $grid-gutter-width) !default;
+$container-md:                 $container-desktop !default;
+
+$container-large-desktop:      (1140px + $grid-gutter-width) !default;
+$container-lg:                 $container-large-desktop !default;

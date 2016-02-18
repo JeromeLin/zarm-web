@@ -65,16 +65,15 @@ class Page1 extends Component {
         <h4>Form inline</h4>
         <Form type="inline" style={{maxWidth: '100%', textAlign: 'center'}}>
 
-          <Form.Item label="账号">
+          <Form.Item label="账号" className="col-10">
             <Input placeholder="请输入..." id="account" />
           </Form.Item>
-          <Form.Item label="密码">
+          <Form.Item label="密码" className="col-10">
             <Input placeholder="请输入..." id="password" />
           </Form.Item>
-          <Form.Item>
+          <Form.Item className="col-4">
             <Button theme="success">登录</Button>
           </Form.Item>
-
         </Form>
 
         <Form style={{maxWidth: '100%'}}>

@@ -19,7 +19,7 @@ module.exports = {
           "css-loader?sourceMap&-minimize!sass-loader"
         )
       },
-      { 
+      {
         test: /\.css$/, 
         loader: ExtractTextPlugin.extract(
           "style-loader",

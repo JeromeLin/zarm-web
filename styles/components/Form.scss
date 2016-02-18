@@ -14,7 +14,7 @@
 .ui-form {
   display: block;
   margin-top: 0;
-  font-size: 14px;
+  /*font-size: 14px;*/
 }
 
 .ui-form-horizontal {
@@ -24,7 +24,7 @@
       width: 25%;
       float: left;
 
-      padding: 6px 10px 0 0;
+      padding: 8px 10px 0 0;
       margin-bottom: 0;
       text-align: right;
     }
@@ -40,7 +40,7 @@
   .ui-form-item {
 
     > label {
-      padding: 6px 6px 0 0;
+      padding: 8px 6px 0 0;
     }
 
     > .ui-form-item-control {
@@ -60,7 +60,6 @@
     > .ui-form-item {
       display: inline-block;
       margin-bottom: 0;
-      margin-right: 10px;
       vertical-align: middle;
     }
   }
@@ -69,6 +68,7 @@
 
 /* ui-form-item */
 .ui-form-item {
+  font-size: 12px;
   margin-bottom: 15px;
 
   > label {
