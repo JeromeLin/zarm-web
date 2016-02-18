@@ -6,7 +6,7 @@ class FormItem extends Component {
 
   render () {
     const props = this.props;
-    const { help, theme, className, children } = props;
+    const { help, theme, className, children, ...others } = props;
 
     const cls = classnames({
       'ui-form-item': true,
@@ -19,7 +19,7 @@ class FormItem extends Component {
     });
 
     return (
-      <div className={cls}>
+      <div className={cls} {...others}>
         {this._renderLabel()}
         <div className={controlCls}>
           {children}
