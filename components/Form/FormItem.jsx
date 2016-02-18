@@ -6,7 +6,7 @@ class FormItem extends Component {
 
   render () {
     const props = this.props;
-    const { help, theme, className, children, ...others } = props;
+    const { help, theme, className, controlCol, children, ...others } = props;
 
     const cls = classnames({
       'ui-form-item': true,
@@ -15,6 +15,7 @@ class FormItem extends Component {
 
     const controlCls = classnames({
       'ui-form-item-control': true,
+      [controlCol]          : !!controlCol,
       [`theme-${theme}`]    : !!theme,
     });
 
@@ -34,10 +35,14 @@ class FormItem extends Component {
   }
 
   _renderLabel() {
-    const { id, label } = this.props;
+    const { id, label, labelCol } = this.props;
 
-    return label ? (
-      <label htmlFor={id || this._getId()}>
+    const labelCls = classnames({
+      [labelCol]: !!labelCol,
+    });
+
+    return ('label' in this.props) ? (
+      <label className={labelCls} htmlFor={id || this._getId()}>
         {label}
       </label>
     ) : null;

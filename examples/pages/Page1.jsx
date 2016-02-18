@@ -60,29 +60,16 @@ class Page1 extends Component {
   render() {
 
     return (
-      <div className="demo">
+      <div className="demo container">
 
-        <h4>Form inline</h4>
-        <Form type="inline" style={{maxWidth: '100%', textAlign: 'center'}}>
-
-          <Form.Item label="账号" className="col-10">
-            <Input placeholder="请输入..." id="account" />
-          </Form.Item>
-          <Form.Item label="密码" className="col-10">
-            <Input placeholder="请输入..." id="password" />
-          </Form.Item>
-          <Form.Item className="col-4">
-            <Button theme="success">登录</Button>
-          </Form.Item>
-        </Form>
-
+        <h4>Form</h4>
         <Form style={{maxWidth: '100%'}}>
 
           <Form.Item label="账号">
-            <Input placeholder="请输入..." id="account" />
+            <Input placeholder="请输入..." />
           </Form.Item>
           <Form.Item label="密码">
-            <Input placeholder="请输入..." id="password" />
+            <Input placeholder="请输入..." />
           </Form.Item>
           <Form.Item>
             <Button theme="success">登录</Button>
@@ -90,16 +77,36 @@ class Page1 extends Component {
 
         </Form>
 
+        <h4>Form inline</h4>
+        <Form type="inline">
+
+          <Form.Item label="账号">
+            <Input placeholder="请输入..." />
+          </Form.Item>
+          <Form.Item label="密码">
+            <Input placeholder="请输入..." />
+          </Form.Item>
+          <Form.Item>
+            <Button theme="success">登录</Button>
+          </Form.Item>
+        </Form>
+
         <h4>Form horizontal</h4>
         <Form type="horizontal">
 
-          <Form.Item label="icon图标">
+          <Form.Item
+            label="icon图标" 
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
             <Icon type="search" style={{fontSize: 30}} />
             <Icon type="check" style={{fontSize: 30}} />
             <Icon type="close" style={{fontSize: 30}} />
           </Form.Item>
 
-          <Form.Item label="图标按钮">
+          <Form.Item
+            label="图标按钮"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
             <Button size="xl" circle><Icon type="search" /></Button>
             <Button size="lg" circle><Icon type="search" /></Button>
             <Button circle><Icon type="search" /></Button>
@@ -107,7 +114,10 @@ class Page1 extends Component {
             <Button size="xs" circle><Icon type="search" /></Button>
           </Form.Item>
 
-          <Form.Item label="文字按钮">
+          <Form.Item
+            label="文字按钮"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
             <Button size="xl">特大号按钮</Button>
             <Button size="lg" theme="info">大号按钮</Button>
             <Button theme="success">普通按钮</Button>
@@ -121,15 +131,27 @@ class Page1 extends Component {
             <Button active>激活状态</Button>
           </Form.Item>
 
-          <Form.Item label="输入框" help="写点提示信息吧">
+          <Form.Item
+            label="输入框"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10"
+            help="写点提示信息吧">
             <Input placeholder="请输入..." id="title" />
           </Form.Item>
 
-          <Form.Item label="文本框">
+          <Form.Item
+            label="文本框"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
             <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
           </Form.Item>
 
-          <Form.Item label="开关" theme="error" help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
+          <Form.Item
+            label="开关"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10"
+            theme="error"
+            help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
             <Switch /> 普通开关
             <br />
             <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
@@ -145,7 +167,12 @@ class Page1 extends Component {
             }} /> 小开关
           </Form.Item>
 
-          <Form.Item label="单选" theme="error" help={`您选择了( ${this.state.radioValue} )`}>
+          <Form.Item
+            label="单选"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10"
+            theme="error"
+            help={`您选择了( ${this.state.radioValue} )`}>
             <Radio value="a" onChange={(e) => {
               console.log(e.target.value);
             }}>单独使用</Radio>
@@ -164,7 +191,12 @@ class Page1 extends Component {
             </Radio.Group> 组合使用
           </Form.Item>
 
-          <Form.Item label="多选" theme="error" help={`您选择了( ${this.state.checkboxValue} )`}>
+          <Form.Item
+            label="多选"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10"
+            theme="error"
+            help={`您选择了( ${this.state.checkboxValue} )`}>
             <Checkbox onChange={(e) => {
               console.log(e.target.checked);
             }}>单独使用</Checkbox>
@@ -181,7 +213,12 @@ class Page1 extends Component {
             </Checkbox.Group> 组合使用
           </Form.Item>
 
-          <Form.Item label="下拉选择" theme="error" help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
+          <Form.Item
+            label="下拉选择"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10"
+            theme="error"
+            help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
             <Select style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
               this.setState({
                 selectValue : data.value,
@@ -207,7 +244,10 @@ class Page1 extends Component {
             <Button>确定</Button>
           </Form.Item>
 
-          <Form.Item label="模态框">
+          <Form.Item
+            label="模态框"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
             <Button onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
             <Button onClick={() => this._onClickOpen('modal')}>模态框</Button>
             <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
@@ -216,7 +256,10 @@ class Page1 extends Component {
             <Button onClick={() => this._onClickOpen('toast')}>消息提示</Button>
           </Form.Item>
 
-          <Form.Item label="&nbsp;">
+          <Form.Item
+            label
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
             <Button theme="info" onClick={() => {
               alert(JSON.stringify(this.state))
             }}>查看表单值</Button>
