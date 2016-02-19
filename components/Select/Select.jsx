@@ -5,6 +5,7 @@ import * as Events from '../utils/events';
 import Option from './Option';
 import Menu from '../Menu';
 import Icon from '../Icon';
+import Tag from '../Tag';
 
 class Select extends Component {
 
@@ -26,24 +27,16 @@ class Select extends Component {
 
   render () {
     const props = this.props;
-    const { isDisabled, ...others } = props;
+    const { placeholder, isDisabled, ...others } = props;
+    const disabled = 'disabled' in props || isDisabled;
 
-    const cls = classnames({
-      'ui-select'         : true,
-      'ui-select-open'    : this.state.dropdown,
-      'ui-select-disabled': ('disabled' in props || isDisabled),
-    });
-
-    const dropdownCls = classnames({
-      'ui-select-dropdown'       : true,
-      'ui-select-dropdown-hidden': !this.state.dropdown,
-    });
-
-    let valueText;
+    let valueText = placeholder,
+        hasValue = false;
 
     let children = React.Children.map(props.children, (option, index) => {
       if (this.state.value == option.props.value) {
         valueText = option.props.children;
+        hasValue = true;
       }
 
       return (
@@ -54,10 +47,26 @@ class Select extends Component {
       );
     });
 
+    const cls = classnames({
+      'ui-select'         : true,
+      'ui-select-open'    : this.state.dropdown,
+      'ui-select-disabled': disabled,
+    });
+
+    const textCls = classnames({
+      'ui-select-text'            : true,
+      'ui-select-text-placeholder': !hasValue,
+    });
+
+    const dropdownCls = classnames({
+      'ui-select-dropdown'       : true,
+      'ui-select-dropdown-hidden': !this.state.dropdown,
+    });
+
     return (
       <span className={cls} {...others}>
-        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
-          <span className="ui-select-text">{valueText}</span>
+        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
+          <span className={textCls}>{valueText}</span>
           <span className="ui-select-arrow">
             <Icon type="unfold" />
           </span>

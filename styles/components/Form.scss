@@ -14,24 +14,15 @@
 .ui-form {
   display: block;
   margin-top: 0;
-  /*font-size: 14px;*/
 }
 
 .ui-form-horizontal {
   .ui-form-item {
 
     > label {
-      // width: 25%;
-      // float: left;
-
       padding: 8px 10px 0 0;
       margin-bottom: 0;
       text-align: right;
-    }
-
-    > .ui-form-item-control {
-      // width: 75%;
-      // float: left;
     }
   }
 }
@@ -56,17 +47,6 @@
     }
   }
 }
-
-// @media (min-width: 768px) {
-//   .ui-form-inline {
-//     > .ui-form-item {
-//       display: inline-block;
-//       margin-bottom: 0;
-//       vertical-align: middle;
-//     }
-//   }
-// }
-
 
 /* ui-form-item */
 .ui-form-item {

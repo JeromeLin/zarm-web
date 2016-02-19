@@ -57,7 +57,7 @@
   padding: $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height - 2;
+  line-height: $height;
 
   &.radius {
     border-radius: $border-radius;
@@ -123,7 +123,7 @@
     @include button-size($base-height-sm, 0 8px, $base-fontSize-sm, $base-radius-sm);
   }
   &.size-xs {
-    @include button-size($base-height-xs, 0 6px, $base-fontSize-xs, $base-radius-xs);
+    @include button-size($base-height-xs, 0 4px, $base-fontSize-xs, $base-radius-xs);
   }
 
   /* Button themes */
