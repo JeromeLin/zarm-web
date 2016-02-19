@@ -18,12 +18,15 @@ import {
   Form,
   Radio,
   Checkbox,
-  Select
+  Select,
+  Menu,
+  Tag
 } from '../../components';
 
 import '../../styles/index.scss';
 import '../styles/pages/Page1.scss';
 
+let index = 0;
 class Page1 extends Component {
 
   constructor(props) {
@@ -39,9 +42,10 @@ class Page1 extends Component {
       switchValue  : false,
       radioValue   : 'b',
       radioValue2  : '',
-      selectValue  : 'a',
-      selectValue2 : 'a',
+      selectValue  : '',
+      selectValue2 : '',
       checkboxValue: [],
+      tags         : [],
     };
   }
 
@@ -55,6 +59,12 @@ class Page1 extends Component {
     this.setState({
       [`${ key }`]: false
     });
+  }
+
+  _removeTag(key) {
+    const tags = [...this.state.tags].filter(tag => (tag.key !== key) && tag);
+    console.log(tags);
+    this.setState({ tags });
   }
 
   render() {
@@ -126,9 +136,30 @@ class Page1 extends Component {
             <Button>直角按钮</Button>
             <Button radius>圆角按钮</Button>
             <Button round>椭圆角按钮</Button>
-            <Button onClick={() => alert('你点击了按钮')}><Icon type="search" />带图标的按钮</Button>
+            <Button><Icon type="search" />带图标的按钮</Button>
             <Button disabled>禁用状态</Button>
             <Button active>激活状态</Button>
+          </Form.Item>
+
+          <Form.Item
+            label="标签"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            <Tag size="xl" radius>特大号标签</Tag>
+            <Tag size="lg" theme="info" radius>大号标签</Tag>
+            <Tag theme="success" radius>普通标签</Tag>
+            <Tag size="sm" theme="warning" radius>小号标签</Tag>
+            <Tag size="xs" theme="error" radius>特小号标签</Tag>
+            <br />
+            {this.state.tags.map(tag =>
+              <Tag key={tag.key} size="xs" radius onClose={() => this._removeTag(tag.key)}>{tag.name}</Tag>
+            )}
+            <Button theme="info" round onClick={() => {
+              const tags = [...this.state.tags];
+              index += 1;
+              tags.push({ key: index, name: `新标签${index}` });
+              this.setState({ tags });
+            }}><Icon type="roundadd" />添加标签</Button>
           </Form.Item>
 
           <Form.Item
@@ -137,6 +168,15 @@ class Page1 extends Component {
             controlCol="col-sm-10"
             help="写点提示信息吧">
             <Input placeholder="请输入..." id="title" />
+          </Form.Item>
+
+          <Form.Item
+            label="密码"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10"
+            help="请输入密码"
+            theme="error">
+            <Input type="password" placeholder="请输入..." id="password" />
           </Form.Item>
 
           <Form.Item
@@ -219,7 +259,7 @@ class Page1 extends Component {
             controlCol="col-sm-10"
             theme="error"
             help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
-            <Select style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
+            <Select style={{width: 120}} placeholder="请选择" value={this.state.selectValue} onChange={(data) => {
               this.setState({
                 selectValue : data.value,
                 selectValue2: data.value
@@ -231,7 +271,7 @@ class Page1 extends Component {
               <Select.Option value="d">我是D</Select.Option>
             </Select>
 
-            <Select style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
+            <Select disabled style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
               this.setState({
                 selectValue2: data.value
               });
@@ -254,6 +294,18 @@ class Page1 extends Component {
             <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
             <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
             <Button onClick={() => this._onClickOpen('toast')}>消息提示</Button>
+          </Form.Item>
+
+          <Form.Item
+            label="菜单"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            <Menu style={{width: 120}}>
+              <Menu.Item>111</Menu.Item>
+              <Menu.Item>222</Menu.Item>
+              <Menu.Item checked>333</Menu.Item>
+              <Menu.Item>444</Menu.Item>
+            </Menu>
           </Form.Item>
 
           <Form.Item

@@ -15,3 +15,4 @@ export Radio from './Radio';
 export Checkbox from './Checkbox';
 export Select from './Select';
 export Menu from './Menu';
+export Tag from './Tag';
