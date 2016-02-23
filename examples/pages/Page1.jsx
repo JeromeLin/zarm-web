@@ -152,7 +152,7 @@ class Page1 extends Component {
             <Tag size="xs" theme="error" radius>特小号标签</Tag>
             <br />
             {this.state.tags.map(tag =>
-              <Tag key={tag.key} size="xs" radius onClose={() => this._removeTag(tag.key)}>{tag.name}</Tag>
+              <Tag key={tag.key} size="xs" radius disabled onClose={() => this._removeTag(tag.key)}>{tag.name}</Tag>
             )}
             <Button theme="info" round onClick={() => {
               const tags = [...this.state.tags];
@@ -177,6 +177,15 @@ class Page1 extends Component {
             help="请输入密码"
             theme="error">
             <Input type="password" placeholder="请输入..." id="password" />
+          </Form.Item>
+
+          <Form.Item
+            label="警告样式的表单"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10"
+            help="我是警告内容"
+            theme="warning">
+            <Input type="email" placeholder="请输入..." />
           </Form.Item>
 
           <Form.Item

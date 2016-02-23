@@ -8,21 +8,22 @@ class Tag extends Component {
   render () {
     const props = this.props;
     const { theme, size, isRadius, isRound, isActive, isFocus, isDisabled, className, onClose, children, ...others } = props;
-    
+    const disabled = ('disabled' in props || isDisabled);
+
     const cls = classnames({
       'ui-tag'           : true,
       'radius'           : ('radius' in props || isRadius),
       'round'            : ('round' in props || isRound),
       'active'           : ('active' in props || isActive),
       'focus'            : ('focus' in props || isFocus),
-      'disabled'         : ('disabled' in props || isDisabled),
+      'disabled'         : disabled,
       [`theme-${theme}`] : !!theme,
       [`size-${size}`]   : !!size,
       [className]        : !!className,
     });
 
     const closeIcon = onClose
-                   ? <Icon type="close" onClick={onClose} />
+                   ? <Icon type="close" onClick={!disabled && onClose} />
                    : null;
     return (
       <div className={cls}>{children}{closeIcon}</div>
