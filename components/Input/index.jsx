@@ -11,12 +11,12 @@ class Input extends Component {
       'ui-input'         : true,
       'disabled'         : ('disabled' in props || isDisabled),
       ['size-' + size]   : size,
-      [className]        : className,
+      [className]        : !!className,
     });
 
     const input = (type == 'textarea')
                ? <textarea className={cls} {...others}>{defaultValue}</textarea>
-               : <input type={type} value={defaultValue} className={cls} {...others} />;
+               : <input type={type} defaultValue={defaultValue} className={cls} {...others} />;
 
     return (
       <span>
