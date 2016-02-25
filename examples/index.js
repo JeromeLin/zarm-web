@@ -1,12 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-
-let history = createBrowserHistory({
-  queryKey: false
-});
+import { browserHistory, Router } from 'react-router';
 
 const rootRoute = {
   path: '/',
@@ -63,6 +58,6 @@ const rootRoute = {
 }
 
 ReactDOM.render(
-  <Router routes={rootRoute} history={history} />,
+  <Router routes={rootRoute} history={browserHistory} />,
   document.getElementById('app')
 );
