@@ -14,7 +14,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(process.cwd(), 'dist'),
+    path: path.join(process.cwd(), 'assets'),
     filename: 'js/[name].min.js',
     chunkFilename: 'js/[name].[chunkhash:8].min.js',
     publicPath: '/'
@@ -29,25 +29,31 @@ module.exports = {
       },
       { 
         test: /\.scss$/, 
-        loader: 'style!css?sourceMap&-minimize!autoprefixer!sass?sourceMap'
+        loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer!sass?sourceMap")
       },
       { 
         test: /\.css$/, 
-        loader: 'style!css?sourceMap&-minimize!autoprefixer'
+        loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer")
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: 'url-loader?limit=8192'
+        test: /\.(png|jpg|jpeg|gif)$/,
+        loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
       },
       {
-        test: /\.(eot|ttf|wav|mp3)$/,
-        loader: 'file-loader'
+        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.(html)$/,
+        loader: 'file-loader?name=[name].[ext]'
       }
     ]
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('stylesheet/[name].css', {
+      allChunks: true
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors'
     }),

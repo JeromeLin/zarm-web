@@ -14,5 +14,6 @@ export Form from './Form';
 export Radio from './Radio';
 export Checkbox from './Checkbox';
 export Select from './Select';
+export Dropdown from './Dropdown';
 export Menu from './Menu';
 export Tag from './Tag';

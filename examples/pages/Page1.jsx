@@ -20,7 +20,8 @@ import {
   Checkbox,
   Select,
   Menu,
-  Tag
+  Tag,
+  Dropdown
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -38,6 +39,7 @@ class Page1 extends Component {
       mask      : false,
       toast     : false,
       loading   : false,
+      dropdown  : false,
 
       switchValue  : false,
       radioValue   : 'b',
@@ -309,12 +311,26 @@ class Page1 extends Component {
             label="菜单"
             labelCol="col-sm-2"
             controlCol="col-sm-10">
-            <Menu style={{width: 120}}>
-              <Menu.Item>111</Menu.Item>
-              <Menu.Item>222</Menu.Item>
-              <Menu.Item checked>333</Menu.Item>
-              <Menu.Item>444</Menu.Item>
-            </Menu>
+            <div style={{display: 'inline-block', position: 'relative'}}>
+              <Button onClick={() => {
+                this.setState({
+                  dropdown: true,
+                });
+                document.onclick = () => {
+                  this.setState({
+                    dropdown: false,
+                  });
+                }
+              }}>点击显示下拉菜单
+              </Button>
+              <Dropdown visible={this.state.dropdown} style={{position: 'absolute', left: 0, top: 36}}>
+                <Menu>
+                  <Menu.Item>111</Menu.Item>
+                  <Menu.Item>222</Menu.Item>
+                  <Menu.Item>333</Menu.Item>
+                </Menu>
+              </Dropdown>
+            </div>
           </Form.Item>
 
           <Form.Item
