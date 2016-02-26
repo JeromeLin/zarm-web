@@ -1,6 +1,6 @@
 @mixin input-size($height, $padding, $font-size, $border-radius) {
   height: $height;
-  line-height: $height;
+  line-height: 1.5;
   padding: $padding;
   font-size: $font-size;
   border-radius: $border-radius;
@@ -15,6 +15,7 @@
   background-color: #fff;
   background-image: none;
   border: 1px solid #d9d9d9;
+  outline: 0;
   transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1),
               background .2s cubic-bezier(0.645, 0.045, 0.355, 1),
               box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -47,16 +48,16 @@
 
   /* Input sizes */
   &.size-xl {
-    @include input-size($base-height-xl, 6px 14px 5px 14px, $base-fontSize-xl, $base-radius-xl);
+    @include input-size($base-height-xl, 0 14px, $base-fontSize-xl, $base-radius-xl);
   }
   &.size-lg {
-    @include input-size($base-height-lg, 5px 11px 4px 11px, $base-fontSize-lg, $base-radius-lg);
+    @include input-size($base-height-lg, 0 11px, $base-fontSize-lg, $base-radius-lg);
   }
   &.size-sm {
-    @include input-size($base-height-sm, 2px 7px, $base-fontSize-sm, $base-radius-sm);
+    @include input-size($base-height-sm, 0 7px, $base-fontSize-sm, $base-radius-sm);
   }
   &.size-xs {
-    @include input-size($base-height-xs, 2px 4px 1px 4px, $base-fontSize-xs, $base-radius-xs);
+    @include input-size($base-height-xs, 0 4px, $base-fontSize-xs, $base-radius-xs);
   }
 }
 

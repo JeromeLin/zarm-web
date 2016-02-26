@@ -86,21 +86,21 @@ class Select extends Component {
   }
 
   onClose() {
-    console.log('close');
+    // console.log('close');
 
     this.setState({
       dropdown: false,
     });
-    Events.off(document, 'click', () => this.onClose());
+    Events.off(document.body, 'click', () => this.onClose());
   }
 
   onSelectClick(e) {
-    console.log('open');
-    
+    // console.log('open');
+
     this.setState({
       dropdown: !this.state.dropdown,
     });
-    Events.on(document, 'click', () => this.onClose());
+    Events.on(document.body, 'click', () => this.onClose());
   }
 
   onOptionChange(e, props, index) {
