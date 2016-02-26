@@ -193,7 +193,8 @@ class Page1 extends Component {
           <Form.Item
             label="文本框"
             labelCol="col-sm-2"
-            controlCol="col-sm-10">
+            controlCol="col-sm-10"
+            help="请输入密码">
             <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
           </Form.Item>
 
