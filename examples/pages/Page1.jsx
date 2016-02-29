@@ -21,7 +21,8 @@ import {
   Select,
   Menu,
   Tag,
-  Dropdown
+  Dropdown,
+  Breadcrumb
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -90,6 +91,29 @@ class Page1 extends Component {
         </Form>
 
         <h4>Form inline</h4>
+        <Form type="inline">
+          <Form.Item
+            className="col-sm-3"
+            label="类型">
+            <Input placeholder="请输入..." />
+          </Form.Item>
+          <Form.Item
+            className="col-sm-3"
+            label="来源">
+            <Input placeholder="请输入..." />
+          </Form.Item>
+          <Form.Item
+            className="col-sm-3"
+            label="等级">
+            <Input placeholder="请输入..." />
+          </Form.Item>
+          <Form.Item
+            className="col-sm-3"
+            label="">
+            <Button theme="success">查询</Button>
+          </Form.Item>
+        </Form>
+
         <Form type="inline">
 
           <Form.Item label="账号">
@@ -162,6 +186,17 @@ class Page1 extends Component {
               tags.push({ key: index, name: `新标签${index}` });
               this.setState({ tags });
             }}><Icon type="roundadd" />添加标签</Button>
+          </Form.Item>
+
+          <Form.Item
+            label="面包屑" 
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            <Breadcrumb>
+              <Breadcrumb.Item separator=">">首页</Breadcrumb.Item>
+              <Breadcrumb.Item href="">模块</Breadcrumb.Item>
+              <Breadcrumb.Item>应用</Breadcrumb.Item>
+            </Breadcrumb>
           </Form.Item>
 
           <Form.Item
