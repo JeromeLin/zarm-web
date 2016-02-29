@@ -22,7 +22,8 @@ import {
   Menu,
   Tag,
   Dropdown,
-  Breadcrumb
+  Breadcrumb,
+  Table
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -367,6 +368,38 @@ class Page1 extends Component {
                 </Menu>
               </Dropdown>
             </div>
+          </Form.Item>
+
+          <Form.Item
+            label="表格" 
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            <Table columns={[{
+              title: '表头1(20%)',
+              dataIndex:'a',
+              width:'20%',
+              render: (text, row, index) => {
+                if (index == 1)
+                  return text;
+                else
+                  return <a href="#">{text}</a>;
+              }
+            },{
+              id: '123',
+              title: '表头2(30%)',
+              dataIndex:'b',
+              width: '30%'
+            },{
+              title: '表头3(50%)',
+              dataIndex: 'c',
+              width: '50%'
+            }]}
+            dataSource={[
+              {a:'123'},
+              {a:'cdd', b:'edd'},
+              {a:'1333', c:'eee', d:2},
+            ]}>
+            </Table>
           </Form.Item>
 
           <Form.Item

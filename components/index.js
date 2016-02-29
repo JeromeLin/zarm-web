@@ -18,3 +18,4 @@ export Dropdown from './Dropdown';
 export Menu from './Menu';
 export Tag from './Tag';
 export Breadcrumb from './Breadcrumb';
+export Table from './Table';
