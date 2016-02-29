@@ -42,9 +42,23 @@
 
 .ui-form-inline {
 
+    &:before {
+      content: " ";
+      display: table;
+    }
+
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+      visibility: hidden;
+      font-size: 0;
+      height: 0;
+    }
+
   .ui-form-item {
     display: inline-block;
-
+    
     > label {
       padding: 8px 6px 0 0;
     }
