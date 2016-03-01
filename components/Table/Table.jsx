@@ -5,10 +5,11 @@ import classnames from 'classnames';
 class Table extends Component {
 
   render () { 
-    const { className, columns, dataSource, ...others } = this.props;
+    const { isBordered, className, columns, dataSource, ...others } = this.props;
 
     const cls = classnames({
       'ui-table'         : true,
+      'ui-table-bordered': ('bordered' in this.props || isBordered),
       [className]        : !!className,
     });
 
@@ -17,9 +18,7 @@ class Table extends Component {
         <thead>
           <tr>
           {
-            columns.map((column, index) => {
-              return <th key={index} width={column.width}>{column.title}</th>;
-            })
+            columns.map((column, index) => this.renderColumn(column, index))
           }
           </tr>
         </thead>
@@ -41,11 +40,18 @@ class Table extends Component {
     );
   }
 
+  renderColumn(column, index) {
+    if ('render' in column)
+      return <th key={index} width={column.width}>{column.render(column, this.props.dataSource, index)}</th>;
+    else
+      return <th key={index} width={column.width}>{column.title}</th>;
+  }
+
   renderCell(column, row, rowIndex) {
     const text = row[column.dataIndex];
 
-    if ('render' in column)
-      return <td key={column.dataIndex}>{column.render(text, row, rowIndex)}</td>;
+    if ('cellRender' in column)
+      return <td key={column.dataIndex}>{column.cellRender(text, row, rowIndex)}</td>;
     else
       return <td key={column.dataIndex}>{text}</td>;
   }

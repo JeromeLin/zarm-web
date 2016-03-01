@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 
 class BreadcrumbItem extends Component {
@@ -24,13 +24,5 @@ class BreadcrumbItem extends Component {
   }
 
 }
-
-BreadcrumbItem.propTypes = {
-  separator     : PropTypes.string,
-};
-
-BreadcrumbItem.defaultProps = {
-  separator     : '/',
-};
 
 export default BreadcrumbItem;
