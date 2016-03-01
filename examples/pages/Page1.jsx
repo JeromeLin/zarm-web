@@ -50,6 +50,7 @@ class Page1 extends Component {
       selectValue2 : '',
       checkboxValue: [],
       tags         : [],
+      tableSelection: [],
     };
   }
 
@@ -194,7 +195,12 @@ class Page1 extends Component {
             labelCol="col-sm-2"
             controlCol="col-sm-10">
             <Breadcrumb>
-              <Breadcrumb.Item separator=">">首页</Breadcrumb.Item>
+              <Breadcrumb.Item>首页</Breadcrumb.Item>
+              <Breadcrumb.Item href="">模块</Breadcrumb.Item>
+              <Breadcrumb.Item>应用</Breadcrumb.Item>
+            </Breadcrumb>
+            <Breadcrumb separator=">">
+              <Breadcrumb.Item><Icon type="search" /></Breadcrumb.Item>
               <Breadcrumb.Item href="">模块</Breadcrumb.Item>
               <Breadcrumb.Item>应用</Breadcrumb.Item>
             </Breadcrumb>
@@ -373,31 +379,63 @@ class Page1 extends Component {
           <Form.Item
             label="表格" 
             labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Table columns={[{
-              title: '表头1(20%)',
-              dataIndex:'a',
-              width:'20%',
-              render: (text, row, index) => {
-                if (index == 1)
-                  return text;
-                else
-                  return <a href="#">{text}</a>;
+            controlCol="col-sm-10"
+            theme="error"
+            help={`您选择了( ${this.state.tableSelection} )`}>
+            <Table bordered columns={[{
+              title: '',
+              dataIndex: 'id',
+              width: 32,
+              render: (column, dataSource, index) => {
+                return (
+                  <Checkbox checked={this.state.tableSelection.length == dataSource.length} onChange={(e) => {
+                    let selection = [];
+                    if (e.target.checked) {
+                      selection = dataSource.map((data) => data.id);
+                    }
+                    this.setState({
+                      tableSelection: selection
+                    });
+                  }} />
+                );
+              },
+              cellRender: (text, row, index) => {
+                return (
+                  <Checkbox value={row.id} checked={this.state.tableSelection.indexOf(row.id) > -1} onChange={(e) => {
+                    let selection = this.state.tableSelection,
+                        value = e.target.value;
+
+                    if (selection.indexOf(value) === -1) {
+                      selection.push(value);
+                    } else {
+                      selection.splice(selection.indexOf(value), 1);
+                    }
+
+                    this.setState({
+                      tableSelection: selection
+                    });
+
+                  }} />
+                );
               }
             },{
-              id: '123',
-              title: '表头2(30%)',
-              dataIndex:'b',
-              width: '30%'
+              title: '姓名',
+              dataIndex: 'name',
+              width: '30%',
+              cellRender: (text, row, index) => {
+                return <a href="javascript:;">{text}</a>;
+              }
             },{
-              title: '表头3(50%)',
-              dataIndex: 'c',
-              width: '50%'
+              title: '年龄',
+              dataIndex: 'age',
+            },{
+              title: '住址',
+              dataIndex: 'address',
             }]}
             dataSource={[
-              {a:'123'},
-              {a:'cdd', b:'edd'},
-              {a:'1333', c:'eee', d:2},
+              {id: '1', name: '张三', address: '上海市杨浦区四平路324号'},
+              {id: '2', name: '李四', age: 32},
+              {id: '3', name: '王五', age: 20, address: '上海市浦东区张杨路1400号'},
             ]}>
             </Table>
           </Form.Item>

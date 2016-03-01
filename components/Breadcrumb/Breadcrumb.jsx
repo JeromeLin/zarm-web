@@ -1,5 +1,5 @@
 
-import React, { Component, cloneElement } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 
 class Breadcrumb extends Component {
@@ -12,11 +12,9 @@ class Breadcrumb extends Component {
       [className]        : !!className,
     });
 
-    const itemSeparator = ('separator' in this.props) ? separator : null;
-
     const items = React.Children.map(children, (element, index) => {
       return cloneElement(element, {
-        itemSeparator,
+        separator,
         key: index,
       });
     });
@@ -29,5 +27,13 @@ class Breadcrumb extends Component {
   }
 
 }
+
+Breadcrumb.propTypes = {
+  separator     : PropTypes.string,
+};
+
+Breadcrumb.defaultProps = {
+  separator     : '/',
+};
 
 export default Breadcrumb;
