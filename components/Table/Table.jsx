@@ -1,20 +1,39 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Loading from '../Loading';
 
 class Table extends Component {
 
-  render () { 
-    const { isBordered, className, columns, dataSource, ...others } = this.props;
+  render () {
+    const props = this.props;
+    const { isBordered, isStriped, isRadius, isLoading, size, className, columns, dataSource, ...others } = props;
 
     const cls = classnames({
       'ui-table'         : true,
-      'ui-table-bordered': ('bordered' in this.props || isBordered),
+      'ui-table-bordered': ('bordered' in props || isBordered),
+      'ui-table-striped' : ('striped' in props || isStriped),
+      'ui-table-radius'  : ('radius' in props || isRadius),
+      [`size-${size}`]   : !!size,
       [className]        : !!className,
     });
 
+    const content = isLoading ? <Loading visible={true}>{this.renderTable()}</Loading>
+                              : this.renderTable();
     return (
-      <table {...others} className={cls}>
+      <div className={cls}>
+        <div className="ui-table-body">
+          {content}
+        </div>
+      </div>
+    );
+  }
+
+  renderTable() {
+    const { columns, dataSource, ...others } = this.props;
+
+    return (
+      <table {...others}>
         <thead>
           <tr>
           {
@@ -56,5 +75,18 @@ class Table extends Component {
       return <td key={column.dataIndex}>{text}</td>;
   }
 }
+
+Table.propTypes = {
+  size      : PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
+  isBordered: PropTypes.bool,
+  isStriped : PropTypes.bool,
+  isRadius  : PropTypes.bool,
+};
+
+Table.defaultProps = {
+  isBordered: false,
+  isStriped : false,
+  isRadius  : false,
+};
 
 export default Table;
