@@ -16,18 +16,18 @@
   }
 
   th {
-    background: #f9f9f9;
+    background: #f4f4f4;
     font-weight: bold;
     transition: background .3s ease;
     position: relative;
   }
 
   &.ui-table-bordered {
-    border: 1px solid #e9e9e9;
+    border: 1px solid #d9d9d9;
 
     th,
     td {
-      border-right: 1px solid #e9e9e9;
+      /*border-right: 1px solid #e9e9e9;*/
       border-bottom: 1px solid #e9e9e9;
     }
 
