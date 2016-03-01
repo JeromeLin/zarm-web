@@ -50,7 +50,9 @@ class Page1 extends Component {
       selectValue2 : '',
       checkboxValue: [],
       tags         : [],
+
       tableSelection: [],
+      tableLoading  : false,
     };
   }
 
@@ -75,420 +77,428 @@ class Page1 extends Component {
   render() {
 
     return (
-      <div className="demo container">
+      <Loading visible={this.state.loading} message="付款中">
+        <div className="demo container">
 
-        <h4>Form</h4>
-        <Form style={{maxWidth: '100%'}}>
+          <h4>Form</h4>
+          <Form style={{maxWidth: '100%'}}>
 
-          <Form.Item label="账号">
-            <Input placeholder="请输入..." />
-          </Form.Item>
-          <Form.Item label="密码">
-            <Input placeholder="请输入..." />
-          </Form.Item>
-          <Form.Item>
-            <Button theme="success">登录</Button>
-          </Form.Item>
+            <Form.Item label="账号">
+              <Input placeholder="请输入..." />
+            </Form.Item>
+            <Form.Item label="密码">
+              <Input placeholder="请输入..." />
+            </Form.Item>
+            <Form.Item>
+              <Button theme="success">登录</Button>
+            </Form.Item>
 
-        </Form>
+          </Form>
 
-        <h4>Form inline</h4>
-        <Form type="inline">
-          <Form.Item
-            className="col-sm-3"
-            label="类型">
-            <Input placeholder="请输入..." />
-          </Form.Item>
-          <Form.Item
-            className="col-sm-3"
-            label="来源">
-            <Input placeholder="请输入..." />
-          </Form.Item>
-          <Form.Item
-            className="col-sm-3"
-            label="等级">
-            <Input placeholder="请输入..." />
-          </Form.Item>
-          <Form.Item
-            className="col-sm-3"
-            label="">
-            <Button theme="success">查询</Button>
-          </Form.Item>
-        </Form>
+          <h4>Form inline</h4>
+          <Form type="inline">
+            <Form.Item
+              className="col-sm-3"
+              label="类型">
+              <Input placeholder="请输入..." />
+            </Form.Item>
+            <Form.Item
+              className="col-sm-3"
+              label="来源">
+              <Input placeholder="请输入..." />
+            </Form.Item>
+            <Form.Item
+              className="col-sm-3"
+              label="等级">
+              <Input placeholder="请输入..." />
+            </Form.Item>
+            <Form.Item
+              className="col-sm-3"
+              label="">
+              <Button theme="success">查询</Button>
+            </Form.Item>
+          </Form>
 
-        <Form type="inline">
+          <Form type="inline">
 
-          <Form.Item label="账号">
-            <Input placeholder="请输入..." />
-          </Form.Item>
-          <Form.Item label="密码">
-            <Input placeholder="请输入..." />
-          </Form.Item>
-          <Form.Item>
-            <Button theme="success">登录</Button>
-          </Form.Item>
-        </Form>
+            <Form.Item label="账号">
+              <Input placeholder="请输入..." />
+            </Form.Item>
+            <Form.Item label="密码">
+              <Input placeholder="请输入..." />
+            </Form.Item>
+            <Form.Item>
+              <Button theme="success">登录</Button>
+            </Form.Item>
+          </Form>
 
-        <h4>Form horizontal</h4>
-        <Form type="horizontal">
+          <h4>Form horizontal</h4>
+          <Form type="horizontal">
 
-          <Form.Item
-            label="icon图标" 
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Icon type="search" style={{fontSize: 30}} />
-            <Icon type="check" style={{fontSize: 30}} />
-            <Icon type="close" style={{fontSize: 30}} />
-          </Form.Item>
+            <Form.Item
+              label="icon图标" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Icon type="search" style={{fontSize: 30}} />
+              <Icon type="check" style={{fontSize: 30}} />
+              <Icon type="close" style={{fontSize: 30}} />
+            </Form.Item>
 
-          <Form.Item
-            label="图标按钮"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Button size="xl" circle><Icon type="search" /></Button>
-            <Button size="lg" circle><Icon type="search" /></Button>
-            <Button circle><Icon type="search" /></Button>
-            <Button size="sm" circle><Icon type="search" /></Button>
-            <Button size="xs" circle><Icon type="search" /></Button>
-          </Form.Item>
+            <Form.Item
+              label="图标按钮"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Button size="xl" circle><Icon type="search" /></Button>
+              <Button size="lg" circle><Icon type="search" /></Button>
+              <Button circle><Icon type="search" /></Button>
+              <Button size="sm" circle><Icon type="search" /></Button>
+              <Button size="xs" circle><Icon type="search" /></Button>
+            </Form.Item>
 
-          <Form.Item
-            label="文字按钮"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Button size="xl">特大号按钮</Button>
-            <Button size="lg" theme="info">大号按钮</Button>
-            <Button theme="success">普通按钮</Button>
-            <Button size="sm" theme="warning">小号按钮</Button>
-            <Button size="xs" theme="error">特小号按钮</Button>
-            <Button>直角按钮</Button>
-            <Button radius>圆角按钮</Button>
-            <Button round>椭圆角按钮</Button>
-            <Button><Icon type="search" />带图标的按钮</Button>
-            <Button disabled>禁用状态</Button>
-            <Button active>激活状态</Button>
-          </Form.Item>
+            <Form.Item
+              label="文字按钮"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Button size="xl">特大号按钮</Button>
+              <Button size="lg" theme="info">大号按钮</Button>
+              <Button theme="success">普通按钮</Button>
+              <Button size="sm" theme="warning">小号按钮</Button>
+              <Button size="xs" theme="error">特小号按钮</Button>
+              <Button>直角按钮</Button>
+              <Button radius>圆角按钮</Button>
+              <Button round>椭圆角按钮</Button>
+              <Button><Icon type="search" />带图标的按钮</Button>
+              <Button disabled>禁用状态</Button>
+              <Button active>激活状态</Button>
+            </Form.Item>
 
-          <Form.Item
-            label="标签"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Tag size="xl" radius>特大号标签</Tag>
-            <Tag size="lg" theme="info" radius>大号标签</Tag>
-            <Tag theme="success" radius>普通标签</Tag>
-            <Tag size="sm" theme="warning" radius>小号标签</Tag>
-            <Tag size="xs" theme="error" radius>特小号标签</Tag>
-            <br />
-            {this.state.tags.map(tag =>
-              <Tag key={tag.key} size="xs" radius onClose={() => this._removeTag(tag.key)}>{tag.name}</Tag>
-            )}
-            <Button theme="info" round onClick={() => {
-              const tags = [...this.state.tags];
-              index += 1;
-              tags.push({ key: index, name: `新标签${index}` });
-              this.setState({ tags });
-            }}><Icon type="roundadd" />添加标签</Button>
-          </Form.Item>
+            <Form.Item
+              label="标签"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Tag size="xl" radius>特大号标签</Tag>
+              <Tag size="lg" theme="info" radius>大号标签</Tag>
+              <Tag theme="success" radius>普通标签</Tag>
+              <Tag size="sm" theme="warning" radius>小号标签</Tag>
+              <Tag size="xs" theme="error" radius>特小号标签</Tag>
+              <br />
+              {this.state.tags.map(tag =>
+                <Tag key={tag.key} size="xs" radius onClose={() => this._removeTag(tag.key)}>{tag.name}</Tag>
+              )}
+              <Button theme="info" round onClick={() => {
+                const tags = [...this.state.tags];
+                index += 1;
+                tags.push({ key: index, name: `新标签${index}` });
+                this.setState({ tags });
+              }}><Icon type="roundadd" />添加标签</Button>
+            </Form.Item>
 
-          <Form.Item
-            label="面包屑" 
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Breadcrumb>
-              <Breadcrumb.Item>首页</Breadcrumb.Item>
-              <Breadcrumb.Item href="">模块</Breadcrumb.Item>
-              <Breadcrumb.Item>应用</Breadcrumb.Item>
-            </Breadcrumb>
-            <Breadcrumb separator=">">
-              <Breadcrumb.Item><Icon type="search" /></Breadcrumb.Item>
-              <Breadcrumb.Item href="">模块</Breadcrumb.Item>
-              <Breadcrumb.Item>应用</Breadcrumb.Item>
-            </Breadcrumb>
-          </Form.Item>
+            <Form.Item
+              label="面包屑" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Breadcrumb>
+                <Breadcrumb.Item>首页</Breadcrumb.Item>
+                <Breadcrumb.Item href="">模块</Breadcrumb.Item>
+                <Breadcrumb.Item>应用</Breadcrumb.Item>
+              </Breadcrumb>
+              <Breadcrumb separator=">">
+                <Breadcrumb.Item><Icon type="search" /></Breadcrumb.Item>
+                <Breadcrumb.Item href="">模块</Breadcrumb.Item>
+                <Breadcrumb.Item>应用</Breadcrumb.Item>
+              </Breadcrumb>
+            </Form.Item>
 
-          <Form.Item
-            label="输入框"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            help="写点提示信息吧">
-            <Input placeholder="请输入..." id="title" />
-          </Form.Item>
+            <Form.Item
+              label="输入框"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              help="写点提示信息吧">
+              <Input placeholder="请输入..." id="title" />
+            </Form.Item>
 
-          <Form.Item
-            label="密码"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            help="请输入密码"
-            theme="error">
-            <Input type="password" placeholder="请输入..." id="password" />
-          </Form.Item>
+            <Form.Item
+              label="密码"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              help="请输入密码"
+              theme="error">
+              <Input type="password" placeholder="请输入..." id="password" />
+            </Form.Item>
 
-          <Form.Item
-            label="警告样式的表单"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            help="我是警告内容"
-            theme="warning">
-            <Input type="email" placeholder="请输入..." />
-          </Form.Item>
+            <Form.Item
+              label="警告样式的表单"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              help="我是警告内容"
+              theme="warning">
+              <Input type="email" placeholder="请输入..." />
+            </Form.Item>
 
-          <Form.Item
-            label="文本框"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            help="请输入密码">
-            <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
-          </Form.Item>
+            <Form.Item
+              label="文本框"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              help="请输入密码">
+              <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
+            </Form.Item>
 
-          <Form.Item
-            label="开关"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            theme="error"
-            help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
-            <Switch /> 普通开关
-            <br />
-            <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
-            <br />
-            <Switch defaultValue={true} /> 设定默认值为true
-            <br />
-            <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
-            <br />
-            <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
-              this.setState({
-                switchValue: value,
-              });
-            }} /> 小开关
-          </Form.Item>
-
-          <Form.Item
-            label="单选"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            theme="error"
-            help={`您选择了( ${this.state.radioValue} )`}>
-            <Radio value="a" onChange={(e) => {
-              console.log(e.target.value);
-            }}>单独使用</Radio>
-            <br />
-            <Radio.Group defaultValue={this.state.radioValue} onChange={(e) => {
-                console.log('radio to ' + e.target.value);
+            <Form.Item
+              label="开关"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              theme="error"
+              help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
+              <Switch /> 普通开关
+              <br />
+              <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
+              <br />
+              <Switch defaultValue={true} /> 设定默认值为true
+              <br />
+              <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
+              <br />
+              <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
                 this.setState({
-                  radioValue: e.target.value,
-                  radioValue2: e.target.value,
+                  switchValue: value,
+                });
+              }} /> 小开关
+            </Form.Item>
+
+            <Form.Item
+              label="单选"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              theme="error"
+              help={`您选择了( ${this.state.radioValue} )`}>
+              <Radio value="a" onChange={(e) => {
+                console.log(e.target.value);
+              }}>单独使用</Radio>
+              <br />
+              <Radio.Group defaultValue={this.state.radioValue} onChange={(e) => {
+                  console.log('radio to ' + e.target.value);
+                  this.setState({
+                    radioValue: e.target.value,
+                    radioValue2: e.target.value,
+                  });
+                }}>
+                <Radio value="a">A</Radio>
+                <Radio value="b">B</Radio>
+                <Radio value="c" disabled>C</Radio>
+                <Radio value="d">D</Radio>
+              </Radio.Group> 组合使用
+            </Form.Item>
+
+            <Form.Item
+              label="多选"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              theme="error"
+              help={`您选择了( ${this.state.checkboxValue} )`}>
+              <Checkbox onChange={(e) => {
+                console.log(e.target.checked);
+              }}>单独使用</Checkbox>
+              <br />
+              <Checkbox.Group value={this.state.checkboxValue} onChange={(data) => {
+                  this.setState({
+                    checkboxValue: data
+                  });
+                }}>
+                <Checkbox value="a">A</Checkbox>
+                <Checkbox value="b" disabled>B</Checkbox>
+                <Checkbox value="c">C</Checkbox>
+                <Checkbox value="d">D</Checkbox>
+              </Checkbox.Group> 组合使用
+            </Form.Item>
+
+            <Form.Item
+              label="下拉选择"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              theme="error"
+              help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
+              <Select style={{width: 120}} placeholder="请选择" value={this.state.selectValue} onChange={(data) => {
+                this.setState({
+                  selectValue : data.value,
+                  selectValue2: data.value
                 });
               }}>
-              <Radio value="a">A</Radio>
-              <Radio value="b">B</Radio>
-              <Radio value="c" disabled>C</Radio>
-              <Radio value="d">D</Radio>
-            </Radio.Group> 组合使用
-          </Form.Item>
+                <Select.Option value="a">我是A</Select.Option>
+                <Select.Option value="b" disabled>我是B</Select.Option>
+                <Select.Option value="c">我是C</Select.Option>
+                <Select.Option value="d">我是D</Select.Option>
+              </Select>
 
-          <Form.Item
-            label="多选"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            theme="error"
-            help={`您选择了( ${this.state.checkboxValue} )`}>
-            <Checkbox onChange={(e) => {
-              console.log(e.target.checked);
-            }}>单独使用</Checkbox>
-            <br />
-            <Checkbox.Group value={this.state.checkboxValue} onChange={(data) => {
+              <Select disabled style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
                 this.setState({
-                  checkboxValue: data
+                  selectValue2: data.value
                 });
               }}>
-              <Checkbox value="a">A</Checkbox>
-              <Checkbox value="b" disabled>B</Checkbox>
-              <Checkbox value="c">C</Checkbox>
-              <Checkbox value="d">D</Checkbox>
-            </Checkbox.Group> 组合使用
-          </Form.Item>
+                <Select.Option value="a">我是A</Select.Option>
+                <Select.Option value="b">我是B</Select.Option>
+                <Select.Option value="c">我是C</Select.Option>
+                <Select.Option value="d">我是D</Select.Option>
+              </Select>
+              <Button>确定</Button>
+            </Form.Item>
 
-          <Form.Item
-            label="下拉选择"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            theme="error"
-            help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
-            <Select style={{width: 120}} placeholder="请选择" value={this.state.selectValue} onChange={(data) => {
-              this.setState({
-                selectValue : data.value,
-                selectValue2: data.value
-              });
-            }}>
-              <Select.Option value="a">我是A</Select.Option>
-              <Select.Option value="b" disabled>我是B</Select.Option>
-              <Select.Option value="c">我是C</Select.Option>
-              <Select.Option value="d">我是D</Select.Option>
-            </Select>
+            <Form.Item
+              label="模态框"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Button onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
+              <Button onClick={() => this._onClickOpen('modal')}>模态框</Button>
+              <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
+              <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
+              <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
+              <Button onClick={() => this._onClickOpen('toast')}>消息提示</Button>
+            </Form.Item>
 
-            <Select disabled style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
-              this.setState({
-                selectValue2: data.value
-              });
-            }}>
-              <Select.Option value="a">我是A</Select.Option>
-              <Select.Option value="b">我是B</Select.Option>
-              <Select.Option value="c">我是C</Select.Option>
-              <Select.Option value="d">我是D</Select.Option>
-            </Select>
-            <Button>确定</Button>
-          </Form.Item>
+            <Form.Item
+              label="菜单"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <div style={{display: 'inline-block', position: 'relative'}}>
+                <Button onClick={() => {
+                  this.setState({
+                    dropdown: true,
+                  });
+                  document.onclick = () => {
+                    this.setState({
+                      dropdown: false,
+                    });
+                  }
+                }}>点击显示下拉菜单
+                </Button>
+                <Dropdown visible={this.state.dropdown} style={{position: 'absolute', left: 0, top: 36}}>
+                  <Menu>
+                    <Menu.Item onClick={(e) => {
+                      e.preventDefault();
+                      // alert(111)
+                    }}><Checkbox value="name">姓名</Checkbox></Menu.Item>
+                    <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
+                    <Menu.Item>333</Menu.Item>
+                  </Menu>
+                </Dropdown>
+              </div>
+            </Form.Item>
 
-          <Form.Item
-            label="模态框"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Button onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
-            <Button onClick={() => this._onClickOpen('modal')}>模态框</Button>
-            <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
-            <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
-            <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
-            <Button onClick={() => this._onClickOpen('toast')}>消息提示</Button>
-          </Form.Item>
-
-          <Form.Item
-            label="菜单"
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <div style={{display: 'inline-block', position: 'relative'}}>
+            <Form.Item
+              label="表格" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              theme="error"
+              help={`您选择了( ${this.state.tableSelection} )`}>
               <Button onClick={() => {
                 this.setState({
-                  dropdown: true,
+                  tableLoading: !this.state.tableLoading
                 });
-                document.onclick = () => {
-                  this.setState({
-                    dropdown: false,
-                  });
-                }
-              }}>点击显示下拉菜单
-              </Button>
-              <Dropdown visible={this.state.dropdown} style={{position: 'absolute', left: 0, top: 36}}>
-                <Menu>
-                  <Menu.Item>111</Menu.Item>
-                  <Menu.Item>222</Menu.Item>
-                  <Menu.Item>333</Menu.Item>
-                </Menu>
-              </Dropdown>
-            </div>
-          </Form.Item>
+              }}>切换loading状态</Button>
+              <Table bordered striped
+                isLoading={this.state.tableLoading}
+                columns={[{
+                  title: '',
+                  dataIndex: 'id',
+                  width: 32,
+                  render: (column, dataSource, index) => {
+                    return (
+                      <Checkbox checked={this.state.tableSelection.length == dataSource.length} onChange={(e) => {
+                        let selection = [];
+                        if (e.target.checked) {
+                          selection = dataSource.map((data) => data.id);
+                        }
+                        this.setState({
+                          tableSelection: selection
+                        });
+                      }} />
+                    );
+                  },
+                  cellRender: (text, row, index) => {
+                    return (
+                      <Checkbox value={row.id} checked={this.state.tableSelection.indexOf(row.id) > -1} onChange={(e) => {
+                        let selection = this.state.tableSelection,
+                            value = e.target.value;
 
-          <Form.Item
-            label="表格" 
-            labelCol="col-sm-2"
-            controlCol="col-sm-10"
-            theme="error"
-            help={`您选择了( ${this.state.tableSelection} )`}>
-            <Table bordered columns={[{
-              title: '',
-              dataIndex: 'id',
-              width: 32,
-              render: (column, dataSource, index) => {
-                return (
-                  <Checkbox checked={this.state.tableSelection.length == dataSource.length} onChange={(e) => {
-                    let selection = [];
-                    if (e.target.checked) {
-                      selection = dataSource.map((data) => data.id);
-                    }
-                    this.setState({
-                      tableSelection: selection
-                    });
-                  }} />
-                );
-              },
-              cellRender: (text, row, index) => {
-                return (
-                  <Checkbox value={row.id} checked={this.state.tableSelection.indexOf(row.id) > -1} onChange={(e) => {
-                    let selection = this.state.tableSelection,
-                        value = e.target.value;
+                        if (selection.indexOf(value) === -1) {
+                          selection.push(value);
+                        } else {
+                          selection.splice(selection.indexOf(value), 1);
+                        }
 
-                    if (selection.indexOf(value) === -1) {
-                      selection.push(value);
-                    } else {
-                      selection.splice(selection.indexOf(value), 1);
-                    }
+                        this.setState({
+                          tableSelection: selection
+                        });
 
-                    this.setState({
-                      tableSelection: selection
-                    });
+                      }} />
+                    );
+                  }
+                },{
+                  title: '姓名',
+                  dataIndex: 'name',
+                  width: '30%',
+                  cellRender: (text, row, index) => {
+                    return <a href="javascript:;">{text}</a>;
+                  }
+                },{
+                  title: '年龄',
+                  dataIndex: 'age',
+                },{
+                  title: '住址',
+                  dataIndex: 'address',
+                }]}
+                dataSource={[
+                  {id: '1', name: '张三', address: '上海市杨浦区四平路324号'},
+                  {id: '2', name: '李四', age: 32},
+                  {id: '3', name: '王五', age: 20, address: '上海市浦东区张杨路1400号'},
+                ]}>
+              </Table>
+            </Form.Item>
 
-                  }} />
-                );
-              }
-            },{
-              title: '姓名',
-              dataIndex: 'name',
-              width: '30%',
-              cellRender: (text, row, index) => {
-                return <a href="javascript:;">{text}</a>;
-              }
-            },{
-              title: '年龄',
-              dataIndex: 'age',
-            },{
-              title: '住址',
-              dataIndex: 'address',
-            }]}
-            dataSource={[
-              {id: '1', name: '张三', address: '上海市杨浦区四平路324号'},
-              {id: '2', name: '李四', age: 32},
-              {id: '3', name: '王五', age: 20, address: '上海市浦东区张杨路1400号'},
-            ]}>
-            </Table>
-          </Form.Item>
+            <Form.Item
+              label
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Button theme="info" onClick={() => {
+                alert(JSON.stringify(this.state))
+              }}>查看表单值</Button>
+            </Form.Item>
 
-          <Form.Item
-            label
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            <Button theme="info" onClick={() => {
-              alert(JSON.stringify(this.state))
-            }}>查看表单值</Button>
-          </Form.Item>
+          </Form>
 
-        </Form>
+          <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
+            <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
+            <Modal.Body height={400}>
+              我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={() => this._onClickClose('modal')}>取消</Button>
+              <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
+            </Modal.Footer>
+          </Modal>
 
-        <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
-          <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
-          <Modal.Body height={400}>
-            我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={() => this._onClickClose('modal')}>取消</Button>
-            <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
-          </Modal.Footer>
-        </Modal>
+          <Confirm
+            visible={this.state.confirm}
+            message="确定要删除吗？"
+            onOk={() => this._onClickOpen('alert')}
+            onCancel={() => this._onClickClose('confirm')} />
 
-        <Confirm
-          visible={this.state.confirm}
-          message="确定要删除吗？"
-          onOk={() => this._onClickOpen('alert')}
-          onCancel={() => this._onClickClose('confirm')} />
+          <Alert
+            visible={this.state.alert}
+            message="这是一个警告框！"
+            onClose={() => this._onClickClose('alert')} />
+          
+          { this.state.toast ?
+            <Toast
+              visible={this.state.toast}
+              message="这是一个提示信息！"
+              onMaskClick={() => this._onClickClose('toast')} />
+          : null }
 
-        <Alert
-          visible={this.state.alert}
-          message="这是一个警告框！"
-          onClose={() => this._onClickClose('alert')} />
-        
-        { this.state.toast ?
-          <Toast
-            visible={this.state.toast}
-            message="这是一个提示信息！"
-            onMaskClick={() => this._onClickClose('toast')} />
-        : null }
-        
-        <Loading
-          visible={this.state.loading}
-          message="付款中" />
+          <Mask
+            visible={this.state.mask}
+            onClose={() => this._onClickClose('mask')} />
 
-        <Mask
-          visible={this.state.mask}
-          onClose={() => this._onClickClose('mask')} />
-
-      </div>
+        </div>
+      </Loading>
     );
   }
 }

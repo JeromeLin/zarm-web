@@ -1,30 +1,23 @@
 
 import React, { Component, PropTypes } from 'react';
-import Mask from '../Mask';
 
 class Loading extends Component {
 
   render () {
-    const { visible, width, height, message, ...others } = this.props;
-    const bodyStyle = {
-      'position'   : 'absolute',
-      'left'       : '50%',
-      'top'        : '50%',
-      'marginLeft' : - width / 2,
-      'marginTop'  : - height / 2,
-      'width'      : width,
-      'height'     : height,
-    };
+    const { visible, message, children, ...others } = this.props;
 
     return visible ? (
       <div className="ui-loading" {...others}>
-        <div className="ui-loading-body" style={bodyStyle}>
-          <br />
-          {message}
+        <div className="ui-loading-spins">
+          <span className="ui-loading-spin ui-loading-spin-first"></span>
+          <span className="ui-loading-spin ui-loading-spin-second"></span>
+          <span className="ui-loading-spin ui-loading-spin-third"></span>
         </div>
-        <Mask visible={visible} type="light" />
+        <div className="ui-loading-inner">
+          {children}
+        </div>
       </div>
-    ) : null;
+    ) : children;
   }
 
 }
@@ -32,15 +25,11 @@ class Loading extends Component {
 Loading.propTypes = {
   visible : PropTypes.bool,
   message : PropTypes.string,
-  width   : PropTypes.number,
-  height  : PropTypes.number,
 };
 
 Loading.defaultProps = {
   visible : false,
   message : '加载中',
-  width   : 80,
-  height  : 80,
 };
 
 export default Loading;

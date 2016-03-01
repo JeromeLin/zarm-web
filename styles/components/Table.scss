@@ -1,44 +1,92 @@
+@mixin table-size($padding, $border-radius) {
+  table {
+    th,
+    td {
+      padding: $padding;
+    }
+  }
+
+  &.ui-table-radius {
+    table {
+      border-radius: $border-radius;
+    }
+  }
+}
 
 .ui-table {
-  width: 100%;
-  max-width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  text-align: left;
-  border-radius: 4px;
-  overflow: hidden;
+  @include table-size(12px, $base-radius);
   font-size: 12px;
   color: #666;
-
-  th,
-  td {
-    padding: 3px 10px;
+  
+  .ui-table-body {
+    transition: opacity .3s ease;
   }
+  
+  table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+    overflow: hidden;
 
-  th {
-    background: #f4f4f4;
-    font-weight: bold;
-    transition: background .3s ease;
-    position: relative;
-  }
+    tr {
+      line-height: normal;
 
-  &.ui-table-bordered {
-    border: 1px solid #d9d9d9;
+      &:last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
 
     th,
     td {
-      /*border-right: 1px solid #e9e9e9;*/
+      padding: 12px;
       border-bottom: 1px solid #e9e9e9;
     }
 
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    th:last-child,
-    td:last-child {
-      border-right: 0;
+    th {
+      background: #f4f4f4;
+      font-weight: bold;
+      transition: background .3s ease;
+      position: relative;
     }
   }
 
+  &.ui-table-bordered {
+    table {
+      border: 1px solid #d9d9d9;
+
+      th,
+      td {
+        border-right: 1px solid #e9e9e9;
+
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+  }
+
+  &.ui-table-striped {
+    > tbody {
+      > tr:nth-of-type(even) {
+        background: #fbfbfb;
+      }
+    }
+  }
+
+  &.size-xl {
+    @include table-size(20px 12px, $base-radius-xl);
+  }
+  &.size-lg {
+    @include table-size(16px 12px, $base-radius-lg);
+  }
+  &.size-sm {
+    @include table-size(8px 12px, $base-radius-sm);
+  }
+  &.size-xs {
+    @include table-size(4px 12px, $base-radius-xs);
+  }
 }
