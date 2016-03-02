@@ -23,7 +23,8 @@ import {
   Tag,
   Dropdown,
   Breadcrumb,
-  Table
+  Table,
+  Pagination,
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -53,6 +54,9 @@ class Page1 extends Component {
 
       tableSelection: [],
       tableLoading  : false,
+
+      currentPage  : 4,
+      pageSize     : 10,
     };
   }
 
@@ -316,7 +320,7 @@ class Page1 extends Component {
               controlCol="col-sm-10"
               theme="error"
               help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
-              <Select style={{width: 120}} placeholder="请选择" value={this.state.selectValue} onChange={(data) => {
+              <Select style={{width: 120}} placeholder="请选择" onChange={(data) => {
                 this.setState({
                   selectValue : data.value,
                   selectValue2: data.value
@@ -328,7 +332,7 @@ class Page1 extends Component {
                 <Select.Option value="d">我是D</Select.Option>
               </Select>
 
-              <Select disabled style={{width: 120}} value={this.state.selectValue2} onChange={(data) => {
+              <Select disabled style={{width: 120}} defaultValue="b" value={this.state.selectValue2} onChange={(data) => {
                 this.setState({
                   selectValue2: data.value
                 });
@@ -371,10 +375,7 @@ class Page1 extends Component {
                 </Button>
                 <Dropdown visible={this.state.dropdown} style={{position: 'absolute', left: 0, top: 36}}>
                   <Menu>
-                    <Menu.Item onClick={(e) => {
-                      e.preventDefault();
-                      // alert(111)
-                    }}><Checkbox value="name">姓名</Checkbox></Menu.Item>
+                    <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
                     <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
                     <Menu.Item>333</Menu.Item>
                   </Menu>
@@ -388,11 +389,11 @@ class Page1 extends Component {
               controlCol="col-sm-10"
               theme="error"
               help={`您选择了( ${this.state.tableSelection} )`}>
-              <Button onClick={() => {
+              <Switch value={this.state.tableLoading} onChange={(value) => {
                 this.setState({
-                  tableLoading: !this.state.tableLoading
+                  tableLoading: value
                 });
-              }}>切换loading状态</Button>
+              }} />切换loading状态
               <Table bordered striped
                 isLoading={this.state.tableLoading}
                 columns={[{
@@ -451,6 +452,62 @@ class Page1 extends Component {
                   {id: '3', name: '王五', age: 20, address: '上海市浦东区张杨路1400号'},
                 ]}>
               </Table>
+            </Form.Item>
+
+            <Form.Item
+              label="分页" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              help={`您选择了( 第 ${this.state.currentPage} 页 )`}>
+              <div>
+                <Pagination
+                  bordered
+                  defaultValue={this.state.currentPage}
+                  value={this.state.currentPage}
+                  pageSize={this.state.pageSize}
+                  total={324} 
+                  addonBefore={`共有 324 条数据`}
+                  addonAfter={
+                    <div>
+                      <Select
+                        size="sm"
+                        defaultValue={10}
+
+                        onChange={(data) => {
+                        this.setState({
+                          pageSize: data.value,
+                        });
+                      }}>
+                        <Select.Option value={10}>10 条/页</Select.Option>
+                        <Select.Option value={20}>20 条/页</Select.Option>
+                        <Select.Option value={30}>30 条/页</Select.Option>
+                        <Select.Option value={40}>40 条/页</Select.Option>
+                      </Select>
+                      <div style={{display: 'inline-block', marginLeft: 15}}>
+                        跳至<span style={{display: 'inline-block', width: 50, marginLeft: 5, marginRight: 5}}>
+                        <Input defaultValue={this.state.currentPage} onKeyDown={(e) => {
+                          if (e.keyCode === 13) {
+                            let value = Number(e.target.value);
+                            this.setState({
+                              currentPage: value
+                            });
+                          }
+                        }} />
+                        </span>页
+                      </div>
+                    </div>
+                  }
+                  onPageChange={(value) => {
+                    this.setState({
+                      currentPage : value
+                    })
+                  }} />
+                <Pagination value={this.state.currentPage} total={324} onChange={(value) => {
+                  this.setState({
+                    currentPage : value
+                  })
+                }} />
+              </div>
             </Form.Item>
 
             <Form.Item

@@ -14,9 +14,9 @@
     opacity: 1;
     visibility: visible;
     user-select: none;
-    
+
     .ui-loading-spin {
-      animation: uiLoadingSpinPulse 1.2s infinite cubic-bezier(.78, .14, .15, .86);
+      animation: loadingSpinPulse 1.2s infinite cubic-bezier(.78, .14, .15, .86);
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -48,7 +48,7 @@
   }
 }
 
-@keyframes uiLoadingSpinPulse {
+@keyframes loadingSpinPulse {
   0%, 80%, 100% { opacity: 0 }
   40% { opacity: 1 }
 }
