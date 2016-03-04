@@ -26,7 +26,7 @@ class Tag extends Component {
                    ? <Icon type="close" onClick={!disabled && onClose} />
                    : null;
     return (
-      <div className={cls}>{children}{closeIcon}</div>
+      <div {...others} className={cls}>{children}{closeIcon}</div>
     );
   }
 }

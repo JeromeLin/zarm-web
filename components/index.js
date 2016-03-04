@@ -20,3 +20,4 @@ export Tag from './Tag';
 export Breadcrumb from './Breadcrumb';
 export Table from './Table';
 export Pagination from './Pagination';
+export Panel from './Panel';
