@@ -2,19 +2,18 @@
 .demo {
   max-width: 1000px;
   border: 1px solid #E9E9E9;
-  padding: 50px 20px;
+  padding: 20px;
 
   .ui-form {
-    .ui-form-item {
-      .ui-button,
-      .ui-switch,
-      .ui-select,
-      .ui-input,
-      .ui-tag {
+    .ui-form-item-control {
+      > .ui-button,
+      > .ui-switch,
+      > .ui-select,
+      > .ui-input,
+      > .ui-tag {
         margin-right: 10px;
       }
 
-      .ui-tag,
       .ui-pagination {
         margin-bottom: 10px;
       } 
