@@ -61,18 +61,18 @@ class Table extends Component {
 
   renderColumn(column, index) {
     if ('render' in column)
-      return <th key={index} width={column.width}>{column.render(column, this.props.dataSource, index)}</th>;
+      return <th key={index} width={column.width}>{column.render(column, index)}</th>;
     else
       return <th key={index} width={column.width}>{column.title}</th>;
   }
 
   renderCell(column, row, rowIndex) {
-    const text = row[column.dataIndex];
+    const value = row[column.dataIndex];
 
     if ('cellRender' in column)
-      return <td key={column.dataIndex}>{column.cellRender(text, row, rowIndex)}</td>;
+      return <td key={column.dataIndex}>{column.cellRender(value, row, rowIndex)}</td>;
     else
-      return <td key={column.dataIndex}>{text}</td>;
+      return <td key={column.dataIndex}>{value}</td>;
   }
 }
 

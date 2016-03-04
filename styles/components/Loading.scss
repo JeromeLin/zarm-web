@@ -1,19 +1,20 @@
 
 .ui-loading {
   position: relative;
-  
+  z-index: 1200;
+
   .ui-loading-spins {
     position: absolute;
     top: 50%;
     height: 20px;
     line-height: 20px;
     margin-top: -10px;
-    z-index: 4;
     text-align: center;
     width: 100%;
     opacity: 1;
     visibility: visible;
     user-select: none;
+    z-index: 1201;
 
     .ui-loading-spin {
       animation: loadingSpinPulse 1.2s infinite cubic-bezier(.78, .14, .15, .86);

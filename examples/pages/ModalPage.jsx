@@ -272,8 +272,8 @@ ReactDOM.render(
                 <Button onClick={() => this._onClickOpenAni('aniModal', 'rotate')}>Open Rotate Modal</Button>
                 <Button onClick={() => this._onClickOpenAni('aniModal', 'slideUp')}>Open SlideUp Modal</Button>
                 <Button onClick={() => this._onClickOpenAni('aniModal', 'slideDown')}>Open SlideDown Modal</Button>
-                <Button onClick={() => this._onClickOpenAni('aniModal', 'slideLeft')}>Open slideLeft Modal</Button>
-                <Button onClick={() => this._onClickOpenAni('aniModal', 'slideRight')}>Open slideRight Modal</Button>
+                <Button onClick={() => this._onClickOpenAni('aniModal', 'slideLeft')}>Open SlideLeft Modal</Button>
+                <Button onClick={() => this._onClickOpenAni('aniModal', 'slideRight')}>Open SlideRight Modal</Button>
               </div>
               <Modal 
                 visible={this.state.aniModal}
