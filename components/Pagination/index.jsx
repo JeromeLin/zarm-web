@@ -110,9 +110,6 @@ class Pagination extends Component {
   }
 
   _onPagerClick(value) {
-    const { total, pageSize } = this.props;
-    const pageCount = Math.ceil(total / pageSize);
-
     this.setState({
       value: value
     });

@@ -7,7 +7,7 @@ class Table extends Component {
 
   render () {
     const props = this.props;
-    const { isBordered, isStriped, isRadius, isLoading, size, className, columns, dataSource, ...others } = props;
+    const { isBordered, isStriped, isRadius, isLoading, size, className } = props;
 
     const cls = classnames({
       'ui-table'         : true,

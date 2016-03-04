@@ -25,6 +25,7 @@ import {
   Breadcrumb,
   Table,
   Pagination,
+  Panel,
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -89,7 +90,7 @@ class Page1 extends Component {
 
     return (
       <Loading visible={this.state.loading} message="付款中">
-        <div className="demo container">
+        <div className="demo">
 
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>
@@ -410,9 +411,22 @@ class Page1 extends Component {
                   total={324} 
                   onPageChange={(value) => {
                     console.log(`您选择了( 第 ${value} 页 )`);
+                    this.setState({
+                      currentPage: value,
+                    })
                   }} />
 
               </div>
+            </Form.Item>
+
+            <Form.Item
+              label="面板"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Panel>
+                <Panel.Header>面板</Panel.Header>
+                <Panel.Body>内容</Panel.Body>
+              </Panel>
             </Form.Item>
 
             <Form.Item
@@ -426,125 +440,126 @@ class Page1 extends Component {
 
           </Form>
 
-          <div style={{marginBottom: 15}}>
-            <Switch value={this.state.tableLoading} onChange={(value) => {
-              this.setState({
-                tableLoading: value
-              });
-            }} /> 切换Loading状态
-          </div>
+          <Panel>
+            <Panel.Header>
+              切换Loading状态：
+              <Switch size="sm" value={this.state.tableLoading} onChange={(value) => {
+                this.setState({
+                  tableLoading: value
+                });
+              }} />
+            </Panel.Header>
+            <Table
+              striped
+              radius
+              isLoading={this.state.tableLoading}
+              columns={[{
+                title: '',
+                dataIndex: 'id',
+                width: 45,
+                render: (column, index) => {
+                  return (
+                    <div style={{textAlign: 'center'}}>
+                      <Checkbox checked={this.state.tableSelection.length == dataSource.length} onChange={(e) => {
+                        const selection = e.target.checked
+                                        ? dataSource.map((data) => data.id)
+                                        : [];
 
-          <Table
-            bordered
-            striped
-            radius
-            isLoading={this.state.tableLoading}
-            columns={[{
-              title: '',
-              dataIndex: 'id',
-              width: 45,
-              render: (column, index) => {
-                return (
-                  <div style={{textAlign: 'center'}}>
-                    <Checkbox checked={this.state.tableSelection.length == dataSource.length} onChange={(e) => {
-                      const selection = e.target.checked
-                                      ? dataSource.map((data) => data.id)
-                                      : [];
+                        this.setState({
+                          tableSelection: selection
+                        });
+                      }} />
+                    </div>
+                  );
+                },
+                cellRender: (text, row, index) => {
+                  return (
+                    <div style={{textAlign: 'center'}}>
+                      <Checkbox value={row.id} checked={this.state.tableSelection.indexOf(row.id) > -1} onChange={(e) => {
+                        let selection = this.state.tableSelection,
+                            value = e.target.value;
 
-                      this.setState({
-                        tableSelection: selection
-                      });
-                    }} />
-                  </div>
-                );
-              },
-              cellRender: (text, row, index) => {
-                return (
-                  <div style={{textAlign: 'center'}}>
-                    <Checkbox value={row.id} checked={this.state.tableSelection.indexOf(row.id) > -1} onChange={(e) => {
-                      let selection = this.state.tableSelection,
-                          value = e.target.value;
+                        if (selection.indexOf(value) === -1) {
+                          selection.push(value);
+                        } else {
+                          selection.splice(selection.indexOf(value), 1);
+                        }
 
-                      if (selection.indexOf(value) === -1) {
-                        selection.push(value);
-                      } else {
-                        selection.splice(selection.indexOf(value), 1);
-                      }
-
-                      this.setState({
-                        tableSelection: selection
-                      });
-                    }} />
-                  </div>
-                );
-              }
-            },{
-              title: '姓名',
-              dataIndex: 'name',
-              width: 100,
-              cellRender: (value, row, index) => {
-                return <a href="javascript:;">{value}</a>;
-              }
-            },
-            {
-              title: '部门',
-              dataIndex: 'dept',
-              width: 140,
-              cellRender: (value, row, index) => {
-                return (
-                  <Select size="sm" value={value} style={{width: 120}}>
-                    <Select.Option value="直营部">直营部</Select.Option>
-                    <Select.Option value="健康险事业部">健康险事业部</Select.Option>
-                    <Select.Option value="金融信保部">金融信保部</Select.Option>
-                    <Select.Option value="人力资源部">人力资源部</Select.Option>
-                  </Select>
-                );
-              }
-            },
-            {
-              title: '年龄',
-              dataIndex: 'age',
-              width: 60,
-              cellRender: (value, row, index) => {
-                if (index === 2) {
-                  return <Input size="sm" style={{width: 40}} defaultValue={value} maxLength="3" />;
-                } else {
-                  return value;
+                        this.setState({
+                          tableSelection: selection
+                        });
+                      }} />
+                    </div>
+                  );
                 }
-              }
-            },{
-              title: '住址',
-              dataIndex: 'address',
-            },{
-              title: '状态',
-              dataIndex: 'state',
-              width: 50,
-              cellRender: (value, row, index) => {
-                return <Switch size="sm" defaultValue={value} />;
-              }
-            },{
-              title: '操作',
-              dataIndex: 'op',
-              width: 90,
-              cellRender: (value, row, index) => {
-                return (
-                  <div style={{color: '#ccc'}}>
-                    <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
-                  </div>
-                );
-              }
-            }]}
-            dataSource={dataSource}>
-          </Table>
+              },{
+                title: '姓名',
+                dataIndex: 'name',
+                width: 100,
+                cellRender: (value, row, index) => {
+                  return <a href="javascript:;">{value}</a>;
+                }
+              },
+              {
+                title: '部门',
+                dataIndex: 'dept',
+                width: 140,
+                cellRender: (value, row, index) => {
+                  return (
+                    <Select size="sm" value={value} style={{width: 120}}>
+                      <Select.Option value="直营部">直营部</Select.Option>
+                      <Select.Option value="健康险事业部">健康险事业部</Select.Option>
+                      <Select.Option value="金融信保部">金融信保部</Select.Option>
+                      <Select.Option value="人力资源部">人力资源部</Select.Option>
+                    </Select>
+                  );
+                }
+              },
+              {
+                title: '年龄',
+                dataIndex: 'age',
+                width: 60,
+                cellRender: (value, row, index) => {
+                  if (index === 2) {
+                    return <Input size="sm" style={{width: 40}} defaultValue={value} maxLength="3" />;
+                  } else {
+                    return value;
+                  }
+                }
+              },{
+                title: '住址',
+                dataIndex: 'address',
+              },{
+                title: '状态',
+                dataIndex: 'state',
+                width: 50,
+                cellRender: (value, row, index) => {
+                  return <Switch size="sm" defaultValue={value} />;
+                }
+              },{
+                title: '操作',
+                dataIndex: 'op',
+                width: 90,
+                cellRender: (value, row, index) => {
+                  return (
+                    <div style={{color: '#ccc'}}>
+                      <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
+                      &nbsp;&nbsp;|&nbsp;&nbsp;
+                      <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
+                    </div>
+                  );
+                }
+              }]}
+              dataSource={dataSource}>
+            </Table>
+          </Panel>
 
           <Pagination
             bordered
             value={this.state.currentPage}
             pageSize={this.state.pageSize}
             total={324}
-            style={{marginTop: 15, textAlign: 'right', float: 'right', fontSize: 14}}
+            style={{fontSize: 14}}
             addonBefore={`共有324条记录 第${this.state.currentPage}/${Math.ceil(324/this.state.pageSize)}页`}
             addonAfter={
               <div>

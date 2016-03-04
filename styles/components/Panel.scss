@@ -1,0 +1,47 @@
+@mixin panel-theme($color, $background, $border) {
+  border-color: $border;
+
+  .ui-panel-header {
+    /*background-color: $background;*/
+    border-color: $border;
+    color: $color;    
+  }
+}
+
+.ui-panel {
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  line-height: normal;
+
+  /* panel themes */
+  &.theme-default {
+    @include panel-theme($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
+  }
+  &.theme-info {
+    @include panel-theme($base-btn-info-color, $base-btn-info-bg, $base-btn-info-border);
+  }
+  &.theme-success {
+    @include panel-theme($base-btn-success-color, $base-btn-success-bg, $base-btn-success-border);
+  }
+  &.theme-warning {
+    @include panel-theme($base-btn-warning-color, $base-btn-warning-bg, $base-btn-warning-border);
+  }
+  &.theme-error {
+    @include panel-theme($base-btn-error-color, $base-btn-error-bg, $base-btn-error-border);
+  }
+}
+
+.ui-panel-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.ui-panel-body {
+  padding: 15px;
+}

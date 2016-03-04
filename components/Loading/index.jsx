@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 class Loading extends Component {
 
   render () {
-    const { visible, message, children, ...others } = this.props;
+    const { visible, children, ...others } = this.props;
 
     return visible ? (
       <div className="ui-loading" {...others}>
