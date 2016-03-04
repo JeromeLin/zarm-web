@@ -1,14 +1,23 @@
-@mixin select-size($height, $font-size, $border-radius) {
-  height: $height;
-  font-size: $font-size;
-  border-radius: $border-radius;
+@mixin select-size($height, $font-size, $border-radius) {  
+  .ui-select-selection {
+    height: $height;
+    font-size: $font-size;
+    border-radius: $border-radius;
 
-  .ui-select-text {
-    line-height: $height - 2;
+    .ui-select-text {
+      line-height: $height - 2;
+    }
+  }
+
+  .ui-dropdown {
+    position: absolute;
+    left: 0;
+    top: $height + 4;
   }
 }
 
 .ui-select {
+  @include select-size($base-height, $base-fontSize, $base-radius);
   display: inline-block;
   margin: 0;
   position: relative;
@@ -17,16 +26,13 @@
   color: #666;
 
   .ui-select-selection {
-    @include select-size($base-height, $base-fontSize, $base-radius)
     outline: none;
     user-select: none;
-    box-sizing: border-box;
     display: block;
     background-color: #fff;
     border-radius: 6px;
     border: 1px solid #d9d9d9;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
-    height: 32px;
     /*box-shadow: inset 0 1px 3px #e3e3e3;*/
     cursor: pointer;
 
@@ -91,4 +97,18 @@
       }
     }
   }
+
+  &.size-xl {
+    @include select-size($base-height-xl, $base-fontSize-xl, $base-radius-xl);
+  }
+  &.size-lg {
+    @include select-size($base-height-lg, $base-fontSize-lg, $base-radius-lg);
+  }
+  &.size-sm {
+    @include select-size($base-height-sm, $base-fontSize-sm, $base-radius-sm);
+  }
+  &.size-xs {
+    @include select-size($base-height-xs, $base-fontSize-xs, $base-radius-xs);
+  }
+
 }

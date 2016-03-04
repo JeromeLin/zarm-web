@@ -27,7 +27,7 @@ class Select extends Component {
 
   render () {
     const props = this.props;
-    const { placeholder, isDisabled, ...others } = props;
+    const { placeholder, isDisabled, size, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     let valueText = placeholder,
@@ -51,6 +51,7 @@ class Select extends Component {
       'ui-select'         : true,
       'ui-select-open'    : this.state.dropdown,
       'ui-select-disabled': disabled,
+      [`size-${size}`]    : !!size,
     });
 
     const textCls = classnames({
@@ -66,7 +67,7 @@ class Select extends Component {
             <Icon type="unfold" />
           </span>
         </span>
-        <Dropdown visible={this.state.dropdown} style={{position: 'absolute', left: 0, top: 36}}>
+        <Dropdown visible={this.state.dropdown}>
           <Menu>
             {children}
           </Menu>

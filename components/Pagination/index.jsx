@@ -50,8 +50,8 @@ class Pagination extends Component {
     } else {
       const firstPager = <li key={1} title="第一页" className="ui-pagination-item" onClick={() => this._onPagerClick(1)}>1</li>,
             lastPager = <li key={pageCount} title="最后一页" className="ui-pagination-item" onClick={() => this._onPagerClick(pageCount)}>{pageCount}</li>,
-            prevPager = <li key="prev" title="上一页" className={classnames({'ui-pagination-item': true, 'ui-pagination-item-prev': true, 'ui-pagination-item-disabled': value == 1})} onClick={() => this._onPagerClick(value - 1)}><Icon type="back" /></li>,
-            nextPager = <li key="next" title="下一页" className={classnames({'ui-pagination-item': true, 'ui-pagination-item-next': true, 'ui-pagination-item-disabled': value == pageCount})}  onClick={() => this._onPagerClick(value + 1)}><Icon type="right" /></li>,
+            prevPager = <li key="prev" title="上一页" className={classnames({'ui-pagination-item': true, 'ui-pagination-item-prev': true, 'ui-pagination-item-disabled': value == 1})} onClick={() => (value > 1) && this._onPagerClick(value - 1)}><Icon type="back" /></li>,
+            nextPager = <li key="next" title="下一页" className={classnames({'ui-pagination-item': true, 'ui-pagination-item-next': true, 'ui-pagination-item-disabled': value == pageCount})}  onClick={() => (value < pageCount) && this._onPagerClick(value + 1)}><Icon type="right" /></li>,
             jumpPrev = <li key="jump-prev" title="向前 5 页" className="ui-pagination-item ui-pagination-item-jump-prev" onClick={() => this._onPagerClick(value - 5)}></li>,
             jumpNext = <li key="jump-next" title="向后 5 页" className="ui-pagination-item ui-pagination-item-jump-next" onClick={() => this._onPagerClick(value + 5)}></li>;
 
@@ -94,8 +94,13 @@ class Pagination extends Component {
       pagerList.push(nextPager);
     }
 
-    pagerList.unshift(<div key="addon-before" className="ui-pagination-addon-before">{addonBefore}</div>);
-    pagerList.push(<div key="addon-after" className="ui-pagination-addon-after">{addonAfter}</div>);
+    if (addonBefore) {
+      pagerList.unshift(<div key="addon-before" className="ui-pagination-addon-before">{addonBefore}</div>);
+    }
+    
+    if (addonAfter) {
+      pagerList.push(<div key="addon-after" className="ui-pagination-addon-after">{addonAfter}</div>);
+    }
 
     return (
       <ul {...others} className={cls}>
@@ -119,14 +124,14 @@ class Pagination extends Component {
 Pagination.propTypes = {
   total        : PropTypes.number,
   pageSize     : PropTypes.number,
-  onChange     : PropTypes.func,
+  onPageChange : PropTypes.func,
 };
 
 Pagination.defaultProps = {
   defaultValue : 1,
   total        : 0,
   pageSize     : 10,
-  onChange     : function () {},
+  onPageChange : function () {},
 };
 
 export default Pagination;
