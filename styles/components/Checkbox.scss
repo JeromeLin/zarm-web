@@ -16,6 +16,7 @@
   vertical-align: middle;
   white-space: nowrap;
   outline: none;
+  cursor: pointer;
 
   .ui-checkbox-inner {
     position: relative;
@@ -50,12 +51,7 @@
   .ui-checkbox-input {
     position: absolute;
     left: 0;
-    z-index: 1;
-    cursor: pointer;
     opacity: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
   }
 
   & + span {
