@@ -2,8 +2,16 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Loading from '../Loading';
+import Checkbox from '../Checkbox';
 
 class Table extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedRows  : [],
+    };
+  }
 
   render () {
     const props = this.props;
@@ -30,15 +38,14 @@ class Table extends Component {
   }
 
   renderTable() {
-    const { columns, dataSource, ...others } = this.props;
+    const { columns, dataSource, rowSelection, ...others } = this.props;
 
     return (
       <table {...others}>
         <thead>
           <tr>
-          {
-            columns.map((column, index) => this.renderColumn(column, index))
-          }
+            {rowSelection ? this.renderSelectAll(rowSelection, dataSource) : null}
+            {columns.map((column, index) => this.renderColumn(column, index))}
           </tr>
         </thead>
         <tbody>
@@ -47,9 +54,8 @@ class Table extends Component {
               let rowIndex = index;
               return (
                 <tr key={rowIndex}>
-                {
-                  columns.map((column, index) => this.renderCell(column, row, rowIndex))
-                }  
+                  {rowSelection ? this.renderSelect(rowSelection, row) : null}
+                  {columns.map((column, index) => this.renderCell(column, row, rowIndex))}  
                 </tr>
               );
             })
@@ -59,18 +65,57 @@ class Table extends Component {
     );
   }
 
+  // 全选所有行
+  renderSelectAll(rowSelection, dataSource) {
+    return (
+      <th style={{width:50, textAlign: 'center'}}>
+        <Checkbox checked={this.state.selectedRows.length == dataSource.length} onChange={(e) => {
+          const selected = e.target.checked;
+          const selectedRows = selected
+                             ? dataSource.map((data) => data)
+                             : [];
+
+          this.setState({selectedRows});
+          rowSelection.onSelectAll && rowSelection.onSelectAll(selected, selectedRows);
+        }} />
+      </th>
+    );
+  }
+
+  // 单选指定行
+  renderSelect(rowSelection, row) {
+    return (
+      <td style={{width:50, textAlign: 'center'}}>
+        <Checkbox value={row} checked={this.state.selectedRows.indexOf(row) > -1} onChange={(e) => {
+          const selected = e.target.checked;
+          let selectedRows = this.state.selectedRows;
+
+          if (selectedRows.indexOf(row) === -1) {
+            selectedRows.push(row);
+          } else {
+            selectedRows.splice(selectedRows.indexOf(row), 1);
+          }
+          this.setState({selectedRows});
+          rowSelection.onSelect && rowSelection.onSelect(selected, row, selectedRows);
+        }} />
+      </td>
+    );
+  }
+
+  // 表头渲染
   renderColumn(column, index) {
-    if ('render' in column)
-      return <th key={index} width={column.width}>{column.render(column, index)}</th>;
+    if ('columnRender' in column)
+      return <th key={index} width={column.width}>{column.columnRender(column, index)}</th>;
     else
       return <th key={index} width={column.width}>{column.title}</th>;
   }
 
+  // 单元格渲染
   renderCell(column, row, rowIndex) {
     const value = row[column.dataIndex];
 
-    if ('cellRender' in column)
-      return <td key={column.dataIndex}>{column.cellRender(value, row, rowIndex)}</td>;
+    if ('render' in column)
+      return <td key={column.dataIndex}>{column.render(value, row, rowIndex)}</td>;
     else
       return <td key={column.dataIndex}>{value}</td>;
   }

@@ -14,7 +14,7 @@
 }
 
 .ui-table {
-  @include table-size(8px 12px, $base-radius);
+  @include table-size(12px, $base-radius);
   font-size: 12px;
   color: #666;
   
@@ -76,10 +76,10 @@
   }
 
   &.size-xl {
-    @include table-size(14px, $base-radius-xl);
+    @include table-size(16px, $base-radius-xl);
   }
   &.size-lg {
-    @include table-size(12px, $base-radius-lg);
+    @include table-size(14px, $base-radius-lg);
   }
   &.size-sm {
     @include table-size(6px 12px, $base-radius-sm);
