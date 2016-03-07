@@ -453,50 +453,12 @@ class Page1 extends Component {
               striped
               radius
               isLoading={this.state.tableLoading}
+              dataSource={dataSource}
               columns={[{
-                title: '',
-                dataIndex: 'id',
-                width: 45,
-                render: (column, index) => {
-                  return (
-                    <div style={{textAlign: 'center'}}>
-                      <Checkbox checked={this.state.tableSelection.length == dataSource.length} onChange={(e) => {
-                        const selection = e.target.checked
-                                        ? dataSource.map((data) => data.id)
-                                        : [];
-
-                        this.setState({
-                          tableSelection: selection
-                        });
-                      }} />
-                    </div>
-                  );
-                },
-                cellRender: (text, row, index) => {
-                  return (
-                    <div style={{textAlign: 'center'}}>
-                      <Checkbox value={row.id} checked={this.state.tableSelection.indexOf(row.id) > -1} onChange={(e) => {
-                        let selection = this.state.tableSelection,
-                            value = e.target.value;
-
-                        if (selection.indexOf(value) === -1) {
-                          selection.push(value);
-                        } else {
-                          selection.splice(selection.indexOf(value), 1);
-                        }
-
-                        this.setState({
-                          tableSelection: selection
-                        });
-                      }} />
-                    </div>
-                  );
-                }
-              },{
                 title: '姓名',
                 dataIndex: 'name',
                 width: 100,
-                cellRender: (value, row, index) => {
+                render: (value, row, index) => {
                   return <a href="javascript:;">{value}</a>;
                 }
               },
@@ -504,7 +466,7 @@ class Page1 extends Component {
                 title: '部门',
                 dataIndex: 'dept',
                 width: 140,
-                cellRender: (value, row, index) => {
+                render: (value, row, index) => {
                   return (
                     <Select size="sm" value={value} style={{width: 120}}>
                       <Select.Option value="直营部">直营部</Select.Option>
@@ -518,8 +480,8 @@ class Page1 extends Component {
               {
                 title: '年龄',
                 dataIndex: 'age',
-                width: 60,
-                cellRender: (value, row, index) => {
+                width: 80,
+                render: (value, row, index) => {
                   if (index === 2) {
                     return <Input size="sm" style={{width: 40}} defaultValue={value} maxLength="3" />;
                   } else {
@@ -532,15 +494,15 @@ class Page1 extends Component {
               },{
                 title: '状态',
                 dataIndex: 'state',
-                width: 50,
-                cellRender: (value, row, index) => {
+                width: 100,
+                render: (value, row, index) => {
                   return <Switch size="sm" defaultValue={value} />;
                 }
               },{
                 title: '操作',
                 dataIndex: 'op',
-                width: 90,
-                cellRender: (value, row, index) => {
+                width: 120,
+                render: (value, row, index) => {
                   return (
                     <div style={{color: '#ccc'}}>
                       <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
@@ -550,7 +512,14 @@ class Page1 extends Component {
                   );
                 }
               }]}
-              dataSource={dataSource}>
+              rowSelection={{
+                onSelect: (selected, row, selectedRows) => {
+                  console.log(selected, row, selectedRows)
+                },
+                onSelectAll: (selected, selectedRows) => {
+                  console.log(selected, selectedRows)
+                }
+              }}>
             </Table>
           </Panel>
 
