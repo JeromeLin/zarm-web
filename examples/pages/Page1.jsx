@@ -26,6 +26,7 @@ import {
   Table,
   Pagination,
   Panel,
+  Step
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -439,6 +440,16 @@ class Page1 extends Component {
             </Form.Item>
 
           </Form>
+
+          <Step current={3}>
+            <Step.Item>投保单基本信息</Step.Item>
+            <Step.Item>投保单位录入</Step.Item>
+            <Step.Item>产品选择</Step.Item>
+            <Step.Item>总单险种定义</Step.Item>
+            <Step.Item>计划创建</Step.Item>
+            <Step.Item>被保人清单导入</Step.Item>
+            <Step.Item>录入完成</Step.Item>
+          </Step>
 
           <Panel>
             <Panel.Header>
