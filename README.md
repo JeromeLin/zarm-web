@@ -31,9 +31,6 @@ import {
   Panel,
 } from dragon-ui;
 
-## 查看用例
-  npm run dev
-
 ## 已完成组件
 - Icon 字体图标
 - Button 按钮
