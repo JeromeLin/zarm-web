@@ -6,30 +6,7 @@
   
 ## 使用
 
-import {
-  Mask,
-  Modal,
-  Alert,
-  Confirm,
-  Toast,
-  Loading,
-  Button,
-  Swipe,
-  Switch,
-  Input,
-  Icon,
-  Form,
-  Radio,
-  Checkbox,
-  Select,
-  Menu,
-  Tag,
-  Dropdown,
-  Breadcrumb,
-  Table,
-  Pagination,
-  Panel,
-} from dragon-ui;
+import { Modal, Alert } from dragon-ui;
 
 ## 已完成组件
 - Icon 字体图标
