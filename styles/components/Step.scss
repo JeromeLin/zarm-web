@@ -15,10 +15,8 @@
 
     &:first-of-type {
       .ui-step-item-line {
-        left: 50%;
-
         &:before {
-          display: none;
+          opacity: 0;
         }
       }
     }
@@ -26,7 +24,7 @@
     &:last-of-type {
       .ui-step-item-line {
         &:after {
-          display: none;
+          opacity: 0;
         }
       }
     }
@@ -35,7 +33,6 @@
   .ui-step-item-body {
     margin-top: 3px;
     font-size: 14px;
-    /*font-weight: bold;*/
     color: #999;
   }
 

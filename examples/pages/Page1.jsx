@@ -216,10 +216,25 @@ class Page1 extends Component {
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
               <Breadcrumb separator=">">
-                <Breadcrumb.Item><Icon type="search" /></Breadcrumb.Item>
+                <Breadcrumb.Item><Icon type="search" /> 首页</Breadcrumb.Item>
                 <Breadcrumb.Item href="">模块</Breadcrumb.Item>
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
+            </Form.Item>
+
+            <Form.Item
+              label="面包屑" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+                <Step current={3}>
+                  <Step.Item>投保单基本信息</Step.Item>
+                  <Step.Item>投保单位录入</Step.Item>
+                  <Step.Item>产品选择</Step.Item>
+                  <Step.Item>总单险种定义</Step.Item>
+                  <Step.Item>计划创建</Step.Item>
+                  <Step.Item>被保人清单导入</Step.Item>
+                  <Step.Item>录入完成</Step.Item>
+                </Step>
             </Form.Item>
 
             <Form.Item
@@ -263,18 +278,6 @@ class Page1 extends Component {
               theme="error"
               help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
               <Switch /> 普通开关
-              <br />
-              <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
-              <br />
-              <Switch defaultValue={true} /> 设定默认值为true
-              <br />
-              <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
-              <br />
-              <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
-                this.setState({
-                  switchValue: value,
-                });
-              }} /> 小开关
             </Form.Item>
 
             <Form.Item
@@ -440,16 +443,6 @@ class Page1 extends Component {
             </Form.Item>
 
           </Form>
-
-          <Step current={3}>
-            <Step.Item>投保单基本信息</Step.Item>
-            <Step.Item>投保单位录入</Step.Item>
-            <Step.Item>产品选择</Step.Item>
-            <Step.Item>总单险种定义</Step.Item>
-            <Step.Item>计划创建</Step.Item>
-            <Step.Item>被保人清单导入</Step.Item>
-            <Step.Item>录入完成</Step.Item>
-          </Step>
 
           <Panel>
             <Panel.Header>
