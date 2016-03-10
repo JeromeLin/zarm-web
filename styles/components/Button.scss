@@ -57,7 +57,7 @@
   padding: $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height;
+  line-height: $height - 2;
 
   &.radius {
     border-radius: $border-radius;
