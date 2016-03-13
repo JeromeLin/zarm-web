@@ -226,7 +226,7 @@ class Page1 extends Component {
               label="面包屑" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-                <Step current={3}>
+                <Step current={6}>
                   <Step.Item>投保单基本信息</Step.Item>
                   <Step.Item>投保单位录入</Step.Item>
                   <Step.Item>产品选择</Step.Item>
