@@ -6,43 +6,56 @@
   max-height: 250px;
   outline: none;
   overflow: auto;
-}
 
-.ui-menu-item {
-  position: relative;
-  display: block;
-  padding: 10px;
-  font-weight: normal;
-  line-height: normal;
-  font-size: 12px;
-  color: #666;
-  cursor: pointer;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  transition: background .3s ease;
+  .ui-menu-item {
+    position: relative;
+    display: block;
+    padding: 10px;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: background .3s ease;
 
-  &:first-child {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    &:hover,
+    .ui-menu-item-active {
+      background: #eaf8fe;
+    }
+
+    &.ui-menu-item-selected {
+      background: #d5f1fd;
+    }
+
+    &.ui-menu-item-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
   }
 
-  &:last-child {
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+  &.size-xl {
+    @include select-size($base-height-xl, $base-fontSize-xl, $base-radius-xl);
   }
-
-  &:hover,
-  .ui-menu-item-active {
-    background: #eaf8fe;
+  &.size-lg {
+    @include select-size($base-height-lg, $base-fontSize-lg, $base-radius-lg);
   }
-
-  &.ui-menu-item-selected {
-    background: #d5f1fd;
+  &.size-sm {
+    @include select-size($base-height-sm, $base-fontSize-sm, $base-radius-sm);
   }
-
-  &.ui-menu-item-disabled {
-    color: #ccc;
-    cursor: not-allowed;
+  &.size-xs {
+    @include select-size($base-height-xs, $base-fontSize-xs, $base-radius-xs);
   }
 }

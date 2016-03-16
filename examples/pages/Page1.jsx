@@ -33,17 +33,18 @@ import '../../styles/index.scss';
 import '../styles/pages/Page1.scss';
 
 let index = 0;
-const dataSource = [
-  {id: '1', name: '张三', dept: '直营部', address: '上海市杨浦区四平路324号', state: true},
-  {id: '2', name: '李四', dept: '健康险事业部', age: 32, state: true},
-  {id: '3', name: '王五', dept: '金融信保部', age: 20, address: '上海市浦东区张杨路1400号', state: false},
-];
-
 class Page1 extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      dataSource: [
+        {id: '1', name: '张三', dept: '直营部', age: 46, address: '上海市杨浦区四平路324号', state: true},
+        {id: '2', name: '李四', dept: '健康险事业部', age: 32, address: 'wda', state: true},
+        {id: '3', name: '王五', dept: '金融信保部', age: 20, address: '上海市浦东区张杨路1400号', state: false},
+        {id: '4', name: '奥巴马', dept: '健康险事业部', age: 45, address: '美国洛杉矶', state: false},
+      ],
+
       modal     : false,
       confirm   : false,
       alert     : false,
@@ -457,16 +458,18 @@ class Page1 extends Component {
               striped
               radius
               isLoading={this.state.tableLoading}
-              dataSource={dataSource}
+              dataSource={this.state.dataSource}
               columns={[{
                 title: '姓名',
                 dataIndex: 'name',
                 width: 100,
                 render: (value, row, index) => {
                   return <a href="javascript:;">{value}</a>;
+                },
+                sorter: (a, b) => {
+                  return a.name.localeCompare(b.name);
                 }
-              },
-              {
+              },{
                 title: '部门',
                 dataIndex: 'dept',
                 width: 140,
@@ -479,28 +482,36 @@ class Page1 extends Component {
                       <Select.Option value="人力资源部">人力资源部</Select.Option>
                     </Select>
                   );
+                },
+                sorter: (a, b) => {
+                  return a.dept.localeCompare(b.dept);
                 }
-              },
-              {
+              },{
                 title: '年龄',
                 dataIndex: 'age',
                 width: 80,
                 render: (value, row, index) => {
-                  if (index === 2) {
-                    return <Input size="sm" style={{width: 40}} defaultValue={value} maxLength="3" />;
-                  } else {
-                    return value;
-                  }
+                  return <Input size="sm" style={{width: 40}} defaultValue={value} value={value} maxLength="3" onChange={(e) => {
+                    let dataSource = this.state.dataSource;
+                    dataSource[index].age = e.target.value;
+                    this.setState({dataSource});
+                  }}/>;
+                },
+                sorter: (a, b) => {
+                  return a.age - b.age;
                 }
               },{
                 title: '住址',
-                dataIndex: 'address',
+                dataIndex: 'address'
               },{
                 title: '状态',
                 dataIndex: 'state',
                 width: 100,
                 render: (value, row, index) => {
-                  return <Switch size="sm" defaultValue={value} />;
+                  return <Switch size="sm" value={value} />;
+                },
+                sorter: (a, b) => {
+                  return a.state - b.state;
                 }
               },{
                 title: '操作',

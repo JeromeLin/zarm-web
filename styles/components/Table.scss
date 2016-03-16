@@ -49,6 +49,7 @@
       font-weight: bold;
       transition: background .3s ease;
       position: relative;
+      user-select: none;
     }
   }
 
@@ -86,5 +87,42 @@
   }
   &.size-xs {
     @include table-size(4px 12px, $base-radius-xs);
+  }
+}
+
+.ui-table-sorter {
+  margin-left: 5px;
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  vertical-align: middle;
+  text-align: center;
+
+  .ui-table-sorter-up,
+  .ui-table-sorter-down {
+    display: block;
+    width: 0; 
+    height: 0; 
+    cursor: pointer;
+    border-style: solid;
+  }
+
+  .ui-table-sorter-up {
+    border-width: 0 4px 7px;
+    border-color: transparent transparent #ddd;
+    margin-bottom: 2px;
+
+    &.ui-table-sorter-active {
+      border-color: transparent transparent #2db7f5;
+    }
+  }
+
+  .ui-table-sorter-down {
+    border-width: 7px 4px 0;
+    border-color: #ddd transparent transparent;
+
+    &.ui-table-sorter-active {
+      border-color: #2db7f5 transparent transparent;
+    }
   }
 }
