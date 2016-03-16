@@ -26,7 +26,8 @@ import {
   Table,
   Pagination,
   Panel,
-  Step
+  Step,
+  Tooltip
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -93,7 +94,13 @@ class Page1 extends Component {
     return (
       <Loading visible={this.state.loading} message="付款中">
         <div className="demo">
-
+          <h4>Tooltip</h4>
+          {['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom',
+          'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
+            return <Tooltip title="这是一个Tooltip" direction={item} style={{marginRight: '10px', lineHeight: '30px'}}>
+            你好这里是一个带title的ToolTip
+            </Tooltip>;
+          })}
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>
 
