@@ -26,7 +26,8 @@ import {
   Table,
   Pagination,
   Panel,
-  Step
+  Step,
+  DatePicker
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -61,8 +62,8 @@ class Page1 extends Component {
       checkboxValue: [],
       tags         : [],
 
-      tableSelection  : [],
-      tableLoading    : false,
+      tableSelection: [],
+      tableLoading  : false,
 
       currentPage  : 4,
       pageSize     : 10,
@@ -356,6 +357,13 @@ class Page1 extends Component {
                 <Select.Option value="d">我是D</Select.Option>
               </Select>
               <Button>确定</Button>
+            </Form.Item>
+
+            <Form.Item
+              label="日期选择器"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <DatePicker style={{width: 120}} />
             </Form.Item>
 
             <Form.Item
