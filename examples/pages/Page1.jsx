@@ -382,7 +382,7 @@ class Page1 extends Component {
               label="日期选择器"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Calendar />
+              <Calendar value="2016-1-12" />
               {
               //<DatePicker style={{width: 120}} />
               }
@@ -490,6 +490,12 @@ class Page1 extends Component {
               isLoading={this.state.tableLoading}
               dataSource={this.state.dataSource}
               columns={[{
+                dataIndex: 'id',
+                width: 50,
+                render: (value, row, index) => {
+                  return index + 1;
+                }
+              },{
                 title: '姓名',
                 dataIndex: 'name',
                 width: 100,
