@@ -24,3 +24,4 @@ export Panel from './Panel';
 export Step from './Step';
 export Calendar from './Calendar';
 export DatePicker from './DatePicker';
+export Tooltip from './Tooltip';
