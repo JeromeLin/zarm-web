@@ -67,7 +67,7 @@ class DatePicker extends Component {
           </span>
         </span>
         <Dropdown visible={this.state.dropdown}>
-          1111
+          111
         </Dropdown>
       </span>
     );
