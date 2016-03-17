@@ -7,12 +7,14 @@
 
   .ui-form {
     .ui-form-item-control {
+      > .ui-tooltip > .ui-button,
       > .ui-button,
       > .ui-switch,
       > .ui-select,
       > .ui-input,
       > .ui-tag {
         margin-right: 10px;
+        margin-bottom: 10px;
       }
 
       .ui-pagination {
