@@ -12,10 +12,12 @@ class Tooltip extends Component {
       [`ui-tooltip-${direction}`] : !!direction,
       [className]: !!className
     });
-    return (<div {...others} className={cls}>
-      <div className="ui-tooltip-inner">{title}</div>
-      {children}
-    </div>);
+    return (
+      <div className={cls}>
+        <div {...others} className="ui-tooltip-inner">{title}</div>
+        {children}
+      </div>
+    );
   }
 }
 
