@@ -67,6 +67,7 @@ class Page1 extends Component {
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
+      username     : '45678'
     };
   }
 
@@ -96,10 +97,13 @@ class Page1 extends Component {
           <h4>Tooltip</h4>
           {['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom',
           'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
-            return <Tooltip title="这是一个Tooltip" direction={item} style={{marginRight: '10px', lineHeight: '30px'}}>
-            你好这里是一个带title的ToolTip
+            let title = '这是一个' + item + '的Tooltip';
+            if (item.indexOf('bottom') === -1) return;
+            return <Tooltip title={title} direction={item} style={{margin: '5px 10px 0 0'}}>
+              <Button>你好这里是一个{item}的ToolTip</Button>
             </Tooltip>;
           })}
+
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>
 
@@ -107,7 +111,7 @@ class Page1 extends Component {
               <Input placeholder="请输入..." />
             </Form.Item>
             <Form.Item label="密码">
-              <Input placeholder="请输入..." />
+              <Input placeholder="请输入..."  value={this.state.username}/>
             </Form.Item>
             <Form.Item>
               <Button theme="success">登录</Button>
@@ -525,7 +529,8 @@ class Page1 extends Component {
               }]}
               rowSelection={{
                 onSelect: (selected, row, selectedRows) => {
-                  console.log(selected, row, selectedRows)
+                  console.log(selected, row, selectedRows);
+
                 },
                 onSelectAll: (selected, selectedRows) => {
                   console.log(selected, selectedRows)
