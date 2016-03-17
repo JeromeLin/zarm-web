@@ -101,7 +101,7 @@ class Page1 extends Component {
           {['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom',
           'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
             let title = '这是一个' + item + '的Tooltip';
-            if (item.indexOf('bottom') === -1) return;
+            // if (item.indexOf('bottom') === -1) return;
             return <Tooltip title={title} direction={item} style={{margin: '5px 10px 0 0'}}>
               <Button>你好这里是一个{item}的ToolTip</Button>
             </Tooltip>;
