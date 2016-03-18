@@ -63,6 +63,7 @@ class Page1 extends Component {
 
       tableSelection  : [],
       tableLoading    : false,
+      value: 'helloworld',
 
       currentPage  : 4,
       pageSize     : 10,
@@ -103,6 +104,24 @@ class Page1 extends Component {
               <Button>你好这里是一个{item}的ToolTip</Button>
             </Tooltip>;
           })}
+
+          <h4>数据的校验</h4>
+          <Form style={{maxWidth: '100%'}} type="inline">
+            <Form.Item label="用户名">
+              <Input placeholder="请输入用户名" value={this.state.value} onChange={(e)=>{
+                let value = e.target.value;
+                if (value.length > 15) {
+                  e.target.style.borderColor = '#f00';
+                  return alert('输入过长');
+                } else {
+                  this.setState({
+                    value: value
+                  })
+                }
+
+              }}/>
+            </Form.Item>
+          </Form>
 
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>
@@ -470,6 +489,12 @@ class Page1 extends Component {
               isLoading={this.state.tableLoading}
               dataSource={dataSource}
               columns={[{
+                title: '序号',
+                width: 100,
+                render: (value, row, index) => {
+                  return index + 1;
+                }
+              },{
                 title: '姓名',
                 dataIndex: 'name',
                 width: 100,
