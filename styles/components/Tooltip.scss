@@ -41,140 +41,145 @@
 .ui-tooltip{
   display: inline-block;
   position: relative;
-  &:hover{
-    .ui-tooltip-inner{
+  &:hover {
+    .ui-tooltip-inner {
       display: block;
     }
-  }
-  .ui-tooltip-inner{
-    display: none;
-    max-width: 200px;
-    padding: 3px 8px;
-    color: #fff;
-    text-align: center;
-    background-color: #000;
-    border-radius: 4px;
-    position: absolute;
-    z-index:1;
-    &:before{
-      content: '';
+
+    > div {
+      display: none;
       position: absolute;
-      width: 0;
-      height: 0;
-      border-color: transparent;
-      border-style: solid;
     }
-  }
-  &.ui-tooltip-top{
-     .ui-tooltip-inner{
-       @extend %ui-tooltip-direction-top;
-       left:50%;
-       transform: translate3d(-50%, -100%, 0);
-     }
-   }
-  &.ui-tooltip-topLeft{
-     .ui-tooltip-inner{
-       @extend %ui-tooltip-direction-top;
-       left:0;
-       transform: translate3d(0, -100%, 0);
-       &:before{
-         left:8px;
-       }
-     }
-   }
-  &.ui-tooltip-topRight{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-top;
-      left:100%;
-      transform: translate3d(-100%, -100%, 0);
-      &:before{
-        left:calc(100% - 8px);
-      }
-    }
-  }
-
-
-  &.ui-tooltip-right{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-right;
-      top:50%;
-      transform: translate3d(100%, -50%, 0);
-    }
-  }
-  &.ui-tooltip-rightTop{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-right;
-      top:0;
-      transform: translate3d(100%, 0, 0);
-      &:before{
-        top:8px;
-      }
-    }
-  }
-  &.ui-tooltip-rightBottom{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-right;
-      top:100%;
-      transform: translate3d(100%, -100%, 0);
-      &:before{
-        top:calc(100% - 8px);
-      }
-    }
-  }
-
-  &.ui-tooltip-bottom {
     .ui-tooltip-inner {
-      @extend %ui-tooltip-direction-bottom;
-      left: 50%;
-      transform: translate3d(-50%, 100%, 0);
-    }
-  }
-  &.ui-tooltip-bottomLeft{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-bottom;
-      left:0;
-      transform: translate3d(0, 100%, 0);
-      &:before{
-        left: 8px;
+      max-width: 200px;
+      padding: 3px 8px;
+      color: #fff;
+      text-align: center;
+      background-color: #000;
+      border-radius: 4px;
+      position: relative;
+      z-index: 1;
+      &:before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
       }
     }
-  }
-  &.ui-tooltip-bottomRight{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-bottom;
-      left:100%;
-      transform: translate3d(-100%, 100%, 0);
-      &:before{
-        left: calc(100% - 8px);
-      }
-    }
-  }
+    &.ui-tooltip-top {
 
-
-  &.ui-tooltip-left{
-     .ui-tooltip-inner{
-       @extend %ui-tooltip-direction-left;
-       top:50%;
-       transform: translate3d(-100%, -50%, 0);
-     }
-   }
-  &.ui-tooltip-leftBottom{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-left;
-      top:100%;
-      transform: translate3d(-100%, -100%, 0);
-      &:before{
-        top:calc(100% - 8px);
+      > div {
+        .ui-tooltip-inner {
+          @extend %ui-tooltip-direction-top;
+          left: 50%;
+          transform: translate3d(-50%, -100%, 0);
+        }
       }
     }
-  }
-  &.ui-tooltip-leftTop{
-    .ui-tooltip-inner{
-      @extend %ui-tooltip-direction-left;
-      top:0;
-      transform: translate3d(-100%, 0, 0);
-      &:before{
-        top: 8px;
+    &.ui-tooltip-topLeft {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-top;
+        left: 0;
+        transform: translate3d(0, -100%, 0);
+        &:before {
+          left: 8px;
+        }
+      }
+    }
+    &.ui-tooltip-topRight {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-top;
+        left: 100%;
+        transform: translate3d(-100%, -100%, 0);
+        &:before {
+          left: calc(100% - 8px);
+        }
+      }
+    }
+
+    &.ui-tooltip-right {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-right;
+        top: 50%;
+        transform: translate3d(100%, -50%, 0);
+      }
+    }
+    &.ui-tooltip-rightTop {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-right;
+        top: 0;
+        transform: translate3d(100%, 0, 0);
+        &:before {
+          top: 8px;
+        }
+      }
+    }
+    &.ui-tooltip-rightBottom {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-right;
+        top: 100%;
+        transform: translate3d(100%, -100%, 0);
+        &:before {
+          top: calc(100% - 8px);
+        }
+      }
+    }
+
+    &.ui-tooltip-bottom {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-bottom;
+        left: 50%;
+        transform: translate3d(-50%, 100%, 0);
+      }
+    }
+    &.ui-tooltip-bottomLeft {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-bottom;
+        left: 0;
+        transform: translate3d(0, 100%, 0);
+        &:before {
+          left: 8px;
+        }
+      }
+    }
+    &.ui-tooltip-bottomRight {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-bottom;
+        left: 100%;
+        transform: translate3d(-100%, 100%, 0);
+        &:before {
+          left: calc(100% - 8px);
+        }
+      }
+    }
+
+    &.ui-tooltip-left {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-left;
+        top: 50%;
+        transform: translate3d(-100%, -50%, 0);
+      }
+    }
+    &.ui-tooltip-leftBottom {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-left;
+        top: 100%;
+        transform: translate3d(-100%, -100%, 0);
+        &:before {
+          top: calc(100% - 8px);
+        }
+      }
+    }
+    &.ui-tooltip-leftTop {
+      .ui-tooltip-inner {
+        @extend %ui-tooltip-direction-left;
+        top: 0;
+        transform: translate3d(-100%, 0, 0);
+        &:before {
+          top: 8px;
+        }
       }
     }
   }
