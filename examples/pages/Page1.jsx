@@ -379,10 +379,12 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="日期选择器"
+              label="日历"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Calendar value="2016-1-12" />
+              <Calendar style={{display: 'inline-block'}} onDateClick={(date) => {
+                console.log(date)
+              }} />
               {
               //<DatePicker style={{width: 120}} />
               }
