@@ -1,9 +1,11 @@
 
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import * as Events from '../utils/events';
+import Events from '../utils/events';
+import isNodeInTree from '../utils/isNodeInTree';
 import Dropdown from '../Dropdown';
-import Menu from '../Menu';
+import Calendar from '../Calendar';
 import Icon from '../Icon';
 
 class DatePicker extends Component {
@@ -11,15 +13,15 @@ class DatePicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value   : props.value || props.defaultValue || this.getCheckedValue(props.children),
+      value   : props.value || props.defaultValue,
       dropdown: false,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps) {
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children)
+        value: nextProps.value
       });
     }
   }
@@ -32,19 +34,10 @@ class DatePicker extends Component {
     let valueText = placeholder,
         hasValue = false;
 
-    let children = React.Children.map(props.children, (option, index) => {
-      if (this.state.value == option.props.value) {
-        valueText = option.props.children;
-        hasValue = true;
-      }
-
-      return (
-        <Option
-          {...option.props}
-          onChange={(e) => this.onOptionChange(e, option.props, index)}
-          checked={this.state.value === option.props.value} />
-      );
-    });
+    if (this.state.value) {
+      valueText = this.state.value;
+      hasValue = true;
+    }
 
     const cls = classnames({
       'ui-select'         : true,
@@ -67,55 +60,59 @@ class DatePicker extends Component {
           </span>
         </span>
         <Dropdown visible={this.state.dropdown}>
-          111
+          <Calendar onDateClick={(value) => this.onDateClick(value)} />
         </Dropdown>
       </span>
     );
   }
 
-  getCheckedValue(children) {
-    let checkedValue = null;
-    React.Children.forEach(children, (option) => {
-      if (option.props && option.props.checked) {
-        checkedValue = option.props.value;
-      }
-    });
-    return checkedValue;
-  }
-
-  onClose() {
-    // console.log('close');
-
-    this.setState({
-      dropdown: false,
-    });
-    Events.off(document.body, 'click', () => this.onClose());
-  }
-
   onSelectClick(e) {
-    // console.log('open');
-
-    this.setState({
-      dropdown: !this.state.dropdown,
-    });
-    Events.on(document.body, 'click', () => this.onClose());
+    e.preventDefault();
+    this.setDropdown(!this.state.dropdown);
   }
 
-  onOptionChange(e, props, index) {
-    e.preventDefault();
-    if (this.state.value === props.value) return;
-
+  onDateClick(value) {
     this.setState({
-      value: props.value,
+      value: value,
+    }, () => {
+      this.setDropdown(false, this.props.onDateClick(value));
     });
+  }
 
-    const selected = {
-      index: index,
-      value: props.value,
-      text : props.children,
+  setDropdown(isOpen, callback) {
+    if (isOpen) {
+      this.bindOuterHandlers();
+    } else {
+      this.unbindOuterHandlers();
     }
 
-    this.props.onChange(selected);
+    this.setState({
+      dropdown: isOpen
+    }, () => {
+      callback && callback();
+    });
+  }
+
+  handleKeyup(e) {
+    (e.keyCode === 27) && this.setDropdown(false);
+  }
+
+  handleOuterClick(e) {
+    e.preventDefault();
+    if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
+      return false;
+    }
+    this.setDropdown(false);
+  }
+
+  bindOuterHandlers() {
+    Events.on(document, 'click', (e) => this.handleOuterClick(e));
+    Events.on(document, 'keyup', (e) => this.handleKeyup(e));
+  }
+
+  unbindOuterHandlers() {
+    Events.off(document, 'click', (e) => this.handleOuterClick(e));
+    Events.off(document, 'keyup', (e) => this.handleKeyup(e));
   }
 }
 

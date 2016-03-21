@@ -18,7 +18,7 @@ class CalendarTHead extends Component {
         <tr>
           {
             weekDays.map((week, index) => {
-              return <th key={`weekdays-${index}`} title={`星期${week}`}>{week}</th>;
+              return <th key={`weekdays-${index}`} className="ui-calendar-week" title={`星期${week}`}>{week}</th>;
             })
           }
         </tr>

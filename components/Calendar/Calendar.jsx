@@ -49,8 +49,6 @@ class Calendar extends Component {
             <CalendarTBody value={value} current={current} onDateClick={(value) => onDateClick && this.onDateClick(value)} />
           </table>
         </div>
-        <div className="ui-calendar-footer">
-        </div>
       </div>
     );
   }
