@@ -21,7 +21,7 @@ class CalendarHeader extends Component {
   }
 
   render() { 
-    const { current, onPreMonthClick, onNextMonthClick } = this.props;
+    const { current } = this.props;
     const { panel } = this.state;
     const dd = new Date(current),
           currentMonth = {
@@ -42,8 +42,6 @@ class CalendarHeader extends Component {
   }
 
   renderDateSelect(current) {
-    const { onPreMonthClick, onNextMonthClick } = this.props;
-
     return (
       <div className="ui-calendar-header">
         <a href="javascript:;" onClick={() => this.onMonthClick(current, 'pre')} className="ui-calendar-header-pre-btn" title="上个月"><Icon type="back" /></a>
@@ -57,7 +55,6 @@ class CalendarHeader extends Component {
   }
 
   renderYearSelect(current) {
-    const { onPreMonthClick, onNextMonthClick } = this.props;
     const beforeYear = parseInt(current.year / 10) * 10;
 
     return (
