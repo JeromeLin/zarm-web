@@ -24,8 +24,8 @@
   }
 }
 
-.ui-calendar-header-pre-month-btn,
-.ui-calendar-header-next-month-btn {
+.ui-calendar-header-pre-btn,
+.ui-calendar-header-next-btn {
   position: absolute;
   top: 0;
   padding: 0 8px;
@@ -34,16 +34,15 @@
   line-height: 34px;
 }
 
-.ui-calendar-header-pre-month-btn {
+.ui-calendar-header-pre-btn {
   left: 0;
 }
 
-.ui-calendar-header-next-month-btn {
+.ui-calendar-header-next-btn {
   right: 0;
 }
 
-.ui-calendar-header-year-btn,
-.ui-calendar-header-month-btn {
+.ui-calendar-header-btn {
   padding: 0 2px;
 }
 
@@ -73,7 +72,7 @@
   background: transparent;
   text-align: center;
   font-weight: normal;
-  
+
   &:hover {
     background: #eaf8fe;
     cursor: pointer;
