@@ -18,6 +18,14 @@ class DatePicker extends Component {
     };
   }
 
+  componentWillMount() {
+    this.unbindOuterHandlers();
+  }
+
+  componentWillUnmount() {
+    this.unbindOuterHandlers();
+  }
+  
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
@@ -98,7 +106,6 @@ class DatePicker extends Component {
   }
 
   handleOuterClick(e) {
-    e.preventDefault();
     if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
       return false;
     }

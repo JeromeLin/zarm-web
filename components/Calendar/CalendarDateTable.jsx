@@ -3,9 +3,10 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
 const CALENDAR_ROW_COUNT = 6,
-      CALENDAR_COL_COUNT = 7;
+      CALENDAR_COL_COUNT = 7,
+      CALENDAR_SHORT_WEEK_DAYS = ['一', '二', '三', '四', '五', '六', '日'];
 
-class CalendarTBody extends Component {
+class CalendarDateTable extends Component {
 
   constructor(props) {
     super(props);
@@ -24,6 +25,37 @@ class CalendarTBody extends Component {
   }
 
   render() {
+    return (
+      <table>
+        {this.renderWeek()}
+        {this.renderDate()}
+      </table>
+    );
+  }
+
+  // 渲染星期
+  renderWeek() { 
+    let weekDays = [];
+
+    for (let i = 0; i < CALENDAR_COL_COUNT; i++) {
+      weekDays[i] = CALENDAR_SHORT_WEEK_DAYS[i];
+    }
+
+    return (
+      <thead>
+        <tr>
+          {
+            weekDays.map((week, index) => {
+              return <th key={`weekdays-${index}`} className="ui-calendar-week" title={`星期${week}`}>{week}</th>;
+            })
+          }
+        </tr>
+      </thead>
+    );
+  }
+
+  // 渲染日期
+  renderDate() {
     let dd = new Date(this.state.current),
         current = {
           year : dd.getFullYear(),
@@ -40,7 +72,7 @@ class CalendarTBody extends Component {
 
     // 当月第一天不在周一时，前面日期用上个月的日期补齐
     for (let i = pre.days; i > pre.days - current.firstDayOfWeek; i--) {
-      dates.unshift(this.renderDate({
+      dates.unshift(this.renderDateCell({
         year : pre.year,
         month: pre.month,
         date : i
@@ -49,7 +81,7 @@ class CalendarTBody extends Component {
 
     // 当月日期
     for (let j = 1; j <= current.days; j++) {
-      dates.push(this.renderDate({
+      dates.push(this.renderDateCell({
         year : current.year,
         month: current.month,
         date : j
@@ -58,7 +90,7 @@ class CalendarTBody extends Component {
 
     // 当月最后一天不在周日时，后面日期用下个月的日期补齐
     for (let k = 1; k <= CALENDAR_ROW_COUNT * CALENDAR_COL_COUNT  - current.days - current.firstDayOfWeek; k++) {
-      dates.push(this.renderDate({
+      dates.push(this.renderDateCell({
         year : next.year,
         month: next.month,
         date : k
@@ -86,8 +118,8 @@ class CalendarTBody extends Component {
     );
   }
 
-  // 渲染日期
-  renderDate(day, type) {
+  // 渲染日期单元
+  renderDateCell(day, type) {
     const { value, onDateClick } = this.props;
     const fullDay = `${day.year}-${day.month}-${day.date}`;
     const cls = classnames({
@@ -138,4 +170,16 @@ class CalendarTBody extends Component {
   }
 }
 
-export default CalendarTBody;
+CalendarDateTable.propTypes = {
+  defaultValue: PropTypes.string,
+  value       : PropTypes.string,
+  onDateClick : PropTypes.func,
+};
+
+CalendarDateTable.defaultProps = {
+  defaultValue: '',
+  value       : '',
+  onDateClick : function () {},
+};
+
+export default CalendarDateTable;

@@ -137,7 +137,6 @@ class Select extends Component {
   }
 
   handleOuterClick(e) {
-    e.preventDefault();
     if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
       return false;
     }
