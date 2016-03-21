@@ -1,7 +1,9 @@
 
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import * as Events from '../utils/events';
+import Events from '../utils/events';
+import isNodeInTree from '../utils/isNodeInTree';
 import Option from './Option';
 import Dropdown from '../Dropdown';
 import Menu from '../Menu';
@@ -23,6 +25,14 @@ class Select extends Component {
         value: nextProps.value || this.getCheckedValue(nextProps.children)
       });
     }
+  }
+
+  componentWillMount() {
+    this.unbindOuterHandlers();
+  }
+
+  componentWillUnmount() {
+    this.unbindOuterHandlers();
   }
 
   render () {
@@ -86,39 +96,62 @@ class Select extends Component {
     return checkedValue;
   }
 
-  onClose() {
-    // console.log('close');
-
-    this.setState({
-      dropdown: false,
-    });
-    Events.off(document.body, 'click', () => this.onClose());
-  }
-
   onSelectClick(e) {
-    // console.log('open');
-
-    this.setState({
-      dropdown: !this.state.dropdown,
-    });
-    Events.on(document.body, 'click', () => this.onClose());
+    e.preventDefault();
+    this.setDropdown(!this.state.dropdown);
   }
 
   onOptionChange(e, props, index) {
-    e.preventDefault();
-    if (this.state.value === props.value) return;
+    if ('disabled' in props) {
+      return;
+    }
 
     this.setState({
       value: props.value,
+    }, () => {
+      const selected = {
+        index: index,
+        value: props.value,
+        text : props.children,
+      }
+      this.setDropdown(false, this.props.onChange(selected));
     });
+  }
 
-    const selected = {
-      index: index,
-      value: props.value,
-      text : props.children,
+  setDropdown(isOpen, callback) {
+    if (isOpen) {
+      this.bindOuterHandlers();
+    } else {
+      this.unbindOuterHandlers();
     }
 
-    this.props.onChange(selected);
+    this.setState({
+      dropdown: isOpen
+    }, () => {
+      callback && callback();
+    });
+  }
+
+  handleKeyup(e) {
+    (e.keyCode === 27) && this.setDropdown(false);
+  }
+
+  handleOuterClick(e) {
+    e.preventDefault();
+    if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
+      return false;
+    }
+    this.setDropdown(false);
+  }
+
+  bindOuterHandlers() {
+    Events.on(document, 'click', (e) => this.handleOuterClick(e));
+    Events.on(document, 'keyup', (e) => this.handleKeyup(e));
+  }
+
+  unbindOuterHandlers() {
+    Events.off(document, 'click', (e) => this.handleOuterClick(e));
+    Events.off(document, 'keyup', (e) => this.handleKeyup(e));
   }
 }
 

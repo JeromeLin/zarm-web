@@ -1,6 +1,6 @@
 
 .ui-calendar {
-  border: 1px solid #d9d9d9;
+  // border: 1px solid #d9d9d9;
 }
 
 /* header */
@@ -28,8 +28,7 @@
 .ui-calendar-header-next-month-btn {
   position: absolute;
   top: 0;
-  color: #999;
-  padding: 0 5px;
+  padding: 0 8px;
   font-size: 16px;
   display: inline-block;
   line-height: 34px;
@@ -43,7 +42,6 @@
   right: 0;
 }
 
-
 .ui-calendar-header-year-btn,
 .ui-calendar-header-month-btn {
   padding: 0 2px;
@@ -51,11 +49,15 @@
 
 /* body */
 .ui-calendar-body {
-  padding: 4px 8px;
+  padding: 6px;
 }
 
 .ui-calendar-cell {
   padding: 4px 0;
+}
+
+.ui-calendar-week {
+  text-align: center;
 }
 
 .ui-calendar-date {
@@ -70,7 +72,8 @@
   padding: 0;
   background: transparent;
   text-align: center;
-
+  font-weight: normal;
+  
   &:hover {
     background: #eaf8fe;
     cursor: pointer;

@@ -70,7 +70,9 @@ class Page1 extends Component {
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
-      username     : '45678'
+      username     : '45678',
+
+      date  : '',
     };
   }
 
@@ -299,6 +301,18 @@ class Page1 extends Component {
               theme="error"
               help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
               <Switch /> 普通开关
+              <br />
+              <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
+              <br />
+              <Switch defaultValue={true} /> 设定默认值为true
+              <br />
+              <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
+              <br />
+              <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
+                this.setState({
+                  switchValue: value,
+                });
+              }} /> 小开关
             </Form.Item>
 
             <Form.Item
@@ -384,10 +398,16 @@ class Page1 extends Component {
               controlCol="col-sm-10">
               <Calendar style={{display: 'inline-block'}} onDateClick={(date) => {
                 console.log(date)
-              }} />
-              {
-              //<DatePicker style={{width: 120}} />
-              }
+              }} />（未完待续）
+            </Form.Item>
+
+            <Form.Item
+              label="日期选择器"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <DatePicker style={{width: 120}} value={this.state.date} placeholder="请选择日期" onDateClick={(date) => {
+                this.setState({date});
+              }} />（未完待续）
             </Form.Item>
 
             <Form.Item
