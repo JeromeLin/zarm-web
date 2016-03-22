@@ -28,7 +28,7 @@ module.exports = {
     };
 
     for (let i = typeArray.length - 1; i >= 0; i--) {
-      on(el, typeArray[i], recursiveFunction);
+      this.on(el, typeArray[i], recursiveFunction);
     }
   }
 }

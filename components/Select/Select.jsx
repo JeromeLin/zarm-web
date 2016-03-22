@@ -8,15 +8,21 @@ import Option from './Option';
 import Dropdown from '../Dropdown';
 import Menu from '../Menu';
 import Icon from '../Icon';
+import Mask from '../Mask';
 
 class Select extends Component {
 
   constructor(props) {
     super(props);
+    this.unmounted = false;
     this.state = {
       value   : props.value || props.defaultValue || this.getCheckedValue(props.children),
       dropdown: false,
     };
+  }
+
+  componentDidMount() {
+    this.unmounted = true;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,11 +33,8 @@ class Select extends Component {
     }
   }
 
-  componentWillMount() {
-    this.unbindOuterHandlers();
-  }
-
   componentWillUnmount() {
+    this.unmounted = false;
     this.unbindOuterHandlers();
   }
 
@@ -108,17 +111,19 @@ class Select extends Component {
 
     this.setState({
       value: props.value,
-    }, () => {
-      const selected = {
-        index: index,
-        value: props.value,
-        text : props.children,
-      }
-      this.setDropdown(false, this.props.onChange(selected));
     });
+
+    const selected = {
+      index: index,
+      value: props.value,
+      text : props.children,
+    };
+    this.setDropdown(false, this.props.onChange(selected));
   }
 
   setDropdown(isOpen, callback) {
+    if (!this.unmounted) return;
+
     if (isOpen) {
       this.bindOuterHandlers();
     } else {
@@ -137,8 +142,8 @@ class Select extends Component {
   }
 
   handleOuterClick(e) {
-    if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
-      return false;
+    if (!this.unmounted || isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
+      return;
     }
     this.setDropdown(false);
   }

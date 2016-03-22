@@ -12,17 +12,19 @@ class DatePicker extends Component {
 
   constructor(props) {
     super(props);
+    this.unmounted = false;
     this.state = {
       value   : props.value || props.defaultValue,
       dropdown: false,
     };
   }
 
-  componentWillMount() {
-    this.unbindOuterHandlers();
+  componentDidMount() {
+    this.unmounted = true;
   }
 
   componentWillUnmount() {
+    this.unmounted = false;
     this.unbindOuterHandlers();
   }
   
@@ -61,14 +63,14 @@ class DatePicker extends Component {
 
     return (
       <span className={cls} {...others}>
-        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
+        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
           <span className="ui-select-icon">
             <Icon type="date" />
           </span>
         </span>
         <Dropdown visible={this.state.dropdown}>
-          <Calendar onDateClick={(value) => this.onDateClick(value)} />
+          <Calendar onChange={(value) => this.onDateChange(value)} />
         </Dropdown>
       </span>
     );
@@ -76,18 +78,21 @@ class DatePicker extends Component {
 
   onSelectClick(e) {
     e.preventDefault();
-    this.setDropdown(!this.state.dropdown);
+    const disabled = 'disabled' in this.props || this.props.isDisabled;
+    !disabled && this.setDropdown(!this.state.dropdown);
   }
 
-  onDateClick(value) {
+  onDateChange(value) {
     this.setState({
       value: value,
     }, () => {
-      this.setDropdown(false, this.props.onDateClick(value));
+      this.setDropdown(false, this.props.onChange(value));
     });
   }
 
   setDropdown(isOpen, callback) {
+    if (!this.unmounted) return;
+    
     if (isOpen) {
       this.bindOuterHandlers();
     } else {
@@ -106,7 +111,7 @@ class DatePicker extends Component {
   }
 
   handleOuterClick(e) {
-    if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
+    if (!this.unmounted || isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
       return false;
     }
     this.setDropdown(false);
