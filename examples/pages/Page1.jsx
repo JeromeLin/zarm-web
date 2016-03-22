@@ -235,7 +235,7 @@ class Page1 extends Component {
               controlCol="col-sm-10">
               <Breadcrumb>
                 <Breadcrumb.Item>首页</Breadcrumb.Item>
-                <Breadcrumb.Item href="">模块</Breadcrumb.Item>
+                <Breadcrumb.Item><Link to="/page2">模块</Link></Breadcrumb.Item>
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
               <Breadcrumb separator=">">
@@ -396,7 +396,7 @@ class Page1 extends Component {
               label="日历"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Calendar style={{display: 'inline-block'}} onDateClick={(date) => {
+              <Calendar style={{display: 'inline-block'}} onChange={(date) => {
                 console.log(date)
               }} />（未完待续）
             </Form.Item>
@@ -410,7 +410,7 @@ class Page1 extends Component {
                 defaultValue={this.state.date}
                 value={this.state.date}
                 placeholder="请选择日期"
-                onDateClick={(date) => {
+                onChange={(date) => {
                   this.setState({date});
                 }}
               />（未完待续）

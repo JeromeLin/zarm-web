@@ -1,4 +1,3 @@
-
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import CalendarHeader from './CalendarHeader';
@@ -25,7 +24,7 @@ class Calendar extends Component {
 
   render () {
     const props = this.props;
-    const { className, onDateClick, ...others } = props;
+    const { className, onChange, ...others } = props;
     const { current, value, panel } = this.state;
     const cls = classnames({
       'ui-calendar': true,
@@ -35,11 +34,11 @@ class Calendar extends Component {
     let body;
     switch(panel) {
       case 'year':
-        body = <CalendarDateTable value={value} current={current} onDateClick={(value) => onDateClick && this.onDateClick(value)} />;
+        body = <CalendarDateTable value={value} current={current} onDateClick={(value) => this.onDateClick(value)} />;
         break;
 
       default:
-        body = <CalendarDateTable value={value} current={current} onDateClick={(value) => onDateClick && this.onDateClick(value)} />;
+        body = <CalendarDateTable value={value} current={current} onDateClick={(value) => this.onDateClick(value)} />;
     }
 
     return (
@@ -61,16 +60,17 @@ class Calendar extends Component {
       value  : value,
       current: value,
     });
-    this.props.onDateClick(value);
+    const { onChange } = this.props;
+    onChange && onChange(value);
   }
 }
 
 Calendar.propTypes = {
-  onDateClick: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 Calendar.defaultProps = {
-  onDateClick: function () {},
+  onChange: function () {},
 };
 
 export default Calendar;
