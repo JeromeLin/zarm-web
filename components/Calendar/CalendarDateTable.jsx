@@ -121,7 +121,7 @@ class CalendarDateTable extends Component {
   // 渲染日期单元
   renderDateCell(day, type) {
     const { value, onDateClick } = this.props;
-    const fullDay = `${day.year}-${day.month}-${day.date}`;
+    const fullDay = `${day.year}/${day.month}/${day.date}`;
     const cls = classnames({
       'ui-calendar-date'           : true,
       'ui-calendar-date-othermonth': type === 'othermonth',
@@ -133,7 +133,7 @@ class CalendarDateTable extends Component {
 
   // 获取第一天的星期
   getFirstDayOfWeek(current) {
-    let date = new Date(`${current.year}-${current.month}-1`);
+    let date = new Date(`${current.year}/${current.month}/1`);
     return date.getDay();
   }
 

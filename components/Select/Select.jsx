@@ -81,7 +81,7 @@ class Select extends Component {
           </span>
         </span>
         <Dropdown visible={this.state.dropdown}>
-          <Menu>
+          <Menu size={size}>
             {children}
           </Menu>
         </Dropdown>

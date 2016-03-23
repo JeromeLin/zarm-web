@@ -246,10 +246,10 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="面包屑" 
+              label="步骤条" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-                <Step current={6}>
+                <Step current={3}>
                   <Step.Item>投保单基本信息</Step.Item>
                   <Step.Item>投保单位录入</Step.Item>
                   <Step.Item>产品选择</Step.Item>
@@ -261,7 +261,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="输入框"
+              label="普通输入框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
               help="写点提示信息吧">
@@ -269,19 +269,19 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="密码"
+              label="错误提示的输入框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
-              help="请输入密码"
+              help="我是错误信息"
               theme="error">
               <Input type="password" placeholder="请输入..." id="password" />
             </Form.Item>
 
             <Form.Item
-              label="警告样式的表单"
+              label="警告样式的输入框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
-              help="我是警告内容"
+              help="我是警告信息"
               theme="warning">
               <Input type="email" placeholder="请输入..." />
             </Form.Item>
@@ -290,7 +290,7 @@ class Page1 extends Component {
               label="文本框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
-              help="请输入密码">
+              help="请输入内容">
               <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
             </Form.Item>
 
