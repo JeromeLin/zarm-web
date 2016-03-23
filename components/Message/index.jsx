@@ -1,6 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import MessageItem from './MessageItem';
 
 class Message extends Component {
 
@@ -8,60 +8,54 @@ class Message extends Component {
     super(props);
     this.state = {
       timer: undefined,
-      visible: false
+      active: 0,
     };
   }
 
-  componentDidUpdate(){
-    clearTimeout(this.state.timer);
-    console.log(this.props.message)
-    if( this.props.message.length )
-      this.state.timer = setTimeout(() => {
-
-        this._onClose();
-      }, this.props.duration)
+  componentWillReceiveProps (nextProps) {
+    clearTimeout( this.state.timer );
+    this.enter();
   }
 
-  _onClose(){
-    this.props.message.shift();
-    this.setState({
-      visible: false
-    });
+  enter() {
+    this.state.timer = setTimeout(() => {
+
+      let node = this.refs.message.children;
+
+      if(!node[this.state.active])
+        return;
+
+      node[this.state.active].className = 'ui-message-wrapper';
+
+      this.state.active++;
+
+      if( this.state.active != this.refs.message.children.length)
+        this.enter();
+
+    }, this.props.dur )
   }
 
   render () {
-    const { message, duration, ...others } = this.props;
+    const { msg, dur, ...others } = this.props;
 
-    let classname = classnames({
-      'ui-message-wrapper': true,
-      'ui-message-visible': true
-    })
+    let items = msg.map((o,i) => {
+      return <MessageItem key={i} msg={o.m} dur={dur} />
+    });
 
-    return <div className="ui-message" {...others}>
-      {message.map((o,i) => <div key={i} className={classname}>
-        <div className="ui-message-container">
-          内容:{o} - 时间:{duration}
-        </div>
-      </div>)}
+    return <div className="ui-message" ref="message" {...others}>
+      {items}
     </div>
-
   }
-
-  _onContainerClick(e) {
-    e.stopPropagation();
-  }
-
 }
 
 Message.propTypes = {
-  message     : PropTypes.array,
-  duration    : PropTypes.number,
+  msg: PropTypes.array,
+  dur: PropTypes.number,
 };
 
 Message.defaultProps = {
-  message     : [],
-  duration    : 1500
+  msg: [],
+  dur: 1500,
 };
 
 export default Message;
-

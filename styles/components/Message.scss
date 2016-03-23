@@ -21,7 +21,7 @@ $primary-color: black;
     left: 50%;
     opacity: 0;
     transform: translate(0, -50px);
-    transition: all 1s;
+    transition: all .5s;
   }
   .ui-message-visible{
     opacity: 1;
