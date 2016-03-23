@@ -1,6 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Format from '../utils/Format';
 
 const CALENDAR_ROW_COUNT = 6,
       CALENDAR_COL_COUNT = 7,
@@ -12,7 +13,6 @@ class CalendarDateTable extends Component {
     super(props);
     this.state = {
       current: props.value || new Date(),
-      value  : props.value
     };
   }
 
@@ -120,15 +120,18 @@ class CalendarDateTable extends Component {
 
   // 渲染日期单元
   renderDateCell(day, type) {
-    const { value, onDateClick } = this.props;
-    const fullDay = `${day.year}/${day.month}/${day.date}`;
+    const { value, onDateClick} = this.props,
+          fullDay = `${day.year}/${day.month}/${day.date}`,
+          displayDay = `${day.year}-${day.month}-${day.date}`;
+
     const cls = classnames({
       'ui-calendar-date'           : true,
       'ui-calendar-date-othermonth': type === 'othermonth',
       'ui-calendar-date-selected'  : value === fullDay,
       'ui-calendar-date-today'     : new Date().toLocaleDateString() === new Date(fullDay).toLocaleDateString(),
     });
-    return <span className={cls} title={fullDay} onClick={() => onDateClick(fullDay)}>{day.date}</span>;
+    
+    return <span className={cls} title={displayDay} onClick={() => onDateClick(fullDay)}>{day.date}</span>;
   }
 
   // 获取第一天的星期
@@ -165,9 +168,9 @@ class CalendarDateTable extends Component {
 
   // 获取指定月份的天数
   getDays(current) {
-    const number = new Date(current.year, current.month, 0).getDate();
-    return number;
+    return new Date(current.year, current.month, 0).getDate();
   }
+
 }
 
 CalendarDateTable.propTypes = {

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Format from '../utils/Format';
 import CalendarHeader from './CalendarHeader';
 import CalendarDateTable from './CalendarDateTable';
 
@@ -60,16 +61,18 @@ class Calendar extends Component {
       value  : value,
       current: value,
     });
-    const { onChange } = this.props;
-    onChange && onChange(value);
+    const { format, onChange } = this.props;
+    onChange && onChange(Format.date(value, format));
   }
 }
 
 Calendar.propTypes = {
+  format  : PropTypes.string,
   onChange: PropTypes.func,
 };
 
 Calendar.defaultProps = {
+  format  : 'yyyy-MM-dd',
   onChange: function () {},
 };
 

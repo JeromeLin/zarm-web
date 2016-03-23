@@ -82,7 +82,7 @@ class CalendarHeader extends Component {
     } else {
       newYear.year = current.year + 10;
     }
-    const currentString = `${newYear.year}-${newYear.month}-1`;
+    const currentString = `${newYear.year}/${newYear.month}/1`;
 
     this.props.onChange(currentString);
   }
@@ -92,7 +92,7 @@ class CalendarHeader extends Component {
     let newMonth = (type === 'pre')
                  ? this.getPreMonth(current)
                  : this.getNextMonth(current);
-    const currentString = `${newMonth.year}-${newMonth.month}-1`;
+    const currentString = `${newMonth.year}/${newMonth.month}/1`;
 
     this.props.onChange(currentString);
   }
