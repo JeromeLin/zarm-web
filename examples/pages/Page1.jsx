@@ -69,7 +69,7 @@ class Page1 extends Component {
       pageSize     : 10,
       inputPage    : 4,
 
-      message   : [],
+      msg   : [],
     };
   }
 
@@ -90,9 +90,9 @@ class Page1 extends Component {
     this.setState({ tags });
   }
 
-  _showMessage(message) {
+  _showMessage(m) {
     this.setState({
-      message: this.state.message.concat(message)
+      msg: this.state.msg.concat({m})
     });
   }
 
@@ -635,7 +635,7 @@ class Page1 extends Component {
               onMaskClick={() => this._onClickClose('toast')} />
           : null }
 
-          <Message message={this.state.message} duration={500} />
+          <Message msg={this.state.msg} dur={1000} />
 
           <Mask
             visible={this.state.mask}
