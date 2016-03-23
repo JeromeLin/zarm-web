@@ -1,3 +1,21 @@
+@mixin menu-size($height, $padding, $font-size, $border-radius) {  
+  .ui-menu-item {
+    height: $height + 4;
+    line-height: $height + 4;
+    padding: 0 $padding;
+    font-size: $font-size;
+
+    &:first-child {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
+}
 
 .ui-menu {
   list-style: none;
@@ -6,30 +24,18 @@
   max-height: 250px;
   outline: none;
   overflow: auto;
+  @include menu-size($base-height, $base-padding, $base-fontSize, $base-radius);
 
   .ui-menu-item {
     position: relative;
     display: block;
-    padding: 10px;
     font-weight: normal;
-    line-height: normal;
-    font-size: 12px;
     color: #666;
     cursor: pointer;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     transition: background .3s ease;
-
-    &:first-child {
-      border-top-left-radius: 6px;
-      border-top-right-radius: 6px;
-    }
-
-    &:last-child {
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-    }
 
     &:hover,
     .ui-menu-item-active {
@@ -47,15 +53,15 @@
   }
 
   &.size-xl {
-    @include select-size($base-height-xl, $base-fontSize-xl, $base-radius-xl);
+    @include menu-size($base-height-xl, $base-padding-xl, $base-fontSize-xl, $base-radius-xl);
   }
   &.size-lg {
-    @include select-size($base-height-lg, $base-fontSize-lg, $base-radius-lg);
+    @include menu-size($base-height-lg, $base-padding-lg, $base-fontSize-lg, $base-radius-lg);
   }
   &.size-sm {
-    @include select-size($base-height-sm, $base-fontSize-sm, $base-radius-sm);
+    @include menu-size($base-height-sm, $base-padding-sm, $base-fontSize-sm, $base-radius-sm);
   }
   &.size-xs {
-    @include select-size($base-height-xs, $base-fontSize-xs, $base-radius-xs);
+    @include menu-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs);
   }
 }
