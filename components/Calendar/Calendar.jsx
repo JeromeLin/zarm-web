@@ -9,8 +9,8 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: props.value || props.defaultValue || new Date(),
-      value  : props.value || props.defaultValue,
+      current: Format.date(props.value, 'yyyy/M/d') || Format.date(props.defaultValue, 'yyyy/M/d') || new Date(),
+      value  : Format.date(props.value, 'yyyy/M/d') || Format.date(props.defaultValue, 'yyyy/M/d'),
       panel  : 'date',
     };
   }
@@ -18,7 +18,8 @@ class Calendar extends Component {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: nextProps.value,
+        value  : Format.date(nextProps.value, 'yyyy/M/d'),
+        current: Format.date(nextProps.value, 'yyyy/M/d'),
       });
     }
   }
@@ -27,6 +28,7 @@ class Calendar extends Component {
     const props = this.props;
     const { className, onChange, ...others } = props;
     const { current, value, panel } = this.state;
+    
     const cls = classnames({
       'ui-calendar': true,
       [className]  : !!className,

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import isNodeInTree from '../utils/isNodeInTree';
+import Format from '../utils/Format';
 import Dropdown from '../Dropdown';
 import Calendar from '../Calendar';
 import Icon from '../Icon';
@@ -14,7 +15,7 @@ class DatePicker extends Component {
     super(props);
     this.unmounted = false;
     this.state = {
-      value   : props.value || props.defaultValue,
+      value   : Format.date(props.value, props.format) || Format.date(props.defaultValue, props.format),
       dropdown: false,
     };
   }
@@ -31,27 +32,28 @@ class DatePicker extends Component {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: nextProps.value
+        value: Format.date(nextProps.value, this.props.format),
       });
     }
   }
 
   render () {
     const props = this.props;
-    const { placeholder, isDisabled, size, ...others } = props;
+    const { defaultValue, placeholder, isDisabled, size, format, ...others } = props;
+    const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
 
     let valueText = placeholder,
         hasValue = false;
 
-    if (this.state.value) {
-      valueText = this.state.value;
+    if (value) {
+      valueText = value;
       hasValue = true;
     }
 
     const cls = classnames({
       'ui-select'         : true,
-      'ui-select-open'    : this.state.dropdown,
+      'ui-select-open'    : dropdown,
       'ui-select-disabled': disabled,
       [`size-${size}`]    : !!size,
     });
@@ -69,8 +71,8 @@ class DatePicker extends Component {
             <Icon type="date" />
           </span>
         </span>
-        <Dropdown visible={this.state.dropdown}>
-          <Calendar onChange={(value) => this.onDateChange(value)} />
+        <Dropdown visible={dropdown}>
+          <Calendar defaultValue={defaultValue} value={value} format={format} onChange={(value) => this.onDateChange(value)} />
         </Dropdown>
       </span>
     );
@@ -129,14 +131,14 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
-  defaultChecked: PropTypes.bool,
   isDisabled    : PropTypes.bool,
+  format        : PropTypes.string,
   onChange      : PropTypes.func,
 };
 
 DatePicker.defaultProps = {
-  defaultChecked: false,
   isDisabled    : false,
+  format        : 'yyyy-MM-dd',
   onChange      : function () {},
 };
 
