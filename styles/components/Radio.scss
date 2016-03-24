@@ -25,10 +25,8 @@
     display: inline-block;
     width: 14px;
     height: 14px;
-    border-width: 1px;
-    border-style: solid;
+    border: 1px solid #d9d9d9;
     border-radius: 14px;
-    border-color: #d9d9d9;
     background-color: #fff;
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
@@ -63,6 +61,7 @@
 
 /* 选中状态 */
 .ui-radio-checked {
+  
   .ui-radio-inner {
     border-color: #d9d9d9;
 
@@ -80,13 +79,10 @@
   .ui-radio-inner {
     border-color: #d9d9d9;
     background-color: #f3f3f3;
+    cursor: not-allowed;
 
     &:after {
       background-color: #ccc;
     }
-  }
-
-  .ui-radio-input {
-    cursor: not-allowed;
   }
 }
