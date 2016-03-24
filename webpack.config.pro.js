@@ -14,7 +14,7 @@ module.exports = {
     path: './',
     filename: 'js/[name].min.js',
     chunkFilename: 'js/[name].[chunkhash:8].min.js',
-    publicPath: '/assets'
+    publicPath: '/assets/'
   },
 
   module: {
