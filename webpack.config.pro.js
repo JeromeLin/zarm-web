@@ -6,6 +6,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
 
   entry: {
+    entry: ['./examples/index.html'],
     index: ['./examples/index.js']
   },
 
@@ -13,7 +14,7 @@ module.exports = {
     path: path.join(process.cwd(), 'assets'),
     filename: 'js/[name].min.js',
     chunkFilename: 'js/[name].[chunkhash:8].min.js',
-    publicPath: '/dragon-ui/assets/'
+    publicPath: '/'
   },
 
   module: {
