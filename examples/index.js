@@ -1,7 +1,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory, Router } from 'react-router';
+import { browserHistory, Router } from 'react-router';
+// import { hashHistory, Router } from 'react-router';
 
 const rootRoute = {
   path: '/',
@@ -58,6 +59,6 @@ const rootRoute = {
 }
 
 ReactDOM.render(
-  <Router routes={rootRoute} history={hashHistory} />,
+  <Router routes={rootRoute} history={browserHistory} />,
   document.getElementById('app')
 );
