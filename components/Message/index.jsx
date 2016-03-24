@@ -36,10 +36,10 @@ class Message extends Component {
   }
 
   render () {
-    const { msg, dur, ...others } = this.props;
+    const { msg, dur, theme, ...others } = this.props;
 
     let items = msg.map((o,i) => {
-      return <MessageItem key={i} msg={o.m} dur={dur} />
+      return <MessageItem key={i} msg={o.m} dur={dur} theme={theme} />
     });
 
     return <div className="ui-message" ref="message" {...others}>
@@ -51,11 +51,13 @@ class Message extends Component {
 Message.propTypes = {
   msg: PropTypes.array,
   dur: PropTypes.number,
+  theme : PropTypes.oneOf(['info', 'warning', 'success', 'error']),
 };
 
 Message.defaultProps = {
   msg: [],
   dur: 1500,
+  theme : 'info',
 };
 
 export default Message;
