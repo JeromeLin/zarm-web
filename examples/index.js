@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory, Router } from 'react-router';
-// import { hashHistory, Router } from 'react-router';
 
 const rootRoute = {
   path: '/',
