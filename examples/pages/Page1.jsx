@@ -72,7 +72,7 @@ class Page1 extends Component {
       inputPage    : 4,
       username     : '45678',
 
-      date  : '',
+      date  : '2015-12-1',
     };
   }
 
@@ -396,9 +396,13 @@ class Page1 extends Component {
               label="日历"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Calendar style={{display: 'inline-block'}} onChange={(date) => {
-                console.log(date)
-              }} />（未完待续）
+              <Calendar
+                style={{display: 'inline-block'}}
+                value={this.state.date}
+                onChange={(date) => {
+                  this.setState({date});
+                }}
+              />（未完待续）
             </Form.Item>
 
             <Form.Item
@@ -407,9 +411,9 @@ class Page1 extends Component {
               controlCol="col-sm-10">
               <DatePicker
                 style={{width: 120}}
-                defaultValue={this.state.date}
                 value={this.state.date}
                 placeholder="请选择日期"
+                format="yyyy-M-d"
                 onChange={(date) => {
                   this.setState({date});
                 }}
