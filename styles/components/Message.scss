@@ -1,10 +1,10 @@
 $border-radius-base: 6px;
 $border-color-base: #d9d9d9;
 $box-shadow-base: 0 0 4px rgba(0,0,0,0.17);
-$success-color: black;
-$error-color: black;
-$warning-color: black;
-$primary-color: black;
+$success-color: #87d068;
+$error-color: #f50;
+$warning-color: #fa0;
+$default-color: #2db7f5;
 
 .ui-message {
   font-size: 12px;
@@ -47,13 +47,12 @@ $primary-color: black;
     color: $error-color;
   }
 
-  .ui-message-warn.ui-icon {
+  .ui-message-warning.ui-icon {
     color: $warning-color;
   }
 
-  .ui-message-info.ui-icon,
-  .ui-message-loading.ui-icon {
-    color: $primary-color;
+  .ui-message-info.ui-icon {
+    color: $default-color;
   }
 
   .ui-icon {

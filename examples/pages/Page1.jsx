@@ -635,7 +635,7 @@ class Page1 extends Component {
               onMaskClick={() => this._onClickClose('toast')} />
           : null }
 
-          <Message msg={this.state.msg} dur={1000} />
+          <Message msg={this.state.msg} dur={1000} theme="success" />
 
           <Mask
             visible={this.state.mask}
