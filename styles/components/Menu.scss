@@ -36,7 +36,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
     transition: background .3s ease;
-
+    user-select: none;
+    
     &:hover,
     .ui-menu-item-active {
       background: #eaf8fe;

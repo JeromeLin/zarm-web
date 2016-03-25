@@ -5,7 +5,7 @@ import Format from '../utils/Format';
 
 const CALENDAR_ROW_COUNT = 6,
       CALENDAR_COL_COUNT = 7,
-      CALENDAR_SHORT_WEEK_DAYS = ['一', '二', '三', '四', '五', '六', '日'];
+      CALENDAR_WEEK_DAYS = ['一', '二', '三', '四', '五', '六', '日'];
 
 class CalendarDateTable extends Component {
 
@@ -25,11 +25,18 @@ class CalendarDateTable extends Component {
   }
 
   render() {
+    const { visible } = this.props;
+    const style = {
+      display: visible ? 'none' : 'block'
+    }
+
     return (
-      <table>
-        {this.renderWeek()}
-        {this.renderDate()}
-      </table>
+      <div style={style}>
+        <table className="ui-calendar-table">
+          {this.renderWeek()}
+          {this.renderDate()}
+        </table>
+      </div>
     );
   }
 
@@ -38,7 +45,7 @@ class CalendarDateTable extends Component {
     let weekDays = [];
 
     for (let i = 0; i < CALENDAR_COL_COUNT; i++) {
-      weekDays[i] = CALENDAR_SHORT_WEEK_DAYS[i];
+      weekDays[i] = CALENDAR_WEEK_DAYS[i];
     }
 
     return (
@@ -46,7 +53,7 @@ class CalendarDateTable extends Component {
         <tr>
           {
             weekDays.map((week, index) => {
-              return <th key={`weekdays-${index}`} className="ui-calendar-week" title={`星期${week}`}>{week}</th>;
+              return <th key={`weekdays-${index}`} className="ui-calendar-column" title={`星期${week}`}>{week}</th>;
             })
           }
         </tr>
@@ -76,7 +83,7 @@ class CalendarDateTable extends Component {
         year : pre.year,
         month: pre.month,
         date : i
-      }, 'othermonth'));
+      }, 'others'));
     }
 
     // 当月日期
@@ -94,7 +101,7 @@ class CalendarDateTable extends Component {
         year : next.year,
         month: next.month,
         date : k
-      }, 'othermonth'));
+      }, 'others'));
     }
 
     let tabelCell = [];
@@ -125,10 +132,10 @@ class CalendarDateTable extends Component {
           displayDay = `${day.year}-${day.month}-${day.date}`;
 
     const cls = classnames({
-      'ui-calendar-date'           : true,
-      'ui-calendar-date-othermonth': type === 'othermonth',
-      'ui-calendar-date-selected'  : value === fullDay,
-      'ui-calendar-date-today'     : new Date().toLocaleDateString() === new Date(fullDay).toLocaleDateString(),
+      'ui-calendar-text'           : true,
+      'ui-calendar-text-others'    : type === 'others',
+      'ui-calendar-text-selected'  : value === fullDay,
+      'ui-calendar-text-today'     : new Date().toLocaleDateString() === new Date(fullDay).toLocaleDateString(),
     });
     
     return <span className={cls} title={displayDay} onClick={() => onDateClick(fullDay)}>{day.date}</span>;
