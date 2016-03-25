@@ -402,7 +402,7 @@ class Page1 extends Component {
                 onChange={(date) => {
                   this.setState({date});
                 }}
-              />（未完待续）
+              />
             </Form.Item>
 
             <Form.Item
@@ -417,7 +417,7 @@ class Page1 extends Component {
                 onChange={(date) => {
                   this.setState({date});
                 }}
-              />（未完待续）
+              />
             </Form.Item>
 
             <Form.Item

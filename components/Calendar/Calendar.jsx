@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import Format from '../utils/Format';
 import CalendarHeader from './CalendarHeader';
 import CalendarDateTable from './CalendarDateTable';
+import CalendarMonthTable from './CalendarMonthTable';
+import CalendarYearTable from './CalendarYearTable';
 
 class Calendar extends Component {
 
@@ -28,40 +30,47 @@ class Calendar extends Component {
     const props = this.props;
     const { className, onChange, ...others } = props;
     const { current, value, panel } = this.state;
-    
+
     const cls = classnames({
       'ui-calendar': true,
       [className]  : !!className,
     });
 
-    let body;
-    switch(panel) {
-      case 'year':
-        body = <CalendarDateTable value={value} current={current} onDateClick={(value) => this.onDateClick(value)} />;
-        break;
-
-      default:
-        body = <CalendarDateTable value={value} current={current} onDateClick={(value) => this.onDateClick(value)} />;
-    }
-
     return (
       <div className={cls} {...others}>
         <CalendarHeader
+          panel={panel}
           current={current}
           onChange={(current) => this.setState({current})}
           onChangePanel={(panel) => this.setState({panel})}
         />
         <div className="ui-calendar-body">
-          {body}
+          <CalendarYearTable visible={panel !== 'year'} value={value} current={current} onYearClick={(value) => this.onYearClick(value)} />
+          <CalendarMonthTable visible={panel !== 'month'} value={value} current={current} onMonthClick={(value) => this.onMonthClick(value)} />
+          <CalendarDateTable visible={panel !== 'date'} value={value} current={current} onDateClick={(value) => this.onDateClick(value)} />
         </div>
       </div>
     );
   }
 
+  onYearClick(value) {
+    this.setState({
+      current: value,
+      panel  : 'date'
+    });
+  }
+
+  onMonthClick(value) {
+    this.setState({
+      current: value,
+      panel  : 'date'
+    });
+  }
+
   onDateClick(value) {
     this.setState({
       value  : value,
-      current: value,
+      current: value
     });
     const { format, onChange } = this.props;
     onChange && onChange(Format.date(value, format));

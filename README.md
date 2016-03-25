@@ -31,10 +31,11 @@ import { Modal, Alert } from dragon-ui;
 - Panel 面版
 - Step 步骤条
 - Tooltip 文字提示
+- Calendar 日历
+- DatePicker 日期选择器
 
 ## 待开发组件
 - Message 全局提示
-- DatePicker 日期选择器
 - Tab 内容切换
 - Upload 上传
 - Transfer 穿梭框
