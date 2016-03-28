@@ -3,13 +3,12 @@
   width: 230px;
 }
 
-/* header */
-.ui-calendar-header {
+.ui-calendar-header,
+.ui-calendar-footer {
   position: relative;
   height: 40px;
   line-height: 40px;
   text-align: center;
-  border-bottom: 1px solid #e9e9e9;
   user-select: none;
 
   a {
@@ -22,6 +21,11 @@
       text-decoration: none;
     }
   }
+}
+
+/* header */
+.ui-calendar-header {
+  border-bottom: 1px solid #e9e9e9;
 
   .ui-calendar-header-pre-btn,
   .ui-calendar-header-next-btn {
@@ -110,7 +114,7 @@
     &.ui-calendar-year {
       
       .ui-calendar-cell {
-        padding: 10px 0;
+        padding: 11px 0;
 
         .ui-calendar-text {
           width: 40px;
@@ -123,7 +127,7 @@
     &.ui-calendar-month {
       
       .ui-calendar-cell {
-        padding: 10px 0;
+        padding: 11px 0;
 
         .ui-calendar-text {
           width: 50px;
@@ -134,4 +138,9 @@
     }
 
   }
+}
+
+/*footer*/
+.ui-calendar-footer {
+  border-top: 1px solid #e9e9e9;
 }

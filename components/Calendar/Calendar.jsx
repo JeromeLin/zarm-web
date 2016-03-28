@@ -22,13 +22,14 @@ class Calendar extends Component {
       this.setState({
         value  : Format.date(nextProps.value, 'yyyy/M/d'),
         current: Format.date(nextProps.value || nextProps.defaultValue || new Date(), 'yyyy/M/d'),
+        panel  : 'date'
       });
     }
   }
 
   render () {
     const props = this.props;
-    const { className, onChange, ...others } = props;
+    const { className, onChange, hasFooter, ...others } = props;
     const { current, value, panel } = this.state;
 
     const cls = classnames({
@@ -49,6 +50,13 @@ class Calendar extends Component {
           <CalendarMonthTable visible={panel !== 'month'} value={value} current={current} onMonthClick={(value) => this.onMonthClick(value)} />
           <CalendarDateTable visible={panel !== 'date'} value={value} current={current} onDateClick={(value) => this.onDateClick(value)} />
         </div>
+        {
+          hasFooter ? (
+            <div className="ui-calendar-footer">
+              <a href="javascript:;" onClick={() => this.onDateClick(new Date())}>今天</a>
+            </div>
+          ) : null
+        }
       </div>
     );
   }

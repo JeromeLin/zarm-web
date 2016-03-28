@@ -72,7 +72,7 @@ class DatePicker extends Component {
           </span>
         </span>
         <Dropdown visible={dropdown}>
-          <Calendar defaultValue={defaultValue} value={value} format={format} onChange={(value) => this.onDateChange(value)} />
+          <Calendar defaultValue={defaultValue} value={value} format={format} hasFooter={true} onChange={(value) => this.onDateChange(value)} />
         </Dropdown>
       </span>
     );
