@@ -29,7 +29,7 @@ class Calendar extends Component {
 
   render () {
     const props = this.props;
-    const { className, onChange, hasFooter, ...others } = props;
+    const { className, hasFooter, ...others } = props;
     const { current, value, panel } = this.state;
 
     const cls = classnames({

@@ -25,7 +25,7 @@ class CalendarDateTable extends Component {
   }
 
   render() {
-    const { visible, onDateClick } = this.props;
+    const { visible } = this.props;
     const style = {
       display: visible ? 'none' : 'block'
     }
@@ -63,7 +63,6 @@ class CalendarDateTable extends Component {
 
   // 渲染日期
   renderDate() {
-    console.log(this.state.current)
     let dd = new Date(this.state.current),
         current = {
           year : dd.getFullYear(),
