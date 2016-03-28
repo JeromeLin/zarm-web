@@ -11,8 +11,8 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: Format.date(props.value, 'yyyy/M/d') || Format.date(props.defaultValue, 'yyyy/M/d') || new Date(),
-      value  : Format.date(props.value, 'yyyy/M/d') || Format.date(props.defaultValue, 'yyyy/M/d'),
+      current: Format.date(props.value || props.defaultValue || new Date(), 'yyyy/M/d'),
+      value  : Format.date(props.value || props.defaultValue, 'yyyy/M/d'),
       panel  : 'date',
     };
   }
@@ -21,7 +21,7 @@ class Calendar extends Component {
     if ('value' in nextProps) {
       this.setState({
         value  : Format.date(nextProps.value, 'yyyy/M/d'),
-        current: Format.date(nextProps.value, 'yyyy/M/d'),
+        current: Format.date(nextProps.value || nextProps.defaultValue || new Date(), 'yyyy/M/d'),
       });
     }
   }

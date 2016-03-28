@@ -12,7 +12,7 @@ class CalendarDateTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: props.value || new Date(),
+      current: props.current || new Date(),
     };
   }
 
@@ -63,6 +63,7 @@ class CalendarDateTable extends Component {
 
   // 渲染日期
   renderDate() {
+    console.log(this.state.current)
     let dd = new Date(this.state.current),
         current = {
           year : dd.getFullYear(),
