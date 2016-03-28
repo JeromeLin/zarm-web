@@ -25,7 +25,7 @@ class CalendarDateTable extends Component {
   }
 
   render() {
-    const { visible } = this.props;
+    const { visible, onDateClick } = this.props;
     const style = {
       display: visible ? 'none' : 'block'
     }

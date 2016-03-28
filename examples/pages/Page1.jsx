@@ -413,7 +413,6 @@ class Page1 extends Component {
                 style={{width: 120}}
                 // value={this.state.date}
                 placeholder="请选择日期"
-                format="yyyy/M/d"
                 onChange={(date) => {
                   this.setState({date});
                 }}
