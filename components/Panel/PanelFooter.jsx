@@ -2,13 +2,13 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-class PanelHeader extends Component {
+class PanelFooter extends Component {
 
   render () { 
     const { className, children, ...others } = this.props;
 
     const cls = classnames({
-      'ui-panel-header': true,
+      'ui-panel-footer': true,
       [className]      : !!className
     });
     
@@ -17,4 +17,4 @@ class PanelHeader extends Component {
 
 }
 
-export default PanelHeader;
+export default PanelFooter;

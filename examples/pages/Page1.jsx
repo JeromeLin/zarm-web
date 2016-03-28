@@ -411,9 +411,9 @@ class Page1 extends Component {
               controlCol="col-sm-10">
               <DatePicker
                 style={{width: 120}}
-                value={this.state.date}
+                // value={this.state.date}
                 placeholder="请选择日期"
-                format="yyyy-M-d"
+                format="yyyy/M/d"
                 onChange={(date) => {
                   this.setState({date});
                 }}
@@ -491,8 +491,21 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Panel>
-                <Panel.Header>面板</Panel.Header>
-                <Panel.Body>内容</Panel.Body>
+                <Panel.Header>
+                  <Panel.Title>头部左侧</Panel.Title>
+                  <Panel.More>
+                    头部右侧
+                  </Panel.More>
+                </Panel.Header>
+                <Panel.Body>
+                  内容
+                </Panel.Body>
+                <Panel.Footer>
+                  <Panel.Title>底部左侧</Panel.Title>
+                  <Panel.More>
+                    底部右侧
+                  </Panel.More>
+                </Panel.Footer>
               </Panel>
             </Form.Item>
 
@@ -509,162 +522,170 @@ class Page1 extends Component {
 
           <Panel>
             <Panel.Header>
-              切换Loading状态：
-              <Switch size="sm" value={this.state.tableLoading} onChange={(value) => {
-                this.setState({
-                  tableLoading: value
-                });
-              }} />
+              <Panel.Title>表格</Panel.Title>
+              <Panel.More>
+                切换Loading状态：
+                <Switch size="sm" value={this.state.tableLoading} onChange={(value) => {
+                  this.setState({
+                    tableLoading: value
+                  });
+                }} />
+              </Panel.More>
             </Panel.Header>
-            <Table
-              striped
-              radius
-              isLoading={this.state.tableLoading}
-              dataSource={this.state.dataSource}
-              columns={[{
-                dataIndex: 'id',
-                width: 50,
-                render: (value, row, index) => {
-                  return index + 1;
-                }
-              },{
-                title: '姓名',
-                dataIndex: 'name',
-                width: 100,
-                render: (value, row, index) => {
-                  return <a href="javascript:;">{value}</a>;
-                },
-                sorter: (a, b) => {
-                  return a.name.localeCompare(b.name);
-                }
-              },{
-                title: '部门',
-                dataIndex: 'dept',
-                width: 140,
-                render: (value, row, index) => {
-                  return (
-                    <Select size="sm" value={value} style={{width: 120}}>
-                      <Select.Option value="直营部">直营部</Select.Option>
-                      <Select.Option value="健康险事业部">健康险事业部</Select.Option>
-                      <Select.Option value="金融信保部">金融信保部</Select.Option>
-                      <Select.Option value="人力资源部">人力资源部</Select.Option>
-                    </Select>
-                  );
-                },
-                sorter: (a, b) => {
-                  return a.dept.localeCompare(b.dept);
-                }
-              },{
-                title: '年龄',
-                dataIndex: 'age',
-                width: 80,
-                render: (value, row, index) => {
-                  return <Input size="sm" style={{width: 40}} defaultValue={value} value={value} maxLength="3" onChange={(e) => {
-                    let dataSource = this.state.dataSource;
-                    dataSource[index].age = e.target.value;
-                    this.setState({dataSource});
-                  }}/>;
-                },
-                sorter: (a, b) => {
-                  return a.age - b.age;
-                }
-              },{
-                title: '住址',
-                dataIndex: 'address'
-              },{
-                title: '状态',
-                dataIndex: 'state',
-                width: 100,
-                render: (value, row, index) => {
-                  return <Switch size="sm" value={value} />;
-                },
-                sorter: (a, b) => {
-                  return a.state - b.state;
-                }
-              },{
-                title: '操作',
-                dataIndex: 'op',
-                width: 120,
-                render: (value, row, index) => {
-                  return (
-                    <div style={{color: '#ccc'}}>
-                      <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
-                      &nbsp;&nbsp;|&nbsp;&nbsp;
-                      <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
+            <Panel.Body style={{padding: 0}}>
+              <Table
+                striped
+                radius
+                isLoading={this.state.tableLoading}
+                dataSource={this.state.dataSource}
+                columns={[{
+                  dataIndex: 'id',
+                  width: 50,
+                  render: (value, row, index) => {
+                    return index + 1;
+                  }
+                },{
+                  title: '姓名',
+                  dataIndex: 'name',
+                  width: 100,
+                  render: (value, row, index) => {
+                    return <a href="javascript:;">{value}</a>;
+                  },
+                  sorter: (a, b) => {
+                    return a.name.localeCompare(b.name);
+                  }
+                },{
+                  title: '部门',
+                  dataIndex: 'dept',
+                  width: 140,
+                  render: (value, row, index) => {
+                    return (
+                      <Select size="sm" value={value} style={{width: 120}}>
+                        <Select.Option value="直营部">直营部</Select.Option>
+                        <Select.Option value="健康险事业部">健康险事业部</Select.Option>
+                        <Select.Option value="金融信保部">金融信保部</Select.Option>
+                        <Select.Option value="人力资源部">人力资源部</Select.Option>
+                      </Select>
+                    );
+                  },
+                  sorter: (a, b) => {
+                    return a.dept.localeCompare(b.dept);
+                  }
+                },{
+                  title: '年龄',
+                  dataIndex: 'age',
+                  width: 80,
+                  render: (value, row, index) => {
+                    return <Input size="sm" style={{width: 40}} defaultValue={value} value={value} maxLength="3" onChange={(e) => {
+                      let dataSource = this.state.dataSource;
+                      dataSource[index].age = e.target.value;
+                      this.setState({dataSource});
+                    }}/>;
+                  },
+                  sorter: (a, b) => {
+                    return a.age - b.age;
+                  }
+                },{
+                  title: '住址',
+                  dataIndex: 'address'
+                },{
+                  title: '状态',
+                  dataIndex: 'state',
+                  width: 100,
+                  render: (value, row, index) => {
+                    return <Switch size="sm" value={value} />;
+                  },
+                  sorter: (a, b) => {
+                    return a.state - b.state;
+                  }
+                },{
+                  title: '操作',
+                  dataIndex: 'op',
+                  width: 120,
+                  render: (value, row, index) => {
+                    return (
+                      <div style={{color: '#ccc'}}>
+                        <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
+                      </div>
+                    );
+                  }
+                }]}
+                rowSelection={{
+                  onSelect: (selected, row, selectedRows) => {
+                    console.log(selected, row, selectedRows);
+
+                  },
+                  onSelectAll: (selected, selectedRows) => {
+                    console.log(selected, selectedRows)
+                  }
+                }}>
+              </Table>
+            </Panel.Body>
+            <Panel.Footer>
+              <Panel.More>
+                <Pagination
+                  bordered
+                  value={this.state.currentPage}
+                  pageSize={this.state.pageSize}
+                  total={324}
+                  style={{marginTop: 10}}
+                  addonBefore={`共有324条记录 第${this.state.currentPage}/${Math.ceil(324/this.state.pageSize)}页`}
+                  addonAfter={
+                    <div>
+                      <Select
+                        size="sm"
+                        defaultValue={10}
+                        onChange={(data) => {
+                          this.setState({
+                            currentPage: 1,
+                            pageSize   : data.value,
+                          });
+                        }}>
+                        <Select.Option value={10}>每页 10 条</Select.Option>
+                        <Select.Option value={20}>每页 20 条</Select.Option>
+                        <Select.Option value={30}>每页 30 条</Select.Option>
+                        <Select.Option value={40}>每页 40 条</Select.Option>
+                      </Select>
+                      <span style={{display: 'inline-block', marginLeft: 15}}>
+                        跳至<span style={{display: 'inline-block', width: 50, marginLeft: 5, marginRight: 5}}>
+                        <Input size="sm" value={this.state.inputPage}
+                          onChange={(e) => {
+                            let value = e.target.value;
+
+                            this.setState({
+                              inputPage: value,
+                            });
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.keyCode === 13) {
+                              let value = parseInt(this.state.inputPage);
+                              if (!value) return;
+
+                              const pageCount = Math.ceil(324/this.state.pageSize);
+                              value = (value < 1) ? 1 : value;
+                              value = (value > pageCount) ? pageCount : value;
+
+                              this.setState({
+                                currentPage: value,
+                                inputPage  : value,
+                              });
+                            }
+                          }} />
+                        </span>页
+                      </span>
                     </div>
-                  );
-                }
-              }]}
-              rowSelection={{
-                onSelect: (selected, row, selectedRows) => {
-                  console.log(selected, row, selectedRows);
-
-                },
-                onSelectAll: (selected, selectedRows) => {
-                  console.log(selected, selectedRows)
-                }
-              }}>
-            </Table>
-          </Panel>
-
-          <Pagination
-            bordered
-            value={this.state.currentPage}
-            pageSize={this.state.pageSize}
-            total={324}
-            style={{fontSize: 14}}
-            addonBefore={`共有324条记录 第${this.state.currentPage}/${Math.ceil(324/this.state.pageSize)}页`}
-            addonAfter={
-              <div>
-                <Select
-                  size="sm"
-                  defaultValue={10}
-                  onChange={(data) => {
+                  }
+                  onPageChange={(value) => {
                     this.setState({
-                      currentPage: 1,
-                      pageSize   : data.value,
-                    });
-                  }}>
-                  <Select.Option value={10}>每页 10 条</Select.Option>
-                  <Select.Option value={20}>每页 20 条</Select.Option>
-                  <Select.Option value={30}>每页 30 条</Select.Option>
-                  <Select.Option value={40}>每页 40 条</Select.Option>
-                </Select>
-                <span style={{display: 'inline-block', marginLeft: 15}}>
-                  跳至<span style={{display: 'inline-block', width: 50, marginLeft: 5, marginRight: 5}}>
-                  <Input size="sm" value={this.state.inputPage}
-                    onChange={(e) => {
-                      let value = e.target.value;
-
-                      this.setState({
-                        inputPage: value,
-                      });
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.keyCode === 13) {
-                        let value = parseInt(this.state.inputPage);
-                        if (!value) return;
-
-                        const pageCount = Math.ceil(324/this.state.pageSize);
-                        value = (value < 1) ? 1 : value;
-                        value = (value > pageCount) ? pageCount : value;
-
-                        this.setState({
-                          currentPage: value,
-                          inputPage  : value,
-                        });
-                      }
-                    }} />
-                  </span>页
-                </span>
-              </div>
-            }
-            onPageChange={(value) => {
-              this.setState({
-                currentPage : value,
-                inputPage   : value,
-              })
-            }} />
+                      currentPage : value,
+                      inputPage   : value,
+                    })
+                  }} />
+              </Panel.More>
+            </Panel.Footer>
+          </Panel>
 
           <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
             <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>

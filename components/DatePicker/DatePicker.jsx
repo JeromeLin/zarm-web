@@ -15,7 +15,7 @@ class DatePicker extends Component {
     super(props);
     this.unmounted = false;
     this.state = {
-      value   : Format.date(props.value, props.format) || Format.date(props.defaultValue, props.format),
+      value   : Format.date(props.value || props.defaultValue, props.format),
       dropdown: false,
     };
   }
