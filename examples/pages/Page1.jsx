@@ -29,7 +29,8 @@ import {
   Step,
   DatePicker,
   Calendar,
-  Tooltip
+  Tooltip,
+  Upload
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -417,6 +418,17 @@ class Page1 extends Component {
                   this.setState({date});
                 }}
               />
+            </Form.Item>
+
+            <Form.Item
+              label="上传" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Upload onChange={(files) => {
+                console.log(files)
+              }}>
+                <Button>上传</Button>
+              </Upload>
             </Form.Item>
 
             <Form.Item
