@@ -27,7 +27,8 @@ import {
   Pagination,
   Panel,
   Step,
-  Tooltip
+  Tooltip,
+  Tab
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -95,6 +96,15 @@ class Page1 extends Component {
     return (
       <Loading visible={this.state.loading} message="付款中">
         <div className="demo">
+          <h4>Tab</h4>
+          <Tab.Group style={{width:'300px'}}>
+            <Tab title="选项卡1" isActive>
+              这是选项卡1的文字
+            </Tab>
+            <Tab title="选项卡2">
+              这是选项卡2的文字
+            </Tab>
+          </Tab.Group>
           <h4>Tooltip</h4>
           {['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom',
           'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
@@ -118,7 +128,6 @@ class Page1 extends Component {
                     value: value
                   })
                 }
-
               }}/>
             </Form.Item>
           </Form>

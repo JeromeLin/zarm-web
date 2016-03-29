@@ -41,23 +41,23 @@
 .ui-tooltip{
   display: inline-block;
   position: relative;
-  &:hover {
-    .ui-tooltip-inner {
-      display: block;
+  > div {
+    position: absolute;
+  }
+    &:hover {
+      .ui-tooltip-inner {
+        display: block;
+      }
     }
-
-    > div {
+    .ui-tooltip-inner {
       display: none;
       position: absolute;
-    }
-    .ui-tooltip-inner {
       max-width: 200px;
       padding: 3px 8px;
       color: #fff;
       text-align: center;
       background-color: #000;
       border-radius: 4px;
-      position: relative;
       z-index: 1;
       &:before {
         content: '';
@@ -183,4 +183,3 @@
       }
     }
   }
-}
