@@ -5,6 +5,18 @@ import classnames from 'classnames';
 class TabGroup extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeIndex: 0
+    }
+  }
+
+  getTitleItemCls(idx) {
+    return idx === this.state.activeIndex ? 'ui-tab-hd-item active' : 'ui-tab-hd-item';
+  }
+
+  getContentItemCls(idx) {
+    return idx === this.state.activeIndex ? 'ui-tab-bd-item active' : 'ui-tab-bd-item';
   }
 
   render () {
@@ -21,11 +33,15 @@ class TabGroup extends Component {
     return (<div {...others} className={cls}>
       <ul className="ui-tab-hd">
         {
-          children.map(item => <li className={'isActive' in item.props ? 'active' : ''}>{item.props.title}</li>)
+          children.map((item, idx) => <li className={this.getTitleItemCls(idx)} onClick={()=>{this.setState({activeIndex:idx})}} key={idx}>{item.props.title}</li>)
         }
       </ul>
       <div className="ui-tab-bd">
-        {children}
+        {children.map((item, idx) => {
+          return (<div className={this.getContentItemCls(idx)} key={idx}>
+              {item}
+            </div>)
+        })}
       </div>
     </div>);
   }

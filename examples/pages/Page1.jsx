@@ -27,15 +27,11 @@ import {
   Pagination,
   Panel,
   Step,
-<<<<<<< HEAD
-  Tooltip,
-  Tab
-=======
   DatePicker,
   Calendar,
   Tooltip,
-  Upload
->>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
+  Upload,
+  Tab
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -70,14 +66,8 @@ class Page1 extends Component {
       checkboxValue: [],
       tags         : [],
 
-<<<<<<< HEAD
-      tableSelection  : [],
-      tableLoading    : false,
-      value: 'helloworld',
-=======
       tableSelection: [],
       tableLoading  : false,
->>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
 
       currentPage  : 4,
       pageSize     : 10,
@@ -111,7 +101,6 @@ class Page1 extends Component {
     return (
       <Loading visible={this.state.loading} message="付款中">
         <div className="demo">
-<<<<<<< HEAD
           <h4>Tab</h4>
           <Tab.Group style={{width:'300px'}}>
             <Tab title="选项卡1" isActive>
@@ -130,9 +119,6 @@ class Page1 extends Component {
               <Button>你好这里是一个{item}的ToolTip</Button>
             </Tooltip>;
           })}
-=======
->>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
-
           <h4>数据的校验</h4>
           <Form style={{maxWidth: '100%'}} type="inline">
             <Form.Item label="用户名">
@@ -592,51 +578,6 @@ class Page1 extends Component {
                 }} />
               </Panel.More>
             </Panel.Header>
-<<<<<<< HEAD
-            <Table
-              striped
-              radius
-              isLoading={this.state.tableLoading}
-              dataSource={dataSource}
-              columns={[{
-                title: '序号',
-                width: 100,
-                render: (value, row, index) => {
-                  return index + 1;
-                }
-              },{
-                title: '姓名',
-                dataIndex: 'name',
-                width: 100,
-                render: (value, row, index) => {
-                  return <a href="javascript:;">{value}</a>;
-                }
-              },
-              {
-                title: '部门',
-                dataIndex: 'dept',
-                width: 140,
-                render: (value, row, index) => {
-                  return (
-                    <Select size="sm" value={value} style={{width: 120}}>
-                      <Select.Option value="直营部">直营部</Select.Option>
-                      <Select.Option value="健康险事业部">健康险事业部</Select.Option>
-                      <Select.Option value="金融信保部">金融信保部</Select.Option>
-                      <Select.Option value="人力资源部">人力资源部</Select.Option>
-                    </Select>
-                  );
-                }
-              },
-              {
-                title: '年龄',
-                dataIndex: 'age',
-                width: 80,
-                render: (value, row, index) => {
-                  if (index === 2) {
-                    return <Input size="sm" style={{width: 40}} defaultValue={value} maxLength="3" />;
-                  } else {
-                    return value;
-=======
             <Panel.Body style={{padding: 0}}>
               <Table
                 striped
@@ -648,7 +589,6 @@ class Page1 extends Component {
                   width: 50,
                   render: (value, row, index) => {
                     return index + 1;
->>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
                   }
                 },{
                   title: '姓名',

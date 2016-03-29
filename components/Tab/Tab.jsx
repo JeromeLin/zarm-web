@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import classnames from 'classnames';
 import Loading from '../Loading';
 
-class Tab extends Component {
+class Tab extends Component{
   render () {
     const props = this.props;
     const {isActive, className, children, ...others} = props;
