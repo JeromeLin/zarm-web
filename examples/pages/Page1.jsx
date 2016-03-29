@@ -27,25 +27,33 @@ import {
   Pagination,
   Panel,
   Step,
+<<<<<<< HEAD
   Tooltip,
   Tab
+=======
+  DatePicker,
+  Calendar,
+  Tooltip,
+  Upload
+>>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
 } from '../../components';
 
 import '../../styles/index.scss';
 import '../styles/pages/Page1.scss';
 
 let index = 0;
-const dataSource = [
-  {id: '1', name: '张三', dept: '直营部', address: '上海市杨浦区四平路324号', state: true},
-  {id: '2', name: '李四', dept: '健康险事业部', age: 32, state: true},
-  {id: '3', name: '王五', dept: '金融信保部', age: 20, address: '上海市浦东区张杨路1400号', state: false},
-];
-
 class Page1 extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      dataSource: [
+        {id: '1', name: '张三', dept: '直营部', age: 46, address: '上海市杨浦区四平路324号', state: true},
+        {id: '2', name: '李四', dept: '健康险事业部', age: 32, address: 'wda', state: true},
+        {id: '3', name: '王五', dept: '金融信保部', age: 20, address: '上海市浦东区张杨路1400号', state: false},
+        {id: '4', name: '奥巴马', dept: '健康险事业部', age: 45, address: '美国洛杉矶', state: false},
+      ],
+
       modal     : false,
       confirm   : false,
       alert     : false,
@@ -62,14 +70,21 @@ class Page1 extends Component {
       checkboxValue: [],
       tags         : [],
 
+<<<<<<< HEAD
       tableSelection  : [],
       tableLoading    : false,
       value: 'helloworld',
+=======
+      tableSelection: [],
+      tableLoading  : false,
+>>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
 
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
-      username     : '45678'
+      username     : '45678',
+
+      date  : '2015-12-1',
     };
   }
 
@@ -96,6 +111,7 @@ class Page1 extends Component {
     return (
       <Loading visible={this.state.loading} message="付款中">
         <div className="demo">
+<<<<<<< HEAD
           <h4>Tab</h4>
           <Tab.Group style={{width:'300px'}}>
             <Tab title="选项卡1" isActive>
@@ -114,6 +130,8 @@ class Page1 extends Component {
               <Button>你好这里是一个{item}的ToolTip</Button>
             </Tooltip>;
           })}
+=======
+>>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
 
           <h4>数据的校验</h4>
           <Form style={{maxWidth: '100%'}} type="inline">
@@ -139,7 +157,7 @@ class Page1 extends Component {
               <Input placeholder="请输入..." />
             </Form.Item>
             <Form.Item label="密码">
-              <Input placeholder="请输入..."  value={this.state.username}/>
+              <Input placeholder="请输入..." />
             </Form.Item>
             <Form.Item>
               <Button theme="success">登录</Button>
@@ -246,12 +264,28 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="文字提示"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              {
+                ['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
+                  let title = '这是一个' + item + '的Tooltip';
+                  return (
+                    <Tooltip key={index} title={title} direction={item} style={{width: 200}}>
+                      <Button>{item}</Button>
+                    </Tooltip>
+                  );
+                })
+              }
+            </Form.Item>
+
+            <Form.Item
               label="面包屑" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Breadcrumb>
                 <Breadcrumb.Item>首页</Breadcrumb.Item>
-                <Breadcrumb.Item href="">模块</Breadcrumb.Item>
+                <Breadcrumb.Item><Link to="/page2">模块</Link></Breadcrumb.Item>
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
               <Breadcrumb separator=">">
@@ -262,10 +296,10 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="面包屑" 
+              label="步骤条" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-                <Step current={6}>
+                <Step current={3}>
                   <Step.Item>投保单基本信息</Step.Item>
                   <Step.Item>投保单位录入</Step.Item>
                   <Step.Item>产品选择</Step.Item>
@@ -277,7 +311,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="输入框"
+              label="普通输入框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
               help="写点提示信息吧">
@@ -285,19 +319,19 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="密码"
+              label="错误提示的输入框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
-              help="请输入密码"
+              help="我是错误信息"
               theme="error">
               <Input type="password" placeholder="请输入..." id="password" />
             </Form.Item>
 
             <Form.Item
-              label="警告样式的表单"
+              label="警告样式的输入框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
-              help="我是警告内容"
+              help="我是警告信息"
               theme="warning">
               <Input type="email" placeholder="请输入..." />
             </Form.Item>
@@ -306,7 +340,7 @@ class Page1 extends Component {
               label="文本框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
-              help="请输入密码">
+              help="请输入内容">
               <Input type="textarea" rows="3" placeholder="请输入..." id="remark" />
             </Form.Item>
 
@@ -317,6 +351,18 @@ class Page1 extends Component {
               theme="error"
               help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
               <Switch /> 普通开关
+              <br />
+              <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
+              <br />
+              <Switch defaultValue={true} /> 设定默认值为true
+              <br />
+              <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
+              <br />
+              <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
+                this.setState({
+                  switchValue: value,
+                });
+              }} /> 小开关
             </Form.Item>
 
             <Form.Item
@@ -397,6 +443,44 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="日历"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Calendar
+                style={{display: 'inline-block'}}
+                value={this.state.date}
+                onChange={(date) => {
+                  this.setState({date});
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              label="日期选择器"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <DatePicker
+                style={{width: 120}}
+                // value={this.state.date}
+                placeholder="请选择日期"
+                onChange={(date) => {
+                  this.setState({date});
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              label="上传" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Upload onChange={(files) => {
+                console.log(files)
+              }}>
+                <Button>上传</Button>
+              </Upload>
+            </Form.Item>
+
+            <Form.Item
               label="模态框"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
@@ -467,8 +551,21 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Panel>
-                <Panel.Header>面板</Panel.Header>
-                <Panel.Body>内容</Panel.Body>
+                <Panel.Header>
+                  <Panel.Title>头部左侧</Panel.Title>
+                  <Panel.More>
+                    头部右侧
+                  </Panel.More>
+                </Panel.Header>
+                <Panel.Body>
+                  内容
+                </Panel.Body>
+                <Panel.Footer>
+                  <Panel.Title>底部左侧</Panel.Title>
+                  <Panel.More>
+                    底部右侧
+                  </Panel.More>
+                </Panel.Footer>
               </Panel>
             </Form.Item>
 
@@ -485,13 +582,17 @@ class Page1 extends Component {
 
           <Panel>
             <Panel.Header>
-              切换Loading状态：
-              <Switch size="sm" value={this.state.tableLoading} onChange={(value) => {
-                this.setState({
-                  tableLoading: value
-                });
-              }} />
+              <Panel.Title>表格</Panel.Title>
+              <Panel.More>
+                切换Loading状态：
+                <Switch size="sm" value={this.state.tableLoading} onChange={(value) => {
+                  this.setState({
+                    tableLoading: value
+                  });
+                }} />
+              </Panel.More>
             </Panel.Header>
+<<<<<<< HEAD
             <Table
               striped
               radius
@@ -535,102 +636,162 @@ class Page1 extends Component {
                     return <Input size="sm" style={{width: 40}} defaultValue={value} maxLength="3" />;
                   } else {
                     return value;
+=======
+            <Panel.Body style={{padding: 0}}>
+              <Table
+                striped
+                radius
+                isLoading={this.state.tableLoading}
+                dataSource={this.state.dataSource}
+                columns={[{
+                  dataIndex: 'id',
+                  width: 50,
+                  render: (value, row, index) => {
+                    return index + 1;
+>>>>>>> 68002382a3855b087a5fa093fb1063e09343c430
                   }
-                }
-              },{
-                title: '住址',
-                dataIndex: 'address',
-              },{
-                title: '状态',
-                dataIndex: 'state',
-                width: 100,
-                render: (value, row, index) => {
-                  return <Switch size="sm" defaultValue={value} />;
-                }
-              },{
-                title: '操作',
-                dataIndex: 'op',
-                width: 120,
-                render: (value, row, index) => {
-                  return (
-                    <div style={{color: '#ccc'}}>
-                      <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
-                      &nbsp;&nbsp;|&nbsp;&nbsp;
-                      <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
+                },{
+                  title: '姓名',
+                  dataIndex: 'name',
+                  width: 100,
+                  render: (value, row, index) => {
+                    return <a href="javascript:;">{value}</a>;
+                  },
+                  sorter: (a, b) => {
+                    return a.name.localeCompare(b.name);
+                  }
+                },{
+                  title: '部门',
+                  dataIndex: 'dept',
+                  width: 140,
+                  render: (value, row, index) => {
+                    return (
+                      <Select size="sm" value={value} style={{width: 120}}>
+                        <Select.Option value="直营部">直营部</Select.Option>
+                        <Select.Option value="健康险事业部">健康险事业部</Select.Option>
+                        <Select.Option value="金融信保部">金融信保部</Select.Option>
+                        <Select.Option value="人力资源部">人力资源部</Select.Option>
+                      </Select>
+                    );
+                  },
+                  sorter: (a, b) => {
+                    return a.dept.localeCompare(b.dept);
+                  }
+                },{
+                  title: '年龄',
+                  dataIndex: 'age',
+                  width: 80,
+                  render: (value, row, index) => {
+                    return <Input size="sm" style={{width: 40}} defaultValue={value} value={value} maxLength="3" onChange={(e) => {
+                      let dataSource = this.state.dataSource;
+                      dataSource[index].age = e.target.value;
+                      this.setState({dataSource});
+                    }}/>;
+                  },
+                  sorter: (a, b) => {
+                    return a.age - b.age;
+                  }
+                },{
+                  title: '住址',
+                  dataIndex: 'address'
+                },{
+                  title: '状态',
+                  dataIndex: 'state',
+                  width: 100,
+                  render: (value, row, index) => {
+                    return <Switch size="sm" value={value} />;
+                  },
+                  sorter: (a, b) => {
+                    return a.state - b.state;
+                  }
+                },{
+                  title: '操作',
+                  dataIndex: 'op',
+                  width: 120,
+                  render: (value, row, index) => {
+                    return (
+                      <div style={{color: '#ccc'}}>
+                        <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
+                      </div>
+                    );
+                  }
+                }]}
+                rowSelection={{
+                  onSelect: (selected, row, selectedRows) => {
+                    console.log(selected, row, selectedRows);
+
+                  },
+                  onSelectAll: (selected, selectedRows) => {
+                    console.log(selected, selectedRows)
+                  }
+                }}>
+              </Table>
+            </Panel.Body>
+            <Panel.Footer>
+              <Panel.More>
+                <Pagination
+                  bordered
+                  value={this.state.currentPage}
+                  pageSize={this.state.pageSize}
+                  total={324}
+                  style={{marginTop: 10}}
+                  addonBefore={`共有324条记录 第${this.state.currentPage}/${Math.ceil(324/this.state.pageSize)}页`}
+                  addonAfter={
+                    <div>
+                      <Select
+                        size="sm"
+                        defaultValue={10}
+                        onChange={(data) => {
+                          this.setState({
+                            currentPage: 1,
+                            pageSize   : data.value,
+                          });
+                        }}>
+                        <Select.Option value={10}>每页 10 条</Select.Option>
+                        <Select.Option value={20}>每页 20 条</Select.Option>
+                        <Select.Option value={30}>每页 30 条</Select.Option>
+                        <Select.Option value={40}>每页 40 条</Select.Option>
+                      </Select>
+                      <span style={{display: 'inline-block', marginLeft: 15}}>
+                        跳至<span style={{display: 'inline-block', width: 50, marginLeft: 5, marginRight: 5}}>
+                        <Input size="sm" value={this.state.inputPage}
+                          onChange={(e) => {
+                            let value = e.target.value;
+
+                            this.setState({
+                              inputPage: value,
+                            });
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.keyCode === 13) {
+                              let value = parseInt(this.state.inputPage);
+                              if (!value) return;
+
+                              const pageCount = Math.ceil(324/this.state.pageSize);
+                              value = (value < 1) ? 1 : value;
+                              value = (value > pageCount) ? pageCount : value;
+
+                              this.setState({
+                                currentPage: value,
+                                inputPage  : value,
+                              });
+                            }
+                          }} />
+                        </span>页
+                      </span>
                     </div>
-                  );
-                }
-              }]}
-              rowSelection={{
-                onSelect: (selected, row, selectedRows) => {
-                  console.log(selected, row, selectedRows);
-
-                },
-                onSelectAll: (selected, selectedRows) => {
-                  console.log(selected, selectedRows)
-                }
-              }}>
-            </Table>
-          </Panel>
-
-          <Pagination
-            bordered
-            value={this.state.currentPage}
-            pageSize={this.state.pageSize}
-            total={324}
-            style={{fontSize: 14}}
-            addonBefore={`共有324条记录 第${this.state.currentPage}/${Math.ceil(324/this.state.pageSize)}页`}
-            addonAfter={
-              <div>
-                <Select
-                  size="sm"
-                  defaultValue={10}
-                  onChange={(data) => {
+                  }
+                  onPageChange={(value) => {
                     this.setState({
-                      currentPage: 1,
-                      pageSize   : data.value,
-                    });
-                  }}>
-                  <Select.Option value={10}>每页 10 条</Select.Option>
-                  <Select.Option value={20}>每页 20 条</Select.Option>
-                  <Select.Option value={30}>每页 30 条</Select.Option>
-                  <Select.Option value={40}>每页 40 条</Select.Option>
-                </Select>
-                <span style={{display: 'inline-block', marginLeft: 15}}>
-                  跳至<span style={{display: 'inline-block', width: 50, marginLeft: 5, marginRight: 5}}>
-                  <Input size="sm" value={this.state.inputPage}
-                    onChange={(e) => {
-                      let value = e.target.value;
-
-                      this.setState({
-                        inputPage: value,
-                      });
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.keyCode === 13) {
-                        let value = parseInt(this.state.inputPage);
-                        if (!value) return;
-
-                        const pageCount = Math.ceil(324/this.state.pageSize);
-                        value = (value < 1) ? 1 : value;
-                        value = (value > pageCount) ? pageCount : value;
-
-                        this.setState({
-                          currentPage: value,
-                          inputPage  : value,
-                        });
-                      }
-                    }} />
-                  </span>页
-                </span>
-              </div>
-            }
-            onPageChange={(value) => {
-              this.setState({
-                currentPage : value,
-                inputPage   : value,
-              })
-            }} />
+                      currentPage : value,
+                      inputPage   : value,
+                    })
+                  }} />
+              </Panel.More>
+            </Panel.Footer>
+          </Panel>
 
           <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
             <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>

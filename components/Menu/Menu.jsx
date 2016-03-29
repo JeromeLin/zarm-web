@@ -5,11 +5,12 @@ import classnames from 'classnames';
 class Menu extends Component {
 
   render () { 
-    const { className, children, ...others } = this.props;
+    const { size, className, children, ...others } = this.props;
 
     const cls = classnames({
-      'ui-menu'          : true,
-      [className]        : !!className,
+      'ui-menu'       : true,
+      [`size-${size}`]: !!size,
+      [className]     : !!className,
     });
 
     return (

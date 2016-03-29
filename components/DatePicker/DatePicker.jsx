@@ -4,19 +4,18 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import isNodeInTree from '../utils/isNodeInTree';
-import Option from './Option';
+import Format from '../utils/Format';
 import Dropdown from '../Dropdown';
-import Menu from '../Menu';
+import Calendar from '../Calendar';
 import Icon from '../Icon';
-import Mask from '../Mask';
 
-class Select extends Component {
+class DatePicker extends Component {
 
   constructor(props) {
     super(props);
     this.unmounted = false;
     this.state = {
-      value   : props.value || props.defaultValue || this.getCheckedValue(props.children),
+      value   : Format.date(props.value || props.defaultValue, props.format),
       dropdown: false,
     };
   }
@@ -25,44 +24,36 @@ class Select extends Component {
     this.unmounted = true;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
-      this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children)
-      });
-    }
-  }
-
   componentWillUnmount() {
     this.unmounted = false;
     this.unbindOuterHandlers();
   }
+  
+  componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps) {
+      this.setState({
+        value: Format.date(nextProps.value, this.props.format),
+      });
+    }
+  }
 
   render () {
     const props = this.props;
-    const { placeholder, isDisabled, size, ...others } = props;
+    const { defaultValue, placeholder, isDisabled, size, format, ...others } = props;
+    const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
 
     let valueText = placeholder,
         hasValue = false;
 
-    let children = React.Children.map(props.children, (option, index) => {
-      if (this.state.value == option.props.value) {
-        valueText = option.props.children;
-        hasValue = true;
-      }
-
-      return (
-        <Option
-          {...option.props}
-          onChange={(e) => this.onOptionChange(e, option.props, index)}
-          checked={this.state.value === option.props.value} />
-      );
-    });
+    if (value) {
+      valueText = value;
+      hasValue = true;
+    }
 
     const cls = classnames({
       'ui-select'         : true,
-      'ui-select-open'    : this.state.dropdown,
+      'ui-select-open'    : dropdown,
       'ui-select-disabled': disabled,
       [`size-${size}`]    : !!size,
     });
@@ -74,56 +65,36 @@ class Select extends Component {
 
     return (
       <span className={cls} {...others}>
-        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
+        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
-          <span className="ui-select-arrow">
-            <Icon type="unfold" />
+          <span className="ui-select-icon">
+            <Icon type="date" />
           </span>
         </span>
-        <Dropdown visible={this.state.dropdown}>
-          <Menu size={size}>
-            {children}
-          </Menu>
+        <Dropdown visible={dropdown}>
+          <Calendar defaultValue={defaultValue} value={value} format={format} hasFooter={true} onChange={(value) => this.onDateChange(value)} />
         </Dropdown>
       </span>
     );
   }
 
-  getCheckedValue(children) {
-    let checkedValue = null;
-    React.Children.forEach(children, (option) => {
-      if (option.props && option.props.checked) {
-        checkedValue = option.props.value;
-      }
-    });
-    return checkedValue;
-  }
-
   onSelectClick(e) {
     e.preventDefault();
-    this.setDropdown(!this.state.dropdown);
+    const disabled = 'disabled' in this.props || this.props.isDisabled;
+    !disabled && this.setDropdown(!this.state.dropdown);
   }
 
-  onOptionChange(e, props, index) {
-    if ('disabled' in props) {
-      return;
-    }
-
+  onDateChange(value) {
     this.setState({
-      value: props.value,
+      value: value,
+    }, () => {
+      this.setDropdown(false, this.props.onChange(value));
     });
-
-    const selected = {
-      index: index,
-      value: props.value,
-      text : props.children,
-    };
-    this.setDropdown(false, this.props.onChange(selected));
   }
 
   setDropdown(isOpen, callback) {
     if (!this.unmounted) return;
-
+    
     if (isOpen) {
       this.bindOuterHandlers();
     } else {
@@ -143,7 +114,7 @@ class Select extends Component {
 
   handleOuterClick(e) {
     if (!this.unmounted || isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
-      return;
+      return false;
     }
     this.setDropdown(false);
   }
@@ -159,16 +130,16 @@ class Select extends Component {
   }
 }
 
-Select.propTypes = {
-  defaultChecked: PropTypes.bool,
+DatePicker.propTypes = {
   isDisabled    : PropTypes.bool,
+  format        : PropTypes.string,
   onChange      : PropTypes.func,
 };
 
-Select.defaultProps = {
-  defaultChecked: false,
+DatePicker.defaultProps = {
   isDisabled    : false,
+  format        : 'yyyy-MM-dd',
   onChange      : function () {},
 };
 
-export default Select;
+export default DatePicker;
