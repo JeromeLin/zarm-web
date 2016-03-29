@@ -13,11 +13,9 @@ class Tooltip extends Component {
       [className]: !!className
     });
     return (<div {...others} className={cls}>
-      <div>
         <div className="ui-tooltip-inner">
           {title}
         </div>
-      </div>
       {children}
     </div>);
   }

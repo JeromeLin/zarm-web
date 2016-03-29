@@ -1,0 +1,28 @@
+.ui-tab{
+  border: 1px solid #ddd;
+  .ui-tab-hd{
+    list-style: none;
+    display: flex;
+    margin:0;
+    padding:0;
+    border-bottom:1px solid #ddd;
+    height:30px;
+    line-height:30px;
+    li{
+      flex:1;
+      background:#ccc;
+      text-align: center;
+      border-right:1px solid #ddd;
+      &.active{
+        background: #fff;
+        border-bottom:2px solid #00b0e8;
+      }
+    }
+  }
+  .ui-tab-bd{
+    >div {
+      padding: 20px;
+      box-sizing: border-box;
+    }
+  }
+}

@@ -23,3 +23,4 @@ export Pagination from './Pagination';
 export Panel from './Panel';
 export Step from './Step';
 export Tooltip from './Tooltip';
+export Tab from './Tab';
