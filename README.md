@@ -29,16 +29,17 @@ import { Modal, Alert } from dragon-ui;
 - Table 表格
 - Pagination 分页
 - Panel 面版
+- Step 步骤条
+- Tooltip 文字提示
+- Calendar 日历
+- DatePicker 日期选择器
 
 ## 待开发组件
 - Message 全局提示
-- DatePicker 日期选择器
 - Tab 内容切换
 - Upload 上传
-- Steps 步骤条
-- Tooltip 文字提示
-- Progress 进度条
 - Transfer 穿梭框
+- Progress 进度条
 - Slider 滑动输入条
 - TimePicker 时间选择器
 - Timeline 时间轴

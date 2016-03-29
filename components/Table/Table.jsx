@@ -3,13 +3,15 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Loading from '../Loading';
 import Checkbox from '../Checkbox';
+// import TableSorter from './TableSorter';
 
 class Table extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      selectedRows  : [],
+      selectedRows: [],
+      sort        : {},
     };
   }
 
@@ -104,20 +106,61 @@ class Table extends Component {
 
   // 表头渲染
   renderColumn(column, index) {
-    if ('columnRender' in column)
-      return <th key={index} width={column.width}>{column.columnRender(column, index)}</th>;
-    else
-      return <th key={index} width={column.width}>{column.title}</th>;
+    let render = ('columnRender' in column) 
+               ? column.columnRender(column, index)
+               : column.title;
+
+    return (
+      <th key={index} width={column.width}>
+        {render}
+        {this.renderSorter(column)}
+      </th>
+    );
+  }
+
+  // 排序渲染
+  renderSorter(column) {
+    const sort = this.state.sort[column.dataIndex];
+    const sortUpCls = classnames({
+      'ui-table-sorter-up'    : true,
+      'ui-table-sorter-active': !!sort,
+    }),
+    sortDownCls = classnames({
+      'ui-table-sorter-down'  : true,
+      'ui-table-sorter-active': (sort !== undefined) && !sort,
+    });
+
+    return column.sorter ? (
+      <span className="ui-table-sorter" onClick={() => this.onSort(column)}>
+        <span className={sortUpCls}></span>
+        <span className={sortDownCls}></span>
+      </span>
+    ) : null;
   }
 
   // 单元格渲染
   renderCell(column, row, rowIndex) {
     const value = row[column.dataIndex];
+    const render = ('render' in column) 
+                 ? column.render(value, row, rowIndex)
+                 : value;
 
-    if ('render' in column)
-      return <td key={column.dataIndex}>{column.render(value, row, rowIndex)}</td>;
-    else
-      return <td key={column.dataIndex}>{value}</td>;
+    return <td key={column.dataIndex}>{render}</td>;
+  }
+
+  onSort(column) {
+    const { dataSource } = this.props;
+    const sort = !this.state.sort[column.dataIndex];
+
+    sort ? dataSource.sort(column.sorter)
+         : dataSource.reverse(column.sorter);
+
+    this.setState({
+      dataSource,
+      sort: {
+        [`${column.dataIndex}`]: sort,
+      }
+    });
   }
 }
 

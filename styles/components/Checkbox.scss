@@ -25,10 +25,8 @@
     display: inline-block;
     width: 14px;
     height: 14px;
-    border-width: 1px;
-    border-style: solid;
+    border: 1px solid #d9d9d9;
     border-radius: 3px;
-    border-color: #d9d9d9;
     background-color: #fff;
     transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
 
@@ -61,6 +59,7 @@
 
 /* 选中状态 */
 .ui-checkbox-checked {
+  
   .ui-checkbox-inner {
     border-color: $base-theme-info;
     background-color: $base-theme-info;
@@ -78,13 +77,10 @@
   .ui-checkbox-inner {
     border-color: #d9d9d9;
     background-color: #f3f3f3;
+    cursor: not-allowed;
 
     &:after {
       background-color: #ccc;
     }
-  }
-
-  .ui-checkbox-input {
-    cursor: not-allowed;
   }
 }
