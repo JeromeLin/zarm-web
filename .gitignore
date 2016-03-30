@@ -3,6 +3,7 @@
 node_modules
 dist
 lib
+assets
 coverage
 _book
 .idea
