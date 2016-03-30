@@ -58,6 +58,6 @@ const rootRoute = {
 }
 
 ReactDOM.render(
-  <Router routes={rootRoute} history={browserHistory} />,
+  <Router routes={rootRoute} history={hashHistory} />,
   document.getElementById('app')
 );
