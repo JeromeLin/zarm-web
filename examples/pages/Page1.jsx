@@ -419,7 +419,7 @@ class Page1 extends Component {
                   console.log(file)
                 }}>
                 <Button>上传</Button>
-              </Upload>
+              </Upload>（未完待续）
             </Form.Item>
 
             <Form.Item
