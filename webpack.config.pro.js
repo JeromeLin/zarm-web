@@ -10,10 +10,10 @@ module.exports = {
   },
 
   output: {
-    path: path.join(process.cwd(), '/'),
+    path: path.join(process.cwd(), 'assets'),
     filename: 'js/[name].min.js',
     chunkFilename: 'js/[name].[chunkhash:8].min.js',
-    publicPath: '/'
+    publicPath: './assets/'
   },
 
   module: {
