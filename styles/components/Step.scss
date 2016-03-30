@@ -1,5 +1,6 @@
 .ui-step {
   width: 100%;
+  margin-bottom: 20px;
   line-height: 1.5;
 
   .ui-step-item,
@@ -10,7 +11,6 @@
   }
   
   .ui-step-item {
-    margin-bottom: 20px;
     text-align: center;
 
     &:first-of-type {

@@ -30,17 +30,51 @@ class Upload extends Component {
   }
 
   onFileChange(e) {
-    const files = this.refs.upload.files;
-    this.props.onChange(files);
+    const { uploadUrl, onSelect, onProgress, onComplete } = this.props;
+    let fd = new FormData(),
+        file = this.refs.upload.files[0],
+        xhr = new XMLHttpRequest(),
+        loaded,
+        total,
+        percent;
+
+    if (onSelect(file) === false) {
+      return false;
+    }
+     
+    fd.append("files", file);
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        onComplete(xhr.responseText);
+      }
+    }
+
+    //侦查当前附件上传情况
+    xhr.upload.onprogress = (e) => {
+      loaded = e.loaded;
+      total = e.total;
+      percent = Math.floor(100 * loaded / total); //已经上传的百分比
+      onProgress(percent);
+    };
+
+    xhr.open("post", uploadUrl);
+    xhr.send(fd);
   }
 }
 
 Upload.propTypes = {
-  onChange: PropTypes.func,
+  uploadUrl : PropTypes.string,
+  onSelect  : PropTypes.func,
+  onProgress: PropTypes.func,
+  onComplete: PropTypes.func,
 };
 
 Upload.defaultProps = {
-  onChange: function () {},
+  uploadUrl : '',
+  onSelect  : () => {},
+  onProgress: () => {},
+  onComplete: () => {},
 };
 
 export default Upload;

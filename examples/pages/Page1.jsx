@@ -424,9 +424,18 @@ class Page1 extends Component {
               label="上传" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Upload onChange={(files) => {
-                console.log(files)
-              }}>
+              <Upload
+                onSelect={ file => {
+                  // console.log(file)
+                  // const isJPG = file.type === 'image/jpeg';
+                  // if (!isJPG) {
+                  //   alert('只能上传 JPG 文件哦！');
+                  // }
+                  // return isJPG;
+                }}
+                onComplete={ file => {
+                  console.log(file)
+                }}>
                 <Button>上传</Button>
               </Upload>
             </Form.Item>
