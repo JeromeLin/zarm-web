@@ -1,7 +1,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import classnames from 'classnames';
-
+import Tab from './Tab';
 class TabGroup extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +9,24 @@ class TabGroup extends Component {
     this.state = {
       activeIndex: 0
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ('activeIndex' in nextProps || this.getSelectIndex(nextProps.children)) {
+      this.setState({
+        activeIndex: nextProps.activeIndex || this.getSelectIndex(nextProps.children)
+      });
+    }
+  }
+
+  getSelectIndex(children) {
+    let selectIndex;
+     React.Children.forEach(children, (item, $index) => {
+      if (item.props && item.props.selected) {
+        selectIndex = $index;
+      }
+    });
+    return selectIndex;
   }
 
   getTitleItemCls(idx) {
@@ -29,19 +47,25 @@ class TabGroup extends Component {
       [`theme-${theme}`]: !!theme,
       [className] : !!className
     });
-
+    let len = children.length;
+    let Children = React.Children.map(props.children, (item, $index) => {
+      return (
+        <Tab {...item.props} selected={!!(this.state.activeIndex === $index)}>
+          {item.props.children}
+        </Tab>
+      );
+    });
+    let liItem = React.Children.map(props.children, (item, $index) => {
+      return (
+        <li style={{'width': (100/len) + '%'}} className={this.getTitleItemCls($index)} onClick={()=>{this.setState({activeIndex:$index})}} key={$index}>{item.props.title}</li>
+      );
+    });
     return (<div {...others} className={cls}>
       <ul className="ui-tab-hd">
-        {
-          children.map((item, idx) => <li className={this.getTitleItemCls(idx)} onClick={()=>{this.setState({activeIndex:idx})}} key={idx}>{item.props.title}</li>)
-        }
+        {liItem}
       </ul>
       <div className="ui-tab-bd">
-        {children.map((item, idx) => {
-          return (<div className={this.getContentItemCls(idx)} key={idx}>
-              {item}
-            </div>)
-        })}
+        {Children}
       </div>
     </div>);
   }
