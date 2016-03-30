@@ -26,10 +26,12 @@ module.exports = {
       { 
         test: /\.scss$/, 
         loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer!sass?sourceMap")
+        // loader: 'style!css!autoprefixer!sass'
       },
       { 
         test: /\.css$/, 
-        loader: 'style!css?sourceMap&-minimize!autoprefixer'
+        loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer")
+        // loader: 'style!css!autoprefixer'
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
