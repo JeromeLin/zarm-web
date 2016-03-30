@@ -119,37 +119,19 @@ class Page1 extends Component {
           <h4>Form inline</h4>
           <Form type="inline">
             <Form.Item
-              className="col-sm-3"
+              className="col-sm-4"
               label="类型">
               <Input placeholder="请输入..." />
             </Form.Item>
             <Form.Item
-              className="col-sm-3"
+              className="col-sm-4"
               label="来源">
               <Input placeholder="请输入..." />
             </Form.Item>
             <Form.Item
-              className="col-sm-3"
-              label="等级">
-              <Input placeholder="请输入..." />
-            </Form.Item>
-            <Form.Item
-              className="col-sm-3"
+              className="col-sm-4"
               label="">
               <Button theme="success">查询</Button>
-            </Form.Item>
-          </Form>
-
-          <Form type="inline">
-
-            <Form.Item label="账号">
-              <Input placeholder="请输入..." />
-            </Form.Item>
-            <Form.Item label="密码">
-              <Input placeholder="请输入..." />
-            </Form.Item>
-            <Form.Item>
-              <Button theme="success">登录</Button>
             </Form.Item>
           </Form>
 
@@ -305,9 +287,9 @@ class Page1 extends Component {
               <br />
               <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
               <br />
-              <Switch defaultValue={true} /> 设定默认值为true
+              <Switch isCheckedText="是" unCheckedText="否" defaultValue={true} /> 设定默认值为true
               <br />
-              <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
+              <Switch disabled /> 禁用状态
               <br />
               <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
                 this.setState({
@@ -577,10 +559,10 @@ class Page1 extends Component {
                 },{
                   title: '部门',
                   dataIndex: 'dept',
-                  width: 140,
+                  width: 130,
                   render: (value, row, index) => {
                     return (
-                      <Select size="sm" value={value} style={{width: 120}}>
+                      <Select size="sm" value={value} style={{width: 130}}>
                         <Select.Option value="直营部">直营部</Select.Option>
                         <Select.Option value="健康险事业部">健康险事业部</Select.Option>
                         <Select.Option value="金融信保部">金融信保部</Select.Option>
