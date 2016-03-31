@@ -22,7 +22,11 @@ export Table from './Table';
 export Pagination from './Pagination';
 export Panel from './Panel';
 export Step from './Step';
+<<<<<<< HEAD
 export Calendar from './Calendar';
 export DatePicker from './DatePicker';
 export Tooltip from './Tooltip';
 export Upload from './Upload';
+=======
+export Message from './Message';
+>>>>>>> ddf4e487d240451caf6ecbc4636011f3e3f03adf
