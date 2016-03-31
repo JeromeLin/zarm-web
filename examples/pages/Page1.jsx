@@ -70,7 +70,7 @@ class Page1 extends Component {
 
       tableSelection: [],
       tableLoading  : false,
-      
+
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
@@ -436,8 +436,7 @@ class Page1 extends Component {
               <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
               <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
               <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
-              <Button onClick={() => this._onClickOpen('toast')}>消息提示</Button>
-              <Button onClick={() => this._showMessage('this is message.'+(index++))}>Message</Button>
+              <Button onClick={() => this._showMessage('this is message.'+(index++))}>消息提示</Button>
             </Form.Item>
 
             <Form.Item
@@ -716,15 +715,8 @@ class Page1 extends Component {
             visible={this.state.alert}
             message="这是一个警告框！"
             onClose={() => this._onClickClose('alert')} />
-          
-          { this.state.toast ?
-            <Toast
-              visible={this.state.toast}
-              message="这是一个提示信息！"
-              onMaskClick={() => this._onClickClose('toast')} />
-          : null }
 
-          <Message msg={this.state.msg} dur={1000} theme="success" />
+          <Message msg={this.state.msg} duration={1000} theme="success" />
 
           <Mask
             visible={this.state.mask}
