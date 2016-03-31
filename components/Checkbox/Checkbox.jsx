@@ -21,7 +21,7 @@ class Checkbox extends Component {
 
   render () {
     const props = this.props;
-    const { value, isDisabled, className, children, ...others } = props;
+    const { defaultChecked, checked, value, isDisabled, className, children, onChange, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
@@ -32,9 +32,15 @@ class Checkbox extends Component {
     });
 
     return (
-      <label>
+      <label {...others}>
         <span className={cls}>
-          <input {...others} type="checkbox" value={value} className="ui-checkbox-input" checked={this.state.checked} disabled={disabled} onChange={(e) => this._onClick(e)} />
+          <input
+            className="ui-checkbox-input"
+            type="checkbox"
+            value={value}
+            checked={this.state.checked}
+            disabled={disabled}
+            onChange={(e) => this._onClick(e)} />
           <span className="ui-checkbox-inner"></span>
         </span>
         {children}
