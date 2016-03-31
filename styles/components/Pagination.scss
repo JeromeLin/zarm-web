@@ -43,18 +43,18 @@
 .ui-pagination-item {
   float: left;
   display: inline-block;
-  cursor: pointer;
+  border: 1px solid transparent;
   border-radius: 6px;
   min-width: 28px;
   height: 28px;
-  line-height: 28px;
+  line-height: 26px;
   text-align: center;
   list-style: none;
   background-color: #fff;
   margin-right: 4px;
   font-family: Arial;
-  font-size: 12px;
   user-select: none;
+  cursor: pointer;
 
   &.ui-pagination-item-prev,
   &.ui-pagination-item-next {

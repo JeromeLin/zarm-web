@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 
+import '../styles/pages/Page2.scss';
+
 class Page2 extends Component {
 
   render() {

@@ -39,7 +39,7 @@ class TabGroup extends Component {
 
   render () {
     const props = this.props;
-    const {isRadius, theme, className, children, ...others} = props;
+    const {isRadius, theme, className, children, onChange, ...others} = props;
 
     const cls = classnames({
       'ui-tab' : true,
@@ -57,7 +57,7 @@ class TabGroup extends Component {
     });
     let liItem = React.Children.map(props.children, (item, $index) => {
       return (
-        <li style={{'width': (100/len) + '%'}} className={this.getTitleItemCls($index)} onClick={()=>{this.setState({activeIndex:$index})}} key={$index}>{item.props.title}</li>
+        <li className={this.getTitleItemCls($index)} onClick={()=>{this.setState({activeIndex:$index},onChange(item,$index))}} key={$index}>{item.props.title}</li>
       );
     });
     return (<div {...others} className={cls}>

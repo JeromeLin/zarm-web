@@ -34,8 +34,7 @@
     }
 
     > label {
-      padding: 8px 10px 0 0;
-      margin-bottom: 0;
+      padding-top: 6px;
       text-align: right;
     }
   }
@@ -43,25 +42,25 @@
 
 .ui-form-inline {
 
-    &:before {
-      content: " ";
-      display: table;
-    }
+  &:before {
+    content: " ";
+    display: table;
+  }
 
-    &:after {
-      content: " ";
-      display: table;
-      clear: both;
-      visibility: hidden;
-      font-size: 0;
-      height: 0;
-    }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
 
   .ui-form-item {
     display: inline-block;
-    
+
     > label {
-      padding: 8px 6px 0 0;
+      padding-right: 6px;
     }
 
     > .ui-form-item-control {
@@ -78,7 +77,6 @@
 
 /* ui-form-item */
 .ui-form-item {
-  font-size: 12px;
   margin-bottom: 15px;
 
   > label {
