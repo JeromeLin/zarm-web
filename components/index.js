@@ -1,4 +1,3 @@
-
 export Mask from './Mask';
 export Modal from './Modal';
 export Confirm from './Confirm';
@@ -27,3 +26,4 @@ export DatePicker from './DatePicker';
 export Tooltip from './Tooltip';
 export Upload from './Upload';
 export Tab from './Tab';
+export Message from './Message';

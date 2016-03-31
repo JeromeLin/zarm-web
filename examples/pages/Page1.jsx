@@ -31,7 +31,8 @@ import {
   Calendar,
   Tooltip,
   Upload,
-  Tab
+  Tab,
+  Message
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -64,7 +65,9 @@ class Page1 extends Component {
       selectValue  : '',
       selectValue2 : 'b',
       checkboxValue: [],
+      date         : '2015-12-1',
       tags         : [],
+      msg          : [],
 
       tableSelection: [],
       tableLoading  : false,
@@ -72,9 +75,6 @@ class Page1 extends Component {
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
-      username     : '45678',
-
-      date  : '2015-12-1',
     };
   }
 
@@ -92,8 +92,13 @@ class Page1 extends Component {
 
   _removeTag(key) {
     const tags = [...this.state.tags].filter(tag => (tag.key !== key) && tag);
-    console.log(tags);
     this.setState({ tags });
+  }
+
+  _showMessage(m) {
+    this.setState({
+      msg: this.state.msg.concat({m})
+    });
   }
 
   render() {
@@ -102,7 +107,7 @@ class Page1 extends Component {
       <Loading visible={this.state.loading} message="付款中">
         <div className="demo">
           <h4>Tab</h4>
-          <Tab.Group style={{width:'300px'}} isRadius>
+          <Tab.Group style={{width:'300px'}} isRadius onChange={(e,i) => console.log(e,i)}>
             <Tab title="选项卡1" selected>
               这是选项卡1的文字
             </Tab>
@@ -157,37 +162,19 @@ class Page1 extends Component {
           <h4>Form inline</h4>
           <Form type="inline">
             <Form.Item
-              className="col-sm-3"
+              className="col-sm-4"
               label="类型">
               <Input placeholder="请输入..." />
             </Form.Item>
             <Form.Item
-              className="col-sm-3"
+              className="col-sm-4"
               label="来源">
               <Input placeholder="请输入..." />
             </Form.Item>
             <Form.Item
-              className="col-sm-3"
-              label="等级">
-              <Input placeholder="请输入..." />
-            </Form.Item>
-            <Form.Item
-              className="col-sm-3"
+              className="col-sm-4"
               label="">
               <Button theme="success">查询</Button>
-            </Form.Item>
-          </Form>
-
-          <Form type="inline">
-
-            <Form.Item label="账号">
-              <Input placeholder="请输入..." />
-            </Form.Item>
-            <Form.Item label="密码">
-              <Input placeholder="请输入..." />
-            </Form.Item>
-            <Form.Item>
-              <Button theme="success">登录</Button>
             </Form.Item>
           </Form>
 
@@ -343,9 +330,9 @@ class Page1 extends Component {
               <br />
               <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
               <br />
-              <Switch defaultValue={true} /> 设定默认值为true
+              <Switch isCheckedText="是" unCheckedText="否" defaultValue={true} /> 设定默认值为true
               <br />
-              <Switch isCheckedText="是" unCheckedText="否" disabled /> 禁用状态
+              <Switch disabled /> 禁用状态
               <br />
               <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
                 this.setState({
@@ -462,11 +449,20 @@ class Page1 extends Component {
               label="上传" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Upload onChange={(files) => {
-                console.log(files)
-              }}>
+              <Upload
+                onSelect={ file => {
+                  // console.log(file)
+                  // const isJPG = file.type === 'image/jpeg';
+                  // if (!isJPG) {
+                  //   alert('只能上传 JPG 文件哦！');
+                  // }
+                  // return isJPG;
+                }}
+                onComplete={ file => {
+                  console.log(file)
+                }}>
                 <Button>上传</Button>
-              </Upload>
+              </Upload>（未完待续）
             </Form.Item>
 
             <Form.Item
@@ -478,7 +474,7 @@ class Page1 extends Component {
               <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
               <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
               <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
-              <Button onClick={() => this._onClickOpen('toast')}>消息提示</Button>
+              <Button onClick={() => this._showMessage('this is message.'+(index++))}>消息提示</Button>
             </Form.Item>
 
             <Form.Item
@@ -606,10 +602,10 @@ class Page1 extends Component {
                 },{
                   title: '部门',
                   dataIndex: 'dept',
-                  width: 140,
+                  width: 130,
                   render: (value, row, index) => {
                     return (
-                      <Select size="sm" value={value} style={{width: 120}}>
+                      <Select size="sm" value={value} style={{width: 130}}>
                         <Select.Option value="直营部">直营部</Select.Option>
                         <Select.Option value="健康险事业部">健康险事业部</Select.Option>
                         <Select.Option value="金融信保部">金融信保部</Select.Option>
@@ -757,13 +753,8 @@ class Page1 extends Component {
             visible={this.state.alert}
             message="这是一个警告框！"
             onClose={() => this._onClickClose('alert')} />
-          
-          { this.state.toast ?
-            <Toast
-              visible={this.state.toast}
-              message="这是一个提示信息！"
-              onMaskClick={() => this._onClickClose('toast')} />
-          : null }
+
+          <Message msg={this.state.msg} duration={1000} theme="success" />
 
           <Mask
             visible={this.state.mask}

@@ -15,7 +15,6 @@
 
 .ui-table {
   @include table-size(12px, $base-radius);
-  font-size: 12px;
   color: #666;
   
   .ui-table-body {
@@ -45,7 +44,7 @@
     }
 
     th {
-      background: #f4f4f4;
+      background: #fffbe9;
       font-weight: bold;
       transition: background .3s ease;
       position: relative;

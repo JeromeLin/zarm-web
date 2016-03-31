@@ -53,7 +53,8 @@ class Calendar extends Component {
         {
           hasFooter ? (
             <div className="ui-calendar-footer">
-              <a href="javascript:;" onClick={() => this.onDateClick(new Date())}>今天</a>
+              <a href="javascript:;" onClick={() => this.onDateClick(new Date())} className="ui-calendar-footer-btn">今天</a>
+              <a href="javascript:;" onClick={() => this.onDateClick('')} className="ui-calendar-footer-btn">清除</a>
             </div>
           ) : null
         }
