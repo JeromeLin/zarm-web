@@ -297,6 +297,7 @@ class Page1 extends Component {
               <Switch disabled /> 禁用状态
               <br />
               <Switch size="sm" value={this.state.switchValue} onChange={(value) => {
+                console.log(value)
                 this.setState({
                   switchValue: value,
                 });
@@ -337,9 +338,10 @@ class Page1 extends Component {
                 console.log(e.target.checked);
               }}>单独使用</Checkbox>
               <br />
-              <Checkbox.Group value={this.state.checkboxValue} onChange={(data) => {
+              <Checkbox.Group value={this.state.checkboxValue} onChange={(values) => {
+                  console.log('Checkbox to ' + values);
                   this.setState({
-                    checkboxValue: data
+                    checkboxValue: values
                   });
                 }}>
                 <Checkbox value="a">A</Checkbox>
@@ -356,6 +358,7 @@ class Page1 extends Component {
               theme="error"
               help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
               <Select style={{width: 120}} placeholder="请选择" onChange={(data) => {
+                console.log(data)
                 this.setState({
                   selectValue : data.value,
                   selectValue2: data.value
@@ -368,6 +371,7 @@ class Page1 extends Component {
               </Select>
 
               <Select disabled style={{width: 120}} defaultValue={this.state.selectValue2} value={this.state.selectValue2} onChange={(data) => {
+                console.log(data)
                 this.setState({
                   selectValue2: data.value
                 });
@@ -388,6 +392,7 @@ class Page1 extends Component {
                 style={{display: 'inline-block'}}
                 value={this.state.date}
                 onChange={(date) => {
+                  console.log(date)
                   this.setState({date});
                 }}
               />
@@ -402,6 +407,7 @@ class Page1 extends Component {
                 // value={this.state.date}
                 placeholder="请选择日期"
                 onChange={(date) => {
+                  console.log(date)
                   this.setState({date});
                 }}
               />
