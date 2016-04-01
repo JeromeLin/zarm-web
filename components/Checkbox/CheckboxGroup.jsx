@@ -20,7 +20,7 @@ class CheckboxGroup extends Component {
     }
   }
 
-  render () {    
+  render () {
     const props = this.props;
 
     const cls = classnames({
