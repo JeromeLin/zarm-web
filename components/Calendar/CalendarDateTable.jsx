@@ -78,7 +78,7 @@ class CalendarDateTable extends Component {
     let dates = [];
 
     // 当月第一天不在周一时，前面日期用上个月的日期补齐
-    for (let i = pre.days; i > pre.days - current.firstDayOfWeek; i--) {
+    for (let i = pre.days; i > pre.days - current.firstDayOfWeek + 1; i--) {
       dates.unshift(this.renderDateCell({
         year : pre.year,
         month: pre.month,
@@ -96,7 +96,7 @@ class CalendarDateTable extends Component {
     }
 
     // 当月最后一天不在周日时，后面日期用下个月的日期补齐
-    for (let k = 1; k <= CALENDAR_ROW_COUNT * CALENDAR_COL_COUNT  - current.days - current.firstDayOfWeek; k++) {
+    for (let k = 1; k <= CALENDAR_ROW_COUNT * CALENDAR_COL_COUNT  - current.days - current.firstDayOfWeek  + 1; k++) {
       dates.push(this.renderDateCell({
         year : next.year,
         month: next.month,
