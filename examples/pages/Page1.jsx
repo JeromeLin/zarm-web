@@ -31,6 +31,7 @@ import {
   Calendar,
   Tooltip,
   Upload,
+  Tab,
   Message
 } from '../../components';
 
@@ -105,6 +106,43 @@ class Page1 extends Component {
     return (
       <Loading visible={this.state.loading} message="付款中">
         <div className="demo">
+          <h4>Tab</h4>
+          <Tab.Group style={{width:'300px'}} isRadius onChange={(e,i) => console.log(e,i)}>
+            <Tab title="选项卡1" selected>
+              这是选项卡1的文字
+            </Tab>
+            <Tab title="选项卡2">
+              这是选项卡2的文字
+            </Tab>
+            <Tab title="选项卡3">
+              这是选项卡2的文字
+            </Tab>
+          </Tab.Group>
+          <h4>Tooltip</h4>
+          {['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom',
+          'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
+            let title = '这是一个' + item + '的Tooltip';
+            if (item.indexOf('bottom') === -1) return;
+            return <Tooltip title={title} direction={item} style={{margin: '5px 10px 0 0'}}>
+              <Button>你好这里是一个{item}的ToolTip</Button>
+            </Tooltip>;
+          })}
+          <h4>数据的校验</h4>
+          <Form style={{maxWidth: '100%'}} type="inline">
+            <Form.Item label="用户名">
+              <Input placeholder="请输入用户名" value={this.state.value} onChange={(e)=>{
+                let value = e.target.value;
+                if (value.length > 15) {
+                  e.target.style.borderColor = '#f00';
+                  return alert('输入过长');
+                } else {
+                  this.setState({
+                    value: value
+                  })
+                }
+              }}/>
+            </Form.Item>
+          </Form>
 
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>

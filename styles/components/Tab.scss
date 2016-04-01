@@ -1,0 +1,48 @@
+$bd-color: #ddd;
+.ui-tab{
+  &.radius{
+    border-radius: 4px;
+  }
+  .ui-tab-hd{
+    @include clearfix;
+    margin:0;
+    list-style:none;
+    padding:0;
+    border-bottom:1px solid $bd-color;
+    li{
+      float:left;
+      position: relative;
+      margin-bottom: -1px;
+      padding:7px 20px 6px;
+      border-radius:4px 4px 0 0 ;
+      margin-right: 3px;
+      background:#f4f4f4;
+      cursor: pointer;
+      text-align: center;
+      color: #666;
+      height:33px;
+      border:1px solid #f4f4f4;
+      border-bottom-color: $bd-color;
+      &.active{
+        background: #fff;
+        padding:7px 20px 6px;
+        border:1px solid $bd-color;
+        border-bottom:0;
+        color:#00b0e8;
+      }
+    }
+  }
+  .ui-tab-bd{
+    @include clearfix;
+    position: relative;
+    z-index: 100;
+    -webkit-transition: height .3s;
+    transition: height .3s;
+    .ui-tab-bd-item {
+      display: none;
+      &.ui-tab-bd-item-active{
+        display: block;
+      }
+    }
+  }
+}
