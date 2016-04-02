@@ -1,13 +1,13 @@
 @mixin input-size($height, $padding, $font-size, $border-radius) {
   height: $height;
-  /*line-height: 1.5;*/
+  line-height: 1.42857143;
   padding: $padding;
   font-size: $font-size;
   border-radius: $border-radius;
 }
 
 .ui-input {
-  @include input-size($base-height, 4px 10px 5px 10px, $base-fontSize, $base-radius);
+  @include input-size($base-height, 4px 9px, $base-fontSize, $base-radius);
   position: relative;
   display: inline-block;
   width: 100%;
