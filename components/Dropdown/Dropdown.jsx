@@ -1,9 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import Events from '../utils/events';
-import isNodeInTree from '../utils/isNodeInTree';
 
 class Dropdown extends Component {
 
@@ -22,14 +19,6 @@ class Dropdown extends Component {
         visible: nextProps.visible
       });
     }
-  }
-
-  componentWillMount() {
-    this.unbindOuterHandlers();
-  }
-
-  componentWillUnmount() {
-    this.unbindOuterHandlers();
   }
 
   // componentDidMount() {
@@ -71,44 +60,6 @@ class Dropdown extends Component {
     });
     
     return <div {...others} className={cls} ref="dropdown">{children}</div>;
-  }
-  
-  setDropdown(isOpen, callback) {
-    if (isOpen) {
-      this.bindOuterHandlers();
-    } else {
-      this.unbindOuterHandlers();
-    }
-
-    this.setState({
-      visible: isOpen
-    }, () => {
-      callback && callback();
-      isOpen && this.props.onOpen && this.props.onOpen();
-      !isOpen && this.props.onClose && this.props.onClose();
-    });
-  }
-
-  handleKeyup(e) {
-    (e.keyCode === 27) && this.setDropdown(false);
-  }
-
-  handleOuterClick(e) {
-    if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
-      return false;
-    }
-
-    this.setDropdown(false);
-  }
-
-  bindOuterHandlers() {
-    Events.on(document, 'click', (e) => this.handleOuterClick(e));
-    Events.on(document, 'keyup', (e) => this.handleKeyup(e));
-  }
-
-  unbindOuterHandlers() {
-    Events.off(document, 'click', (e) => this.handleOuterClick(e));
-    Events.off(document, 'keyup', (e) => this.handleKeyup(e));
   }
 
   // animationEnd(e) {

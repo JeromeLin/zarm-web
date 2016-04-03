@@ -76,9 +76,7 @@ class Select extends Component {
       <span className={cls} {...others}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
-          <span className="ui-select-arrow">
-            <Icon type="unfold" />
-          </span>
+          <Icon className="ui-select-arrow" type="unfold" />
         </span>
         <Dropdown visible={this.state.dropdown}>
           <Menu size={size}>

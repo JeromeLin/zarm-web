@@ -67,9 +67,7 @@ class DatePicker extends Component {
       <span className={cls} {...others}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
-          <span className="ui-select-icon">
-            <Icon type="date" />
-          </span>
+          <Icon className="ui-select-icon" type="date" />
         </span>
         <Dropdown visible={dropdown}>
           <Calendar defaultValue={defaultValue} value={value} format={format} hasFooter={true} onChange={(value) => this.onDateChange(value)} />
