@@ -436,6 +436,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
+                url="http://192.168.11.95:8080/artimes/insuredImport"
                 onSelect={ file => {
                   // console.log(file)
                   // const isJPG = file.type === 'image/jpeg';
