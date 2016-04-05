@@ -30,7 +30,7 @@ class Upload extends Component {
   }
 
   onFileChange(e) {
-    const { uploadUrl, onSelect, onProgress, onComplete } = this.props;
+    const { url, onSelect, onProgress, onComplete } = this.props;
     let fd = new FormData(),
         file = this.refs.upload.files[0],
         xhr = new XMLHttpRequest(),
@@ -58,20 +58,20 @@ class Upload extends Component {
       onProgress(percent);
     };
 
-    xhr.open("post", uploadUrl);
+    xhr.open("post", url);
     xhr.send(fd);
   }
 }
 
 Upload.propTypes = {
-  uploadUrl : PropTypes.string,
+  url       : PropTypes.string,
   onSelect  : PropTypes.func,
   onProgress: PropTypes.func,
   onComplete: PropTypes.func,
 };
 
 Upload.defaultProps = {
-  uploadUrl : '',
+  url       : '',
   onSelect  : () => {},
   onProgress: () => {},
   onComplete: () => {},
