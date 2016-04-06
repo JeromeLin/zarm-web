@@ -47,8 +47,9 @@ class Dropdown extends Component {
   //   return !!(this.state.isShow || nextState.isShow);
   // }
 
-  render () { 
-    const { className, children, ...others } = this.props;
+  render () {
+    const props = this.props;
+    const { className, isRadius, children, ...others } = props;
     // const { isShow, animationState } = this.state;
     const { visible } = this.state;
 
@@ -56,6 +57,7 @@ class Dropdown extends Component {
       'ui-dropdown'       : true,
       'ui-dropdown-hidden': !visible,
       // [`scaleDown-${animationState}`]: true,
+      'radius'            : ('radius' in props || isRadius),
       [className]         : !!className
     });
     
@@ -94,5 +96,19 @@ class Dropdown extends Component {
   //   }
   // }
 }
+
+Dropdown.propTypes = {
+  visible       : PropTypes.bool,
+  isRadius      : PropTypes.bool,
+  isDisabled    : PropTypes.bool,
+  onChange      : PropTypes.func,
+};
+
+Dropdown.defaultProps = {
+  visible       : false,
+  isRadius      : false,
+  isDisabled    : false,
+  onChange      : function () {},
+};
 
 export default Dropdown;

@@ -238,7 +238,7 @@ class Page1 extends Component {
               label="标签页" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Tab.Group radius onChange={(i) => console.log(i)}>
+              <Tab.Group onChange={(i) => console.log(i)}>
                 <Tab title="选项卡1">
                   这是选项卡1的文字
                 </Tab>
@@ -375,7 +375,7 @@ class Page1 extends Component {
               controlCol="col-sm-10"
               theme="error"
               help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
-              <Select style={{width: 120}} placeholder="请选择" onChange={(data) => {
+              <Select radius style={{width: 120}} placeholder="请选择" onChange={(data) => {
                 console.log(data)
                 this.setState({
                   selectValue : data.value,
@@ -436,7 +436,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
-                url="http://192.168.11.95:8080/artimes/insuredImport"
+                url="http://10.139.162.103:8080/artimes/insuredImport"
                 onSelect={ file => {
                   // console.log(file)
                   // const isJPG = file.type === 'image/jpeg';
@@ -497,6 +497,7 @@ class Page1 extends Component {
               <div>
                 <Pagination
                   bordered
+                  radius
                   defaultValue={this.state.currentPage}
                   pageSize={10}
                   total={324}
@@ -505,6 +506,7 @@ class Page1 extends Component {
                   }} />
 
                 <Pagination
+                  radius
                   value={this.state.currentPage}
                   pageSize={10}
                   total={324} 
@@ -522,7 +524,7 @@ class Page1 extends Component {
               label="面板"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Panel>
+              <Panel radius>
                 <Panel.Header>
                   <Panel.Title>头部左侧</Panel.Title>
                   <Panel.More>

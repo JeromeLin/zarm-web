@@ -17,6 +17,34 @@
   outline: none;
   cursor: pointer;
 
+  /* 选中状态 */
+  &.checked {
+    
+    .ui-checkbox-inner {
+      border-color: $base-theme-info;
+      background-color: $base-theme-info;
+
+      &:after {
+        transform: rotate(45deg) scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  &.disabled {
+
+    .ui-checkbox-inner {
+      border-color: #d9d9d9;
+      background-color: #f3f3f3;
+      cursor: not-allowed;
+
+      &:after {
+        background-color: #ccc;
+      }
+    }
+  }
+
   .ui-checkbox-inner {
     position: relative;
     top: 0;
@@ -53,33 +81,5 @@
 
   & + span {
     margin-left: 5px;
-  }
-}
-
-/* 选中状态 */
-.ui-checkbox-checked {
-  
-  .ui-checkbox-inner {
-    border-color: $base-theme-info;
-    background-color: $base-theme-info;
-
-    &:after {
-      transform: rotate(45deg) scale(1);
-      transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
-    }
-  }
-}
-
-/* 禁用状态 */
-.ui-checkbox-disabled {
-
-  .ui-checkbox-inner {
-    border-color: #d9d9d9;
-    background-color: #f3f3f3;
-    cursor: not-allowed;
-
-    &:after {
-      background-color: #ccc;
-    }
   }
 }

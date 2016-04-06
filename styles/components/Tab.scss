@@ -19,7 +19,7 @@
       float: left;
       position: relative;
       margin-bottom: -1px;
-      padding: 7px 20px 6px;
+      padding: 6px 20px 6px;
       margin-right: 3px;
       background: #f4f4f4;
       cursor: pointer;
@@ -27,12 +27,11 @@
       color: #666;
       height: 33px;
       line-height: normal;
-      border: 1px solid #f4f4f4;
+      border: 1px solid transparent;
       border-bottom-color: #ddd;
 
       &.active {
         background: #fff;
-        padding: 7px 20px 6px;
         border: 1px solid #ddd;
         border-bottom: 0;
         color: #00b0e8;

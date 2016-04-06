@@ -18,6 +18,35 @@
   outline: none;
   cursor: pointer;
   
+  /* 选中状态 */
+  &.checked {
+    
+    .ui-radio-inner {
+      border-color: #d9d9d9;
+
+      &:after {
+        transform: scale(1);
+        opacity: 1;
+        transition: transform .3s cubic-bezier(.12, .4, .29, 1.46),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  &.disabled {
+
+    .ui-radio-inner {
+      border-color: #d9d9d9;
+      background-color: #f3f3f3;
+      cursor: not-allowed;
+
+      &:after {
+        background-color: #ccc;
+      }
+    }
+  }
+
+
   .ui-radio-inner {
     position: relative;
     top: 0;
@@ -56,33 +85,5 @@
 
   & + span {
     margin-left: 5px;
-  }
-}
-
-/* 选中状态 */
-.ui-radio-checked {
-  
-  .ui-radio-inner {
-    border-color: #d9d9d9;
-
-    &:after {
-      transform: scale(1);
-      opacity: 1;
-      transition: transform .3s cubic-bezier(.12, .4, .29, 1.46),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
-    }
-  }
-}
-
-/* 禁用状态 */
-.ui-radio-disabled {
-
-  .ui-radio-inner {
-    border-color: #d9d9d9;
-    background-color: #f3f3f3;
-    cursor: not-allowed;
-
-    &:after {
-      background-color: #ccc;
-    }
   }
 }

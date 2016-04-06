@@ -1,8 +1,8 @@
 @mixin select-size($height, $padding, $font-size, $border-radius) {  
+
   .ui-select-selection {
     height: $height;
     font-size: $font-size;
-    border-radius: $border-radius;
 
     .ui-select-text {
       line-height: $height - 2;
@@ -22,6 +22,12 @@
     left: 0;
     top: $height + 4;
   }
+
+  &.radius {
+    .ui-select-selection {
+      border-radius: $border-radius;
+    }
+  }
 }
 
 .ui-select {
@@ -37,7 +43,6 @@
     user-select: none;
     display: block;
     background-color: #fff;
-    border-radius: 6px;
     border: 1px solid #d9d9d9;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
     /*box-shadow: inset 0 1px 3px #e3e3e3;*/
@@ -86,7 +91,7 @@
     }
   }
 
-  &.ui-select-disabled {
+  &.disabled {
 
     .ui-select-selection {
       cursor: not-allowed;

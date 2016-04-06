@@ -25,10 +25,10 @@ class Radio extends Component {
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-radio'         : true,
-      'ui-radio-checked' : this.state.checked,
-      'ui-radio-disabled': disabled,
-      [className]        : !!className,
+      'ui-radio' : true,
+      'checked'  : this.state.checked,
+      'disabled' : disabled,
+      [className]: !!className,
     });
 
     return (

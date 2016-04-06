@@ -40,8 +40,9 @@ class Select extends Component {
 
   render () {
     const props = this.props;
-    const { placeholder, isDisabled, size, ...others } = props;
+    const { placeholder, isRadius, isDisabled, size, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
+    const radius = 'radius' in props || isRadius;
 
     let valueText = placeholder,
         hasValue = false;
@@ -61,10 +62,11 @@ class Select extends Component {
     });
 
     const cls = classnames({
-      'ui-select'         : true,
-      'ui-select-open'    : this.state.dropdown,
-      'ui-select-disabled': disabled,
-      [`size-${size}`]    : !!size,
+      'ui-select'     : true,
+      'ui-select-open': this.state.dropdown,
+      'disabled'      : disabled,
+      'radius'        : radius,
+      [`size-${size}`]: !!size,
     });
 
     const textCls = classnames({
@@ -78,7 +80,7 @@ class Select extends Component {
           <span className={textCls}>{valueText}</span>
           <Icon className="ui-select-arrow" type="unfold" />
         </span>
-        <Dropdown visible={this.state.dropdown}>
+        <Dropdown visible={this.state.dropdown} isRadius={radius}>
           <Menu size={size}>
             {children}
           </Menu>
@@ -158,13 +160,13 @@ class Select extends Component {
 }
 
 Select.propTypes = {
-  defaultChecked: PropTypes.bool,
+  isRadius      : PropTypes.bool,
   isDisabled    : PropTypes.bool,
   onChange      : PropTypes.func,
 };
 
 Select.defaultProps = {
-  defaultChecked: false,
+  isRadius      : false,
   isDisabled    : false,
   onChange      : function () {},
 };

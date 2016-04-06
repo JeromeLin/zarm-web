@@ -25,10 +25,10 @@ class Checkbox extends Component {
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-checkbox'         : true,
-      'ui-checkbox-checked' : this.state.checked,
-      'ui-checkbox-disabled': disabled,
-      [className]           : !!className,
+      'ui-checkbox': true,
+      'checked'    : this.state.checked,
+      'disabled'   : disabled,
+      [className]  : !!className,
     });
 
     return (
