@@ -3,7 +3,10 @@
   line-height: 1.42857143;
   padding: $padding;
   font-size: $font-size;
-  border-radius: $border-radius;
+
+  &.radius {
+    border-radius: $border-radius;
+  }
 }
 
 .ui-input {
@@ -65,7 +68,7 @@ textarea {
   &.ui-input {
     max-width: 100%;
     height: auto !important;
-    line-height: 1.5;
+    line-height: 1.42857143;
     vertical-align: bottom;
   }
 }

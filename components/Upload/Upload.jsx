@@ -9,8 +9,8 @@ class Upload extends Component {
     const { multiple, className, ...others } = this.props;
 
     const cls = classnames({
-      'ui-upload'       : true,
-      [className]     : !!className,
+      'ui-upload': true,
+      [className]: !!className,
     });
 
     const children = React.Children.map(props.children, (element, index) => {

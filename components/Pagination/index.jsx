@@ -22,12 +22,13 @@ class Pagination extends Component {
 
   render() {
     const props = this.props;
-    const { isBordered, className, total, pageSize, addonBefore, addonAfter, ...others } = props;
+    const { isBordered, isRadius, className, total, pageSize, addonBefore, addonAfter, ...others } = props;
 
     const cls = classnames({
-      'ui-pagination'         : true,
-      'ui-pagination-bordered': ('bordered' in props || isBordered),
-      [className]             : !!className,
+      'ui-pagination': true,
+      'bordered'     : ('bordered' in props || isBordered),
+      'radius'       : ('radius' in props || isRadius),
+      [className]    : !!className,
     });
 
     const pageCount = Math.ceil(total / pageSize);
@@ -119,6 +120,8 @@ class Pagination extends Component {
 }
 
 Pagination.propTypes = {
+  isBordered   : PropTypes.bool,
+  isRadius     : PropTypes.bool,
   total        : PropTypes.number,
   pageSize     : PropTypes.number,
   onPageChange : PropTypes.func,
@@ -126,6 +129,8 @@ Pagination.propTypes = {
 
 Pagination.defaultProps = {
   defaultValue : 1,
+  isBordered   : false,
+  isRadius     : false,
   total        : 0,
   pageSize     : 10,
   onPageChange : function () {},
