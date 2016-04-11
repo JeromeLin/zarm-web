@@ -42,7 +42,6 @@
   .ui-tab-body {
     @include clearfix;
     position: relative;
-    z-index: 100;
     -webkit-transition: height .3s;
     transition: height .3s;
 

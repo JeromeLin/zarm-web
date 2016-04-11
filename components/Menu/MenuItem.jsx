@@ -9,9 +9,9 @@ class MenuItem extends Component {
     const { checked, isDisabled, children, ...others } = props;
     
     const cls = classnames({
-      'ui-menu-item'         : true,
-      'ui-menu-item-selected': !!checked,
-      'ui-menu-item-disabled': ('disabled' in props || isDisabled),
+      'ui-menu-item': true,
+      'selected'    : !!checked,
+      'disabled'    : ('disabled' in props || isDisabled),
     });
 
     return (
