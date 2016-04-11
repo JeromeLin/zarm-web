@@ -721,6 +721,29 @@ class Page1 extends Component {
             </Panel.Footer>
           </Panel>
 
+          <div style={{verticalAlign: 'middle'}}>
+            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
+              <span className="ui-select-selection" style={{height: '100%'}}>
+                <Menu>
+                  <Menu.Item>姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名</Menu.Item>
+                  <Menu.Item>年龄</Menu.Item>
+                  <Menu.Item>333</Menu.Item>
+                </Menu>
+              </span>
+            </span>
+            <span style={{width: 50, textAlign: 'center', display: 'inline-block'}}>
+              <Button><Icon type="right" /></Button>
+              <Button style={{marginTop: 10}}><Icon type="back" /></Button>
+            </span>
+            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
+              <span className="ui-select-selection" style={{height: '100%'}}>
+                <Menu>
+
+                </Menu>
+              </span>
+            </span>
+          </div>
+
           <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
             <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
             <Modal.Body height={400}>
