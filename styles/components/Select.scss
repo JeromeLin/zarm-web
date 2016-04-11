@@ -1,7 +1,7 @@
 @mixin select-size($height, $padding, $font-size, $border-radius) {  
 
   .ui-select-selection {
-    height: $height;
+    /*height: $height;*/
     font-size: $font-size;
 
     .ui-select-text {

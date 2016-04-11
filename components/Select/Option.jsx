@@ -27,13 +27,6 @@ class Option extends Component {
 
     return <Menu.Item {...others} onClick={(e) => props.onChange(e) }>{children}</Menu.Item>;
   }
-
-  _onClick(e) {
-    this.setState({
-      checked: true
-    });
-    this.props.onChange(e);
-  }
 }
 
 Option.propTypes = {
