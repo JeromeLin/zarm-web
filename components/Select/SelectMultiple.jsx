@@ -23,7 +23,7 @@ class SelectMultiple extends Component {
 
   render () {
     const props = this.props;
-    const { placeholder, isRadius, isDisabled, size, ...others } = props;
+    const { isRadius, isDisabled, size, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
