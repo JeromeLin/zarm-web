@@ -13,7 +13,7 @@ class Confirm extends Component {
       <Modal {...others}>
         <Modal.Body>
           <div className="ui-confirm">
-            <Icon type="question" />
+            <Icon type="question-round" />
             <span>{message}</span>
           </div>
         </Modal.Body>

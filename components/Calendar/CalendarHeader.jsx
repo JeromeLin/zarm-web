@@ -33,28 +33,28 @@ class CalendarHeader extends Component {
       <div className="ui-calendar-header">
 
         <div style={{display: (this.state.panel !== 'date') ? 'none' : 'block'}}>
-          <a href="javascript:;" onClick={() => this.onMonthClick(current, 'pre')} className="ui-calendar-header-pre-btn" title="上个月"><Icon type="back" /></a>
+          <a href="javascript:;" onClick={() => this.onMonthClick(current, 'pre')} className="ui-calendar-header-pre-btn" title="上个月"><Icon type="arrow-left" /></a>
           <span>
             <a href="javascript:;" className="ui-calendar-header-btn" onClick={() => this.onChangePanel('year')}>{current.year}年</a>
             <a href="javascript:;" className="ui-calendar-header-btn" onClick={() => this.onChangePanel('month')}>{current.month}月</a>
           </span>
-          <a href="javascript:;" onClick={() => this.onMonthClick(current, 'next')} className="ui-calendar-header-next-btn" title="下个月"><Icon type="right" /></a>
+          <a href="javascript:;" onClick={() => this.onMonthClick(current, 'next')} className="ui-calendar-header-next-btn" title="下个月"><Icon type="arrow-right" /></a>
         </div>
 
         <div style={{display: (this.state.panel !== 'month') ? 'none' : 'block'}}>
-          <a href="javascript:;" onClick={() => this.onYearClick(current, 'pre')} className="ui-calendar-header-pre-btn" title="去年"><Icon type="back" /></a>
+          <a href="javascript:;" onClick={() => this.onYearClick(current, 'pre')} className="ui-calendar-header-pre-btn" title="去年"><Icon type="arrow-left" /></a>
           <span>
             <a href="javascript:;" className="ui-calendar-header-year-btn" onClick={() => this.onChangePanel('date')}>{current.year}年</a>
           </span>
-          <a href="javascript:;" onClick={() => this.onYearClick(current, 'next')} className="ui-calendar-header-next-btn" title="明年"><Icon type="right" /></a>
+          <a href="javascript:;" onClick={() => this.onYearClick(current, 'next')} className="ui-calendar-header-next-btn" title="明年"><Icon type="arrow-right" /></a>
         </div>
 
         <div style={{display: (this.state.panel !== 'year') ? 'none' : 'block'}}>
-          <a href="javascript:;" onClick={() => this.onCenturyClick(current, 'pre')} className="ui-calendar-header-pre-btn" title="上个年代"><Icon type="back" /></a>
+          <a href="javascript:;" onClick={() => this.onCenturyClick(current, 'pre')} className="ui-calendar-header-pre-btn" title="上个年代"><Icon type="arrow-left" /></a>
           <span>
             <a href="javascript:;" className="ui-calendar-header-year-btn" onClick={() => this.onChangePanel('date')}>{beforeYear} - {beforeYear + 9} 年</a>
           </span>
-          <a href="javascript:;" onClick={() => this.onCenturyClick(current, 'next')} className="ui-calendar-header-next-btn" title="下个年代"><Icon type="right" /></a>
+          <a href="javascript:;" onClick={() => this.onCenturyClick(current, 'next')} className="ui-calendar-header-next-btn" title="下个年代"><Icon type="arrow-right" /></a>
         </div>
 
       </div>

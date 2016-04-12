@@ -25,20 +25,20 @@ class MessageItem extends Component {
     });
 
     let iconClass = classnames({
-    	[`ui-message-${theme}`] : !!theme,
+    	[`ui-message-${theme}`]: !!theme,
     });
 
-    let iconType = 'info';
+    let iconType = 'info-round';
 
-    switch( theme ){
-    	case 'warning' :
-    		iconType = 'notice';
+    switch(theme) {
+    	case 'warning':
+    		iconType = 'warning-round';
     		break;
-    	case 'success' :
-    		iconType = 'roundcheck';
+    	case 'success':
+    		iconType = 'check-round';
     		break;
-    	case 'error' :
-    		iconType = 'roundclose';
+    	case 'error':
+    		iconType = 'close-round';
     		break;
     }
 

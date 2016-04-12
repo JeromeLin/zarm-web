@@ -38,7 +38,6 @@ import { Modal, Alert } from dragon-ui;
 
 ## 待开发组件
 - Upload 上传
-- Transfer 穿梭框
 - Progress 进度条
 - Slider 滑动输入条
 - TimePicker 时间选择器

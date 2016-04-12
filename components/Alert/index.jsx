@@ -13,7 +13,7 @@ class Alert extends Component {
       <Modal {...others}>
         <Modal.Body>
           <div className="ui-alert">
-            <Icon type="info" />
+            <Icon type="info-round" />
             <span>{message}</span>
           </div>
         </Modal.Body>

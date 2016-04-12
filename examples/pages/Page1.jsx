@@ -159,7 +159,6 @@ class Page1 extends Component {
               label="icon图标" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Icon type="search" style={{fontSize: 30}} />
               <Icon type="check" style={{fontSize: 30}} />
               <Icon type="close" style={{fontSize: 30}} />
             </Form.Item>
@@ -168,11 +167,11 @@ class Page1 extends Component {
               label="图标按钮"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Button size="xl" circle><Icon type="search" /></Button>
-              <Button size="lg" circle><Icon type="search" /></Button>
-              <Button circle><Icon type="search" /></Button>
-              <Button size="sm" circle><Icon type="search" /></Button>
-              <Button size="xs" circle><Icon type="search" /></Button>
+              <Button size="xl" circle><Icon type="check" /></Button>
+              <Button size="lg" circle><Icon type="check" /></Button>
+              <Button circle><Icon type="check" /></Button>
+              <Button size="sm" circle><Icon type="check" /></Button>
+              <Button size="xs" circle><Icon type="check" /></Button>
             </Form.Item>
 
             <Form.Item
@@ -187,7 +186,7 @@ class Page1 extends Component {
               <Button>直角按钮</Button>
               <Button radius>圆角按钮</Button>
               <Button round>椭圆角按钮</Button>
-              <Button><Icon type="search" />带图标的按钮</Button>
+              <Button><Icon type="check" />带图标的按钮</Button>
               <Button disabled>禁用状态</Button>
               <Button active>激活状态</Button>
             </Form.Item>
@@ -210,7 +209,7 @@ class Page1 extends Component {
                 index += 1;
                 tags.push({ key: index, name: `新标签${index}` });
                 this.setState({ tags });
-              }}><Icon type="roundadd" />添加标签</Button>
+              }}><Icon type="add" />添加标签</Button>
             </Form.Item>
 
             <Form.Item
@@ -239,7 +238,7 @@ class Page1 extends Component {
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
               <Breadcrumb separator=">">
-                <Breadcrumb.Item><Icon type="search" /> 首页</Breadcrumb.Item>
+                <Breadcrumb.Item><Icon type="check" /> 首页</Breadcrumb.Item>
                 <Breadcrumb.Item href="">模块</Breadcrumb.Item>
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
@@ -446,7 +445,7 @@ class Page1 extends Component {
                           mulSelectLeftValue: [],
                           mulSelectRightValue: []
                       });
-                    }}><Icon type="right" /></Button>
+                    }}><Icon type="add" /></Button>
                     <Button
                       radius
                       style={{float: 'left', clear: 'both', marginTop: 10}} 
@@ -461,7 +460,7 @@ class Page1 extends Component {
                           mulSelectLeftValue: [],
                           mulSelectRightValue: []
                       });
-                    }}><Icon type="back" /></Button>
+                    }}><Icon type="minus" /></Button>
                   </span>
 
                   <Select.Multiple radius style={{width: 180, height: 200}} value={this.state.mulSelectRightValue} onChange={(selectedRows, row) => {
