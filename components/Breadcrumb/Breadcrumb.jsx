@@ -29,7 +29,7 @@ class Breadcrumb extends Component {
 }
 
 Breadcrumb.propTypes = {
-  separator     : PropTypes.string,
+  // separator     : PropTypes.string,
 };
 
 Breadcrumb.defaultProps = {

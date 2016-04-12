@@ -8,7 +8,6 @@ import Option from './Option';
 import Dropdown from '../Dropdown';
 import Menu from '../Menu';
 import Icon from '../Icon';
-import Mask from '../Mask';
 
 class Select extends Component {
 
@@ -78,7 +77,7 @@ class Select extends Component {
       <span className={cls} {...others}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
-          <Icon className="ui-select-arrow" type="unfold" />
+          <Icon type="arrow-bottom" className="ui-select-arrow" />
         </span>
         <Dropdown visible={this.state.dropdown} isRadius={radius}>
           <Menu size={size}>

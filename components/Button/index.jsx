@@ -24,7 +24,7 @@ class Button extends Component {
     });
 
     return (
-      <button {...others} type={type} className={classes} onClick={(e) => !disabled && onClick(e)}>{children}</button>
+      <button {...others} type={type} className={classes} disabled={disabled} onClick={(e) => !disabled && onClick(e)}>{children}</button>
     );
   }
 }

@@ -1,14 +1,8 @@
 
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import Events from '../utils/events';
-import isNodeInTree from '../utils/isNodeInTree';
 import Option from './Option';
-import Dropdown from '../Dropdown';
 import Menu from '../Menu';
-import Icon from '../Icon';
-import Mask from '../Mask';
 
 class SelectMultiple extends Component {
 
