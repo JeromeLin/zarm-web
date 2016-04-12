@@ -32,7 +32,8 @@ import {
   Tooltip,
   Upload,
   Tab,
-  Message
+  Message,
+  Progress
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -65,17 +66,6 @@ class Page1 extends Component {
       selectValue  : '',
       selectValue2 : 'b',
       checkboxValue: [],
-
-      mulSelectLeft      : [
-        {value: 1, name: '我是选项一'},
-        {value: 2, name: '我是选项二'},
-        {value: 3, name: '我是选项三'},
-        {value: 4, name: '我是选项四'},
-      ],
-      mulSelectLeftValue : [],
-      mulSelectRight     : [],
-      mulSelectRightValue: [],
-
       date         : '2015-12-1',
       tags         : [],
       msg          : [],
@@ -86,9 +76,23 @@ class Page1 extends Component {
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
+      percent: 90,
     };
   }
 
+  componentDidMount() {
+    // 初始化数据
+    const interval = setInterval(() => {
+        if (!this.state.percent) {
+            return clearInterval(interval);
+        }
+        const percent = this.state.percent - 1;
+        this.setState({
+            percent: percent
+        });
+    }, 100)
+  }
+    
   _onClickOpen(key) {
     this.setState({
       [`${ key }`]: true
@@ -414,69 +418,6 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="多选穿梭框"
-              labelCol="col-sm-2"
-              controlCol="col-sm-10"
-              theme="error"
-              help={`您选择了( ${this.state.mulSelectRight.length}项 )`}>
-                <div style={{verticalAlign: 'middle'}}>
-
-                  <Select.Multiple radius style={{width: 180, height: 200}} value={this.state.mulSelectLeftValue} onChange={(selectedRows, row) => {
-                    this.setState({ mulSelectLeftValue: selectedRows });
-                  }}>
-                    {
-                      this.state.mulSelectLeft.map((option, index) => {
-                        return <Select.Option key={index} value={option.value}>{option.name}</Select.Option>
-                      })
-                    }
-                  </Select.Multiple>
-
-                  <span style={{margin: '-10px 10px 0 10px', textAlign: 'center', verticalAlign: 'middle', display: 'inline-block'}}>
-                    <Button
-                      radius
-                      style={{float: 'left', clear: 'both'}}
-                      isDisabled={this.state.mulSelectLeftValue.length == 0}
-                      onClick={() => {
-                        const mulSelectLeft = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) < 0) && item); 
-                        let selected = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) > -1) && item);
-                        let mulSelectRight = this.state.mulSelectRight.concat(selected);
-                        this.setState({ 
-                          mulSelectLeft, 
-                          mulSelectRight,
-                          mulSelectLeftValue: [],
-                          mulSelectRightValue: []
-                      });
-                    }}><Icon type="right" /></Button>
-                    <Button
-                      radius
-                      style={{float: 'left', clear: 'both', marginTop: 10}} 
-                      isDisabled={this.state.mulSelectRightValue.length == 0}
-                      onClick={()=> {
-                        const mulSelectRight = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) < 0) && item); 
-                        let selected = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) > -1) && item);
-                        let mulSelectLeft = this.state.mulSelectLeft.concat(selected);
-                        this.setState({
-                          mulSelectLeft,
-                          mulSelectRight,
-                          mulSelectLeftValue: [],
-                          mulSelectRightValue: []
-                      });
-                    }}><Icon type="back" /></Button>
-                  </span>
-
-                  <Select.Multiple radius style={{width: 180, height: 200}} value={this.state.mulSelectRightValue} onChange={(selectedRows, row) => {
-                    this.setState({ mulSelectRightValue: selectedRows });
-                  }}>
-                    {
-                      this.state.mulSelectRight.map((option, index) => {
-                        return <Select.Option key={index} value={option.value}>{option.name}</Select.Option>
-                      })
-                    }
-                  </Select.Multiple>
-                </div>
-            </Form.Item>
-
-            <Form.Item
               label="日历"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
@@ -795,7 +736,30 @@ class Page1 extends Component {
             </Panel.Footer>
           </Panel>
 
-          <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
+          <div style={{verticalAlign: 'middle'}}>
+            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
+              <span className="ui-select-selection" style={{height: '100%'}}>
+                <Menu>
+                  <Menu.Item>姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名</Menu.Item>
+                  <Menu.Item>年龄</Menu.Item>
+                  <Menu.Item>333</Menu.Item>
+                </Menu>
+              </span>
+            </span>
+            <span style={{width: 50, textAlign: 'center', display: 'inline-block'}}>
+              <Button><Icon type="right" /></Button>
+              <Button style={{marginTop: 10}}><Icon type="back" /></Button>
+            </span>
+            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
+              <span className="ui-select-selection" style={{height: '100%'}}>
+                <Menu>
+
+                </Menu>
+              </span>
+            </span>
+          </div>
+
+          <Modal visible={this.state.modal} style={{width: '1000px'}} onMaskClick={() => this._onClickClose('modal')}>
             <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
             <Modal.Body height={400}>
               我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
@@ -822,6 +786,17 @@ class Page1 extends Component {
           <Mask
             visible={this.state.mask}
             onClose={() => this._onClickClose('mask')} />
+          Info:<br/>
+
+          <Progress percent={this.state.percent} theme="info" radius size="xs" style={{width:'50%'}}></Progress> <br/>
+          warning:<br/>
+          <Progress percent="30" theme="warning" radius size="sm" style={{width:'50%'}}></Progress><br/>
+          Success:<br/>
+          <Progress percent="30" theme="success" radius size="lg" style={{width:'50%'}}></Progress><br/>
+          Default:<br/>
+          <Progress percent="30" theme="default" radius size="xl" style={{width:'50%'}}></Progress><br/>
+          Error:<br/>
+          <Progress percent="30" theme="error" radius size="xl" style={{width:'50%'}}></Progress><br/>
 
         </div>
       </Loading>
