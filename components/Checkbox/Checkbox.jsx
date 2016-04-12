@@ -21,7 +21,7 @@ class Checkbox extends Component {
 
   render () {
     const props = this.props;
-    const { value, isDisabled, className, children, ...others } = props;
+    const { value, isDisabled, className, children, onChange, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
