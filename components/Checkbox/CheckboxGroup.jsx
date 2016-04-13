@@ -23,10 +23,6 @@ class CheckboxGroup extends Component {
   render () {
     const props = this.props;
 
-    const cls = classnames({
-      'ui-checkbox-group'   : true,
-    });
-
     let children = React.Children.map(props.children, (checkbox) => {
       return (
         <Checkbox {...checkbox.props}
@@ -36,7 +32,7 @@ class CheckboxGroup extends Component {
     });
 
     return (
-      <div className={cls}>
+      <div className="ui-checkbox-group">
         {children}
       </div>
     );
@@ -70,8 +66,6 @@ class CheckboxGroup extends Component {
 }
 
 CheckboxGroup.propTypes = {
-  value        : PropTypes.arrayOf(PropTypes.string),
-  defaultValue : PropTypes.arrayOf(PropTypes.string),
   onChange     : PropTypes.func,
 };
 

@@ -1,46 +1,55 @@
-$bd-color: #ddd;
-.ui-tab{
-  &.radius{
-    border-radius: 4px;
+
+.ui-tab {
+
+  &.radius {
+    .ui-tab-header-item {
+      border-top-left-radius: $base-radius;
+      border-top-right-radius: $base-radius;
+    }
   }
-  .ui-tab-hd{
+
+  .ui-tab-header {
     @include clearfix;
-    margin:0;
-    list-style:none;
-    padding:0;
-    border-bottom:1px solid $bd-color;
-    li{
-      float:left;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+
+    .ui-tab-header-item {
+      float: left;
       position: relative;
       margin-bottom: -1px;
-      padding:7px 20px 6px;
-      border-radius:4px 4px 0 0 ;
+      padding: 6px 20px 6px;
       margin-right: 3px;
-      background:#f4f4f4;
+      background: #f4f4f4;
       cursor: pointer;
       text-align: center;
       color: #666;
-      height:33px;
-      border:1px solid #f4f4f4;
-      border-bottom-color: $bd-color;
-      &.active{
+      height: 33px;
+      line-height: normal;
+      border: 1px solid transparent;
+      border-bottom-color: #ddd;
+
+      &.active {
         background: #fff;
-        padding:7px 20px 6px;
-        border:1px solid $bd-color;
-        border-bottom:0;
-        color:#00b0e8;
+        border: 1px solid #ddd;
+        border-bottom: 0;
+        color: #00b0e8;
       }
     }
   }
-  .ui-tab-bd{
+
+  .ui-tab-body {
     @include clearfix;
     position: relative;
-    z-index: 100;
     -webkit-transition: height .3s;
     transition: height .3s;
-    .ui-tab-bd-item {
+
+    .ui-tab-body-item {
       display: none;
-      &.ui-tab-bd-item-active{
+      line-height: normal;
+      
+      &.ui-tab-body-item-active {
         display: block;
       }
     }

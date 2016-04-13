@@ -1,7 +1,7 @@
 @mixin menu-size($height, $padding, $font-size, $border-radius) {  
   .ui-menu-item {
-    height: $height + 4;
-    line-height: $height + 4;
+    height: $height;
+    line-height: $height;
     padding: 0 $padding;
     font-size: $font-size;
 
@@ -39,15 +39,15 @@
     user-select: none;
     
     &:hover,
-    .ui-menu-item-active {
+    .active {
       background: #eaf8fe;
     }
 
-    &.ui-menu-item-selected {
+    &.selected {
       background: #d5f1fd;
     }
 
-    &.ui-menu-item-disabled {
+    &.disabled {
       color: #ccc;
       cursor: not-allowed;
     }

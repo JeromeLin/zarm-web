@@ -21,14 +21,14 @@ class Checkbox extends Component {
 
   render () {
     const props = this.props;
-    const { defaultChecked, checked, value, isDisabled, className, children, onChange, ...others } = props;
+    const { value, isDisabled, className, children, onChange, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-checkbox'         : true,
-      'ui-checkbox-checked' : this.state.checked,
-      'ui-checkbox-disabled': disabled,
-      [className]           : !!className,
+      'ui-checkbox': true,
+      'checked'    : this.state.checked,
+      'disabled'   : disabled,
+      [className]  : !!className,
     });
 
     return (

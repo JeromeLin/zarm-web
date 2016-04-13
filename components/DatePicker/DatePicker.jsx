@@ -39,9 +39,10 @@ class DatePicker extends Component {
 
   render () {
     const props = this.props;
-    const { defaultValue, placeholder, isDisabled, size, format, ...others } = props;
+    const { defaultValue, placeholder, isDisabled, isRadius, size, format, ...others } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
+    const radius = 'radius' in props || isRadius;
 
     let valueText = placeholder,
         hasValue = false;
@@ -54,7 +55,8 @@ class DatePicker extends Component {
     const cls = classnames({
       'ui-select'         : true,
       'ui-select-open'    : dropdown,
-      'ui-select-disabled': disabled,
+      'disabled'          : disabled,
+      'radius'            : radius,
       [`size-${size}`]    : !!size,
     });
 
@@ -67,11 +69,9 @@ class DatePicker extends Component {
       <span className={cls} {...others}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
-          <span className="ui-select-icon">
-            <Icon type="date" />
-          </span>
+          <Icon className="ui-select-icon" type="date" />
         </span>
-        <Dropdown visible={dropdown}>
+        <Dropdown isRadius={radius} visible={dropdown}>
           <Calendar defaultValue={defaultValue} value={value} format={format} hasFooter={true} onChange={(value) => this.onDateChange(value)} />
         </Dropdown>
       </span>

@@ -26,10 +26,10 @@ class Switch extends Component {
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-switch'         : true,
-      [`size-${size}`]    : !!size,
-      'ui-switch-checked' : value,
-      'ui-switch-disabled': disabled,
+      'ui-switch'     : true,
+      'checked'       : value,
+      'disabled'      : disabled,
+      [`size-${size}`]: !!size,
     });
 
     return (

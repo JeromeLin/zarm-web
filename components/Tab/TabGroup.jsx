@@ -2,10 +2,11 @@
 import React, {Component, PropTypes} from 'react';
 import classnames from 'classnames';
 import Tab from './Tab';
+
 class TabGroup extends Component {
+
   constructor(props) {
     super(props);
-
     this.state = {
       activeIndex: 0
     }
@@ -30,11 +31,15 @@ class TabGroup extends Component {
   }
 
   getTitleItemCls(idx) {
-    return idx === this.state.activeIndex ? 'ui-tab-hd-item active' : 'ui-tab-hd-item';
+    return idx === this.state.activeIndex
+                 ? 'ui-tab-header-item active'
+                 : 'ui-tab-header-item';
   }
 
   getContentItemCls(idx) {
-    return idx === this.state.activeIndex ? 'ui-tab-bd-item active' : 'ui-tab-bd-item';
+    return idx === this.state.activeIndex
+                  ? 'ui-tab-body-item active'
+                  : 'ui-tab-body-item';
   }
 
   render () {
@@ -42,45 +47,52 @@ class TabGroup extends Component {
     const {isRadius, theme, className, children, onChange, ...others} = props;
 
     const cls = classnames({
-      'ui-tab' : true,
-      'radius' : ('radius' in props || isRadius),
+      'ui-tab'          : true,
+      'radius'          : ('radius' in props || isRadius),
       [`theme-${theme}`]: !!theme,
-      [className] : !!className
+      [className]       : !!className
     });
-    let len = children.length;
-    let Children = React.Children.map(props.children, (item, $index) => {
+
+    let content = React.Children.map(children, (item, $index) => {
       return (
         <Tab {...item.props} selected={!!(this.state.activeIndex === $index)}>
           {item.props.children}
         </Tab>
       );
     });
-    let liItem = React.Children.map(props.children, (item, $index) => {
+
+    let items = React.Children.map(children, (item, $index) => {
       return (
-        <li className={this.getTitleItemCls($index)} onClick={()=>{this.setState({activeIndex:$index},onChange(item,$index))}} key={$index}>{item.props.title}</li>
+        <li key={$index} className={this.getTitleItemCls($index)} onClick={() => {
+          this.setState(
+            { activeIndex: $index },
+            onChange($index)
+          );
+        }}>{item.props.title}</li>
       );
     });
-    return (<div {...others} className={cls}>
-      <ul className="ui-tab-hd">
-        {liItem}
-      </ul>
-      <div className="ui-tab-bd">
-        {Children}
+
+    return (
+      <div {...others} className={cls}>
+        <ul className="ui-tab-header">
+          {items}
+        </ul>
+        <div className="ui-tab-body">
+          {content}
+        </div>
       </div>
-    </div>);
+    );
   }
 }
 
 TabGroup.propTypes = {
   theme     : PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   isRadius  : PropTypes.bool,
-  activeKey : PropTypes.number
 };
 
 TabGroup.defaultProps = {
   theme     : 'default',
   isRadius  : false,
-  activeKey : 0
 };
 
 export default TabGroup;

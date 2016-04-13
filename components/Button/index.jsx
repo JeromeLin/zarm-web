@@ -6,7 +6,8 @@ class Button extends Component {
 
   render() {
     const props = this.props;
-    const { type, theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isDisabled, className, children, ...others } = this.props;
+    const { type, theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isDisabled, className, onClick, children, ...others } = this.props;
+    const disabled = ('disabled' in props || isDisabled);
 
     const classes = classnames({
       'ui-button'        : true,
@@ -16,14 +17,14 @@ class Button extends Component {
       'circle'           : ('circle' in props || isCircle),
       'active'           : ('active' in props || isActive),
       'focus'            : ('focus' in props || isFocus),
-      'disabled'         : ('disabled' in props || isDisabled),
+      'disabled'         : disabled,
       [`theme-${theme}`] : !!theme,
       [`size-${size}`]   : !!size,
       [className]        : !!className,
     });
 
     return (
-      <button type={type} className={classes} {...others}>{children}</button>
+      <button {...others} type={type} className={classes} disabled={disabled} onClick={(e) => !disabled && onClick(e)}>{children}</button>
     );
   }
 }
@@ -40,6 +41,7 @@ Button.propTypes = {
   isFocus   : PropTypes.bool,
   isDisabled: PropTypes.bool,
   className : PropTypes.string,
+  onClick   : PropTypes.func,
 };
 
 Button.defaultProps = {
@@ -54,6 +56,7 @@ Button.defaultProps = {
   isFocus   : false,
   isDisabled: false,
   className : null,
+  onClick   : () => {},
 };
 
 export default Button;
