@@ -6,12 +6,13 @@ class Input extends Component {
 
   render () { 
     const props = this.props;
-    const { type, isDisabled, size, defaultValue, className, ...others } = props;
+    const { type, isRadius, isDisabled, size, defaultValue, className, ...others } = props;
     const cls = classnames({
-      'ui-input'         : true,
-      'disabled'         : ('disabled' in props || isDisabled),
-      ['size-' + size]   : size,
-      [className]        : !!className,
+      'ui-input'      : true,
+      'disabled'      : ('disabled' in props || isDisabled),
+      'radius'        : ('radius' in props || isRadius),
+      ['size-' + size]: size,
+      [className]     : !!className,
     });
 
     const input = (type == 'textarea')
@@ -30,6 +31,7 @@ class Input extends Component {
 Input.propTypes = {
   type      : PropTypes.string,
   size      : PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
+  isRadius  : PropTypes.bool,
   isDisabled: PropTypes.bool,
   className : PropTypes.string,
 };
@@ -37,6 +39,7 @@ Input.propTypes = {
 Input.defaultProps = {
   type      : 'text',
   size      : null,
+  isRadius  : false,
   isDisabled: false,
   className : null,
 };

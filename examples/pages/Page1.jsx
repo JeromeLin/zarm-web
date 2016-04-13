@@ -65,6 +65,17 @@ class Page1 extends Component {
       selectValue  : '',
       selectValue2 : 'b',
       checkboxValue: [],
+
+      mulSelectLeft      : [
+        {value: 1, name: '我是选项一'},
+        {value: 2, name: '我是选项二'},
+        {value: 3, name: '我是选项三'},
+        {value: 4, name: '我是选项四'},
+      ],
+      mulSelectLeftValue : [],
+      mulSelectRight     : [],
+      mulSelectRightValue: [],
+
       date         : '2015-12-1',
       tags         : [],
       msg          : [],
@@ -104,45 +115,8 @@ class Page1 extends Component {
   render() {
 
     return (
-      <Loading visible={this.state.loading} message="付款中">
+      <Loading visible={this.state.loading}>
         <div className="demo">
-          <h4>Tab</h4>
-          <Tab.Group style={{width:'300px'}} isRadius onChange={(e,i) => console.log(e,i)}>
-            <Tab title="选项卡1" selected>
-              这是选项卡1的文字
-            </Tab>
-            <Tab title="选项卡2">
-              这是选项卡2的文字
-            </Tab>
-            <Tab title="选项卡3">
-              这是选项卡2的文字
-            </Tab>
-          </Tab.Group>
-          <h4>Tooltip</h4>
-          {['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom',
-          'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
-            let title = '这是一个' + item + '的Tooltip';
-            if (item.indexOf('bottom') === -1) return;
-            return <Tooltip title={title} direction={item} style={{margin: '5px 10px 0 0'}}>
-              <Button>你好这里是一个{item}的ToolTip</Button>
-            </Tooltip>;
-          })}
-          <h4>数据的校验</h4>
-          <Form style={{maxWidth: '100%'}} type="inline">
-            <Form.Item label="用户名">
-              <Input placeholder="请输入用户名" value={this.state.value} onChange={(e)=>{
-                let value = e.target.value;
-                if (value.length > 15) {
-                  e.target.style.borderColor = '#f00';
-                  return alert('输入过长');
-                } else {
-                  this.setState({
-                    value: value
-                  })
-                }
-              }}/>
-            </Form.Item>
-          </Form>
 
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>
@@ -185,7 +159,6 @@ class Page1 extends Component {
               label="icon图标" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Icon type="search" style={{fontSize: 30}} />
               <Icon type="check" style={{fontSize: 30}} />
               <Icon type="close" style={{fontSize: 30}} />
             </Form.Item>
@@ -194,11 +167,11 @@ class Page1 extends Component {
               label="图标按钮"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Button size="xl" circle><Icon type="search" /></Button>
-              <Button size="lg" circle><Icon type="search" /></Button>
-              <Button circle><Icon type="search" /></Button>
-              <Button size="sm" circle><Icon type="search" /></Button>
-              <Button size="xs" circle><Icon type="search" /></Button>
+              <Button size="xl" circle><Icon type="check" /></Button>
+              <Button size="lg" circle><Icon type="check" /></Button>
+              <Button circle><Icon type="check" /></Button>
+              <Button size="sm" circle><Icon type="check" /></Button>
+              <Button size="xs" circle><Icon type="check" /></Button>
             </Form.Item>
 
             <Form.Item
@@ -213,7 +186,7 @@ class Page1 extends Component {
               <Button>直角按钮</Button>
               <Button radius>圆角按钮</Button>
               <Button round>椭圆角按钮</Button>
-              <Button><Icon type="search" />带图标的按钮</Button>
+              <Button><Icon type="check" />带图标的按钮</Button>
               <Button disabled>禁用状态</Button>
               <Button active>激活状态</Button>
             </Form.Item>
@@ -236,7 +209,7 @@ class Page1 extends Component {
                 index += 1;
                 tags.push({ key: index, name: `新标签${index}` });
                 this.setState({ tags });
-              }}><Icon type="roundadd" />添加标签</Button>
+              }}><Icon type="add" />添加标签</Button>
             </Form.Item>
 
             <Form.Item
@@ -265,10 +238,27 @@ class Page1 extends Component {
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
               <Breadcrumb separator=">">
-                <Breadcrumb.Item><Icon type="search" /> 首页</Breadcrumb.Item>
+                <Breadcrumb.Item><Icon type="check" /> 首页</Breadcrumb.Item>
                 <Breadcrumb.Item href="">模块</Breadcrumb.Item>
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
+            </Form.Item>
+
+            <Form.Item
+              label="标签页" 
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Tab.Group onChange={(i) => console.log(i)}>
+                <Tab title="选项卡1">
+                  这是选项卡1的文字
+                </Tab>
+                <Tab title="选项卡2">
+                  这是选项卡2的文字
+                </Tab>
+                <Tab title="选项卡3" selected>
+                  这是选项卡3的文字
+                </Tab>
+              </Tab.Group>
             </Form.Item>
 
             <Form.Item
@@ -395,7 +385,7 @@ class Page1 extends Component {
               controlCol="col-sm-10"
               theme="error"
               help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
-              <Select style={{width: 120}} placeholder="请选择" onChange={(data) => {
+              <Select radius style={{width: 120}} placeholder="请选择" onChange={(data) => {
                 console.log(data)
                 this.setState({
                   selectValue : data.value,
@@ -423,6 +413,69 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="多选穿梭框"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10"
+              theme="error"
+              help={`您选择了( ${this.state.mulSelectRight.length}项 )`}>
+                <div style={{verticalAlign: 'middle'}}>
+
+                  <Select.Multiple radius style={{width: 180, height: 200}} value={this.state.mulSelectLeftValue} onChange={(selectedRows, row) => {
+                    this.setState({ mulSelectLeftValue: selectedRows });
+                  }}>
+                    {
+                      this.state.mulSelectLeft.map((option, index) => {
+                        return <Select.Option key={index} value={option.value}>{option.name}</Select.Option>
+                      })
+                    }
+                  </Select.Multiple>
+
+                  <span style={{margin: '-10px 10px 0 10px', textAlign: 'center', verticalAlign: 'middle', display: 'inline-block'}}>
+                    <Button
+                      radius
+                      style={{float: 'left', clear: 'both'}}
+                      isDisabled={this.state.mulSelectLeftValue.length == 0}
+                      onClick={() => {
+                        const mulSelectLeft = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) < 0) && item); 
+                        let selected = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) > -1) && item);
+                        let mulSelectRight = this.state.mulSelectRight.concat(selected);
+                        this.setState({ 
+                          mulSelectLeft, 
+                          mulSelectRight,
+                          mulSelectLeftValue: [],
+                          mulSelectRightValue: []
+                      });
+                    }}><Icon type="add" /></Button>
+                    <Button
+                      radius
+                      style={{float: 'left', clear: 'both', marginTop: 10}} 
+                      isDisabled={this.state.mulSelectRightValue.length == 0}
+                      onClick={()=> {
+                        const mulSelectRight = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) < 0) && item); 
+                        let selected = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) > -1) && item);
+                        let mulSelectLeft = this.state.mulSelectLeft.concat(selected);
+                        this.setState({
+                          mulSelectLeft,
+                          mulSelectRight,
+                          mulSelectLeftValue: [],
+                          mulSelectRightValue: []
+                      });
+                    }}><Icon type="minus" /></Button>
+                  </span>
+
+                  <Select.Multiple radius style={{width: 180, height: 200}} value={this.state.mulSelectRightValue} onChange={(selectedRows, row) => {
+                    this.setState({ mulSelectRightValue: selectedRows });
+                  }}>
+                    {
+                      this.state.mulSelectRight.map((option, index) => {
+                        return <Select.Option key={index} value={option.value}>{option.name}</Select.Option>
+                      })
+                    }
+                  </Select.Multiple>
+                </div>
+            </Form.Item>
+
+            <Form.Item
               label="日历"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
@@ -441,6 +494,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <DatePicker
+                radius
                 style={{width: 120}}
                 // value={this.state.date}
                 placeholder="请选择日期"
@@ -456,6 +510,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
+                url="http://10.139.162.103:8080/artemis/insuredImport"
                 onSelect={ file => {
                   // console.log(file)
                   // const isJPG = file.type === 'image/jpeg';
@@ -516,6 +571,7 @@ class Page1 extends Component {
               <div>
                 <Pagination
                   bordered
+                  radius
                   defaultValue={this.state.currentPage}
                   pageSize={10}
                   total={324}
@@ -524,6 +580,7 @@ class Page1 extends Component {
                   }} />
 
                 <Pagination
+                  radius
                   value={this.state.currentPage}
                   pageSize={10}
                   total={324} 
@@ -541,7 +598,7 @@ class Page1 extends Component {
               label="面板"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Panel>
+              <Panel radius>
                 <Panel.Header>
                   <Panel.Title>头部左侧</Panel.Title>
                   <Panel.More>

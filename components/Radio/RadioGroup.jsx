@@ -23,10 +23,6 @@ class RadioGroup extends Component {
   render() {    
     const props = this.props;
 
-    const cls = classnames({
-      'ui-radio-group'   : true,
-    });
-
     let children = React.Children.map(props.children, (radio) => {
       return (
         <Radio {...radio.props}
@@ -37,7 +33,7 @@ class RadioGroup extends Component {
     });
 
     return (
-      <div className={cls}>
+      <div className="ui-radio-group">
         {children}
       </div>
     );
@@ -62,8 +58,6 @@ class RadioGroup extends Component {
 }
 
 RadioGroup.propTypes = {
-  value        : PropTypes.string,
-  defaultValue : PropTypes.string,
   onChange     : PropTypes.func,
 };
 

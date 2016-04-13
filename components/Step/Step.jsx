@@ -1,24 +1,28 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Events from '../utils/events';
 import StepItem from './StepItem';
 
 class Step extends Component {
 
   constructor(props) {
     super(props);
+    this.unmounted = false;
     this.state = {
       itemWidth: 0,
     };
   }
 
   componentDidMount() {
-    this._updateItemWidth();
-    window.addEventListener("resize", () => this._updateItemWidth());
+    this.unmounted = true;
+    this.handleResize();
+    this.bindHandlers();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", () => this._updateItemWidth());
+    this.unmounted = false;
+    this.unbindHandlers();
   }
 
   render() { 
@@ -49,12 +53,23 @@ class Step extends Component {
     );
   }
 
-  _updateItemWidth() {
-    const step = this.refs.step,
-          num = step.childNodes.length,
-          itemWidth = Math.floor(step.offsetWidth / num);
+  handleResize(e) {
+    if (!this.unmounted) {
+      return;
+    }
 
+    const step = this.refs.step,
+          num = React.Children.count(this.props.children),
+          itemWidth = Math.floor(step.offsetWidth / num);
     this.setState({itemWidth});
+  }
+
+  bindHandlers() {
+    Events.on(window, 'resize', (e) => this.handleResize(e));
+  }
+
+  unbindHandlers() {
+    Events.off(window, 'resize', (e) => this.handleResize(e));
   }
 }
 

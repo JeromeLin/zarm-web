@@ -1,9 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import Events from '../utils/events';
-import isNodeInTree from '../utils/isNodeInTree';
 
 class Dropdown extends Component {
 
@@ -22,14 +19,6 @@ class Dropdown extends Component {
         visible: nextProps.visible
       });
     }
-  }
-
-  componentWillMount() {
-    this.unbindOuterHandlers();
-  }
-
-  componentWillUnmount() {
-    this.unbindOuterHandlers();
   }
 
   // componentDidMount() {
@@ -58,8 +47,9 @@ class Dropdown extends Component {
   //   return !!(this.state.isShow || nextState.isShow);
   // }
 
-  render () { 
-    const { className, children, ...others } = this.props;
+  render () {
+    const props = this.props;
+    const { className, isRadius, children, ...others } = props;
     // const { isShow, animationState } = this.state;
     const { visible } = this.state;
 
@@ -67,48 +57,11 @@ class Dropdown extends Component {
       'ui-dropdown'       : true,
       'ui-dropdown-hidden': !visible,
       // [`scaleDown-${animationState}`]: true,
+      'radius'            : ('radius' in props || isRadius),
       [className]         : !!className
     });
     
     return <div {...others} className={cls} ref="dropdown">{children}</div>;
-  }
-  
-  setDropdown(isOpen, callback) {
-    if (isOpen) {
-      this.bindOuterHandlers();
-    } else {
-      this.unbindOuterHandlers();
-    }
-
-    this.setState({
-      visible: isOpen
-    }, () => {
-      callback && callback();
-      isOpen && this.props.onOpen && this.props.onOpen();
-      !isOpen && this.props.onClose && this.props.onClose();
-    });
-  }
-
-  handleKeyup(e) {
-    (e.keyCode === 27) && this.setDropdown(false);
-  }
-
-  handleOuterClick(e) {
-    if (isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
-      return false;
-    }
-
-    this.setDropdown(false);
-  }
-
-  bindOuterHandlers() {
-    Events.on(document, 'click', (e) => this.handleOuterClick(e));
-    Events.on(document, 'keyup', (e) => this.handleKeyup(e));
-  }
-
-  unbindOuterHandlers() {
-    Events.off(document, 'click', (e) => this.handleOuterClick(e));
-    Events.off(document, 'keyup', (e) => this.handleKeyup(e));
   }
 
   // animationEnd(e) {
@@ -143,5 +96,19 @@ class Dropdown extends Component {
   //   }
   // }
 }
+
+Dropdown.propTypes = {
+  visible       : PropTypes.bool,
+  isRadius      : PropTypes.bool,
+  isDisabled    : PropTypes.bool,
+  onChange      : PropTypes.func,
+};
+
+Dropdown.defaultProps = {
+  visible       : false,
+  isRadius      : false,
+  isDisabled    : false,
+  onChange      : function () {},
+};
 
 export default Dropdown;
