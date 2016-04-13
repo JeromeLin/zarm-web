@@ -32,7 +32,8 @@ import {
   Tooltip,
   Upload,
   Tab,
-  Message
+  Message,
+  Progress
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -65,6 +66,7 @@ class Page1 extends Component {
       selectValue  : '',
       selectValue2 : 'b',
       checkboxValue: [],
+      date         : '2015-12-1',
 
       mulSelectLeft      : [
         {value: 1, name: '我是选项一'},
@@ -76,7 +78,6 @@ class Page1 extends Component {
       mulSelectRight     : [],
       mulSelectRightValue: [],
 
-      date         : '2015-12-1',
       tags         : [],
       msg          : [],
 
@@ -86,9 +87,25 @@ class Page1 extends Component {
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
+      percent: 90,
     };
   }
 
+  componentDidMount() {
+    this.percent = 100;
+    // 初始化数据
+    const interval = setInterval(() => {
+        if (this.state.percent <= 0) {
+            this.setState({
+                percent: 99
+            });
+        }
+        const percent = this.state.percent - 5;
+        this.setState({
+            percent: percent
+        });
+    }, 3000)
+  }
   _onClickOpen(key) {
     this.setState({
       [`${ key }`]: true
@@ -795,7 +812,30 @@ class Page1 extends Component {
             </Panel.Footer>
           </Panel>
 
-          <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
+          <div style={{verticalAlign: 'middle'}}>
+            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
+              <span className="ui-select-selection" style={{height: '100%'}}>
+                <Menu>
+                  <Menu.Item>姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名</Menu.Item>
+                  <Menu.Item>年龄</Menu.Item>
+                  <Menu.Item>333</Menu.Item>
+                </Menu>
+              </span>
+            </span>
+            <span style={{width: 50, textAlign: 'center', display: 'inline-block'}}>
+              <Button><Icon type="right" /></Button>
+              <Button style={{marginTop: 10}}><Icon type="back" /></Button>
+            </span>
+            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
+              <span className="ui-select-selection" style={{height: '100%'}}>
+                <Menu>
+
+                </Menu>
+              </span>
+            </span>
+          </div>
+
+          <Modal visible={this.state.modal} style={{width: '1000px'}} onMaskClick={() => this._onClickClose('modal')}>
             <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
             <Modal.Body height={400}>
               我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
@@ -822,7 +862,23 @@ class Page1 extends Component {
           <Mask
             visible={this.state.mask}
             onClose={() => this._onClickClose('mask')} />
+          Info:<br/>
 
+          <Progress percent={this.state.percent} theme="info" radius size="xs" style={{width:'50%'}} 
+                render={(percent) => { if (percent > 50) {
+                                    return (<div>大于50，目前为{percent}</div>);
+                                } else {
+                                    return (<div>小于50，目前为{percent}</div>);
+                                }}}>
+            </Progress> <br/>
+          warning:<br/>
+          <Progress percent="30" theme="warning" radius size="sm" style={{width:'50%'}}></Progress><br/>
+          Success:<br/>
+          <Progress percent="30" theme="success" radius size="lg" style={{width:'50%'}}></Progress><br/>
+          Default:<br/>
+          <Progress percent="30" theme="default" radius size="xl" style={{width:'50%'}}></Progress><br/>
+          Error:<br/>
+          <Progress percent="30" theme="error" radius size="xl" style={{width:'50%'}}></Progress><br/>
         </div>
       </Loading>
     );
