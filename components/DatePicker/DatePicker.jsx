@@ -71,7 +71,7 @@ class DatePicker extends Component {
           <span className={textCls}>{valueText}</span>
           <Icon className="ui-select-icon" type="date" />
         </span>
-        <Dropdown visible={dropdown}>
+        <Dropdown isRadius={radius} visible={dropdown}>
           <Calendar defaultValue={defaultValue} value={value} format={format} hasFooter={true} onChange={(value) => this.onDateChange(value)} />
         </Dropdown>
       </span>

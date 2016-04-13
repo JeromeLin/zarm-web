@@ -115,7 +115,7 @@ class Page1 extends Component {
   render() {
 
     return (
-      <Loading visible={this.state.loading} message="付款中">
+      <Loading visible={this.state.loading}>
         <div className="demo">
 
           <h4>Form</h4>
@@ -494,6 +494,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <DatePicker
+                radius
                 style={{width: 120}}
                 // value={this.state.date}
                 placeholder="请选择日期"
@@ -509,7 +510,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
-                url="http://10.139.162.103:8080/artimes/insuredImport"
+                url="http://10.139.162.103:8080/artemis/insuredImport"
                 onSelect={ file => {
                   // console.log(file)
                   // const isJPG = file.type === 'image/jpeg';
