@@ -1,26 +1,47 @@
 @mixin progress-theme($color, $background, $border) {
-  background-color: $color;
-  transition: all .5s ease 0s;
-  position: relative;
+  .ui-progress-bg {
+    background-color: $color; 
+  }
 }
 
 
 @mixin progress-size($height, $padding, $font-size, $border-radius) {
-  padding: $padding;
-  font-size: $font-size;
-  height: $height / 2;
-  line-height: $height - 2;
+
+  .ui-progress-bg {
+    padding: $padding;
+    font-size: $font-size;
+    height: $height / 2;
+    line-height: $height - 2;
+  }
 
   &.radius {
     border-radius: $border-radius * 3;
+
+    .ui-progress-line-inner,
+    .ui-progress-bg {
+      border-radius: $border-radius * 3;
+    }
   }
   
   &.round {
     border-radius: 1000px;
+
+    .ui-progress-line-inner,
+    .ui-progress-bg {
+      border-radius: 1000px;
+    }
   }
 }
 
-.ui-progress { 
+.ui-progress {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  width: 100%;
+  font-size: 12px;
+  @include progress-size($base-height, 0 10px, $base-fontSize, $base-radius);
+
   /* Progress themes */
   &.theme-default {
     @include progress-theme($base-theme-default, $base-btn-default-bg, $base-btn-default-border);
@@ -53,19 +74,6 @@
   }
 }
 
-.ui-progress-line-wrap {
-  margin-right: 8px;
-  margin-bottom: 5px;
-  width: 100%;
-  font-size: 12px;
-  position: relative;
-  display: inline-block;
-}
-
-.clearfix{
-  zoom: 1;
-}
-
 .ui-progress-line-outer {
   padding-right: 45px;
   display: inline-block;
@@ -77,16 +85,18 @@
   display: inline-block;
   width: 100%;
   background-color: #f3f3f3;
-  border-radius: 100px;
   vertical-align: middle;
 }
 
+.ui-progress-bg {
+  position: relative;
+  transition: all .5s ease 0s;
+}
+
 .ui-progress-line-text {
+  display: inline-block;
   width: 35px;
   text-align: left;
-  font-size: 1em;
   margin-left: 10px;
   vertical-align: middle;
-  display: inline-block;
-  font-family: tahoma;
 }

@@ -95,16 +95,14 @@ class Page1 extends Component {
     this.percent = 100;
     // 初始化数据
     const interval = setInterval(() => {
-        if (this.state.percent <= 0) {
-            this.setState({
-                percent: 99
-            });
+        if (this.state.percent >= 100) {
+          this.setState({
+            percent: 0
+          });
         }
-        const percent = this.state.percent - 5;
-        this.setState({
-            percent: percent
-        });
-    }, 3000)
+        const percent = this.state.percent + 5;
+        this.setState({percent});
+    }, 1000);
   }
   _onClickOpen(key) {
     this.setState({
@@ -635,6 +633,28 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="进度条"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Progress
+                radius
+                theme="warning"
+                size="xs"
+                percent={this.state.percent}
+                render={(percent) => {
+                  if (percent > 50) {
+                    return <div>大于50，目前为{percent}</div>;
+                  } else {
+                    return <div>小于50，目前为{percent}</div>;
+                  }
+                }} />
+              <Progress percent="30" theme="success" size="sm" />
+              <Progress percent="30" />
+              <Progress percent="30" theme="info" size="lg" />
+              <Progress percent="30" theme="error" size="xl" />
+            </Form.Item>
+
+            <Form.Item
               label
               labelCol="col-sm-2"
               controlCol="col-sm-10">
@@ -812,29 +832,6 @@ class Page1 extends Component {
             </Panel.Footer>
           </Panel>
 
-          <div style={{verticalAlign: 'middle'}}>
-            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
-              <span className="ui-select-selection" style={{height: '100%'}}>
-                <Menu>
-                  <Menu.Item>姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名</Menu.Item>
-                  <Menu.Item>年龄</Menu.Item>
-                  <Menu.Item>333</Menu.Item>
-                </Menu>
-              </span>
-            </span>
-            <span style={{width: 50, textAlign: 'center', display: 'inline-block'}}>
-              <Button><Icon type="right" /></Button>
-              <Button style={{marginTop: 10}}><Icon type="back" /></Button>
-            </span>
-            <span className="ui-select radius" style={{width: 180, height: 200, display: 'inline-block'}}>
-              <span className="ui-select-selection" style={{height: '100%'}}>
-                <Menu>
-
-                </Menu>
-              </span>
-            </span>
-          </div>
-
           <Modal visible={this.state.modal} style={{width: '1000px'}} onMaskClick={() => this._onClickClose('modal')}>
             <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
             <Modal.Body height={400}>
@@ -862,23 +859,7 @@ class Page1 extends Component {
           <Mask
             visible={this.state.mask}
             onClose={() => this._onClickClose('mask')} />
-          Info:<br/>
-
-          <Progress percent={this.state.percent} theme="info" radius size="xs" style={{width:'50%'}} 
-                render={(percent) => { if (percent > 50) {
-                                    return (<div>大于50，目前为{percent}</div>);
-                                } else {
-                                    return (<div>小于50，目前为{percent}</div>);
-                                }}}>
-            </Progress> <br/>
-          warning:<br/>
-          <Progress percent="30" theme="warning" radius size="sm" style={{width:'50%'}}></Progress><br/>
-          Success:<br/>
-          <Progress percent="30" theme="success" radius size="lg" style={{width:'50%'}}></Progress><br/>
-          Default:<br/>
-          <Progress percent="30" theme="default" radius size="xl" style={{width:'50%'}}></Progress><br/>
-          Error:<br/>
-          <Progress percent="30" theme="error" radius size="xl" style={{width:'50%'}}></Progress><br/>
+      
         </div>
       </Loading>
     );
