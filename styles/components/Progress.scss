@@ -1,7 +1,7 @@
 @mixin progress-theme($color, $background, $border) {
     background-color: $color;
-    -webkit-transition: all .3s linear 0s;
-    transition: all .3s linear 0s;
+    -webkit-transition: all .5s ease 0s;
+    transition: all .5s ease 0s;
     position: relative;
 }
 

@@ -81,18 +81,20 @@ class Page1 extends Component {
   }
 
   componentDidMount() {
+    this.percent = 100;
     // 初始化数据
     const interval = setInterval(() => {
-        if (!this.state.percent) {
-            return clearInterval(interval);
+        if (this.state.percent <= 0) {
+            this.setState({
+                percent: 99
+            });
         }
-        const percent = this.state.percent - 1;
+        const percent = this.state.percent - 5;
         this.setState({
             percent: percent
         });
-    }, 100)
+    }, 3000)
   }
-    
   _onClickOpen(key) {
     this.setState({
       [`${ key }`]: true
@@ -788,7 +790,13 @@ class Page1 extends Component {
             onClose={() => this._onClickClose('mask')} />
           Info:<br/>
 
-          <Progress percent={this.state.percent} theme="info" radius size="xs" style={{width:'50%'}}></Progress> <br/>
+          <Progress percent={this.state.percent} theme="info" radius size="xs" style={{width:'50%'}} 
+                render={(percent) => { if (percent > 50) {
+                                    return (<div>大于50，目前为{percent}</div>);
+                                } else {
+                                    return (<div>小于50，目前为{percent}</div>);
+                                }}}>
+            </Progress> <br/>
           warning:<br/>
           <Progress percent="30" theme="warning" radius size="sm" style={{width:'50%'}}></Progress><br/>
           Success:<br/>
@@ -797,7 +805,6 @@ class Page1 extends Component {
           <Progress percent="30" theme="default" radius size="xl" style={{width:'50%'}}></Progress><br/>
           Error:<br/>
           <Progress percent="30" theme="error" radius size="xl" style={{width:'50%'}}></Progress><br/>
-
         </div>
       </Loading>
     );
