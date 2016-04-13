@@ -4,34 +4,52 @@ import classnames from 'classnames';
 
 class Progress extends Component {
 
-  render() {
-    const props = this.props;
-    const { isRadius, isRound, percent, theme, size, className, ...others } = this.props;
 
-    const classes = classnames({
-      'radius'           : ('radius' in props || isRadius),
-      'round'            : ('round' in props || isRound),   
-      [`theme-${theme}`] : !!theme,
-      [`size-${size}`]   : !!size,
-      [className]        : !!className,
-      'ui-progress ': true
+    // componentWillReceiveProps(nextProps) {
+    //     console.log(nextProps);
+    //     if ('percent' in nextProps) {
+    //         this.setState({
+    //             percent  : nextProps.percent
+    //         });
+    //     }
+    // }
 
-    });
+    render() {
+        const props = this.props;
+        const { isRadius, isRound, percent, theme, size, className, ...others } = this.props;
 
-    return (
-      // <div type={type} className={classes} {...others}>12345</div>
+        const classes = classnames({
+          'radius'           : ('radius' in props || isRadius),
+          'round'            : ('round' in props || isRound),   
+          [`theme-${theme}`] : !!theme,
+          [`size-${size}`]   : !!size,
+          [className]        : !!className,
+          'ui-progress ': true
 
-        <div className="ant-progress-line-wrap clearfix status-normal" {...others}>
-            <div className="ant-progress-line-outer">
-                <div className="ant-progress-line-inner">
-                    <div className={classes} style={{width: percent + '%'}}>
+        });
+
+        if (this.props.render) {
+            return (<div className="ant-progress-line-wrap clearfix status-normal" {...others}>
+                <div className="ant-progress-line-outer">
+                    <div className="ant-progress-line-inner">
+                        <div className={classes} style={{width: percent + '%'}}>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <span className="ant-progress-line-text">{percent}%</span>
-        </div>
-    );
-  }
+                {this.props.render(percent)}
+            </div>)
+        } else {
+            return (<div className="ant-progress-line-wrap clearfix status-normal" {...others}>
+                <div className="ant-progress-line-outer">
+                    <div className="ant-progress-line-inner">
+                        <div className={classes} style={{width: percent + '%'}}>
+                        </div>
+                    </div>
+                </div>
+                <span className="ant-progress-line-text">{percent}%</span>
+            </div>)
+        }
+    }
 }
 
 Progress.propTypes = {
