@@ -1,0 +1,92 @@
+@mixin progress-theme($color, $background, $border) {
+  background-color: $color;
+  transition: all .5s ease 0s;
+  position: relative;
+}
+
+
+@mixin progress-size($height, $padding, $font-size, $border-radius) {
+  padding: $padding;
+  font-size: $font-size;
+  height: $height / 2;
+  line-height: $height - 2;
+
+  &.radius {
+    border-radius: $border-radius * 3;
+  }
+  
+  &.round {
+    border-radius: 1000px;
+  }
+}
+
+.ui-progress { 
+  /* Progress themes */
+  &.theme-default {
+    @include progress-theme($base-theme-default, $base-btn-default-bg, $base-btn-default-border);
+  }
+  &.theme-info {
+    @include progress-theme($base-theme-info, $base-btn-info-bg, $base-btn-info-border);
+  }
+  &.theme-success {
+    @include progress-theme($base-theme-success, $base-btn-success-bg, $base-btn-success-border);
+  }
+  &.theme-warning {
+    @include progress-theme($base-theme-warning, $base-btn-warning-bg, $base-btn-warning-border);
+  }
+  &.theme-error {
+    @include progress-theme($base-theme-error, $base-btn-error-bg, $base-btn-error-border);
+  }
+
+  /* Progress sizes */
+  &.size-xl {
+    @include progress-size($base-height-xl, 0 14px, $base-fontSize-xl, $base-radius-xl);
+  }
+  &.size-lg {
+    @include progress-size($base-height-lg, 0 12px, $base-fontSize-lg, $base-radius-lg);
+  }
+  &.size-sm {
+    @include progress-size($base-height-sm, 0 8px, $base-fontSize-sm, $base-radius-sm);
+  }
+  &.size-xs {
+    @include progress-size($base-height-xs, 0 4px, $base-fontSize-xs, $base-radius-xs);
+  }
+}
+
+.ui-progress-line-wrap {
+  margin-right: 8px;
+  margin-bottom: 5px;
+  width: 100%;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.clearfix{
+  zoom: 1;
+}
+
+.ui-progress-line-outer {
+  padding-right: 45px;
+  display: inline-block;
+  width: 100%;
+  margin-right: -45px;
+}
+
+.ui-progress-line-inner {
+  display: inline-block;
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 100px;
+  vertical-align: middle;
+}
+
+.ui-progress-line-text {
+  width: 35px;
+  text-align: left;
+  font-size: 1em;
+  margin-left: 10px;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: tahoma;
+}
