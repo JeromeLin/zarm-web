@@ -88,11 +88,13 @@ class TabGroup extends Component {
 TabGroup.propTypes = {
   theme     : PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   isRadius  : PropTypes.bool,
+  onChange  : PropTypes.func,
 };
 
 TabGroup.defaultProps = {
   theme     : 'default',
   isRadius  : false,
+  onChange  : () => {},
 };
 
 export default TabGroup;

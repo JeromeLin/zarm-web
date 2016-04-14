@@ -65,7 +65,7 @@ Radio.propTypes = {
 Radio.defaultProps = {
   defaultChecked: false,
   isDisabled    : false,
-  onChange      : function () {},
+  onChange      : () => {},
 };
 
 export default Radio;

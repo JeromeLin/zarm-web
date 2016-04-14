@@ -40,8 +40,8 @@ Confirm.defaultProps = {
   width     : 270,
   okText    : '确定',
   cancelText: '取消',
-  onOk      : function () {},
-  onCancel  : function () {},
+  onOk      : () => {},
+  onCancel  : () => {},
 };
 
 export default Confirm;

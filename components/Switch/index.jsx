@@ -62,7 +62,7 @@ Switch.defaultProps = {
   defaultValue : false,
   isCheckedText: '',
   unCheckedText: '',
-  onChange     : function () {},
+  onChange     : () => {},
 };
 
 export default Switch;

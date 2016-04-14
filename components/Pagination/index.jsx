@@ -133,7 +133,7 @@ Pagination.defaultProps = {
   isRadius     : false,
   total        : 0,
   pageSize     : 10,
-  onPageChange : function () {},
+  onPageChange : () => {},
 };
 
 export default Pagination;

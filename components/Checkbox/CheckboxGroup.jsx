@@ -70,7 +70,7 @@ CheckboxGroup.propTypes = {
 };
 
 CheckboxGroup.defaultProps = {
-  onChange     : function () {},
+  onChange     : () => {},
 };
 
 export default CheckboxGroup;

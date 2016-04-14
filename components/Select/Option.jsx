@@ -38,7 +38,7 @@ Option.propTypes = {
 Option.defaultProps = {
   defaultChecked: false,
   isDisabled    : false,
-  onChange      : function () {},
+  onChange      : () => {},
 };
 
 export default Option;
