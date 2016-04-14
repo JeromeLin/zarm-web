@@ -263,7 +263,7 @@ class Page1 extends Component {
               label="标签页" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Tab.Group onChange={(i) => console.log(i)}>
+              <Tab.Group>
                 <Tab title="选项卡1">
                   这是选项卡1的文字
                 </Tab>
@@ -636,9 +636,9 @@ class Page1 extends Component {
               label="进度条"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Progress round percent="30" theme="warning" size="xl" />
-              <Progress radius percent="30" theme="success" size="lg" />
-              <Progress percent={this.state.percent}
+              <Progress round percent="30" size="xl" />
+              <Progress radius percent="30" theme="warning" size="lg" />
+              <Progress percent={this.state.percent} theme="success"
                 render={(percent) => {
                   return <div>已处理{percent}项</div>;
                 }} />
