@@ -636,22 +636,14 @@ class Page1 extends Component {
               label="进度条"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Progress
-                radius
-                theme="warning"
-                size="xs"
-                percent={this.state.percent}
+              <Progress round percent="30" theme="warning" size="xl" />
+              <Progress radius percent="30" theme="success" size="lg" />
+              <Progress percent={this.state.percent}
                 render={(percent) => {
-                  if (percent > 50) {
-                    return <div>大于50，目前为{percent}</div>;
-                  } else {
-                    return <div>小于50，目前为{percent}</div>;
-                  }
+                  return <div>已处理{percent}项</div>;
                 }} />
-              <Progress percent="30" theme="success" size="sm" />
-              <Progress percent="30" />
-              <Progress percent="30" theme="info" size="lg" />
-              <Progress percent="30" theme="error" size="xl" />
+              <Progress percent="30" theme="info" size="sm" />
+              <Progress percent="30" theme="error" size="xs" />
             </Form.Item>
 
             <Form.Item
