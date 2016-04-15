@@ -91,19 +91,6 @@ class Page1 extends Component {
     };
   }
 
-  componentDidMount() {
-    this.percent = 100;
-    // 初始化数据
-    const interval = setInterval(() => {
-        if (this.state.percent >= 100) {
-          this.setState({
-            percent: 0
-          });
-        }
-        const percent = this.state.percent + 5;
-        this.setState({percent});
-    }, 1000);
-  }
   _onClickOpen(key) {
     this.setState({
       [`${ key }`]: true
@@ -263,7 +250,7 @@ class Page1 extends Component {
               label="标签页" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Tab.Group>
+              <Tab.Group onChange={(i) => console.log(i)}>
                 <Tab title="选项卡1">
                   这是选项卡1的文字
                 </Tab>
