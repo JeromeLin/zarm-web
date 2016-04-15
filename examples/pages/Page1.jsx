@@ -114,6 +114,26 @@ class Page1 extends Component {
     });
   }
 
+  _showDefault() {
+    Message.default('default!!!', 1500)
+  }
+
+  _showInfo() {
+    Message.info('info!!!', 1500)
+  }
+
+  _showSuccess() {
+    Message.success('success!!!', 1500)
+  }
+
+  _showError() {
+    Message.error('error!!!', 1500)
+  }
+
+  _showWarning() {
+    Message.warning('warning!!!', 1500)
+  }
+
   render() {
 
     return (
@@ -541,6 +561,17 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="消息提示"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Button onClick={() => this._showDefault()}>default</Button>
+              <Button onClick={() => this._showInfo()}>info</Button>
+              <Button onClick={() => this._showSuccess()}>success</Button>
+              <Button onClick={() => this._showError()}>error</Button>
+              <Button onClick={() => this._showWarning()}>warning</Button>
+            </Form.Item>
+
+            <Form.Item
               label="菜单"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
@@ -838,7 +869,7 @@ class Page1 extends Component {
           <Mask
             visible={this.state.mask}
             onClose={() => this._onClickClose('mask')} />
-      
+          <div id="message"></div>
         </div>
       </Loading>
     );

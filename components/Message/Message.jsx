@@ -1,6 +1,11 @@
 
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import MessageItem from './MessageItem';
+// 创建一个div
+let openFlg = false,
+    div = document.createElement('div'),
+    theme = 'default';
 
 class Message extends Component {
 
@@ -12,9 +17,44 @@ class Message extends Component {
     };
   }
 
+  componentDidMount() {
+    if ( openFlg ) {
+      this.enter();
+      openFlg = false;
+    }
+  }
+
   componentWillReceiveProps (nextProps) {
     clearTimeout(this.state.timer);
     this.enter();
+  }
+
+  static default(message, duration) {
+    openFlg = true;
+    let messageArray = [{m: message}];
+        duration = duration || 1500;  
+    document.body.appendChild(div);
+    ReactDOM.render(<Message msg={messageArray} duration={duration} theme={theme} />,div);
+  }
+
+  static info(message, duration) {
+    theme = 'info';
+    this.default(message, duration);
+  }
+
+  static success(message, duration) {
+    theme = 'success';
+    this.default(message, duration);
+  }
+
+  static warning(message, duration) {
+    theme = 'warning';
+    this.default(message, duration);
+  }
+
+  static error(message, duration) {
+    theme = 'error';
+    this.default(message, duration);
   }
 
   enter() {
@@ -29,15 +69,20 @@ class Message extends Component {
 
       this.state.active++;
 
-      if( this.state.active != this.refs.message.children.length)
+      if( this.state.active != this.refs.message.children.length){
         this.enter();
+      }
+
+      setTimeout(() => {
+        ReactDOM.unmountComponentAtNode(div);
+        document.body.removeChild(div)
+      }, 500);
 
     }, this.props.duration)
   }
 
   render () {
     const { msg, duration, theme, ...others } = this.props;
-
     let items = msg.map((o,i) => {
       return <MessageItem key={i} content={o.m} duration={duration} theme={theme} />
     });
