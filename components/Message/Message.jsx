@@ -5,7 +5,7 @@ import MessageItem from './MessageItem';
 // 创建一个div
 let openFlg = false,
     div = document.createElement('div'),
-    theme = 'default';
+    theme = 'info';
 
 class Message extends Component {
 
