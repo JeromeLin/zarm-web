@@ -21,11 +21,12 @@ class Tab extends Component {
 
   render () {
     const props = this.props;
-    const { children, ...others } = props;
+    const { className, children, ...others } = props;
 
     const cls = classnames({
       'ui-tab-body-item'       : true,
-      'ui-tab-body-item-active': this.state.selected
+      'ui-tab-body-item-active': this.state.selected,
+      [className]              : !!className,
     })
 
     return (
