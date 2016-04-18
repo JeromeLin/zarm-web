@@ -27,3 +27,4 @@ export Tooltip from './Tooltip';
 export Upload from './Upload';
 export Tab from './Tab';
 export Message from './Message';
+export Progress from './Progress';

@@ -167,7 +167,7 @@ Select.propTypes = {
 Select.defaultProps = {
   isRadius      : false,
   isDisabled    : false,
-  onChange      : function () {},
+  onChange      : () => {},
 };
 
 export default Select;

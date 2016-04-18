@@ -139,7 +139,7 @@ DatePicker.propTypes = {
 DatePicker.defaultProps = {
   isDisabled    : false,
   format        : 'yyyy-MM-dd',
-  onChange      : function () {},
+  onChange      : () => {},
 };
 
 export default DatePicker;

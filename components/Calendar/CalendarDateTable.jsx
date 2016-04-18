@@ -189,7 +189,7 @@ CalendarDateTable.propTypes = {
 CalendarDateTable.defaultProps = {
   defaultValue: '',
   value       : '',
-  onDateClick : function () {},
+  onDateClick : () => {},
 };
 
 export default CalendarDateTable;

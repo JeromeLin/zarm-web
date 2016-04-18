@@ -32,7 +32,8 @@ import {
   Tooltip,
   Upload,
   Tab,
-  Message
+  Message,
+  Progress
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -65,6 +66,7 @@ class Page1 extends Component {
       selectValue  : '',
       selectValue2 : 'b',
       checkboxValue: [],
+      date         : '2015-12-1',
 
       mulSelectLeft      : [
         {value: 1, name: '我是选项一'},
@@ -76,7 +78,6 @@ class Page1 extends Component {
       mulSelectRight     : [],
       mulSelectRightValue: [],
 
-      date         : '2015-12-1',
       tags         : [],
       msg          : [],
 
@@ -86,6 +87,7 @@ class Page1 extends Component {
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
+      percent: 90,
     };
   }
 
@@ -618,6 +620,20 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="进度条"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Progress round percent="30" size="xl" />
+              <Progress radius percent="30" theme="warning" size="lg" />
+              <Progress percent={this.state.percent} theme="success"
+                render={(percent) => {
+                  return <div>已处理{percent}项</div>;
+                }} />
+              <Progress percent="30" theme="info" size="sm" />
+              <Progress percent="30" theme="error" size="xs" />
+            </Form.Item>
+
+            <Form.Item
               label
               labelCol="col-sm-2"
               controlCol="col-sm-10">
@@ -795,7 +811,7 @@ class Page1 extends Component {
             </Panel.Footer>
           </Panel>
 
-          <Modal visible={this.state.modal} width="600" onMaskClick={() => this._onClickClose('modal')}>
+          <Modal visible={this.state.modal} style={{width: '1000px'}} onMaskClick={() => this._onClickClose('modal')}>
             <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
             <Modal.Body height={400}>
               我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
@@ -822,7 +838,7 @@ class Page1 extends Component {
           <Mask
             visible={this.state.mask}
             onClose={() => this._onClickClose('mask')} />
-
+      
         </div>
       </Loading>
     );

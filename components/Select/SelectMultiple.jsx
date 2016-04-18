@@ -108,7 +108,7 @@ SelectMultiple.propTypes = {
 SelectMultiple.defaultProps = {
   isRadius      : false,
   isDisabled    : false,
-  onChange      : function () {},
+  onChange      : () => {},
 };
 
 export default SelectMultiple;

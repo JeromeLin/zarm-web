@@ -109,7 +109,7 @@ CalendarYearTable.propTypes = {
 CalendarYearTable.defaultProps = {
   defaultValue: '',
   value       : '',
-  onYearClick : function () {},
+  onYearClick : () => {},
 };
 
 export default CalendarYearTable;

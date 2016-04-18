@@ -93,7 +93,7 @@ Calendar.propTypes = {
 
 Calendar.defaultProps = {
   format  : 'yyyy-MM-dd',
-  onChange: function () {},
+  onChange: () => {},
 };
 
 export default Calendar;
