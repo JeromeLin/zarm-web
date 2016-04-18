@@ -34,7 +34,7 @@ Alert.propTypes = {
 Alert.defaultProps = {
   message : '',
   width   : 270,
-  onClose : function () {},
+  onClose : () => {},
 };
 
 export default Alert;

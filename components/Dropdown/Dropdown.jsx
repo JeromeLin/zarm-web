@@ -108,7 +108,7 @@ Dropdown.defaultProps = {
   visible       : false,
   isRadius      : false,
   isDisabled    : false,
-  onChange      : function () {},
+  onChange      : () => {},
 };
 
 export default Dropdown;

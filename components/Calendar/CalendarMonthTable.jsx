@@ -101,7 +101,7 @@ CalendarMonthTable.propTypes = {
 CalendarMonthTable.defaultProps = {
   defaultValue: '',
   value       : '',
-  onMonthClick : function () {},
+  onMonthClick : () => {},
 };
 
 export default CalendarMonthTable;

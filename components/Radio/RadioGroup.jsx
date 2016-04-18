@@ -58,11 +58,11 @@ class RadioGroup extends Component {
 }
 
 RadioGroup.propTypes = {
-  onChange     : PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 RadioGroup.defaultProps = {
-  onChange     : function () {},
+  onChange: () => {},
 };
 
 export default RadioGroup;
