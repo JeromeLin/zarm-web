@@ -7,12 +7,12 @@
     .ui-select-text {
       line-height: $height - 2;
       padding-left: $padding;
-      padding-right: 28px;
+      padding-right: $height;
     }
 
     .ui-select-icon,
     .ui-select-arrow {
-      right: $padding;
+      right: ($height - $font-size) / 2;
       margin-top:  - $font-size / 2;
     }
   }
@@ -73,6 +73,7 @@
     .ui-select-arrow {
       position: absolute;
       top: 50%;
+      margin-top: -6px;
       color: #d9d9d9;
       transition: transform .2s ease;
       line-height: normal;
