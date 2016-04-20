@@ -385,7 +385,6 @@ class Page1 extends Component {
               label="下拉选择"
               labelCol="col-sm-2"
               controlCol="col-sm-10"
-              theme="error"
               help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
               <Select radius style={{width: 120}} placeholder="请选择" onChange={(data) => {
                 console.log(data)
@@ -411,7 +410,8 @@ class Page1 extends Component {
                 <Select.Option value="c">我是C</Select.Option>
                 <Select.Option value="d">我是D</Select.Option>
               </Select>
-              <Button>确定</Button>
+              <Input style={{width: 200}} />
+              <Button radius>确定</Button>
             </Form.Item>
 
             <Form.Item
@@ -759,7 +759,7 @@ class Page1 extends Component {
                   style={{marginTop: 10}}
                   addonBefore={`共有324条记录 第${this.state.currentPage}/${Math.ceil(324/this.state.pageSize)}页`}
                   addonAfter={
-                    <div>
+                    <div style={{lineHeight: 1.5}}>
                       <Select
                         size="sm"
                         defaultValue={10}
@@ -775,8 +775,8 @@ class Page1 extends Component {
                         <Select.Option value={40}>每页 40 条</Select.Option>
                       </Select>
                       <span style={{display: 'inline-block', marginLeft: 15}}>
-                        跳至<span style={{display: 'inline-block', width: 50, marginLeft: 5, marginRight: 5}}>
-                        <Input size="sm" value={this.state.inputPage}
+                        跳至
+                        <Input style={{width: 50, marginLeft: 5, marginRight: 5}} size="sm" value={this.state.inputPage}
                           onChange={(e) => {
                             let value = e.target.value;
 
@@ -799,7 +799,7 @@ class Page1 extends Component {
                               });
                             }
                           }} />
-                        </span>页
+                          页
                       </span>
                     </div>
                   }

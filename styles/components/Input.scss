@@ -1,6 +1,6 @@
 @mixin input-size($height, $padding, $font-size, $border-radius) {
   height: $height;
-  line-height: 1.42857143;
+  line-height: 1.5;
   padding: $padding;
   font-size: $font-size;
 
@@ -10,7 +10,7 @@
 }
 
 .ui-input {
-  @include input-size($base-height, 4px 9px, $base-fontSize, $base-radius);
+  @include input-size($base-height, 4px 7px, $base-fontSize, $base-radius);
   position: relative;
   display: inline-block;
   width: 100%;
@@ -68,7 +68,7 @@ textarea {
   &.ui-input {
     max-width: 100%;
     height: auto !important;
-    line-height: 1.42857143;
+    line-height: 1.5;
     vertical-align: bottom;
   }
 }
