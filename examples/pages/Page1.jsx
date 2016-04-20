@@ -227,7 +227,7 @@ class Page1 extends Component {
                     </Tooltip>
                   );
                 })
-              }
+              }（待完善）
             </Form.Item>
 
             <Form.Item
@@ -512,7 +512,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
-                url="http://10.139.162.103:8080/artemis/insuredImport"
+                url="http://10.139.163.146:8080/artemis/insuredImportd"
                 onSelect={ file => {
                   // console.log(file)
                   // const isJPG = file.type === 'image/jpeg';
@@ -631,6 +631,7 @@ class Page1 extends Component {
                 }} />
               <Progress percent="30" theme="info" size="sm" />
               <Progress percent="30" theme="error" size="xs" />
+              （待完善）
             </Form.Item>
 
             <Form.Item
@@ -644,7 +645,7 @@ class Page1 extends Component {
 
           </Form>
 
-          <Panel>
+          <Panel style={{marginTop: 20}}>
             <Panel.Header>
               <Panel.Title>表格</Panel.Title>
               <Panel.More>
@@ -660,6 +661,7 @@ class Page1 extends Component {
               <Table
                 striped
                 radius
+                hover
                 isLoading={this.state.tableLoading}
                 dataSource={this.state.dataSource}
                 columns={[{
