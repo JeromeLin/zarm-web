@@ -17,13 +17,14 @@ class Table extends Component {
 
   render () {
     const props = this.props;
-    const { isBordered, isStriped, isRadius, isLoading, size, className } = props;
+    const { isBordered, isStriped, isRadius, isHover, isLoading, size, className } = props;
 
     const cls = classnames({
       'ui-table'         : true,
       'ui-table-bordered': ('bordered' in props || isBordered),
       'ui-table-striped' : ('striped' in props || isStriped),
       'ui-table-radius'  : ('radius' in props || isRadius),
+      'ui-table-hover'   : ('hover' in props || isHover),
       [`size-${size}`]   : !!size,
       [className]        : !!className,
     });
@@ -169,12 +170,14 @@ Table.propTypes = {
   isBordered: PropTypes.bool,
   isStriped : PropTypes.bool,
   isRadius  : PropTypes.bool,
+  isHover   : PropTypes.bool,
 };
 
 Table.defaultProps = {
   isBordered: false,
   isStriped : false,
   isRadius  : false,
+  isHover   : false,
 };
 
 export default Table;
