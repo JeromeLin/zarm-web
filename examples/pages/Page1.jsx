@@ -512,7 +512,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
-                url="http://10.139.163.146:8080/artemis/insuredImportd"
+                url="http://10.139.162.103:8080/artemis/insuredImportd"
                 onSelect={ file => {
                   // console.log(file)
                   // const isJPG = file.type === 'image/jpeg';
