@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import isNodeInTree from '../utils/isNodeInTree';
-import Format from '../utils/Format';
+import Format from '../utils/format';
 import Dropdown from '../Dropdown';
 import Calendar from '../Calendar';
 import Icon from '../Icon';
