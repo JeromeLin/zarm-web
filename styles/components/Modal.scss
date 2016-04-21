@@ -11,7 +11,7 @@
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overflow: auto;
-  z-index: 1100;
+  z-index: $base-zindex-modal;
 
   &.radius {
     .ui-modal-dialog {
@@ -35,7 +35,7 @@
       background: #fff;
       box-shadow: 0 7px 21px rgba(0,0,0,.2);
       overflow: hidden;
-      z-index: 1101;
+      z-index: $base-zindex-modal + 1;
     }
   }
 }

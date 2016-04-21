@@ -1,7 +1,7 @@
 
 .ui-loading {
   position: relative;
-  /*z-index: 1200;*/
+  z-index: $base-zindex-loading;
 
   .ui-loading-spins {
     position: absolute;
@@ -14,7 +14,7 @@
     opacity: 1;
     visibility: visible;
     user-select: none;
-    z-index: 1201;
+    z-index: $base-zindex-loading + 1;
 
     .ui-loading-spin {
       animation: loadingSpinPulse 1.2s infinite cubic-bezier(.78, .14, .15, .86);

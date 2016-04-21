@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import Format from '../utils/Format';
+import Format from '../utils/format';
 
 const CALENDAR_ROW_COUNT = 6,
       CALENDAR_COL_COUNT = 7,

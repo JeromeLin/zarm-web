@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import Format from '../utils/Format';
+import Format from '../utils/format';
 import CalendarHeader from './CalendarHeader';
 import CalendarDateTable from './CalendarDateTable';
 import CalendarMonthTable from './CalendarMonthTable';

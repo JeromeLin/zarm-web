@@ -9,7 +9,7 @@ $default-color: #2db7f5;
 .ui-message {
   font-size: 12px;
   position: fixed;
-  z-index: 1050;
+  z-index: $base-zindex-message;
   width: 100%;
   top: 16px;
   left: 0;
