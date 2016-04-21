@@ -74,11 +74,16 @@ $base-tag-error-color:     #fff !default;
 $base-tag-error-bg:        $base-theme-error !default;
 
 
+$base-zindex-mask:         1000 !default;
+$base-zindex-modal:        1100 !default;
+$base-zindex-loading:      1200 !default;
+$base-zindex-message:      1300 !default;
+
 
 $base-modal-radius:        6px !default;
 $base-modal-round:         20px !default;
 
-$base-icon-url:            'http://at.alicdn.com/t/font_1460428003_7848346';
+$base-icon-url:            'http://at.alicdn.com/t/font_1461206629_673235';
 
 $screen-xs:                 480px !default;
 

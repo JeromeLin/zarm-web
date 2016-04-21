@@ -17,13 +17,15 @@
 }
 
 .ui-icon-check:before { content: "\e602"; }
-.ui-icon-close:before { content: "\e605"; }
-.ui-icon-check-round-fill:before { content: "\e609"; }
 .ui-icon-check-round:before { content: "\e60a"; }
+.ui-icon-check-round-fill:before { content: "\e609"; }
+.ui-icon-close:before { content: "\e605"; }
+.ui-icon-close-round:before { content: "\e60e"; }
+.ui-icon-close-round-fill:before { content: "\e60b"; }
+.ui-icon-info-round:before { content: "\e625"; }
+.ui-icon-info-round-fill:before { content: "\e624"; }
 .ui-icon-question-round-fill:before { content: "\e618"; }
 .ui-icon-question-round:before { content: "\e619"; }
-.ui-icon-info-round-fill:before { content: "\e624"; }
-.ui-icon-info-round:before { content: "\e625"; }
 .ui-icon-arrow-top:before { content: "\e600"; }
 .ui-icon-arrow-bottom:before { content: "\e601"; }
 .ui-icon-arrow-left:before { content: "\e603"; }

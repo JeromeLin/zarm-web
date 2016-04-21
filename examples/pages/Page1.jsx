@@ -161,8 +161,23 @@ class Page1 extends Component {
               label="icon图标" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Icon type="check" style={{fontSize: 30}} />
+              <Icon type="check" theme="info" style={{fontSize: 30}} />
+              <Icon type="check-round" style={{fontSize: 30}} />
+              <Icon type="check-round-fill" style={{fontSize: 30}} />
               <Icon type="close" style={{fontSize: 30}} />
+              <Icon type="close-round" style={{fontSize: 30}} />
+              <Icon type="close-round-fill" style={{fontSize: 30}} />
+              <Icon type="info-round" style={{fontSize: 30}} />
+              <Icon type="info-round-fill" style={{fontSize: 30}} />
+              <Icon type="question-round" style={{fontSize: 30}} />
+              <Icon type="question-round-fill" style={{fontSize: 30}} />
+              <Icon type="arrow-left" style={{fontSize: 30}} />
+              <Icon type="arrow-right" style={{fontSize: 30}} />
+              <Icon type="arrow-top" style={{fontSize: 30}} />
+              <Icon type="arrow-bottom" style={{fontSize: 30}} />
+              <Icon type="add" style={{fontSize: 30}} />
+              <Icon type="minus" style={{fontSize: 30}} />
+              <Icon type="date" style={{fontSize: 30}} />
             </Form.Item>
 
             <Form.Item
@@ -386,7 +401,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10"
               help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
-              <Select radius style={{width: 120}} placeholder="请选择" onChange={(data) => {
+              <Select radius style={{width: 120}} onChange={(data) => {
                 console.log(data)
                 this.setState({
                   selectValue : data.value,

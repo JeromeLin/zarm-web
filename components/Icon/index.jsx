@@ -20,11 +20,11 @@ class Icon extends Component {
 }
 
 Icon.propTypes = {
-  type: PropTypes.string,
+  type : PropTypes.string,
 };
 
 Icon.defaultProps = {
-  type: '',
+  type : '',
 };
 
 export default Icon;
