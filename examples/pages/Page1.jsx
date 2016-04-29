@@ -379,7 +379,7 @@ class Page1 extends Component {
               controlCol="col-sm-10"
               theme="error"
               help={`您选择了( ${this.state.checkboxValue} )`}>
-              <Checkbox onChange={(e) => {
+              <Checkbox disabled defaultChecked={true} onChange={(e) => {
                 console.log(e.target.checked);
               }}>单独使用</Checkbox>
               <br />
