@@ -30,7 +30,7 @@ class Upload extends Component {
   }
 
   onFileChange(e) {
-    const { url, onSelect, onProgress, onComplete } = this.props;
+    const { url, data, onSelect, onProgress, onComplete, onError } = this.props;
     let fd = new FormData(),
         file = this.refs.upload.files[0],
         xhr = new XMLHttpRequest(),
@@ -41,24 +41,33 @@ class Upload extends Component {
     if (onSelect(file) === false) {
       return false;
     }
-     
-    fd.append("files", file);
+    
+    // console.log(Math.round(file.size * 100 / (1024 * 1024)) / 100);
+
+    fd.append('files', file);
+    Object.keys(data).forEach((key, index) => {
+      fd.append(key, data[key]);
+    })
 
     xhr.onreadystatechange = () => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        onComplete(xhr.responseText);
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          onComplete(JSON.parse(xhr.responseText));
+        } else {
+          onError()
+        }
       }
     }
 
     //侦查当前附件上传情况
-    xhr.upload.onprogress = (e) => {
+    xhr.upload.onprogress = e => {
       loaded = e.loaded;
       total = e.total;
       percent = Math.floor(100 * loaded / total); //已经上传的百分比
       onProgress(percent);
     };
 
-    xhr.open("post", url);
+    xhr.open('post', url);
     xhr.send(fd);
   }
 }
@@ -68,6 +77,7 @@ Upload.propTypes = {
   onSelect  : PropTypes.func,
   onProgress: PropTypes.func,
   onComplete: PropTypes.func,
+  onError   : PropTypes.func,
 };
 
 Upload.defaultProps = {
@@ -75,6 +85,7 @@ Upload.defaultProps = {
   onSelect  : () => {},
   onProgress: () => {},
   onComplete: () => {},
+  onError   : () => {},
 };
 
 export default Upload;

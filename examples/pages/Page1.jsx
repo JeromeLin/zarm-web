@@ -87,7 +87,7 @@ class Page1 extends Component {
       currentPage  : 4,
       pageSize     : 10,
       inputPage    : 4,
-      percent: 90,
+      percent: 0,
     };
   }
 
@@ -178,6 +178,7 @@ class Page1 extends Component {
               <Icon type="add" style={{fontSize: 30}} />
               <Icon type="minus" style={{fontSize: 30}} />
               <Icon type="date" style={{fontSize: 30}} />
+              <Icon type="loading" style={{fontSize: 30}} />
             </Form.Item>
 
             <Form.Item
@@ -203,8 +204,9 @@ class Page1 extends Component {
               <Button>直角按钮</Button>
               <Button radius>圆角按钮</Button>
               <Button round>椭圆角按钮</Button>
-              <Button><Icon type="check" />带图标的按钮</Button>
+              <Button><Icon type="check" /> 带图标的按钮</Button>
               <Button disabled>禁用状态</Button>
+              <Button disabled loading>加载中的按钮</Button>
               <Button active>激活状态</Button>
             </Form.Item>
 
@@ -317,6 +319,13 @@ class Page1 extends Component {
               help="我是警告信息"
               theme="warning">
               <Input type="email" placeholder="请输入..." />
+            </Form.Item>
+
+            <Form.Item
+              label="数字输入框"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Input type="number" defaultValue={0} />
             </Form.Item>
 
             <Form.Item
@@ -525,9 +534,18 @@ class Page1 extends Component {
             <Form.Item
               label="上传" 
               labelCol="col-sm-2"
-              controlCol="col-sm-10">
+              controlCol="col-sm-10"
+              help={
+                <Progress percent={this.state.percent} theme="info" size="sm" />
+              }>
               <Upload
-                url="http://10.139.162.103:8080/artemis/insuredImportd"
+                url="http://10.139.163.74:8080/artemis/addApplyAttachment"
+                data={{
+                  attachmentType: 2,
+                  policyCategory: 1,
+                  objectId      : '20040006',
+                  remark        : null
+                }}
                 onSelect={ file => {
                   // console.log(file)
                   // const isJPG = file.type === 'image/jpeg';
@@ -536,11 +554,29 @@ class Page1 extends Component {
                   // }
                   // return isJPG;
                 }}
+                onProgress={ percent => {
+                  this.setState({percent});
+                }}
                 onComplete={ file => {
                   console.log(file)
                 }}>
                 <Button>上传</Button>
-              </Upload>（未完待续）
+              </Upload>
+            </Form.Item>
+
+            <Form.Item
+              label="进度条"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Progress round percent="30" size="xl" />
+              <Progress radius percent="30" theme="warning" size="lg" />
+              <Progress percent={this.state.percent} theme="success"
+                render={(percent) => {
+                  return <div>已处理{percent}项</div>;
+                }} />
+              <Progress percent="30" theme="info" size="sm" />
+              <Progress percent="30" theme="error" size="xs" />
+              （待完善）
             </Form.Item>
 
             <Form.Item
@@ -632,21 +668,6 @@ class Page1 extends Component {
                   </Panel.More>
                 </Panel.Footer>
               </Panel>
-            </Form.Item>
-
-            <Form.Item
-              label="进度条"
-              labelCol="col-sm-2"
-              controlCol="col-sm-10">
-              <Progress round percent="30" size="xl" />
-              <Progress radius percent="30" theme="warning" size="lg" />
-              <Progress percent={this.state.percent} theme="success"
-                render={(percent) => {
-                  return <div>已处理{percent}项</div>;
-                }} />
-              <Progress percent="30" theme="info" size="sm" />
-              <Progress percent="30" theme="error" size="xs" />
-              （待完善）
             </Form.Item>
 
             <Form.Item

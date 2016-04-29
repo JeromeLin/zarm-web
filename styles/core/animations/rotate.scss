@@ -7,6 +7,9 @@
     transform: rotate(360deg);
   }
 }
+.rotate360 {
+  animation: rotate360 1s infinite linear;
+}
 
 /* rotate */
 @keyframes rotate-enter {
