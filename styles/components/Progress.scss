@@ -8,7 +8,6 @@
 @mixin progress-size($height, $padding, $font-size, $border-radius) {
 
   .ui-progress-bg {
-    padding: $padding;
     font-size: $font-size;
     height: $height;
     line-height: $height;

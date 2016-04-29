@@ -1,12 +1,13 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Icon from '../Icon';
 
 class Button extends Component {
 
   render() {
     const props = this.props;
-    const { type, theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isDisabled, className, onClick, children, ...others } = this.props;
+    const { type, theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isDisabled, isLoading, className, onClick, children, ...others } = this.props;
     const disabled = ('disabled' in props || isDisabled);
 
     const classes = classnames({
@@ -23,8 +24,11 @@ class Button extends Component {
       [className]        : !!className,
     });
 
+    let textContent = ('loading' in props || isLoading)
+                    ? <span><Icon type="loading" className="rotate360" /> {children}</span>
+                    : children;
     return (
-      <button {...others} type={type} className={classes} disabled={disabled} onClick={(e) => !disabled && onClick(e)}>{children}</button>
+      <button {...others} type={type} className={classes} disabled={disabled} onClick={(e) => !disabled && onClick(e)}>{textContent}</button>
     );
   }
 }
@@ -40,6 +44,7 @@ Button.propTypes = {
   isActive  : PropTypes.bool,
   isFocus   : PropTypes.bool,
   isDisabled: PropTypes.bool,
+  isLoading : PropTypes.bool,
   className : PropTypes.string,
   onClick   : PropTypes.func,
 };
@@ -55,6 +60,7 @@ Button.defaultProps = {
   isActive  : false,
   isFocus   : false,
   isDisabled: false,
+  isLoading : false,
   className : null,
   onClick   : () => {},
 };
