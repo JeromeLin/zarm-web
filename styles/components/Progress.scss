@@ -35,8 +35,6 @@
 .ui-progress {
   position: relative;
   display: inline-block;
-  margin-right: 8px;
-  margin-bottom: 5px;
   width: 100%;
   font-size: 12px;
   @include progress-size(8px, 0 10px, $base-fontSize, $base-radius);

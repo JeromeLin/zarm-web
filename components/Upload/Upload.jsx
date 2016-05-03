@@ -1,12 +1,21 @@
 
 import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
+import Icon from '../Icon';
+import Progress from '../Progress';
 
 class Upload extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      uploading: false
+    }
+  }
+
   render () { 
     const props = this.props;
-    const { multiple, className, ...others } = this.props;
+    const { multiple, fileExt, className } = this.props;
 
     const cls = classnames({
       'ui-upload': true,
@@ -15,6 +24,8 @@ class Upload extends Component {
 
     const children = React.Children.map(props.children, (element, index) => {
       return cloneElement(element, {
+        isLoading: this.state.uploading,
+        isDisabled: this.state.uploading,
         onClick: () => {
           this.refs.upload.click();
         }
@@ -22,39 +33,93 @@ class Upload extends Component {
     });
 
     return (
-      <div {...others} className={cls}>
-        <input type="file" style={{display: 'none'}} multiple={multiple} ref="upload" onChange={(e) => this.onFileChange(e)} />
+      <div className={cls}>
+        <input type="file" style={{display: 'none'}} multiple={multiple} accept={fileExt} ref="upload" onChange={(e) => this.onUpload(e)} />
         {children}
+        {this.renderList()}
       </div>
     );
   }
 
-  onFileChange(e) {
+  // 渲染列表
+  renderList() {
+    const props = this.props.list;
+    const { className, type, dataSource, isRadius, onDelete } = props;
+
+    const listCls = classnames({
+      'ui-upload-list'          : true,
+      'ui-upload-list-inline'   : ('inline' in props),
+      [`ui-upload-list-${type}`]: ('type' in props),
+      [className]               : !!className,
+    });
+
+    const itemCls = classnames({
+      'ui-upload-list-item': true,
+      'radius'             : ('radius' in props || isRadius),
+    });
+
+    return (
+      <div className={listCls}>
+      {
+        dataSource.map((item, index) => {
+          const progress = item.percent
+                         ? <Progress className="ui-upload-list-item-progress" percent={item.percent} theme="info" size="sm" />
+                         : null;
+
+          return (
+            <div key={`upload-list-item-${index}`} className={itemCls}>
+              <a className="ui-upload-list-item-thumbnail" href={item.url || item.thumbUrl} target="_blank">
+                <img src={item.thumbUrl || item.url} alt={item.name} />
+              </a>
+              <span className="ui-upload-list-item-name">
+                <a href={item.url || item.thumbUrl} title={item.name} target="_blank">{item.name}</a>
+              </span>
+              {
+                // <div className="ui-upload-list-item-size">{item.size}</div>
+              }
+              <Icon type="close" title="删除" className="ui-upload-list-item-icon" onClick={() => onDelete(item)} />
+              {progress}
+            </div>
+          );
+
+        })
+      }
+      </div>
+    );
+  }
+
+  // 上传
+  onUpload(e) {
     const { url, data, onSelect, onProgress, onComplete, onError } = this.props;
     let fd = new FormData(),
-        file = this.refs.upload.files[0],
+        files = this.refs.upload.files[0],
         xhr = new XMLHttpRequest(),
         loaded,
         total,
         percent;
 
-    if (onSelect(file) === false) {
+    if (!files || onSelect(files) === false) {
       return false;
     }
     
-    // console.log(Math.round(file.size * 100 / (1024 * 1024)) / 100);
-
-    fd.append('files', file);
+    fd.append('files', files);
     Object.keys(data).forEach((key, index) => {
       fd.append(key, data[key]);
     })
 
+    this.setState({
+      uploading: true
+    });
+
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4) {
         if (xhr.status == 200) {
-          onComplete(JSON.parse(xhr.responseText));
+          onComplete(files, JSON.parse(xhr.responseText));
+          this.setState({
+            uploading: false
+          });
         } else {
-          onError()
+          onError();
         }
       }
     }
@@ -73,6 +138,8 @@ class Upload extends Component {
 }
 
 Upload.propTypes = {
+  fileDesc  : PropTypes.string,
+  isRadius  : PropTypes.bool,
   url       : PropTypes.string,
   onSelect  : PropTypes.func,
   onProgress: PropTypes.func,
@@ -81,6 +148,8 @@ Upload.propTypes = {
 };
 
 Upload.defaultProps = {
+  fileDesc  : '',
+  isRadius  : false,
   url       : '',
   onSelect  : () => {},
   onProgress: () => {},

@@ -52,6 +52,17 @@ class Page1 extends Component {
         {id: '4', name: '奥巴马', dept: '健康险事业部', age: 45, address: '美国洛杉矶', state: false},
       ],
 
+      uploadDataSource: [{
+        id: 1,
+        name: '111111111111111111111111111111111111111111111111.jpg',
+        thumbUrl: 'https://os.alipayobjects.com/rmsportal/NDbkJhpzmLxtPhB.png',
+      },
+      {
+        id: 2,
+        name: '2222.png',
+        thumbUrl: 'https://os.alipayobjects.com/rmsportal/NDbkJhpzmLxtPhB.png',
+      }],
+
       modal     : false,
       confirm   : false,
       alert     : false,
@@ -120,6 +131,7 @@ class Page1 extends Component {
       <Loading visible={this.state.loading}>
         <div className="demo">
 
+          <h2 ref="iframe1">sss</h2>
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>
 
@@ -534,11 +546,9 @@ class Page1 extends Component {
             <Form.Item
               label="上传" 
               labelCol="col-sm-2"
-              controlCol="col-sm-10"
-              help={
-                <Progress percent={this.state.percent} theme="info" size="sm" />
-              }>
+              controlCol="col-sm-10">
               <Upload
+                fileExt="image/gif, image/jpeg, image/png"
                 url="http://10.139.163.74:8080/artemis/addApplyAttachment"
                 data={{
                   attachmentType: 2,
@@ -548,17 +558,30 @@ class Page1 extends Component {
                 }}
                 onSelect={ file => {
                   // console.log(file)
-                  // const isJPG = file.type === 'image/jpeg';
-                  // if (!isJPG) {
-                  //   alert('只能上传 JPG 文件哦！');
-                  // }
-                  // return isJPG;
                 }}
                 onProgress={ percent => {
                   this.setState({percent});
                 }}
-                onComplete={ file => {
-                  console.log(file)
+                onComplete={(file, cb) => {
+                  let data = cb.result;
+                  let uploadDataSource = this.state.uploadDataSource;
+                  uploadDataSource.push({
+                    id: data.attachmentId,
+                    name: data.attachmentName,
+                    url: 'http://10.139.163.74:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
+                    size: file.size,
+                  });
+                  this.setState({uploadDataSource});
+                }}
+                list={{
+                  inline: true,
+                  isRadius: true,
+                  type: 'picture',
+                  dataSource: this.state.uploadDataSource,
+                  onDelete: (item) => {
+                    let uploadDataSource = [...this.state.uploadDataSource].filter(file => file && (file.id != item.id));
+                    this.setState({uploadDataSource});
+                  }
                 }}>
                 <Button>上传</Button>
               </Upload>

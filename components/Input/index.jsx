@@ -7,17 +7,19 @@ class Input extends Component {
   render () { 
     const props = this.props;
     const { type, isRadius, isDisabled, size, defaultValue, className, ...others } = props;
+    const disabled = ('disabled' in props || isDisabled);
+    
     const cls = classnames({
       'ui-input'      : true,
-      'disabled'      : ('disabled' in props || isDisabled),
+      'disabled'      : disabled,
       'radius'        : ('radius' in props || isRadius),
       ['size-' + size]: size,
       [className]     : !!className,
     });
 
     const input = (type == 'textarea')
-               ? <textarea className={cls} {...others}>{defaultValue}</textarea>
-               : <input type={type} defaultValue={defaultValue} className={cls} {...others} />;
+               ? <textarea className={cls} {...others} disabled={disabled}>{defaultValue}</textarea>
+               : <input type={type} defaultValue={defaultValue} className={cls} {...others} disabled={disabled} />;
 
     return (
       <span>
