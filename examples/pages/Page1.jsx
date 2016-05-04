@@ -68,7 +68,7 @@ class Page1 extends Component {
       selectValue  : '',
       selectValue2 : 'b',
       checkboxValue: [],
-      date         : '2015-12-1',
+      date         : '2015-12-2',
 
       mulSelectLeft      : [
         {value: 1, name: '我是选项一'},
