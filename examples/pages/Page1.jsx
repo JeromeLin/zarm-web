@@ -122,7 +122,6 @@ class Page1 extends Component {
       <Loading visible={this.state.loading}>
         <div className="demo">
 
-          <h2 ref="iframe1">sss</h2>
           <h4>Form</h4>
           <Form style={{maxWidth: '100%'}}>
 
@@ -411,9 +410,8 @@ class Page1 extends Component {
             <Form.Item
               label="下拉选择"
               labelCol="col-sm-2"
-              controlCol="col-sm-10"
-              help={`您选择了( ${this.state.selectValue}, ${this.state.selectValue2} )`}>
-              <Select radius style={{width: 120}} onChange={(data) => {
+              controlCol="col-sm-10">
+              <Select radius placeholder="请选择" style={{width: 120}} onChange={(data) => {
                 console.log(data)
                 this.setState({
                   selectValue : data.value,
@@ -426,19 +424,21 @@ class Page1 extends Component {
                 <Select.Option value="d">我是D</Select.Option>
               </Select>
 
-              <Select disabled style={{width: 120}} defaultValue={this.state.selectValue2} value={this.state.selectValue2} onChange={(data) => {
-                console.log(data)
-                this.setState({
-                  selectValue2: data.value
-                });
-              }}>
+              <Select disabled placeholder="请选择" style={{width: 120}} defaultValue={this.state.selectValue2} value={this.state.selectValue2}>
                 <Select.Option value="a">我是A</Select.Option>
                 <Select.Option value="b">我是B</Select.Option>
                 <Select.Option value="c">我是C</Select.Option>
                 <Select.Option value="d">我是D</Select.Option>
               </Select>
-              <Input style={{width: 200}} />
-              <Button radius>确定</Button>
+
+              <Select radius search placeholder="请选择" style={{width: 120}} onChange={(data) => {
+                console.log(data)
+              }}>
+                <Select.Option value="a">我是A</Select.Option>
+                <Select.Option value="b" disabled>我是B</Select.Option>
+                <Select.Option value="c">我是C</Select.Option>
+                <Select.Option value="d">我是D</Select.Option>
+              </Select>
             </Form.Item>
 
             <Form.Item
@@ -574,7 +574,7 @@ class Page1 extends Component {
                     this.setState({uploadDataSource});
                   }
                 }}>
-                <Button>上传</Button>
+                <Button radius>上传</Button>
               </Upload>
             </Form.Item>
 
