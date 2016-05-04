@@ -5,8 +5,7 @@
   npm install dragon-ui
   
 ## 使用
-
-import { Modal, Alert } from dragon-ui;
+  import { Modal, Alert } from dragon-ui;
 
 ## 已完成组件
 - Icon 字体图标
@@ -35,10 +34,10 @@ import { Modal, Alert } from dragon-ui;
 - DatePicker 日期选择器
 - Message 全局提示
 - Tab 内容切换
-
-## 待开发组件
 - Upload 上传
 - Progress 进度条
+
+## 待开发组件
 - Slider 滑动输入条
 - TimePicker 时间选择器
 - Timeline 时间轴
