@@ -143,8 +143,12 @@ class CalendarDateTable extends Component {
 
   // 获取第一天的星期
   getFirstDayOfWeek(current) {
-    let date = new Date(`${current.year}/${current.month}/1`);
-    return date.getDay();
+    let date = new Date(`${current.year}/${current.month}/1`),
+        week = date.getDay();
+    if (week == 0) {
+      week = 7;
+    }
+    return week;
   }
 
   // 获取下个月
