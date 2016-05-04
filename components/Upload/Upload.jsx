@@ -24,8 +24,8 @@ class Upload extends Component {
 
     const children = React.Children.map(props.children, (element, index) => {
       return cloneElement(element, {
-        isLoading: this.state.uploading,
-        isDisabled: this.state.uploading,
+        isLoading: 'loading' in element.props || element.props.isLoading || this.state.uploading,
+        isDisabled: 'disabled' in element.props || element.props.isDisabled || this.state.uploading,
         onClick: () => {
           this.refs.upload.click();
         }
@@ -44,8 +44,9 @@ class Upload extends Component {
   // 渲染列表
   renderList() {
     const props = this.props.list;
-    const { className, type, dataSource, isRadius, onDelete } = props;
+    if (!props) return;
 
+    const { className, type, dataSource, isRadius, onDelete } = props;
     const listCls = classnames({
       'ui-upload-list'          : true,
       'ui-upload-list-inline'   : ('inline' in props),

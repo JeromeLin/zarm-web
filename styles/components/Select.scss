@@ -21,6 +21,10 @@
     position: absolute;
     left: 0;
     top: $height + 4;
+
+    .ui-select-notfound {
+      margin: $padding;
+    }
   }
 
   &.radius {
@@ -79,6 +83,16 @@
     }
   }
 
+  .ui-dropdown {
+    .ui-select-input {
+      margin: 5px;
+    }
+
+    .ui-select-notfound {
+      color: #ccc;
+    }
+  }
+
   &.ui-select-open {
     .ui-select-selection {
       border-color: #57c5f7;
@@ -92,7 +106,6 @@
   }
 
   &.disabled {
-
     .ui-select-selection {
       cursor: not-allowed;
       background-color: #f3f5f7;

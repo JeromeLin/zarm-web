@@ -6,6 +6,7 @@ import Events from '../utils/events';
 import isNodeInTree from '../utils/isNodeInTree';
 import Option from './Option';
 import Dropdown from '../Dropdown';
+import Input from '../Input';
 import Menu from '../Menu';
 import Icon from '../Icon';
 
@@ -15,8 +16,9 @@ class Select extends Component {
     super(props);
     this.unmounted = false;
     this.state = {
-      value   : props.value || props.defaultValue || this.getCheckedValue(props.children),
-      dropdown: false,
+      value      : props.value || props.defaultValue || this.getCheckedValue(props.children),
+      dropdown   : false,
+      searchValue: '',
     };
   }
 
@@ -39,9 +41,10 @@ class Select extends Component {
 
   render () {
     const props = this.props;
-    const { placeholder, isRadius, isDisabled, size, ...others } = props;
+    const { placeholder, isRadius, isDisabled, isSearch, size, onChange, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
+    const search = 'search' in props || isSearch;
 
     let valueText = placeholder,
         hasValue = false;
@@ -52,6 +55,10 @@ class Select extends Component {
         hasValue = true;
       }
 
+      if (search && option.props.children.toString().indexOf(this.state.searchValue) < 0) {
+        return null;
+      }
+
       return (
         <Option
           {...option.props}
@@ -59,6 +66,21 @@ class Select extends Component {
           checked={this.state.value === option.props.value} />
       );
     });
+
+    let menus = (children.length > 0)
+              ? <Menu size={size}>{children}</Menu>
+              : <span className="ui-select-notfound">没有找到数据</span>;
+
+    const searchInput = search
+                      ? (
+                          <div className="ui-select-input">
+                            <Input isRadius={radius} size="sm" placeholder="输入关键字" value={this.state.searchValue} onChange={(e) => {
+                              let searchValue = e.target.value;
+                              this.setState({searchValue})
+                            }} />
+                          </div>
+                        )
+                      : null;
 
     const cls = classnames({
       'ui-select'     : true,
@@ -80,9 +102,8 @@ class Select extends Component {
           <Icon type="arrow-bottom" className="ui-select-arrow" />
         </span>
         <Dropdown visible={this.state.dropdown} isRadius={radius}>
-          <Menu size={size}>
-            {children}
-          </Menu>
+          {searchInput}
+          {menus}
         </Dropdown>
       </span>
     );
@@ -109,7 +130,8 @@ class Select extends Component {
     }
 
     this.setState({
-      value: props.value,
+      value      : props.value,
+      searchValue: '',
     });
 
     const selected = {
@@ -161,12 +183,14 @@ class Select extends Component {
 Select.propTypes = {
   isRadius      : PropTypes.bool,
   isDisabled    : PropTypes.bool,
+  isSearch      : PropTypes.bool,
   onChange      : PropTypes.func,
 };
 
 Select.defaultProps = {
   isRadius      : false,
   isDisabled    : false,
+  isSearch      : false,
   onChange      : () => {},
 };
 
