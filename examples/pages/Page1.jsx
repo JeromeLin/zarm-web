@@ -52,16 +52,7 @@ class Page1 extends Component {
         {id: '4', name: '奥巴马', dept: '健康险事业部', age: 45, address: '美国洛杉矶', state: false},
       ],
 
-      uploadDataSource: [{
-        id: 1,
-        name: '111111111111111111111111111111111111111111111111.jpg',
-        thumbUrl: 'https://os.alipayobjects.com/rmsportal/NDbkJhpzmLxtPhB.png',
-      },
-      {
-        id: 2,
-        name: '2222.png',
-        thumbUrl: 'https://os.alipayobjects.com/rmsportal/NDbkJhpzmLxtPhB.png',
-      }],
+      uploadDataSource: [],
 
       modal     : false,
       confirm   : false,
@@ -216,7 +207,7 @@ class Page1 extends Component {
               <Button>直角按钮</Button>
               <Button radius>圆角按钮</Button>
               <Button round>椭圆角按钮</Button>
-              <Button><Icon type="check" /> 带图标的按钮</Button>
+              <Button><Icon type="check" loading /> 带图标的按钮</Button>
               <Button disabled>禁用状态</Button>
               <Button disabled loading>加载中的按钮</Button>
               <Button active>激活状态</Button>
