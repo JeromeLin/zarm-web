@@ -53,8 +53,17 @@ class Page1 extends Component {
       ],
 
       uploadDataSource: [],
+      startUpload: false,
 
       modal     : false,
+      modalProps: {
+        visible: false,
+        style: {
+          width: '1000px'
+        },
+        onMaskClick: () => this._toggleModal(null)
+      },
+
       confirm   : false,
       alert     : false,
       mask      : false,
@@ -103,6 +112,15 @@ class Page1 extends Component {
     this.setState({
       [`${ key }`]: false
     });
+  }
+
+  _toggleModal(animationType) {
+    let modalProps = this.state.modalProps;
+    modalProps.visible = !modalProps.visible;
+    if (modalProps.visible) {
+      modalProps.animationType = animationType || 'zoom';
+    }
+    this.setState({modalProps});
   }
 
   _removeTag(key) {
@@ -539,7 +557,10 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
-                fileExt="image/gif, image/jpeg, image/png"
+                style={{marginBottom: 10}}
+                multiple
+                fileExt=".gif, .jpeg, .png"
+                startUpload={this.state.startUpload}
                 url="http://10.139.163.74:8080/artemis/addApplyAttachment"
                 data={{
                   attachmentType: 2,
@@ -548,10 +569,7 @@ class Page1 extends Component {
                   remark        : null
                 }}
                 onSelect={ file => {
-                  // console.log(file)
-                }}
-                onProgress={ percent => {
-                  this.setState({percent});
+                  console.log(file)
                 }}
                 onComplete={(file, cb) => {
                   let data = cb.result;
@@ -563,19 +581,53 @@ class Page1 extends Component {
                     size: file.size,
                   });
                   this.setState({uploadDataSource});
-                }}
-                list={{
-                  inline: true,
-                  isRadius: true,
-                  type: 'picture',
-                  dataSource: this.state.uploadDataSource,
-                  onDelete: (item) => {
-                    let uploadDataSource = [...this.state.uploadDataSource].filter(file => file && (file.id != item.id));
-                    this.setState({uploadDataSource});
-                  }
                 }}>
-                <Button radius>上传</Button>
+                <Button radius>选择文件并上传</Button>
               </Upload>
+
+              <Upload
+                multiple
+                fileExt=".gif, .jpeg, .png"
+                autoUpload={false}
+                startUpload={this.state.startUpload}
+                url="http://10.139.163.74:8080/artemis/addApplyAttachment"
+                data={{
+                  attachmentType: 2,
+                  policyCategory: 1,
+                  objectId      : '20040006',
+                  remark        : null
+                }}
+                onSelect={ file => {
+                  console.log(file)
+                }}
+                onComplete={(file, cb) => {
+                  let data = cb.result;
+                  let uploadDataSource = this.state.uploadDataSource;
+                  uploadDataSource.push({
+                    id: data.attachmentId,
+                    name: data.attachmentName,
+                    url: 'http://10.139.163.74:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
+                    size: file.size,
+                  });
+                  this.setState({uploadDataSource});
+                }}>
+                <div style={{float: 'left', border:'1px dotted #ccc', textAlign: 'center', width: 120, marginRight: 10}}><Icon type="add" />选择文件</div>
+                <Button onClick={() => {
+                  this.setState({
+                    startUpload: true
+                  });
+                }}>上传</Button>
+              </Upload>
+
+              <Upload.List
+                radius
+                inline
+                type="picture"
+                dataSource={this.state.uploadDataSource} 
+                onDelete={(item) => {
+                  let uploadDataSource = [...this.state.uploadDataSource].filter(file => file && (file.id != item.id));
+                  this.setState({uploadDataSource});
+                }} />
             </Form.Item>
 
             <Form.Item
@@ -597,8 +649,25 @@ class Page1 extends Component {
               label="模态框"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
+              <Button onClick={() => this._toggleModal()}>zoom</Button>
+              <Button onClick={() => this._toggleModal('door')}>door</Button>
+              <Button onClick={() => this._toggleModal('flip')}>flip</Button>
+              <Button onClick={() => this._toggleModal('rotate')}>rotate</Button>
+              <Button onClick={() => this._toggleModal('slideUp')}>slideUp</Button>
+              <Button onClick={() => this._toggleModal('slideDown')}>slideDown</Button>
+              <Button onClick={() => this._toggleModal('slideLeft')}>slideLeft</Button>
+              <Button onClick={() => this._toggleModal('slideRight')}>slideRight</Button>
+              <Button onClick={() => this._toggleModal('moveUp')}>moveUp</Button>
+              <Button onClick={() => this._toggleModal('moveDown')}>moveDown</Button>
+              <Button onClick={() => this._toggleModal('moveLeft')}>moveLeft</Button>
+              <Button onClick={() => this._toggleModal('moveRight')}>moveRight</Button>
+            </Form.Item>
+
+            <Form.Item
+              label="基础组件"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
               <Button onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
-              <Button onClick={() => this._onClickOpen('modal')}>模态框</Button>
               <Button onClick={() => this._onClickOpen('confirm')}>确认框</Button>
               <Button onClick={() => this._onClickOpen('alert')}>警告框</Button>
               <Button onClick={() => this._onClickOpen('loading')}>加载中</Button>
@@ -781,7 +850,7 @@ class Page1 extends Component {
                   render: (value, row, index) => {
                     return (
                       <div style={{color: '#ccc'}}>
-                        <a href="javascript:;" onClick={() => this._onClickOpen('modal')}>编辑</a>
+                        <a href="javascript:;" onClick={() => this._onClickOpen('alert')}>编辑</a>
                         &nbsp;&nbsp;|&nbsp;&nbsp;
                         <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
                       </div>
@@ -863,13 +932,13 @@ class Page1 extends Component {
             </Panel.Footer>
           </Panel>
 
-          <Modal visible={this.state.modal} style={{width: '1000px'}} onMaskClick={() => this._onClickClose('modal')}>
-            <Modal.Header title="标题" onClose={() => this._onClickClose('modal')}></Modal.Header>
+          <Modal {...this.state.modalProps}>
+            <Modal.Header title="标题" onClose={() => this._toggleModal()}></Modal.Header>
             <Modal.Body height={400}>
               我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={() => this._onClickClose('modal')}>取消</Button>
+              <Button onClick={() => this._toggleModal()}>取消</Button>
               <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
             </Modal.Footer>
           </Modal>
