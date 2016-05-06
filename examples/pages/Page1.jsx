@@ -559,9 +559,9 @@ class Page1 extends Component {
               <Upload
                 style={{marginBottom: 10}}
                 multiple
-                fileExt=".gif, .jpeg, .png"
+                fileExt=".gif, .jpg, .png"
                 startUpload={this.state.startUpload}
-                url="http://10.139.163.74:8080/artemis/addApplyAttachment"
+                url="http://10.139.163.146:8080/artemis/addApplyAttachment"
                 data={{
                   attachmentType: 2,
                   policyCategory: 1,
@@ -577,7 +577,7 @@ class Page1 extends Component {
                   uploadDataSource.push({
                     id: data.attachmentId,
                     name: data.attachmentName,
-                    url: 'http://10.139.163.74:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
+                    url: 'http://10.139.163.146:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
                     size: file.size,
                   });
                   this.setState({uploadDataSource});
@@ -587,10 +587,10 @@ class Page1 extends Component {
 
               <Upload
                 multiple
-                fileExt=".gif, .jpeg, .png"
+                fileExt=".gif, .jpg, .png"
                 autoUpload={false}
                 startUpload={this.state.startUpload}
-                url="http://10.139.163.74:8080/artemis/addApplyAttachment"
+                url="http://10.139.163.146:8080/artemis/addApplyAttachment"
                 data={{
                   attachmentType: 2,
                   policyCategory: 1,
@@ -606,18 +606,22 @@ class Page1 extends Component {
                   uploadDataSource.push({
                     id: data.attachmentId,
                     name: data.attachmentName,
-                    url: 'http://10.139.163.74:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
+                    url: 'http://10.139.163.146:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
                     size: file.size,
                   });
-                  this.setState({uploadDataSource});
+                  this.setState({
+                    uploadDataSource,
+                    startUpload: false
+                  });
                 }}>
                 <div style={{float: 'left', border:'1px dotted #ccc', textAlign: 'center', width: 120, marginRight: 10}}><Icon type="add" />选择文件</div>
-                <Button onClick={() => {
-                  this.setState({
-                    startUpload: true
-                  });
-                }}>上传</Button>
               </Upload>
+
+              <Button isLoading={this.state.startUpload} isDisabled={this.state.startUpload} onClick={() => {
+                this.setState({
+                  startUpload: true
+                });
+              }}>上传</Button>
 
               <Upload.List
                 radius
