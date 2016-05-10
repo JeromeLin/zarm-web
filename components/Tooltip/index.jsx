@@ -5,7 +5,7 @@ import classnames from 'classnames';
 class Tooltip extends Component {
   render () {
     const props = this.props;
-    const {title, direction, className, children, ...others} = props;
+    const {title, direction, className, children, tipStyle, style, ...others} = props;
 
     const cls = classnames({
       'ui-tooltip' : true,
@@ -13,8 +13,8 @@ class Tooltip extends Component {
       [className]: !!className
     });
     return (
-      <div className={cls}>
-        <div {...others} className="ui-tooltip-inner">{title}</div>
+      <div className={cls} style={style}>
+        <div {...others} className="ui-tooltip-inner" style={tipStyle}>{title}</div>
         {children}
       </div>
     );
