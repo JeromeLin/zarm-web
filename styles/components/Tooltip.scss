@@ -69,20 +69,17 @@
       }
     }
     &.ui-tooltip-top {
-
-      > div {
         .ui-tooltip-inner {
           @extend %ui-tooltip-direction-top;
           left: 50%;
-          transform: translate3d(-50%, -100%, 0);
+          transform: translate(-50%, -100%);
         }
-      }
     }
     &.ui-tooltip-topLeft {
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-top;
         left: 0;
-        transform: translate3d(0, -100%, 0);
+        transform: translate(0, -100%);
         &:before {
           left: 8px;
         }
@@ -92,7 +89,7 @@
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-top;
         left: 100%;
-        transform: translate3d(-100%, -100%, 0);
+        transform: translate(-100%, -100%);
         &:before {
           left: calc(100% - 8px);
         }
@@ -103,14 +100,14 @@
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-right;
         top: 50%;
-        transform: translate3d(100%, -50%, 0);
+        transform: translate(100%, -50%);
       }
     }
     &.ui-tooltip-rightTop {
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-right;
         top: 0;
-        transform: translate3d(100%, 0, 0);
+        transform: translate(100%, 0);
         &:before {
           top: 8px;
         }
@@ -120,7 +117,7 @@
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-right;
         top: 100%;
-        transform: translate3d(100%, -100%, 0);
+        transform: translate(100%, -100%);
         &:before {
           top: calc(100% - 8px);
         }
@@ -131,14 +128,14 @@
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-bottom;
         left: 50%;
-        transform: translate3d(-50%, 100%, 0);
+        transform: translate(-50%, 100%);
       }
     }
     &.ui-tooltip-bottomLeft {
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-bottom;
         left: 0;
-        transform: translate3d(0, 100%, 0);
+        transform: translate(0, 100%);
         &:before {
           left: 8px;
         }
@@ -148,7 +145,7 @@
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-bottom;
         left: 100%;
-        transform: translate3d(-100%, 100%, 0);
+        transform: translate(-100%, 100%);
         &:before {
           left: calc(100% - 8px);
         }
@@ -159,14 +156,14 @@
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-left;
         top: 50%;
-        transform: translate3d(-100%, -50%, 0);
+        transform: translate(-100%, -50%);
       }
     }
     &.ui-tooltip-leftBottom {
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-left;
         top: 100%;
-        transform: translate3d(-100%, -100%, 0);
+        transform: translate(-100%, -100%);
         &:before {
           top: calc(100% - 8px);
         }
@@ -176,7 +173,7 @@
       .ui-tooltip-inner {
         @extend %ui-tooltip-direction-left;
         top: 0;
-        transform: translate3d(-100%, 0, 0);
+        transform: translate(-100%, 0);
         &:before {
           top: 8px;
         }
