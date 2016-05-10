@@ -453,7 +453,7 @@ class Page1 extends Component {
                 console.log(data)
               }}>
                 <Select.Option value="a">我是A</Select.Option>
-                <Select.Option value="b" disabled>我是B</Select.Option>
+                <Select.Option value="b">我是B</Select.Option>
                 <Select.Option value="c">我是C</Select.Option>
                 <Select.Option value="d">我是D</Select.Option>
               </Select>

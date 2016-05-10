@@ -125,7 +125,7 @@ class Select extends Component {
   }
 
   onOptionChange(e, props, index) {
-    if ('disabled' in props) {
+    if ('disabled' in props || props.isDisabled) {
       return;
     }
 
