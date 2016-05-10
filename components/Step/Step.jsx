@@ -16,7 +16,9 @@ class Step extends Component {
 
   componentDidMount() {
     this.unmounted = true;
-    this.handleResize();
+    setInterval(() => {
+      this.handleUpdate();
+    }, 100);
     this.bindHandlers();
   }
 
@@ -53,7 +55,7 @@ class Step extends Component {
     );
   }
 
-  handleResize(e) {
+  handleUpdate(e) {
     if (!this.unmounted) {
       return;
     }
@@ -61,15 +63,16 @@ class Step extends Component {
     const step = this.refs.step,
           num = React.Children.count(this.props.children),
           itemWidth = Math.floor(step.offsetWidth / num);
+
     this.setState({itemWidth});
   }
 
   bindHandlers() {
-    Events.on(window, 'resize', (e) => this.handleResize(e));
+    Events.on(window, 'resize', (e) => this.handleUpdate(e));
   }
 
   unbindHandlers() {
-    Events.off(window, 'resize', (e) => this.handleResize(e));
+    Events.off(window, 'resize', (e) => this.handleUpdate(e));
   }
 }
 
