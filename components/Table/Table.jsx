@@ -10,9 +10,17 @@ class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedRows: [],
+      selectedRows: props.rowSelection.value || props.rowSelection.defaultValue || [],
       sort        : {},
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ('rowSelection' in nextProps) {
+      this.setState({
+        selectedRows: nextProps.rowSelection.value
+      });
+    }
   }
 
   render () {

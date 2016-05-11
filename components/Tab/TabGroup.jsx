@@ -94,7 +94,7 @@ TabGroup.propTypes = {
 TabGroup.defaultProps = {
   theme     : 'default',
   isRadius  : false,
-  onChange  : () => {},
+  onChange  : () => {}
 };
 
 export default TabGroup;
