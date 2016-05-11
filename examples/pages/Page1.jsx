@@ -259,8 +259,8 @@ class Page1 extends Component {
                 ['left', 'right', 'top', 'bottom', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((item, index) => {
                   let title = '这是一个' + item + '的Tooltip';
                   return (
-                    <Tooltip key={index} title={title} direction={item} style={{width: 200}}>
-                      <Button>{item}</Button>
+                    <Tooltip key={index} title={title} direction={item} tipStyle={{width: 200}} style={{marginRight : 10}}>
+                      <Button style={{marginRight: 0}}>{item}</Button>
                     </Tooltip>
                   );
                 })
@@ -862,12 +862,18 @@ class Page1 extends Component {
                   }
                 }]}
                 rowSelection={{
+                  value: this.state.tableSelection,
                   onSelect: (selected, row, selectedRows) => {
-                    console.log(selected, row, selectedRows);
-
+                    // console.log(selected, row, selectedRows);
+                    let tableSelection = this.state.tableSelection;
+                    tableSelection = selectedRows;
+                    this.setState({tableSelection}, console.log(this.state.tableSelection));
                   },
                   onSelectAll: (selected, selectedRows) => {
-                    console.log(selected, selectedRows)
+                    // console.log(selected, selectedRows);
+                    let tableSelection = this.state.tableSelection;
+                    tableSelection = selectedRows;
+                    this.setState({tableSelection}, console.log(this.state.tableSelection));
                   }
                 }}>
               </Table>
