@@ -140,9 +140,8 @@ class Page1 extends Component {
       <Loading visible={this.state.loading}>
         <div className="demo">
 
-          <h4>Form</h4>
+          <span>Form</span>
           <Form style={{maxWidth: '100%'}}>
-
             <Form.Item label="账号">
               <Input placeholder="请输入..." />
             </Form.Item>
@@ -152,10 +151,9 @@ class Page1 extends Component {
             <Form.Item>
               <Button theme="success">登录</Button>
             </Form.Item>
-
           </Form>
 
-          <h4>Form inline</h4>
+          <span>Form inline</span>
           <Form type="inline">
             <Form.Item
               className="col-sm-4"
@@ -174,7 +172,7 @@ class Page1 extends Component {
             </Form.Item>
           </Form>
 
-          <h4>Form horizontal</h4>
+          <span>Form horizontal</span>
           <Form type="horizontal">
 
             <Form.Item
