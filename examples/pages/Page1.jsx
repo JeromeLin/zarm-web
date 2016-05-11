@@ -862,7 +862,7 @@ class Page1 extends Component {
                   }
                 }]}
                 rowSelection={{
-                  value: this.state.tableSelection,
+                  // value: this.state.tableSelection,
                   onSelect: (selected, row, selectedRows) => {
                     console.log(selected, row, selectedRows);
                     let tableSelection = this.state.tableSelection;

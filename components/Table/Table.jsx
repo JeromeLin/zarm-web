@@ -9,14 +9,17 @@ class Table extends Component {
 
   constructor(props) {
     super(props);
+    let selectedRows = ('rowSelection' in props)
+                     ? props.rowSelection.value || props.rowSelection.defaultValue || []
+                     : [];
     this.state = {
-      selectedRows: props.rowSelection.value || props.rowSelection.defaultValue || [],
+      selectedRows: selectedRows,
       sort        : {},
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('rowSelection' in nextProps) {
+    if (('rowSelection' in nextProps) && ('value' in nextProps.rowSelection)) {
       this.setState({
         selectedRows: nextProps.rowSelection.value
       });
