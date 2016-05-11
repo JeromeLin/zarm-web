@@ -10,15 +10,13 @@ class Step extends Component {
     super(props);
     this.unmounted = false;
     this.state = {
-      itemWidth: 0,
+      itemWidth: '100%',
     };
   }
 
   componentDidMount() {
     this.unmounted = true;
-    setInterval(() => {
-      this.handleUpdate();
-    }, 100);
+    this.handleUpdate();
     this.bindHandlers();
   }
 
@@ -43,7 +41,7 @@ class Step extends Component {
           isFinished={index + 1 < current}
           isProcess={index + 1 == current}
           index={index + 1}
-          style={{width: this.state.itemWidth}}
+          style={{width: `${this.state.itemWidth}`}}
         />
       );
     });
@@ -62,7 +60,7 @@ class Step extends Component {
 
     const step = this.refs.step,
           num = React.Children.count(this.props.children),
-          itemWidth = Math.floor(step.offsetWidth / num);
+          itemWidth = 100 / num + '%';
 
     this.setState({itemWidth});
   }
