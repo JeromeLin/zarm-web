@@ -408,7 +408,7 @@ class Page1 extends Component {
               controlCol="col-sm-10"
               theme="error"
               help={`您选择了( ${this.state.checkboxValue} )`}>
-              <Checkbox disabled defaultChecked={true} onChange={(e) => {
+              <Checkbox onChange={(e) => {
                 console.log(e.target.checked);
               }}>单独使用</Checkbox>
               <br />
@@ -864,16 +864,16 @@ class Page1 extends Component {
                 rowSelection={{
                   value: this.state.tableSelection,
                   onSelect: (selected, row, selectedRows) => {
-                    // console.log(selected, row, selectedRows);
+                    console.log(selected, row, selectedRows);
                     let tableSelection = this.state.tableSelection;
                     tableSelection = selectedRows;
-                    this.setState({tableSelection}, console.log(this.state.tableSelection));
+                    this.setState({tableSelection});
                   },
                   onSelectAll: (selected, selectedRows) => {
-                    // console.log(selected, selectedRows);
+                    console.log(selected, selectedRows);
                     let tableSelection = this.state.tableSelection;
                     tableSelection = selectedRows;
-                    this.setState({tableSelection}, console.log(this.state.tableSelection));
+                    this.setState({tableSelection});
                   }
                 }}>
               </Table>
