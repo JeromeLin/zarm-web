@@ -41,7 +41,7 @@ class Select extends Component {
 
   render () {
     const props = this.props;
-    const { placeholder, isRadius, isDisabled, isSearch, size, onChange, ...others } = props;
+    const { placeholder, dataSource, searchPlaceholder, isRadius, isDisabled, isSearch, size, onChange, onSearchChange, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;
@@ -55,7 +55,10 @@ class Select extends Component {
         hasValue = true;
       }
 
-      if (search && option.props.children.toString().indexOf(this.state.searchValue) < 0) {
+      // if (search && option.props.children.toString().indexOf(this.state.searchValue) < 0) {
+      //   return null;
+      // }
+      if (search && this.state.searchValue.length == 0) {
         return null;
       }
 
@@ -66,21 +69,6 @@ class Select extends Component {
           checked={this.state.value === option.props.value} />
       );
     });
-
-    let menus = (children.length > 0)
-              ? <Menu size={size}>{children}</Menu>
-              : <span className="ui-select-notfound">没有找到数据</span>;
-
-    const searchInput = search
-                      ? (
-                          <div className="ui-select-input">
-                            <Input isRadius={radius} size="sm" placeholder="输入关键字" value={this.state.searchValue} onChange={(e) => {
-                              let searchValue = e.target.value;
-                              this.setState({searchValue})
-                            }} />
-                          </div>
-                        )
-                      : null;
 
     const cls = classnames({
       'ui-select'     : true,
@@ -95,14 +83,35 @@ class Select extends Component {
       'ui-select-text-placeholder': !hasValue,
     });
 
+    const menus = (children.length > 0)
+              ? <Menu size={size}>{children}</Menu>
+              : <span className="ui-select-notfound">没有找到数据</span>;
+
+    const inputPlaceholder = this.state.dropdown
+                           ? (hasValue ? valueText : searchPlaceholder)
+                           : null;
+
+    const searchInput = search
+                      ? (
+                          <div>
+                            <div className={textCls} style={{display: this.state.dropdown ? 'none' : 'block'}}>{valueText}</div>
+                            <div className={textCls}>
+                              <input ref="searchInput" placeholder={inputPlaceholder} value={this.state.searchValue} onChange={(e) => {
+                                let searchValue = e.target.value;
+                                this.setState({searchValue}, () => onSearchChange(searchValue));
+                              }} />
+                            </div>
+                          </div>
+                        )
+                      : <span className={textCls}>{valueText}</span>;
+
     return (
       <span className={cls} {...others}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
-          <span className={textCls}>{valueText}</span>
+          {searchInput}
           <Icon type="arrow-bottom" className="ui-select-arrow" />
         </span>
         <Dropdown visible={this.state.dropdown} isRadius={radius}>
-          {searchInput}
           {menus}
         </Dropdown>
       </span>
@@ -121,7 +130,7 @@ class Select extends Component {
 
   onSelectClick(e) {
     e.preventDefault();
-    this.setDropdown(!this.state.dropdown);
+    !this.state.dropdown && this.setDropdown(!this.state.dropdown);
   }
 
   onOptionChange(e, props, index) {
@@ -152,7 +161,8 @@ class Select extends Component {
     }
 
     this.setState({
-      dropdown: isOpen
+      dropdown   : isOpen,
+      searchValue: ''
     }, () => {
       callback && callback();
     });
@@ -184,6 +194,7 @@ Select.propTypes = {
   isRadius      : PropTypes.bool,
   isDisabled    : PropTypes.bool,
   isSearch      : PropTypes.bool,
+  onSearchChange: PropTypes.func,
   onChange      : PropTypes.func,
 };
 
@@ -191,6 +202,7 @@ Select.defaultProps = {
   isRadius      : false,
   isDisabled    : false,
   isSearch      : false,
+  onSearchChange: () => {},
   onChange      : () => {},
 };
 

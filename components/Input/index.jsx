@@ -7,12 +7,13 @@ class Input extends Component {
   render () { 
     const props = this.props;
     const { type, isRadius, isDisabled, size, defaultValue, className, ...others } = props;
-    const disabled = ('disabled' in props || isDisabled);
-    
+    const disabled = 'disabled' in props || isDisabled;
+    const radius = 'radius' in props || isRadius;
+
     const cls = classnames({
       'ui-input'      : true,
       'disabled'      : disabled,
-      'radius'        : ('radius' in props || isRadius),
+      'radius'        : radius,
       ['size-' + size]: size,
       [className]     : !!className,
     });
