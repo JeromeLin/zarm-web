@@ -74,10 +74,11 @@ class Page1 extends Component {
       switchValue  : false,
       radioValue   : 'b',
       radioValue2  : '',
-      selectValue  : '',
-      selectValue2 : 'b',
+      selectValue  : 'b',
       checkboxValue: [],
       date         : '2015-12-2',
+
+      selectSearchDataSource: [],
 
       mulSelectLeft      : [
         {value: 1, name: '我是选项一'},
@@ -427,11 +428,10 @@ class Page1 extends Component {
               label="下拉选择"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Select radius placeholder="请选择" style={{width: 120}} onChange={(data) => {
+              <Select radius placeholder="请选择" style={{width: 120}} value={this.state.selectValue} onChange={(data) => {
                 console.log(data)
                 this.setState({
                   selectValue : data.value,
-                  selectValue2: data.value
                 });
               }}>
                 <Select.Option value="a">我是A</Select.Option>
@@ -440,20 +440,39 @@ class Page1 extends Component {
                 <Select.Option value="d">我是D</Select.Option>
               </Select>
 
-              <Select disabled placeholder="请选择" style={{width: 120}} defaultValue={this.state.selectValue2} value={this.state.selectValue2}>
+              <Select disabled placeholder="请选择" style={{width: 120}} defaultValue={this.state.selectValue} value={this.state.selectValue}>
                 <Select.Option value="a">我是A</Select.Option>
                 <Select.Option value="b">我是B</Select.Option>
                 <Select.Option value="c">我是C</Select.Option>
                 <Select.Option value="d">我是D</Select.Option>
               </Select>
 
-              <Select radius search placeholder="请选择" style={{width: 120}} onChange={(data) => {
-                console.log(data)
+              <Select
+              radius
+              search
+              style={{width: 120}}
+              value={this.state.selectValue}
+              placeholder="请选择"
+              searchPlaceholder="输入“我”试试"
+              onSearchChange={(value) => {
+                let selectSearchDataSource = [
+                  {value: 'a', name: '我是A'},
+                  {value: 'b', name: '我是B'},
+                  {value: 'c', name: '我是C'},
+                  {value: 'd', name: '我是D'},
+                ].filter(item => item.name.indexOf(value) > -1);
+                this.setState({selectSearchDataSource});
+              }}
+              onChange={(data) => {
+                this.setState({
+                  selectValue: data.value
+                });
               }}>
-                <Select.Option value="a">我是A</Select.Option>
-                <Select.Option value="b">我是B</Select.Option>
-                <Select.Option value="c">我是C</Select.Option>
-                <Select.Option value="d">我是D</Select.Option>
+                {
+                  this.state.selectSearchDataSource.map((item, index) => {
+                    return <Select.Option key={index} value={item.value}>{item.name}</Select.Option>;
+                  })
+                }
               </Select>
             </Form.Item>
 

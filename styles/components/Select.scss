@@ -8,6 +8,16 @@
       line-height: $height - 2;
       padding-left: $padding;
       padding-right: $height;
+
+      input {
+        width: 100%;
+        line-height: $height - 4;
+        border: 0;
+        color: #333;
+        font-size: 100%;
+        background: transparent;
+        outline: 0;
+      }
     }
 
     .ui-select-icon,
@@ -63,6 +73,9 @@
     }
 
     .ui-select-text {
+      position: absolute;
+      left: 0;
+      top: 0;
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -84,10 +97,6 @@
   }
 
   .ui-dropdown {
-    .ui-select-input {
-      margin: 5px;
-    }
-
     .ui-select-notfound {
       color: #ccc;
     }
