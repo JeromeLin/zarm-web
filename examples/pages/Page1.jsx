@@ -456,10 +456,10 @@ class Page1 extends Component {
               searchPlaceholder="输入“我”试试"
               onSearchChange={(value) => {
                 let selectSearchDataSource = [
-                  {value: 'a', name: '我是A'},
-                  {value: 'b', name: '我是B'},
-                  {value: 'c', name: '我是C'},
-                  {value: 'd', name: '我是D'},
+                  {value: 'a', name: '我是我是我是我是A'},
+                  {value: 'b', name: '我是我是我是我是B'},
+                  {value: 'c', name: '我是我是我是我是C'},
+                  {value: 'd', name: '我是我是我是我是D'},
                 ].filter(item => item.name.indexOf(value) > -1);
                 this.setState({selectSearchDataSource});
               }}

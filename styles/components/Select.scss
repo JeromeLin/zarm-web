@@ -5,9 +5,9 @@
     font-size: $font-size;
 
     .ui-select-text {
+      left: $padding;
+      right: $height;
       line-height: $height - 2;
-      padding-left: $padding;
-      padding-right: $height;
 
       input {
         width: 100%;
@@ -74,8 +74,7 @@
 
     .ui-select-text {
       position: absolute;
-      left: 0;
-      top: 0;
+      top: 1px;
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;

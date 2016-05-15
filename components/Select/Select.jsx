@@ -80,23 +80,23 @@ class Select extends Component {
 
     const textCls = classnames({
       'ui-select-text'            : true,
-      'ui-select-text-placeholder': !hasValue,
+      'ui-select-text-placeholder': !hasValue || (hasValue && this.state.dropdown),
     });
 
     const menus = (children.length > 0)
-              ? <Menu size={size}>{children}</Menu>
-              : <span className="ui-select-notfound">没有找到数据</span>;
+                ? <Menu size={size}>{children}</Menu>
+                : <span className="ui-select-notfound">没有找到数据</span>;
 
     const inputPlaceholder = this.state.dropdown
                            ? (hasValue ? valueText : searchPlaceholder)
-                           : null;
+                           : valueText;
 
     const searchInput = search
                       ? (
                           <div>
-                            <div className={textCls} style={{display: this.state.dropdown ? 'none' : 'block'}}>{valueText}</div>
+                            { this.state.searchValue == '' ? <div className={textCls}>{this.state.searchValue || inputPlaceholder}</div> : null}
                             <div className={textCls}>
-                              <input ref="searchInput" placeholder={inputPlaceholder} value={this.state.searchValue} onChange={(e) => {
+                              <input ref="searchInput" value={this.state.searchValue} onChange={(e) => {
                                 let searchValue = e.target.value;
                                 this.setState({searchValue}, () => onSearchChange(searchValue));
                               }} />
