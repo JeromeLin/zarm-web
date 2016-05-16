@@ -448,31 +448,23 @@ class Page1 extends Component {
               </Select>
 
               <Select
-              radius
-              search
-              style={{width: 120}}
-              value={this.state.selectValue}
-              placeholder="请选择"
-              searchPlaceholder="输入“我”试试"
-              onSearchChange={(value) => {
-                let selectSearchDataSource = [
-                  {value: 'a', name: '我是我是我是我是A'},
-                  {value: 'b', name: '我是我是我是我是B'},
-                  {value: 'c', name: '我是我是我是我是C'},
-                  {value: 'd', name: '我是我是我是我是D'},
-                ].filter(item => item.name.indexOf(value) > -1);
-                this.setState({selectSearchDataSource});
-              }}
-              onChange={(data) => {
-                this.setState({
-                  selectValue: data.value
-                });
-              }}>
-                {
-                  this.state.selectSearchDataSource.map((item, index) => {
-                    return <Select.Option key={index} value={item.value}>{item.name}</Select.Option>;
-                  })
-                }
+                radius
+                search
+                style={{width: 120}}
+                placeholder="请选择"
+                searchPlaceholder="输入关键字"
+                onSearchChange={(value) => {
+                  console.log(value)
+                }}
+                onChange={(data) => {
+                  this.setState({
+                    selectValue: data.value
+                  });
+                }}>
+                <Select.Option value="a">我是A</Select.Option>
+                <Select.Option value="b">我是B</Select.Option>
+                <Select.Option value="c">我是C</Select.Option>
+                <Select.Option value="d">我是D</Select.Option>
               </Select>
             </Form.Item>
 
