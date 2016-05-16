@@ -55,10 +55,7 @@ class Select extends Component {
         hasValue = true;
       }
 
-      // if (search && option.props.children.toString().indexOf(this.state.searchValue) < 0) {
-      //   return null;
-      // }
-      if (search && this.state.searchValue.length == 0) {
+      if (search && option.props.children.toString().indexOf(this.state.searchValue) < 0) {
         return null;
       }
 
@@ -80,7 +77,7 @@ class Select extends Component {
 
     const textCls = classnames({
       'ui-select-text'            : true,
-      'ui-select-text-placeholder': !hasValue || (hasValue && this.state.dropdown),
+      'ui-select-text-placeholder': !hasValue || (search && hasValue && this.state.dropdown),
     });
 
     const menus = (children.length > 0)
@@ -91,24 +88,24 @@ class Select extends Component {
                            ? (hasValue ? valueText : searchPlaceholder)
                            : valueText;
 
-    const searchInput = search
-                      ? (
-                          <div>
-                            { this.state.searchValue == '' ? <div className={textCls}>{this.state.searchValue || inputPlaceholder}</div> : null}
-                            <div className={textCls}>
-                              <input ref="searchInput" value={this.state.searchValue} onChange={(e) => {
-                                let searchValue = e.target.value;
-                                this.setState({searchValue}, () => onSearchChange(searchValue));
-                              }} />
-                            </div>
-                          </div>
-                        )
-                      : <span className={textCls}>{valueText}</span>;
+    const textRender = !(search && this.state.searchValue.length > 0)
+                     && <span className={textCls}>{inputPlaceholder}</span>;
+
+    const inputRender = search
+                      && (
+                          <span className={textCls}>
+                            <input ref="searchInput" value={this.state.searchValue} onChange={(e) => {
+                              let searchValue = e.target.value;
+                              this.setState({searchValue}, () => onSearchChange(searchValue));
+                            }} />
+                          </span>
+                        );
 
     return (
       <span className={cls} {...others}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
-          {searchInput}
+          {textRender}
+          {inputRender}
           <Icon type="arrow-bottom" className="ui-select-arrow" />
         </span>
         <Dropdown visible={this.state.dropdown} isRadius={radius}>
