@@ -47,7 +47,7 @@ class Step extends Component {
     });
 
     return (
-      <div {...others} className={cls} ref="step">
+      <div {...others} className={cls}>
         {children}
       </div>
     );
@@ -58,8 +58,7 @@ class Step extends Component {
       return;
     }
 
-    const step = this.refs.step,
-          num = React.Children.count(this.props.children),
+    const num = React.Children.count(this.props.children),
           itemWidth = 100 / num + '%';
 
     this.setState({itemWidth});

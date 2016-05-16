@@ -5,18 +5,14 @@
     font-size: $font-size;
 
     .ui-select-text {
-      left: $padding;
-      right: $height;
       line-height: $height - 2;
+      padding-left: $padding;
+      padding-right: $height;
 
       input {
-        width: 100%;
-        line-height: $height - 4;
-        border: 0;
-        color: #333;
-        font-size: 100%;
-        background: transparent;
-        outline: 0;
+        height: $height;
+        padding-left: $padding;
+        padding-right: $height;
       }
     }
 
@@ -73,12 +69,22 @@
     }
 
     .ui-select-text {
-      position: absolute;
-      top: 1px;
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border: 0;
+        color: #333;
+        font-size: 100%;
+        background: transparent;
+        outline: 0;
+      }
 
       &.ui-select-text-placeholder {
         color: #ccc;
