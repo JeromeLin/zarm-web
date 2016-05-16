@@ -41,7 +41,7 @@ class Select extends Component {
 
   render () {
     const props = this.props;
-    const { placeholder, dataSource, searchPlaceholder, isRadius, isDisabled, isSearch, size, onChange, onSearchChange, ...others } = props;
+    const { placeholder, searchPlaceholder, isRadius, isDisabled, isSearch, size, onChange, onSearchChange, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;

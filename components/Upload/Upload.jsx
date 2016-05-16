@@ -95,7 +95,6 @@ class Upload extends Component {
 
     let fd = new FormData(),
         xhr = new XMLHttpRequest(),
-        input = this.refs.upload,
         loaded,
         total,
         percent;
