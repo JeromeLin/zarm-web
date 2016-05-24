@@ -323,6 +323,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              required
               label="错误提示的输入框"
               labelCol="col-sm-2"
               controlCol="col-sm-10"

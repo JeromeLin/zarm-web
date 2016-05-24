@@ -1,6 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Icon from '../Icon';
 
 class FormItem extends Component {
 
@@ -35,15 +36,20 @@ class FormItem extends Component {
   }
 
   _renderLabel() {
-    const { id, label, labelCol } = this.props;
+    const props = this.props;
+    const { id, label, labelCol, isRequired } = props;
 
     const labelCls = classnames({
       [labelCol]: !!labelCol,
     });
 
-    return ('label' in this.props) ? (
+    const star = ('required' in props || isRequired)
+               ? <span className="ui-form-item-required"><Icon type="required" /></span>
+               : null;
+
+    return ('label' in props) ? (
       <label className={labelCls} htmlFor={id || this._getId()}>
-        {label}
+        {star}{label}
       </label>
     ) : null;
   }
