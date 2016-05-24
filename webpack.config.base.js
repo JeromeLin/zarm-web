@@ -5,10 +5,10 @@ var path = require('path');
 module.exports = {
 
   output: {
-    path: path.join(process.cwd(), 'assets'),
+    path: path.resolve(__dirname, 'assets'),
     filename: 'js/[name].min.js',
     chunkFilename: 'js/[name].[chunkhash:8].min.js',
-    publicPath: './'
+    publicPath: '/'
   },
 
   module: {
