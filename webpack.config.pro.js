@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var config = require('./webpack.config.base');
+var path = require('path');
 
 config.entry = {
   index: [
@@ -8,6 +9,9 @@ config.entry = {
     './examples/index.js'
   ]
 };
+
+// github gh-pages dir http://xxxx.com/dragon-ui/
+config.output.publicPath = './';
 
 config.module.loaders.push({
   test: /\.(js|jsx)$/, 
