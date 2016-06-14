@@ -40,6 +40,14 @@ const rootRoute = {
       }
     },
     {
+      path: 'slider',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/SliderPage'));
+        }, 'SliderPage');
+      }
+    },
+    {
       path: '*',
       getComponent(location, cb) {
         require.ensure([], (require) => {
