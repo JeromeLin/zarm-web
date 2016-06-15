@@ -1,0 +1,16 @@
+.mySlider .ui-slider-horizontal{
+	border: 1px solid #5cb85c;
+	.ui-slider-back{
+		background-color: #5cb85c;
+	}
+	.ui-slider-handle{
+		background-image: linear-gradient(to bottom,#2db7f5 0,#91c5dc 100%);
+		border: 1px solid #2db7f5;
+		&:hover{
+	  	border: 1px solid #2db7f5;
+	    background-color: #91c5dc;
+	    background-position: 0 -5px;
+	    transition: background-position .1s linear;
+	  }
+	}
+}
