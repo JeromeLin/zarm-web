@@ -54,8 +54,8 @@ class SliderPage extends Component{
 				<SliderContainer min = {-100} max = {300} step = {1} defaultValue = {-50} />
 				带负值的slider: min = -100, max = 300, step = 1, defaultValue = 80
 
-				<SliderContainer min = {0} max = {300} step = {1} defaultValue = {80} customCls = 'mySlider'/>
-				自定义样式: min = 0, max = 300, step = 1, defaultValue = 80, customCls = 'mySlider'
+				<SliderContainer min = {-300} max = {300} step = {1} defaultValue = {-100} customCls = 'mySlider'/>
+				自定义样式: min = -300, max = 300, step = 1, defaultValue = -100, customCls = 'mySlider'
 			</div>
 		)
 	}
