@@ -172,7 +172,7 @@ export default class Slider extends Component{
 	}
 
 	render(){
-		const {min, max, step, defaultValue, styleWidth, showTip, tipAlwayShow, customCls, HandleAmount, defaultRange} = this.props
+		const {min, max, step, defaultValue, styleWidth, showTip, tipAlwayShow, customCls, theme, HandleAmount, defaultRange} = this.props
 		
 		const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue]
 		const percentArr = [], styleObjArr = [] , handles = [], tipArr = []
@@ -186,7 +186,8 @@ export default class Slider extends Component{
 		})
 		const customClass = classnames({
 			'ui-slider-wraper' : true,
-			[customCls] : customCls
+			[customCls] : customCls,
+			[theme] : theme
 		})
 
 		const transitionArray = ['WebkitTransition', 'MozTransition', 'msTransition', 'OTransition', 'Transition']
@@ -242,6 +243,7 @@ Slider.propTypes = {
 	showTip : PropTypes.bool,
 	tipAlwayShow : PropTypes.bool,
 	customCls : PropTypes.string,
+	theme : PropTypes.string,
 	HandleAmount : PropTypes.number,
 }
 
