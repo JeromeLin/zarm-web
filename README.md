@@ -36,9 +36,9 @@
 - Tab 内容切换
 - Upload 上传
 - Progress 进度条
+- Slider 滑动输入条
 
 ## 待开发组件
-- Slider 滑动输入条
 - TimePicker 时间选择器
 - Timeline 时间轴
 - Popover 气泡弹窗

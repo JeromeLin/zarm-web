@@ -42,6 +42,7 @@ export default class Slider extends Component{
 		}, 0)
 
 		this.offsetLeft = domUtil.getLeft(this.refs.sliderBody)
+		this.isTouchSuported = domUtil.probTouch()
 	}
 
 	onHandleDown(i){
@@ -50,13 +51,18 @@ export default class Slider extends Component{
 			e.preventDefault()
 			this.draggingPayload.handleMove = this.onHandleMove(i)
 			this.draggingPayload.handleUp = this.onHandleUp(i)
-			document.body.addEventListener('mousemove', this.draggingPayload.handleMove , false)
-			document.body.addEventListener('mouseup', this.draggingPayload.handleUp , false)
+			if(!this.isTouchSuported){
+				document.body.addEventListener('mousemove', this.draggingPayload.handleMove , false)
+				document.body.addEventListener('mouseup', this.draggingPayload.handleUp , false)
+			}else{
+				document.body.addEventListener('touchmove', this.draggingPayload.handleMove , false)
+				document.body.addEventListener('touchend', this.draggingPayload.handleUp , false)
+			}
 			// 移除初始化时的transition效果，否则会影响slider的推动
 			this.removeTransition = true 
 
 			this.draggingPayload.isDragging  = true
-			this.draggingPayload.prevX = e.clientX
+			this.draggingPayload.prevX = this.isTouchSuported ? e.touches[0].clientX : e.clientX
 		}
 	}
 
@@ -67,7 +73,7 @@ export default class Slider extends Component{
 			if(this.draggingPayload.isDragging){
 				
 				const {min, max, step, styleWidth, getValue} = this.props
-				const mouseMovedDist = e.clientX - this.draggingPayload.prevX
+				const mouseMovedDist = ((this.isTouchSuported && e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX) - this.draggingPayload.prevX
 				const percent = mouseMovedDist / (styleWidth || 200)
 				const value = percent * ( max - min )
 				if( Math.abs(value) >= step ){
@@ -78,21 +84,21 @@ export default class Slider extends Component{
 
 					if( newValue <= max  && newValue >= min ){
 						getValue && getValue(this.state[`currentValue${i}`] + closestStepToValue, i)
-						this.draggingPayload.prevX = e.clientX
+						this.draggingPayload.prevX = (this.isTouchSuported && e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX
 						this.draggingPayload.isThreshhold = false
 						this.setState({
 							[`currentValue${i}`]:this.state[`currentValue${i}`] + closestStepToValue
 						})
 					}else if( newValue > max && !this.draggingPayload.isThreshhold){
 						getValue && getValue(max, i)
-						this.draggingPayload.prevX = e.clientX
+						this.draggingPayload.prevX = (this.isTouchSuported && e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX
 						this.draggingPayload.isThreshhold = true
 						this.setState({
 							[`currentValue${i}`]: max
 						})
 					}else if( newValue < min && !this.draggingPayload.isThreshhold ){
 						getValue && getValue(min, i)
-						this.draggingPayload.prevX = e.clientX
+						this.draggingPayload.prevX = this.isTouchSuported ? e.touches[0].clientX : e.clientX
 						this.draggingPayload.isThreshhold = true
 						this.setState({
 							[`currentValue${i}`]: min
@@ -107,9 +113,13 @@ export default class Slider extends Component{
 		return (e) => {
 			e.stopPropagation()
 			e.preventDefault()
-			document.body.removeEventListener('mousemove', this.draggingPayload.handleMove , false)
-			document.body.removeEventListener('mouseup', this.draggingPayload.handleUp, false)
-
+			if(!this.isTouchSuported){
+				document.body.removeEventListener('mousemove', this.draggingPayload.handleMove , false)
+				document.body.removeEventListener('mouseup', this.draggingPayload.handleUp, false)
+			}else{
+				document.body.removeEventListener('touchmove', this.draggingPayload.handleMove , false)
+				document.body.removeEventListener('touchend', this.draggingPayload.handleUp, false)
+			}
 			this.draggingPayload.isDragging  = false
 		}
 	}
@@ -120,7 +130,8 @@ export default class Slider extends Component{
 		this.removeTransition = false
 
 		const {min, max, step, styleWidth, getValue} = this.props
-		const mouseLeft = e.clientX - this.offsetLeft
+		//此处用pageX,兼容有x轴滚动条的情况
+		const mouseLeft = e.pageX - this.offsetLeft
 		if( mouseLeft < 0 || mouseLeft > (styleWidth || 200) ) return
 		const percent = mouseLeft / (styleWidth || 200)
 		const value = Math.floor(percent * (max - min)) + min
@@ -210,10 +221,13 @@ export default class Slider extends Component{
 			tipArr.push( (<em className={tipClass}>{this.state[`currentValue${i}`]}</em>) )
 			handles.push(
 				<span key = {`handleKey${i}`} className='ui-slider-handle' style = { styleObjArr[i].handle }
-								onMouseDown = { this.onHandleDown(i) }
-								onMouseMove = { this.onHandleMove(i) } 
-								onMouseUp = { this.onHandleUp(i) } 
-								onClick = {(e) => e.stopPropagation()}>
+								onMouseDown = { !this.isTouchSuported && this.onHandleDown(i) }
+								onMouseMove = { !this.isTouchSuported && this.onHandleMove(i) } 
+								onMouseUp = { !this.isTouchSuported && this.onHandleUp(i) } 
+								onClick = {(e) => e.stopPropagation()}
+								onTouchStart = {this.isTouchSuported && this.onHandleDown(i)}
+								onTouchMove =  {this.isTouchSuported && this.onHandleMove(i)}
+								onTouchEnd = {this.isTouchSuported && this.onHandleMove(i)}>
 					{showTip && tipArr[i]}
 				</span>
 			)

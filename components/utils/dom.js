@@ -14,6 +14,10 @@ const domUtil = {
 	    let offset = e.offsetLeft;
 	    if(e.offsetParent != null) offset += domUtil.getLeft(e.offsetParent);
 	    return offset;
+	},
+
+	probTouch: (e) => {
+		return 'ontouchend' in document
 	}
 }
 
