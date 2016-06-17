@@ -76,6 +76,19 @@ class SliderPage extends Component{
 													HandleAmount = {7} styleWidth = {400} />
 				多点选择: min = -100, max = 800, step = 1, defaultValue = [50, 150, 300, 300, 600, 1000], HandleAmount = 7
 				<div>多点选择时handle的数量以HandleAmount为准. defaultValue的长度不足的默认为min,多余的将被忽略</div>
+				
+				<SliderContainer max = {200} defaultValue = {50} theme = {'slider-theme-green'}/>
+				内置的theme: max = 200, min = 0, defaultValue = 50, step =1, 
+
+				<SliderContainer max = {200} defaultValue = {50} theme = {'slider-theme-red'}/>
+				内置的theme: max = 200, min = 0, defaultValue = 50, step =1, 
+
+				<SliderContainer max = {200} defaultValue = {50} theme = {'slider-theme-yellow'}/>
+				内置的theme: max = 200, min = 0, defaultValue = 50, step =1, 
+
+				<SliderContainer max = {200} defaultValue = {50} theme = {'slider-theme-blue'}/>
+				内置的theme: max = 200, min = 0, defaultValue = 50, step =1, 
+
 				<SliderContainer min = {-300} max = {300} step = {1} defaultValue = {-100} customCls = 'mySlider'/>
 				自定义样式: min = -300, max = 300, step = 1, defaultValue = -100, customCls = 'mySlider'
 			</div>

@@ -74,3 +74,44 @@
   	}
 	}
 }
+
+
+@mixin slider-theme($borderColor : #c3c3d6, $background : #fff, $handleColor : #e4e4e4, $handleBorder : #d3d3d3, $tipColor : rgba(0, 0, 0, 0.8)) {
+  .ui-slider-horizontal{
+    border: 1px solid $borderColor;
+    .ui-slider-back{
+      background-color: $background;
+    }
+    .ui-slider-handle{
+      background-image: linear-gradient(to bottom,lighten($handleColor,30%) 0, $handleColor 100%);
+      border: 1px solid darken($handleBorder, 20%);
+      &:hover{
+        border: 1px solid handleBorder;
+        background-color: $handleColor;
+        background-position: 0 -5px;
+        transition: background-position .1s linear;
+      }
+      .ui-slider-tip{
+        background-color: $tipColor;
+        &::after{
+          border-top-color: $tipColor;
+          bottom:-15px;
+        }
+      }
+    }
+  }
+}
+
+
+.slider-theme-green{
+  @include slider-theme(undefined, #5cb85c, #576476);
+}
+.slider-theme-red{
+  @include slider-theme(undefined, #f50 , #576476);
+}
+.slider-theme-yellow{
+  @include slider-theme(undefined, #f0ad4e , #576476);
+}
+.slider-theme-blue{
+  @include slider-theme(undefined, #2db7f5 , #576476);
+}
