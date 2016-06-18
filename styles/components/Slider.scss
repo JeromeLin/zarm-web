@@ -1,5 +1,14 @@
 .ui-slider-wraper{
 	margin: 10px 0;
+	&.round .ui-slider-horizontal{
+		border-radius: 6px;
+	}
+	&.solid .ui-slider-horizontal{
+		background-color: #eee;
+	}
+	&.round .ui-slider-back{
+		border-radius: 6px;
+	}
 	*{
 		box-sizing:border-box;
 	}
@@ -10,7 +19,6 @@
 	border: 1px solid #c3c3d6;
 	position:relative;
 	overflow:visible;
-	border-radius: 4px;
 	cursor:pointer;
 	.ui-slider-handle{
 		top: -3px;
@@ -40,6 +48,7 @@
   border-radius: 4px;
   height: 15px;
   width: 15px;
+  z-index: 100;
   &:hover{
   	border: 1px solid #c3c3d6;
     background-color: #e6e6e6;
@@ -72,5 +81,59 @@
   	&.ui-slider-tip-show{
   		display:block;
   	}
+	}
+}
+
+@mixin slider-theme($borderColor : #c3c3d6, $background : #fff, $handleColor : #e4e4e4, $handleBorder : #d3d3d3, $tipColor : rgba(0, 0, 0, 0.8)) {
+  .ui-slider-horizontal{
+    border: 1px solid $borderColor;
+    .ui-slider-back{
+      background-color: $background;
+    }
+    .ui-slider-handle{
+      background-image: linear-gradient(to bottom,lighten($handleColor,30%) 0, $handleColor 100%);
+      border: 1px solid darken($handleBorder, 20%);
+      &:hover{
+        border: 1px solid handleBorder;
+        background-color: $handleColor;
+      }
+      .ui-slider-tip{
+        background-color: $tipColor;
+        &::after{
+          border-top-color: $tipColor;
+        }
+      }
+    }
+  }
+}
+
+.theme-default{
+  @include slider-theme($base-theme-default, $base-theme-default, #576476);
+  &.ui-slider-wraper.solid .ui-slider-horizontal{
+		background-color: rgba($base-theme-default, 0.3);
+	}
+}
+.theme-info{
+  @include slider-theme($base-theme-info, $base-theme-info, #576476, #d3d3d3, $base-theme-info);
+  &.ui-slider-wraper.solid .ui-slider-horizontal{
+		background-color: rgba($base-theme-info, 0.2);
+	}
+}
+.theme-success{
+  @include slider-theme($base-theme-success, $base-theme-success, #576476, #d3d3d3, $base-theme-success);
+  &.ui-slider-wraper.solid .ui-slider-horizontal{
+		background-color: rgba($base-theme-success, 0.2);
+	}
+}
+.theme-warning{
+  @include slider-theme($base-theme-warning, $base-theme-warning, #576476, #d3d3d3, $base-theme-warning);
+   &.ui-slider-wraper.solid .ui-slider-horizontal{
+		background-color: rgba($base-theme-warning, 0.2);
+	}
+}
+.theme-error{
+  @include slider-theme($base-theme-error, $base-theme-error, #576476, #d3d3d3, $base-theme-error);
+   &.ui-slider-wraper.solid .ui-slider-horizontal{
+		background-color: rgba($base-theme-error, 0.2);
 	}
 }
