@@ -118,6 +118,18 @@ class SliderPage extends Component{
 					styleWidth={400} />
 				多点选择: min=-100, max=800, step=1, defaultValue=[50, 150, 300, 300, 600, 700], HandleAmount=7
 				<div>isRange = true, rangeColors=['blue', 'green', 'yellow', 'orange', 'red']</div>
+
+				<SliderContainer 
+					min={-100} 
+					max={800} step={1} 
+					defaultValue={[50, 150, 300, 450, 600]} 
+					HandleAmount={5}
+					isRange={true} 
+					isPass={false}
+					rangeColors={['#fff', 'orange', 'orange', 'orange', 'orange']}
+					styleWidth={400} />
+				多点选择: min=-100, max=800, step=1, defaultValue=[50, 150, 300, 300, 600, 700], HandleAmount=7
+				<div>isRange = true, rangeColors=['#fff', 'orange', 'orange', 'orange', 'orange']</div>
 				
 				<SliderContainer max={200} defaultValue={50} theme={'default'} round={true}/>
 				theme default: max=200, min=0, defaultValue=50, step =1, round=true
