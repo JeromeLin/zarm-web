@@ -101,8 +101,8 @@ class SliderPage extends Component{
 					min={-100} 
 					max={800} step={1} 
 					defaultValue={[50, 150, 300, 350, 600, 700]} 
-					HandleAmount={7} 
-					styleWidth={400} 
+					HandleAmount={6} 
+					styleWidth={800} 
 					isPass={false}/>
 				多点选择: min=-100, max=800, step=1, defaultValue=[50, 150, 300, 350, 600, 700], HandleAmount=7, isPass=false
 				<div>多点选择时handle的数量以HandleAmount为准. defaultValue的长度不足的默认为min,多余的将被忽略</div>
@@ -116,7 +116,7 @@ class SliderPage extends Component{
 					isRange={true} 
 					rangeColors={['blue', 'green', 'yellow', 'orange', 'red']}
 					styleWidth={400} />
-				多点选择: min=-100, max=800, step=1, defaultValue=[50, 150, 300, 300, 600, 700], HandleAmount=7
+				多点选择: min=-100, max=800, step=1, defaultValue=[50, 150, 300, 450, 600], HandleAmount=7
 				<div>isRange = true, rangeColors=['blue', 'green', 'yellow', 'orange', 'red']</div>
 
 				<SliderContainer 
@@ -128,7 +128,7 @@ class SliderPage extends Component{
 					isPass={false}
 					rangeColors={['#fff', 'orange', 'orange', 'orange', 'orange']}
 					styleWidth={400} />
-				多点选择: min=-100, max=800, step=1, defaultValue=[50, 150, 300, 300, 600, 700], HandleAmount=7
+				多点选择: min=-100, max=800, step=1, defaultValue=[50, 150, 300, 450, 600], HandleAmount=7
 				<div>isRange = true, rangeColors=['#fff', 'orange', 'orange', 'orange', 'orange']</div>
 				
 				<SliderContainer max={200} defaultValue={50} theme={'default'} round={true}/>

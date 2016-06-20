@@ -49,12 +49,14 @@
   height: 15px;
   width: 15px;
   z-index: 100;
+
   &:hover{
   	border: 1px solid #c3c3d6;
     background-color: #e6e6e6;
     background-position: 0 -5px;
     transition: background-position .1s linear;
   }
+
   .ui-slider-tip{
   	display:none;
   	position:absolute;
@@ -65,6 +67,7 @@
   	transform:translate(-50%, -140%);
   	left:50%;
   	border-radius:4px;
+
   	&::after{
   		content:'';
   		position:absolute;
@@ -78,13 +81,14 @@
   		transform:translateX(-50%);
   		left:50%;
   	}
+
   	&.ui-slider-tip-show{
   		display:block;
   	}
 	}
 }
 
-@mixin slider-theme($borderColor : #c3c3d6, $background : #fff, $handleColor : #e4e4e4, $handleBorder : #d3d3d3, $tipColor : rgba(0, 0, 0, 0.8)) {
+@mixin slider-theme($borderColor : #c3c3d6, $background : #fff, $handleColor : #e4e4e4, $handleBorder : #c3c3d6, $tipColor : rgba(0, 0, 0, 0.8)) {
   .ui-slider-horizontal{
     border: 1px solid $borderColor;
     .ui-slider-back{
@@ -92,9 +96,10 @@
     }
     .ui-slider-handle{
       background-image: linear-gradient(to bottom,lighten($handleColor,30%) 0, $handleColor 100%);
-      border: 1px solid darken($handleBorder, 20%);
+      border: 1px solid $handleBorder;
+
       &:hover{
-        border: 1px solid handleBorder;
+        border: 1px solid darken($handleBorder, 5%);
         background-color: $handleColor;
       }
       .ui-slider-tip{
@@ -108,31 +113,31 @@
 }
 
 .theme-default{
-  @include slider-theme($base-theme-default, $base-theme-default, #576476);
+  @include slider-theme($base-theme-default, $base-theme-default, #e4e4e4);
   &.ui-slider-wraper.solid .ui-slider-horizontal{
 		background-color: rgba($base-theme-default, 0.3);
 	}
 }
 .theme-info{
-  @include slider-theme($base-theme-info, $base-theme-info, #576476, #d3d3d3, $base-theme-info);
+  @include slider-theme($base-theme-info, $base-theme-info, #e4e4e4, #c3c3d6, $base-theme-info);
   &.ui-slider-wraper.solid .ui-slider-horizontal{
 		background-color: rgba($base-theme-info, 0.2);
 	}
 }
 .theme-success{
-  @include slider-theme($base-theme-success, $base-theme-success, #576476, #d3d3d3, $base-theme-success);
+  @include slider-theme($base-theme-success, $base-theme-success, #e4e4e4, #c3c3d6, $base-theme-success);
   &.ui-slider-wraper.solid .ui-slider-horizontal{
 		background-color: rgba($base-theme-success, 0.2);
 	}
 }
 .theme-warning{
-  @include slider-theme($base-theme-warning, $base-theme-warning, #576476, #d3d3d3, $base-theme-warning);
+  @include slider-theme($base-theme-warning, $base-theme-warning, #e4e4e4, #c3c3d6, $base-theme-warning);
    &.ui-slider-wraper.solid .ui-slider-horizontal{
 		background-color: rgba($base-theme-warning, 0.2);
 	}
 }
 .theme-error{
-  @include slider-theme($base-theme-error, $base-theme-error, #576476, #d3d3d3, $base-theme-error);
+  @include slider-theme($base-theme-error, $base-theme-error, #e4e4e4, #c3c3d6, $base-theme-error);
    &.ui-slider-wraper.solid .ui-slider-horizontal{
 		background-color: rgba($base-theme-error, 0.2);
 	}
