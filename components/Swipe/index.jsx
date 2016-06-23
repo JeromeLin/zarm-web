@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes, Children } from 'react';
 import classnames from 'classnames';
-import addEndEventListener from '../utils/transitionEvents';
+// import addEndEventListener from '../utils/transitionEvents';
 
 class Swipe extends Component {
 
@@ -33,7 +33,7 @@ class Swipe extends Component {
   componentDidMount() {
     // 监听窗口变化
     window.addEventListener("resize", () => this._updateResize());
-    this.transitionEvents = addEndEventListener(this.refs.swipeItems, this._transitionEnd.bind(this));
+    // this.transitionEvents = addEndEventListener(this.refs.swipeItems, this._transitionEnd.bind(this));
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
@@ -41,15 +41,19 @@ class Swipe extends Component {
     this.startAutoplay();
   }
 
+  componentWillUpdate() {
+    setTimeout(this._transitionEnd.bind(this), this.props.speed);
+  }
+  
   componentWillUnmount() {
     // 自动轮播结束
     this.pauseAutoplay();
     // 移除监听窗口变化
     window.removeEventListener("resize", () => this._updateResize());
 
-    if (this.transitionEvents) {
-      this.transitionEvents.remove();
-    }
+    // if (this.transitionEvents) {
+    //   this.transitionEvents.remove();
+    // }
   }
 
   render () {
