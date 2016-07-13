@@ -317,7 +317,7 @@ Slider.defaultProps = {
 	step : 1,
 	defaultValue : 0,
 	showTip : true,
-	tipAlwayShow: true,
+	tipAlwayShow: false,
 	HandleAmount : 1,
 	isRound : false,
 	isSolid : false,
