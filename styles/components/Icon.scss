@@ -1,3 +1,6 @@
+@mixin icon-theme($color) {
+  color: $color;
+}
 
 @font-face {
   font-family: "dragonicon";
@@ -14,6 +17,22 @@
 /*  -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;*/
+
+  /*&.theme-default {
+    @include icon-theme($base-theme-default);
+  }*/
+  &.theme-info {
+    @include icon-theme($base-theme-info);
+  }
+  &.theme-success {
+    @include icon-theme($base-theme-success);
+  }
+  &.theme-warning {
+    @include icon-theme($base-theme-warning);
+  }
+  &.theme-error {
+    @include icon-theme($base-theme-error);
+  }
 }
 
 .ui-icon-check:before { content: "\e602"; }
@@ -24,6 +43,8 @@
 .ui-icon-close-round-fill:before { content: "\e60b"; }
 .ui-icon-info-round:before { content: "\e625"; }
 .ui-icon-info-round-fill:before { content: "\e624"; }
+.ui-icon-warning-round:before { content: "\e611"; }
+.ui-icon-warning-round-fill:before { content: "\e610"; }
 .ui-icon-question-round-fill:before { content: "\e618"; }
 .ui-icon-question-round:before { content: "\e619"; }
 .ui-icon-arrow-top:before { content: "\e600"; }
@@ -35,5 +56,4 @@
 .ui-icon-date:before { content: "\e63d"; }
 .ui-icon-loading:before { content: "\e608"; }
 .ui-icon-required:before { content: "\e60d"; }
-
 

@@ -37,6 +37,7 @@
 - Upload 上传
 - Progress 进度条
 - Slider 滑动输入条
+- Swipe 图片轮播
 
 ## 待开发组件
 - TimePicker 时间选择器

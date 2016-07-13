@@ -33,7 +33,8 @@ import {
   Upload,
   Tab,
   Message,
-  Progress
+  Progress,
+  Slider
 } from '../../components';
 
 import '../../styles/index.scss';
@@ -142,37 +143,37 @@ class Page1 extends Component {
         <div className="demo">
 
           <Swipe>
-          <div className="ui-swipe-item">
-            <div className="ui-swipe-pic">
-              <a href="http://www.baidu.com">
-                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E4%BD%B3%E4%B9%90%E9%94%AD.png" />
-              </a>
+            <div className="ui-swipe-item">
+              <div className="ui-swipe-pic">
+                <a href="http://www.baidu.com">
+                  <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E4%BD%B3%E4%B9%90%E9%94%AD.png" />
+                </a>
+              </div>
+              <div className="ui-swipe-info">
+                <div className="ui-swipe-title">百度</div>
+              </div>
             </div>
-            <div className="ui-swipe-info">
-              <div className="ui-swipe-title">百度</div>
+            <div className="ui-swipe-item">
+              <div className="ui-swipe-pic">
+                <a href="http://www.taobao.com">
+                  <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E8%96%AF%E7%89%87-0.png" />
+                </a>
+              </div>
+              <div className="ui-swipe-info">
+                <div className="ui-swipe-title">淘宝</div>
+              </div>
             </div>
-          </div>
-          <div className="ui-swipe-item">
-            <div className="ui-swipe-pic">
-              <a href="http://www.taobao.com">
-                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E8%96%AF%E7%89%87-0.png" />
-              </a>
+            <div className="ui-swipe-item">
+              <div className="ui-swipe-pic">
+                <a href="http://www.qq.com">
+                  <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E9%BB%84%E6%B2%B9%E8%96%AF%E7%89%87-0.png" />
+                </a>
+              </div>
+              <div className="ui-swipe-info">
+                <div className="ui-swipe-title">腾讯</div>
+              </div>
             </div>
-            <div className="ui-swipe-info">
-              <div className="ui-swipe-title">淘宝</div>
-            </div>
-          </div>
-          <div className="ui-swipe-item">
-            <div className="ui-swipe-pic">
-              <a href="http://www.qq.com">
-                <img src="http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E9%BB%84%E6%B2%B9%E8%96%AF%E7%89%87-0.png" />
-              </a>
-            </div>
-            <div className="ui-swipe-info">
-              <div className="ui-swipe-title">腾讯</div>
-            </div>
-          </div>
-        </Swipe>
+          </Swipe>
         
           <span>Form</span>
           <Form style={{maxWidth: '100%'}}>
@@ -213,16 +214,18 @@ class Page1 extends Component {
               label="icon图标" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Icon type="check" theme="info" style={{fontSize: 30}} />
-              <Icon type="check-round" style={{fontSize: 30}} />
-              <Icon type="check-round-fill" style={{fontSize: 30}} />
-              <Icon type="close" style={{fontSize: 30}} />
-              <Icon type="close-round" style={{fontSize: 30}} />
-              <Icon type="close-round-fill" style={{fontSize: 30}} />
-              <Icon type="info-round" style={{fontSize: 30}} />
-              <Icon type="info-round-fill" style={{fontSize: 30}} />
+              <Icon type="check" theme="success" style={{fontSize: 30}} />
+              <Icon type="check-round" theme="success" style={{fontSize: 30}} />
+              <Icon type="check-round-fill" theme="success" style={{fontSize: 30}} />
+              <Icon type="close" theme="error" style={{fontSize: 30}} />
+              <Icon type="close-round" theme="error" style={{fontSize: 30}} />
+              <Icon type="close-round-fill" theme="error" style={{fontSize: 30}} />
+              <Icon type="info-round" theme="info" style={{fontSize: 30}} />
+              <Icon type="info-round-fill" theme="info" style={{fontSize: 30}} />
               <Icon type="question-round" style={{fontSize: 30}} />
               <Icon type="question-round-fill" style={{fontSize: 30}} />
+              <Icon type="warning-round" theme="warning" style={{fontSize: 30}} />
+              <Icon type="warning-round-fill" theme="warning" style={{fontSize: 30}} />
               <Icon type="arrow-left" style={{fontSize: 30}} />
               <Icon type="arrow-right" style={{fontSize: 30}} />
               <Icon type="arrow-top" style={{fontSize: 30}} />
@@ -678,6 +681,13 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="滑动输入条"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <Slider round min={0} max={300} step={1} defaultValue={80} />
+            </Form.Item>
+
+            <Form.Item
               label="进度条"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
@@ -1003,6 +1013,7 @@ class Page1 extends Component {
             onCancel={() => this._onClickClose('confirm')} />
 
           <Alert
+            theme="warning"
             visible={this.state.alert}
             message="这是一个警告框！"
             onClose={() => this._onClickClose('alert')} />
