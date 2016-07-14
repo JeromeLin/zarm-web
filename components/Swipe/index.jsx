@@ -38,16 +38,16 @@ class Swipe extends Component {
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
     // 自动轮播开始
-    this.startAutoplay();
+    this.startAutoPlay();
   }
 
   componentWillUpdate() {
     setTimeout(this._transitionEnd.bind(this), this.props.speed);
   }
-  
+
   componentWillUnmount() {
     // 自动轮播结束
-    this.pauseAutoplay();
+    this.pauseAutoPlay();
     // 移除监听窗口变化
     window.removeEventListener("resize", () => this._updateResize());
 
@@ -106,8 +106,8 @@ class Swipe extends Component {
   }
 
   // 自动轮播开始
-  startAutoplay() {
-    this.moveInterval = (this.props.autoplay && setInterval(() => {
+  startAutoPlay() {
+    this.moveInterval = (this.props.autoPlay && setInterval(() => {
 
       let activeIndex = this.state.activeIndex,
           maxLength = this.props.children.length;
@@ -128,12 +128,12 @@ class Swipe extends Component {
         this.onSlideTo(activeIndex);
       }
       this.onSlideTo(activeIndex);
-    }, this.props.autoplayIntervalTime));
+    }, this.props.autoPlayIntervalTime));
 
   }
 
   // 暂停自动轮播
-  pauseAutoplay() {
+  pauseAutoPlay() {
     if (this.moveInterval) { 
       clearInterval(this.moveInterval);
     }
@@ -193,7 +193,7 @@ class Swipe extends Component {
   
   // 触屏事件
   _onTouchStart(event) {
-    this.pauseAutoplay();
+    this.pauseAutoPlay();
 
     let pointX = this._getCurrentPoint(event),
         activeIndex = this.state.activeIndex,
@@ -253,7 +253,7 @@ class Swipe extends Component {
 
 
     // 恢复自动轮播
-    this.startAutoplay();
+    this.startAutoPlay();
 
     this.setState({
       pointStart  : 0,
@@ -288,8 +288,8 @@ Swipe.propTypes = {
   height               : PropTypes.number,
   activeIndex          : PropTypes.number,
   speed                : PropTypes.number,
-  autoplay             : PropTypes.bool,
-  autoplayIntervalTime : PropTypes.number,
+  autoPlay             : PropTypes.bool,
+  autoPlayIntervalTime : PropTypes.number,
   moveDistanceRatio    : PropTypes.number,
   moveTimeSpan         : PropTypes.number,
 };
@@ -299,8 +299,8 @@ Swipe.defaultProps = {
   height               : 160,
   activeIndex          : 0,
   speed                : 300,
-  autoplay             : true,
-  autoplayIntervalTime : 3000,
+  autoPlay             : true,
+  autoPlayIntervalTime : 3000,
   moveDistanceRatio    : 0.5,
   moveTimeSpan         : 300,
 };
