@@ -7,19 +7,19 @@ let EVENT_NAME_MAP = {
   'WebkitAnimation' : 'webkitAnimationEnd'
 };
 
-let endEvents = [];
-let testStyle = document.createElement('div').style;
+let endEvents = ['WebkitTransition', 'MozTransition', 'msTransition', 'OTransition', 'Transition'];
+// let testStyle = document.createElement('div').style;
 
-if (!('AnimationEvent' in window)) {
-  delete EVENT_NAME_MAP.animation;
-}
+// if (!('AnimationEvent' in window)) {
+//   delete EVENT_NAME_MAP.animation;
+// }
 
-for (let styleName in EVENT_NAME_MAP) {
-  if (styleName in testStyle) {
-    endEvents.push(EVENT_NAME_MAP[styleName]);
-    break;
-  }
-}
+// for (let styleName in EVENT_NAME_MAP) {
+//   if (styleName in testStyle) {
+//     endEvents.push(EVENT_NAME_MAP[styleName]);
+//     break;
+//   }
+// }
 
 export default function addEndEventListener(node, eventListener) {
   if (endEvents.length === 0) {

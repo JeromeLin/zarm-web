@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import addEndEventListener from '../utils/animationEvents';
+// import addEndEventListener from '../utils/animationEvents';
 
 class Modal extends Component {
 
@@ -9,22 +9,23 @@ class Modal extends Component {
     super(props);
     this.state = {
       isShow         : false,
+      isPending      : false,
       animationState : 'leave',
     };
+
+    this.resolveAnimationFrame = this.resolveAnimationFrame.bind(this);
   }
 
-  componentDidMount() {
-    this.animationEvents = addEndEventListener(this.refs.dialog, this.animationEnd.bind(this));
+  // componentDidMount() {
+  //   this.animationEvents = addEndEventListener(this.refs.dialog, this.resolveAnimationFrame);
 
-    if (this.props.visible) {
-      this.enter();
-    }
-  }
+  //   if (this.props.visible) {
+  //     this.enter();
+  //   }
+  // }
 
-  componentWillUnmount() {
-    if (this.animationEvents) {
-      this.animationEvents.remove();
-    }
+  componentWillUpdate() {
+    setTimeout(this.resolveAnimationFrame, this.props.animationDuration);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,14 +42,14 @@ class Modal extends Component {
 
   render () {
     const { animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
-    const { isShow, animationState } = this.state;
+    const { isShow, isPending, animationState } = this.state;
 
     const classes = {
       modal:  classnames({
                 'ui-modal'                : true,
                 'radius'                  : ('radius' in this.props || isRadius),
                 'round'                   : ('round' in this.props || isRound),
-                [`fade-${animationState}`]: true,
+                [`fade-${animationState}`]: isPending,
                 [className]               : !!className,
               }),
       dialog: classnames({
@@ -91,15 +92,21 @@ class Modal extends Component {
     );
   }
 
-  animationEnd(e) {
-    let node = this.refs.dialog;
-    if (e && e.target !== node) {
-      return;
-    }
+  resolveAnimationFrame() {
+    // let node = this.refs.dialog;
+    // if (e && e.target !== node) {
+    //   return;
+    // }
 
     if (this.state.animationState === 'leave') {
       this.setState({
-        isShow: false
+        isShow: false,
+        isPending: false
+      });
+    } else {
+      this.setState({
+        isShow: true,
+        isPending: false
       });
     }
   }
@@ -107,20 +114,17 @@ class Modal extends Component {
   enter() {
     this.setState({
       isShow: true,
+      isPending: true,
       animationState: 'enter',
     });
   }
 
   leave() {
-    if (this.animationEvents) {
-      this.setState({
-        animationState: 'leave',
-      });
-    } else {
-      this.setState({
-        isShow: false,
-      })
-    }
+    this.setState({
+      isShow: true,
+      isPending: true,
+      animationState: 'leave',
+    });
   }
 
   onContainerClick(e) {
