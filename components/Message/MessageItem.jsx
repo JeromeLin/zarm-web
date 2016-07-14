@@ -13,43 +13,43 @@ class MessageItem extends Component {
   }
 
   componentDidMount() {
-  	setTimeout(() => this.setState({ visible: true }), 50);
+    setTimeout(() => this.setState({ visible: true }), 50);
   }
 
   render() {
     const { content, theme, ...others } = this.props;
 
     let wrapClass = classnames({
-    	'ui-message-wrapper': true,
-    	'ui-message-visible': this.state.visible
+      'ui-message-wrapper': true,
+      'ui-message-visible': this.state.visible
     });
 
     let iconClass = classnames({
-    	[`ui-message-${theme}`]: !!theme,
+      [`ui-message-${theme}`]: !!theme,
     });
 
     let iconType = 'info-round';
 
     switch(theme) {
-    	case 'warning':
-    		iconType = 'warning-round';
-    		break;
-    	case 'success':
-    		iconType = 'check-round';
-    		break;
-    	case 'error':
-    		iconType = 'close-round';
-    		break;
+      case 'warning':
+        iconType = 'warning-round';
+        break;
+      case 'success':
+        iconType = 'check-round';
+        break;
+      case 'error':
+        iconType = 'close-round';
+        break;
     }
 
-  	return (
-  		<div className={wrapClass} {...others}>
+    return (
+      <div className={wrapClass} {...others}>
           <div className="ui-message-container">
-          	<Icon type={iconType} className={iconClass} style={{fontSize: 15}} />
+            <Icon type={iconType} className={iconClass} style={{fontSize: 15}} />
             {content}
           </div>
         </div>
-  	);
+    );
   }
 }
 
