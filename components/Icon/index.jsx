@@ -5,10 +5,11 @@ import classnames from 'classnames';
 class Icon extends Component {
 
   render () { 
-    const { type, className, ...others } = this.props;
+    const { type, theme, className, ...others } = this.props;
     const cls = classnames({
       'ui-icon'          : true,
       [`ui-icon-${type}`]: !!type,
+      [`theme-${theme}`] : !!theme,
       [className]        : !!className
     });
     
@@ -21,10 +22,12 @@ class Icon extends Component {
 
 Icon.propTypes = {
   type : PropTypes.string,
+  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
 };
 
 Icon.defaultProps = {
   type : '',
+  theme: 'default',
 };
 
 export default Icon;
