@@ -287,40 +287,40 @@ export default class Slider extends Component{
 }
 
 Slider.propTypes = {
-	min : PropTypes.number,
-	max : PropTypes.number.isRequired,
-	step : PropTypes.number,
-	defaultValue : PropTypes.oneOfType([
+	min 				: PropTypes.number,
+	max 				: PropTypes.number.isRequired,
+	step 				: PropTypes.number,
+	defaultValue: PropTypes.oneOfType([
 									PropTypes.number, 
 									PropTypes.array
 								]),
-	styleWidth: PropTypes.number,
-	getValue : PropTypes.func,
-	showTip : PropTypes.bool,
-	isRound : PropTypes.bool,
-	isSolid : PropTypes.bool,
-	isRange : PropTypes.bool,
-	isPass  : PropTypes.bool,
-	tipAlwayShow : PropTypes.bool,
-	customCls : PropTypes.string,
-	theme : PropTypes.string,
-	HandleAmount : PropTypes.number,
-	theme : PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
-	rangeColor : PropTypes.oneOfType([
+	styleWidth 	: PropTypes.number,
+	getValue 		: PropTypes.func,
+	showTip 		: PropTypes.bool,
+	isRound 		: PropTypes.bool,
+	isSolid 		: PropTypes.bool,
+	isRange 		: PropTypes.bool,
+	isPass  		: PropTypes.bool,
+	tipAlwayShow: PropTypes.bool,
+	customCls 	: PropTypes.string,
+	HandleAmount: PropTypes.number,
+	theme 			: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+	rangeColor  : PropTypes.oneOfType([
 									PropTypes.string, 
 									PropTypes.array
-							]),
+								]),
 }
 
 Slider.defaultProps = {
-	min : 0,
-	step : 1,
-	defaultValue : 0,
-	showTip : true,
+	min 				: 0,
+	step 				: 1,
+	defaultValue: 0,
+	showTip 		: true,
 	tipAlwayShow: false,
-	HandleAmount : 1,
-	isRound : false,
-	isSolid : false,
-	isRange : false,
-	isPass  : true,
+	HandleAmount: 1,
+	isRound 		: false,
+	isSolid 		: false,
+	isRange 		: false,
+	isPass  		: true,
+	theme				: 'default'
 }
