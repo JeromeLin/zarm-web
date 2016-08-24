@@ -607,7 +607,7 @@ class Page1 extends Component {
                 multiple
                 fileExt=".gif, .jpg, .png"
                 startUpload={this.state.startUpload}
-                url="http://10.139.163.146:8080/artemis/addApplyAttachment"
+                url="http://www.xxx.com"
                 data={{
                   attachmentType: 2,
                   policyCategory: 1,
@@ -623,7 +623,7 @@ class Page1 extends Component {
                   uploadDataSource.push({
                     id: data.attachmentId,
                     name: data.attachmentName,
-                    url: 'http://10.139.163.146:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
+                    url: 'http://www.xxx.com',
                     size: file.size,
                   });
                   this.setState({uploadDataSource});
@@ -636,7 +636,7 @@ class Page1 extends Component {
                 fileExt=".gif, .jpg, .png"
                 autoUpload={false}
                 startUpload={this.state.startUpload}
-                url="http://10.139.163.146:8080/artemis/addApplyAttachment"
+                url="http://www.xxx.com"
                 data={{
                   attachmentType: 2,
                   policyCategory: 1,
@@ -652,7 +652,7 @@ class Page1 extends Component {
                   uploadDataSource.push({
                     id: data.attachmentId,
                     name: data.attachmentName,
-                    url: 'http://10.139.163.146:8080/artemis/listAppAttachmentsByObjectId?attachmentId=' + data.attachmentId,
+                    url: 'http://www.xxx.com',
                     size: file.size,
                   });
                   this.setState({
