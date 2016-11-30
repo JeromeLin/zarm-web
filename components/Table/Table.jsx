@@ -64,12 +64,18 @@ class Table extends Component {
         </thead>
         <tbody>
           {
-            dataSource.map((row, index) => {
-              let rowIndex = index;
+            dataSource.map((row, rowIndex) => {
+              const renderSelect = rowSelection
+                                 ? this.renderSelect(rowSelection, row)
+                                 : null
+              const renderCell = columns.map((column, columnIndex) => {
+                return this.renderCell(column, row, rowIndex, columnIndex)
+              })
+
               return (
                 <tr key={rowIndex}>
-                  {rowSelection ? this.renderSelect(rowSelection, row) : null}
-                  {columns.map((column, index) => this.renderCell(column, row, rowIndex))}  
+                  {renderSelect}
+                  {renderCell}
                 </tr>
               );
             })
@@ -151,13 +157,14 @@ class Table extends Component {
   }
 
   // 单元格渲染
-  renderCell(column, row, rowIndex) {
+  renderCell(column, row, rowIndex, columnIndex) {
+    console.log(columnIndex)
     const value = row[column.dataIndex];
     const render = ('render' in column) 
                  ? column.render(value, row, rowIndex)
                  : value;
 
-    return <td key={column.dataIndex}>{render}</td>;
+    return <td key={column.dataIndex + columnIndex}>{render}</td>;
   }
 
   onSort(column) {

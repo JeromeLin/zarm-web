@@ -47,10 +47,50 @@ class Page1 extends Component {
     super(props);
     this.state = {
       dataSource: [
-        {id: '1', name: '张三', dept: '直营部', age: 46, address: '上海市杨浦区四平路324号', state: true},
-        {id: '2', name: '李四', dept: '健康险事业部', age: 32, address: 'wda', state: true},
-        {id: '3', name: '王五', dept: '金融信保部', age: 20, address: '上海市浦东区张杨路1400号', state: false},
-        {id: '4', name: '奥巴马', dept: '健康险事业部', age: 45, address: '美国洛杉矶', state: false},
+        {
+          id: '1',
+          name: '张三',
+          dept: '直营部', 
+          age: 46,
+          address: {
+            home: '上海市杨浦区四平路324号',
+            comp: '1xxx公司'
+          },
+          state: true
+        },
+        {
+          id: '2', 
+          name: '李四',
+          dept: '健康险事业部',
+          age: 32,
+          address: {
+            home: 'aaaa',
+            comp: '2xxx公司'
+          },
+          state: true
+        },
+        {
+          id: '3',
+          name: '王五',
+          dept: '金融信保部',
+          age: 20,
+          address: {
+            home: '上海市浦东区张杨路1400号',
+            comp: '3xxx公司'
+          },
+          state: false
+        },
+        {
+          id: '4', 
+          name: '奥巴马',
+          dept: '健康险事业部',
+          age: 45,
+          address: {
+            home: '美国洛杉矶',
+            comp: '2xxx公司'
+          },
+          state: false
+        },
       ],
 
       uploadDataSource: [],
@@ -888,8 +928,18 @@ class Page1 extends Component {
                     return a.age - b.age;
                   }
                 },{
-                  title: '住址',
-                  dataIndex: 'address'
+                  title: '家庭住址',
+                  dataIndex: 'address',
+                  render: (value, row, index) => {
+                    return value.home
+                  }
+                },
+                {
+                  title: '公司地址',
+                  dataIndex: 'address',
+                  render: (value, row, index) => {
+                    return value.comp
+                  }
                 },{
                   title: '状态',
                   dataIndex: 'state',
