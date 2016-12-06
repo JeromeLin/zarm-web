@@ -158,7 +158,6 @@ class Table extends Component {
 
   // 单元格渲染
   renderCell(column, row, rowIndex, columnIndex) {
-    console.log(columnIndex)
     const value = row[column.dataIndex];
     const render = ('render' in column) 
                  ? column.render(value, row, rowIndex)
