@@ -1,5 +1,5 @@
 
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Tab from './Tab';
 
