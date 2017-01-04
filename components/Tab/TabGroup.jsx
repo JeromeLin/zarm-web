@@ -8,14 +8,14 @@ class TabGroup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: 0
+      value: props.value || props.defaultValue || this.getSelectIndex(props.children) || 0,
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('activeIndex' in nextProps || this.getSelectIndex(nextProps.children)) {
+    if ('value' in nextProps || this.getSelectIndex(nextProps.children)) {
       this.setState({
-        activeIndex: nextProps.activeIndex || this.getSelectIndex(nextProps.children)
+        value: nextProps.value
       });
     }
   }
@@ -31,13 +31,13 @@ class TabGroup extends Component {
   }
 
   getTitleItemCls(idx) {
-    return idx === this.state.activeIndex
+    return idx === this.state.value
                  ? 'ui-tab-header-item active'
                  : 'ui-tab-header-item';
   }
 
   getContentItemCls(idx) {
-    return idx === this.state.activeIndex
+    return idx === this.state.value
                   ? 'ui-tab-body-item active'
                   : 'ui-tab-body-item';
   }
@@ -53,22 +53,22 @@ class TabGroup extends Component {
       [className]       : !!className
     });
 
-    let content = React.Children.map(children, (item, $index) => {
-      return (
-        <Tab {...item.props} selected={!!(this.state.activeIndex === $index)}>
-          {item.props.children}
-        </Tab>
-      );
-    });
-
-    let items = React.Children.map(children, (item, $index) => {
+    const items = React.Children.map(children, (item, $index) => {
       return (
         <li key={$index} className={this.getTitleItemCls($index)} onClick={() => {
           this.setState(
-            { activeIndex: $index },
+            { value: $index },
             onChange($index)
           );
         }}>{item.props.title}</li>
+      );
+    });
+
+    const content = React.Children.map(children, (item, $index) => {
+      return (
+        <Tab {...item.props} selected={!!(this.state.value === $index)}>
+          {item.props.children}
+        </Tab>
       );
     });
 
