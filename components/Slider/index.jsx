@@ -46,6 +46,21 @@ export default class Slider extends Component{
 		this.isTouchSuported = domUtil.probTouch()
 	}
 
+	componentWillReceiveProps(nextProps) {
+    setTimeout(() => {
+      const { min, max, HandleAmount, defaultValue } = nextProps
+      let states = {}, i = 0
+      const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue]
+      
+      while( i < HandleAmount ){
+        if(dv[i] === undefined) dv[i] = min
+        states[`currentValue${i}`] = this.validateDefault(dv[i], min, max)
+        i++
+      }
+      this.setState( states )
+    }, 0)
+  }
+  
 	onHandleDown(i){
 		return (e) => {
 			e.stopPropagation()
