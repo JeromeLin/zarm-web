@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 import Progress from '../Progress';
 
+
 class Upload extends Component {
 
   constructor(props) {
@@ -92,6 +93,8 @@ class Upload extends Component {
   // 上传附件
   onUpload(file) {
     const { url, data, onProgress, onComplete, onError } = this.props;
+    const URL = /^(http:\/\/|https:\/\/|\/\/)/;
+    const { origin } = window.location;
 
     let fd = new FormData(),
         xhr = new XMLHttpRequest(),
@@ -103,6 +106,10 @@ class Upload extends Component {
     Object.keys(data).forEach((key, index) => {
       fd.append(key, data[key]);
     })
+
+    if(URL.test(url) && !~url.indexOf(origin)) {
+      return onComplete(file);
+    }
 
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4) {
