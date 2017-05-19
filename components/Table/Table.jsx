@@ -52,7 +52,7 @@ class Table extends Component {
   }
 
   renderTable() {
-    const { columns, dataSource, rowSelection, ...others } = this.props;
+    const { columns, dataSource, rowSelection, rowClick, ...others } = this.props;
 
     return (
       <table {...others}>
@@ -73,7 +73,7 @@ class Table extends Component {
               })
 
               return (
-                <tr key={rowIndex}>
+                <tr key={rowIndex} onClick={() => { rowClick(dataSource[rowIndex]); }}>
                   {renderSelect}
                   {renderCell}
                 </tr>

@@ -880,6 +880,7 @@ class Page1 extends Component {
                 hover
                 isLoading={this.state.tableLoading}
                 dataSource={this.state.dataSource}
+                rowClick={(row) => { console.log(row) }}
                 columns={[{
                   dataIndex: 'id',
                   width: 50,
