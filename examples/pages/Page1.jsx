@@ -957,13 +957,22 @@ class Page1 extends Component {
                   render: (value, row, index) => {
                     return (
                       <div style={{color: '#ccc'}}>
-                        <a href="javascript:;" onClick={() => this._onClickOpen('alert')}>编辑</a>
+                        <a href="javascript:;" onClick={(e) => {
+                          e.stopPropagation();  //避免触发rowClick事件
+                          this._onClickOpen('alert');
+                        }}>编辑</a>
                         &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href="javascript:;" onClick={() => this._onClickOpen('confirm')}>删除</a>
+                        <a href="javascript:;" onClick={(e) => {
+                          e.stopPropagation();  //避免触发rowClick事件
+                          this._onClickOpen('confirm');
+                        }}>删除</a>
                       </div>
                     );
                   }
                 }]}
+                rowClick={(row) => {
+                  console.log(row);
+                }}
                 rowSelection={{
                   // value: this.state.tableSelection,
                   onSelect: (selected, row, selectedRows) => {

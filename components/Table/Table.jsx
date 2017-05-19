@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Loading from '../Loading';
 import Checkbox from '../Checkbox';
-// import TableSorter from './TableSorter';
 
 class Table extends Component {
 
@@ -52,7 +51,7 @@ class Table extends Component {
   }
 
   renderTable() {
-    const { columns, dataSource, rowSelection, ...others } = this.props;
+    const { columns, dataSource, rowClick, rowSelection, ...others } = this.props;
 
     return (
       <table {...others}>
@@ -67,13 +66,13 @@ class Table extends Component {
             dataSource.map((row, rowIndex) => {
               const renderSelect = rowSelection
                                  ? this.renderSelect(rowSelection, row)
-                                 : null
+                                 : null;
               const renderCell = columns.map((column, columnIndex) => {
-                return this.renderCell(column, row, rowIndex, columnIndex)
-              })
+                return this.renderCell(column, row, rowIndex, columnIndex);
+              });
 
               return (
-                <tr key={rowIndex}>
+                <tr key={rowIndex} onClick={() => rowClick(row)}>
                   {renderSelect}
                   {renderCell}
                 </tr>
@@ -89,7 +88,7 @@ class Table extends Component {
   renderSelectAll(rowSelection, dataSource) {
     return (
       <th style={{width:50, textAlign: 'center'}}>
-        <Checkbox checked={this.state.selectedRows.length == dataSource.length} onChange={(e) => {
+        <Checkbox checked={this.state.selectedRows.length === dataSource.length} onChange={(e) => {
           const selected = e.target.checked;
           const selectedRows = selected
                              ? dataSource.map((data) => data)
@@ -124,7 +123,7 @@ class Table extends Component {
 
   // 表头渲染
   renderColumn(column, index) {
-    let render = ('columnRender' in column) 
+    let render = ('columnRender' in column)
                ? column.columnRender(column, index)
                : column.title;
 
@@ -142,8 +141,8 @@ class Table extends Component {
     const sortUpCls = classnames({
       'ui-table-sorter-up'    : true,
       'ui-table-sorter-active': !!sort,
-    }),
-    sortDownCls = classnames({
+    });
+    const sortDownCls = classnames({
       'ui-table-sorter-down'  : true,
       'ui-table-sorter-active': (sort !== undefined) && !sort,
     });
@@ -159,7 +158,7 @@ class Table extends Component {
   // 单元格渲染
   renderCell(column, row, rowIndex, columnIndex) {
     const value = row[column.dataIndex];
-    const render = ('render' in column) 
+    const render = ('render' in column)
                  ? column.render(value, row, rowIndex)
                  : value;
 
