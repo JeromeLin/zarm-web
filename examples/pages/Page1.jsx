@@ -254,37 +254,41 @@ class Page1 extends Component {
               label="icon图标" 
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Icon type="check" theme="success" style={{fontSize: 30}} />
-              <Icon type="check-round" theme="success" style={{fontSize: 30}} />
-              <Icon type="check-round-fill" theme="success" style={{fontSize: 30}} />
-              <Icon type="close" theme="error" style={{fontSize: 30}} />
-              <Icon type="close-round" theme="error" style={{fontSize: 30}} />
-              <Icon type="close-round-fill" theme="error" style={{fontSize: 30}} />
-              <Icon type="info-round" theme="info" style={{fontSize: 30}} />
-              <Icon type="info-round-fill" theme="info" style={{fontSize: 30}} />
-              <Icon type="question-round" style={{fontSize: 30}} />
-              <Icon type="question-round-fill" style={{fontSize: 30}} />
-              <Icon type="warning-round" theme="warning" style={{fontSize: 30}} />
-              <Icon type="warning-round-fill" theme="warning" style={{fontSize: 30}} />
-              <Icon type="arrow-left" style={{fontSize: 30}} />
-              <Icon type="arrow-right" style={{fontSize: 30}} />
-              <Icon type="arrow-top" style={{fontSize: 30}} />
-              <Icon type="arrow-bottom" style={{fontSize: 30}} />
-              <Icon type="add" style={{fontSize: 30}} />
-              <Icon type="minus" style={{fontSize: 30}} />
-              <Icon type="date" style={{fontSize: 30}} />
-              <Icon type="loading" style={{fontSize: 30}} />
+              <Icon type="right" theme="success" />
+              <Icon type="right-round" theme="success" />
+              <Icon type="right-round-fill" theme="success" />
+              <Icon type="wrong" theme="error" />
+              <Icon type="wrong-round" theme="error" />
+              <Icon type="wrong-round-fill" theme="error" />
+              <Icon type="info-round" theme="info" />
+              <Icon type="info-round-fill" theme="info" />
+              <Icon type="question-round" />
+              <Icon type="question-round-fill" />
+              <Icon type="warning-round" theme="warning" />
+              <Icon type="warning-round-fill" theme="warning" />
+              <Icon type="arrow-left" />
+              <Icon type="arrow-right" />
+              <Icon type="arrow-top" />
+              <Icon type="arrow-bottom" />
+              <Icon type="add" />
+              <Icon type="add-round" />
+              <Icon type="add-round-fill" />
+              <Icon type="minus" />
+              <Icon type="minus-round" />
+              <Icon type="minus-round-fill" />
+              <Icon type="date" />
+              <Icon type="loading" />
             </Form.Item>
 
             <Form.Item
               label="图标按钮"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
-              <Button size="xl" circle><Icon type="check" /></Button>
-              <Button size="lg" circle><Icon type="check" /></Button>
-              <Button circle><Icon type="check" /></Button>
-              <Button size="sm" circle><Icon type="check" /></Button>
-              <Button size="xs" circle><Icon type="check" /></Button>
+              <Button size="xl" circle><Icon type="wrong" /></Button>
+              <Button size="lg" circle><Icon type="wrong" /></Button>
+              <Button circle><Icon type="wrong" /></Button>
+              <Button size="sm" circle><Icon type="wrong" /></Button>
+              <Button size="xs" circle><Icon type="wrong" /></Button>
             </Form.Item>
 
             <Form.Item
@@ -299,7 +303,7 @@ class Page1 extends Component {
               <Button>直角按钮</Button>
               <Button radius>圆角按钮</Button>
               <Button round>椭圆角按钮</Button>
-              <Button><Icon type="check" loading /> 带图标的按钮</Button>
+              <Button><Icon type="right" loading /> 带图标的按钮</Button>
               <Button disabled>禁用状态</Button>
               <Button disabled loading>加载中的按钮</Button>
               <Button active>激活状态</Button>
@@ -352,7 +356,7 @@ class Page1 extends Component {
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
               <Breadcrumb separator=">">
-                <Breadcrumb.Item><Icon type="check" /> 首页</Breadcrumb.Item>
+                <Breadcrumb.Item><Icon type="right" /> 首页</Breadcrumb.Item>
                 <Breadcrumb.Item href="">模块</Breadcrumb.Item>
                 <Breadcrumb.Item>应用</Breadcrumb.Item>
               </Breadcrumb>
@@ -440,7 +444,7 @@ class Page1 extends Component {
               help={`您最后一个开关选择了( ${this.state.switchValue} )`}>
               <Switch /> 普通开关
               <br />
-              <Switch isCheckedText={<Icon type="check" />} unCheckedText={<Icon type="close" />} /> 图标开关
+              <Switch isCheckedText={<Icon type="right" />} unCheckedText={<Icon type="wrong" />} /> 图标开关
               <br />
               <Switch isCheckedText="是" unCheckedText="否" defaultValue={true} /> 设定默认值为true
               <br />
