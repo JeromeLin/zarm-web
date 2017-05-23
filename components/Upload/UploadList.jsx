@@ -42,7 +42,7 @@ class UploadList extends Component {
                 {
                   // <div className="ui-upload-list-item-size">{item.size}</div>
                 }
-                <Icon type="close" title="删除" className="ui-upload-list-item-icon" onClick={() => onDelete(item)} />
+                <Icon type="wrong" title="删除" className="ui-upload-list-item-icon" onClick={() => onDelete(item)} />
                 {progress}
               </div>
             );

@@ -15,10 +15,10 @@ class Alert extends Component {
         iconType = 'warning-round';
         break;
       case 'success':
-        iconType = 'check-round';
+        iconType = 'right-round';
         break;
       case 'error':
-        iconType = 'close-round';
+        iconType = 'wrong-round';
         break;
     }
 
