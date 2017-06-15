@@ -21,7 +21,7 @@ class Radio extends Component {
 
   render () {
     const props = this.props;
-    const { value, isDisabled, className, children, ...others } = props;
+    const { value, isDisabled, className, children } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
@@ -32,7 +32,7 @@ class Radio extends Component {
     });
 
     return (
-      <label {...others}>
+      <label>
         <span className={cls}>
           <input
             className="ui-radio-input"
