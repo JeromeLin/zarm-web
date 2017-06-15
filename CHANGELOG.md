@@ -1,5 +1,7 @@
 # 版本更新日志  
 
+## 0.0.57  
+  * 修复Radio触发重复两次onChange事件的bug，支持value为number类型的值
 
 ## 0.0.56  
   * Table组件新增rowClick属性，用于点击整行的操作

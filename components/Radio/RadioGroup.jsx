@@ -1,6 +1,5 @@
 
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
 import Radio from './Radio';
 
 class RadioGroup extends Component {
@@ -20,15 +19,14 @@ class RadioGroup extends Component {
     }
   }
 
-  render() {    
+  render() {
     const props = this.props;
 
     let children = React.Children.map(props.children, (radio) => {
       return (
         <Radio {...radio.props}
           onChange={(e) => this.onRadioChange(e)}
-          checked={this.state.value === radio.props.value}>
-        </Radio>
+          checked={this.state.value == radio.props.value} />
       );
     });
 
