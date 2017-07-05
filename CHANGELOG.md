@@ -1,5 +1,8 @@
 # 版本更新日志  
 
+## 0.0.58  
+  * 修复Upload组件图片上传失败后uploading状态没有重置为false的问题
+
 ## 0.0.57  
   * 修复Radio触发重复两次onChange事件的bug，支持value为number类型的值
 
