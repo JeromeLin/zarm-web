@@ -25,7 +25,7 @@ class Upload extends Component {
     }
   }
 
-  render () { 
+  render () {
     const props = this.props;
     const { multiple, fileExt, className, ...others } = props;
 
@@ -128,6 +128,7 @@ class Upload extends Component {
             this.setState({fileNumber});
           }
         } else {
+          this.setState({ uploading: false });
           onError();
         }
       }
