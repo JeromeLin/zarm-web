@@ -51,7 +51,7 @@ class Table extends Component {
   }
 
   renderTable() {
-    const { columns, dataSource, rowClick, rowSelection, ...others } = this.props;
+    const { columns, dataSource, rowSelection, rowClick, ...others } = this.props;
 
     return (
       <table {...others}>
@@ -72,7 +72,7 @@ class Table extends Component {
               });
 
               return (
-                <tr key={rowIndex} onClick={() => rowClick(row)}>
+                <tr key={rowIndex} onClick={() => { rowClick && rowClick(row); }}>
                   {renderSelect}
                   {renderCell}
                 </tr>
