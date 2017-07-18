@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
@@ -50,8 +50,11 @@ class Page1 extends Component {
         {
           id: '1',
           name: '张三',
-          dept: '直营部', 
+          dept: '直营部',
           age: 46,
+          iphone: '15617283931',
+          android: '15617283930',
+          tel: '23412341231',
           address: {
             home: '上海市杨浦区四平路324号',
             comp: '1xxx公司'
@@ -59,10 +62,13 @@ class Page1 extends Component {
           state: true
         },
         {
-          id: '2', 
+          id: '2',
           name: '李四',
           dept: '健康险事业部',
           age: 32,
+          iphone: '15617283931',
+          android: '15617283930',
+          tel: '23412341231',
           address: {
             home: 'aaaa',
             comp: '2xxx公司'
@@ -74,6 +80,9 @@ class Page1 extends Component {
           name: '王五',
           dept: '金融信保部',
           age: 20,
+          iphone: '15617283931',
+          android: '15617283930',
+          tel: '23412341231',
           address: {
             home: '上海市浦东区张杨路1400号',
             comp: '3xxx公司'
@@ -81,10 +90,13 @@ class Page1 extends Component {
           state: false
         },
         {
-          id: '4', 
+          id: '4',
           name: '奥巴马',
           dept: '健康险事业部',
           age: 45,
+          iphone: '15617283931',
+          android: '15617283930',
+          tel: '23412341231',
           address: {
             home: '美国洛杉矶',
             comp: '2xxx公司'
@@ -214,7 +226,7 @@ class Page1 extends Component {
               </div>
             </div>
           </Swipe>
-        
+
           <span>Form</span>
           <Form style={{maxWidth: '100%'}}>
             <Form.Item label="账号">
@@ -251,7 +263,7 @@ class Page1 extends Component {
           <Form type="horizontal">
 
             <Form.Item
-              label="icon图标" 
+              label="icon图标"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Icon type="right" theme="success" />
@@ -347,7 +359,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="面包屑" 
+              label="面包屑"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Breadcrumb>
@@ -363,7 +375,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="标签页" 
+              label="标签页"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Tab.Group defaultValue={1} onChange={(i) => console.log(i)}>
@@ -380,7 +392,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="步骤条" 
+              label="步骤条"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
                 <Step current={3}>
@@ -573,11 +585,11 @@ class Page1 extends Component {
                       style={{float: 'left', clear: 'both'}}
                       isDisabled={this.state.mulSelectLeftValue.length == 0}
                       onClick={() => {
-                        const mulSelectLeft = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) < 0) && item); 
+                        const mulSelectLeft = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) < 0) && item);
                         let selected = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) > -1) && item);
                         let mulSelectRight = this.state.mulSelectRight.concat(selected);
-                        this.setState({ 
-                          mulSelectLeft, 
+                        this.setState({
+                          mulSelectLeft,
                           mulSelectRight,
                           mulSelectLeftValue: [],
                           mulSelectRightValue: []
@@ -585,10 +597,10 @@ class Page1 extends Component {
                     }}><Icon type="add" /></Button>
                     <Button
                       radius
-                      style={{float: 'left', clear: 'both', marginTop: 10}} 
+                      style={{float: 'left', clear: 'both', marginTop: 10}}
                       isDisabled={this.state.mulSelectRightValue.length == 0}
                       onClick={()=> {
-                        const mulSelectRight = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) < 0) && item); 
+                        const mulSelectRight = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) < 0) && item);
                         let selected = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) > -1) && item);
                         let mulSelectLeft = this.state.mulSelectLeft.concat(selected);
                         this.setState({
@@ -643,7 +655,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="上传" 
+              label="上传"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <Upload
@@ -717,7 +729,7 @@ class Page1 extends Component {
                 radius
                 inline
                 type="picture"
-                dataSource={this.state.uploadDataSource} 
+                dataSource={this.state.uploadDataSource}
                 onDelete={(item) => {
                   let uploadDataSource = [...this.state.uploadDataSource].filter(file => file && (file.id != item.id));
                   this.setState({uploadDataSource});
@@ -802,7 +814,7 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
-              label="分页" 
+              label="分页"
               labelCol="col-sm-2"
               controlCol="col-sm-10">
               <div>
@@ -820,7 +832,7 @@ class Page1 extends Component {
                   radius
                   value={this.state.currentPage}
                   pageSize={10}
-                  total={324} 
+                  total={324}
                   onPageChange={(value) => {
                     console.log(`您选择了( 第 ${value} 页 )`);
                     this.setState({
@@ -931,6 +943,29 @@ class Page1 extends Component {
                   sorter: (a, b) => {
                     return a.age - b.age;
                   }
+                },{
+                  title: '联系方式',
+                  dataIndex: 'contact',
+                  children: [
+                    {
+                      title: '手机',
+                      dataIndex: 'mobile',
+                      children: [
+                        {
+                          title: 'iphone',
+                          dataIndex: 'iphone'
+                        },
+                        {
+                          title: 'android',
+                          dataIndex: 'android'
+                        }
+                      ]
+                    },
+                    {
+                      title: '固话',
+                      dataIndex: 'tel'
+                    }
+                  ]
                 },{
                   title: '家庭住址',
                   dataIndex: 'address',
@@ -1086,7 +1121,7 @@ class Page1 extends Component {
           <Mask
             visible={this.state.mask}
             onClose={() => this._onClickClose('mask')} />
-      
+
         </div>
       </Loading>
     );
