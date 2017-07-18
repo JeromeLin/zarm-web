@@ -52,14 +52,25 @@ class Table extends Component {
 
   renderTable() {
     const { columns, dataSource, rowClick, rowSelection, ...others } = this.props;
+    const { headRows, dataColumns } = this.groupColumns(columns);
 
     return (
       <table {...others}>
         <thead>
-          <tr>
-            {rowSelection ? this.renderSelectAll(rowSelection, dataSource) : null}
-            {columns.map((column, index) => this.renderColumn(column, index))}
-          </tr>
+          {
+            headRows.map((row, index) => {
+              return (
+                <tr key={index}>
+                  {
+                    rowSelection && index === 0
+                    ? this.renderSelectAll(rowSelection, dataSource, headRows.length)
+                    : null
+                  }
+                  {row.map((column, columnIndex) => this.renderColumn(column, columnIndex))}
+                </tr>
+              );
+            })
+          }
         </thead>
         <tbody>
           {
@@ -67,7 +78,7 @@ class Table extends Component {
               const renderSelect = rowSelection
                                  ? this.renderSelect(rowSelection, row)
                                  : null;
-              const renderCell = columns.map((column, columnIndex) => {
+              const renderCell = dataColumns.map((column, columnIndex) => {
                 return this.renderCell(column, row, rowIndex, columnIndex);
               });
 
@@ -85,9 +96,9 @@ class Table extends Component {
   }
 
   // 全选所有行
-  renderSelectAll(rowSelection, dataSource) {
+  renderSelectAll(rowSelection, dataSource, rowSpan) {
     return (
-      <th style={{width:50, textAlign: 'center'}}>
+      <th style={{width:50, textAlign: 'center'}} rowSpan={rowSpan}>
         <Checkbox checked={this.state.selectedRows.length === dataSource.length} onChange={(e) => {
           const selected = e.target.checked;
           const selectedRows = selected
@@ -128,7 +139,11 @@ class Table extends Component {
                : column.title;
 
     return (
-      <th key={index} width={column.width}>
+      <th
+        key={column.dataIndex + index}
+        width={column.width}
+        rowSpan={column.rowSpan}
+        colSpan={column.colSpan} >
         {render}
         {this.renderSorter(column)}
       </th>
@@ -178,6 +193,41 @@ class Table extends Component {
         [`${column.dataIndex}`]: sort,
       }
     });
+  }
+
+  // 表头分组
+  groupColumns(columns, currentRow = 0, parentColumn = {}, rows = [], dataColumns = []) {
+    rows[currentRow] = rows[currentRow] || [];
+    let group = [];
+
+    function setRowSpan(column) {
+      let rowSpan = rows.length - currentRow;
+      if (column && !column.children &&
+      rowSpan > 1 && (!column.rowSpan || column.rowSpan < rowSpan)) {
+        column.rowSpan = rowSpan;
+      }
+    }
+    columns.forEach((column, index) => {
+      let newColumn = { ...column };
+      rows[currentRow].push(newColumn);
+      parentColumn.colSpan = parentColumn.colSpan || 0;
+      if (newColumn.children && newColumn.children.length > 0) {
+        newColumn.children = this.groupColumns(newColumn.children, currentRow + 1, newColumn, rows, dataColumns).group;
+        parentColumn.colSpan = parentColumn.colSpan + newColumn.colSpan;
+      } else {
+        dataColumns.push(newColumn);
+        parentColumn.colSpan++;
+      }
+
+      for (let i = 0; i < rows[currentRow].length - 1; ++i) {
+        setRowSpan(rows[currentRow][i]);
+      }
+      if (index + 1 === columns.length) {
+        setRowSpan(newColumn);
+      }
+      group.push(newColumn);
+    });
+    return { group, headRows: rows, dataColumns };
   }
 }
 
