@@ -53,9 +53,12 @@ class Table extends Component {
   renderTable() {
     const { columns, dataSource, rowClick, rowSelection, ...others } = this.props;
     const { headRows, dataColumns } = this.groupColumns(columns);
+    const cls = classnames({
+      'ui-table-multi-headrow': headRows.length > 1
+    });
 
     return (
-      <table {...others}>
+      <table {...others} className={cls}>
         <thead>
           {
             headRows.map((row, index) => {
