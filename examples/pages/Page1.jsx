@@ -944,29 +944,6 @@ class Page1 extends Component {
                     return a.age - b.age;
                   }
                 },{
-                  title: '联系方式',
-                  dataIndex: 'contact',
-                  children: [
-                    {
-                      title: '手机',
-                      dataIndex: 'mobile',
-                      children: [
-                        {
-                          title: 'iphone',
-                          dataIndex: 'iphone'
-                        },
-                        {
-                          title: 'android',
-                          dataIndex: 'android'
-                        }
-                      ]
-                    },
-                    {
-                      title: '固话',
-                      dataIndex: 'tel'
-                    }
-                  ]
-                },{
                   title: '家庭住址',
                   dataIndex: 'address',
                   render: (value, row, index) => {
@@ -1092,6 +1069,114 @@ class Page1 extends Component {
               </Panel.More>
             </Panel.Footer>
           </Panel>
+
+          <div>表头分组</div>
+          <Table
+            striped
+            hover
+            isLoading={this.state.tableLoading}
+            dataSource={this.state.dataSource}
+            columns={[{
+              dataIndex: 'id',
+              width: 50,
+              render: (value, row, index) => {
+                return index + 1;
+              }
+            },{
+              title: '姓名',
+              dataIndex: 'name',
+              width: 100,
+              render: (value, row, index) => {
+                return <a href="javascript:;">{value}</a>;
+              },
+              sorter: (a, b) => {
+                return a.name.localeCompare(b.name);
+              }
+            },{
+              title: '联系方式',
+              dataIndex: 'contact',
+              children: [
+                {
+                  title: '手机',
+                  dataIndex: 'mobile',
+                  children: [
+                    {
+                      title: 'iphone',
+                      dataIndex: 'iphone'
+                    },
+                    {
+                      title: 'android',
+                      dataIndex: 'android'
+                    }
+                  ]
+                },
+                {
+                  title: '固话',
+                  dataIndex: 'tel'
+                }
+              ]
+            },{
+              title: '家庭住址',
+              dataIndex: 'address',
+              render: (value, row, index) => {
+                return value.home
+              }
+            },
+            {
+              title: '公司地址',
+              dataIndex: 'address',
+              render: (value, row, index) => {
+                return value.comp
+              }
+            },{
+              title: '状态',
+              dataIndex: 'state',
+              width: 100,
+              render: (value, row, index) => {
+                return <Switch size="sm" value={value} />;
+              },
+              sorter: (a, b) => {
+                return a.state - b.state;
+              }
+            },{
+              title: '操作',
+              dataIndex: 'op',
+              width: 120,
+              render: (value, row, index) => {
+                return (
+                  <div style={{color: '#ccc'}}>
+                    <a href="javascript:;" onClick={(e) => {
+                      e.stopPropagation();  //避免触发rowClick事件
+                      this._onClickOpen('alert');
+                    }}>编辑</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="javascript:;" onClick={(e) => {
+                      e.stopPropagation();  //避免触发rowClick事件
+                      this._onClickOpen('confirm');
+                    }}>删除</a>
+                  </div>
+                );
+              }
+            }]}
+            rowClick={(row) => {
+              console.log(row);
+            }}
+            rowSelection={{
+              // value: this.state.tableSelection,
+              onSelect: (selected, row, selectedRows) => {
+                console.log(selected, row, selectedRows);
+                let tableSelection = this.state.tableSelection;
+                tableSelection = selectedRows;
+                this.setState({tableSelection});
+              },
+              onSelectAll: (selected, selectedRows) => {
+                console.log(selected, selectedRows);
+                let tableSelection = this.state.tableSelection;
+                tableSelection = selectedRows;
+                this.setState({tableSelection});
+              }
+            }}>
+          </Table>
 
           <Modal {...this.state.modalProps}>
             <Modal.Header title="标题" onClose={() => this._toggleModal()}></Modal.Header>
