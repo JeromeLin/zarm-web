@@ -1070,7 +1070,7 @@ class Page1 extends Component {
             </Panel.Footer>
           </Panel>
 
-          <div>表头分组</div>
+          <div>表头分组和单元格合并</div>
           <Table
             striped
             hover
@@ -1087,7 +1087,7 @@ class Page1 extends Component {
               dataIndex: 'name',
               width: 100,
               render: (value, row, index) => {
-                return <a href="javascript:;">{value}</a>;
+                return <a href="javascript:;">{value}</a>; 
               },
               sorter: (a, b) => {
                 return a.name.localeCompare(b.name);
@@ -1102,11 +1102,30 @@ class Page1 extends Component {
                   children: [
                     {
                       title: 'iphone',
-                      dataIndex: 'iphone'
+                      dataIndex: 'iphone',
+                      render: (value, row, index) => {
+                        {/* colSpan例子 */}
+                        if (index === 1) {
+                          return {
+                            value,
+                            colSpan: 2
+                          }
+                        }
+                        return value;
+                      }
                     },
                     {
                       title: 'android',
-                      dataIndex: 'android'
+                      dataIndex: 'android',
+                      render: (value, row, index) => {
+                        {/* colSpan例子 */}
+                        if (index === 1) {
+                          return {
+                            colSpan: 0
+                          }
+                        }
+                        return value;
+                      }
                     }
                   ]
                 },
@@ -1119,6 +1138,18 @@ class Page1 extends Component {
               title: '家庭住址',
               dataIndex: 'address',
               render: (value, row, index) => {
+                {/* rowSpan例子 */}
+                if (index === 2) {
+                  return {
+                    value: value.home,
+                    rowSpan: 2
+                  }
+                }
+                if (index === 3) {
+                  return {
+                    rowSpan: 0
+                  }
+                }
                 return value.home
               }
             },
