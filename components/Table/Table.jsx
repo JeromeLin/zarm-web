@@ -180,7 +180,28 @@ class Table extends Component {
                  ? column.render(value, row, rowIndex)
                  : value;
 
+    // 渲染需合并的单元格
+    if (typeof render === 'object' && ('colSpan' in render || 'rowSpan' in render)) {
+      return this.renderMergedCell(column, columnIndex, render);
+    }
     return <td key={column.dataIndex + columnIndex}>{render}</td>;
+  }
+
+  // 合并单元格
+  renderMergedCell(column, columnIndex, render) {
+    const { colSpan, rowSpan, value } = render;
+    if (colSpan === 0 || rowSpan === 0) {
+      return null;
+    }
+    return (
+      <td
+        key={column.dataIndex + columnIndex}
+        colSpan={colSpan}
+        rowSpan={rowSpan}
+        >
+        {value}
+      </td>
+    );
   }
 
   onSort(column) {
