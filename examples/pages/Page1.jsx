@@ -26,6 +26,8 @@ import {
   Table,
   Pagination,
   Panel,
+  Popover,
+  Popconfirm,
   Step,
   DatePicker,
   Calendar,
@@ -357,6 +359,62 @@ class Page1 extends Component {
                 })
               }（待完善）
             </Form.Item>
+
+            <Form.Item
+              label="气泡卡片"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <div style={{marginBottom: 30}}>
+                {
+                  ['left', 'leftTop',  'leftBottom', 'right', 'rightTop', 'rightBottom'].map(item => {
+                    return (
+                      <Popover key={item} content={() => '这是一个' + item + '的Popover' } direction={item}>
+                        <Button style={{marginRight: 10}}>{item}</Button>
+                      </Popover>
+                    );
+                  }) 
+                }
+              </div>
+              <div style={{marginBottom: 30}}>
+                {
+                  ['top', 'topLeft',  'topRight', 'bottom', 'bottomLeft', 'bottomRight'].map(item => {
+                    return (
+                      <Popover key={item} content={() => '这是一个' + item + '的Popover' } direction={item}>
+                        <Button style={{marginRight: 10}}>{item}</Button>
+                      </Popover>
+                    );
+                  }) 
+                }
+              </div>
+            </Form.Item> 
+            
+            <Form.Item
+              label="气泡确认框"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <div style={{marginBottom: 30}}>
+                {
+                  ['left', 'leftTop',  'leftBottom', 'right', 'rightTop', 'rightBottom'].map(item => {
+                    return (
+                      <Popconfirm key={item} content={'这是一个' + item + '的Popcofirm'} onConfirm={() => {alert('confirmed')}} direction={item}>
+                        <Button style={{marginRight: 10}}>{item}</Button>
+                      </Popconfirm>
+                    );
+                  }) 
+                }
+              </div>
+              <div style={{marginBottom: 30}}>
+                {
+                  ['top', 'topLeft',  'topRight', 'bottom', 'bottomLeft', 'bottomRight'].map(item => {
+                    return (
+                      <Popconfirm key={item} content={'这是一个' + item + '的Popcofirm'} onConfirm={() => {alert('confirmed')}} direction={item}>
+                        <Button style={{marginRight: 10}}>{item}</Button>
+                      </Popconfirm>
+                    );
+                  }) 
+                }
+              </div>
+            </Form.Item> 
 
             <Form.Item
               label="面包屑"
