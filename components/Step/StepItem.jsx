@@ -1,6 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Icon from '../Icon';
 
 class StepItem extends Component {
 
@@ -19,7 +20,7 @@ class StepItem extends Component {
         <div className="ui-step-item-line"></div>
         <div className="ui-step-item-header">
           <div className="ui-step-item-header-inner">
-            <span>{!('finished' in props || isFinished) ? index : null}</span>
+            <span>{!('finished' in props || isFinished) ? index : <Icon type="right" />}</span>
           </div>
         </div>
         <div className="ui-step-item-body">
