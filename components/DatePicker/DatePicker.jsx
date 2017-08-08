@@ -66,7 +66,7 @@ class DatePicker extends Component {
     });
 
     return (
-      <span className={cls} {...others}>
+      <span className={cls} {...others} ref={(ele) => this.select = ele}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
           <Icon className="ui-select-icon" type="date" />
@@ -113,7 +113,7 @@ class DatePicker extends Component {
   }
 
   handleOuterClick(e) {
-    if (!this.unmounted || isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
+    if (!this.unmounted || isNodeInTree(e.target, this.select)) {
       return false;
     }
     this.setDropdown(false);

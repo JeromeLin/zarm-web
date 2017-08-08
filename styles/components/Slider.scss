@@ -38,7 +38,6 @@
    display:block
 }
 .ui-slider-handle{
-  z-index: 1;
   cursor: pointer;
   display: inline-block;
   position: absolute;
@@ -48,7 +47,7 @@
   border-radius: 4px;
   height: 15px;
   width: 15px;
-  z-index: 100;
+  z-index: 99;
 
   &:hover{
   	border: 1px solid #c3c3d6;

@@ -272,6 +272,7 @@ export default class Slider extends Component{
 			
 			handles.push(
 				<div key={`handleBack${i}`}>
+					<div key={`Back${i}`} className='ui-slider-back' style = { styleObjArr.back }></div>
 					<span 
 						key={`handle${i}`} 
 						className='ui-slider-handle' 
@@ -285,7 +286,6 @@ export default class Slider extends Component{
 						onTouchEnd={this.isTouchSuported && this.onHandleMove(i)}>
 						{showTip && (<em className={tipClass}>{this.state[`currentValue${i}`]}</em>)}
 					</span>
-					<div key={`Back${i}`} className='ui-slider-back' style = { styleObjArr.back }></div>
 				</div>
 			)
 			i++
