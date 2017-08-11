@@ -102,7 +102,7 @@ class Select extends Component {
                         );
 
     return (
-      <span className={cls} {...others}>
+      <span className={cls} {...others} ref={ele => this.select = ele}>
         <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
           {textRender}
           {inputRender}
@@ -170,7 +170,7 @@ class Select extends Component {
   }
 
   handleOuterClick(e) {
-    if (!this.unmounted || isNodeInTree(e.target, ReactDOM.findDOMNode(this))) {
+    if (!this.unmounted || isNodeInTree(e.target, this.select)) {
       return;
     }
     this.setDropdown(false);
