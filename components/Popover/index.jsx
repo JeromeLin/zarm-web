@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
-import Popper from '../utils/popper';
+import Popper from './popper';
 import { on } from '../utils/events';
 
-const direactMap = {
+const directMap = {
   top: 'top', topLeft: 'top-start', topRight: 'top-end',
   right: 'right', rightTop: 'right-start', rightBottom: 'right-end',
   bottom: 'bottom', bottomLeft: 'bottom-start', bottomRight: 'bottom-end',
@@ -21,7 +21,7 @@ class Popover extends Component {
   }
 
   componentDidMount() {
-    const instance = findDOMNode(this);
+    const instance = this.instance;
     const reference = findDOMNode(this.reference);
     const pop = this.pop;
     const trigger = this.props.trigger;
@@ -77,7 +77,7 @@ class Popover extends Component {
           this.arrow.setAttribute('x-arrow', '');
         }
         this.popper = new Popper(reference, this.pop, {
-          placement: direactMap[direction]
+          placement: directMap[direction]
         });
       }
     } else {
@@ -103,6 +103,13 @@ class Popover extends Component {
   }
 
   hidePop() {
+    const trigger = this.props.trigger;
+    if (trigger === 'click') {
+      this.setState({
+        visible: false
+      });
+      return;
+    }
     this.timer = setTimeout(() => {
       this.setState({
         visible: false
@@ -130,7 +137,7 @@ class Popover extends Component {
     });
 
     return (
-      <div className={cls}>
+      <div className={cls} ref={instance => { this.instance = instance; }}>
         { !!mask ? <div className={maskCls} onClick={onMaskClick}/> : null}
         <div
           className={contentCls}
