@@ -92,7 +92,7 @@ class Upload extends Component {
 
   // 上传附件
   onUpload(file) {
-    const { url, data, onProgress, onComplete, onError } = this.props;
+    const { url, fileName, data, onProgress, onComplete, onError } = this.props;
     const URL = /^(http:\/\/|https:\/\/|\/\/)/;
     const { origin } = window.location;
 
@@ -102,7 +102,7 @@ class Upload extends Component {
         total,
         percent;
 
-    fd.append('files', file);
+    fd.append(fileName, file);
     Object.keys(data).forEach((key, index) => {
       fd.append(key, data[key]);
     })
@@ -148,7 +148,7 @@ class Upload extends Component {
 }
 
 Upload.propTypes = {
-  fileDesc   : PropTypes.string,
+  fileName   : PropTypes.string,
   startUpload: PropTypes.bool,
   autoUpload : PropTypes.bool,
   isRadius   : PropTypes.bool,
@@ -160,7 +160,7 @@ Upload.propTypes = {
 };
 
 Upload.defaultProps = {
-  fileDesc   : '',
+  fileName   : 'files',
   startUpload: false,
   autoUpload : true,
   isRadius   : false,
