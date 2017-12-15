@@ -7,8 +7,7 @@ import {
   isFixed,
   getScrollTopValue,
   getScrollLeftValue,
-  setStyle,
-  getStyleComputedProperty
+  setStyle
 } from '../utils/dom';
 
 const root = window;
@@ -16,17 +15,105 @@ const DEFAULTS = {
   placement: 'bottom',
   offset: 0,
   boundariesPadding: 5,
-  preventOverflowOrder: ['left', 'right', 'top', 'bottom'], 
+  preventOverflowOrder: ['left', 'right', 'top', 'bottom'],
   arrowElement: '[x-arrow]',
   modifiers: ['shift', 'offset', 'preventOverflow', 'keepTogether', 'arrow', 'flip', 'applyStyle'],
   removeOnDestroy: false
 };
 
 /**
+ * 获取一个元素相对任意父元素的偏移值
+ */
+function getOffsetRectRelativeToCustomParent(element, parent, fixed) {
+  const elementRect = getBoundingClientRect(element);
+  const parentRect = getBoundingClientRect(parent);
+
+  if (fixed) {
+    const scrollParent = getScrollParent(parent);
+    parentRect.top += scrollParent.scrollTop;
+    parentRect.bottom += scrollParent.scrollTop;
+    parentRect.left += scrollParent.scrollLeft;
+    parentRect.right += scrollParent.scrollLeft;
+  }
+  const rect = {
+    top: elementRect.top - parentRect.top,
+    left: elementRect.left - parentRect.left,
+    bottom: (elementRect.top - parentRect.top) + elementRect.height,
+    right: (elementRect.left - parentRect.left) + elementRect.width,
+    width: elementRect.width,
+    height: elementRect.height
+  };
+  return rect;
+}
+
+/**
+ * Helpers
+ */
+
+/**
+ * 获取相反的方向
+ */
+function getOppositePlacement(placement) {
+  const hash = {left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
+  return placement.replace(/left|right|bottom|top/g, function(matched){
+    return hash[matched];
+  });
+}
+
+/**
+ * 生成气泡框的ClientRect
+ */
+function getPopperClientRect(popperOffsets) {
+  const offsets = Object.assign({}, popperOffsets);
+  offsets.right = offsets.left + offsets.width;
+  offsets.bottom = offsets.top + offsets.height;
+  return offsets;
+}
+
+/**
+ * 获取数组某个值的index
+ */
+function getArrayKeyIndex(arr, keyToFind) {
+  let i = 0;
+  let key;
+  for (key in arr) {
+    if (arr[key] === keyToFind) {
+      return i;
+    }
+    i++;
+  }
+  return null;
+}
+
+/**
+ * 检查是否是函数
+ */
+function isFunction(functionToCheck) {
+  const getType = {};
+  return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+}
+
+/**
+ * 获取一个元素的各个offset值
+ */
+function getOffsetRect(element) {
+  const elementRect = {
+    width: element.offsetWidth,
+    height: element.offsetHeight,
+    left: element.offsetLeft,
+    top: element.offsetTop
+  };
+  elementRect.right = elementRect.left + elementRect.width;
+  elementRect.bottom = elementRect.top + elementRect.height;
+
+  return elementRect;
+}
+
+/**
  * @constructor 气泡框构造函数
  * @param {HTMLElement} reference
  * @param {HTMLElement} popper
- * @param {Object} options 
+ * @param {Object} options
  */
 function Popper(reference, popper, options) {
   this._reference = reference;
@@ -44,6 +131,11 @@ function Popper(reference, popper, options) {
   setStyle(this._popper, { position: this.state.position, top: 0 });
 
   this.update();
+  if (root.requestAnimationFrame) {
+    requestAnimationFrame(this.update.bind(this));
+  } else {
+    setTimeout(this.update.bind(this));
+  }
   this._setupEventListeners();
   return this;
 }
@@ -123,8 +215,8 @@ Popper.prototype._getOffsets = function(popper, reference, placement) {
       popperOffsets.top = referenceOffsets.bottom;
     }
   }
-  popperOffsets.width   = popperRect.width;
-  popperOffsets.height  = popperRect.height;
+  popperOffsets.width = popperRect.width;
+  popperOffsets.height = popperRect.height;
 
   return {
     popper: popperOffsets,
@@ -178,7 +270,7 @@ Popper.prototype._getBoundaries = function(data, padding) {
     bottom: root.document.documentElement.clientHeight - (offsetParentRect.top - scrollTop),
     left: 0 - (offsetParentRect.left - scrollLeft)
   };
-  
+
   boundaries.left += padding;
   boundaries.right -= padding;
   boundaries.top = boundaries.top + padding;
@@ -199,7 +291,7 @@ Popper.prototype.runModifiers = function(data, modifiers, ends) {
 
   modifiersToRun.forEach(function(modifier) {
     if (isFunction(modifier)) {
-        data = modifier.call(this, data);
+      data = modifier.call(this, data);
     }
   }.bind(this));
 
@@ -228,7 +320,7 @@ Popper.prototype.modifiers.applyStyle = function(data) {
     styles.top = 0;
     styles.left = 0;
   } else {
-    styles.left =left;
+    styles.left = left;
     styles.top = top;
   }
   setStyle(this._popper, styles);
@@ -323,7 +415,7 @@ Popper.prototype.modifiers.preventOverflow = function(data) {
  * 保持气泡框和reference始终在一起
  */
 Popper.prototype.modifiers.keepTogether = function(data) {
-  const popper  = getPopperClientRect(data.offsets.popper);
+  const popper = getPopperClientRect(data.offsets.popper);
   const reference = data.offsets.reference;
   const f = Math.floor;
 
@@ -399,14 +491,11 @@ Popper.prototype.modifiers.offset = function(data) {
 
   if (data.placement.indexOf('left') !== -1) {
     popper.top -= offset;
-  }
-  else if (data.placement.indexOf('right') !== -1) {
+  } else if (data.placement.indexOf('right') !== -1) {
     popper.top += offset;
-  }
-  else if (data.placement.indexOf('top') !== -1) {
+  } else if (data.placement.indexOf('top') !== -1) {
     popper.left -= offset;
-  }
-  else if (data.placement.indexOf('bottom') !== -1) {
+  } else if (data.placement.indexOf('bottom') !== -1) {
     popper.left += offset;
   }
 
@@ -418,22 +507,22 @@ Popper.prototype.modifiers.offset = function(data) {
  */
 Popper.prototype.modifiers.arrow = function(data) {
   const arrow = this._popper.querySelector(this._options.arrowElement);
-  const arrowStyle  = {};
-  const placement   = data.placement.split('-')[0];
-  const popper      = getPopperClientRect(data.offsets.popper);
-  const reference   = data.offsets.reference;
-  const isVertical  = ['left', 'right'].indexOf(placement) !== -1;
-  const len         = isVertical ? 'height' : 'width';
-  const side        = isVertical ? 'top' : 'left';
-  const altSide     = isVertical ? 'left' : 'top';
-  const opSide      = isVertical ? 'bottom' : 'right';
-  const arrowSize   = getOuterSizes(arrow)[len];
+  const arrowStyle = {};
+  const placement = data.placement.split('-')[0];
+  const popper = getPopperClientRect(data.offsets.popper);
+  const reference = data.offsets.reference;
+  const isVertical = ['left', 'right'].indexOf(placement) !== -1;
+  const len = isVertical ? 'height' : 'width';
+  const side = isVertical ? 'top' : 'left';
+  const altSide = isVertical ? 'left' : 'top';
+  const opSide = isVertical ? 'bottom' : 'right';
+  const arrowSize = getOuterSizes(arrow)[len];
 
   if (reference[opSide] - arrowSize < popper[side]) {
-      data.offsets.popper[side] -= popper[side] - (reference[opSide] - arrowSize);
+    data.offsets.popper[side] -= popper[side] - (reference[opSide] - arrowSize);
   }
   if (reference[side] + arrowSize > popper[opSide]) {
-      data.offsets.popper[side] += (reference[side] + arrowSize) - popper[opSide];
+    data.offsets.popper[side] += (reference[side] + arrowSize) - popper[opSide];
   }
 
   const center = reference[side] + (reference[len] / 2) - (arrowSize / 2);
@@ -448,92 +537,5 @@ Popper.prototype.modifiers.arrow = function(data) {
 
   return data;
 };
-
-/**
- * Helpers
- */
-
-/**
- * 获取相反的方向
- */
-function getOppositePlacement(placement) {
-  const hash = {left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
-  return placement.replace(/left|right|bottom|top/g, function(matched){
-    return hash[matched];
-  });
-}
-
-/**
- * 生成气泡框的ClientRect
- */
-function getPopperClientRect(popperOffsets) {
-  const offsets = Object.assign({}, popperOffsets);
-  offsets.right = offsets.left + offsets.width;
-  offsets.bottom = offsets.top + offsets.height;
-  return offsets;
-}
-
-/**
- * 获取数组某个值的index
- */
-function getArrayKeyIndex(arr, keyToFind) {
-  let i = 0, key;
-  for (key in arr) {
-    if (arr[key] === keyToFind) {
-      return i;
-    }
-    i++;
-  }
-  return null;
-}
-
-/**
- * 检查是否是函数
- */
-function isFunction(functionToCheck) {
-  const getType = {};
-  return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-}
-
-/**
- * 获取一个元素的各个offset值
- */
-function getOffsetRect(element) {
-  const elementRect = {
-    width: element.offsetWidth,
-    height: element.offsetHeight,
-    left: element.offsetLeft,
-    top: element.offsetTop
-  };
-  elementRect.right = elementRect.left + elementRect.width;
-  elementRect.bottom = elementRect.top + elementRect.height;
-
-  return elementRect;
-}
-
-/**
- * 获取一个元素相对任意父元素的偏移值
- */
-function getOffsetRectRelativeToCustomParent(element, parent, fixed) {
-  const elementRect = getBoundingClientRect(element);
-  const parentRect = getBoundingClientRect(parent);
-
-  if (fixed) {
-    const scrollParent = getScrollParent(parent);
-    parentRect.top += scrollParent.scrollTop;
-    parentRect.bottom += scrollParent.scrollTop;
-    parentRect.left += scrollParent.scrollLeft;
-    parentRect.right += scrollParent.scrollLeft;
-  }
-  const rect = {
-    top: elementRect.top - parentRect.top ,
-    left: elementRect.left - parentRect.left ,
-    bottom: (elementRect.top - parentRect.top) + elementRect.height,
-    right: (elementRect.left - parentRect.left) + elementRect.width,
-    width: elementRect.width,
-    height: elementRect.height
-  };
-  return rect;
-}
 
 export default Popper;
