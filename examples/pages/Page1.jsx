@@ -396,7 +396,7 @@ class Page1 extends Component {
                 {
                   ['left', 'leftTop',  'leftBottom', 'right', 'rightTop', 'rightBottom'].map(item => {
                     return (
-                      <Popconfirm key={item} content={'这是一个' + item + '的Popcofirm'} onConfirm={() => {alert('confirmed')}} direction={item}>
+                      <Popconfirm key={item} content={'这是一个' + item + '的Popcofirm'} onOk={() => {alert('confirmed')}} direction={item}>
                         <Button style={{marginRight: 10}}>{item}</Button>
                       </Popconfirm>
                     );
@@ -407,7 +407,7 @@ class Page1 extends Component {
                 {
                   ['top', 'topLeft',  'topRight', 'bottom', 'bottomLeft', 'bottomRight'].map(item => {
                     return (
-                      <Popconfirm key={item} content={'这是一个' + item + '的Popcofirm'} onConfirm={() => {alert('confirmed')}} direction={item}>
+                      <Popconfirm key={item} content={'这是一个' + item + '的Popcofirm'} onOk={() => {alert('confirmed')}} direction={item}>
                         <Button style={{marginRight: 10}}>{item}</Button>
                       </Popconfirm>
                     );

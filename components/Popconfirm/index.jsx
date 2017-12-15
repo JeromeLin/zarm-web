@@ -30,16 +30,16 @@ class Popconfirm extends Component {
   }
 
   handleConfirm() {
-    const { onConfirm } = this.props;
+    const { onOk } = this.props;
     this.setState({
       visible: false
     });
-    onConfirm();
+    onOk();
   }
 
   render() {
     const { visible } = this.state;
-    const { children, content, prefixCls, className, trigger, direction, confirmText, cancelText } = this.props;
+    const { children, content, prefixCls, className, trigger, direction, okText, cancelText } = this.props;
 
     const popContent = () => {
       return (
@@ -47,7 +47,7 @@ class Popconfirm extends Component {
           {content}
           <div className={`${prefixCls}-actions`}>
             <Button onClick={() => this.handleCancel()}>{cancelText}</Button>
-            <Button theme="info" onClick={() => this.handleConfirm()}>{confirmText}</Button>
+            <Button theme="info" onClick={() => this.handleConfirm()}>{okText}</Button>
           </div>
         </div>
       );
@@ -81,8 +81,8 @@ Popconfirm.propTypes = {
     'leftTop', 'left', 'leftBottom'
   ]),
   onCancel: PropTypes.func,
-  onConfirm: PropTypes.func,
-  confirmText: PropTypes.string,
+  onOk: PropTypes.func,
+  okText: PropTypes.string,
   cancelText: PropTypes.string,
   content: PropTypes.any,
 };
@@ -94,8 +94,8 @@ Popconfirm.defaultProps = {
   trigger: 'click',
   direction: 'bottomLeft',
   onCancel: noop,
-  onConfirm: noop,
-  confirmText: '确认',
+  onOk: noop,
+  okText: '确认',
   cancelText: '取消',
   content: null,
 };
