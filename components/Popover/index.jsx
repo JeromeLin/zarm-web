@@ -33,7 +33,7 @@ class Popover extends Component {
         });
       });
       on(document, 'click', ({ target }) => {
-        if (!instance || instance.contains(target) 
+        if (!instance || instance.contains(target)
         || !reference || reference.contains(target)
         || !pop || pop.contains(target)) {
           return;
@@ -146,9 +146,9 @@ class Popover extends Component {
           <span
           className={`${prefixCls}-arrow`}
           ref={arrow => { this.arrow = arrow; }}
-          /> 
+          />
         </div>
-        { React.cloneElement(child, { ref: reference => { this.reference = reference } }) }
+        { React.cloneElement(child, { ref: reference => { this.reference = reference; } }) }
       </div>
     );
   }

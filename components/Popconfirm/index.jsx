@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
-import Popover from  '../Popover';
+import Popover from '../Popover';
 import Button from '../Button';
 
 const noop = () => {};
@@ -49,7 +48,7 @@ class Popconfirm extends Component {
           <div className={`${prefixCls}-actions`}>
             <Button onClick={() => this.handleCancel()}>{cancelText}</Button>
             <Button theme="info" onClick={() => this.handleConfirm()}>{confirmText}</Button>
-          </div>  
+          </div>
         </div>
       );
     };
@@ -71,7 +70,7 @@ class Popconfirm extends Component {
 Popconfirm.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  visible: PropTypes.bool, 
+  visible: PropTypes.bool,
   trigger: PropTypes.oneOf([
     'click', 'hover'
   ]),
