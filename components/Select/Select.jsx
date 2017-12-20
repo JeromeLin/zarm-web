@@ -91,7 +91,7 @@ class Select extends Component {
     const textRender = !(search && this.state.searchValue.length > 0)
                      && <span className={textCls}>{inputPlaceholder}</span>;
 
-    const inputRender = search
+    const inputRender = search && !disabled
                       && (
                           <span className={textCls}>
                             <input ref="searchInput" value={this.state.searchValue} onChange={(e) => {

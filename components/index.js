@@ -19,6 +19,8 @@ export Breadcrumb from './Breadcrumb';
 export Table from './Table';
 export Pagination from './Pagination';
 export Panel from './Panel';
+export Popover from './Popover';
+export Popconfirm from './Popconfirm';
 export Slider from './Slider';
 export Step from './Step';
 export Calendar from './Calendar';
