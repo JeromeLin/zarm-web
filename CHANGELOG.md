@@ -3,6 +3,7 @@
 ## 0.0.61  
   * 新增Popover、Popconfirm组件
   * Uploader组件新增属性fileName
+  * 修复Select组件在搜索模式下，设置disabled时，输入框未被禁用的bug
 
 ## 0.0.60  
   * Table组件增加单元格分组功能
