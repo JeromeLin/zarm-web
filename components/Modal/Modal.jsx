@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-// import addEndEventListener from '../utils/animationEvents';
+import Events from '../utils/events';
 
 class Modal extends Component {
 
@@ -13,19 +13,17 @@ class Modal extends Component {
       animationState : 'leave',
     };
 
-    this.resolveAnimationFrame = this.resolveAnimationFrame.bind(this);
+    this.animationEnd = this.animationEnd.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.animationEvents = addEndEventListener(this.refs.dialog, this.resolveAnimationFrame);
-
-  //   if (this.props.visible) {
-  //     this.enter();
-  //   }
-  // }
-
   componentWillUpdate() {
-    setTimeout(this.resolveAnimationFrame, this.props.animationDuration);
+    Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
+    Events.on(this.modal, 'animationend', this.animationEnd);
+  }
+
+  componentWillUnmount() {
+    Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
+    Events.off(this.modal, 'animationend', this.animationEnd);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,17 +44,17 @@ class Modal extends Component {
 
     const classes = {
       modal:  classnames({
-                'ui-modal'                : true,
-                'radius'                  : ('radius' in this.props || isRadius),
-                'round'                   : ('round' in this.props || isRound),
-                [`fade-${animationState}`]: isPending,
-                [className]               : !!className,
-              }),
+        'ui-modal'                : true,
+        'radius'                  : ('radius' in this.props || isRadius),
+        'round'                   : ('round' in this.props || isRound),
+        [`fade-${animationState}`]: isPending,
+        [className]               : !!className,
+      }),
       dialog: classnames({
-                'ui-modal-dialog'                     : true,
-                [`${animationType}-${animationState}`]: true,
-              })
-    }
+        'ui-modal-dialog'                     : true,
+        [`${animationType}-${animationState}`]: true,
+      })
+    };
 
     const style = {
       modal: {
@@ -82,7 +80,7 @@ class Modal extends Component {
     }
 
     return (
-      <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
+      <div className={classes.modal} style={style.modal} onClick={onMaskClick} ref={(ele) => { this.modal = ele; }}>
         <div className="ui-modal-wrapper">
           <div {...others} className={classes.dialog} ref="dialog" style={style.dialog} onClick={(e) => this.onContainerClick(e)}>
             {children}
@@ -92,12 +90,7 @@ class Modal extends Component {
     );
   }
 
-  resolveAnimationFrame() {
-    // let node = this.refs.dialog;
-    // if (e && e.target !== node) {
-    //   return;
-    // }
-
+  animationEnd() {
     if (this.state.animationState === 'leave') {
       this.setState({
         isShow: false,
@@ -132,13 +125,13 @@ class Modal extends Component {
   }
 }
 
-Modal.propTypes = { 
+Modal.propTypes = {
   visible           : PropTypes.bool,
   animationType     : PropTypes.oneOf([
-                        'fade', 'door', 'flip', 'rotate', 'zoom',
-                        'moveUp','moveDown', 'moveLeft', 'moveRight',
-                        'slideUp', 'slideDown', 'slideLeft', 'slideRight'
-                      ]),
+    'fade', 'door', 'flip', 'rotate', 'zoom',
+    'moveUp', 'moveDown', 'moveLeft', 'moveRight',
+    'slideUp', 'slideDown', 'slideLeft', 'slideRight'
+  ]),
   animationDuration : PropTypes.number,
   width             : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   minWidth          : PropTypes.number,
@@ -159,4 +152,3 @@ Modal.defaultProps = {
 };
 
 export default Modal;
-

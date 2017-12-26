@@ -1,5 +1,8 @@
 # 版本更新日志  
 
+## 0.0.62  
+  * 优化Modal组件
+
 ## 0.0.61  
   * 新增Popover、Popconfirm组件
   * Uploader组件新增属性fileName
