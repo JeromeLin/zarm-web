@@ -86,7 +86,7 @@ class Table extends Component {
               });
 
               return (
-                <tr key={rowIndex} onClick={() => rowClick(row)}>
+                <tr key={rowIndex} onClick={() => typeof rowClick === 'function' && rowClick(row)}>
                   {renderSelect}
                   {renderCell}
                 </tr>
