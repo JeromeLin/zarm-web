@@ -15,6 +15,12 @@ class Modal extends Component {
 
     this.animationEnd = this.animationEnd.bind(this);
   }
+  
+  componentWillMount() {
+    if (this.props.visible) {
+      this.enter();
+    }
+  }
 
   componentWillUpdate() {
     Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
