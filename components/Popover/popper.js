@@ -10,7 +10,6 @@ import {
   setStyle
 } from '../utils/dom';
 
-const root = window;
 const DEFAULTS = {
   placement: 'bottom',
   offset: 0,
@@ -131,7 +130,7 @@ function Popper(reference, popper, options) {
   setStyle(this._popper, { position: this.state.position, top: 0 });
 
   this.update();
-  if (root.requestAnimationFrame) {
+  if (window.requestAnimationFrame) {
     requestAnimationFrame(this.update.bind(this));
   } else {
     setTimeout(this.update.bind(this));
@@ -230,11 +229,11 @@ Popper.prototype._getOffsets = function(popper, reference, placement) {
  */
 Popper.prototype._setupEventListeners = function() {
   this.state.updateBound = this.update.bind(this);
-  root.addEventListener('resize', this.state.updateBound);
+  window.addEventListener('resize', this.state.updateBound);
 
   let target = getScrollParent(this._reference);
-  if (target === root.document.body || target === root.document.documentElement) {
-    target = root;
+  if (target === document.body || target === document.documentElement) {
+    target = window;
   }
   target.addEventListener('scroll', this.state.updateBound);
 };
@@ -243,11 +242,11 @@ Popper.prototype._setupEventListeners = function() {
  * 移除事件
  */
 Popper.prototype._removeEventListeners = function() {
-  root.removeEventListener('resize', this.state.updateBound);
+  window.removeEventListener('resize', this.state.updateBound);
   let target = getScrollParent(this._reference);
 
-  if (target === root.document.body || target === root.document.documentElement) {
-    target = root;
+  if (target === document.body || target === document.documentElement) {
+    target = window;
   }
   target.removeEventListener('scroll', this.state.updateBound);
   this.state.updateBound = null;
@@ -266,8 +265,8 @@ Popper.prototype._getBoundaries = function(data, padding) {
 
   boundaries = {
     top: 0 - (offsetParentRect.top - scrollTop),
-    right: root.document.documentElement.clientWidth - (offsetParentRect.left - scrollLeft),
-    bottom: root.document.documentElement.clientHeight - (offsetParentRect.top - scrollTop),
+    right: document.documentElement.clientWidth - (offsetParentRect.left - scrollLeft),
+    bottom: document.documentElement.clientHeight - (offsetParentRect.top - scrollTop),
     left: 0 - (offsetParentRect.left - scrollLeft)
   };
 
