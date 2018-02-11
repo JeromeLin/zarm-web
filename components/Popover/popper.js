@@ -10,7 +10,11 @@ import {
   setStyle
 } from '../utils/dom';
 
-const root = window;
+let root = {};
+if (typeof window !== 'undefined') {
+  root = window;
+}
+
 const DEFAULTS = {
   placement: 'bottom',
   offset: 0,
@@ -54,7 +58,7 @@ function getOffsetRectRelativeToCustomParent(element, parent, fixed) {
  * 获取相反的方向
  */
 function getOppositePlacement(placement) {
-  const hash = {left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
+  const hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
   return placement.replace(/left|right|bottom|top/g, function(matched){
     return hash[matched];
   });
@@ -64,7 +68,7 @@ function getOppositePlacement(placement) {
  * 生成气泡框的ClientRect
  */
 function getPopperClientRect(popperOffsets) {
-  const offsets = Object.assign({}, popperOffsets);
+  const offsets = { ...popperOffsets };
   offsets.right = offsets.left + offsets.width;
   offsets.bottom = offsets.top + offsets.height;
   return offsets;
@@ -119,7 +123,7 @@ function Popper(reference, popper, options) {
   this._reference = reference;
   this._popper = popper;
   this.state = {};
-  this._options = Object.assign({}, DEFAULTS, options);
+  this._options = { ...DEFAULTS, ...options };
   this._options.modifiers = this._options.modifiers.map(function(modifier) {
     if (modifier === 'applyStyle') {
       this._popper.setAttribute('x-placement', this._options.placement);
@@ -346,7 +350,7 @@ Popper.prototype.modifiers.shift = function(data) {
 
   if (shiftVariation) {
     const reference = data.offsets.reference;
-    const popper = getPopperClientRect(data.offsets.popper);
+    let popper = getPopperClientRect(data.offsets.popper);
     const shiftOffsets = {
       y: {
         start: { top: reference.top },
@@ -359,7 +363,7 @@ Popper.prototype.modifiers.shift = function(data) {
     };
     const axis = ['bottom', 'top'].indexOf(basePlacement) !== -1 ? 'x' : 'y';
 
-    data.offsets.popper = Object.assign(popper, shiftOffsets[axis][shiftVariation]);
+    data.offsets.popper = popper = { ...popper, ...(shiftOffsets[axis][shiftVariation]) };
   }
 
   return data;
@@ -371,7 +375,7 @@ Popper.prototype.modifiers.shift = function(data) {
  */
 Popper.prototype.modifiers.preventOverflow = function(data) {
   const order = this._options.preventOverflowOrder;
-  const popper = getPopperClientRect(data.offsets.popper);
+  let popper = getPopperClientRect(data.offsets.popper);
 
   const check = {
     left: function() {
@@ -405,7 +409,7 @@ Popper.prototype.modifiers.preventOverflow = function(data) {
   };
 
   order.forEach(function(direction) {
-    data.offsets.popper = Object.assign(popper, check[direction]());
+    data.offsets.popper = popper = { ...popper, ...check[direction]() };
   });
 
   return data;
