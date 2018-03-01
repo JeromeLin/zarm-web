@@ -1,14 +1,17 @@
+import React, { PureComponent } from 'react';
+import Container from '../components/Container';
+import Footer from '../components/Footer';
 
-import React, { Component } from 'react';
-import '../styles/pages/NotFoundPage.scss';
-
-class NotFoundPage extends Component {
+class Page extends PureComponent {
 
   render() {
     return (
-      <div>NotFoundPage</div>
+      <Container>
+        <main>Not Found Page</main>
+        <Footer />
+      </Container>
     );
   }
 }
 
-export default NotFoundPage;
+export default Page;

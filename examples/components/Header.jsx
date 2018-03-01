@@ -1,12 +1,15 @@
-
 import React, { Component } from 'react';
 import '../styles/components/Header.scss';
 
 class Header extends Component {
 
   render() {
+    const { title } = this.props;
+
     return (
-      <div className="Header">Header</div>
+      <header className="Header">
+        {title}
+      </header>
     );
   }
 }
