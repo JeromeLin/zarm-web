@@ -79,7 +79,7 @@ class Table extends Component {
           {
             dataSource.map((row, rowIndex) => {
               const renderSelect = rowSelection
-                                 ? this.renderSelect(rowSelection, row)
+                                 ? this.renderSelect(rowSelection, row, rowIndex)
                                  : null;
               const renderCell = dataColumns.map((column, columnIndex) => {
                 return this.renderCell(column, row, rowIndex, columnIndex);
@@ -116,7 +116,7 @@ class Table extends Component {
   }
 
   // 单选指定行
-  renderSelect(rowSelection, row) {
+  renderSelect(rowSelection, row, index) {
     return (
       <td style={{width:50, textAlign: 'center'}}>
         <Checkbox value={row} checked={this.state.selectedRows.indexOf(row) > -1} onChange={(e) => {
@@ -129,7 +129,7 @@ class Table extends Component {
             selectedRows.splice(selectedRows.indexOf(row), 1);
           }
           this.setState({selectedRows});
-          rowSelection.onSelect && rowSelection.onSelect(selected, row, selectedRows);
+          rowSelection.onSelect && rowSelection.onSelect(selected, row, selectedRows, index);
         }} />
       </td>
     );
