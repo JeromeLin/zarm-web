@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Panel, Cell } from 'zarm';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 import '../styles/pages/IndexPage';
@@ -13,12 +12,15 @@ class Page extends PureComponent {
       <Container className="index-page">
         <header>
           <section className="brand">
-            <div className="brand-title">Zarm UI</div>
-            <div className="brand-description">众安科技移动端组件库</div>
+            <div className="brand-title">Zarm-web UI</div>
+            <div className="brand-description">众安科技桌面端组件库</div>
           </section>
         </header>
         <main>
-          <a onClick={() => history.push('/button')}>按钮 Button</a>
+          <ul>
+            <li><a onClick={() => history.push('/button')}>按钮 Button</a></li>
+            <li><a onClick={() => history.push('/icon')}>图标 Icon</a></li>
+          </ul>
         </main>
         <Footer />
       </Container>
