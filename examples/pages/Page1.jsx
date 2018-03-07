@@ -713,6 +713,61 @@ class Page1 extends Component {
             </Form.Item>
 
             <Form.Item
+              label="日期选择器"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <DatePicker
+                radius
+                style={{width: 120}}
+                minDate={'2018/3/2'}
+                maxDate={'2018/3/12'}
+                // value={this.state.date}
+                placeholder="请选择日期"
+                onChange={(date) => {
+                  console.log(date)
+                  this.setState({date});
+                }}
+              />
+              设置最小日期和最大日期
+            </Form.Item>
+
+            <Form.Item
+              label="日期选择器"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <DatePicker
+                radius
+                style={{width: 120}}
+                minDate={'2018/3/5'}
+                // value={this.state.date}
+                placeholder="请选择日期"
+                onChange={(date) => {
+                  console.log(date)
+                  this.setState({date});
+                }}
+              />
+              设置最小日期
+            </Form.Item>
+
+            <Form.Item
+              label="日期选择器"
+              labelCol="col-sm-2"
+              controlCol="col-sm-10">
+              <DatePicker
+                radius
+                style={{width: 120}}
+                maxDate={'2018/3/12'}
+                // value={this.state.date}
+                placeholder="请选择日期"
+                onChange={(date) => {
+                  console.log(date)
+                  this.setState({date});
+                }}
+              />
+              设置最大日期
+            </Form.Item>
+
+            <Form.Item
               label="上传"
               labelCol="col-sm-2"
               controlCol="col-sm-10">

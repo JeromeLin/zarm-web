@@ -1,4 +1,3 @@
-
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
@@ -15,7 +14,7 @@ class DatePicker extends Component {
     super(props);
     this.unmounted = false;
     this.state = {
-      value   : Format.date(props.value || props.defaultValue, props.format),
+      value: Format.date(props.value || props.defaultValue, props.format),
       dropdown: false,
     };
   }
@@ -28,7 +27,7 @@ class DatePicker extends Component {
     this.unmounted = false;
     this.unbindOuterHandlers();
   }
-  
+
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
@@ -37,42 +36,54 @@ class DatePicker extends Component {
     }
   }
 
-  render () {
+  render() {
     const props = this.props;
-    const { defaultValue, placeholder, isDisabled, isRadius, size, format, ...others } = props;
+    const { defaultValue, placeholder, isDisabled, isRadius, size, format, minDate, maxDate, ...others } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
     let valueText = placeholder,
-        hasValue = false;
+      hasValue = false;
 
     if (value) {
       valueText = value;
       hasValue = true;
     }
 
-    const cls = classnames({
-      'ui-select'         : true,
-      'ui-select-open'    : dropdown,
-      'disabled'          : disabled,
-      'radius'            : radius,
-      [`size-${size}`]    : !!size,
+    const cls = classnames('ui-select', {
+      'ui-select-open': dropdown,
+      'disabled': disabled,
+      'radius': radius,
+      [`size-${size}`]: !!size,
     });
 
-    const textCls = classnames({
-      'ui-select-text'            : true,
+    const textCls = classnames('ui-select-text', {
       'ui-select-text-placeholder': !hasValue,
     });
 
     return (
       <span className={cls} {...others} ref={(ele) => this.select = ele}>
-        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.onSelectClick(e)}>
+        <span
+          className="ui-select-selection"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-haspopup="true"
+          aria-expanded="false"
+          onClick={(e) => this.onSelectClick(e)}>
           <span className={textCls}>{valueText}</span>
-          <Icon className="ui-select-icon" type="date" />
+          <Icon className="ui-select-icon" type="date"/>
         </span>
+
         <Dropdown isRadius={radius} visible={dropdown}>
-          <Calendar defaultValue={defaultValue} value={value} format={format} hasFooter={true} onChange={(value) => this.onDateChange(value)} />
+          <Calendar
+            defaultValue={defaultValue}
+            value={value}
+            format={format}
+            hasFooter={true}
+            minDate={minDate}
+            maxDate={maxDate}
+            onChange={(value) => this.onDateChange(value)}/>
         </Dropdown>
       </span>
     );
@@ -94,7 +105,7 @@ class DatePicker extends Component {
 
   setDropdown(isOpen, callback) {
     if (!this.unmounted) return;
-    
+
     if (isOpen) {
       this.bindOuterHandlers();
     } else {
@@ -131,15 +142,20 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
-  isDisabled    : PropTypes.bool,
-  format        : PropTypes.string,
-  onChange      : PropTypes.func,
+  isDisabled: PropTypes.bool,
+  format: PropTypes.string,
+  onChange: PropTypes.func,
+  minDate: PropTypes.string,
+  maxDate: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
-  isDisabled    : false,
-  format        : 'yyyy-MM-dd',
-  onChange      : () => {},
+  isDisabled: false,
+  format: 'yyyy-MM-dd',
+  minDate: '',
+  maxDate: '',
+  onChange: () => {
+  },
 };
 
 export default DatePicker;
