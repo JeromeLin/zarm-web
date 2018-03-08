@@ -131,7 +131,7 @@ class Page1 extends Component {
       radioValue2  : '',
       selectValue  : 'b',
       checkboxValue: [],
-      date         : '2015-12-2',
+      date         : '2018-3-8',
 
       selectSearchDataSource: [],
 
@@ -688,6 +688,8 @@ class Page1 extends Component {
               controlCol="col-sm-10">
               <Calendar
                 style={{display: 'inline-block'}}
+                min={'2018/3/5'}
+                max={'2018/3/12'}
                 value={this.state.date}
                 onChange={(date) => {
                   console.log(date)
