@@ -38,7 +38,7 @@ class DatePicker extends Component {
 
   render() {
     const props = this.props;
-    const { defaultValue, placeholder, isDisabled, isRadius, size, format, minDate, maxDate, ...others } = props;
+    const { defaultValue, placeholder, isDisabled, isRadius, size, format, min, max, ...others } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -81,8 +81,8 @@ class DatePicker extends Component {
             value={value}
             format={format}
             hasFooter={true}
-            minDate={minDate}
-            maxDate={maxDate}
+            min={min}
+            max={max}
             onChange={(value) => this.onDateChange(value)}/>
         </Dropdown>
       </span>
@@ -145,15 +145,15 @@ DatePicker.propTypes = {
   isDisabled: PropTypes.bool,
   format: PropTypes.string,
   onChange: PropTypes.func,
-  minDate: PropTypes.string,
-  maxDate: PropTypes.string,
+  min: PropTypes.string,
+  max: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
   isDisabled: false,
   format: 'yyyy-MM-dd',
-  minDate: '',
-  maxDate: '',
+  min: '',
+  max: '',
   onChange: () => {
   },
 };

@@ -131,7 +131,7 @@ class Page1 extends Component {
       radioValue2  : '',
       selectValue  : 'b',
       checkboxValue: [],
-      date         : '2015-12-2',
+      date         : '2018-3-8',
 
       selectSearchDataSource: [],
 
@@ -688,6 +688,8 @@ class Page1 extends Component {
               controlCol="col-sm-10">
               <Calendar
                 style={{display: 'inline-block'}}
+                min={'2018/3/5'}
+                max={'2018/3/12'}
                 value={this.state.date}
                 onChange={(date) => {
                   console.log(date)
@@ -710,61 +712,6 @@ class Page1 extends Component {
                   this.setState({date});
                 }}
               />
-            </Form.Item>
-
-            <Form.Item
-              label="日期选择器"
-              labelCol="col-sm-2"
-              controlCol="col-sm-10">
-              <DatePicker
-                radius
-                style={{width: 120}}
-                minDate={'2018/3/2'}
-                maxDate={'2018/3/12'}
-                // value={this.state.date}
-                placeholder="请选择日期"
-                onChange={(date) => {
-                  console.log(date)
-                  this.setState({date});
-                }}
-              />
-              设置最小日期和最大日期
-            </Form.Item>
-
-            <Form.Item
-              label="日期选择器"
-              labelCol="col-sm-2"
-              controlCol="col-sm-10">
-              <DatePicker
-                radius
-                style={{width: 120}}
-                minDate={'2018/3/5'}
-                // value={this.state.date}
-                placeholder="请选择日期"
-                onChange={(date) => {
-                  console.log(date)
-                  this.setState({date});
-                }}
-              />
-              设置最小日期
-            </Form.Item>
-
-            <Form.Item
-              label="日期选择器"
-              labelCol="col-sm-2"
-              controlCol="col-sm-10">
-              <DatePicker
-                radius
-                style={{width: 120}}
-                maxDate={'2018/3/12'}
-                // value={this.state.date}
-                placeholder="请选择日期"
-                onChange={(date) => {
-                  console.log(date)
-                  this.setState({date});
-                }}
-              />
-              设置最大日期
             </Form.Item>
 
             <Form.Item

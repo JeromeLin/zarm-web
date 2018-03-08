@@ -129,19 +129,19 @@ class CalendarDateTable extends Component {
     const {
       value,
       onDateClick,
-      minDate,
-      maxDate,
+      min,
+      max,
     } = this.props;
 
     const fullDay = `${day.year}/${day.month}/${day.date}`;
     const displayDay = `${day.year}-${day.month}-${day.date}`;
 
-    if (minDate || maxDate) {
-      const _minDate = Format.date(minDate, 'yyyy/M/d');
-      const _maxDate = Format.date(maxDate, 'yyyy/M/d');
+    if (min || max) {
+      const _min = Format.date(min, 'yyyy/M/d');
+      const _max = Format.date(max, 'yyyy/M/d');
 
-      const isSmall = new Date(fullDay) < new Date(_minDate);
-      const isLarge = new Date(fullDay) > new Date(_maxDate);
+      const isSmall = new Date(fullDay) < new Date(_min);
+      const isLarge = new Date(fullDay) > new Date(_max);
 
       if (isSmall || isLarge) {
         return (
@@ -217,15 +217,15 @@ CalendarDateTable.propTypes = {
   defaultValue: PropTypes.string,
   value: PropTypes.string,
   onDateClick: PropTypes.func,
-  minDate: PropTypes.string,
-  maxDate: PropTypes.string,
+  min: PropTypes.string,
+  max: PropTypes.string,
 };
 
 CalendarDateTable.defaultProps = {
   defaultValue: '',
   value: '',
-  minDate: '',
-  maxDate: '',
+  min: '',
+  max: '',
   onDateClick: () => {
   },
 };

@@ -29,7 +29,7 @@ class Calendar extends Component {
 
   render() {
     const props = this.props;
-    const { className, hasFooter, minDate, maxDate, ...others } = props;
+    const { className, hasFooter, min, max, ...others } = props;
     const { current, value, panel } = this.state;
 
     const cls = classnames({
@@ -62,8 +62,8 @@ class Calendar extends Component {
             visible={panel !== 'date'}
             value={value}
             current={current}
-            minDate={minDate}
-            maxDate={maxDate}
+            min={min}
+            max={max}
             onDateClick={(value) => this.onDateClick(value)}/>
         </div>
         {
@@ -116,14 +116,14 @@ class Calendar extends Component {
 Calendar.propTypes = {
   format: PropTypes.string,
   onChange: PropTypes.func,
-  minDate: PropTypes.string,
-  maxDate: PropTypes.string,
+  min: PropTypes.string,
+  max: PropTypes.string,
 };
 
 Calendar.defaultProps = {
   format: 'yyyy-MM-dd',
-  minDate: '',
-  maxDate: '',
+  min: '',
+  max: '',
   onChange: () => {
   },
 };
