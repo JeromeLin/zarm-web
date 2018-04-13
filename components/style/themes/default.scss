@@ -19,7 +19,7 @@ $background-active: #ddd;
 $background-disabled: #e1e1e1;
 
 // 边框色
-$border-color: #ddd;
+$border-color: #e8e8e8;
 $border-disabled: #e1e1e1;
 
 // 圆角
@@ -107,10 +107,6 @@ $actionsheet-margin: 0;
 $actionsheet-item-height: r(50);
 $actionsheet-item-font-size: r(16);
 
-// Alert
-$alert-button-height: r(50);
-$alert-button-font-size: r(18);
-
 // Badge
 $badge-height: r(19);
 $badge-font-size: $font-size-sm;
@@ -118,15 +114,15 @@ $badge-padding-h: $padding-h-sm;
 $badge-dot-diameter: r(8);
 
 // Button
-$button-height-sm: r(27);
-$button-height-md: r(45);
-$button-height-lg: r(52);
+$button-height-sm: r(24);
+$button-height-md: r(32);
+$button-height-lg: r(40);
 $button-padding-h-sm: $padding-h-md;
 $button-padding-h-md: $padding-h-lg;
 $button-padding-h-lg: $padding-h-lg;
-$button-font-size-sm: r(14);
-$button-font-size-md: r(18);
-$button-font-size-lg: r(20);
+$button-font-size-sm: r(12);
+$button-font-size-md: r(14);
+$button-font-size-lg: r(16);
 $button-bordered-active-opacity: .6;
 
 // Cell
@@ -165,7 +161,8 @@ $message-font-size-lg: r(15);
 
 // Modal
 $modal-background: #fff;
-$modal-title-font-size: r(18);
+$modal-header-height: r(50);
+$modal-title-font-size: r(16);
 
 // NoticeBar
 $noticebar-height: r(24);

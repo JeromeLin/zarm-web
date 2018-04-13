@@ -1,0 +1,15 @@
+@import "../../Button/style/mixins";
+
+$prefixCls: $prefixCls-confirm;
+
+.#{$prefixCls} {
+  &-body {
+    text-align: center;
+  }
+
+  &-footer {
+    .#{$prefixCls-button} + .#{$prefixCls-button} {
+      margin-left: 10px;
+    }
+  }
+}

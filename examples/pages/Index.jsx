@@ -20,6 +20,8 @@ class Page extends PureComponent {
           <ul>
             <li><a onClick={() => history.push('/button')}>按钮 Button</a></li>
             <li><a onClick={() => history.push('/icon')}>图标 Icon</a></li>
+            <li><a onClick={() => history.push('/badge')}>徽标 Badge</a></li>
+            <li><a onClick={() => history.push('/modal')}>模态框 Modal</a></li>
           </ul>
         </main>
         <Footer />

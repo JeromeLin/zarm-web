@@ -21,6 +21,8 @@ class App extends Component {
         {/* 操作反馈 */}
         <Route path="/button" component={AsyncComponent(() => import('../pages/ButtonPage'))} />
         <Route path="/icon" component={AsyncComponent(() => import('../pages/IconPage'))} />
+        <Route path="/badge" component={AsyncComponent(() => import('../pages/BadgePage'))} />
+        <Route path="/modal" component={AsyncComponent(() => import('../pages/ModalPage'))} />
 
         <Route component={AsyncComponent(() => import('../pages/NotFoundPage'))} />
       </Switch>
