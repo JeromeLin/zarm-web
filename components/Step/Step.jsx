@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import StepItem from './StepItem';

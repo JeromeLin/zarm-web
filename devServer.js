@@ -1,7 +1,7 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config.dev');
-var dir = __dirname + '/examples';
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config.dev');
+const dir = __dirname + '/examples';
 
 new WebpackDevServer(webpack(config), {
   contentBase: dir,
@@ -10,9 +10,9 @@ new WebpackDevServer(webpack(config), {
   inline: true,
   noInfo: false,
   historyApiFallback: true
-}).listen(3000, function (err, result) {
+}).listen(3000, function(err, result) {
   if (err) {
-    console.log(err);
+    console.log(err); // eslint-disable-line
   }
-  console.log('Listening at localhost:3000');
+  console.log('Listening at localhost:3000'); // eslint-disable-line
 });

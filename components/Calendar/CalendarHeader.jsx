@@ -1,6 +1,5 @@
 
-import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import React, { Component } from 'react';
 import Icon from '../Icon';
 
 class CalendarHeader extends Component {

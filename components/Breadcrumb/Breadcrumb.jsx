@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 import classnames from 'classnames';
 
 class Breadcrumb extends Component {
