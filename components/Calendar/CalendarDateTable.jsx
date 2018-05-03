@@ -175,7 +175,7 @@ class CalendarDateTable extends Component {
   getFirstDayOfWeek(current) {
     let date = new Date(`${current.year}/${current.month}/1`);
     let week = date.getDay();
-    if (week == 0) {
+    if (week === 0) {
       week = 7;
     }
     return week;
@@ -184,7 +184,7 @@ class CalendarDateTable extends Component {
   // 获取下个月
   getNextMonth(current) {
     let result = {};
-    if (current.month == 12) {
+    if (current.month === 12) {
       result.year = current.year + 1;
       result.month = 1;
     } else {
@@ -197,7 +197,7 @@ class CalendarDateTable extends Component {
   // 获取上个月
   getPreMonth(current) {
     let result = {};
-    if (current.month == 1) {
+    if (current.month === 1) {
       result.year = current.year - 1;
       result.month = 12;
     } else {

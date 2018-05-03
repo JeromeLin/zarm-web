@@ -1,22 +1,20 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Events from '../utils/events';
 
 class Modal extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      isShow         : false,
-      isPending      : false,
-      animationState : 'leave',
+      isShow: false,
+      isPending: false,
+      animationState: 'leave'
     };
 
     this.animationEnd = this.animationEnd.bind(this);
   }
-  
+
   componentWillMount() {
     if (this.props.visible) {
       this.enter();
@@ -45,40 +43,51 @@ class Modal extends Component {
     return !!(this.state.isShow || nextState.isShow);
   }
 
-  render () {
-    const { animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
+  render() {
+    const {
+      animationType,
+      animationDuration,
+      width,
+      minWidth,
+      isRadius,
+      isRound,
+      className,
+      onMaskClick,
+      children,
+      ...others
+    } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
     const classes = {
-      modal:  classnames({
-        'ui-modal'                : true,
-        'radius'                  : ('radius' in this.props || isRadius),
-        'round'                   : ('round' in this.props || isRound),
+      modal: classnames({
+        'ui-modal': true,
+        radius: 'radius' in this.props || isRadius,
+        round: 'round' in this.props || isRound,
         [`fade-${animationState}`]: isPending,
-        [className]               : !!className,
+        [className]: !!className
       }),
       dialog: classnames({
-        'ui-modal-dialog'                     : true,
-        [`${animationType}-${animationState}`]: true,
+        'ui-modal-dialog': true,
+        [`${animationType}-${animationState}`]: true
       })
     };
 
     const style = {
       modal: {
-        WebkitAnimationDuration : `${animationDuration}ms`,
-        MozAnimationDuration    : `${animationDuration}ms`,
-        msAnimationDuration     : `${animationDuration}ms`,
-        OAnimationDuration      : `${animationDuration}ms`,
-        animationDuration       : `${animationDuration}ms`,
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`
       },
       dialog: {
-        width                   : width,
-        minWidth                : minWidth,
-        WebkitAnimationDuration : `${animationDuration}ms`,
-        MozAnimationDuration    : `${animationDuration}ms`,
-        msAnimationDuration     : `${animationDuration}ms`,
-        OAnimationDuration      : `${animationDuration}ms`,
-        animationDuration       : `${animationDuration}ms`,
+        width: width,
+        minWidth: minWidth,
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`
       }
     };
 
@@ -87,9 +96,22 @@ class Modal extends Component {
     }
 
     return (
-      <div className={classes.modal} style={style.modal} onClick={onMaskClick} ref={(ele) => { this.modal = ele; }}>
+      <div
+        className={classes.modal}
+        style={style.modal}
+        onClick={onMaskClick}
+        ref={ele => {
+          this.modal = ele;
+        }}
+      >
         <div className="ui-modal-wrapper">
-          <div {...others} className={classes.dialog} ref="dialog" style={style.dialog} onClick={(e) => this.onContainerClick(e)}>
+          <div
+            {...others}
+            className={classes.dialog}
+            ref="dialog"
+            style={style.dialog}
+            onClick={e => this.onContainerClick(e)}
+          >
             {children}
           </div>
         </div>
@@ -115,7 +137,7 @@ class Modal extends Component {
     this.setState({
       isShow: true,
       isPending: true,
-      animationState: 'enter',
+      animationState: 'enter'
     });
   }
 
@@ -123,7 +145,7 @@ class Modal extends Component {
     this.setState({
       isShow: true,
       isPending: true,
-      animationState: 'leave',
+      animationState: 'leave'
     });
   }
 
@@ -133,29 +155,39 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  visible           : PropTypes.bool,
-  animationType     : PropTypes.oneOf([
-    'fade', 'door', 'flip', 'rotate', 'zoom',
-    'moveUp', 'moveDown', 'moveLeft', 'moveRight',
-    'slideUp', 'slideDown', 'slideLeft', 'slideRight'
+  visible: PropTypes.bool,
+  animationType: PropTypes.oneOf([
+    'fade',
+    'door',
+    'flip',
+    'rotate',
+    'zoom',
+    'moveUp',
+    'moveDown',
+    'moveLeft',
+    'moveRight',
+    'slideUp',
+    'slideDown',
+    'slideLeft',
+    'slideRight'
   ]),
-  animationDuration : PropTypes.number,
-  width             : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  minWidth          : PropTypes.number,
-  isRadius          : PropTypes.bool,
-  isRound           : PropTypes.bool,
-  onMaskClick       : PropTypes.func,
+  animationDuration: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  minWidth: PropTypes.number,
+  isRadius: PropTypes.bool,
+  isRound: PropTypes.bool,
+  onMaskClick: PropTypes.func
 };
 
 Modal.defaultProps = {
-  visible           : false,
-  animationType     : 'zoom',
-  animationDuration : 300,
-  width             : 600,
-  minWidth          : 270,
-  isRadius          : false,
-  isRound           : false,
-  onMaskClick       : function () {},
+  visible: false,
+  animationType: 'zoom',
+  animationDuration: 300,
+  width: 600,
+  minWidth: 270,
+  isRadius: false,
+  isRound: false,
+  onMaskClick: function() {}
 };
 
 export default Modal;

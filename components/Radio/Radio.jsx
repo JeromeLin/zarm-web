@@ -1,14 +1,12 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Radio extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked,
+      checked: props.checked || props.defaultChecked
     };
   }
 
@@ -20,16 +18,16 @@ class Radio extends Component {
     }
   }
 
-  render () {
+  render() {
     const props = this.props;
     const { value, isDisabled, className, children } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-radio' : true,
-      'checked'  : this.state.checked,
-      'disabled' : disabled,
-      [className]: !!className,
+      'ui-radio': true,
+      checked: this.state.checked,
+      disabled: disabled,
+      [className]: !!className
     });
 
     return (
@@ -41,8 +39,9 @@ class Radio extends Component {
             value={value}
             checked={this.state.checked}
             disabled={disabled}
-            onChange={(e) => this._onClick(e)} />
-          <span className="ui-radio-inner"></span>
+            onChange={e => this._onClick(e)}
+          />
+          <span className="ui-radio-inner" />
         </span>
         {children}
       </label>
@@ -59,14 +58,14 @@ class Radio extends Component {
 
 Radio.propTypes = {
   defaultChecked: PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  onChange      : PropTypes.func,
+  isDisabled: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 Radio.defaultProps = {
   defaultChecked: false,
-  isDisabled    : false,
-  onChange      : () => {},
+  isDisabled: false,
+  onChange: () => {}
 };
 
 export default Radio;

@@ -1,19 +1,15 @@
-
 import React, { Component } from 'react';
 
 class ModalFooter extends Component {
+  render() {
+    const { children, ...others } = this.props;
 
-  render () { 
-    const { children, ...others } = this.props; 
-    
     return (
       <div className="ui-modal-footer" {...others}>
         {children}
       </div>
     );
   }
-
 }
 
 export default ModalFooter;
-

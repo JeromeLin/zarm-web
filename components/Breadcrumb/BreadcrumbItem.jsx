@@ -1,20 +1,23 @@
-
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
 class BreadcrumbItem extends Component {
-
-  render () { 
+  render() {
     const { className, href, separator, children, ...others } = this.props;
 
     const cls = classnames({
-      [className]: !!className,
+      [className]: !!className
     });
 
-    const text = ('href' in this.props)
-               ? <a className="ui-breadcrumb-link" href={href}>{children}</a>
-               : <span className="ui-breadcrumb-link">{children}</span>;
-               
+    const text =
+      'href' in this.props ? (
+        <a className="ui-breadcrumb-link" href={href}>
+          {children}
+        </a>
+      ) : (
+        <span className="ui-breadcrumb-link">{children}</span>
+      );
+
     return (
       <span {...others} className={cls}>
         {text}
@@ -22,7 +25,6 @@ class BreadcrumbItem extends Component {
       </span>
     );
   }
-
 }
 
 export default BreadcrumbItem;

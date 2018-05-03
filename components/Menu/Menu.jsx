@@ -1,16 +1,14 @@
-
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
 class Menu extends Component {
-
-  render () { 
+  render() {
     const { size, className, children, ...others } = this.props;
 
     const cls = classnames({
-      'ui-menu'       : true,
+      'ui-menu': true,
       [`size-${size}`]: !!size,
-      [className]     : !!className,
+      [className]: !!className
     });
 
     return (
@@ -19,7 +17,6 @@ class Menu extends Component {
       </ul>
     );
   }
-
 }
 
 export default Menu;

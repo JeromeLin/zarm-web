@@ -10,15 +10,17 @@ class Alert extends Component {
 
     let iconType = 'info-round';
     switch (theme) {
-      case 'warning':
-        iconType = 'warning-round';
-        break;
-      case 'success':
-        iconType = 'right-round';
-        break;
-      case 'error':
-        iconType = 'wrong-round';
-        break;
+    case 'warning':
+      iconType = 'warning-round';
+      break;
+    case 'success':
+      iconType = 'right-round';
+      break;
+    case 'error':
+      iconType = 'wrong-round';
+      break;
+    default:
+      break;
     }
 
     return (

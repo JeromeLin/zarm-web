@@ -1,16 +1,12 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Dropdown extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       visible: props.visible
-      // isShow         : false,
-      // animationState : 'leave',
     };
   }
 
@@ -22,94 +18,40 @@ class Dropdown extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.animationEvents = addEndEventListener(this.refs.dropdown, this.animationEnd.bind(this));
-
-  //   if (this.props.visible) {
-  //     this.enter();
-  //   }
-  // }
-
-  // componentWillUnmount() {
-  //   if (this.animationEvents) {
-  //     this.animationEvents.remove();
-  //   }
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (!this.props.visible && nextProps.visible) {
-  //     this.enter();
-  //   } else if (this.props.visible && !nextProps.visible) {
-  //     this.leave();
-  //   }
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return !!(this.state.isShow || nextState.isShow);
-  // }
-
-  render () {
+  render() {
     const props = this.props;
     const { className, isRadius, children, ...others } = props;
     // const { isShow, animationState } = this.state;
     const { visible } = this.state;
 
     const cls = classnames({
-      'ui-dropdown'       : true,
+      'ui-dropdown': true,
       'ui-dropdown-hidden': !visible,
       // [`scaleDown-${animationState}`]: true,
-      'radius'            : ('radius' in props || isRadius),
-      [className]         : !!className
+      radius: 'radius' in props || isRadius,
+      [className]: !!className
     });
-    
-    return <div {...others} className={cls} ref="dropdown">{children}</div>;
+
+    return (
+      <div {...others} className={cls} ref="dropdown">
+        {children}
+      </div>
+    );
   }
-
-  // animationEnd(e) {
-  //   let node = this.refs.dialog;
-  //   if (e && e.target !== node) {
-  //     return;
-  //   }
-
-  //   if (this.state.animationState === 'leave') {
-  //     this.setState({
-  //       isShow: false
-  //     });
-  //   }
-  // }
-
-  // enter() {
-  //   this.setState({
-  //     isShow: true,
-  //     animationState: 'enter',
-  //   });
-  // }
-
-  // leave() {
-  //   if (this.animationEvents) {
-  //     this.setState({
-  //       animationState: 'leave',
-  //     });
-  //   } else {
-  //     this.setState({
-  //       isShow: false,
-  //     })
-  //   }
-  // }
 }
 
 Dropdown.propTypes = {
-  visible       : PropTypes.bool,
-  isRadius      : PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  onChange      : PropTypes.func,
+  visible: PropTypes.bool,
+  isRadius: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 Dropdown.defaultProps = {
-  visible       : false,
-  isRadius      : false,
-  isDisabled    : false,
-  onChange      : () => {},
+  visible: false,
+  isRadius: false,
+  isDisabled: false,
+  onChange: () => {}
 };
 
 export default Dropdown;

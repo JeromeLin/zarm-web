@@ -1,17 +1,15 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Form extends Component {
-
-  render () { 
+  render() {
     const { type, className, children, ...others } = this.props;
 
     const cls = classnames({
-      'ui-form'          : true,
-      [`ui-form-${type}`]: ('type' in this.props),
-      [className]        : !!className,
+      'ui-form': true,
+      [`ui-form-${type}`]: 'type' in this.props,
+      [className]: !!className
     });
 
     return (
@@ -20,16 +18,15 @@ class Form extends Component {
       </form>
     );
   }
-
 }
 
 Form.propTypes = {
-  type      : PropTypes.oneOf(['horizontal', 'inline']),
-  className : PropTypes.string,
+  type: PropTypes.oneOf(['horizontal', 'inline']),
+  className: PropTypes.string
 };
 
 Form.defaultProps = {
-  className : null,
+  className: null
 };
 
 export default Form;

@@ -1,15 +1,15 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
 
 class ModalHeader extends Component {
-
-  render () { 
+  render() {
     const { title, onClose, ...others } = this.props;
-    const btnClose = onClose
-                   ? <div className="ui-modal-close" onClick={onClose}><Icon type="wrong" /></div>
-                   : null;
+    const btnClose = onClose ? (
+      <div className="ui-modal-close" onClick={onClose}>
+        <Icon type="wrong" />
+      </div>
+    ) : null;
 
     return (
       <div className="ui-modal-header" {...others}>
@@ -18,17 +18,15 @@ class ModalHeader extends Component {
       </div>
     );
   }
-
 }
 
-ModalHeader.propTypes = { 
-  title   : PropTypes.string,
-  onClose : PropTypes.func,
+ModalHeader.propTypes = {
+  title: PropTypes.string,
+  onClose: PropTypes.func
 };
 
 ModalHeader.defaultProps = {
-  title   : '',
+  title: ''
 };
 
 export default ModalHeader;
-

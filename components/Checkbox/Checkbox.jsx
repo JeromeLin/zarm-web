@@ -1,14 +1,12 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Checkbox extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked,
+      checked: props.checked || props.defaultChecked
     };
   }
 
@@ -20,16 +18,22 @@ class Checkbox extends Component {
     }
   }
 
-  render () {
+  render() {
     const props = this.props;
-    const { value, isDisabled, className, children, onChange, ...others } = props;
+    const {
+      value,
+      isDisabled,
+      className,
+      children,
+      ...others
+    } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
       'ui-checkbox': true,
-      'checked'    : this.state.checked,
-      'disabled'   : disabled,
-      [className]  : !!className,
+      checked: this.state.checked,
+      disabled: disabled,
+      [className]: !!className
     });
 
     return (
@@ -41,8 +45,9 @@ class Checkbox extends Component {
             value={value}
             checked={this.state.checked}
             disabled={disabled}
-            onChange={(e) => this._onClick(e)} />
-          <span className="ui-checkbox-inner"></span>
+            onChange={e => this._onClick(e)}
+          />
+          <span className="ui-checkbox-inner" />
         </span>
         {children}
       </label>
@@ -61,14 +66,14 @@ class Checkbox extends Component {
 
 Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  onChange      : PropTypes.func,
+  isDisabled: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 Checkbox.defaultProps = {
   defaultChecked: false,
-  isDisabled    : false,
-  onChange      : () => {},
+  isDisabled: false,
+  onChange: () => {}
 };
 
 export default Checkbox;

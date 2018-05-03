@@ -1,14 +1,12 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class ModalBody extends Component {
-
-  render () {
+  render() {
     const { height, children, ...others } = this.props;
     const bodyStyle = {
-      'height' : height,
-    }
+      height: height
+    };
 
     return (
       <div className="ui-modal-body" style={bodyStyle} {...others}>
@@ -16,16 +14,12 @@ class ModalBody extends Component {
       </div>
     );
   }
-
 }
 
-ModalBody.propTypes = { 
-  height : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+ModalBody.propTypes = {
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-ModalBody.defaultProps = {
-  
-};
+ModalBody.defaultProps = {};
 
 export default ModalBody;
-

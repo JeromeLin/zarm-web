@@ -1,17 +1,15 @@
-
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
 class MenuItem extends Component {
-
-  render () { 
+  render() {
     const props = this.props;
     const { checked, isDisabled, children, ...others } = props;
-    
+
     const cls = classnames({
       'ui-menu-item': true,
-      'selected'    : !!checked,
-      'disabled'    : ('disabled' in props || isDisabled),
+      selected: !!checked,
+      disabled: 'disabled' in props || isDisabled
     });
 
     return (
@@ -20,7 +18,6 @@ class MenuItem extends Component {
       </li>
     );
   }
-
 }
 
 export default MenuItem;

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -6,11 +5,13 @@ import Option from './Option';
 import Menu from '../Menu';
 
 class SelectMultiple extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      value   : props.value || props.defaultValue || this.getCheckedValue(props.children),
+      value:
+        props.value ||
+        props.defaultValue ||
+        this.getCheckedValue(props.children)
     };
   }
 
@@ -22,7 +23,7 @@ class SelectMultiple extends Component {
     }
   }
 
-  render () {
+  render() {
     const props = this.props;
     const { isRadius, isDisabled, size, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
@@ -32,25 +33,32 @@ class SelectMultiple extends Component {
       return (
         <Option
           {...option.props}
-          onChange={(e) => this.onOptionChange(e, option.props, index)}
-          checked={!!(this.state.value.indexOf(option.props.value) > -1)} />
+          onChange={e => this.onOptionChange(e, option.props, index)}
+          checked={!!(this.state.value.indexOf(option.props.value) > -1)}
+        />
       );
     });
 
     const cls = classnames({
-      'ui-select'     : true,
+      'ui-select': true,
       'ui-select-open': this.state.dropdown,
-      'disabled'      : disabled,
-      'radius'        : radius,
-      [`size-${size}`]: !!size,
+      disabled: disabled,
+      radius: radius,
+      [`size-${size}`]: !!size
     });
 
     return (
       <span className={cls} {...others}>
-        <span className="ui-select-selection" style={{height: '100%'}} role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
-          <Menu size={size}>
-            {children}
-          </Menu>
+        <span
+          className="ui-select-selection"
+          style={{ height: '100%' }}
+          role="combobox"
+          aria-autocomplete="list"
+          aria-haspopup="true"
+          aria-expanded="false"
+          onClick={e => !disabled && this.onSelectClick(e)}
+        >
+          <Menu size={size}>{children}</Menu>
         </span>
       </span>
     );
@@ -58,7 +66,7 @@ class SelectMultiple extends Component {
 
   getCheckedValue(children) {
     let checkedValue = [];
-    React.Children.forEach(children, (option) => {
+    React.Children.forEach(children, option => {
       if (option.props && option.props.checked) {
         checkedValue.push(option.props.value);
       }
@@ -75,9 +83,9 @@ class SelectMultiple extends Component {
       return;
     }
 
-    let value = this.state.value,
-        index = value.indexOf(props.value),
-        isSelected = (index > -1);
+    let value = this.state.value;
+    let index = value.indexOf(props.value);
+    let isSelected = index > -1;
 
     if (isSelected) {
       value.splice(index, 1);
@@ -86,30 +94,26 @@ class SelectMultiple extends Component {
     }
 
     const row = {
-      index   : rowIndex,
-      value   : props.value,
-      text    : props.children,
-      selected: !isSelected,
+      index: rowIndex,
+      value: props.value,
+      text: props.children,
+      selected: !isSelected
     };
 
-    this.setState(
-      { value },
-      this.props.onChange(value, row)
-    );
+    this.setState({ value }, this.props.onChange(value, row));
   }
-
 }
 
 SelectMultiple.propTypes = {
-  isRadius      : PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  onChange      : PropTypes.func,
+  isRadius: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 SelectMultiple.defaultProps = {
-  isRadius      : false,
-  isDisabled    : false,
-  onChange      : () => {},
+  isRadius: false,
+  isDisabled: false,
+  onChange: () => {}
 };
 
 export default SelectMultiple;

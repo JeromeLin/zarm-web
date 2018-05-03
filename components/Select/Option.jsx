@@ -1,16 +1,13 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import Menu from '../Menu';
 
 class Option extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked,
+      checked: props.checked || props.defaultChecked
     };
   }
 
@@ -22,24 +19,28 @@ class Option extends Component {
     }
   }
 
-  render () {
+  render() {
     const props = this.props;
     const { children, ...others } = props;
 
-    return <Menu.Item {...others} onClick={(e) => props.onChange(e) }>{children}</Menu.Item>;
+    return (
+      <Menu.Item {...others} onClick={e => props.onChange(e)}>
+        {children}
+      </Menu.Item>
+    );
   }
 }
 
 Option.propTypes = {
   defaultChecked: PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  onChange      : PropTypes.func,
+  isDisabled: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 Option.defaultProps = {
   defaultChecked: false,
-  isDisabled    : false,
-  onChange      : () => {},
+  isDisabled: false,
+  onChange: () => {}
 };
 
 export default Option;
