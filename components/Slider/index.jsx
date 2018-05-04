@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import domUtil from '../utils/dom';
 
+const noop = () => {};
+
 export default class Slider extends Component {
   constructor(props) {
     super(props);
@@ -325,13 +327,13 @@ export default class Slider extends Component {
             key={`handle${i}`}
             className="ui-slider-handle"
             style={styleObjArr.handle}
-            onMouseDown={!this.isTouchSuported && this.onHandleDown(i)}
-            onMouseMove={!this.isTouchSuported && this.onHandleMove(i)}
-            onMouseUp={!this.isTouchSuported && this.onHandleUp(i)}
+            onMouseDown={!this.isTouchSuported ? this.onHandleDown(i) : noop}
+            onMouseMove={!this.isTouchSuported ? this.onHandleMove(i) : noop}
+            onMouseUp={!this.isTouchSuported ? this.onHandleUp(i) : noop}
             onClick={e => e.stopPropagation()}
-            onTouchStart={this.isTouchSuported && this.onHandleDown(i)}
-            onTouchMove={this.isTouchSuported && this.onHandleMove(i)}
-            onTouchEnd={this.isTouchSuported && this.onHandleMove(i)}
+            onTouchStart={this.isTouchSuported ? this.onHandleDown(i) : noop}
+            onTouchMove={this.isTouchSuported ? this.onHandleMove(i) : noop}
+            onTouchEnd={this.isTouchSuported ? this.onHandleMove(i) : noop}
           >
             {showTip && (
               <em className={tipClass}>{this.state[`currentValue${i}`]}</em>

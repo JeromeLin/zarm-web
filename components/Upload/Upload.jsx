@@ -36,8 +36,10 @@ class Upload extends Component {
     });
 
     const children = React.Children.map(props.children, (element, index) => {
-      if (index > 0) {
-        return cloneElement(element, {
+      let extendProps = {};
+      if (typeof element.type !== 'string') {
+        // 不是原生dom
+        extendProps = {
           isLoading:
             'loading' in element.props ||
             element.props.isLoading ||
@@ -46,17 +48,15 @@ class Upload extends Component {
             'disabled' in element.props ||
             element.props.isDisabled ||
             this.state.uploading
+        };
+      }
+      if (index > 0) {
+        return cloneElement(element, {
+          ...extendProps
         });
       } else {
         return cloneElement(element, {
-          isLoading:
-            'loading' in element.props ||
-            element.props.isLoading ||
-            this.state.uploading,
-          isDisabled:
-            'disabled' in element.props ||
-            element.props.isDisabled ||
-            this.state.uploading,
+          ...extendProps,
           onClick: () => {
             this.upload.click();
           }

@@ -71,11 +71,11 @@ class FormItem extends Component {
 }
 
 FormItem.propTypes = {
-  theme: PropTypes.oneOf(['success', 'warning', 'error', 'validating'])
+  theme: PropTypes.oneOf(['success', 'warning', 'error', 'validating', 'default'])
 };
 
 FormItem.defaultProps = {
-  theme: ''
+  theme: 'default'
 };
 
 export default FormItem;
