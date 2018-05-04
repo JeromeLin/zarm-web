@@ -220,7 +220,7 @@ class Table extends Component {
 
     // 渲染需合并的单元格
     if (
-      typeof render === 'object' &&
+      typeof render === 'object' && render !== null &&
       ('colSpan' in render || 'rowSpan' in render)
     ) {
       return this.renderMergedCell(column, columnIndex, render);
