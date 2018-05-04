@@ -15,7 +15,7 @@ class MessageItem extends Component {
   }
 
   render() {
-    const { content, theme, ...others } = this.props;
+    const { content, theme, style } = this.props;
 
     let wrapClass = classnames({
       'ui-message-wrapper': true,
@@ -29,21 +29,21 @@ class MessageItem extends Component {
     let iconType = 'info-round';
 
     switch (theme) {
-    case 'warning':
-      iconType = 'warning-round';
-      break;
-    case 'success':
-      iconType = 'right-round';
-      break;
-    case 'error':
-      iconType = 'wrong-round';
-      break;
-    default:
-      break;
+      case 'warning':
+        iconType = 'warning-round';
+        break;
+      case 'success':
+        iconType = 'right-round';
+        break;
+      case 'error':
+        iconType = 'wrong-round';
+        break;
+      default:
+        break;
     }
 
     return (
-      <div className={wrapClass} {...others}>
+      <div className={wrapClass} style={style}>
         <div className="ui-message-container">
           <Icon
             type={iconType}

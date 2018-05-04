@@ -3,7 +3,9 @@ import classnames from 'classnames';
 
 class Menu extends Component {
   render() {
-    const { size, className, children, ...others } = this.props;
+    const {
+      size, className, children, style
+    } = this.props;
 
     const cls = classnames({
       'ui-menu': true,
@@ -12,7 +14,7 @@ class Menu extends Component {
     });
 
     return (
-      <ul {...others} className={cls} role="menu">
+      <ul className={cls} role="menu" style={style}>
         {children}
       </ul>
     );

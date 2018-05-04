@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 class Loading extends Component {
   render() {
-    const { visible, children, ...others } = this.props;
+    const { visible, children, style } = this.props;
 
     return visible ? (
-      <div className="ui-loading" {...others}>
+      <div className="ui-loading" style={style}>
         <div className="ui-loading-spins">
           <span className="ui-loading-spin ui-loading-spin-first" />
           <span className="ui-loading-spin ui-loading-spin-second" />
@@ -22,12 +22,10 @@ class Loading extends Component {
 
 Loading.propTypes = {
   visible: PropTypes.bool,
-  message: PropTypes.string
 };
 
 Loading.defaultProps = {
   visible: false,
-  message: '加载中'
 };
 
 export default Loading;

@@ -29,13 +29,12 @@ class Popover extends Component {
   }
 
   componentDidMount() {
-    const instance = this.instance;
-    const reference = findDOMNode(this.reference);
-    const pop = this.pop;
-    const trigger = this.props.trigger;
+    const { instance, pop } = this;
+    const reference = findDOMNode(this.reference); // eslint-disable-line
+    const { trigger } = this.props;
 
     if (trigger === 'click') {
-      on(reference, 'click', e => {
+      on(reference, 'click', (e) => {
         this.setState({
           visible: !this.state.visible
         });
@@ -80,7 +79,7 @@ class Popover extends Component {
   componentDidUpdate() {
     const { visible } = this.state;
     const { direction } = this.props;
-    const reference = findDOMNode(this.reference);
+    const reference = findDOMNode(this.reference); // eslint-disable-line
 
     if (visible) {
       if (this.popper) {
@@ -116,7 +115,7 @@ class Popover extends Component {
   }
 
   hidePop() {
-    const trigger = this.props.trigger;
+    const { trigger } = this.props;
     if (trigger === 'click') {
       this.setState({
         visible: false
@@ -164,27 +163,27 @@ class Popover extends Component {
     return (
       <div
         className={cls}
-        ref={instance => {
+        ref={(instance) => {
           this.instance = instance;
         }}
       >
-        {!!mask ? <div className={maskCls} onClick={onMaskClick} /> : null}
+        {mask ? <div className={maskCls} onClick={onMaskClick} /> : null}
         <div
           className={contentCls}
-          ref={pop => {
+          ref={(pop) => {
             this.pop = pop;
           }}
         >
           {popContent}
           <span
             className={`${prefixCls}-arrow`}
-            ref={arrow => {
+            ref={(arrow) => {
               this.arrow = arrow;
             }}
           />
         </div>
         {React.cloneElement(child, {
-          ref: reference => {
+          ref: (reference) => {
             this.reference = reference;
           }
         })}
@@ -215,7 +214,7 @@ Popover.propTypes = {
     'leftBottom'
   ]),
   onMaskClick: PropTypes.func,
-  content: PropTypes.any
+  content: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
 };
 
 Popover.defaultProps = {

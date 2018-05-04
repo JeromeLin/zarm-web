@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 class Input extends Component {
   render() {
-    const props = this.props;
+    const { props } = this;
     const {
       type,
       isRadius,
@@ -12,22 +12,34 @@ class Input extends Component {
       size,
       defaultValue,
       className,
-      ...others
+      rows,
+      cols,
+      placeholder,
+      maxLength,
+      style
     } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
     const cls = classnames({
       'ui-input': true,
-      disabled: disabled,
-      radius: radius,
-      ['size-' + size]: size,
+      disabled,
+      radius,
+      [`size-${size}`]: size,
       [className]: !!className
     });
 
     const input =
       type === 'textarea' ? (
-        <textarea className={cls} {...others} disabled={disabled}>
+        <textarea
+          className={cls}
+          style={style}
+          rows={rows}
+          cols={cols}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          disabled={disabled}
+        >
           {defaultValue}
         </textarea>
       ) : (
@@ -35,7 +47,9 @@ class Input extends Component {
           type={type}
           defaultValue={defaultValue}
           className={cls}
-          {...others}
+          style={style}
+          placeholder={placeholder}
+          maxLength={maxLength}
           disabled={disabled}
         />
       );

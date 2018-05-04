@@ -50,6 +50,7 @@ class Popconfirm extends Component {
       cancelText
     } = this.props;
 
+    // eslint-disable-next-line
     const popContent = () => {
       return (
         <div>
@@ -102,7 +103,7 @@ Popconfirm.propTypes = {
   onOk: PropTypes.func,
   okText: PropTypes.string,
   cancelText: PropTypes.string,
-  content: PropTypes.any
+  content: PropTypes.node
 };
 
 Popconfirm.defaultProps = {

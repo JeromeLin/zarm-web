@@ -20,7 +20,7 @@ class Pagination extends Component {
   }
 
   render() {
-    const props = this.props;
+    const { props } = this;
     const {
       isBordered,
       isRadius,
@@ -29,7 +29,7 @@ class Pagination extends Component {
       pageSize,
       addonBefore,
       addonAfter,
-      ...others
+      style
     } = props;
 
     const cls = classnames({
@@ -63,69 +63,69 @@ class Pagination extends Component {
       }
     } else {
       const firstPager = (
-          <li
-            key={1}
-            title="第一页"
-            className="ui-pagination-item"
-            onClick={() => this._onPagerClick(1)}
-          >
-            1
-          </li>
-        );
+        <li
+          key={1}
+          title="第一页"
+          className="ui-pagination-item"
+          onClick={() => this._onPagerClick(1)}
+        >
+          1
+        </li>
+      );
       const lastPager = (
-          <li
-            key={pageCount}
-            title="最后一页"
-            className="ui-pagination-item"
-            onClick={() => this._onPagerClick(pageCount)}
-          >
-            {pageCount}
-          </li>
-        );
+        <li
+          key={pageCount}
+          title="最后一页"
+          className="ui-pagination-item"
+          onClick={() => this._onPagerClick(pageCount)}
+        >
+          {pageCount}
+        </li>
+      );
       const prevPager = (
-          <li
-            key="prev"
-            title="上一页"
-            className={classnames({
-              'ui-pagination-item': true,
-              'ui-pagination-item-prev': true,
-              'ui-pagination-item-disabled': Number(value) === 1
-            })}
-            onClick={() => value > 1 && this._onPagerClick(value - 1)}
-          >
-            <Icon type="arrow-left" />
-          </li>
-        );
+        <li
+          key="prev"
+          title="上一页"
+          className={classnames({
+            'ui-pagination-item': true,
+            'ui-pagination-item-prev': true,
+            'ui-pagination-item-disabled': Number(value) === 1
+          })}
+          onClick={() => value > 1 && this._onPagerClick(value - 1)}
+        >
+          <Icon type="arrow-left" />
+        </li>
+      );
       const nextPager = (
-          <li
-            key="next"
-            title="下一页"
-            className={classnames({
-              'ui-pagination-item': true,
-              'ui-pagination-item-next': true,
-              'ui-pagination-item-disabled': Number(value) === pageCount
-            })}
-            onClick={() => value < pageCount && this._onPagerClick(value + 1)}
-          >
-            <Icon type="arrow-right" />
-          </li>
-        );
+        <li
+          key="next"
+          title="下一页"
+          className={classnames({
+            'ui-pagination-item': true,
+            'ui-pagination-item-next': true,
+            'ui-pagination-item-disabled': Number(value) === pageCount
+          })}
+          onClick={() => value < pageCount && this._onPagerClick(value + 1)}
+        >
+          <Icon type="arrow-right" />
+        </li>
+      );
       const jumpPrev = (
-          <li
-            key="jump-prev"
-            title="向前 5 页"
-            className="ui-pagination-item ui-pagination-item-jump-prev"
-            onClick={() => this._onPagerClick(value - 5)}
-          />
-        );
+        <li
+          key="jump-prev"
+          title="向前 5 页"
+          className="ui-pagination-item ui-pagination-item-jump-prev"
+          onClick={() => this._onPagerClick(value - 5)}
+        />
+      );
       const jumpNext = (
-          <li
-            key="jump-next"
-            title="向后 5 页"
-            className="ui-pagination-item ui-pagination-item-jump-next"
-            onClick={() => this._onPagerClick(value + 5)}
-          />
-        );
+        <li
+          key="jump-next"
+          title="向后 5 页"
+          className="ui-pagination-item ui-pagination-item-jump-next"
+          onClick={() => this._onPagerClick(value + 5)}
+        />
+      );
 
       let left = Math.max(1, value - 2);
       let right = Math.min(value + 2, pageCount);
@@ -189,7 +189,7 @@ class Pagination extends Component {
     }
 
     return (
-      <ul {...others} className={cls}>
+      <ul className={cls} style={style}>
         {pagerList}
       </ul>
     );
@@ -197,13 +197,14 @@ class Pagination extends Component {
 
   _onPagerClick(value) {
     this.setState({
-      value: value
+      value
     });
     this.props.onPageChange(value);
   }
 }
 
 Pagination.propTypes = {
+  defaultValue: PropTypes.number,
   isBordered: PropTypes.bool,
   isRadius: PropTypes.bool,
   total: PropTypes.number,

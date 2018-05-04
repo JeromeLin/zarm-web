@@ -34,8 +34,10 @@ class Calendar extends Component {
   }
 
   render() {
-    const props = this.props;
-    const { className, hasFooter, min, max, ...others } = props;
+    const { props } = this;
+    const {
+      className, hasFooter, min, max, style
+    } = props;
     const { current, value, panel } = this.state;
 
     const cls = classnames({
@@ -44,7 +46,7 @@ class Calendar extends Component {
     });
 
     return (
-      <div className={cls} {...others}>
+      <div className={cls} style={style}>
         <CalendarHeader
           panel={panel}
           current={current}
@@ -114,7 +116,7 @@ class Calendar extends Component {
 
   onDateClick(value) {
     this.setState({
-      value: value,
+      value,
       current: value
     });
     const { format, onChange } = this.props;

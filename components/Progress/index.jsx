@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 class Progress extends Component {
   render() {
-    const props = this.props;
+    const { props } = this;
     const {
       isRadius,
       isRound,
@@ -12,7 +12,7 @@ class Progress extends Component {
       theme,
       size,
       className,
-      ...others
+      style
     } = this.props;
 
     const cls = classnames({
@@ -25,10 +25,10 @@ class Progress extends Component {
     });
 
     return (
-      <div className={cls} {...others}>
+      <div className={cls} style={style}>
         <div className="ui-progress-line-outer">
           <div className="ui-progress-line-inner">
-            <div className="ui-progress-bg" style={{ width: percent + '%' }} />
+            <div className="ui-progress-bg" style={{ width: `${percent}%` }} />
           </div>
         </div>
         {this.textRender(percent)}

@@ -1,16 +1,15 @@
-
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import StepItem from './StepItem';
 
 class Step extends Component {
-
   constructor(props) {
     super(props);
     this.unmounted = false;
     this.state = {
-      itemWidth: '100%',
+      itemWidth: '100%'
     };
   }
 
@@ -25,29 +24,27 @@ class Step extends Component {
     this.unbindHandlers();
   }
 
-  render() { 
-    const props = this.props;
-    const { className, current, ...others } = props;
+  render() {
+    const { props } = this;
+    const { className, current, style } = props;
 
     const cls = classnames({
-      'ui-step'  : true,
-      [className]: !!className,
+      'ui-step': true,
+      [className]: !!className
     });
 
-    let children = React.Children.map(props.children, (item, index) => {
-      return (
-        <StepItem
-          {...item.props}
-          isFinished={index + 1 < current}
-          isProcess={index + 1 == current}
-          index={index + 1}
-          style={{width: `${this.state.itemWidth}`}}
-        />
-      );
-    });
+    let children = React.Children.map(props.children, (item, index) => (
+      <StepItem
+        {...item.props}
+        isFinished={index + 1 < current}
+        isProcess={index + 1 === Number(current)}
+        index={index + 1}
+        style={{ width: `${this.state.itemWidth}` }}
+      />
+    ));
 
     return (
-      <div {...others} className={cls}>
+      <div className={cls} style={style}>
         {children}
       </div>
     );
@@ -58,19 +55,27 @@ class Step extends Component {
       return;
     }
 
-    const num = React.Children.count(this.props.children),
-          itemWidth = 100 / num + '%';
+    const num = React.Children.count(this.props.children);
+    const itemWidth = `${100 / num}%`;
 
-    this.setState({itemWidth});
+    this.setState({ itemWidth });
   }
 
   bindHandlers() {
-    Events.on(window, 'resize', (e) => this.handleUpdate(e));
+    Events.on(window, 'resize', e => this.handleUpdate(e));
   }
 
   unbindHandlers() {
-    Events.off(window, 'resize', (e) => this.handleUpdate(e));
+    Events.off(window, 'resize', e => this.handleUpdate(e));
   }
 }
+
+Step.propTypes = {
+  current: PropTypes.number
+};
+
+Step.defaultProps = {
+  current: 1
+};
 
 export default Step;

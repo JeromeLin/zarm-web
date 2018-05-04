@@ -19,25 +19,25 @@ class Checkbox extends Component {
   }
 
   render() {
-    const props = this.props;
+    const { props } = this;
     const {
       value,
       isDisabled,
       className,
       children,
-      ...others
+      style
     } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
       'ui-checkbox': true,
       checked: this.state.checked,
-      disabled: disabled,
+      disabled,
       [className]: !!className
     });
 
     return (
-      <label {...others}>
+      <label style={style}>
         <span className={cls}>
           <input
             className="ui-checkbox-input"
@@ -55,7 +55,7 @@ class Checkbox extends Component {
   }
 
   _onClick(e) {
-    const checked = this.state.checked;
+    const { checked } = this.state;
 
     this.setState({
       checked: !checked

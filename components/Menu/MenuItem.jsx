@@ -3,8 +3,10 @@ import classnames from 'classnames';
 
 class MenuItem extends Component {
   render() {
-    const props = this.props;
-    const { checked, isDisabled, children, ...others } = props;
+    const { props } = this;
+    const {
+      checked, isDisabled, children, onClick, style
+    } = props;
 
     const cls = classnames({
       'ui-menu-item': true,
@@ -13,7 +15,7 @@ class MenuItem extends Component {
     });
 
     return (
-      <li className={cls} role="menuitem" {...others}>
+      <li className={cls} role="menuitem" style={style} onClick={onClick}>
         {children}
       </li>
     );

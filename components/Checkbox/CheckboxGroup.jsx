@@ -22,24 +22,23 @@ class CheckboxGroup extends Component {
   }
 
   render() {
-    const props = this.props;
+    const { props } = this;
 
-    let children = React.Children.map(props.children, checkbox => {
-      return (
-        <Checkbox
-          {...checkbox.props}
-          onChange={e => this.onCheckboxChange(e)}
-          checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)}
-        />
-      );
-    });
+    let children = React.Children.map(props.children, checkbox => (
+      <Checkbox
+        {...checkbox.props}
+        onChange={e => this.onCheckboxChange(e)}
+        checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)}
+      />
+    ));
 
     return <div className="ui-checkbox-group">{children}</div>;
   }
 
+  // eslint-disable-next-line
   getCheckedValue(children) {
     let checkedValue = [];
-    React.Children.forEach(children, checkbox => {
+    React.Children.forEach(children, (checkbox) => {
       if (checkbox.props && checkbox.props.checked) {
         checkedValue.push(checkbox.props.value);
       }
@@ -48,7 +47,7 @@ class CheckboxGroup extends Component {
   }
 
   onCheckboxChange(e) {
-    let value = this.state.value;
+    let { value } = this.state;
     let index = value.indexOf(e.target.value);
 
     if (index < 0) {
@@ -58,7 +57,7 @@ class CheckboxGroup extends Component {
     }
 
     this.setState({
-      value: value
+      value
     });
     this.props.onChange(value);
   }

@@ -31,9 +31,11 @@ export default class Slider extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      const { min, max, HandleAmount, defaultValue } = this.props;
-      let states = {},
-        i = 0;
+      const {
+        min, max, HandleAmount, defaultValue
+      } = this.props;
+      let states = {};
+      let i = 0;
       const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue];
 
       while (i < HandleAmount) {
@@ -44,15 +46,17 @@ export default class Slider extends Component {
       this.setState(states);
     }, 0);
 
-    this.offsetLeft = domUtil.getLeft(this.refs.sliderBody);
+    this.offsetLeft = domUtil.getLeft(this.sliderBody);
     this.isTouchSuported = domUtil.probTouch();
   }
 
   componentWillReceiveProps(nextProps) {
     setTimeout(() => {
-      const { min, max, HandleAmount, defaultValue } = nextProps;
-      let states = {},
-        i = 0;
+      const {
+        min, max, HandleAmount, defaultValue
+      } = nextProps;
+      let states = {};
+      let i = 0;
       const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue];
 
       while (i < HandleAmount) {
@@ -65,7 +69,7 @@ export default class Slider extends Component {
   }
 
   onHandleDown(i) {
-    return e => {
+    return (e) => {
       e.stopPropagation();
       e.preventDefault();
       const addBodyListener = document.body.addEventListener.bind(
@@ -92,11 +96,13 @@ export default class Slider extends Component {
   }
 
   onHandleMove(i) {
-    return e => {
+    return (e) => {
       e.stopPropagation();
       e.preventDefault();
       if (this.draggingPayload.isDragging) {
-        const { min, max, step, styleWidth, getValue, isPass } = this.props;
+        const {
+          min, max, step, styleWidth, getValue, isPass
+        } = this.props;
         const mouseMovedDist =
           (this.isTouchSuported && e.touches && e.touches[0]
             ? e.touches[0].clientX
@@ -140,7 +146,7 @@ export default class Slider extends Component {
   }
 
   onHandleUp(i) {
-    return e => {
+    return (e) => {
       e.stopPropagation();
       e.preventDefault();
       const removeBodyListener = document.body.removeEventListener.bind(
@@ -167,7 +173,9 @@ export default class Slider extends Component {
     if (this.draggingPayload.isDragging) return;
 
     this.removeTransition = false;
-    const { min, max, step, styleWidth, getValue } = this.props;
+    const {
+      min, max, step, styleWidth, getValue
+    } = this.props;
     //此处用pageX,兼容有x轴滚动条的情况
     const mouseLeft = e.pageX - this.offsetLeft;
     if (mouseLeft < 0 || mouseLeft > (styleWidth || 200)) return;
@@ -193,35 +201,34 @@ export default class Slider extends Component {
     }
   }
 
+  // eslint-disable-next-line
   validateDefault(defaultValue, min, max) {
+    // eslint-disable-next-line
     return defaultValue < min ? min : defaultValue > max ? max : defaultValue;
   }
 
+  // eslint-disable-next-line
   isArray(ele) {
     return Object.prototype.toString.call(ele) === '[object Array]';
   }
 
   findClosestHandle(value) {
     let states = Object.keys(this.state);
-    states = states.map(v => {
-      return this.state[v];
-    });
-    return states.reduce((pre, cur, index) => {
-      return value > Math.max(pre, cur)
-        ? Math.max(pre, cur)
-        : value < Math.min(pre, cur)
-          ? Math.min(pre, cur)
-          : Math.abs(value - pre) < Math.abs(value - cur)
-            ? pre
-            : cur;
-    }, this.state[`currentValue${0}`]);
+    states = states.map(v => this.state[v]);
+    /* eslint-disable */
+    return states.reduce((pre, cur, index) => (value > Math.max(pre, cur)
+      ? Math.max(pre, cur)
+      : value < Math.min(pre, cur)
+        ? Math.min(pre, cur)
+        : Math.abs(value - pre) < Math.abs(value - cur)
+          ? pre
+          : cur), this.state[`currentValue${0}`]);
+    /* eslint-enable */
   }
 
   findHandleIndex(state, v) {
     let states = Object.keys(state);
-    states = states.map(v => {
-      return this.state[v];
-    });
+    states = states.map(v => this.state[v]);
     return states.indexOf(v);
   }
 
@@ -229,26 +236,20 @@ export default class Slider extends Component {
   isHandleMeet(index, value) {
     const { max, min } = this.props;
     let states = Object.keys(this.state);
-    states = states.map(v => {
-      return this.state[v];
-    });
-    states.sort((a, b) => {
-      return a - b;
-    });
+    states = states.map(v => this.state[v]);
+    states.sort((a, b) => a - b);
 
     const v = this.state[`currentValue${index}`];
     const vIndex = states.indexOf(v);
     const vMax = states[vIndex + 1] ? states[vIndex + 1] : max;
     const vMin = states[vIndex - 1] ? states[vIndex - 1] : min;
-    return value > vMin && value < vMax ? false : true;
+    return !(value > vMin && value < vMax);
   }
 
   render() {
     const {
       min,
       max,
-      step,
-      defaultValue,
       styleWidth,
       isRound,
       isSolid,
@@ -260,10 +261,9 @@ export default class Slider extends Component {
       isRange,
       rangeColors
     } = this.props;
-    const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue];
 
     const styleWidthObj = {
-      width: (styleWidth || 200) + 'px'
+      width: `${styleWidth || 200}px`
     };
     const tipClass = classnames({
       'ui-slider-tip': true,
@@ -285,6 +285,7 @@ export default class Slider extends Component {
       'Transition'
     ];
 
+    // eslint-disable-next-line
     const rangeColorArray = rangeColors
       ? this.isArray(rangeColors)
         ? rangeColors
@@ -292,8 +293,8 @@ export default class Slider extends Component {
       : ['#fff', '#eee'];
 
     const handles = [];
-    let i = 0,
-      styleObjArr;
+    let i = 0;
+    let styleObjArr;
     while (i < HandleAmount) {
       let percent = (this.state[`currentValue${i}`] - min) / (max - min) * 100;
 
@@ -306,7 +307,8 @@ export default class Slider extends Component {
         }
       };
       if (!this.removeTransition) {
-        transitionArray.forEach(transition => {
+        // eslint-disable-next-line
+        transitionArray.forEach((transition) => {
           styleObjArr.handle[transition] = 'left 0.6s ease-out';
           styleObjArr.back[transition] = 'width 0.6s ease-out';
         });
@@ -345,7 +347,7 @@ export default class Slider extends Component {
         <div
           className="ui-slider-horizontal"
           style={styleWidthObj}
-          ref="sliderBody"
+          ref={(sliderBody) => { this.sliderBody = sliderBody; }}
           onClick={this.clickhandler}
         >
           {handles}
@@ -385,5 +387,9 @@ Slider.defaultProps = {
   isSolid: false,
   isRange: false,
   isPass: true,
-  theme: 'default'
+  theme: 'default',
+  styleWidth: 200,
+  rangeColor: '',
+  customCls: '',
+  getValue: () => {}
 };

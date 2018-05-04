@@ -4,7 +4,9 @@ import classnames from 'classnames';
 
 class Form extends Component {
   render() {
-    const { type, className, children, ...others } = this.props;
+    const {
+      type, className, children, style
+    } = this.props;
 
     const cls = classnames({
       'ui-form': true,
@@ -13,7 +15,7 @@ class Form extends Component {
     });
 
     return (
-      <form className={cls} {...others}>
+      <form className={cls} style={style}>
         {children}
       </form>
     );
@@ -26,6 +28,7 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
+  type: 'horizontal',
   className: null
 };
 

@@ -11,12 +11,14 @@ class Confirm extends Component {
       okText,
       cancelText,
       onOk,
+      width,
+      visible,
+      style,
       onCancel,
-      ...others
     } = this.props;
 
     return (
-      <Modal {...others}>
+      <Modal width={width} visible={visible} style={style}>
         <Modal.Body>
           <div className="ui-confirm">
             <Icon type="question-round" />

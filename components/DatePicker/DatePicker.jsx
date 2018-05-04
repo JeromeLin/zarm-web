@@ -36,7 +36,7 @@ class DatePicker extends Component {
   }
 
   render() {
-    const props = this.props;
+    const { props } = this;
     const {
       defaultValue,
       placeholder,
@@ -46,7 +46,7 @@ class DatePicker extends Component {
       format,
       min,
       max,
-      ...others
+      style
     } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
@@ -62,8 +62,8 @@ class DatePicker extends Component {
 
     const cls = classnames('ui-select', {
       'ui-select-open': dropdown,
-      disabled: disabled,
-      radius: radius,
+      disabled,
+      radius,
       [`size-${size}`]: !!size
     });
 
@@ -72,7 +72,7 @@ class DatePicker extends Component {
     });
 
     return (
-      <span className={cls} {...others} ref={ele => (this.select = ele)}>
+      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
         <span
           className="ui-select-selection"
           role="combobox"
@@ -109,7 +109,7 @@ class DatePicker extends Component {
   onDateChange(value) {
     this.setState(
       {
-        value: value
+        value
       },
       () => {
         this.setDropdown(false, this.props.onChange(value));
@@ -142,7 +142,7 @@ class DatePicker extends Component {
 
   handleOuterClick(e) {
     if (!this.unmounted || isNodeInTree(e.target, this.select)) {
-      return false;
+      return;
     }
     this.setDropdown(false);
   }

@@ -3,7 +3,9 @@ import classnames from 'classnames';
 
 class BreadcrumbItem extends Component {
   render() {
-    const { className, href, separator, children, ...others } = this.props;
+    const {
+      className, href, separator, children, style
+    } = this.props;
 
     const cls = classnames({
       [className]: !!className
@@ -19,7 +21,7 @@ class BreadcrumbItem extends Component {
       );
 
     return (
-      <span {...others} className={cls}>
+      <span className={cls} style={style}>
         {text}
         <span className="ui-breadcrumb-separator">{separator}</span>
       </span>

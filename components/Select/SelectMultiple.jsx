@@ -24,11 +24,14 @@ class SelectMultiple extends Component {
   }
 
   render() {
-    const props = this.props;
-    const { isRadius, isDisabled, size, ...others } = props;
+    const { props } = this;
+    const {
+      isRadius, isDisabled, size, style
+    } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
+    // eslint-disable-next-line
     let children = React.Children.map(props.children, (option, index) => {
       return (
         <Option
@@ -42,13 +45,13 @@ class SelectMultiple extends Component {
     const cls = classnames({
       'ui-select': true,
       'ui-select-open': this.state.dropdown,
-      disabled: disabled,
-      radius: radius,
+      disabled,
+      radius,
       [`size-${size}`]: !!size
     });
 
     return (
-      <span className={cls} {...others}>
+      <span className={cls} style={style}>
         <span
           className="ui-select-selection"
           style={{ height: '100%' }}
@@ -64,9 +67,10 @@ class SelectMultiple extends Component {
     );
   }
 
+  // eslint-disable-next-line
   getCheckedValue(children) {
     let checkedValue = [];
-    React.Children.forEach(children, option => {
+    React.Children.forEach(children, (option) => {
       if (option.props && option.props.checked) {
         checkedValue.push(option.props.value);
       }
@@ -74,6 +78,7 @@ class SelectMultiple extends Component {
     return checkedValue;
   }
 
+  // eslint-disable-next-line
   onSelectClick(e) {
     e.preventDefault();
   }
@@ -83,7 +88,7 @@ class SelectMultiple extends Component {
       return;
     }
 
-    let value = this.state.value;
+    let { value } = this.state;
     let index = value.indexOf(props.value);
     let isSelected = index > -1;
 

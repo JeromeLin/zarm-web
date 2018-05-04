@@ -4,8 +4,10 @@ import classnames from 'classnames';
 
 class Panel extends Component {
   render() {
-    const props = this.props;
-    const { isRadius, theme, className, children, ...others } = props;
+    const { props } = this;
+    const {
+      isRadius, theme, className, children, style
+    } = props;
 
     const cls = classnames({
       'ui-panel': true,
@@ -15,7 +17,7 @@ class Panel extends Component {
     });
 
     return (
-      <div {...others} className={cls}>
+      <div className={cls} style={style}>
         {children}
       </div>
     );

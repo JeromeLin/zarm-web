@@ -5,8 +5,10 @@ import Icon from '../Icon';
 
 class FormItem extends Component {
   render() {
-    const props = this.props;
-    const { theme, className, controlCol, children, ...others } = props;
+    const { props } = this;
+    const {
+      theme, className, controlCol, children, style
+    } = props;
 
     const cls = classnames({
       'ui-form-item': true,
@@ -20,7 +22,7 @@ class FormItem extends Component {
     });
 
     return (
-      <div className={cls} {...others}>
+      <div className={cls} style={style}>
         {this._renderLabel()}
         <div className={controlCls}>
           {children}
@@ -35,8 +37,10 @@ class FormItem extends Component {
   }
 
   _renderLabel() {
-    const props = this.props;
-    const { id, label, labelCol, isRequired } = props;
+    const { props } = this;
+    const {
+      id, label, labelCol, isRequired
+    } = props;
 
     const labelCls = classnames({
       [labelCol]: !!labelCol
@@ -70,7 +74,8 @@ FormItem.propTypes = {
   theme: PropTypes.oneOf(['success', 'warning', 'error', 'validating'])
 };
 
-// FormItem.defaultProps = {
-// };
+FormItem.defaultProps = {
+  theme: ''
+};
 
 export default FormItem;

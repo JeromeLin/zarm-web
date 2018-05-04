@@ -19,21 +19,21 @@ class Dropdown extends Component {
   }
 
   render() {
-    const props = this.props;
-    const { className, isRadius, children, ...others } = props;
-    // const { isShow, animationState } = this.state;
+    const { props } = this;
+    const {
+      className, isRadius, children, style
+    } = props;
     const { visible } = this.state;
 
     const cls = classnames({
       'ui-dropdown': true,
       'ui-dropdown-hidden': !visible,
-      // [`scaleDown-${animationState}`]: true,
       radius: 'radius' in props || isRadius,
       [className]: !!className
     });
 
     return (
-      <div {...others} className={cls} ref="dropdown">
+      <div className={cls} style={style}>
         {children}
       </div>
     );

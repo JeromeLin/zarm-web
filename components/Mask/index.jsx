@@ -4,7 +4,9 @@ import classnames from 'classnames';
 
 class Mask extends Component {
   render() {
-    const { visible, type, onClose, ...others } = this.props;
+    const {
+      visible, type, onClose, style
+    } = this.props;
     const markCls = classnames({
       'ui-mask': true,
       transparent: type === 'transparent',
@@ -13,7 +15,7 @@ class Mask extends Component {
     });
 
     return visible ? (
-      <div className={markCls} onClick={onClose} {...others} />
+      <div className={markCls} onClick={onClose} style={style} />
     ) : null;
   }
 }

@@ -169,27 +169,29 @@ class CalendarHeader extends Component {
   }
 
   // 获取下个月
+  // eslint-disable-next-line
   getNextMonth(current) {
     let result = current;
     if (result.month === 12) {
-      result.year = result.year + 1;
+      result.year += 1;
       result.month = 1;
     } else {
       result.year = result.year;
-      result.month = result.month + 1;
+      result.month += 1;
     }
     return result;
   }
 
   // 获取上个月
+  // eslint-disable-next-line
   getPreMonth(current) {
     let result = current;
     if (result.month === 1) {
-      result.year = result.year - 1;
+      result.year -= 1;
       result.month = 12;
     } else {
       result.year = result.year;
-      result.month = result.month - 1;
+      result.month -= 1;
     }
     return result;
   }

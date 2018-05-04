@@ -18,7 +18,7 @@ class Message extends Component {
 
   enter() {
     this.state.timer = setTimeout(() => {
-      let node = this.refs.message.children;
+      let node = this.message.children;
 
       if (!node[this.state.active]) return;
 
@@ -26,21 +26,29 @@ class Message extends Component {
 
       this.state.active++;
 
-      if (this.state.active !== this.refs.message.children.length) this.enter();
+      if (this.state.active !== this.message.children.length) this.enter();
     }, this.props.duration);
   }
 
   render() {
-    const { msg, duration, theme, ...others } = this.props;
+    const {
+      msg, duration, theme, style
+    } = this.props;
 
+    // eslint-disable-next-line
     let items = msg.map((o, i) => {
       return (
+        // eslint-disable-next-line
         <MessageItem key={i} content={o.m} duration={duration} theme={theme} />
       );
     });
 
     return (
-      <div className="ui-message" ref="message" {...others}>
+      <div
+        className="ui-message"
+        ref={(message) => { this.message = message; }}
+        style={style}
+      >
         {items}
       </div>
     );
@@ -48,7 +56,7 @@ class Message extends Component {
 }
 
 Message.propTypes = {
-  msg: PropTypes.array,
+  msg: PropTypes.arrayOf(PropTypes.object),
   duration: PropTypes.number,
   theme: PropTypes.oneOf(['info', 'warning', 'success', 'error'])
 };

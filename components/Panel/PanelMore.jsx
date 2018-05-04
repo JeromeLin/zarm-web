@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 class PanelMore extends Component {
   render() {
-    const { className, children, ...others } = this.props;
+    const { className, children, style } = this.props;
 
     const cls = classnames({
       'ui-panel-more': true,
@@ -11,7 +11,7 @@ class PanelMore extends Component {
     });
 
     return (
-      <div {...others} className={cls}>
+      <div className={cls} style={style}>
         {children}
       </div>
     );

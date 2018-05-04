@@ -40,7 +40,7 @@ class Select extends Component {
   }
 
   render() {
-    const props = this.props;
+    const { props } = this;
     const {
       placeholder,
       searchPlaceholder,
@@ -49,7 +49,7 @@ class Select extends Component {
       isSearch,
       size,
       onSearchChange,
-      ...others
+      style
     } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -83,8 +83,8 @@ class Select extends Component {
     const cls = classnames({
       'ui-select': true,
       'ui-select-open': this.state.dropdown,
-      disabled: disabled,
-      radius: radius,
+      disabled,
+      radius,
       [`size-${size}`]: !!size
     });
 
@@ -115,18 +115,17 @@ class Select extends Component {
       !disabled && (
         <span className={textCls}>
           <input
-            ref="searchInput"
             value={this.state.searchValue}
-            onChange={e => {
+            onChange={(e) => {
               let searchValue = e.target.value;
               this.setState({ searchValue }, () => onSearchChange(searchValue));
             }}
           />
         </span>
-      );
+    );
 
     return (
-      <span className={cls} {...others} ref={ele => (this.select = ele)}>
+      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
         <span
           className="ui-select-selection"
           role="combobox"
@@ -146,9 +145,10 @@ class Select extends Component {
     );
   }
 
+  // eslint-disable-next-line
   getCheckedValue(children) {
     let checkedValue = null;
-    React.Children.forEach(children, option => {
+    React.Children.forEach(children, (option) => {
       if (option.props && option.props.checked) {
         checkedValue = option.props.value;
       }
@@ -172,7 +172,7 @@ class Select extends Component {
     });
 
     const selected = {
-      index: index,
+      index,
       value: props.value,
       text: props.children
     };
