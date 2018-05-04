@@ -12,7 +12,6 @@ class Tooltip extends Component {
       children,
       tipStyle,
       style,
-      ...others
     } = props;
 
     const cls = classnames({
@@ -22,7 +21,7 @@ class Tooltip extends Component {
     });
     return (
       <div className={cls} style={style}>
-        <div {...others} className="ui-tooltip-inner" style={tipStyle}>
+        <div className="ui-tooltip-inner" style={tipStyle}>
           {title}
         </div>
         {children}
