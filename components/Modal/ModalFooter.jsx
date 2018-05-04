@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class ModalFooter extends Component {
   render() {
-    const { children, ...others } = this.props;
+    const { children, style } = this.props;
 
     return (
-      <div className="ui-modal-footer" {...others}>
+      <div className="ui-modal-footer" style={style}>
         {children}
       </div>
     );

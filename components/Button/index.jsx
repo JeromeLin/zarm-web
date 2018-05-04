@@ -5,7 +5,7 @@ import Icon from '../Icon';
 
 class Button extends Component {
   render() {
-    const props = this.props;
+    const { props } = this;
     const {
       type,
       theme,
@@ -21,8 +21,8 @@ class Button extends Component {
       className,
       onClick,
       children,
-      ...others
-    } = this.props;
+      style
+    } = props;
     const disabled = 'disabled' in props || isDisabled;
 
     const classes = classnames({
@@ -33,7 +33,7 @@ class Button extends Component {
       circle: 'circle' in props || isCircle,
       active: 'active' in props || isActive,
       focus: 'focus' in props || isFocus,
-      disabled: disabled,
+      disabled,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [className]: !!className
@@ -49,9 +49,9 @@ class Button extends Component {
       );
     return (
       <button
-        {...others}
         type={type}
         className={classes}
+        style={style}
         disabled={disabled}
         onClick={e => !disabled && onClick(e)}
       >
@@ -74,7 +74,8 @@ Button.propTypes = {
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   className: PropTypes.string,
-  onClick: PropTypes.func
+  style: PropTypes.objectOf(PropTypes.any),
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
@@ -90,6 +91,7 @@ Button.defaultProps = {
   isDisabled: false,
   isLoading: false,
   className: null,
+  style: {},
   onClick: () => {}
 };
 

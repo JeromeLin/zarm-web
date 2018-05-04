@@ -4,7 +4,9 @@ import classnames from 'classnames';
 
 class Icon extends Component {
   render() {
-    const { type, theme, className, ...others } = this.props;
+    const {
+      type, theme, className, style
+    } = this.props;
     const cls = classnames({
       'ui-icon': true,
       [`ui-icon-${type}`]: !!type,
@@ -12,18 +14,20 @@ class Icon extends Component {
       [className]: !!className
     });
 
-    return <i className={cls} {...others} />;
+    return <i className={cls} style={style} />;
   }
 }
 
 Icon.propTypes = {
   type: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error'])
+  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  style: PropTypes.objectOf(PropTypes.any)
 };
 
 Icon.defaultProps = {
   type: '',
-  theme: 'default'
+  theme: 'default',
+  style: {}
 };
 
 export default Icon;

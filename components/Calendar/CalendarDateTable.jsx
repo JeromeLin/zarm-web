@@ -8,7 +8,6 @@ const CALENDAR_COL_COUNT = 7;
 const CALENDAR_WEEK_DAYS = ['一', '二', '三', '四', '五', '六', '日'];
 
 class CalendarDateTable extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -50,13 +49,13 @@ class CalendarDateTable extends Component {
 
     return (
       <thead>
-      <tr>
-        {
-          weekDays.map((week, index) => {
-            return <th key={`weekdays-${index}`} className="ui-calendar-column" title={`星期${week}`}>{week}</th>;
-          })
-        }
-      </tr>
+        <tr>
+          {
+            weekDays.map((week, index) => {
+              return <th key={`weekdays-${index}`} className="ui-calendar-column" title={`星期${week}`}>{week}</th>;
+            })
+          }
+        </tr>
       </thead>
     );
   }

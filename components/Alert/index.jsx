@@ -6,25 +6,31 @@ import Icon from '../Icon';
 
 class Alert extends Component {
   render() {
-    const { theme, message, onClose, ...others } = this.props;
+    const {
+      theme, message, onClose, width, className, visible
+    } = this.props;
 
     let iconType = 'info-round';
     switch (theme) {
-    case 'warning':
-      iconType = 'warning-round';
-      break;
-    case 'success':
-      iconType = 'right-round';
-      break;
-    case 'error':
-      iconType = 'wrong-round';
-      break;
-    default:
-      break;
+      case 'warning':
+        iconType = 'warning-round';
+        break;
+      case 'success':
+        iconType = 'right-round';
+        break;
+      case 'error':
+        iconType = 'wrong-round';
+        break;
+      default:
+        break;
     }
 
     return (
-      <Modal {...others}>
+      <Modal
+        width={width}
+        className={className}
+        visible={visible}
+      >
         <Modal.Body>
           <div className="ui-alert">
             <Icon type={iconType} theme={theme} />
@@ -43,6 +49,7 @@ Alert.propTypes = {
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   message: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  className: PropTypes.string,
   onClose: PropTypes.func
 };
 
@@ -50,6 +57,7 @@ Alert.defaultProps = {
   theme: 'info',
   message: '',
   width: 270,
+  className: '',
   onClose: () => {}
 };
 

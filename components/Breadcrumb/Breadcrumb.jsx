@@ -1,4 +1,5 @@
 import React, { Component, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Breadcrumb extends Component {
@@ -26,7 +27,7 @@ class Breadcrumb extends Component {
 }
 
 Breadcrumb.propTypes = {
-  // separator     : PropTypes.string,
+  separator: PropTypes.string,
 };
 
 Breadcrumb.defaultProps = {

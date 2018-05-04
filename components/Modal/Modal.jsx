@@ -54,7 +54,6 @@ class Modal extends Component {
       className,
       onMaskClick,
       children,
-      ...others
     } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
@@ -81,8 +80,8 @@ class Modal extends Component {
         animationDuration: `${animationDuration}ms`
       },
       dialog: {
-        width: width,
-        minWidth: minWidth,
+        width,
+        minWidth,
         WebkitAnimationDuration: `${animationDuration}ms`,
         MozAnimationDuration: `${animationDuration}ms`,
         msAnimationDuration: `${animationDuration}ms`,
@@ -100,17 +99,15 @@ class Modal extends Component {
         className={classes.modal}
         style={style.modal}
         onClick={onMaskClick}
-        ref={ele => {
+        ref={(ele) => {
           this.modal = ele;
         }}
       >
         <div className="ui-modal-wrapper">
           <div
-            {...others}
             className={classes.dialog}
-            ref="dialog"
             style={style.dialog}
-            onClick={e => this.onContainerClick(e)}
+            onClick={e => e.stopPropagation()}
           >
             {children}
           </div>
@@ -148,10 +145,6 @@ class Modal extends Component {
       animationState: 'leave'
     });
   }
-
-  onContainerClick(e) {
-    e.stopPropagation();
-  }
 }
 
 Modal.propTypes = {
@@ -187,7 +180,7 @@ Modal.defaultProps = {
   minWidth: 270,
   isRadius: false,
   isRound: false,
-  onMaskClick: function() {}
+  onMaskClick() {}
 };
 
 export default Modal;
