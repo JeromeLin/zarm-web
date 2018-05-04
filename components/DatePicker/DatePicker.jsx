@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import isNodeInTree from '../utils/isNodeInTree';
@@ -9,13 +9,12 @@ import Calendar from '../Calendar';
 import Icon from '../Icon';
 
 class DatePicker extends Component {
-
   constructor(props) {
     super(props);
     this.unmounted = false;
     this.state = {
       value: Format.date(props.value || props.defaultValue, props.format),
-      dropdown: false,
+      dropdown: false
     };
   }
 
@@ -31,20 +30,30 @@ class DatePicker extends Component {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: Format.date(nextProps.value, this.props.format),
+        value: Format.date(nextProps.value, this.props.format)
       });
     }
   }
 
   render() {
-    const props = this.props;
-    const { defaultValue, placeholder, isDisabled, isRadius, size, format, min, max, ...others } = props;
+    const { props } = this;
+    const {
+      defaultValue,
+      placeholder,
+      isDisabled,
+      isRadius,
+      size,
+      format,
+      min,
+      max,
+      style
+    } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
-    let valueText = placeholder,
-      hasValue = false;
+    let valueText = placeholder;
+    let hasValue = false;
 
     if (value) {
       valueText = value;
@@ -53,26 +62,27 @@ class DatePicker extends Component {
 
     const cls = classnames('ui-select', {
       'ui-select-open': dropdown,
-      'disabled': disabled,
-      'radius': radius,
-      [`size-${size}`]: !!size,
+      disabled,
+      radius,
+      [`size-${size}`]: !!size
     });
 
     const textCls = classnames('ui-select-text', {
-      'ui-select-text-placeholder': !hasValue,
+      'ui-select-text-placeholder': !hasValue
     });
 
     return (
-      <span className={cls} {...others} ref={(ele) => this.select = ele}>
+      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
         <span
           className="ui-select-selection"
           role="combobox"
           aria-autocomplete="list"
           aria-haspopup="true"
           aria-expanded="false"
-          onClick={(e) => this.onSelectClick(e)}>
+          onClick={e => this.onSelectClick(e)}
+        >
           <span className={textCls}>{valueText}</span>
-          <Icon className="ui-select-icon" type="date"/>
+          <Icon className="ui-select-icon" type="date" />
         </span>
 
         <Dropdown isRadius={radius} visible={dropdown}>
@@ -80,10 +90,11 @@ class DatePicker extends Component {
             defaultValue={defaultValue}
             value={value}
             format={format}
-            hasFooter={true}
+            hasFooter
             min={min}
             max={max}
-            onChange={(value) => this.onDateChange(value)}/>
+            onChange={value => this.onDateChange(value)}
+          />
         </Dropdown>
       </span>
     );
@@ -96,11 +107,14 @@ class DatePicker extends Component {
   }
 
   onDateChange(value) {
-    this.setState({
-      value: value,
-    }, () => {
-      this.setDropdown(false, this.props.onChange(value));
-    });
+    this.setState(
+      {
+        value
+      },
+      () => {
+        this.setDropdown(false, this.props.onChange(value));
+      }
+    );
   }
 
   setDropdown(isOpen, callback) {
@@ -112,32 +126,35 @@ class DatePicker extends Component {
       this.unbindOuterHandlers();
     }
 
-    this.setState({
-      dropdown: isOpen
-    }, () => {
-      callback && callback();
-    });
+    this.setState(
+      {
+        dropdown: isOpen
+      },
+      () => {
+        callback && callback();
+      }
+    );
   }
 
   handleKeyup(e) {
-    (e.keyCode === 27) && this.setDropdown(false);
+    e.keyCode === 27 && this.setDropdown(false);
   }
 
   handleOuterClick(e) {
     if (!this.unmounted || isNodeInTree(e.target, this.select)) {
-      return false;
+      return;
     }
     this.setDropdown(false);
   }
 
   bindOuterHandlers() {
-    Events.on(document, 'click', (e) => this.handleOuterClick(e));
-    Events.on(document, 'keyup', (e) => this.handleKeyup(e));
+    Events.on(document, 'click', e => this.handleOuterClick(e));
+    Events.on(document, 'keyup', e => this.handleKeyup(e));
   }
 
   unbindOuterHandlers() {
-    Events.off(document, 'click', (e) => this.handleOuterClick(e));
-    Events.off(document, 'keyup', (e) => this.handleKeyup(e));
+    Events.off(document, 'click', e => this.handleOuterClick(e));
+    Events.off(document, 'keyup', e => this.handleKeyup(e));
   }
 }
 
@@ -146,7 +163,7 @@ DatePicker.propTypes = {
   format: PropTypes.string,
   onChange: PropTypes.func,
   min: PropTypes.string,
-  max: PropTypes.string,
+  max: PropTypes.string
 };
 
 DatePicker.defaultProps = {
@@ -154,8 +171,7 @@ DatePicker.defaultProps = {
   format: 'yyyy-MM-dd',
   min: '',
   max: '',
-  onChange: () => {
-  },
+  onChange: () => {}
 };
 
 export default DatePicker;

@@ -1,20 +1,29 @@
-
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Tooltip extends Component {
-  render () {
-    const props = this.props;
-    const {title, direction, className, children, tipStyle, style, ...others} = props;
+  render() {
+    const { props } = this;
+    const {
+      title,
+      direction,
+      className,
+      children,
+      tipStyle,
+      style,
+    } = props;
 
     const cls = classnames({
-      'ui-tooltip' : true,
-      [`ui-tooltip-${direction}`] : !!direction,
+      'ui-tooltip': true,
+      [`ui-tooltip-${direction}`]: !!direction,
       [className]: !!className
     });
     return (
       <div className={cls} style={style}>
-        <div {...others} className="ui-tooltip-inner" style={tipStyle}>{title}</div>
+        <div className="ui-tooltip-inner" style={tipStyle}>
+          {title}
+        </div>
         {children}
       </div>
     );
@@ -22,11 +31,24 @@ class Tooltip extends Component {
 }
 
 Tooltip.propTypes = {
-  direction   : PropTypes.oneOf(['top', 'left', 'right', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom'])
+  direction: PropTypes.oneOf([
+    'top',
+    'left',
+    'right',
+    'bottom',
+    'topLeft',
+    'topRight',
+    'bottomLeft',
+    'bottomRight',
+    'leftTop',
+    'leftBottom',
+    'rightTop',
+    'rightBottom'
+  ])
 };
 
 Tooltip.defaultProps = {
-  direction   : 'bottom'
+  direction: 'bottom'
 };
 
 export default Tooltip;

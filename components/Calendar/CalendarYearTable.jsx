@@ -1,16 +1,15 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const CALENDAR_ROW_COUNT = 4,
-      CALENDAR_COL_COUNT = 3;
+const CALENDAR_ROW_COUNT = 4;
+const CALENDAR_COL_COUNT = 3;
 
 class CalendarYearTable extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      current: props.value || new Date(),
+      current: props.value || new Date()
     };
   }
 
@@ -39,29 +38,32 @@ class CalendarYearTable extends Component {
 
   // 渲染年份
   renderYear() {
-    let dd = new Date(this.state.current),
-        current = {
-          year : dd.getFullYear(),
-          month: dd.getMonth() + 1,
-          date : dd.getDate(),
-        };
+    let dd = new Date(this.state.current);
+    let current = {
+      year: dd.getFullYear(),
+      month: dd.getMonth() + 1,
+      date: dd.getDate()
+    };
 
     let years = [];
 
     // 当月日期
-    const firstYear = parseInt(current.year / 10) * 10 - 1,
-          lastYear = firstYear + 11;
+    const firstYear = parseInt(current.year / 10, 10) * 10 - 1;
+    const lastYear = firstYear + 11;
 
     for (let i = firstYear; i <= lastYear; i++) {
-      let type = (i == firstYear || i == lastYear)
-               ? 'others'
-               : null;
+      let type = i === firstYear || i === lastYear ? 'others' : null;
 
-      years.push(this.renderYearCell({
-        year : i,
-        month: current.month,
-        date : current.date,
-      }, type));
+      years.push(
+        this.renderYearCell(
+          {
+            year: i,
+            month: current.month,
+            date: current.date
+          },
+          type
+        )
+      );
     }
 
     let tabelCell = [];
@@ -75,41 +77,49 @@ class CalendarYearTable extends Component {
           </td>
         );
       }
-      tabelCell.push(<tr key={`row-${m}`} role="row">{tabelRow}</tr>);
+      tabelCell.push(
+        <tr key={`row-${m}`} role="row">
+          {tabelRow}
+        </tr>
+      );
     }
 
-    return (
-      <tbody>
-        {tabelCell}
-      </tbody>
-    );
+    return <tbody>{tabelCell}</tbody>;
   }
 
   // 渲染年份单元
   renderYearCell(day, type) {
-    const { onYearClick } = this.props,
-          fullDay = `${day.year}/${day.month}/${day.date}`;
+    const { onYearClick } = this.props;
+    const fullDay = `${day.year}/${day.month}/${day.date}`;
 
     const cls = classnames({
-      'ui-calendar-text'         : true,
-      'ui-calendar-text-others'  : type === 'others',
-      'ui-calendar-text-selected': this.state.current === fullDay,
+      'ui-calendar-text': true,
+      'ui-calendar-text-others': type === 'others',
+      'ui-calendar-text-selected': this.state.current === fullDay
     });
-    
-    return <span className={cls} title={day.year} onClick={() => onYearClick(fullDay)}>{day.year}</span>;
+
+    return (
+      <span
+        className={cls}
+        title={day.year}
+        onClick={() => onYearClick(fullDay)}
+      >
+        {day.year}
+      </span>
+    );
   }
 }
 
 CalendarYearTable.propTypes = {
   defaultValue: PropTypes.string,
-  value       : PropTypes.string,
-  onYearClick : PropTypes.func,
+  value: PropTypes.string,
+  onYearClick: PropTypes.func
 };
 
 CalendarYearTable.defaultProps = {
   defaultValue: '',
-  value       : '',
-  onYearClick : () => {},
+  value: '',
+  onYearClick: () => {}
 };
 
 export default CalendarYearTable;

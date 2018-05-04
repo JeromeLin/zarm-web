@@ -1,14 +1,15 @@
-
-import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Checkbox from './Checkbox';
 
 class CheckboxGroup extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || this.getCheckedValue(props.children),
+      value:
+        props.value ||
+        props.defaultValue ||
+        this.getCheckedValue(props.children)
     };
   }
 
@@ -20,24 +21,21 @@ class CheckboxGroup extends Component {
     }
   }
 
-  render () {
-    const props = this.props;
+  render() {
+    const { props } = this;
 
-    let children = React.Children.map(props.children, (checkbox) => {
-      return (
-        <Checkbox {...checkbox.props}
-          onChange={(e) => this.onCheckboxChange(e)}
-          checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)} />
-      );
-    });
+    let children = React.Children.map(props.children, checkbox => (
+      <Checkbox
+        {...checkbox.props}
+        onChange={e => this.onCheckboxChange(e)}
+        checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)}
+      />
+    ));
 
-    return (
-      <div className="ui-checkbox-group">
-        {children}
-      </div>
-    );
+    return <div className="ui-checkbox-group">{children}</div>;
   }
 
+  // eslint-disable-next-line
   getCheckedValue(children) {
     let checkedValue = [];
     React.Children.forEach(children, (checkbox) => {
@@ -49,8 +47,8 @@ class CheckboxGroup extends Component {
   }
 
   onCheckboxChange(e) {
-    let value = this.state.value,
-        index = value.indexOf(e.target.value);
+    let { value } = this.state;
+    let index = value.indexOf(e.target.value);
 
     if (index < 0) {
       value.push(e.target.value);
@@ -59,18 +57,18 @@ class CheckboxGroup extends Component {
     }
 
     this.setState({
-      value: value
+      value
     });
     this.props.onChange(value);
   }
 }
 
 CheckboxGroup.propTypes = {
-  onChange     : PropTypes.func,
+  onChange: PropTypes.func
 };
 
 CheckboxGroup.defaultProps = {
-  onChange     : () => {},
+  onChange: () => {}
 };
 
 export default CheckboxGroup;

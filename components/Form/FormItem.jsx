@@ -1,27 +1,28 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
 class FormItem extends Component {
-
-  render () {
-    const props = this.props;
-    const { theme, className, controlCol, children, ...others } = props;
+  render() {
+    const { props } = this;
+    const {
+      theme, className, controlCol, children, style
+    } = props;
 
     const cls = classnames({
       'ui-form-item': true,
-      [className]   : !!className,
+      [className]: !!className
     });
 
     const controlCls = classnames({
       'ui-form-item-control': true,
-      [controlCol]          : !!controlCol,
-      [`theme-${theme}`]    : !!theme,
+      [controlCol]: !!controlCol,
+      [`theme-${theme}`]: !!theme
     });
 
     return (
-      <div className={cls} {...others}>
+      <div className={cls} style={style}>
         {this._renderLabel()}
         <div className={controlCls}>
           {children}
@@ -36,20 +37,26 @@ class FormItem extends Component {
   }
 
   _renderLabel() {
-    const props = this.props;
-    const { id, label, labelCol, isRequired } = props;
+    const { props } = this;
+    const {
+      id, label, labelCol, isRequired
+    } = props;
 
     const labelCls = classnames({
-      [labelCol]: !!labelCol,
+      [labelCol]: !!labelCol
     });
 
-    const star = ('required' in props || isRequired)
-               ? <span className="ui-form-item-required"><Icon type="required" /></span>
-               : null;
+    const star =
+      'required' in props || isRequired ? (
+        <span className="ui-form-item-required">
+          <Icon type="required" />
+        </span>
+      ) : null;
 
-    return ('label' in props) ? (
+    return 'label' in props ? (
       <label className={labelCls} htmlFor={id || this._getId()}>
-        {star}{label}
+        {star}
+        {label}
       </label>
     ) : null;
   }
@@ -57,17 +64,18 @@ class FormItem extends Component {
   _renderExplain() {
     const { help } = this.props;
 
-    return ('help' in this.props) ? (
+    return 'help' in this.props ? (
       <div className="ui-form-explain">{help}</div>
     ) : null;
   }
 }
 
 FormItem.propTypes = {
-  theme: PropTypes.oneOf(['success', 'warning', 'error', 'validating']),
+  theme: PropTypes.oneOf(['success', 'warning', 'error', 'validating', 'default'])
 };
 
-// FormItem.defaultProps = {
-// };
+FormItem.defaultProps = {
+  theme: 'default'
+};
 
 export default FormItem;

@@ -1,33 +1,37 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Panel extends Component {
-
-  render () {
-    const props = this.props;
-    const { isRadius, theme, className, children, ...others } = props;
+  render() {
+    const { props } = this;
+    const {
+      isRadius, theme, className, children, style
+    } = props;
 
     const cls = classnames({
-      'ui-panel'        : true,
-      'radius'          : ('radius' in props || isRadius),
+      'ui-panel': true,
+      radius: 'radius' in props || isRadius,
       [`theme-${theme}`]: !!theme,
-      [className]       : !!className
+      [className]: !!className
     });
-    
-    return <div {...others} className={cls}>{children}</div>;
-  }
 
+    return (
+      <div className={cls} style={style}>
+        {children}
+      </div>
+    );
+  }
 }
 
 Panel.propTypes = {
-  theme     : PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
-  isRadius  : PropTypes.bool,
+  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  isRadius: PropTypes.bool
 };
 
 Panel.defaultProps = {
-  theme     : 'default',
-  isRadius  : false,
+  theme: 'default',
+  isRadius: false
 };
 
 export default Panel;

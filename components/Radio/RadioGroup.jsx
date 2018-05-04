@@ -1,13 +1,15 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Radio from './Radio';
 
 class RadioGroup extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || this.getCheckedValue(props.children),
+      value:
+        props.value ||
+        props.defaultValue ||
+        this.getCheckedValue(props.children)
     };
   }
 
@@ -20,23 +22,20 @@ class RadioGroup extends Component {
   }
 
   render() {
-    const props = this.props;
+    const { props } = this;
 
-    let children = React.Children.map(props.children, (radio) => {
-      return (
-        <Radio {...radio.props}
-          onChange={(e) => this.onRadioChange(e)}
-          checked={this.state.value == radio.props.value} />
-      );
-    });
+    let children = React.Children.map(props.children, radio => (
+      <Radio
+        {...radio.props}
+        onChange={e => this.onRadioChange(e)}
+        checked={this.state.value == radio.props.value} // eslint-disable-line
+      />
+    ));
 
-    return (
-      <div className="ui-radio-group">
-        {children}
-      </div>
-    );
+    return <div className="ui-radio-group">{children}</div>;
   }
 
+  // eslint-disable-next-line
   getCheckedValue(children) {
     let checkedValue = null;
     React.Children.forEach(children, (radio) => {
@@ -56,11 +55,11 @@ class RadioGroup extends Component {
 }
 
 RadioGroup.propTypes = {
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 RadioGroup.defaultProps = {
-  onChange: () => {},
+  onChange: () => {}
 };
 
 export default RadioGroup;

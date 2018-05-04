@@ -1,20 +1,21 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 
 class PanelBody extends Component {
-
-  render () { 
-    const { className, children, ...others } = this.props;
+  render() {
+    const { className, children, style } = this.props;
 
     const cls = classnames({
       'ui-panel-body': true,
-      [className]    : !!className
+      [className]: !!className
     });
-    
-    return <div {...others} className={cls}>{children}</div>;
-  }
 
+    return (
+      <div className={cls} style={style}>
+        {children}
+      </div>
+    );
+  }
 }
 
 export default PanelBody;

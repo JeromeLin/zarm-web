@@ -1,24 +1,24 @@
-
-import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import isNodeInTree from '../utils/isNodeInTree';
 import Option from './Option';
 import Dropdown from '../Dropdown';
-import Input from '../Input';
 import Menu from '../Menu';
 import Icon from '../Icon';
 
 class Select extends Component {
-
   constructor(props) {
     super(props);
     this.unmounted = false;
     this.state = {
-      value      : props.value || props.defaultValue || this.getCheckedValue(props.children),
-      dropdown   : false,
-      searchValue: '',
+      value:
+        props.value ||
+        props.defaultValue ||
+        this.getCheckedValue(props.children),
+      dropdown: false,
+      searchValue: ''
     };
   }
 
@@ -39,71 +39,101 @@ class Select extends Component {
     this.unbindOuterHandlers();
   }
 
-  render () {
-    const props = this.props;
-    const { placeholder, searchPlaceholder, isRadius, isDisabled, isSearch, size, onChange, onSearchChange, ...others } = props;
+  render() {
+    const { props } = this;
+    const {
+      placeholder,
+      searchPlaceholder,
+      isRadius,
+      isDisabled,
+      isSearch,
+      size,
+      onSearchChange,
+      style
+    } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;
 
-    let valueText = placeholder,
-        hasValue = false;
+    let valueText = placeholder;
+    let hasValue = false;
 
     let children = React.Children.map(props.children, (option, index) => {
-      if (this.state.value == option.props.value) {
+      if (this.state.value == option.props.value) { // eslint-disable-line
         valueText = option.props.children;
         hasValue = true;
       }
 
-      if (search && option.props.children.toString().indexOf(this.state.searchValue) < 0) {
+      if (
+        search &&
+        option.props.children.toString().indexOf(this.state.searchValue) < 0
+      ) {
         return null;
       }
 
       return (
         <Option
           {...option.props}
-          onChange={(e) => this.onOptionChange(e, option.props, index)}
-          checked={this.state.value === option.props.value} />
+          onChange={e => this.onOptionChange(e, option.props, index)}
+          checked={this.state.value === option.props.value}
+        />
       );
     });
 
     const cls = classnames({
-      'ui-select'     : true,
+      'ui-select': true,
       'ui-select-open': this.state.dropdown,
-      'disabled'      : disabled,
-      'radius'        : radius,
-      [`size-${size}`]: !!size,
+      disabled,
+      radius,
+      [`size-${size}`]: !!size
     });
 
     const textCls = classnames({
-      'ui-select-text'            : true,
-      'ui-select-text-placeholder': !hasValue || (search && hasValue && this.state.dropdown),
+      'ui-select-text': true,
+      'ui-select-text-placeholder':
+        !hasValue || (search && hasValue && this.state.dropdown)
     });
 
-    const menus = (children.length > 0)
-                ? <Menu size={size}>{children}</Menu>
-                : <span className="ui-select-notfound">没有找到数据</span>;
+    const menus =
+      children.length > 0 ? (
+        <Menu size={size}>{children}</Menu>
+      ) : (
+        <span className="ui-select-notfound">没有找到数据</span>
+      );
 
-    const inputPlaceholder = this.state.dropdown
-                           ? (hasValue ? valueText : searchPlaceholder)
-                           : valueText;
+    const inputPlaceholder = this.state.dropdown // eslint-disable-line
+      ? hasValue
+        ? valueText
+        : searchPlaceholder
+      : valueText;
 
-    const textRender = !(search && this.state.searchValue.length > 0)
-                     && <span className={textCls}>{inputPlaceholder}</span>;
+    const textRender = !(search && this.state.searchValue.length > 0) && (
+      <span className={textCls}>{inputPlaceholder}</span>
+    );
 
-    const inputRender = search && !disabled
-                      && (
-                          <span className={textCls}>
-                            <input ref="searchInput" value={this.state.searchValue} onChange={(e) => {
-                              let searchValue = e.target.value;
-                              this.setState({searchValue}, () => onSearchChange(searchValue));
-                            }} />
-                          </span>
-                        );
+    const inputRender = search &&
+      !disabled && (
+        <span className={textCls}>
+          <input
+            value={this.state.searchValue}
+            onChange={(e) => {
+              let searchValue = e.target.value;
+              this.setState({ searchValue }, () => onSearchChange(searchValue));
+            }}
+          />
+        </span>
+    );
 
     return (
-      <span className={cls} {...others} ref={ele => this.select = ele}>
-        <span className="ui-select-selection" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" onClick={(e) => !disabled && this.onSelectClick(e)}>
+      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
+        <span
+          className="ui-select-selection"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-haspopup="true"
+          aria-expanded="false"
+          onClick={e => !disabled && this.onSelectClick(e)}
+        >
           {textRender}
           {inputRender}
           <Icon type="arrow-bottom" className="ui-select-arrow" />
@@ -115,6 +145,7 @@ class Select extends Component {
     );
   }
 
+  // eslint-disable-next-line
   getCheckedValue(children) {
     let checkedValue = null;
     React.Children.forEach(children, (option) => {
@@ -136,14 +167,14 @@ class Select extends Component {
     }
 
     this.setState({
-      value      : props.value,
-      searchValue: '',
+      value: props.value,
+      searchValue: ''
     });
 
     const selected = {
-      index: index,
+      index,
       value: props.value,
-      text : props.children,
+      text: props.children
     };
     this.setDropdown(false, this.props.onChange(selected));
   }
@@ -157,16 +188,19 @@ class Select extends Component {
       this.unbindOuterHandlers();
     }
 
-    this.setState({
-      dropdown   : isOpen,
-      searchValue: ''
-    }, () => {
-      callback && callback();
-    });
+    this.setState(
+      {
+        dropdown: isOpen,
+        searchValue: ''
+      },
+      () => {
+        callback && callback();
+      }
+    );
   }
 
   handleKeyup(e) {
-    (e.keyCode === 27) && this.setDropdown(false);
+    e.keyCode === 27 && this.setDropdown(false);
   }
 
   handleOuterClick(e) {
@@ -177,30 +211,30 @@ class Select extends Component {
   }
 
   bindOuterHandlers() {
-    Events.on(document, 'click', (e) => this.handleOuterClick(e));
-    Events.on(document, 'keyup', (e) => this.handleKeyup(e));
+    Events.on(document, 'click', e => this.handleOuterClick(e));
+    Events.on(document, 'keyup', e => this.handleKeyup(e));
   }
 
   unbindOuterHandlers() {
-    Events.off(document, 'click', (e) => this.handleOuterClick(e));
-    Events.off(document, 'keyup', (e) => this.handleKeyup(e));
+    Events.off(document, 'click', e => this.handleOuterClick(e));
+    Events.off(document, 'keyup', e => this.handleKeyup(e));
   }
 }
 
 Select.propTypes = {
-  isRadius      : PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  isSearch      : PropTypes.bool,
+  isRadius: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isSearch: PropTypes.bool,
   onSearchChange: PropTypes.func,
-  onChange      : PropTypes.func,
+  onChange: PropTypes.func
 };
 
 Select.defaultProps = {
-  isRadius      : false,
-  isDisabled    : false,
-  isSearch      : false,
+  isRadius: false,
+  isDisabled: false,
+  isSearch: false,
   onSearchChange: () => {},
-  onChange      : () => {},
+  onChange: () => {}
 };
 
 export default Select;

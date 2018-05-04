@@ -1,14 +1,12 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
 class MessageItem extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      visible : false,
+      visible: false
     };
   }
 
@@ -17,7 +15,7 @@ class MessageItem extends Component {
   }
 
   render() {
-    const { content, theme, ...others } = this.props;
+    const { content, theme, style } = this.props;
 
     let wrapClass = classnames({
       'ui-message-wrapper': true,
@@ -25,12 +23,12 @@ class MessageItem extends Component {
     });
 
     let iconClass = classnames({
-      [`ui-message-${theme}`]: !!theme,
+      [`ui-message-${theme}`]: !!theme
     });
 
     let iconType = 'info-round';
 
-    switch(theme) {
+    switch (theme) {
       case 'warning':
         iconType = 'warning-round';
         break;
@@ -40,15 +38,21 @@ class MessageItem extends Component {
       case 'error':
         iconType = 'wrong-round';
         break;
+      default:
+        break;
     }
 
     return (
-      <div className={wrapClass} {...others}>
-          <div className="ui-message-container">
-            <Icon type={iconType} className={iconClass} style={{fontSize: 15}} />
-            {content}
-          </div>
+      <div className={wrapClass} style={style}>
+        <div className="ui-message-container">
+          <Icon
+            type={iconType}
+            className={iconClass}
+            style={{ fontSize: 15 }}
+          />
+          {content}
         </div>
+      </div>
     );
   }
 }
