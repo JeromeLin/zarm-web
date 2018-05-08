@@ -16,7 +16,8 @@ class Input extends Component {
       cols,
       placeholder,
       maxLength,
-      style
+      style,
+      ...otherProps
     } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -39,6 +40,7 @@ class Input extends Component {
           placeholder={placeholder}
           maxLength={maxLength}
           disabled={disabled}
+          {...otherProps}
         >
           {defaultValue}
         </textarea>
@@ -51,6 +53,7 @@ class Input extends Component {
           placeholder={placeholder}
           maxLength={maxLength}
           disabled={disabled}
+          {...otherProps}
         />
       );
 
