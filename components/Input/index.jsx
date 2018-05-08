@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+function fixControlledValue(value) {
+  if (typeof value === 'undefined' || value === null) {
+    return '';
+  }
+  return value;
+}
+
 class Input extends Component {
   render() {
     const { props } = this;
@@ -29,6 +36,12 @@ class Input extends Component {
       [`size-${size}`]: size,
       [className]: !!className
     });
+
+    if ('value' in props) {
+      otherProps.value = fixControlledValue(props.value);
+      // value 和 defautValue只能设置一个
+      delete otherProps.defaultValue;
+    }
 
     const input =
       type === 'textarea' ? (
