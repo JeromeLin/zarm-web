@@ -1,52 +1,63 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
+// const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  output: {
-    path: path.resolve(__dirname, 'assets'),
-    filename: 'js/[name].[hash:8].js',
-    chunkFilename: 'js/[name].[chunkhash:8].min.js',
-    publicPath: '/'
-  },
+  // output: {
+  //   path: path.resolve(__dirname, 'assets'),
+  //   filename: 'js/[name].[hash:8].js',
+  //   chunkFilename: 'js/[name].[chunkhash:8].min.js',
+  //   publicPath: '/'
+  // },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css?sourceMap&-minimize!autoprefixer!sass?sourceMap'
-        )
+        use: [
+          MiniCssExtractPlugin.loader, 'css-loader',
+          'postcss-loader', 'sass-loader'
+        ]
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css?sourceMap&-minimize!autoprefixer'
-        )
+        use: [
+          MiniCssExtractPlugin.loader, 'css-loader',
+          'postcss-loader'
+        ]
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: 'images/[name].[hash:8].[ext]',
+          },
+        }
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)$/,
-        loader: 'file-loader?name=fonts/[name].[ext]'
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[name].[ext]'
+          }
+        }
       },
       {
         test: /\.(html)$/,
-        loader: 'html'
+        use: 'html-loader'
       }
     ]
   },
 
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
+    new MiniCssExtractPlugin({
+      filename: './style/index.css',
+    }),
   ],
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx', '.scss']
   }
 };

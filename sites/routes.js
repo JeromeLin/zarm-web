@@ -1,14 +1,16 @@
+import App from './pages/App';
+
 const rootRoute = {
   path: '/',
-  component: require('./pages/App'),
+  component: App,
   childRoutes: [
     {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure(
           [],
-          require => {
-            cb(null, require('./pages/Page1'));
+          (require) => {
+            cb(null, require('./pages/Page1').default);
           },
           'Page1'
         );
@@ -19,8 +21,8 @@ const rootRoute = {
       getComponent(location, cb) {
         require.ensure(
           [],
-          require => {
-            cb(null, require('./pages/Page2'));
+          (require) => {
+            cb(null, require('./pages/Page2').default);
           },
           'Page2'
         );
@@ -31,8 +33,8 @@ const rootRoute = {
       getComponent(location, cb) {
         require.ensure(
           [],
-          require => {
-            cb(null, require('./pages/ButtonPage'));
+          (require) => {
+            cb(null, require('./pages/ButtonPage').default);
           },
           'ButtonPage'
         );
@@ -43,8 +45,8 @@ const rootRoute = {
       getComponent(location, cb) {
         require.ensure(
           [],
-          require => {
-            cb(null, require('./pages/ModalPage'));
+          (require) => {
+            cb(null, require('./pages/ModalPage').default);
           },
           'ModalPage'
         );
@@ -55,8 +57,8 @@ const rootRoute = {
       getComponent(location, cb) {
         require.ensure(
           [],
-          require => {
-            cb(null, require('./pages/SliderPage'));
+          (require) => {
+            cb(null, require('./pages/SliderPage').default);
           },
           'SliderPage'
         );
@@ -67,8 +69,8 @@ const rootRoute = {
       getComponent(location, cb) {
         require.ensure(
           [],
-          require => {
-            cb(null, require('./pages/NotFoundPage'));
+          (require) => {
+            cb(null, require('./pages/NotFoundPage').default);
           },
           'NotFoundPage'
         );
@@ -79,8 +81,8 @@ const rootRoute = {
     getComponent(location, cb) {
       require.ensure(
         [],
-        require => {
-          cb(null, require('./pages/Page1'));
+        (require) => {
+          cb(null, require('./pages/Page1').default);
         },
         'Page1'
       );

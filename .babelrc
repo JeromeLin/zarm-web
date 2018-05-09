@@ -1,11 +1,12 @@
 { 
-  "presets" : [["env", { "modules": false }], "stage-0", "react"],
   "env": {
     "development": {
+      "presets" : ["env", "stage-0", "react"],
       "plugins" : ["react-hot-loader/babel", "transform-runtime"]
     },
     "production": {
-      "plugins" : ["transform-runtime"]
+      "plugins" : ["transform-runtime"],
+      "presets" : [["env", { "modules": false }], "stage-0", "react"]
     }
   }
 }

@@ -1,56 +1,47 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 const config = require('./webpack.config.base');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+config.mode = 'development';
 
 config.entry = {
   index: [
     'webpack-dev-server/client?http://127.0.0.1:3000',
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
-    './examples/index.js'
+    './sites/index.js'
   ]
 };
 
-config.plugins.push(
-  new ExtractTextPlugin('stylesheet/[name].css', {
-    allChunks: true
-  })
-);
-config.plugins.push(
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendors'
-  })
-);
-config.module.loaders.push({
+config.output = {
+  path: path.join(__dirname, '/dist'),
+  filename: '[name].js',
+  publicPath: '/'
+};
+
+config.devServer = {
+  contentBase: path.join(__dirname, '/dist'),
+  noInfo: false,
+  hot: true,
+  historyApiFallback: true,
+  open: true,
+  port: 3000,
+};
+
+config.module.rules.push({
   test: /\.(js|jsx)$/,
-  // loader: 'react-hot!babel',
-  loader: 'babel',
+  loader: 'babel-loader',
   exclude: /node_modules/
 });
+
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.plugins.push(
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('development')
-    },
-    __DEBUG__: true
+  new HtmlWebpackPlugin({
+    inject: false,
+    template: './sites/index.html',
+    filename: 'index.html'
   })
 );
-
-config.devtool = 'source-map';
-
-for (const key in config.entry) {
-  if (key === 'vendors') {
-    continue;
-  }
-  config.plugins.push(
-    new HtmlWebpackPlugin({
-      template: './examples/' + key + '.html',
-      filename: key + '.html',
-      chunks: ['vendors', key]
-    })
-  );
-}
 
 module.exports = config;
