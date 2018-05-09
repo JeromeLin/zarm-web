@@ -25,7 +25,7 @@ config.plugins.push(
 config.module.loaders.push({
   test: /\.(js|jsx)$/,
   // loader: 'react-hot!babel',
-  loader: 'react-hot-loader/webpack!babel',
+  loader: 'babel',
   exclude: /node_modules/
 });
 config.plugins.push(new webpack.HotModuleReplacementPlugin());

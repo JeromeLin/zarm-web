@@ -1,7 +1,6 @@
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var config = require('./webpack.config.base');
-var path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const config = require('./webpack.config.base');
+const path = require('path');
 
 config.entry = {
   'dragon-ui': ['./components/index.js', './styles/index.scss']
