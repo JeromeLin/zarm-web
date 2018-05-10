@@ -18,7 +18,7 @@ render(RootContainer);
 if (module.hot) {
   module.hot.accept('./root.js', () => {
     // eslint-disable-next-line
-    const NextRootContainer = require('./root');
+    const NextRootContainer = require('./root').default;
     render(NextRootContainer);
   });
 }

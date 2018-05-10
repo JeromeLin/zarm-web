@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const config = require('./webpack.config.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 config.mode = 'development';
 
@@ -14,14 +15,9 @@ config.entry = {
   ]
 };
 
-config.output = {
-  path: path.join(__dirname, '/dist'),
-  filename: '[name].js',
-  publicPath: '/'
-};
-
 config.devServer = {
   contentBase: path.join(__dirname, '/dist'),
+  publicPath: '/',
   noInfo: false,
   hot: true,
   historyApiFallback: true,
@@ -29,18 +25,15 @@ config.devServer = {
   port: 3000,
 };
 
-config.module.rules.push({
-  test: /\.(js|jsx)$/,
-  loader: 'babel-loader',
-  exclude: /node_modules/
-});
-
+config.plugins.push(
+  new MiniCssExtractPlugin({
+    filename: 'index.css',
+  })
+);
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.plugins.push(
   new HtmlWebpackPlugin({
-    inject: false,
     template: './sites/index.html',
-    filename: 'index.html'
   })
 );
 

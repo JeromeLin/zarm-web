@@ -1,6 +1,8 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./webpack.config.base');
 const path = require('path');
+
+config.mode = 'development';
 
 config.entry = {
   'dragon-ui': ['./components/index.js', './styles/index.scss']
@@ -13,15 +15,9 @@ config.output = {
   filename: '[name].js'
 };
 
-config.module.loaders.push({
-  test: /\.(js|jsx)$/,
-  loader: 'babel',
-  exclude: /node_modules/
-});
-
 config.plugins.push(
-  new ExtractTextPlugin('[name].css', {
-    allChunks: true
+  new MiniCssExtractPlugin({
+    filename: '[name].css',
   })
 );
 

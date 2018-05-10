@@ -1,16 +1,13 @@
-// const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  // output: {
-  //   path: path.resolve(__dirname, 'assets'),
-  //   filename: 'js/[name].[hash:8].js',
-  //   chunkFilename: 'js/[name].[chunkhash:8].min.js',
-  //   publicPath: '/'
-  // },
-
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.scss$/,
         use: [
@@ -51,11 +48,7 @@ module.exports = {
     ]
   },
 
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: './style/index.css',
-    }),
-  ],
+  plugins: [],
 
   resolve: {
     extensions: ['.js', '.jsx', '.scss']

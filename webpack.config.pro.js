@@ -1,61 +1,44 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const config = require('./webpack.config.base');
 
+config.mode = 'production';
+
 config.entry = {
-  index: ['./examples/index.js']
+  index: ['./sites/index.js']
 };
 
 // github gh-pages dir http://xxxx.com/dragon-ui/
-config.output.publicPath = './';
+config.output = {
+  path: path.resolve(__dirname, 'assets'),
+  filename: 'js/[name].[hash:8].js',
+  chunkFilename: 'js/[name].[chunkhash:8].min.js',
+  publicPath: './'
+};
 
-config.module.loaders.push({
-  test: /\.(js|jsx)$/,
-  loader: 'babel',
-  exclude: /node_modules/
-});
+config.optimization = {
+  minimizer: [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true
+    }),
+    new OptimizeCSSAssetsPlugin({})
+  ]
+};
 
 config.plugins.push(
-  new ExtractTextPlugin('stylesheet/[name].css', {
-    allChunks: true
+  new MiniCssExtractPlugin({
+    filename: 'css/[name].[hash:8].css',
   })
 );
 config.plugins.push(
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendors'
+  new HtmlWebpackPlugin({
+    template: './sites/index.html',
   })
 );
-config.plugins.push(
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('production')
-    },
-    __DEBUG__: true
-  })
-);
-config.plugins.push(
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    },
-    output: {
-      comments: false
-    }
-  })
-);
-
-for (const key in config.entry) {
-  if (key === 'vendors') {
-    continue;
-  }
-  config.plugins.push(
-    new HtmlWebpackPlugin({
-      template: './examples/' + key + '.html',
-      filename: key + '.html',
-      chunks: ['vendors', key]
-    })
-  );
-}
 
 module.exports = config;
