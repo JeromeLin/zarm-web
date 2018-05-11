@@ -1145,6 +1145,9 @@ class Page1 extends Component {
                 <Pagination
                   bordered
                   radius
+                  showTotal
+                  showJumper
+                  showPageSizeSelector
                   defaultValue={this.state.currentPage}
                   pageSize={10}
                   total={324}
@@ -1152,12 +1155,11 @@ class Page1 extends Component {
                     console.log(`您选择了( 第 ${value} 页 )`);
                   }}
                 />
-
                 <Pagination
                   radius
                   value={this.state.currentPage}
                   pageSize={10}
-                  total={324}
+                  total={48}
                   onPageChange={value => {
                     console.log(`您选择了( 第 ${value} 页 )`);
                     this.setState({

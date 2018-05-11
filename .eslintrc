@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": ["eslint-config-airbnb"],
   "env": {
     "browser": true,
@@ -50,6 +51,7 @@
     "jsx-a11y/role-has-required-aria-props": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "jsx-a11y/label-has-for": 0,
+    "arrow-body-style": 0,
     "space-after-keywords": 0,
     "space-before-blocks": 0,
     "space-before-function-paren": 0,

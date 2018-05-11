@@ -1,7 +1,5 @@
 
 .ui-pagination {
-  margin: 0;
-  padding: 0;
 
   &:after {
     content: " ";
@@ -41,6 +39,27 @@
   &.radius {
     .ui-pagination-item {
       border-radius: $base-radius;
+    }
+  }
+  &-total {
+    float: left;
+    color: #999;
+  }
+  &-pagers {
+    float: right;
+
+    >ul {
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &-size, &-jumper {
+    float: left;
+    margin-left: 6px;
+    
+    .ui-select {
+      vertical-align: inherit;
     }
   }
 }
