@@ -1,8 +1,8 @@
 { 
   "env": {
     "development": {
-      "presets" : ["env", "stage-0", "react"],
-      "plugins" : ["react-hot-loader/babel", "transform-runtime"]
+      "plugins" : ["react-hot-loader/babel", "transform-runtime"],
+      "presets" : ["env", "stage-0", "react"]
     },
     "production": {
       "plugins" : ["transform-runtime"],

@@ -749,7 +749,6 @@ class Page1 extends Component {
                 disabled
                 placeholder="请选择"
                 style={{ width: 120 }}
-                defaultValue={this.state.selectValue}
                 value={this.state.selectValue}
               >
                 <Select.Option value="a">我是A</Select.Option>
@@ -1270,7 +1269,6 @@ class Page1 extends Component {
                         <Input
                           size="sm"
                           style={{ width: 40 }}
-                          defaultValue={value}
                           value={value}
                           maxLength="3"
                           onChange={e => {
