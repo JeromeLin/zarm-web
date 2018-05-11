@@ -60,7 +60,9 @@
     display: inline-block;
 
     > label {
-      padding-right: 6px;
+      padding-right: 8px;
+      min-width: 60px;
+      text-align: right;
     }
 
     > .ui-form-item-control {
