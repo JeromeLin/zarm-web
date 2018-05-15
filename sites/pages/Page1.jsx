@@ -58,7 +58,7 @@ class Page1 extends Component {
           android: '15617283930',
           tel: '23412341231',
           address: {
-            home: '上海市杨浦区四平路324号',
+            home: '上海市杨浦区四平路324号上海市杨浦区四平路324号上海市杨浦区四平路324号',
             comp: '1xxx公司'
           },
           state: true
@@ -66,13 +66,13 @@ class Page1 extends Component {
         {
           id: '2',
           name: '李四',
-          dept: '健康险事业部',
+          dept: '健康险事业部健康险事业部',
           age: 32,
           iphone: '15617283931',
           android: '15617283930',
           tel: '23412341231',
           address: {
-            home: 'aaaa',
+            home: '健康险事业部健康险事业部健康险事业部健康险事业部健康险事业部健康险事业部',
             comp: '2xxx公司'
           },
           state: true
@@ -100,7 +100,7 @@ class Page1 extends Component {
           android: '15617283930',
           tel: '23412341231',
           address: {
-            home: '美国洛杉矶',
+            home: '美国洛杉矶美国洛杉矶美国洛杉矶美国洛杉矶美国洛杉矶美国洛杉矶美国洛杉矶',
             comp: '2xxx公司'
           },
           state: false
@@ -1150,7 +1150,7 @@ class Page1 extends Component {
                   showPageSizeSelector
                   defaultValue={this.state.currentPage}
                   pageSize={10}
-                  total={324}
+                  total={34}
                   onPageChange={value => {
                     console.log(`您选择了( 第 ${value} 页 )`);
                   }}
@@ -1215,12 +1215,14 @@ class Page1 extends Component {
             <Panel.Body style={{ padding: 0 }}>
               <Table
                 striped
+                bordered
                 radius
                 hover
                 isLoading={this.state.tableLoading}
                 dataSource={this.state.dataSource}
                 columns={[
                   {
+                    title: 'ID',
                     dataIndex: 'id',
                     width: 50,
                     render: (value, row, index) => {
@@ -1364,67 +1366,22 @@ class Page1 extends Component {
             <Panel.Footer>
               <Panel.More>
                 <Pagination
-                  bordered
-                  value={this.state.currentPage}
-                  pageSize={this.state.pageSize}
-                  total={324}
-                  style={{ marginTop: 10 }}
-                  addonBefore={`共有324条记录 第${
-                    this.state.currentPage
-                  }/${Math.ceil(324 / this.state.pageSize)}页`}
-                  addonAfter={
-                    <div style={{ lineHeight: 1.5 }}>
-                      <Select
-                        size="sm"
-                        defaultValue={10}
-                        onChange={data => {
-                          this.setState({
-                            currentPage: 1,
-                            pageSize: data.value
-                          });
-                        }}
-                      >
-                        <Select.Option value={10}>每页 10 条</Select.Option>
-                        <Select.Option value={20}>每页 20 条</Select.Option>
-                        <Select.Option value={30}>每页 30 条</Select.Option>
-                        <Select.Option value={40}>每页 40 条</Select.Option>
-                      </Select>
-                      <span style={{ display: 'inline-block', marginLeft: 15 }}>
-                        跳至
-                        <Input
-                          style={{ width: 50, marginLeft: 5, marginRight: 5 }}
-                          size="sm"
-                          value={this.state.inputPage}
-                          onChange={e => {
-                            let value = e.target.value;
-
-                            this.setState({
-                              inputPage: value
-                            });
-                          }}
-                          onKeyDown={e => {
-                            if (e.keyCode === 13) {
-                              let value = parseInt(this.state.inputPage);
-                              if (!value) return;
-
-                              const pageCount = Math.ceil(
-                                324 / this.state.pageSize
-                              );
-                              value = value < 1 ? 1 : value;
-                              value = value > pageCount ? pageCount : value;
-
-                              this.setState({
-                                currentPage: value,
-                                inputPage: value
-                              });
-                            }
-                          }}
-                        />
-                        页
-                      </span>
-                    </div>
-                  }
-                  onPageChange={value => {
+                   bordered
+                   radius
+                   value={this.state.currentPage}
+                   pageSize={this.state.pageSize}
+                   total={324}
+                   style={{ marginTop: 10 }}
+                   showTotal
+                   showPageSizeSelector
+                   showJumper
+                   onPageSizeChange={(value) => {
+                    this.setState({
+                      currentPage: 1,
+                      pageSize: value
+                    });
+                   }}
+                   onPageChange={value => {
                     this.setState({
                       currentPage: value,
                       inputPage: value
@@ -1437,12 +1394,13 @@ class Page1 extends Component {
 
           <div>表头分组和单元格合并</div>
           <Table
-            striped
+            // striped
             hover
             isLoading={this.state.tableLoading}
             dataSource={this.state.dataSource}
             columns={[
               {
+                title: 'ID',
                 dataIndex: 'id',
                 width: 50,
                 render: (value, row, index) => {
@@ -1549,6 +1507,7 @@ class Page1 extends Component {
               {
                 title: '操作',
                 dataIndex: 'op',
+                fixed: 'right',
                 width: 120,
                 render: (value, row, index) => {
                   return (
@@ -1581,6 +1540,7 @@ class Page1 extends Component {
               console.log(row);
             }}
             rowSelection={{
+              fixed: true,
               // value: this.state.tableSelection,
               onSelect: (selected, row, selectedRows) => {
                 console.log(selected, row, selectedRows);

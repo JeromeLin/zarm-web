@@ -214,7 +214,11 @@ Popover.propTypes = {
     'leftBottom'
   ]),
   onMaskClick: PropTypes.func,
-  content: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+  content: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+    PropTypes.element
+  ])
 };
 
 Popover.defaultProps = {

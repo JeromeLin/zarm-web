@@ -6,7 +6,7 @@
     },
     "production": {
       "plugins" : ["transform-runtime"],
-      "presets" : ["env", "stage-0", "react"]
+      "presets" : [["env", { "modules": false }], "stage-0", "react"]
     }
   }
 }

@@ -1,4 +1,6 @@
-import {
+import domUtil from '../utils/dom';
+
+const {
   getBoundingClientRect,
   getSupportedPropertyName,
   getOffsetParent,
@@ -8,7 +10,7 @@ import {
   getScrollTopValue,
   getScrollLeftValue,
   setStyle
-} from '../utils/dom';
+} = domUtil;
 
 let root = {};
 if (typeof window !== 'undefined') {

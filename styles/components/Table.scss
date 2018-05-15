@@ -2,7 +2,7 @@
   table {
     th,
     td {
-      padding: $padding;
+      padding: $padding / 2 $padding;
     }
   }
 
@@ -15,36 +15,86 @@
 
 .ui-table {
   @include table-size(12px, $base-radius);
+  position: relative;
   color: #666;
 
   .ui-table-body {
+    width: 100%;
+    overflow-x: auto;
     transition: opacity .3s ease;
+  }
+  .ui-table-fixed-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #e9e9e9;
+    border-right: 0;
+    border-bottom: 0;
+    border-right: 1px solid #e9e9e9;
+    transition: box-shadow 0.3s ease-out;
+
+    &.shadow {
+      border-right: 0;
+      box-shadow: 6px 0 6px -4px rgba(0,0,0,.12);
+    }
+  }
+  .ui-table-fixed-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border: 1px solid #e9e9e9;
+    border-left: 0;
+    border-bottom: 0;
+    border-left: 1px solid #e9e9e9;
+    transition: box-shadow 0.3s ease-out;
+
+    &.shadow {
+      border-left: 0;
+      box-shadow: -6px 0 6px -4px rgba(0,0,0,.12);
+    }
+  }
+  .ui-popover-content {
+    max-width: 300px;
+    text-align: left;
+    line-height: 24px;
+    white-space: normal;
   }
 
   table {
-    width: 100%;
-    max-width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    text-align: left;
+    background-color: #fff;
 
     tr {
       line-height: normal;
     }
-
     th,
     td {
+      white-space: nowrap;
       border-bottom: 1px solid #e9e9e9;
     }
 
     th {
-      background: #fffbe9;
+      background: #f4f4f4;
       font-weight: bold;
+      height: 50px;
+      line-height: 26px;
       transition: background .3s ease;
       position: relative;
       user-select: none;
     }
+    td {
+      height: 40px;
+      line-height: 15px;
 
+      .ellipsis-cell {
+        max-width: 300px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
     tbody:last-child {
       tr:last-child {
         td {
@@ -62,6 +112,12 @@
         border-right: 1px solid #e9e9e9;
       }
     }
+  }
+
+  .ui-table-scroll {
+    width: auto;
+    min-width: 100%;
+    text-align: left;
   }
 
   &.ui-table-bordered {
@@ -86,8 +142,8 @@
 
   &.ui-table-hover {
     tbody {
-      tr:hover {
-        background-color: #f5f5f5;
+      tr:hover, tr.hover {
+        background-color: #ecf6fd;
       }
     }
   }
