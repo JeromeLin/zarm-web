@@ -54,7 +54,10 @@ class Table extends Component {
         thead,
         'height'
       );
-      const fixedColTdHeight = domUtil.getStyleComputedProperty(trow, 'height');
+      let fixedColTdHeight = 0;
+      if (trow) {
+        fixedColTdHeight = domUtil.getStyleComputedProperty(trow, 'height');
+      }
 
       this.setState({
         fixedColAttrs: {
@@ -422,17 +425,22 @@ class Table extends Component {
 
   // 表头渲染
   renderColumn(column, index) {
-    let render =
+    const render =
       'columnRender' in column
         ? column.columnRender(column, index)
         : column.title;
 
+    const {
+      dataIndex, width, rowSpan, colSpan, style = {}
+    } = column;
+
     return (
       <th
-        key={column.dataIndex + index}
-        width={column.width}
-        rowSpan={column.rowSpan}
-        colSpan={column.colSpan}
+        key={dataIndex + index}
+        width={width}
+        rowSpan={rowSpan}
+        colSpan={colSpan}
+        style={style}
       >
         {render}
         {this.renderSorter(column)}

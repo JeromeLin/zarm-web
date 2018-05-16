@@ -28,9 +28,7 @@
     top: 0;
     left: 0;
     border: 1px solid #e9e9e9;
-    border-right: 0;
     border-bottom: 0;
-    border-right: 1px solid #e9e9e9;
     transition: box-shadow 0.3s ease-out;
 
     &.shadow {
@@ -44,9 +42,7 @@
     right: 0;
     height: 100%;
     border: 1px solid #e9e9e9;
-    border-left: 0;
     border-bottom: 0;
-    border-left: 1px solid #e9e9e9;
     transition: box-shadow 0.3s ease-out;
 
     &.shadow {

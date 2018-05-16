@@ -1461,7 +1461,10 @@ class Page1 extends Component {
                   },
                   {
                     title: '固话',
-                    dataIndex: 'tel'
+                    dataIndex: 'tel',
+                    style: {
+                      textAlign: 'right',
+                    }
                   }
                 ]
               },
