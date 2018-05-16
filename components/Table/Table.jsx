@@ -30,19 +30,16 @@ class Table extends Component {
         selectedRows: nextProps.rowSelection.value
       });
     }
-  }
-
-  componentDidUpdate() {
-    // 异步获取数据的情况需要Update后计算单元格高度
-    this.getFixedColAttrs();
+    if (nextProps.dataSource !== this.props.dataSource) {
+      // 数据变更重新计算固定列高度
+      this.getFixedColAttrs();
+    }
   }
 
   // 同步单元格高度
   getFixedColAttrs() {
     const { columns } = this.props;
-    const { fixedColAttrs } = this.state;
 
-    if (fixedColAttrs.fixedColThHeight) return;
     if (!columns || columns.length < 2) return;
 
     const firstColumn = columns[0];
@@ -54,7 +51,7 @@ class Table extends Component {
         thead,
         'height'
       );
-      let fixedColTdHeight = 0;
+      let fixedColTdHeight = 40;
       if (trow) {
         fixedColTdHeight = domUtil.getStyleComputedProperty(trow, 'height');
       }

@@ -139,7 +139,7 @@
   &.ui-table-hover {
     tbody {
       tr:hover, tr.hover {
-        background-color: #ecf6fd;
+        background-color: #ecf6fd !important;
       }
     }
   }
