@@ -168,7 +168,7 @@ class Pagination extends Component {
   }
 
   renderJumper = () => {
-    const { radius } = this.props;
+    const { radius, total, pageSize } = this.props;
     return (
       <div className="ui-pagination-jumper">
         跳至
@@ -183,6 +183,10 @@ class Pagination extends Component {
               value = parseInt(value, 10);
               // eslint-disable-next-line
               if (!value || isNaN(value)) return;
+
+              if (value < 1) value = 1;
+              const pageCount = Math.ceil(total / pageSize);
+              if (value > pageCount) value = pageCount;
 
               this._onPagerClick(value);
             }
