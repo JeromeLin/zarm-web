@@ -538,7 +538,7 @@ class Page1 extends Component {
               labelCol="col-sm-2"
               controlCol="col-sm-10"
             >
-              <Tab.Group defaultValue={1} onChange={i => console.log(i)}>
+              <Tab.Group radius defaultValue={1} onChange={i => console.log(i)}>
                 <Tab title="选项卡1">这是选项卡1的文字</Tab>
                 <Tab title="选项卡2">这是选项卡2的文字</Tab>
                 <Tab title="选项卡3">这是选项卡3的文字</Tab>
