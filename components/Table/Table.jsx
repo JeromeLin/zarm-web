@@ -162,21 +162,21 @@ class Table extends Component {
       10
     );
     const { scrollLeft } = target;
-    if (fixedleftCol) {
-      if (scrollLeft === 0) {
-        // 滚动到最左边
-        fixedleftCol.classList.remove('shadow');
-      } else {
-        fixedleftCol.classList.add('shadow');
-      }
-    }
 
-    if (fixedrightCol) {
-      if (scrollLeft > 0 && scrollLeft + containerWidth === scrollTableWidth) {
-        // 滚动到最右边
-        fixedrightCol.classList.remove('shadow');
-      } else {
-        fixedrightCol.classList.add('shadow');
+    if (containerWidth < scrollTableWidth) {
+      if (fixedleftCol) {
+        if (scrollLeft > 0) {
+          fixedleftCol.classList.add('shadow');
+        } else {
+          fixedleftCol.classList.remove('shadow');
+        }
+      }
+      if (fixedrightCol) {
+        if (scrollLeft + containerWidth < scrollTableWidth) {
+          fixedrightCol.classList.add('shadow');
+        } else {
+          fixedrightCol.classList.remove('shadow');
+        }
       }
     }
   };
