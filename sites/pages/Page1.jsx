@@ -1215,7 +1215,7 @@ class Page1 extends Component {
             <Panel.Body style={{ padding: 0 }}>
               <Table
                 striped
-                bordered
+                // bordered
                 radius
                 hover
                 isLoading={this.state.tableLoading}
@@ -1394,7 +1394,9 @@ class Page1 extends Component {
 
           <div>表头分组和单元格合并</div>
           <Table
+            bordered
             // striped
+            radius
             hover
             isLoading={this.state.tableLoading}
             dataSource={this.state.dataSource}
