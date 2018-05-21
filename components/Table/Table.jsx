@@ -482,6 +482,7 @@ class Table extends Component {
   // 单元格渲染
   renderCell(column, row, rowIndex, columnIndex) {
     const value = row[column.dataIndex];
+    const { style = {} } = column;
     const render =
       'render' in column ? column.render(value, row, rowIndex) : value;
 
@@ -496,25 +497,27 @@ class Table extends Component {
     // 字符长度判断
     if (typeof render === 'string' && render.length > 20) {
       return (
-        <td key={column.dataIndex + columnIndex}>
+        <td key={column.dataIndex + columnIndex} style={style}>
           <Popover trigger="hover" direction="top" content={render}>
             <div className="ellipsis-cell">{render}</div>
           </Popover>
         </td>
       );
     }
-    return <td key={column.dataIndex + columnIndex}>{render}</td>;
+    return <td key={column.dataIndex + columnIndex} style={style}>{render}</td>;
   }
 
   // 合并单元格
   // eslint-disable-next-line
   renderMergedCell(column, columnIndex, render) {
     const { colSpan, rowSpan, value } = render;
+    const { style = {} } = column;
     if (colSpan === 0 || rowSpan === 0) {
       return null;
     }
     return (
       <td
+        style={style}
         key={column.dataIndex + columnIndex}
         colSpan={colSpan}
         rowSpan={rowSpan}
