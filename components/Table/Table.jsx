@@ -137,9 +137,9 @@ class Table extends Component {
   }
 
   onEnterTableRow(index) {
-    const { fixedLeftTbody, fixedRightTbody, scrollTbody } = this;
+    const { fixedleftTbody, fixedrightTbody, scrollTbody } = this;
 
-    [fixedLeftTbody, fixedRightTbody, scrollTbody].forEach(tbody => {
+    [fixedleftTbody, fixedrightTbody, scrollTbody].forEach(tbody => {
       if (tbody) {
         this.toggleHoverStatus(tbody.querySelectorAll('tr'), index);
       }
@@ -152,7 +152,7 @@ class Table extends Component {
 
   onScrollTable = e => {
     const { target } = e;
-    const { fixedLeftCol, fixedRightCol, scrollTable } = this;
+    const { fixedleftCol, fixedrightCol, scrollTable } = this;
     const containerWidth = parseInt(
       domUtil.getStyleComputedProperty(target, 'width'),
       10
@@ -162,21 +162,21 @@ class Table extends Component {
       10
     );
     const { scrollLeft } = target;
-    if (fixedLeftCol) {
+    if (fixedleftCol) {
       if (scrollLeft === 0) {
         // 滚动到最左边
-        fixedLeftCol.classList.remove('shadow');
+        fixedleftCol.classList.remove('shadow');
       } else {
-        fixedLeftCol.classList.add('shadow');
+        fixedleftCol.classList.add('shadow');
       }
     }
 
-    if (fixedRightCol) {
+    if (fixedrightCol) {
       if (scrollLeft > 0 && scrollLeft + containerWidth === scrollTableWidth) {
         // 滚动到最右边
-        fixedRightCol.classList.remove('shadow');
+        fixedrightCol.classList.remove('shadow');
       } else {
-        fixedRightCol.classList.add('shadow');
+        fixedrightCol.classList.add('shadow');
       }
     }
   };
@@ -283,7 +283,7 @@ class Table extends Component {
       return (
         <table
           ref={fixedCol => {
-            this.fixedLeftCol = fixedCol;
+            this.fixedleftCol = fixedCol;
           }}
           className={cls}
         >
@@ -301,7 +301,7 @@ class Table extends Component {
           </thead>
           <tbody
             ref={fixedTbody => {
-              this.fixedLeftTbody = fixedTbody;
+              this.fixedleftTbody = fixedTbody;
             }}
           >
             {dataSource.map((data, index) => {
@@ -323,23 +323,31 @@ class Table extends Component {
       );
     }
 
-    return null;
+    return this.renderFixedTable('left');
   }
 
   // 渲染固定右侧的操作列
   renderFixedRightCol() {
+    return this.renderFixedTable('right');
+  }
+
+  // 渲染固定位置的表格
+  renderFixedTable(direction) {
     const { columns, dataSource } = this.props;
     const {
       fixedColAttrs: { fixedColThHeight, fixedColTdHeight }
     } = this.state;
-    const { fixed, title, render } = columns[columns.length - 1];
-    const cls = 'ui-table-fixed-right';
+    const column = direction === 'left' ? columns[0] : columns[columns.length - 1];
+    const {
+      fixed, title, render, dataIndex
+    } = column;
+    const cls = `ui-table-fixed-${direction}`;
 
-    if (fixed && fixed === 'right') {
+    if (fixed && fixed === direction) {
       return (
         <table
           ref={fixedCol => {
-            this.fixedRightCol = fixedCol;
+            this[`fixed${direction}Col`] = fixedCol;
           }}
           className={cls}
         >
@@ -350,7 +358,7 @@ class Table extends Component {
           </thead>
           <tbody
             ref={fixedTbody => {
-              this.fixedRightTbody = fixedTbody;
+              this[`fixed${direction}Tbody`] = fixedTbody;
             }}
           >
             {dataSource.map((data, index) => {
@@ -361,7 +369,13 @@ class Table extends Component {
                   onMouseEnter={() => this.onEnterTableRow(index)}
                   onMouseLeave={() => this.onLeaveTableRow(index)}
                 >
-                  <td style={{ height: fixedColTdHeight }}>{render()}</td>
+                  <td style={{ height: fixedColTdHeight }}>
+                    {
+                      typeof render === 'function'
+                      ? render(data[dataIndex], data, index)
+                      : data[dataIndex]
+                    }
+                  </td>
                 </tr>
               );
             })}
@@ -537,15 +551,15 @@ class Table extends Component {
     ) : (
       this.renderTable()
     );
-    const fixedLeftCol = this.renderFixedLeftCol();
-    const fixedRightCol = this.renderFixedRightCol();
+    const fixedleftCol = this.renderFixedLeftCol();
+    const fixedrightCol = this.renderFixedRightCol();
 
     return (
       <div className={cls}>
         <div className="ui-table-body" onScroll={this.onScrollTable}>
           {content}
-          {fixedLeftCol}
-          {fixedRightCol}
+          {fixedleftCol}
+          {fixedrightCol}
         </div>
       </div>
     );
