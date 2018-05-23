@@ -5,6 +5,7 @@ import Loading from '../Loading';
 import Checkbox from '../Checkbox';
 import Popover from '../Popover';
 import domUtil from '../utils/dom';
+import rAF from '../utils/rAF';
 
 class Table extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Table extends Component {
   }
 
   componentDidMount() {
-    this.getFixedColAttrs();
+    rAF.rAF(() => this.getFixedColAttrs());
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,7 +33,7 @@ class Table extends Component {
     }
     if (nextProps.dataSource !== this.props.dataSource) {
       // 数据变更重新计算固定列高度
-      this.getFixedColAttrs();
+      rAF.rAF(() => this.getFixedColAttrs());
     }
   }
 

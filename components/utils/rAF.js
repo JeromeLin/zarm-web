@@ -30,5 +30,5 @@ if (!cAF) {
 
 export default {
   rAF,
-  cAF,
-};
+  cAF
+}
