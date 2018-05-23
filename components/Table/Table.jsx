@@ -36,7 +36,7 @@ class Table extends Component {
     }
   }
 
-  // 同步单元格高度
+  // 同步单元格宽度和高度
   getFixedColAttrs() {
     const { columns } = this.props;
 
@@ -44,12 +44,22 @@ class Table extends Component {
 
     const firstColumn = columns[0];
     const lastColumn = columns[columns.length - 1];
-    const { thead, trow } = this;
+    const {
+      thead, trow, leftCell, rightCell,
+    } = this;
 
     if (firstColumn.fixed || lastColumn.fixed) {
       const fixedColThHeight = domUtil.getStyleComputedProperty(
         thead,
         'height'
+      );
+      const fixedleftColWidth = domUtil.getStyleComputedProperty(
+        leftCell,
+        'width'
+      );
+      const fixedrightColWidth = domUtil.getStyleComputedProperty(
+        rightCell,
+        'width'
       );
       let fixedColTdHeight = 40;
       if (trow) {
@@ -59,7 +69,9 @@ class Table extends Component {
       this.setState({
         fixedColAttrs: {
           fixedColThHeight,
-          fixedColTdHeight
+          fixedColTdHeight,
+          fixedleftColWidth,
+          fixedrightColWidth
         }
       });
     }
@@ -223,7 +235,7 @@ class Table extends Component {
                     )
                   : null}
                 {row.map((column, columnIndex) =>
-                  this.renderColumn(column, columnIndex)
+                  this.renderColumn(column, columnIndex, index, row.length)
                 )}
               </tr>
             );
@@ -335,9 +347,12 @@ class Table extends Component {
   renderFixedTable(direction) {
     const { columns, dataSource } = this.props;
     const {
-      fixedColAttrs: { fixedColThHeight, fixedColTdHeight }
+      fixedColAttrs: {
+        fixedColThHeight, fixedColTdHeight, fixedleftColWidth, fixedrightColWidth,
+      }
     } = this.state;
     const column = direction === 'left' ? columns[0] : columns[columns.length - 1];
+    const columnWidth = direction === 'left' ? fixedleftColWidth : fixedrightColWidth;
     const {
       fixed, title, render, dataIndex
     } = column;
@@ -353,7 +368,7 @@ class Table extends Component {
         >
           <thead>
             <tr>
-              <th style={{ height: fixedColThHeight }}>{title}</th>
+              <th style={{ width: columnWidth, height: fixedColThHeight }}>{title}</th>
             </tr>
           </thead>
           <tbody
@@ -435,7 +450,7 @@ class Table extends Component {
   }
 
   // 表头渲染
-  renderColumn(column, index) {
+  renderColumn(column, index, rowIndex, length) {
     const render =
       'columnRender' in column
         ? column.columnRender(column, index)
@@ -445,6 +460,18 @@ class Table extends Component {
       dataIndex, width, rowSpan, colSpan, style = {}
     } = column;
 
+    let refAttr = {};
+    if (rowIndex === 0) {
+      if (index === 0) {
+        refAttr = {
+          ref: (leftCell) => { this.leftCell = leftCell; }
+        };
+      } else if (index === length - 1) {
+        refAttr = {
+          ref: (rightCell) => { this.rightCell = rightCell; }
+        };
+      }
+    }
     return (
       <th
         key={dataIndex + index}
@@ -452,6 +479,7 @@ class Table extends Component {
         rowSpan={rowSpan}
         colSpan={colSpan}
         style={style}
+        {...refAttr}
       >
         {render}
         {this.renderSorter(column)}
