@@ -8,7 +8,7 @@ const config = require('./webpack.config.base');
 config.mode = 'production';
 
 config.entry = {
-  index: ['./sites/index.js']
+  index: ['./sites/index.js'],
 };
 
 // github gh-pages dir http://xxxx.com/dragon-ui/
@@ -16,7 +16,7 @@ config.output = {
   path: path.resolve(__dirname, 'assets'),
   filename: 'js/[name].[hash:8].js',
   chunkFilename: 'js/[name].[chunkhash:8].min.js',
-  publicPath: './'
+  publicPath: './',
 };
 
 config.optimization = {
@@ -24,10 +24,10 @@ config.optimization = {
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
-      sourceMap: true
+      sourceMap: true,
     }),
-    new OptimizeCSSAssetsPlugin({})
-  ]
+    new OptimizeCSSAssetsPlugin({}),
+  ],
 };
 
 config.plugins.push(
