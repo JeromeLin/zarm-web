@@ -34,7 +34,7 @@ class Input extends Component {
       disabled,
       radius,
       [`size-${size}`]: size,
-      [className]: !!className
+      [className]: !!className,
     });
 
     if ('value' in props) {
@@ -79,7 +79,7 @@ Input.propTypes = {
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   isRadius: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -87,7 +87,7 @@ Input.defaultProps = {
   size: null,
   isRadius: false,
   isDisabled: false,
-  className: null
+  className: null,
 };
 
 export default Input;

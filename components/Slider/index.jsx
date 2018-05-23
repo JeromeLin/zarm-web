@@ -9,7 +9,7 @@ export default class Slider extends Component {
   constructor(props) {
     super(props);
     const { HandleAmount } = this.props;
-    let states = {};
+    const states = {};
     let i = 0;
     while (i < HandleAmount) {
       states[`currentValue${i}`] = 0;
@@ -26,17 +26,17 @@ export default class Slider extends Component {
       isDragging: false,
       prevX: 0,
       isThreshhold: false, // 是否到达阈值
-      handleMove: undefined, //记录匿名函数的指针
-      handleUp: undefined //记录匿名函数的指针
+      handleMove: undefined, // 记录匿名函数的指针
+      handleUp: undefined, // 记录匿名函数的指针
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       const {
-        min, max, HandleAmount, defaultValue
+        min, max, HandleAmount, defaultValue,
       } = this.props;
-      let states = {};
+      const states = {};
       let i = 0;
       const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue];
 
@@ -55,9 +55,9 @@ export default class Slider extends Component {
   componentWillReceiveProps(nextProps) {
     setTimeout(() => {
       const {
-        min, max, HandleAmount, defaultValue
+        min, max, HandleAmount, defaultValue,
       } = nextProps;
-      let states = {};
+      const states = {};
       let i = 0;
       const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue];
 
@@ -103,7 +103,7 @@ export default class Slider extends Component {
       e.preventDefault();
       if (this.draggingPayload.isDragging) {
         const {
-          min, max, step, styleWidth, getValue, isPass
+          min, max, step, styleWidth, getValue, isPass,
         } = this.props;
         const mouseMovedDist =
           (this.isTouchSuported && e.touches && e.touches[0]
@@ -113,7 +113,7 @@ export default class Slider extends Component {
         const percent = mouseMovedDist / (styleWidth || 200);
         const value = percent * (max - min);
         if (Math.abs(value) >= step) {
-          //寻找最接近value的step倍数
+          // 寻找最接近value的step倍数
           const closestStepToValue = Math.round(value / step) * step;
           const newValue = this.state[`currentValue${i}`] + closestStepToValue;
 
@@ -127,19 +127,19 @@ export default class Slider extends Component {
             getValue && getValue(newValue, i);
             this.draggingPayload.isThreshhold = false;
             this.setState({
-              [`currentValue${i}`]: newValue
+              [`currentValue${i}`]: newValue,
             });
           } else if (newValue > max && !this.draggingPayload.isThreshhold) {
             getValue && getValue(max, i);
             this.draggingPayload.isThreshhold = true;
             this.setState({
-              [`currentValue${i}`]: max
+              [`currentValue${i}`]: max,
             });
           } else if (newValue < min && !this.draggingPayload.isThreshhold) {
             getValue && getValue(min, i);
             this.draggingPayload.isThreshhold = true;
             this.setState({
-              [`currentValue${i}`]: min
+              [`currentValue${i}`]: min,
             });
           }
         }
@@ -147,7 +147,7 @@ export default class Slider extends Component {
     };
   }
 
-  onHandleUp(i) {
+  onHandleUp() {
     return (e) => {
       e.stopPropagation();
       e.preventDefault();
@@ -162,7 +162,7 @@ export default class Slider extends Component {
         removeBodyListener('touchmove', this.draggingPayload.handleMove, false);
         removeBodyListener('touchend', this.draggingPayload.handleUp, false);
       }
-      //fix ‘click event triggered after mouseup’ bug
+      // fix ‘click event triggered after mouseup’ bug
       setTimeout(() => {
         this.draggingPayload.isDragging = false;
       }, 0);
@@ -176,15 +176,15 @@ export default class Slider extends Component {
 
     this.removeTransition = false;
     const {
-      min, max, step, styleWidth, getValue
+      min, max, step, styleWidth, getValue,
     } = this.props;
-    //此处用pageX,兼容有x轴滚动条的情况
+    // 此处用pageX,兼容有x轴滚动条的情况
     const mouseLeft = e.pageX - this.offsetLeft;
     if (mouseLeft < 0 || mouseLeft > (styleWidth || 200)) return;
     const percent = mouseLeft / (styleWidth || 200);
     const value = Math.floor(percent * (max - min)) + min;
 
-    //寻找最接近的handle的value值
+    // 寻找最接近的handle的value值
     const closestHandleValue = this.findClosestHandle(value);
     const handleIndex = this.findHandleIndex(this.state, closestHandleValue);
 
@@ -198,7 +198,7 @@ export default class Slider extends Component {
         );
       this.setState({
         [`currentValue${handleIndex}`]:
-          this.state[`currentValue${handleIndex}`] + closestStepToDelta
+          this.state[`currentValue${handleIndex}`] + closestStepToDelta,
       });
     }
   }
@@ -234,7 +234,7 @@ export default class Slider extends Component {
     return states.indexOf(v);
   }
 
-  //判断handle是否互相接触
+  // 判断handle是否互相接触
   isHandleMeet(index, value) {
     const { max, min } = this.props;
     let states = Object.keys(this.state);
@@ -261,22 +261,22 @@ export default class Slider extends Component {
       theme,
       HandleAmount,
       isRange,
-      rangeColors
+      rangeColors,
     } = this.props;
 
     const styleWidthObj = {
-      width: `${styleWidth || 200}px`
+      width: `${styleWidth || 200}px`,
     };
     const tipClass = classnames({
       'ui-slider-tip': true,
-      'ui-slider-tip-show': tipAlwayShow
+      'ui-slider-tip-show': tipAlwayShow,
     });
     const customClass = classnames({
       'ui-slider-wraper': true,
       [customCls]: customCls,
       round: 'round' in this.props || isRound,
       solid: 'solid' in this.props || isSolid,
-      [`theme-${theme}`]: !!theme
+      [`theme-${theme}`]: !!theme,
     });
 
     const transitionArray = [
@@ -284,7 +284,7 @@ export default class Slider extends Component {
       'MozTransition',
       'msTransition',
       'OTransition',
-      'Transition'
+      'Transition',
     ];
 
     // eslint-disable-next-line
@@ -298,15 +298,15 @@ export default class Slider extends Component {
     let i = 0;
     let styleObjArr;
     while (i < HandleAmount) {
-      let percent = (this.state[`currentValue${i}`] - min) / (max - min) * 100;
+      const percent = (this.state[`currentValue${i}`] - min) / (max - min) * 100;
 
       styleObjArr = {
         handle: { left: `${percent}%` },
         back: {
           width: `${percent}%`,
           backgroundColor: isRange && rangeColorArray[i],
-          zIndex: 10 - i
-        }
+          zIndex: 10 - i,
+        },
       };
       if (!this.removeTransition) {
         // eslint-disable-next-line
@@ -375,7 +375,7 @@ Slider.propTypes = {
   customCls: PropTypes.string,
   HandleAmount: PropTypes.number,
   theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
-  rangeColor: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+  rangeColor: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 };
 
 Slider.defaultProps = {
@@ -393,5 +393,5 @@ Slider.defaultProps = {
   styleWidth: 200,
   rangeColor: '',
   customCls: '',
-  getValue: () => {}
+  getValue: () => {},
 };

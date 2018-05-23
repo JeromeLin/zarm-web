@@ -6,14 +6,14 @@ class Panel extends Component {
   render() {
     const { props } = this;
     const {
-      isRadius, theme, className, children, style
+      isRadius, theme, className, children, style,
     } = props;
 
     const cls = classnames({
       'ui-panel': true,
       radius: 'radius' in props || isRadius,
       [`theme-${theme}`]: !!theme,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -26,12 +26,12 @@ class Panel extends Component {
 
 Panel.propTypes = {
   theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
-  isRadius: PropTypes.bool
+  isRadius: PropTypes.bool,
 };
 
 Panel.defaultProps = {
   theme: 'default',
-  isRadius: false
+  isRadius: false,
 };
 
 export default Panel;

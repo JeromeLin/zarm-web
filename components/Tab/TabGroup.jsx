@@ -11,14 +11,14 @@ class TabGroup extends Component {
         props.value ||
         props.defaultValue ||
         this.getSelectIndex(props.children) ||
-        0
+        0,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getSelectIndex(nextProps.children)) {
       this.setState({
-        value: nextProps.value
+        value: nextProps.value,
       });
     }
   }
@@ -49,14 +49,14 @@ class TabGroup extends Component {
   render() {
     const { props } = this;
     const {
-      isRadius, theme, className, children, onChange, style
+      isRadius, theme, className, children, onChange, style,
     } = props;
 
     const cls = classnames({
       'ui-tab': true,
       radius: 'radius' in props || isRadius,
       [`theme-${theme}`]: !!theme,
-      [className]: !!className
+      [className]: !!className,
     });
 
     // eslint-disable-next-line
@@ -95,13 +95,13 @@ class TabGroup extends Component {
 TabGroup.propTypes = {
   theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   isRadius: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 TabGroup.defaultProps = {
   theme: 'default',
   isRadius: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default TabGroup;

@@ -5,13 +5,13 @@ import classnames from 'classnames';
 class Mask extends Component {
   render() {
     const {
-      visible, type, onClose, style
+      visible, type, onClose, style,
     } = this.props;
     const markCls = classnames({
       'ui-mask': true,
       transparent: type === 'transparent',
       light: type === 'light',
-      dark: type === 'dark'
+      dark: type === 'dark',
     });
 
     return visible ? (
@@ -23,13 +23,13 @@ class Mask extends Component {
 Mask.propTypes = {
   visible: PropTypes.bool,
   type: PropTypes.oneOf(['transparent', 'light', 'normal', 'dark']),
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
 };
 
 Mask.defaultProps = {
   visible: false,
   type: 'normal',
-  onClose: () => {}
+  onClose: () => {},
 };
 
 export default Mask;

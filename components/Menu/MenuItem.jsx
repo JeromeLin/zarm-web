@@ -5,13 +5,13 @@ class MenuItem extends Component {
   render() {
     const { props } = this;
     const {
-      checked, isDisabled, children, onClick, style
+      checked, isDisabled, children, onClick, style,
     } = props;
 
     const cls = classnames({
       'ui-menu-item': true,
       selected: !!checked,
-      disabled: 'disabled' in props || isDisabled
+      disabled: 'disabled' in props || isDisabled,
     });
 
     return (

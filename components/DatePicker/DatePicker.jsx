@@ -14,7 +14,7 @@ class DatePicker extends Component {
     this.unmounted = false;
     this.state = {
       value: Format.date(props.value || props.defaultValue, props.format),
-      dropdown: false
+      dropdown: false,
     };
   }
 
@@ -22,17 +22,74 @@ class DatePicker extends Component {
     this.unmounted = true;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps) {
+      this.setState({
+        value: Format.date(nextProps.value, this.props.format),
+      });
+    }
+  }
+
   componentWillUnmount() {
     this.unmounted = false;
     this.unbindOuterHandlers();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
-      this.setState({
-        value: Format.date(nextProps.value, this.props.format)
-      });
+  onSelectClick(e) {
+    e.preventDefault();
+    const disabled = 'disabled' in this.props || this.props.isDisabled;
+    !disabled && this.setDropdown(!this.state.dropdown);
+  }
+
+  onDateChange(value) {
+    this.setState(
+      {
+        value,
+      },
+      () => {
+        this.setDropdown(false, this.props.onChange(value));
+      }
+    );
+  }
+
+  setDropdown(isOpen, callback) {
+    if (!this.unmounted) return;
+
+    if (isOpen) {
+      this.bindOuterHandlers();
+    } else {
+      this.unbindOuterHandlers();
     }
+
+    this.setState(
+      {
+        dropdown: isOpen,
+      },
+      () => {
+        callback && callback();
+      }
+    );
+  }
+
+  handleKeyup(e) {
+    e.keyCode === 27 && this.setDropdown(false);
+  }
+
+  handleOuterClick(e) {
+    if (!this.unmounted || isNodeInTree(e.target, this.select)) {
+      return;
+    }
+    this.setDropdown(false);
+  }
+
+  bindOuterHandlers() {
+    Events.on(document, 'click', e => this.handleOuterClick(e));
+    Events.on(document, 'keyup', e => this.handleKeyup(e));
+  }
+
+  unbindOuterHandlers() {
+    Events.off(document, 'click', e => this.handleOuterClick(e));
+    Events.off(document, 'keyup', e => this.handleKeyup(e));
   }
 
   render() {
@@ -46,7 +103,7 @@ class DatePicker extends Component {
       format,
       min,
       max,
-      style
+      style,
     } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
@@ -64,11 +121,11 @@ class DatePicker extends Component {
       'ui-select-open': dropdown,
       disabled,
       radius,
-      [`size-${size}`]: !!size
+      [`size-${size}`]: !!size,
     });
 
     const textCls = classnames('ui-select-text', {
-      'ui-select-text-placeholder': !hasValue
+      'ui-select-text-placeholder': !hasValue,
     });
 
     return (
@@ -99,63 +156,6 @@ class DatePicker extends Component {
       </span>
     );
   }
-
-  onSelectClick(e) {
-    e.preventDefault();
-    const disabled = 'disabled' in this.props || this.props.isDisabled;
-    !disabled && this.setDropdown(!this.state.dropdown);
-  }
-
-  onDateChange(value) {
-    this.setState(
-      {
-        value
-      },
-      () => {
-        this.setDropdown(false, this.props.onChange(value));
-      }
-    );
-  }
-
-  setDropdown(isOpen, callback) {
-    if (!this.unmounted) return;
-
-    if (isOpen) {
-      this.bindOuterHandlers();
-    } else {
-      this.unbindOuterHandlers();
-    }
-
-    this.setState(
-      {
-        dropdown: isOpen
-      },
-      () => {
-        callback && callback();
-      }
-    );
-  }
-
-  handleKeyup(e) {
-    e.keyCode === 27 && this.setDropdown(false);
-  }
-
-  handleOuterClick(e) {
-    if (!this.unmounted || isNodeInTree(e.target, this.select)) {
-      return;
-    }
-    this.setDropdown(false);
-  }
-
-  bindOuterHandlers() {
-    Events.on(document, 'click', e => this.handleOuterClick(e));
-    Events.on(document, 'keyup', e => this.handleKeyup(e));
-  }
-
-  unbindOuterHandlers() {
-    Events.off(document, 'click', e => this.handleOuterClick(e));
-    Events.off(document, 'keyup', e => this.handleKeyup(e));
-  }
 }
 
 DatePicker.propTypes = {
@@ -163,7 +163,7 @@ DatePicker.propTypes = {
   format: PropTypes.string,
   onChange: PropTypes.func,
   min: PropTypes.string,
-  max: PropTypes.string
+  max: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
@@ -171,7 +171,7 @@ DatePicker.defaultProps = {
   format: 'yyyy-MM-dd',
   min: '',
   max: '',
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default DatePicker;

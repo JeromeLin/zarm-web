@@ -1,13 +1,13 @@
 
-let EVENT_NAME_MAP = {
-        'animation' : 'animationend',
-       'OAnimation' : 'oAnimationEnd',
-      'msAnimation' : 'MSAnimationEnd',
-     'MozAnimation' : 'mozAnimationEnd',
-  'WebkitAnimation' : 'webkitAnimationEnd'
-};
+// const EVENT_NAME_MAP = {
+//   animation: 'animationend',
+//   OAnimation: 'oAnimationEnd',
+//   msAnimation: 'MSAnimationEnd',
+//   MozAnimation: 'mozAnimationEnd',
+//   WebkitAnimation: 'webkitAnimationEnd',
+// };
 
-let endEvents = ['WebkitTransition', 'MozTransition', 'msTransition', 'OTransition', 'Transition'];
+const endEvents = ['WebkitTransition', 'MozTransition', 'msTransition', 'OTransition', 'Transition'];
 // let testStyle = document.createElement('div').style;
 
 // if (!('AnimationEvent' in window)) {
@@ -27,15 +27,15 @@ export default function addEndEventListener(node, eventListener) {
     return;
   }
 
-  endEvents.forEach(event => {
+  endEvents.forEach((event) => {
     node.addEventListener(event, eventListener, false);
   });
 
   return {
     remove() {
-      endEvents.forEach(event => {
+      endEvents.forEach((event) => {
         node.removeEventListener(event, eventListener, false);
       });
-    }
-  }
-};
+    },
+  };
+}

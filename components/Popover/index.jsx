@@ -17,14 +17,14 @@ const directMap = {
   bottomRight: 'bottom-end',
   left: 'left',
   leftTop: 'left-start',
-  leftBottom: 'left-end'
+  leftBottom: 'left-end',
 };
 
 class Popover extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
     };
   }
 
@@ -34,9 +34,9 @@ class Popover extends Component {
     const { trigger } = this.props;
 
     if (trigger === 'click') {
-      on(reference, 'click', (e) => {
+      on(reference, 'click', () => {
         this.setState({
-          visible: !this.state.visible
+          visible: !this.state.visible,
         });
       });
       on(document, 'click', ({ target }) => {
@@ -71,7 +71,7 @@ class Popover extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.state.visible !== nextProps.visible) {
       this.setState({
-        visible: !!nextProps.visible
+        visible: !!nextProps.visible,
       });
     }
   }
@@ -89,7 +89,7 @@ class Popover extends Component {
           this.arrow.setAttribute('x-arrow', '');
         }
         this.popper = new Popper(reference, this.pop, {
-          placement: directMap[direction]
+          placement: directMap[direction],
         });
       }
     } else {
@@ -110,7 +110,7 @@ class Popover extends Component {
   showPop() {
     clearTimeout(this.timer);
     this.setState({
-      visible: true
+      visible: true,
     });
   }
 
@@ -118,13 +118,13 @@ class Popover extends Component {
     const { trigger } = this.props;
     if (trigger === 'click') {
       this.setState({
-        visible: false
+        visible: false,
       });
       return;
     }
     this.timer = setTimeout(() => {
       this.setState({
-        visible: false
+        visible: false,
       });
     }, 200);
   }
@@ -138,7 +138,7 @@ class Popover extends Component {
       className,
       radius,
       mask,
-      onMaskClick
+      onMaskClick,
     } = this.props;
     const child = React.isValidElement(children) ? (
       children
@@ -148,16 +148,16 @@ class Popover extends Component {
     const popContent = typeof content === 'function' ? content() : content;
     const cls = classnames({
       'ui-popover': true,
-      [className]: !!className
+      [className]: !!className,
     });
     const contentCls = classnames({
       [`${prefixCls}-content`]: true,
       [`${prefixCls}-content-show`]: visible,
-      [`${prefixCls}-content-radius`]: !!radius
+      [`${prefixCls}-content-radius`]: !!radius,
     });
     const maskCls = classnames({
       [`${prefixCls}-mask`]: true,
-      [`${prefixCls}-mask-show`]: visible
+      [`${prefixCls}-mask-show`]: visible,
     });
 
     return (
@@ -185,7 +185,7 @@ class Popover extends Component {
         {React.cloneElement(child, {
           ref: (reference) => {
             this.reference = reference;
-          }
+          },
         })}
       </div>
     );
@@ -211,14 +211,14 @@ Popover.propTypes = {
     'bottomRight',
     'leftTop',
     'left',
-    'leftBottom'
+    'leftBottom',
   ]),
   onMaskClick: PropTypes.func,
   content: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.string,
-    PropTypes.element
-  ])
+    PropTypes.element,
+  ]),
 };
 
 Popover.defaultProps = {
@@ -230,7 +230,7 @@ Popover.defaultProps = {
   radius: true,
   direction: 'bottomRight',
   onMaskClick() {},
-  content: null
+  content: null,
 };
 
 export default Popover;

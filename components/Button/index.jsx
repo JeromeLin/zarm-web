@@ -21,7 +21,7 @@ class Button extends Component {
       className,
       onClick,
       children,
-      style
+      style,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
 
@@ -36,10 +36,10 @@ class Button extends Component {
       disabled,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [className]: !!className
+      [className]: !!className,
     });
 
-    let textContent =
+    const textContent =
       'loading' in props || isLoading ? (
         <span>
           <Icon type="loading" className="rotate360" /> {children}
@@ -92,7 +92,7 @@ Button.defaultProps = {
   isLoading: false,
   className: null,
   style: {},
-  onClick: () => {}
+  onClick: () => {},
 };
 
 export default Button;

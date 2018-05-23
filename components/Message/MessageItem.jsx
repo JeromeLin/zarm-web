@@ -6,7 +6,7 @@ class MessageItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
     };
   }
 
@@ -17,13 +17,13 @@ class MessageItem extends Component {
   render() {
     const { content, theme, style } = this.props;
 
-    let wrapClass = classnames({
+    const wrapClass = classnames({
       'ui-message-wrapper': true,
-      'ui-message-visible': this.state.visible
+      'ui-message-visible': this.state.visible,
     });
 
-    let iconClass = classnames({
-      [`ui-message-${theme}`]: !!theme
+    const iconClass = classnames({
+      [`ui-message-${theme}`]: !!theme,
     });
 
     let iconType = 'info-round';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import domUtil from '../utils/dom';
 
 const {
@@ -9,7 +10,7 @@ const {
   isFixed,
   getScrollTopValue,
   getScrollLeftValue,
-  setStyle
+  setStyle,
 } = domUtil;
 
 let root = {};
@@ -30,9 +31,9 @@ const DEFAULTS = {
     'keepTogether',
     'arrow',
     'flip',
-    'applyStyle'
+    'applyStyle',
   ],
-  removeOnDestroy: false
+  removeOnDestroy: false,
 };
 
 /**
@@ -55,7 +56,7 @@ function getOffsetRectRelativeToCustomParent(element, parent, fixed) {
     bottom: elementRect.top - parentRect.top + elementRect.height,
     right: elementRect.left - parentRect.left + elementRect.width,
     width: elementRect.width,
-    height: elementRect.height
+    height: elementRect.height,
   };
   return rect;
 }
@@ -69,7 +70,7 @@ function getOffsetRectRelativeToCustomParent(element, parent, fixed) {
  */
 function getOppositePlacement(placement) {
   const hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
-  return placement.replace(/left|right|bottom|top/g, function(matched) {
+  return placement.replace(/left|right|bottom|top/g, (matched) => {
     return hash[matched];
   });
 }
@@ -118,7 +119,7 @@ function getOffsetRect(element) {
     width: element.offsetWidth,
     height: element.offsetHeight,
     left: element.offsetLeft,
-    top: element.offsetTop
+    top: element.offsetTop,
   };
   elementRect.right = elementRect.left + elementRect.width;
   elementRect.bottom = elementRect.top + elementRect.height;
@@ -138,12 +139,12 @@ function Popper(reference, popper, options) {
   this.state = {};
   this._options = { ...DEFAULTS, ...options };
   this._options.modifiers = this._options.modifiers.map(
-    function(modifier) {
+    (modifier) => {
       if (modifier === 'applyStyle') {
         this._popper.setAttribute('x-placement', this._options.placement);
       }
       return this.modifiers[modifier] || modifier;
-    }.bind(this)
+    }
   );
 
   this.state.position = this._getPosition(this._popper, this._reference);
@@ -162,7 +163,7 @@ function Popper(reference, popper, options) {
 /**
  * 销毁
  */
-Popper.prototype.destroy = function() {
+Popper.prototype.destroy = function () {
   this._popper.removeAttribute('x-placement');
   this._popper.style.left = '';
   this._popper.style.position = '';
@@ -179,7 +180,7 @@ Popper.prototype.destroy = function() {
 /**
  * 更新方位，重新计算偏移量
  */
-Popper.prototype.update = function() {
+Popper.prototype.update = function () {
   let data = {};
 
   data.placement = this._options.placement;
@@ -202,7 +203,7 @@ Popper.prototype.update = function() {
 /**
  * 判断气泡框应该使用什么定位
  */
-Popper.prototype._getPosition = function(popper, reference) {
+Popper.prototype._getPosition = function (popper, reference) {
   const container = getOffsetParent(reference);
 
   const isParentFixed = isFixed(reference, container);
@@ -212,7 +213,7 @@ Popper.prototype._getPosition = function(popper, reference) {
 /**
  * 根据方位计算气泡框和reference相对气泡框定位父元素的left，top等值
  */
-Popper.prototype._getOffsets = function(popper, reference, placement) {
+Popper.prototype._getOffsets = function (popper, reference, placement) {
   placement = placement.split('-')[0];
   const popperOffsets = {};
 
@@ -251,14 +252,14 @@ Popper.prototype._getOffsets = function(popper, reference, placement) {
 
   return {
     popper: popperOffsets,
-    reference: referenceOffsets
+    reference: referenceOffsets,
   };
 };
 
 /**
  * 设置resize和scroll事件，更新气泡框位置
  */
-Popper.prototype._setupEventListeners = function() {
+Popper.prototype._setupEventListeners = function () {
   this.state.updateBound = this.update.bind(this);
   root.addEventListener('resize', this.state.updateBound);
 
@@ -275,7 +276,7 @@ Popper.prototype._setupEventListeners = function() {
 /**
  * 移除事件
  */
-Popper.prototype._removeEventListeners = function() {
+Popper.prototype._removeEventListeners = function () {
   root.removeEventListener('resize', this.state.updateBound);
   let target = getScrollParent(this._reference);
 
@@ -292,7 +293,7 @@ Popper.prototype._removeEventListeners = function() {
 /**
  * 获取边界，用于优化在边界情况下正常显示气泡框
  */
-Popper.prototype._getBoundaries = function(data, padding) {
+Popper.prototype._getBoundaries = function (data, padding) {
   let boundaries = {};
   const offsetParent = getOffsetParent(this._popper);
   const scrollParent = getScrollParent(this._popper);
@@ -314,13 +315,13 @@ Popper.prototype._getBoundaries = function(data, padding) {
     bottom:
       root.document.documentElement.clientHeight -
       (offsetParentRect.top - scrollTop),
-    left: 0 - (offsetParentRect.left - scrollLeft)
+    left: 0 - (offsetParentRect.left - scrollLeft),
   };
 
   boundaries.left += padding;
   boundaries.right -= padding;
-  boundaries.top = boundaries.top + padding;
-  boundaries.bottom = boundaries.bottom - padding;
+  boundaries.top += padding;
+  boundaries.bottom -= padding;
 
   return boundaries;
 };
@@ -328,7 +329,7 @@ Popper.prototype._getBoundaries = function(data, padding) {
 /**
  * 运行各个modifier函数细调和修正偏移量，并最终应用样式
  */
-Popper.prototype.runModifiers = function(data, modifiers, ends) {
+Popper.prototype.runModifiers = function (data, modifiers, ends) {
   let modifiersToRun = modifiers.slice();
   if (ends !== undefined) {
     modifiersToRun = this._options.modifiers.slice(
@@ -338,11 +339,11 @@ Popper.prototype.runModifiers = function(data, modifiers, ends) {
   }
 
   modifiersToRun.forEach(
-    function(modifier) {
+    (modifier) => {
       if (isFunction(modifier)) {
         data = modifier.call(this, data);
       }
-    }.bind(this)
+    }
   );
 
   return data;
@@ -356,9 +357,9 @@ Popper.prototype.modifiers = {};
 /**
  * 应用最后计算出的样式到气泡框
  */
-Popper.prototype.modifiers.applyStyle = function(data) {
+Popper.prototype.modifiers.applyStyle = function (data) {
   const styles = {
-    position: data.offsets.popper.position
+    position: data.offsets.popper.position,
   };
   const left = Math.round(data.offsets.popper.left);
   const top = Math.round(data.offsets.popper.top);
@@ -366,7 +367,7 @@ Popper.prototype.modifiers.applyStyle = function(data) {
   let prefixedProperty;
   if (getSupportedPropertyName('transform')) {
     prefixedProperty = getSupportedPropertyName('transform');
-    styles[prefixedProperty] = 'translate3d(' + left + 'px, ' + top + 'px, 0)';
+    styles[prefixedProperty] = `translate3d(${left}px, ${top}px, 0)`;
     styles.top = 0;
     styles.left = 0;
   } else {
@@ -389,7 +390,7 @@ Popper.prototype.modifiers.applyStyle = function(data) {
 /**
  * 计算气泡框在不同方位的top，left值
  */
-Popper.prototype.modifiers.shift = function(data) {
+Popper.prototype.modifiers.shift = function (data) {
   const placement = data.placement;
   const basePlacement = placement.split('-')[0];
   const shiftVariation = placement.split('-')[1];
@@ -400,18 +401,18 @@ Popper.prototype.modifiers.shift = function(data) {
     const shiftOffsets = {
       y: {
         start: { top: reference.top },
-        end: { top: reference.top + reference.height - popper.height }
+        end: { top: reference.top + reference.height - popper.height },
       },
       x: {
         start: { left: reference.left },
-        end: { left: reference.left + reference.width - popper.width }
-      }
+        end: { left: reference.left + reference.width - popper.width },
+      },
     };
     const axis = ['bottom', 'top'].indexOf(basePlacement) !== -1 ? 'x' : 'y';
 
     data.offsets.popper = popper = {
       ...popper,
-      ...shiftOffsets[axis][shiftVariation]
+      ...shiftOffsets[axis][shiftVariation],
     };
   }
 
@@ -421,42 +422,42 @@ Popper.prototype.modifiers.shift = function(data) {
 /**
  * 阻止并修正在边界情况下气泡框溢出问题
  */
-Popper.prototype.modifiers.preventOverflow = function(data) {
+Popper.prototype.modifiers.preventOverflow = function (data) {
   const order = this._options.preventOverflowOrder;
   let popper = getPopperClientRect(data.offsets.popper);
 
   const check = {
-    left: function() {
+    left() {
       let left = popper.left;
       if (popper.left < data.boundaries.left) {
         left = Math.max(popper.left, data.boundaries.left);
       }
-      return { left: left };
+      return { left };
     },
-    right: function() {
+    right() {
       let left = popper.left;
       if (popper.right > data.boundaries.right) {
         left = Math.min(popper.left, data.boundaries.right - popper.width);
       }
-      return { left: left };
+      return { left };
     },
-    top: function() {
+    top() {
       let top = popper.top;
       if (popper.top < data.boundaries.top) {
         top = Math.max(popper.top, data.boundaries.top);
       }
-      return { top: top };
+      return { top };
     },
-    bottom: function() {
+    bottom() {
       let top = popper.top;
       if (popper.bottom > data.boundaries.bottom) {
         top = Math.min(popper.top, data.boundaries.bottom - popper.height);
       }
-      return { top: top };
-    }
+      return { top };
+    },
   };
 
-  order.forEach(function(direction) {
+  order.forEach((direction) => {
     data.offsets.popper = popper = { ...popper, ...check[direction]() };
   });
 
@@ -466,7 +467,7 @@ Popper.prototype.modifiers.preventOverflow = function(data) {
 /**
  * 保持气泡框和reference始终在一起
  */
-Popper.prototype.modifiers.keepTogether = function(data) {
+Popper.prototype.modifiers.keepTogether = function (data) {
   const popper = getPopperClientRect(data.offsets.popper);
   const reference = data.offsets.reference;
   const f = Math.floor;
@@ -490,7 +491,7 @@ Popper.prototype.modifiers.keepTogether = function(data) {
 /**
  * 如果气泡框被边界挤得和reference重叠了，进行方向翻转
  */
-Popper.prototype.modifiers.flip = function(data) {
+Popper.prototype.modifiers.flip = function (data) {
   if (data.flipped && data.placement === data._originalPlacement) {
     // 两边都没空间，导致循环翻转
     return data;
@@ -502,7 +503,7 @@ Popper.prototype.modifiers.flip = function(data) {
   const flipOrder = [placement, placementOpposite];
 
   flipOrder.forEach(
-    function(step, index) {
+    (step, index) => {
       if (placement !== step || flipOrder.length === index + 1) {
         return;
       }
@@ -524,7 +525,7 @@ Popper.prototype.modifiers.flip = function(data) {
         data.flipped = true;
         data.placement = flipOrder[index + 1];
         if (variation) {
-          data.placement += '-' + variation;
+          data.placement += `-${variation}`;
         }
         // 计算翻转后的偏移值
         data.offsets.popper = this._getOffsets(
@@ -535,7 +536,7 @@ Popper.prototype.modifiers.flip = function(data) {
         // 因为翻转了反向，重新跑一遍flip之前的modifiers
         data = this.runModifiers(data, this._options.modifiers, this._flip);
       }
-    }.bind(this)
+    }
   );
 
   return data;
@@ -544,7 +545,7 @@ Popper.prototype.modifiers.flip = function(data) {
 /**
  * 根据传入的offset对气泡框做偏移
  */
-Popper.prototype.modifiers.offset = function(data) {
+Popper.prototype.modifiers.offset = function (data) {
   const offset = this._options.offset;
   const popper = data.offsets.popper;
 
@@ -564,7 +565,7 @@ Popper.prototype.modifiers.offset = function(data) {
 /**
  * 保证箭头永远在气泡框和reference之间
  */
-Popper.prototype.modifiers.arrow = function(data) {
+Popper.prototype.modifiers.arrow = function (data) {
   const arrow = this._popper.querySelector(this._options.arrowElement);
   const arrowStyle = {};
   const placement = data.placement.split('-')[0];

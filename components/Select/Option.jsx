@@ -7,7 +7,7 @@ class Option extends Component {
   render() {
     const { props } = this;
     const {
-      children, checked, disabled, isDisabled
+      children, checked, disabled, isDisabled,
     } = props;
 
     const disableProps = {
@@ -31,13 +31,13 @@ class Option extends Component {
 Option.propTypes = {
   defaultChecked: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 Option.defaultProps = {
   defaultChecked: false,
   isDisabled: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Option;

@@ -7,7 +7,7 @@ class Upload extends Component {
     super(props);
     this.state = {
       fileNumber: 0,
-      uploading: false
+      uploading: false,
     };
   }
 
@@ -15,7 +15,7 @@ class Upload extends Component {
     if ('startUpload' in nextProps) {
       this.setState(
         {
-          startUpload: !!nextProps.startUpload
+          startUpload: !!nextProps.startUpload,
         },
         () => {
           this.state.startUpload && this.onUploadClick();
@@ -24,63 +24,8 @@ class Upload extends Component {
     }
   }
 
-  render() {
-    const { props } = this;
-    const {
-      multiple, fileExt, className, style
-    } = props;
-
-    const cls = classnames({
-      'ui-upload': true,
-      [className]: !!className
-    });
-
-    const children = React.Children.map(props.children, (element, index) => {
-      let extendProps = {};
-      if (typeof element.type !== 'string') {
-        // 不是原生dom
-        extendProps = {
-          isLoading:
-            'loading' in element.props ||
-            element.props.isLoading ||
-            this.state.uploading,
-          isDisabled:
-            'disabled' in element.props ||
-            element.props.isDisabled ||
-            this.state.uploading
-        };
-      }
-      if (index > 0) {
-        return cloneElement(element, {
-          ...extendProps
-        });
-      } else {
-        return cloneElement(element, {
-          ...extendProps,
-          onClick: () => {
-            this.upload.click();
-          }
-        });
-      }
-    });
-
-    return (
-      <div className={cls} style={style}>
-        <input
-          type="file"
-          style={{ display: 'none' }}
-          multiple={multiple}
-          accept={fileExt}
-          ref={(upload) => { this.upload = upload; }}
-          onChange={e => this.onSelect(e)}
-        />
-        {children}
-      </div>
-    );
-  }
-
   // 选择附件
-  onSelect(e) {
+  onSelect() {
     const { files } = this.upload;
     const { autoUpload, onSelect } = this.props;
 
@@ -94,7 +39,7 @@ class Upload extends Component {
 
   // 点击上传按钮
   onUploadClick() {
-    let { files } = this.upload;
+    const { files } = this.upload;
 
     if (files.length === 0 || this.state.uploading) {
       return;
@@ -102,7 +47,7 @@ class Upload extends Component {
 
     this.setState({
       uploading: true,
-      fileNumber: files.length
+      fileNumber: files.length,
     });
 
     for (let i = 0; i < files.length; i++) {
@@ -113,16 +58,16 @@ class Upload extends Component {
   // 上传附件
   onUpload(file) {
     const {
-      url, fileName, data, onComplete, onError
+      url, fileName, data, onComplete, onError,
     } = this.props;
     const URL = /^(http:\/\/|https:\/\/|\/\/)/;
     const { origin } = window.location;
 
-    let fd = new FormData();
-    let xhr = new XMLHttpRequest();
+    const fd = new FormData();
+    const xhr = new XMLHttpRequest();
 
     fd.append(fileName, file);
-    Object.keys(data).forEach((key, index) => {
+    Object.keys(data).forEach((key) => {
       fd.append(key, data[key]);
     });
 
@@ -137,7 +82,7 @@ class Upload extends Component {
           onComplete(file, JSON.parse(xhr.responseText));
 
           let { fileNumber } = this.state;
-          let uploading = false;
+          const uploading = false;
 
           fileNumber--;
 
@@ -154,7 +99,7 @@ class Upload extends Component {
       }
     };
 
-    //侦查当前附件上传情况
+    // 侦查当前附件上传情况
     // xhr.upload.onprogress = e => {
     //   loaded = e.loaded;
     //   total = e.total;
@@ -165,6 +110,60 @@ class Upload extends Component {
     xhr.open('post', url);
     xhr.send(fd);
     return true;
+  }
+
+  render() {
+    const { props } = this;
+    const {
+      multiple, fileExt, className, style,
+    } = props;
+
+    const cls = classnames({
+      'ui-upload': true,
+      [className]: !!className,
+    });
+
+    const children = React.Children.map(props.children, (element, index) => {
+      let extendProps = {};
+      if (typeof element.type !== 'string') {
+        // 不是原生dom
+        extendProps = {
+          isLoading:
+            'loading' in element.props ||
+            element.props.isLoading ||
+            this.state.uploading,
+          isDisabled:
+            'disabled' in element.props ||
+            element.props.isDisabled ||
+            this.state.uploading,
+        };
+      }
+      if (index > 0) {
+        return cloneElement(element, {
+          ...extendProps,
+        });
+      }
+      return cloneElement(element, {
+        ...extendProps,
+        onClick: () => {
+          this.upload.click();
+        },
+      });
+    });
+
+    return (
+      <div className={cls} style={style}>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          multiple={multiple}
+          accept={fileExt}
+          ref={(upload) => { this.upload = upload; }}
+          onChange={e => this.onSelect(e)}
+        />
+        {children}
+      </div>
+    );
   }
 }
 
@@ -177,7 +176,7 @@ Upload.propTypes = {
   onSelect: PropTypes.func,
   onProgress: PropTypes.func,
   onComplete: PropTypes.func,
-  onError: PropTypes.func
+  onError: PropTypes.func,
 };
 
 Upload.defaultProps = {
@@ -189,7 +188,7 @@ Upload.defaultProps = {
   onSelect: () => {},
   onProgress: () => {},
   onComplete: () => {},
-  onError: () => {}
+  onError: () => {},
 };
 
 export default Upload;

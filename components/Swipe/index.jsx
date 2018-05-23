@@ -13,7 +13,7 @@ class Swipe extends Component {
       translateX: 0,
       pointStart: 0,
       pointEnd: 0,
-      timeStart: new Date()
+      timeStart: new Date(),
     };
   }
 
@@ -50,61 +50,6 @@ class Swipe extends Component {
     // }
   }
 
-  render() {
-    const {
-      className, height, children, style: wrapperStyle
-    } = this.props;
-
-    const classes = classnames({
-      'ui-swipe': true,
-      [className]: !!className
-    });
-
-    const style = {
-      items: {},
-      pagination: {}
-    };
-
-    if (!this._isDirectionX()) {
-      style.items.height = height;
-      style.pagination.marginTop = 3;
-    } else {
-      style.items.whiteSpace = 'nowrap';
-      style.pagination.display = 'inline-block';
-      style.pagination.marginRight = 3;
-    }
-
-    return (
-      <div className={classes} style={wrapperStyle}>
-        <div
-          ref={(swipeItems) => { this.swipeItems = swipeItems; }}
-          className="ui-swipe-items"
-          style={style.items}
-          onTouchStart={event => this._onTouchStart(event)}
-          onTouchMove={event => this._onTouchMove(event)}
-          onTouchEnd={event => this._onTouchEnd(event)}
-        >
-          {this.state.items}
-        </div>
-        <div className="ui-swipe-pagination">
-          <ul>
-            {Children.map(children, (result, index) => (
-              <li
-                key={`pagination-${index}`}
-                className={classnames({
-                  // eslint-disable-next-line
-                  active: index == this.state.activeIndex
-                })}
-                style={style.pagination}
-                onClick={() => this.onSlideTo(index)}
-              />
-              ))}
-          </ul>
-        </div>
-      </div>
-    );
-  }
-
   // 滑动到指定编号
   onSlideTo(index) {
     this._onMoveTo(index, this.props.speed);
@@ -121,19 +66,19 @@ class Swipe extends Component {
     }
 
     // 增加头尾拼接节点
-    let items = [].concat(children);
-    let firstItem = items[0];
-    let lastItem = items[items.length - 1];
+    const items = [].concat(children);
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
     items.push(firstItem);
     items.unshift(lastItem);
 
     // 节点追加后重排key
     const newItems = React.Children.map(items, (element, index) => cloneElement(element, {
-      key: index
+      key: index,
     }));
 
     this.setState({
-      items: newItems
+      items: newItems,
     });
 
     // 自动轮播开始
@@ -146,7 +91,7 @@ class Swipe extends Component {
       this.props.autoPlay &&
       setInterval(() => {
         let { activeIndex } = this.state;
-        let maxLength = this.props.children.length;
+        const maxLength = this.props.children.length;
 
         activeIndex =
           ['left', 'top'].indexOf(this.props.direction) > -1
@@ -191,7 +136,7 @@ class Swipe extends Component {
 
     this.setState({
       activeIndex: index,
-      translateX: px
+      translateX: px,
     });
   }
 
@@ -217,8 +162,8 @@ class Swipe extends Component {
   }
 
   _transitionEnd() {
-    let { activeIndex } = this.state;
-    let maxLength = this.props.children.length;
+    const { activeIndex } = this.state;
+    const maxLength = this.props.children.length;
 
     if (activeIndex > maxLength - 1) {
       this.onJumpTo(0);
@@ -231,9 +176,9 @@ class Swipe extends Component {
   _onTouchStart(event) {
     this.pauseAutoPlay();
 
-    let pointX = this._getCurrentPoint(event);
-    let { activeIndex } = this.state;
-    let maxLength = this.props.children.length;
+    const pointX = this._getCurrentPoint(event);
+    const { activeIndex } = this.state;
+    const maxLength = this.props.children.length;
 
     // 跳转到头尾
     if (activeIndex <= 0) {
@@ -244,7 +189,7 @@ class Swipe extends Component {
 
     this.setState({
       pointStart: pointX,
-      timeStart: new Date()
+      timeStart: new Date(),
     });
   }
 
@@ -257,11 +202,11 @@ class Swipe extends Component {
 
     this._doTransition(dom, px, 0);
     this.setState({
-      pointEnd: pointX
+      pointEnd: pointX,
     });
   }
 
-  _onTouchEnd(event) {
+  _onTouchEnd() {
     const px =
         this.state.pointEnd !== 0
           ? this.state.pointEnd - this.state.pointStart
@@ -294,23 +239,78 @@ class Swipe extends Component {
     this.setState({
       pointStart: 0,
       pointEnd: 0,
-      activeIndex
+      activeIndex,
     });
   }
 
   // 获取鼠标/触摸点坐标
   _getCurrentPoint(event, type) {
-    let touch = type === 'mouse' ? event : event.touches[0];
+    const touch = type === 'mouse' ? event : event.touches[0];
 
-    let offset = this._isDirectionX() ? touch.pageX : touch.pageY;
+    const offset = this._isDirectionX() ? touch.pageX : touch.pageY;
     return offset;
   }
 
   // 是否横向移动
   _isDirectionX() {
-    let dir =
+    const dir =
       ['left', 'right'].indexOf(this.props.direction) > -1;
     return dir;
+  }
+
+  render() {
+    const {
+      className, height, children, style: wrapperStyle,
+    } = this.props;
+
+    const classes = classnames({
+      'ui-swipe': true,
+      [className]: !!className,
+    });
+
+    const style = {
+      items: {},
+      pagination: {},
+    };
+
+    if (!this._isDirectionX()) {
+      style.items.height = height;
+      style.pagination.marginTop = 3;
+    } else {
+      style.items.whiteSpace = 'nowrap';
+      style.pagination.display = 'inline-block';
+      style.pagination.marginRight = 3;
+    }
+
+    return (
+      <div className={classes} style={wrapperStyle}>
+        <div
+          ref={(swipeItems) => { this.swipeItems = swipeItems; }}
+          className="ui-swipe-items"
+          style={style.items}
+          onTouchStart={event => this._onTouchStart(event)}
+          onTouchMove={event => this._onTouchMove(event)}
+          onTouchEnd={event => this._onTouchEnd(event)}
+        >
+          {this.state.items}
+        </div>
+        <div className="ui-swipe-pagination">
+          <ul>
+            {Children.map(children, (result, index) => (
+              <li
+                key={`pagination-${index}`}
+                className={classnames({
+                  // eslint-disable-next-line
+                  active: index == this.state.activeIndex
+                })}
+                style={style.pagination}
+                onClick={() => this.onSlideTo(index)}
+              />
+              ))}
+          </ul>
+        </div>
+      </div>
+    );
   }
 }
 
@@ -322,7 +322,7 @@ Swipe.propTypes = {
   autoPlay: PropTypes.bool,
   autoPlayIntervalTime: PropTypes.number,
   moveDistanceRatio: PropTypes.number,
-  moveTimeSpan: PropTypes.number
+  moveTimeSpan: PropTypes.number,
 };
 
 Swipe.defaultProps = {
@@ -333,7 +333,7 @@ Swipe.defaultProps = {
   autoPlay: true,
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,
-  moveTimeSpan: 300
+  moveTimeSpan: 300,
 };
 
 export default Swipe;

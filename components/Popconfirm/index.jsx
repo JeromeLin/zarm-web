@@ -9,14 +9,14 @@ class Popconfirm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.visible !== nextProps.visible) {
       this.setState({
-        visible: !!nextProps.visible
+        visible: !!nextProps.visible,
       });
     }
   }
@@ -24,7 +24,7 @@ class Popconfirm extends Component {
   handleCancel() {
     const { onCancel } = this.props;
     this.setState({
-      visible: false
+      visible: false,
     });
     onCancel();
   }
@@ -32,7 +32,7 @@ class Popconfirm extends Component {
   handleConfirm() {
     const { onOk } = this.props;
     this.setState({
-      visible: false
+      visible: false,
     });
     onOk();
   }
@@ -47,7 +47,7 @@ class Popconfirm extends Component {
       trigger,
       direction,
       okText,
-      cancelText
+      cancelText,
     } = this.props;
 
     // eslint-disable-next-line
@@ -97,13 +97,13 @@ Popconfirm.propTypes = {
     'bottomRight',
     'leftTop',
     'left',
-    'leftBottom'
+    'leftBottom',
   ]),
   onCancel: PropTypes.func,
   onOk: PropTypes.func,
   okText: PropTypes.string,
   cancelText: PropTypes.string,
-  content: PropTypes.node
+  content: PropTypes.node,
 };
 
 Popconfirm.defaultProps = {
@@ -116,7 +116,7 @@ Popconfirm.defaultProps = {
   onOk: noop,
   okText: '确认',
   cancelText: '取消',
-  content: null
+  content: null,
 };
 
 export default Popconfirm;

@@ -5,13 +5,13 @@ import classnames from 'classnames';
 class Icon extends Component {
   render() {
     const {
-      type, theme, className, style, onClick
+      type, theme, className, style, onClick,
     } = this.props;
     const cls = classnames({
       'ui-icon': true,
       [`ui-icon-${type}`]: !!type,
       [`theme-${theme}`]: !!theme,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return <i className={cls} style={style} onClick={onClick} />;

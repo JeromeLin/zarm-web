@@ -11,38 +11,22 @@ class CalendarDateTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: props.current || new Date()
+      current: props.current || new Date(),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('current' in nextProps) {
       this.setState({
-        current: nextProps.current
+        current: nextProps.current,
       });
     }
-  }
-
-  render() {
-    const { visible } = this.props;
-    const style = {
-      display: visible ? 'none' : 'block'
-    };
-
-    return (
-      <div style={style}>
-        <table className="ui-calendar-table">
-          {this.renderWeek()}
-          {this.renderDate()}
-        </table>
-      </div>
-    );
   }
 
   // 渲染星期
   // eslint-disable-next-line
   renderWeek() {
-    let weekDays = [];
+    const weekDays = [];
 
     for (let i = 0; i < CALENDAR_COL_COUNT; i++) {
       weekDays[i] = CALENDAR_WEEK_DAYS[i];
@@ -68,19 +52,19 @@ class CalendarDateTable extends Component {
 
   // 渲染日期
   renderDate() {
-    let dd = new Date(this.state.current);
-    let current = {
+    const dd = new Date(this.state.current);
+    const current = {
       year: dd.getFullYear(),
-      month: dd.getMonth() + 1
+      month: dd.getMonth() + 1,
     };
-    let pre = this.getPreMonth(current);
-    let next = this.getNextMonth(current);
+    const pre = this.getPreMonth(current);
+    const next = this.getNextMonth(current);
 
     current.days = this.getDays(current);
     current.firstDayOfWeek = this.getFirstDayOfWeek(current);
     pre.days = this.getDays(pre);
 
-    let dates = [];
+    const dates = [];
 
     // 当月第一天不在周一时，前面日期用上个月的日期补齐
     for (let i = pre.days; i > pre.days - current.firstDayOfWeek + 1; i--) {
@@ -89,7 +73,7 @@ class CalendarDateTable extends Component {
           {
             year: pre.year,
             month: pre.month,
-            date: i
+            date: i,
           },
           'others'
         )
@@ -102,7 +86,7 @@ class CalendarDateTable extends Component {
         this.renderDateCell({
           year: current.year,
           month: current.month,
-          date: j
+          date: j,
         })
       );
     }
@@ -122,18 +106,18 @@ class CalendarDateTable extends Component {
           {
             year: next.year,
             month: next.month,
-            date: k
+            date: k,
           },
           'others'
         )
       );
     }
 
-    let tabelCell = [];
+    const tabelCell = [];
     for (let m = 0; m < CALENDAR_ROW_COUNT; m++) {
-      let tabelRow = [];
+      const tabelRow = [];
       for (let n = 0; n < CALENDAR_COL_COUNT; n++) {
-        let index = m * CALENDAR_COL_COUNT + n;
+        const index = m * CALENDAR_COL_COUNT + n;
         tabelRow.push(
           <td key={`column-${n}`} className="ui-calendar-cell" role="gridcell">
             {dates[index]}
@@ -153,7 +137,7 @@ class CalendarDateTable extends Component {
   // 渲染日期单元
   renderDateCell(day, type) {
     const {
-      value, onDateClick, min, max
+      value, onDateClick, min, max,
     } = this.props;
 
     const fullDay = `${day.year}/${day.month}/${day.date}`;
@@ -183,7 +167,7 @@ class CalendarDateTable extends Component {
       'ui-calendar-text-selected': value === fullDay,
       'ui-calendar-text-today':
         new Date().toLocaleDateString() ===
-        new Date(fullDay).toLocaleDateString()
+        new Date(fullDay).toLocaleDateString(),
     });
 
     return (
@@ -200,7 +184,7 @@ class CalendarDateTable extends Component {
   // 获取第一天的星期
   // eslint-disable-next-line
   getFirstDayOfWeek(current) {
-    let date = new Date(`${current.year}/${current.month}/1`);
+    const date = new Date(`${current.year}/${current.month}/1`);
     let week = date.getDay();
     if (week === 0) {
       week = 7;
@@ -211,7 +195,7 @@ class CalendarDateTable extends Component {
   // 获取下个月
   // eslint-disable-next-line
   getNextMonth(current) {
-    let result = {};
+    const result = {};
     if (current.month === 12) {
       result.year = current.year + 1;
       result.month = 1;
@@ -225,7 +209,7 @@ class CalendarDateTable extends Component {
   // 获取上个月
   // eslint-disable-next-line
   getPreMonth(current) {
-    let result = {};
+    const result = {};
     if (current.month === 1) {
       result.year = current.year - 1;
       result.month = 12;
@@ -241,6 +225,22 @@ class CalendarDateTable extends Component {
   getDays(current) {
     return new Date(current.year, current.month, 0).getDate();
   }
+
+  render() {
+    const { visible } = this.props;
+    const style = {
+      display: visible ? 'none' : 'block',
+    };
+
+    return (
+      <div style={style}>
+        <table className="ui-calendar-table">
+          {this.renderWeek()}
+          {this.renderDate()}
+        </table>
+      </div>
+    );
+  }
 }
 
 CalendarDateTable.propTypes = {
@@ -248,7 +248,7 @@ CalendarDateTable.propTypes = {
   value: PropTypes.string,
   onDateClick: PropTypes.func,
   min: PropTypes.string,
-  max: PropTypes.string
+  max: PropTypes.string,
 };
 
 CalendarDateTable.defaultProps = {
@@ -256,7 +256,7 @@ CalendarDateTable.defaultProps = {
   value: '',
   min: '',
   max: '',
-  onDateClick: () => {}
+  onDateClick: () => {},
 };
 
 export default CalendarDateTable;

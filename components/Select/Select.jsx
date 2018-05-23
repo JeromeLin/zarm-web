@@ -18,7 +18,7 @@ class Select extends Component {
         props.defaultValue ||
         this.getCheckedValue(props.children),
       dropdown: false,
-      searchValue: ''
+      searchValue: '',
     };
   }
 
@@ -29,7 +29,7 @@ class Select extends Component {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children)
+        value: nextProps.value || this.getCheckedValue(nextProps.children),
       });
     }
   }
@@ -37,112 +37,6 @@ class Select extends Component {
   componentWillUnmount() {
     this.unmounted = false;
     this.unbindOuterHandlers();
-  }
-
-  render() {
-    const { props } = this;
-    const {
-      placeholder,
-      searchPlaceholder,
-      isRadius,
-      isDisabled,
-      isSearch,
-      size,
-      onSearchChange,
-      style
-    } = props;
-    const disabled = 'disabled' in props || isDisabled;
-    const radius = 'radius' in props || isRadius;
-    const search = 'search' in props || isSearch;
-
-    let valueText = placeholder;
-    let hasValue = false;
-
-    let children = React.Children.map(props.children, (option, index) => {
-      if (this.state.value == option.props.value) { // eslint-disable-line
-        valueText = option.props.children;
-        hasValue = true;
-      }
-
-      if (
-        search &&
-        option.props.children.toString().indexOf(this.state.searchValue) < 0
-      ) {
-        return null;
-      }
-
-      return (
-        <Option
-          {...option.props}
-          onChange={e => this.onOptionChange(e, option.props, index)}
-          checked={this.state.value === option.props.value}
-        />
-      );
-    });
-
-    const cls = classnames({
-      'ui-select': true,
-      'ui-select-open': this.state.dropdown,
-      disabled,
-      radius,
-      [`size-${size}`]: !!size
-    });
-
-    const textCls = classnames({
-      'ui-select-text': true,
-      'ui-select-text-placeholder':
-        !hasValue || (search && hasValue && this.state.dropdown)
-    });
-
-    const menus =
-      children.length > 0 ? (
-        <Menu size={size}>{children}</Menu>
-      ) : (
-        <span className="ui-select-notfound">没有找到数据</span>
-      );
-
-    const inputPlaceholder = this.state.dropdown // eslint-disable-line
-      ? hasValue
-        ? valueText
-        : searchPlaceholder
-      : valueText;
-
-    const textRender = !(search && this.state.searchValue.length > 0) && (
-      <span className={textCls}>{inputPlaceholder}</span>
-    );
-
-    const inputRender = search &&
-      !disabled && (
-        <span className={textCls}>
-          <input
-            value={this.state.searchValue}
-            onChange={(e) => {
-              let searchValue = e.target.value;
-              this.setState({ searchValue }, () => onSearchChange(searchValue));
-            }}
-          />
-        </span>
-    );
-
-    return (
-      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
-        <span
-          className="ui-select-selection"
-          role="combobox"
-          aria-autocomplete="list"
-          aria-haspopup="true"
-          aria-expanded="false"
-          onClick={e => !disabled && this.onSelectClick(e)}
-        >
-          {textRender}
-          {inputRender}
-          <Icon type="arrow-bottom" className="ui-select-arrow" />
-        </span>
-        <Dropdown visible={this.state.dropdown} isRadius={radius}>
-          {menus}
-        </Dropdown>
-      </span>
-    );
   }
 
   // eslint-disable-next-line
@@ -168,13 +62,13 @@ class Select extends Component {
 
     this.setState({
       value: props.value,
-      searchValue: ''
+      searchValue: '',
     });
 
     const selected = {
       index,
       value: props.value,
-      text: props.children
+      text: props.children,
     };
     this.setDropdown(false, this.props.onChange(selected));
   }
@@ -191,7 +85,7 @@ class Select extends Component {
     this.setState(
       {
         dropdown: isOpen,
-        searchValue: ''
+        searchValue: '',
       },
       () => {
         callback && callback();
@@ -219,6 +113,112 @@ class Select extends Component {
     Events.off(document, 'click', e => this.handleOuterClick(e));
     Events.off(document, 'keyup', e => this.handleKeyup(e));
   }
+
+  render() {
+    const { props } = this;
+    const {
+      placeholder,
+      searchPlaceholder,
+      isRadius,
+      isDisabled,
+      isSearch,
+      size,
+      onSearchChange,
+      style,
+    } = props;
+    const disabled = 'disabled' in props || isDisabled;
+    const radius = 'radius' in props || isRadius;
+    const search = 'search' in props || isSearch;
+
+    let valueText = placeholder;
+    let hasValue = false;
+
+    const children = React.Children.map(props.children, (option, index) => {
+      if (this.state.value == option.props.value) { // eslint-disable-line
+        valueText = option.props.children;
+        hasValue = true;
+      }
+
+      if (
+        search &&
+        option.props.children.toString().indexOf(this.state.searchValue) < 0
+      ) {
+        return null;
+      }
+
+      return (
+        <Option
+          {...option.props}
+          onChange={e => this.onOptionChange(e, option.props, index)}
+          checked={this.state.value === option.props.value}
+        />
+      );
+    });
+
+    const cls = classnames({
+      'ui-select': true,
+      'ui-select-open': this.state.dropdown,
+      disabled,
+      radius,
+      [`size-${size}`]: !!size,
+    });
+
+    const textCls = classnames({
+      'ui-select-text': true,
+      'ui-select-text-placeholder':
+        !hasValue || (search && hasValue && this.state.dropdown),
+    });
+
+    const menus =
+      children.length > 0 ? (
+        <Menu size={size}>{children}</Menu>
+      ) : (
+        <span className="ui-select-notfound">没有找到数据</span>
+      );
+
+    const inputPlaceholder = this.state.dropdown // eslint-disable-line
+      ? hasValue
+        ? valueText
+        : searchPlaceholder
+      : valueText;
+
+    const textRender = !(search && this.state.searchValue.length > 0) && (
+      <span className={textCls}>{inputPlaceholder}</span>
+    );
+
+    const inputRender = search &&
+      !disabled && (
+        <span className={textCls}>
+          <input
+            value={this.state.searchValue}
+            onChange={(e) => {
+              const searchValue = e.target.value;
+              this.setState({ searchValue }, () => onSearchChange(searchValue));
+            }}
+          />
+        </span>
+    );
+
+    return (
+      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
+        <span
+          className="ui-select-selection"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-haspopup="true"
+          aria-expanded="false"
+          onClick={e => !disabled && this.onSelectClick(e)}
+        >
+          {textRender}
+          {inputRender}
+          <Icon type="arrow-bottom" className="ui-select-arrow" />
+        </span>
+        <Dropdown visible={this.state.dropdown} isRadius={radius}>
+          {menus}
+        </Dropdown>
+      </span>
+    );
+  }
 }
 
 Select.propTypes = {
@@ -226,7 +226,7 @@ Select.propTypes = {
   isDisabled: PropTypes.bool,
   isSearch: PropTypes.bool,
   onSearchChange: PropTypes.func,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 Select.defaultProps = {
@@ -234,7 +234,7 @@ Select.defaultProps = {
   isDisabled: false,
   isSearch: false,
   onSearchChange: () => {},
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Select;

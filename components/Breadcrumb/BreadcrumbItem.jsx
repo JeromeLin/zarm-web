@@ -4,11 +4,11 @@ import classnames from 'classnames';
 class BreadcrumbItem extends Component {
   render() {
     const {
-      className, href, separator, children, style
+      className, href, separator, children, style,
     } = this.props;
 
     const cls = classnames({
-      [className]: !!className
+      [className]: !!className,
     });
 
     const text =

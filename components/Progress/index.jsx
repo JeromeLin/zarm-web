@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Progress extends Component {
+  textRender(percent) {
+    const render =
+      'render' in this.props ? (
+        this.props.render(percent)
+      ) : (
+        <span className="ui-progress-line-text">{percent}%</span>
+      );
+    return render;
+  }
   render() {
     const { props } = this;
     const {
@@ -12,7 +21,7 @@ class Progress extends Component {
       theme,
       size,
       className,
-      style
+      style,
     } = this.props;
 
     const cls = classnames({
@@ -21,7 +30,7 @@ class Progress extends Component {
       round: 'round' in props || isRound,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -35,16 +44,6 @@ class Progress extends Component {
       </div>
     );
   }
-
-  textRender(percent) {
-    let render =
-      'render' in this.props ? (
-        this.props.render(percent)
-      ) : (
-        <span className="ui-progress-line-text">{percent}%</span>
-      );
-    return render;
-  }
 }
 
 Progress.propTypes = {
@@ -53,7 +52,7 @@ Progress.propTypes = {
   isBlock: PropTypes.bool,
   isRadius: PropTypes.bool,
   isRound: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 Progress.defaultProps = {
@@ -62,7 +61,7 @@ Progress.defaultProps = {
   isBlock: false,
   isRadius: false,
   isRound: false,
-  className: null
+  className: null,
 };
 
 export default Progress;

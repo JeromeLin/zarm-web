@@ -7,18 +7,18 @@ class Message extends Component {
     super(props);
     this.state = {
       timer: undefined,
-      active: 0
+      active: 0,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     clearTimeout(this.state.timer);
     this.enter();
   }
 
   enter() {
     this.state.timer = setTimeout(() => {
-      let node = this.message.children;
+      const node = this.message.children;
 
       if (!node[this.state.active]) return;
 
@@ -32,7 +32,7 @@ class Message extends Component {
 
   render() {
     const {
-      msg, duration, theme, style
+      msg, duration, theme, style,
     } = this.props;
 
     // eslint-disable-next-line
@@ -58,13 +58,13 @@ class Message extends Component {
 Message.propTypes = {
   msg: PropTypes.arrayOf(PropTypes.object),
   duration: PropTypes.number,
-  theme: PropTypes.oneOf(['info', 'warning', 'success', 'error'])
+  theme: PropTypes.oneOf(['info', 'warning', 'success', 'error']),
 };
 
 Message.defaultProps = {
   msg: [],
   duration: 1500,
-  theme: 'info'
+  theme: 'info',
 };
 
 export default Message;

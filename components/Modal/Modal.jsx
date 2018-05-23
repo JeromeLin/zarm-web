@@ -9,7 +9,7 @@ class Modal extends Component {
     this.state = {
       isShow: false,
       isPending: false,
-      animationState: 'leave'
+      animationState: 'leave',
     };
 
     this.animationEnd = this.animationEnd.bind(this);
@@ -19,16 +19,6 @@ class Modal extends Component {
     if (this.props.visible) {
       this.enter();
     }
-  }
-
-  componentWillUpdate() {
-    Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
-    Events.on(this.modal, 'animationend', this.animationEnd);
-  }
-
-  componentWillUnmount() {
-    Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
-    Events.off(this.modal, 'animationend', this.animationEnd);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,6 +31,46 @@ class Modal extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return !!(this.state.isShow || nextState.isShow);
+  }
+
+  componentWillUpdate() {
+    Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
+    Events.on(this.modal, 'animationend', this.animationEnd);
+  }
+
+  componentWillUnmount() {
+    Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
+    Events.off(this.modal, 'animationend', this.animationEnd);
+  }
+
+  animationEnd() {
+    if (this.state.animationState === 'leave') {
+      this.setState({
+        isShow: false,
+        isPending: false,
+      });
+    } else {
+      this.setState({
+        isShow: true,
+        isPending: false,
+      });
+    }
+  }
+
+  enter() {
+    this.setState({
+      isShow: true,
+      isPending: true,
+      animationState: 'enter',
+    });
+  }
+
+  leave() {
+    this.setState({
+      isShow: true,
+      isPending: true,
+      animationState: 'leave',
+    });
   }
 
   render() {
@@ -63,12 +93,12 @@ class Modal extends Component {
         radius: 'radius' in this.props || isRadius,
         round: 'round' in this.props || isRound,
         [`fade-${animationState}`]: isPending,
-        [className]: !!className
+        [className]: !!className,
       }),
       dialog: classnames({
         'ui-modal-dialog': true,
-        [`${animationType}-${animationState}`]: true
-      })
+        [`${animationType}-${animationState}`]: true,
+      }),
     };
 
     const style = {
@@ -77,7 +107,7 @@ class Modal extends Component {
         MozAnimationDuration: `${animationDuration}ms`,
         msAnimationDuration: `${animationDuration}ms`,
         OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`
+        animationDuration: `${animationDuration}ms`,
       },
       dialog: {
         width: Number(width),
@@ -86,8 +116,8 @@ class Modal extends Component {
         MozAnimationDuration: `${animationDuration}ms`,
         msAnimationDuration: `${animationDuration}ms`,
         OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`
-      }
+        animationDuration: `${animationDuration}ms`,
+      },
     };
 
     if (!isShow) {
@@ -115,36 +145,6 @@ class Modal extends Component {
       </div>
     );
   }
-
-  animationEnd() {
-    if (this.state.animationState === 'leave') {
-      this.setState({
-        isShow: false,
-        isPending: false
-      });
-    } else {
-      this.setState({
-        isShow: true,
-        isPending: false
-      });
-    }
-  }
-
-  enter() {
-    this.setState({
-      isShow: true,
-      isPending: true,
-      animationState: 'enter'
-    });
-  }
-
-  leave() {
-    this.setState({
-      isShow: true,
-      isPending: true,
-      animationState: 'leave'
-    });
-  }
 }
 
 Modal.propTypes = {
@@ -162,14 +162,14 @@ Modal.propTypes = {
     'slideUp',
     'slideDown',
     'slideLeft',
-    'slideRight'
+    'slideRight',
   ]),
   animationDuration: PropTypes.number,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   minWidth: PropTypes.number,
   isRadius: PropTypes.bool,
   isRound: PropTypes.bool,
-  onMaskClick: PropTypes.func
+  onMaskClick: PropTypes.func,
 };
 
 Modal.defaultProps = {
@@ -180,7 +180,7 @@ Modal.defaultProps = {
   minWidth: 270,
   isRadius: false,
   isRound: false,
-  onMaskClick() {}
+  onMaskClick() {},
 };
 
 export default Modal;

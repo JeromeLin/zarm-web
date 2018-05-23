@@ -9,7 +9,7 @@ class Step extends Component {
     super(props);
     this.unmounted = false;
     this.state = {
-      itemWidth: '100%'
+      itemWidth: '100%',
     };
   }
 
@@ -24,33 +24,7 @@ class Step extends Component {
     this.unbindHandlers();
   }
 
-  render() {
-    const { props } = this;
-    const { className, current, style } = props;
-
-    const cls = classnames({
-      'ui-step': true,
-      [className]: !!className
-    });
-
-    let children = React.Children.map(props.children, (item, index) => (
-      <StepItem
-        {...item.props}
-        isFinished={index + 1 < current}
-        isProcess={index + 1 === Number(current)}
-        index={index + 1}
-        style={{ width: `${this.state.itemWidth}` }}
-      />
-    ));
-
-    return (
-      <div className={cls} style={style}>
-        {children}
-      </div>
-    );
-  }
-
-  handleUpdate(e) {
+  handleUpdate() {
     if (!this.unmounted) {
       return;
     }
@@ -68,14 +42,40 @@ class Step extends Component {
   unbindHandlers() {
     Events.off(window, 'resize', e => this.handleUpdate(e));
   }
+
+  render() {
+    const { props } = this;
+    const { className, current, style } = props;
+
+    const cls = classnames({
+      'ui-step': true,
+      [className]: !!className,
+    });
+
+    const children = React.Children.map(props.children, (item, index) => (
+      <StepItem
+        {...item.props}
+        isFinished={index + 1 < current}
+        isProcess={index + 1 === Number(current)}
+        index={index + 1}
+        style={{ width: `${this.state.itemWidth}` }}
+      />
+    ));
+
+    return (
+      <div className={cls} style={style}>
+        {children}
+      </div>
+    );
+  }
 }
 
 Step.propTypes = {
-  current: PropTypes.number
+  current: PropTypes.number,
 };
 
 Step.defaultProps = {
-  current: 1
+  current: 1,
 };
 
 export default Step;

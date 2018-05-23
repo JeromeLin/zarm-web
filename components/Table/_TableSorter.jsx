@@ -6,16 +6,22 @@ class TableSorter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sort: props.sort
+      sort: props.sort,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('sort' in nextProps) {
       this.setState({
-        sort: !!nextProps.sort
+        sort: !!nextProps.sort,
       });
     }
+  }
+
+  toggleSort() {
+    const sort = !this.state.sort;
+    this.setState({ sort });
+    this.props.onSort(sort);
   }
 
   render() {
@@ -24,15 +30,15 @@ class TableSorter extends Component {
 
     const cls = classnames({
       'ui-table-sorter': true,
-      [className]: !!className
+      [className]: !!className,
     });
     const sortUpCls = classnames({
       'ui-table-sorter-up': true,
-      'ui-table-sorter-active': !!sort
+      'ui-table-sorter-active': !!sort,
     });
     const sortDownCls = classnames({
       'ui-table-sorter-down': true,
-      'ui-table-sorter-active': sort !== undefined && !sort
+      'ui-table-sorter-active': sort !== undefined && !sort,
     });
 
     return (
@@ -42,22 +48,16 @@ class TableSorter extends Component {
       </span>
     );
   }
-
-  toggleSort() {
-    const sort = !this.state.sort;
-    this.setState({ sort });
-    this.props.onSort(sort);
-  }
 }
 
 TableSorter.propTypes = {
   sort: PropTypes.bool,
-  onSort: PropTypes.func
+  onSort: PropTypes.func,
 };
 
 TableSorter.defaultProps = {
   sort: false,
-  onSort() {}
+  onSort() {},
 };
 
 export default TableSorter;

@@ -7,7 +7,7 @@ import Icon from '../Icon';
 class Alert extends Component {
   render() {
     const {
-      theme, message, onClose, width, className, visible
+      theme, message, onClose, width, className, visible,
     } = this.props;
 
     let iconType = 'info-round';
@@ -50,7 +50,7 @@ Alert.propTypes = {
   message: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
 };
 
 Alert.defaultProps = {
@@ -58,7 +58,7 @@ Alert.defaultProps = {
   message: '',
   width: 270,
   className: '',
-  onClose: () => {}
+  onClose: () => {},
 };
 
 export default Alert;

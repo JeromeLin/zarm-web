@@ -7,7 +7,7 @@ class PanelMore extends Component {
 
     const cls = classnames({
       'ui-panel-more': true,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (

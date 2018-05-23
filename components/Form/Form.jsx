@@ -5,13 +5,13 @@ import classnames from 'classnames';
 class Form extends Component {
   render() {
     const {
-      type, className, children, style
+      type, className, children, style,
     } = this.props;
 
     const cls = classnames({
       'ui-form': true,
       [`ui-form-${type}`]: 'type' in this.props,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -24,12 +24,12 @@ class Form extends Component {
 
 Form.propTypes = {
   type: PropTypes.oneOf(['horizontal', 'inline']),
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 Form.defaultProps = {
   type: 'horizontal',
-  className: null
+  className: null,
 };
 
 export default Form;

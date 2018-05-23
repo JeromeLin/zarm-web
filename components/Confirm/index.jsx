@@ -42,7 +42,7 @@ Confirm.propTypes = {
   okText: PropTypes.string,
   cancelText: PropTypes.string,
   onOk: PropTypes.func,
-  onCancel: PropTypes.func
+  onCancel: PropTypes.func,
 };
 
 Confirm.defaultProps = {
@@ -51,7 +51,7 @@ Confirm.defaultProps = {
   okText: '确定',
   cancelText: '取消',
   onOk: () => {},
-  onCancel: () => {}
+  onCancel: () => {},
 };
 
 export default Confirm;

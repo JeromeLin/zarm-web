@@ -7,7 +7,7 @@ class PanelTitle extends Component {
 
     const cls = classnames({
       'ui-panel-title': true,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (

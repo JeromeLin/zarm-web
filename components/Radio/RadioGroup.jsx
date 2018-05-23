@@ -9,14 +9,14 @@ class RadioGroup extends Component {
       value:
         props.value ||
         props.defaultValue ||
-        this.getCheckedValue(props.children)
+        this.getCheckedValue(props.children),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children)
+        value: nextProps.value || this.getCheckedValue(nextProps.children),
       });
     }
   }
@@ -24,7 +24,7 @@ class RadioGroup extends Component {
   render() {
     const { props } = this;
 
-    let children = React.Children.map(props.children, radio => (
+    const children = React.Children.map(props.children, radio => (
       <Radio
         {...radio.props}
         onChange={e => this.onRadioChange(e)}
@@ -48,18 +48,18 @@ class RadioGroup extends Component {
 
   onRadioChange(e) {
     this.setState({
-      value: e.target.value
+      value: e.target.value,
     });
     this.props.onChange(e);
   }
 }
 
 RadioGroup.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 RadioGroup.defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default RadioGroup;

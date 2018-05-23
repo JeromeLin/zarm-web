@@ -9,16 +9,73 @@ class Pagination extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue
+      value: props.value || props.defaultValue,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: nextProps.value
+        value: nextProps.value,
       });
     }
+  }
+
+  getPagerList = () => {
+    const {
+      total,
+      pageSize,
+      addonBefore,
+      addonAfter,
+    } = this.props;
+
+    const pageCount = Math.ceil(total / pageSize);
+    const pagerList = [];
+    let { value } = this.state;
+    value = value < 1 ? 1 : value;
+    value = value > pageCount ? pageCount : value;
+
+    if (pageCount <= 9) {
+      for (let i = 1; i <= pageCount; i++) {
+        pagerList.push(this.renderPager(i, value));
+      }
+    } else {
+      let left = Math.max(1, value - 2);
+      let right = Math.min(value + 2, pageCount);
+      if (value - 1 <= 2) {
+        right = 1 + 4;
+      }
+      if (pageCount - value <= 2) {
+        left = pageCount - 4;
+      }
+
+      for (let i = left; i <= right; i++) {
+        pagerList.push(this.renderPager(i, value));
+      }
+      if (value - 1 >= 4) {
+        pagerList.unshift(this.jumpPrev(value));
+      }
+      if (pageCount - value >= 4) {
+        pagerList.push(this.jumpNext(value));
+      }
+      if (left !== 1) {
+        pagerList.unshift(this.firstPager);
+      }
+      if (right !== pageCount) {
+        pagerList.push(this.lastPager(pageCount));
+      }
+      pagerList.unshift(this.prevPager(value));
+      pagerList.push(this.nextPager(value, pageCount));
+    }
+
+    if (addonBefore) {
+      pagerList.unshift(this.renderAddonBefore(addonBefore));
+    }
+    if (addonAfter) {
+      pagerList.push(this.renderAddonAfter(addonAfter));
+    }
+
+    return pagerList;
   }
 
   firstPager = (
@@ -53,7 +110,7 @@ class Pagination extends Component {
         className={classnames({
           'ui-pagination-item': true,
           'ui-pagination-item-prev': true,
-          'ui-pagination-item-disabled': Number(current) === 1
+          'ui-pagination-item-disabled': Number(current) === 1,
         })}
         onClick={() => current > 1 && this._onPagerClick(current - 1)}
       >
@@ -70,7 +127,7 @@ class Pagination extends Component {
         className={classnames({
           'ui-pagination-item': true,
           'ui-pagination-item-next': true,
-          'ui-pagination-item-disabled': Number(current) === pageCount
+          'ui-pagination-item-disabled': Number(current) === pageCount,
         })}
         onClick={() => current < pageCount && this._onPagerClick(current + 1)}
       >
@@ -101,6 +158,13 @@ class Pagination extends Component {
     );
   }
 
+  _onPagerClick(value) {
+    this.setState({
+      value,
+    });
+    this.props.onPageChange(value);
+  }
+
   renderPager = (i, current) => {
     return (
       <li
@@ -108,7 +172,7 @@ class Pagination extends Component {
         title={i}
         className={classnames({
           'ui-pagination-item': true,
-          'ui-pagination-item-active': current === i
+          'ui-pagination-item-active': current === i,
         })}
         onClick={() => this._onPagerClick(i)}
       >
@@ -197,70 +261,6 @@ class Pagination extends Component {
     );
   }
 
-  getPagerList = () => {
-    const {
-      total,
-      pageSize,
-      addonBefore,
-      addonAfter
-    } = this.props;
-
-    const pageCount = Math.ceil(total / pageSize);
-    let pagerList = [];
-    let { value } = this.state;
-    value = value < 1 ? 1 : value;
-    value = value > pageCount ? pageCount : value;
-
-    if (pageCount <= 9) {
-      for (let i = 1; i <= pageCount; i++) {
-        pagerList.push(this.renderPager(i, value));
-      }
-    } else {
-      let left = Math.max(1, value - 2);
-      let right = Math.min(value + 2, pageCount);
-      if (value - 1 <= 2) {
-        right = 1 + 4;
-      }
-      if (pageCount - value <= 2) {
-        left = pageCount - 4;
-      }
-
-      for (let i = left; i <= right; i++) {
-        pagerList.push(this.renderPager(i, value));
-      }
-      if (value - 1 >= 4) {
-        pagerList.unshift(this.jumpPrev(value));
-      }
-      if (pageCount - value >= 4) {
-        pagerList.push(this.jumpNext(value));
-      }
-      if (left !== 1) {
-        pagerList.unshift(this.firstPager);
-      }
-      if (right !== pageCount) {
-        pagerList.push(this.lastPager(pageCount));
-      }
-      pagerList.unshift(this.prevPager(value));
-      pagerList.push(this.nextPager(value, pageCount));
-    }
-
-    if (addonBefore) {
-      pagerList.unshift(this.renderAddonBefore(addonBefore));
-    }
-    if (addonAfter) {
-      pagerList.push(this.renderAddonAfter(addonAfter));
-    }
-
-    return pagerList;
-  }
-
-  _onPagerClick(value) {
-    this.setState({
-      value
-    });
-    this.props.onPageChange(value);
-  }
-
   render() {
     const { props } = this;
     const {
@@ -270,14 +270,14 @@ class Pagination extends Component {
       showTotal,
       showJumper,
       showPageSizeSelector,
-      style
+      style,
     } = props;
 
     const cls = classnames({
       'ui-pagination': true,
       bordered: 'bordered' in props || isBordered,
       radius: 'radius' in props || isRadius,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -324,7 +324,7 @@ Pagination.defaultProps = {
   showJumper: false,
   showPageSizeSelector: false,
   onPageChange: () => {},
-  onPageSizeChange: () => {}
+  onPageSizeChange: () => {},
 };
 
 export default Pagination;

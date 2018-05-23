@@ -9,14 +9,14 @@ class CalendarYearTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: props.value || new Date()
+      current: props.value || new Date(),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('current' in nextProps) {
       this.setState({
-        current: nextProps.current
+        current: nextProps.current,
       });
     }
   }
@@ -24,7 +24,7 @@ class CalendarYearTable extends Component {
   render() {
     const { visible } = this.props;
     const style = {
-      display: visible ? 'none' : 'block'
+      display: visible ? 'none' : 'block',
     };
 
     return (
@@ -38,39 +38,39 @@ class CalendarYearTable extends Component {
 
   // 渲染年份
   renderYear() {
-    let dd = new Date(this.state.current);
-    let current = {
+    const dd = new Date(this.state.current);
+    const current = {
       year: dd.getFullYear(),
       month: dd.getMonth() + 1,
-      date: dd.getDate()
+      date: dd.getDate(),
     };
 
-    let years = [];
+    const years = [];
 
     // 当月日期
     const firstYear = parseInt(current.year / 10, 10) * 10 - 1;
     const lastYear = firstYear + 11;
 
     for (let i = firstYear; i <= lastYear; i++) {
-      let type = i === firstYear || i === lastYear ? 'others' : null;
+      const type = i === firstYear || i === lastYear ? 'others' : null;
 
       years.push(
         this.renderYearCell(
           {
             year: i,
             month: current.month,
-            date: current.date
+            date: current.date,
           },
           type
         )
       );
     }
 
-    let tabelCell = [];
+    const tabelCell = [];
     for (let m = 0; m < CALENDAR_ROW_COUNT; m++) {
-      let tabelRow = [];
+      const tabelRow = [];
       for (let n = 0; n < CALENDAR_COL_COUNT; n++) {
-        let index = m * CALENDAR_COL_COUNT + n;
+        const index = m * CALENDAR_COL_COUNT + n;
         tabelRow.push(
           <td key={`column-${n}`} className="ui-calendar-cell" role="gridcell">
             {years[index]}
@@ -95,7 +95,7 @@ class CalendarYearTable extends Component {
     const cls = classnames({
       'ui-calendar-text': true,
       'ui-calendar-text-others': type === 'others',
-      'ui-calendar-text-selected': this.state.current === fullDay
+      'ui-calendar-text-selected': this.state.current === fullDay,
     });
 
     return (
@@ -113,13 +113,13 @@ class CalendarYearTable extends Component {
 CalendarYearTable.propTypes = {
   defaultValue: PropTypes.string,
   value: PropTypes.string,
-  onYearClick: PropTypes.func
+  onYearClick: PropTypes.func,
 };
 
 CalendarYearTable.defaultProps = {
   defaultValue: '',
   value: '',
-  onYearClick: () => {}
+  onYearClick: () => {},
 };
 
 export default CalendarYearTable;

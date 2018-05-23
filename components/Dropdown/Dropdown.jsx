@@ -6,14 +6,14 @@ class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: props.visible
+      visible: props.visible,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('visible' in nextProps) {
       this.setState({
-        visible: nextProps.visible
+        visible: nextProps.visible,
       });
     }
   }
@@ -21,7 +21,7 @@ class Dropdown extends Component {
   render() {
     const { props } = this;
     const {
-      className, isRadius, children, style
+      className, isRadius, children, style,
     } = props;
     const { visible } = this.state;
 
@@ -29,7 +29,7 @@ class Dropdown extends Component {
       'ui-dropdown': true,
       'ui-dropdown-hidden': !visible,
       radius: 'radius' in props || isRadius,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -44,14 +44,14 @@ Dropdown.propTypes = {
   visible: PropTypes.bool,
   isRadius: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 Dropdown.defaultProps = {
   visible: false,
   isRadius: false,
   isDisabled: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Dropdown;

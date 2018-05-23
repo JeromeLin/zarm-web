@@ -8,19 +8,19 @@ class UploadList extends Component {
   render() {
     const { props } = this;
     const {
-      className, type, dataSource, isRadius, onDelete
+      className, type, dataSource, isRadius, onDelete,
     } = props;
 
     const listCls = classnames({
       'ui-upload-list': true,
       'ui-upload-list-inline': 'inline' in props,
       [`ui-upload-list-${type}`]: 'type' in props,
-      [className]: !!className
+      [className]: !!className,
     });
 
     const itemCls = classnames({
       'ui-upload-list-item': true,
-      radius: 'radius' in props || isRadius
+      radius: 'radius' in props || isRadius,
     });
 
     return (
@@ -78,14 +78,14 @@ UploadList.propTypes = {
   type: PropTypes.oneOf(['text', 'picture']),
   isRadius: PropTypes.bool,
   dataSource: PropTypes.arrayOf(PropTypes.object),
-  onRemove: PropTypes.func
+  onRemove: PropTypes.func,
 };
 
 UploadList.defaultProps = {
   type: 'text',
   isRadius: false,
   dataSource: [],
-  onRemove: () => {}
+  onRemove: () => {},
 };
 
 export default UploadList;

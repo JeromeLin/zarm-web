@@ -6,16 +6,25 @@ class Checkbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked
+      checked: props.checked || props.defaultChecked,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
-        checked: !!nextProps.checked
+        checked: !!nextProps.checked,
       });
     }
+  }
+
+  _onClick(e) {
+    const { checked } = this.state;
+
+    this.setState({
+      checked: !checked,
+    });
+    this.props.onChange(e);
   }
 
   render() {
@@ -25,7 +34,7 @@ class Checkbox extends Component {
       isDisabled,
       className,
       children,
-      style
+      style,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
 
@@ -33,7 +42,7 @@ class Checkbox extends Component {
       'ui-checkbox': true,
       checked: this.state.checked,
       disabled,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -53,27 +62,18 @@ class Checkbox extends Component {
       </label>
     );
   }
-
-  _onClick(e) {
-    const { checked } = this.state;
-
-    this.setState({
-      checked: !checked
-    });
-    this.props.onChange(e);
-  }
 }
 
 Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 Checkbox.defaultProps = {
   defaultChecked: false,
   isDisabled: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Checkbox;

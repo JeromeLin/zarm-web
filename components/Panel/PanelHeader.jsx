@@ -7,7 +7,7 @@ class PanelHeader extends Component {
 
     const cls = classnames({
       'ui-panel-header': true,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (

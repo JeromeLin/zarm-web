@@ -16,7 +16,7 @@ class Calendar extends Component {
         'yyyy/M/d'
       ),
       value: Format.date(props.value || props.defaultValue, 'yyyy/M/d'),
-      panel: 'date'
+      panel: 'date',
     };
   }
 
@@ -28,21 +28,44 @@ class Calendar extends Component {
           nextProps.value || nextProps.defaultValue || new Date(),
           'yyyy/M/d'
         ),
-        panel: 'date'
+        panel: 'date',
       });
     }
+  }
+
+  onYearClick(value) {
+    this.setState({
+      current: value,
+      panel: 'date',
+    });
+  }
+
+  onMonthClick(value) {
+    this.setState({
+      current: value,
+      panel: 'date',
+    });
+  }
+
+  onDateClick(value) {
+    this.setState({
+      value,
+      current: value,
+    });
+    const { format, onChange } = this.props;
+    onChange && onChange(Format.date(value, format));
   }
 
   render() {
     const { props } = this;
     const {
-      className, hasFooter, min, max, style
+      className, hasFooter, min, max, style,
     } = props;
     const { current, value, panel } = this.state;
 
     const cls = classnames({
       'ui-calendar': true,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -99,43 +122,20 @@ class Calendar extends Component {
       </div>
     );
   }
-
-  onYearClick(value) {
-    this.setState({
-      current: value,
-      panel: 'date'
-    });
-  }
-
-  onMonthClick(value) {
-    this.setState({
-      current: value,
-      panel: 'date'
-    });
-  }
-
-  onDateClick(value) {
-    this.setState({
-      value,
-      current: value
-    });
-    const { format, onChange } = this.props;
-    onChange && onChange(Format.date(value, format));
-  }
 }
 
 Calendar.propTypes = {
   format: PropTypes.string,
   onChange: PropTypes.func,
   min: PropTypes.string,
-  max: PropTypes.string
+  max: PropTypes.string,
 };
 
 Calendar.defaultProps = {
   format: 'yyyy-MM-dd',
   min: '',
   max: '',
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Calendar;

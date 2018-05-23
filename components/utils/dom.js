@@ -1,15 +1,15 @@
-"use strict";
 
+/* eslint-disable */
 const domUtil = {
 
-  //获取元素的纵坐标（相对于窗口）
+  // 获取元素的纵坐标（相对于窗口）
   getTop: (e) => {
     let offset = e.offsetTop;
     if (e.offsetParent != null) offset += domUtil.getTop(e.offsetParent);
     return offset;
   },
 
-  //获取元素的横坐标（相对于窗口）
+  // 获取元素的横坐标（相对于窗口）
   getLeft: (e) => {
     let offset = e.offsetLeft;
     if (e.offsetParent != null) offset += domUtil.getLeft(e.offsetParent);
@@ -17,7 +17,7 @@ const domUtil = {
   },
 
   probTouch: (e) => {
-    return 'ontouchend' in document
+    return 'ontouchend' in document;
   },
 
   // 获取元素大小以及相对窗口的位置
@@ -25,7 +25,7 @@ const domUtil = {
     const rect = e.getBoundingClientRect();
 
     // 解决ie下的兼容问题
-    const isIE = navigator.userAgent.indexOf("MSIE") != -1;
+    const isIE = navigator.userAgent.indexOf('MSIE') != -1;
     const rectTop = isIE && e.tagName === 'HTML' ?
       -e.scrollTop :
       rect.top;
@@ -36,7 +36,7 @@ const domUtil = {
       right: rect.right,
       bottom: rect.bottom,
       width: rect.right - rect.left,
-      height: rect.bottom - rectTop
+      height: rect.bottom - rectTop,
     };
   },
 
@@ -45,7 +45,7 @@ const domUtil = {
     function is_numeric(n) {
       return (n !== '' && !isNaN(parseFloat(n)) && isFinite(n));
     }
-    Object.keys(styles).forEach(function(prop) {
+    Object.keys(styles).forEach((prop) => {
       let unit = '';
       if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && is_numeric(styles[prop])) {
         unit = 'px';
@@ -84,7 +84,7 @@ const domUtil = {
     const y = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
     const result = {
       width: e.offsetWidth + y,
-      height: e.offsetHeight + x
+      height: e.offsetHeight + x,
     };
 
     // reset
@@ -100,7 +100,7 @@ const domUtil = {
   },
 
   // 获取指定元素可滚动的父元素
-  getScrollParent: function(e) {
+  getScrollParent(e) {
     const parent = e.parentNode;
 
     if (!parent) {
@@ -109,9 +109,8 @@ const domUtil = {
     if (parent === window.document) {
       if (window.document.body.scrollTop) {
         return window.document.body;
-      } else {
-        return window.document.documentElement;
       }
+      return window.document.documentElement;
     }
     if (
       ['scroll', 'auto'].indexOf(domUtil.getStyleComputedProperty(parent, 'overflow')) !== -1 ||
@@ -143,7 +142,7 @@ const domUtil = {
 
   getScrollLeftValue: (e) => {
     return e == document.body ? Math.max(document.documentElement.scrollLeft, document.body.scrollLeft) : e.scrollLeft;
-  }
-}
+  },
+};
 
-export default domUtil
+export default domUtil;

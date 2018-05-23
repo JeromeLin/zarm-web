@@ -5,14 +5,14 @@ class CalendarHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      panel: props.panel || 'date'
+      panel: props.panel || 'date',
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('panel' in nextProps) {
       this.setState({
-        panel: nextProps.panel
+        panel: nextProps.panel,
       });
     }
   }
@@ -22,7 +22,7 @@ class CalendarHeader extends Component {
     const current = {
       year: dd.getFullYear(),
       month: dd.getMonth() + 1,
-      date: dd.getDate()
+      date: dd.getDate(),
     };
     const beforeYear = parseInt(current.year / 10, 10) * 10;
 
@@ -135,7 +135,7 @@ class CalendarHeader extends Component {
 
   // 切换世纪
   onCenturyClick(current, type) {
-    let newYear = current;
+    const newYear = current;
     if (type === 'pre') {
       newYear.year = current.year - 10;
     } else {
@@ -148,7 +148,7 @@ class CalendarHeader extends Component {
 
   // 切换年份
   onYearClick(current, type) {
-    let newYear = current;
+    const newYear = current;
     if (type === 'pre') {
       newYear.year = current.year - 1;
     } else {
@@ -161,7 +161,7 @@ class CalendarHeader extends Component {
 
   // 切换月份
   onMonthClick(current, type) {
-    let newMonth =
+    const newMonth =
       type === 'pre' ? this.getPreMonth(current) : this.getNextMonth(current);
     const currentString = `${newMonth.year}/${newMonth.month}/${newMonth.date}`;
 
@@ -171,7 +171,7 @@ class CalendarHeader extends Component {
   // 获取下个月
   // eslint-disable-next-line
   getNextMonth(current) {
-    let result = current;
+    const result = current;
     if (result.month === 12) {
       result.year += 1;
       result.month = 1;
@@ -185,7 +185,7 @@ class CalendarHeader extends Component {
   // 获取上个月
   // eslint-disable-next-line
   getPreMonth(current) {
-    let result = current;
+    const result = current;
     if (result.month === 1) {
       result.year -= 1;
       result.month = 12;

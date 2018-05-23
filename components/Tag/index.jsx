@@ -17,7 +17,7 @@ class Tag extends Component {
       className,
       onClose,
       children,
-      style
+      style,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
 
@@ -30,7 +30,7 @@ class Tag extends Component {
       disabled,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [className]: !!className
+      [className]: !!className,
     });
 
     const closeIcon = onClose ? (
@@ -48,13 +48,13 @@ class Tag extends Component {
 Tag.propTypes = {
   theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
 };
 
 Tag.defaultProps = {
   theme: 'default',
   size: null,
-  onClose: () => {}
+  onClose: () => {},
 };
 
 export default Tag;

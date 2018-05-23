@@ -6,22 +6,30 @@ class Switch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue
+      value: props.value || props.defaultValue,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: !!nextProps.value
+        value: !!nextProps.value,
       });
     }
+  }
+
+  _onClick() {
+    const value = !this.state.value;
+    this.setState({
+      value,
+    });
+    this.props.onChange(value);
   }
 
   render() {
     const { props } = this;
     const {
-      size, isCheckedText, unCheckedText, isDisabled, style
+      size, isCheckedText, unCheckedText, isDisabled, style,
     } = props;
     const { value } = this.state;
     const disabled = 'disabled' in props || isDisabled;
@@ -30,7 +38,7 @@ class Switch extends Component {
       'ui-switch': true,
       checked: value,
       disabled,
-      [`size-${size}`]: !!size
+      [`size-${size}`]: !!size,
     });
 
     return (
@@ -45,14 +53,6 @@ class Switch extends Component {
       </span>
     );
   }
-
-  _onClick() {
-    const value = !this.state.value;
-    this.setState({
-      value
-    });
-    this.props.onChange(value);
-  }
 }
 
 Switch.propTypes = {
@@ -61,7 +61,7 @@ Switch.propTypes = {
   defaultValue: PropTypes.bool,
   isCheckedText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   unCheckedText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 Switch.defaultProps = {
@@ -70,7 +70,7 @@ Switch.defaultProps = {
   defaultValue: false,
   isCheckedText: '',
   unCheckedText: '',
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Switch;

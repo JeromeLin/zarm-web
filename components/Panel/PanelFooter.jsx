@@ -7,7 +7,7 @@ class PanelFooter extends Component {
 
     const cls = classnames({
       'ui-panel-footer': true,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (

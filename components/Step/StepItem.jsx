@@ -6,13 +6,13 @@ class StepItem extends Component {
   render() {
     const { props } = this;
     const {
-      isFinished, isProcess, index, children, style
+      isFinished, isProcess, index, children, style,
     } = props;
 
     const cls = classnames({
       'ui-step-item': true,
       'ui-step-item-finish': 'finished' in props || isFinished,
-      'ui-step-item-process': 'process' in props || isProcess
+      'ui-step-item-process': 'process' in props || isProcess,
     });
 
     return (

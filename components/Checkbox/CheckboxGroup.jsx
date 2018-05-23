@@ -9,14 +9,14 @@ class CheckboxGroup extends Component {
       value:
         props.value ||
         props.defaultValue ||
-        this.getCheckedValue(props.children)
+        this.getCheckedValue(props.children),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children)
+        value: nextProps.value || this.getCheckedValue(nextProps.children),
       });
     }
   }
@@ -24,7 +24,7 @@ class CheckboxGroup extends Component {
   render() {
     const { props } = this;
 
-    let children = React.Children.map(props.children, checkbox => (
+    const children = React.Children.map(props.children, checkbox => (
       <Checkbox
         {...checkbox.props}
         onChange={e => this.onCheckboxChange(e)}
@@ -37,7 +37,7 @@ class CheckboxGroup extends Component {
 
   // eslint-disable-next-line
   getCheckedValue(children) {
-    let checkedValue = [];
+    const checkedValue = [];
     React.Children.forEach(children, (checkbox) => {
       if (checkbox.props && checkbox.props.checked) {
         checkedValue.push(checkbox.props.value);
@@ -47,8 +47,8 @@ class CheckboxGroup extends Component {
   }
 
   onCheckboxChange(e) {
-    let { value } = this.state;
-    let index = value.indexOf(e.target.value);
+    const { value } = this.state;
+    const index = value.indexOf(e.target.value);
 
     if (index < 0) {
       value.push(e.target.value);
@@ -57,18 +57,18 @@ class CheckboxGroup extends Component {
     }
 
     this.setState({
-      value
+      value,
     });
     this.props.onChange(value);
   }
 }
 
 CheckboxGroup.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 CheckboxGroup.defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default CheckboxGroup;

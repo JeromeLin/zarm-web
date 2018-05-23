@@ -6,12 +6,12 @@ class ModalBody extends Component {
   render() {
     const { height, children, className } = this.props;
     const bodyStyle = {
-      height
+      height,
     };
 
     const cls = classnames({
       'ui-modal-body': true,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -23,11 +23,11 @@ class ModalBody extends Component {
 }
 
 ModalBody.propTypes = {
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 ModalBody.defaultProps = {
-  height: 'auto'
+  height: 'auto',
 };
 
 export default ModalBody;

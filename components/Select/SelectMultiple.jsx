@@ -11,22 +11,63 @@ class SelectMultiple extends Component {
       value:
         props.value ||
         props.defaultValue ||
-        this.getCheckedValue(props.children)
+        this.getCheckedValue(props.children),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children)
+        value: nextProps.value || this.getCheckedValue(nextProps.children),
       });
     }
+  }
+
+  // eslint-disable-next-line
+  getCheckedValue(children) {
+    const checkedValue = [];
+    React.Children.forEach(children, (option) => {
+      if (option.props && option.props.checked) {
+        checkedValue.push(option.props.value);
+      }
+    });
+    return checkedValue;
+  }
+
+  // eslint-disable-next-line
+  onSelectClick(e) {
+    e.preventDefault();
+  }
+
+  onOptionChange(e, props, rowIndex) {
+    if ('disabled' in props) {
+      return;
+    }
+
+    const { value } = this.state;
+    const index = value.indexOf(props.value);
+    const isSelected = index > -1;
+
+    if (isSelected) {
+      value.splice(index, 1);
+    } else {
+      value.push(props.value);
+    }
+
+    const row = {
+      index: rowIndex,
+      value: props.value,
+      text: props.children,
+      selected: !isSelected,
+    };
+
+    this.setState({ value }, this.props.onChange(value, row));
   }
 
   render() {
     const { props } = this;
     const {
-      isRadius, isDisabled, size, style
+      isRadius, isDisabled, size, style,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -47,7 +88,7 @@ class SelectMultiple extends Component {
       'ui-select-open': this.state.dropdown,
       disabled,
       radius,
-      [`size-${size}`]: !!size
+      [`size-${size}`]: !!size,
     });
 
     return (
@@ -66,59 +107,18 @@ class SelectMultiple extends Component {
       </span>
     );
   }
-
-  // eslint-disable-next-line
-  getCheckedValue(children) {
-    let checkedValue = [];
-    React.Children.forEach(children, (option) => {
-      if (option.props && option.props.checked) {
-        checkedValue.push(option.props.value);
-      }
-    });
-    return checkedValue;
-  }
-
-  // eslint-disable-next-line
-  onSelectClick(e) {
-    e.preventDefault();
-  }
-
-  onOptionChange(e, props, rowIndex) {
-    if ('disabled' in props) {
-      return;
-    }
-
-    let { value } = this.state;
-    let index = value.indexOf(props.value);
-    let isSelected = index > -1;
-
-    if (isSelected) {
-      value.splice(index, 1);
-    } else {
-      value.push(props.value);
-    }
-
-    const row = {
-      index: rowIndex,
-      value: props.value,
-      text: props.children,
-      selected: !isSelected
-    };
-
-    this.setState({ value }, this.props.onChange(value, row));
-  }
 }
 
 SelectMultiple.propTypes = {
   isRadius: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 SelectMultiple.defaultProps = {
   isRadius: false,
   isDisabled: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default SelectMultiple;

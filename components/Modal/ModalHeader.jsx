@@ -23,7 +23,7 @@ class ModalHeader extends Component {
 ModalHeader.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func,
-  style: PropTypes.objectOf(PropTypes.any)
+  style: PropTypes.objectOf(PropTypes.any),
 };
 
 ModalHeader.defaultProps = {

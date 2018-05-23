@@ -7,7 +7,7 @@ class PanelBody extends Component {
 
     const cls = classnames({
       'ui-panel-body': true,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (

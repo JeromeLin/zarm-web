@@ -17,7 +17,7 @@ class Tooltip extends Component {
     const cls = classnames({
       'ui-tooltip': true,
       [`ui-tooltip-${direction}`]: !!direction,
-      [className]: !!className
+      [className]: !!className,
     });
     return (
       <div className={cls} style={style}>
@@ -43,12 +43,12 @@ Tooltip.propTypes = {
     'leftTop',
     'leftBottom',
     'rightTop',
-    'rightBottom'
-  ])
+    'rightBottom',
+  ]),
 };
 
 Tooltip.defaultProps = {
-  direction: 'bottom'
+  direction: 'bottom',
 };
 
 export default Tooltip;

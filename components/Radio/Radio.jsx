@@ -6,22 +6,29 @@ class Radio extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked
+      checked: props.checked || props.defaultChecked,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
-        checked: !!nextProps.checked
+        checked: !!nextProps.checked,
       });
     }
+  }
+
+  _onClick(e) {
+    this.setState({
+      checked: true,
+    });
+    this.props.onChange(e);
   }
 
   render() {
     const { props } = this;
     const {
-      value, isDisabled, className, children
+      value, isDisabled, className, children,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
 
@@ -29,7 +36,7 @@ class Radio extends Component {
       'ui-radio': true,
       checked: this.state.checked,
       disabled,
-      [className]: !!className
+      [className]: !!className,
     });
 
     return (
@@ -49,25 +56,18 @@ class Radio extends Component {
       </label>
     );
   }
-
-  _onClick(e) {
-    this.setState({
-      checked: true
-    });
-    this.props.onChange(e);
-  }
 }
 
 Radio.propTypes = {
   defaultChecked: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 Radio.defaultProps = {
   defaultChecked: false,
   isDisabled: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Radio;
