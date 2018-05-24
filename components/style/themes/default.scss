@@ -1,232 +1,120 @@
-// 主题色
-$theme-default: #ddd;                    // 默认
-$theme-primary: #12c287;                 // 主色
-$theme-success: #69c964;                 // 成功
-$theme-warning: #eca632;                 // 警告
-$theme-error: #e55546;                   // 错误
+$browser-default-font-size: 14;
+$browser-default-font-size-px: 14px !default;
 
-// 文字色
-$color-text: #333;                       // 基本
-$color-text-inverse: #fff;               // 反色
-$color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bbb;              // 失效
-$color-text-caption: #999;               // 辅助描述
-$color-link: $theme-primary;               // 链接
-$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+$base-theme-default:       #e6e6e6 !default;
+$base-theme-success:       #5cb85c !default;
+$base-theme-info:          #2db7f5 !default;
+$base-theme-warning:       #f0ad4e !default;
+$base-theme-error:         #f50 !default;
+/*$base-theme-error:         #d9534f !default;*/
 
-// 背景色
-$background-active: #ddd;
-$background-disabled: #e1e1e1;
+$base-radius-xl:           6px !default;
+$base-radius-lg:           5px !default;
+$base-radius:              4px !default;
+$base-radius-sm:           4px !default;
+$base-radius-xs:           4px !default;
 
-// 边框色
-$border-color: #e8e8e8;
-$border-disabled: #e1e1e1;
+$base-height-xl:           40px !default;
+$base-height-lg:           36px !default;
+$base-height:              32px !default;
+$base-height-sm:           28px !default;
+$base-height-xs:           24px !default;
 
-// 圆角
-$radius-sm: r(2);
-$radius-md: r(4);
-$radius-lg: r(8);
-$radius-round: r(1000);
-$radius-circle: 50%;
+$base-padding-xl:          14px !default;
+$base-padding-lg:          12px !default;
+$base-padding:             10px !default;
+$base-padding-sm:          8px !default;
+$base-padding-xs:          4px !default;
 
-// 水平间距
-$padding-h-sm: r(5);
-$padding-h-md: r(8);
-$padding-h-lg: r(15);
-$padding-h-xl: r(20);
+$base-fontSize-xl:         18px !default;
+$base-fontSize-lg:         16px !default;
+$base-fontSize:            14px !default;
+$base-fontSize-sm:         14px !default;
+$base-fontSize-xs:         12px !default;
 
-// 垂直间距
-$padding-v-sm: r(2);
-$padding-v-md: r(6);
-$padding-v-lg: r(9);
-$padding-v-xl: r(12);
+$base-line-height:         1.5 !default;
 
-// 字体大小
-$font-size-xs: r(10);
-$font-size-sm: r(12);
-$font-size-md: r(14);
-$font-size-lg: r(15);
-$font-size-xl: r(18);
+$base-btn-default-color:   #333 !default;
+$base-btn-default-bg:      $base-theme-default !default;
+$base-btn-default-border:  $base-btn-default-bg !default;
 
-// 堆叠顺序
-$zindex-mask: 1000;
-$zindex-popup: 1300;
-$zindex-modal: 1400;
-$zindex-toast: 1500;
-$zindex-loading: 1500;
+$base-btn-info-color:      #fff !default;
+$base-btn-info-bg:         $base-theme-info !default;
+$base-btn-info-border:     $base-btn-info-bg !default;
 
-// 透明度
-$opacity-disabled: .5;
-$opacity-mask: .4;
-$opacity-toast: .7;
-$opacity-tooltip: .7;
+$base-btn-success-color:   #fff !default;
+$base-btn-success-bg:      $base-theme-success !default;
+$base-btn-success-border:  $base-btn-success-bg !default;
 
-/* 组件前缀 */
-$prefixCls-accordion: za-accordion;
-$prefixCls-actionsheet: za-actionsheet;
-$prefixCls-alert: za-alert;
-$prefixCls-badge: za-badge;
-$prefixCls-button: za-button;
-$prefixCls-cell: za-cell;
-$prefixCls-checkbox: za-checkbox;
-$prefixCls-confirm: za-confirm;
-$prefixCls-icon: za-icon;
-$prefixCls-input: za-input;
-$prefixCls-keyboard: za-keyboard;
-$prefixCls-loading: za-loading;
-$prefixCls-mask: za-mask;
-$prefixCls-message: za-message;
-$prefixCls-modal: za-modal;
-$prefixCls-noticebar: za-noticebar;
-$prefixCls-panel: za-panel;
-$prefixCls-picker: za-picker;
-$prefixCls-wheel: za-wheel;
-$prefixCls-popup: za-popup;
-$prefixCls-progress: za-progress;
-$prefixCls-pull: za-pull;
-$prefixCls-radio: za-radio;
-$prefixCls-select: za-select;
-$prefixCls-slider: za-slider;
-$prefixCls-spinner: za-spinner;
-$prefixCls-stepper: za-stepper;
-$prefixCls-swipe: za-swipe;
-$prefixCls-swipeaction: za-swipeaction;
-$prefixCls-switch: za-switch;
-$prefixCls-tab: za-tab;
-$prefixCls-toast: za-toast;
-$prefixCls-tooltip: za-tooltip;
-$prefixCls-filepicker: za-filepicker;
+$base-btn-warning-color:   #fff !default;
+$base-btn-warning-bg:      $base-theme-warning !default;
+$base-btn-warning-border:  $base-btn-warning-bg !default;
 
-// Accordion
-$accordion-height: r(45);
-$accordion-padding: r(15);
-$accordion-arrow-color: #c7c7cc;
+$base-btn-error-color:     #fff !default;
+$base-btn-error-bg:        $base-theme-error !default;
+$base-btn-error-border:    $base-btn-error-bg !default;
 
-// ActionSheet
-$actionsheet-margin: 0;
-$actionsheet-item-height: r(50);
-$actionsheet-item-font-size: r(16);
 
-// Badge
-$badge-height: r(19);
-$badge-font-size: $font-size-sm;
-$badge-padding-h: $padding-h-sm;
-$badge-dot-diameter: r(8);
 
-// Button
-$button-height-sm: r(24);
-$button-height-md: r(32);
-$button-height-lg: r(40);
-$button-padding-h-sm: $padding-h-md;
-$button-padding-h-md: $padding-h-lg;
-$button-padding-h-lg: $padding-h-lg;
-$button-font-size-sm: r(12);
-$button-font-size-md: r(14);
-$button-font-size-lg: r(16);
-$button-bordered-active-opacity: .6;
 
-// Cell
-$cell-height: r(45);                            // 最小高度
-$cell-background: #fff;                       // 背景色
-$cell-line-left: r(15);                         // 分隔线左边距
-$cell-line-hasicon-left: r(59);                 // 带icon时分隔线左边距
-$cell-title-color: $color-text;                 // 标题文字颜色
-$cell-title-font-size: $font-size-lg;           // 标题文字大小
-$cell-description-color: #999;                // 标题文字颜色
-$cell-description-font-size: $font-size-md;     // 描述文字大小
-$cell-icon-width: r(28);                        // 图标宽度
-$cell-icon-height: r(28);                       // 图标高度
-$cell-label-width: r(100);                      // 表单label宽度
+$base-tag-default-color:   #444 !default;
+$base-tag-default-bg:      $base-theme-default !default;
 
-// Checkbox
-$checkbox-size: r(20);
+$base-tag-info-color:      #fff !default;
+$base-tag-info-bg:         $base-theme-info !default;
 
-// Confirm
-$confirm-button-height: r(50);
-$confirm-button-font-size: r(18);
+$base-tag-success-color:   #fff !default;
+$base-tag-success-bg:      $base-theme-success !default;
 
-// Icon
-$icon-url: '//at.alicdn.com/t/font_126288_uipjvv8ogdivbo6r';
+$base-tag-warning-color:   #fff !default;
+$base-tag-warning-bg:      $base-theme-warning !default;
 
-// Keyboard
-$keyboard-item-height: r(50);
-$keyboard-item-font-size: r(28);
-$keyboard-icon-font-size: r(21);
+$base-tag-error-color:     #fff !default;
+$base-tag-error-bg:        $base-theme-error !default;
 
-// Message
-$message-min-height: r(30);
-$message-font-size: r(12);
-$message-min-height-lg: r(42);
-$message-font-size-lg: r(15);
 
-// Modal
-$modal-background: #fff;
-$modal-header-height: r(50);
-$modal-title-font-size: r(16);
+$base-zindex-mask:         1000 !default;
+$base-zindex-modal:        1100 !default;
+$base-zindex-loading:      1200 !default;
+$base-zindex-message:      1300 !default;
 
-// NoticeBar
-$noticebar-height: r(24);
 
-// Panel
-$panel-header-color: $color-text-caption;
-$panel-header-font-size: r(14);
-$panel-body-color: $color-text;
-$panel-footer-color: $color-text-caption;
-$panel-footer-font-size: r(12);
+$base-modal-radius:        6px !default;
+$base-modal-round:         20px !default;
 
-// Picker
-$picker-stackitem-height: r(35);
+$base-icon-url:            'https://at.alicdn.com/t/font_1469689123_124623';
 
-// Pull
-$pull-control-height: r(50);
-$pull-control-font-size: r(14);
+$screen-xs:                 480px !default;
 
-// Radio
-$radio-size: r(20);
+$screen-xs-min:             $screen-xs !default;
+$screen-phone:              $screen-xs-min !default;
+$screen-sm:                 768px !default;
+$screen-sm-min:             $screen-sm !default;
+$screen-tablet:             $screen-sm-min !default;
 
-// Wheel
-$wheel-item-height: r(34);
+$screen-md:                 992px !default;
+$screen-md-min:             $screen-md !default;
+$screen-desktop:            $screen-md-min !default;
 
-// Slider
-$slider-line-background: #d6d6d6;
-$slider-line-height: r(2);
-$slider-handle-size: r(28);
-$slider-handle-background: #fff;
-$slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+$screen-lg:                 1200px !default;
+$screen-lg-min:             $screen-lg !default;
+$screen-lg-desktop:         $screen-lg-min !default;
 
-// Spinner
-$spinner-size-md: r(20);
-$spinner-size-lg: r(31);
-$spinner-path-color: #e6e6e6;
+$screen-xs-max:             ($screen-sm-min - 1) !default;
+$screen-sm-max:             ($screen-md-min - 1) !default;
+$screen-md-max:             ($screen-lg-min - 1) !default;
 
-// Stepper
-$stepper-height: r(27);
-$stepper-button-width: r(27);
-$stepper-button-font-size: r(16);
-$stepper-input-width: r(40);
-$stepper-input-font-size: r(16);
 
-// Swipe
-$swipe-pagination-dot-size: r(8);
+$grid-columns:              12 !default;
+$grid-gutter-width:         30px !default;
+$grid-float-breakpoint:     $screen-sm-min !default;
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
 
-// Switch
-$switch-width: r(51);
-$switch-height: r(31);
-$switch-border-color: #e5e5e5;
-$switch-background: #fdfdfd;
+$container-tablet:          (750px + $grid-gutter-width) !default;
+$container-sm:              $container-tablet !default;
 
-// Tab
-$tab-height: r(45);
-$tab-item-font-size: $font-size-lg;
-$tab-line-height: r(2);
+$container-desktop:         (970px + $grid-gutter-width) !default;
+$container-md:              $container-desktop !default;
 
-// Toast
-$toast-border-radius: r(6);
-$toast-color: #fff;
-$toast-font-size: r(13);
-$toast-max-width: 70%;
-
-// Tooltip
-$tooltip-font-size: r(12);
-$tooltip-color: #fff;
-$tooltip-arrow-size: r(5);
+$container-large-desktop:   (1170px + $grid-gutter-width) !default;
+$container-lg:              $container-large-desktop !default;

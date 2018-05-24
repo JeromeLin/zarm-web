@@ -36,7 +36,7 @@ module.exports = {
               plugins: [
                 'transform-runtime',
                 ['import', {
-                  libraryName: 'zarm',
+                  libraryName: 'dragon-ui',
                   libraryDirectory: 'components',
                   style: true,
                   camel2DashComponentName: false,

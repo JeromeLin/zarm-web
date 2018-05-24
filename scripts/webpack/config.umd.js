@@ -11,13 +11,13 @@ const env = process.env.NODE_ENV;
 config.devtool = 'source-map';
 
 config.entry = {
-  zarm: [
+  'dragon-ui': [
     './components/index.tsx',
   ],
 };
 
 config.output = {
-  library: 'zarm',
+  library: 'dragon-ui',
   libraryTarget: 'umd',
   path: path.join(process.cwd(), 'dist'),
   filename: '[name].js',
@@ -77,9 +77,9 @@ if (env === 'production') {
 }
 
 config.plugins.push(new webpack.BannerPlugin(`
-  Zarm v${version}
+  dragon-ui v${version}
 
-  Github: https://github.com/ZhonganTechENG/zarm
+  Github: https://jeromelin.github.io/dragon-ui/
 
   Copyright (c) 2013-present, ZhonganTech, Inc.
 

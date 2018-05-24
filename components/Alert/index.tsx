@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Modal from '../Modal';
 import Button from '../Button';
 import Icon from '../Icon';
+import AlertProps from './PropsType';
 
-class Alert extends Component {
+class Alert extends Component<AlertProps, any> {
+  static defaultProps = {
+    prefixCls: 'ui-alert',
+    theme: 'info',
+    message: '',
+    width: 270,
+    className: '',
+    onClose: () => {},
+  };
+
   render() {
     const {
-      theme, message, onClose, width, className, visible
+      theme, message, onClose, width,
+      className, visible, prefixCls,
     } = this.props;
 
     let iconType = 'info-round';
@@ -32,7 +42,7 @@ class Alert extends Component {
         visible={visible}
       >
         <Modal.Body>
-          <div className="ui-alert">
+          <div className={prefixCls}>
             <Icon type={iconType} theme={theme} />
             <span>{message}</span>
           </div>
@@ -44,21 +54,5 @@ class Alert extends Component {
     );
   }
 }
-
-Alert.propTypes = {
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
-  message: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  className: PropTypes.string,
-  onClose: PropTypes.func
-};
-
-Alert.defaultProps = {
-  theme: 'info',
-  message: '',
-  width: 270,
-  className: '',
-  onClose: () => {}
-};
 
 export default Alert;

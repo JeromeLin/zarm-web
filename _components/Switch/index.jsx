@@ -1,13 +1,12 @@
-
-import React, { Component, PropTypes, Children } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Switch extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue,
+      value: props.value || props.defaultValue
     };
   }
 
@@ -20,21 +19,29 @@ class Switch extends Component {
   }
 
   render() {
-    const props = this.props;
-    const { size, isCheckedText, unCheckedText, isDisabled, ...others } = props;
+    const { props } = this;
+    const {
+      size, isCheckedText, unCheckedText, isDisabled, style
+    } = props;
     const { value } = this.state;
     const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-switch'     : true,
-      'checked'       : value,
-      'disabled'      : disabled,
-      [`size-${size}`]: !!size,
+      'ui-switch': true,
+      checked: value,
+      disabled,
+      [`size-${size}`]: !!size
     });
 
     return (
-      <span className={cls} onClick={() => !disabled && this._onClick()} {...others}>
-        <span className="ui-switch-inner">{ value ? isCheckedText : unCheckedText }</span>
+      <span
+        className={cls}
+        onClick={() => !disabled && this._onClick()}
+        style={style}
+      >
+        <span className="ui-switch-inner">
+          {value ? isCheckedText : unCheckedText}
+        </span>
       </span>
     );
   }
@@ -42,27 +49,28 @@ class Switch extends Component {
   _onClick() {
     const value = !this.state.value;
     this.setState({
-      value: value
+      value
     });
     this.props.onChange(value);
   }
 }
 
 Switch.propTypes = {
-  size         : PropTypes.oneOf(['sm']),
-  value        : PropTypes.bool,
-  defaultValue : PropTypes.bool,
+  size: PropTypes.oneOf(['sm']),
+  value: PropTypes.bool,
+  defaultValue: PropTypes.bool,
   isCheckedText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   unCheckedText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  onChange     : PropTypes.func,
+  onChange: PropTypes.func
 };
 
 Switch.defaultProps = {
-  size         : null,
-  defaultValue : false,
+  size: null,
+  value: false,
+  defaultValue: false,
   isCheckedText: '',
   unCheckedText: '',
-  onChange     : () => {},
+  onChange: () => {}
 };
 
 export default Switch;

@@ -1,27 +1,29 @@
-import React, { PureComponent } from 'react';
-import PropsType from './PropsType';
+import React, { Component } from 'react';
 import classnames from 'classnames';
+import IconProps from './PropsType';
 
-export interface IconProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class Icon extends PureComponent<IconProps, {}> {
-
+class Icon extends Component<IconProps, any> {
   static defaultProps = {
-    prefixCls: 'za-icon',
+    prefixCls: 'ui-icon',
+    type: '',
+    theme: 'default',
+    className: '',
+    style: {},
   };
 
   render() {
-    const { prefixCls, type, theme, className, ...others } = this.props;
-    const cls = classnames(prefixCls, className, {
+    const {
+      prefixCls, type, theme, className, style,
+    } = this.props;
+    const cls = classnames({
+      [prefixCls as string]: true,
       [`${prefixCls}-${type}`]: !!type,
       [`theme-${theme}`]: !!theme,
+      [className as string]: !!className,
     });
 
-    return (
-      <i {...others} className={cls} />
-    );
+    return <i className={cls} style={style} />;
   }
 }
+
+export default Icon;

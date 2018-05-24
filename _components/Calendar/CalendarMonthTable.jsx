@@ -1,17 +1,29 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const CALENDAR_ROW_COUNT = 4,
-      CALENDAR_COL_COUNT = 3,
-      CALENDAR_MONTHS = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
+const CALENDAR_ROW_COUNT = 4;
+const CALENDAR_COL_COUNT = 3;
+const CALENDAR_MONTHS = [
+  '一',
+  '二',
+  '三',
+  '四',
+  '五',
+  '六',
+  '七',
+  '八',
+  '九',
+  '十',
+  '十一',
+  '十二'
+];
 
 class CalendarMonthTable extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      current: props.value || new Date(),
+      current: props.value || new Date()
     };
   }
 
@@ -40,20 +52,22 @@ class CalendarMonthTable extends Component {
 
   // 渲染月份
   renderMonth() {
-    let dd = new Date(this.state.current),
-        current = {
-          year : dd.getFullYear(),
-          month: dd.getMonth() + 1,
-          date : dd.getDate(),
-        };
+    let dd = new Date(this.state.current);
+    let current = {
+      year: dd.getFullYear(),
+      month: dd.getMonth() + 1,
+      date: dd.getDate()
+    };
 
     let months = [];
     for (let i = 1; i <= 12; i++) {
-      months.push(this.renderMonthCell({
-        year : current.year,
-        month: i,
-        date : current.date,
-      }));
+      months.push(
+        this.renderMonthCell({
+          year: current.year,
+          month: i,
+          date: current.date
+        })
+      );
     }
 
     let tabelCell = [];
@@ -67,41 +81,48 @@ class CalendarMonthTable extends Component {
           </td>
         );
       }
-      tabelCell.push(<tr key={`row-${m}`} role="row">{tabelRow}</tr>);
+      tabelCell.push(
+        <tr key={`row-${m}`} role="row">
+          {tabelRow}
+        </tr>
+      );
     }
 
-    return (
-      <tbody>
-        {tabelCell}
-      </tbody>
-    );
+    return <tbody>{tabelCell}</tbody>;
   }
 
   // 渲染月份单元
   renderMonthCell(day) {
-    const { onMonthClick } = this.props,
-          fullDay = `${day.year}/${day.month}/${day.date}`;
+    const { onMonthClick } = this.props;
+    const fullDay = `${day.year}/${day.month}/${day.date}`;
 
     const cls = classnames({
-      'ui-calendar-text'         : true,
-      'ui-calendar-text-selected': this.state.current === fullDay,
+      'ui-calendar-text': true,
+      'ui-calendar-text-selected': this.state.current === fullDay
     });
-    
-    return <span className={cls} title={`${CALENDAR_MONTHS[day.month - 1]}月`} onClick={() => onMonthClick(fullDay)}>{CALENDAR_MONTHS[day.month - 1]}月</span>;
-  }
 
+    return (
+      <span
+        className={cls}
+        title={`${CALENDAR_MONTHS[day.month - 1]}月`}
+        onClick={() => onMonthClick(fullDay)}
+      >
+        {CALENDAR_MONTHS[day.month - 1]}月
+      </span>
+    );
+  }
 }
 
 CalendarMonthTable.propTypes = {
   defaultValue: PropTypes.string,
-  value       : PropTypes.string,
-  onMonthClick : PropTypes.func,
+  value: PropTypes.string,
+  onMonthClick: PropTypes.func
 };
 
 CalendarMonthTable.defaultProps = {
   defaultValue: '',
-  value       : '',
-  onMonthClick : () => {},
+  value: '',
+  onMonthClick: () => {}
 };
 
 export default CalendarMonthTable;

@@ -28,20 +28,20 @@ gulp.task('dist', () => {
       outputStyle: 'compressed',
     }))
     .pipe(autoprefixer({ browsers }))
-    .pipe(concat('zarm.css'))
+    .pipe(concat('dragon-ui.css'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
     .pipe(sourcemaps.write())
-    .pipe(rename('zarm.css.map'))
+    .pipe(rename('dragon-ui.css.map'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
 
     .pipe(cssnano())
-    .pipe(concat('zarm.min.css'))
+    .pipe(concat('dragon-ui.min.css'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
     .pipe(sourcemaps.write())
-    .pipe(rename('zarm.min.css.map'))
+    .pipe(rename('dragon-ui.min.css.map'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist));
 });

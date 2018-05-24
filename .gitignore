@@ -10,3 +10,4 @@ _book
 .temp
 *.log
 npm-debug.*
+package-lock.json

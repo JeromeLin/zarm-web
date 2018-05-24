@@ -1,7 +1,0 @@
-@mixin badge-theme($color) {
-  .#{$prefixCls-badge} {
-    &-sup {
-      background-color: $color;
-    }
-  }
-}

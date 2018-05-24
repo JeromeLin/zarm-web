@@ -1,25 +1,24 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 
 class Menu extends Component {
-
-  render () { 
-    const { size, className, children, ...others } = this.props;
+  render() {
+    const {
+      size, className, children, style
+    } = this.props;
 
     const cls = classnames({
-      'ui-menu'       : true,
+      'ui-menu': true,
       [`size-${size}`]: !!size,
-      [className]     : !!className,
+      [className]: !!className
     });
 
     return (
-      <ul {...others} className={cls} role="menu">
+      <ul className={cls} role="menu" style={style}>
         {children}
       </ul>
     );
   }
-
 }
 
 export default Menu;

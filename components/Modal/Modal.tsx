@@ -1,48 +1,42 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
-import { BaseModalProps } from './PropsType';
 import Events from '../utils/events';
-import Mask from '../Mask';
+import { ModalProps, StyleType } from './PropsType';
 
-const stopPropagation = (e) => {
-  e.stopPropagation();
-  // e.nativeEvent.stopImmediatePropagation();
-};
-
-export interface ModalProps extends BaseModalProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class Modal extends PureComponent<ModalProps, any> {
+class Modal extends Component<ModalProps, any> {
 
   static Header: any;
   static Body: any;
   static Footer: any;
+
   static defaultProps = {
-    prefixCls: 'za-modal',
+    prefixCls: 'ui-modal',
     visible: false,
-    animationType: 'fade',
-    animationDuration: 200,
-    width: '70%',
+    animationType: 'zoom',
+    animationDuration: 300,
+    width: 600,
+    minWidth: 270,
+    isRadius: false,
+    isRound: false,
+    onMaskClick() {},
   };
 
-  private modal;
+  private modal: HTMLDivElement | null;
 
   constructor(props) {
     super(props);
     this.state = {
-      isShow: props.visible || false,
+      isShow: false,
       isPending: false,
-      animationState: 'enter',
+      animationState: 'leave',
     };
+
+    this.animationEnd = this.animationEnd.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.visible && nextProps.visible) {
+  componentWillMount() {
+    if (this.props.visible) {
       this.enter();
-    } else if (this.props.visible && !nextProps.visible) {
-      this.leave();
     }
   }
 
@@ -56,7 +50,19 @@ export default class Modal extends PureComponent<ModalProps, any> {
     Events.off(this.modal, 'animationend', this.animationEnd);
   }
 
-  animationEnd = () => {
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.visible && nextProps.visible) {
+      this.enter();
+    } else if (this.props.visible && !nextProps.visible) {
+      this.leave();
+    }
+  }
+
+  shouldComponentUpdate(_, nextState) {
+    return !!(this.state.isShow || nextState.isShow);
+  }
+
+  animationEnd() {
     if (this.state.animationState === 'leave') {
       this.setState({
         isShow: false,
@@ -70,7 +76,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
     }
   }
 
-  enter = () => {
+  enter() {
     this.setState({
       isShow: true,
       isPending: true,
@@ -78,7 +84,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
     });
   }
 
-  leave = () => {
+  leave() {
     this.setState({
       isShow: true,
       isPending: true,
@@ -87,60 +93,75 @@ export default class Modal extends PureComponent<ModalProps, any> {
   }
 
   render() {
-    const { prefixCls, className, shape, animationType, animationDuration, width, onMaskClick, children } = this.props;
+    const {
+      prefixCls,
+      animationType,
+      animationDuration,
+      width,
+      minWidth,
+      isRadius,
+      isRound,
+      className,
+      onMaskClick,
+      children,
+    } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
-    const cls = {
-      modal: classnames(`${prefixCls}`, className, {
-        [`shape-${shape}`]: !!shape,
+    const classes = {
+      modal: classnames({
+        [prefixCls as string]: true,
+        radius: 'radius' in this.props || isRadius,
+        round: 'round' in this.props || isRound,
         [`fade-${animationState}`]: isPending,
+        [className as string]: !!className,
       }),
-      dialog: classnames(`${prefixCls}-dialog`, {
-        [`${animationType}-${animationState}`]: isPending,
-        [`fade-${animationState}`]: isPending,
+      dialog: classnames({
+        [`${prefixCls}-dialog`]: true,
+        [`${animationType}-${animationState}`]: true,
       }),
-      // mask: classnames({
-      //   [`fade-${animationState}`]: isPending,
-      // }),
     };
 
-    const modalStyle: CSSProperties = {
-      WebkitAnimationDuration: `${animationDuration}ms`,
-      animationDuration: `${animationDuration}ms`,
+    const style: StyleType = {
+      modal: {
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      },
+      dialog: {
+        width,
+        minWidth,
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      },
     };
-
-    const dialogStyle: CSSProperties = {
-      width,
-      WebkitAnimationDuration: `${animationDuration}ms`,
-      animationDuration: `${animationDuration}ms`,
-    };
-
-    // const maskStyle: CSSProperties = {
-    //   WebkitAnimationDuration: `${animationDuration}ms`,
-    //   MozAnimationDuration: `${animationDuration}ms`,
-    //   msAnimationDuration: `${animationDuration}ms`,
-    //   OAnimationDuration: `${animationDuration}ms`,
-    //   animationDuration: `${animationDuration}ms`,
-    // };
-
     if (!isShow) {
-      modalStyle.display = 'none';
+      style.modal.display = 'none';
     }
 
     return (
-      <div className={cls.modal} style={modalStyle} ref={(ele) => { this.modal = ele; }}>
+      <div
+        className={classes.modal}
+        style={style.modal}
+        onClick={onMaskClick}
+        ref={(ele) => { this.modal = ele; }}
+      >
         <div className={`${prefixCls}-wrapper`}>
-          <div className={cls.dialog} style={dialogStyle} onClick={stopPropagation}>
+          <div
+            className={classes.dialog}
+            style={style.dialog}
+            onClick={e => e.stopPropagation()}
+          >
             {children}
           </div>
         </div>
-        <Mask
-          visible={isShow}
-          // className={cls.mask}
-          // style={maskStyle}
-          onClose={onMaskClick}
-        />
       </div>
     );
   }
 }
+
+export default Modal;

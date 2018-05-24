@@ -1,13 +1,12 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Tab extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      selected: props.selected || props.defaultSelected,
+      selected: props.selected || props.defaultSelected
     };
   }
 
@@ -19,18 +18,18 @@ class Tab extends Component {
     }
   }
 
-  render () {
-    const props = this.props;
-    const { className, children, ...others } = props;
+  render() {
+    const { props } = this;
+    const { className, children, style } = props;
 
     const cls = classnames({
-      'ui-tab-body-item'       : true,
+      'ui-tab-body-item': true,
       'ui-tab-body-item-active': this.state.selected,
-      [className]              : !!className,
-    })
+      [className]: !!className
+    });
 
     return (
-      <div {...others} className={cls}>
+      <div className={cls} style={style}>
         {children}
       </div>
     );
@@ -39,12 +38,12 @@ class Tab extends Component {
 
 Tab.propTypes = {
   defaultChecked: PropTypes.bool,
-  isDisabled    : PropTypes.bool,
+  isDisabled: PropTypes.bool
 };
 
 Tab.defaultProps = {
   defaultChecked: false,
-  isDisabled    : false,
+  isDisabled: false
 };
 
 export default Tab;

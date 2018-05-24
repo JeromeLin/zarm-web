@@ -1,28 +1,21 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
-import { BaseModalFooterProps } from './PropsType';
+import React, { Component } from 'react';
+import { ModalFooterProps } from './PropsType';
 
-export interface ModalFooterProps extends BaseModalFooterProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
-
+class ModalFooter extends Component<ModalFooterProps, any> {
   static defaultProps = {
-    prefixCls: 'za-modal',
+    prefixCls: 'ui-modal',
+    style: {},
   };
 
   render() {
-    const { prefixCls, className, block, children, ...others } = this.props;
-    const cls = classnames(`${prefixCls}-footer`, className, {
-      block,
-    });
+    const { children, style, prefixCls } = this.props;
 
     return (
-      <div className={cls} {...others}>
+      <div className={`${prefixCls}-footer`} style={style}>
         {children}
       </div>
     );
   }
 }
+
+export default ModalFooter;

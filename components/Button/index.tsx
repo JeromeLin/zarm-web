@@ -1,79 +1,83 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
-// import Spinner from '../Spinner';
+import ButtonProps from './PropsType';
+import Icon from '../Icon';
 
-export interface ButtonProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class Button extends PureComponent<ButtonProps, {}> {
-
+class Button extends Component<ButtonProps, any> {
   static defaultProps = {
-    prefixCls: 'za-button',
+    prefixCls: 'ui-button',
+    type: 'button',
     theme: 'default',
-    block: false,
-    bordered: false,
-    active: false,
-    focus: false,
-    disabled: false,
-    loading: false,
-    onClick() {},
+    size: null,
+    isBlock: false,
+    isRadius: false,
+    isRound: false,
+    isCircle: false,
+    isActive: false,
+    isFocus: false,
+    isDisabled: false,
+    isLoading: false,
+    className: null,
+    style: {},
+    onClick: () => {},
   };
 
   render() {
+    const { props } = this;
     const {
       prefixCls,
-      className,
+      type,
       theme,
       size,
-      shape,
-      icon,
-      block,
-      active,
-      focus,
-      bordered,
-      disabled,
-      loading,
+      isBlock,
+      isRadius,
+      isRound,
+      isCircle,
+      isActive,
+      isFocus,
+      isDisabled,
+      isLoading,
+      className,
       onClick,
       children,
-      ...others,
-    } = this.props;
+      style,
+    } = props;
+    const disabled = 'disabled' in props || isDisabled;
 
-    const classes = classnames(`${prefixCls}`, className, {
+    const classes = classnames({
+      [prefixCls as string]: true,
+      block: 'block' in props || isBlock,
+      radius: 'radius' in props || isRadius,
+      round: 'round' in props || isRound,
+      circle: 'circle' in props || isCircle,
+      active: 'active' in props || isActive,
+      focus: 'focus' in props || isFocus,
+      disabled,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [`shape-${shape}`]: !!shape,
-      block,
-      bordered,
-      active,
-      focus,
-      disabled,
+      [className as string]: !!className,
     });
 
-    const iconRender = icon;
-    // const iconRender = loading
-    //   ? <Spinner className="rotate360" />
-    //   : icon;
-
-    const childrenRender = children && <span>{children}</span>;
-
-    const contentRender = (!!icon || loading)
-      ? <div className={`${prefixCls}-content`}>{iconRender}{childrenRender}</div>
-      : childrenRender;
-
+    let textContent =
+      'loading' in props || isLoading ? (
+        <span>
+          <Icon type="loading" className="rotate360" /> {children}
+        </span>
+      ) : (
+        children
+      );
     return (
-      <a
-        role="button"
-        aria-disabled={disabled}
+      <button
+        type={type}
         className={classes}
-        onClick={e => !disabled && typeof onClick === 'function' && onClick(e)}
-        onTouchStart={() => {}}
-        {...others}
+        style={style}
+        disabled={disabled}
+        onClick={e => !disabled && onClick(e)}
       >
-        {contentRender}
-      </a>
+        {textContent}
+      </button>
     );
   }
 }
+
+export default Button;
