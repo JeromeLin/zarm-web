@@ -543,6 +543,21 @@ class Table extends Component {
     if (colSpan === 0 || rowSpan === 0) {
       return null;
     }
+    // 字符长度判断
+    if (typeof value === 'string' && value.length > 20) {
+      return (
+        <td
+          key={column.dataIndex + columnIndex}
+          style={style}
+          colSpan={colSpan}
+          rowSpan={rowSpan}
+        >
+          <Popover trigger="hover" direction="top" content={value}>
+            <div className="ellipsis-cell">{value}</div>
+          </Popover>
+        </td>
+      );
+    }
     return (
       <td
         style={style}
