@@ -67,7 +67,7 @@ class SelectMultiple extends Component {
   render() {
     const { props } = this;
     const {
-      isRadius, isDisabled, size, style,
+      isRadius, isDisabled, size, style, onDoubleClick,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -77,6 +77,7 @@ class SelectMultiple extends Component {
       return (
         <Option
           {...option.props}
+          onDoubleClick={onDoubleClick}
           onChange={e => this.onOptionChange(e, option.props, index)}
           checked={!!(this.state.value.indexOf(option.props.value) > -1)}
         />
@@ -113,12 +114,14 @@ SelectMultiple.propTypes = {
   isRadius: PropTypes.bool,
   isDisabled: PropTypes.bool,
   onChange: PropTypes.func,
+  onDoubleClick: PropTypes.func,
 };
 
 SelectMultiple.defaultProps = {
   isRadius: false,
   isDisabled: false,
   onChange: () => {},
+  onDoubleClick: () => {},
 };
 
 export default SelectMultiple;

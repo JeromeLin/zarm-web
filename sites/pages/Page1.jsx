@@ -794,6 +794,7 @@ class Page1 extends Component {
                   onChange={(selectedRows, row) => {
                     this.setState({ mulSelectLeftValue: selectedRows });
                   }}
+                  onDoubleClick={() => { console.log(1); }}
                 >
                   {this.state.mulSelectLeft.map((option, index) => {
                     return (

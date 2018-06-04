@@ -6,5 +6,7 @@ lib
 assets
 coverage
 package-lock.json
+npm-debug*
+es
 _book
 .idea
