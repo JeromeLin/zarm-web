@@ -1,24 +1,62 @@
-import React, { PureComponent } from 'react';
-import Container from '../components/Container';
-import Footer from '../components/Footer';
-
-class Page extends PureComponent {
-  render() {
-    return (
-      <Container className="index-page">
-        <header>
-          <section className="brand">
-            <div className="brand-title">Dragon-UI</div>
-            <div className="brand-description">众安科技桌面端组件库</div>
-          </section>
-        </header>
-        <main>
-          TODO
-        </main>
-        <Footer />
-      </Container>
-    );
-  }
-}
-
-export default Page;
+export default {
+  documents: {
+    'quick-start': './quick-start',
+  },
+  components: {
+    Basic: {
+      layout: './layout',
+      color: './color',
+      typography: './typography',
+      icon: './icon',
+      button: './button',
+    },
+    Form: {
+      radio: './radio',
+      checkbox: './checkbox',
+      input: './input',
+      'input-number': './input-number',
+      select: './select',
+      cascader: './cascader',
+      switch: './switch',
+      slider: './slider',
+      'time-picker': './time-picker',
+      'date-picker': './date-picker',
+      'datetime-picker': './datetime-picker',
+      upload: './upload',
+      rate: './rate',
+      'color-picker': './color-picker',
+      transfer: './transfer',
+      form: './form',
+    },
+    Data: {
+      table: './table',
+      tag: './tag',
+      progress: './progress',
+      tree: './tree',
+      pagination: './pagination',
+      badge: './badge',
+    },
+    Notice: {
+      alert: './alert',
+      loading: './loading',
+      message: './message',
+      'message-box': './message-box',
+      notification: './notification',
+    },
+    Nav: {
+      menu: './menu',
+      tabs: './tabs',
+      breadcrumb: './breadcrumb',
+      dropdown: './dropdown',
+      steps: './steps',
+    },
+    Others: {
+      dialog: './dialog',
+      tooltip: './tooltip',
+      popover: './popover',
+      card: './card',
+      carousel: './carousel',
+      collapse: './collapse',
+    },
+  },
+};
