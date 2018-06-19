@@ -165,7 +165,7 @@
   "lint-staged": {
     "components/**/*.{ts,tsx}": "lint:ts",
     "{components,examples}/**/*.{js,jsx}": "lint:js",
-    "{styles}/**/*.scss": "lint:style"
+    "{styles,examples}/**/*.scss": "lint:style"
   },
   "pre-commit": [
     "lint-staged"
