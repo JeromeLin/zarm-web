@@ -7,5 +7,8 @@ export default interface PropsType {
   width?: number | string;
   className?: string;
   visible?: boolean;
+  hideIcon?: boolean;
+  closable?: boolean;
+  closeText?: string;
   onClose: () => void;
 }

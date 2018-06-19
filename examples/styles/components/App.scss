@@ -209,10 +209,11 @@ body {
       text-decoration: none;
       display: block;
       position: relative;
-      transition: all .3s;
+      transition: all .15s ease-out;
 
       &.active {
-        color: #20a0ff;
+        color: #24292e;
+        font-weight: 600;
       }
     }
 
@@ -225,7 +226,7 @@ body {
         padding-left: 24px;
 
         &:hover {
-          color: #20a0ff;
+          color: #24292e;
         }
       }
     }
@@ -256,6 +257,26 @@ body {
   .source {
     position: relative;
     padding: 24px;
+
+    button {
+      margin-right: 8px;
+    }
+
+    .multi-rows {
+      margin-bottom: 8px;
+    }
+
+    .buttons {
+      > button {
+        margin-bottom: 8px;
+      }
+    }
+
+    .icons {
+      .ui-icon {
+        font-size: 28px;
+      }
+    }
   }
 
   .meta {
@@ -320,7 +341,7 @@ body {
 
     span {
       display: inline-block;
-      transform: translateX(40px);
+      transform: translateX(-40px);
       font-size: 14px;
       line-height: 36px;
       transition: .3s;
@@ -328,7 +349,7 @@ body {
     }
 
     &:hover {
-      color: #20a0ff;
+      color: #24292e;
       background-color: #f9fafc;
     }
   }

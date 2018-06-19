@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import classnames from 'classnames';
 import ScrollToTop from 'react-scroll-up';
 import 'normalize.css';
 import AsyncComponent from './AsyncComponent';
@@ -13,9 +14,11 @@ class App extends Component {
     super(props);
 
     this.state = {};
+    this.components = {};
   }
 
   render() {
+    const hash = window.location.hash.match(/#\/(\w+)/);
     return (
       <div className="app">
         <header className="header">
@@ -54,9 +57,10 @@ class App extends Component {
                         <ul className="pure-menu-list">
                           {
                             Object.keys(pages.components[group]).map((page) => {
+                              this.components[page] = pages.components[group][page];
                               return (
                                 <li key={page} className="nav-item">
-                                  <a href={`#/${page}`}>{page}</a>
+                                  <a href={`#/${page}`} className={classnames({ active: page === hash[1] })}>{page}</a>
                                 </li>
                               );
                             })
@@ -71,7 +75,11 @@ class App extends Component {
           </nav>
           <div className="content">
             <Switch>
-              <Route path="/alert" component={AsyncComponent(() => import('../pages/Alert'))} />
+              {
+                Object.keys(this.components).map((name) => {
+                  return <Route path={`/${name}`} key={name} component={AsyncComponent(() => import(`../pages/${name}`))} />;
+                })
+              }
             </Switch>
             <ScrollToTop showUnder={210}>
               <div className="page-up" />

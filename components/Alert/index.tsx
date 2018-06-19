@@ -11,13 +11,16 @@ class Alert extends Component<AlertProps, any> {
     message: '',
     width: 270,
     className: '',
+    hideIcon: false,
+    closable: true,
+    closeText: '关闭',
     onClose: () => {},
   };
 
   render() {
     const {
-      theme, message, onClose, width,
-      className, visible, prefixCls,
+      theme, message, closable, closeText, onClose, width,
+      className, visible, prefixCls, hideIcon,
     } = this.props;
 
     let iconType = 'info-round';
@@ -43,13 +46,18 @@ class Alert extends Component<AlertProps, any> {
       >
         <Modal.Body>
           <div className={prefixCls}>
-            <Icon type={iconType} theme={theme} />
+            {!hideIcon && <Icon type={iconType} theme={theme} />}
             <span>{message}</span>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={onClose}>关闭</Button>
-        </Modal.Footer>
+        {
+          // tslint:disable-next-line:jsx-no-multiline-js
+          closable && (
+            <Modal.Footer>
+              <Button onClick={onClose}>{closeText}</Button>
+            </Modal.Footer>
+          )
+        }
       </Modal>
     );
   }
