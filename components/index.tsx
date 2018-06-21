@@ -10,3 +10,5 @@ export { default as Select } from './Select';
 export { default as Menu } from './Menu';
 export { default as Dropdown } from './Dropdown';
 export { default as Message } from './Message';
+export { default as Checkbox } from './Checkbox';
+export { default as Confirm } from './Confirm';

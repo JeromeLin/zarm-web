@@ -12,7 +12,7 @@ export default {
     },
     Form: {
       // radio: './radio',
-      // checkbox: './checkbox',
+      Checkbox: '../pages/checkbox',
       Input: '../pages/input',
       // 'input-number': './input-number',
       Select: '../pages/select',
@@ -41,7 +41,7 @@ export default {
       // loading: './loading',
       Message: '../pages/message',
       Modal: '../pages/modal',
-      // notification: './notification',
+      Confirm: '../pages/confirm',
     },
     Nav: {
       // menu: './menu',

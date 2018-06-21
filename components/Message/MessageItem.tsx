@@ -4,6 +4,9 @@ import Icon from '../Icon';
 import { ItemProps } from './PropsType';
 
 class MessageItem extends Component<ItemProps, any> {
+  static defaultProps = {
+    prefixCls: 'ui-message',
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -16,15 +19,15 @@ class MessageItem extends Component<ItemProps, any> {
   }
 
   render() {
-    const { content, theme, style } = this.props;
+    const { content, theme, style, prefixCls } = this.props;
 
     const wrapClass = classnames({
-      'ui-message-wrapper': true,
-      'ui-message-visible': this.state.visible,
+      [`${prefixCls}-wrapper`]: true,
+      [`${prefixCls}-visible`]: this.state.visible,
     });
 
     const iconClass = classnames({
-      [`ui-message-${theme}`]: !!theme,
+      [`${prefixCls}-${theme}`]: !!theme,
     });
 
     let iconType = 'info-round';
@@ -45,7 +48,7 @@ class MessageItem extends Component<ItemProps, any> {
 
     return (
       <div className={wrapClass} style={style}>
-        <div className="ui-message-container">
+        <div className={`${prefixCls}-container`}>
           <Icon
             type={iconType}
             className={iconClass}

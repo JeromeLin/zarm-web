@@ -4,6 +4,7 @@ import PropsType from './PropsType';
 
 class Message extends Component<PropsType, any> {
   static defaultProps = {
+    prefixCls: 'ui-message',
     msg: [],
     duration: 1500,
     theme: 'info',
@@ -19,6 +20,7 @@ class Message extends Component<PropsType, any> {
   }
 
   enter() {
+    const { prefixCls } = this.props;
     this.timer = setTimeout(() => {
       const node = this.message.children;
 
@@ -26,7 +28,7 @@ class Message extends Component<PropsType, any> {
         return;
       }
 
-      node[this.active].className = 'ui-message-wrapper';
+      node[this.active].className = `${prefixCls}-wrapper`;
 
       this.active++;
 
@@ -38,7 +40,7 @@ class Message extends Component<PropsType, any> {
 
   render() {
     const {
-      msg, duration, theme, style,
+      msg, duration, theme, style, prefixCls,
     } = this.props;
 
     // eslint-disable-next-line
@@ -51,7 +53,7 @@ class Message extends Component<PropsType, any> {
 
     return (
       <div
-        className="ui-message"
+        className={prefixCls}
         ref={(message) => { this.message = message; }}
         style={style}
       >
