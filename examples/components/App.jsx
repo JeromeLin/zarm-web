@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   render() {
-    const hash = window.location.hash.match(/#\/(\w+)/);
+    const hash = window.location.hash.match(/#\/(\w+)?/);
     return (
       <div className="app">
         <header className="header">

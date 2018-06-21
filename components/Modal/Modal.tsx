@@ -109,11 +109,11 @@ class Modal extends Component<ModalProps, any> {
 
     const classes = {
       modal: classnames({
-        [prefixCls as string]: true,
+        [prefixCls!]: true,
         radius: 'radius' in this.props || isRadius,
         round: 'round' in this.props || isRound,
         [`fade-${animationState}`]: isPending,
-        [className as string]: !!className,
+        [className!]: !!className,
       }),
       dialog: classnames({
         [`${prefixCls}-dialog`]: true,

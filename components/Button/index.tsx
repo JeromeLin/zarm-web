@@ -45,7 +45,7 @@ class Button extends Component<ButtonProps, any> {
     const disabled = 'disabled' in props || isDisabled;
 
     const classes = classnames({
-      [prefixCls as string]: true,
+      [prefixCls!]: true,
       block: 'block' in props || isBlock,
       radius: 'radius' in props || isRadius,
       round: 'round' in props || isRound,
@@ -55,7 +55,7 @@ class Button extends Component<ButtonProps, any> {
       disabled,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [className as string]: !!className,
+      [className!]: !!className,
     });
 
     let textContent =

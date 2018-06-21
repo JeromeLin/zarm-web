@@ -9,20 +9,21 @@ class Icon extends Component<IconProps, any> {
     theme: 'default',
     className: '',
     style: {},
+    onClick: () => {},
   };
 
   render() {
     const {
-      prefixCls, type, theme, className, style,
+      prefixCls, type, theme, className, style, onClick,
     } = this.props;
     const cls = classnames({
-      [prefixCls as string]: true,
+      [prefixCls!]: true,
       [`${prefixCls}-${type}`]: !!type,
       [`theme-${theme}`]: !!theme,
-      [className as string]: !!className,
+      [className!]: !!className,
     });
 
-    return <i className={cls} style={style} />;
+    return <i className={cls} style={style} onClick={onClick} />;
   }
 }
 

@@ -6,4 +6,5 @@ export default interface PropsType {
   theme?: theme;
   style?: object;
   className?: string;
+  onClick?: () => void;
 }
