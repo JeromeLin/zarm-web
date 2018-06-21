@@ -14,3 +14,5 @@ export { default as Checkbox } from './Checkbox';
 export { default as Confirm } from './Confirm';
 export { default as Popover } from './Popover';
 export { default as Progress } from './Progress';
+export { default as Radio } from './Radio';
+export { default as Slider } from './Slider';

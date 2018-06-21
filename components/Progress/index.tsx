@@ -4,6 +4,7 @@ import PropsType from './PropsType';
 
 class Progress extends Component<PropsType, any> {
   static defaultProps = {
+    prefixCls: 'ui-progress',
     theme: 'default',
     size: null,
     isBlock: false,
@@ -14,17 +15,19 @@ class Progress extends Component<PropsType, any> {
   };
 
   textRender(percent) {
+    const { prefixCls } = this.props;
     const render =
       'render' in this.props ? (
         this.props.render!(percent)
       ) : (
-        <span className="ui-progress-line-text">{percent}%</span>
+        <span className={`${prefixCls}-line-text`}>{percent}%</span>
       );
     return render;
   }
   render() {
     const { props } = this;
     const {
+      prefixCls,
       isRadius,
       isRound,
       percent,
@@ -35,7 +38,7 @@ class Progress extends Component<PropsType, any> {
     } = this.props;
 
     const cls = classnames({
-      'ui-progress': true,
+      [prefixCls!]: true,
       radius: 'radius' in props || isRadius,
       round: 'round' in props || isRound,
       [`theme-${theme}`]: !!theme,
@@ -45,9 +48,9 @@ class Progress extends Component<PropsType, any> {
 
     return (
       <div className={cls} style={style}>
-        <div className="ui-progress-line-outer">
-          <div className="ui-progress-line-inner">
-            <div className="ui-progress-bg" style={{ width: `${percent}%` }} />
+        <div className={`${prefixCls}-line-outer`}>
+          <div className={`${prefixCls}-line-inner`}>
+            <div className={`${prefixCls}-bg`} style={{ width: `${percent}%` }} />
           </div>
         </div>
         {this.textRender(percent)}
