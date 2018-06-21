@@ -5,3 +5,8 @@ export { default as Modal } from './Modal';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Tag } from './Tag';
 export { default as Input } from './Input';
+export { default as Pagination } from './Pagination';
+export { default as Select } from './Select';
+export { default as Menu } from './Menu';
+export { default as Dropdown } from './Dropdown';
+export { default as Message } from './Message';

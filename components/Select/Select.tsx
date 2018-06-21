@@ -86,7 +86,7 @@ class Select extends Component<PropsType, any> {
       value: props.value,
       text: props.children,
     };
-    this.setDropdown(false, this.props.onChange(selected));
+    this.setDropdown(false, () => this.props.onChange(selected));
   }
 
   setDropdown(isOpen, callback?) {

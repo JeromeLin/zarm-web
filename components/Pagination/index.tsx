@@ -7,6 +7,7 @@ import PropsType from './PropsType';
 
 class Pagination extends Component<PropsType, any> {
   static defaultProps = {
+    prefixCls: 'ui-pagination',
     defaultValue: 1,
     isBordered: false,
     isRadius: false,
@@ -92,11 +93,12 @@ class Pagination extends Component<PropsType, any> {
   }
 
   firstPager = () => {
+    const { prefixCls } = this.props;
     return (
       <li
         key={1}
         title="第-页"
-        className="ui-pagination-item"
+        className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(1)}
       >
         1
@@ -105,11 +107,12 @@ class Pagination extends Component<PropsType, any> {
   }
 
   lastPager = (pageCount) => {
+    const { prefixCls } = this.props;
     return (
       <li
         key={pageCount}
         title="最后一页"
-        className="ui-pagination-item"
+        className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(pageCount)}
       >
         {pageCount}
@@ -118,15 +121,16 @@ class Pagination extends Component<PropsType, any> {
   }
 
   prevPager = (current) => {
+    const { prefixCls } = this.props;
     return (
       <li
         key="prev"
         title="上一页"
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
-          'ui-pagination-item': true,
-          'ui-pagination-item-prev': true,
-          'ui-pagination-item-disabled': Number(current) === 1,
+          [`${prefixCls}-item`]: true,
+          [`${prefixCls}-item-prev`]: true,
+          [`${prefixCls}-item-disabled`]: Number(current) === 1,
         })}
         onClick={() => current > 1 && this._onPagerClick(current - 1)}
       >
@@ -136,15 +140,16 @@ class Pagination extends Component<PropsType, any> {
   }
 
   nextPager = (current, pageCount) => {
+    const { prefixCls } = this.props;
     return (
       <li
         key="next"
         title="下一页"
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
-          'ui-pagination-item': true,
-          'ui-pagination-item-next': true,
-          'ui-pagination-item-disabled': Number(current) === pageCount,
+          [`${prefixCls}-item`]: true,
+          [`${prefixCls}-item-next`]: true,
+          [`${prefixCls}-item-disabled`]: Number(current) === pageCount,
         })}
         onClick={() => current < pageCount && this._onPagerClick(current + 1)}
       >
@@ -154,22 +159,24 @@ class Pagination extends Component<PropsType, any> {
   }
 
   jumpPrev = (current) => {
+    const { prefixCls } = this.props;
     return (
       <li
         key="jump-prev"
         title="向前 5 页"
-        className="ui-pagination-item ui-pagination-item-jump-prev"
+        className={`${prefixCls}-item ${prefixCls}-item-jump-prev`}
         onClick={() => this._onPagerClick(current - 5)}
       />
     );
   }
 
   jumpNext = (current) => {
+    const { prefixCls } = this.props;
     return (
       <li
         key="jump-next"
         title="向后 5 页"
-        className="ui-pagination-item ui-pagination-item-jump-next"
+        className={`${prefixCls}-item ${prefixCls}-item-jump-next`}
         onClick={() => this._onPagerClick(current + 5)}
       />
     );
@@ -183,14 +190,15 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderPager = (i, current) => {
+    const { prefixCls } = this.props;
     return (
       <li
         key={i}
         title={i}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
-          'ui-pagination-item': true,
-          'ui-pagination-item-active': current === i,
+          [`${prefixCls}-item`]: true,
+          [`${prefixCls}-item-active`]: current === i,
         })}
         onClick={() => this._onPagerClick(i)}
       >
@@ -200,35 +208,37 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderAddonBefore = (addonBefore) => {
+    const { prefixCls } = this.props;
     return (
-      <div key="addon-before" className="ui-pagination-addon-before">
+      <div key="addon-before" className={`${prefixCls}-addon-before`}>
         {addonBefore}
       </div>
     );
   }
 
   renderAddonAfter = (addonAfter) => {
+    const { prefixCls } = this.props;
     return (
-      <div key="addon-after" className="ui-pagination-addon-after">
+      <div key="addon-after" className={`${prefixCls}-addon-after`}>
         {addonAfter}
       </div>
     );
   }
 
   renderTotal = () => {
-    const { total, pageSize } = this.props;
+    const { total, pageSize, prefixCls } = this.props;
     const { value } = this.state;
     return (
-      <div className="ui-pagination-total">
+      <div className={`${prefixCls}-total`}>
         共有条 {total} 记录 第 {value} / {Math.ceil(total / pageSize)} 页
       </div>
     );
   }
 
   renderPageSizeSelector = () => {
-    const { radius } = this.props;
+    const { radius, prefixCls } = this.props;
     return (
-      <div className="ui-pagination-size">
+      <div className={`${prefixCls}-size`}>
         <Select
           isRadius={radius}
           size="sm"
@@ -249,9 +259,9 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderJumper = () => {
-    const { radius, total, pageSize } = this.props;
+    const { radius, total, pageSize, prefixCls } = this.props;
     return (
-      <div className="ui-pagination-jumper">
+      <div className={`${prefixCls}-jumper`}>
         跳至
         <Input
           isRadius={radius}
@@ -282,6 +292,7 @@ class Pagination extends Component<PropsType, any> {
   render() {
     const { props } = this;
     const {
+      prefixCls,
       isBordered,
       isRadius,
       className,
@@ -292,7 +303,7 @@ class Pagination extends Component<PropsType, any> {
     } = props;
 
     const cls = classnames({
-      'ui-pagination': true,
+      [prefixCls!]: true,
       bordered: 'bordered' in props || isBordered,
       radius: 'radius' in props || isRadius,
       [className!]: !!className,
@@ -301,7 +312,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <div className={cls} style={style}>
         {showTotal && this.renderTotal()}
-        <div className="ui-pagination-pagers">
+        <div className={`${prefixCls}-pagers`}>
           <ul>
             {this.getPagerList()}
           </ul>

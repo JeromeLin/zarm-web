@@ -69,7 +69,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
       selected: !isSelected,
     };
 
-    this.setState({ value }, this.props.onChange(value, row));
+    this.setState({ value }, () => this.props.onChange(value, row));
   }
 
   render() {
