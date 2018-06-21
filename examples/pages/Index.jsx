@@ -31,7 +31,7 @@ export default {
     Data: {
       // table: './table',
       Tag: '../pages/tag',
-      // progress: './progress',
+      Progress: '../pages/Progress',
       // tree: './tree',
       Pagination: '../pages/pagination',
       // badge: './badge',
@@ -53,7 +53,7 @@ export default {
     Others: {
     //   dialog: './dialog',
     //   tooltip: './tooltip',
-    //   popover: './popover',
+      Popover: '../pages/popover',
     //   card: './card',
     //   carousel: './carousel',
     //   collapse: './collapse',

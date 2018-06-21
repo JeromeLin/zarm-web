@@ -7,6 +7,7 @@ import PropsType from './PropsType';
 class Confirm extends Component<PropsType, any> {
 
   static defaultProps = {
+    prefixCls: 'ui-confirm',
     message: '',
     width: 270,
     okText: '确定',
@@ -17,6 +18,7 @@ class Confirm extends Component<PropsType, any> {
 
   render() {
     const {
+      prefixCls,
       message,
       okText,
       cancelText,
@@ -29,7 +31,7 @@ class Confirm extends Component<PropsType, any> {
     return (
       <Modal width={width} visible={visible}>
         <Modal.Body>
-          <div className="ui-confirm">
+          <div className={prefixCls}>
             <Icon type="question-round" />
             <span>{message}</span>
           </div>
