@@ -1,6 +1,5 @@
 @import '../../style/index';
 
-
 @mixin tag-theme($color, $background) {
   $active-background: darken($background, 10%);
   

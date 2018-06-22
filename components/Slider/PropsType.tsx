@@ -1,13 +1,14 @@
 export type theme = 'default' | 'info' | 'success' | 'warning' | 'error';
 
 export default interface PropsType {
+  prefixCls?: string;
   min: number;
   max: number;
   step: number;
   defaultValue: number;
   showTip?: boolean;
   tipAlwayShow?: boolean;
-  HandleAmount: number;
+  handleAmount: number;
   isRound?: boolean;
   isSolid?: boolean;
   isRange?: boolean;

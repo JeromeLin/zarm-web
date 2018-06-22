@@ -1,4 +1,4 @@
-## Slider滑动输入条
+## Slider 滑动输入条
 滑动型输入器。
 
 ### 基础用法
@@ -38,84 +38,60 @@
 ```
 :::
 
-### 圆角标签
+### 多个滑动手柄
 
-可以设置圆角或椭圆角的标签
+可以设置多个滑动手柄。
 
-:::demo 使用`radius`，`round`属性设置圆角、椭圆角
+:::demo 通过`HanleAmount`设置。
 
 ```js
   render() {
     return (
       <div>
-        <div className="multi-rows">
-          <Tag radius>default</Tag>
-          <Tag radius theme="info">info</Tag>
-          <Tag radius theme="success">success</Tag>
-          <Tag radius theme="warning">warning</Tag>
-          <Tag radius theme="error">error</Tag>
-        </div>
-        <div className="multi-rows">
-          <Tag round>default</Tag>
-          <Tag round theme="info">info</Tag>
-          <Tag round theme="success">success</Tag>
-          <Tag round theme="warning">warning</Tag>
-          <Tag round theme="error">error</Tag>
-        </div>
+        <Slider round min={0} max={300} step={1} defaultValue={80} handleAmount={2} styleWidth={600} />
       </div>
     )
   }
 ```
 :::
 
-### 不同尺寸
+### 取值回调
 
-除了默认尺寸外，可以额外设置四种尺寸。
+可以实时获取值。
 
-:::demo 额外的尺寸：`xl`、`lg`、`sm`，`xs`，通过设置`size`属性来配置它们。
+:::demo 通过`getValue`添加回调函数。
 
 ```js
   render() {
     return (
       <div>
-        <Tag size='xl' theme="info">xl尺寸</Tag>
-        <Tag size='lg' theme="info">lg尺寸</Tag>
-        <Tag theme="info">默认尺寸</Tag>
-        <Tag size='sm' theme="info">sm尺寸</Tag>
-        <Tag size='xs' theme="info">xs尺寸</Tag>
-      </div>
-    )
-  }
-```
-:::
-
-### 可关闭标签
-
-支持标签可关闭。
-
-:::demo 可以通过设置`onClose`添加关闭回调。
-
-```js
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: true
-    };
-  }
-  handleClose() {
-    this.setState({
-      visible: false
-    });
-  }
-  render() {
-    const style = {
-      display: this.state.visible ? 'block' : 'none'
-    }
-    return (
-      <div style={style}>
-        <Tag theme="info" onClose={() => this.handleClose()}>可关闭标签</Tag>
+        <Slider
+          min={0} 
+          max={300}
+          styleWidth={600}
+          getValue={(value, i) => {
+            console.log(value, i);
+          }}  
+        />
       </div>
     );
+  }
+```
+:::
+
+### 更多自定义设置
+
+通过`range`, `rangeColors`属性自定义样式。
+
+:::demo
+
+```js
+  render() {
+    return (
+      <div>
+        <Slider round isRange handleAmount={2} rangeColors={['red', 'yellow']} styleWidth={600} min={0} max={300} step={1} defaultValue={[80, 150]} />
+      </div>
+    )
   }
 ```
 :::
@@ -124,14 +100,17 @@
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| size     | 尺寸   | string  |   xl,lg,sm,xs            |    —     |
-| theme     | 主题   | string    |   info,success,warning,error,default |     default   |
-| radius     | 是否圆角   | boolean    | — | false   |
-| round     | 是否椭圆角   | boolean    | — | false   |
-| circle     | 是否圆形   | boolean    | — | false   |
-| disabled  | 是否禁用    | boolean   | true, false   | false   |
+| min     | 最小范围   | number  |   -            |    0    |
+| max     | 最大范围   | number    |   - |     -   |
+| step     | 步长   | number    |   - |     1   |
+| defaultValue     | 默认值   | number/number[]    | — | 0   |
+| showTip     | 是否显示Tip   | boolean   | — | true |
+| handleAmount     | 滑动手柄数量   |  number | — | 1 |
+| round     | 端点是否圆角   | boolean    | — | false   |
+| isRange     | 是否双滑块模式   | boolean    | — | false   |
+| rangeColors     | 双滑块颜色  |  []   | — | -   |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
-| onClose | 点击关闭触发的事件 | — |
+| getValue | 滑动手柄时候触发的事件 | (value, index) |

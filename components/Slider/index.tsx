@@ -7,12 +7,13 @@ const noop = () => {};
 
 class Slider extends Component<PropsType, any> {
   static defaultProps = {
+    prefixCls: 'ui-slider',
     min: 0,
     step: 1,
     defaultValue: 0,
     showTip: true,
     tipAlwayShow: false,
-    HandleAmount: 1,
+    handleAmount: 1,
     isRound: false,
     isSolid: false,
     isRange: false,
@@ -32,10 +33,10 @@ class Slider extends Component<PropsType, any> {
 
   constructor(props) {
     super(props);
-    const { HandleAmount } = this.props;
+    const { handleAmount } = this.props;
     const states = {};
     let i = 0;
-    while (i < HandleAmount) {
+    while (i < handleAmount) {
       states[`currentValue${i}`] = 0;
       i++;
     }
@@ -58,13 +59,13 @@ class Slider extends Component<PropsType, any> {
   componentDidMount() {
     setTimeout(() => {
       const {
-        min, max, HandleAmount, defaultValue,
+        min, max, handleAmount, defaultValue,
       } = this.props;
       const states = {};
       let i = 0;
       const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue];
 
-      while (i < HandleAmount) {
+      while (i < handleAmount) {
         if (dv[i] === undefined) {
           dv[i] = min;
         }
@@ -81,13 +82,13 @@ class Slider extends Component<PropsType, any> {
   componentWillReceiveProps(nextProps) {
     setTimeout(() => {
       const {
-        min, max, HandleAmount, defaultValue,
+        min, max, handleAmount, defaultValue,
       } = nextProps;
       const states = {};
       let i = 0;
       const dv = this.isArray(defaultValue) ? defaultValue : [defaultValue];
 
-      while (i < HandleAmount) {
+      while (i < handleAmount) {
         if (dv[i] === undefined) {
           dv[i] = min;
         }
@@ -292,6 +293,7 @@ class Slider extends Component<PropsType, any> {
 
   render() {
     const {
+      prefixCls,
       min,
       max,
       styleWidth,
@@ -301,7 +303,7 @@ class Slider extends Component<PropsType, any> {
       tipAlwayShow,
       customCls,
       theme,
-      HandleAmount,
+      handleAmount,
       isRange,
       rangeColors,
     } = this.props;
@@ -310,11 +312,11 @@ class Slider extends Component<PropsType, any> {
       width: `${styleWidth || 200}px`,
     };
     const tipClass = classnames({
-      'ui-slider-tip': true,
-      'ui-slider-tip-show': tipAlwayShow,
+      [`${prefixCls}-tip`]: true,
+      [`${prefixCls}-tip-show`]: tipAlwayShow,
     });
     const customClass = classnames({
-      'ui-slider-wraper': true,
+      [`${prefixCls}-wraper`]: true,
       [customCls!]: !!customCls,
       round: 'round' in this.props || isRound,
       solid: 'solid' in this.props || isSolid,
@@ -339,7 +341,7 @@ class Slider extends Component<PropsType, any> {
     const handles: React.ReactNode[] = [];
     let i = 0;
     let styleObjArr;
-    while (i < HandleAmount) {
+    while (i < handleAmount) {
       const percent = (this.state[`currentValue${i}`] - min) / (max - min) * 100;
 
       styleObjArr = {
@@ -362,12 +364,12 @@ class Slider extends Component<PropsType, any> {
         <div key={`handleBack${i}`}>
           <div
             key={`Back${i}`}
-            className="ui-slider-back"
+            className={`${prefixCls}-back`}
             style={styleObjArr.back}
           />
           <span
             key={`handle${i}`}
-            className="ui-slider-handle"
+            className={`${prefixCls}-handle`}
             style={styleObjArr.handle}
             onMouseDown={!this.isTouchSuported ? this.onHandleDown(i) : noop}
             onMouseMove={!this.isTouchSuported ? this.onHandleMove(i) : noop}
@@ -387,7 +389,7 @@ class Slider extends Component<PropsType, any> {
     return (
       <div className={customClass}>
         <div
-          className="ui-slider-horizontal"
+          className={`${prefixCls}-horizontal`}
           style={styleWidthObj}
           ref={(sliderBody) => { this.sliderBody = sliderBody; }}
           onClick={this.clickhandler}
