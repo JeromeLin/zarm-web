@@ -25,3 +25,4 @@ export { default as Tooltip } from './Tooltip';
 export { default as Table } from './Table';
 export { default as Popconfirm } from './Popconfirm';
 export { default as Panel } from './Panel';
+export { default as Mask } from './Mask';

@@ -55,7 +55,7 @@ export default {
       Tooltip: '../pages/tooltip',
       Popover: '../pages/popover',
       Popconfirm: '../pages/popconfirm',
-      //   card: './card',
+      Mask: '../pages/mask',
       Swipe: '../pages/swipe',
     //   collapse: './collapse',
     },
