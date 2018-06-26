@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
-import ScrollToTop from 'react-scroll-up';
+// import ScrollToTop from 'react-scroll-up';
 import 'normalize.css';
 import AsyncComponent from './AsyncComponent';
 import '../styles/index';
@@ -12,7 +12,6 @@ import pages from '../pages/Index';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {};
     this.components = {};
   }
@@ -75,15 +74,17 @@ class App extends Component {
           </nav>
           <div className="content">
             <Switch>
+              <Route path="/" exact component={AsyncComponent(() => import('../pages/QuikStart'))} />
+              <Route path="/quick-start" component={AsyncComponent(() => import('../pages/QuikStart'))} />
               {
                 Object.keys(this.components).map((name) => {
                   return <Route path={`/${name}`} key={name} component={AsyncComponent(() => import(`../pages/${name}`))} />;
                 })
               }
             </Switch>
-            <ScrollToTop showUnder={210}>
+            {/* <ScrollToTop showUnder={210}>
               <div className="page-up" />
-            </ScrollToTop>
+            </ScrollToTop> */}
           </div>
         </div>
       </div>

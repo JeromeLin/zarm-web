@@ -1,5 +1,5 @@
-## Loading 加载
-加载中组件。
+## Dropdown 下拉框
+下拉框组件。
 
 ### 基础用法
 
@@ -24,7 +24,7 @@
         </Button>
         <Dropdown
           visible={this.state.dropdown}
-          style={{position: 'absolute', left: 0, top: 36, width: 200}}>
+          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}>
           <Menu>
             <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
             <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
