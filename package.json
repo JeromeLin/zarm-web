@@ -3,19 +3,16 @@
   "version": "1.0.0",
   "description": "基于 React 的桌面端UI库",
   "tags": [
-    "zarm",
-    "zarm-ui",
+    "dragon-ui",
     "react",
-    "react-zarm",
     "zhongan"
   ],
   "keywords": [
     "react",
     "react-ui",
     "react-component",
-    "zarm",
-    "zarm-ui",
-    "zarm-mobile",
+    "dragon",
+    "dragon-ui",
     "component",
     "components",
     "ui",
