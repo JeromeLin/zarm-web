@@ -8,6 +8,7 @@ class Form extends Component<PropsType, any> {
     type: 'horizontal',
     className: null,
   };
+  static Item;
   render() {
     const {
       type, className, children, style, prefixCls,

@@ -10,6 +10,8 @@ class Message extends Component<PropsType, any> {
     theme: 'info',
   };
 
+  static Item;
+
   private timer;
   private active = 0;
   private message;

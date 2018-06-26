@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* tslint:disable */
 import domUtil from '../utils/dom';
 
 const {
@@ -115,7 +116,15 @@ function isFunction(functionToCheck) {
  * 获取一个元素的各个offset值
  */
 function getOffsetRect(element) {
-  const elementRect = {
+  type rect = {
+    width: number,
+    height: number,
+    left: number,
+    top: number,
+    right?: number,
+    bottom?: number,
+  }
+  const elementRect: rect = {
     width: element.offsetWidth,
     height: element.offsetHeight,
     left: element.offsetLeft,
@@ -151,13 +160,13 @@ function Popper(reference, popper, options) {
   setStyle(this._popper, { position: this.state.position, top: 0 });
 
   this.update();
-  if (root.requestAnimationFrame) {
+  if ((root as Window).requestAnimationFrame) {
     requestAnimationFrame(this.update.bind(this));
   } else {
     setTimeout(this.update.bind(this));
   }
   this._setupEventListeners();
-  return this;
+  // return this;
 }
 
 /**
@@ -181,7 +190,13 @@ Popper.prototype.destroy = function () {
  * 更新方位，重新计算偏移量
  */
 Popper.prototype.update = function () {
-  let data = {};
+  type dataType = {
+    placement?: string,
+    _originalPlacement?: string,
+    offsets?: object,
+    boundaries?: object,
+  };
+  let data: dataType = {};
 
   data.placement = this._options.placement;
   data._originalPlacement = this._options.placement;
@@ -203,10 +218,10 @@ Popper.prototype.update = function () {
 /**
  * 判断气泡框应该使用什么定位
  */
-Popper.prototype._getPosition = function (popper, reference) {
-  const container = getOffsetParent(reference);
+Popper.prototype._getPosition = function (_, reference) {
+  // const container = getOffsetParent(reference);
 
-  const isParentFixed = isFixed(reference, container);
+  const isParentFixed = isFixed(reference);
   return isParentFixed ? 'fixed' : 'absolute';
 };
 
@@ -215,7 +230,14 @@ Popper.prototype._getPosition = function (popper, reference) {
  */
 Popper.prototype._getOffsets = function (popper, reference, placement) {
   placement = placement.split('-')[0];
-  const popperOffsets = {};
+  type offset = {
+    position?: string,
+    top?: number,
+    left?: number,
+    width?: number,
+    height?: number,
+  }
+  const popperOffsets: offset = {};
 
   popperOffsets.position = this.state.position;
   const isParentFixed = popperOffsets.position === 'fixed';
@@ -261,12 +283,12 @@ Popper.prototype._getOffsets = function (popper, reference, placement) {
  */
 Popper.prototype._setupEventListeners = function () {
   this.state.updateBound = this.update.bind(this);
-  root.addEventListener('resize', this.state.updateBound);
+  (root as Window).addEventListener('resize', this.state.updateBound);
 
   let target = getScrollParent(this._reference);
   if (
-    target === root.document.body ||
-    target === root.document.documentElement
+    target === (root as Window).document.body ||
+    target === (root as Window).document.documentElement
   ) {
     target = root;
   }
@@ -277,12 +299,12 @@ Popper.prototype._setupEventListeners = function () {
  * 移除事件
  */
 Popper.prototype._removeEventListeners = function () {
-  root.removeEventListener('resize', this.state.updateBound);
+  (root as Window).removeEventListener('resize', this.state.updateBound);
   let target = getScrollParent(this._reference);
 
   if (
-    target === root.document.body ||
-    target === root.document.documentElement
+    target === (root as Window).document.body ||
+    target === (root as Window).document.documentElement
   ) {
     target = root;
   }
@@ -294,7 +316,13 @@ Popper.prototype._removeEventListeners = function () {
  * 获取边界，用于优化在边界情况下正常显示气泡框
  */
 Popper.prototype._getBoundaries = function (data, padding) {
-  let boundaries = {};
+  type boundary = {
+    left?: number,
+    right?: number,
+    top?: number,
+    bottom?: number,
+  }
+  let boundaries: boundary = {};
   const offsetParent = getOffsetParent(this._popper);
   const scrollParent = getScrollParent(this._popper);
   const offsetParentRect = getOffsetRect(offsetParent);
@@ -310,18 +338,18 @@ Popper.prototype._getBoundaries = function (data, padding) {
   boundaries = {
     top: 0 - (offsetParentRect.top - scrollTop),
     right:
-      root.document.documentElement.clientWidth -
+    (root as Window).document.documentElement.clientWidth -
       (offsetParentRect.left - scrollLeft),
     bottom:
-      root.document.documentElement.clientHeight -
+    (root as Window).document.documentElement.clientHeight -
       (offsetParentRect.top - scrollTop),
     left: 0 - (offsetParentRect.left - scrollLeft),
   };
 
   boundaries.left += padding;
-  boundaries.right -= padding;
+  boundaries.right! -= padding;
   boundaries.top += padding;
-  boundaries.bottom -= padding;
+  boundaries.bottom! -= padding;
 
   return boundaries;
 };
@@ -358,7 +386,7 @@ Popper.prototype.modifiers = {};
  * 应用最后计算出的样式到气泡框
  */
 Popper.prototype.modifiers.applyStyle = function (data) {
-  const styles = {
+  const styles: { [propName: string]: number | string } = {
     position: data.offsets.popper.position,
   };
   const left = Math.round(data.offsets.popper.left);
