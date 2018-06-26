@@ -3,20 +3,21 @@ import PropsType from './PropsType';
 
 class Loading extends Component<PropsType, any> {
   static defaultProps = {
+    prefixCls: 'ui-loading',
     visible: false,
   };
 
   render() {
-    const { visible, children, style } = this.props;
+    const { visible, children, style, prefixCls } = this.props;
 
     return visible ? (
-      <div className="ui-loading" style={style}>
-        <div className="ui-loading-spins">
-          <span className="ui-loading-spin ui-loading-spin-first" />
-          <span className="ui-loading-spin ui-loading-spin-second" />
-          <span className="ui-loading-spin ui-loading-spin-third" />
+      <div className={prefixCls} style={style}>
+        <div className={`${prefixCls}-spins`}>
+          <span className={`${prefixCls}-spin ${prefixCls}-spin-first`} />
+          <span className={`${prefixCls}-spin ${prefixCls}-spin-second`} />
+          <span className={`${prefixCls}-spin ${prefixCls}-spin-third`} />
         </div>
-        <div className="ui-loading-inner">{children}</div>
+        <div className={`${prefixCls}-inner`}>{children}</div>
       </div>
     ) : (
       children

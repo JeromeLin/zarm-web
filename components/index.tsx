@@ -26,3 +26,7 @@ export { default as Table } from './Table';
 export { default as Popconfirm } from './Popconfirm';
 export { default as Panel } from './Panel';
 export { default as Mask } from './Mask';
+export { default as Calendar } from './Calendar';
+export { default as DatePicker } from './DatePicker';
+export { default as Form } from './Form';
+export { default as Loading } from './Loading';

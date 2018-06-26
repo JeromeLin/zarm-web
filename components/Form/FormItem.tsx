@@ -19,7 +19,7 @@ class FormItem extends Component<ItemProps, any> {
   _renderLabel() {
     const { props } = this;
     const {
-      id, label, labelCol, isRequired,
+      id, label, labelCol, isRequired, prefixCls,
     } = props;
 
     const labelCls = classnames({
@@ -28,7 +28,7 @@ class FormItem extends Component<ItemProps, any> {
 
     const star =
       'required' in props || isRequired ? (
-        <span className="ui-form-item-required">
+        <span className={`${prefixCls}-item-required`}>
           <Icon type="required" />
         </span>
       ) : null;
@@ -42,26 +42,26 @@ class FormItem extends Component<ItemProps, any> {
   }
 
   _renderExplain() {
-    const { help } = this.props;
+    const { help, prefixCls } = this.props;
 
     return 'help' in this.props ? (
-      <div className="ui-form-explain">{help}</div>
+      <div className={`${prefixCls}-explain`}>{help}</div>
     ) : null;
   }
 
   render() {
     const { props } = this;
     const {
-      theme, className, controlCol, children, style,
+      theme, className, controlCol, children, style, prefixCls,
     } = props;
 
     const cls = classnames({
-      'ui-form-item': true,
+      [`${prefixCls}-item`]: true,
       [className!]: !!className,
     });
 
     const controlCls = classnames({
-      'ui-form-item-control': true,
+      [`${prefixCls}-item-control`]: true,
       [controlCol!]: !!controlCol,
       [`theme-${theme}`]: !!theme,
     });
