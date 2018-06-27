@@ -130,8 +130,8 @@ class Modal extends Component<ModalProps, any> {
         animationDuration: `${animationDuration}ms`,
       },
       dialog: {
-        width,
-        minWidth,
+        width: Number(width),
+        minWidth: Number(minWidth),
         WebkitAnimationDuration: `${animationDuration}ms`,
         MozAnimationDuration: `${animationDuration}ms`,
         msAnimationDuration: `${animationDuration}ms`,
