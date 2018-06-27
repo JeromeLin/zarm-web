@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import '../styles/components/Container';
 
 class Container extends Component {
-
   componentDidMount() {
     if (this.props.className !== 'index-page') return;
 
@@ -16,7 +15,7 @@ class Container extends Component {
   componentWillUnmount() {
     if (this.props.className !== 'index-page') return;
 
-    const scrollTop = this.container.scrollTop;
+    const { scrollTop } = this.container;
     window.sessionStorage[this.props.className] = scrollTop;
   }
 
@@ -28,6 +27,7 @@ class Container extends Component {
       [className]: !!className,
     });
 
+    /* eslint-disable */
     return (
       <div ref={(ele) => { this.container = ele; }} className={cls} style={{ height: window.innerHeight }}>
         <a className="github" href="https://github.com/ZhonganTechENG/zarm">

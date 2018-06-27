@@ -1,29 +1,24 @@
-import React, { PureComponent, CSSProperties } from 'react';
-import classnames from 'classnames';
-import { BaseModalBodyProps } from './PropsType';
+import React, { Component } from 'react';
+import { ModalBodyProps } from './PropsType';
 
-export interface ModalBodyProps extends BaseModalBodyProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
-
+class ModalBody extends Component<ModalBodyProps, any> {
   static defaultProps = {
-    prefixCls: 'za-modal',
+    prefixCls: 'ui-modal',
+    height: 'auto',
   };
 
   render() {
-    const { prefixCls, className, height, children, ...others } = this.props;
-    const cls = classnames(`${prefixCls}-body`, className);
-
-    const bodyStyle: CSSProperties = {};
-    bodyStyle.height = height;
+    const { height, children, prefixCls } = this.props;
+    const bodyStyle = {
+      height,
+    };
 
     return (
-      <div className={cls} style={bodyStyle} {...others}>
+      <div className={`${prefixCls}-body`} style={bodyStyle}>
         {children}
       </div>
     );
   }
 }
+
+export default ModalBody;

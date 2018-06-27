@@ -1,81 +1,88 @@
-$prefixCls: $prefixCls-modal;
+@import '../../style/index';
 
-.#{$prefixCls} {
+.ui-modal {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overflow: auto;
-  z-index: $zindex-modal;
+  z-index: $base-zindex-modal;
 
-  &.shape-radius {
-    .#{$prefixCls}-dialog {
-      border-radius: $radius-md;
+  &.radius {
+    .ui-modal-dialog {
+      border-radius: $base-modal-radius;
     }
   }
 
-  &-wrapper {
+  &.round {
+    .ui-modal-dialog {
+      border-radius: $base-modal-round;
+    }
+  }
+
+  > .ui-modal-wrapper {
     width: 100%;
     margin: auto 0;
-  }
-
-  &-dialog {
-    position: relative;
-    margin: r(60) auto;
-    background-color: $modal-background;
-    box-shadow: 0 r(7) r(21) $color-shadow;
-    overflow: hidden;
-    z-index: $zindex-modal + 1;
-  }
-
-  &-header {
-    position: relative;
-    height: $modal-header-height;
-    line-height: $modal-header-height;
-    padding: 0 r(15);
-    border-bottom: 1px solid $border-color;
-
-    &-title {
-      font-size: $modal-title-font-size;
-      color: #333;
+  
+    > .ui-modal-dialog {
+      position: relative;
+      margin: 60px auto;
+      background: #fff;
+      box-shadow: 0 7px 21px rgba(0,0,0,.2);
+      overflow: hidden;
+      z-index: $base-zindex-modal + 1;
     }
-
-    &-close {
-      position: absolute;
-      top: r(20);
-      right: r(15);
-      line-height: r(15);
-      color: #ccc;
-      cursor: pointer;
-
-      &.#{$prefixCls-icon} {
-        font-size: r(20);
-      }
-
-      &:hover {
-        color: #999;
-      }
-    }
-  }
-
-  &-body {
-    font-size: r(15);
-    color: $color-text-caption;
-    padding: r(15);
-    overflow: auto;
-    user-select: auto;
-  }
-
-  &-footer {
-    width: 100%;
-    border-top: 1px solid $border-color;
-    padding: r(10) r(18);
-    text-align: right;
   }
 }
+
+.ui-modal-header {
+  position: relative;
+  height: 50px;
+  border-bottom: 1px solid #e9e9e9;
+  padding: 0 20px;
+
+  .ui-modal-title {
+    font-size: 16px;
+    line-height: 50px;
+  }
+
+  .ui-modal-close {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 20px;
+    line-height: 50px;
+    color: #999;
+    cursor: pointer;
+    // transition: transform .2s ease;
+
+    &:hover {
+      color: #666;
+      // transform: rotate(360deg);
+    }
+  }
+}
+
+.ui-modal-body {
+  padding: 20px;
+  overflow: auto;
+  user-select: auto;
+}
+
+.ui-modal-footer {
+  border-top: 1px solid #e9e9e9;
+  padding: 10px 18px;
+  text-align: right;
+
+  button + button {
+    margin-left: 10px;
+  }
+}
+

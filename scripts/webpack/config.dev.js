@@ -52,7 +52,7 @@ config.devServer = {
 };
 
 config.resolve.alias = {
-  zarm: process.cwd(),
+  'dragon-ui': process.cwd(),
 };
 
 module.exports = config;

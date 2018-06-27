@@ -1,5 +1,10 @@
+export type theme = 'default' | 'info' | 'success' | 'warning' | 'error';
+
 export default interface PropsType {
+  prefixCls?: string;
   type?: string;
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
+  theme?: theme;
+  style?: object;
+  className?: string;
   onClick?: () => void;
 }

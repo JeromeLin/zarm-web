@@ -1,6 +1,9 @@
+export type bgType = 'transparent' | 'light' | 'normal' | 'dark';
+
 export default interface PropsType {
-  visible?: boolean;
-  type?: 'transparent' | 'normal';
-  onClose?: () => void;
-  style?: React.CSSProperties;
+  prefixCls?: string;
+  visible: boolean;
+  type: bgType;
+  style?: object;
+  onClose: () => void;
 }

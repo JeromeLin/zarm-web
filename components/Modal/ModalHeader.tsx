@@ -1,30 +1,29 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
-import { BaseModalHeaderProps } from './PropsType';
+import React, { Component } from 'react';
+import { ModalHeaderProps } from './PropsType';
 import Icon from '../Icon';
 
-export interface ModalHeaderProps extends BaseModalHeaderProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
-
+class ModalHeader extends Component<ModalHeaderProps, any> {
   static defaultProps = {
-    prefixCls: 'za-modal',
     title: '',
+    style: {},
+    onClose: () => {},
   };
 
   render() {
-    const { prefixCls, className, title, onClose, ...others } = this.props;
-    const cls = classnames(`${prefixCls}-header`, className);
-    const btnClose = onClose && <Icon type="wrong" className={`${prefixCls}-header-close`} onClick={onClose} />;
+    const { title, onClose, style } = this.props;
+    const btnClose = onClose ? (
+      <div className="ui-modal-close" onClick={onClose}>
+        <Icon type="wrong" />
+      </div>
+    ) : null;
 
     return (
-      <div className={cls} {...others}>
-        <div className={`${prefixCls}-header-title`}>{title}</div>
+      <div className="ui-modal-header" style={style}>
+        <div className="ui-modal-title">{title}</div>
         {btnClose}
       </div>
     );
   }
 }
+
+export default ModalHeader;

@@ -1,3 +1,4 @@
-import '../../style/';
-import '../../Modal/style/';
-import './index.scss';
+import './component.scss';
+import '../../Modal/style';
+import '../../Button/style';
+import '../../Icon/style';

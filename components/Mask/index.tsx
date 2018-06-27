@@ -1,24 +1,30 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
-export interface MaskProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class Mask extends PureComponent<MaskProps, {}> {
-
+class Mask extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'za-mask',
+    prefixCls: 'ui-mask',
     visible: false,
     type: 'normal',
+    onClose: () => {},
   };
 
-  render(): any {
-    const { prefixCls, className, visible, type, onClose, ...others } = this.props;
-    const markCls = classnames(`${prefixCls}`, className, type);
+  render() {
+    const {
+      visible, type, onClose, style, prefixCls,
+    } = this.props;
+    const markCls = classnames({
+      [prefixCls!]: true,
+      transparent: type === 'transparent',
+      light: type === 'light',
+      dark: type === 'dark',
+    });
 
-    return visible && <div className={markCls} onClick={onClose} {...others} />;
+    return visible ? (
+      <div className={markCls} onClick={onClose} style={style} />
+    ) : null;
   }
 }
+
+export default Mask;

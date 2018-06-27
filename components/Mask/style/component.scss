@@ -1,13 +1,18 @@
-$prefixCls: $prefixCls-mask;
+@import '../../style/index';
 
-.#{$prefixCls} {
+.ui-mask {
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 0px;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, $opacity-mask);
-  z-index: $zindex-mask;
+  animation: fade-enter .3s ease-out;
+  background-color: rgba(0, 0, 0, .4);
+  z-index: $base-zindex-mask;
+
+  &.light {
+    background-color: rgba(255, 255, 255, .3);
+  }
 
   &.transparent {
     background-color: transparent;

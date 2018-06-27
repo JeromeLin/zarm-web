@@ -1,23 +1,10 @@
 export default interface PropsType {
-  shape?: 'radius';
+  prefixCls?: string;
+  message?: string;
   visible?: boolean;
-  animationType?:
-    'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
-    'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' |
-    'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
-  animationDuration?: number;
-  width?: string | number;
-  onMaskClick?: () => void;
-  title?: any;
-  message?: any;
+  width?: number | string;
   okText?: string;
-  onOk?: () => void;
   cancelText?: string;
-  onCancel?: () => void;
-}
-
-declare global {
-  interface Window {
-    zarmConfirm?: any;
-  }
+  onOk: () => void;
+  onCancel: () => void;
 }

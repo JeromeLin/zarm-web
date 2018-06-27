@@ -1,56 +1,50 @@
-import React, { PureComponent } from 'react';
-// import ReactDOM from 'react-dom';
-import classnames from 'classnames';
-import PropsType from './PropsType';
+import React, { Component } from 'react';
 import Modal from '../Modal';
 import Button from '../Button';
+import Icon from '../Icon';
+import PropsType from './PropsType';
 
-export interface ConfirmProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
-
-export default class Confirm extends PureComponent<ConfirmProps, {}> {
+class Confirm extends Component<PropsType, any> {
 
   static defaultProps = {
-    prefixCls: 'za-confirm',
-    animationType: 'zoom',
+    prefixCls: 'ui-confirm',
     message: '',
+    width: 270,
     okText: '确定',
     cancelText: '取消',
-    width: 400,
+    onOk: () => {},
+    onCancel: () => {},
   };
 
-  // static show = (props) => {
-  //   ReactDOM.render(<Confirm {...props} visible />, window.zarmConfirm);
-  // }
-
-  // static hide = () => {
-  //   ReactDOM.render(<Confirm visible={false} />, window.zarmConfirm);
-  // }
-
   render() {
-    const { prefixCls, className, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
-    const cls = classnames(prefixCls, className);
+    const {
+      prefixCls,
+      message,
+      okText,
+      cancelText,
+      onOk,
+      width,
+      visible,
+      onCancel,
+    } = this.props;
 
     return (
-      <Modal className={cls} {...others}>
-        <Modal.Header title={title} />
-        <Modal.Body className={`${prefixCls}-body`}>
-          {message}
+      <Modal width={width} visible={visible}>
+        <Modal.Body>
+          <div className={prefixCls}>
+            <Icon type="question-round" />
+            <span>{message}</span>
+          </div>
         </Modal.Body>
-        <Modal.Footer className={`${prefixCls}-footer`}>
+        <Modal.Footer>
           <Button onClick={onCancel}>{cancelText}</Button>
-          <Button theme="primary" onClick={onOk}>{okText}</Button>
+          <Button theme="success" onClick={onOk}>
+            {okText}
+          </Button>
         </Modal.Footer>
       </Modal>
     );
   }
 }
 
-// if (!window.zarmConfirm) {
-//   window.zarmConfirm = document.createElement('div');
-//   document.body.appendChild(window.zarmConfirm);
-// }
-
-// ReactDOM.render(<Confirm visible={false} />, window.zarmConfirm);
+export default Confirm;
