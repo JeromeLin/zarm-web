@@ -9,19 +9,16 @@ class Loading extends Component<PropsType, any> {
 
   render() {
     const { visible, children, style, prefixCls } = this.props;
-
-    return visible ? (
+    return (
       <div className={prefixCls} style={style}>
-        <div className={`${prefixCls}-spins`}>
+        <div className={`${prefixCls}-spins`} style={{ display: (visible ? 'block' : 'none') }}>
           <span className={`${prefixCls}-spin ${prefixCls}-spin-first`} />
           <span className={`${prefixCls}-spin ${prefixCls}-spin-second`} />
           <span className={`${prefixCls}-spin ${prefixCls}-spin-third`} />
         </div>
-        <div className={`${prefixCls}-inner`}>{children}</div>
+        <div className={visible ? `${prefixCls}-inner` : ''}>{children}</div>
       </div>
-    ) : (
-      children
-    );
+    )
   }
 }
 

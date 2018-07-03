@@ -24,6 +24,10 @@
           显示
           </Button>
         </Loading>
+        <br />
+        <Button theme="info" onClick={() => this.toggleLoading()}>
+          隐藏
+        </Button>
       </div>
     )
   }
