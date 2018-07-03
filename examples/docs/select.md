@@ -260,7 +260,7 @@
 | radius     | 是否圆角   | boolean   | — | false  |
 | disabled     | 是否禁用   | boolean   | — | false  |
 
-### Select Events
+### Select.Multiple Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onChange | 选项变更时候触发的事件 |  { index, value, text }|
