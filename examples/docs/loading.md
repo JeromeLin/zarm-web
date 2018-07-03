@@ -20,10 +20,12 @@
     return (
       <div>
         <Loading visible={this.state.loading}>
-          <Button theme="info" onClick={() => this.toggleLoading()}>
-          显示
-          </Button>
+          这里是内容
         </Loading>
+        <br />
+        <Button theme="info" onClick={() => this.toggleLoading()}>
+          显示/隐藏
+        </Button>
       </div>
     )
   }
