@@ -5,6 +5,7 @@ import Input from '../Input';
 import Icon from '../Icon';
 import PropsType from './PropsType';
 
+const noop = () => {};
 class Pagination extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'ui-pagination',
@@ -16,8 +17,9 @@ class Pagination extends Component<PropsType, any> {
     showTotal: false,
     showJumper: false,
     showPageSizeSelector: false,
-    onPageChange: () => {},
-    onPageSizeChange: () => {},
+    onPageChange: noop,
+    onPageSizeChange: noop,
+    onChange: noop,
   };
 
   constructor(props) {
@@ -183,10 +185,18 @@ class Pagination extends Component<PropsType, any> {
   }
 
   _onPagerClick(value) {
+    const { pageSize, onPageChange, onChange } = this.props;
     this.setState({
       value,
     });
-    this.props.onPageChange(value);
+    if (onPageChange !== noop) {
+      onPageChange(value);
+      return;
+    }
+    onChange({
+      pageSize,
+      currentPage: value,
+    });
   }
 
   renderPager = (i, current) => {
@@ -236,7 +246,7 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderPageSizeSelector = () => {
-    const { radius, prefixCls } = this.props;
+    const { radius, prefixCls, pageSize, onPageSizeChange, onChange } = this.props;
     return (
       <div className={`${prefixCls}-size`}>
         <Select
@@ -245,7 +255,17 @@ class Pagination extends Component<PropsType, any> {
           defaultValue={10}
           // tslint:disable-next-line:jsx-no-multiline-js
           onChange={({ value }) => {
-            this.props.onPageSizeChange(value);
+            if (value === pageSize) {
+              return;
+            }
+            if (onPageSizeChange !== noop) {
+              onPageSizeChange(value);
+              return;
+            }
+            onChange({
+              currentPage: 1,
+              pageSize: value,
+            });
           }}
         >
           <Select.Option value={10}>每页 10 条</Select.Option>
