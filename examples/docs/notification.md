@@ -38,7 +38,7 @@ open2() {
 
 带有 icon，常用来显示「成功、警告、消息、错误」类的系统消息
 
-::: demo Element 为 Notification 组件准备了四种通知类型：`success`, `warning`, `info`, `error`。通过`type`字段来设置，除此以外的值将被忽略。同时，我们也为 Notification 的各种 type 注册了方法，可以在不传入`type`字段的情况下像`open5`和`open6`那样直接调用。
+::: demo Notification 组件有四种通知类型：`success`, `warning`, `info`, `error`。通过`type`字段来设置
 ```js
 render() {
   return (
@@ -110,6 +110,7 @@ open() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | title | 标题 | string | — | — |
 | message | 说明文字 | string/ReactElement | — | — |
+| className | 自定义类名 | string | - | - |
 | type | 图标主题，只能为列举的四种之一，否则无效 | string | success/warning/info/error | — |
 | duration | 显示时间, 毫秒。设为 0 则不会自动关闭 | number | — | 4500 |
 | onClick | 点击 Notification 时的回调函数 | function | — | — |
