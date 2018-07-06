@@ -108,45 +108,6 @@
 ```
 :::
 
-### 事件回调
-
-通过`onChange`兼容`onPageSizeChange`与`onPageChange`，监听翻页和跳转以及每页条数变更事件。
-
-
-:::demo
-
-```js
-  constructor(props) {
-    super(props);
-    this.state = {
-      pageSize: 10,
-      currentPage: 1,
-    }
-  }
-  render() {
-    const { pageSize, currentPage } = this.state;
-    return (
-      <div>
-        <Pagination
-          total={100}
-          value={currentPage}
-          pageSize={pageSize}
-          showJumper
-          showPageSizeSelector
-          onChange={({pageSize, currentPage}) => {
-            alert('每页展示：' + pageSize + ',且当前页是' + currentPage);
-            this.setState({
-              pageSize,
-              currentPage,
-            });
-          }}
-        />
-      </div>
-    )
-  }
-```
-:::
-
 ### 更多设置
 
 通过`radius`，`bordered`设置样式。
@@ -189,4 +150,3 @@
 |---------- |-------- |---------- |
 | onPageChange | 翻页或跳转触发的事件 | page |
 | onPageSizeChange | 每页展示条数变更触发的事件 | pageSize |
-| onChange |监听翻页和跳转以及每页条数变更事件。 | {pageSize, currentPage} |

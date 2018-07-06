@@ -17,5 +17,5 @@ export default interface PropsType {
   addonAfter?: React.ReactNode;
   onPageChange: (value: number) => void;
   onPageSizeChange: (value: number) => void;
-  onChange: (pageInfo:{ currentPage: number, pageSize: number }) => void;
+  onChange: (pageInfo: { currentPage: number, pageSize: number }) => void;
 }
