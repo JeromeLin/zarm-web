@@ -38,7 +38,7 @@ export default class Notification extends Component<NotificationProps, any> {
   }
 
   componentWillUnmount () {
-    if (this.state.animationState === '') {
+    if (this.state.animationState === 'leave') {
       this.stopTimer();
     }
 
@@ -95,7 +95,7 @@ export default class Notification extends Component<NotificationProps, any> {
       case 'warning':
         return 'warning-round-fill';
       default:
-        return 'info-round-fill';
+        return '';
     }
   }
 
