@@ -18,7 +18,7 @@ class Loading extends Component<PropsType, any> {
         </div>
         <div className={visible ? `${prefixCls}-inner` : ''}>{children}</div>
       </div>
-    )
+    );
   }
 }
 
