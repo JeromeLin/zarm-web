@@ -20,18 +20,16 @@ export default class Notification extends Component<NotificationProps, any> {
 
   private timeout: number | undefined;
   private notification: any;
+  private animateCb: () => void;
 
   componentDidMount () {
-    Events.on(this.notification, 'transitionend', () => {
+    this.animateCb = () => {
       if (this.state.animationState === 'leave') {
         this.props.willUnMount(this.notification.offsetHeight, parseInt(this.notification.style.top, 10));
       }
-    });
-    Events.on(this.notification, 'animationend', () => {
-      if (this.state.animationState === 'leave') {
-        this.props.willUnMount(this.notification.offsetHeight, parseInt(this.notification.style.top, 10));
-      }
-    });
+    };
+    Events.on(this.notification, 'transitionend', this.animateCb);
+    Events.on(this.notification, 'animationend', this.animateCb);
 
     this.enter();
     this.startTimer();
@@ -42,8 +40,8 @@ export default class Notification extends Component<NotificationProps, any> {
       this.stopTimer();
     }
 
-    Events.off(this.notification, 'transitionend', () => {});
-    Events.off(this.notification, 'animationend', () => {});
+    Events.off(this.notification, 'transitionend', this.animateCb);
+    Events.off(this.notification, 'animationend', this.animateCb);
   }
 
   startTimer () {

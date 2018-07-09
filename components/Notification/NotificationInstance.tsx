@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import rafObj from '../utils/rAf';
 import Notification from './Notification';
 
 const className: string = '.ui-notification';
@@ -33,7 +34,7 @@ export default function NotificationInstance (props: any, type: string) {
       ReactDOM.unmountComponentAtNode(div);
       document.body.removeChild(div);
 
-      requestAnimationFrame(() => {
+      rafObj.rAF(() => {
         const instancesDom = document.querySelectorAll(className);
 
         Array.from(instancesDom).forEach((instance: any) => {
