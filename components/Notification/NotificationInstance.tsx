@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import rafObj from '../utils/rAf';
+import rafObj from '../utils/rAF';
 import Notification from './Notification';
 
 const className: string = '.ui-notification';
