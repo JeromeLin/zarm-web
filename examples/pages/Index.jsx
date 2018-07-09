@@ -32,6 +32,7 @@ export default {
       Message: '../pages/message',
       Modal: '../pages/modal',
       Confirm: '../pages/confirm',
+      Notification: '../pages/notification',
     },
     Nav: {
       Tab: '../pages/tab',
