@@ -29,9 +29,20 @@ export default function NotificationInstance (props: any, type: string) {
 
   const element = React.createElement(Notification, {
     ...props,
-    willUnMount () {
+    willUnMount (lastHeight, lastTop) {
       ReactDOM.unmountComponentAtNode(div);
       document.body.removeChild(div);
+
+      requestAnimationFrame(() => {
+        const instancesDom = document.querySelectorAll(className);
+
+        Array.from(instancesDom).forEach((instance: any) => {
+          const instanceTop = parseInt(instance.style.top, 10);
+          if (instanceTop > lastTop) {
+            instance.style.top = `${instanceTop - lastHeight - 16}px`;
+          }
+        });
+      });
     },
   });
 

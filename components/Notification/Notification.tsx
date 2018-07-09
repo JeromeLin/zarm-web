@@ -24,12 +24,12 @@ export default class Notification extends Component<NotificationProps, any> {
   componentDidMount () {
     Events.on(this.notification, 'transitionend', () => {
       if (this.state.animationState === 'leave') {
-        this.props.willUnMount();
+        this.props.willUnMount(this.notification.offsetHeight, parseInt(this.notification.style.top, 10));
       }
     });
     Events.on(this.notification, 'animationend', () => {
       if (this.state.animationState === 'leave') {
-        this.props.willUnMount();
+        this.props.willUnMount(this.notification.offsetHeight, parseInt(this.notification.style.top, 10));
       }
     });
 
