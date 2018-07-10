@@ -1,4 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": ["za"]
+  "extends": ["za"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  }
 }
