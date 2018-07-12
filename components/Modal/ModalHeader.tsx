@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import { ModalHeaderProps } from './PropsType';
 import Icon from '../Icon';
 
 class ModalHeader extends Component<ModalHeaderProps, any> {
   static defaultProps = {
+    prefixCls: 'ui-modal',
     title: '',
     style: {},
     onClose: () => {},
   };
 
   render() {
-    const { title, onClose, style } = this.props;
+    const { title, onClose, prefixCls, className, style } = this.props;
     const btnClose = onClose ? (
-      <div className="ui-modal-close" onClick={onClose}>
+      <div className={`${prefixCls}-close`} onClick={onClose}>
         <Icon type="wrong" />
       </div>
     ) : null;
 
+    const cls = classnames({
+      [`${prefixCls}-header`]: true,
+      [className!]: !!className,
+    });
+
     return (
-      <div className="ui-modal-header" style={style}>
-        <div className="ui-modal-title">{title}</div>
+      <div className={cls} style={style}>
+        <div className={`${prefixCls}-title`}>{title}</div>
         {btnClose}
       </div>
     );
