@@ -64,6 +64,7 @@
     "no-var-keyword": true,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
+    "jsx-no-multiline-js": false,
     "one-line": [
       true,
       "check-catch",

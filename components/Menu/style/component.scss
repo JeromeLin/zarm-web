@@ -7,15 +7,15 @@
     padding: 0 $padding;
     font-size: $font-size;
 
-    &:first-child {
-      border-top-left-radius: $border-radius;
-      border-top-right-radius: $border-radius;
-    }
+    // &:first-child {
+    //   border-top-left-radius: $border-radius;
+    //   border-top-right-radius: $border-radius;
+    // }
 
-    &:last-child {
-      border-bottom-left-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
-    }
+    // &:last-child {
+    //   border-bottom-left-radius: $border-radius;
+    //   border-bottom-right-radius: $border-radius;
+    // }
   }
 }
 
@@ -27,7 +27,7 @@
   max-height: 250px;
   outline: none;
   overflow: auto;
-  @include menu-size($base-height, $base-padding, $base-fontSize, $base-radius);
+  @include menu-size($base-height-xl, 0, $base-fontSize, $base-radius);
 
   .ui-menu-item {
     position: relative;
@@ -41,18 +41,34 @@
     transition: background .3s ease;
     user-select: none;
     
-    &:hover,
-    .active {
-      background: #eaf8fe;
+    &:hover{
+      color: #1890ff;
     }
 
-    &.selected {
-      background: #d5f1fd;
+    &.selected,
+    &.active {
+      color: #1890ff;
+      background: #e6f7ff;
     }
 
     &.disabled {
       color: #ccc;
       cursor: not-allowed;
+    }
+  }
+
+  &-dark {
+    background: #001529;
+    .ui-menu-item {
+      &:hover {
+        color: #fff;
+        background: inherit;
+      }
+      &.selected,
+      &.active {
+        color: #fff;
+        background: #1890ff;
+      }
     }
   }
 

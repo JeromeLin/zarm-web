@@ -26,8 +26,8 @@
           visible={this.state.dropdown}
           style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}>
           <Menu>
-            <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-            <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
+            <Menu.Item itemKey="姓名"><Checkbox value="name">姓名</Checkbox></Menu.Item>
+            <Menu.Item itemKey="年龄"><Checkbox value="age">年龄</Checkbox></Menu.Item>
             <Menu.Item>333</Menu.Item>
           </Menu>
         </Dropdown>
