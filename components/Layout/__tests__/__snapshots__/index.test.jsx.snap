@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders basic layout correctly 1`] = `
+<div
+  class="ui-layout"
+>
+  <div
+    class="ui-layout-header"
+  >
+    Header
+  </div>
+  <div
+    class="ui-layout-content"
+  >
+    Content
+  </div>
+  <div
+    class="ui-layout-footer"
+  >
+    Footer
+  </div>
+</div>
+`;
+
+exports[`Layout renders basic layout with sider correctly 1`] = `
+<div
+  class="ui-layout"
+>
+  <div
+    class="ui-layout-header"
+  >
+    Header
+  </div>
+  <div
+    class="ui-layout ui-layout-has-sider"
+  >
+    <div
+      class="ui-layout-sider"
+      style="flex:0 0 236;max-width:236px;min-width:236px;width:236px"
+    >
+      <div
+        class="ui-layout-sider-children"
+      >
+        Sider
+      </div>
+    </div>
+    <div
+      class="ui-layout-content"
+    >
+      Content
+    </div>
+  </div>
+  <div
+    class="ui-layout-footer"
+  >
+    Footer
+  </div>
+</div>
+`;
+
+exports[`Layout renders collapsible sider layout correctly 1`] = `
+<div
+  class="ui-layout ui-layout-has-sider"
+>
+  <div
+    class="ui-layout-sider"
+    style="flex:0 0 236;max-width:236px;min-width:236px;width:236px"
+  >
+    <div
+      class="ui-layout-sider-children"
+    >
+      Sider
+    </div>
+    <div
+      class="ui-layout-sider-trigger"
+      style="width:236px"
+    >
+      <i
+        class="ui-icon ui-icon-arrow-left theme-default"
+      />
+    </div>
+  </div>
+  <div
+    class="ui-layout"
+  >
+    <div
+      class="ui-layout-header"
+    >
+      Header
+    </div>
+    <div
+      class="ui-layout-content"
+    >
+      Content
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Layout renders sider layout correctly 1`] = `
+<div
+  class="ui-layout ui-layout-has-sider"
+>
+  <div
+    class="ui-layout-sider"
+    style="flex:0 0 236;max-width:236px;min-width:236px;width:236px"
+  >
+    <div
+      class="ui-layout-sider-children"
+    >
+      Sider
+    </div>
+  </div>
+  <div
+    class="ui-layout"
+  >
+    <div
+      class="ui-layout-header"
+    >
+      Header
+    </div>
+    <div
+      class="ui-layout-content"
+    >
+      Content
+    </div>
+  </div>
+</div>
+`;

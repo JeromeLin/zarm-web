@@ -7,6 +7,9 @@ export default {
       Icon: '../pages/icon',
       Button: '../pages/button',
     },
+    Layout: {
+      Layout: '../pages/layout',
+    },
     Form: {
       Radio: '../pages/radio',
       Checkbox: '../pages/checkbox',
@@ -32,6 +35,7 @@ export default {
       Message: '../pages/message',
       Modal: '../pages/modal',
       Confirm: '../pages/confirm',
+      Notification: '../pages/notification',
     },
     Nav: {
       Tab: '../pages/tab',
