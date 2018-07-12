@@ -10,26 +10,35 @@
     this.state = {
       dropdown: false,
     }
-
   }
   render() {
     return (
       <div style={{position: 'relative'}}>
-        <Button onClick={() => {
-          this.setState({
-            dropdown: !this.state.dropdown,
-          });
-        }}>
-          toggle
-        </Button>
         <Dropdown
+          placement="bottomLeft"
+          trigger="click"
           visible={this.state.dropdown}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}>
-          <Menu>
-            <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-            <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
-            <Menu.Item>333</Menu.Item>
-          </Menu>
+          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
+          onVisibleChange={flag => {
+            this.setState({
+              dropdown: flag
+            });
+          }}
+          overlay={
+              <Menu>
+                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
+                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
+                <Menu.Item onClick={()=>{
+                  this.setState({
+                    dropdown: false
+                  });
+                }}>333</Menu.Item>
+              </Menu>
+          }
+          >
+            <Button theme="info">
+              toggle
+            </Button>
         </Dropdown>
       </div>
     )

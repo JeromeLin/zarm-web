@@ -33,3 +33,42 @@
 .scaleDown-leave {
   animation: scaleDown-leave both;
 }
+
+
+
+// scaleUp 向上的缩放动画
+@keyframes scaleUp-enter {
+  from {
+    opacity: 0;
+    transform-origin: bottom center;
+    transform: scaleY(.8);
+  }
+
+  to {
+    opacity: 1;
+    transform-origin: bottom center;
+    transform: scaleY(1);
+  }
+}
+
+.scaleUp-enter {
+  animation: scaleUp-enter both;
+}
+
+@keyframes scaleUp-leave {
+  from {
+    opacity: 1;
+    transform-origin: bottom center;
+    transform: scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform-origin: bottom center;
+    transform: scaleY(.8);
+  }
+}
+
+.scaleUp-leave {
+  animation: scaleUp-leave both;
+}
