@@ -3,7 +3,7 @@ export type size = 'xl' | 'lg' | 'sm' | 'xs';
 type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight'
 export type trigger = 'click' | 'hover' | 'contextMenu';
 
-export interface propsType {
+interface basicPropsType {
   prefixCls?: string
   visible?: boolean
   overlay?: React.ReactElement<any>
@@ -13,9 +13,12 @@ export interface propsType {
   style?: React.CSSProperties
   trigger?: trigger
   disabled?: boolean
+  zIndex?: number
+  notRenderInDisabledMode?: boolean
   onVisibleChange(flag: boolean): void
 }
 
+export type propsType = React.HTMLAttributes<any> & basicPropsType
 
 export interface stateType {
   visible?: boolean,

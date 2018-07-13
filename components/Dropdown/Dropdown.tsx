@@ -36,7 +36,8 @@ const defaultProps = {
   placement: 'bottomLeft',
   trigger: 'click',
   defaultProps: () => { },
-  disabled: false
+  disabled: false,
+  zIndex: 999
 }
 
 export default class Dropdown extends React.Component<propsType, stateType> {
@@ -56,14 +57,15 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     div.style.setProperty('position', 'absolute');
     div.style.setProperty('left', '0');
     div.style.setProperty('top', '0');
-    div.style.setProperty('width', '100%');
+    div.style.setProperty('width', 'auto');
     return div;
   }
 
   // 根据定位点计算定位信息
   static calcPosition(placement: string,
     width: number, height: number, dropWidth: number, dropHeight: number): { top: number, left: number } {
-    let top: number = 0; let left: number = 0;
+    let top: number = 0,
+      left: number = 0;
     const placementCode = placementMap[placement];
     if (placementCode & 1) {
       top = height;
@@ -86,7 +88,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
   private triggerBox: HTMLDivElement;
   private DropdownContent: HTMLDivElement;
   private isHoverOnDropContent: boolean = false;
-
+  private hiddenTimer!: number;
   state = {
     visible: this.props.visible,
     positionInfo: {
@@ -116,11 +118,15 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     else if (type === 'mouseenter') {
       if (this.props.visible === false) {
         this.props.onVisibleChange(true);
+      } else {
+        if (this.hiddenTimer) {
+          clearTimeout(this.hiddenTimer);
+        }
       }
     }
     else if (type === 'mouseleave') {
       // 缓冲一点一时间给间隙
-      setTimeout(() => {
+      this.hiddenTimer = setTimeout(() => {
         // 若当前鼠标在弹出层上 不消失
         if (this.isHoverOnDropContent === false) {
           this.props.onVisibleChange(false);
@@ -131,6 +137,10 @@ export default class Dropdown extends React.Component<propsType, stateType> {
 
   // 鼠标放到弹框上的时候，设置变量
   onDropdownContentMouseEnter = (): void => {
+    // 重新放置时候取消隐藏
+    if (this.hiddenTimer) {
+      clearTimeout(this.hiddenTimer);
+    }
     if (this.isHoverOnDropContent === false) {
       this.isHoverOnDropContent = true;
     }
@@ -139,7 +149,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
   onDropdownContentMouseLeave = (): void => {
     this.isHoverOnDropContent = false;
     // 给消失一点缓冲时间
-    setTimeout(() => {
+    this.hiddenTimer = setTimeout(() => {
       this.props.onVisibleChange(false);
     }, 300);
   }
@@ -232,7 +242,6 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       offsetWidth,
       offsetHeight
     );
-    console.log(rectInfo, top, left);
     const offset = placement.startsWith('bottom') ? 5 : -5;
     return {
       left: rectInfo.left + left - marginLeft,
@@ -298,7 +307,20 @@ export default class Dropdown extends React.Component<propsType, stateType> {
   }
 
   render() {
-    const { disabled, children, overlay, className, trigger, prefixCls, style, isRadius, placement, ...others } = this.props;
+    const {
+      disabled,
+      children,
+      overlay,
+      className,
+      trigger,
+      prefixCls,
+      style,
+      isRadius,
+      placement,
+      zIndex,
+      notRenderInDisabledMode,
+      ...others
+    } = this.props;
     const { visible, positionInfo, animationState } = this.state;
     const animationProps = placementMap[placement as string] & 1 ? 'scaleDown' : 'scaleUp'
     const cls = classnames({
@@ -309,12 +331,13 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     });
 
     const dropdownBoxStyle: React.CSSProperties = {
+      minWidth: (this.triggerBox && this.triggerBox.offsetWidth) || 0,
       ...style,
       ...positionInfo,
-      display: visible ? 'block' : 'none',
       position: 'absolute',
       animationDuration: '300ms',
-      marginTop: 40
+      display: disabled ? 'none' : (visible ? 'block' : 'none'),
+      zIndex,
     }
 
     return <React.Fragment>
@@ -336,7 +359,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
             {...others}
             {...this.DropdownContentEvent}
           >
-            {overlay}
+            {(notRenderInDisabledMode && disabled) ? null : overlay}
           </div>,
           this.div)
       }

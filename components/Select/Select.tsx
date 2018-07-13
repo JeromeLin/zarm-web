@@ -1,7 +1,6 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import isNodeInTree from '../utils/isNodeInTree';
 import Option from './Option';
 import Dropdown from '../Dropdown';
 import Menu from '../Menu';
@@ -20,12 +19,8 @@ class Select extends Component<PropsType, any> {
   static Option;
   static Multiple;
 
-  private unmounted: boolean;
-  private select: any;
-
   constructor(props) {
     super(props);
-    this.unmounted = false;
     this.state = {
       value:
         props.value ||
@@ -37,7 +32,6 @@ class Select extends Component<PropsType, any> {
   }
 
   componentDidMount() {
-    this.unmounted = true;
     this.bindOuterHandlers();
   }
 
@@ -50,7 +44,6 @@ class Select extends Component<PropsType, any> {
   }
 
   componentWillUnmount() {
-    this.unmounted = false;
     this.unbindOuterHandlers();
   }
 
