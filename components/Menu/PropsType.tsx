@@ -6,6 +6,7 @@ export type styleType = {
 };
 
 export type childPropsType = {
+  prefixCls?: string,
   mode?: 'inline' | 'horizontal',
   inlineIndent?: number,
   level?: number;
@@ -40,7 +41,7 @@ export interface SubMenuProps {
   style: object;
   subMenuKey: string;
   openKeys: string[];
-  toggleOpenKeys: (level: number, subMenyKey: string) => void;
+  toggleOpenKeys: (subMenyKey: string) => void;
 }
 
 export default interface PropsType {
@@ -56,5 +57,5 @@ export default interface PropsType {
   openKeys?: string[];
   selectedKeys?: string[];
   onClick?: () => {};
-  onOpenChange?: () => {};
+  onOpenChange?: (openKeys: string[]) => {};
 }

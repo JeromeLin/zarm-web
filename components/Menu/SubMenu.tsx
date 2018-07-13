@@ -14,17 +14,20 @@ class SubMenu extends Component<SubMenuProps, any> {
 
   toggleSubMenuOpen = (e) => {
     e.stopPropagation();
-    const { level, subMenuKey } = this.props;
+    const { subMenuKey } = this.props;
 
-    this.props.toggleOpenKeys(level, subMenuKey);
+    this.props.toggleOpenKeys(subMenuKey);
   }
 
   renderChildren() {
-    const { children, level, inlineIndent, mode } = this.props;
+    const {
+      children, level, inlineIndent, mode, prefixCls,
+    } = this.props;
     const childProps: childPropsType = {
       mode,
       level: level + 1,
       inlineIndent,
+      prefixCls,
     };
     return Children.map(children, (child) => {
       const c: ReactElement<any> = child as ReactElement<any>;
@@ -51,6 +54,8 @@ class SubMenu extends Component<SubMenuProps, any> {
     if (mode === 'inline') {
       subMenuStyle.paddingLeft = level * inlineIndent;
     }
+    // TODO: openKeys
+    // console.log(subMenuKey, openKeys);
     const cls = classnames(`${prefixCls}-submenu`, {
       [`${prefixCls}-submenu-open`]: openKeys.indexOf(subMenuKey) > -1,
     });

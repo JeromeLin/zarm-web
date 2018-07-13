@@ -40,26 +40,33 @@ class Menu extends Component<PropsType, any> {
   }
 
   toggleSelectedKeys = (itemKey) => {
-    this.setState({
-      selectedKeys: [itemKey],
-    });
+    if (!('selectedKeys' in this.props)) {
+      this.setState({
+        selectedKeys: [itemKey],
+      });
+    }
   }
 
-  toggleOpenKeys = (level, subMenuKey) => {
+  toggleOpenKeys = (subMenuKey) => {
     const { openKeys } = this.state;
-
+    const { onOpenChange } = this.props;
     const newOpenKeys = [...openKeys];
 
-    if (openKeys.indexOf(subMenuKey) > -1) {
-      newOpenKeys.length = level - 1;
+    const keyIndex = openKeys.indexOf(subMenuKey);
+    if (keyIndex > -1) {
+      newOpenKeys.splice(keyIndex, 1);
     } else {
-      newOpenKeys.length = level;
-      newOpenKeys[level - 1] = subMenuKey;
+      newOpenKeys.push(subMenuKey);
     }
 
-    this.setState({
-      openKeys: newOpenKeys,
-    });
+    if (onOpenChange) {
+      onOpenChange(newOpenKeys);
+    }
+    if (!('openKeys' in this.props)) {
+      this.setState({
+        openKeys: newOpenKeys,
+      });
+    }
   }
 
   renderChildren() {
@@ -84,13 +91,14 @@ class Menu extends Component<PropsType, any> {
 
   render() {
     const {
-      size, mode, className, style, prefixCls,
+      size, theme, mode, className, style, prefixCls,
     } = this.props;
 
     const { openKeys, selectedKeys } = this.state;
 
     const cls = classnames({
       [prefixCls!]: true,
+      [`${prefixCls}-${theme}`]: true,
       [`${prefixCls}-${mode}`]: true,
       [`size-${size}`]: !!size,
       [className!]: !!className,

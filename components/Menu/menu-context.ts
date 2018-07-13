@@ -4,7 +4,7 @@ export type keysType = {
   openKeys: string[],
   selectedKeys: string[],
   toggleSelectedKeys?: (itemKey: string) => void;
-  toggleOpenKeys?: (level: number, subMenuKey: string) => void;
+  toggleOpenKeys?: (subMenuKey: string) => void;
 };
 
 export const menuKeys: keysType = {

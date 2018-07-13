@@ -33,11 +33,35 @@
                 <Menu.Item itemKey="姓名" key="3"><Checkbox value="name">姓名</Checkbox></Menu.Item>
                 <Menu.Item itemKey="年龄" key="4"><Checkbox value="age">年龄</Checkbox></Menu.Item>
               </Menu.SubMenu>
+              <Menu.SubMenu title="二级" key="56">
+                <Menu.Item itemKey="姓名" key="5"><Checkbox value="name">姓名</Checkbox></Menu.Item>
+                <Menu.Item itemKey="年龄" key="6"><Checkbox value="age">年龄</Checkbox></Menu.Item>
+              </Menu.SubMenu>
             </Menu.SubMenu>
             <Menu.Item>333</Menu.Item>
           </Menu>
         </Dropdown>
       </div>
+    )
+  }
+```
+:::
+
+
+### 测试Menu
+
+:::demo
+```js
+  render() {
+    return (
+      <Menu mode="horizontal">
+        <Menu.Item itemKey="姓名" key="1">意健险</Menu.Item>
+        <Menu.Item itemKey="年龄" key="2">健康险个险</Menu.Item>
+        <Menu.Item itemKey="姓名" key="3">雇主责任险</Menu.Item>
+        <Menu.Item itemKey="年龄" key="4">运营后台管理</Menu.Item>
+        <Menu.Item itemKey="姓名" key="5">公共功能</Menu.Item>
+        <Menu.Item itemKey="年龄" key="6">询报价</Menu.Item>
+      </Menu>
     )
   }
 ```
