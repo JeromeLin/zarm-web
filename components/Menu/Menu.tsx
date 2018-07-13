@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Children, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import PropsType, { childPropsType } from './PropsType';
 import MenuContext, { menuKeys, keysType } from './menu-context';
 
 class Menu extends Component<PropsType, any> {
@@ -8,10 +8,12 @@ class Menu extends Component<PropsType, any> {
     prefixCls: 'ui-menu',
     mode: 'inline',
     theme: 'light',
+    inlineIndent: 24,
     defaultOpenKeys: [],
     defaultSelectedKeys: [],
   };
 
+  static SubMenu;
   static Item;
 
   static getDerivedStateFromProps(props) {
@@ -34,6 +36,7 @@ class Menu extends Component<PropsType, any> {
       selectedKeys: defaultSelectedKeys,
     };
     menuKeys.toggleSelectedKeys = this.toggleSelectedKeys;
+    menuKeys.toggleOpenKeys = this.toggleOpenKeys;
   }
 
   toggleSelectedKeys = (itemKey) => {
@@ -42,9 +45,46 @@ class Menu extends Component<PropsType, any> {
     });
   }
 
+  toggleOpenKeys = (level, subMenuKey) => {
+    const { openKeys } = this.state;
+
+    const newOpenKeys = [...openKeys];
+
+    if (openKeys.indexOf(subMenuKey) > -1) {
+      newOpenKeys.length = level - 1;
+    } else {
+      newOpenKeys.length = level;
+      newOpenKeys[level - 1] = subMenuKey;
+    }
+
+    this.setState({
+      openKeys: newOpenKeys,
+    });
+  }
+
+  renderChildren() {
+    const { children, inlineIndent, mode } = this.props;
+
+    const childProps: childPropsType = {
+      mode,
+      inlineIndent,
+    };
+    return Children.map(children, (child) => {
+      const c: ReactElement<any> = child as ReactElement<any>;
+      const type = (c.type as React.ComponentClass<any>).name;
+      const key = (child as ReactElement<any>).key;
+      if (type === 'SubMenuConsumer') {
+        childProps.subMenuKey = key;
+      } else if (type === 'MenuItemConsumer') {
+        childProps.itemKey = key;
+      }
+      return cloneElement(c, childProps);
+    });
+  }
+
   render() {
     const {
-      size, mode, className, children, style, prefixCls,
+      size, mode, className, style, prefixCls,
     } = this.props;
 
     const { openKeys, selectedKeys } = this.state;
@@ -56,7 +96,7 @@ class Menu extends Component<PropsType, any> {
       [className!]: !!className,
     });
 
-    const newMenuKeys = {
+    const newMenuKeys: keysType = {
       ...menuKeys,
       openKeys,
       selectedKeys,
@@ -65,7 +105,7 @@ class Menu extends Component<PropsType, any> {
     return (
       <ul role="menu" className={cls} style={style}>
         <MenuContext.Provider value={newMenuKeys}>
-          {children}
+          {this.renderChildren()}
         </MenuContext.Provider>
       </ul>
     );

@@ -10,7 +10,6 @@
     this.state = {
       dropdown: false,
     }
-
   }
   render() {
     return (
@@ -26,8 +25,15 @@
           visible={this.state.dropdown}
           style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}>
           <Menu>
-            <Menu.Item itemKey="姓名"><Checkbox value="name">姓名</Checkbox></Menu.Item>
-            <Menu.Item itemKey="年龄"><Checkbox value="age">年龄</Checkbox></Menu.Item>
+            <Menu.SubMenu title="一级" key="12">
+              <Menu.Item itemKey="姓名" key="1"><Checkbox value="name">姓名</Checkbox></Menu.Item>
+              <Menu.Item itemKey="年龄" key="2"><Checkbox value="age">年龄</Checkbox></Menu.Item>
+
+              <Menu.SubMenu title="二级" key="34">
+                <Menu.Item itemKey="姓名" key="3"><Checkbox value="name">姓名</Checkbox></Menu.Item>
+                <Menu.Item itemKey="年龄" key="4"><Checkbox value="age">年龄</Checkbox></Menu.Item>
+              </Menu.SubMenu>
+            </Menu.SubMenu>
             <Menu.Item>333</Menu.Item>
           </Menu>
         </Dropdown>

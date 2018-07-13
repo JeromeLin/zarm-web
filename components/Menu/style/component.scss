@@ -72,6 +72,28 @@
     }
   }
 
+  &-submenu {
+    height: auto;
+    &-title {
+      height: $base-height-xl;
+      line-height: $base-height-xl;
+      cursor: pointer;
+
+      &:hover{
+        color: #1890ff;
+      }
+    }
+    &-sub {
+      height: 0;
+      overflow: hidden;
+    }
+    &-open {
+      > .ui-menu-submenu-sub {
+        height: auto;
+      }
+    }
+  }
+
   &.size-xl {
     @include menu-size($base-height-xl, $base-padding-xl, $base-fontSize-xl, $base-radius-xl);
   }
