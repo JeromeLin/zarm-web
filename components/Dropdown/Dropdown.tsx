@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import events from '../utils/events';
+import throttle from '../utils/throttle';
 import { propsType, stateType, trigger } from "./PropsType";
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
@@ -19,7 +20,7 @@ function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document
   return position;
 }
 
-// todo [debounce, 首次不创建]
+// todo [首次不创建]
 const placementMap = {
   bottomLeft: 5,
   bottomCenter: 9,
@@ -215,7 +216,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
   }
 
   // 窗口大小变化的时候实时调整定位
-  onWindowResize = (): void => {
+  onWindowResize = throttle((): void => {
     if (!this.state.visible || this.props.disabled) {
       return;
     }
@@ -226,7 +227,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     this.setState({
       positionInfo: { left, top }
     });
-  }
+  }, 300)
 
   // 获取元素的定位信息
   getDropdownPosition(placement) {
