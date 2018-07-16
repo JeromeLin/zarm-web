@@ -6,6 +6,7 @@ import throttle from '../utils/throttle';
 import { propsType, stateType, trigger } from "./PropsType";
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
+// 获取元素坐标
 function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document.documentElement) {
   let parentElem = elem.offsetParent;
   const position = {
@@ -21,6 +22,7 @@ function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document
 }
 
 // todo [首次不创建]
+
 const placementMap = {
   bottomLeft: 5,
   bottomCenter: 9,
@@ -53,7 +55,14 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       instance.props.onVisibleChange(true);
     });
   }
-  static createDivBox(): HTMLDivElement {
+
+  static reposition() {
+    Dropdown.mountedInstance.forEach((instance) => {
+      instance.reposition();
+    });
+  }
+
+  private static createDivBox(): HTMLDivElement {
     const div = document.createElement('div');
     div.style.setProperty('position', 'absolute');
     div.style.setProperty('left', '0');
@@ -63,8 +72,12 @@ export default class Dropdown extends React.Component<propsType, stateType> {
   }
 
   // 根据定位点计算定位信息
-  static calcPosition(placement: string,
-    width: number, height: number, dropWidth: number, dropHeight: number): { top: number, left: number } {
+  private static calcPosition(
+    placement: string,
+    width: number,
+    height: number,
+    dropWidth: number,
+    dropHeight: number): { top: number, left: number } {
     let top: number = 0,
       left: number = 0;
     const placementCode = placementMap[placement];
@@ -84,7 +97,6 @@ export default class Dropdown extends React.Component<propsType, stateType> {
   }
 
   static defaultProps = defaultProps;
-
   private div: HTMLDivElement = Dropdown.createDivBox();
   private triggerBox: HTMLDivElement;
   private DropdownContent: HTMLDivElement;
@@ -167,21 +179,6 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     onContextMenu?: ReactMouseEvent,
   } = {};
 
-  setEventObject(trigger: trigger) {
-    if (trigger === 'hover') {
-      this.DropdownContentEvent.onMouseLeave = this.onDropdownContentMouseLeave;
-      this.DropdownContentEvent.onMouseEnter = this.onDropdownContentMouseEnter;
-      this.triggerEvent.onMouseEnter = this.onTrigger;
-      this.triggerEvent.onMouseLeave = this.onTrigger;
-    }
-    else if (trigger === 'click') {
-      this.triggerEvent.onClick = this.onTrigger;
-    }
-    else if (trigger === 'contextMenu') {
-      this.triggerEvent.onContextMenu = this.onTrigger;
-    }
-  }
-
   constructor(props) {
     super(props);
     this.setEventObject(props.trigger);
@@ -200,9 +197,27 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     }
     events.on(document, 'click', this.onDocumentClick);
     events.on(window, 'resize', this.onWindowResize);
+    // 存储当前实例，方便静态方法统一处理
     Dropdown.mountedInstance.add(this);
   }
 
+  // 根据trigger方式不同绑定事件
+  setEventObject(trigger: trigger) {
+    if (trigger === 'hover') {
+      this.DropdownContentEvent.onMouseLeave = this.onDropdownContentMouseLeave;
+      this.DropdownContentEvent.onMouseEnter = this.onDropdownContentMouseEnter;
+      this.triggerEvent.onMouseEnter = this.onTrigger;
+      this.triggerEvent.onMouseLeave = this.onTrigger;
+    }
+    else if (trigger === 'click') {
+      this.triggerEvent.onClick = this.onTrigger;
+    }
+    else if (trigger === 'contextMenu') {
+      this.triggerEvent.onContextMenu = this.onTrigger;
+    }
+  }
+
+  // 点击外部的时候
   onDocumentClick = (e): void => {
     if (this.props.disabled === true) {
       return;
@@ -215,8 +230,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     }
   }
 
-  // 窗口大小变化的时候实时调整定位
-  onWindowResize = throttle((): void => {
+  reposition = () => {
     if (!this.state.visible || this.props.disabled) {
       return;
     }
@@ -227,7 +241,10 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     this.setState({
       positionInfo: { left, top }
     });
-  }, 300)
+  }
+
+  // 窗口大小变化的时候实时调整定位
+  onWindowResize = throttle(this.reposition, 300)
 
   // 获取元素的定位信息
   getDropdownPosition(placement) {
@@ -260,12 +277,8 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     if (nextProps.visible) {
       this.enter(() => {
         if (nextProps.visible) {
-          const { left, top } = this.getDropdownPosition(nextProps.placement);
           this.setState({
-            positionInfo: {
-              left,
-              top
-            }
+            positionInfo: this.getDropdownPosition(nextProps.placement)
           });
         }
       });
@@ -291,7 +304,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     }
   }
 
-  enter(callback) {
+  enter(callback): void {
     this.setState({
       visible: true,
       isPending: true,
@@ -299,7 +312,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     }, callback);
   }
 
-  leave() {
+  leave(): void {
     this.setState({
       visible: true,
       isPending: true,
@@ -322,8 +335,12 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       notRenderInDisabledMode,
       ...others
     } = this.props;
+
     const { visible, positionInfo, animationState } = this.state;
-    const animationProps = placementMap[placement as string] & 1 ? 'scaleDown' : 'scaleUp'
+
+    // 根据placement判断向上动画还是向下动画
+    const animationProps = (placementMap[placement as string] & 1) ? 'scaleDown' : 'scaleUp';
+
     const cls = classnames({
       [prefixCls!]: true,
       radius: 'radius' in this.props || isRadius,

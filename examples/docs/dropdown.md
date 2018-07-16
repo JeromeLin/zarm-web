@@ -11,12 +11,10 @@
       dropdown: false,
       dropdown2:false,
       dropdown3:false,
-      dropdown4:false,
-      dropdown5:false,
-      dropdown6:false,
-      dropdown7:false,
+      dropdown4:false
     }
   }
+
   render() {
     const overlay = <Menu>
                 <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
@@ -26,10 +24,7 @@
                     dropdown: false,
                     dropdown2:false,
                     dropdown3:false,
-                    dropdown4:false,
-                    dropdown5:false,
-                    dropdown6:false,
-                    dropdown7:false,
+                    dropdown4:false
                   });
                 }}>点我关闭弹窗</Menu.Item>
               </Menu>;
@@ -181,8 +176,9 @@ onVisibleChange={(visible)=>{
 
 ### 静态方法
 ```
-Drop.hide();   // 隐藏所有的Dropdown组件
-Drop.show();   // 显示所有的Dropdown组件
+Drop.hide();         // 隐藏所有的Dropdown组件
+Drop.show();         // 显示所有的Dropdown组件(不包括禁用的组件)
+Drop.reposition();   // 重新定位所有的组件(不包括隐藏和禁用的组件)
 ```
 
 
@@ -190,13 +186,15 @@ Drop.show();   // 显示所有的Dropdown组件
 当这个参数为true 且 disable参数也为true的时候，将不会渲染弹窗，这会在一些一直都是disabled状态下的组件节省渲染开销，尤其在渲染大量数据的情况下。
 
 ### `className` 和 `style`参数
-className 和style 参数会作用在弹出框的最外层 ui-dropdown节点上。内部的style会覆盖传入的style(若冲突),会被覆盖的有：
-+ display                  // 控制dropdown的显示
-+ left                     // 控制dropdown的位置
-+ top                      // 控制dropdown的位置
-+ animationDuration        // 控制dropdown动画的事件
-+ zIndex                   // 控制组件的显示层级
-+ position                 // 控制组件的定位方式，只能为absolute
+className 和 style 参数会作用在弹出框的最外层 ui-dropdown节点上。内部的style会覆盖传入的style(若冲突), 会被覆盖的属性有：
+```
+display                  // 控制dropdown的显示
+left                     // 控制dropdown的位置
+top                      // 控制dropdown的位置
+animationDuration        // 控制dropdown动画的事件 默认为300
+zIndex                   // 控制组件的显示层级 默认为999
+position                 // 控制组件的定位方式，只能为absolute
+```
 
 ### 内部实现
 设 点击的触发组件为 triggerBox, 弹出的组件为 DropdownBox
