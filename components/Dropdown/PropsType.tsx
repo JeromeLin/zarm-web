@@ -1,5 +1,3 @@
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
-
 type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight'
 export type trigger = 'click' | 'hover' | 'contextMenu';
 

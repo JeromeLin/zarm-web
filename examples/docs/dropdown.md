@@ -117,14 +117,6 @@
       dropdown2:false,
     }
   }
-  componentDidMount(){
-    setTimeout(()=>{
-      Dropdown.show();
-      setTimeout(()=>{
-        Dropdown.hide();
-      },3000);
-    },3000);
-  }
   render() {
     const overlay = <Menu>
                 <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
@@ -154,7 +146,6 @@
             </Button>
         </Dropdown>
 
-
         <Dropdown
           placement="topLeft"
           visible={this.state.dropdown2}
@@ -176,15 +167,6 @@
 ```
 :::
 
-### 内部实现
-设 点击的触发组件为 triggerBox, 弹出的组件为 DropdownBox
-+ Dropdown组件在实现的时候，考虑到定位信息的获取，把所有的DropdownBox都动态创建到body的根节点下。然后相对于body进行绝对定位。计算出当前triggerBox的位置然后设置弹出框的绝对定位信息。   
-+ 监听了window.resize事件，当window.resize的时候自动计算目前已弹出的DropdownBox的位置。  
-+ 监听了document的点击事件，当点击外部的时候回自动隐藏DropdownBox。  
-+ 默认在triggerBox和DropdownBox之间有5px的间隙。  
-+ 当trigger参数为hover的时候，鼠标移出之后会延迟300ms后，DropdownBox才会消失，为了让用户在从triggerBox滑到DropdownBox的时候，经过间隙不会直接隐藏DropdownBox。  
-+ DropdownBox的动画效果时长为300ms，目前不支持自定义。  
-+ 当前的弹出框的最小宽度为当前triggerBox的宽度。可以自己设置宽度。
 
 ### `onVisibleChange` 参数
 这个参数为当显示属性发生变化的回调函数 为必传项，一般情况下, 我们都需要保持外部数据和内部数据的一致性。参考下面用法
@@ -205,7 +187,27 @@ Drop.show();   // 显示所有的Dropdown组件
 
 
 ### `notRenderInDisabledMode` 参数
-当这个参数为true 且 disable参数也为true的时候，将不会渲染弹窗，会在一些一直都是disabled状态下的组件节省渲染开销，尤其在渲染大量数据的情况下。
+当这个参数为true 且 disable参数也为true的时候，将不会渲染弹窗，这会在一些一直都是disabled状态下的组件节省渲染开销，尤其在渲染大量数据的情况下。
+
+### `className` 和 `style`参数
+className 和style 参数会作用在弹出框的最外层 ui-dropdown节点上。内部的style会覆盖传入的style(若冲突),会被覆盖的有：
++ display                  // 控制dropdown的显示
++ left                     // 控制dropdown的位置
++ top                      // 控制dropdown的位置
++ animationDuration        // 控制dropdown动画的事件
++ zIndex                   // 控制组件的显示层级
++ position                 // 控制组件的定位方式，只能为absolute
+
+### 内部实现
+设 点击的触发组件为 triggerBox, 弹出的组件为 DropdownBox
++ Dropdown组件在实现的时候，考虑到定位信息的获取，把所有的DropdownBox都动态创建到body的根节点下。然后相对于body进行绝对定位。计算出当前triggerBox的位置然后设置弹出框的绝对定位信息。   
++ 监听了window.resize事件，当window.resize的时候自动计算目前已弹出的DropdownBox的位置。  
++ 监听了document的点击事件，当点击外部的时候回自动隐藏DropdownBox。  
++ 默认在triggerBox和DropdownBox之间有5px的间隙。  
++ 当trigger参数为hover的时候，鼠标移出之后会延迟300ms后，DropdownBox才会消失，为了让用户在从triggerBox滑到DropdownBox的时候，经过间隙不会直接隐藏DropdownBox。  
++ DropdownBox的动画效果时长为300ms，目前不支持自定义。  
++ 当前的弹出框的最小宽度为当前triggerBox的宽度。可以自己设置宽度。
+
 
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
