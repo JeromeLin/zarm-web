@@ -15,6 +15,7 @@ class Menu extends Component<PropsType, any> {
 
   static SubMenu;
   static Item;
+  static Divider;
 
   static getDerivedStateFromProps(props) {
     const state = {} as keysType;
@@ -28,6 +29,8 @@ class Menu extends Component<PropsType, any> {
     return Object.keys(state).length > 0 ? state : null;
   }
 
+  menuKeys: any;
+
   constructor(props) {
     super(props);
     const { defaultOpenKeys, defaultSelectedKeys } = props;
@@ -35,8 +38,10 @@ class Menu extends Component<PropsType, any> {
       openKeys: defaultOpenKeys,
       selectedKeys: defaultSelectedKeys,
     };
-    menuKeys.toggleSelectedKeys = this.toggleSelectedKeys;
-    menuKeys.toggleOpenKeys = this.toggleOpenKeys;
+    // 每个实例都有自己的menuKeys，如果都指向一个menuKeys引用会有问题
+    this.menuKeys = { ...menuKeys };
+    this.menuKeys.toggleSelectedKeys = this.toggleSelectedKeys;
+    this.menuKeys.toggleOpenKeys = this.toggleOpenKeys;
   }
 
   toggleSelectedKeys = (itemKey) => {
@@ -76,14 +81,14 @@ class Menu extends Component<PropsType, any> {
       mode,
       inlineIndent,
     };
-    return Children.map(children, (child) => {
+    return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
       const type = (c.type as React.ComponentClass<any>).name;
       const key = (child as ReactElement<any>).key;
       if (type === 'SubMenuConsumer') {
-        childProps.subMenuKey = key;
+        childProps.subMenuKey = key || `submenu-0-${index}`;
       } else if (type === 'MenuItemConsumer') {
-        childProps.itemKey = key;
+        childProps.itemKey = key || `menuitem-0-${index}`;
       }
       return cloneElement(c, childProps);
     });
@@ -95,7 +100,6 @@ class Menu extends Component<PropsType, any> {
     } = this.props;
 
     const { openKeys, selectedKeys } = this.state;
-
     const cls = classnames({
       [prefixCls!]: true,
       [`${prefixCls}-${theme}`]: true,
@@ -105,7 +109,7 @@ class Menu extends Component<PropsType, any> {
     });
 
     const newMenuKeys: keysType = {
-      ...menuKeys,
+      ...this.menuKeys,
       openKeys,
       selectedKeys,
     };

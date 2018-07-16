@@ -31,6 +31,12 @@ export interface ItemProps {
   onDoubleClick?: () => void;
 }
 
+export type DividerProps = {
+  prefixCls?: string,
+  className?: string;
+  style: object;
+};
+
 export interface SubMenuProps {
   prefixCls?: string;
   level: number;

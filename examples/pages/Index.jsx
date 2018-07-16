@@ -41,6 +41,8 @@ export default {
       Tab: '../pages/tab',
       Breadcrumb: '../pages/breadcrumb',
       Step: '../pages/step',
+      Dropdown: '../pages/dropdown',
+      Menu: '../pages/menu',
     },
     Others: {
       Tooltip: '../pages/tooltip',
@@ -48,7 +50,6 @@ export default {
       Popconfirm: '../pages/popconfirm',
       Mask: '../pages/mask',
       Swipe: '../pages/swipe',
-      Dropdown: '../pages/dropdown',
     },
   },
 };

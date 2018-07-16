@@ -12,6 +12,8 @@ class SubMenu extends Component<SubMenuProps, any> {
     openKeys: [],
   };
 
+  sub: any;
+
   toggleSubMenuOpen = (e) => {
     e.stopPropagation();
     const { subMenuKey } = this.props;
@@ -21,7 +23,7 @@ class SubMenu extends Component<SubMenuProps, any> {
 
   renderChildren() {
     const {
-      children, level, inlineIndent, mode, prefixCls,
+      children, level, inlineIndent, mode, prefixCls, subMenuKey,
     } = this.props;
     const childProps: childPropsType = {
       mode,
@@ -29,19 +31,55 @@ class SubMenu extends Component<SubMenuProps, any> {
       inlineIndent,
       prefixCls,
     };
-    return Children.map(children, (child) => {
+    return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
       const type = (c.type as React.ComponentClass<any>).name;
       const key = (child as ReactElement<any>).key;
 
       if (type === 'SubMenuConsumer') {
-        childProps.subMenuKey = key;
+        childProps.subMenuKey = key || `${subMenuKey}-submenu-${level}-${index}`;
       } else if (type === 'MenuItemConsumer') {
-        childProps.itemKey = key;
+        childProps.itemKey = key || `${subMenuKey}-menuitem-${level}-${index}`;
       }
 
       return cloneElement(c, childProps);
     });
+  }
+
+  getSubHeight() {
+    const childs = [...this.sub.children];
+
+    const height = childs.reduce((res, next) => {
+      res += next.offsetHeight;
+      return res;
+    }, 0);
+
+    return height;
+  }
+
+  componentDidUpdate(prevProps) {
+    const { openKeys: lastOpenKeys } = prevProps;
+    const { openKeys, subMenuKey } = this.props;
+
+    const keyIndex = openKeys.indexOf(subMenuKey);
+    const keysLength = openKeys.length;
+    if (keyIndex > -1) {
+      if (keysLength > 1 && keyIndex < keysLength - 1 || keysLength < lastOpenKeys.length) {
+        // 如果不是最后一级子菜单，或者嵌套的子菜单被收起，当前子菜单高度自适应
+        this.sub.style.height = 'auto';
+      } else {
+        // 否则，设置具体的高度产生过渡动画
+        const height = this.getSubHeight();
+        this.sub.style.height = height + 'px';
+      }
+    } else {
+      const height = this.getSubHeight();
+      this.sub.style.height = height + 'px';
+
+      setTimeout(() => {
+        this.sub.style.height = 0;
+      }, 0);
+    }
   }
 
   render() {
@@ -54,10 +92,8 @@ class SubMenu extends Component<SubMenuProps, any> {
     if (mode === 'inline') {
       subMenuStyle.paddingLeft = level * inlineIndent;
     }
-    // TODO: openKeys
-    // console.log(subMenuKey, openKeys);
     const cls = classnames(`${prefixCls}-submenu`, {
-      [`${prefixCls}-submenu-open`]: openKeys.indexOf(subMenuKey) > -1,
+      open: openKeys.indexOf(subMenuKey) > -1,
     });
     return (
       <li className={cls} style={style}>
@@ -67,8 +103,10 @@ class SubMenu extends Component<SubMenuProps, any> {
           className={`${prefixCls}-submenu-title`}
         >
           {title}
+          <i className={`${prefixCls}-submenu-arrow`} />
         </div>
         <ul
+          ref={(sub) => { this.sub = sub; }}
           className={`${prefixCls}-submenu-sub`}
         >
           {this.renderChildren()}
