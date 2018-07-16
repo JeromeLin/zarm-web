@@ -30,3 +30,5 @@ export { default as Calendar } from './Calendar';
 export { default as DatePicker } from './DatePicker';
 export { default as Form } from './Form';
 export { default as Loading } from './Loading';
+export { default as Notification } from './Notification';
+export { default as Layout } from './Layout';
