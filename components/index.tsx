@@ -32,3 +32,4 @@ export { default as Form } from './Form';
 export { default as Loading } from './Loading';
 export { default as Notification } from './Notification';
 export { default as NumberInput } from './NumberInput';
+export { default as Layout } from './Layout';
