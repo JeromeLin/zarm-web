@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { ItemProps } from './PropsType';
+import { ItemProps, styleType } from './PropsType';
 import MenuContext from './menu-context';
 
 class MenuItem extends Component<ItemProps, any> {
@@ -23,8 +23,8 @@ class MenuItem extends Component<ItemProps, any> {
   render() {
     const { props } = this;
     const {
-      checked, isDisabled, children, prefixCls,
-      className, style, onDoubleClick, selectedKeys, itemKey,
+      checked, isDisabled, children, prefixCls, level, inlineIndent,
+      className, style, onDoubleClick, selectedKeys, itemKey, mode,
     } = props;
     const cls = classnames({
       [`${prefixCls}-item`]: true,
@@ -33,11 +33,17 @@ class MenuItem extends Component<ItemProps, any> {
       selected: !!checked,
       disabled: 'disabled' in props || isDisabled,
     });
+    const itemStyle: styleType = {
+      ...style,
+    };
+    if (mode === 'inline') {
+      itemStyle.paddingLeft = level * inlineIndent;
+    }
     return (
       <li
         className={cls}
         role="menuitem"
-        style={style}
+        style={itemStyle}
         onClick={this.handleClick}
         onDoubleClick={onDoubleClick}
       >
@@ -47,7 +53,7 @@ class MenuItem extends Component<ItemProps, any> {
   }
 }
 
-export default (props) => {
+export default function MenuItemConsumer(props) {
   return (
     <MenuContext.Consumer>
       {
@@ -57,8 +63,7 @@ export default (props) => {
             selectedKeys={menuKeys.selectedKeys}
             toggleSelectedKeys={menuKeys.toggleSelectedKeys}
           />
-        )
-      }
+        )}
     </MenuContext.Consumer>
   );
-};
+}

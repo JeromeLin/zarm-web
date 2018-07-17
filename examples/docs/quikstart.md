@@ -33,7 +33,7 @@ import 'dragon-ui/dist/dragon-ui.min.css';
   }
 ```
 ```js
-import { Button, Cell } from 'zarm';
+import { Button, Cell } from 'dragon-ui';
 ```
 
 方法二

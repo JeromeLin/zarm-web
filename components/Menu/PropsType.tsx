@@ -1,22 +1,53 @@
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
+export type styleType = {
+  paddingLeft?: number,
+  [propName: string]: any,
+};
+
+export type childPropsType = {
+  prefixCls?: string,
+  mode?: 'inline' | 'horizontal',
+  inlineIndent?: number,
+  level?: number;
+  itemKey?: any,
+  subMenuKey?: any,
+};
+
 export interface ItemProps {
   prefixCls?: string;
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;
   className?: string;
-  style?: object;
+  style: object;
   selectedKeys: string[];
-  level?: number;
+  level: number;
+  mode: 'inline' | 'horizontal';
+  inlineIndent: number;
   itemKey: string;
   onClick: (itemKey: string) => void;
   toggleSelectedKeys: (itemKey: string) => void;
   onDoubleClick?: () => void;
 }
 
+export type DividerProps = {
+  prefixCls?: string,
+  className?: string;
+  style: object;
+};
+
 export interface SubMenuProps {
-  level?: number;
+  prefixCls?: string;
+  level: number;
+  inlineIndent: number;
+  mode: 'inline' | 'horizontal';
+  title: string | React.ReactNode;
+  className?: string;
+  style: object;
+  subMenuKey: string;
+  openKeys: string[];
+  toggleOpenKeys: (subMenyKey: string) => void;
 }
 
 export default interface PropsType {
@@ -28,9 +59,9 @@ export default interface PropsType {
   theme?: 'light' | 'dark';
   defaultOpenKeys?: string[];
   defaultSelectedKeys?: string[];
-  inlineIndent: number;
-  openKeys: string[];
-  selectedKeys: string[];
-  onClick: () => {};
-  onOpenChange: () => {};
+  inlineIndent?: number;
+  openKeys?: string[];
+  selectedKeys?: string[];
+  onClick?: () => {};
+  onOpenChange?: (openKeys: string[]) => {};
 }
