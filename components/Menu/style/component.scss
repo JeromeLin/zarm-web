@@ -1,23 +1,15 @@
 @import '../../style/index';
 
-@mixin menu-size($height, $padding, $font-size, $border-radius) {  
+@mixin menu-size($height, $padding, $font-size) {  
   .ui-menu-item {
     height: $height;
     line-height: $height;
     padding: 0 $padding;
     font-size: $font-size;
-
-    &:first-child {
-      border-top-left-radius: $border-radius;
-      border-top-right-radius: $border-radius;
-    }
-
-    &:last-child {
-      border-bottom-left-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
-    }
   }
 }
+
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
 .ui-menu {
   list-style: none;
@@ -27,9 +19,9 @@
   max-height: 250px;
   outline: none;
   overflow: auto;
-  @include menu-size($base-height, $base-padding, $base-fontSize, $base-radius);
+  @include menu-size($base-height-xl, 0, $base-fontSize);
 
-  .ui-menu-item {
+  &-item {
     position: relative;
     display: block;
     font-weight: normal;
@@ -40,32 +32,182 @@
     overflow: hidden;
     transition: background .3s ease;
     user-select: none;
+    transition: color .3s $ease-in-out,border-color .3s $ease-in-out,background .3s $ease-in-out,padding .15s $ease-in-out;
     
-    &:hover,
-    .active {
-      background: #eaf8fe;
+    &:hover{
+      color: #1890ff;
     }
 
-    &.selected {
-      background: #d5f1fd;
+    &.selected,
+    &.active {
+      color: #1890ff;
+      background: #e6f7ff;
     }
 
     &.disabled {
       color: #ccc;
       cursor: not-allowed;
     }
+
+    &-divider {
+      height: 1px;
+      margin: 1px 0;
+      overflow: hidden;
+      padding: 0;
+      line-height: 0;
+      background-color: #e5e5e5;
+    }
+  }
+
+  &-horizontal {
+    .ui-menu-item {
+      float: left;
+      padding: 0 20px;
+      height: 54px;
+      line-height: 54px;
+      border-bottom: 2px solid transparent;
+
+      &.active,
+      &:hover {
+        border-bottom: 2px solid #1890ff;
+        background: #fff;
+        color: #1890ff;
+      }
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      height: 0;
+      clear: both;
+    }
+  }
+
+  &-dark {
+    background: #001529;
+
+    .ui-menu-submenu-sub {
+      background: #000c17;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .45) inset;
+    }
+    .ui-menu-item {
+      color: hsla(0,0%,100%,.65);
+      &:hover {
+        color: #fff;
+        background: inherit;
+      }
+      &.selected,
+      &.active {
+        color: #fff;
+        background: #1890ff;
+      }
+    }
+    &.ui-menu-inline {
+      .ui-menu-submenu {
+        color: hsla(0,0%,100%,.65);
+        &-title {
+          &:hover{
+            color: #fff;
+  
+            .ui-menu-submenu-arrow {
+              opacity: 1;
+              &:after,
+              &:before {
+                background: #fff;
+              }
+            }
+          }
+        }
+        &-arrow {
+          opacity: .45;
+          transition: all .3s;
+          &:after,
+          &:before {
+            background: #fff;
+          } 
+        }
+      }
+    }
+  }
+
+  &-submenu {
+    height: auto;
+    &-title {
+      height: $base-height-xl;
+      line-height: $base-height-xl;
+      cursor: pointer;
+
+      &:hover{
+        color: #1890ff;
+      }
+    }
+    &-sub {
+      height: 0;
+      overflow: hidden;
+      transition: all .2s ease-out
+    }
+  }
+
+  &-inline {
+    .ui-menu-submenu {
+      &-title {
+        position: relative;
+      }
+      &-arrow {
+        transition: transform .3s $ease-in-out;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        width: 10px;
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+          vertical-align: baseline;
+          background: #fff;
+          background-image: linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.65));
+          width: 6px;
+          height: 1.5px;
+          border-radius: 2px;
+          transition: background .3s $ease-in-out, transform .3s $ease-in-out, top .3s $ease-in-out;
+        }
+        &:before {
+          transform: rotate(-45deg) translateX(2px);
+        }
+        &:after {
+          transform: rotate(45deg) translateX(-2px);
+        }
+      }
+      &-title:hover .ui-menu-submenu-arrow {
+        &:after,
+        &:before {
+          background: linear-gradient(to right, #1890ff,#1890ff);
+        }
+      }
+      &.open {
+        > .ui-menu-submenu-title .ui-menu-submenu-arrow {
+          transform: translateY(-2px);
+          &:before {
+            transform: rotate(45deg) translateX(2px);
+          }
+          &:after {
+            transform: rotate(-45deg) translateX(-2px);
+          }
+        }
+      }
+    }
   }
 
   &.size-xl {
-    @include menu-size($base-height-xl, $base-padding-xl, $base-fontSize-xl, $base-radius-xl);
+    @include menu-size($base-height-xl, $base-padding-xl, $base-fontSize-xl);
   }
   &.size-lg {
-    @include menu-size($base-height-lg, $base-padding-lg, $base-fontSize-lg, $base-radius-lg);
+    @include menu-size($base-height-lg, $base-padding-lg, $base-fontSize-lg);
   }
   &.size-sm {
-    @include menu-size($base-height-sm, $base-padding-sm, $base-fontSize-sm, $base-radius-sm);
+    @include menu-size($base-height-sm, $base-padding-sm, $base-fontSize-sm);
   }
   &.size-xs {
-    @include menu-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs);
+    @include menu-size($base-height-xs, $base-padding-xs, $base-fontSize-xs);
   }
 }
