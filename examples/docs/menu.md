@@ -156,7 +156,7 @@ SubMenu内可以继续嵌套SubMenu
   constructor(props) {
     super(props);
     this.state = {
-      openKeys: []
+      openKeys: ['a']
     }
   }
   onOpenChange(openKeys) {
@@ -174,10 +174,10 @@ SubMenu内可以继续嵌套SubMenu
     return (
       <div style={wrapperStyle}>
         <Menu
-            theme="dark"
-            openKeys={openKeys}
-            defaultOpenKeys={['a']}
-            onOpenChange={(keys) => this.onOpenChange(keys)}
+          theme="dark"
+          openKeys={openKeys}
+          defaultOpenKeys={['a']}
+          onOpenChange={(keys) => this.onOpenChange(keys)}
         >
           <Menu.SubMenu title="新契约" key="a">
             <Menu.Item>投保单复核</Menu.Item>
