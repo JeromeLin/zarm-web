@@ -83,7 +83,10 @@ class SubMenu extends Component<SubMenuProps, any> {
   }
 
   componentDidMount() {
-    this.setSubHeight({ openKeys: [] });
+    const { openKeys } = this.props;
+    if (openKeys.length > 0) {
+      this.setSubHeight({ openKeys: [] });
+    }
   }
 
   componentDidUpdate(prevProps) {
