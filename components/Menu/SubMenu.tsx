@@ -57,7 +57,7 @@ class SubMenu extends Component<SubMenuProps, any> {
     return height;
   }
 
-  componentDidUpdate(prevProps) {
+  setSubHeight(prevProps) {
     const { openKeys: lastOpenKeys } = prevProps;
     const { openKeys, subMenuKey } = this.props;
 
@@ -80,6 +80,14 @@ class SubMenu extends Component<SubMenuProps, any> {
         this.sub.style.height = 0;
       }, 0);
     }
+  }
+
+  componentDidMount() {
+    this.setSubHeight({ openKeys: [] });
+  }
+
+  componentDidUpdate(prevProps) {
+    this.setSubHeight(prevProps);
   }
 
   render() {

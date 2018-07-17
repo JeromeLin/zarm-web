@@ -38,11 +38,11 @@ export default {
       Notification: '../pages/notification',
     },
     Nav: {
+      Menu: '../pages/menu',
       Tab: '../pages/tab',
       Breadcrumb: '../pages/breadcrumb',
       Step: '../pages/step',
       Dropdown: '../pages/dropdown',
-      Menu: '../pages/menu',
     },
     Others: {
       Tooltip: '../pages/tooltip',
