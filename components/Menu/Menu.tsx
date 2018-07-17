@@ -23,7 +23,7 @@ class Menu extends Component<PropsType, any> {
       state.openKeys = props.openKeys;
     }
     if ('selectedKeys' in props) {
-      state.selectedKeys = props.selecedKeys;
+      state.selectedKeys = props.selectedKeys;
     }
 
     return Object.keys(state).length > 0 ? state : null;
