@@ -14,6 +14,7 @@ export default {
       Radio: '../pages/radio',
       Checkbox: '../pages/checkbox',
       Input: '../pages/input',
+      NumberInput: '../pages/numberinput',
       Select: '../pages/select',
       Switch: '../pages/switch',
       Slider: '../pages/slider',
