@@ -48,11 +48,12 @@ class SubMenu extends Component<SubMenuProps, any> {
 
   getSubHeight() {
     const childs = [...this.sub.children];
+    const marginBottom = 8;
 
     const height = childs.reduce((res, next) => {
-      res += next.offsetHeight;
+      res += (next.offsetHeight + marginBottom);
       return res;
-    }, 0);
+    }, marginBottom / 2);
 
     return height;
   }

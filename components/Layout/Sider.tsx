@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SiderPropsType } from './PropsType';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
@@ -10,6 +11,10 @@ class Sider extends Component<SiderPropsType, any> {
     collapsedWidth: 80,
     width: 236,
     onCollapse: () => {},
+  };
+
+  static childContextTypes = {
+    siderCollapsed: PropTypes.bool,
   };
 
   constructor(props) {
@@ -26,6 +31,12 @@ class Sider extends Component<SiderPropsType, any> {
         collapsed: nextProps.collapsed,
       });
     }
+  }
+
+  getChildContext() {
+    return {
+      siderCollapsed: this.state.collapsed,
+    };
   }
 
   setCollapsed = (collapsed: boolean) => {

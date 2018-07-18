@@ -6,6 +6,7 @@ const defaultPrefixCls = 'ui-layout';
 class Layout extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: defaultPrefixCls,
+    hasSider: false,
   };
 
   static Header: any;
@@ -16,8 +17,8 @@ class Layout extends Component<PropsType, any> {
   render() {
     const { prefixCls, className, children, style } = this.props;
 
-    let hasSider = false;
-    if (prefixCls === defaultPrefixCls) {
+    let hasSider = this.props.hasSider;
+    if (!hasSider && prefixCls === defaultPrefixCls) {
       Children.forEach(children, (child) => {
         if ('collapsible' in (child as ReactElement<any>).props) {
           hasSider = true;

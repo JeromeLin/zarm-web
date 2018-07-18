@@ -16,9 +16,10 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   margin: 0;
   padding: 0;
   height: 100%;
-  max-height: 250px;
+  background: #fff;
   outline: none;
-  overflow: auto;
+  // max-height: 250px; TODO: see select
+  // overflow: auto;
   @include menu-size($base-height-xl, 0, $base-fontSize);
 
   &-item {
@@ -33,6 +34,20 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: background .3s ease;
     user-select: none;
     transition: color .3s $ease-in-out,border-color .3s $ease-in-out,background .3s $ease-in-out,padding .15s $ease-in-out;
+
+    > a {
+      display: block;
+
+      &:before {
+        position: absolute;
+        background-color: transparent;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        content: ''; 
+      }
+    }
     
     &:hover{
       color: #1890ff;
@@ -45,7 +60,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
     &.disabled {
-      color: #ccc;
+      color: rgba(0, 0, 0, 0.25);
       cursor: not-allowed;
     }
 
@@ -63,15 +78,22 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     .ui-menu-item {
       float: left;
       padding: 0 20px;
-      height: 54px;
+      height: 56px;
       line-height: 54px;
       border-bottom: 2px solid transparent;
+      a {
+        color: #666;
+      }
 
       &.active,
       &:hover {
         border-bottom: 2px solid #1890ff;
         background: #fff;
         color: #1890ff;
+
+        a {
+          color: #1890ff;
+        }
       }
     }
 
@@ -101,14 +123,25 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
         color: #fff;
         background: #1890ff;
       }
+      a {
+        color: hsla(0,0%,100%,.65);
+      }
+      &:hover,
+      &.selected,
+      &.active {
+        a {
+          color: #fff;
+        }
+      }
     }
     &.ui-menu-inline {
       .ui-menu-submenu {
         color: hsla(0,0%,100%,.65);
         &-title {
+          margin-top: 4px;
+          margin-bottom: 4px;
           &:hover{
             color: #fff;
-  
             .ui-menu-submenu-arrow {
               opacity: 1;
               &:after,
@@ -127,6 +160,13 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
           } 
         }
       }
+      .ui-menu-item {
+        margin-top: 4px;
+
+        &:not(:last-child) {
+          margin-bottom: 8px;
+        }
+      }
     }
   }
 
@@ -140,10 +180,16 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       &:hover{
         color: #1890ff;
       }
+      
+      .iconfont {
+        min-width: 14px;
+        margin-right: 10px;
+      }
     }
     &-sub {
       height: 0;
       overflow: hidden;
+      padding: 0;
       transition: all .2s ease-out
     }
   }
@@ -194,6 +240,30 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
             transform: rotate(-45deg) translateX(-2px);
           }
         }
+      }
+    }
+  }
+
+  &-collapsed {
+    width: 80px;
+
+    > .ui-menu-submenu > .ui-menu-submenu-title,
+    > .ui-menu-item {
+      text-overflow: clip;
+      padding: 0 32px;
+    }
+    .ui-menu-submenu-arrow {
+      display: none;
+    }
+    .iconfont {
+      font-size: 16px;
+      line-height: 40px;
+      margin: 0;
+
+      + span {
+        max-width: 0;
+        display: inline-block;
+        opacity: 0;
       }
     }
   }

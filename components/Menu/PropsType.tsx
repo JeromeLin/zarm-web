@@ -9,6 +9,7 @@ export type childPropsType = {
   prefixCls?: string,
   mode?: 'inline' | 'horizontal',
   inlineIndent?: number,
+  inlineCollapsed?: boolean,
   level?: number;
   itemKey?: any,
   subMenuKey?: any,
@@ -60,6 +61,7 @@ export default interface PropsType {
   defaultOpenKeys?: string[];
   defaultSelectedKeys?: string[];
   inlineIndent?: number;
+  inlineCollapsed?: boolean;
   openKeys?: string[];
   selectedKeys?: string[];
   onClick?: () => {};
