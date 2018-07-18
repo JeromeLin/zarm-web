@@ -1,9 +1,10 @@
+// tslint:disable:no-bitwise
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import events from '../utils/events';
 import throttle from '../utils/throttle';
-import { propsType, stateType, trigger } from "./PropsType";
+import { propsType, StateType } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
 // 获取元素坐标
@@ -11,8 +12,8 @@ function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document
   let parentElem = elem.offsetParent;
   const position = {
     top: elem.offsetTop,
-    left: elem.offsetLeft
-  }
+    left: elem.offsetLeft,
+  };
   while (relativeElem.contains(parentElem)) {
     position.top += (parentElem as HTMLElement).offsetTop;
     position.left += (parentElem as HTMLElement).offsetLeft;
@@ -29,8 +30,8 @@ const placementMap = {
   bottomRight: 17,
   topLeft: 6,
   topCenter: 10,
-  topRight: 18
-}
+  topRight: 18,
+};
 
 const defaultProps = {
   visible: false,
@@ -38,15 +39,12 @@ const defaultProps = {
   prefixCls: 'ui-dropdown',
   placement: 'bottomLeft',
   trigger: 'click',
-  defaultProps: () => { },
   disabled: false,
-  zIndex: 999
-}
+  zIndex: 999,
+};
 
-export default class Dropdown extends React.Component<propsType, stateType> {
-  // 用于存储已生成的全部实例的Set
-  private static mountedInstance: Set<Dropdown> = new Set();
-
+export default class Dropdown extends React.Component<propsType, StateType> {
+  static defaultProps = defaultProps;
   // 隐藏全部的Dropdown
   static hide(): void {
     Dropdown.mountedInstance.forEach((instance) => {
@@ -59,23 +57,15 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       instance.props.onVisibleChange(true);
     });
   }
-  
+
   // 重新计算Dropdown定位
   static reposition() {
     Dropdown.mountedInstance.forEach((instance) => {
       instance.reposition();
     });
   }
-
-  private static createDivBox(): HTMLDivElement {
-    const div = document.createElement('div');
-    div.style.setProperty('position', 'absolute');
-    div.style.setProperty('left', '0');
-    div.style.setProperty('top', '0');
-    div.style.setProperty('width', 'auto');
-    return div;
-  }
-
+  // 用于存储已生成的全部实例的Set
+  private static mountedInstance: Set<Dropdown> = new Set();
   // 根据定位点计算定位信息
   private static calcPosition(
     placement: string,
@@ -83,8 +73,8 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     height: number,
     dropWidth: number,
     dropHeight: number): { top: number, left: number } {
-    let top: number = 0,
-      left: number = 0;
+    let top: number = 0;
+    let left: number = 0;
     const placementCode = placementMap[placement];
     if (placementCode & 1) {
       top = height;
@@ -97,27 +87,68 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       left = width - dropWidth;
     }
     return {
-      top, left
-    }
+      top, left,
+    };
+  }
+  private static createDivBox(): HTMLDivElement {
+    const div = document.createElement('div');
+    div.style.setProperty('position', 'absolute');
+    div.style.setProperty('left', '0');
+    div.style.setProperty('top', '0');
+    div.style.setProperty('width', 'auto');
+    return div;
   }
 
-  static defaultProps = defaultProps;
+  state = {
+    visible: this.props.visible,
+    positionInfo: {
+      left: 0,
+      top: 0,
+    },
+    isPending: false,
+    animationState: null,
+    animationProps: null,
+  };
+
+  DropdownContentEvent: {
+    onMouseLeave?: () => void,
+    onMouseEnter?: () => void,
+  } = {};
+
+  triggerEvent: {
+    onClick?: ReactMouseEvent,
+    onMouseEnter?: ReactMouseEvent,
+    onMouseLeave?: ReactMouseEvent,
+    onContextMenu?: ReactMouseEvent,
+  } = {};
+
+  // 窗口大小变化的时候实时调整定位
+  onWindowResize: () => void;
   private div: HTMLDivElement = Dropdown.createDivBox();
   private triggerBox: HTMLDivElement;
   private DropdownContent: HTMLDivElement;
   private isHoverOnDropContent: boolean = false;
   private hiddenTimer!: number;
-  state = {
-    visible: this.props.visible,
-    positionInfo: {
-      left: 0,
-      top: 0
-    },
-    isPending: false,
-    animationState: null,
-    animationProps: null
+
+  constructor(props) {
+    super(props);
+    this.setEventObject(props.trigger);
+    this.onWindowResize = throttle(this.reposition, 300);
   }
 
+  // 根据trigger方式不同绑定事件
+  setEventObject = (triggerType: string) => {
+    if (triggerType === 'hover') {
+      this.DropdownContentEvent.onMouseLeave = this.onDropdownContentMouseLeave;
+      this.DropdownContentEvent.onMouseEnter = this.onDropdownContentMouseEnter;
+      this.triggerEvent.onMouseEnter = this.onTrigger;
+      this.triggerEvent.onMouseLeave = this.onTrigger;
+    } else if (triggerType === 'click') {
+      this.triggerEvent.onClick = this.onTrigger;
+    } else if (triggerType === 'contextMenu') {
+      this.triggerEvent.onContextMenu = this.onTrigger;
+    }
+  }
 
   // 显示与否的回调函数
   onTrigger = (e: React.MouseEvent): void => {
@@ -128,12 +159,10 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     const { type } = e;
     if (type === 'click') {
       this.props.onVisibleChange(!this.props.visible);
-    }
-    else if (type === 'contextmenu') {
+    } else if (type === 'contextmenu') {
       e.preventDefault();
       this.props.onVisibleChange(!this.props.visible);
-    }
-    else if (type === 'mouseenter') {
+    } else if (type === 'mouseenter') {
       if (this.props.visible === false) {
         this.props.onVisibleChange(true);
       } else {
@@ -141,8 +170,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
           clearTimeout(this.hiddenTimer);
         }
       }
-    }
-    else if (type === 'mouseleave') {
+    } else if (type === 'mouseleave') {
       // 缓冲一点一时间给间隙
       this.hiddenTimer = setTimeout(() => {
         // 若当前鼠标在弹出层上 不消失
@@ -172,23 +200,6 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     }, 300);
   }
 
-
-  DropdownContentEvent: {
-    onMouseLeave?: () => void,
-    onMouseEnter?: () => void
-  } = {};
-  triggerEvent: {
-    onClick?: ReactMouseEvent,
-    onMouseEnter?: ReactMouseEvent,
-    onMouseLeave?: ReactMouseEvent,
-    onContextMenu?: ReactMouseEvent,
-  } = {};
-
-  constructor(props) {
-    super(props);
-    this.setEventObject(props.trigger);
-  }
-
   componentDidMount() {
     document.body.appendChild(this.div);
     if (this.props.visible) {
@@ -196,30 +207,14 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       this.setState({
         positionInfo: {
           left,
-          top
-        }
+          top,
+        },
       });
     }
     events.on(document, 'click', this.onDocumentClick);
     events.on(window, 'resize', this.onWindowResize);
     // 存储当前实例，方便静态方法统一处理
     Dropdown.mountedInstance.add(this);
-  }
-
-  // 根据trigger方式不同绑定事件
-  setEventObject(trigger: trigger) {
-    if (trigger === 'hover') {
-      this.DropdownContentEvent.onMouseLeave = this.onDropdownContentMouseLeave;
-      this.DropdownContentEvent.onMouseEnter = this.onDropdownContentMouseEnter;
-      this.triggerEvent.onMouseEnter = this.onTrigger;
-      this.triggerEvent.onMouseLeave = this.onTrigger;
-    }
-    else if (trigger === 'click') {
-      this.triggerEvent.onClick = this.onTrigger;
-    }
-    else if (trigger === 'contextMenu') {
-      this.triggerEvent.onContextMenu = this.onTrigger;
-    }
   }
 
   // 点击外部的时候
@@ -244,12 +239,9 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       return;
     }
     this.setState({
-      positionInfo: { left, top }
+      positionInfo: { left, top },
     });
   }
-
-  // 窗口大小变化的时候实时调整定位
-  onWindowResize = throttle(this.reposition, 300)
 
   // 获取元素的定位信息
   getDropdownPosition(placement) {
@@ -263,12 +255,12 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       this.triggerBox.offsetWidth,
       this.triggerBox.offsetHeight,
       offsetWidth,
-      offsetHeight
+      offsetHeight,
     );
     const offset = placement.startsWith('bottom') ? 5 : -5;
     return {
       left: rectInfo.left + left - marginLeft,
-      top: rectInfo.top + top - marginTop + offset
+      top: rectInfo.top + top - marginTop + offset,
     };
   }
 
@@ -283,7 +275,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       this.enter(() => {
         if (nextProps.visible) {
           this.setState({
-            positionInfo: this.getDropdownPosition(nextProps.placement)
+            positionInfo: this.getDropdownPosition(nextProps.placement),
           });
         }
       });
@@ -304,7 +296,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       this.setState({
         isPending: false,
         visible: this.props.visible,
-        animationState: null
+        animationState: null,
       });
     }
   }
@@ -313,7 +305,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     this.setState({
       visible: true,
       isPending: true,
-      animationState: 'enter'
+      animationState: 'enter',
     }, callback);
   }
 
@@ -321,7 +313,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
     this.setState({
       visible: true,
       isPending: true,
-      animationState: 'leave'
+      animationState: 'leave',
     });
   }
 
@@ -338,11 +330,13 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       placement,
       zIndex,
       notRenderInDisabledMode,
+      visible,
+      onVisibleChange,
+      // tslint:disable-next-line:trailing-comma
       ...others
     } = this.props;
 
-    const { visible, positionInfo, animationState } = this.state;
-
+    const { positionInfo, animationState } = this.state;
     // 根据placement判断向上动画还是向下动画
     const animationProps = (placementMap[placement as string] & 1) ? 'scaleDown' : 'scaleUp';
 
@@ -350,7 +344,7 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       [prefixCls!]: true,
       radius: 'radius' in this.props || isRadius,
       [className!]: !!className,
-      [`${animationProps}-${animationState}`]: !!animationState
+      [`${animationProps}-${animationState}`]: !!animationState,
     });
 
     const dropdownBoxStyle: React.CSSProperties = {
@@ -359,15 +353,15 @@ export default class Dropdown extends React.Component<propsType, stateType> {
       ...positionInfo,
       position: 'absolute',
       animationDuration: '300ms',
-      display: disabled ? 'none' : (visible ? 'block' : 'none'),
+      display: disabled ? 'none' : (this.state.visible ? 'block' : 'none'),
       zIndex,
-    }
+    };
 
     return <React.Fragment>
       <div
         className={`${prefixCls}-trigger-box`}
         style={{ display: 'inline-block' }}
-        ref={(e) => { this.triggerBox = e as HTMLDivElement }}
+        ref={(e) => { this.triggerBox = e as HTMLDivElement; }}
         {...this.triggerEvent}
       >
         {children}
@@ -386,6 +380,6 @@ export default class Dropdown extends React.Component<propsType, stateType> {
           </div>,
           this.div)
       }
-    </React.Fragment >
+    </React.Fragment>;
   }
-};
+}
