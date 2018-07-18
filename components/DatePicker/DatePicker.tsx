@@ -151,7 +151,7 @@ class DatePicker extends Component<PropsType, any> {
       <Dropdown
         onVisibleChange={(visible) => {
           this.setState({
-            dropdown: visible
+            dropdown: visible,
           });
         }}
         overlay={<Calendar

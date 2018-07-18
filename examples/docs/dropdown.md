@@ -33,7 +33,6 @@
       <div style={{position: 'relative'}}>
         <Dropdown
           visible={this.state.dropdown}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
           onVisibleChange={visible => {
             this.setState({
               dropdown: visible

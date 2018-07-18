@@ -200,7 +200,7 @@ class Select extends Component<PropsType, any> {
         isRadius={radius}
         overlay={menus}
         onVisibleChange={(visible) => {
-          this.setState({ dropdown: visible })
+          this.setState({ dropdown: visible });
         }}
       >
         <span className={cls} style={style}>
