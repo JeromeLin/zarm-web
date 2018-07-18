@@ -1,7 +1,6 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import isNodeInTree from '../utils/isNodeInTree';
 import Option from './Option';
 import Dropdown from '../Dropdown';
 import Menu from '../Menu';
@@ -14,18 +13,14 @@ class Select extends Component<PropsType, any> {
     isRadius: false,
     isDisabled: false,
     isSearch: false,
-    onSearchChange: () => {},
-    onChange: () => {},
+    onSearchChange: () => { },
+    onChange: () => { },
   };
   static Option;
   static Multiple;
 
-  private unmounted: boolean;
-  private select: any;
-
   constructor(props) {
     super(props);
-    this.unmounted = false;
     this.state = {
       value:
         props.value ||
@@ -37,7 +32,7 @@ class Select extends Component<PropsType, any> {
   }
 
   componentDidMount() {
-    this.unmounted = true;
+    this.bindOuterHandlers();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,7 +44,6 @@ class Select extends Component<PropsType, any> {
   }
 
   componentWillUnmount() {
-    this.unmounted = false;
     this.unbindOuterHandlers();
   }
 
@@ -64,14 +58,8 @@ class Select extends Component<PropsType, any> {
     return checkedValue;
   }
 
-  onSelectClick(e) {
-    e.preventDefault();
-    if (!this.state.dropdown) {
-      this.setDropdown(!this.state.dropdown);
-    }
-  }
-
-  onOptionChange(_, props, index) {
+  onOptionChange(_: Event, props, index) {
+    _.stopPropagation();
     if ('disabled' in props || props.isDisabled) {
       return;
     }
@@ -90,16 +78,6 @@ class Select extends Component<PropsType, any> {
   }
 
   setDropdown(isOpen, callback?) {
-    if (!this.unmounted) {
-      return;
-    }
-
-    if (isOpen) {
-      this.bindOuterHandlers();
-    } else {
-      this.unbindOuterHandlers();
-    }
-
     this.setState(
       {
         dropdown: isOpen,
@@ -114,25 +92,16 @@ class Select extends Component<PropsType, any> {
   }
 
   handleKeyup(e) {
-    if (e.keyCode === 27) {
+    if (this.state.dropdown === true && e.keyCode === 27) {
       this.setDropdown(false);
     }
   }
 
-  handleOuterClick(e) {
-    if (!this.unmounted || isNodeInTree(e.target, this.select)) {
-      return;
-    }
-    this.setDropdown(false);
-  }
-
   bindOuterHandlers() {
-    Events.on(document, 'click', e => this.handleOuterClick(e));
     Events.on(document, 'keyup', e => this.handleKeyup(e));
   }
 
   unbindOuterHandlers() {
-    Events.off(document, 'click', e => this.handleOuterClick(e));
     Events.off(document, 'keyup', e => this.handleKeyup(e));
   }
 
@@ -197,8 +166,8 @@ class Select extends Component<PropsType, any> {
       children.length > 0 ? (
         <Menu size={size}>{children}</Menu>
       ) : (
-        <span className={`${prefixCls}-notfound`}>没有找到数据</span>
-      );
+          <span className={`${prefixCls}-notfound`}>没有找到数据</span>
+        );
 
     const inputPlaceholder = this.state.dropdown // eslint-disable-line
       ? hasValue
@@ -222,26 +191,33 @@ class Select extends Component<PropsType, any> {
             }}
           />
         </span>
-    );
+      );
 
     return (
-      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
-        <span
-          className={`${prefixCls}-selection`}
-          role="combobox"
-          aria-autocomplete="list"
-          aria-haspopup="true"
-          aria-expanded="false"
-          onClick={e => !disabled && this.onSelectClick(e)}
-        >
-          {textRender}
-          {inputRender}
-          <Icon type="arrow-bottom" className={`${prefixCls}-arrow`} />
+      <Dropdown
+        disabled={disabled}
+        visible={this.state.dropdown}
+        isRadius={radius}
+        overlay={menus}
+        onVisibleChange={(visible) => {
+          this.setState({ dropdown: visible });
+        }}
+      >
+        <span className={cls} style={style}>
+          <span
+            className={`${prefixCls}-selection`}
+            role="combobox"
+            aria-autocomplete="list"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {textRender}
+            {inputRender}
+            <Icon type="arrow-bottom" className={`${prefixCls}-arrow`} />
+          </span>
         </span>
-        <Dropdown visible={this.state.dropdown} isRadius={radius}>
-          {menus}
-        </Dropdown>
-      </span>
+      </Dropdown>
+
     );
   }
 }

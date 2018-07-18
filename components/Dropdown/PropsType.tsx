@@ -1,11 +1,29 @@
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
+type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
+export type trigger = 'click' | 'hover' | 'contextMenu';
 
-export default interface PropsType {
+interface BasicPropsType {
   prefixCls?: string;
   visible?: boolean;
-  radius?: boolean;
-  isRadius?: boolean;
+  overlay?: React.ReactElement<any>;
+  placement?: placement;
   className?: string;
-  style?: object;
-  onChange?: () => void;
+  isRadius?: boolean;
+  style?: React.CSSProperties;
+  trigger?: trigger;
+  disabled?: boolean;
+  zIndex?: number;
+  notRenderInDisabledMode?: boolean;
+  onVisibleChange(flag: boolean): void;
+}
+
+export type propsType = React.HTMLAttributes<any> & BasicPropsType;
+
+export interface StateType {
+  visible?: boolean;
+  positionInfo: {
+    left: number;
+    top: number;
+  };
+  isPending: boolean;
+  animationState: string | null;
 }
