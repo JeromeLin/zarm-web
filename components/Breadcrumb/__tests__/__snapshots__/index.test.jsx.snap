@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] = `
+<div
+  class="ui-breadcrumb"
+>
+  <span
+    class=""
+  >
+    <span
+      class="ui-breadcrumb-link"
+    >
+      首页
+    </span>
+    <span
+      class="ui-breadcrumb-separator"
+    >
+      &gt;
+    </span>
+  </span>
+  <span
+    class=""
+  >
+    <span
+      class="ui-breadcrumb-link"
+    >
+      模块
+    </span>
+    <span
+      class="ui-breadcrumb-separator"
+    >
+      &gt;
+    </span>
+  </span>
+  <span
+    class=""
+  >
+    <a
+      class="ui-breadcrumb-link"
+      href="https://t.zhongan.com"
+    >
+      应用
+    </a>
+    <span
+      class="ui-breadcrumb-separator"
+    >
+      &gt;
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
+<div
+  class="ui-breadcrumb"
+>
+  <span
+    class=""
+  >
+    <span
+      class="ui-breadcrumb-link"
+    >
+      首页
+    </span>
+    <span
+      class="ui-breadcrumb-separator"
+    >
+      /
+    </span>
+  </span>
+  <span
+    class=""
+  >
+    <span
+      class="ui-breadcrumb-link"
+    >
+      模块
+    </span>
+    <span
+      class="ui-breadcrumb-separator"
+    >
+      /
+    </span>
+  </span>
+  <span
+    class=""
+  >
+    <a
+      class="ui-breadcrumb-link"
+      href="https://t.zhongan.com"
+    >
+      应用
+    </a>
+    <span
+      class="ui-breadcrumb-separator"
+    >
+      /
+    </span>
+  </span>
+</div>
+`;

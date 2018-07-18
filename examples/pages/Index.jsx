@@ -14,6 +14,7 @@ export default {
       Radio: '../pages/radio',
       Checkbox: '../pages/checkbox',
       Input: '../pages/input',
+      NumberInput: '../pages/numberinput',
       Select: '../pages/select',
       Switch: '../pages/switch',
       Slider: '../pages/slider',
@@ -38,9 +39,11 @@ export default {
       Notification: '../pages/notification',
     },
     Nav: {
+      Menu: '../pages/menu',
       Tab: '../pages/tab',
       Breadcrumb: '../pages/breadcrumb',
       Step: '../pages/step',
+      Dropdown: '../pages/dropdown',
     },
     Others: {
       Tooltip: '../pages/tooltip',
@@ -48,7 +51,6 @@ export default {
       Popconfirm: '../pages/popconfirm',
       Mask: '../pages/mask',
       Swipe: '../pages/swipe',
-      Dropdown: '../pages/dropdown',
     },
   },
 };

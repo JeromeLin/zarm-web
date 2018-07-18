@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import { ModalFooterProps } from './PropsType';
 
 class ModalFooter extends Component<ModalFooterProps, any> {
@@ -8,10 +9,15 @@ class ModalFooter extends Component<ModalFooterProps, any> {
   };
 
   render() {
-    const { children, style, prefixCls } = this.props;
+    const { children, style, prefixCls, className } = this.props;
+
+    const cls = classnames({
+      [`${prefixCls}-footer`]: true,
+      [className!]: !!className,
+    });
 
     return (
-      <div className={`${prefixCls}-footer`} style={style}>
+      <div className={cls} style={style}>
         {children}
       </div>
     );
