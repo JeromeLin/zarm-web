@@ -14,7 +14,7 @@ class DatePicker extends Component<PropsType, any> {
     format: 'yyyy-MM-dd',
     min: '',
     max: '',
-    onChange: () => {},
+    onChange: () => { },
   };
 
   private unmounted;
@@ -148,32 +148,39 @@ class DatePicker extends Component<PropsType, any> {
     });
 
     return (
-      <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
-        <span
-          className="ui-select-selection"
-          role="combobox"
-          aria-autocomplete="list"
-          aria-haspopup="true"
-          aria-expanded="false"
-          onClick={e => this.onSelectClick(e)}
-        >
-          <span className={textCls}>{valueText}</span>
-          <Icon className="ui-select-icon" type="date" />
+      <Dropdown
+        onVisibleChange={(visible) => {
+          this.setState({
+            dropdown: visible
+          });
+        }}
+        overlay={<Calendar
+          defaultValue={defaultValue}
+          value={value}
+          format={format}
+          hasFooter
+          min={min}
+          max={max}
+          // tslint:disable-next-line:no-shadowed-variable
+          onChange={value => this.onDateChange(value)}
+        />}
+        isRadius={radius}
+        visible={dropdown}
+      >
+        <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
+          <span
+            className="ui-select-selection"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-haspopup="true"
+            aria-expanded="false"
+            onClick={e => this.onSelectClick(e)}
+          >
+            <span className={textCls}>{valueText}</span>
+            <Icon className="ui-select-icon" type="date" />
+          </span>
         </span>
-
-        <Dropdown isRadius={radius} visible={dropdown}>
-          <Calendar
-            defaultValue={defaultValue}
-            value={value}
-            format={format}
-            hasFooter
-            min={min}
-            max={max}
-            // tslint:disable-next-line:no-shadowed-variable
-            onChange={value => this.onDateChange(value)}
-          />
-        </Dropdown>
-      </span>
+      </Dropdown>
     );
   }
 }

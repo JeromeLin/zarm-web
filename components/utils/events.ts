@@ -29,3 +29,5 @@ export default {
     }
   },
 };
+
+export const UIReposition = new CustomEvent('ui-repostion');
