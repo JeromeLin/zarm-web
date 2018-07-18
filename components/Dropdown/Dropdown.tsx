@@ -44,18 +44,23 @@ const defaultProps = {
 }
 
 export default class Dropdown extends React.Component<propsType, stateType> {
-  static mountedInstance: Set<Dropdown> = new Set();
+  // 用于存储已生成的全部实例的Set
+  private static mountedInstance: Set<Dropdown> = new Set();
+
+  // 隐藏全部的Dropdown
   static hide(): void {
     Dropdown.mountedInstance.forEach((instance) => {
       instance.props.onVisibleChange(false);
     });
   }
+  // 显示全部的Dropdown 除了disable
   static show(): void {
     Dropdown.mountedInstance.forEach((instance) => {
       instance.props.onVisibleChange(true);
     });
   }
-
+  
+  // 重新计算Dropdown定位
   static reposition() {
     Dropdown.mountedInstance.forEach((instance) => {
       instance.reposition();
