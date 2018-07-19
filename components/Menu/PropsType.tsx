@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface ItemProps {
@@ -5,7 +6,7 @@ export interface ItemProps {
   disabled?: boolean;
   isDisabled?: boolean;
   style?: object;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent) => void;
   onDoubleClick?: () => void;
 }
 

@@ -1,12 +1,13 @@
+import { CSSProperties, MouseEvent } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OptionProps {
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;
-  style?: object;
-  onChange: (e: any) => void;
-  onDoubleClick?: () => void;
+  style?: CSSProperties;
+  onChange: (e: MouseEvent) => void;
+  onDoubleClick?: (e: MouseEvent) => void;
 }
 
 export interface IDisableProps {
@@ -32,7 +33,7 @@ export default interface PropsType {
   defaultValue?: string | number;
   size?: size;
   className?: string;
-  style?: object;
+  style?: CSSProperties;
   radius?: boolean;
   isRadius?: boolean;
   disabled?: boolean;
