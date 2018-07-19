@@ -27,7 +27,7 @@ export interface ItemProps {
   mode: 'inline' | 'horizontal';
   inlineIndent: number;
   itemKey: string;
-  onClick: (itemKey: string) => void;
+  onClick: (e: React.MouseEvent, itemKey: string) => void;
   toggleSelectedKeys: (itemKey: string) => void;
   onDoubleClick?: () => void;
 }

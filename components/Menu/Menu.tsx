@@ -107,7 +107,7 @@ class Menu extends Component<PropsType, any> {
     } = this.props;
     const { siderCollapsed } = this.context;
 
-    const { openKeys, selectedKeys, collapsed } = this.state;
+    const { openKeys, selectedKeys } = this.state;
     const cls = classnames({
       [prefixCls!]: true,
       [`${prefixCls}-${theme}`]: true,
