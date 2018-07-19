@@ -26,7 +26,7 @@ Modal组件的基础用法。
         <Button theme="info" onClick={() => this.toggleModal()}>展示模态框</Button>
         <Modal visible={modalVisible}>
           <Modal.Header title="标题" onClose={() => this.toggleModal()} />
-          <Modal.Body>
+          <Modal.Body className="test">
             我是一个模态框
           </Modal.Body>
           <Modal.Footer>

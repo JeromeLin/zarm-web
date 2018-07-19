@@ -20,7 +20,7 @@
     return (
       <div>
         <Loading visible={this.state.loading}>
-          <p>这里是内容</p>
+          这里是内容
         </Loading>
         <br />
         <Button theme="info" onClick={() => this.toggleLoading()}>

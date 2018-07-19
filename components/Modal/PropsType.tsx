@@ -17,17 +17,21 @@ export interface ModalProps {
 export interface ModalBodyProps {
   prefixCls?: string;
   height?: number | string;
+  style?: object;
+  className?: string;
 }
 
 export interface ModalFooterProps {
   prefixCls?: string;
   style?: object;
+  className?: string;
 }
 
 export interface ModalHeaderProps {
   prefixCls?: string;
   title?: string;
   style?: object;
+  className?: string;
   onClose?: () => void;
 }
 
