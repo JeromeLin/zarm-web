@@ -44,6 +44,7 @@ export interface SubMenuProps {
   inlineIndent: number;
   mode: 'inline' | 'horizontal';
   title: string | React.ReactNode;
+  inlineCollapsed?: boolean;
   className?: string;
   style: object;
   subMenuKey: string;

@@ -19,6 +19,7 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -64,6 +65,7 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -109,6 +111,7 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -206,6 +209,7 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -251,6 +255,7 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -296,6 +301,7 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -349,6 +355,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -378,6 +385,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
         </div>
         <ul
           class="ui-menu-submenu-sub"
+          style="height:0;opacity:1;transform:scale(1)"
         >
           <li
             class="ui-menu-item"
@@ -411,6 +419,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"
@@ -456,6 +465,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
+      style="height:0;opacity:1;transform:scale(1)"
     >
       <li
         class="ui-menu-item"

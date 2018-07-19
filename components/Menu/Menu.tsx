@@ -82,11 +82,12 @@ class Menu extends Component<PropsType, any> {
 
   renderChildren() {
     const { children, inlineIndent, inlineCollapsed, mode } = this.props;
+    const { siderCollapsed } = this.context;
 
     const childProps: childPropsType = {
       mode,
       inlineIndent,
-      inlineCollapsed,
+      inlineCollapsed: inlineCollapsed || siderCollapsed,
     };
     return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
@@ -103,7 +104,7 @@ class Menu extends Component<PropsType, any> {
 
   render() {
     const {
-      size, theme, mode, className, style, prefixCls,
+      size, theme, mode, className, style, prefixCls, inlineCollapsed,
     } = this.props;
     const { siderCollapsed } = this.context;
 
@@ -112,7 +113,7 @@ class Menu extends Component<PropsType, any> {
       [prefixCls!]: true,
       [`${prefixCls}-${theme}`]: true,
       [`${prefixCls}-${mode}`]: true,
-      [`${prefixCls}-collapsed`]: !!siderCollapsed,
+      [`${prefixCls}-collapsed`]: !!siderCollapsed || !!inlineCollapsed,
       [`size-${size}`]: !!size,
       [className!]: !!className,
     });

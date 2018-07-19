@@ -162,9 +162,13 @@ class Select extends Component<PropsType, any> {
         !hasValue || (search && hasValue && this.state.dropdown),
     });
 
+    const menuStyle = {
+      maxHeight: 250,
+      overflow: 'auto',
+    };
     const menus =
       children.length > 0 ? (
-        <Menu size={size}>{children}</Menu>
+        <Menu size={size} style={menuStyle}>{children}</Menu>
       ) : (
           <span className={`${prefixCls}-notfound`}>没有找到数据</span>
         );

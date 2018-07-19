@@ -1,5 +1,7 @@
 import React, { Component, Children, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
+import dom from '../utils/dom';
+import events from '../utils/events';
 import { SubMenuProps, styleType, childPropsType } from './PropsType';
 import MenuContext from './menu-context';
 
@@ -48,7 +50,11 @@ class SubMenu extends Component<SubMenuProps, any> {
 
   getSubHeight() {
     const childs = [...this.sub.children];
-    const marginBottom = 8;
+    let marginBottom = 0;
+
+    if (childs[0]) {
+      marginBottom = parseFloat(dom.getStyleComputedProperty(childs[0], 'marginBottom'));
+    }
 
     const height = childs.reduce((res, next) => {
       res += (next.offsetHeight + marginBottom);
@@ -83,21 +89,59 @@ class SubMenu extends Component<SubMenuProps, any> {
     }
   }
 
+  setScale() {
+    const { openKeys, subMenuKey } = this.props;
+
+    const keyIndex = openKeys.indexOf(subMenuKey);
+    if (keyIndex > -1) {
+      this.sub.style.opacity = 1;
+      this.sub.style.transform = 'scale(1)';
+    } else {
+      this.sub.style.opacity = 0;
+      this.sub.style.transform = 'scale(0)';
+    }
+  }
+
+  onClickOutSide = (e) => {
+    const { target } = e;
+    const { subMenuKey, openKeys } = this.props;
+    if (!this.sub.contains(target) && openKeys.indexOf(subMenuKey) > -1) {
+      this.props.toggleOpenKeys(subMenuKey);
+    }
+  }
+
   componentDidMount() {
-    const { openKeys } = this.props;
+    const { openKeys, inlineCollapsed } = this.props;
     if (openKeys.length > 0) {
-      this.setSubHeight({ openKeys: [] });
+      if (!inlineCollapsed) {
+        this.setSubHeight({ openKeys: [] });
+      } else {
+        this.setScale();
+        events.on(document, 'click', this.onClickOutSide);
+      }
     }
   }
 
   componentDidUpdate(prevProps) {
-    this.setSubHeight(prevProps);
+    const { inlineCollapsed } = this.props;
+    if (!inlineCollapsed) {
+      this.setSubHeight(prevProps);
+    } else {
+      this.setScale();
+    }
+  }
+
+  componentWillUnmount() {
+    const { inlineCollapsed } = this.props;
+    if (inlineCollapsed) {
+      events.off(document, 'click', this.onClickOutSide);
+    }
   }
 
   render() {
     const {
       title, level, mode, style, inlineIndent,
-      prefixCls, openKeys, subMenuKey,
+      prefixCls, openKeys, subMenuKey, inlineCollapsed,
     } = this.props;
 
     const subMenuStyle: styleType = {};
@@ -107,6 +151,21 @@ class SubMenu extends Component<SubMenuProps, any> {
     const cls = classnames(`${prefixCls}-submenu`, {
       open: openKeys.indexOf(subMenuKey) > -1,
     });
+    let subStyle: React.CSSProperties = {};
+
+    if (!inlineCollapsed) {
+      subStyle = {
+        height: 0,
+        opacity: 1,
+        transform: 'scale(1)',
+      };
+    } else {
+      subStyle = {
+        height: 'auto',
+        opacity: 0,
+        transform: 'scale(0)',
+      };
+    }
     return (
       <li className={cls} style={style}>
         <div
@@ -120,6 +179,7 @@ class SubMenu extends Component<SubMenuProps, any> {
         <ul
           ref={(sub) => { this.sub = sub; }}
           className={`${prefixCls}-submenu-sub`}
+          style={subStyle}
         >
           {this.renderChildren()}
         </ul>
