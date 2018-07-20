@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel renders Panel correctly 1`] = `
+<div>
+  <div
+    class="ui-panel theme-default"
+  >
+    <div
+      class="ui-panel-header"
+    >
+      <div
+        class="ui-panel-title"
+      >
+        头部左侧
+      </div>
+      <div
+        class="ui-panel-more"
+      >
+        头部右侧
+      </div>
+    </div>
+    <div
+      class="ui-panel-body"
+    >
+      React is the entry point to the React library If you load React from a script tag, these top-level APIs are available on the React global
+    </div>
+    <div
+      class="ui-panel-footer"
+    >
+      <div
+        class="ui-panel-title"
+      >
+        底部左侧
+      </div>
+      <div
+        class="ui-panel-more"
+      >
+        底部右侧
+      </div>
+    </div>
+  </div>
+</div>
+`;
