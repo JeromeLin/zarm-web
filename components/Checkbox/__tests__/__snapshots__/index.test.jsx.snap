@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu renders CheckboxGroup correctly with defaultValue 1`] = `
+exports[`Checkbox renders CheckboxGroup correctly with defaultValue 1`] = `
 <div
   class="ui-checkbox-group"
 >
@@ -68,7 +68,7 @@ exports[`Menu renders CheckboxGroup correctly with defaultValue 1`] = `
 </div>
 `;
 
-exports[`Menu renders disabled Checkbox correctly 1`] = `
+exports[`Checkbox renders disabled Checkbox correctly 1`] = `
 <label>
   <span
     class="ui-checkbox checked disabled"
@@ -88,7 +88,7 @@ exports[`Menu renders disabled Checkbox correctly 1`] = `
 </label>
 `;
 
-exports[`Menu renders disabled CheckboxGroup correctly 1`] = `
+exports[`Checkbox renders disabled CheckboxGroup correctly 1`] = `
 <div
   class="ui-checkbox-group"
 >
@@ -155,7 +155,7 @@ exports[`Menu renders disabled CheckboxGroup correctly 1`] = `
 </div>
 `;
 
-exports[`Menu renders normal Checkbox correctly 1`] = `
+exports[`Checkbox renders normal Checkbox correctly 1`] = `
 <label>
   <span
     class="ui-checkbox checked"

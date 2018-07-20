@@ -3,7 +3,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Checkbox from '../index';
 
-describe('Menu', () => {
+describe('Checkbox', () => {
   it('renders normal Checkbox correctly', () => {
     const wrapper = render(
       <Checkbox
