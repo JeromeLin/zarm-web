@@ -1,5 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Menu renders Menu with Divider correctly 1`] = `
+<ul
+  class="ui-menu ui-menu-dark ui-menu-inline"
+  role="menu"
+>
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    投保单复核
+  </li>
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    在线投保单管理
+  </li>
+  <li
+    class="ui-menu-item-divider"
+  />
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    投保单录入
+  </li>
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    新增计划
+  </li>
+</ul>
+`;
+
+exports[`Menu renders collpased Menu correctly 1`] = `
+<ul
+  class="ui-menu ui-menu-light ui-menu-inline ui-menu-collapsed"
+  role="menu"
+>
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    投保单复核
+  </li>
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    在线投保单管理
+  </li>
+  <li
+    class="ui-menu-item-divider"
+  />
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    投保单录入
+  </li>
+  <li
+    class="ui-menu-item"
+    role="menuitem"
+    style="padding-left:24px"
+  >
+    新增计划
+  </li>
+</ul>
+`;
+
 exports[`Menu renders dark Menu correctly 1`] = `
 <ul
   class="ui-menu ui-menu-dark ui-menu-inline"
@@ -19,7 +97,7 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -65,7 +143,7 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -111,7 +189,7 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -209,7 +287,7 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -255,7 +333,7 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -301,7 +379,7 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -355,7 +433,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -385,7 +463,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
         </div>
         <ul
           class="ui-menu-submenu-sub"
-          style="height:0;opacity:1;transform:scale(1)"
+          style="display:block"
         >
           <li
             class="ui-menu-item"
@@ -419,7 +497,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"
@@ -465,7 +543,7 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </div>
     <ul
       class="ui-menu-submenu-sub"
-      style="height:0;opacity:1;transform:scale(1)"
+      style="display:block"
     >
       <li
         class="ui-menu-item"

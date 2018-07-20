@@ -8,6 +8,30 @@
   }
 }
 
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
 $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
 $prefixCls: ui-menu;
@@ -89,7 +113,6 @@ $prefixCls: ui-menu;
       height: 0;
       padding: 0;
       overflow: hidden;
-      transform-origin: 0 0;
       transition: all .2s $ease-in-out;
     }
   }
@@ -117,9 +140,24 @@ $prefixCls: ui-menu;
     text-overflow: clip;
     padding: 0 ($menu-collapsed-width - 16) / 2;
   }
+  .#{$prefixCls}-item {
+    padding-right: ($menu-collapsed-width - 16) / 2;
+  }
   > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-title {
     .#{$prefixCls}-submenu-arrow {
       display: none;
+    }
+  }
+  > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-sub {
+    height: auto !important;
+    opacity: 0;
+    transform-origin: 0 0;
+
+    &.slide-up {
+      animation: slide-up 0.2s both;
+    }
+    &.slide-down {
+      animation: slide-down 0.2s both;
     }
   }
   .iconfont {
