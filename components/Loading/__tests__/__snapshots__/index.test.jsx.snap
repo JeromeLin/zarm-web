@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading renders hidden Loading correctly 1`] = `
+<div
+  class="ui-loading"
+>
+  <div
+    class="ui-loading-spins"
+    style="display:none"
+  >
+    <span
+      class="ui-loading-spin ui-loading-spin-first"
+    />
+    <span
+      class="ui-loading-spin ui-loading-spin-second"
+    />
+    <span
+      class="ui-loading-spin ui-loading-spin-third"
+    />
+  </div>
+  <div
+    class=""
+  >
+    这里是内容
+  </div>
+</div>
+`;
+
+exports[`Loading renders visible Loading correctly 1`] = `
+<div
+  class="ui-loading"
+>
+  <div
+    class="ui-loading-spins"
+    style="display:block"
+  >
+    <span
+      class="ui-loading-spin ui-loading-spin-first"
+    />
+    <span
+      class="ui-loading-spin ui-loading-spin-second"
+    />
+    <span
+      class="ui-loading-spin ui-loading-spin-third"
+    />
+  </div>
+  <div
+    class="ui-loading-inner"
+  >
+    这里是内容
+  </div>
+</div>
+`;
