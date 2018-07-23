@@ -12,10 +12,23 @@
   constructor(props) {
     super(props)
     this.state = {
-      selectValue: ''
+      selectValue: '',
+      options: []
+    };
+  }
+  componentDidMount() {
+    let i = 1;
+    let options = [];
+    while(i < 100) {
+      options.push(`我是${i}`);
+      i++;
     }
+    this.setState({
+      options
+    });
   }
   render() {
+    const { options } = this.state;
     return (
       <div>
         <Select
@@ -32,6 +45,11 @@
           <Select.Option value="b" disabled>我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
+          {
+            options.map((text) => {
+              return <Select.Option value={text} key={text}>{text}</Select.Option>
+            })
+          }
         </Select>
       </div>
     )

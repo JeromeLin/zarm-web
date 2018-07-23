@@ -84,6 +84,8 @@ $base-zindex-message:      1300 !default;
 $base-modal-radius:        6px !default;
 $base-modal-round:         20px !default;
 
+
+
 $base-icon-url:            'https://at.alicdn.com/t/font_1469689123_124623';
 
 $screen-xs:                 480px !default;
@@ -120,3 +122,17 @@ $container-md:              $container-desktop !default;
 
 $container-large-desktop:   (1170px + $grid-gutter-width) !default;
 $container-lg:              $container-large-desktop !default;
+
+$menu-default-bg-color:     #fff;
+$menu-dark-bg-color:        #001529;
+$menu-collapsed-width:      80px;
+$submenu-dark-bg-color:     #000c17;
+$menuitem-dark-color:       hsla(0,0%,100%,.65);
+$menuitem-dark-active-color:#fff;
+$menuitem-default-color:    #666;
+$menuitem-active-color:     #1890ff;
+$menuitem-active-bg-color:  #e6f7ff;
+$menuitem-disabled-color:   rgba(0, 0, 0, 0.25);
+$menuitem-divider-bg-color: #e5e5e5;
+$menuitem-horizontal-padding: 20px;
+$menuitem-horizontal-height:  56px;

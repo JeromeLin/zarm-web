@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders Disabled Input correctly 1`] = `
+<div>
+  <span>
+    <input
+      class="ui-input disabled"
+      disabled=""
+      type="text"
+      value="禁用"
+    />
+  </span>
+</div>
+`;
+
+exports[`Input renders Input with radius correctly 1`] = `
+<div>
+  <span>
+    <input
+      class="ui-input radius"
+      placeholder="请输入"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`Input renders correctly with initial value 1`] = `
+<div>
+  <Input
+    onChange={[Function]}
+    prefixCls="ui-input"
+    size={null}
+    type="text"
+    value="hey"
+  />
+</div>
+`;
+
+exports[`Input renders different sizes of Input correctly 1`] = `
+<div>
+  <span>
+    <input
+      class="ui-input size-xl"
+      placeholder="请输入"
+      type="text"
+    />
+  </span>
+  <span>
+    <input
+      class="ui-input size-lg"
+      placeholder="请输入"
+      type="text"
+    />
+  </span>
+  <span>
+    <input
+      class="ui-input size-sm"
+      placeholder="请输入"
+      type="text"
+    />
+  </span>
+  <span>
+    <input
+      class="ui-input size-xs"
+      placeholder="请输入"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`Input renders different types of Input correctly 1`] = `
+<div>
+  <span>
+    <input
+      class="ui-input"
+      placeholder="请输入"
+      type="text"
+    />
+  </span>
+  <span>
+    <textarea
+      class="ui-input"
+      placeholder="请输入"
+    />
+  </span>
+</div>
+`;
