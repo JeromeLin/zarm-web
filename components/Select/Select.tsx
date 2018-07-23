@@ -64,7 +64,6 @@ class Select extends Component<PropsType, any> {
   }
 
   onOptionChange(_: React.MouseEvent, props, index) {
-    _.stopPropagation();
     if ('disabled' in props || props.isDisabled) {
       return;
     }
@@ -132,29 +131,28 @@ class Select extends Component<PropsType, any> {
     let hasValue = false;
 
     const children = React.Children.map(props.children, (option, index) => {
-      if (!(option instanceof Option)) {
-        return null;
-      }
-      // tslint:disable-next-line:triple-equals
-      if (this.state.value == option.props.value) {
-        valueText = option.props.children;
-        hasValue = true;
-      }
+      if (option && typeof option === 'object' && option.type === Option) {
+        // tslint:disable-next-line:triple-equals
+        if (this.state.value == option.props.value) {
+          valueText = option.props.children;
+          hasValue = true;
+        }
 
-      if (
-        search &&
-        option.props.children.toString().indexOf(this.state.searchValue) < 0
-      ) {
-        return null;
+        if (
+          search &&
+          option.props.children.toString().indexOf(this.state.searchValue) < 0
+        ) {
+          return null;
+        }
+        return (
+          <Option
+            {...option.props}
+            onChange={e => this.onOptionChange(e, option.props, index)}
+            checked={this.state.value === option.props.value}
+          />
+        );
       }
-
-      return (
-        <Option
-          {...option.props}
-          onChange={e => this.onOptionChange(e, option.props, index)}
-          checked={this.state.value === option.props.value}
-        />
-      );
+      return null;
     });
 
     const cls = classnames({

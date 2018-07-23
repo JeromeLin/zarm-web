@@ -76,6 +76,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={AsyncComponent(() => import('../pages/QuikStart'))} />
               <Route path="/quick-start" component={AsyncComponent(() => import('../pages/QuikStart'))} />
+              <Route path="/test" component={AsyncComponent(() => import('../pages/test'))} />
               {
                 Object.keys(this.components).map((name) => {
                   return <Route path={`/${name}`} key={name} component={AsyncComponent(() => import(`../pages/${name}`))} />;
