@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress renders Progress with radius & round props correctly 1`] = `
+<div>
+  <div
+    class="ui-progress theme-info size-lg"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress radius theme-info size-lg"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress round theme-info size-lg"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Progress renders different sizes of Progress correctly 1`] = `
+<div>
+  <div
+    class="ui-progress theme-info size-xl"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-info size-lg"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-info"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-info size-sm"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-info size-xs"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Progress renders different themes of Progress correctly 1`] = `
+<div>
+  <div
+    class="ui-progress theme-default"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-info"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-success"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-warning"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="ui-progress theme-error"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Progress renders normal Progress correctly 1`] = `
+<div>
+  <div
+    class="ui-progress theme-default"
+  >
+    <div
+      class="ui-progress-line-outer"
+    >
+      <div
+        class="ui-progress-line-inner"
+      >
+        <div
+          class="ui-progress-bg"
+          style="width:30%"
+        />
+      </div>
+    </div>
+    <span
+      class="ui-progress-line-text"
+    >
+      30%
+    </span>
+  </div>
+</div>
+`;

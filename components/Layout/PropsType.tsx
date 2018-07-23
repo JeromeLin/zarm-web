@@ -1,6 +1,7 @@
 export default interface PropsType {
   prefixCls?: string;
   style?: object;
+  hasSider?: boolean;
   className?: string;
 }
 

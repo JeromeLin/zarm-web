@@ -37,7 +37,7 @@
                 <Button theme="info" style={{marginRight: 10}}>{item}</Button>
               </Popover>
             );
-          }) 
+          })
         }
         </div>
         {
