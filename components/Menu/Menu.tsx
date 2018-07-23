@@ -1,5 +1,6 @@
 import React, { Component, Children, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import PropsType, { childPropsType } from './PropsType';
 import MenuContext, { menuKeys, keysType } from './menu-context';
 
@@ -9,8 +10,13 @@ class Menu extends Component<PropsType, any> {
     mode: 'inline',
     theme: 'light',
     inlineIndent: 24,
+    inlineCollapsed: false,
     defaultOpenKeys: [],
     defaultSelectedKeys: [],
+  };
+
+  static contextTypes = {
+    siderCollapsed: PropTypes.bool,
   };
 
   static SubMenu;
@@ -23,7 +29,7 @@ class Menu extends Component<PropsType, any> {
       state.openKeys = props.openKeys;
     }
     if ('selectedKeys' in props) {
-      state.selectedKeys = props.selecedKeys;
+      state.selectedKeys = props.selectedKeys;
     }
 
     return Object.keys(state).length > 0 ? state : null;
@@ -75,11 +81,13 @@ class Menu extends Component<PropsType, any> {
   }
 
   renderChildren() {
-    const { children, inlineIndent, mode } = this.props;
+    const { children, inlineIndent, inlineCollapsed, mode } = this.props;
+    const { siderCollapsed } = this.context;
 
     const childProps: childPropsType = {
       mode,
       inlineIndent,
+      inlineCollapsed: inlineCollapsed || siderCollapsed,
     };
     return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
@@ -96,14 +104,16 @@ class Menu extends Component<PropsType, any> {
 
   render() {
     const {
-      size, theme, mode, className, style, prefixCls,
+      size, theme, mode, className, style, prefixCls, inlineCollapsed,
     } = this.props;
+    const { siderCollapsed } = this.context;
 
     const { openKeys, selectedKeys } = this.state;
     const cls = classnames({
       [prefixCls!]: true,
       [`${prefixCls}-${theme}`]: true,
       [`${prefixCls}-${mode}`]: true,
+      [`${prefixCls}-collapsed`]: !!siderCollapsed || !!inlineCollapsed,
       [`size-${size}`]: !!size,
       [className!]: !!className,
     });

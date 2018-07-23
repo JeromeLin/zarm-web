@@ -10,13 +10,15 @@ class MenuItem extends Component<ItemProps, any> {
     isDisabled: false,
     level: 1,
     style: {},
+    mode: 'inline',
+    inlineIndent: 10,
     onClick: () => {},
     onDoubleClick: () => {},
   };
 
-  handleClick = () => {
+  handleClick = (e) => {
     const { itemKey } = this.props;
-    this.props.onClick(itemKey);
+    this.props.onClick(e, itemKey);
     this.props.toggleSelectedKeys(itemKey);
   }
 
@@ -26,9 +28,10 @@ class MenuItem extends Component<ItemProps, any> {
       checked, isDisabled, children, prefixCls, level, inlineIndent,
       className, style, onDoubleClick, selectedKeys, itemKey, mode,
     } = props;
+
     const cls = classnames({
       [`${prefixCls}-item`]: true,
-      active: selectedKeys.indexOf(itemKey) > -1,
+      active: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
       [className!]: !!className,
       selected: !!checked,
       disabled: 'disabled' in props || isDisabled,

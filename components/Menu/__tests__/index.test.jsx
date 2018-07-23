@@ -1,7 +1,8 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Menu from '../index';
+import { SubMenu } from '../SubMenu';
 
 describe('Menu', () => {
   it('renders horizontal Menu correctly', () => {
@@ -100,5 +101,64 @@ describe('Menu', () => {
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders Menu with Divider correctly', () => {
+    const wrapper = render(
+      <Menu theme="dark">
+        <Menu.Item>投保单复核</Menu.Item>
+        <Menu.Item>在线投保单管理</Menu.Item>
+        <Menu.Divider />
+        <Menu.Item>投保单录入</Menu.Item>
+        <Menu.Item>新增计划</Menu.Item>
+      </Menu>
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders collpased Menu correctly', () => {
+    const wrapper = render(
+      <Menu inlineCollapsed>
+        <Menu.Item>投保单复核</Menu.Item>
+        <Menu.Item>在线投保单管理</Menu.Item>
+        <Menu.Divider />
+        <Menu.Item>投保单录入</Menu.Item>
+        <Menu.Item>新增计划</Menu.Item>
+      </Menu>
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('behaves correctly when toggling collapsed status', () => {
+    const wrapper = shallow(
+      <Menu>
+        <Menu.Item>投保单复核</Menu.Item>
+        <Menu.Item>在线投保单管理</Menu.Item>
+        <Menu.Item>投保单录入</Menu.Item>
+        <Menu.Item>新增计划</Menu.Item>
+      </Menu>
+    );
+
+    wrapper.setProps({ inlineCollapsed: true });
+
+    expect(wrapper.find('.ui-menu').hasClass('ui-menu-collapsed')).toBeTruthy();
+  });
+
+  it('behaves correctly when toggling subMenu', () => {
+    const subMenuKey = 'key';
+    const wrapper = shallow(
+      <SubMenu openKeys={[]} subMenuKey={subMenuKey}>
+        <Menu.Item>投保单复核</Menu.Item>
+        <Menu.Item>在线投保单管理</Menu.Item>
+        <Menu.Item>投保单录入</Menu.Item>
+        <Menu.Item>新增计划</Menu.Item>
+      </SubMenu>
+    );
+
+    wrapper.setProps({ openKeys: [subMenuKey] });
+
+    expect(wrapper.find('li').hasClass('open')).toBeTruthy();
   });
 });

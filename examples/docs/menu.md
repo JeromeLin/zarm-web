@@ -117,7 +117,8 @@ SubMenu内可以继续嵌套SubMenu
   render() {
     const wrapperStyle = {
       width: 238,
-      border: '1px solid #e3e3e3'
+      border: '1px solid #e3e3e3',
+      backgroundColor: '#001529'
     }
     return (
       <div style={wrapperStyle}>
@@ -168,7 +169,8 @@ SubMenu内可以继续嵌套SubMenu
   render() {
     const wrapperStyle = {
       width: 238,
-      border: '1px solid #e3e3e3'
+      border: '1px solid #e3e3e3',
+      backgroundColor: '#001529'
     }
     const { openKeys } = this.state;
     return (

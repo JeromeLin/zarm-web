@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio renders Radio Group correctly 1`] = `
+<div
+  class="ui-radio-group"
+>
+  <label>
+    <span
+      class="ui-radio checked"
+    >
+      <input
+        checked=""
+        class="ui-radio-input"
+        type="radio"
+        value="a"
+      />
+      <span
+        class="ui-radio-inner"
+      />
+    </span>
+    A
+  </label>
+  <label>
+    <span
+      class="ui-radio"
+    >
+      <input
+        class="ui-radio-input"
+        type="radio"
+        value="b"
+      />
+      <span
+        class="ui-radio-inner"
+      />
+    </span>
+    B
+  </label>
+  <label>
+    <span
+      class="ui-radio"
+    >
+      <input
+        class="ui-radio-input"
+        type="radio"
+        value="c"
+      />
+      <span
+        class="ui-radio-inner"
+      />
+    </span>
+    C
+  </label>
+  <label>
+    <span
+      class="ui-radio"
+    >
+      <input
+        class="ui-radio-input"
+        type="radio"
+        value="d"
+      />
+      <span
+        class="ui-radio-inner"
+      />
+    </span>
+    D
+  </label>
+</div>
+`;
+
+exports[`Radio renders checked Radio correctly 1`] = `
+<div>
+  <label>
+    <span
+      class="ui-radio checked"
+    >
+      <input
+        checked=""
+        class="ui-radio-input"
+        type="radio"
+      />
+      <span
+        class="ui-radio-inner"
+      />
+    </span>
+    选择
+  </label>
+</div>
+`;
+
+exports[`Radio renders disabled Radio correctly 1`] = `
+<div>
+  <label>
+    <span
+      class="ui-radio disabled"
+    >
+      <input
+        class="ui-radio-input"
+        disabled=""
+        type="radio"
+        value="a"
+      />
+      <span
+        class="ui-radio-inner"
+      />
+    </span>
+    选择
+  </label>
+</div>
+`;
+
+exports[`Radio renders normal Radio correctly 1`] = `
+<div>
+  <label>
+    <span
+      class="ui-radio"
+    >
+      <input
+        class="ui-radio-input"
+        type="radio"
+        value="a"
+      />
+      <span
+        class="ui-radio-inner"
+      />
+    </span>
+    选择
+  </label>
+</div>
+`;

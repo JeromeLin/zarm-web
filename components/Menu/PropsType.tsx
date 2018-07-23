@@ -9,6 +9,7 @@ export type childPropsType = {
   prefixCls?: string,
   mode?: 'inline' | 'horizontal',
   inlineIndent?: number,
+  inlineCollapsed?: boolean,
   level?: number;
   itemKey?: any,
   subMenuKey?: any,
@@ -26,7 +27,7 @@ export interface ItemProps {
   mode: 'inline' | 'horizontal';
   inlineIndent: number;
   itemKey: string;
-  onClick: (itemKey: string) => void;
+  onClick: (e: React.MouseEvent, itemKey: string) => void;
   toggleSelectedKeys: (itemKey: string) => void;
   onDoubleClick?: () => void;
 }
@@ -43,6 +44,7 @@ export interface SubMenuProps {
   inlineIndent: number;
   mode: 'inline' | 'horizontal';
   title: string | React.ReactNode;
+  inlineCollapsed?: boolean;
   className?: string;
   style: object;
   subMenuKey: string;
@@ -60,6 +62,7 @@ export default interface PropsType {
   defaultOpenKeys?: string[];
   defaultSelectedKeys?: string[];
   inlineIndent?: number;
+  inlineCollapsed?: boolean;
   openKeys?: string[];
   selectedKeys?: string[];
   onClick?: () => {};
