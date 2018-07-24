@@ -381,6 +381,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       position: 'absolute',
       animationDuration: '300ms',
       display: disabled ? 'none' : (this.state.visible ? 'block' : 'none'),
+      overflow: 'hidden',
       zIndex,
     };
 
