@@ -91,13 +91,10 @@ class Menu extends Component<PropsType, any> {
     };
     return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
-      const type = (c.type as React.ComponentClass<any>).name;
       const key = (child as ReactElement<any>).key;
-      if (type === 'SubMenuConsumer') {
-        childProps.subMenuKey = key || `submenu-0-${index}`;
-      } else if (type === 'MenuItemConsumer') {
-        childProps.itemKey = key || `menuitem-0-${index}`;
-      }
+
+      childProps.subMenuKey = key || `0-${index}`;
+      childProps.itemKey = key || `0-${index}`;
       return cloneElement(c, childProps);
     });
   }
