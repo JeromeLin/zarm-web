@@ -138,6 +138,7 @@ class Modal extends Component<ModalProps, any> {
         msAnimationDuration: `${animationDuration}ms`,
         OAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
+        position: 'fixed',
       },
       dialog: {
         width: Number(width),

@@ -7,17 +7,21 @@ import throttle from '../utils/throttle';
 import { propsType, StateType } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
-function getOffsetElem(elem: HTMLElement, relativeElem: HTMLElement = document.body) {
+function getOffsetElem(elem: HTMLElement) {
   let parentElem = elem.parentNode;
-  while (parentElem && relativeElem.contains(parentElem)) {
+  while (parentElem) {
     if (parentElem instanceof HTMLElement) {
-      if (parentElem.style.position === 'fixed' || window.getComputedStyle(parentElem).position === 'fixed') {
+      if (parentElem.style.position === 'fixed' ||
+        window.getComputedStyle(parentElem).position === 'fixed' ||
+        parentElem === document.body) {
         return parentElem;
       }
       parentElem = parentElem.parentNode;
+    } else {
+      break;
     }
   }
-  return relativeElem;
+  return document.body;
 }
 
 // 获取元素坐标
