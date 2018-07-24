@@ -121,6 +121,8 @@ class Select extends Component<PropsType, any> {
       size,
       onSearchChange,
       style,
+      zIndex,
+      getPopupContainer,
     } = props;
 
     const disabled = 'disabled' in props || isDisabled;
@@ -210,6 +212,8 @@ class Select extends Component<PropsType, any> {
         visible={this.state.dropdown}
         isRadius={radius}
         overlay={menus}
+        zIndex={zIndex}
+        getPopupContainer={getPopupContainer}
         onVisibleChange={(visible) => this.setState({ dropdown: visible })}
       >
         <span className={cls} style={style}>

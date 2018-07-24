@@ -44,4 +44,6 @@ export default interface PropsType {
   searchPlaceholder?: string;
   onChange: (e: any) => void;
   onSearchChange?: (e: any) => void;
+  zIndex?: number;
+  getPopupContainer?(): HTMLElement;
 }

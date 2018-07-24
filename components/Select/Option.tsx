@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import * as classnames from 'classnames';
 import Menu from '../Menu';
 import { OptionProps, IDisableProps } from './PropsType';
 
 class Option extends Component<OptionProps, any> {
   static defaultProps = {
     isDisabled: false,
-    onChange: () => { },
+    onChange: () => {},
   };
 
   render() {
@@ -21,20 +20,15 @@ class Option extends Component<OptionProps, any> {
     if (disabled) {
       disableProps.disabled = true;
     }
-    const className = classnames({
-      'ui-select-option': true,
-      'active': checked,
-      'disabled': disabled,
-    });
     return (
-      <li
-        className={className}
-        data-checked={checked}
+      <Menu.Item
+        checked={checked}
+        {...disableProps}
         onClick={e => props.onChange(e)}
         onDoubleClick={onDoubleClick}
       >
         {children}
-      </li>
+      </Menu.Item>
     );
   }
 }

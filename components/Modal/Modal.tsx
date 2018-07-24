@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
@@ -18,10 +19,11 @@ class Modal extends Component<ModalProps, any> {
     minWidth: 270,
     isRadius: false,
     isRound: false,
-    onMaskClick() {},
+    onMaskClick() { },
   };
 
   private modal: HTMLDivElement | null;
+  private div: HTMLDivElement = document.createElement('div');
 
   constructor(props) {
     super(props);
@@ -30,7 +32,6 @@ class Modal extends Component<ModalProps, any> {
       isPending: false,
       animationState: 'leave',
     };
-
     this.animationEnd = this.animationEnd.bind(this);
   }
 
@@ -38,6 +39,10 @@ class Modal extends Component<ModalProps, any> {
     if (this.props.visible) {
       this.enter();
     }
+  }
+
+  componentDidMount() {
+    document.body.appendChild(this.div);
   }
 
   componentWillUpdate() {
@@ -48,6 +53,9 @@ class Modal extends Component<ModalProps, any> {
   componentWillUnmount() {
     Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
     Events.off(this.modal, 'animationend', this.animationEnd);
+    setTimeout(() => {
+      document.body.removeChild(this.div);
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -77,6 +85,7 @@ class Modal extends Component<ModalProps, any> {
   }
 
   enter() {
+    document.body.style.overflow = 'hidden';
     this.setState({
       isShow: true,
       isPending: true,
@@ -90,6 +99,7 @@ class Modal extends Component<ModalProps, any> {
       isPending: true,
       animationState: 'leave',
     });
+    document.body.style.overflow = null;
   }
 
   render() {
@@ -142,8 +152,7 @@ class Modal extends Component<ModalProps, any> {
     if (!isShow) {
       style.modal.display = 'none';
     }
-
-    return (
+    return createPortal(
       <div
         className={classes.modal}
         style={style.modal}
@@ -159,7 +168,8 @@ class Modal extends Component<ModalProps, any> {
             {children}
           </div>
         </div>
-      </div>
+      </div>,
+      this.div,
     );
   }
 }
