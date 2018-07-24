@@ -318,7 +318,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     events.off(window, 'click', this.onWindowResize);
     Dropdown.mountedInstance.delete(this);
     setTimeout(() => {
-      document.body.removeChild(this.div);
+      this.popContainer.removeChild(this.div);
     });
   }
 
