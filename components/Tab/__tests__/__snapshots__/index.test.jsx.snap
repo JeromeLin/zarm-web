@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch renders Tab correctly with more props 1`] = `
+exports[`Tab renders Tab correctly with more props 1`] = `
 <div>
   <div
     class="ui-tab radius theme-error"
@@ -59,7 +59,7 @@ exports[`Switch renders Tab correctly with more props 1`] = `
 </div>
 `;
 
-exports[`Switch renders normal Tab correctly 1`] = `
+exports[`Tab renders normal Tab correctly 1`] = `
 <div>
   <div
     class="ui-tab theme-default"

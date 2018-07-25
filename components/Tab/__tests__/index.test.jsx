@@ -3,7 +3,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Tab from '../index';
 
-describe('Switch', () => {
+describe('Tab', () => {
   it('renders normal Tab correctly', () => {
     const wrapper = render(
       <div>
