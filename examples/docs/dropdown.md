@@ -197,7 +197,7 @@ position                 // 控制组件的定位方式，只能为absolute
 
 ### 内部实现
 设 点击的触发组件为 triggerBox, 弹出的组件为 DropdownBox
-+ Dropdown组件在实现的时候，考虑到定位信息的获取，把所有的DropdownBox都动态创建到body的根节点下。然后相对于body进行绝对定位。计算出当前triggerBox的位置然后设置弹出框的绝对定位信息。   
++ Dropdown组件在实现的时候，考虑到定位信息的获取，把所有的DropdownBox都动态创建到body的根节点下。然后相对于body进行绝对定位。计算出当前triggerBox的位置然后设置弹出框的绝对定位信息， 若父级中有position:fixed样式，则动态创建到该元素下。
 + 监听了window.resize事件，当window.resize的时候自动计算目前已弹出的DropdownBox的位置。  
 + 监听了document的点击事件，当点击外部的时候回自动隐藏DropdownBox。  
 + 默认在triggerBox和DropdownBox之间有5px的间隙。  

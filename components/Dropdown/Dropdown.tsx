@@ -7,17 +7,39 @@ import throttle from '../utils/throttle';
 import { propsType, StateType } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
+function getOffsetElem(elem: HTMLElement) {
+  let parentElem = elem.parentNode;
+  while (parentElem) {
+    if (parentElem instanceof HTMLElement) {
+      if (parentElem.style.position === 'fixed' ||
+        window.getComputedStyle(parentElem).position === 'fixed' ||
+        parentElem === document.body) {
+        return parentElem;
+      }
+      parentElem = parentElem.parentNode;
+    } else {
+      break;
+    }
+  }
+  return document.body;
+}
+
 // 获取元素坐标
-function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document.documentElement) {
+function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document.body) {
   let parentElem = elem.offsetParent;
-  const position = {
+  const position: { top: number, left: number } = {
     top: elem.offsetTop,
     left: elem.offsetLeft,
   };
   while (relativeElem.contains(parentElem)) {
-    position.top += (parentElem as HTMLElement).offsetTop;
-    position.left += (parentElem as HTMLElement).offsetLeft;
-    parentElem = (parentElem as HTMLElement).offsetParent;
+    if (parentElem instanceof HTMLElement) {
+      if (relativeElem === parentElem) {
+        return position;
+      }
+      position.top += parentElem.offsetTop;
+      position.left += parentElem.offsetLeft;
+      parentElem = parentElem.offsetParent;
+    }
   }
   return position;
 }
@@ -40,7 +62,7 @@ const defaultProps = {
   placement: 'bottomLeft',
   trigger: 'click',
   disabled: false,
-  zIndex: 999,
+  zIndex: 9999,
 };
 
 export default class Dropdown extends React.Component<propsType, StateType> {
@@ -127,6 +149,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   private div: HTMLDivElement = Dropdown.createDivBox();
   private triggerBox: HTMLDivElement;
   private DropdownContent: HTMLDivElement;
+  private popContainer: HTMLElement;
   private isHoverOnDropContent: boolean = false;
   private hiddenTimer!: number;
 
@@ -201,7 +224,13 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   }
 
   componentDidMount() {
-    document.body.appendChild(this.div);
+    if (typeof this.props.getPopupContainer === 'function') {
+      this.popContainer = this.props.getPopupContainer();
+      this.popContainer.style.position = 'relative';
+    } else {
+      this.popContainer = getOffsetElem(this.triggerBox);
+    }
+    this.popContainer.appendChild(this.div);
     if (this.props.visible) {
       const { left, top } = this.getDropdownPosition(this.props.placement);
       this.setState({
@@ -245,7 +274,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
 
   // 获取元素的定位信息
   getDropdownPosition(placement) {
-    let rectInfo = getElemPosition(this.triggerBox);
+    let rectInfo = getElemPosition(this.triggerBox, this.popContainer);
     const { offsetWidth, offsetHeight } = this.DropdownContent;
     const computerStyle = window.getComputedStyle(this.DropdownContent);
     const marginTop = parseFloat(this.DropdownContent.style.marginTop || computerStyle.marginTop || '0');
@@ -288,7 +317,9 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     events.off(document, 'click', this.onDocumentClick);
     events.off(window, 'click', this.onWindowResize);
     Dropdown.mountedInstance.delete(this);
-    document.body.removeChild(this.div);
+    setTimeout(() => {
+      this.popContainer.removeChild(this.div);
+    });
   }
 
   onAniEnd = (e: React.AnimationEvent) => {
@@ -332,6 +363,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       notRenderInDisabledMode,
       visible,
       onVisibleChange,
+      getPopupContainer,
       // tslint:disable-next-line:trailing-comma
       ...others
     } = this.props;
@@ -339,7 +371,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     const { positionInfo, animationState } = this.state;
     // 根据placement判断向上动画还是向下动画
     const animationProps = (placementMap[placement as string] & 1) ? 'scaleDown' : 'scaleUp';
-
     const cls = classnames({
       [prefixCls!]: true,
       radius: 'radius' in this.props || isRadius,
@@ -354,6 +385,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       position: 'absolute',
       animationDuration: '300ms',
       display: disabled ? 'none' : (this.state.visible ? 'block' : 'none'),
+      overflow: 'hidden',
       zIndex,
     };
 

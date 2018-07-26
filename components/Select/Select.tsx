@@ -1,4 +1,4 @@
-import React, { Component, ReactElement } from 'react';
+import React, { Component, ReactElement, ReactNode } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import Option from './Option';
@@ -16,6 +16,7 @@ class Select extends Component<PropsType, any> {
     onSearchChange: () => { },
     onChange: () => { },
   };
+
   static Option;
   static Multiple;
 
@@ -47,6 +48,10 @@ class Select extends Component<PropsType, any> {
     this.unbindOuterHandlers();
   }
 
+  getOptionList(children: Array<ReactNode>): Array<ReactNode> {
+    return children.filter((child) => child instanceof Option);
+  }
+
   // eslint-disable-next-line
   getCheckedValue(children) {
     let checkedValue = null;
@@ -58,8 +63,7 @@ class Select extends Component<PropsType, any> {
     return checkedValue;
   }
 
-  onOptionChange(_: Event, props, index) {
-    _.stopPropagation();
+  onOptionChange(_: React.MouseEvent, props, index) {
     if ('disabled' in props || props.isDisabled) {
       return;
     }
@@ -117,7 +121,10 @@ class Select extends Component<PropsType, any> {
       size,
       onSearchChange,
       style,
+      zIndex,
+      getPopupContainer,
     } = props;
+
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;
@@ -126,26 +133,28 @@ class Select extends Component<PropsType, any> {
     let hasValue = false;
 
     const children = React.Children.map(props.children, (option, index) => {
-      // tslint:disable-next-line:triple-equals
-      if (this.state.value == (option as ReactElement<any>).props.value) {
-        valueText = (option as ReactElement<any>).props.children;
-        hasValue = true;
-      }
+      if (option && typeof option === 'object' && option.type === Option) {
+        // tslint:disable-next-line:triple-equals
+        if (this.state.value == option.props.value) {
+          valueText = option.props.children;
+          hasValue = true;
+        }
 
-      if (
-        search &&
-        (option as ReactElement<any>).props.children.toString().indexOf(this.state.searchValue) < 0
-      ) {
-        return null;
+        if (
+          search &&
+          option.props.children.toString().indexOf(this.state.searchValue) < 0
+        ) {
+          return null;
+        }
+        return (
+          <Option
+            {...option.props}
+            onChange={e => this.onOptionChange(e, option.props, index)}
+            checked={this.state.value === option.props.value}
+          />
+        );
       }
-
-      return (
-        <Option
-          {...(option as ReactElement<any>).props}
-          onChange={e => this.onOptionChange(e, (option as ReactElement<any>).props, index)}
-          checked={this.state.value === (option as ReactElement<any>).props.value}
-        />
-      );
+      return null;
     });
 
     const cls = classnames({
@@ -203,9 +212,9 @@ class Select extends Component<PropsType, any> {
         visible={this.state.dropdown}
         isRadius={radius}
         overlay={menus}
-        onVisibleChange={(visible) => {
-          this.setState({ dropdown: visible });
-        }}
+        zIndex={zIndex}
+        getPopupContainer={getPopupContainer}
+        onVisibleChange={(visible) => this.setState({ dropdown: visible })}
       >
         <span className={cls} style={style}>
           <span

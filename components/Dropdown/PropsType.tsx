@@ -14,6 +14,7 @@ interface BasicPropsType {
   zIndex?: number;
   notRenderInDisabledMode?: boolean;
   onVisibleChange(flag: boolean): void;
+  getPopupContainer?(): HTMLElement;
 }
 
 export type propsType = React.HTMLAttributes<any> & BasicPropsType;
