@@ -103,12 +103,6 @@
     }
   }
 
-  .ui-dropdown {
-    .ui-select-notfound {
-      color: #ccc;
-    }
-  }
-
   &.ui-select-open {
     .ui-select-selection {
       border-color: #57c5f7;
@@ -148,5 +142,12 @@
   &.size-xs {
     @include select-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs);
   }
+}
 
+.ui-dropdown {
+  .ui-select-notfound {
+    display: block;
+    padding: 8px;
+    color: #ccc;
+  }
 }
