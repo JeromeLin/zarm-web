@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider renders Slider with more props correctly 1`] = `
+<div>
+  <div
+    class="ui-slider-wraper round theme-default"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:600px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:red;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:yellow;z-index:9;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Slider renders Slider with multiple handles correctly 1`] = `
+<div>
+  <div
+    class="ui-slider-wraper round theme-default"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:600px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:9;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Slider renders different themes of Slider correctly 1`] = `
+<div>
+  <div
+    class="ui-slider-wraper round theme-default"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:200px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui-slider-wraper round theme-info"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:200px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui-slider-wraper round theme-success"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:200px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui-slider-wraper round theme-warning"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:200px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui-slider-wraper round theme-error"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:200px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Slider renders normal Slider correctly 1`] = `
+<div>
+  <div
+    class="ui-slider-wraper round theme-default"
+  >
+    <div
+      class="ui-slider-horizontal"
+      style="width:200px"
+    >
+      <div>
+        <div
+          class="ui-slider-back"
+          style="width:0%;background-color:;z-index:10;-webkit-transition:width 0.6s ease-out;-moz-transition:width 0.6s ease-out;-ms-transition:width 0.6s ease-out;-o-transition:width 0.6s ease-out;-transition:width 0.6s ease-out"
+        />
+        <span
+          class="ui-slider-handle"
+          style="left:0%;-webkit-transition:left 0.6s ease-out;-moz-transition:left 0.6s ease-out;-ms-transition:left 0.6s ease-out;-o-transition:left 0.6s ease-out;-transition:left 0.6s ease-out"
+        >
+          <em
+            class="ui-slider-tip"
+          >
+            0
+          </em>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

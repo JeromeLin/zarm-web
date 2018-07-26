@@ -130,6 +130,7 @@ class Slider extends Component<PropsType, any> {
     return (e) => {
       e.stopPropagation();
       e.preventDefault();
+
       if (this.draggingPayload.isDragging) {
         const {
           min, max, step, styleWidth, getValue, isPass,

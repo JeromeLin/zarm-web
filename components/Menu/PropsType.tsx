@@ -11,8 +11,8 @@ export type childPropsType = {
   inlineIndent?: number,
   inlineCollapsed?: boolean,
   level?: number;
-  itemKey?: any,
-  subMenuKey?: any,
+  itemKey?: any;
+  subMenuKey?: any;
 };
 
 export interface ItemProps {
@@ -47,6 +47,7 @@ export interface SubMenuProps {
   inlineCollapsed?: boolean;
   className?: string;
   style: object;
+  itemKey?: any;
   subMenuKey: string;
   openKeys: string[];
   toggleOpenKeys: (subMenyKey: string) => void;

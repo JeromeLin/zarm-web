@@ -174,7 +174,7 @@ exports[`Pagination renders Pagination with total info correctly 1`] = `
     <div
       class="ui-pagination-total"
     >
-      共有条 100 记录 第 1 / 10 页
+      共有 100 条记录 第 1 / 10 页
     </div>
     <div
       class="ui-pagination-pagers"

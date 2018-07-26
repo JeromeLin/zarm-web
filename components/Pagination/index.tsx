@@ -240,7 +240,7 @@ class Pagination extends Component<PropsType, any> {
     const { value } = this.state;
     return (
       <div className={`${prefixCls}-total`}>
-        共有条 {total} 记录 第 {value} / {Math.ceil(total / pageSize)} 页
+        共有 {total} 条记录 第 {value} / {Math.ceil(total / pageSize)} 页
       </div>
     );
   }

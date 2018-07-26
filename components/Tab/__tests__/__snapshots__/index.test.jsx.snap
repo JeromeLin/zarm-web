@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab renders Tab correctly with more props 1`] = `
+<div>
+  <div
+    class="ui-tab radius theme-error"
+  >
+    <ul
+      class="ui-tab-header"
+    >
+      <li
+        class="ui-tab-header-item"
+      >
+        选项卡1
+      </li>
+      <li
+        class="ui-tab-header-item active"
+      >
+        选项卡2
+      </li>
+      <li
+        class="ui-tab-header-item"
+      >
+        选项卡3
+      </li>
+    </ul>
+    <div
+      class="ui-tab-body"
+    >
+      <div
+        class="ui-tab-body-item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡1的文字
+        </div>
+      </div>
+      <div
+        class="ui-tab-body-item ui-tab-body-item-active"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡2的文字
+        </div>
+      </div>
+      <div
+        class="ui-tab-body-item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡3的文字
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tab renders normal Tab correctly 1`] = `
+<div>
+  <div
+    class="ui-tab theme-default"
+  >
+    <ul
+      class="ui-tab-header"
+    >
+      <li
+        class="ui-tab-header-item"
+      >
+        选项卡1
+      </li>
+      <li
+        class="ui-tab-header-item active"
+      >
+        选项卡2
+      </li>
+      <li
+        class="ui-tab-header-item"
+      >
+        选项卡3
+      </li>
+    </ul>
+    <div
+      class="ui-tab-body"
+    >
+      <div
+        class="ui-tab-body-item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡1的文字
+        </div>
+      </div>
+      <div
+        class="ui-tab-body-item ui-tab-body-item-active"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡2的文字
+        </div>
+      </div>
+      <div
+        class="ui-tab-body-item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡3的文字
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
