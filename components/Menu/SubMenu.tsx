@@ -44,14 +44,10 @@ export class SubMenu extends Component<SubMenuProps, any> {
     };
     return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
-      const type = (c.type as React.ComponentClass<any>).name;
       const key = (child as ReactElement<any>).key;
 
-      if (type === 'SubMenuConsumer') {
-        childProps.subMenuKey = key || `${subMenuKey}-submenu-${level}-${index}`;
-      } else if (type === 'MenuItemConsumer') {
-        childProps.itemKey = key || `${subMenuKey}-menuitem-${level}-${index}`;
-      }
+      childProps.itemKey = key || `${subMenuKey}-${level}-${index}`;
+      childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
 
       return cloneElement(c, childProps);
     });

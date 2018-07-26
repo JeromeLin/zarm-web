@@ -104,12 +104,6 @@
     }
   }
 
-  .ui-dropdown {
-    .ui-select-notfound {
-      color: #ccc;
-    }
-  }
-
   &.ui-select-open {
     .ui-select-selection {
       border-color: #57c5f7;
@@ -177,5 +171,13 @@
     &:hover {
       background-color: transparent;
     }
+  }
+}
+
+.ui-dropdown {
+  .ui-select-notfound {
+    display: block;
+    padding: 8px;
+    color: #ccc;
   }
 }

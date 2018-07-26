@@ -104,7 +104,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
       <span className={cls} style={style}>
         <span
           className={`${prefixCls}-selection`}
-          style={{ height: '100%' }}
+          style={{ height: '100%', maxHeight: 250, overflow: 'auto' }}
           role="combobox"
           aria-autocomplete="list"
           aria-haspopup="true"
