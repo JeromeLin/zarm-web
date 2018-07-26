@@ -3,7 +3,7 @@
 exports[`Modal renders basic Modal correctly 1`] = `
 <div
   class="ui-modal"
-  style="-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms;display:none"
+  style="-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms;position:fixed;display:none"
 >
   <div
     class="ui-modal-wrapper"
@@ -47,7 +47,7 @@ exports[`Modal renders basic Modal correctly 1`] = `
 exports[`Modal renders closable Modal correctly 1`] = `
 <div
   class="ui-modal"
-  style="-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms;display:none"
+  style="-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms;position:fixed;display:none"
 >
   <div
     class="ui-modal-wrapper"
@@ -91,7 +91,7 @@ exports[`Modal renders closable Modal correctly 1`] = `
 exports[`Modal renders customized Modal correctly 1`] = `
 <div
   class="ui-modal radius fade-enter"
-  style="-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms"
+  style="-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms;position:fixed"
 >
   <div
     class="ui-modal-wrapper"
