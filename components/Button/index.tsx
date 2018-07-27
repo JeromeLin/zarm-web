@@ -19,7 +19,7 @@ class Button extends Component<ButtonProps, any> {
     isLoading: false,
     className: null,
     style: {},
-    onClick: () => {},
+    onClick: () => { },
   };
 
   render() {
@@ -30,13 +30,21 @@ class Button extends Component<ButtonProps, any> {
       theme,
       size,
       isBlock,
+      block,
       isRadius,
+      radius,
       isRound,
+      round,
       isCircle,
+      circle,
       isActive,
+      active,
       isFocus,
+      focus,
       isDisabled,
+      disabled,
       isLoading,
+      loading,
       className,
       onClick,
       children,
@@ -44,37 +52,45 @@ class Button extends Component<ButtonProps, any> {
       // tslint:disable-next-line:trailing-comma
       ...others
     } = props;
-    const disabled = 'disabled' in props || isDisabled;
-    const loading = 'loading' in props || isLoading;
+
+    const radiusStatus = radius || isRadius;
+    const blockStatus = block || isBlock;
+    const roundStatus = round || isRound;
+    const circleStatus = circle || isRound;
+    const activeStatus = active || isActive;
+    const focusStatus = focus || isFocus;
+    const disabledStatus = disabled || isDisabled;
+    const loadingStatus = loading || isLoading;
+
     const classes = classnames({
       [prefixCls!]: true,
-      block: 'block' in props || isBlock,
-      radius: 'radius' in props || isRadius,
-      round: 'round' in props || isRound,
-      circle: 'circle' in props || isCircle,
-      active: 'active' in props || isActive,
-      focus: 'focus' in props || isFocus,
-      disabled,
+      block: blockStatus,
+      radius: radiusStatus,
+      round: roundStatus,
+      circle: circleStatus,
+      active: activeStatus,
+      focus: focusStatus,
+      disabled: disabledStatus,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [className!]: !!className,
     });
 
     let textContent =
-      'loading' in props || isLoading ? (
+      loadingStatus ? (
         <span>
           <Icon type="loading" className="rotate360" /> {children}
         </span>
       ) : (
-        children
-      );
+          children
+        );
     return (
       <button
         type={type}
         className={classes}
         style={style}
-        disabled={disabled}
-        onClick={e => (!disabled && !loading) && onClick(e)}
+        disabled={disabledStatus}
+        onClick={e => (!disabledStatus && !loadingStatus) && onClick(e)}
         {...others}
       >
         {textContent}
