@@ -1,7 +1,8 @@
-export type theme = 'default'|  'info'|  'success'|  'warning'|  'error';
+import { ButtonHTMLAttributes, MouseEvent,CSSProperties } from 'react';
+export type theme = 'default' | 'info' | 'success' | 'warning' | 'error';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
-export default interface PropsType {
+interface BasicPropsType {
   prefixCls?: string;
   type?: string;
   theme?: theme;
@@ -15,6 +16,10 @@ export default interface PropsType {
   isDisabled?: boolean;
   isLoading?: boolean;
   className?: string;
-  style?: object;
-  onClick: (e?: any) => void;
+  style?: CSSProperties;
+  onClick: (e?: MouseEvent) => void;
 }
+
+type PropsType = ButtonHTMLAttributes<{}> & BasicPropsType;
+
+export default PropsType;

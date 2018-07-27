@@ -41,9 +41,11 @@ class Button extends Component<ButtonProps, any> {
       onClick,
       children,
       style,
+      // tslint:disable-next-line:trailing-comma
+      ...others
     } = props;
     const disabled = 'disabled' in props || isDisabled;
-
+    const loading = 'loading' in props || isLoading;
     const classes = classnames({
       [prefixCls!]: true,
       block: 'block' in props || isBlock,
@@ -72,7 +74,8 @@ class Button extends Component<ButtonProps, any> {
         className={classes}
         style={style}
         disabled={disabled}
-        onClick={e => !disabled && onClick(e)}
+        onClick={e => (!disabled && !loading) && onClick(e)}
+        {...others}
       >
         {textContent}
       </button>
