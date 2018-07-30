@@ -5,7 +5,7 @@ import Input from '../Input';
 import Icon from '../Icon';
 import PropsType from './PropsType';
 
-const noop = () => {};
+const noop = () => { };
 class Pagination extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'ui-pagination',
@@ -289,16 +289,16 @@ class Pagination extends Component<PropsType, any> {
           size="sm"
           defaultValue=""
           // tslint:disable-next-line:jsx-no-multiline-js
-          onKeyDown={(e) => {
-            let { value } = e.target;
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            let { value } = e.currentTarget;
             if (e.keyCode === 13) {
-              value = parseInt(value, 10);
+              let sValue = parseInt(value, 10);
               // eslint-disable-next-line
-              if (!value || isNaN(value)) { return; }
+              if (!sValue || isNaN(sValue)) { return; }
 
-              if (value < 1) { value = 1; }
+              if (sValue < 1) { sValue = 1; }
               const pageCount = Math.ceil(total / pageSize);
-              if (value > pageCount) { value = pageCount; }
+              if (sValue > pageCount) { sValue = pageCount; }
 
               this._onPagerClick(value);
             }

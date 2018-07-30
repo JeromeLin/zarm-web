@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 export type dateType = {
   year?: number,
   month?: number,
@@ -49,7 +51,7 @@ export default interface PropsType {
   value?: string;
   defaultValue?: string;
   className?: string;
-  style?: object;
+  style?: CSSProperties;
   hasFooter?: boolean;
   onChange?: (value: string) => void;
 }

@@ -1,7 +1,9 @@
+import { ChangeEvent, CSSProperties } from 'react';
+
 export interface GroupProps {
   value?: string;
   defaultValue?: string;
-  onChange: (e: any) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default interface PropsType {
@@ -10,8 +12,8 @@ export default interface PropsType {
   checked?: boolean;
   defaultChecked?: boolean;
   className?: string;
-  style?: object;
+  style?: CSSProperties;
   disabled?: boolean;
   isDisabled?: boolean;
-  onChange: (e: any) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
