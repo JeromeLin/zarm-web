@@ -191,7 +191,7 @@ display                  // 控制dropdown的显示
 left                     // 控制dropdown的位置
 top                      // 控制dropdown的位置
 animationDuration        // 控制dropdown动画的事件 默认为300
-zIndex                   // 控制组件的显示层级 默认为999
+zIndex                   // 控制组件的显示层级 默认为9999
 position                 // 控制组件的定位方式，只能为absolute
 ```
 
@@ -218,6 +218,7 @@ position                 // 控制组件的定位方式，只能为absolute
 | style |  弹出层的style | React.CSSProperties | - | - |
 | trigger | 出发弹出框的方式 | string | click hover contextMenu | click |
 | disabled | 是否禁用弹出框 | boolean | - | false |
-| zIndex | 当前弹框的zIndex值 | number | - | 999 |
+| zIndex | 当前弹框的zIndex值 | number | - | 9999 |
 | notRenderInDisabledMode | 在disable为true的时候是否不渲染overlay | boolean | - | false |
 | onVisibleChange | 显示属性变化时候的回调函数（必传）| (visible:boolean):=> void | - | - |
+| getPopupContainer | 获取dropdown挂载点的函数（必传）| ():=> HTMLElement | - | - |
