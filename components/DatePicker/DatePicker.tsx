@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import isNodeInTree from '../utils/isNodeInTree';
 import Format from '../utils/format';
 import Dropdown from '../Dropdown';
 import Calendar from '../Calendar';
@@ -18,8 +17,6 @@ class DatePicker extends Component<PropsType, any> {
   };
 
   private unmounted;
-  private select;
-
   constructor(props) {
     super(props);
     this.unmounted = false;
@@ -88,27 +85,18 @@ class DatePicker extends Component<PropsType, any> {
     );
   }
 
-  handleKeyup(e) {
+  handleKeyup = (e) => {
     if (e.keyCode === 27) {
       this.setDropdown(false);
     }
   }
 
-  handleOuterClick(e) {
-    if (!this.unmounted || isNodeInTree(e.target, this.select)) {
-      return;
-    }
-    this.setDropdown(false);
-  }
-
   bindOuterHandlers() {
-    Events.on(document, 'click', e => this.handleOuterClick(e));
-    Events.on(document, 'keyup', e => this.handleKeyup(e));
+    Events.on(document, 'keyup', this.handleKeyup);
   }
 
   unbindOuterHandlers() {
-    Events.off(document, 'click', e => this.handleOuterClick(e));
-    Events.off(document, 'keyup', e => this.handleKeyup(e));
+    Events.off(document, 'keyup', this.handleKeyup);
   }
 
   render() {
@@ -167,7 +155,7 @@ class DatePicker extends Component<PropsType, any> {
         isRadius={radius}
         visible={dropdown}
       >
-        <span className={cls} style={style} ref={(ele) => { this.select = ele; }}>
+        <span className={cls} style={style}>
           <span
             className="ui-select-selection"
             role="combobox"
