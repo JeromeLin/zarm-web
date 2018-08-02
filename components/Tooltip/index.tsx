@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import Popover from '../Popover';
 import PropsType from './PropsType';
 
 class Tooltip extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'ui-tooltip',
     direction: 'bottom',
+    trigger: 'hover',
   };
 
   render() {
@@ -15,23 +17,26 @@ class Tooltip extends Component<PropsType, any> {
       direction,
       className,
       children,
-      tipStyle,
+      trigger,
       style,
       prefixCls,
     } = props;
 
     const cls = classnames({
       [prefixCls!]: true,
-      [`${prefixCls}-${direction}`]: !!direction,
       [className!]: !!className,
     });
     return (
-      <div className={cls} style={style}>
-        <div className={`${prefixCls}-inner`} style={tipStyle}>
-          {title}
+      <Popover
+        content={title}
+        direction={direction}
+        trigger={trigger}
+        className={cls}
+      >
+        <div style={style}>
+          {children}
         </div>
-        {children}
-      </div>
+      </Popover>
     );
   }
 }

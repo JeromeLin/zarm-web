@@ -4,7 +4,8 @@ export type direction = 'top' | 'left' | 'right' | 'bottom' | 'topLeft' | 'topRi
 
 export default interface PropsType {
   prefixCls?: string;
-  direction?: direction;
+  direction: direction;
+  trigger: 'hover' | 'click';
   title?: string;
   tipStyle?: object;
   className?: string;
