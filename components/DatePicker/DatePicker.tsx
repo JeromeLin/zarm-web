@@ -138,6 +138,9 @@ class DatePicker extends Component<PropsType, any> {
     return (
       <Dropdown
         onVisibleChange={(visible) => {
+          if (disabled) {
+            return;
+          }
           this.setState({
             dropdown: visible,
           });
