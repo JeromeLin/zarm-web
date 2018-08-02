@@ -53,8 +53,8 @@ class Modal extends Component<ModalProps, any> {
   componentWillUnmount() {
     Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
     Events.off(this.modal, 'animationend', this.animationEnd);
+    document.body.classList.remove('ui-modal-body-overflow');
     setTimeout(() => {
-      document.body.classList.remove('ui-modal-body-overflow');
       document.body.removeChild(this.div);
     });
   }
