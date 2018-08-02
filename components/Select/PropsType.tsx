@@ -29,7 +29,8 @@ export interface MultipleProps {
 
 export default interface PropsType {
   prefixCls?: string;
-  value?: string | number;
+  value?: string | number | Array<string | number>;
+  multiple?: boolean;
   defaultValue?: string | number;
   size?: size;
   className?: string;

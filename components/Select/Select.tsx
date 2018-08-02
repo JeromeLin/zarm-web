@@ -5,6 +5,7 @@ import Option from './Option';
 import Dropdown from '../Dropdown';
 import Menu from '../Menu';
 import Icon from '../Icon';
+import Button from '../Button';
 import PropsType from './PropsType';
 
 class Select extends Component<PropsType, any> {
@@ -224,7 +225,22 @@ class Select extends Component<PropsType, any> {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            {textRender}
+            {
+              Array.isArray(this.state.value) ?
+                this.state.value.map(valueItem => {
+                  return (
+                    <Button
+                      key={valueItem}
+                      onClick={() => {
+
+                      }}
+                    >
+                      {valueItem}
+                    </Button>
+                  );
+                })
+                : textRender
+            }
             {inputRender}
             <Icon type="arrow-bottom" className={`${prefixCls}-arrow`} />
           </span>
