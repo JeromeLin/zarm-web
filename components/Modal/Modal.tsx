@@ -3,6 +3,9 @@ import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
+import domUtil from '../utils/dom';
+
+const animationDurationKey = domUtil.getSupportedPropertyName('animationDuration');
 
 class Modal extends Component<ModalProps, any> {
 
@@ -53,16 +56,21 @@ class Modal extends Component<ModalProps, any> {
   componentWillUnmount() {
     Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
     Events.off(this.modal, 'animationend', this.animationEnd);
+
+    document.body.classList.remove('ui-modal-body-overflow');
+    document.body.style.setProperty('padding-right', null);
     setTimeout(() => {
-      document.body.classList.remove('ui-modal-body-overflow');
       document.body.removeChild(this.div);
     });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.visible && nextProps.visible) {
+    if (nextProps.visible === this.props.visible) {
+      return;
+    }
+    if (nextProps.visible) {
       this.enter();
-    } else if (this.props.visible && !nextProps.visible) {
+    } else {
       this.leave();
     }
   }
@@ -87,6 +95,10 @@ class Modal extends Component<ModalProps, any> {
 
   enter() {
     document.body.classList.add('ui-modal-body-overflow');
+    const scrollBarWidth = window.innerWidth - document.body.clientWidth;
+    if (scrollBarWidth) {
+      document.body.style.setProperty('padding-right', scrollBarWidth + 'px');
+    }
     this.setState({
       isShow: true,
       isPending: true,
@@ -101,6 +113,7 @@ class Modal extends Component<ModalProps, any> {
       animationState: 'leave',
     });
     document.body.classList.remove('ui-modal-body-overflow');
+    document.body.style.setProperty('padding-right', null);
   }
 
   render() {
@@ -134,26 +147,17 @@ class Modal extends Component<ModalProps, any> {
 
     const style: StyleType = {
       modal: {
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
+        [animationDurationKey]: `${animationDuration}ms`,
         position: 'fixed',
+        display: isShow ? '' : 'none',
       },
       dialog: {
         width: Number(width),
         minWidth: Number(minWidth),
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
+        [animationDurationKey]: `${animationDuration}ms`,
       },
     };
-    if (!isShow) {
-      style.modal.display = 'none';
-    }
+
     return createPortal(
       <div
         className={classes.modal}
