@@ -17,19 +17,30 @@ export default class Markdown extends React.Component {
     };
   }
 
+  divList = [];
+
   componentDidMount() {
     this.renderDOM();
   }
 
   componentDidUpdate() {
-    this.renderDOM();
+    // this.renderDOM();
   }
+
+  componentWillUnmount() {
+    this.divList.forEach(element => {
+      ReactDOM.unmountComponentAtNode(element);
+      element.parentNode.removeChild(element);
+    });
+    this.divList = [];
+  }
+
 
   renderDOM() {
     // eslint-disable-next-line
     for (const [id, component] of this.components) {
       const div = document.getElementById(id);
-
+      this.divList.push(div);
       if (div instanceof HTMLElement) {
         ReactDOM.render(component, div);
       }
