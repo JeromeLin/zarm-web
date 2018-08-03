@@ -30,12 +30,12 @@
   > .ui-modal-wrapper {
     width: 100%;
     margin: auto 0;
-  
+
     > .ui-modal-dialog {
       position: relative;
       margin: 60px auto;
       background: #fff;
-      box-shadow: 0 7px 21px rgba(0,0,0,.2);
+      box-shadow: 0 7px 21px rgba(0, 0, 0, .2);
       overflow: hidden;
       z-index: $base-zindex-modal + 1;
     }
@@ -86,3 +86,6 @@
   }
 }
 
+.ui-modal-body-overflow {
+  overflow: hidden;
+}

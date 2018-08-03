@@ -53,6 +53,7 @@ class Modal extends Component<ModalProps, any> {
   componentWillUnmount() {
     Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
     Events.off(this.modal, 'animationend', this.animationEnd);
+    document.body.classList.remove('ui-modal-body-overflow');
     setTimeout(() => {
       document.body.removeChild(this.div);
     });
@@ -85,7 +86,7 @@ class Modal extends Component<ModalProps, any> {
   }
 
   enter() {
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('ui-modal-body-overflow');
     this.setState({
       isShow: true,
       isPending: true,
@@ -99,7 +100,7 @@ class Modal extends Component<ModalProps, any> {
       isPending: true,
       animationState: 'leave',
     });
-    document.body.style.overflow = null;
+    document.body.classList.remove('ui-modal-body-overflow');
   }
 
   render() {
