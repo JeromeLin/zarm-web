@@ -7,45 +7,33 @@ import throttle from '../utils/throttle';
 import { propsType, StateType } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
+function isFixedElem(elem) {
+  return elem.style.position === 'fixed' ||
+    window.getComputedStyle(elem).position === 'fixed';
+}
+
 function getOffsetElem(elem: HTMLElement) {
-  let parentElem = elem.parentNode;
-  while (parentElem) {
-    if (parentElem instanceof HTMLElement) {
-      if (parentElem.style.position === 'fixed' ||
-        window.getComputedStyle(parentElem).position === 'fixed' ||
-        parentElem === document.body) {
-        return parentElem;
-      }
-      parentElem = parentElem.parentNode;
-    } else {
-      break;
-    }
+  let parentElem = elem;
+  while (parentElem.parentNode instanceof HTMLElement && parentElem !== document.body && !isFixedElem(parentElem)) {
+    parentElem = parentElem.parentNode;
   }
-  return document.body;
+  return parentElem;
 }
 
 // 获取元素坐标
-function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document.body) {
-  let parentElem = elem.offsetParent;
-  const position: { top: number, left: number } = {
-    top: elem.offsetTop,
-    left: elem.offsetLeft,
-  };
-  while (relativeElem.contains(parentElem)) {
-    if (parentElem instanceof HTMLElement) {
-      if (relativeElem === parentElem) {
-        return position;
-      }
-      position.top += parentElem.offsetTop;
-      position.left += parentElem.offsetLeft;
-      parentElem = parentElem.offsetParent;
-    }
+function getElemPosition(elem: HTMLElement, relElem: HTMLElement = document.body) {
+  let parentElem = elem;
+  const position: { top: number, left: number } = { top: 0, left: 0 };
+  while (relElem.contains(parentElem) && parentElem.offsetParent instanceof HTMLElement && relElem !== parentElem) {
+    position.top += parentElem.offsetTop;
+    position.left += parentElem.offsetLeft;
+    parentElem = parentElem.offsetParent;
   }
   return position;
 }
 
 // todo [首次不创建]
-
+// bottom = 0; top = 2; left = 4; middle = 8; right = 16;
 const placementMap = {
   bottomLeft: 5,
   bottomCenter: 9,
@@ -86,8 +74,10 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       instance.reposition();
     });
   }
+
   // 用于存储已生成的全部实例的Set
   private static mountedInstance: Set<Dropdown> = new Set();
+
   // 根据定位点计算定位信息
   private static calcPosition(
     placement: string,
@@ -95,14 +85,16 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     height: number,
     dropWidth: number,
     dropHeight: number): { top: number, left: number } {
+    const placementCode = placementMap[placement];
     let top: number = 0;
     let left: number = 0;
-    const placementCode = placementMap[placement];
+    // 包含bottom 或 包含top
     if (placementCode & 1) {
       top = height;
     } else if (placementCode & 2) {
       top = -dropHeight;
     }
+    // 包含middle 或包含right
     if (placementCode & 8) {
       left = (width - dropWidth) / 2;
     } else if (placementCode & 16) {
@@ -153,6 +145,34 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   private isHoverOnDropContent: boolean = false;
   private hiddenTimer!: number;
 
+  private eventHandler = {
+    click: () => {
+      this.props.onVisibleChange(!this.props.visible);
+    },
+    contextmenu: (e) => {
+      e.preventDefault();
+      this.props.onVisibleChange(!this.props.visible);
+    },
+    mouseenter: () => {
+      if (this.props.visible === false) {
+        this.props.onVisibleChange(true);
+      } else {
+        if (this.hiddenTimer) {
+          clearTimeout(this.hiddenTimer);
+        }
+      }
+    },
+    mouseleave: () => {
+      // 缓冲一点一时间给间隙
+      this.hiddenTimer = setTimeout(() => {
+        // 若当前鼠标在弹出层上 不消失
+        if (this.isHoverOnDropContent === false) {
+          this.props.onVisibleChange(false);
+        }
+      }, 300);
+    },
+  };
+
   constructor(props) {
     super(props);
     this.setEventObject(props.trigger);
@@ -180,27 +200,9 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       return;
     }
     const { type } = e;
-    if (type === 'click') {
-      this.props.onVisibleChange(!this.props.visible);
-    } else if (type === 'contextmenu') {
-      e.preventDefault();
-      this.props.onVisibleChange(!this.props.visible);
-    } else if (type === 'mouseenter') {
-      if (this.props.visible === false) {
-        this.props.onVisibleChange(true);
-      } else {
-        if (this.hiddenTimer) {
-          clearTimeout(this.hiddenTimer);
-        }
-      }
-    } else if (type === 'mouseleave') {
-      // 缓冲一点一时间给间隙
-      this.hiddenTimer = setTimeout(() => {
-        // 若当前鼠标在弹出层上 不消失
-        if (this.isHoverOnDropContent === false) {
-          this.props.onVisibleChange(false);
-        }
-      }, 300);
+    const handler = this.eventHandler[type];
+    if (handler) {
+      handler(e);
     }
   }
 
@@ -210,9 +212,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     if (this.hiddenTimer) {
       clearTimeout(this.hiddenTimer);
     }
-    if (this.isHoverOnDropContent === false) {
-      this.isHoverOnDropContent = true;
-    }
+    this.isHoverOnDropContent = true;
   }
 
   onDropdownContentMouseLeave = (): void => {
@@ -297,6 +297,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     if (nextProps.visible === this.props.visible) {
       return;
     }
+    // 修改出发方式
     if (nextProps.trigger !== this.props.trigger) {
       this.setEventObject(nextProps.trigger);
     }
@@ -308,9 +309,9 @@ export default class Dropdown extends React.Component<propsType, StateType> {
           });
         }
       });
-    } else {
-      this.leave();
+      return;
     }
+    this.leave();
   }
 
   componentWillUnmount() {
