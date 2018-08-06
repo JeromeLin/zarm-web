@@ -45,7 +45,8 @@
     .ui-notification-icon {
       position: absolute;
       left: 20px;
-      top: 32px;
+      top: 50%;
+      transform: translateY(-50%);
       font-size: 42px;
     }
   }

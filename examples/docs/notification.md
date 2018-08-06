@@ -55,7 +55,8 @@ open3() {
   Notification({
     title: '成功',
     message: '这是一条成功的提示消息',
-    type: 'success'
+    type: 'success',
+    duration: 0
   });
 }
 
