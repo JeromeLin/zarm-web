@@ -1,5 +1,3 @@
-@import '../../style/index';
-
 .ui-layout {
   display: flex;
   flex-direction: column;
@@ -19,7 +17,7 @@
     flex-direction: row;
     > &,
     > &-content {
-      overflow-x: hidden; 
+      overflow-x: hidden;
     }
   }
 

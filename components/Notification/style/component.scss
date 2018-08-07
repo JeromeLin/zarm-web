@@ -1,8 +1,8 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 .ui-notification {
   width: 330px;
-  padding: 8px 16px 16px;
+  padding: 16px;
   box-sizing: border-box;
   border-radius:  $base-radius-xs;
   position: fixed;
@@ -20,7 +20,11 @@
     }
 
     .ui-notification-close {
-      text-align: right;
+      position: absolute;
+      z-index: 1000;
+      width: 16px;
+      height: 16px;
+      right: 16px;
 
       &:hover {
         color: rgba(0, 0, 0, .67);

@@ -1,5 +1,3 @@
-@import '../../style/index';
-
 .ui-calendar {
   width: 240px;
 }
@@ -112,7 +110,7 @@
     }
 
     &.ui-calendar-year {
-      
+
       .ui-calendar-cell {
         padding: 14px 0;
 
@@ -121,11 +119,11 @@
           height: 28px;
           line-height: 26px;
         }
-      } 
+      }
     }
 
     &.ui-calendar-month {
-      
+
       .ui-calendar-cell {
         padding: 14px 0;
 
@@ -134,7 +132,7 @@
           height: 28px;
           line-height: 26px;
         }
-      } 
+      }
     }
 
   }

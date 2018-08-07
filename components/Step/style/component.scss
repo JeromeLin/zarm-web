@@ -1,5 +1,3 @@
-@import '../../style/index';
-
 .ui-step {
   width: 100%;
   margin-bottom: 20px;
@@ -11,7 +9,7 @@
     display: inline-block;
     vertical-align: top;
   }
-  
+
   .ui-step-item {
     text-align: center;
 
@@ -31,7 +29,7 @@
       }
     }
   }
-  
+
   .ui-step-item-body {
     margin-top: 5px;
     color: #999;

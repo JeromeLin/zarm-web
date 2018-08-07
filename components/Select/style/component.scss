@@ -1,6 +1,6 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
-@mixin select-size($height, $padding, $font-size, $border-radius) {  
+@mixin select-size($height, $padding, $font-size, $border-radius) {
 
   .ui-select-selection {
     min-height: $height;
