@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import events from '../utils/events';
 import throttle from '../utils/throttle';
+import domUtil from '../utils/dom';
 import { propsType, StateType } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
@@ -146,6 +147,8 @@ export default class Dropdown extends React.Component<propsType, StateType> {
 
   // 窗口大小变化的时候实时调整定位
   onWindowResize: () => void;
+  // 可滚动父容器滚动的时候调整定位
+  onParentScroll: () => void;
   private div: HTMLDivElement = Dropdown.createDivBox();
   private triggerBox: HTMLDivElement;
   private DropdownContent: HTMLDivElement;
@@ -157,6 +160,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     super(props);
     this.setEventObject(props.trigger);
     this.onWindowResize = throttle(this.reposition, 300);
+    this.onParentScroll = this.reposition;
   }
 
   // 根据trigger方式不同绑定事件
@@ -240,8 +244,11 @@ export default class Dropdown extends React.Component<propsType, StateType> {
         },
       });
     }
+    const scrollParent = domUtil.getScrollParent(this.triggerBox);
     events.on(document, 'click', this.onDocumentClick);
     events.on(window, 'resize', this.onWindowResize);
+    events.on(scrollParent, 'scroll', this.onParentScroll);
+
     // 存储当前实例，方便静态方法统一处理
     Dropdown.mountedInstance.add(this);
   }
@@ -287,9 +294,16 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       offsetHeight,
     );
     const offset = placement.startsWith('bottom') ? 5 : -5;
+    const scrollParent = domUtil.getScrollParent(this.triggerBox);
+    let scrollLeft = 0;
+    let scrollTop = 0;
+    if (scrollParent !== this.popContainer && this.popContainer.contains(scrollParent)) {
+      scrollLeft = domUtil.getScrollLeftValue(scrollParent);
+      scrollTop = domUtil.getScrollTopValue(scrollParent);
+    }
     return {
-      left: rectInfo.left + left - marginLeft,
-      top: rectInfo.top + top - marginTop + offset,
+      left: rectInfo.left + left - marginLeft - scrollLeft,
+      top: rectInfo.top + top - marginTop + offset - scrollTop,
     };
   }
 
