@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 // import ScrollToTop from 'react-scroll-up';
 import AsyncComponent from './AsyncComponent';
-import '../../components/style/index.scss'
+import '../../components/style/index.scss';
 import '../styles/index';
 import '../styles/components/App';
 
