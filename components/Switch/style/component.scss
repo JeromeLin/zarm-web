@@ -1,4 +1,4 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 .ui-switch {
   position: relative;
@@ -48,7 +48,7 @@
       cursor: not-allowed;
     }
   }
-  
+
   &.size-sm {
     height: 14px;
     line-height: 12px;
@@ -83,5 +83,5 @@
     color: #fff;
     font-size: 12px;
   }
-  
+
 }

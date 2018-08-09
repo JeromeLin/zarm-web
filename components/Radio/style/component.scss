@@ -1,4 +1,4 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 .ui-radio-group {
   display: inline-block;
@@ -19,10 +19,10 @@
   white-space: nowrap;
   outline: none;
   cursor: pointer;
-  
+
   /* 选中状态 */
   &.checked {
-    
+
     .ui-radio-inner {
       border-color: #d9d9d9;
 

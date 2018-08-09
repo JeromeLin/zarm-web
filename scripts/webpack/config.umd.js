@@ -50,6 +50,7 @@ if (env === 'production') {
     assetNameRegExp: /\.css$/g,
     cssProcessor: require('cssnano'),
     cssProcessorOptions: {
+      safe: true,
       discardComments: {
         removeAll: true,
       },

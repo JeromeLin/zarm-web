@@ -1,4 +1,4 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 .ui-pagination {
 
@@ -14,8 +14,8 @@
   &.bordered {
     .ui-pagination-item {
       border: 1px solid #d9d9d9;
-      margin-right: 8px; 
-      
+      margin-right: 8px;
+
       &:hover {
         border-color: #2db7f5;
       }
@@ -34,7 +34,7 @@
           border-color: #d9d9d9;
         }
       }
-    } 
+    }
   }
 
   &.radius {
@@ -61,7 +61,7 @@
     float: left;
     margin-left: 6px;
     line-height: 28px;
-    
+
     .ui-select {
       vertical-align: inherit;
     }
@@ -90,7 +90,7 @@
   }
 
   &.ui-pagination-item-jump-prev,
-  &.ui-pagination-item-jump-next {    
+  &.ui-pagination-item-jump-next {
     &:after {
       content: "\2022\2022\2022";
       display: block;
@@ -104,7 +104,7 @@
     color: #2db7f5;
 
     &.ui-pagination-jump-prev,
-    &.ui-pagination-jump-next {    
+    &.ui-pagination-jump-next {
       &:after {
         color: #2db7f5;
       }

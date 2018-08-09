@@ -1,6 +1,6 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
-@mixin menu-size($height, $font-size) {  
+@mixin menu-size($height, $font-size) {
   .ui-menu-item {
     height: $height;
     line-height: $height;
@@ -62,7 +62,7 @@ $prefixCls: ui-menu;
       display: block;
 
       &:before {
-        content: ''; 
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -94,7 +94,7 @@ $prefixCls: ui-menu;
   }
   &-submenu {
     height: auto;
-  
+
     &-title {
       height: $base-height-xl;
       line-height: $base-height-xl;
@@ -315,7 +315,7 @@ $prefixCls: ui-menu;
       &-title {
         margin-top: 4px;
         margin-bottom: 4px;
-  
+
         &:hover{
           color: $menuitem-dark-active-color;
 
@@ -334,7 +334,7 @@ $prefixCls: ui-menu;
         &:after,
         &:before {
           background: $menuitem-dark-active-color;
-        } 
+        }
       }
     }
     .#{$prefixCls}-item {

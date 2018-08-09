@@ -112,7 +112,6 @@ export default class Notification extends Component<NotificationProps, any> {
           {this.props.type && <Icon type={this.type} className="ui-notification-icon" theme={this.props.type} />}
           <h2 className="ui-notification-title">{this.props.title}</h2>
           <div className="ui-notification-content">{this.props.message}</div>
-          <div className="ui-notification-close" onClick={this.onClose} />
         </div>
       </div>
     );
