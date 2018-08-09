@@ -153,6 +153,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   private triggerBox: HTMLDivElement;
   private DropdownContent: HTMLDivElement;
   private popContainer: HTMLElement;
+  private scrollParent: HTMLElement;
   private isHoverOnDropContent: boolean = false;
   private hiddenTimer!: number;
 
@@ -244,10 +245,10 @@ export default class Dropdown extends React.Component<propsType, StateType> {
         },
       });
     }
-    const scrollParent = domUtil.getScrollParent(this.triggerBox);
+    this.scrollParent = domUtil.getScrollParent(this.triggerBox);
     events.on(document, 'click', this.onDocumentClick);
     events.on(window, 'resize', this.onWindowResize);
-    events.on(scrollParent, 'scroll', this.onParentScroll);
+    events.on(this.scrollParent, 'scroll', this.onParentScroll);
 
     // 存储当前实例，方便静态方法统一处理
     Dropdown.mountedInstance.add(this);
@@ -294,7 +295,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       offsetHeight,
     );
     const offset = placement.startsWith('bottom') ? 5 : -5;
-    const scrollParent = domUtil.getScrollParent(this.triggerBox);
+    const scrollParent = this.scrollParent;
     let scrollLeft = 0;
     let scrollTop = 0;
     if (scrollParent !== this.popContainer && this.popContainer.contains(scrollParent)) {
@@ -330,6 +331,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   componentWillUnmount() {
     events.off(document, 'click', this.onDocumentClick);
     events.off(window, 'click', this.onWindowResize);
+    events.off(this.scrollParent, 'scroll', this.onParentScroll);
     Dropdown.mountedInstance.delete(this);
     setTimeout(() => {
       this.popContainer.removeChild(this.div);

@@ -15,6 +15,7 @@ class Table extends Component<PropsType, any> {
     isStriped: false,
     isRadius: false,
     isHover: false,
+    maxCellSize: 20,
     columns: [],
     dataSource: [],
   };
@@ -540,6 +541,7 @@ class Table extends Component<PropsType, any> {
 
   // 单元格渲染
   renderCell(column, row, rowIndex, columnIndex) {
+    const { maxCellSize } = this.props;
     const value = row[column.dataIndex];
     const { style = {} } = column;
     const render =
@@ -554,11 +556,11 @@ class Table extends Component<PropsType, any> {
       return this.renderMergedCell(column, columnIndex, render);
     }
     // 字符长度判断
-    if (typeof render === 'string' && render.length > 20) {
+    if (typeof render === 'string' && render.length > maxCellSize) {
       return (
         <td key={column.dataIndex + columnIndex} style={style}>
           <Popover trigger="hover" direction="top" content={render}>
-            <div className="ellipsis-cell">{render}</div>
+            <div className="ellipsis-cell" style={{ maxWidth: 15 * maxCellSize }}>{render}</div>
           </Popover>
         </td>
       );
@@ -569,13 +571,14 @@ class Table extends Component<PropsType, any> {
   // 合并单元格
   // eslint-disable-next-line
   renderMergedCell(column, columnIndex, render) {
+    const { maxCellSize } = this.props;
     const { colSpan, rowSpan, value } = render;
     const { style = {} } = column;
     if (colSpan === 0 || rowSpan === 0) {
       return null;
     }
     // 字符长度判断
-    if (typeof value === 'string' && value.length > 20) {
+    if (typeof value === 'string' && value.length > maxCellSize) {
       return (
         <td
           key={column.dataIndex + columnIndex}
@@ -584,7 +587,7 @@ class Table extends Component<PropsType, any> {
           rowSpan={rowSpan}
         >
           <Popover trigger="hover" direction="top" content={value}>
-            <div className="ellipsis-cell">{value}</div>
+            <div className="ellipsis-cell" style={{ maxWidth: 15 * maxCellSize }}>{value}</div>
           </Popover>
         </td>
       );

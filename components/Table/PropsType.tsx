@@ -24,5 +24,6 @@ export default interface PropsType {
   rowSelection?: rowSelection;
   style?: object;
   width?: number;
+  maxCellSize: 20;
   dataSource: object[];
 }

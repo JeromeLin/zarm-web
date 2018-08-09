@@ -610,6 +610,7 @@
 | striped   |  是否间隔变色  | boolean |   -  |    false  |
 | isLoading   |  是否加载中  | boolean |   -  |    false  |
 | striped   |  是否间隔变色  | boolean |   -  |    false  |
+| maxCellSize   |  单元格最多显示字符数，超过显示...  | number |   -  |    20  |
 | rowSelection  |  选中行配置 | object |   -  |    -  |
 
 ### Events
