@@ -1,5 +1,4 @@
-
-@import '../../style/index';
+@import '../../style/themes/default';
 
 .ui-checkbox-group {
   display: inline-block;
@@ -22,7 +21,7 @@
 
   /* 选中状态 */
   &.checked {
-    
+
     .ui-checkbox-inner {
       border-color: $base-theme-info;
       background-color: $base-theme-info;

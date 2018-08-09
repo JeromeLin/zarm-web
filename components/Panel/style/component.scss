@@ -1,4 +1,4 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 @mixin panel-theme($color, $background, $border) {
   border-color: $border;
@@ -6,7 +6,7 @@
   .ui-panel-header {
     /*background-color: $background;*/
     border-color: $border;
-    color: $color;    
+    color: $color;
   }
 }
 

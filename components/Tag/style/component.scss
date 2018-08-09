@@ -1,15 +1,15 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 @mixin tag-theme($color, $background) {
   $active-background: darken($background, 10%);
-  
+
   background-color: $background;
   color: $color;
-  
+
   &.disabled,
   &:disabled {
     cursor: not-allowed;
-    
+
     &:focus,
     &.focus {
       background-color: $background;
@@ -33,7 +33,7 @@
   &.radius {
     border-radius: $border-radius;
   }
-  
+
   &.round {
     border-radius: 1000px;
   }

@@ -32,6 +32,7 @@ config.plugins.push(new OptimizeCssAssetsPlugin({
   assetNameRegExp: /\.css$/g,
   cssProcessor: require('cssnano')({ zindex: false }),
   cssProcessorOptions: {
+    safe: true,
     discardComments: {
       removeAll: true,
     },

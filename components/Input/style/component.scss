@@ -1,4 +1,4 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 @mixin input-size($height, $padding, $font-size, $border-radius) {
   height: $height;
@@ -41,7 +41,7 @@
   &:disabled {
     cursor: not-allowed;
     background-color: #f3f5f7;
-    
+
     &:focus,
     &.focus {
       border-color: #ccc;

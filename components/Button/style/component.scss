@@ -1,13 +1,13 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 @mixin button-theme($color, $background, $border) {
   $active-background: darken($background, 10%);
   $active-border: darken($border, 12%);
-  
+
   background-color: $background;
   border-color: $border;
   color: $color;
-  
+
   &:hover {
     background-color: $active-background;
         border-color: $active-border;
@@ -37,11 +37,11 @@
                  color: $color;
     }
   }
-  
+
   &.disabled,
   &:disabled {
     cursor: not-allowed;
-    
+
     &:focus,
     &.focus {
       background-color: $background;
@@ -63,7 +63,7 @@
   &.radius {
     border-radius: $border-radius;
   }
-  
+
   &.round {
     border-radius: 1000px;
   }
@@ -98,7 +98,7 @@
   -webkit-appearance: none;
   user-select: none;
   transition: background-color 300ms ease-out, border-color 300ms ease-out;
-  
+
   /* disabled Button */
   &.disabled,
   &:disabled {

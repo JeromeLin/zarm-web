@@ -1,8 +1,8 @@
-@import '../../style/index';
+@import '../../style/themes/default';
 
 @mixin progress-theme($color, $background, $border) {
   .ui-progress-bg {
-    background-color: $color; 
+    background-color: $color;
   }
 }
 
@@ -23,7 +23,7 @@
       border-radius: $border-radius;
     }
   }
-  
+
   &.round {
     border-radius: 1000px;
 
