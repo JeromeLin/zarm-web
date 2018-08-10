@@ -565,12 +565,12 @@
                 <div style={{color: '#ccc'}}>
                   <a href="javascript:;" onClick={(e) => {
                     e.stopPropagation();  //避免触发rowClick事件
-                    this._onClickOpen('alert');
+                    alert('编辑');
                   }}>编辑</a>
                   &nbsp;&nbsp;|&nbsp;&nbsp;
                   <a href="javascript:;" onClick={(e) => {
                     e.stopPropagation();  //避免触发rowClick事件
-                    this._onClickOpen('confirm');
+                    alert('删除');
                   }}>删除</a>
                 </div>
               );

@@ -116,6 +116,7 @@ class Upload extends Component<PropsType, any> {
           }
         } else {
           this.setState({ uploading: false });
+          this.upload.value = '';
           onError();
         }
       }
