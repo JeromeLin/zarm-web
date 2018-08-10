@@ -1,4 +1,4 @@
-@import '../../style/themes/default';
+@import '../../style/index';
 
 @mixin form-item-control-theme($theme) {
   $shadow-color: lighten($theme, 20%);

@@ -1,4 +1,4 @@
-@import '../../style/themes/default';
+@import '../../style/index';
 
 @mixin panel-theme($color, $background, $border) {
   border-color: $border;

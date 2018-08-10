@@ -1,4 +1,4 @@
-@import '../../style/themes/default';
+@import '../../style/index';
 
 @mixin button-theme($color, $background, $border) {
   $active-background: darken($background, 10%);
