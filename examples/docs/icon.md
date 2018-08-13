@@ -12,8 +12,8 @@ render() {
   return (
     <ul className="icon-list">
       <li>
-        <Icon type="check" />
-        <div className="ui-icon-name">check</div>
+        <Icon type="right" />
+        <div className="ui-icon-name">right</div>
       </li>
       <li>
         <Icon type="close" />
@@ -64,10 +64,6 @@ render() {
         <div className="ui-icon-name">close-round-fill</div>
       </li>
       <li>
-        <Icon type="add" />
-        <div className="ui-icon-name">add</div>
-      </li>
-      <li>
         <Icon type="minus" />
         <div className="ui-icon-name">minus</div>
       </li>
@@ -100,28 +96,28 @@ render() {
         <div className="ui-icon-name">fangxingxuanzhong</div>
       </li>
       <li>
-        <Icon type="guanbi1" />
-        <div className="ui-icon-name">guanbi1</div>
+        <Icon type="wrong" />
+        <div className="ui-icon-name">wrong</div>
       </li>
       <li>
-        <Icon type="guanbi2fill" />
-        <div className="ui-icon-name">guanbi2fill</div>
+        <Icon type="wrong-round-fill" />
+        <div className="ui-icon-name">wrong-round-fill</div>
       </li>
       <li>
-        <Icon type="guanbi2" />
-        <div className="ui-icon-name">guanbi2</div>
+        <Icon type="wrong-round" />
+        <div className="ui-icon-name">wrong-round</div>
       </li>
       <li>
-        <Icon type="jiahao" />
-        <div className="ui-icon-name">jiahao</div>
+        <Icon type="add-round" />
+        <div className="ui-icon-name">add-round</div>
       </li>
       <li>
-        <Icon type="jiahao1" />
-        <div className="ui-icon-name">jiahao1</div>
+        <Icon type="add" />
+        <div className="ui-icon-name">add</div>
       </li>
       <li>
-        <Icon type="jiahao2fill" />
-        <div className="ui-icon-name">jiahao2fill</div>
+        <Icon type="add-round-fill" />
+        <div className="ui-icon-name">add-round-fill</div>
       </li>
       <li>
         <Icon type="jianhao" />
@@ -144,12 +140,12 @@ render() {
         <div className="ui-icon-name">xuanze</div>
       </li>
       <li>
-        <Icon type="yuanxingxuanzhongfill" />
-        <div className="ui-icon-name">yuanxingxuanzhongfill</div>
+        <Icon type="right-round-fill" />
+        <div className="ui-icon-name">right-round-fill</div>
       </li>
       <li>
-        <Icon type="yuanxingxuanzhong" />
-        <div className="ui-icon-name">yuanxingxuanzhong</div>
+        <Icon type="right-round" />
+        <div className="ui-icon-name">right-round</div>
       </li>
       <li>
         <Icon type="minus-round-fill" />
@@ -305,7 +301,7 @@ render() {
 
       <li>
         <Icon type="folder" theme="success" />
-        <div className="ui-icon-name">unlike-fill</div>
+        <div className="ui-icon-name">folder</div>
       </li>
 
       <li>
