@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Form from '../index';
-import Input from '../../Input';
-import Button from '../../Button';
+import Input from '../../input';
+import Button from '../../button';
 
 describe('Form', () => {
   it('renders normal Form correctly', () => {

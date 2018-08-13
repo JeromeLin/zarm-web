@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Tooltip from '../index';
-import Button from '../../Button';
+import Button from '../../button';
 
 describe('Tooltip', () => {
   it('renders normal Tooltip correctly', () => {
