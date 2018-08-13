@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Icon/style';
+import '../../components/icon/style';
 
 export default class Icon extends Markdown {
   // eslint-disable-next-line

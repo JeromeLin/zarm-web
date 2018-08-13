@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/NumberInput/style';
-import '../../components/Icon/style';
+import '../../components/numberInput/style';
+import '../../components/icon/style';
 
 export default class NumberInput extends Markdown {
   // eslint-disable-next-line

@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Progress/style';
+import '../../components/progress/style';
 
 export default class Progress extends Markdown {
   // eslint-disable-next-line

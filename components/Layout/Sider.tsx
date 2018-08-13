@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { SiderPropsType } from './PropsType';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Icon from '../Icon';
+import Icon from '../icon';
 
 class Sider extends Component<SiderPropsType, any> {
   static defaultProps = {

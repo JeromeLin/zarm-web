@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Modal from '../Modal';
-import Button from '../Button';
-import Icon from '../Icon';
+import Modal from '../modal';
+import Button from '../button';
+import Icon from '../icon';
 import PropsType from './PropsType';
 
 class Confirm extends Component<PropsType, any> {

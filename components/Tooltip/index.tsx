@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Popover from '../Popover';
+import Popover from '../popover';
 import PropsType from './PropsType';
 
 class Tooltip extends Component<PropsType, any> {

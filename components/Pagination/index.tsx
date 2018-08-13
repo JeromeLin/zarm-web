@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Select from '../Select';
-import Input from '../Input';
-import Icon from '../Icon';
+import Select from '../select';
+import Input from '../input';
+import Icon from '../icon';
 import PropsType from './PropsType';
 
 const noop = () => {};

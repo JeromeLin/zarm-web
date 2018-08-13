@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { ModalHeaderProps } from './PropsType';
-import Icon from '../Icon';
+import Icon from '../icon';
 
 class ModalHeader extends Component<ModalHeaderProps, any> {
   static defaultProps = {

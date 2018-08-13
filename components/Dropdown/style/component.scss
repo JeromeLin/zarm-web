@@ -1,5 +1,3 @@
-@import '../../style/index';
-
 @mixin dropdown-size($border-radius) {
   &.radius {
     border-radius: $border-radius;

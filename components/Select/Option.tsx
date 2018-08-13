@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Menu from '../Menu';
+import Menu from '../menu';
 import { OptionProps, IDisableProps } from './PropsType';
 
 class Option extends Component<OptionProps, any> {

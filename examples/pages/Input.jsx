@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Input/style';
+import '../../components/input/style';
 
 export default class Input extends Markdown {
   // eslint-disable-next-line

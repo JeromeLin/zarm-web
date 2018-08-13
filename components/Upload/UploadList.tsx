@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Icon from '../Icon';
-import Progress from '../Progress';
+import Icon from '../icon';
+import Progress from '../progress';
 import { ListProps } from './PropsType';
 
 class UploadList extends Component<ListProps, any> {

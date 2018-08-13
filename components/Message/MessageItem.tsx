@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Icon from '../Icon';
+import Icon from '../icon';
 import { ItemProps } from './PropsType';
 
 class MessageItem extends Component<ItemProps, any> {

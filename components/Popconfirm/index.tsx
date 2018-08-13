@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Popover from '../Popover';
-import Button from '../Button';
+import Popover from '../popover';
+import Button from '../button';
 import PropsType from './PropsType';
 
 const noop = () => {};

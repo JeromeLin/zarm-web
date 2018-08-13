@@ -1,1 +1,3 @@
-import './component.scss';
+import '../../style';
+import '../../popover/style';
+import './index.scss';

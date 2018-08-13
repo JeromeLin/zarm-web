@@ -65,7 +65,8 @@ class Popover extends Component<PropsType, any> {
           !reference ||
           reference.contains(target) ||
           !pop ||
-          pop.contains(target)
+          pop.contains(target) ||
+          !this.popper
         ) {
           return;
         }

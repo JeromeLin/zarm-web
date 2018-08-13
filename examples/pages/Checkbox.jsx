@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Checkbox/style';
+import '../../components/checkbox/style';
 
 export default class Checkbox extends Markdown {
   // eslint-disable-next-line

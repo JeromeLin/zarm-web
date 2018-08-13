@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import NotificationProps from './PropsType';
-import Icon from '../Icon';
+import Icon from '../icon';
 import Events from '../utils/events';
 
 export default class Notification extends Component<NotificationProps, any> {

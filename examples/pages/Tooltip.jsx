@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Tooltip/style';
+import '../../components/tooltip/style';
 
 export default class Tooltip extends Markdown {
   // eslint-disable-next-line

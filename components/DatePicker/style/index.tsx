@@ -1,4 +1,4 @@
-import './component.scss';
-import '../../Dropdown/style';
-import '../../Calendar/style';
-import '../../Icon/style';
+import '../../style';
+import '../../dropdown/style';
+import '../../calendar/style';
+import '../../icon/style';

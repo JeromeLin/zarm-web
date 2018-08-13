@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/Tag/style';
-import '../../components/Icon/style';
+import '../../components/tag/style';
+import '../../components/icon/style';
 
 export default class Alert extends Markdown {
   // eslint-disable-next-line

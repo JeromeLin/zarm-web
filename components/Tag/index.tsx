@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Icon from '../Icon';
+import Icon from '../icon';
 import PropsType from './PropsType';
 
 class Tag extends Component<PropsType, any> {

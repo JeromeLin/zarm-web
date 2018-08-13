@@ -1,3 +1,4 @@
-import '../../Menu/style';
-import '../../Dropdown/style';
-import './component.scss';
+import '../../style';
+import '../../menu/style';
+import '../../dropdown/style';
+import './index.scss';

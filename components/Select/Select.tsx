@@ -2,9 +2,9 @@ import React, { Component, ReactElement, ReactNode } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import Option from './Option';
-import Dropdown from '../Dropdown';
-import Menu from '../Menu';
-import Icon from '../Icon';
+import Dropdown from '../dropdown';
+import Menu from '../menu';
+import Icon from '../icon';
 import PropsType from './PropsType';
 
 class Select extends Component<PropsType, any> {

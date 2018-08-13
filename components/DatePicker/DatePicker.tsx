@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import Format from '../utils/format';
-import Dropdown from '../Dropdown';
-import Calendar from '../Calendar';
-import Icon from '../Icon';
+import Dropdown from '../dropdown';
+import Calendar from '../calendar';
+import Icon from '../icon';
 import PropsType from './PropsType';
 
 class DatePicker extends Component<PropsType, any> {

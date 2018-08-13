@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Icon from '../Icon';
+import Icon from '../icon';
 import { HeaderProps } from './PropsType';
 
 class CalendarHeader extends Component<HeaderProps, any> {

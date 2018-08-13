@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import NumberInputProps from './PropsType';
-import Input from '../Input';
-import Icon from '../Icon';
+import Input from '../input';
+import Icon from '../icon';
 
 export default class NumberInput extends PureComponent<NumberInputProps, any> {
   static defaultProps = {

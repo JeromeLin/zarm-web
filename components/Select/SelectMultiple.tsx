@@ -1,7 +1,7 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
 import Option from './Option';
-import Menu from '../Menu';
+import Menu from '../menu';
 import { MultipleProps } from './PropsType';
 
 class SelectMultiple extends Component<MultipleProps, any> {

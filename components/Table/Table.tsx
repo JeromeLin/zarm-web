@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Loading from '../Loading';
-import Checkbox from '../Checkbox';
-import Popover from '../Popover';
+import Loading from '../loading';
+import Checkbox from '../checkbox';
+import Popover from '../popover';
 import domUtil from '../utils/dom';
 import rAF from '../utils/rAF';
 import PropsType from './PropsType';

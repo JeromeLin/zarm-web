@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import ButtonProps from './PropsType';
-import Icon from '../Icon';
+import Icon from '../icon';
 
 class Button extends Component<ButtonProps, any> {
   static defaultProps = {

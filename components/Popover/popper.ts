@@ -223,6 +223,7 @@ Popper.prototype._getPosition = function (_, reference) {
 
   const isParentFixed = isFixed(reference);
   return isParentFixed ? 'fixed' : 'absolute';
+  return 'absolute';
 };
 
 /**

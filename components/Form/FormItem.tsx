@@ -1,6 +1,6 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
-import Icon from '../Icon';
+import Icon from '../icon';
 import { ItemProps } from './PropsType';
 
 class FormItem extends Component<ItemProps, any> {

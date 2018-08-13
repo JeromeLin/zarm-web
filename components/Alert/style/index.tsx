@@ -1,2 +1,3 @@
-import './component.scss';
-import '../../Modal/style';
+import '../../style';
+import '../../modal/style';
+import './index.scss';
