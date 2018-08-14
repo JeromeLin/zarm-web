@@ -20,6 +20,7 @@ export default {
       Slider: '../pages/slider',
       Calendar: '../pages/calendar',
       DatePicker: '../pages/datepicker',
+      TimePicker: '../pages/timepicker',
       Upload: '../pages/upload',
       Form: '../pages/form',
     },
