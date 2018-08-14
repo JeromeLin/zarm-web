@@ -20,6 +20,14 @@ render() {
         <div className="ui-icon-name">arrowrightb</div>
       </li>
       <li>
+        <Icon type="arrowtop" />
+        <div className="ui-icon-name">arrowrightb</div>
+      </li>
+      <li>
+        <Icon type="arrowbottom" />
+        <div className="ui-icon-name">arrowrightb</div>
+      </li>
+      <li>
         <Icon type="right" />
         <div className="ui-icon-name">right</div>
       </li>
