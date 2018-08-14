@@ -12,6 +12,14 @@ render() {
   return (
     <ul className="icon-list">
       <li>
+        <Icon type="arrowleftb" />
+        <div className="ui-icon-name">arrowleftb</div>
+      </li>
+      <li>
+        <Icon type="arrowrightb" />
+        <div className="ui-icon-name">arrowrightb</div>
+      </li>
+      <li>
         <Icon type="right" />
         <div className="ui-icon-name">right</div>
       </li>
