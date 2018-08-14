@@ -1,0 +1,343 @@
+@mixin menu-size($height, $font-size) {
+  .ui-menu-item {
+    height: $height;
+    line-height: $height;
+    font-size: $font-size;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+$prefixCls: ui-menu;
+
+.#{$prefixCls} {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: $menu-default-bg-color;
+  outline: none;
+  @include menu-size($base-height-xl, $base-fontSize);
+
+  &-item {
+    position: relative;
+    display: block;
+    font-weight: normal;
+    color: $menuitem-default-color;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: background .3s ease;
+    user-select: none;
+    transition: color .3s $ease-in-out, border-color .3s $ease-in-out, background .3s $ease-in-out, padding .15s $ease-in-out;
+
+    > a {
+      display: block;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: transparent;
+      }
+    }
+    &:hover{
+      color: $menuitem-active-color;
+    }
+    &.selected,
+    &.active {
+      color: $menuitem-active-color;
+      background: $menuitem-active-bg-color;
+    }
+    &.disabled {
+      color: $menuitem-disabled-color;
+      cursor: not-allowed;
+    }
+    &-divider {
+      height: 1px;
+      margin: 1px 0;
+      overflow: hidden;
+      padding: 0;
+      line-height: 0;
+      background-color: $menuitem-divider-bg-color;
+    }
+  }
+  &-submenu {
+    height: auto;
+
+    &-title {
+      height: $base-height-xl;
+      line-height: $base-height-xl;
+      user-select: none;
+      cursor: pointer;
+
+      &:hover{
+        color: $menuitem-active-color;
+      }
+      .iconfont {
+        min-width: 14px;
+        margin-right: 10px;
+      }
+    }
+    &-sub {
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      transition: all .2s $ease-in-out;
+    }
+  }
+
+  &.size-xl {
+    @include menu-size($base-height-xl, $base-fontSize-xl);
+  }
+  &.size-lg {
+    @include menu-size($base-height-lg, $base-fontSize-lg);
+  }
+  &.size-sm {
+    @include menu-size($base-height-sm, $base-fontSize-sm);
+  }
+  &.size-xs {
+    @include menu-size($base-height-xs, $base-fontSize-xs);
+  }
+}
+
+// collapsed样式
+.#{$prefixCls}-collapsed {
+  width: $menu-collapsed-width;
+
+  > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-title,
+  > .#{$prefixCls}-item {
+    text-overflow: clip;
+    padding: 0 ($menu-collapsed-width - 16) / 2;
+  }
+  .#{$prefixCls}-item {
+    padding-right: ($menu-collapsed-width - 16) / 2;
+  }
+  > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-title {
+    .#{$prefixCls}-submenu-arrow {
+      display: none;
+    }
+  }
+  > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-sub {
+    height: auto !important;
+    opacity: 0;
+    transform-origin: 0 0;
+
+    &.slide-up {
+      animation: slide-up 0.2s both;
+    }
+    &.slide-down {
+      animation: slide-down 0.2s both;
+    }
+  }
+  .iconfont {
+    float: left;
+    font-size: 16px;
+    line-height: 40px;
+    margin: 0;
+
+    + span {
+      max-width: 0;
+      display: inline-block;
+      opacity: 0;
+    }
+  }
+}
+
+// inline模式
+.#{$prefixCls}-inline {
+  .#{$prefixCls}-submenu {
+    &-title {
+      position: relative;
+
+      &:hover {
+        .#{$prefixCls}-submenu-arrow {
+          &:after,
+          &:before {
+            background: linear-gradient(to right, $menuitem-active-color,$menuitem-active-color);
+          }
+        }
+      }
+    }
+    &-arrow {
+      transition: transform .3s $ease-in-out;
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      width: 10px;
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        vertical-align: baseline;
+        background: $menuitem-dark-active-color;
+        background-image: linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.65));
+        width: 6px;
+        height: 1.5px;
+        border-radius: 2px;
+        transition: background .3s $ease-in-out, transform .3s $ease-in-out, top .3s $ease-in-out;
+      }
+      &:before {
+        transform: rotate(-45deg) translateX(2px);
+      }
+      &:after {
+        transform: rotate(45deg) translateX(-2px);
+      }
+    }
+    &.open {
+      > .#{$prefixCls}-submenu-title .#{$prefixCls}-submenu-arrow {
+        transform: translateY(-2px);
+        &:before {
+          transform: rotate(45deg) translateX(2px);
+        }
+        &:after {
+          transform: rotate(-45deg) translateX(-2px);
+        }
+      }
+    }
+  }
+  &.#{$prefixCls}-collapsed {
+    > .#{$prefixCls}-submenu {
+      position: relative;
+
+      > .#{$prefixCls}-submenu-sub {
+        position: absolute;
+        top: 0;
+        left: $menu-collapsed-width + 8px;
+        z-index: 2;
+        background-color: $menu-dark-bg-color;
+        border-radius: 2px;
+
+       > .#{$prefixCls}-item {
+          padding: 0 48px 0 24px !important;
+        }
+      }
+    }
+  }
+}
+
+// horizontal模式
+.#{$prefixCls}-horizontal {
+  .#{$prefixCls}-item {
+    float: left;
+    padding: 0 $menuitem-horizontal-padding;
+    height: $menuitem-horizontal-height;
+    line-height: $menuitem-horizontal-height - 2;
+    border-bottom: 2px solid transparent;
+
+    > a {
+      color: $menuitem-default-color;
+    }
+    &.active,
+    &:hover {
+      border-bottom: 2px solid $menuitem-active-color;
+      background: $menu-default-bg-color;
+      color: $menuitem-active-color;
+
+      > a {
+        color: $menuitem-active-color;
+      }
+    }
+  }
+  &::after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+  }
+}
+
+// dark主题
+.#{$prefixCls}-dark {
+  background: $menu-dark-bg-color;
+
+  .#{$prefixCls}-submenu-sub {
+    background: $submenu-dark-bg-color;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .45) inset;
+  }
+  .#{$prefixCls}-item {
+    color: $menuitem-dark-color;
+
+    &:hover {
+      color: $menuitem-dark-active-color;
+      background: inherit;
+    }
+    &.selected,
+    &.active {
+      color: $menuitem-dark-active-color;
+      background: $menuitem-active-color;
+    }
+    > a {
+      color: $menuitem-dark-color;
+    }
+    &:hover,
+    &.selected,
+    &.active {
+      > a {
+        color: $menuitem-dark-active-color;
+      }
+    }
+  }
+  &.#{$prefixCls}-inline {
+    .#{$prefixCls}-submenu {
+      color: $menuitem-dark-color;
+
+      &-title {
+        margin-top: 4px;
+        margin-bottom: 4px;
+
+        &:hover{
+          color: $menuitem-dark-active-color;
+
+          .#{$prefixCls}-submenu-arrow {
+            opacity: 1;
+            &:after,
+            &:before {
+              background: $menuitem-dark-active-color;
+            }
+          }
+        }
+      }
+      &-arrow {
+        opacity: .45;
+        transition: all .3s;
+        &:after,
+        &:before {
+          background: $menuitem-dark-active-color;
+        }
+      }
+    }
+    .#{$prefixCls}-item {
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+  }
+}

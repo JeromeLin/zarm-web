@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/Popconfirm/style';
-import '../../components/Button/style';
+import '../../components/popconfirm/style';
+import '../../components/button/style';
 
 export default class Popconfirm extends Markdown {
   // eslint-disable-next-line

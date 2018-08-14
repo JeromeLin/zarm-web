@@ -1,5 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/Table/style';
+import '../../components/table/style';
+import '../../components/popover/style';
 
 export default class Table extends Markdown {
   // eslint-disable-next-line

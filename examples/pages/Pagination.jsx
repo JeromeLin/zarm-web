@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/Pagination/style';
-import '../../components/Select/style';
+import '../../components/pagination/style';
+import '../../components/select/style';
 
 export default class Pagination extends Markdown {
   // eslint-disable-next-line

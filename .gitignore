@@ -9,6 +9,7 @@ _book
 .DS_Store
 .temp
 .history
+.vscode
 *.log
 .prettierrc.yaml
 *.iml

@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Calendar/style';
+import '../../components/calendar/style';
 
 export default class Calendar extends Markdown {
   // eslint-disable-next-line

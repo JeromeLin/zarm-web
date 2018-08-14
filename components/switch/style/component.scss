@@ -1,0 +1,85 @@
+.ui-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  line-height: 20px;
+  vertical-align: middle;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: left .3s cubic-bezier(.78, .14, .15, .86);
+  user-select: none;
+
+  &:after {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    top: 1px;
+    border-radius: 100%;
+    background-color: #fff;
+    content: " ";
+    cursor: pointer;
+    transition: left .3s cubic-bezier(.78, .14, .15, .86);
+  }
+
+  &.checked {
+    border: 1px solid $base-theme-info;
+    background-color: $base-theme-info;
+
+    &:after {
+      left: 22px;
+    }
+
+    .ui-switch-inner {
+      left: 6px;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:after {
+      cursor: not-allowed;
+    }
+  }
+
+  &.size-sm {
+    height: 14px;
+    line-height: 12px;
+    width: 28px;
+
+    &:after {
+      width: 12px;
+      height: 12px;
+      top: 0;
+      left: 0;
+    }
+
+    &.checked {
+      &:after {
+        left: 14px;
+      }
+
+      .ui-switch-inner {
+        left: 3px;
+      }
+    }
+
+    .ui-switch-inner {
+      left: 13px;
+      font-size: 10px;
+    }
+  }
+
+  .ui-switch-inner {
+    position: absolute;
+    left: 24px;
+    color: #fff;
+    font-size: 12px;
+  }
+
+}

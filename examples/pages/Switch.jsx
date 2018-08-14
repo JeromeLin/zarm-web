@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Switch/style';
+import '../../components/switch/style';
 
 export default class Switch extends Markdown {
   // eslint-disable-next-line
