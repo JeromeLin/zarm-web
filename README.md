@@ -27,7 +27,6 @@ import 'dragon-ui/dist/dragon-ui.min.css';
       ['import', {
         libraryName: 'dragon-ui',
         style: true,
-        camel2DashComponentName: false,
       }],
     ]
   }
