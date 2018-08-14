@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/numberInput/style';
+import '../../components/number-input/style';
 import '../../components/icon/style';
 
 export default class NumberInput extends Markdown {
