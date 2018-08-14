@@ -71,6 +71,7 @@ class TimeSelect extends Component<TimeSelectProps, any> {
 
   selectInit () {
     const {selectH, selectM, selectS} = this.state;
+
     for (let i = 0; i < 60; i++) {
       const num = i < 10 ? '0' + i : i + '';
       if (i < 24) selectH.push(num);
