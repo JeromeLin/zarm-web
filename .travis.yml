@@ -3,13 +3,6 @@ language: node_js
 node_js:
   - 6
   - 8
-before_install:
-  - apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-  - apt-get update -qq
-  - apt-get install -y -qq yarn=1.9.4-1
-cache:
-  yarn: true
 script:
   - npm run lint
   - npm run test
