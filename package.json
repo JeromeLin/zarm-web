@@ -50,7 +50,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^7.0.0",
+    "rc-animate": "3.0.0-rc.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.3",
