@@ -5,29 +5,29 @@ import Icon from '../icon';
 import TimeSelect from './TimeSelect';
 
 export interface TimePickerProps {
-  value?: any,
-  defaultValue?: string,
-  placeholder?: string,
-  isDisabled?: boolean,
-  isRadius?: string | boolean,
-  size?: any,
-  style?: React.CSSProperties,
-  onChange?: (value: any) => void,
+  value?: any;
+  defaultValue?: string;
+  placeholder?: string;
+  isDisabled?: boolean;
+  isRadius?: string | boolean;
+  size?: any;
+  style?: React.CSSProperties;
+  onChange?: (value: any) => void;
 }
 
 class TimePicker extends Component<TimePickerProps, any> {
+  private unmounted: boolean;
+  private dropdownEl: React.ReactNode;
+
   constructor (props) {
     super(props);
     const value = props.value || props.defaultValue;
     this.unmounted = false;
     this.state = {
       value,
-      dropdown: false
+      dropdown: false,
     };
   }
-
-  private unmounted: boolean;
-  private dropdownEl: React.ReactNode;
 
   componentDidMount () {
     this.unmounted = true;
@@ -40,21 +40,21 @@ class TimePicker extends Component<TimePickerProps, any> {
   }
 
   onDateChange (value) {
-    if (value.indexOf('undefined') > -1) return;
+    if (value.indexOf('undefined') > -1) { return; }
     this.setState({
-      value
+      value,
     }, () => {
       this.setDropdown(!!value, this.props.onChange && this.props.onChange(value));
     });
   }
 
   setDropdown (isOpen, callback) {
-    if (!this.unmounted) return;
+    if (!this.unmounted) { return; }
 
     this.setState({
-      dropdown: isOpen
+      dropdown: isOpen,
     }, () => {
-      callback && callback();
+      callback();
     });
   }
 
@@ -71,13 +71,13 @@ class TimePicker extends Component<TimePickerProps, any> {
 
   onVisibleChange = visible => {
     this.setState({
-      dropdown: visible
+      dropdown: visible,
     });
-  };
+  }
 
   render () {
-    const {defaultValue, placeholder, isDisabled, isRadius, size, ...others} = this.props;
-    const {value, dropdown} = this.state;
+    const { defaultValue, placeholder, isDisabled, isRadius, size, ...others } = this.props;
+    const { value, dropdown } = this.state;
     const disabled = 'disabled' in this.props || isDisabled;
     const radius = 'radius' in this.props || isRadius;
 
@@ -95,11 +95,11 @@ class TimePicker extends Component<TimePickerProps, any> {
       'ui-select-open': dropdown,
       disabled,
       radius,
-      [`size-${size}`]: !!size
+      [`size-${size}`]: !!size,
     });
     const textCls = classnames({
       'ui-select-text': true,
-      'ui-select-text-placeholder': !hasValue
+      'ui-select-text-placeholder': !hasValue,
     });
 
     const overlay = (
@@ -120,7 +120,7 @@ class TimePicker extends Component<TimePickerProps, any> {
           ref={el => this.dropdownEl = el}
           visible={dropdown}
           disabled={disabled}
-          style={{display: 'block'}}
+          style={{ display: 'block' }}
           onVisibleChange={this.onVisibleChange}
           overlay={overlay}
         >
