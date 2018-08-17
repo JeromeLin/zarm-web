@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Icon from '../icon';
 import { HeaderProps } from './PropsType';
+import i18n from '../locale';
 
 class CalendarHeader extends Component<HeaderProps, any> {
   static defaultProps = {
@@ -42,31 +43,54 @@ class CalendarHeader extends Component<HeaderProps, any> {
             href="javascript:;"
             onClick={() => this.onMonthClick(current, 'pre')}
             className={`${prefixCls}-header-pre-btn`}
-            title="上个月"
+            title={i18n.t('el.calendar.last_month')}
           >
             <Icon type="arrow-left" />
           </a>
-          <span>
-            <a
-              href="javascript:;"
-              className={`${prefixCls}-header-btn`}
-              onClick={() => this.onChangePanel('year')}
-            >
-              {current.year}年
-            </a>
-            <a
-              href="javascript:;"
-              className={`${prefixCls}-header-btn`}
-              onClick={() => this.onChangePanel('month')}
-            >
-              {current.month}月
-            </a>
-          </span>
+          {
+            i18n.t('lang') === 'zh-cn'
+            ? (
+              <span>
+                <a
+                  href="javascript:;"
+                  className={`${prefixCls}-header-btn`}
+                  onClick={() => this.onChangePanel('year')}
+                >
+                  {current.year}年
+                </a>
+                <a
+                  href="javascript:;"
+                  className={`${prefixCls}-header-btn`}
+                  onClick={() => this.onChangePanel('month')}
+                >
+                  {current.month}月
+                </a>
+              </span>
+            )
+            : (
+              <span>
+                <a
+                  href="javascript:;"
+                  className={`${prefixCls}-header-btn`}
+                  onClick={() => this.onChangePanel('month')}
+                >
+                  {i18n.t(`el.calendar.month${current.month}`)}
+                </a>
+                <a
+                  href="javascript:;"
+                  className={`${prefixCls}-header-btn`}
+                  onClick={() => this.onChangePanel('year')}
+                >
+                  {current.year}
+                </a>
+              </span>
+            )
+          }
           <a
             href="javascript:;"
             onClick={() => this.onMonthClick(current, 'next')}
             className={`${prefixCls}-header-next-btn`}
-            title="下个月"
+            title={i18n.t('el.calendar.next_month')}
           >
             <Icon type="arrow-right" />
           </a>
@@ -79,7 +103,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
             href="javascript:;"
             onClick={() => this.onYearClick(current, 'pre')}
             className={`${prefixCls}-header-pre-btn`}
-            title="去年"
+            title={i18n.t('el.calendar.last_year')}
           >
             <Icon type="arrow-left" />
           </a>
@@ -89,14 +113,14 @@ class CalendarHeader extends Component<HeaderProps, any> {
               className={`${prefixCls}-header-year-btn`}
               onClick={() => this.onChangePanel('date')}
             >
-              {current.year}年
+              {current.year}{i18n.t('el.calendar.year')}
             </a>
           </span>
           <a
             href="javascript:;"
             onClick={() => this.onYearClick(current, 'next')}
             className={`${prefixCls}-header-next-btn`}
-            title="明年"
+            title={i18n.t('el.calendar.next_year')}
           >
             <Icon type="arrow-right" />
           </a>
@@ -109,7 +133,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
             href="javascript:;"
             onClick={() => this.onCenturyClick(current, 'pre')}
             className={`${prefixCls}-header-pre-btn`}
-            title="上个年代"
+            title={i18n.t('el.calendar.last_decade')}
           >
             <Icon type="arrow-left" />
           </a>
@@ -119,14 +143,14 @@ class CalendarHeader extends Component<HeaderProps, any> {
               className={`${prefixCls}-header-year-btn`}
               onClick={() => this.onChangePanel('date')}
             >
-              {beforeYear} - {beforeYear + 9} 年
+              {beforeYear} - {beforeYear + 9} {i18n.t('el.calendar.year')}
             </a>
           </span>
           <a
             href="javascript:;"
             onClick={() => this.onCenturyClick(current, 'next')}
             className={`${prefixCls}-header-next-btn`}
-            title="下个年代"
+            title={i18n.t('el.calendar.next_decade')}
           >
             <Icon type="arrow-right" />
           </a>

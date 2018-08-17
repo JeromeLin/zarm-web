@@ -6,6 +6,7 @@ import CalendarDateTable from './CalendarDateTable';
 import CalendarMonthTable from './CalendarMonthTable';
 import CalendarYearTable from './CalendarYearTable';
 import PropsType from './PropsType';
+import i18n from '../locale';
 
 class Calendar extends Component<PropsType, any> {
   static defaultProps = {
@@ -124,7 +125,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick(new Date())}
               className={`${prefixCls}-footer-btn`}
             >
-              今天
+              {i18n.t('el.calendar.today')}
             </a>
 
             <a
@@ -132,7 +133,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick('')}
               className={`${prefixCls}-footer-btn`}
             >
-              清除
+              {i18n.t('el.calendar.clear')}
             </a>
           </div>
         ) : null}

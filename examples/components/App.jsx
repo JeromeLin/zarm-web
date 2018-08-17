@@ -6,18 +6,33 @@ import AsyncComponent from './AsyncComponent';
 import '../../components/style/index.scss';
 import '../styles/index';
 import '../styles/components/App';
+import i18n from '../../components/locale';
+import langZH from '../../components/locale/lang/zh-CN';
+import langEN from '../../components/locale/lang/en';
 
 import pages from '../pages/Index';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.components = {};
+
+    if (localStorage.lang === 'en') {
+      i18n.use(langEN);
+    } else {
+      i18n.use(langZH);
+    }
+  }
+
+  // eslint-disable-next-line
+  changeLang(lang) {
+    localStorage.lang = lang;
+    window.location.reload();
   }
 
   render() {
     const hash = window.location.hash.match(/#\/(\w+)?/);
+    const { lang } = window.localStorage;
     return (
       <div className="app">
         <header className="header">
@@ -32,6 +47,13 @@ class App extends Component {
               <li className="nav-item">
                 <a href="//github.com/JeromeLin/dragon-ui" target="_blank" rel="noopener noreferrer">Github</a>
               </li>
+              <li className="nav-item">
+                {
+                  lang === 'en'
+                  ? <span className="lang" onClick={() => this.changeLang('zh')}>中文</span>
+                  : <span className="lang" onClick={() => this.changeLang('en')}>English</span>
+                }
+              </li>
             </ul>
           </div>
         </header>
@@ -43,6 +65,9 @@ class App extends Component {
                 <ul className="pure-menu-list sub-nav">
                   <li className="nav-item">
                     <a href="#/quick-start">快速上手</a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="#/i18n">国际化</a>
                   </li>
                 </ul>
               </li>
@@ -76,6 +101,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={AsyncComponent(() => import('../pages/QuikStart'))} />
               <Route path="/quick-start" component={AsyncComponent(() => import('../pages/QuikStart'))} />
+              <Route path="/i18n" component={AsyncComponent(() => import('../pages/I18n'))} />
               {
                 Object.keys(this.components).map((name) => {
                   return <Route path={`/${name}`} key={name} component={AsyncComponent(() => import(`../pages/${name}`))} />;

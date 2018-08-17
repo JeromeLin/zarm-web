@@ -4,6 +4,7 @@ import Select from '../select';
 import Input from '../input';
 import Icon from '../icon';
 import PropsType from './PropsType';
+import i18n from '../locale';
 
 const noop = () => {};
 class Pagination extends Component<PropsType, any> {
@@ -99,7 +100,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={1}
-        title="第-页"
+        title={i18n.t('el.pagination.first_page')}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(1)}
       >
@@ -113,7 +114,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={pageCount}
-        title="最后一页"
+        title={i18n.t('el.pagination.last_page')}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(pageCount)}
       >
@@ -127,7 +128,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="prev"
-        title="上一页"
+        title={i18n.t('el.pagination.prev_page')}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -146,7 +147,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="next"
-        title="下一页"
+        title={i18n.t('el.pagination.next_page')}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -165,7 +166,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-prev"
-        title="向前 5 页"
+        title={i18n.t('el.pagination.prev_5_page')}
         className={`${prefixCls}-item ${prefixCls}-item-jump-prev`}
         onClick={() => this._onPagerClick(current - 5)}
       />
@@ -177,7 +178,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-next"
-        title="向后 5 页"
+        title={i18n.t('el.pagination.next_5_page')}
         className={`${prefixCls}-item ${prefixCls}-item-jump-next`}
         onClick={() => this._onPagerClick(current + 5)}
       />
@@ -240,7 +241,12 @@ class Pagination extends Component<PropsType, any> {
     const { value } = this.state;
     return (
       <div className={`${prefixCls}-total`}>
-        共有 {total} 条记录 第 {value} / {Math.ceil(total / pageSize)} 页
+        {i18n.t('el.pagination.total', {
+          total,
+        })}
+        {i18n.t('el.pagination.current', {
+          current: `${value} / ${Math.ceil(total / pageSize)}`,
+        })}
       </div>
     );
   }
@@ -268,11 +274,17 @@ class Pagination extends Component<PropsType, any> {
             });
           }}
         >
-          <Select.Option value={10}>每页 10 条</Select.Option>
-          <Select.Option value={20}>每页 20 条</Select.Option>
-          <Select.Option value={30}>每页 30 条</Select.Option>
-          <Select.Option value={40}>每页 40 条</Select.Option>
-          <Select.Option value={50}>每页 50 条</Select.Option>
+          {
+            [10, 20, 30, 40, 50].map((value) => {
+              return (
+                <Select.Option value={value} key={value}>
+                  {i18n.t('el.pagination.pagesize', {
+                    value,
+                  })}
+                </Select.Option>
+              );
+            })
+          }
         </Select>
       </div>
     );
@@ -282,7 +294,7 @@ class Pagination extends Component<PropsType, any> {
     const { radius, total, pageSize, prefixCls } = this.props;
     return (
       <div className={`${prefixCls}-jumper`}>
-        跳至
+        {i18n.t('el.pagination.goto')}
         <Input
           isRadius={radius}
           style={{ width: 50, marginLeft: 5, marginRight: 5 }}
@@ -304,7 +316,7 @@ class Pagination extends Component<PropsType, any> {
             }
           }}
         />
-        页
+        {i18n.t('el.pagination.pageClassifier')}
       </div>
     );
   }

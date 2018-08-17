@@ -32,7 +32,6 @@
     return (
       <div>
         <Select
-          placeholder="请选择"
           style={{ width: 200 }}
           value={this.state.selectValue}
           onChange={(data) => {
@@ -103,8 +102,7 @@
           search
           value={this.state.selectValue}
           style={{ width: 200 }}
-          placeholder="请选择"
-          searchPlaceholder="输入关键字"
+          // searchPlaceholder="输入关键字"
           onSearchChange={(value) => {
             console.log(value)
           }}
@@ -145,8 +143,7 @@
           radius
           value={this.state.selectValue}
           style={{ width: 200 }}
-          placeholder="请选择"
-          searchPlaceholder="输入关键字"
+          // searchPlaceholder="输入关键字"
           onChange={(data) => {
             this.setState({
               selectValue: data.value

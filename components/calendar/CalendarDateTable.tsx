@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Format from '../utils/format';
 import { DateTableProps, dateType } from './PropsType';
+import i18n from '../locale';
 
 const CALENDAR_ROW_COUNT = 6;
 const CALENDAR_COL_COUNT = 7;
-const CALENDAR_WEEK_DAYS = ['一', '二', '三', '四', '五', '六', '日'];
+const CALENDAR_WEEK_DAYS = i18n.t('el.calendar.week_days');
 
 class CalendarDateTable extends Component<DateTableProps, any> {
   static defaultProps = {
@@ -36,7 +37,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
   // eslint-disable-next-line
   renderWeek() {
     const weekDays: string[] = [];
-
+    const { prefixCls } = this.props;
     for (let i = 0; i < CALENDAR_COL_COUNT; i++) {
       weekDays[i] = CALENDAR_WEEK_DAYS[i];
     }
@@ -50,8 +51,8 @@ class CalendarDateTable extends Component<DateTableProps, any> {
             <th
               // eslint-disable-next-line
               key={`weekdays-${index}`}
-              className={`{prefixCls}-column`}
-              title={`星期${week}`}
+              className={`${prefixCls}-column`}
+              title={i18n.t('el.calendar.week_days_hints')[index]}
             >
               {week}
             </th>

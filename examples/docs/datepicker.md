@@ -19,7 +19,6 @@
           radius
           style={{width: 200}}
           value={this.state.date}
-          placeholder="请选择日期"
           onChange={(date) => {
             console.log(date)
             this.setState({date});
@@ -52,7 +51,6 @@
           disabled
           style={{width: 200}}
           value={this.state.date}
-          placeholder="请选择日期"
           onChange={(date) => {
             console.log(date)
             this.setState({date});

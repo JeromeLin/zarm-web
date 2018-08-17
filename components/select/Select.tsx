@@ -6,6 +6,7 @@ import Dropdown from '../dropdown';
 import Menu from '../menu';
 import Icon from '../icon';
 import PropsType from './PropsType';
+import i18n from '../locale';
 
 class Select extends Component<PropsType, any> {
   static defaultProps = {
@@ -13,6 +14,8 @@ class Select extends Component<PropsType, any> {
     isRadius: false,
     isDisabled: false,
     isSearch: false,
+    placeholder: i18n.t('el.select.placeholder'),
+    searchPlaceholder: i18n.t('el.select.searchPlaceholder'),
     onSearchChange: () => { },
     onChange: () => { },
   };
@@ -179,13 +182,13 @@ class Select extends Component<PropsType, any> {
       children.length > 0 ? (
         <Menu size={size} style={menuStyle}>{children}</Menu>
       ) : (
-          <span className={`${prefixCls}-notfound`}>没有找到数据</span>
+          <span className={`${prefixCls}-notfound`}>{i18n.t('el.select.noMatch')}</span>
         );
 
     const inputPlaceholder = this.state.dropdown // eslint-disable-line
       ? hasValue
         ? valueText
-        : searchPlaceholder
+        : (search && searchPlaceholder)
       : valueText;
 
     const textRender = !(search && this.state.searchValue.length > 0) && (

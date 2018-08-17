@@ -109,6 +109,13 @@ body {
         opacity: 0.4;
         background: #fff;
       }
+      .lang {
+        cursor: pointer;
+        user-select: none;
+        padding: 4px 8px;
+        border: 1px solid #fff;
+        border-radius: 2px;
+      }
     }
   }
 

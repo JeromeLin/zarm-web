@@ -3,6 +3,7 @@ import Modal from '../modal';
 import Button from '../button';
 import Icon from '../icon';
 import AlertProps from './PropsType';
+import i18n from '../locale';
 
 class Alert extends Component<AlertProps, any> {
   static defaultProps = {
@@ -13,7 +14,7 @@ class Alert extends Component<AlertProps, any> {
     className: '',
     hideIcon: false,
     closable: true,
-    closeText: '关闭',
+    closeText: i18n.t('el.alert.close'),
     onClose: () => {},
   };
 

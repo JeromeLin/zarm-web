@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Popover from '../popover';
 import Button from '../button';
 import PropsType from './PropsType';
+import i18n from '../locale';
 
 const noop = () => {};
 
@@ -14,8 +15,8 @@ class Popconfirm extends Component<PropsType, any> {
     direction: 'bottomLeft',
     onCancel: noop,
     onOk: noop,
-    okText: '确认',
-    cancelText: '取消',
+    okText: i18n.t('el.confirm.confirm'),
+    cancelText: i18n.t('el.confirm.cancel'),
     content: null,
   };
 

@@ -3,6 +3,7 @@ import Modal from '../modal';
 import Button from '../button';
 import Icon from '../icon';
 import PropsType from './PropsType';
+import i18n from '../locale';
 
 class Confirm extends Component<PropsType, any> {
 
@@ -10,8 +11,8 @@ class Confirm extends Component<PropsType, any> {
     prefixCls: 'ui-confirm',
     message: '',
     width: 270,
-    okText: '确定',
-    cancelText: '取消',
+    okText: i18n.t('el.confirm.confirm'),
+    cancelText: i18n.t('el.confirm.cancel'),
     onOk: () => {},
     onCancel: () => {},
   };

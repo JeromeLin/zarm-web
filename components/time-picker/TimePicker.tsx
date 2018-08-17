@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Dropdown from '../dropdown';
 import Icon from '../icon';
 import TimeSelect from './TimeSelect';
+import i18n from '../locale';
 
 export interface TimePickerProps {
   value?: any;
@@ -109,7 +110,9 @@ class TimePicker extends Component<TimePickerProps, any> {
           onChange={(value) => this.onDateChange(value)}
         />
         <div className="ui-select-bottom">
-          <a href="javascript:;" onClick={() => this.onDateChange('')}>清除</a>
+          <a href="javascript:;" onClick={() => this.onDateChange('')}>
+            {i18n.t('el.timepicker.clear')}
+          </a>
         </div>
       </Fragment>
     );

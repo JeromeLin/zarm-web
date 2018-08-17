@@ -6,6 +6,7 @@ import Dropdown from '../dropdown';
 import Calendar from '../calendar';
 import Icon from '../icon';
 import PropsType from './PropsType';
+import i18n from '../locale';
 
 class DatePicker extends Component<PropsType, any> {
   static defaultProps = {
@@ -13,6 +14,7 @@ class DatePicker extends Component<PropsType, any> {
     format: 'yyyy-MM-dd',
     min: '',
     max: '',
+    placeholder: i18n.t('el.datepicker.placeholder'),
     onChange: () => { },
   };
 
