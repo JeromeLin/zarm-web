@@ -20,7 +20,6 @@ export default class Canvas extends React.Component {
     this.blockControl = this.blockControl.bind(this);
   }
 
-  playerElem = null;
 
   componentDidMount() {
     this.renderSource(this.source[2]);
@@ -32,6 +31,7 @@ export default class Canvas extends React.Component {
     }
   }
 
+  playerElem = null;
 
   blockControl() {
     this.setState({

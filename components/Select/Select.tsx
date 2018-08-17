@@ -5,7 +5,6 @@ import Option from './Option';
 import Dropdown from '../Dropdown';
 import Menu from '../Menu';
 import Icon from '../Icon';
-import Button from '../Button';
 import PropsType from './PropsType';
 
 class Select extends Component<PropsType, any> {
@@ -21,6 +20,18 @@ class Select extends Component<PropsType, any> {
   static Option;
   static Multiple;
 
+  static getChildrenObject(children: React.ReactChild) {
+    if (Array.isArray(children)) {
+      return children.reduce((prev, elem) => {
+        const { value } = elem.props;
+        prev[String(value)] = elem.props;
+        return prev;
+      }, {});
+    }
+  }
+
+  optionMap: {};
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +42,7 @@ class Select extends Component<PropsType, any> {
       dropdown: false,
       searchValue: '',
     };
+    this.optionMap = this.constructor.getChildrenObject(props.children));
   }
 
   componentDidMount() {
@@ -55,10 +67,9 @@ class Select extends Component<PropsType, any> {
 
   // eslint-disable-next-line
   getCheckedValue(children) {
-    let checkedValue = null;
-    React.Children.forEach(children, (option) => {
+    let checkedValue = React.Children.forEach(children, (option) => {
       if ((option as ReactElement<any>).props && (option as ReactElement<any>).props.checked) {
-        checkedValue = (option as ReactElement<any>).props.value;
+        return (option as ReactElement<any>).props.value;
       }
     });
     return checkedValue;
@@ -68,18 +79,37 @@ class Select extends Component<PropsType, any> {
     if ('disabled' in props || props.isDisabled) {
       return;
     }
-
+    let newValue = this.state.value;
+    if (this.props.multiple) {
+      const lens = newValue.length;
+      let include = false;
+      for (let i = 0; i < lens; i++) {
+        if (newValue[i] === props.value) {
+          newValue.splice(i, 1);
+          include = true;
+          break;
+        }
+      }
+      if (include === false) {
+        newValue.push(props.value);
+      }
+    } else {
+      newValue = props.value;
+    }
     this.setState({
-      value: props.value,
+      value: newValue,
       searchValue: '',
+    }, () => {
+      const selected = {
+        index,
+        value: props.value,
+        text: props.children,
+      };
+      this.props.onChange(selected);
+      if (!this.props.multiple) {
+        this.setDropdown(false, () => this.props.onChange(selected));
+      }
     });
-
-    const selected = {
-      index,
-      value: props.value,
-      text: props.children,
-    };
-    this.setDropdown(false, () => this.props.onChange(selected));
   }
 
   setDropdown(isOpen, callback?) {
@@ -108,6 +138,10 @@ class Select extends Component<PropsType, any> {
 
   unbindOuterHandlers() {
     Events.off(document, 'keyup', e => this.handleKeyup(e));
+  }
+
+  isChecked(value) {
+    return this.props.multiple ? this.state.value.includes(value) : this.state.value === value;
   }
 
   render() {
@@ -151,7 +185,7 @@ class Select extends Component<PropsType, any> {
           <Option
             {...option.props}
             onChange={e => this.onOptionChange(e, option.props, index)}
-            checked={this.state.value === option.props.value}
+            checked={this.isChecked(option.props.value)}
           />
         );
       }
@@ -227,18 +261,27 @@ class Select extends Component<PropsType, any> {
           >
             {
               Array.isArray(this.state.value) ?
-                this.state.value.map(valueItem => {
-                  return (
-                    <Button
-                      key={valueItem}
-                      onClick={() => {
-
-                      }}
-                    >
-                      {valueItem}
-                    </Button>
-                  );
-                })
+                <div className="select-btn-list">
+                  {
+                    this.state.value.map(valueItem => {
+                      return (
+                        <div
+                          className="select-btn"
+                          key={valueItem}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            const index = this.state.value.indexOf(valueItem);
+                            this.state.value.splice(index, 1);
+                            this.forceUpdate();
+                          }}
+                        >
+                          {this.optionMap[valueItem].children}
+                          <Icon style={{ marginLeft: 5, color: '#333' }} type="wrong" theme="info" />
+                        </div>
+                      );
+                    })
+                  }
+                </div>
                 : textRender
             }
             {inputRender}

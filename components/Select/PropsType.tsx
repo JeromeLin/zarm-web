@@ -22,7 +22,7 @@ export interface MultipleProps {
   isDisabled?: boolean;
   isRadius?: boolean;
   size?: size;
-  style?: object;
+  style?: CSSProperties;
   onChange: (value: any, row: object) => () => void;
   onDoubleClick?: () => void;
 }
