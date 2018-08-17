@@ -44,7 +44,7 @@ class TimePicker extends Component<TimePickerProps, any> {
     this.setState({
       value,
     }, () => {
-      this.setDropdown(!!value, this.props.onChange && this.props.onChange(value));
+      this.setDropdown(!!value, this.props.onChange);
     });
   }
 
@@ -54,7 +54,7 @@ class TimePicker extends Component<TimePickerProps, any> {
     this.setState({
       dropdown: isOpen,
     }, () => {
-      callback();
+      callback(this.state.value);
     });
   }
 
