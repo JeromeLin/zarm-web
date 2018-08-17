@@ -380,7 +380,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       visible,
       onVisibleChange,
       getPopupContainer,
-      // tslint:disable-next-line:trailing-comma
       ...others
     } = this.props;
 
