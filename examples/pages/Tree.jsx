@@ -1,7 +1,7 @@
 import Markdown from '../components/markdown';
-import Checkbox from '../../components/Checkbox'; // eslint-disable-line
-import '../../components/Mask/style';
-import '../../components/Button/style';
+import '../../components/checkbox/style';
+import '../../components/tree/style';
+import Checkbox from '../../components/checkbox';
 
 export default class Mask extends Markdown {
   // eslint-disable-next-line

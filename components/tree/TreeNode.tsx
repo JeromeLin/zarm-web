@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Checkbox from '../Checkbox';
+import Checkbox from '../checkbox';
 import Animate from 'rc-animate';
 import classnames from 'classnames';
 import { TreeNodePropsType } from './PropsType';
