@@ -1,0 +1,99 @@
+@mixin progress-theme($color, $background, $border) {
+  .ui-progress-bg {
+    background-color: $color;
+  }
+}
+
+
+@mixin progress-size($height, $padding, $font-size, $border-radius) {
+
+  .ui-progress-bg {
+    font-size: $font-size;
+    height: $height;
+    line-height: $height;
+  }
+
+  &.radius {
+    border-radius: $border-radius;
+
+    .ui-progress-line-inner,
+    .ui-progress-bg {
+      border-radius: $border-radius;
+    }
+  }
+
+  &.round {
+    border-radius: 1000px;
+
+    .ui-progress-line-inner,
+    .ui-progress-bg {
+      border-radius: 1000px;
+    }
+  }
+}
+
+.ui-progress {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-size: 12px;
+  @include progress-size(8px, 0 10px, $base-fontSize, $base-radius);
+
+  /* Progress themes */
+  &.theme-default {
+    @include progress-theme($base-theme-default, $base-btn-default-bg, $base-btn-default-border);
+  }
+  &.theme-info {
+    @include progress-theme($base-theme-info, $base-btn-info-bg, $base-btn-info-border);
+  }
+  &.theme-success {
+    @include progress-theme($base-theme-success, $base-btn-success-bg, $base-btn-success-border);
+  }
+  &.theme-warning {
+    @include progress-theme($base-theme-warning, $base-btn-warning-bg, $base-btn-warning-border);
+  }
+  &.theme-error {
+    @include progress-theme($base-theme-error, $base-btn-error-bg, $base-btn-error-border);
+  }
+
+  /* Progress sizes */
+  &.size-xl {
+    @include progress-size(20px, 0 14px, $base-fontSize-xl, $base-radius-xl);
+  }
+  &.size-lg {
+    @include progress-size(14px, 0 12px, $base-fontSize-lg, $base-radius-lg);
+  }
+  &.size-sm {
+    @include progress-size(4px, 0 8px, $base-fontSize-sm, $base-radius-sm);
+  }
+  &.size-xs {
+    @include progress-size(2px, 0 4px, $base-fontSize-xs, $base-radius-xs);
+  }
+}
+
+.ui-progress-line-outer {
+  padding-right: 45px;
+  display: inline-block;
+  width: 100%;
+  margin-right: -45px;
+}
+
+.ui-progress-line-inner {
+  display: inline-block;
+  width: 100%;
+  background-color: #f3f3f3;
+  vertical-align: middle;
+}
+
+.ui-progress-bg {
+  position: relative;
+  transition: all .5s ease 0s;
+}
+
+.ui-progress-line-text {
+  display: inline-block;
+  width: 35px;
+  text-align: left;
+  margin-left: 10px;
+  vertical-align: middle;
+}

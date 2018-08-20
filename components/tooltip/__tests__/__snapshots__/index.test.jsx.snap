@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip renders normal Tooltip correctly 1`] = `
+<div
+  class="ui-popover ui-tooltip"
+>
+  <div
+    class="ui-popover-content ui-popover-content-radius"
+  >
+    这是一个left定位的Tooltip
+    <span
+      class="ui-popover-arrow"
+    />
+  </div>
+  <div>
+    <button
+      class="ui-button theme-default"
+      type="button"
+    >
+      left
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag renders Tag correctly with more props 1`] = `
+<div>
+  <div
+    class="ui-tag radius theme-default"
+  >
+    default
+  </div>
+  <div
+    class="ui-tag radius theme-info size-xl"
+  >
+    info
+  </div>
+  <div
+    class="ui-tag radius theme-success size-lg"
+  >
+    success
+  </div>
+  <div
+    class="ui-tag radius theme-warning size-sm"
+  >
+    warning
+  </div>
+  <div
+    class="ui-tag radius theme-error size-xs"
+  >
+    error
+  </div>
+</div>
+`;
+
+exports[`Tag renders disabled Tag correctly 1`] = `
+<div>
+  <div
+    class="ui-tag disabled theme-default"
+  >
+    default
+  </div>
+  <div
+    class="ui-tag disabled theme-info"
+  >
+    info
+  </div>
+  <div
+    class="ui-tag disabled theme-success"
+  >
+    success
+  </div>
+  <div
+    class="ui-tag disabled theme-warning"
+  >
+    warning
+  </div>
+  <div
+    class="ui-tag disabled theme-error"
+  >
+    error
+  </div>
+</div>
+`;
+
+exports[`Tag renders normal Tag correctly 1`] = `
+<div>
+  <div
+    class="ui-tag theme-default"
+  >
+    default
+  </div>
+  <div
+    class="ui-tag theme-info"
+  >
+    info
+  </div>
+  <div
+    class="ui-tag theme-success"
+  >
+    success
+  </div>
+  <div
+    class="ui-tag theme-warning"
+  >
+    warning
+  </div>
+  <div
+    class="ui-tag theme-error"
+  >
+    error
+  </div>
+</div>
+`;

@@ -30,8 +30,9 @@ config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
 
 config.plugins.push(new OptimizeCssAssetsPlugin({
   assetNameRegExp: /\.css$/g,
-  cssProcessor: require('cssnano'),
+  cssProcessor: require('cssnano')({ zindex: false }),
   cssProcessorOptions: {
+    safe: true,
     discardComments: {
       removeAll: true,
     },

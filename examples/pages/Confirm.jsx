@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/Confirm/style';
-import '../../components/Button/style';
+import '../../components/confirm/style';
+import '../../components/button/style';
 
 export default class Confirm extends Markdown {
   // eslint-disable-next-line

@@ -170,7 +170,9 @@
     return (
       <div>
         <Layout style={layoutStyle}>
-          <Layout.Sider onCollapse={collapsed => console.log(collapsed)} collapsible style={siderStyle}>Sider</Layout.Sider>
+          <Layout.Sider onCollapse={collapsed => console.log(collapsed)} collapsible style={siderStyle}>
+            Sider
+          </Layout.Sider>
           <Layout>
             <Layout.Header>Header</Layout.Header>
             <Layout.Content style={contentStyle}>Content</Layout.Content>

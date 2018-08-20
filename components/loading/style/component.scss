@@ -1,0 +1,54 @@
+.ui-loading {
+  position: relative;
+  z-index: $base-zindex-loading;
+
+  .ui-loading-spins {
+    position: absolute;
+    top: 50%;
+    height: 20px;
+    line-height: 20px;
+    margin-top: -10px;
+    text-align: center;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    user-select: none;
+    z-index: $base-zindex-loading + 1;
+
+    .ui-loading-spin {
+      animation: loadingSpinPulse 1.2s infinite cubic-bezier(.78, .14, .15, .86);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      background-color: #2db7f5;
+
+      &.ui-loading-spin-second {
+        animation-delay: 200ms;
+      }
+
+      &.ui-loading-spin-third {
+        animation-delay: 400ms;
+      }
+    }
+
+    .ui-loading-spin + .ui-loading-spin {
+      margin-left: 8px;
+    }
+  }
+
+  .ui-loading-inner {
+    transition: all .3s cubic-bezier(.78, .14, .15, .86);
+    opacity: .7;
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    filter: progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false);
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+@keyframes loadingSpinPulse {
+  0%, 80%, 100% { opacity: 0 }
+  40% { opacity: 1 }
+}

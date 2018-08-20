@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/DatePicker/style';
+import '../../components/date-picker/style';
 
 export default class DatePicker extends Markdown {
   // eslint-disable-next-line

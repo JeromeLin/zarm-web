@@ -59,7 +59,7 @@ const domUtil = {
   },
 
   // 获取元素css的某一个计算后属性值
-  getStyleComputedProperty: (e, property) => {
+  getStyleComputedProperty: (e, property: string): string => {
     const css = window.getComputedStyle(e, null);
     return css[property];
   },
