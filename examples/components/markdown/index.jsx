@@ -25,11 +25,20 @@ export default class Markdown extends React.Component {
     this.renderDOM();
   }
 
+  componentWillUnmount() {
+    this.nodeList.forEach((node) => {
+      ReactDOM.unmountComponentAtNode(node);
+    });
+  }
+
+  nodeList = [];
+
   renderDOM() {
     // eslint-disable-next-line
     for (const [id, component] of this.components) {
       const div = document.getElementById(id);
 
+      this.nodeList.push(div);
       if (div instanceof HTMLElement) {
         ReactDOM.render(component, div);
       }
@@ -38,7 +47,7 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const document = this.document(localStorage.getItem('ELEMENT_LANGUAGE') || 'zh-CN');
+    const document = this.document();
 
     if (typeof document === 'string') {
       this.components.clear();

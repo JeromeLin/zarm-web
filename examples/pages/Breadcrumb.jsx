@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Breadcrumb/style';
+import '../../components/breadcrumb/style';
 
 export default class Breadcrumb extends Markdown {
   // eslint-disable-next-line

@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders Buttons of different size correctly 1`] = `
+<div>
+  <button
+    class="ui-button theme-info size-xl"
+    type="button"
+  >
+    xl尺寸
+  </button>
+  <button
+    class="ui-button theme-info size-lg"
+    type="button"
+  >
+    lg尺寸
+  </button>
+  <button
+    class="ui-button theme-info"
+    type="button"
+  >
+    默认尺寸
+  </button>
+  <button
+    class="ui-button theme-info size-sm"
+    type="button"
+  >
+    sm尺寸
+  </button>
+  <button
+    class="ui-button theme-info size-xs"
+    type="button"
+  >
+    xs尺寸
+  </button>
+</div>
+`;
+
+exports[`Button renders Buttons of different theme correctly 1`] = `
+<div>
+  <button
+    class="ui-button theme-default"
+    type="button"
+  >
+    default
+  </button>
+  <button
+    class="ui-button theme-info"
+    type="button"
+  >
+    info
+  </button>
+  <button
+    class="ui-button theme-success"
+    type="button"
+  >
+    success
+  </button>
+  <button
+    class="ui-button theme-warning"
+    type="button"
+  >
+    warning
+  </button>
+  <button
+    class="ui-button theme-error"
+    type="button"
+  >
+    error
+  </button>
+</div>
+`;
+
+exports[`Button renders Buttons with radius or round props correctly 1`] = `
+<div>
+  <div>
+    <button
+      class="ui-button radius theme-default"
+      type="button"
+    >
+      default
+    </button>
+    <button
+      class="ui-button radius theme-info"
+      type="button"
+    >
+      info
+    </button>
+    <button
+      class="ui-button radius theme-success"
+      type="button"
+    >
+      success
+    </button>
+    <button
+      class="ui-button radius theme-warning"
+      type="button"
+    >
+      warning
+    </button>
+    <button
+      class="ui-button radius theme-error"
+      type="button"
+    >
+      error
+    </button>
+  </div>
+  <div>
+    <button
+      class="ui-button round theme-default"
+      type="button"
+    >
+      default
+    </button>
+    <button
+      class="ui-button round theme-info"
+      type="button"
+    >
+      info
+    </button>
+    <button
+      class="ui-button round theme-success"
+      type="button"
+    >
+      success
+    </button>
+    <button
+      class="ui-button round theme-warning"
+      type="button"
+    >
+      warning
+    </button>
+    <button
+      class="ui-button round theme-error"
+      type="button"
+    >
+      error
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Button renders anchor Button correctly 1`] = `
+<a
+  class="ui-button radius theme-info"
+  href="https://www.baidu.com"
+  target="_blank"
+>
+  百度一下
+</a>
+`;
+
+exports[`Button renders disaled Button correctly 1`] = `
+<div>
+  <button
+    class="ui-button disabled theme-default"
+    disabled=""
+    type="button"
+  >
+    default
+  </button>
+</div>
+`;
+
+exports[`Button renders loading Button correctly 1`] = `
+<div>
+  <button
+    class="ui-button theme-info"
+    type="button"
+  >
+    <span>
+      <i
+        class="ui-icon ui-icon-loading theme-default rotate360"
+      />
+       加载中
+    </span>
+  </button>
+</div>
+`;

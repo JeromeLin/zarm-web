@@ -1,0 +1,32 @@
+.icon-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  border-radius: 4px;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 16.66%;
+    text-align: center;
+    height: 120px;
+    color: #666;
+    font-size: 13px;
+    transition: color .15s linear;
+
+    i {
+      display: block;
+      font-size: 32px;
+      //margin-bottom: 15px;
+      color: #606266;
+    }
+
+    .ui-icon-name {
+      width: 100%;
+    }
+  }
+}

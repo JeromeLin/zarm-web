@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders Pagination with customized props correctly 1`] = `
+<div>
+  <div
+    class="ui-pagination bordered radius"
+  >
+    <div
+      class="ui-pagination-pagers"
+    >
+      <ul>
+        <div
+          class="ui-pagination-addon-before"
+        >
+          addonBefore
+        </div>
+        <li
+          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          title="上一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-left theme-default"
+          />
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-active"
+          title="1"
+        >
+          1
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="2"
+        >
+          2
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="3"
+        >
+          3
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="4"
+        >
+          4
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="5"
+        >
+          5
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-jump-next"
+          title="向后 5 页"
+        />
+        <li
+          class="ui-pagination-item"
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-next"
+          title="下一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-right theme-default"
+          />
+        </li>
+        <div
+          class="ui-pagination-addon-after"
+        >
+          addonAfter
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pagination renders Pagination with jumper correctly 1`] = `
+<div>
+  <div
+    class="ui-pagination"
+  >
+    <div
+      class="ui-pagination-pagers"
+    >
+      <ul>
+        <li
+          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          title="上一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-left theme-default"
+          />
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-active"
+          title="1"
+        >
+          1
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="2"
+        >
+          2
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="3"
+        >
+          3
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="4"
+        >
+          4
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="5"
+        >
+          5
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-jump-next"
+          title="向后 5 页"
+        />
+        <li
+          class="ui-pagination-item"
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-next"
+          title="下一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-right theme-default"
+          />
+        </li>
+      </ul>
+      <div
+        class="ui-pagination-jumper"
+      >
+        跳至
+        <span>
+          <input
+            class="ui-input size-sm"
+            style="width:50px;margin-left:5px;margin-right:5px"
+            type="text"
+            value=""
+          />
+        </span>
+        页
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pagination renders Pagination with total info correctly 1`] = `
+<div>
+  <div
+    class="ui-pagination"
+  >
+    <div
+      class="ui-pagination-total"
+    >
+      共有 100 条记录 第 1 / 10 页
+    </div>
+    <div
+      class="ui-pagination-pagers"
+    >
+      <ul>
+        <li
+          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          title="上一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-left theme-default"
+          />
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-active"
+          title="1"
+        >
+          1
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="2"
+        >
+          2
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="3"
+        >
+          3
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="4"
+        >
+          4
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="5"
+        >
+          5
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-jump-next"
+          title="向后 5 页"
+        />
+        <li
+          class="ui-pagination-item"
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-next"
+          title="下一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-right theme-default"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pagination renders normal Pagination correctly 1`] = `
+<div>
+  <div
+    class="ui-pagination"
+  >
+    <div
+      class="ui-pagination-pagers"
+    >
+      <ul>
+        <li
+          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          title="上一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-left theme-default"
+          />
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-active"
+          title="1"
+        >
+          1
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="2"
+        >
+          2
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="3"
+        >
+          3
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="4"
+        >
+          4
+        </li>
+        <li
+          class="ui-pagination-item"
+          title="5"
+        >
+          5
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-jump-next"
+          title="向后 5 页"
+        />
+        <li
+          class="ui-pagination-item"
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          class="ui-pagination-item ui-pagination-item-next"
+          title="下一页"
+        >
+          <i
+            class="ui-icon ui-icon-arrow-right theme-default"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

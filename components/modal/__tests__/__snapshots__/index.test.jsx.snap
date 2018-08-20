@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders basic Modal correctly 1`] = `
+<div
+  class="ui-modal"
+  style="-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms;position:fixed;display:none"
+>
+  <div
+    class="ui-modal-wrapper"
+  >
+    <div
+      class="ui-modal-dialog zoom-leave"
+      style="width:600px;min-width:270px;-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms"
+    >
+      <div
+        class="ui-modal-header"
+      >
+        <div
+          class="ui-modal-title"
+        >
+          标题
+        </div>
+        <div
+          class="ui-modal-close"
+        >
+          <i
+            class="ui-icon ui-icon-wrong theme-default"
+          />
+        </div>
+      </div>
+      <div
+        class="ui-modal-body"
+        style="height:auto"
+      >
+        我是一个模态框
+      </div>
+      <div
+        class="ui-modal-footer"
+      >
+        页脚
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders closable Modal correctly 1`] = `
+<div
+  class="ui-modal"
+  style="-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms;position:fixed;display:none"
+>
+  <div
+    class="ui-modal-wrapper"
+  >
+    <div
+      class="ui-modal-dialog zoom-leave"
+      style="width:600px;min-width:270px;-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms"
+    >
+      <div
+        class="ui-modal-header"
+      >
+        <div
+          class="ui-modal-title"
+        >
+          标题
+        </div>
+        <div
+          class="ui-modal-close"
+        >
+          <i
+            class="ui-icon ui-icon-wrong theme-default"
+          />
+        </div>
+      </div>
+      <div
+        class="ui-modal-body"
+        style="height:auto"
+      >
+        我是一个模态框
+      </div>
+      <div
+        class="ui-modal-footer"
+      >
+        页脚
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders customized Modal correctly 1`] = `
+<div
+  class="ui-modal radius fade-enter"
+  style="-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms;position:fixed"
+>
+  <div
+    class="ui-modal-wrapper"
+  >
+    <div
+      class="ui-modal-dialog fade-enter"
+      style="width:400px;min-width:270px;-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms"
+    >
+      <div
+        class="ui-modal-header"
+      >
+        <div
+          class="ui-modal-title"
+        >
+          标题
+        </div>
+        <div
+          class="ui-modal-close"
+        >
+          <i
+            class="ui-icon ui-icon-wrong theme-default"
+          />
+        </div>
+      </div>
+      <div
+        class="ui-modal-body"
+        style="height:auto"
+      >
+        我是一个模态框
+      </div>
+      <div
+        class="ui-modal-footer"
+      >
+        页脚
+      </div>
+    </div>
+  </div>
+</div>
+`;

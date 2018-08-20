@@ -48,8 +48,9 @@ if (env === 'production') {
   config.plugins.push(new ExtractTextPlugin(cssConfig));
   config.plugins.push(new OptimizeCssAssetsPlugin({
     assetNameRegExp: /\.css$/g,
-    cssProcessor: require('cssnano'),
+    cssProcessor: require('cssnano')({ zindex: false }),
     cssProcessorOptions: {
+      safe: true,
       discardComments: {
         removeAll: true,
       },

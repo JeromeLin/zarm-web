@@ -1,8 +1,8 @@
 import Markdown from '../components/markdown';
-import '../../components/Dropdown/style';
-import '../../components/Button/style';
-import '../../components/Menu/style';
-import '../../components/Checkbox/style';
+import '../../components/dropdown/style';
+import '../../components/button/style';
+import '../../components/menu/style';
+import '../../components/checkbox/style';
 
 export default class Dropdown extends Markdown {
   // eslint-disable-next-line

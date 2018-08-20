@@ -13,6 +13,22 @@ Modal组件的基础用法。
     this.state = {
       modalVisible: false
     };
+    this.columns = [
+      {
+        title: '姓名',
+        dataIndex: 'name'
+      },
+      {
+        title: '地址',
+        dataIndex: 'address'
+      },
+    ]
+    this.dataSource = [
+      {
+        name: '明',
+        address: '东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村东湖村'
+      }
+    ]
   }
   toggleModal() {
     this.setState({
@@ -26,8 +42,12 @@ Modal组件的基础用法。
         <Button theme="info" onClick={() => this.toggleModal()}>展示模态框</Button>
         <Modal visible={modalVisible}>
           <Modal.Header title="标题" onClose={() => this.toggleModal()} />
-          <Modal.Body>
-            我是一个模态框
+          <Modal.Body className="test">
+            <Table
+              bordered
+              columns={this.columns}
+              dataSource={this.dataSource}
+            />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={() => this.toggleModal()}>取消</Button>

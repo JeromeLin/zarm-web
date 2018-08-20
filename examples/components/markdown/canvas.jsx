@@ -24,6 +24,12 @@ export default class Canvas extends React.Component {
     this.renderSource(this.source[2]);
   }
 
+  componentWillUnmount() {
+    if (this.containerElem) {
+      ReactDOM.unmountComponentAtNode(this.containerElem);
+    }
+  }
+
   blockControl() {
     this.setState({
       showBlock: !this.state.showBlock,
@@ -71,7 +77,7 @@ export default class Canvas extends React.Component {
   render() {
     return (
       <div className={`demo-block demo-box demo-${this.props.name}`}>
-        <div className="source" id={this.playerId} />
+        <div className="source" id={this.playerId} ref={(elem) => { this.containerElem = elem; }} />
         {
           this.state.showBlock && (
             <div className="meta">
