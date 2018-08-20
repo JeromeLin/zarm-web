@@ -1,11 +1,7 @@
-assets
-coverage
-dist
-es
-lib
-node_modules
-_book
 .idea
+<<<<<<< HEAD
+coverage
+=======
 .DS_Store
 .temp
 .history
@@ -22,3 +18,4 @@ components/**/*.js
 components/*.js
 xcuserdata
 package-lock.json
+>>>>>>> dev
