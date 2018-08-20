@@ -2,6 +2,7 @@ import React from 'react';
 import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Button from '../index';
+import Icon from '../../icon'
 
 describe('Button', () => {
   it('renders Buttons of different theme correctly', () => {
@@ -68,6 +69,20 @@ describe('Button', () => {
       </div>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders anchor Button correctly', () => {
+    const wrapper = render(
+      <Button radius href="https://www.baidu.com" theme="info" target="_blank">百度一下</Button>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders anchor Button with tag a correctly', () => {
+    const wrapper = shallow(
+      <Button href="https://www.baidu.com">百度一下</Button>
+    );
+    expect(wrapper.exists('a')).toEqual(true)
   });
 
   it('triggers onClick callback correctly on nomarl Button', () => {

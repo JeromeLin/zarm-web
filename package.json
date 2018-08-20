@@ -120,7 +120,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
-    "react-test-renderer": "^15.6.1",
+    "react-test-renderer": "^16.4.2",
     "react-transition-group": "^2.2.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.2",
