@@ -139,6 +139,16 @@ exports[`Button renders Buttons with radius or round props correctly 1`] = `
 </div>
 `;
 
+exports[`Button renders anchor Button correctly 1`] = `
+<a
+  class="ui-button radius theme-info"
+  href="https://www.baidu.com"
+  target="_blank"
+>
+  百度一下
+</a>
+`;
+
 exports[`Button renders disaled Button correctly 1`] = `
 <div>
   <button

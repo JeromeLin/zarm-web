@@ -125,6 +125,19 @@
 ```
 :::
 
+### 链接按钮
+
+使用a标签代替button, 可设置href, target属性
+
+:::demo
+
+```js
+  render() {
+    return <Button radius href="https://www.baidu.com/" theme="info" target="_blank">百度一下</Button>
+  }
+```
+:::
+
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |

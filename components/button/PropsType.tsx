@@ -26,6 +26,8 @@ interface BasicPropsType {
   className?: string;
   style?: CSSProperties;
   onClick: (e?: MouseEvent) => void;
+  href?: string | undefined;
+  target?: string | undefined;
 }
 
 type PropsType = ButtonHTMLAttributes<{}> & BasicPropsType;
