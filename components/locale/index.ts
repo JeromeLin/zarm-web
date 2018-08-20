@@ -1,9 +1,9 @@
 /* eslint-disable */
 import format from './format';
-import defaultLang from './lang/zh-CN';
-// import defaultLang from './lang/en';
+import zh from './lang/zh-CN';
+import en from './lang/en';
 
-let _lang = defaultLang;
+let _lang = zh;
 
 function use(lang) {
   _lang = lang;
@@ -33,4 +33,6 @@ function t(path, options?) {
 export default {
   use,
   t,
+  en,
+  zh,
 };

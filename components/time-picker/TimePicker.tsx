@@ -17,6 +17,10 @@ export interface TimePickerProps {
 }
 
 class TimePicker extends Component<TimePickerProps, any> {
+  static defaultProps = {
+    onChange: () => {},
+  };
+
   private unmounted: boolean;
   private dropdownEl: React.ReactNode;
 
@@ -110,7 +114,7 @@ class TimePicker extends Component<TimePickerProps, any> {
           onChange={(value) => this.onDateChange(value)}
         />
         <div className="ui-select-bottom">
-          <a href="javascript:;" onClick={() => this.onDateChange('')}>
+          <a className="clear-btn" href="javascript:;" onClick={() => this.onDateChange('')}>
             {i18n.t('za.timepicker.clear')}
           </a>
         </div>

@@ -39,7 +39,6 @@ module.exports = {
                   libraryName: 'dragon-ui',
                   libraryDirectory: 'components',
                   style: true,
-                  camel2DashComponentName: false,
                 }],
               ],
             },

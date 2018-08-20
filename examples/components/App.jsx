@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
-// import ScrollToTop from 'react-scroll-up';
+import { locale as i18n } from 'dragon-ui';
 import AsyncComponent from './AsyncComponent';
 import '../../components/style/index.scss';
 import '../styles/index';
 import '../styles/components/App';
-import i18n from '../../components/locale';
-import langZH from '../../components/locale/lang/zh-CN';
-import langEN from '../../components/locale/lang/en';
 
 import pages from '../pages/Index';
 
@@ -18,9 +15,9 @@ class App extends Component {
     this.components = {};
 
     if (localStorage.lang === 'en') {
-      i18n.use(langEN);
+      i18n.use(i18n.en);
     } else {
-      i18n.use(langZH);
+      i18n.use(i18n.zh);
     }
   }
 

@@ -143,5 +143,8 @@
   &.theme-error {
     @include button-theme($base-btn-error-color, $base-btn-error-bg, $base-btn-error-border);
   }
+}
 
+a.ui-button {
+  text-decoration: none;
 }

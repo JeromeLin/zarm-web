@@ -22,7 +22,7 @@ class Button extends Component<ButtonProps, any> {
     onClick: () => { },
   };
 
-  render() {
+  render () {
     const { props } = this;
     const {
       prefixCls,
@@ -49,6 +49,8 @@ class Button extends Component<ButtonProps, any> {
       onClick,
       children,
       style,
+      href,
+      target,
       ...others
     } = props;
 
@@ -78,22 +80,35 @@ class Button extends Component<ButtonProps, any> {
     let textContent =
       loadingStatus ? (
         <span>
-          <Icon type="loading" className="rotate360" /> {children}
+          <Icon type="loading" className="rotate360"/> {children}
         </span>
       ) : (
-          children
-        );
+        children
+      );
+
     return (
-      <button
-        type={type}
-        className={classes}
-        style={style}
-        disabled={disabledStatus}
-        onClick={e => (!disabledStatus && !loadingStatus) && onClick(e)}
-        {...others}
-      >
-        {textContent}
-      </button>
+      href
+        ? <a
+          className={classes}
+          href={href}
+          target={target}
+          {...others}
+          onClick={e => (!disabledStatus && !loadingStatus) && onClick(e)}
+        >
+          {textContent}
+        </a>
+        : (
+          <button
+            type={type}
+            className={classes}
+            style={style}
+            disabled={disabledStatus}
+            onClick={e => (!disabledStatus && !loadingStatus) && onClick(e)}
+            {...others}
+          >
+            {textContent}
+          </button>
+        )
     );
   }
 }
