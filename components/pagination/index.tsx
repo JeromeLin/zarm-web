@@ -100,7 +100,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={1}
-        title={i18n.t('el.pagination.first_page')}
+        title={i18n.t('za.pagination.first_page')}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(1)}
       >
@@ -114,7 +114,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={pageCount}
-        title={i18n.t('el.pagination.last_page')}
+        title={i18n.t('za.pagination.last_page')}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(pageCount)}
       >
@@ -128,7 +128,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="prev"
-        title={i18n.t('el.pagination.prev_page')}
+        title={i18n.t('za.pagination.prev_page')}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -147,7 +147,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="next"
-        title={i18n.t('el.pagination.next_page')}
+        title={i18n.t('za.pagination.next_page')}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -166,7 +166,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-prev"
-        title={i18n.t('el.pagination.prev_5_page')}
+        title={i18n.t('za.pagination.prev_5_page')}
         className={`${prefixCls}-item ${prefixCls}-item-jump-prev`}
         onClick={() => this._onPagerClick(current - 5)}
       />
@@ -178,7 +178,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-next"
-        title={i18n.t('el.pagination.next_5_page')}
+        title={i18n.t('za.pagination.next_5_page')}
         className={`${prefixCls}-item ${prefixCls}-item-jump-next`}
         onClick={() => this._onPagerClick(current + 5)}
       />
@@ -241,10 +241,10 @@ class Pagination extends Component<PropsType, any> {
     const { value } = this.state;
     return (
       <div className={`${prefixCls}-total`}>
-        {i18n.t('el.pagination.total', {
+        {i18n.t('za.pagination.total', {
           total,
         })}
-        {i18n.t('el.pagination.current', {
+        {i18n.t('za.pagination.current', {
           current: `${value} / ${Math.ceil(total / pageSize)}`,
         })}
       </div>
@@ -278,7 +278,7 @@ class Pagination extends Component<PropsType, any> {
             [10, 20, 30, 40, 50].map((value) => {
               return (
                 <Select.Option value={value} key={value}>
-                  {i18n.t('el.pagination.pagesize', {
+                  {i18n.t('za.pagination.pagesize', {
                     value,
                   })}
                 </Select.Option>
@@ -294,7 +294,7 @@ class Pagination extends Component<PropsType, any> {
     const { radius, total, pageSize, prefixCls } = this.props;
     return (
       <div className={`${prefixCls}-jumper`}>
-        {i18n.t('el.pagination.goto')}
+        {i18n.t('za.pagination.goto')}
         <Input
           isRadius={radius}
           style={{ width: 50, marginLeft: 5, marginRight: 5 }}
@@ -316,7 +316,7 @@ class Pagination extends Component<PropsType, any> {
             }
           }}
         />
-        {i18n.t('el.pagination.pageClassifier')}
+        {i18n.t('za.pagination.pageClassifier')}
       </div>
     );
   }

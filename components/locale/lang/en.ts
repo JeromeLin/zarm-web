@@ -1,6 +1,6 @@
 export default {
   lang: 'en',
-  el: {
+  za: {
     alert: {
       close: 'Close',
     },

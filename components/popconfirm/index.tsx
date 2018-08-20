@@ -15,8 +15,8 @@ class Popconfirm extends Component<PropsType, any> {
     direction: 'bottomLeft',
     onCancel: noop,
     onOk: noop,
-    okText: i18n.t('el.confirm.confirm'),
-    cancelText: i18n.t('el.confirm.cancel'),
+    okText: i18n.t('za.confirm.confirm'),
+    cancelText: i18n.t('za.confirm.cancel'),
     content: null,
   };
 

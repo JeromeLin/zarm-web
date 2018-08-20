@@ -11,8 +11,8 @@ class Confirm extends Component<PropsType, any> {
     prefixCls: 'ui-confirm',
     message: '',
     width: 270,
-    okText: i18n.t('el.confirm.confirm'),
-    cancelText: i18n.t('el.confirm.cancel'),
+    okText: i18n.t('za.confirm.confirm'),
+    cancelText: i18n.t('za.confirm.cancel'),
     onOk: () => {},
     onCancel: () => {},
   };

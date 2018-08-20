@@ -111,7 +111,7 @@ class TimePicker extends Component<TimePickerProps, any> {
         />
         <div className="ui-select-bottom">
           <a href="javascript:;" onClick={() => this.onDateChange('')}>
-            {i18n.t('el.timepicker.clear')}
+            {i18n.t('za.timepicker.clear')}
           </a>
         </div>
       </Fragment>

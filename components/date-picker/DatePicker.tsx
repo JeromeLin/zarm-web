@@ -14,7 +14,7 @@ class DatePicker extends Component<PropsType, any> {
     format: 'yyyy-MM-dd',
     min: '',
     max: '',
-    placeholder: i18n.t('el.datepicker.placeholder'),
+    placeholder: i18n.t('za.datepicker.placeholder'),
     onChange: () => { },
   };
 

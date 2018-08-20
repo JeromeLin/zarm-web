@@ -125,7 +125,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick(new Date())}
               className={`${prefixCls}-footer-btn`}
             >
-              {i18n.t('el.calendar.today')}
+              {i18n.t('za.calendar.today')}
             </a>
 
             <a
@@ -133,7 +133,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick('')}
               className={`${prefixCls}-footer-btn`}
             >
-              {i18n.t('el.calendar.clear')}
+              {i18n.t('za.calendar.clear')}
             </a>
           </div>
         ) : null}

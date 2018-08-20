@@ -6,7 +6,7 @@ import i18n from '../locale';
 
 const CALENDAR_ROW_COUNT = 6;
 const CALENDAR_COL_COUNT = 7;
-const CALENDAR_WEEK_DAYS = i18n.t('el.calendar.week_days');
+const CALENDAR_WEEK_DAYS = i18n.t('za.calendar.week_days');
 
 class CalendarDateTable extends Component<DateTableProps, any> {
   static defaultProps = {
@@ -52,7 +52,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
               // eslint-disable-next-line
               key={`weekdays-${index}`}
               className={`${prefixCls}-column`}
-              title={i18n.t('el.calendar.week_days_hints')[index]}
+              title={i18n.t('za.calendar.week_days_hints')[index]}
             >
               {week}
             </th>

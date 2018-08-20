@@ -14,8 +14,8 @@ class Select extends Component<PropsType, any> {
     isRadius: false,
     isDisabled: false,
     isSearch: false,
-    placeholder: i18n.t('el.select.placeholder'),
-    searchPlaceholder: i18n.t('el.select.searchPlaceholder'),
+    placeholder: i18n.t('za.select.placeholder'),
+    searchPlaceholder: i18n.t('za.select.searchPlaceholder'),
     onSearchChange: () => { },
     onChange: () => { },
   };
@@ -182,7 +182,7 @@ class Select extends Component<PropsType, any> {
       children.length > 0 ? (
         <Menu size={size} style={menuStyle}>{children}</Menu>
       ) : (
-          <span className={`${prefixCls}-notfound`}>{i18n.t('el.select.noMatch')}</span>
+          <span className={`${prefixCls}-notfound`}>{i18n.t('za.select.noMatch')}</span>
         );
 
     const inputPlaceholder = this.state.dropdown // eslint-disable-line

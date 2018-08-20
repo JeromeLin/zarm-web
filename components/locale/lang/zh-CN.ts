@@ -1,6 +1,6 @@
 export default {
   lang: 'zh-cn',
-  el: {
+  za: {
     alert: {
       close: '关闭',
     },

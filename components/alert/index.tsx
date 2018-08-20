@@ -14,7 +14,7 @@ class Alert extends Component<AlertProps, any> {
     className: '',
     hideIcon: false,
     closable: true,
-    closeText: i18n.t('el.alert.close'),
+    closeText: i18n.t('za.alert.close'),
     onClose: () => {},
   };
 
