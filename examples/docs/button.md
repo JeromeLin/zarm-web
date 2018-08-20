@@ -148,6 +148,8 @@
 | circle     | 是否圆形   | boolean    | — | false   |
 | loading     | 是否加载中状态   | boolean    | — | false   |
 | disabled  | 是否禁用    | boolean   | true, false   | false   |
+| href      | href属性   | string | - | - |
+| blank     | blank属性, href存在时生效 | string | - | - |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
