@@ -99,10 +99,10 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
     return (
       <span
         className={cls}
-        title={i18n.t(`el.calendar.month${day.month}`)}
+        title={i18n.t(`za.calendar.month${day.month}`)}
         onClick={() => onMonthClick(fullDay)}
       >
-        {i18n.t(`el.calendar.month${day.month}`)}
+        {i18n.t(`za.calendar.month${day.month}`)}
       </span>
     );
   }

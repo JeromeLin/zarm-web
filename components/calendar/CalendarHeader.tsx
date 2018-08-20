@@ -74,7 +74,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
                   className={`${prefixCls}-header-btn`}
                   onClick={() => this.onChangePanel('month')}
                 >
-                  {i18n.t(`el.calendar.month${current.month}`)}
+                  {i18n.t(`za.calendar.month${current.month}`)}
                 </a>
                 <a
                   href="javascript:;"
