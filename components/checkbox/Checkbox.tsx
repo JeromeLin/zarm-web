@@ -9,6 +9,7 @@ class Checkbox extends Component<PropsType, any> {
     prefixCls: 'ui-checkbox',
     defaultChecked: false,
     isDisabled: false,
+    indeterminate: false,
     onChange: () => {},
   };
 
@@ -45,13 +46,14 @@ class Checkbox extends Component<PropsType, any> {
       className,
       children,
       style,
+      indeterminate,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
-
     const cls = classnames({
       [prefixCls!]: true,
       checked: this.state.checked,
       disabled,
+      indeterminate: this.state.checked && indeterminate,
       [className!]: !!className,
     });
 
