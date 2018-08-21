@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import Form from '../../components/form';
-import DatePicker from '../../components/date-picker';
+import Form from '../../components/form'; // eslint-disable-line
+import DatePicker from '../../components/date-picker'; // eslint-disable-line
 import '../../components/form/style';
 import '../../components/date-picker/style';
 import '../../components/dropdown/style';
