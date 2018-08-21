@@ -34,3 +34,4 @@ export { default as Notification } from './notification';
 export { default as NumberInput } from './number-input';
 export { default as Layout } from './layout';
 export { default as TimePicker } from './time-picker';
+export { default as Tree } from './tree';
