@@ -31,6 +31,18 @@ describe('Checkbox', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders indeterminate Checkbox correctly', () => {
+    const wrapper = render(
+      <Checkbox
+        indeterminate
+        value="0"
+      >
+        选择0
+      </Checkbox>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('renders disabled CheckboxGroup correctly', () => {
     const wrapper = render(
       <Checkbox.Group>

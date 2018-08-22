@@ -36,11 +36,11 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
       class="ui-tree-switcher ui-tree-switcher-open"
     />
     <span
-      class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+      class="ui-tree-checkbox"
     >
       <label>
         <span
-          class="ui-checkbox checked"
+          class="ui-checkbox checked indeterminate"
         >
           <input
             checked=""
@@ -372,11 +372,11 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
             class="ui-tree-switcher ui-tree-switcher-open"
           />
           <span
-            class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+            class="ui-tree-checkbox"
           >
             <label>
               <span
-                class="ui-checkbox checked"
+                class="ui-checkbox checked indeterminate"
               >
                 <input
                   checked=""
@@ -445,11 +445,11 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-switcher ui-tree-switcher-open"
                 />
                 <span
-                  class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+                  class="ui-tree-checkbox"
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked"
+                      class="ui-checkbox checked indeterminate"
                     >
                       <input
                         checked=""
@@ -2882,11 +2882,11 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
       class="ui-tree-switcher ui-tree-switcher-open"
     />
     <span
-      class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+      class="ui-tree-checkbox"
     >
       <label>
         <span
-          class="ui-checkbox checked"
+          class="ui-checkbox checked indeterminate"
         >
           <input
             checked=""
@@ -3218,11 +3218,11 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
             class="ui-tree-switcher ui-tree-switcher-open"
           />
           <span
-            class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+            class="ui-tree-checkbox"
           >
             <label>
               <span
-                class="ui-checkbox checked"
+                class="ui-checkbox checked indeterminate"
               >
                 <input
                   checked=""
@@ -3291,11 +3291,11 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-switcher ui-tree-switcher-open"
                 />
                 <span
-                  class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+                  class="ui-tree-checkbox"
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked"
+                      class="ui-checkbox checked indeterminate"
                     >
                       <input
                         checked=""
@@ -4578,11 +4578,11 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
       class="ui-tree-switcher ui-tree-switcher-open"
     />
     <span
-      class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+      class="ui-tree-checkbox"
     >
       <label>
         <span
-          class="ui-checkbox checked"
+          class="ui-checkbox checked indeterminate"
         >
           <input
             checked=""
@@ -4914,11 +4914,11 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
             class="ui-tree-switcher ui-tree-switcher-open"
           />
           <span
-            class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+            class="ui-tree-checkbox"
           >
             <label>
               <span
-                class="ui-checkbox checked"
+                class="ui-checkbox checked indeterminate"
               >
                 <input
                   checked=""
@@ -4987,11 +4987,11 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-switcher ui-tree-switcher-open"
                 />
                 <span
-                  class="ui-tree-checkbox ui-tree-checkbox-halfChecked"
+                  class="ui-tree-checkbox"
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked"
+                      class="ui-checkbox checked indeterminate"
                     >
                       <input
                         checked=""

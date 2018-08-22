@@ -13,5 +13,6 @@ export default interface PropsType {
   style?: object;
   disabled?: boolean;
   isDisabled?: boolean;
+  indeterminate?: boolean;
   onChange: (e: any) => void;
 }

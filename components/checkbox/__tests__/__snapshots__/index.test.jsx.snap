@@ -155,6 +155,24 @@ exports[`Checkbox renders disabled CheckboxGroup correctly 1`] = `
 </div>
 `;
 
+exports[`Checkbox renders indeterminate Checkbox correctly 1`] = `
+<label>
+  <span
+    class="ui-checkbox"
+  >
+    <input
+      class="ui-checkbox-input"
+      type="checkbox"
+      value="0"
+    />
+    <span
+      class="ui-checkbox-inner"
+    />
+  </span>
+  选择0
+</label>
+`;
+
 exports[`Checkbox renders normal Checkbox correctly 1`] = `
 <label>
   <span
