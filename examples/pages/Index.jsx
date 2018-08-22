@@ -30,6 +30,7 @@ export default {
       Progress: '../pages/Progress',
       Panel: '../pages/panel',
       Pagination: '../pages/pagination',
+      Tree: '../pages/Tree',
     },
     Notice: {
       Alert: '../pages/alert',

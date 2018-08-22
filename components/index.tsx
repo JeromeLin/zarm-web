@@ -35,3 +35,4 @@ export { default as NumberInput } from './number-input';
 export { default as Layout } from './layout';
 export { default as TimePicker } from './time-picker';
 export { default as i18n } from './locale';
+export { default as Tree } from './tree';
