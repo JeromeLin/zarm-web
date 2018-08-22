@@ -51,7 +51,9 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^7.0.0",
+    "rc-animate": "^3.0.0-rc.5",
+    "css-animation": "^1.2.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
