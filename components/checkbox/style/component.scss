@@ -19,7 +19,6 @@
 
   /* 选中状态 */
   &.checked {
-
     .ui-checkbox-inner {
       border-color: $base-theme-info;
       background-color: $base-theme-info;
@@ -27,6 +26,19 @@
       &:after {
         transform: rotate(45deg) scale(1);
         transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  /* 未全部选中状态 */
+  &.indeterminate {
+    .ui-checkbox-inner {
+      border-color: $base-theme-info;
+      background-color: $base-theme-info;
+
+      &:after {
+        transform: rotate(90deg) translate(1px, -1px);
+        width: 0;
       }
     }
   }
