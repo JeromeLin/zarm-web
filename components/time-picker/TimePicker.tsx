@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Dropdown from '../dropdown';
 import Icon from '../icon';
 import TimeSelect from './TimeSelect';
-import i18n from '../locale';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 export interface TimePickerProps {
   value?: any;
@@ -13,6 +13,8 @@ export interface TimePickerProps {
   isRadius?: string | boolean;
   size?: any;
   style?: React.CSSProperties;
+  locale: { clear: string };
+  localeCode: string;
   onChange?: (value: any) => void;
 }
 
@@ -81,7 +83,7 @@ class TimePicker extends Component<TimePickerProps, any> {
   }
 
   render () {
-    const { defaultValue, placeholder, isDisabled, isRadius, size, ...others } = this.props;
+    const { defaultValue, placeholder, isDisabled, isRadius, size, locale, localeCode, ...others } = this.props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in this.props || isDisabled;
     const radius = 'radius' in this.props || isRadius;
@@ -115,7 +117,7 @@ class TimePicker extends Component<TimePickerProps, any> {
         />
         <div className="ui-select-bottom">
           <a className="clear-btn" href="javascript:;" onClick={() => this.onDateChange('')}>
-            {i18n.t('za.timepicker.clear')}
+            {locale.clear}
           </a>
         </div>
       </Fragment>
@@ -147,4 +149,4 @@ class TimePicker extends Component<TimePickerProps, any> {
   }
 }
 
-export default TimePicker;
+export default LocaleReceiver(TimePicker);

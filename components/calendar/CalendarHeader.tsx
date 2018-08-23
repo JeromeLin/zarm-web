@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Icon from '../icon';
 import { HeaderProps } from './PropsType';
-import i18n from '../locale';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 class CalendarHeader extends Component<HeaderProps, any> {
   static defaultProps = {
@@ -33,7 +33,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
       date: dd.getDate(),
     };
     const beforeYear = parseInt(String(current.year / 10), 10) * 10;
-    const { prefixCls } = this.props;
+    const { prefixCls, locale, localeCode } = this.props;
     return (
       <div className={`${prefixCls}-header`}>
         <div
@@ -43,12 +43,12 @@ class CalendarHeader extends Component<HeaderProps, any> {
             href="javascript:;"
             onClick={() => this.onMonthClick(current, 'pre')}
             className={`${prefixCls}-header-pre-btn`}
-            title={i18n.t('za.calendar.last_month')}
+            title={locale.last_month}
           >
             <Icon type="arrow-left" />
           </a>
           {
-            i18n.t('lang') === 'zh-cn'
+           localeCode === 'zh-cn'
             ? (
               <span>
                 <a
@@ -74,7 +74,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
                   className={`${prefixCls}-header-btn`}
                   onClick={() => this.onChangePanel('month')}
                 >
-                  {i18n.t(`za.calendar.month${current.month}`)}
+                  {locale[`month${current.month}`]}
                 </a>
                 <a
                   href="javascript:;"
@@ -90,7 +90,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
             href="javascript:;"
             onClick={() => this.onMonthClick(current, 'next')}
             className={`${prefixCls}-header-next-btn`}
-            title={i18n.t('za.calendar.next_month')}
+            title={locale.next_month}
           >
             <Icon type="arrow-right" />
           </a>
@@ -103,7 +103,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
             href="javascript:;"
             onClick={() => this.onYearClick(current, 'pre')}
             className={`${prefixCls}-header-pre-btn`}
-            title={i18n.t('za.calendar.last_year')}
+            title={locale.last_year}
           >
             <Icon type="arrow-left" />
           </a>
@@ -113,14 +113,14 @@ class CalendarHeader extends Component<HeaderProps, any> {
               className={`${prefixCls}-header-year-btn`}
               onClick={() => this.onChangePanel('date')}
             >
-              {current.year}{i18n.t('za.calendar.year')}
+              {current.year}{locale.year}
             </a>
           </span>
           <a
             href="javascript:;"
             onClick={() => this.onYearClick(current, 'next')}
             className={`${prefixCls}-header-next-btn`}
-            title={i18n.t('za.calendar.next_year')}
+            title={locale.next_year}
           >
             <Icon type="arrow-right" />
           </a>
@@ -133,7 +133,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
             href="javascript:;"
             onClick={() => this.onCenturyClick(current, 'pre')}
             className={`${prefixCls}-header-pre-btn`}
-            title={i18n.t('za.calendar.last_decade')}
+            title={locale.last_decade}
           >
             <Icon type="arrow-left" />
           </a>
@@ -143,14 +143,14 @@ class CalendarHeader extends Component<HeaderProps, any> {
               className={`${prefixCls}-header-year-btn`}
               onClick={() => this.onChangePanel('date')}
             >
-              {beforeYear} - {beforeYear + 9} {i18n.t('za.calendar.year')}
+              {beforeYear} - {beforeYear + 9} {locale.year}
             </a>
           </span>
           <a
             href="javascript:;"
             onClick={() => this.onCenturyClick(current, 'next')}
             className={`${prefixCls}-header-next-btn`}
-            title={i18n.t('za.calendar.next_decade')}
+            title={locale.next_decade}
           >
             <Icon type="arrow-right" />
           </a>
@@ -228,4 +228,4 @@ class CalendarHeader extends Component<HeaderProps, any> {
   }
 }
 
-export default CalendarHeader;
+export default LocaleReceiver(CalendarHeader, 'Calendar');

@@ -6,7 +6,7 @@ import CalendarDateTable from './CalendarDateTable';
 import CalendarMonthTable from './CalendarMonthTable';
 import CalendarYearTable from './CalendarYearTable';
 import PropsType from './PropsType';
-import i18n from '../locale';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 class Calendar extends Component<PropsType, any> {
   static defaultProps = {
@@ -70,7 +70,7 @@ class Calendar extends Component<PropsType, any> {
   render() {
     const { props } = this;
     const {
-      className, hasFooter, min, max, style, prefixCls,
+      className, hasFooter, min, max, style, prefixCls, locale,
     } = props;
     const { current, value, panel } = this.state;
 
@@ -125,7 +125,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick(new Date())}
               className={`${prefixCls}-footer-btn`}
             >
-              {i18n.t('za.calendar.today')}
+              {locale.today}
             </a>
 
             <a
@@ -133,7 +133,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick('')}
               className={`${prefixCls}-footer-btn`}
             >
-              {i18n.t('za.calendar.clear')}
+              {locale.clear}
             </a>
           </div>
         ) : null}
@@ -142,4 +142,4 @@ class Calendar extends Component<PropsType, any> {
   }
 }
 
-export default Calendar;
+export default LocaleReceiver(Calendar);

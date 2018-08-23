@@ -1,6 +1,6 @@
 /* eslint-disable */
 import format from './format';
-import zh from './lang/zh-CN';
+import zh from './lang/zh-cn';
 import en from './lang/en';
 
 let _lang = zh;

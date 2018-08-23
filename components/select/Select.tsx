@@ -6,7 +6,7 @@ import Dropdown from '../dropdown';
 import Menu from '../menu';
 import Icon from '../icon';
 import PropsType from './PropsType';
-import i18n from '../locale';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 class Select extends Component<PropsType, any> {
   static defaultProps = {
@@ -14,8 +14,6 @@ class Select extends Component<PropsType, any> {
     isRadius: false,
     isDisabled: false,
     isSearch: false,
-    placeholder: i18n.t('za.select.placeholder'),
-    searchPlaceholder: i18n.t('za.select.searchPlaceholder'),
     onSearchChange: () => { },
     onChange: () => { },
   };
@@ -126,13 +124,14 @@ class Select extends Component<PropsType, any> {
       style,
       zIndex,
       getPopupContainer,
+      locale,
     } = props;
 
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;
 
-    let valueText = placeholder;
+    let valueText = locale!.placeholder || placeholder;
     let hasValue = false;
 
     const children = React.Children.map(props.children, (option, index) => {
@@ -182,13 +181,13 @@ class Select extends Component<PropsType, any> {
       children.length > 0 ? (
         <Menu size={size} style={menuStyle}>{children}</Menu>
       ) : (
-          <span className={`${prefixCls}-notfound`}>{i18n.t('za.select.noMatch')}</span>
+          <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>
         );
 
     const inputPlaceholder = this.state.dropdown // eslint-disable-line
       ? hasValue
         ? valueText
-        : (search && searchPlaceholder)
+        : (search && (locale!.searchPlaceHolder || searchPlaceholder))
       : valueText;
 
     const textRender = !(search && this.state.searchValue.length > 0) && (
@@ -238,4 +237,4 @@ class Select extends Component<PropsType, any> {
   }
 }
 
-export default Select;
+export default LocaleReceiver(Select);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Popover from '../popover';
 import Button from '../button';
 import PropsType from './PropsType';
-import i18n from '../locale';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 const noop = () => {};
 
@@ -15,8 +15,6 @@ class Popconfirm extends Component<PropsType, any> {
     direction: 'bottomLeft',
     onCancel: noop,
     onOk: noop,
-    okText: i18n.t('za.confirm.confirm'),
-    cancelText: i18n.t('za.confirm.cancel'),
     content: null,
   };
 
@@ -62,6 +60,7 @@ class Popconfirm extends Component<PropsType, any> {
       direction,
       okText,
       cancelText,
+      locale,
     } = this.props;
 
     // eslint-disable-next-line
@@ -70,9 +69,9 @@ class Popconfirm extends Component<PropsType, any> {
         <div>
           {content}
           <div className={`${prefixCls}-actions`}>
-            <Button onClick={() => this.handleCancel()}>{cancelText}</Button>
+            <Button onClick={() => this.handleCancel()}>{cancelText || locale.cancel}</Button>
             <Button theme="info" onClick={() => this.handleConfirm()}>
-              {okText}
+              {okText || locale.confirm}
             </Button>
           </div>
         </div>
@@ -94,4 +93,4 @@ class Popconfirm extends Component<PropsType, any> {
   }
 }
 
-export default Popconfirm;
+export default LocaleReceiver(Popconfirm, 'Confirm');

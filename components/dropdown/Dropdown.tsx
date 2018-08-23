@@ -66,29 +66,31 @@ const defaultProps = {
   zIndex: 9999,
 };
 
+const mountedInstance = new Set();
+
 export default class Dropdown extends React.Component<propsType, StateType> {
   static defaultProps = defaultProps;
   // 隐藏全部的Dropdown
   static hide(): void {
-    Dropdown.mountedInstance.forEach((instance) => {
+    mountedInstance.forEach((instance) => {
       instance.props.onVisibleChange(false);
     });
   }
   // 显示全部的Dropdown 除了disable
   static show(): void {
-    Dropdown.mountedInstance.forEach((instance) => {
+    mountedInstance.forEach((instance) => {
       instance.props.onVisibleChange(true);
     });
   }
 
   // 重新计算Dropdown定位
   static reposition() {
-    Dropdown.mountedInstance.forEach((instance) => {
+    mountedInstance.forEach((instance) => {
       instance.reposition();
     });
   }
   // 用于存储已生成的全部实例的Set
-  private static mountedInstance: Set<Dropdown> = new Set();
+  // private static mountedInstance: Set<Dropdown> = new Set();
   // 根据定位点计算定位信息
   private static calcPosition(
     placement: string,
@@ -251,7 +253,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     events.on(this.scrollParent, 'scroll', this.onParentScroll);
 
     // 存储当前实例，方便静态方法统一处理
-    Dropdown.mountedInstance.add(this);
+    mountedInstance.add(this);
   }
 
   // 点击外部的时候
@@ -332,7 +334,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     events.off(document, 'click', this.onDocumentClick);
     events.off(window, 'click', this.onWindowResize);
     events.off(this.scrollParent, 'scroll', this.onParentScroll);
-    Dropdown.mountedInstance.delete(this);
+    mountedInstance.delete(this);
     setTimeout(() => {
       this.popContainer.removeChild(this.div);
     });

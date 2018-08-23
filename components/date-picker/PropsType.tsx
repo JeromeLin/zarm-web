@@ -15,5 +15,6 @@ export default interface PropsType {
   size?: size;
   className?: string;
   style?: object;
+  locale: { placeholder: string };
   onChange: (value: any) => void;
 }

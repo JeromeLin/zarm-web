@@ -6,7 +6,7 @@ import Dropdown from '../dropdown';
 import Calendar from '../calendar';
 import Icon from '../icon';
 import PropsType from './PropsType';
-import i18n from '../locale';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 class DatePicker extends Component<PropsType, any> {
   static defaultProps = {
@@ -14,7 +14,6 @@ class DatePicker extends Component<PropsType, any> {
     format: 'yyyy-MM-dd',
     min: '',
     max: '',
-    placeholder: i18n.t('za.datepicker.placeholder'),
     onChange: () => { },
   };
 
@@ -113,12 +112,13 @@ class DatePicker extends Component<PropsType, any> {
       min,
       max,
       style,
+      locale,
     } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
-    let valueText = placeholder;
+    let valueText = placeholder || locale.placeholder;
     let hasValue = false;
 
     if (value) {
@@ -178,4 +178,4 @@ class DatePicker extends Component<PropsType, any> {
   }
 }
 
-export default DatePicker;
+export default LocaleReceiver(DatePicker);

@@ -45,5 +45,8 @@ export default interface PropsType {
   onChange: (e: any) => void;
   onSearchChange?: (e: any) => void;
   zIndex?: number;
+  locale?: {
+    [propName: string]: any,
+  };
   getPopupContainer?(): HTMLElement;
 }
