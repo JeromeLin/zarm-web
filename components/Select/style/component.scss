@@ -1,5 +1,7 @@
 @import '../../style/index';
 
+@import './input';
+
 @mixin select-size($height, $padding, $font-size, $border-radius) {
   .ui-select-selection {
     min-height: $height;
@@ -52,9 +54,10 @@
   width: 120px;
 
   .ui-select-selection {
+    display: flex;
+    flex-wrap: wrap;
     outline: none;
     user-select: none;
-    display: block;
     background-color: #fff;
     border: 1px solid #d9d9d9;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
@@ -132,6 +135,7 @@
   }
 
   .select-btn-list {
+    display: inline-block;
     padding: 5px;
 
     .select-btn {
@@ -199,4 +203,11 @@
     padding: 8px;
     color: #ccc;
   }
+}
+
+.ui-cursor {
+  width: 2px;
+  background-color: #333;
+  animation: cursor 1s;
+  animation-iteration-count: infinite;
 }

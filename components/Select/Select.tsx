@@ -1,4 +1,4 @@
-import React, { Component, ReactElement, ReactNode } from 'react';
+import React, { Component, ReactElement, ReactNode, FormEvent } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import Option from './Option';
@@ -31,7 +31,8 @@ class Select extends Component<PropsType, any> {
   }
 
   optionMap: {};
-
+  divInput: HTMLSpanElement;
+  divInputHeight: number = 0;
   constructor(props) {
     super(props);
     this.state = {
@@ -42,10 +43,11 @@ class Select extends Component<PropsType, any> {
       dropdown: false,
       searchValue: '',
     };
-    this.optionMap = this.constructor.getChildrenObject(props.children));
+    this.optionMap = Select.getChildrenObject(props.children);
   }
 
   componentDidMount() {
+    this.divInputHeight = this.divInput.offsetHeight;
     this.bindOuterHandlers();
   }
 
@@ -59,6 +61,14 @@ class Select extends Component<PropsType, any> {
 
   componentWillUnmount() {
     this.unbindOuterHandlers();
+  }
+
+  componentDidUpdate() {
+    let newHeight = this.divInput.offsetHeight;
+    if (newHeight !== this.divInputHeight) {
+      Dropdown.reposition();
+      this.divInputHeight = newHeight;
+    }
   }
 
   getOptionList(children: Array<ReactNode>): Array<ReactNode> {
@@ -142,6 +152,10 @@ class Select extends Component<PropsType, any> {
 
   isChecked(value) {
     return this.props.multiple ? this.state.value.includes(value) : this.state.value === value;
+  }
+
+  stopProp = (e) => {
+    e.stopPropagation();
   }
 
   render() {
@@ -229,16 +243,32 @@ class Select extends Component<PropsType, any> {
 
     const inputRender = search &&
       !disabled && (
-        <span className={textCls}>
-          <input
-            value={this.state.searchValue}
-            // tslint:disable-next-line:jsx-no-multiline-js
-            onChange={(e) => {
-              const searchValue = e.target.value;
-              this.setState({ searchValue }, () => onSearchChange!(searchValue));
-            }}
-          />
-        </span>
+        <div
+          className="div-input"
+          contentEditable
+          onInput={(e: FormEvent<HTMLDivElement>) => {
+            if (this.state.dropdown === false) {
+              this.setState({ dropdown: true });
+            }
+            const searchValue = (e.target as HTMLDivElement).innerText;
+            this.setState({
+              searchValue,
+            }, () => {
+              onSearchChange!(searchValue);
+            });
+            this.componentDidUpdate();
+          }}
+        />
+        // <span className={textCls}>
+        //   <input
+        //     value={this.state.searchValue}
+        //     // tslint:disable-next-line:jsx-no-multiline-js
+        //     onChange={(e) => {
+        //       const searchValue = e.target.value;
+        //       this.setState({ searchValue }, () => onSearchChange!(searchValue));
+        //     }}
+        //   />
+        // </span>
       );
 
     return (
@@ -253,6 +283,11 @@ class Select extends Component<PropsType, any> {
       >
         <span className={cls} style={style}>
           <span
+            ref={e => {
+              if (e) {
+                this.divInput = e;
+              }
+            }}
             className={`${prefixCls}-selection`}
             role="combobox"
             aria-autocomplete="list"
@@ -271,8 +306,13 @@ class Select extends Component<PropsType, any> {
                           onClick={(e) => {
                             e.stopPropagation();
                             const index = this.state.value.indexOf(valueItem);
-                            this.state.value.splice(index, 1);
-                            this.forceUpdate();
+                            const { value } = this.state;
+                            setTimeout(() => {
+                              value.splice(index, 1);
+                              this.setState({
+                                value,
+                              });
+                            });
                           }}
                         >
                           {this.optionMap[valueItem].children}

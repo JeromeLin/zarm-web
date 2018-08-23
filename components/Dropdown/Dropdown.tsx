@@ -252,11 +252,11 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       return;
     }
     const target: Node = e.target;
+    console.dir(target);
     if (this.div.contains(target) || this.triggerBox.contains(target)) {
       return;
-    } else {
-      this.props.onVisibleChange(false);
     }
+    this.props.onVisibleChange(false);
   }
 
   reposition = () => {
