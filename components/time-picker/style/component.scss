@@ -3,6 +3,7 @@
 
   &.ui-select {
     width: 160px;
+    line-height: 1;
   }
 
   .ui-select-selection {
@@ -16,18 +17,23 @@
   .ui-time-select-icon {
     position: absolute;
     right: 10px;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
     color: #d9d9d9;
     font-size: 18px;
   }
 }
 
 .ui-time-select {
-  width: 240px;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
   border-bottom: 1px solid #e9e9e9;
 
   .ui-select {
-    width: 80px;
+    width: 33.333333%;
+    flex: 1;
     border-right: 1px solid #e9e9e9;
 
     &:last-child {
@@ -62,4 +68,8 @@
 .ui-select-bottom {
   text-align: center;
   line-height: 38px;
+
+  .confirm-btn {
+    margin-left: 12px;
+  }
 }

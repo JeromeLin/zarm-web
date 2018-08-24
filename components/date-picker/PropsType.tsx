@@ -15,5 +15,6 @@ export default interface PropsType {
   size?: size;
   className?: string;
   style?: object;
+  showTime?: boolean;
   onChange: (value: any) => void;
 }

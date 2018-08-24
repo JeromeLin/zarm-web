@@ -36,6 +36,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
   // eslint-disable-next-line
   renderWeek() {
     const weekDays: string[] = [];
+    const { prefixCls } = this.props;
 
     for (let i = 0; i < CALENDAR_COL_COUNT; i++) {
       weekDays[i] = CALENDAR_WEEK_DAYS[i];
@@ -50,7 +51,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
             <th
               // eslint-disable-next-line
               key={`weekdays-${index}`}
-              className={`{prefixCls}-column`}
+              className={`${prefixCls}-column`}
               title={`星期${week}`}
             >
               {week}
@@ -126,6 +127,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
 
     const tabelCell: JSX.Element[] = [];
     const { prefixCls } = this.props;
+
     for (let m = 0; m < CALENDAR_ROW_COUNT; m++) {
       const tabelRow: JSX.Element[] = [];
       for (let n = 0; n < CALENDAR_COL_COUNT; n++) {

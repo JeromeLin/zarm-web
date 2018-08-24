@@ -4,14 +4,18 @@ import Dropdown from '../dropdown';
 import Icon from '../icon';
 import TimeSelect from './TimeSelect';
 
+type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
+
 export interface TimePickerProps {
   value?: any;
   defaultValue?: string;
   placeholder?: string;
   isDisabled?: boolean;
-  isRadius?: string | boolean;
+  isRadius?: string;
   size?: any;
   style?: React.CSSProperties;
+  dropdownStyle?: React.CSSProperties;
+  placement?: placement;
   onChange?: (value: any) => void;
 }
 
@@ -52,13 +56,15 @@ class TimePicker extends Component<TimePickerProps, any> {
     });
   }
 
-  setDropdown (isOpen, callback) {
+  setDropdown (isOpen, callback?) {
     if (!this.unmounted) { return; }
 
     this.setState({
       dropdown: isOpen,
     }, () => {
-      callback(this.state.value);
+      if (callback) {
+        callback(this.state.value);
+      }
     });
   }
 
@@ -79,8 +85,12 @@ class TimePicker extends Component<TimePickerProps, any> {
     });
   }
 
+  onConfirmBtn () {
+    this.setDropdown(false);
+  }
+
   render () {
-    const { defaultValue, placeholder, isDisabled, isRadius, size, ...others } = this.props;
+    const { defaultValue, placeholder, isDisabled, isRadius, size, dropdownStyle, placement, ...others } = this.props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in this.props || isDisabled;
     const radius = 'radius' in this.props || isRadius;
@@ -114,6 +124,7 @@ class TimePicker extends Component<TimePickerProps, any> {
         />
         <div className="ui-select-bottom">
           <a className="clear-btn" href="javascript:;" onClick={() => this.onDateChange('')}>清除</a>
+          <a className="confirm-btn" href="javascript:;" onClick={() => this.onConfirmBtn()}>确认</a>
         </div>
       </Fragment>
     );
@@ -124,9 +135,11 @@ class TimePicker extends Component<TimePickerProps, any> {
           ref={el => this.dropdownEl = el}
           visible={dropdown}
           disabled={disabled}
-          style={{ display: 'block' }}
+          style={{ width: 240, ...dropdownStyle }}
+          zIndex={2020}
           onVisibleChange={this.onVisibleChange}
           overlay={overlay}
+          placement={placement}
         >
           <div
             className="ui-select-selection"

@@ -5,7 +5,9 @@ import CalendarHeader from './CalendarHeader';
 import CalendarDateTable from './CalendarDateTable';
 import CalendarMonthTable from './CalendarMonthTable';
 import CalendarYearTable from './CalendarYearTable';
+import Button from '../button';
 import PropsType from './PropsType';
+import TimePicker from '../time-picker';
 
 class Calendar extends Component<PropsType, any> {
   static defaultProps = {
@@ -23,8 +25,11 @@ class Calendar extends Component<PropsType, any> {
         props.value || props.defaultValue || new Date(),
         'yyyy/M/d',
       ),
-      value: Format.date(props.value || props.defaultValue, 'yyyy/M/d'),
+      value: Format.date(props.value || props.defaultValue, props.format),
       panel: 'date',
+
+      showTime: false,
+      timeValue: '00:00:00',
     };
   }
 
@@ -55,27 +60,75 @@ class Calendar extends Component<PropsType, any> {
     });
   }
 
-  onDateClick(value) {
+  onDateClick(value, isNow = false) {
+    const { format, onChange, showTime } = this.props;
+    let dropdownStatus = false;
+
+    if (!showTime) {
+      dropdownStatus = false;
+    } else {
+      dropdownStatus = !isNow;
+      isNow ? value = value : value = `${value} ${this.state.timeValue}`;
+    }
+
     this.setState({
       value,
       current: value,
+      timeValue: showTime && value && String(Format.date(value, format)).split(' ')[1],
     });
-    const { format, onChange } = this.props;
+
     if (onChange) {
-      onChange(Format.date(value, format));
+      onChange(Format.date(value, format), dropdownStatus);
+    }
+  }
+
+  onConfirmClick (value) {
+    const valueWithTime = (value && `${value} ${this.state.timeValue}`) || '';
+    const { format, onChange } = this.props;
+
+    if (onChange) {
+      onChange(Format.date(valueWithTime, format), false);
+    }
+  }
+
+  onTimeChange (timeValue) {
+    const { format } = this.props;
+    const { value } = this.state;
+
+    if (!value) { // 判断先选择time的情况
+      this.setState({ value: String(Format.date(new Date(), format)).split(' ')[0] } , () => {
+        this.setValue(this.state.value, timeValue);
+      });
+    } else {
+      this.setValue(value, timeValue);
+    }
+  }
+
+  setValue (value, timeValue) {
+    const { format, onChange } = this.props;
+
+    this.setState({
+      timeValue,
+      value: value,
+      current: `${value} ${timeValue}`,
+    });
+
+    if (onChange) {
+      onChange(Format.date(`${value} ${timeValue}`, format), true);
     }
   }
 
   render() {
     const { props } = this;
     const {
-      className, hasFooter, min, max, style, prefixCls,
+      className, hasFooter, min, max, style, prefixCls, showTime,
     } = props;
     const { current, value, panel } = this.state;
 
     const cls = classnames({
       [prefixCls!]: true,
       [className!]: !!className,
+      [`${prefixCls}-showTime`]: !!showTime,
     });
 
     return (
@@ -87,7 +140,19 @@ class Calendar extends Component<PropsType, any> {
           onChange={current => this.setState({ current })}
           // tslint:disable-next-line:no-shadowed-variable
           onChangePanel={panel => this.setState({ panel })}
-        />
+        >
+          {
+            showTime && (
+              <TimePicker
+                placement="bottomRight"
+                value={this.state.timeValue}
+                onChange={(value) => {
+                  this.onTimeChange(value);
+                }}
+              />
+            )
+          }
+        </CalendarHeader>
         <div className={`${prefixCls}-body`}>
           <CalendarYearTable
             visible={panel !== 'year'}
@@ -117,23 +182,38 @@ class Calendar extends Component<PropsType, any> {
         </div>
         {
           // tslint:disable-next-line:jsx-no-multiline-js
-          hasFooter ? (
+          (hasFooter && panel === 'date') ? (
           <div className={`${prefixCls}-footer`}>
             <a
               href="javascript:;"
-              onClick={() => this.onDateClick(new Date())}
+              onClick={() => this.onDateClick(new Date(), true)}
               className={`${prefixCls}-footer-btn`}
             >
-              今天
+              {showTime ? '此刻' : '今天'}
             </a>
 
             <a
               href="javascript:;"
-              onClick={() => this.onDateClick('')}
+              onClick={() => this.onDateClick('', true)}
               className={`${prefixCls}-footer-btn`}
             >
               清除
             </a>
+
+            {
+              showTime && (
+                <Button
+                  radius
+                  theme="info"
+                  size="xs"
+                  style={{ float: 'right' }}
+                  onClick={() => this.onConfirmClick(value)}
+                  className={`${prefixCls}-footer-btn`}
+                >
+                  确认
+                </Button>
+              )
+            }
           </div>
         ) : null}
       </div>
