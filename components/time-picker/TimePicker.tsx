@@ -93,7 +93,10 @@ class TimePicker extends Component<TimePickerProps, any> {
   }
 
   render () {
-    const { defaultValue, placeholder, isDisabled, isRadius, size, locale, localeCode, dropdownStyle, placement, ...others } = this.props;
+    const {
+      defaultValue, placeholder, isDisabled, isRadius, size, locale,
+      localeCode, dropdownStyle, placement, ...others
+    } = this.props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in this.props || isDisabled;
     const radius = 'radius' in this.props || isRadius;
