@@ -5,6 +5,8 @@ export default {
   },
   Calendar: {
     today: '今天',
+    now: '此刻',
+    confirm: '确认',
     clear: '清除',
     week_days: ['一', '二', '三', '四', '五', '六', '日'],
     week_days_hints: [
@@ -63,5 +65,6 @@ export default {
   },
   TimePicker: {
     clear: '清除',
+    confirm: '确认',
   },
 };

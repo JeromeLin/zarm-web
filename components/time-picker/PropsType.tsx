@@ -1,4 +1,4 @@
 export default interface PropsType {
-  value: string;
-  onChange: any;
+  value?: string;
+  onChange?: any;
 }

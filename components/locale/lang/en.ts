@@ -5,6 +5,8 @@ export default {
   },
   Calendar: {
     today: 'Today',
+    now: 'Now',
+    confirm: 'Ok',
     clear: 'Clear',
     week_days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     week_days_hints: [
@@ -62,6 +64,7 @@ export default {
     searchPlaceholder: 'Input search text',
   },
   TimePicker: {
+    confirm: 'Ok',
     clear: 'Clear',
   },
 };

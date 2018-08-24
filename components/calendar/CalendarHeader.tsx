@@ -48,9 +48,9 @@ class CalendarHeader extends Component<HeaderProps, any> {
             <Icon type="arrow-left" />
           </a>
           {
-           localeCode === 'zh-cn'
+            localeCode === 'zh-cn'
             ? (
-              <span>
+              <span className={`${prefixCls}-header-time`}>
                 <a
                   href="javascript:;"
                   className={`${prefixCls}-header-btn`}
@@ -68,7 +68,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
               </span>
             )
             : (
-              <span>
+              <span className={`${prefixCls}-header-time`}>
                 <a
                   href="javascript:;"
                   className={`${prefixCls}-header-btn`}
@@ -94,6 +94,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
           >
             <Icon type="arrow-right" />
           </a>
+          {this.props.children}
         </div>
 
         <div

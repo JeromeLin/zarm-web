@@ -42,7 +42,7 @@ export interface DateTableProps {
   min?: string;
   max?: string;
   locale: { [propName: string]: any };
-  onDateClick: (value: any) => void;
+  onDateClick: (value: any, isNow?: boolean) => void;
 }
 
 export default interface PropsType {
@@ -56,5 +56,6 @@ export default interface PropsType {
   style?: object;
   hasFooter?: boolean;
   locale: { [propName: string]: any };
-  onChange?: (value: string) => void;
+  showTime?: boolean;
+  onChange?: (value: string, dropdown: boolean) => void;
 }

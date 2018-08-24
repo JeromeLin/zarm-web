@@ -59,11 +59,12 @@ const placementMap = {
 const defaultProps = {
   visible: false,
   isRadius: false,
+  hideOnClick: true,
   prefixCls: 'ui-dropdown',
   placement: 'bottomLeft',
   trigger: 'click',
   disabled: false,
-  zIndex: 9999,
+  zIndex: 2018,
 };
 
 const mountedInstance = new Set();
@@ -265,7 +266,9 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     if (this.div.contains(target) || this.triggerBox.contains(target)) {
       return;
     } else {
-      this.props.onVisibleChange(false);
+      if (this.props.hideOnClick) {
+        this.props.onVisibleChange(false);
+      }
     }
   }
 
@@ -380,6 +383,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       zIndex,
       notRenderInDisabledMode,
       visible,
+      hideOnClick,
       onVisibleChange,
       getPopupContainer,
       ...others
