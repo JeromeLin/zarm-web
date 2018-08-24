@@ -15,25 +15,12 @@
 
     .ui-time-select-wrapper {
       float: right;
-      margin-top: 3px;
+      margin: 4px 4px 0 0;
     }
 
     .ui-time-select .ui-select .ui-select-selection {
       max-height: 250px !important;
     }
-
-    //.ui-calendar-header,
-    //.ui-calendar-footer {
-    //  text-align: initial;
-    //
-    //  .ui-calendar-header-time {
-    //    padding-left: 60px;
-    //  }
-    //
-    //  .ui-calendar-header-next-btn {
-    //    right: 160px;
-    //  }
-    //}
 
     .ui-calendar-header {
       div:nth-of-type(1) {
