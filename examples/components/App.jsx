@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import AsyncComponent from './AsyncComponent';
+import { qs } from '../../components/locale/util';
 import '../../components/style/index.scss';
 import '../styles/index';
 import '../styles/components/App';
 
 import pages from '../pages/Index';
+
+const changeLanguage = (_lang) => {
+  const { href } = window.location;
+  window.location.href = `${href.split('?')[0]}?lang=${_lang}`;
+  window.location.reload();
+};
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +23,7 @@ class App extends Component {
 
   render() {
     const hash = window.location.hash.match(/#\/(\w+)?/);
+    const lang = qs('lang') || 'zh';
     return (
       <div className="app">
         <header className="header">
@@ -32,9 +40,9 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 {
-                  'TODO'
-                  ? <span className="lang" onClick={() => this.changeLang('zh')}>中文</span>
-                  : <span className="lang" onClick={() => this.changeLang('en')}>English</span>
+                  lang === 'en'
+                  ? <span className="lang" onClick={() => changeLanguage('zh')}>中文</span>
+                  : <span className="lang" onClick={() => changeLanguage('en')}>English</span>
                 }
               </li>
             </ul>
@@ -44,13 +52,13 @@ class App extends Component {
           <nav className="side-nav">
             <ul>
               <li className="nav-item">
-                <a href="#/quick-start">开发指南</a>
+                <a href={`#/quick-start?lang=${lang}`}>开发指南</a>
                 <ul className="pure-menu-list sub-nav">
                   <li className="nav-item">
-                    <a href="#/quick-start">快速上手</a>
+                    <a href={`#/quick-start?lang=${lang}`}>快速上手</a>
                   </li>
                   <li className="nav-item">
-                    <a href="#/i18n">国际化</a>
+                    <a href={`#/i18n?lang=${lang}`} className={classnames({ active: hash[1] === 'i18n' })}>国际化</a>
                   </li>
                 </ul>
               </li>
@@ -67,7 +75,7 @@ class App extends Component {
                               this.components[page] = pages.components[group][page];
                               return (
                                 <li key={page} className="nav-item">
-                                  <a href={`#/${page}`} className={classnames({ active: page === hash[1] })}>{page}</a>
+                                  <a href={`#/${page}?lang=${lang}`} className={classnames({ active: page === hash[1] })}>{page}</a>
                                 </li>
                               );
                             })

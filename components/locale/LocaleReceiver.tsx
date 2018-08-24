@@ -1,5 +1,4 @@
 import React from 'react';
-// import { LocaleReceiverProps } from './PropsType';
 import { LocaleContext } from './LocaleProvider';
 
 const LocaleReceiverWrapper = (WrappedComponent, name?) => {
