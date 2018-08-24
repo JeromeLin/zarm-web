@@ -12,6 +12,7 @@ interface BasicPropsType {
   trigger?: trigger;
   disabled?: boolean;
   zIndex?: number;
+  hideOnClick?: boolean;
   notRenderInDisabledMode?: boolean;
   onVisibleChange(flag: boolean): void;
   getPopupContainer?(): HTMLElement;

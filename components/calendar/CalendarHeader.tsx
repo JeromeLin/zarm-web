@@ -46,7 +46,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
           >
             <Icon type="arrow-left" />
           </a>
-          <span>
+          <span className={`${prefixCls}-header-time`}>
             <a
               href="javascript:;"
               className={`${prefixCls}-header-btn`}
@@ -70,6 +70,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
           >
             <Icon type="arrow-right" />
           </a>
+          {this.props.children}
         </div>
 
         <div
