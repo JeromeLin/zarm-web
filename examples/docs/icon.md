@@ -104,12 +104,12 @@ render() {
         <div className="ui-icon-name">close-round</div>
       </li>
       <li>
-        <Icon type="fangxingxuanzhongfill" />
-        <div className="ui-icon-name">fangxingxuanzhongfill</div>
+        <Icon type="square-check-fill" />
+        <div className="ui-icon-name">square-check-fill</div>
       </li>
       <li>
-        <Icon type="fangxingxuanzhong" />
-        <div className="ui-icon-name">fangxingxuanzhong</div>
+        <Icon type="square-check" />
+        <div className="ui-icon-name">square-check</div>
       </li>
       <li>
         <Icon type="wrong" />
