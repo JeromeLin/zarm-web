@@ -11,6 +11,7 @@ const browserlist = require('../config/browserlist');
 
 const DIR = {
   sass: path.resolve(__dirname, '../../components/**/*.scss'),
+  font: path.resolve(__dirname, '../../components/**/fonts/*.*'),
   buildSrc: path.resolve(__dirname, '../../components/**/index.scss'),
   lib: path.resolve(__dirname, '../../lib'),
   dist: path.resolve(__dirname, '../../dist'),
@@ -18,6 +19,11 @@ const DIR = {
 
 gulp.task('copySass', () => {
   return gulp.src(DIR.sass)
+    .pipe(gulp.dest(DIR.lib));
+});
+
+gulp.task('copyFont', () => {
+  return gulp.src(DIR.font)
     .pipe(gulp.dest(DIR.lib));
 });
 
@@ -46,4 +52,4 @@ gulp.task('dist', () => {
     .pipe(gulp.dest(DIR.dist));
 });
 
-gulp.task('default', ['copySass', 'dist']);
+gulp.task('default', ['copySass', 'copyFont', 'dist']);
