@@ -272,7 +272,7 @@ render() {
   return (
     <ul className="icon-list">
       <li>
-        <Icon type="like_fill" theme="error" />
+        <Icon type="like-fill" theme="error" />
         <div className="ui-icon-name">like-fill</div>
       </li>
 
