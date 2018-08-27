@@ -32,16 +32,12 @@ render() {
         <div className="ui-icon-name">right</div>
       </li>
       <li>
-        <Icon type="close" />
-        <div className="ui-icon-name">close</div>
+        <Icon type="right-round-fill" />
+        <div className="ui-icon-name">right-round-fill</div>
       </li>
       <li>
-        <Icon type="check-round-fill" />
-        <div className="ui-icon-name">check-round-fill</div>
-      </li>
-      <li>
-        <Icon type="check-round" />
-        <div className="ui-icon-name">check-round</div>
+        <Icon type="right-round" />
+        <div className="ui-icon-name">right-round</div>
       </li>
       <li>
         <Icon type="question-round-fill" />
@@ -76,12 +72,8 @@ render() {
         <div className="ui-icon-name">arrow-right</div>
       </li>
       <li>
-        <Icon type="close-round-fill" />
-        <div className="ui-icon-name">close-round-fill</div>
-      </li>
-      <li>
-        <Icon type="minus" />
-        <div className="ui-icon-name">minus</div>
+        <Icon type="warning-round" />
+        <div className="ui-icon-name">warning-round</div>
       </li>
       <li>
         <Icon type="warning-round-fill" />
@@ -92,16 +84,8 @@ render() {
         <div className="ui-icon-name">download</div>
       </li>
       <li>
-        <Icon type="warning-round" />
-        <div className="ui-icon-name">warning-round</div>
-      </li>
-      <li>
         <Icon type="date" />
         <div className="ui-icon-name">date</div>
-      </li>
-      <li>
-        <Icon type="close-round" />
-        <div className="ui-icon-name">close-round</div>
       </li>
       <li>
         <Icon type="square-check-fill" />
@@ -136,32 +120,12 @@ render() {
         <div className="ui-icon-name">add-round-fill</div>
       </li>
       <li>
-        <Icon type="jianhao" />
-        <div className="ui-icon-name">jianhao</div>
+        <Icon type="minus" />
+        <div className="ui-icon-name">minus</div>
       </li>
       <li>
-        <Icon type="tishifill" />
-        <div className="ui-icon-name">tishifill</div>
-      </li>
-      <li>
-        <Icon type="wenhaofill" />
-        <div className="ui-icon-name">wenhaofill</div>
-      </li>
-      <li>
-        <Icon type="wenhao" />
-        <div className="ui-icon-name">wenhao</div>
-      </li>
-      <li>
-        <Icon type="xuanze" />
-        <div className="ui-icon-name">xuanze</div>
-      </li>
-      <li>
-        <Icon type="right-round-fill" />
-        <div className="ui-icon-name">right-round-fill</div>
-      </li>
-      <li>
-        <Icon type="right-round" />
-        <div className="ui-icon-name">right-round</div>
+        <Icon type="minus-round" />
+        <div className="ui-icon-name">minus-round</div>
       </li>
       <li>
         <Icon type="minus-round-fill" />
@@ -179,57 +143,54 @@ render() {
         <Icon type="download1" />
         <div className="ui-icon-name">download1</div>
       </li>
-      <li>
-        <Icon type="minus-round" />
-        <div className="ui-icon-name">minus-round</div>
-      </li>
+
       <li>
         <Icon type="brush" />
         <div className="ui-icon-name">brush</div>
       </li>
       <li>
-        <Icon type="brush_fill" />
-        <div className="ui-icon-name">brush_fill</div>
+        <Icon type="brush-fill" />
+        <div className="ui-icon-name">brush-fill</div>
       </li>
       <li>
-        <Icon type="camera_fill" />
-        <div className="ui-icon-name">camera_fill</div>
+        <Icon type="camera-fill" />
+        <div className="ui-icon-name">camera-fill</div>
       </li>
       <li>
         <Icon type="camera" />
         <div className="ui-icon-name">camera</div>
       </li>
       <li>
-        <Icon type="collection_fill" />
-        <div className="ui-icon-name">collection_fill</div>
+        <Icon type="collection-fill" />
+        <div className="ui-icon-name">collection-fill</div>
       </li>
       <li>
         <Icon type="collection" />
         <div className="ui-icon-name">collection</div>
       </li>
       <li>
-        <Icon type="computer_fill" />
-        <div className="ui-icon-name">computer_fill</div>
+        <Icon type="computer-fill" />
+        <div className="ui-icon-name">computer-fill</div>
       </li>
       <li>
         <Icon type="empty" />
         <div className="ui-icon-name">empty</div>
       </li>
       <li>
-        <Icon type="empty_fill" />
-        <div className="ui-icon-name">empty_fill</div>
+        <Icon type="empty-fill" />
+        <div className="ui-icon-name">empty-fill</div>
       </li>
       <li>
-        <Icon type="like_fill" />
-        <div className="ui-icon-name">like_fill</div>
+        <Icon type="like-fill" />
+        <div className="ui-icon-name">like-fill</div>
       </li>
       <li>
         <Icon type="lock" />
         <div className="ui-icon-name">lock</div>
       </li>
       <li>
-        <Icon type="setup_fill" />
-        <div className="ui-icon-name">setup_fill</div>
+        <Icon type="setup-fill" />
+        <div className="ui-icon-name">setup-fill</div>
       </li>
       <li>
         <Icon type="setup" />
