@@ -123,6 +123,7 @@ class Select extends Component<PropsType, any> {
       onSearchChange,
       style,
       zIndex,
+      title,
       getPopupContainer,
       locale,
     } = props;
@@ -191,7 +192,7 @@ class Select extends Component<PropsType, any> {
       : valueText;
 
     const textRender = !(search && this.state.searchValue.length > 0) && (
-      <span className={textCls}>{inputPlaceholder}</span>
+      <span className={textCls} title={title}>{inputPlaceholder}</span>
     );
 
     const inputRender = search &&

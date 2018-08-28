@@ -5,6 +5,7 @@
     "jsx": "react",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
+    "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
     "types": [

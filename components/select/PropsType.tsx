@@ -45,6 +45,7 @@ export default interface PropsType {
   onChange: (e: any) => void;
   onSearchChange?: (e: any) => void;
   zIndex?: number;
+  title?: string;
   locale?: {
     [propName: string]: any,
   };
