@@ -3,6 +3,7 @@ import Modal from '../modal';
 import Button from '../button';
 import Icon from '../icon';
 import AlertProps from './PropsType';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 class Alert extends Component<AlertProps, any> {
   static defaultProps = {
@@ -13,14 +14,14 @@ class Alert extends Component<AlertProps, any> {
     className: '',
     hideIcon: false,
     closable: true,
-    closeText: '关闭',
+    // closeText: '关闭',
     onClose: () => {},
   };
 
   render() {
     const {
       theme, message, closable, closeText, onClose, width,
-      className, visible, prefixCls, hideIcon,
+      className, visible, prefixCls, hideIcon, locale,
     } = this.props;
 
     let iconType = 'info-round';
@@ -37,7 +38,6 @@ class Alert extends Component<AlertProps, any> {
       default:
         break;
     }
-
     return (
       <Modal
         width={width}
@@ -54,7 +54,7 @@ class Alert extends Component<AlertProps, any> {
           // tslint:disable-next-line:jsx-no-multiline-js
           closable && (
             <Modal.Footer>
-              <Button onClick={onClose}>{closeText}</Button>
+              <Button onClick={onClose}>{closeText || locale.close}</Button>
             </Modal.Footer>
           )
         }
@@ -63,4 +63,4 @@ class Alert extends Component<AlertProps, any> {
   }
 }
 
-export default Alert;
+export default LocaleReceiver(Alert);

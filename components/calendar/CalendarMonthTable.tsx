@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { MonthTableProps } from './PropsType';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 const CALENDAR_ROW_COUNT = 4;
 const CALENDAR_COL_COUNT = 3;
-const CALENDAR_MONTHS = [
-  '一',
-  '二',
-  '三',
-  '四',
-  '五',
-  '六',
-  '七',
-  '八',
-  '九',
-  '十',
-  '十一',
-  '十二',
-];
 
 class CalendarMonthTable extends Component<MonthTableProps, any> {
   static defaultProps = {
@@ -101,7 +88,7 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
 
   // 渲染月份单元
   renderMonthCell(day) {
-    const { onMonthClick, prefixCls } = this.props;
+    const { onMonthClick, prefixCls, locale } = this.props;
     const fullDay = `${day.year}/${day.month}/${day.date}`;
 
     const cls = classnames({
@@ -112,13 +99,13 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
     return (
       <span
         className={cls}
-        title={`${CALENDAR_MONTHS[day.month - 1]}月`}
+        title={locale[`month${day.month}`]}
         onClick={() => onMonthClick(fullDay)}
       >
-        {CALENDAR_MONTHS[day.month - 1]}月
+        {locale[`month${day.month}`]}
       </span>
     );
   }
 }
 
-export default CalendarMonthTable;
+export default LocaleReceiver(CalendarMonthTable, 'Calendar');

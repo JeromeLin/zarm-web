@@ -37,9 +37,8 @@
 
 .ui-icon {
   &-right:before { content: '\e602'; }
-  &-close:before { content: '\e605'; }
-  &-check-round-fill:before { content: '\e609'; }
-  &-check-round:before { content: '\e60a'; }
+  &-right-round-fill:before { content: '\e609'; }
+  &-right-round:before { content: '\e60a'; }
   &-question-round-fill:before { content: '\e618'; }
   &-question-round:before { content: '\e619'; }
   &-info-round-fill:before { content: '\e624'; }
@@ -48,65 +47,36 @@
   &-arrow-bottom:before { content: '\e601'; }
   &-arrow-left:before { content: '\e603'; }
   &-arrow-right:before { content: '\e604'; }
-  &-close-round-fill:before { content: '\e60b'; }
   &-add:before { content: '\e606'; }
   &-minus:before { content: '\e607'; }
   &-warning-round-fill:before { content: '\e610'; }
-  &-download:before { content: '\e638'; }
   &-warning-round:before { content: '\e611'; }
   &-date:before { content: '\e63d'; }
-  &-close-round:before { content: '\e60e'; }
-  &-fangxingxuanzhongfill:before { content: '\e622'; }
-  &-fangxingxuanzhong:before { content: '\e623'; }
   &-wrong:before { content: '\e60f'; }
   &-wrong-round-fill:before { content: '\e613'; }
   &-wrong-round:before { content: '\e614'; }
   &-add-round:before { content: '\e615'; }
   &-add:before { content: '\e616'; }
   &-add-round-fill:before { content: '\e617'; }
-  &-jianhao:before { content: '\e61a'; }
-  &-tishifill:before { content: '\e61b'; }
-  &-tishi:before { content: '\e61c'; }
-  &-wenhaofill:before { content: '\e61d'; }
-  &-wenhao:before { content: '\e61e'; }
-  &-xuanze:before { content: '\e61f'; }
-  &-right-round-fill:before { content: '\e620'; }
-  &-right-round:before { content: '\e621'; }
   &-minus-round-fill:before { content: '\e60c'; }
   &-required:before { content: '\e60d'; }
   &-loading:before { content: '\e608'; }
-  &-download1:before { content: '\e663'; }
   &-minus-round:before { content: '\e612'; }
   &-brush:before { content: '\e6e5'; }
-  &-brush_fill:before { content: '\e6e6'; }
-  &-camera_fill:before { content: '\e6e7'; }
-  &-camera:before { content: '\e6e8'; }
-  &-collection_fill:before { content: '\e6ea'; }
-  &-collection:before { content: '\e6eb'; }
-  &-computer_fill:before { content: '\e6ec'; }
+  &-brush-fill:before { content: '\e6e6'; }
   &-empty:before { content: '\e6f7'; }
-  &-empty_fill:before { content: '\e6f8'; }
-  &-like_fill:before { content: '\e707'; }
-  &-lock:before { content: '\e709'; }
-  &-setup_fill:before { content: '\e728'; }
-  &-setup:before { content: '\e729'; }
+  &-empty-fill:before { content: '\e6f8'; }
   &-search:before { content: '\e741'; }
   &-time-circle:before { content: '\e784'; }
   &-folder:before { content: '\e7d1'; }
   &-folder-open:before { content: '\e7d2'; }
   &-folder-add:before { content: '\e7d3'; }
-  &-menu:before { content: '\e7f4'; }
   &-stop:before { content: '\e842'; }
-  &-file-text-fill:before { content: '\e858'; }
   &-folder-add-fill:before { content: '\e85e'; }
   &-folder-fill:before { content: '\e85f'; }
   &-folder-open-fill:before { content: '\e860'; }
-  &-cloud-fill:before { content: '\e869'; }
-  &-like-fill:before { content: '\e86a'; }
-  &-unlike-fill:before { content: '\e86b'; }
-  &-pushpin-fill:before { content: '\e86d'; }
-  &-arrowleftb:before { content: '\e6c2'; }
-  &-arrowrightb:before { content: '\e644'; }
-  &-arrowtop:before { content: '\e6b2'; }
-  &-arrowbottom:before { content: '\e6a2'; }
+  &-arrow-left-fill:before { content: '\e6c2'; }
+  &-arrow-right-fill:before { content: '\e644'; }
+  &-arrow-top-fill:before { content: '\e6b2'; }
+  &-arrow-bottom-fill:before { content: '\e6a2'; }
 }

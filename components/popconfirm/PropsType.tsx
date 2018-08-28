@@ -11,5 +11,6 @@ export default interface PropsType {
   onOk: () => void;
   okText?: string;
   cancelText?: string;
+  locale: { [propName: string]: any };
   content: React.ReactNode;
 }

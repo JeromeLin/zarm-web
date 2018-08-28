@@ -31,7 +31,6 @@ class Input extends Component<PropsType, any> {
       placeholder,
       maxLength,
       style,
-      // tslint:disable-next-line:trailing-comma
       ...otherProps
     } = props;
     const disabled = 'disabled' in props || isDisabled;

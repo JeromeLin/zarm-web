@@ -51,7 +51,6 @@ class Button extends Component<ButtonProps, any> {
       style,
       href,
       target,
-      // tslint:disable-next-line:trailing-comma
       ...others
     } = props;
 

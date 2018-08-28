@@ -1,7 +1,7 @@
 
 module.exports = [
   'last 3 versions',
-  'ie >= 10',
+  'ie >= 9',
   'ie_mob >= 10',
   'ff >= 30',
   'chrome >= 34',

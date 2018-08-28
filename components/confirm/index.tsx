@@ -3,6 +3,7 @@ import Modal from '../modal';
 import Button from '../button';
 import Icon from '../icon';
 import PropsType from './PropsType';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 class Confirm extends Component<PropsType, any> {
 
@@ -10,8 +11,6 @@ class Confirm extends Component<PropsType, any> {
     prefixCls: 'ui-confirm',
     message: '',
     width: 270,
-    okText: '确定',
-    cancelText: '取消',
     onOk: () => {},
     onCancel: () => {},
   };
@@ -26,6 +25,7 @@ class Confirm extends Component<PropsType, any> {
       width,
       visible,
       onCancel,
+      locale,
     } = this.props;
 
     return (
@@ -37,9 +37,9 @@ class Confirm extends Component<PropsType, any> {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onCancel}>{cancelText}</Button>
+          <Button onClick={onCancel}>{cancelText || locale.cancel}</Button>
           <Button theme="success" onClick={onOk}>
-            {okText}
+            {okText || locale.confirm}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -47,4 +47,4 @@ class Confirm extends Component<PropsType, any> {
   }
 }
 
-export default Confirm;
+export default LocaleReceiver(Confirm);

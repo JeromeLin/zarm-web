@@ -6,6 +6,7 @@ import Dropdown from '../dropdown';
 import Menu from '../menu';
 import Icon from '../icon';
 import PropsType from './PropsType';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 class Select extends Component<PropsType, any> {
   static defaultProps = {
@@ -122,14 +123,16 @@ class Select extends Component<PropsType, any> {
       onSearchChange,
       style,
       zIndex,
+      title,
       getPopupContainer,
+      locale,
     } = props;
 
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;
 
-    let valueText = placeholder;
+    let valueText = locale!.placeholder || placeholder;
     let hasValue = false;
 
     const children = React.Children.map(props.children, (option, index) => {
@@ -179,17 +182,17 @@ class Select extends Component<PropsType, any> {
       children.length > 0 ? (
         <Menu size={size} style={menuStyle}>{children}</Menu>
       ) : (
-          <span className={`${prefixCls}-notfound`}>没有找到数据</span>
+          <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>
         );
 
     const inputPlaceholder = this.state.dropdown // eslint-disable-line
       ? hasValue
         ? valueText
-        : searchPlaceholder
+        : (search && (locale!.searchPlaceHolder || searchPlaceholder))
       : valueText;
 
     const textRender = !(search && this.state.searchValue.length > 0) && (
-      <span className={textCls}>{inputPlaceholder}</span>
+      <span className={textCls} title={title}>{inputPlaceholder}</span>
     );
 
     const inputRender = search &&
@@ -235,4 +238,4 @@ class Select extends Component<PropsType, any> {
   }
 }
 
-export default Select;
+export default LocaleReceiver(Select);

@@ -23,7 +23,7 @@ exports[`PopConfirm renders PopConfirm correctly 1`] = `
             class="ui-button theme-info"
             type="button"
           >
-            确认
+            确定
           </button>
         </div>
       </div>

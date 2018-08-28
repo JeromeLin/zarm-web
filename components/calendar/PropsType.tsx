@@ -8,6 +8,8 @@ export interface HeaderProps {
   prefixCls?: string;
   panel?: string;
   current: string;
+  locale: { [propName: string]: any };
+  localeCode: string;
   onChange: (cur: string) => void;
   onChangePanel: (panel: string) => void;
 }
@@ -27,6 +29,7 @@ export interface MonthTableProps {
   defaultValue?: string;
   visible?: boolean;
   current?: string;
+  locale: { [propName: string]: any };
   onMonthClick: (value: any) => void;
 }
 
@@ -38,6 +41,7 @@ export interface DateTableProps {
   current?: string;
   min?: string;
   max?: string;
+  locale: { [propName: string]: any };
   onDateClick: (value: any, isNow?: boolean) => void;
 }
 
@@ -51,6 +55,7 @@ export default interface PropsType {
   className?: string;
   style?: object;
   hasFooter?: boolean;
+  locale: { [propName: string]: any };
   showTime?: boolean;
   onChange?: (value: string, dropdown: boolean) => void;
 }

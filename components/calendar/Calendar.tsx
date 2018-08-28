@@ -7,6 +7,7 @@ import CalendarMonthTable from './CalendarMonthTable';
 import CalendarYearTable from './CalendarYearTable';
 import Button from '../button';
 import PropsType from './PropsType';
+import LocaleReceiver from '../locale/LocaleReceiver';
 import TimePicker from '../time-picker';
 
 class Calendar extends Component<PropsType, any> {
@@ -121,7 +122,7 @@ class Calendar extends Component<PropsType, any> {
   render() {
     const { props } = this;
     const {
-      className, hasFooter, min, max, style, prefixCls, showTime,
+      className, hasFooter, min, max, style, prefixCls, locale, showTime,
     } = props;
     const { current, value, panel } = this.state;
 
@@ -189,7 +190,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick(new Date(), true)}
               className={`${prefixCls}-footer-btn`}
             >
-              {showTime ? '此刻' : '今天'}
+              {showTime ? locale.now : locale.today}
             </a>
 
             <a
@@ -197,7 +198,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick('', true)}
               className={`${prefixCls}-footer-btn`}
             >
-              清除
+              {locale.clear}
             </a>
 
             {
@@ -210,7 +211,7 @@ class Calendar extends Component<PropsType, any> {
                   onClick={() => this.onConfirmClick(value)}
                   className={`${prefixCls}-footer-btn`}
                 >
-                  确认
+                  {locale.confirm}
                 </Button>
               )
             }
@@ -221,4 +222,4 @@ class Calendar extends Component<PropsType, any> {
   }
 }
 
-export default Calendar;
+export default LocaleReceiver(Calendar);
