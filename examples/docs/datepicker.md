@@ -52,7 +52,7 @@ DateTimePicker时候showTime需要为true且format必传
           showTime
           style={{width: 200}}
           value={this.state.date1}
-          placeholder="请选择日期"
+          // placeholder="请选择日期"
           onChange={(date1) => {
             console.log(date1);
             this.setState({date1});
@@ -65,7 +65,7 @@ DateTimePicker时候showTime需要为true且format必传
           showTime
           style={{width: 200, marginLeft: 24}}
           value={this.state.date2}
-          placeholder="请选择日期"
+          // placeholder="请选择日期"
           onChange={(date2) => {
             console.log(date2);
             this.setState({date2});
@@ -99,7 +99,7 @@ DateTimePicker时候showTime需要为true且format必传
           disabled
           style={{width: 200}}
           value={this.state.date1}
-          placeholder="请选择日期"
+          // placeholder="请选择日期"
           onChange={(date1) => {
             console.log(date1)
             this.setState({date1});
