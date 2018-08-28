@@ -12,20 +12,20 @@ render() {
   return (
     <ul className="icon-list">
       <li>
-        <Icon type="arrowleftb" />
-        <div className="ui-icon-name">arrowleftb</div>
+        <Icon type="arrow-left-fill" />
+        <div className="ui-icon-name">arrow-left-fill</div>
       </li>
       <li>
-        <Icon type="arrowrightb" />
-        <div className="ui-icon-name">arrowrightb</div>
+        <Icon type="arrow-right-fill" />
+        <div className="ui-icon-name">arrow-right-fill</div>
       </li>
       <li>
-        <Icon type="arrowtop" />
-        <div className="ui-icon-name">arrowrightb</div>
+        <Icon type="arrow-top-fill" />
+        <div className="ui-icon-name">arrow-top-fill</div>
       </li>
       <li>
-        <Icon type="arrowbottom" />
-        <div className="ui-icon-name">arrowrightb</div>
+        <Icon type="arrow-bottom-fill" />
+        <div className="ui-icon-name">arrow-bottom-fill</div>
       </li>
       <li>
         <Icon type="right" />
@@ -80,20 +80,8 @@ render() {
         <div className="ui-icon-name">warning-round-fill</div>
       </li>
       <li>
-        <Icon type="download" />
-        <div className="ui-icon-name">download</div>
-      </li>
-      <li>
         <Icon type="date" />
         <div className="ui-icon-name">date</div>
-      </li>
-      <li>
-        <Icon type="square-check-fill" />
-        <div className="ui-icon-name">square-check-fill</div>
-      </li>
-      <li>
-        <Icon type="square-check" />
-        <div className="ui-icon-name">square-check</div>
       </li>
       <li>
         <Icon type="wrong" />
@@ -140,11 +128,6 @@ render() {
         <div className="ui-icon-name">loading</div>
       </li>
       <li>
-        <Icon type="download1" />
-        <div className="ui-icon-name">download1</div>
-      </li>
-
-      <li>
         <Icon type="brush" />
         <div className="ui-icon-name">brush</div>
       </li>
@@ -153,48 +136,12 @@ render() {
         <div className="ui-icon-name">brush-fill</div>
       </li>
       <li>
-        <Icon type="camera-fill" />
-        <div className="ui-icon-name">camera-fill</div>
-      </li>
-      <li>
-        <Icon type="camera" />
-        <div className="ui-icon-name">camera</div>
-      </li>
-      <li>
-        <Icon type="collection-fill" />
-        <div className="ui-icon-name">collection-fill</div>
-      </li>
-      <li>
-        <Icon type="collection" />
-        <div className="ui-icon-name">collection</div>
-      </li>
-      <li>
-        <Icon type="computer-fill" />
-        <div className="ui-icon-name">computer-fill</div>
-      </li>
-      <li>
         <Icon type="empty" />
         <div className="ui-icon-name">empty</div>
       </li>
       <li>
         <Icon type="empty-fill" />
         <div className="ui-icon-name">empty-fill</div>
-      </li>
-      <li>
-        <Icon type="like-fill" />
-        <div className="ui-icon-name">like-fill</div>
-      </li>
-      <li>
-        <Icon type="lock" />
-        <div className="ui-icon-name">lock</div>
-      </li>
-      <li>
-        <Icon type="setup-fill" />
-        <div className="ui-icon-name">setup-fill</div>
-      </li>
-      <li>
-        <Icon type="setup" />
-        <div className="ui-icon-name">setup</div>
       </li>
       <li>
         <Icon type="search" />
@@ -217,18 +164,6 @@ render() {
         <div className="ui-icon-name">folder-add</div>
       </li>
       <li>
-        <Icon type="menu" />
-        <div className="ui-icon-name">menu</div>
-      </li>
-      <li>
-        <Icon type="stop" />
-        <div className="ui-icon-name">stop</div>
-      </li>
-      <li>
-        <Icon type="file-text-fill" />
-        <div className="ui-icon-name">file-text-fill</div>
-      </li>
-      <li>
         <Icon type="folder-add-fill" />
         <div className="ui-icon-name">file-add-fill</div>
       </li>
@@ -239,22 +174,6 @@ render() {
       <li>
         <Icon type="folder-open-fill" />
         <div className="ui-icon-name">file-open-fill</div>
-      </li>
-      <li>
-        <Icon type="cloud-fill" />
-        <div className="ui-icon-name">cloud-fill</div>
-      </li>
-      <li>
-        <Icon type="like-fill" />
-        <div className="ui-icon-name">like-fill</div>
-      </li>
-      <li>
-        <Icon type="unlike-fill" />
-        <div className="ui-icon-name">unlike-fill</div>
-      </li>
-      <li>
-        <Icon type="pushpin-fill" />
-        <div className="ui-icon-name">pushpin-fill</div>
       </li>
     </ul>
   )
@@ -272,8 +191,8 @@ render() {
   return (
     <ul className="icon-list">
       <li>
-        <Icon type="like_fill" theme="error" />
-        <div className="ui-icon-name">like-fill</div>
+        <Icon type="folder-fill" theme="error" />
+        <div className="ui-icon-name">folder-fill</div>
       </li>
 
       <li>
