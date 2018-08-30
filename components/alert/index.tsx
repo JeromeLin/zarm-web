@@ -63,4 +63,4 @@ class Alert extends Component<AlertProps, any> {
   }
 }
 
-export default LocaleReceiver(Alert);
+export default LocaleReceiver(Alert, 'Alert');

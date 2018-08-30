@@ -148,4 +148,4 @@ class DatePicker extends Component<PropsType, any> {
   }
 }
 
-export default LocaleReceiver(DatePicker);
+export default LocaleReceiver(DatePicker, 'DatePicker');

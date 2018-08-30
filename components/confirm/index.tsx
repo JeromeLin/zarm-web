@@ -47,4 +47,4 @@ class Confirm extends Component<PropsType, any> {
   }
 }
 
-export default LocaleReceiver(Confirm);
+export default LocaleReceiver(Confirm, 'Confirm');

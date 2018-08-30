@@ -238,4 +238,4 @@ class Select extends Component<PropsType, any> {
   }
 }
 
-export default LocaleReceiver(Select);
+export default LocaleReceiver(Select, 'Select');

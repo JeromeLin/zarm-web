@@ -7,7 +7,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config.base');
 
 config.mode = 'production';
-config.devtool = 'cheap-module-eval-source-map';
 
 config.entry = {
   index: ['./examples/index.js'],
