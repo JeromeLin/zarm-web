@@ -177,11 +177,5 @@
     "components/**/*.{ts,tsx}": "lint:ts",
     "{components,examples}/**/*.{js,jsx}": "lint:js",
     "{styles,examples}/**/*.scss": "lint:style"
-  },
-  "sideEffects": [
-    "dist/*",
-    "components/style/*",
-    "es/**/style/*",
-    "lib/**/style/*"
-  ]
+  }
 }
