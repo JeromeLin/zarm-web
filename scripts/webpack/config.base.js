@@ -85,7 +85,11 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'file-loader?name=fonts/[name].[hash:8].[ext]',
+            loader: 'file-loader',
+            options: {
+              name: './fonts/[name].[hash:8].[ext]',
+              publicPath: '../',
+            },
           },
         ],
       },
