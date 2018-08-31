@@ -9,14 +9,14 @@ class CalendarYearTable extends Component<YearTableProps, any> {
   static defaultProps = {
     prefixCls: 'ui-calendar',
     defaultValue: '',
-    value: '',
+    current: '',
     onYearClick: () => {},
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      current: props.value || new Date(),
+      current: props.current || new Date(),
     };
   }
 
