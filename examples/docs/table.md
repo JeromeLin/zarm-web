@@ -269,7 +269,7 @@
         <Table
           striped
           hover
-          bordered
+          // bordered
           dataSource={dataSource}
           columns={[{
             dataIndex: 'id',
