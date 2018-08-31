@@ -77,6 +77,70 @@ DateTimePicker时候showTime需要为true且format必传
 ```
 :::
 
+### range 用法
+
+:::demo
+
+```js
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: []
+    };
+  }
+  render() {
+    return (
+      <div>
+       <DatePicker
+          radius
+          isRange
+          style={{width: 300}}
+          value={this.state.date}
+          placeholder="请选择起始日期"
+          onChange={(date) => {
+            console.log(date)
+            this.setState({date});
+          }}
+        />
+      </div>
+    )
+  }
+```
+:::
+
+### range time 用法
+
+:::demo
+
+```js
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: []
+    };
+  }
+  render() {
+    return (
+      <div>
+       <DatePicker
+          radius
+          isRange
+          showTime
+          format="yyyy-MM-dd hh:mm:ss"
+          style={{width: 350}}
+          value={this.state.date}
+          placeholder="请选择起始日期"
+          onChange={(date) => {
+            console.log(date)
+            this.setState({date});
+          }}
+        />
+      </div>
+    )
+  }
+```
+:::
+
 ### 禁用状态
 
 不可用状态。
@@ -130,6 +194,7 @@ DateTimePicker时候showTime需要为true且format必传
 | value     | 选中日期值   | string |   -   |    -   |
 | defaultValue  | 默认值 | string |   -   |    -   |
 | showTime | 是否显示时间选择器 | boolean | - | false |
+| isRange | 是否显示日期范围选择器 | boolean | - | false |
 | format  | 回调参数日期格式 | string |   -   |    'yyyy-MM-dd'   |
 | min  | 可选的最小日期 | string |   -   |    ''   |
 | max  | 可选的最大日期 | string |   -   |    ''   |

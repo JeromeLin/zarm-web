@@ -5,13 +5,14 @@ export default interface PropsType {
   format?: string;
   min?: string;
   max?: string;
-  value?: string;
+  value?: string | string[];
   defaultValue?: string;
   placeholder?: string;
   disabled?: boolean;
   radius?: boolean;
   isDisabled?: boolean;
   isRadius?: boolean;
+  isRange?: boolean;
   size?: size;
   className?: string;
   style?: object;

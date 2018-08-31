@@ -6,18 +6,20 @@ import LocaleReceiver from '../locale/LocaleReceiver';
 const CALENDAR_ROW_COUNT = 4;
 const CALENDAR_COL_COUNT = 3;
 
+const fn = () => {};
+
 class CalendarMonthTable extends Component<MonthTableProps, any> {
   static defaultProps = {
     prefixCls: 'ui-calendar',
     defaultValue: '',
-    value: '',
-    onMonthClick: () => {},
+    current: '',
+    onMonthClick: fn,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      current: props.value || new Date(),
+      current: props.current || new Date(),
     };
   }
 
@@ -29,18 +31,35 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
     }
   }
 
-  render() {
-    const { visible, prefixCls } = this.props;
-    const style = {
-      display: visible ? 'none' : 'block',
-    };
+  // 渲染月份单元
+  renderMonthCell(day) {
+    const {
+      onMonthClick,
+      prefixCls,
+      disabledMonth,
+      locale,
+    } = this.props;
+
+    const fullDay = `${day.year}/${day.month}/${day.date}`;
+
+    const isDisabled = disabledMonth ? !disabledMonth(fullDay) : false;
+
+    const cls = classnames({
+      [`${prefixCls}-text`]: true,
+      [`${prefixCls}-text-disabled`]: isDisabled,
+      [`${prefixCls}-text-selected`]: this.state.current === fullDay,
+    });
+
+    const onClick = () => onMonthClick(fullDay);
 
     return (
-      <div style={style}>
-        <table className={`${prefixCls}-table ${prefixCls}-month`}>
-          {this.renderMonth()}
-        </table>
-      </div>
+      <span
+        className={cls}
+        title={locale[`month${day.month}`]}
+        onClick={(isDisabled && fn) || onClick}
+      >
+        {locale[`month${day.month}`]}
+      </span>
     );
   }
 
@@ -86,24 +105,18 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
     return <tbody>{tabelCell}</tbody>;
   }
 
-  // 渲染月份单元
-  renderMonthCell(day) {
-    const { onMonthClick, prefixCls, locale } = this.props;
-    const fullDay = `${day.year}/${day.month}/${day.date}`;
-
-    const cls = classnames({
-      [`${prefixCls}-text`]: true,
-      [`${prefixCls}-text-selected`]: this.state.current === fullDay,
-    });
+  render() {
+    const { visible, prefixCls } = this.props;
+    const style = {
+      display: visible ? 'none' : 'block',
+    };
 
     return (
-      <span
-        className={cls}
-        title={locale[`month${day.month}`]}
-        onClick={() => onMonthClick(fullDay)}
-      >
-        {locale[`month${day.month}`]}
-      </span>
+      <div style={style}>
+        <table className={`${prefixCls}-table ${prefixCls}-month`}>
+          {this.renderMonth()}
+        </table>
+      </div>
     );
   }
 }
