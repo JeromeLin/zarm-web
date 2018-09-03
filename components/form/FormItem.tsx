@@ -62,6 +62,7 @@ class FormItem extends Component<ItemProps, any> {
 
     const controlCls = classnames({
       [`${prefixCls}-item-control`]: true,
+      [`${prefixCls}-item-control-help`]: 'help' in props,
       [controlCol!]: !!controlCol,
       [`theme-${theme}`]: !!theme,
     });

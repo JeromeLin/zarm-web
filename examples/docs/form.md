@@ -55,6 +55,32 @@
 ```
 :::
 
+### 帮助提示
+
+:::demo 设置`type`属性为`inline`，并给`Form.Item`设置相应的栅格布局类。
+
+```js
+  render() {
+    return (
+      <Form type="inline">
+        <Form.Item
+          className="col-sm-6"
+          theme="error"
+          help="类型不能为空"
+          label="类型">
+          <Input placeholder="请输入..." />
+        </Form.Item>
+        <Form.Item
+          className="col-sm-6"
+          label="来源">
+          <Input placeholder="请输入..." />
+        </Form.Item>
+      </Form>
+    )
+  }
+```
+:::
+
 ### Form Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
