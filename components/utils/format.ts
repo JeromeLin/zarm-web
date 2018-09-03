@@ -8,7 +8,11 @@ export default {
       return date;
     }
 
-    date = new Date(date.toString().replace(/-/g, '/'));
+    // 判断是否为 Date 对象
+    if (!(Object.prototype.toString.call(date) === '[object Date]')) {
+      date = new Date(date.toString().replace(/-/g, '/'));
+    }
+
     const o = {
       'M+': date.getMonth() + 1, // 月份
       'd+': date.getDate(), // 日

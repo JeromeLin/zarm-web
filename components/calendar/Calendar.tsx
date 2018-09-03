@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+
 import Format from '../utils/format';
+
+import Button from '../button';
+import TimePicker from '../time-picker';
+import LocaleReceiver from '../locale/LocaleReceiver';
+
 import CalendarHeader from './CalendarHeader';
 import CalendarDateTable from './CalendarDateTable';
 import CalendarMonthTable from './CalendarMonthTable';
 import CalendarYearTable from './CalendarYearTable';
-import Button from '../button';
+
 import PropsType from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
-import TimePicker from '../time-picker';
 
 class Calendar extends Component<PropsType, any> {
   static defaultProps = {
@@ -16,14 +20,17 @@ class Calendar extends Component<PropsType, any> {
     format: 'yyyy-MM-dd',
     min: '',
     max: '',
+    isShowPrev: true,
+    isShowNext: true,
     onChange: () => {},
   };
 
   constructor(props) {
     super(props);
+
     this.state = {
       current: Format.date(
-        props.value || props.defaultValue || new Date(),
+        props.current || props.value || props.defaultValue || new Date(),
         'yyyy/M/d',
       ),
       value: Format.date(props.value || props.defaultValue, props.format),
@@ -39,7 +46,7 @@ class Calendar extends Component<PropsType, any> {
       this.setState({
         value: Format.date(nextProps.value, 'yyyy/M/d'),
         current: Format.date(
-          nextProps.value || nextProps.defaultValue || new Date(),
+          nextProps.current || nextProps.value || nextProps.defaultValue || new Date(),
           'yyyy/M/d',
         ),
         panel: 'date',
@@ -47,21 +54,30 @@ class Calendar extends Component<PropsType, any> {
     }
   }
 
-  onYearClick(value) {
+  handleChangeHeader = (current) => {
+    const { onPanelChange } = this.props;
+
+    if (typeof onPanelChange === 'function') {
+      onPanelChange(current);
+    }
+
+    this.setState({ current });
+  }
+
+  handleChangeYearOrMonth = (current) => {
+    const { onPanelChange } = this.props;
+
+    if (typeof onPanelChange === 'function') {
+      onPanelChange(current);
+    }
+
     this.setState({
-      current: value,
+      current,
       panel: 'date',
     });
   }
 
-  onMonthClick(value) {
-    this.setState({
-      current: value,
-      panel: 'date',
-    });
-  }
-
-  onDateClick(value, isNow = false) {
+  onDateClick (value, isNow = false) {
     const { format, onChange, showTime } = this.props;
     let dropdownStatus = false;
 
@@ -106,7 +122,10 @@ class Calendar extends Component<PropsType, any> {
   }
 
   setValue (value, timeValue) {
-    const { format, onChange } = this.props;
+    const {
+      format,
+      onChange,
+    } = this.props;
 
     this.setState({
       timeValue,
@@ -115,15 +134,55 @@ class Calendar extends Component<PropsType, any> {
     });
 
     if (onChange) {
-      onChange(Format.date(`${value} ${timeValue}`, format), true);
+      onChange(Format.date(`${value} ${timeValue}`, format), true, true);
     }
+  }
+
+  getDisplayDate = () => {
+    const {
+      selectedValue = [],
+      isLeftCalendar,
+      isRightCalendar,
+    } = this.props;
+
+    const { current } = this.state;
+
+    if (isLeftCalendar) {
+      if (selectedValue[0]) {
+        return Format.date(selectedValue[0], 'yyyy-MM-dd');
+      }
+
+      return '开始日期';
+    }
+
+    if (isRightCalendar) {
+      if (selectedValue[1]) {
+        return Format.date(selectedValue[1], 'yyyy-MM-dd');
+      }
+
+      return '终止日期';
+    }
+
+    return Format.date(current, 'yyyy-MM-dd');
   }
 
   render() {
     const { props } = this;
     const {
-      className, hasFooter, min, max, style, prefixCls, locale, showTime,
+      className,
+      hasFooter,
+      min,
+      max,
+      style,
+      prefixCls,
+      locale,
+      showTime,
+      isShowPrev,
+      isShowNext,
+      selectedValue,
+      disabledMonth,
     } = props;
+
     const { current, value, panel } = this.state;
 
     const cls = classnames({
@@ -134,41 +193,50 @@ class Calendar extends Component<PropsType, any> {
 
     return (
       <div className={cls} style={style}>
+        {
+          showTime &&
+          <div className="ui-calendar-time-header">
+            {
+              this.getDisplayDate()
+            }
+
+            <TimePicker
+              placement="bottomRight"
+              value={this.state.timeValue}
+              onChange={(value) => {
+                this.onTimeChange(value);
+              }}
+            />
+          </div>
+        }
+
         <CalendarHeader
           panel={panel}
           current={current}
+          isShowPrev={isShowPrev}
+          isShowNext={isShowNext}
           // tslint:disable-next-line:no-shadowed-variable
-          onChange={current => this.setState({ current })}
+          onChange={this.handleChangeHeader}
           // tslint:disable-next-line:no-shadowed-variable
           onChangePanel={panel => this.setState({ panel })}
-        >
-          {
-            showTime && (
-              <TimePicker
-                placement="bottomRight"
-                value={this.state.timeValue}
-                onChange={(value) => {
-                  this.onTimeChange(value);
-                }}
-              />
-            )
-          }
-        </CalendarHeader>
+        />
+
         <div className={`${prefixCls}-body`}>
           <CalendarYearTable
             visible={panel !== 'year'}
             value={value}
             current={current}
             // tslint:disable-next-line:no-shadowed-variable
-            onYearClick={value => this.onYearClick(value)}
+            onYearClick={this.handleChangeYearOrMonth}
           />
 
           <CalendarMonthTable
             visible={panel !== 'month'}
             value={value}
             current={current}
+            disabledMonth={disabledMonth}
             // tslint:disable-next-line:no-shadowed-variable
-            onMonthClick={value => this.onMonthClick(value)}
+            onMonthClick={this.handleChangeYearOrMonth}
           />
 
           <CalendarDateTable
@@ -177,6 +245,7 @@ class Calendar extends Component<PropsType, any> {
             current={current}
             min={min}
             max={max}
+            selectedValue={selectedValue}
             // tslint:disable-next-line:no-shadowed-variable
             onDateClick={value => this.onDateClick(value)}
           />
