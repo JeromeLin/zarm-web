@@ -19,6 +19,7 @@ export interface HeadProps {
   sort: object;
   rowSelection?: rowSelection;
   dataSource: object[];
+  expandedRowRender?: (row: any, index: number) => React.ReactNode;
   onSort: (column: column) => void;
   renderSelectAll: (
     rowSelection: rowSelection,
@@ -36,7 +37,10 @@ export interface BodyProps {
   rowClick?: (row: any) => void;
   onEnterRow: (index: number) => void;
   onLeaveRow: () => void;
-  expandedRowRender?: (row: any, index: number, expanded: boolean) => React.ReactNode;
+  rowKey?: (row: any, index: number) => string | string;
+  expandedRowKeys: any[];
+  toggleExpandRow: (key: string, row: any) => void;
+  expandedRowRender?: (row: any, index: number) => React.ReactNode;
   renderCell: (column: column, row: any, rowIndex: number, columnIndex: number) => React.ReactNode;
   renderSelect: (rowSelection: rowSelection, row: any, height?: number) => React.ReactNode;
 }
@@ -90,7 +94,12 @@ export default interface PropsType {
   columns: column[];
   rowClick?: (row: any) => void;
   rowSelection?: rowSelection;
-  expandedRowRender: (row: any, index: number, expanded: boolean) => React.ReactNode;
+  rowKey?: (row: any, index: number) => string | string;
+  defaultExpandAllRows?: boolean;
+  defaultExpandedRowKeys?: any[];
+  expandedRowKeys?: any[];
+  expandedRowRender: (row: any, index: number) => React.ReactNode;
+  onExpand?: (expanded: boolean, row: any) => void;
   style?: object;
   width?: number;
   maxCellSize: 20;

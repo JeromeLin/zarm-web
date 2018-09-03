@@ -56,6 +56,18 @@ class Head extends Component<HeadProps, any> {
     );
   }
 
+  renderExpandIconPlaceholder() {
+    const { expandedRowRender } = this.props;
+
+    if (expandedRowRender) {
+      return (
+        <th key="expand-icon">
+          <span />
+        </th>
+      );
+    }
+  }
+
   render() {
     const {
       rows, renderSelectAll, rowSelection, dataSource,
@@ -63,6 +75,7 @@ class Head extends Component<HeadProps, any> {
     const headRows = rows.map((row, index) => {
       return (
         <tr key={index}>
+          {this.renderExpandIconPlaceholder()}
           {
             rowSelection && index === 0
             ? renderSelectAll(

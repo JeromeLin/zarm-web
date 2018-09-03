@@ -20,6 +20,7 @@ class Table extends Component<PropsType, any> {
     isRadius: false,
     isHover: false,
     maxCellSize: 20,
+    defaultExpandAllRows: false,
     columns: [],
     dataSource: [],
   };
@@ -36,10 +37,12 @@ class Table extends Component<PropsType, any> {
       'rowSelection' in props
         ? props.rowSelection.value || props.rowSelection.defaultValue || []
         : [];
+    const expandedRowKeys = this.getExpandedRowKeys();
     this.state = {
       selectedRows,
       sort: {},
       fixedColAttrs: {},
+      expandedRowKeys,
     };
   }
 
@@ -114,6 +117,36 @@ class Table extends Component<PropsType, any> {
     }
   }
 
+  getRowKey = (row, index) => {
+    const { rowKey } =  this.props;
+    let key;
+
+    if (rowKey) {
+      key = typeof rowKey === 'function' ? rowKey(row, index) : row[rowKey];
+    } else {
+      key = index;
+    }
+    return key;
+  }
+
+  // 获取初始化展开行
+  getExpandedRowKeys() {
+    const {
+      expandedRowKeys, defaultExpandAllRows, defaultExpandedRowKeys, dataSource,
+    } = this.props;
+
+    if (defaultExpandAllRows) {
+      return dataSource.map(this.getRowKey);
+    }
+    if (expandedRowKeys) {
+      return Array.isArray(expandedRowKeys) ? expandedRowKeys : [expandedRowKeys];
+    }
+    if (defaultExpandedRowKeys) {
+      return Array.isArray(defaultExpandedRowKeys) ? defaultExpandedRowKeys : [defaultExpandedRowKeys];
+    }
+    return [];
+  }
+
   // 同步单元格宽度和高度
   getFixedColAttrs() {
     const { columns, rowSelection } = this.props;
@@ -145,6 +178,27 @@ class Table extends Component<PropsType, any> {
         },
       });
     }
+  }
+
+  // 处理收起展开行
+  toggleExpandRow = (key, row) => {
+    const { onExpand } = this.props;
+    const { expandedRowKeys } = this.state;
+    const index = expandedRowKeys.indexOf(key);
+    const keys = [...expandedRowKeys];
+
+    if (index > -1) {
+      keys.splice(index, 1);
+    } else {
+      keys.push(key);
+    }
+
+    if (onExpand) {
+      onExpand(index < 0, row);
+    }
+    this.setState({
+      expandedRowKeys: keys,
+    });
   }
 
   // 渲染固定左侧的列
@@ -256,11 +310,13 @@ class Table extends Component<PropsType, any> {
       columns,
       dataSource,
       rowClick,
+      rowKey,
       rowSelection,
       style,
       width,
+      expandedRowRender,
     } = this.props;
-    const { sort } = this.state;
+    const { sort, expandedRowKeys } = this.state;
     const { headRows, dataColumns } = groupColumns(columns);
     const cls = classnames({
       [`${prefixCls}-scroll`]: true,
@@ -278,16 +334,22 @@ class Table extends Component<PropsType, any> {
           prefixCls={prefixCls}
           rows={headRows}
           sort={sort}
+          expandedRowRender={expandedRowRender}
           rowSelection={rowSelection}
           dataSource={dataSource}
           onSort={this.onSort}
           renderSelectAll={this.renderSelectAll}
         />
         <Body
+          prefixCls={prefixCls}
           ref={(body) => { this.body = body; }}
           rowSelection={rowSelection}
           dataSource={dataSource}
           dataColumns={dataColumns}
+          rowKey={rowKey}
+          expandedRowKeys={expandedRowKeys}
+          expandedRowRender={expandedRowRender}
+          toggleExpandRow={this.toggleExpandRow}
           onEnterRow={this.onEnterRow}
           onLeaveRow={this.onLeaveRow}
           rowClick={rowClick}
