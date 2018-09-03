@@ -77,7 +77,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       类型
     </label>
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control ui-form-item-control-help theme-default"
     >
       <span>
         <input
