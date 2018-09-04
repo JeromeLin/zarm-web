@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+
 import Format from '../utils/format';
+import { isArray } from '../utils/validate';
+
 import { DateTableProps, dateType } from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 
-const CALENDAR_ROW_COUNT = 6;
-const CALENDAR_COL_COUNT = 7;
+// 生成 [1, 2, 3, ...] 的序列
+const getSequence = length => [...Array.from({ length }).keys()];
+
+const CALENDAR_ROW_COUNT =  getSequence(6);
+const CALENDAR_COL_COUNT = getSequence(7);
+
+const compareTime = (v1, v2) => new Date(v1) > new Date(v2);
+
+const isEqualTime = (v1, v2) => Format.date(v1, 'yyyy/M/d') === Format.date(v2, 'yyyy/M/d');
 
 class CalendarDateTable extends Component<DateTableProps, any> {
   static defaultProps = {
@@ -38,7 +48,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
     const weekDays: string[] = [];
     const { prefixCls, locale } = this.props;
     const CALENDAR_WEEK_DAYS = locale.week_days;
-    for (let i = 0; i < CALENDAR_COL_COUNT; i++) {
+    for (let i = 0; i < CALENDAR_COL_COUNT.length; i++) {
       weekDays[i] = CALENDAR_WEEK_DAYS[i];
     }
 
@@ -107,7 +117,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
     for (
       let k = 1;
       k <=
-      CALENDAR_ROW_COUNT * CALENDAR_COL_COUNT -
+      CALENDAR_ROW_COUNT.length * CALENDAR_COL_COUNT.length -
         current.days -
         current.firstDayOfWeek +
         1;
@@ -125,33 +135,40 @@ class CalendarDateTable extends Component<DateTableProps, any> {
       );
     }
 
-    const tabelCell: JSX.Element[] = [];
     const { prefixCls } = this.props;
 
-    for (let m = 0; m < CALENDAR_ROW_COUNT; m++) {
-      const tabelRow: JSX.Element[] = [];
-      for (let n = 0; n < CALENDAR_COL_COUNT; n++) {
-        const index = m * CALENDAR_COL_COUNT + n;
-        tabelRow.push(
-          <td key={`column-${n}`} className={`${prefixCls}-cell`} role="gridcell">
-            {dates[index]}
-          </td>,
-        );
-      }
-      tabelCell.push(
-        <tr key={`row-${m}`} role="row">
-          {tabelRow}
-        </tr>,
-      );
-    }
+    return (
+      <tbody>
+      {
+        CALENDAR_ROW_COUNT.map((m) => (
+          <tr key={`row-${m}`} role="row">
+            {
+              CALENDAR_COL_COUNT.map((n) => {
+                const index = m * CALENDAR_COL_COUNT.length + n;
 
-    return <tbody>{tabelCell}</tbody>;
+                return (
+                  <td key={`column-${n}`} className={`${prefixCls}-cell`} role="gridcell">
+                    {dates[index]}
+                  </td>
+                );
+              })
+            }
+          </tr>
+        ))
+      }
+      </tbody>
+    );
   }
 
   // 渲染日期单元
   renderDateCell(day, type?) {
     const {
-      value, onDateClick, min, max, prefixCls,
+      value,
+      onDateClick,
+      min,
+      max,
+      prefixCls,
+      selectedValue,
     } = this.props;
 
     const fullDay = `${day.year}/${day.month}/${day.date}`;
@@ -172,13 +189,28 @@ class CalendarDateTable extends Component<DateTableProps, any> {
           >
             {day.date}
           </span>
-        );
+        ) as JSX.Element;
       }
+    }
+
+    let isSelected = false;
+    let isRange = false;
+    if (selectedValue && isArray(selectedValue) && type !== 'others') {
+      if (selectedValue.length === 2) {
+        isRange = compareTime(fullDay, selectedValue[0]) &&
+          compareTime(selectedValue[1], fullDay);
+      }
+
+      isSelected = isEqualTime(selectedValue[0], fullDay) ||
+        isEqualTime(selectedValue[1], fullDay);
+    } else {
+      isSelected = isEqualTime(value, fullDay);
     }
 
     const cls = classnames(`${prefixCls}-text`, {
       [`${prefixCls}-text-others`]: type === 'others',
-      [`${prefixCls}-text-selected`]: value === fullDay,
+      [`${prefixCls}-text-selected`]: isSelected,
+      [`${prefixCls}-text-range`]: isRange,
       [`${prefixCls}-text-today`]:
         new Date().toLocaleDateString() ===
         new Date(fullDay).toLocaleDateString(),
@@ -253,7 +285,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
           {this.renderDate()}
         </table>
       </div>
-    );
+    ) as JSX.Element;
   }
 }
 
