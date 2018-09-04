@@ -80,6 +80,10 @@ class Table extends Component<PropsType, any> {
     const { fixedrightTbody } = this.fixedRightColumn;
     const { scrollbody } = this.body;
 
+    if (!fixedleftTbody && !fixedrightTbody) {
+      return;
+    }
+
     [fixedleftTbody, fixedrightTbody, scrollbody].forEach((tbody) => {
       if (tbody) {
         toggleHoverStatus(tbody.querySelectorAll('tr'), index);

@@ -76,7 +76,7 @@
       <div>
         <Table
           striped
-          hover
+          // hover
           bordered
           dataSource={dataSource}
           columns={[{
@@ -267,7 +267,7 @@
     return (
       <div>
         <Table
-          striped
+          // striped
           hover
           dataSource={dataSource}
           columns={[{
@@ -459,7 +459,7 @@
     return (
       <div>
         <Table
-          hover
+          // hover
           bordered
           dataSource={dataSource}
           columns={[{
