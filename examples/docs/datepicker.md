@@ -96,7 +96,7 @@ DateTimePicker时候showTime需要为true且format必传
           isRange
           style={{width: 300}}
           value={this.state.date}
-          placeholder="请选择起始日期"
+          // placeholder="请选择起始日期"
           onChange={(date) => {
             console.log(date)
             this.setState({date});
@@ -129,7 +129,7 @@ DateTimePicker时候showTime需要为true且format必传
           format="yyyy-MM-dd hh:mm:ss"
           style={{width: 350}}
           value={this.state.date}
-          placeholder="请选择起始日期"
+          // placeholder="请选择起始日期"
           onChange={(date) => {
             console.log(date)
             this.setState({date});
