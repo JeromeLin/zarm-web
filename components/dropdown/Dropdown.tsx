@@ -259,7 +259,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
 
   // 点击外部的时候
   onDocumentClick = (e): void => {
-    if (this.props.disabled === true) {
+    if (this.props.disabled === true || this.state.visible === false) {
       return;
     }
     const target: Node = e.target;
