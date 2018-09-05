@@ -143,6 +143,7 @@ class Calendar extends Component<PropsType, any> {
       selectedValue = [],
       isLeftCalendar,
       isRightCalendar,
+      locale,
     } = this.props;
 
     const { current } = this.state;
@@ -152,7 +153,7 @@ class Calendar extends Component<PropsType, any> {
         return Format.date(selectedValue[0], 'yyyy-MM-dd');
       }
 
-      return '开始日期';
+      return locale.start_date;
     }
 
     if (isRightCalendar) {
@@ -160,7 +161,7 @@ class Calendar extends Component<PropsType, any> {
         return Format.date(selectedValue[1], 'yyyy-MM-dd');
       }
 
-      return '终止日期';
+      return locale.end_date;
     }
 
     return Format.date(current, 'yyyy-MM-dd');
