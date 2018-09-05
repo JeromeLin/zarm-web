@@ -28,9 +28,10 @@ class Option extends Component<OptionProps, any> {
         {...disableProps}
         onClick={e => props.onChange(e)}
         onDoubleClick={onDoubleClick}
+        style={{ paddingRight: 25 }}
       >
         {children}
-        {checked && <Icon style={{ float: 'right', marginRight: 10 }} type="right" theme="info" />}
+        {checked && <Icon style={{ position: 'absolute', right: 5 }} type="right" theme="info" />}
       </Menu.Item >
     );
   }

@@ -22,7 +22,7 @@
     .ui-select-icon,
     .ui-select-arrow {
       right: ($height - $font-size) / 2;
-      margin-top:  - $font-size / 2;
+      margin-top: - $font-size / 2;
     }
   }
 
@@ -135,22 +135,26 @@
   }
 
   .select-btn-list {
+    padding-right: 30px;
     display: inline-block;
-    padding: 5px;
+    font-size: 0;
+
+    .select-btn-outer {
+      padding: 2px;
+      display: inline-block;
+    }
 
     .select-btn {
-      margin-left: 5px;
       border: 1px solid #ccc;
-      display: inline-block;
+      padding: 3px 5px;
       min-width: 30px;
+      max-width: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       text-align: center;
       border-radius: 5px;
-      padding: 3px 5px;
       font-size: 12px;
-
-      &:first-child {
-        margin-left: 0;
-      }
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { Component, ReactElement, ReactNode, FormEvent } from 'react';
+import React, { Component, ReactElement, ReactNode, ChangeEvent } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import Option from './Option';
@@ -6,6 +6,7 @@ import Dropdown from '../Dropdown';
 import Menu from '../Menu';
 import Icon from '../Icon';
 import PropsType from './PropsType';
+import Input from '../Input';
 
 class Select extends Component<PropsType, any> {
   static defaultProps = {
@@ -32,10 +33,11 @@ class Select extends Component<PropsType, any> {
 
   optionMap: {};
   divInput: HTMLSpanElement;
+  searchInput: Input;
   divInputHeight: number = 0;
   constructor(props) {
     super(props);
-    this.state = {
+    const state = {
       value:
         props.value ||
         props.defaultValue ||
@@ -43,6 +45,10 @@ class Select extends Component<PropsType, any> {
       dropdown: false,
       searchValue: '',
     };
+    if (props.multiple && typeof props.value === 'string') {
+      state.value = [state.value];
+    }
+    this.state = state;
     this.optionMap = Select.getChildrenObject(props.children);
   }
 
@@ -53,8 +59,12 @@ class Select extends Component<PropsType, any> {
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
+      let value = nextProps.value || this.getCheckedValue(nextProps.children);
+      if (nextProps.multiple && value === 'string') {
+        value = [value];
+      }
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children),
+        value,
       });
     }
   }
@@ -136,6 +146,10 @@ class Select extends Component<PropsType, any> {
     );
   }
 
+  onVisibleChange = (visible) => {
+    this.setState({ dropdown: visible });
+  }
+
   handleKeyup(e) {
     if (this.state.dropdown === true && e.keyCode === 27) {
       this.setDropdown(false);
@@ -156,6 +170,10 @@ class Select extends Component<PropsType, any> {
 
   stopProp = (e) => {
     e.stopPropagation();
+  }
+
+  searchInputElem = (elem) => {
+    this.searchInput = elem;
   }
 
   render() {
@@ -224,12 +242,6 @@ class Select extends Component<PropsType, any> {
       maxHeight: 250,
       overflow: 'auto',
     };
-    const menus =
-      children.length > 0 ? (
-        <Menu size={size} style={menuStyle}>{children}</Menu>
-      ) : (
-          <span className={`${prefixCls}-notfound`}>没有找到数据</span>
-        );
 
     const inputPlaceholder = this.state.dropdown // eslint-disable-line
       ? hasValue
@@ -243,22 +255,21 @@ class Select extends Component<PropsType, any> {
 
     const inputRender = search &&
       !disabled && (
-        <div
-          className="div-input"
-          contentEditable
-          onInput={(e: FormEvent<HTMLDivElement>) => {
-            if (this.state.dropdown === false) {
-              this.setState({ dropdown: true });
-            }
-            const searchValue = (e.target as HTMLDivElement).innerText;
-            this.setState({
-              searchValue,
-            }, () => {
-              onSearchChange!(searchValue);
-            });
-            this.componentDidUpdate();
-          }}
-        />
+        <div className="search-input">
+          <Input
+            ref={this.searchInputElem}
+            placeholder="请输入搜索内容"
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              const searchValue = e.target.value;
+              this.setState({
+                searchValue,
+              }, () => {
+                onSearchChange!(searchValue);
+              });
+              this.componentDidUpdate();
+            }}
+          />
+        </div>
         // <span className={textCls}>
         //   <input
         //     value={this.state.searchValue}
@@ -271,6 +282,18 @@ class Select extends Component<PropsType, any> {
         // </span>
       );
 
+    const menus =
+      <div>
+        {inputRender}
+        {
+          children.length > 0 ? (
+            <Menu size={size} style={menuStyle}>{children}</Menu>
+          ) : (
+              <span className={`${prefixCls}-notfound`}>没有找到数据</span>
+            )
+        }
+      </div>;
+
     return (
       <Dropdown
         disabled={disabled}
@@ -279,7 +302,7 @@ class Select extends Component<PropsType, any> {
         overlay={menus}
         zIndex={zIndex}
         getPopupContainer={getPopupContainer}
-        onVisibleChange={(visible) => this.setState({ dropdown: visible })}
+        onVisibleChange={this.onVisibleChange}
       >
         <span className={cls} style={style}>
           <span
@@ -300,23 +323,24 @@ class Select extends Component<PropsType, any> {
                   {
                     this.state.value.map(valueItem => {
                       return (
-                        <div
-                          className="select-btn"
-                          key={valueItem}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            const index = this.state.value.indexOf(valueItem);
-                            const { value } = this.state;
-                            setTimeout(() => {
-                              value.splice(index, 1);
-                              this.setState({
-                                value,
+                        <div className="select-btn-outer" key={valueItem}>
+                          <div
+                            className="select-btn"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const index = this.state.value.indexOf(valueItem);
+                              const { value } = this.state;
+                              setTimeout(() => {
+                                value.splice(index, 1);
+                                this.setState({
+                                  value,
+                                });
                               });
-                            });
-                          }}
-                        >
-                          {this.optionMap[valueItem].children}
-                          <Icon style={{ marginLeft: 5, color: '#333' }} type="wrong" theme="info" />
+                            }}
+                          >
+                            {this.optionMap[valueItem].children}
+                            <Icon style={{ marginLeft: 5, color: '#333' }} type="wrong" theme="info" />
+                          </div>
                         </div>
                       );
                     })
@@ -324,7 +348,6 @@ class Select extends Component<PropsType, any> {
                 </div>
                 : textRender
             }
-            {inputRender}
             <Icon type="arrow-bottom" className={`${prefixCls}-arrow`} />
           </span>
         </span>
