@@ -1,0 +1,65 @@
+$border-radius-base: 6px;
+$border-color-base: #d9d9d9;
+$box-shadow-base: 0 0 4px rgba(0,0,0,0.17);
+$success-color: #87d068;
+$error-color: #f50;
+$warning-color: #fa0;
+$default-color: #2db7f5;
+
+.ui-message {
+  font-size: 12px;
+  position: fixed;
+  z-index: $base-zindex-message;
+  width: 100%;
+  top: 16px;
+  left: 0;
+
+  .ui-message-wrapper {
+    width: auto;
+    vertical-align: middle;
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    transform: translate(0, -50px);
+    transition: all .5s;
+  }
+  .ui-message-visible{
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .ui-message-container {
+    position: relative;
+    right: 50%;
+    padding: 8px 16px;
+    border-radius: $border-radius-base;
+    border: 1px solid $border-color-base;
+    box-shadow: $box-shadow-base;
+    background: #fff;
+    display: block;
+  }
+
+  .ui-message-success.ui-icon {
+    color: $success-color;
+  }
+
+  .ui-message-error.ui-icon {
+    color: $error-color;
+  }
+
+  .ui-message-warning.ui-icon {
+    color: $warning-color;
+  }
+
+  .ui-message-info.ui-icon {
+    color: $default-color;
+  }
+
+  .ui-icon {
+    margin-right: 8px;
+    font-size: 14px;
+    top: 1px;
+    position: relative;
+  }
+
+}

@@ -1,0 +1,5452 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tree renders basic Tree correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-close"
+    />
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-close"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span />
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with TreeNode children 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox checked indeterminate"
+        >
+          <input
+            checked=""
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox checked disabled"
+                          >
+                            <input
+                              checked=""
+                              class="ui-checkbox-input"
+                              disabled=""
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked disabled"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox checked indeterminate"
+              >
+                <input
+                  checked=""
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked indeterminate"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox checked"
+                          >
+                            <input
+                              checked=""
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with TreeNodes children 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox checked"
+        >
+          <input
+            checked=""
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="parent 1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        parent 1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox disabled"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  disabled=""
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="parent 1-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              parent 1-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked disabled"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="leaf"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    leaf
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-0-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="leaf"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    leaf
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox checked"
+              >
+                <input
+                  checked=""
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="parent 1-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              parent 1-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title=""
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    <span
+                      style="color:#1890ff"
+                    >
+                      sss
+                    </span>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox"
+        >
+          <input
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox disabled"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              disabled=""
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox disabled"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with defaultExpandAll correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with defaultExpandAll correctly 2`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox"
+        >
+          <input
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox disabled"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              disabled=""
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox disabled"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox checked indeterminate"
+        >
+          <input
+            checked=""
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox checked disabled"
+                          >
+                            <input
+                              checked=""
+                              class="ui-checkbox-input"
+                              disabled=""
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked disabled"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox checked indeterminate"
+              >
+                <input
+                  checked=""
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked indeterminate"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox checked"
+                          >
+                            <input
+                              checked=""
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with expandedKeys correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-close"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-close"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span />
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-close"
+          />
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-close"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span />
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox"
+        >
+          <input
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox disabled"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              disabled=""
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-close"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-close"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span />
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-close"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-close"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span />
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox"
+        >
+          <input
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox disabled"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              disabled=""
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox disabled"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, checkedKeys correctly 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox checked indeterminate"
+        >
+          <input
+            checked=""
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="根结点1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        根结点1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-0-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-0-0
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-0-0-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox checked disabled"
+                          >
+                            <input
+                              checked=""
+                              class="ui-checkbox-input"
+                              disabled=""
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-0
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-0-0-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-0-0-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-0-0-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked disabled"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-1
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-1-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-1-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-1-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-2"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox checked indeterminate"
+              >
+                <input
+                  checked=""
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="父结点 0-2"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              父结点 0-2
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-2-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="父结点 0-2-0"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-0
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-open"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked indeterminate"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                  title="父结点 0-2-1"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    父结点 0-2-1
+                  </span>
+                </span>
+                <span>
+                  <ul
+                    class="ui-tree-child-tree ui-tree-child-tree-open"
+                    data-expanded="true"
+                  >
+                    <li
+                      data-keys="0-2-1-0"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-open"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox"
+                          >
+                            <input
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+                        title="子结点 0-2-1-0"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-0
+                        </span>
+                      </span>
+                      <span>
+                        <ul
+                          class="ui-tree-child-tree ui-tree-child-tree-open"
+                          data-expanded="true"
+                        >
+                          <li
+                            data-keys="0-2-1-0-0"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-0"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-0
+                              </span>
+                            </span>
+                          </li>
+                          <li
+                            data-keys="0-2-1-0-1"
+                          >
+                            <span
+                              class="ui-tree-switcher ui-tree-switcher-noop"
+                            />
+                            <span
+                              class="ui-tree-checkbox"
+                            >
+                              <label>
+                                <span
+                                  class="ui-checkbox"
+                                >
+                                  <input
+                                    class="ui-checkbox-input"
+                                    type="checkbox"
+                                  />
+                                  <span
+                                    class="ui-checkbox-inner"
+                                  />
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                              title="子结点 0-2-1-0-1"
+                            >
+                              <span
+                                class="ui-tree-title"
+                              >
+                                子结点 0-2-1-0-1
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                      </span>
+                    </li>
+                    <li
+                      data-keys="0-2-1-1"
+                    >
+                      <span
+                        class="ui-tree-switcher ui-tree-switcher-noop"
+                      />
+                      <span
+                        class="ui-tree-checkbox"
+                      >
+                        <label>
+                          <span
+                            class="ui-checkbox checked"
+                          >
+                            <input
+                              checked=""
+                              class="ui-checkbox-input"
+                              type="checkbox"
+                            />
+                            <span
+                              class="ui-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </span>
+                      <span
+                        class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                        title="子结点 0-2-1-1"
+                      >
+                        <span
+                          class="ui-tree-title"
+                        >
+                          子结点 0-2-1-1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              </li>
+              <li
+                data-keys="0-2-2"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="子结点 0-2-2"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    子结点 0-2-2
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
+<ul
+  class="ui-tree"
+>
+  <li
+    data-keys="0"
+  >
+    <span
+      class="ui-tree-switcher ui-tree-switcher-open"
+    />
+    <span
+      class="ui-tree-checkbox"
+    >
+      <label>
+        <span
+          class="ui-checkbox checked"
+        >
+          <input
+            checked=""
+            class="ui-checkbox-input"
+            type="checkbox"
+          />
+          <span
+            class="ui-checkbox-inner"
+          />
+        </span>
+      </label>
+    </span>
+    <span
+      class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+      title="parent 1"
+    >
+      <span
+        class="ui-tree-title"
+      >
+        parent 1
+      </span>
+    </span>
+    <span>
+      <ul
+        class="ui-tree-child-tree ui-tree-child-tree-open"
+        data-expanded="true"
+      >
+        <li
+          data-keys="0-0"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox disabled"
+              >
+                <input
+                  class="ui-checkbox-input"
+                  disabled=""
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="parent 1-0"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              parent 1-0
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-0-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked disabled"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        disabled=""
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="leaf"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    leaf
+                  </span>
+                </span>
+              </li>
+              <li
+                data-keys="0-0-1"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox"
+                    >
+                      <input
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title="leaf"
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    leaf
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+        <li
+          data-keys="0-1"
+        >
+          <span
+            class="ui-tree-switcher ui-tree-switcher-open"
+          />
+          <span
+            class="ui-tree-checkbox"
+          >
+            <label>
+              <span
+                class="ui-checkbox checked"
+              >
+                <input
+                  checked=""
+                  class="ui-checkbox-input"
+                  type="checkbox"
+                />
+                <span
+                  class="ui-checkbox-inner"
+                />
+              </span>
+            </label>
+          </span>
+          <span
+            class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-open"
+            title="parent 1-1"
+          >
+            <span
+              class="ui-tree-title"
+            >
+              parent 1-1
+            </span>
+          </span>
+          <span>
+            <ul
+              class="ui-tree-child-tree ui-tree-child-tree-open"
+              data-expanded="true"
+            >
+              <li
+                data-keys="0-1-0"
+              >
+                <span
+                  class="ui-tree-switcher ui-tree-switcher-noop"
+                />
+                <span
+                  class="ui-tree-checkbox"
+                >
+                  <label>
+                    <span
+                      class="ui-checkbox checked"
+                    >
+                      <input
+                        checked=""
+                        class="ui-checkbox-input"
+                        type="checkbox"
+                      />
+                      <span
+                        class="ui-checkbox-inner"
+                      />
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="ui-tree-node-content-wrapper ui-tree-node-content-wrapper-noop"
+                  title=""
+                >
+                  <span
+                    class="ui-tree-title"
+                  >
+                    <span
+                      style="color:#1890ff"
+                    >
+                      sss
+                    </span>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </span>
+  </li>
+</ul>
+`;

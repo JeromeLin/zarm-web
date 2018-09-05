@@ -20,6 +20,7 @@ export default {
       Slider: '../pages/slider',
       Calendar: '../pages/calendar',
       DatePicker: '../pages/datepicker',
+      TimePicker: '../pages/timepicker',
       Upload: '../pages/upload',
       Form: '../pages/form',
     },
@@ -29,6 +30,7 @@ export default {
       Progress: '../pages/Progress',
       Panel: '../pages/panel',
       Pagination: '../pages/pagination',
+      Tree: '../pages/Tree',
     },
     Notice: {
       Alert: '../pages/alert',

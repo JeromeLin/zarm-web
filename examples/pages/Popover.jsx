@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/Popover/style';
-import '../../components/Button/style';
+import '../../components/popover/style';
+import '../../components/button/style';
 
 export default class Popover extends Markdown {
   // eslint-disable-next-line

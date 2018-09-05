@@ -1,0 +1,44 @@
+.ui-range-date-picker {
+  width: 480px;
+
+  &.ui-range-date-time-picker {
+    width: 720px;
+  }
+
+  .ui-range-date-picker-table {
+    @include clearfix;
+
+    .ui-range-date-picker-left {
+      float: left;
+      width: 50%;
+      border-right: 1px solid #e9e9e9;
+    }
+
+    .ui-range-date-picker-right {
+      float: right;
+      width: 50%;
+      border-left: 1px solid #e9e9e9;
+    }
+
+    .ui-time-select .ui-select .ui-select-selection {
+      max-height: 230px !important;
+    }
+  }
+
+  .ui-range-date-picker-footer {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+
+    .ui-range-date-picker-footer-btn {
+      margin-right: 8px;
+
+      &.disabled {
+        color: $menuitem-disabled-color;
+        text-decoration: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+

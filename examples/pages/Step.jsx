@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Step/style';
+import '../../components/step/style';
 
 export default class Step extends Markdown {
   // eslint-disable-next-line

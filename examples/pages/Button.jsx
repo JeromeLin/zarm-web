@@ -1,6 +1,6 @@
 import Markdown from '../components/markdown';
-import '../../components/Button/style';
-import '../../components/Icon/style';
+import '../../components/button/style';
+import '../../components/icon/style';
 
 export default class Button extends Markdown {
   // eslint-disable-next-line

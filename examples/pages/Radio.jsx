@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Radio/style';
+import '../../components/radio/style';
 
 export default class Radio extends Markdown {
   // eslint-disable-next-line

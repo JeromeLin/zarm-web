@@ -1,0 +1,107 @@
+$treePrefixCls: ui-tree;
+
+.#{$treePrefixCls} {
+  margin: 0;
+  padding: 5px;
+
+  li {
+    padding: 3px 0;
+    margin: 0;
+    list-style: none;
+    white-space: nowrap;
+    outline: 0;
+
+    .collapse {
+      overflow: hidden;
+      display: block;
+    }
+
+    .collapse-active {
+      transition: height 0.2s ease-out;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0 0 0 18px;
+    }
+
+    .#{$treePrefixCls}-node-content-wrapper {
+      display: inline-block;
+      cursor: pointer;
+      text-decoration: none;
+      vertical-align: top;
+    }
+
+    span {
+      &.#{$treePrefixCls}-switcher {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+
+        &.#{$treePrefixCls}-switcher-open,
+        &.#{$treePrefixCls}-switcher-close {
+          &:after {
+            width: 0;
+            height: 0;
+            content: '';
+            display: inline-block;
+            border: 4px solid #000;
+            border-color: rgba(0, 0, 0, 0.65) transparent transparent;
+            transition: transform .3s;
+          }
+        }
+
+        &.#{$treePrefixCls}-switcher-open:after {
+          transform: translate(8px, 0) rotate(0deg);
+        }
+
+        &.#{$treePrefixCls}-switcher-close:after {
+          transform: translate(10px, -2px) rotate(-90deg);
+        }
+
+        &.#{$treePrefixCls}-switcher-noop {
+          cursor: default;
+        }
+      }
+
+      &.#{$treePrefixCls}-checkbox {
+        width: 20px;
+        height: 24px;
+        line-height: 24px;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      &.#{$treePrefixCls}-node-content-wrapper {
+        line-height: 24px;
+        height: 24px;
+        display: inline-block;
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 12px;
+      }
+    }
+
+    &-child-tree {
+      display: none;
+
+      &-open {
+        display: block;
+      }
+    }
+
+    &-treenode-disabled {
+      > span:not(.#{$treePrefixCls}-switcher),
+      > a,
+      > a span {
+        color: #767676;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+

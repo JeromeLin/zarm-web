@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Select/style';
+import '../../components/select/style';
 
 export default class Select extends Markdown {
   // eslint-disable-next-line

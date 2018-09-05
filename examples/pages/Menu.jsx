@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Menu/style';
+import '../../components/menu/style';
 
 export default class Menu extends Markdown {
   // eslint-disable-next-line
