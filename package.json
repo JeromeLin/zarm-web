@@ -47,7 +47,8 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "docs": "cd docs && gitbook install && gitbook serve",
-    "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS"
+    "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
+    "release": "bash scripts/release.sh"
   },
   "dependencies": {
     "classnames": "^2.2.5",
