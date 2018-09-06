@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders CheckboxGroup correctly with defaultValue 1`] = `
+<div
+  class="ui-checkbox-group"
+>
+  <label>
+    <span
+      class="ui-checkbox checked"
+    >
+      <input
+        checked=""
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="a"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    A
+  </label>
+  <label>
+    <span
+      class="ui-checkbox"
+    >
+      <input
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="b"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    B
+  </label>
+  <label>
+    <span
+      class="ui-checkbox"
+    >
+      <input
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="c"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    C
+  </label>
+  <label>
+    <span
+      class="ui-checkbox"
+    >
+      <input
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="d"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    D
+  </label>
+</div>
+`;
+
+exports[`Checkbox renders disabled Checkbox correctly 1`] = `
+<label>
+  <span
+    class="ui-checkbox checked disabled"
+  >
+    <input
+      checked=""
+      class="ui-checkbox-input"
+      disabled=""
+      type="checkbox"
+      value="0"
+    />
+    <span
+      class="ui-checkbox-inner"
+    />
+  </span>
+  选择0
+</label>
+`;
+
+exports[`Checkbox renders disabled CheckboxGroup correctly 1`] = `
+<div
+  class="ui-checkbox-group"
+>
+  <label>
+    <span
+      class="ui-checkbox"
+    >
+      <input
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="a"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    A
+  </label>
+  <label>
+    <span
+      class="ui-checkbox"
+    >
+      <input
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="b"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    B
+  </label>
+  <label>
+    <span
+      class="ui-checkbox"
+    >
+      <input
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="c"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    C
+  </label>
+  <label>
+    <span
+      class="ui-checkbox"
+    >
+      <input
+        class="ui-checkbox-input"
+        type="checkbox"
+        value="d"
+      />
+      <span
+        class="ui-checkbox-inner"
+      />
+    </span>
+    D
+  </label>
+</div>
+`;
+
+exports[`Checkbox renders indeterminate Checkbox correctly 1`] = `
+<label>
+  <span
+    class="ui-checkbox"
+  >
+    <input
+      class="ui-checkbox-input"
+      type="checkbox"
+      value="0"
+    />
+    <span
+      class="ui-checkbox-inner"
+    />
+  </span>
+  选择0
+</label>
+`;
+
+exports[`Checkbox renders normal Checkbox correctly 1`] = `
+<label>
+  <span
+    class="ui-checkbox checked"
+  >
+    <input
+      checked=""
+      class="ui-checkbox-input"
+      type="checkbox"
+      value="0"
+    />
+    <span
+      class="ui-checkbox-inner"
+    />
+  </span>
+  选择0
+</label>
+`;

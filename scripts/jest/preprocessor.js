@@ -1,5 +1,5 @@
 const babelJest = require('babel-jest');
-const browsers = require('../config/browsers');
+const browsers = require('../config/browserlist');
 
 module.exports = babelJest.createTransformer({
   presets: [

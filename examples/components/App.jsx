@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
-// import ScrollToTop from 'react-scroll-up';
-import 'normalize.css';
 import AsyncComponent from './AsyncComponent';
+import { qs } from '../../components/locale/util';
+import '../../components/style/index.scss';
 import '../styles/index';
 import '../styles/components/App';
 
 import pages from '../pages/Index';
 
+const changeLanguage = (_lang) => {
+  const { href } = window.location;
+  window.location.href = `${href.split('?')[0]}?lang=${_lang}`;
+  window.location.reload();
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.components = {};
   }
 
   render() {
     const hash = window.location.hash.match(/#\/(\w+)?/);
+    const lang = qs('lang') || 'zh';
     return (
       <div className="app">
         <header className="header">
@@ -32,6 +38,13 @@ class App extends Component {
               <li className="nav-item">
                 <a href="//github.com/JeromeLin/dragon-ui" target="_blank" rel="noopener noreferrer">Github</a>
               </li>
+              <li className="nav-item">
+                {
+                  lang === 'en'
+                  ? <span className="lang" onClick={() => changeLanguage('zh')}>中文</span>
+                  : <span className="lang" onClick={() => changeLanguage('en')}>English</span>
+                }
+              </li>
             </ul>
           </div>
         </header>
@@ -39,10 +52,13 @@ class App extends Component {
           <nav className="side-nav">
             <ul>
               <li className="nav-item">
-                <a href="#/quick-start">开发指南</a>
+                <a href={`#/quick-start?lang=${lang}`}>开发指南</a>
                 <ul className="pure-menu-list sub-nav">
                   <li className="nav-item">
-                    <a href="#/quick-start">快速上手</a>
+                    <a href={`#/quick-start?lang=${lang}`}>快速上手</a>
+                  </li>
+                  <li className="nav-item">
+                    <a href={`#/i18n?lang=${lang}`} className={classnames({ active: hash[1] === 'i18n' })}>国际化</a>
                   </li>
                 </ul>
               </li>
@@ -59,7 +75,7 @@ class App extends Component {
                               this.components[page] = pages.components[group][page];
                               return (
                                 <li key={page} className="nav-item">
-                                  <a href={`#/${page}`} className={classnames({ active: page === hash[1] })}>{page}</a>
+                                  <a href={`#/${page}?lang=${lang}`} className={classnames({ active: page === hash[1] })}>{page}</a>
                                 </li>
                               );
                             })
@@ -76,7 +92,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={AsyncComponent(() => import('../pages/QuikStart'))} />
               <Route path="/quick-start" component={AsyncComponent(() => import('../pages/QuikStart'))} />
-              <Route path="/test" component={AsyncComponent(() => import('../pages/test'))} />
+              <Route path="/i18n" component={AsyncComponent(() => import('../pages/I18n'))} />
               {
                 Object.keys(this.components).map((name) => {
                   return <Route path={`/${name}`} key={name} component={AsyncComponent(() => import(`../pages/${name}`))} />;

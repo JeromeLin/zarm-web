@@ -83,6 +83,31 @@
 ```
 :::
 
+### 部分选中状态
+
+未全部选中，即部分选中状态。
+
+:::demo 可以使用`indeterminate`属性来定义样式是否为部分选中。
+
+```js
+  onChange(e) {
+    console.log(e.target.checked);
+  }
+  render() {
+    return (
+      <div>
+        <Checkbox
+          indeterminate
+          onChange={(e) => this.onChange(e)}
+        >
+          选择
+        </Checkbox>
+      </div>
+    )
+  }
+```
+:::
+
 
 ### Checkbox Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
@@ -91,6 +116,7 @@
 | defaultChecked    | 默认选中  | boolean   |   - |     false   |
 | disabled  | 是否禁用    | boolean   | true, false   | false   |
 | value  | 选择框对应的值    | string   | -  | -   |
+| indeterminate  | 是否是部分选中状态    | boolean | true, false | false |
 
 ### Checkbox Events
 | 事件名称 | 说明 | 回调参数 |

@@ -1,0 +1,75 @@
+.ui-time-select-wrapper {
+  min-height: 32px;
+
+  &.ui-select {
+    width: 160px;
+    line-height: 1;
+  }
+
+  .ui-select-selection {
+    position: relative;
+  }
+
+  .ui-dropdown-trigger-box {
+    width: 100%;
+  }
+
+  .ui-time-select-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    color: #d9d9d9;
+    font-size: 18px;
+  }
+}
+
+.ui-time-select {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  border-bottom: 1px solid #e9e9e9;
+
+  .ui-select {
+    width: 33.333333%;
+    flex: 1;
+    border-right: 1px solid #e9e9e9;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    .ui-select-selection {
+      max-height: 192px !important;
+      border: none;
+      box-shadow: none;
+
+      .ui-menu {
+        height: auto;
+        padding: 0 0 160px;
+
+        .ui-menu-item {
+          text-align: center;
+          border-radius: 0;
+          height: 32px;
+          line-height: 32px;
+
+          &.selected {
+            background: #2db7f5;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ui-select-bottom {
+  text-align: center;
+  line-height: 38px;
+
+  .confirm-btn {
+    margin-left: 12px;
+  }
+}

@@ -7,10 +7,11 @@ const cssnano = require('gulp-cssnano');
 const size = require('gulp-filesize');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
-const browsers = require('../config/browsers');
+const browserlist = require('../config/browserlist');
 
 const DIR = {
   sass: path.resolve(__dirname, '../../components/**/*.scss'),
+  font: path.resolve(__dirname, '../../components/**/fonts/*.*'),
   buildSrc: path.resolve(__dirname, '../../components/**/index.scss'),
   lib: path.resolve(__dirname, '../../lib'),
   dist: path.resolve(__dirname, '../../dist'),
@@ -21,13 +22,18 @@ gulp.task('copySass', () => {
     .pipe(gulp.dest(DIR.lib));
 });
 
+gulp.task('copyFont', () => {
+  return gulp.src(DIR.font)
+    .pipe(gulp.dest(DIR.lib));
+});
+
 gulp.task('dist', () => {
   return gulp.src(DIR.buildSrc)
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',
     }))
-    .pipe(autoprefixer({ browsers }))
+    .pipe(autoprefixer({ browsers: browserlist }))
     .pipe(concat('dragon-ui.css'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
@@ -46,4 +52,4 @@ gulp.task('dist', () => {
     .pipe(gulp.dest(DIR.dist));
 });
 
-gulp.task('default', ['copySass', 'dist']);
+gulp.task('default', ['copySass', 'copyFont', 'dist']);

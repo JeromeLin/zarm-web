@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Panel/style';
+import '../../components/panel/style';
 
 export default class Panel extends Markdown {
   // eslint-disable-next-line
