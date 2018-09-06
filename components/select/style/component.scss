@@ -10,6 +10,7 @@
       padding-right: $height;
 
       input {
+        width: 10px;
         height: $height;
         padding-left: $padding;
         padding-right: $height;
@@ -70,16 +71,14 @@
     }
 
     .ui-select-text {
-      display: block;
+      display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
 
       input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+        display: inline-block;
+        width: auto;
         border: 0;
         color: #333;
         font-size: 100%;
@@ -88,6 +87,10 @@
       }
 
       &.ui-select-text-placeholder {
+        color: #ccc;
+      }
+
+      &.ui-select-text-placeholder-color {
         color: #ccc;
       }
     }

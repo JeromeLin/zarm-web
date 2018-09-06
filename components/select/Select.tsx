@@ -45,6 +45,12 @@ class Select extends Component<PropsType, any> {
     }
   }
 
+  componentDidUpdate() {
+    if (this.props.search && this.state.dropdown) {
+      this.inputBox.focus();
+    }
+  }
+
   componentWillUnmount() {
     this.unbindOuterHandlers();
   }
@@ -110,6 +116,34 @@ class Select extends Component<PropsType, any> {
     Events.off(document, 'keyup', e => this.handleKeyup(e));
   }
 
+  inputRender(textCls) {
+    return <span className={textCls}>
+      <input
+        ref={elem => this.inputBox = elem}
+        value={this.state.searchValue}
+        // tslint:disable-next-line:jsx-no-multiline-js
+        onChange={(e) => {
+          const searchValue = e.target.value;
+          this.setState({ searchValue }, () => this.props.onSearchChange!(searchValue));
+        }}
+      />
+    </span>;
+  }
+
+  getPlaceHoder(hasValue, valueText) {
+    if (hasValue) {
+      return valueText;
+    }
+    if (this.state.dropdown) {
+      return '';
+    }
+    const { locale, searchPlaceholder, search } = this.props;
+    if (search) {
+      return searchPlaceholder || locale!.searchPlaceholder;
+    }
+    return valueText;
+  }
+
   render() {
     const { props } = this;
     const {
@@ -132,7 +166,7 @@ class Select extends Component<PropsType, any> {
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;
 
-    let valueText = locale!.placeholder || placeholder;
+    let valueText = placeholder || locale!.placeholder;
     let hasValue = false;
 
     const children = React.Children.map(props.children, (option, index) => {
@@ -170,7 +204,7 @@ class Select extends Component<PropsType, any> {
 
     const textCls = classnames({
       [`${prefixCls}-text`]: true,
-      [`${prefixCls}-text-placeholder`]:
+      [`${prefixCls}-text-placeholder-color`]:
         !hasValue || (search && hasValue && this.state.dropdown),
     });
 
@@ -185,29 +219,13 @@ class Select extends Component<PropsType, any> {
           <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>
         );
 
-    const inputPlaceholder = this.state.dropdown // eslint-disable-line
-      ? hasValue
-        ? valueText
-        : (search && (locale!.searchPlaceHolder || searchPlaceholder))
-      : valueText;
+    let inputPlaceholder = this.getPlaceHoder(hasValue, valueText);
 
     const textRender = !(search && this.state.searchValue.length > 0) && (
       <span className={textCls} title={title}>{inputPlaceholder}</span>
     );
 
-    const inputRender = search &&
-      !disabled && (
-        <span className={textCls}>
-          <input
-            value={this.state.searchValue}
-            // tslint:disable-next-line:jsx-no-multiline-js
-            onChange={(e) => {
-              const searchValue = e.target.value;
-              this.setState({ searchValue }, () => onSearchChange!(searchValue));
-            }}
-          />
-        </span>
-      );
+    const inputRender = search && !disabled && this.inputRender(textCls);
 
     return (
       <Dropdown
