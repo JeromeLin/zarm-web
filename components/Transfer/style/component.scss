@@ -1,0 +1,48 @@
+
+@import '../../style/index';
+
+.ui-transfer {
+    width: 400px;
+    height: 250px;
+    
+    >.ui-transfer-panel {
+        display: inline-block;
+        width: 40%;
+        height: 100%;
+
+        >.ui-transfer-panel-title {
+            margin-bottom: 10px;
+            height: 20px;
+        }
+        >.ui-select {
+            width: 100%;
+            height: calc(100% - 30px);
+
+            >.ui-select-selection {
+                text-align: left;
+                
+                .ui-menu-item:hover {
+                    background: #eaf8fe !important;
+                }
+                .ui-menu-item.active {
+                    color: inherit;
+                    background: inherit;
+                }
+                .ui-menu-item.selected {
+                    background: #d5f1fd !important;
+                }
+            }
+        }
+    }
+    >.ui-transfer-action-bar {
+        width: 10%;
+        height: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: inline-block;
+
+        >button:last-child {
+            margin-top: 20px;
+        }
+    }
+}
