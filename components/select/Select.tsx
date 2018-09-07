@@ -7,7 +7,11 @@ import Menu from '../menu';
 import Icon from '../icon';
 import PropsType from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
+import Tag from '../tag';
 
+/**
+ * placeholder
+ */
 class Select extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'ui-select',
@@ -21,6 +25,8 @@ class Select extends Component<PropsType, any> {
   static Option;
   static Multiple;
 
+  inputBox: HTMLInputElement;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -30,24 +36,45 @@ class Select extends Component<PropsType, any> {
         this.getCheckedValue(props.children),
       dropdown: false,
       searchValue: '',
+      showPlacehoder: true,
     };
+    this.optionMap = this.getOptionMap(props.children);
+    console.log(this.optionMap);
   }
 
   componentDidMount() {
     this.bindOuterHandlers();
   }
 
+  getOptionMap(options) {
+    return options.reduce((prev, option) => {
+      if (option.type === Option) {
+        prev[option.props.value] = option;
+      }
+      return prev;
+    }, {});
+  }
+
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
+      let value = nextProps.value || this.getCheckedValue(nextProps.children);
+      if (nextProps.multiple && !Array.isArray(value)) {
+        value = [value];
+      }
+      this.optionMap = this.getOptionMap();
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children),
+        value,
       });
     }
   }
 
   componentDidUpdate() {
-    if (this.props.search && this.state.dropdown) {
-      this.inputBox.focus();
+    if (this.props.search) {
+      if (this.state.dropdown) {
+        this.inputBox.focus();
+      } else {
+        this.inputBox.blur();
+      }
     }
   }
 
@@ -75,10 +102,34 @@ class Select extends Component<PropsType, any> {
       return;
     }
 
-    this.setState({
-      value: props.value,
-      searchValue: '',
-    });
+    if (props.search || props.isSearch) {
+      this.setState({
+        searchValue: '',
+      });
+      this.inputBox.textContent = '';
+    }
+
+    if (this.props.multiple) {
+      const selected = this.state.value.slice();
+      console.log(selected, props.value);
+      const position = selected.indexOf(props.value);
+      if (position === -1) {
+        selected.push(props.value);
+      } else {
+        selected.splice(position, 1);
+      }
+      const selectedData = selected.map((select, selectIndex) => {
+        const vdom = this.optionMap[select];
+        const text = vdom ? vdom.props.children : '';
+        return {
+          text,
+          value: select,
+          index: selectIndex,
+        };
+      });
+      console.log(selectedData);
+      this.setDropdown(false, () => this.props.onChange(selected, selectedData));
+    }
 
     const selected = {
       index,
@@ -117,17 +168,15 @@ class Select extends Component<PropsType, any> {
   }
 
   inputRender(textCls) {
-    return <span className={textCls}>
-      <input
-        ref={elem => this.inputBox = elem}
-        value={this.state.searchValue}
-        // tslint:disable-next-line:jsx-no-multiline-js
-        onChange={(e) => {
-          const searchValue = e.target.value;
-          this.setState({ searchValue }, () => this.props.onSearchChange!(searchValue));
-        }}
-      />
-    </span>;
+    return <div
+      className="input-div"
+      contentEditable
+      ref={elem => this.inputBox = elem}
+      onInput={(e) => {
+        let value = e.target.textContent;
+        this.setState({ searchValue: value });
+      }}
+    />;
   }
 
   getPlaceHoder(hasValue, valueText) {
@@ -142,6 +191,20 @@ class Select extends Component<PropsType, any> {
       return searchPlaceholder || locale!.searchPlaceholder;
     }
     return valueText;
+  }
+
+  renderMultiple() {
+    return this.state.value.map((item, index) => {
+      return <Tag
+        key={item}
+        radius
+        onClose={() => {
+
+        }}
+      >
+        {item}
+      </Tag>;
+    });
   }
 
   render() {
@@ -204,6 +267,7 @@ class Select extends Component<PropsType, any> {
 
     const textCls = classnames({
       [`${prefixCls}-text`]: true,
+      [`${prefixCls}-text-placeholder`]: true,
       [`${prefixCls}-text-placeholder-color`]:
         !hasValue || (search && hasValue && this.state.dropdown),
     });
@@ -221,7 +285,7 @@ class Select extends Component<PropsType, any> {
 
     let inputPlaceholder = this.getPlaceHoder(hasValue, valueText);
 
-    const textRender = !(search && this.state.searchValue.length > 0) && (
+    let textRender = !(search && this.state.searchValue.length > 0) && (
       <span className={textCls} title={title}>{inputPlaceholder}</span>
     );
 

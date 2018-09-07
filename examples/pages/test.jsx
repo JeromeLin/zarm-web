@@ -1,35 +1,59 @@
 import React from 'react';
 import Select from '../../components/Select';
 import '../../components/Select/style';
+import InputTag from '../../components/InputWithTags';
+
+console.log(InputTag);
 
 export default class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
+      ss: [
+        { key: "1", value: '111' },
+        { key: "2", value: '222' },
+      ],
     };
   }
 
   componentDidMount() {
+    setTimeout(() => {
+      // this.setState({
+      //   ss: "你大二",
+      // })
+    }, 2000);
   }
 
   render() {
     return (
-      <div>
-        <Select search style={{ width: 300 }} value="">
-          <Select.Option value="haha1">value1</Select.Option>
-          <Select.Option value="haha2">value2</Select.Option>
-          <Select.Option value="haha3">value3</Select.Option>
-          <Select.Option value="haha4">111</Select.Option>
-          <Select.Option value="haha5">value5</Select.Option>
-          <Select.Option value="haha6">value6</Select.Option>
-          <Select.Option value="haha7">value7</Select.Option>
-          <Select.Option value="haha8">value8</Select.Option>
-          <Select.Option value="haha9">value9</Select.Option>
-          <Select.Option value="haha10">value10</Select.Option>
-          <Select.Option value="haha11">value11</Select.Option>
-        </Select>
-      </div>
+      <div
+        style={{ width: 390, cursor: 'pointer' }}
+        onClick={() => {
+          this.setState({
+            active: true,
+          });
+        }}
+      >
+        <InputTag
+          radius
+          placeholder="请选择"
+          search
+          active={this.state.active}
+          value={this.state.ss}
+          searchValue={this.state.searchValue}
+          onSearchChange={(e) => {
+            this.setState({ searchValue: e.target.textContent });
+          }}
+          onDeleteTag={(key, value, index) => {
+            let arr = this.state.ss;
+            arr.splice(index, 1);
+            this.setState({
+              ss: arr
+            });
+          }}
+        />
+      </div >
     );
   }
 }

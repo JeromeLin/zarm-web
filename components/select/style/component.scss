@@ -13,7 +13,7 @@
         width: 10px;
         height: $height;
         padding-left: $padding;
-        padding-right: $height;
+        // padding-right: $height;
       }
     }
 
@@ -87,7 +87,11 @@
       }
 
       &.ui-select-text-placeholder {
-        color: #ccc;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        line-height: 32px;
       }
 
       &.ui-select-text-placeholder-color {
