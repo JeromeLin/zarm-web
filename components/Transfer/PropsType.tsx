@@ -10,8 +10,8 @@ export default interface PropsType {
   selectedPanelTitle?: string;
   initialValue: object[];
   selectedValue?: object[];
-  keyOfItem: string,
-  displayNameOfItem: string,
+  keyOfItem: string;
+  displayNameOfItem: string;
   onAdd: (value: any) => void;
   onDoubleAdd: (value: any) => void;
   onMinus: (value: any) => void;
