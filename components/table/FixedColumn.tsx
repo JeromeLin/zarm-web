@@ -95,6 +95,10 @@ class FixedColumn extends Component<FixedColumnProps, any> {
     } = colAttrs;
     const column = direction === 'left' ? columns[0] : columns[columns.length - 1];
     const columnWidth = direction === 'left' ? fixedleftColWidth : fixedrightColWidth;
+
+    if (!column) {
+      return null;
+    }
     const { fixed, title } = column;
     const cls = `${prefixCls}-fixed-${direction}`;
 
