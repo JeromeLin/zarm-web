@@ -1,5 +1,5 @@
 import Markdown from '../components/markdown';
-import '../../components/Transfer/style';
+import '../../components/transfer/style';
 
 export default class Transfer extends Markdown {
   // eslint-disable-next-line

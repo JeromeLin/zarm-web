@@ -31,7 +31,7 @@ export default {
       Panel: '../pages/panel',
       Pagination: '../pages/pagination',
       Tree: '../pages/Tree',
-      Transfer: '../pages/Transfer',
+      Transfer: '../pages/transfer',
     },
     Notice: {
       Alert: '../pages/alert',

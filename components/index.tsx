@@ -36,4 +36,4 @@ export { default as Layout } from './layout';
 export { default as TimePicker } from './time-picker';
 export { default as LocaleProvider } from './locale';
 export { default as Tree } from './tree';
-export { default as Transfer } from './Transfer';
+export { default as Transfer } from './transfer';
