@@ -17,4 +17,3 @@ export default interface PropsType {
   onMinus: (value: any) => void;
   onDoubleMinus: (value: any) => void;
 }
-
