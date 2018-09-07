@@ -88,7 +88,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
   }
 
   render() {
-    const { direction, columns,  prefixCls, colAttrs, rowSelection } = this.props;
+    const { direction, columns = [],  prefixCls, colAttrs, rowSelection } = this.props;
     const {
       fixedColThHeight, fixedColTdHeight,
       fixedleftColWidth, fixedrightColWidth,
