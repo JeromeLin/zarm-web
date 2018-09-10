@@ -1,19 +1,12 @@
 import React from 'react';
-import Select from '../../components/Select';
-import '../../components/Select/style';
-import InputTag from '../../components/InputWithTags';
-
-console.log(InputTag);
+import Select from '../../components/select';
+import '../../components/select/style';
 
 export default class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
-      ss: [
-        { key: "1", value: '111' },
-        { key: "2", value: '222' },
-      ],
+      value: [1, 2],
     };
   }
 
@@ -28,31 +21,36 @@ export default class Test extends React.Component {
   render() {
     return (
       <div
-        style={{ width: 390, cursor: 'pointer' }}
-        onClick={() => {
-          this.setState({
-            active: true,
-          });
-        }}
+        style={{ width: 300, cursor: 'pointer' }}
       >
-        <InputTag
-          radius
-          placeholder="请选择"
+        <Select
           search
-          active={this.state.active}
-          value={this.state.ss}
-          searchValue={this.state.searchValue}
-          onSearchChange={(e) => {
-            this.setState({ searchValue: e.target.textContent });
-          }}
-          onDeleteTag={(key, value, index) => {
-            let arr = this.state.ss;
-            arr.splice(index, 1);
+          style={{ width: '100%' }}
+          multiple
+          value={this.state.value}
+          onChange={(value, valueData) => {
+            console.log(value);
             this.setState({
-              ss: arr
+              value,
             });
           }}
-        />
+        >
+          <Select.Option value="1">12345678901111111第三方斯蒂芬</Select.Option>
+          <Select.Option value="2">13</Select.Option>
+          <Select.Option value="3">14</Select.Option>
+          <Select.Option value="4">15</Select.Option>
+          <Select.Option value="5">16</Select.Option>
+          <Select.Option value="6">16</Select.Option>
+          <Select.Option value="7">16</Select.Option>
+          <Select.Option value="8">16</Select.Option>
+          <Select.Option value="9">16</Select.Option>
+          <Select.Option value="10">16</Select.Option>
+          <Select.Option value="11">16</Select.Option>
+          <Select.Option value="12">16</Select.Option>
+          <Select.Option value="13">16</Select.Option>
+          <Select.Option value="14">16</Select.Option>
+          <Select.Option value="15">16</Select.Option>
+        </Select>
       </div >
     );
   }
