@@ -191,7 +191,7 @@ DateTimePicker时候showTime需要为true且format必传
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| value     | 选中日期值   | string |   -   |    -   |
+| value     | 选中日期值   | string / string[] |   -   |    -   |
 | defaultValue  | 默认值 | string |   -   |    -   |
 | showTime | 是否显示时间选择器 | boolean | - | false |
 | isRange | 是否显示日期范围选择器 | boolean | - | false |
