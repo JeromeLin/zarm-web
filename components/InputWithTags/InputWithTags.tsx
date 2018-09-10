@@ -1,9 +1,13 @@
-import React, { ReactNode } from 'react';
-import Tag from '../Tag';
-import Icon from '../Icon';
+import React, { ReactNode, CSSProperties, MouseEvent } from 'react';
+import Tag from '../tag';
+import Icon from '../icon';
 import cn from 'classnames';
-import '../Tag/style';
+import '../tag/style';
 import './index.scss';
+
+const Style = {
+  tagStyle: { maxWidth: 80, backgroundColor: '#f0f0f0' },
+};
 
 interface ValueArray {
   key: any;
@@ -11,19 +15,21 @@ interface ValueArray {
 }
 
 interface Props {
+  style?: CSSProperties;
   search?: boolean;
   active?: boolean;
   placeholder?: string;
-  searchValue?: string;
+  searchValue?: string | null;
   radius?: boolean;
   value?: React.ReactNode | Array<ValueArray>;
-  onDeleteTag?(key: any, value: React.ReactNode, index: number): void;
-  onSearchChange(e: React.UIEvent<HTMLDivElement>): void;
+  onDeleteTag?(e: MouseEvent, key: any, value: React.ReactNode, index: number): void;
+  onSearchChange(e: React.ChangeEvent<HTMLDivElement>): void;
 }
 
 class InputWithTags extends React.Component<Props> {
   didUpdateCallback: Array<() => void> = [];
   inputDiv: HTMLDivElement;
+  tagListBox: HTMLDivElement;
   constructor(props: Props) {
     super(props);
   }
@@ -35,23 +41,26 @@ class InputWithTags extends React.Component<Props> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.active) {
-      this.inputDiv.focus();
+    if (nextProps.active !== this.props.active) {
+      if (nextProps.active) {
+        this.inputDiv.focus();
+      } else {
+        this.inputDiv.innerText = '';
+      }
     }
   }
 
-  componentDidUpdate() {
-    this.didUpdateCallback.forEach(fn => {
-      fn();
-    });
+  tagListBoxref = (e) => {
+    this.tagListBox = e;
   }
 
   render() {
-    const { search, value, searchValue, placeholder, active, onDeleteTag, radius } = this.props;
+    const { search, value, searchValue, placeholder, active, onDeleteTag, radius, ...others } = this.props;
     let showPlaceHolder = true;
     if (typeof value === 'string' || Array.isArray(value)) {
       showPlaceHolder = value.length === 0;
     }
+
     const searchValueStyle = { display: searchValue ? 'none' : 'block' };
 
     let tagList;
@@ -61,14 +70,20 @@ class InputWithTags extends React.Component<Props> {
           <div
             className="tag-list-box"
             key={elem.key}
+            ref={this.tagListBoxref}
           >
             <Tag
+              title={typeof elem.value === 'string' ? elem.value : ''}
+              style={Style.tagStyle}
               isRadius={radius}
               size="xs"
               key={elem.key}
-              onClose={() => {
+              onClose={(e: MouseEvent) => {
+                e.stopPropagation();
                 if (typeof onDeleteTag === 'function') {
-                  onDeleteTag(elem.key, elem.value, index);
+                  setTimeout(() => {
+                    onDeleteTag(e, elem.key, elem.value, index);
+                  });
                 }
               }}
             >
@@ -87,7 +102,7 @@ class InputWithTags extends React.Component<Props> {
       'tag-input-box-active': active,
     });
 
-    return <div className={boxCls}>
+    return <div className={boxCls} {...others}>
       {tagList}
       <div
         className="input-div"

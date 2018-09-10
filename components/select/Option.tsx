@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Menu from '../menu';
+import Icon from '../icon';
+import '../icon/style';
 import { OptionProps, IDisableProps } from './PropsType';
 
 class Option extends Component<OptionProps, any> {
   static defaultProps = {
     isDisabled: false,
-    onChange: () => {},
+    onChange: () => { },
   };
 
   render() {
@@ -28,7 +30,8 @@ class Option extends Component<OptionProps, any> {
         onDoubleClick={onDoubleClick}
       >
         {children}
-      </Menu.Item>
+        {checked && <Icon className="checked-icon" theme="info" type="right" />}
+      </Menu.Item >
     );
   }
 }

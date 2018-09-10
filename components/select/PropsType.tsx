@@ -1,4 +1,4 @@
-import { CSSProperties, MouseEvent } from 'react';
+import { CSSProperties, MouseEvent, ReactNode } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OptionProps {
@@ -27,6 +27,8 @@ export interface MultipleProps {
   onDoubleClick?: () => void;
 }
 
+interface ChangeValue { value: string | number; text: ReactNode; index: number; }
+
 export default interface PropsType {
   prefixCls?: string;
   value?: string | number | Array<string | number>;
@@ -43,7 +45,7 @@ export default interface PropsType {
   isSearch?: boolean;
   placeholder?: string;
   searchPlaceholder?: string;
-  onChange: (e: any) => void;
+  onChange: (value: ChangeValue | Array<string>, valueData?: Array<any>) => void;
   onSearchChange?: (e: any) => void;
   zIndex?: number;
   title?: string;
