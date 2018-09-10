@@ -102,7 +102,6 @@ class Transfer extends Component<PropsType, any> {
       isRadius,
       style,
       width,
-      height,
       initialPanelTitle,
       selectedPanelTitle,
       keyOfItem,
@@ -121,7 +120,7 @@ class Transfer extends Component<PropsType, any> {
 
     return (
       <div
-        style={{ ...style, width, height }}
+        style={{ ...style, width }}
         className={cls}
       >
         <div className={prefixCls + '-panel'}>
@@ -146,14 +145,16 @@ class Transfer extends Component<PropsType, any> {
             }
           </Select.Multiple>
         </div>
-        <span className={prefixCls + '-action-bar'}>
+        <div className={prefixCls + '-action-bar'}>
+          <div className="button-wrapper">
           <Button isDisabled={this.state.selectedLeft.length === 0} onClick={() => !disabled && this._onAdd()}>
           <Icon type="add"/>
           </Button>
           <Button isDisabled={this.state.selectedRight.length === 0} onClick={() => !disabled && this._onMinus()}>
             <Icon type="minus" />
           </Button>
-        </span>
+          </div>
+        </div>
         <div className={prefixCls + '-panel'}>
           <h4 className={prefixCls + '-panel-title'}>{selectedPanelTitle}</h4>
           <Select.Multiple

@@ -74,7 +74,7 @@
     const { initialValue, selectedValue } = this.state;
     return (
       <div>
-        <Transfer initialPanelTitle='初始值' selectedPanelTitle='已选值' radius initialValue={initialValue}  selectedValue={selectedValue} keyOfItem='id' displayNameOfItem='name' width={400} onAdd={(value)=>{this.setState({selectedValue: value});}}/>
+        <Transfer initialPanelTitle='初始值' selectedPanelTitle='已选值' radius initialValue={initialValue}  selectedValue={selectedValue} keyOfItem='id' displayNameOfItem='name' width={500} onAdd={(value)=>{this.setState({selectedValue: value});}}/>
       </div>
     )
   }

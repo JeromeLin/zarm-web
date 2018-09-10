@@ -5,7 +5,6 @@ export default interface PropsType {
   isRadius?: boolean;
   style?: object;
   width?: number;
-  height?: number;
   initialPanelTitle?: string;
   selectedPanelTitle?: string;
   initialValue: object[];
