@@ -18,5 +18,6 @@ export default interface PropsType {
   style?: object;
   locale: { [props: string]: string };
   showTime?: boolean;
+  allowInput?: boolean;
   onChange: (value: any) => void;
 }

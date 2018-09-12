@@ -17,9 +17,12 @@
       <div>
        <DatePicker
           radius
+          allowInput
+          format="yyyy/MM/dd"
           style={{width: 200}}
           value={this.state.date}
           onChange={(date) => {
+            console.log(date)
             this.setState({date});
           }}
         />
@@ -201,6 +204,7 @@ DateTimePicker时候showTime需要为true且format必传
 | placeholder | 选择框默认文案 | string |   -   |   -  |
 | radius | 是否圆角 | boolean |   -   |   false  |
 | isDisabled | 是否禁用 | boolean |   -   |   false  |
+| allowInput | 是否允许输入日期 | boolean |   -   |   false  |
 
 
 

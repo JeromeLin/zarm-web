@@ -33,4 +33,15 @@ export default {
     }
     return fmt;
   },
+
+  validate(date, fmt) {
+    if (!date || !fmt) {
+      return false;
+    }
+
+    const sepertor = /-/.test(fmt) ? '-' : '/';
+    fmt = fmt.replace(/[yMdhms]/g, '\\d').replace(/(-|\/)/g, `\\${sepertor}`);
+
+    return new RegExp(`^${fmt}$`).test(date);
+  },
 };
