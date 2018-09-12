@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 import Events from '../utils/events';
 import Format from '../utils/format';
+import LocaleReceiver from '../locale/LocaleReceiver';
 
 import Dropdown from '../dropdown/index';
 import RangeCalendar from '../calendar/Calendar';
@@ -341,11 +342,12 @@ class RangeDatePicker extends Component<PropsType, any> {
       size,
       style,
       value = [],
+      locale,
     } = props;
 
     const { isShowDropdown } = this.state;
 
-    let valueText = placeholder;
+    let valueText = placeholder || locale.placeholder;
     let hasValue = false;
 
     if (value.length) {
@@ -395,6 +397,7 @@ class RangeDatePicker extends Component<PropsType, any> {
       min,
       max,
       showTime,
+      locale,
     } = props;
 
     const {
@@ -462,14 +465,14 @@ class RangeDatePicker extends Component<PropsType, any> {
           href="javascript:;"
           onClick={this.handleCloseDropDown}
         >
-          清除
+          {locale.clear}
         </a>
 
         <a
           href="javascript:;"
           onClick={this.handleConfirm}
         >
-          确定
+          {locale.confirm}
         </a>
       </div>
     );
@@ -508,4 +511,4 @@ class RangeDatePicker extends Component<PropsType, any> {
   }
 }
 
-export default RangeDatePicker;
+export default LocaleReceiver(RangeDatePicker, 'Calendar');
