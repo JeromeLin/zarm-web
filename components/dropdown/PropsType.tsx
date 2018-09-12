@@ -7,6 +7,7 @@ interface BasicPropsType {
   overlay?: React.ReactElement<any>;
   placement?: placement;
   className?: string;
+  radius?: boolean;
   isRadius?: boolean;
   style?: React.CSSProperties;
   trigger?: trigger;
