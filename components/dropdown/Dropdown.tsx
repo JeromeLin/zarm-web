@@ -204,7 +204,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     } else if (type === 'mouseleave') {
       // 缓冲一点一时间给间隙
       this.hiddenTimer = setTimeout(() => {
-        // 若当前鼠标在弹出层上 不消失
+        // 若当前鼠标在弹出层上 则不消失
         if (this.isHoverOnDropContent === false) {
           this.props.onVisibleChange(false);
         }
