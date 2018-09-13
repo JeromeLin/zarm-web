@@ -274,7 +274,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     }
     const target: Node = e.target;
     if (this.div.contains(target) || this.triggerBox.contains(target)) {
-      return;
+      return ;
     } else {
       this.props.onVisibleChange(false);
     }
