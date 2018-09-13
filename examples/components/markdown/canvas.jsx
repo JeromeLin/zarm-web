@@ -20,15 +20,18 @@ export default class Canvas extends React.Component {
     this.blockControl = this.blockControl.bind(this);
   }
 
+
   componentDidMount() {
     this.renderSource(this.source[2]);
   }
 
   componentWillUnmount() {
-    if (this.containerElem) {
-      ReactDOM.unmountComponentAtNode(this.containerElem);
+    if (this.playerElem) {
+      ReactDOM.unmountComponentAtNode(this.playerElem);
     }
   }
+
+  playerElem = null;
 
   blockControl() {
     this.setState({
@@ -57,10 +60,17 @@ export default class Canvas extends React.Component {
           ${value}
         }
 
-        ReactDOM.render(<Demo {...context.props} />, document.getElementById('${this.playerId}'))
+        if(!window.playerList){
+            window.playerList = [];
+        }
+        const container = document.getElementById('${this.playerId}');
+        console.log(container);
+        window.playerList.push(container);
+
+        ReactDOM.render(<Demo {...context.props} />, container)
       `, {
-        presets: ['es2015', 'react'],
-      }).code;
+          presets: ['es2015', 'react'],
+        }).code;
 
       args.push(code);
       // eslint-disable-next-line
@@ -77,7 +87,13 @@ export default class Canvas extends React.Component {
   render() {
     return (
       <div className={`demo-block demo-box demo-${this.props.name}`}>
-        <div className="source" id={this.playerId} ref={(elem) => { this.containerElem = elem; }} />
+        <div
+          className="source"
+          id={this.playerId}
+          ref={(e) => {
+            this.playerElem = e;
+          }}
+        />
         {
           this.state.showBlock && (
             <div className="meta">
@@ -104,13 +120,13 @@ export default class Canvas extends React.Component {
                 <i className="el-icon-caret-top" />隐藏
               </span>
             ) : (
-              <span>
-                <i className="el-icon-caret-bottom" />展开
+                <span>
+                  <i className="el-icon-caret-bottom" />展开
               </span>
-            )
+              )
           }
         </div>
-      </div>
+      </div >
     );
   }
 }

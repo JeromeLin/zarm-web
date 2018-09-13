@@ -9,7 +9,7 @@ class Icon extends Component<IconProps, any> {
     theme: 'default',
     className: '',
     style: {},
-    onClick: () => {},
+    onClick: () => { },
   };
 
   render() {
