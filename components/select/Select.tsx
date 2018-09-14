@@ -4,6 +4,7 @@ import Option from './Option';
 import Dropdown from '../dropdown';
 import Menu from '../menu';
 import InputWithTags from '../inputWithTags';
+import '../inputWithTags/style';
 import PropsType from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 
@@ -220,8 +221,20 @@ class Select extends Component<PropsType, StateProps> {
 
     let placeholderText = placeholder || locale!.placeholder;
 
-    let valueText: string | Array<any> = this.state.value;
-
+    let valueText;
+    if (multiple && Array.isArray(this.state.value)) {
+      valueText = this.state.value.map((item) => {
+        return {
+          key: item,
+          value: this.optionMap[item].props.children,
+        };
+      });
+    } else {
+      let optionProps = this.optionMap[this.state.value as string];
+      if (optionProps) {
+        valueText = optionProps.props.children;
+      }
+    }
     const children = React.Children.map(props.children, (option, index) => {
       if (option && typeof option === 'object' && option.type === Option) {
         if (
@@ -253,15 +266,6 @@ class Select extends Component<PropsType, StateProps> {
       ) : (
           <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>
         );
-
-    if (multiple && Array.isArray(this.state.value)) {
-      valueText = this.state.value.map((item) => {
-        return {
-          key: item,
-          value: this.optionMap[item].props.children,
-        };
-      });
-    }
 
     return (
       <Dropdown

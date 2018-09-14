@@ -6,7 +6,7 @@ export default class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: [1, 2],
+      value: '1',
     };
   }
 
@@ -26,16 +26,14 @@ export default class Test extends React.Component {
         <Select
           search
           style={{ width: '100%' }}
-          multiple
           value={this.state.value}
-          onChange={(value, valueData) => {
-            console.log(value);
+          onChange={({ value }) => {
             this.setState({
               value,
             });
           }}
         >
-          <Select.Option value="1">12345678901111111第三方斯蒂芬</Select.Option>
+          <Select.Option value="1">1234</Select.Option>
           <Select.Option value="2">13</Select.Option>
           <Select.Option value="3">14</Select.Option>
           <Select.Option value="4">15</Select.Option>
