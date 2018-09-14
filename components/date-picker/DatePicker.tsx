@@ -17,6 +17,7 @@ class DatePicker extends Component<PropsType, any> {
     showTime: false,
     allowInput: false,
     onChange: () => {},
+    onInputInvalidDate: () => {},
   };
 
   private unmounted;
@@ -59,11 +60,17 @@ class DatePicker extends Component<PropsType, any> {
   }
 
   onInputDateValue = (e) => {
-    const { target: { value } } = e;
+    let { target: { value } } = e;
     const { format } = this.props;
 
+    value = Format.transform(value, format);
+
     if (Format.validate(value, format)) {
-      this.onDateChange(value, false);
+      if (Format.inrange(value, format)) {
+        this.onDateChange(value, false);
+      } else {
+        this.props.onInputInvalidDate(value);
+      }
     }
     this.setState({
       value,
@@ -96,7 +103,7 @@ class DatePicker extends Component<PropsType, any> {
       defaultValue,
     };
 
-    if (!Format.validate(value, format)) {
+    if (!Format.validate(value, format) || !Format.inrange(value, format)) {
       delete values.value;
     }
 

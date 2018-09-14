@@ -34,14 +34,50 @@ export default {
     return fmt;
   },
 
+  // 验证日期格式
   validate(date, fmt) {
     if (!date || !fmt) {
       return false;
     }
 
-    const sepertor = /-/.test(fmt) ? '-' : '/';
-    fmt = fmt.replace(/[yMdhms]/g, '\\d').replace(/(-|\/)/g, `\\${sepertor}`);
+    const sep = /-/.test(fmt) ? '-' : '/';
+    fmt = fmt.replace(/[yMdhms]/g, '\\d').replace(/(-|\/)/g, `\\${sep}`);
 
     return new RegExp(`^${fmt}$`).test(date);
+  },
+
+  // 将数字转成日期格式
+  transform(num, fmt) {
+    const sep = /-/.test(fmt) ? '-' : '/';
+    fmt = fmt.replace(/-|\//g, '');
+
+    if (num.length !== fmt.length || !/^\d+$/.test(num)) {
+      return num;
+    }
+    if (/^(y+)(M+)(d+)$/.test(fmt)) {
+      let date = '';
+      date += `${num.substr(0, RegExp.$1.length)}${sep}`;
+      date += `${num.substr(RegExp.$1.length, RegExp.$2.length)}${sep}`;
+      date += `${num.substr(RegExp.$1.length + RegExp.$2.length, RegExp.$3.length)}`;
+      return date;
+    }
+  },
+
+  // 判断日期是否在有效范围内
+  inrange(date, fmt) {
+    const sep = /-/.test(fmt) ? '-' : '/';
+    const parts = date.split(sep);
+
+    const month = Number(parts[1]);
+    const day = Number(parts[2]);
+    const maxs = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month - 1];
+
+    if (month < 1 || month > 12) {
+      return false;
+    }
+    if (day < 1 || day > maxs) {
+      return false;
+    }
+    return true;
   },
 };

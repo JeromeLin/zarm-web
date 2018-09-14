@@ -18,7 +18,6 @@
        <DatePicker
           radius
           allowInput
-          format="yyyy/MM/dd"
           style={{width: 200}}
           value={this.state.date}
           onChange={(date) => {
@@ -207,8 +206,8 @@ DateTimePicker时候showTime需要为true且format必传
 | allowInput | 是否允许输入日期 | boolean |   -   |   false  |
 
 
-
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onChange | 日期变更回调 |  date |
+| onInputInvalidDate | 手动输入的日期非法时回调 |  date |

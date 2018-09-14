@@ -20,4 +20,5 @@ export default interface PropsType {
   showTime?: boolean;
   allowInput?: boolean;
   onChange: (value: any) => void;
+  onInputInvalidDate: (value: any) => void;
 }
