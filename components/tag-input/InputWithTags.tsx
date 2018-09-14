@@ -59,7 +59,7 @@ class InputWithTags extends React.Component<Props> {
       showPlaceHolder = value.length === 0;
     }
 
-    const searchValueStyle = { display: searchValue ? 'none' : 'block' };
+    const searchValueStyle = { display: searchValue ? 'none' : 'inline-block' };
 
     let tagList;
     if (Array.isArray(value)) {

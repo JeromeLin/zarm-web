@@ -3,8 +3,7 @@ import Events from '../utils/events';
 import Option from './Option';
 import Dropdown from '../dropdown';
 import Menu from '../menu';
-import InputWithTags from '../inputWithTags';
-import '../inputWithTags/style';
+import InputWithTags from '../tag-input';
 import PropsType from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 
@@ -55,7 +54,6 @@ class Select extends Component<PropsType, StateProps> {
       state.value = String(props.value);
     }
     this.state = state;
-
     this.optionMap = this.getOptionMap(this.props.children);
   }
 
@@ -63,13 +61,15 @@ class Select extends Component<PropsType, StateProps> {
     this.bindOuterHandlers();
   }
 
-  getOptionMap(options) {
+  getOptionMap(options, prev = {}) {
     return options.reduce((prev, option) => {
       if (option.type === Option) {
         prev[option.props.value] = option;
+      } else if (Array.isArray(option)) {
+        this.getOptionMap(option, prev);
       }
       return prev;
-    }, {});
+    }, prev);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -223,12 +223,15 @@ class Select extends Component<PropsType, StateProps> {
 
     let valueText;
     if (multiple && Array.isArray(this.state.value)) {
-      valueText = this.state.value.map((item) => {
-        return {
-          key: item,
-          value: this.optionMap[item].props.children,
-        };
-      });
+      valueText = this.state.value.reduce((prev: any, item) => {
+        if (this.optionMap[item]) {
+          prev.push({
+            key: item,
+            value: this.optionMap[item].props.children,
+          });
+        }
+        return prev;
+      }, []);
     } else {
       let optionProps = this.optionMap[this.state.value as string];
       if (optionProps) {

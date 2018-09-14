@@ -1,2 +1,4 @@
 import '../../style';
-import './index';
+import '../../select/style';
+import '../../button/style';
+import './index.scss';

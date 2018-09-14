@@ -299,7 +299,7 @@ class Pagination extends Component<PropsType, any> {
           defaultValue=""
           // tslint:disable-next-line:jsx-no-multiline-js
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-            let { value } = e.currentTarget;
+            let { value } = e.target as HTMLInputElement;
             if (e.keyCode === 13) {
               let sValue = parseInt(value, 10);
               // eslint-disable-next-line
