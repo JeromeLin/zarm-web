@@ -54,6 +54,7 @@ export default {
       Popconfirm: '../pages/popconfirm',
       Mask: '../pages/mask',
       Swipe: '../pages/swipe',
+      Avatar: '../pages/avatar',
     },
   },
 };
