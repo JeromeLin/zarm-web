@@ -53,7 +53,6 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "css-animation": "^1.2.5",
-    "jest-cli": "^23.6.0",
     "normalize.css": "^7.0.0",
     "rc-animate": "^3.0.0-rc.5",
     "tslib": "^1.9.3"

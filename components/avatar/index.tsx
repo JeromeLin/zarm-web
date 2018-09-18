@@ -28,14 +28,14 @@ class Avatar extends Component<PropsType, any> {
 
   render() {
     const {
-        prefixCls,
-        style,
-        size,
-        shape,
-        icon,
-        src,
-        alt,
-        children,
+      prefixCls,
+      style,
+      size,
+      shape,
+      icon,
+      src,
+      alt,
+      children,
     } = this.props;
     const { loadError } = this.state;
 
@@ -67,9 +67,9 @@ class Avatar extends Component<PropsType, any> {
       } : { ...style };
 
     const spanStyle = {
-        position: 'absolute' as 'absolute',
-        transform: 'scale(' + (1 - 0.1 * strLength ) + ')',
-        left: 'calc(50% - ' + 4.5 * strLength + 'px )',
+      position: 'absolute' as 'absolute',
+      transform: 'scale(' + (1 - 0.1 * strLength ) + ')',
+      left: 'calc(50% - ' + 4.5 * strLength + 'px )',
       };
 
     return (

@@ -38,9 +38,9 @@
         <Avatar icon="user" />
         <Avatar>U</Avatar>
         <Avatar>USER</Avatar>
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" alt="my avatar" onError={()=>console.log('load error')}/>
-        <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>U</Avatar>
-        <Avatar style={{ backgroundColor: '#87d068' }} icon="user" />
+        <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" alt="my avatar" onError={()=>console.log('load error')}/>
+        <Avatar style={{ color: '#2db7f5', backgroundColor: 'rgb(249, 232, 8)' }}>U</Avatar>
+        <Avatar style={{ backgroundColor: 'rgba(228, 45, 154, 0.88)' }} icon="user" />
       </div>
     )
   }

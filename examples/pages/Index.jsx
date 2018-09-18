@@ -32,6 +32,7 @@ export default {
       Pagination: '../pages/pagination',
       Tree: '../pages/Tree',
       Transfer: '../pages/transfer',
+      Avatar: '../pages/avatar',
     },
     Notice: {
       Alert: '../pages/alert',
@@ -54,7 +55,6 @@ export default {
       Popconfirm: '../pages/popconfirm',
       Mask: '../pages/mask',
       Swipe: '../pages/swipe',
-      Avatar: '../pages/avatar',
     },
   },
 };
