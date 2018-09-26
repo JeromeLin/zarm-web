@@ -4,6 +4,7 @@ import Format from '../utils/format';
 import Dropdown from '../dropdown';
 import Calendar from '../calendar';
 import Icon from '../icon';
+import Input from '../input';
 import PropsType from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 
@@ -14,7 +15,9 @@ class DatePicker extends Component<PropsType, any> {
     min: '',
     max: '',
     showTime: false,
+    allowInput: false,
     onChange: () => {},
+    onInputInvalidDate: () => {},
   };
 
   private unmounted;
@@ -33,8 +36,9 @@ class DatePicker extends Component<PropsType, any> {
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
+      const { format } = this.props;
       this.setState({
-        value: Format.date(nextProps.value, this.props.format),
+        value: Format.date(nextProps.value, format),
       });
     }
   }
@@ -53,6 +57,24 @@ class DatePicker extends Component<PropsType, any> {
         this.setDropdown(dropdown, () => this.props.onChange(value));
       },
     );
+  }
+
+  onInputDateValue = (e) => {
+    let { target: { value } } = e;
+    const { format } = this.props;
+
+    value = Format.transform(value, format);
+
+    if (Format.validate(value, format)) {
+      if (Format.inrange(value, format)) {
+        this.onDateChange(value, false);
+      } else {
+        this.props.onInputInvalidDate(value);
+      }
+    }
+    this.setState({
+      value,
+    });
   }
 
   setDropdown(isOpen, callback?) {
@@ -76,10 +98,18 @@ class DatePicker extends Component<PropsType, any> {
     const { defaultValue, min, max, showTime, format } = this.props;
     const { value } = this.state;
 
+    const values = {
+      value,
+      defaultValue,
+    };
+
+    if (!Format.validate(value, format) || !Format.inrange(value, format)) {
+      delete values.value;
+    }
+
     return (
       <Calendar
-        defaultValue={defaultValue}
-        value={value}
+        {...values}
         format={format}
         hasFooter
         min={min}
@@ -92,7 +122,7 @@ class DatePicker extends Component<PropsType, any> {
 
   render() {
     const { props } = this;
-    const { placeholder, isDisabled, isRadius, size, style, showTime, locale } = props;
+    const { placeholder, isDisabled, isRadius, size, style, showTime, locale, allowInput } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -100,7 +130,7 @@ class DatePicker extends Component<PropsType, any> {
     let valueText = placeholder || locale.placeholder;
     let hasValue = false;
 
-    if (value) {
+    if (value || value === '') {
       valueText = value;
       hasValue = true;
     }
@@ -139,7 +169,17 @@ class DatePicker extends Component<PropsType, any> {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <span className={textCls}>{valueText}</span>
+            <span className={textCls}>
+              {
+                allowInput && !showTime ?
+                <Input
+                  onChange={this.onInputDateValue}
+                  value={value}
+                  placeholder={valueText}
+                /> :
+                valueText
+              }
+            </span>
             <Icon className="ui-select-icon" type="date"/>
           </span>
         </span>
