@@ -289,6 +289,7 @@ class Select extends Component<PropsType, StateProps> {
         }}
       >
         <InputWithTags
+          radius={radius}
           size={size}
           disabled={disabled}
           ref={this.inputWithTagsRef}

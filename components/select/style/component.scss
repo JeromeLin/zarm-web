@@ -190,30 +190,30 @@
     position: absolute;
     right: 5px;
   }
+}
 
-  .option-list {
-    position: relative;
-    white-space: nowrap;
-    padding: 10px;
-    cursor: pointer;
+.ui-option-list {
+  position: relative;
+  white-space: nowrap;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: #1890ff;
+    background-color: #e6f7ff;
+  }
+
+  &.checked {
+    background-color: #e6f7ff;
+    color: #1890ff;
+  }
+
+  &.disabled {
+    color: #ccc;
+    cursor: no-drop;
 
     &:hover {
-      color: #1890ff;
-      background-color: #e6f7ff;
-    }
-
-    &.checked {
-      background-color: #e6f7ff;
-      color: #1890ff;
-    }
-
-    &.disabled {
-      color: #ccc;
-      cursor: no-drop;
-
-      &:hover {
-        background-color: transparent;
-      }
+      background-color: transparent;
     }
   }
 }
