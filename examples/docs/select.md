@@ -134,7 +134,7 @@
   constructor(props) {
     super(props)
     this.state = {
-      selectValue: ['df']
+      selectValue: ['a']
     }
   }
   render() {
@@ -176,7 +176,7 @@
   constructor(props) {
     super(props)
     this.state = {
-      selectValue: ['df']
+      selectValue: ['a']
     }
   }
   render() {
