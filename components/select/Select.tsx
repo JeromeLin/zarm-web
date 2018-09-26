@@ -135,8 +135,8 @@ class Select extends Component<PropsType, any> {
     let valueText = locale!.placeholder || placeholder;
     let hasValue = false;
 
-    const children = React.Children.map(props.children, (option, index) => {
-      if (option && typeof option === 'object' && option.type === Option) {
+    const children = React.Children.map(this.props.children, (option: any, index) => {
+      if (option && typeof option === 'object' && option.type!.name === 'Option') {
         // tslint:disable-next-line:triple-equals
         if (this.state.value == option.props.value) {
           valueText = option.props.children;
