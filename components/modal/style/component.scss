@@ -38,6 +38,10 @@
       z-index: $base-zindex-modal + 1;
     }
   }
+  // fix popover-content position when using in Modal
+  .ui-popover-content {
+    position: absolute !important;
+  }
 }
 
 .ui-modal-header {
