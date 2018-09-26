@@ -3,8 +3,16 @@ import Tag from '../tag';
 import Icon from '../icon';
 import cn from 'classnames';
 
+const sizeValue = {
+  xs: 24,
+  sm: 28,
+  lg: 36,
+  xl: 40,
+};
+
 const Style = {
   tagStyle: { maxWidth: 80, backgroundColor: '#f0f0f0' },
+  iconStyle: { fontSize: 'initial' },
 };
 
 interface ValueArray {
@@ -12,14 +20,16 @@ interface ValueArray {
   value: ReactNode;
 }
 
-interface Props {
+export interface Props {
   style?: CSSProperties;
   search?: boolean;
   active?: boolean;
   placeholder?: string;
   searchValue?: string | null;
   radius?: boolean;
+  disabled?: boolean;
   value?: React.ReactNode | Array<ValueArray>;
+  size?: 'sm' | 'xs' | 'xl' | 'lg';
   onDeleteTag?(e: MouseEvent, key: any, value: React.ReactNode, index: number): void;
   onSearchChange(e: React.ChangeEvent<HTMLDivElement>): void;
 }
@@ -33,6 +43,9 @@ class InputWithTags extends React.Component<Props> {
   }
 
   onInput = (e) => {
+    if (this.props.disabled) {
+      return;
+    }
     if (typeof this.props.onSearchChange === 'function') {
       this.props.onSearchChange(e);
     }
@@ -40,10 +53,12 @@ class InputWithTags extends React.Component<Props> {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.active !== this.props.active) {
-      if (nextProps.active) {
-        this.inputDiv.focus();
-      } else {
-        this.inputDiv.innerText = '';
+      if (!nextProps.disabled) {
+        if (nextProps.active) {
+          this.inputDiv.focus();
+        } else {
+          this.inputDiv.innerText = '';
+        }
       }
     }
   }
@@ -53,13 +68,16 @@ class InputWithTags extends React.Component<Props> {
   }
 
   render() {
-    const { search, value, searchValue, placeholder, active, onDeleteTag, radius, ...others } = this.props;
+    const { search, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size,
+      radius, disabled, ...others } = this.props;
     let showPlaceHolder = true;
     if (typeof value === 'string' || Array.isArray(value)) {
       showPlaceHolder = value.length === 0;
     }
 
     const searchValueStyle = { display: searchValue ? 'none' : 'inline-block' };
+
+    let tagSizeHeight = (size ? sizeValue[size] : 32) - 10;
 
     let tagList;
     if (Array.isArray(value)) {
@@ -72,9 +90,8 @@ class InputWithTags extends React.Component<Props> {
           >
             <Tag
               title={typeof elem.value === 'string' ? elem.value : ''}
-              style={Style.tagStyle}
+              style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: tagSizeHeight + 'px' }}
               isRadius={radius}
-              size="xs"
               key={elem.key}
               onClose={(e: MouseEvent) => {
                 e.stopPropagation();
@@ -91,26 +108,28 @@ class InputWithTags extends React.Component<Props> {
         );
       });
     } else {
-      tagList = <div style={searchValueStyle} className="value-text">{value}</div>;
+      tagList = <div title={value as string} style={searchValueStyle} className="value-text">{value}</div>;
     }
 
     const boxCls = cn({
       'tag-input-box': true,
       'radius': radius,
       'tag-input-box-active': active,
+      'disabled': disabled,
+      [`size-${size}`]: size,
     });
 
     return <div className={boxCls} {...others}>
       {tagList}
       <div
         className="input-div"
-        contentEditable={search}
+        contentEditable={!disabled && search}
         onInput={this.onInput}
         ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
       />
       {showPlaceHolder && <span style={searchValueStyle} className="input-div-placeholder">{placeholder}</span>}
-      <Icon className="arrow-bottom" type="arrow-bottom" />
-    </div >;
+      <Icon style={Style.iconStyle} className="arrow-bottom" type="arrow-bottom" />
+    </div>;
   }
 }
 

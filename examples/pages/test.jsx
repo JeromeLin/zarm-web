@@ -21,7 +21,7 @@ export default class Test extends React.Component {
   render() {
     return (
       <div
-        style={{ width: 100, cursor: 'pointer' }}
+        style={{ width: 200, cursor: 'pointer' }}
       >
         <Select
           search
@@ -33,7 +33,7 @@ export default class Test extends React.Component {
             });
           }}
         >
-          <Select.Option value="1">1234我是一个很长的代码</Select.Option>
+          <Select.Option value="1">1234我是一个很长的代码11edasdasdcertwgtstyhbd</Select.Option>
           <Select.Option value="2">13</Select.Option>
           <Select.Option value="3">14</Select.Option>
           <Select.Option value="4">15</Select.Option>

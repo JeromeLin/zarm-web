@@ -5,6 +5,7 @@ export interface OptionProps {
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;
+  showCheckIcon?: boolean;
   style?: CSSProperties;
   onChange: (e: MouseEvent) => void;
   onDoubleClick?: (e: MouseEvent) => void;

@@ -64,13 +64,12 @@ export default class Canvas extends React.Component {
             window.playerList = [];
         }
         const container = document.getElementById('${this.playerId}');
-        console.log(container);
         window.playerList.push(container);
 
         ReactDOM.render(<Demo {...context.props} />, container)
       `, {
-          presets: ['es2015', 'react'],
-        }).code;
+        presets: ['es2015', 'react'],
+      }).code;
 
       args.push(code);
       // eslint-disable-next-line
@@ -120,8 +119,8 @@ export default class Canvas extends React.Component {
                 <i className="el-icon-caret-top" />隐藏
               </span>
             ) : (
-                <span>
-                  <i className="el-icon-caret-bottom" />展开
+              <span>
+                <i className="el-icon-caret-bottom" />展开
               </span>
               )
           }

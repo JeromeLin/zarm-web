@@ -1,4 +1,4 @@
-import { CSSProperties } from "../../node_modules/@types/react";
+import { CSSProperties } from '../../node_modules/@types/react';
 
 export type theme = 'success' | 'warning' | 'error' | 'validating' | 'default';
 

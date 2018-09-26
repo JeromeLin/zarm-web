@@ -17,8 +17,6 @@ export default class Markdown extends React.Component {
     };
   }
 
-  divList = [];
-
   componentDidMount() {
     this.renderDOM();
   }
@@ -28,12 +26,14 @@ export default class Markdown extends React.Component {
   }
 
   componentWillUnmount() {
-    this.divList.forEach(element => {
+    this.divList.forEach((element) => {
       ReactDOM.unmountComponentAtNode(element);
       element.parentNode.removeChild(element);
     });
     this.divList = [];
   }
+
+  divList = [];
 
 
   renderDOM() {

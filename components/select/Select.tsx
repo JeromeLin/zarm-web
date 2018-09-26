@@ -251,6 +251,7 @@ class Select extends Component<PropsType, StateProps> {
         return (
           <Option
             {...option.props}
+            showCheckIcon
             onChange={e => this.onOptionChange(e, option.props, index)}
             checked={checked}
           />
@@ -288,6 +289,8 @@ class Select extends Component<PropsType, StateProps> {
         }}
       >
         <InputWithTags
+          size={size}
+          disabled={disabled}
           ref={this.inputWithTagsRef}
           style={style}
           searchValue={this.state.searchValue}

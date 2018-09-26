@@ -4,6 +4,11 @@
   }
 }
 
+.ui-dropdown-trigger-box {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .ui-dropdown {
   @include dropdown-size($base-radius);
 
