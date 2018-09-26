@@ -14,6 +14,7 @@ class DatePicker extends Component<PropsType, any> {
     min: '',
     max: '',
     showTime: false,
+    disabledDate: () => {},
     onChange: () => {},
   };
 
@@ -24,6 +25,7 @@ class DatePicker extends Component<PropsType, any> {
     this.state = {
       value: Format.date(props.value || props.defaultValue, props.format),
       dropdown: false,
+      flag: true,
     };
   }
 
@@ -43,7 +45,19 @@ class DatePicker extends Component<PropsType, any> {
     this.unmounted = false;
   }
 
-  onDateChange(value, dropdown) {
+  onDateChange(value, dropdown, isTimeChange) {
+    if (isTimeChange) { // hack方法 临时解决datetimePicker点击空白区域需要关闭的问题
+      this.setState({
+        flag: false,
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            flag: true,
+          });
+        });
+      });
+    }
+
     this.setState(
       {
         value,
@@ -85,14 +99,14 @@ class DatePicker extends Component<PropsType, any> {
         min={min}
         max={max}
         showTime={showTime}
-        onChange={(value, dropdown) => this.onDateChange(value, dropdown)}
+        onChange={(value, dropdown, isTimeChange) => this.onDateChange(value, dropdown, isTimeChange)}
       />
     );
   }
 
   render() {
     const { props } = this;
-    const { placeholder, isDisabled, isRadius, size, style, showTime, locale } = props;
+    const { placeholder, isDisabled, isRadius, size, style, locale } = props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -129,7 +143,7 @@ class DatePicker extends Component<PropsType, any> {
         overlay={this.renderOverlay()}
         isRadius={radius}
         visible={dropdown}
-        hideOnClick={!showTime}
+        hideOnClick={this.state.flag}
       >
         <span className={cls} style={style}>
           <span
