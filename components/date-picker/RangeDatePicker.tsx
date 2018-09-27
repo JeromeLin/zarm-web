@@ -63,6 +63,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     format: 'yyyy-MM-dd',
     min: '',
     max: '',
+    value: [],
     onChange: fn,
   };
 

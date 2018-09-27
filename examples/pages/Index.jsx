@@ -32,6 +32,7 @@ export default {
       Pagination: '../pages/pagination',
       Tree: '../pages/Tree',
       Transfer: '../pages/transfer',
+      Avatar: '../pages/avatar',
     },
     Notice: {
       Alert: '../pages/alert',

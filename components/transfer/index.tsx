@@ -96,16 +96,16 @@ class Transfer extends Component<PropsType, any> {
 
   render() {
     const {
-        prefixCls,
-        size,
-        isDisabled,
-        isRadius,
-        style,
-        width,
-        initialPanelTitle,
-        selectedPanelTitle,
-        keyOfItem,
-        displayNameOfItem,
+      prefixCls,
+      size,
+      isDisabled,
+      isRadius,
+      style,
+      width,
+      initialPanelTitle,
+      selectedPanelTitle,
+      keyOfItem,
+      displayNameOfItem,
     } = this.props;
 
     const disabled = 'disabled' in this.props || isDisabled;
@@ -119,61 +119,61 @@ class Transfer extends Component<PropsType, any> {
     });
 
     return (
-        <div
-          style={{ ...style, width }}
-          className={cls}
-        >
-          <div className={prefixCls + '-panel'}>
-            <h4 className={prefixCls + '-panel-title'}>{initialPanelTitle}</h4>
-            <Select.Multiple
-              isDisabled={disabled}
-              isRadius={radius}
-              value={this.state.selectedLeft}
-              onChange={(selectedRows) => {
-              this.setState({ selectedLeft: selectedRows });
-              }}
-              onDoubleClick={(e) => !disabled && this._onDoubleAdd(e)}
-            >
-              {
-              this.state.initialValue.map((option, index) => {
-                  return (
-                  <Select.Option key={index} value={option[keyOfItem]} >
-                        {option[displayNameOfItem]}
-                  </Select.Option>
-                  );
-              })
-              }
-            </Select.Multiple>
-          </div>
-          <div className={prefixCls + '-action-bar'}>
-            <div className="button-wrapper">
-            <Button isDisabled={this.state.selectedLeft.length === 0} onClick={() => !disabled && this._onAdd()}>
-            <Icon type="add"/>
-            </Button>
-            <Button isDisabled={this.state.selectedRight.length === 0} onClick={() => !disabled && this._onMinus()}>
-              <Icon type="minus" />
-            </Button>
-            </div>
-          </div>
-          <div className={prefixCls + '-panel'}>
-            <h4 className={prefixCls + '-panel-title'}>{selectedPanelTitle}</h4>
-            <Select.Multiple
-              isDisabled={disabled}
-              isRadius={radius}
-              value={this.state.selectedRight}
-              onChange={(selectedRows) => {
-              this.setState({ selectedRight: selectedRows });
-              }}
-              onDoubleClick={(e) => !disabled && this._onDoubleMinus(e)}
-            >
-              {
-              this.state.selectedValue.map((option, index) => {
-              return (<Select.Option key={index} value={option[keyOfItem]}>{option[displayNameOfItem]}</Select.Option>);
-              })
-              }
-            </Select.Multiple>
+      <div
+        style={{ ...style, width }}
+        className={cls}
+      >
+        <div className={prefixCls + '-panel'}>
+          <h4 className={prefixCls + '-panel-title'}>{initialPanelTitle}</h4>
+          <Select.Multiple
+            isDisabled={disabled}
+            isRadius={radius}
+            value={this.state.selectedLeft}
+            onChange={(selectedRows) => {
+            this.setState({ selectedLeft: selectedRows });
+            }}
+            onDoubleClick={(e) => !disabled && this._onDoubleAdd(e)}
+          >
+            {
+            this.state.initialValue.map((option, index) => {
+                return (
+                <Select.Option key={index} value={option[keyOfItem]} >
+                      {option[displayNameOfItem]}
+                </Select.Option>
+                );
+            })
+            }
+          </Select.Multiple>
+        </div>
+        <div className={prefixCls + '-action-bar'}>
+          <div className="button-wrapper">
+          <Button isDisabled={this.state.selectedLeft.length === 0} onClick={() => !disabled && this._onAdd()}>
+          <Icon type="add"/>
+          </Button>
+          <Button isDisabled={this.state.selectedRight.length === 0} onClick={() => !disabled && this._onMinus()}>
+            <Icon type="minus" />
+          </Button>
           </div>
         </div>
+        <div className={prefixCls + '-panel'}>
+          <h4 className={prefixCls + '-panel-title'}>{selectedPanelTitle}</h4>
+          <Select.Multiple
+            isDisabled={disabled}
+            isRadius={radius}
+            value={this.state.selectedRight}
+            onChange={(selectedRows) => {
+            this.setState({ selectedRight: selectedRows });
+            }}
+            onDoubleClick={(e) => !disabled && this._onDoubleMinus(e)}
+          >
+            {
+            this.state.selectedValue.map((option, index) => {
+            return (<Select.Option key={index} value={option[keyOfItem]}>{option[displayNameOfItem]}</Select.Option>);
+            })
+            }
+          </Select.Multiple>
+        </div>
+      </div>
     );
   }
 }

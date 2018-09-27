@@ -17,9 +17,11 @@
       <div>
        <DatePicker
           radius
+          allowInput
           style={{width: 200}}
           value={this.state.date}
           onChange={(date) => {
+            console.log(date)
             this.setState({date});
           }}
         />
@@ -191,7 +193,7 @@ DateTimePicker时候showTime需要为true且format必传
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| value     | 选中日期值   | string |   -   |    -   |
+| value     | 选中日期值   | string / string[] |   -   |    -   |
 | defaultValue  | 默认值 | string |   -   |    -   |
 | showTime | 是否显示时间选择器 | boolean | - | false |
 | isRange | 是否显示日期范围选择器 | boolean | - | false |
@@ -201,10 +203,11 @@ DateTimePicker时候showTime需要为true且format必传
 | placeholder | 选择框默认文案 | string |   -   |   -  |
 | radius | 是否圆角 | boolean |   -   |   false  |
 | isDisabled | 是否禁用 | boolean |   -   |   false  |
-
+| allowInput | 是否允许输入日期 | boolean |   -   |   false  |
 
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onChange | 日期变更回调 |  date |
+| onInputInvalidDate | 手动输入的日期非法时回调 |  date |
