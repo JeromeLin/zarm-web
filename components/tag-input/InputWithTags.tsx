@@ -116,7 +116,7 @@ class InputWithTags extends React.Component<Props> {
       'radius': radius,
       'tag-input-box-active': active,
       'disabled': disabled,
-      [`size-${size}`]: size,
+      [`size-${size}`]: !!size,
     });
 
     return <div className={boxCls} {...others}>
