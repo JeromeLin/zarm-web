@@ -65,7 +65,7 @@ export default interface PropsType {
   isLeftCalendar?: boolean; // 在 rangeCalendar 中表示是开始日历，
   isRightCalendar?: boolean; // 在 rangeCalendar 中表示是结束日历，
   showTime?: boolean;
-  onChange?: (value: string, dropdown: boolean, isTime?: boolean) => void;
+  onChange?: (value: string, dropdown: boolean, isTimeChange?: boolean) => void;
   isShowPrev?: boolean;
   isShowNext?: boolean;
   disabledMonth?: (value: any) => void;

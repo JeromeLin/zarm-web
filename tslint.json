@@ -141,6 +141,7 @@
       true,
       "never"
     ],
-    "jsx-wrap-multiline": false
+    "jsx-wrap-multiline": false,
+    "variable-name": false
   }
 }
