@@ -3,6 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const browserlist = require('../config/browserlist');
 const babelConfig = require('../config/babelConfig');
 
+const isDev = process.env.NODE_ENV === 'development';
+
 babelConfig.plugins.push([
   'import',
   {
@@ -48,7 +50,7 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader?importLoaders=1',
           },

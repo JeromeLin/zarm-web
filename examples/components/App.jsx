@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import classnames from 'classnames';
+import { hot } from 'react-hot-loader';
 import AsyncComponent from './AsyncComponent';
 import { qs } from '../../components/locale/util';
 import '../../components/style/index.scss';
@@ -109,4 +110,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default hot(module)(App);

@@ -1,4 +1,5 @@
 import Markdown from '../components/markdown';
+import '../../components/button/style';
 import '../../components/date-picker/style';
 
 export default class DatePicker extends Markdown {

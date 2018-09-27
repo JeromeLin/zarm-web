@@ -89,13 +89,13 @@ class TimePicker extends Component<TimePickerProps, any> {
   }
 
   onConfirmBtn () {
-    this.setDropdown(false);
+    this.setDropdown(false, this.props.onChange);
   }
 
   render () {
     const {
       defaultValue, placeholder, isDisabled, isRadius, size, locale,
-      localeCode, dropdownStyle, placement, ...others
+      localeCode, dropdownStyle, placement, onChange, ...others
     } = this.props;
     const { value, dropdown } = this.state;
     const disabled = 'disabled' in this.props || isDisabled;
