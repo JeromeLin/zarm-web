@@ -63,7 +63,7 @@ class Select extends Component<PropsType, StateProps> {
 
   getOptionMap(options, prev = {}) {
     return options.reduce((prev, option) => {
-      if (option.type === Option) {
+      if (option && typeof option === 'object') {
         prev[option.props.value] = option;
       } else if (Array.isArray(option)) {
         this.getOptionMap(option, prev);
@@ -239,7 +239,7 @@ class Select extends Component<PropsType, StateProps> {
       }
     }
     const children = React.Children.map(props.children, (option, index) => {
-      if (option && typeof option === 'object' && option.type === Option) {
+      if (option && typeof option === 'object') {
         if (
           search &&
           option.props.children.toString().indexOf(this.state.searchValue) < 0
