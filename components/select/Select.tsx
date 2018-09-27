@@ -62,7 +62,6 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   getOptionMap(options, prev = {}) {
-    console.log(options);
     return options.reduce((prev, option) => {
       if (option && typeof option === 'object' && option.type) {
         if (option.props) {
