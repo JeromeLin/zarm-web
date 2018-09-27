@@ -32,7 +32,7 @@
     "clean": "rm -rf lib es dist .temp",
     "build:es": "tsc --outDir es -d",
     "build:lib": "tsc --outDir lib -d && tsc --outDir .temp --jsx preserve && babel .temp --out-dir lib --presets=env,react,stage-0 --plugins=transform-runtime && rm -rf .temp",
-    "build:umd": "NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
+    "build:umd": "webpack --config scripts/webpack/config.umd.js && NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
     "build:css": "cd scripts/gulp && gulp",
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:css",
     "site:build": "rm -rf assets && NODE_ENV=production webpack --config scripts/webpack/config.site.js",
