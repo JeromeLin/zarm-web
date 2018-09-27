@@ -27,6 +27,7 @@
   border: 1px solid #d9d9d9;
   position: relative;
   padding-right: 35px;
+  padding-left: 8px;
   will-change: box-shadow, border-color;
   transition: box-shadow, 0.3s, border-color 0.3s;
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -55,7 +56,6 @@
     line-height: $base-height - 2px;
     outline: none;
     max-width: 100%;
-    padding-left: 9px;
   }
 
   .input-div-placeholder,
@@ -77,7 +77,6 @@
 
   .tag-list-box {
     padding: 5px 0;
-    margin-left: 5px;
     display: inline-block;
     vertical-align: middle;
   }
