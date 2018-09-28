@@ -8,19 +8,12 @@
       line-height: $height - 2;
       padding-left: $padding;
       padding-right: $height;
-
-      input {
-        width: 10px;
-        height: $height;
-        padding-left: $padding;
-        // padding-right: $height;
-      }
     }
 
     .ui-select-icon,
     .ui-select-arrow {
       right: ($height - $font-size) / 2;
-      margin-top:  - $font-size / 2;
+      margin-top: - $font-size / 2;
     }
   }
 
@@ -71,28 +64,23 @@
     }
 
     .ui-select-text {
-      display: inline-block;
+      display: block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
 
       input {
-        display: inline-block;
-        width: auto;
+        display: block;
         border: 0;
-        color: #333;
-        font-size: 100%;
-        background: transparent;
-        outline: 0;
+        box-shadow: none;
       }
 
-      &.ui-select-text-placeholder {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        line-height: 32px;
-      }
+      // &.ui-select-text-placeholder {
+      //   position: absolute;
+      //   left: 0;
+      //   top: 0;
+      //   height: 100%;
+      // }
 
       &.ui-select-text-placeholder-color {
         color: #ccc;
