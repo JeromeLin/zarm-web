@@ -7,6 +7,7 @@ const cssnano = require('gulp-cssnano');
 const size = require('gulp-filesize');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
+const modifyCssUrls = require('gulp-modify-css-urls');
 const browserlist = require('../config/browserlist');
 
 const DIR = {
@@ -34,6 +35,11 @@ gulp.task('dist', () => {
       outputStyle: 'compressed',
     }))
     .pipe(autoprefixer({ browsers: browserlist }))
+    .pipe(modifyCssUrls({
+      modify(url) {
+        return url.replace('../..', '../lib');
+      },
+    }))
     .pipe(concat('dragon-ui.css'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
