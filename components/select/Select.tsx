@@ -37,21 +37,22 @@ class Select extends Component<PropsType, StateProps> {
 
   constructor(props: PropsType) {
     super(props);
+    let value = props.value === undefined ? props.defaultValue : props.value;
     let state: StateProps = {
-      value: String(props.value),
+      value: String(value),
       dropdown: false,
       searchValue: '',
       showPlacehoder: true,
     };
 
     if (props.multiple) {
-      if (!Array.isArray(props.value)) {
-        state.value = [String(props.value)];
+      if (!Array.isArray(value)) {
+        state.value = [String(value)];
       } else {
-        state.value = props.value.map(val => String(val));
+        state.value = value.map(val => String(val));
       }
     } else {
-      state.value = String(props.value);
+      state.value = String(value);
     }
     this.state = state;
     this.optionMap = this.getOptionMap(this.props.children);
@@ -75,8 +76,8 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
-      let value = nextProps.value;
+    if ('value' in nextProps || nextProps.defaultValue !== this.props.defaultValue) {
+      let value = nextProps.value === undefined ? nextProps.defaultValue : nextProps.value;
       if (nextProps.multiple) {
         if (!Array.isArray(value)) {
           value = [String(value)];
@@ -84,7 +85,7 @@ class Select extends Component<PropsType, StateProps> {
           value = value.map(val => String(val));
         }
       } else {
-        value = value;
+        value = String(value);
       }
       this.optionMap = this.getOptionMap(nextProps.children);
       this.setState({
@@ -142,7 +143,12 @@ class Select extends Component<PropsType, StateProps> {
           index: selectIndex,
         };
       });
-      this.props.onChange(selected, selectedData);
+      this.setState({
+        value: selected,
+      }, () => {
+        this.props.onChange(selected, selectedData);
+      });
+
       return;
     }
 
@@ -151,7 +157,12 @@ class Select extends Component<PropsType, StateProps> {
       value: props.value,
       text: props.children,
     };
-    this.setDropdown(false, () => this.props.onChange(selected));
+
+    this.setState({
+      value: props.value,
+    }, () => {
+      this.setDropdown(false, () => this.props.onChange(selected));
+    });
   }
 
   inputWithTagsRef = (e) => {

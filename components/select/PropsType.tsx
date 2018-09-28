@@ -34,7 +34,7 @@ export default interface PropsType {
   prefixCls?: string;
   value?: string | number | Array<string | number>;
   multiple?: boolean;
-  defaultValue?: string | number;
+  defaultValue?: string | number | Array<string | number>;
   size?: size;
   className?: string;
   style?: CSSProperties;
