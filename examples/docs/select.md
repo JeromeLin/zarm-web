@@ -19,7 +19,7 @@
   componentDidMount() {
     let i = 1;
     let options = [];
-    while(i < 100) {
+    while(i < 10) {
       options.push(`我是${i}`);
       i++;
     }
@@ -122,6 +122,123 @@
   }
 ```
 :::
+
+
+### 多选
+
+支持输入框多选。
+
+:::demo 添加`multiple`属性，可支持多选。
+
+```js
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectValue: ['a']
+    }
+  }
+  render() {
+    return (
+      <div>
+        <Select
+          multiple
+          value={this.state.selectValue}
+          style={{ width: 200 }}
+          onChange={(selectedArr) => {
+            console.log(selectedArr);
+            this.setState({
+              selectValue: selectedArr
+            });
+          }}>
+          <Select.Option value="a">我是A</Select.Option>
+          <Select.Option value="b">我是B</Select.Option>
+          <Select.Option value="c">我是C</Select.Option>
+          <Select.Option value="d">我是D</Select.Option>
+           <Select.Option value="e">我是E</Select.Option>
+          <Select.Option value="f">我是F</Select.Option>
+          <Select.Option value="g">我是G</Select.Option>
+          <Select.Option value="h">我是H</Select.Option>
+        </Select>
+      </div>
+    )
+  }
+```
+:::
+  
+
+### 多选并支持查找
+
+支持输入框搜索选项。
+
+:::demo 添加`multiple` 和`search`属性，可支持多选和查找。
+
+```js
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectValue: ['a']
+    }
+  }
+  render() {
+    return (
+      <div>
+        <Select
+          search
+          multiple
+          value={this.state.selectValue}
+          style={{ width: 200 }}
+          onChange={(selectedArr) => {
+            console.log(selectedArr);
+            this.setState({
+              selectValue: selectedArr
+            });
+          }}>
+          <Select.Option value="a">我是A</Select.Option>
+          <Select.Option value="b">我是B</Select.Option>
+          <Select.Option value="c">我是C</Select.Option>
+          <Select.Option value="d">我是D</Select.Option>
+           <Select.Option value="e">我是E</Select.Option>
+          <Select.Option value="f">我是F</Select.Option>
+          <Select.Option value="g">我是G</Select.Option>
+          <Select.Option value="h">我是H</Select.Option>
+        </Select>
+      </div>
+    )
+  }
+```
+:::
+
+注意事项
++ 当`multiple`属性为`true`时, `value`需要为`Array<string>`类型
++ 当`multiple`属性为`true`时, `onChange`的回调参数为`(selectedValueArr,selectedValueData)`,数据类型如下：
+```
+type selectedValueArr = Array<string>;
+type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
+```
++ onChange回调的参数中的`value`值类型始终为`string`;
++ 当`multiple`属性为`true`时,若参数`value`中存在目前`option`列表中不存在的元素：则不会显示该元素，但也不会删除该元素。例如：
+```
+  this.state = {
+      selectValue: ['i am not the one']
+  }
+  render() {
+    return (
+        <Select
+          multiple
+          value={this.state.selectValue}
+          onChange={(selectedArr) => {
+            console.log(selectedArr);
+            this.setState({
+              selectValue: selectedArr
+            });
+          }}>
+          <Select.Option value="a">我是A</Select.Option>
+          <Select.Option value="b">我是B</Select.Option>
+        </Select>
+    )
+  }
+```
+以上代码中`'i am not the one'`并不存在于Select.Option中，当你执行`onChange`操作的时候`selectedArr`中依然会保留改字段,但并不会显示在输入框内。
 
 
 ### 更多设置

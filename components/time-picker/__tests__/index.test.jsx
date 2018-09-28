@@ -72,7 +72,7 @@ describe('TimePicker', () => {
         onChange={onChange}
       />
     );
-    wrapper.find('.ui-menu-item').first().simulate('click');
+    wrapper.find('.ui-option-list').first().simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(initValue);
   });

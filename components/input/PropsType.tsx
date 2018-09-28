@@ -1,3 +1,5 @@
+import { InputHTMLAttributes, TextareaHTMLAttributes, CSSProperties } from 'react';
+
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OtherProps {
@@ -6,7 +8,7 @@ export interface OtherProps {
   [propName: string]: any;
 }
 
-export default interface PropsType {
+interface BasicPropType {
   prefixCls?: string;
   type?: string;
   size?: size;
@@ -18,8 +20,11 @@ export default interface PropsType {
   defaultValue?: string;
   rows?: number;
   cols?: number;
-  style?: object;
+  style?: CSSProperties;
   placeholder?: string;
   maxLength?: number;
-  [propName: string]: any;
 }
+
+type PropType = (InputHTMLAttributes<{}> | TextareaHTMLAttributes<{}>) & BasicPropType;
+
+export default PropType;

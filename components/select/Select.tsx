@@ -1,14 +1,23 @@
-import React, { Component, ReactElement, ReactNode } from 'react';
-import classnames from 'classnames';
+import React, { Component, ReactElement, ReactNode, ChangeEvent } from 'react';
 import Events from '../utils/events';
 import Option from './Option';
 import Dropdown from '../dropdown';
 import Menu from '../menu';
-import Icon from '../icon';
+import InputWithTags from '../tag-input';
 import PropsType from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 
-class Select extends Component<PropsType, any> {
+interface StateProps {
+  value: string | string[];
+  dropdown: boolean;
+  searchValue: string | null;
+  showPlacehoder: boolean;
+}
+
+/**
+ * placeholder
+ */
+class Select extends Component<PropsType, StateProps> {
   static defaultProps = {
     prefixCls: 'ui-select',
     isRadius: false,
@@ -21,26 +30,65 @@ class Select extends Component<PropsType, any> {
   static Option;
   static Multiple;
 
-  constructor(props) {
+  inputBox: HTMLInputElement;
+  optionMap: { [x: string]: any, [y: number]: any };
+  inputWithTags: InputWithTags;
+  oldInputDivHeight: number = 0;
+
+  constructor(props: PropsType) {
     super(props);
-    this.state = {
-      value:
-        props.value ||
-        props.defaultValue ||
-        this.getCheckedValue(props.children),
+    let state: StateProps = {
+      value: String(props.value),
       dropdown: false,
       searchValue: '',
+      showPlacehoder: true,
     };
+
+    if (props.multiple) {
+      if (!Array.isArray(props.value)) {
+        state.value = [String(props.value)];
+      } else {
+        state.value = props.value.map(val => String(val));
+      }
+    } else {
+      state.value = String(props.value);
+    }
+    this.state = state;
+    this.optionMap = this.getOptionMap(this.props.children);
   }
 
   componentDidMount() {
     this.bindOuterHandlers();
   }
 
+  getOptionMap(options, prev = {}) {
+    return options.reduce((prev, option) => {
+      if (option && typeof option === 'object' && option.type) {
+        if (option.props) {
+          prev[option.props.value] = option;
+        }
+      } else if (Array.isArray(option)) {
+        this.getOptionMap(option, prev);
+      }
+      return prev;
+    }, prev);
+  }
+
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps) {
+      let value = nextProps.value;
+      if (nextProps.multiple) {
+        if (!Array.isArray(value)) {
+          value = [String(value)];
+        } else {
+          value = value.map(val => String(val));
+        }
+      } else {
+        value = value;
+      }
+      this.optionMap = this.getOptionMap(nextProps.children);
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children),
+        value,
       });
     }
   }
@@ -68,11 +116,35 @@ class Select extends Component<PropsType, any> {
     if ('disabled' in props || props.isDisabled) {
       return;
     }
+    if (props.search || props.isSearch) {
+      this.setState({
+        searchValue: '',
+      });
+      this.inputBox.textContent = '';
+    }
 
-    this.setState({
-      value: props.value,
-      searchValue: '',
-    });
+    let value = String(props.value);
+
+    if (this.props.multiple) {
+      const selected = (this.state.value as Array<string>).slice();
+      const position = selected.indexOf(value);
+      if (position === -1) {
+        selected.push(value);
+      } else {
+        selected.splice(position, 1);
+      }
+      const selectedData = selected.map((select, selectIndex) => {
+        const vdom = this.optionMap[select];
+        const text = vdom ? vdom.props.children : '';
+        return {
+          text,
+          value: select,
+          index: selectIndex,
+        };
+      });
+      this.props.onChange(selected, selectedData);
+      return;
+    }
 
     const selected = {
       index,
@@ -80,6 +152,10 @@ class Select extends Component<PropsType, any> {
       text: props.children,
     };
     this.setDropdown(false, () => this.props.onChange(selected));
+  }
+
+  inputWithTagsRef = (e) => {
+    this.inputWithTags = e;
   }
 
   setDropdown(isOpen, callback?) {
@@ -110,20 +186,33 @@ class Select extends Component<PropsType, any> {
     Events.off(document, 'keyup', e => this.handleKeyup(e));
   }
 
+  onDeleteTag = (_e, _key, _value, index) => {
+    const selected = (this.state.value as Array<string>).slice();
+    selected.splice(index, 1);
+    const selectedData = selected.map((select, selectIndex) => {
+      const vdom = this.optionMap[select];
+      const text = vdom ? vdom.props.children : '';
+      return {
+        text,
+        value: select,
+        index: selectIndex,
+      };
+    });
+    this.props.onChange(selected, selectedData);
+  }
+
   render() {
     const { props } = this;
     const {
       prefixCls,
       placeholder,
-      searchPlaceholder,
       isRadius,
       isDisabled,
       isSearch,
       size,
-      onSearchChange,
       style,
       zIndex,
-      title,
+      multiple,
       getPopupContainer,
       locale,
     } = props;
@@ -132,46 +221,45 @@ class Select extends Component<PropsType, any> {
     const radius = 'radius' in props || isRadius;
     const search = 'search' in props || isSearch;
 
-    let valueText = locale!.placeholder || placeholder;
-    let hasValue = false;
+    let placeholderText = placeholder || locale!.placeholder;
 
-    const children = React.Children.map(this.props.children, (option: any, index) => {
-      if (option && typeof option === 'object') {
-        // tslint:disable-next-line:triple-equals
-        if (this.state.value == option.props.value) {
-          valueText = option.props.children;
-          hasValue = true;
+    let valueText;
+    if (multiple && Array.isArray(this.state.value)) {
+      valueText = this.state.value.reduce((prev: any, item) => {
+        if (this.optionMap[item]) {
+          prev.push({
+            key: item,
+            value: this.optionMap[item].props.children,
+          });
         }
-
+        return prev;
+      }, []);
+    } else {
+      let optionProps = this.optionMap[this.state.value as string];
+      if (optionProps) {
+        valueText = optionProps.props.children;
+      }
+    }
+    const children = React.Children.map(props.children, (option, index) => {
+      if (option && typeof option === 'object') {
         if (
           search &&
           option.props.children.toString().indexOf(this.state.searchValue) < 0
         ) {
           return null;
         }
+        let propsValue = String(option.props.value);
+        const checked = multiple ? this.state.value.indexOf(propsValue) > -1 : this.state.value === propsValue;
         return (
           <Option
             {...option.props}
+            showCheckIcon
             onChange={e => this.onOptionChange(e, option.props, index)}
-            checked={this.state.value === option.props.value}
+            checked={checked}
           />
         );
       }
       return null;
-    });
-
-    const cls = classnames({
-      [prefixCls!]: true,
-      [`${prefixCls}-open`]: this.state.dropdown,
-      disabled,
-      radius,
-      [`size-${size}`]: !!size,
-    });
-
-    const textCls = classnames({
-      [`${prefixCls}-text`]: true,
-      [`${prefixCls}-text-placeholder`]:
-        !hasValue || (search && hasValue && this.state.dropdown),
     });
 
     const menuStyle = {
@@ -185,53 +273,41 @@ class Select extends Component<PropsType, any> {
           <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>
         );
 
-    const inputPlaceholder = this.state.dropdown // eslint-disable-line
-      ? hasValue
-        ? valueText
-        : (search && (locale!.searchPlaceHolder || searchPlaceholder))
-      : valueText;
-
-    const textRender = !(search && this.state.searchValue.length > 0) && (
-      <span className={textCls} title={title}>{inputPlaceholder}</span>
-    );
-
-    const inputRender = search &&
-      !disabled && (
-        <span className={textCls}>
-          <input
-            value={this.state.searchValue}
-            // tslint:disable-next-line:jsx-no-multiline-js
-            onChange={(e) => {
-              const searchValue = e.target.value;
-              this.setState({ searchValue }, () => onSearchChange!(searchValue));
-            }}
-          />
-        </span>
-      );
-
     return (
       <Dropdown
+        triggerBoxStyle={style}
         disabled={disabled}
         visible={this.state.dropdown}
         isRadius={radius}
         overlay={menus}
         zIndex={zIndex}
         getPopupContainer={getPopupContainer}
-        onVisibleChange={(visible) => this.setState({ dropdown: visible })}
+        onVisibleChange={(visible) => {
+          if (visible === true) {
+            this.setState({ dropdown: visible, searchValue: '' });
+          } else {
+            this.setState({ dropdown: visible });
+          }
+        }}
       >
-        <span className={cls} style={style}>
-          <span
-            className={`${prefixCls}-selection`}
-            role="combobox"
-            aria-autocomplete="list"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            {textRender}
-            {inputRender}
-            <Icon type="arrow-bottom" className={`${prefixCls}-arrow`} />
-          </span>
-        </span>
+        <InputWithTags
+          radius={radius}
+          size={size}
+          disabled={disabled}
+          ref={this.inputWithTagsRef}
+          style={style}
+          searchValue={this.state.searchValue}
+          search={search}
+          active={this.state.dropdown}
+          value={valueText}
+          placeholder={placeholderText}
+          onDeleteTag={this.onDeleteTag}
+          onSearchChange={(e: ChangeEvent<HTMLDivElement>) => {
+            this.setState({
+              searchValue: e.target.textContent,
+            });
+          }}
+        />
       </Dropdown>
 
     );

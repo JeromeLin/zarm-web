@@ -126,7 +126,7 @@
     "raw-loader": "^0.5.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-hot-loader": "^4.3.8",
+    "react-hot-loader": "^4.3.11",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^16.4.2",
     "react-transition-group": "^2.2.1",
