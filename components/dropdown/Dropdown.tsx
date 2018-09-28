@@ -276,7 +276,10 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     if (this.div.contains(target) || this.triggerBox.contains(target)) {
       return;
     } else {
-      this.props.onVisibleChange(false);
+      // this.props.onVisibleChange(false);
+      if (this.props.hideOnClick) {
+        this.props.onVisibleChange(false);
+      }
     }
   }
 
