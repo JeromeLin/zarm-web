@@ -8,18 +8,12 @@
       line-height: $height - 2;
       padding-left: $padding;
       padding-right: $height;
-
-      input {
-        height: $height;
-        padding-left: $padding;
-        padding-right: $height;
-      }
     }
 
     .ui-select-icon,
     .ui-select-arrow {
       right: ($height - $font-size) / 2;
-      margin-top:  - $font-size / 2;
+      margin-top: - $font-size / 2;
     }
   }
 
@@ -76,18 +70,19 @@
       white-space: nowrap;
 
       input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+        display: block;
         border: 0;
-        color: #333;
-        font-size: 100%;
-        background: transparent;
-        outline: 0;
+        box-shadow: none;
       }
 
-      &.ui-select-text-placeholder {
+      // &.ui-select-text-placeholder {
+      //   position: absolute;
+      //   left: 0;
+      //   top: 0;
+      //   height: 100%;
+      // }
+
+      &.ui-select-text-placeholder-color {
         color: #ccc;
       }
     }
@@ -177,5 +172,36 @@
     display: block;
     padding: 8px;
     color: #ccc;
+  }
+
+  .checked-icon {
+    position: absolute;
+    right: 5px;
+  }
+}
+
+.ui-option-list {
+  position: relative;
+  white-space: nowrap;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: #1890ff;
+    background-color: #e6f7ff;
+  }
+
+  &.checked {
+    background-color: #e6f7ff;
+    color: #1890ff;
+  }
+
+  &.disabled {
+    color: #ccc;
+    cursor: no-drop;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 }

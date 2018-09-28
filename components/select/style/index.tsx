@@ -1,4 +1,5 @@
+import './index.scss';
 import '../../style';
 import '../../menu/style';
 import '../../dropdown/style';
-import './index.scss';
+import '../../tag-input/style';

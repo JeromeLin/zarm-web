@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 export type theme = 'default' | 'info' | 'success' | 'warning' | 'error';
 
 export default interface PropsType {
@@ -6,5 +7,5 @@ export default interface PropsType {
   theme?: theme;
   style?: object;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
 }
