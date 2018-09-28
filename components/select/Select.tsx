@@ -142,7 +142,12 @@ class Select extends Component<PropsType, StateProps> {
           index: selectIndex,
         };
       });
-      this.props.onChange(selected, selectedData);
+      this.setState({
+        value: selected,
+      }, () => {
+        this.props.onChange(selected, selectedData);
+      });
+
       return;
     }
 
@@ -151,7 +156,12 @@ class Select extends Component<PropsType, StateProps> {
       value: props.value,
       text: props.children,
     };
-    this.setDropdown(false, () => this.props.onChange(selected));
+
+    this.setState({
+      value: props.value,
+    }, () => {
+      this.setDropdown(false, () => this.props.onChange(selected));
+    });
   }
 
   inputWithTagsRef = (e) => {
