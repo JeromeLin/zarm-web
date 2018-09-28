@@ -43,6 +43,7 @@ export interface BodyProps {
   expandedRowRender?: (row: any, index: number) => React.ReactNode;
   renderCell: (column: column, row: any, rowIndex: number, columnIndex: number) => React.ReactNode;
   renderSelect: (rowSelection: rowSelection, row: any, height?: number) => React.ReactNode;
+  rowClassName?: (row: any) => string;
 }
 
 export interface CellProps {
@@ -104,4 +105,5 @@ export default interface PropsType {
   width?: number;
   maxCellSize: 20;
   dataSource: object[];
+  rowClassName?: (row: any) => string;
 }

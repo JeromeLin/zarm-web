@@ -319,6 +319,7 @@ class Table extends Component<PropsType, any> {
       style,
       width,
       expandedRowRender,
+      rowClassName,
     } = this.props;
     const { sort, expandedRowKeys } = this.state;
     const { headRows, dataColumns } = groupColumns(columns);
@@ -356,6 +357,7 @@ class Table extends Component<PropsType, any> {
           toggleExpandRow={this.toggleExpandRow}
           onEnterRow={this.onEnterRow}
           onLeaveRow={this.onLeaveRow}
+          rowClassName={rowClassName}
           rowClick={rowClick}
           renderCell={this.renderCell}
           renderSelect={this.renderSelect}
