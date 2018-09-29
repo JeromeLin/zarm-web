@@ -1,4 +1,4 @@
-import React, { ReactNode, CSSProperties, MouseEvent } from 'react';
+import React, { ReactNode, CSSProperties, MouseEvent, UIEvent } from 'react';
 import Tag from '../tag';
 import Icon from '../icon';
 import cn from 'classnames';
@@ -31,18 +31,14 @@ export interface Props {
   value?: React.ReactNode | Array<ValueArray>;
   size?: 'sm' | 'xs' | 'xl' | 'lg';
   onDeleteTag?(e: MouseEvent, key: any, value: React.ReactNode, index: number): void;
-  onSearchChange(e: React.ChangeEvent<HTMLDivElement>): void;
+  onSearchChange(e: React.UIEvent<HTMLDivElement>): void;
 }
 
 class InputWithTags extends React.Component<Props> {
-  didUpdateCallback: Array<() => void> = [];
   inputDiv: HTMLDivElement;
   tagListBox: HTMLDivElement;
-  constructor(props: Props) {
-    super(props);
-  }
 
-  onInput = (e) => {
+  onInput = (e: UIEvent<HTMLDivElement>) => {
     if (this.props.disabled) {
       return;
     }
