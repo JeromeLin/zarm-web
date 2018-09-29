@@ -69,7 +69,7 @@ class Select extends Component<PropsType, StateProps> {
 
     React.Children.map(options, (option) => {
       if (option && typeof option === 'object' && option.type) {
-        if (option.props) {
+        if (option.props && option.props.value) {
           prev[option.props.value] = option;
         }
       } else if (Array.isArray(option)) {
