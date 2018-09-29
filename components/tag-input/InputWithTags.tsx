@@ -13,7 +13,7 @@ const sizeValue = {
 };
 
 const Style = {
-  tagStyle: { maxWidth: 80 },
+  tagStyle: { maxWidth: 100 },
   iconStyle: { fontSize: 'initial' },
 };
 
@@ -22,9 +22,10 @@ type BasicProps = React.HTMLAttributes<HTMLDivElement> & PropsType;
 class InputWithTags extends React.Component<BasicProps> {
   inputDiv: HTMLDivElement;
   tagListBox: HTMLDivElement;
+  isComposition: boolean;
 
   onInput = (e: UIEvent<HTMLDivElement>) => {
-    if (this.props.disabled) {
+    if (this.props.disabled || this.isComposition) {
       return;
     }
     if (typeof this.props.onSearchChange === 'function') {
@@ -56,12 +57,21 @@ class InputWithTags extends React.Component<BasicProps> {
     }
   }
 
+  onCompositionStart = () => {
+    this.isComposition = true;
+  }
+
+  onCompositionEnd = (e) => {
+    this.isComposition = false;
+    this.onInput(e);
+  }
+
   render() {
     const { search, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
       radius, disabled, ...others } = this.props;
-    let showPlaceHolder = true;
-    if (typeof value === 'string' || Array.isArray(value)) {
-      showPlaceHolder = value.length === 0;
+    let showPlaceHolder = false;
+    if (value == null || (typeof value === 'string' && value.length === 0)) {
+      showPlaceHolder = true;
     }
 
     const searchValueStyle = { display: searchValue ? 'none' : 'inline-block' };
@@ -80,9 +90,9 @@ class InputWithTags extends React.Component<BasicProps> {
             ref={this.tagListBoxref}
           >
             <Tag
-              disabled={disabled}
+              isDisabled={disabled}
               theme={tagTheme}
-              title={typeof elem.value === 'string' ? elem.value : ''}
+              title={Array.isArray(elem.value) ? elem.value.join('') : String(elem.value)}
               style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: tagSizeHeight + 'px' }}
               isRadius={radius}
               key={elem.key}
@@ -97,7 +107,7 @@ class InputWithTags extends React.Component<BasicProps> {
             >
               {elem.value}
             </Tag>
-          </div>
+          </div >
         );
       });
     } else {
@@ -123,6 +133,8 @@ class InputWithTags extends React.Component<BasicProps> {
           className="input-div"
           contentEditable={!disabled && search}
           onInput={this.onInput}
+          onCompositionStart={this.onCompositionStart}
+          onCompositionEnd={this.onCompositionEnd}
           ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
         />
       }

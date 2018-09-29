@@ -1,10 +1,10 @@
-import React, { Component, ReactElement, ReactNode } from 'react';
+import React, { Component, ReactNode } from 'react';
 import Events from '../utils/events';
 import Option from './Option';
 import Dropdown from '../dropdown';
 import Menu from '../menu';
 import InputWithTags from '../tag-input';
-import PropsType from './PropsType';
+import PropsType, { OptionProps } from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 
 interface StateProps {
@@ -12,6 +12,12 @@ interface StateProps {
   dropdown: boolean;
   searchValue: string | null;
   showPlacehoder: boolean;
+}
+
+interface OptionDataProps {
+  props: OptionProps & { key?: any, children?: ReactNode };
+  value: string | number;
+  children: ReactNode;
 }
 
 /**
@@ -32,6 +38,7 @@ class Select extends Component<PropsType, StateProps> {
 
   inputBox: HTMLInputElement;
   optionMap: { [x: string]: any, [y: number]: any };
+  optionData: Array<OptionDataProps>;
   inputWithTags: InputWithTags;
   oldInputDivHeight: number = 0;
 
@@ -55,29 +62,39 @@ class Select extends Component<PropsType, StateProps> {
       state.value = String(value);
     }
     this.state = state;
-    this.optionMap = this.getOptionMap(this.props.children);
+    const [optionMap, optionData] = this.getOptionMap(this.props.children);
+    this.optionMap = optionMap;
+    this.optionData = optionData;
   }
 
   componentDidMount() {
     this.bindOuterHandlers();
   }
 
-  getOptionMap(options: ReactNode, prev = {}) {
+  getOptionMap(options: ReactNode): [{}, Array<any>] {
     if (!Array.isArray(options)) {
       options = [options];
     }
 
+    let optionData: Array<OptionDataProps> = [];
+    let optionMap: {} = {};
+
     React.Children.map(options, (option) => {
       if (option && typeof option === 'object' && option.type) {
         if (option.props && option.props.value) {
-          prev[option.props.value] = option;
+          // handle optionMap
+          optionMap[option.props.value] = option;
+          // handle OptionData
+          optionData.push({
+            props: option.props,
+            value: option.props.value,
+            children: option.props.children,
+          });
         }
-      } else if (Array.isArray(option)) {
-        this.getOptionMap(option, prev);
       }
-      return prev;
+      return optionMap;
     });
-    return prev;
+    return [optionMap, optionData];
   }
 
   componentWillReceiveProps(nextProps) {
@@ -92,7 +109,11 @@ class Select extends Component<PropsType, StateProps> {
       } else {
         value = String(value);
       }
-      this.optionMap = this.getOptionMap(nextProps.children);
+      if (nextProps.children !== this.props.children) {
+        const [optionMap, optionData] = this.getOptionMap(nextProps.children);
+        this.optionData = optionData;
+        this.optionMap = optionMap;
+      }
       this.setState({
         value,
       });
@@ -101,21 +122,6 @@ class Select extends Component<PropsType, StateProps> {
 
   componentWillUnmount() {
     this.unbindOuterHandlers();
-  }
-
-  getOptionList(children: Array<ReactNode>): Array<ReactNode> {
-    return children.filter((child) => child instanceof Option);
-  }
-
-  // eslint-disable-next-line
-  getCheckedValue(children) {
-    let checkedValue = null;
-    React.Children.forEach(children, (option) => {
-      if ((option as ReactElement<any>).props && (option as ReactElement<any>).props.checked) {
-        checkedValue = (option as ReactElement<any>).props.value;
-      }
-    });
-    return checkedValue;
   }
 
   onOptionChange(_: React.MouseEvent, props, index) {
@@ -142,25 +148,14 @@ class Select extends Component<PropsType, StateProps> {
       const selectedData = selected.map((select) => {
         const vdom = this.optionMap[select];
         const text = vdom ? vdom.props.children : '';
-        let index = 0;
-        React.Children.forEach(this.props.children, (option, optionIndex) => {
-          if (option === vdom) {
-            index = optionIndex;
-            return;
-          }
-        });
-        return {
-          text,
-          value: select,
-          index,
-        };
+        let index = this.optionData.findIndex(elem => String(elem.value) === String(select));
+        return { text, value: select, index };
       });
       this.setState({
         value: selected,
       }, () => {
         this.props.onChange(selected, selectedData);
       });
-
       return;
     }
 
@@ -271,26 +266,28 @@ class Select extends Component<PropsType, StateProps> {
         valueText = optionProps.props.children;
       }
     }
-    const children = React.Children.map(props.children, (option, index) => {
-      if (option && typeof option === 'object') {
-        if (
-          search &&
-          option.props.children.toString().indexOf(this.state.searchValue) < 0
-        ) {
+
+    const { value } = this.state;
+    const children: Array<ReactNode> = [];
+    this.optionData.forEach((elem, index) => {
+      if (search && this.state.searchValue) {
+        if (String(elem.props.children).indexOf(this.state.searchValue) === -1) {
           return null;
         }
-        let propsValue = String(option.props.value);
-        const checked = multiple ? this.state.value.indexOf(propsValue) > -1 : this.state.value === propsValue;
-        return (
-          <Option
-            {...option.props}
-            showCheckIcon
-            onChange={e => this.onOptionChange(e, option.props, index)}
-            checked={checked}
-          />
-        );
       }
-      return null;
+      const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
+      children.push(
+        <Option
+          key={elem.props.value}
+          showCheckIcon={checked}
+          {...elem.props}
+          checked={checked}
+          onChange={(e) => {
+            this.onOptionChange(e, elem.props, index);
+          }}
+        >
+          {elem.children}
+        </Option>);
     });
 
     const menuStyle = {

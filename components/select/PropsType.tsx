@@ -2,6 +2,7 @@ import { CSSProperties, MouseEvent, ReactNode } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OptionProps {
+  value: string | number;
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;

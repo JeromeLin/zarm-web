@@ -13,8 +13,13 @@
     super(props)
     this.state = {
       selectValue: '',
-      options: []
+      options: [1,2,3]
     };
+  }
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({options:[4,5,6]});
+    },1000);
   }
   render() {
     const { options } = this.state;
@@ -33,6 +38,7 @@
           <Select.Option value="b" disabled>我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
+          {options.map(elem=><div key={elem} value={elem}><span>{elem}</span></div>)}
         </Select>
       </div>
     )
@@ -119,7 +125,9 @@
   constructor(props) {
     super(props)
     this.state = {
-      selectValue: ['a']
+      selectValue: ['a'],
+      b:'123',
+      c:'456'
     }
   }
   render() {
@@ -135,7 +143,7 @@
               selectValue: selectedArr
             });
           }}>
-          <Select.Option value="a">我是A</Select.Option>
+          <Select.Option value="a">{[this.state.c,this.state.b]}</Select.Option>
           <Select.Option value="b">我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
