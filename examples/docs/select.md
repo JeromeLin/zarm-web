@@ -16,17 +16,6 @@
       options: []
     };
   }
-  componentDidMount() {
-    let i = 1;
-    let options = [];
-    while(i < 10) {
-      options.push(`我是${i}`);
-      i++;
-    }
-    this.setState({
-      options
-    });
-  }
   render() {
     const { options } = this.state;
     return (
@@ -44,11 +33,6 @@
           <Select.Option value="b" disabled>我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
-          {
-            options.map((text) => {
-              return <Select.Option value={text} key={text}>{text}</Select.Option>
-            })
-          }
         </Select>
       </div>
     )
@@ -108,6 +92,7 @@
             console.log(value)
           }}
           onChange={(data) => {
+            console.log(data);
             this.setState({
               selectValue: data.value
             });
@@ -144,8 +129,8 @@
           multiple
           value={this.state.selectValue}
           style={{ width: 200 }}
-          onChange={(selectedArr) => {
-            console.log(selectedArr);
+          onChange={(selectedArr,selectedData) => {
+            console.log(selectedArr, selectedData);
             this.setState({
               selectValue: selectedArr
             });
@@ -198,7 +183,7 @@
           <Select.Option value="b">我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
-           <Select.Option value="e">我是E</Select.Option>
+          <Select.Option value="e">我是E</Select.Option>
           <Select.Option value="f">我是F</Select.Option>
           <Select.Option value="g">我是G</Select.Option>
           <Select.Option value="h">我是H</Select.Option>
@@ -372,12 +357,13 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 ### Select Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| value     | 选中值   | string |   -            |    -   |
+| value     | 选中值   | string, string[] |   -            |    -   |
 | defaultValue     | 默认选中值   | string  |   - |     1  |
 | radius     | 是否圆角   | boolean   | — | false  |
 | search     | 是否支持搜索   | boolean    | — | false   |
 | disabled     | 是否禁用   | boolean   | — | false  |
-
+| tagTheme     | 多选状态下的tag标签主题   | string   | — | default  |
+| size | Select组件的大小 | string | xs,sm,lg,xl | - |
 
 ### Select Events
 | 事件名称 | 说明 | 回调参数 |
@@ -406,3 +392,4 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 |---------- |-------- |---------- |-------------  |-------- |
 | checked     | 是否选中   | boolean   | — | false  |
 | disabled     | 是否禁用   | boolean   | — | false  |
+| value | 当前option组件的value值（必填） | string | - | - |

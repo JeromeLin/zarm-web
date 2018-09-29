@@ -139,13 +139,20 @@ class Select extends Component<PropsType, StateProps> {
       } else {
         selected.splice(position, 1);
       }
-      const selectedData = selected.map((select, selectIndex) => {
+      const selectedData = selected.map((select) => {
         const vdom = this.optionMap[select];
         const text = vdom ? vdom.props.children : '';
+        let index = 0;
+        React.Children.forEach(this.props.children, (option, optionIndex) => {
+          if (option === vdom) {
+            index = optionIndex;
+            return;
+          }
+        });
         return {
           text,
           value: select,
-          index: selectIndex,
+          index,
         };
       });
       this.setState({
@@ -215,6 +222,13 @@ class Select extends Component<PropsType, StateProps> {
       };
     });
     this.props.onChange(selected, selectedData);
+  }
+
+  onSearchValueChange = (e) => {
+    this.setState({
+      searchValue: (e.target as HTMLDivElement).textContent,
+      dropdown: true,
+    });
   }
 
   render() {
@@ -318,11 +332,7 @@ class Select extends Component<PropsType, StateProps> {
           value={valueText}
           placeholder={placeholderText}
           onDeleteTag={this.onDeleteTag}
-          onSearchChange={(e) => {
-            this.setState({
-              searchValue: (e.target as HTMLDivElement).textContent,
-            });
-          }}
+          onSearchChange={this.onSearchValueChange}
         />
       </Dropdown>
 
