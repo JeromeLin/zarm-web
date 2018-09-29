@@ -1,6 +1,7 @@
 @import '../../style/themes/default';
 @mixin tag-size($height, $padding, $font-size, $border-radius) {
   min-height: $height;
+  line-height: $height - 2px;
 
   .radius {
     border-radius: $border-radius;
@@ -49,7 +50,8 @@
   .input-div {
     display: inline-block;
     vertical-align: middle;
-    min-width: 10px;
+    min-width: 5px;
+    padding: 0 2px;
     width: auto;
     white-space: nowrap;
     overflow: hidden;
@@ -76,7 +78,8 @@
   }
 
   .tag-list-box {
-    padding: 5px 0;
+    padding: 4px 0;
+    line-height: 0;
     display: inline-block;
     vertical-align: middle;
   }
