@@ -294,7 +294,7 @@ class Pagination extends Component<PropsType, any> {
         {locale.goto}
         <Input
           isRadius={radius}
-          style={{ width: 50, marginLeft: 5, marginRight: 5 }}
+          style={{ width: 50, textAlign: 'center', marginLeft: 5, marginRight: 5 }}
           size="sm"
           defaultValue=""
           // tslint:disable-next-line:jsx-no-multiline-js
@@ -309,7 +309,7 @@ class Pagination extends Component<PropsType, any> {
               const pageCount = Math.ceil(total / pageSize);
               if (sValue > pageCount) { sValue = pageCount; }
 
-              this._onPagerClick(value);
+              this._onPagerClick(sValue);
             }
           }}
         />
