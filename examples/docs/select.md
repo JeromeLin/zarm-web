@@ -183,6 +183,7 @@
     return (
       <div>
         <Select
+          tagTheme="info"
           search
           multiple
           value={this.state.selectValue}

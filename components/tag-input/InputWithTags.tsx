@@ -11,7 +11,7 @@ const sizeValue = {
 };
 
 const Style = {
-  tagStyle: { maxWidth: 80, backgroundColor: '#f0f0f0' },
+  tagStyle: { maxWidth: 80 },
   iconStyle: { fontSize: 'initial' },
 };
 
@@ -20,6 +20,7 @@ interface ValueArray {
   value: ReactNode;
 }
 
+export type themeType = 'default' | 'info' | 'success' | 'warning' | 'error';
 export interface Props {
   style?: CSSProperties;
   search?: boolean;
@@ -29,6 +30,7 @@ export interface Props {
   radius?: boolean;
   disabled?: boolean;
   value?: React.ReactNode | Array<ValueArray>;
+  tagTheme?: themeType;
   size?: 'sm' | 'xs' | 'xl' | 'lg';
   onDeleteTag?(e: MouseEvent, key: any, value: React.ReactNode, index: number): void;
   onSearchChange(e: React.UIEvent<HTMLDivElement>): void;
@@ -64,7 +66,7 @@ class InputWithTags extends React.Component<Props> {
   }
 
   render() {
-    const { search, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size,
+    const { search, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
       radius, disabled, ...others } = this.props;
     let showPlaceHolder = true;
     if (typeof value === 'string' || Array.isArray(value)) {
@@ -85,6 +87,8 @@ class InputWithTags extends React.Component<Props> {
             ref={this.tagListBoxref}
           >
             <Tag
+              disabled={disabled}
+              theme={tagTheme}
               title={typeof elem.value === 'string' ? elem.value : ''}
               style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: tagSizeHeight + 'px' }}
               isRadius={radius}

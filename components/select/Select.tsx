@@ -226,6 +226,7 @@ class Select extends Component<PropsType, StateProps> {
       isDisabled,
       isSearch,
       size,
+      tagTheme,
       style,
       zIndex,
       multiple,
@@ -305,6 +306,7 @@ class Select extends Component<PropsType, StateProps> {
         }}
       >
         <InputWithTags
+          tagTheme={tagTheme}
           radius={radius}
           size={size}
           disabled={disabled}
