@@ -1,4 +1,4 @@
-import React, { Component, ReactElement, ReactNode, ChangeEvent } from 'react';
+import React, { Component, ReactElement, ReactNode } from 'react';
 import Events from '../utils/events';
 import Option from './Option';
 import Dropdown from '../dropdown';
@@ -62,8 +62,12 @@ class Select extends Component<PropsType, StateProps> {
     this.bindOuterHandlers();
   }
 
-  getOptionMap(options, prev = {}) {
-    return options.reduce((prev, option) => {
+  getOptionMap(options: ReactNode, prev = {}) {
+    if (!Array.isArray(options)) {
+      options = [options];
+    }
+
+    React.Children.map(options, (option) => {
       if (option && typeof option === 'object' && option.type) {
         if (option.props) {
           prev[option.props.value] = option;
@@ -72,7 +76,8 @@ class Select extends Component<PropsType, StateProps> {
         this.getOptionMap(option, prev);
       }
       return prev;
-    }, prev);
+    });
+    return prev;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -277,12 +282,10 @@ class Select extends Component<PropsType, StateProps> {
       maxHeight: 250,
       overflow: 'auto',
     };
+
     const menus =
-      children.length > 0 ? (
-        <Menu size={size} style={menuStyle}>{children}</Menu>
-      ) : (
-          <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>
-        );
+      children && children.length > 0 ? (<Menu size={size} style={menuStyle}>{children}</Menu>)
+        : (<span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>);
 
     return (
       <Dropdown
@@ -313,9 +316,9 @@ class Select extends Component<PropsType, StateProps> {
           value={valueText}
           placeholder={placeholderText}
           onDeleteTag={this.onDeleteTag}
-          onSearchChange={(e: ChangeEvent<HTMLDivElement>) => {
+          onSearchChange={(e) => {
             this.setState({
-              searchValue: e.target.textContent,
+              searchValue: (e.target as HTMLDivElement).textContent,
             });
           }}
         />
