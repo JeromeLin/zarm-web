@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocaleContext } from './LocaleProvider';
+import hoistNonReactStatic from 'hoist-non-react-statics';
 
 const LocaleReceiverWrapper = (WrappedComponent, name?) => {
   const LocaleReceiver: any = (props) => {
@@ -14,7 +15,7 @@ const LocaleReceiverWrapper = (WrappedComponent, name?) => {
       </LocaleContext.Consumer>
     );
   };
-
+  hoistNonReactStatic(LocaleReceiver,WrappedComponent)
   return LocaleReceiver;
 };
 
