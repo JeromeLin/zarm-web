@@ -49,7 +49,7 @@ class InputWithTags extends React.Component<Props> {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.active !== this.props.active) {
-      if (!nextProps.disabled) {
+      if (!nextProps.disabled && nextProps.search) {
         if (nextProps.active) {
           this.inputDiv.focus();
         } else {
@@ -117,12 +117,14 @@ class InputWithTags extends React.Component<Props> {
 
     return <div className={boxCls} {...others}>
       {tagList}
-      <div
-        className="input-div"
-        contentEditable={!disabled && search}
-        onInput={this.onInput}
-        ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
-      />
+      {
+        search && <div
+          className="input-div"
+          contentEditable={!disabled && search}
+          onInput={this.onInput}
+          ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
+        />
+      }
       {showPlaceHolder && <span style={searchValueStyle} className="input-div-placeholder">{placeholder}</span>}
       <Icon style={Style.iconStyle} className="arrow-bottom" type="arrow-bottom" />
     </div>;
