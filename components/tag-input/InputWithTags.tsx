@@ -1,7 +1,9 @@
-import React, { ReactNode, CSSProperties, MouseEvent, UIEvent } from 'react';
+import React, { UIEvent } from 'react';
 import Tag from '../tag';
 import Icon from '../icon';
 import cn from 'classnames';
+
+import PropsType, { ValueArray } from './PropsType';
 
 const sizeValue = {
   xs: 24,
@@ -15,28 +17,9 @@ const Style = {
   iconStyle: { fontSize: 'initial' },
 };
 
-interface ValueArray {
-  key: any;
-  value: ReactNode;
-}
+type BasicProps = React.HTMLAttributes<HTMLDivElement> & PropsType;
 
-export type themeType = 'default' | 'info' | 'success' | 'warning' | 'error';
-export interface Props {
-  style?: CSSProperties;
-  search?: boolean;
-  active?: boolean;
-  placeholder?: string;
-  searchValue?: string | null;
-  radius?: boolean;
-  disabled?: boolean;
-  value?: React.ReactNode | Array<ValueArray>;
-  tagTheme?: themeType;
-  size?: 'sm' | 'xs' | 'xl' | 'lg';
-  onDeleteTag?(e: MouseEvent, key: any, value: React.ReactNode, index: number): void;
-  onSearchChange(e: React.UIEvent<HTMLDivElement>): void;
-}
-
-class InputWithTags extends React.Component<Props> {
+class InputWithTags extends React.Component<BasicProps> {
   inputDiv: HTMLDivElement;
   tagListBox: HTMLDivElement;
 
@@ -49,8 +32,9 @@ class InputWithTags extends React.Component<Props> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BasicProps) {
     if (nextProps.active !== this.props.active) {
+      // work without disabled and search prop;
       if (!nextProps.disabled && nextProps.search) {
         if (nextProps.active) {
           this.inputDiv.focus();
@@ -65,6 +49,13 @@ class InputWithTags extends React.Component<Props> {
     this.tagListBox = e;
   }
 
+  onTagBoxClick = () => {
+    const { active, search, value } = this.props;
+    if (active && search && Array.isArray(value)) {
+      this.inputDiv.focus();
+    }
+  }
+
   render() {
     const { search, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
       radius, disabled, ...others } = this.props;
@@ -75,9 +66,11 @@ class InputWithTags extends React.Component<Props> {
 
     const searchValueStyle = { display: searchValue ? 'none' : 'inline-block' };
 
-    let tagSizeHeight = (size ? sizeValue[size] : 32) - 10;
+    let tagSizeHeight: number = (size ? sizeValue[size] : 32) - 10;
 
     let tagList;
+
+    // if value is array, make a Tag list;
     if (Array.isArray(value)) {
       tagList = (value as Array<ValueArray>).map((elem, index) => {
         return (
@@ -93,7 +86,7 @@ class InputWithTags extends React.Component<Props> {
               style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: tagSizeHeight + 'px' }}
               isRadius={radius}
               key={elem.key}
-              onClose={(e: MouseEvent) => {
+              onClose={(e) => {
                 e.stopPropagation();
                 if (typeof onDeleteTag === 'function') {
                   setTimeout(() => {
@@ -119,7 +112,11 @@ class InputWithTags extends React.Component<Props> {
       [`size-${size}`]: !!size,
     });
 
-    return <div className={boxCls} {...others}>
+    return <div
+      className={boxCls}
+      onClick={this.onTagBoxClick}
+      {...others}
+    >
       {tagList}
       {
         search && <div
