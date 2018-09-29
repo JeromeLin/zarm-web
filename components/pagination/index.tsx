@@ -101,7 +101,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={1}
-        title={locale.first_page}
+        title={locale!.first_page}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(1)}
       >
@@ -115,7 +115,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={pageCount}
-        title={locale.last_page}
+        title={locale!.last_page}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(pageCount)}
       >
@@ -129,7 +129,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="prev"
-        title={locale.prev_page}
+        title={locale!.prev_page}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -148,7 +148,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="next"
-        title={locale.next_page}
+        title={locale!.next_page}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -167,7 +167,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-prev"
-        title={locale.prev_5_page}
+        title={locale!.prev_5_page}
         className={`${prefixCls}-item ${prefixCls}-item-jump-prev`}
         onClick={() => this._onPagerClick(current - 5)}
       />
@@ -179,7 +179,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-next"
-        title={locale.next_5_page}
+        title={locale!.next_5_page}
         className={`${prefixCls}-item ${prefixCls}-item-jump-next`}
         onClick={() => this._onPagerClick(current + 5)}
       />
@@ -242,10 +242,10 @@ class Pagination extends Component<PropsType, any> {
     const { value } = this.state;
     return (
       <div className={`${prefixCls}-total`}>
-        {format(locale.total, {
+        {format(locale!.total, {
           total,
         })}
-        {format(locale.current, {
+        {format(locale!.current, {
           current: `${value} / ${Math.ceil(total / pageSize)}`,
         })}
       </div>
@@ -278,7 +278,7 @@ class Pagination extends Component<PropsType, any> {
           {
             [10, 20, 30, 40, 50].map((value) => {
               return (
-                <Select.Option value={value} key={value}>{format(locale.pagesize, { value })}</Select.Option>
+                <Select.Option value={value} key={value}>{format(locale!.pagesize, { value })}</Select.Option>
               );
             })
           }
@@ -291,7 +291,7 @@ class Pagination extends Component<PropsType, any> {
     const { radius, total, pageSize, prefixCls, locale } = this.props;
     return (
       <div className={`${prefixCls}-jumper`}>
-        {locale.goto}
+        {locale!.goto}
         <Input
           isRadius={radius}
           style={{ width: 50, textAlign: 'center', marginLeft: 5, marginRight: 5 }}
@@ -313,7 +313,7 @@ class Pagination extends Component<PropsType, any> {
             }
           }}
         />
-        {locale.pageClassifier}
+        {locale!.pageClassifier}
       </div>
     );
   }

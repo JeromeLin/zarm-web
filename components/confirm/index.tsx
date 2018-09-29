@@ -37,9 +37,9 @@ class Confirm extends Component<PropsType, any> {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onCancel}>{cancelText || locale.cancel}</Button>
+          <Button onClick={onCancel}>{cancelText || locale!.cancel}</Button>
           <Button theme="success" onClick={onOk}>
-            {okText || locale.confirm}
+            {okText || locale!.confirm}
           </Button>
         </Modal.Footer>
       </Modal>
