@@ -68,6 +68,7 @@ export interface FixedColumnProps {
   dataSource: object[];
   colAttrs: colAttrsType;
   rowSelection?: rowSelection;
+  rowClassName?: (row: any) => string;
   onEnterRow: (index: number) => void;
   onLeaveRow: () => void;
   renderSelectAll?: (

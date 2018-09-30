@@ -207,12 +207,13 @@ class Table extends Component<PropsType, any> {
 
   // 渲染固定左侧的列
   renderFixedLeftCol() {
-    const { columns, prefixCls, dataSource, rowSelection } = this.props;
+    const { columns, prefixCls, dataSource, rowSelection, rowClassName } = this.props;
     const { fixedColAttrs } = this.state;
     return (
       <FixedColumn
         ref={(fixedColumn) => { this.fixedLeftColumn = fixedColumn; }}
         direction="left"
+        rowClassName={rowClassName}
         prefixCls={prefixCls}
         columns={columns}
         dataSource={dataSource}
@@ -228,12 +229,13 @@ class Table extends Component<PropsType, any> {
 
   // 渲染固定右侧的列
   renderFixedRightCol() {
-    const { columns, prefixCls, dataSource } = this.props;
+    const { columns, prefixCls, dataSource, rowClassName } = this.props;
     const { fixedColAttrs } = this.state;
     return (
       <FixedColumn
         ref={(fixedColumn) => { this.fixedRightColumn = fixedColumn; }}
         direction="right"
+        rowClassName={rowClassName}
         prefixCls={prefixCls}
         columns={columns}
         dataSource={dataSource}

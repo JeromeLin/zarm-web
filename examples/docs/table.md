@@ -172,6 +172,11 @@
           rowClick={(row) => {
             console.log(row);
           }}
+          rowClassName={(row) => {
+            if(row.age == 46) {
+              return 'bg'
+            }
+          }}
           rowSelection={{
             // value: this.state.tableSelection,
             onSelect: (selected, row, selectedRows) => {
@@ -363,6 +368,11 @@
           }]}
           rowClick={(row) => {
             console.log(row);
+          }}
+          rowClassName={(row) => {
+            if(row.age == 46) {
+              return 'bg'
+            }
           }}
           rowSelection={{
             fixed: true,
