@@ -175,6 +175,14 @@ render() {
         <Icon type="folder-open-fill" />
         <div className="ui-icon-name">file-open-fill</div>
       </li>
+      <li>
+        <Icon type="user" />
+        <div className="ui-icon-name">user</div>
+      </li>
+      <li>
+        <Icon type="user-fill" />
+        <div className="ui-icon-name">user-fill</div>
+      </li>
     </ul>
   )
 }

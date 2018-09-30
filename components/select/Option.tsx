@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
-import Menu from '../menu';
-import { OptionProps, IDisableProps } from './PropsType';
+import cn from 'classnames';
+import Icon from '../icon';
+import { OptionProps } from './PropsType';
 
 class Option extends Component<OptionProps, any> {
   static defaultProps = {
     isDisabled: false,
-    onChange: () => {},
+    onChange: () => { },
   };
 
   render() {
     const { props } = this;
     const {
-      children, checked, disabled, isDisabled, onDoubleClick,
+      children, checked, disabled, isDisabled, onDoubleClick, showCheckIcon,
     } = props;
 
-    const disableProps: IDisableProps = {
-      isDisabled,
-    };
-    if (disabled) {
-      disableProps.disabled = true;
-    }
+    const cls = cn({
+      'ui-option-list': true,
+      'checked': checked,
+      'disabled': isDisabled || disabled,
+    });
     return (
-      <Menu.Item
-        checked={checked}
-        {...disableProps}
+      <li
+        className={cls}
+        style={{ paddingRight: showCheckIcon ? 25 : 10 }}
         onClick={e => props.onChange(e)}
         onDoubleClick={onDoubleClick}
       >
         {children}
-      </Menu.Item>
+        {showCheckIcon && checked && <Icon className="checked-icon" theme="info" type="right" />}
+      </li>
     );
   }
 }

@@ -98,7 +98,7 @@ export default interface PropsType {
   defaultExpandAllRows?: boolean;
   defaultExpandedRowKeys?: any[];
   expandedRowKeys?: any[];
-  expandedRowRender: (row: any, index: number) => React.ReactNode;
+  expandedRowRender?: (row: any, index: number) => React.ReactNode;
   onExpand?: (expanded: boolean, row: any) => void;
   style?: object;
   width?: number;

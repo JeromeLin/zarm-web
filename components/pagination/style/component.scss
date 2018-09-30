@@ -1,5 +1,4 @@
 .ui-pagination {
-
   &:after {
     content: " ";
     display: block;
@@ -40,22 +39,26 @@
       border-radius: $base-radius;
     }
   }
+
   &-total {
     float: left;
     line-height: 28px;
     padding-right: 4px;
     color: #999;
   }
+
   &-pagers {
     float: right;
 
-    >ul {
+    & > ul {
       float: left;
       margin: 0;
       padding: 0;
     }
   }
-  &-size, &-jumper {
+
+  &-size,
+  &-jumper {
     float: left;
     margin-left: 6px;
     line-height: 28px;
@@ -122,7 +125,6 @@
     background-color: #2db7f5;
     color: #fff;
   }
-
 }
 
 .ui-pagination-addon-before {

@@ -159,6 +159,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   private scrollParent: HTMLElement;
   private isHoverOnDropContent: boolean = false;
   private hiddenTimer: number | undefined;
+  private triggerBoxOffsetHeight: number;
 
   constructor(props) {
     super(props);
@@ -204,7 +205,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     } else if (type === 'mouseleave') {
       // 缓冲一点一时间给间隙
       this.hiddenTimer = setTimeout(() => {
-        // 若当前鼠标在弹出层上 不消失
+        // 若当前鼠标在弹出层上 则不消失
         if (this.isHoverOnDropContent === false) {
           this.props.onVisibleChange(false);
         }
@@ -255,6 +256,15 @@ export default class Dropdown extends React.Component<propsType, StateType> {
 
     // 存储当前实例，方便静态方法统一处理
     mountedInstance.add(this);
+    this.triggerBoxOffsetHeight = this.triggerBox.offsetHeight;
+  }
+
+  componentDidUpdate() {
+    const height = this.triggerBox.offsetHeight;
+    if (height !== this.triggerBoxOffsetHeight) {
+      this.reposition();
+      this.triggerBoxOffsetHeight = height;
+    }
   }
 
   // 点击外部的时候
@@ -266,6 +276,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     if (this.div.contains(target) || this.triggerBox.contains(target)) {
       return;
     } else {
+      // this.props.onVisibleChange(false);
       if (this.props.hideOnClick) {
         this.props.onVisibleChange(false);
       }
@@ -386,6 +397,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       hideOnClick,
       onVisibleChange,
       getPopupContainer,
+      triggerBoxStyle,
       ...others
     } = this.props;
 
@@ -413,7 +425,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     return <React.Fragment>
       <div
         className={`${prefixCls}-trigger-box`}
-        style={{ display: 'inline-block' }}
+        style={triggerBoxStyle}
         ref={(e) => { this.triggerBox = e as HTMLDivElement; }}
         {...this.triggerEvent}
       >

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 export type themeType = 'default' | 'info' | 'success' | 'warning' | 'error';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
@@ -16,7 +17,8 @@ export default interface PropsType {
   isFocus?: boolean;
   isDisabled?: boolean;
   disabled?: boolean;
-  className?: string;
+  className?: ReactNode;
   style?: object;
-  onClose: () => void;
+  title?: string;
+  onClose: (e) => void;
 }

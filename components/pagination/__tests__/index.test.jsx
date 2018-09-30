@@ -129,7 +129,6 @@ describe('Pagination', () => {
         value: 6,
       },
     });
-
     expect(onChange).toHaveBeenCalledWith(6);
   });
 

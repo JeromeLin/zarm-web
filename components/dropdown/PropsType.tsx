@@ -9,7 +9,7 @@ interface BasicPropsType {
   className?: string;
   radius?: boolean;
   isRadius?: boolean;
-  style?: React.CSSProperties;
+  triggerBoxStyle?: React.CSSProperties;
   trigger?: trigger;
   disabled?: boolean;
   zIndex?: number;

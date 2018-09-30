@@ -1,0 +1,65 @@
+
+.ui-transfer {
+  width: 400px;
+  height: 250px;
+  max-height: 250px;
+
+  > .ui-transfer-panel {
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+
+    > .ui-transfer-panel-title {
+      margin-bottom: 10px;
+      height: 20px;
+    }
+
+    > .ui-select {
+      width: 100%;
+      height: calc(100% - 30px);
+      vertical-align: initial;
+
+      > .ui-select-selection {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+
+        .ui-menu-item:hover {
+          background: #eaf8fe !important;
+        }
+
+        .ui-menu-item.active {
+          color: inherit;
+          background: inherit;
+        }
+
+        .ui-menu-item.selected {
+          background: #d5f1fd !important;
+        }
+      }
+    }
+  }
+
+  > .ui-transfer-action-bar {
+    width: 36px;
+    height: 100%;
+    margin-left: 4%;
+    margin-right: 4%;
+    display: inline-block;
+    position: relative;
+
+    > .button-wrapper {
+      width: 100%;
+      height: 84px;
+      position: absolute;
+      top: 15px;
+      bottom: 15px;
+      margin-top: auto;
+      margin-bottom: auto;
+
+      > button:last-child {
+        margin-top: 20px;
+      }
+    }
+  }
+}

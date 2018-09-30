@@ -4,6 +4,19 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
 
+function toggleBodyOverflow(show) {
+  let scrollBarWidth = window.innerWidth - document.documentElement.offsetWidth;
+  if (show === true) {
+    document.body.classList.add('ui-modal-body-overflow');
+    if (scrollBarWidth > 0) {
+      document.body.style.setProperty('padding-right', scrollBarWidth + 'px');
+    }
+  } else {
+    document.body.classList.remove('ui-modal-body-overflow');
+    document.body.style.setProperty('padding-right', null);
+  }
+}
+
 class Modal extends Component<ModalProps, any> {
 
   static Header: any;
@@ -53,7 +66,7 @@ class Modal extends Component<ModalProps, any> {
   componentWillUnmount() {
     Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
     Events.off(this.modal, 'animationend', this.animationEnd);
-    document.body.classList.remove('ui-modal-body-overflow');
+    toggleBodyOverflow(false);
     setTimeout(() => {
       document.body.removeChild(this.div);
     });
@@ -86,7 +99,7 @@ class Modal extends Component<ModalProps, any> {
   }
 
   enter() {
-    document.body.classList.add('ui-modal-body-overflow');
+    toggleBodyOverflow(true);
     this.setState({
       isShow: true,
       isPending: true,
@@ -100,7 +113,7 @@ class Modal extends Component<ModalProps, any> {
       isPending: true,
       animationState: 'leave',
     });
-    document.body.classList.remove('ui-modal-body-overflow');
+    toggleBodyOverflow(false);
   }
 
   render() {
