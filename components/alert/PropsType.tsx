@@ -10,6 +10,6 @@ export default interface PropsType {
   hideIcon?: boolean;
   closable?: boolean;
   closeText?: string;
-  locale: { close: string };
+  locale?: { close: string };
   onClose: () => void;
 }

@@ -1,10 +1,12 @@
-import { CSSProperties, MouseEvent } from 'react';
+import { CSSProperties, MouseEvent, ReactNode } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OptionProps {
+  value: string | number;
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;
+  showCheckIcon?: boolean;
   style?: CSSProperties;
   onChange: (e: MouseEvent) => void;
   onDoubleClick?: (e: MouseEvent) => void;
@@ -22,15 +24,18 @@ export interface MultipleProps {
   isDisabled?: boolean;
   isRadius?: boolean;
   size?: size;
-  style?: object;
+  style?: CSSProperties;
   onChange: (value: any, row: object) => () => void;
   onDoubleClick?: () => void;
 }
 
+interface ChangeValue { value: string | number; text: ReactNode; index: number; }
+export type themeType = 'default' | 'info' | 'success' | 'warning' | 'error';
 export default interface PropsType {
   prefixCls?: string;
-  value?: string | number;
-  defaultValue?: string | number;
+  value?: string | number | Array<string | number>;
+  multiple?: boolean;
+  defaultValue?: string | number | Array<string | number>;
   size?: size;
   className?: string;
   style?: CSSProperties;
@@ -42,8 +47,9 @@ export default interface PropsType {
   isSearch?: boolean;
   placeholder?: string;
   searchPlaceholder?: string;
-  onChange: (e: any) => void;
+  onChange: (value: ChangeValue | Array<string>, valueData?: Array<any>) => void;
   onSearchChange?: (e: any) => void;
+  tagTheme?: themeType;
   zIndex?: number;
   title?: string;
   locale?: {

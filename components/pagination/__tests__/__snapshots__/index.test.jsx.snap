@@ -154,7 +154,7 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
         <span>
           <input
             class="ui-input size-sm"
-            style="width:50px;margin-left:5px;margin-right:5px"
+            style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
             type="text"
             value=""
           />

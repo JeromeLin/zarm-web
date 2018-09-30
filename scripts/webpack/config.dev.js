@@ -7,7 +7,10 @@ config.mode = 'development';
 config.devtool = 'cheap-module-eval-source-map';
 
 config.entry = {
-  index: ['./examples/index.js'],
+  index: [
+    'react-hot-loader/patch',
+    './examples/index.js',
+  ],
 };
 
 config.plugins.push(
@@ -46,8 +49,6 @@ Object.keys(config.entry).forEach((key) => {
     chunks: ['manifest', key],
   }));
 });
-
-config.module.rules[0].use[0].options.presets.push('react-hmre');
 
 config.devServer = {
   host: '0.0.0.0',

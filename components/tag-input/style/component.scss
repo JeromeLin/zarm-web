@@ -1,0 +1,122 @@
+@mixin tag-size($height, $padding, $font-size, $border-radius) {
+  min-height: $height;
+  line-height: $height - 2px;
+
+  .radius {
+    border-radius: $border-radius;
+  }
+
+  .input-div {
+    font-size: $font-size;
+  }
+
+  .input-div-placeholder,
+  .value-text {
+    font-size: $font-size;
+  }
+}
+
+.tag-input-box {
+  @include tag-size($base-height,$base-padding, $base-fontSize-xs, $base-radius);
+
+  font-size: 0;
+  width: 100%;
+  min-width: 110px;
+  border: 1px solid #d9d9d9;
+  position: relative;
+  padding-right: 35px;
+  padding-left: 8px;
+  will-change: box-shadow, border-color;
+  transition: box-shadow, 0.3s, border-color 0.3s;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  overflow: hidden;
+
+  &:hover {
+    border-color: #57c5f7;
+  }
+
+  &.disabled {
+    border-color: #d9d9d9;
+    background-color: #f3f5f7;
+  }
+
+  &.radius {
+    border-radius: 4px;
+  }
+
+  .input-div {
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 5px;
+    padding: 0 2px;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    outline: none;
+    max-width: 100%;
+  }
+
+  .input-div-placeholder,
+  .value-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 35px);
+  }
+
+  .input-div-placeholder {
+    color: #999;
+  }
+
+  .tag-list-box {
+    padding: 4px 0;
+    line-height: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .arrow-bottom {
+    color: #d9d9d9;
+    will-change: transform;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transition: transform 0.5s;
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+
+.tag-input-box-active {
+  border-color: #57c5f7;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+
+  .value-text {
+    color: #999;
+  }
+
+  .arrow-bottom {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+.tag-input-box {
+  &.size-xl {
+    @include tag-size($base-height-xl, $base-padding-xl, $base-fontSize-lg, $base-radius-xl);
+  }
+
+  &.size-lg {
+    @include tag-size($base-height-lg, $base-padding-lg, $base-fontSize, $base-radius-lg);
+  }
+
+  &.size-sm {
+    @include tag-size($base-height-sm, $base-padding-sm, $base-fontSize-xs, $base-radius-sm);
+  }
+
+  &.size-xs {
+    @include tag-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs);
+  }
+}

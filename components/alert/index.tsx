@@ -54,7 +54,7 @@ class Alert extends Component<AlertProps, any> {
           // tslint:disable-next-line:jsx-no-multiline-js
           closable && (
             <Modal.Footer>
-              <Button onClick={onClose}>{closeText || locale.close}</Button>
+              <Button onClick={onClose}>{closeText || locale!.close}</Button>
             </Modal.Footer>
           )
         }

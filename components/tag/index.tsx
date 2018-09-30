@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
 import PropsType from './PropsType';
+
+const Style = {
+  iconStyle: { position: 'absolute', right: 3, top: 0, cursor: 'pointer' },
+};
 
 class Tag extends Component<PropsType, any> {
   static defaultProps = {
@@ -23,6 +27,7 @@ class Tag extends Component<PropsType, any> {
       onClose,
       children,
       style,
+      title,
     } = props;
     const disabled = 'disabled' in props || isDisabled;
 
@@ -33,19 +38,21 @@ class Tag extends Component<PropsType, any> {
       active: 'active' in props || isActive,
       focus: 'focus' in props || isFocus,
       disabled,
+      hasCloseButton: typeof onClose === 'function',
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [className!]: !!className,
+      [(className as string)]: !!className,
     });
 
     const closeIcon = typeof onClose === 'function' ? (
       <Icon
+        style={Style.iconStyle}
         type="wrong"
-        onClick={() => { if (!disabled) { onClose(); } }}
+        onClick={(e: MouseEvent) => { if (!disabled) { onClose(e); } }}
       />
     ) : null;
     return (
-      <div className={cls} style={style}>
+      <div className={cls} style={style} title={title}>
         {children}
         {closeIcon}
       </div>

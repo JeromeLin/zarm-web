@@ -7,7 +7,6 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
   >
     <div
       class="ui-dropdown-trigger-box"
-      style="display:inline-block"
     >
       <div
         aria-autocomplete="list"
@@ -172,7 +171,6 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
   >
     <div
       class="ui-dropdown-trigger-box"
-      style="display:inline-block"
     >
       <div
         aria-autocomplete="list"
@@ -278,7 +276,6 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
   >
     <div
       class="ui-dropdown-trigger-box"
-      style="display:inline-block"
     >
       <div
         aria-autocomplete="list"
