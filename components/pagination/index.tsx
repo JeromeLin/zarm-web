@@ -258,8 +258,8 @@ class Pagination extends Component<PropsType, any> {
       <div className={`${prefixCls}-size`}>
         <Select
           isRadius={radius}
-          size="sm"
           defaultValue={10}
+          size="sm"
           // tslint:disable-next-line:jsx-no-multiline-js
           onChange={({ value }) => {
             if (value === pageSize) {
@@ -294,6 +294,7 @@ class Pagination extends Component<PropsType, any> {
         {locale!.goto}
         <Input
           isRadius={radius}
+          type="text"
           style={{ width: 50, textAlign: 'center', marginLeft: 5, marginRight: 5 }}
           size="sm"
           defaultValue=""
