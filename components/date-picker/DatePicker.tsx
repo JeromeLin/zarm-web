@@ -139,7 +139,7 @@ class DatePicker extends Component<PropsType, any> {
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
-    let valueText = placeholder || locale.placeholder;
+    let valueText = placeholder || locale!.placeholder;
     let hasValue = false;
 
     if (value) {

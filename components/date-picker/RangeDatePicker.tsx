@@ -348,7 +348,7 @@ class RangeDatePicker extends Component<PropsType, any> {
 
     const { isShowDropdown } = this.state;
 
-    let valueText = placeholder || locale.placeholder;
+    let valueText = placeholder || locale!.placeholder;
     let hasValue = false;
 
     if (value.length) {
@@ -466,14 +466,14 @@ class RangeDatePicker extends Component<PropsType, any> {
           href="javascript:;"
           onClick={this.handleCloseDropDown}
         >
-          {locale.clear}
+          {locale!.clear}
         </a>
 
         <a
           href="javascript:;"
           onClick={this.handleConfirm}
         >
-          {locale.confirm}
+          {locale!.confirm}
         </a>
       </div>
     );
