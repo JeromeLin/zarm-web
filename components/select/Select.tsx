@@ -161,12 +161,12 @@ class Select extends Component<PropsType, StateProps> {
 
     const selected = {
       index,
-      value: props.value,
+      value,
       text: props.children,
     };
 
     this.setState({
-      value: props.value,
+      value,
     }, () => {
       this.setDropdown(false, () => this.props.onChange(selected));
     });

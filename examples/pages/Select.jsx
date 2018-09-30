@@ -1,4 +1,5 @@
 import Markdown from '../components/markdown';
+import '../../components/button/style';
 import '../../components/select/style';
 
 export default class Select extends Markdown {
