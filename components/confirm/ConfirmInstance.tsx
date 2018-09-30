@@ -4,9 +4,10 @@ import Confirm from './Confirm';
 const div = document.createElement('div');
 let visible = false;
 class ConfirmExtension extends Confirm {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
+
   static defalut(option: any) {
     document.body.appendChild(div);
     let defalutValue = {
@@ -16,11 +17,11 @@ class ConfirmExtension extends Confirm {
       okText: '确定',
       cancelText: '取消',
       locale: {
-        confirm: "Cancel",
-        cancel: "Ok",
+        confirm: 'Cancel',
+        cancel: 'Ok',
       },
       onOk: () => {},
-      onCancel: () => {}
+      onCancel: () => {},
     };
     let object;
     if (option) {
@@ -42,7 +43,7 @@ class ConfirmExtension extends Confirm {
         }}
         onOk={object.onOk}
       />,
-      div
+      div,
     );
   }
   static show(object) {
@@ -51,11 +52,12 @@ class ConfirmExtension extends Confirm {
   }
   static hide(callback?: () => void) {
     visible = false;
-    callback && callback();
+    if (callback) {
+      callback();
+    }
     ReactDOM.unmountComponentAtNode(div);
     document.body.removeChild(div);
   }
-
 }
 
 export default ConfirmExtension;

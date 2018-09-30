@@ -14,7 +14,7 @@ class AlertExtension extends Alert {
       hideIcon: false,
       theme: 'info',
       closable: true,
-      onClose: () => {}
+      onClose: () => {},
     };
     let object;
     if (option) {
@@ -36,10 +36,10 @@ class AlertExtension extends Alert {
         closable={object.closable}
         theme={object.theme}
         locale={{
-          close:'close'
+          close: 'close',
         }}
       />,
-      div
+      div,
     );
   }
   static show(object) {
@@ -48,7 +48,6 @@ class AlertExtension extends Alert {
   }
   static hide() {
     visible = false;
-    console.log(div);
     ReactDOM.unmountComponentAtNode(div);
     document.body.removeChild(div);
   }

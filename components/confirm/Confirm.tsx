@@ -10,7 +10,7 @@ class Confirm extends Component<PropsType, any> {
     message: '',
     width: 270,
     onOk: () => {},
-    onCancel: () => {}
+    onCancel: () => {},
   };
 
   render() {
@@ -23,7 +23,7 @@ class Confirm extends Component<PropsType, any> {
       width,
       visible,
       onCancel,
-      locale
+      locale,
     } = this.props;
     return (
       <Modal width={width} visible={visible}>
@@ -34,9 +34,9 @@ class Confirm extends Component<PropsType, any> {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onCancel}>{cancelText || locale.cancel}</Button>
+          <Button onClick={onCancel}>{cancelText || locale!.cancel}</Button>
           <Button theme="success" onClick={onOk}>
-            {okText || locale.confirm}
+            {okText || locale!.confirm}
           </Button>
         </Modal.Footer>
       </Modal>

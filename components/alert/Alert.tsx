@@ -52,7 +52,7 @@ class Alert extends Component<AlertProps, any> {
         {
           closable && (
             <Modal.Footer>
-              <Button onClick={onClose}>{closeText || locale.close}</Button>
+              <Button onClick={onClose}>{closeText || locale!.close}</Button>
             </Modal.Footer>
           )
         }
