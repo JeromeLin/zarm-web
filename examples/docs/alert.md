@@ -153,6 +153,28 @@
 ```
 :::
 
+###  命令式方式调用
+
+根据业务需要添加命令式调用
+
+::: demo 通过调用`Alert.show(object)`来显示Alert。
+```js
+  render() {
+    return (
+      <div>
+        <Button theme="success" onClick={()=>{
+          Alert.show({
+            message:'测试',
+            theme:'success',
+            closeText:'取消'
+          })
+        }}>命令式调用</Button>
+      </div>
+    );
+  }
+```
+:::
+
 
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
