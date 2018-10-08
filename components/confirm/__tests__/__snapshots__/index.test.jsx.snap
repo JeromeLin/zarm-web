@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Confirm renders basic Confirm correctly 1`] = `
+<LocaleReceiver
+  message="确认删除吗？"
+  onCancel={[Function]}
+  onOk={[Function]}
+  visible={true}
+>
+  <ConfirmExtension
+    locale={
+      Object {
+        "cancel": "取消",
+        "confirm": "确定",
+      }
+    }
+    localeCode="zh-cn"
+    message="确认删除吗？"
+    onCancel={[Function]}
+    onOk={[Function]}
+    prefixCls="ui-confirm"
+    visible={true}
+    width={270}
+  >
+    <Modal
+      animationDuration={300}
+      animationType="zoom"
+      isRadius={false}
+      isRound={false}
+      minWidth={270}
+      onMaskClick={[Function]}
+      prefixCls="ui-modal"
+      visible={true}
+      width={270}
+    >
+      <div
+        className="ui-modal fade-enter"
+        onClick={[Function]}
+        style={
+          Object {
+            "MozAnimationDuration": "300ms",
+            "OAnimationDuration": "300ms",
+            "WebkitAnimationDuration": "300ms",
+            "animationDuration": "300ms",
+            "msAnimationDuration": "300ms",
+            "position": "fixed",
+          }
+        }
+      >
+        <div
+          className="ui-modal-wrapper"
+        >
+          <div
+            className="ui-modal-dialog zoom-enter"
+            onClick={[Function]}
+            style={
+              Object {
+                "MozAnimationDuration": "300ms",
+                "OAnimationDuration": "300ms",
+                "WebkitAnimationDuration": "300ms",
+                "animationDuration": "300ms",
+                "minWidth": 270,
+                "msAnimationDuration": "300ms",
+                "width": 270,
+              }
+            }
+          >
+            <ModalBody
+              height="auto"
+              prefixCls="ui-modal"
+              style={Object {}}
+            >
+              <div
+                className="ui-modal-body"
+                style={
+                  Object {
+                    "height": "auto",
+                  }
+                }
+              >
+                <div
+                  className="ui-confirm"
+                >
+                  <Icon
+                    className=""
+                    onClick={[Function]}
+                    prefixCls="ui-icon"
+                    style={Object {}}
+                    theme="default"
+                    type="question-round"
+                  >
+                    <i
+                      className="ui-icon ui-icon-question-round theme-default"
+                      onClick={[Function]}
+                      style={Object {}}
+                    />
+                  </Icon>
+                  <span>
+                    确认删除吗？
+                  </span>
+                </div>
+              </div>
+            </ModalBody>
+            <ModalFooter
+              prefixCls="ui-modal"
+              style={Object {}}
+            >
+              <div
+                className="ui-modal-footer"
+                style={Object {}}
+              >
+                <Button
+                  className={null}
+                  isActive={false}
+                  isBlock={false}
+                  isCircle={false}
+                  isDisabled={false}
+                  isFocus={false}
+                  isLoading={false}
+                  isRadius={false}
+                  isRound={false}
+                  onClick={[Function]}
+                  prefixCls="ui-button"
+                  size={null}
+                  style={Object {}}
+                  theme="default"
+                  type="button"
+                >
+                  <button
+                    className="ui-button theme-default"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    取消
+                  </button>
+                </Button>
+                <Button
+                  className={null}
+                  isActive={false}
+                  isBlock={false}
+                  isCircle={false}
+                  isDisabled={false}
+                  isFocus={false}
+                  isLoading={false}
+                  isRadius={false}
+                  isRound={false}
+                  onClick={[Function]}
+                  prefixCls="ui-button"
+                  size={null}
+                  style={Object {}}
+                  theme="success"
+                  type="button"
+                >
+                  <button
+                    className="ui-button theme-success"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    确定
+                  </button>
+                </Button>
+              </div>
+            </ModalFooter>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </ConfirmExtension>
+</LocaleReceiver>
+`;
