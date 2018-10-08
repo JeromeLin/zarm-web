@@ -172,6 +172,11 @@
           rowClick={(row) => {
             console.log(row);
           }}
+          rowClassName={(row) => {
+            if(row.age == 46) {
+              return 'bg'
+            }
+          }}
           rowSelection={{
             // value: this.state.tableSelection,
             onSelect: (selected, row, selectedRows) => {
@@ -363,6 +368,11 @@
           }]}
           rowClick={(row) => {
             console.log(row);
+          }}
+          rowClassName={(row) => {
+            if(row.age == 46) {
+              return 'bg'
+            }
           }}
           rowSelection={{
             fixed: true,
@@ -822,6 +832,7 @@
 | defaultExpandedRowKeys  | 默认展开所有行 | string[] / number[] |   -  |    -  |
 | expandedRowKeys  | 展开的行，控制属性 | string[] / number[] |   -  |    -  |
 | expandedRowRender  | 展开行渲染函数 | (row, index) => ReactNode |   -  |    -  |
+| rowClassName  | 筛选行添加样式 | (row) => string |   -  |    -  |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
