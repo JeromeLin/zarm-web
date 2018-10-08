@@ -39,7 +39,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
   renderSelection(thHeight, tdHeight) {
     const {
       prefixCls, direction, rowSelection, renderSelect,
-      renderSelectAll, onEnterRow, onLeaveRow, dataSource, rowClassName
+      renderSelectAll, onEnterRow, onLeaveRow, dataSource, rowClassName,
     } = this.props;
     const size = dataSource.length;
     let iHeight = parseInt(tdHeight, 10);
