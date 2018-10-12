@@ -87,11 +87,9 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | url   | 上传接口url | string |   -  |    -  |
 | fileName   | 上传文件字段名 |string |   -  |    files  |
+| data   | 需要额外上传的参数 | object |   -  |    {}  |
 | startUpload   | 开始上传 | boolean |   -  |    false  |
 | autoUpload   | 是否自动上传 | boolean |   -  |    true  |
-| startUpload   | 开始上传 | boolean |   -  |    false  |
-
-
 
 ### Tab.Group Events
 | 事件名称 | 说明 | 回调参数 |
@@ -99,4 +97,3 @@
 | onSelect | 选择文件后触发的事件 |  files |
 | onComplete | 上传完成后触发的事件 |  (files, response) |
 | onError | 上传失败后触发的事件 |  - |
-
