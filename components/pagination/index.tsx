@@ -15,7 +15,7 @@ class Pagination extends Component<PropsType, any> {
     isBordered: false,
     isRadius: false,
     total: 0,
-    pageSize: 10,
+    pageSizeSource: [10, 20, 30, 40, 50],
     showTotal: false,
     showJumper: false,
     showPageSizeSelector: false,
@@ -26,8 +26,10 @@ class Pagination extends Component<PropsType, any> {
 
   constructor(props) {
     super(props);
+    const firstPageSize = ( props.pageSizeSource && props.pageSizeSource.length > 0 && props.pageSizeSource[0]);
     this.state = {
       value: props.value || props.defaultValue,
+      pageSize: props.pageSize || firstPageSize || 10,
     };
   }
 
@@ -42,10 +44,10 @@ class Pagination extends Component<PropsType, any> {
   getPagerList = () => {
     const {
       total,
-      pageSize,
       addonBefore,
       addonAfter,
     } = this.props;
+    const { pageSize } = this.state;
 
     const pageCount = Math.ceil(total / pageSize);
     const pagerList: JSX.Element[] = [];
@@ -187,7 +189,9 @@ class Pagination extends Component<PropsType, any> {
   }
 
   _onPagerClick(value) {
-    const { pageSize, onPageChange, onChange } = this.props;
+    const { onPageChange, onChange } = this.props;
+    const { pageSize } = this.state;
+
     this.setState({
       value,
     });
@@ -238,7 +242,9 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderTotal = () => {
-    const { total, pageSize, prefixCls, locale } = this.props;
+    const { total, prefixCls, locale } = this.props;
+    const { pageSize } = this.state;
+
     const { value } = this.state;
     return (
       <div className={`${prefixCls}-total`}>
@@ -253,14 +259,21 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderPageSizeSelector = () => {
-    const { radius, prefixCls, pageSize, onPageSizeChange, onChange, locale } = this.props;
+    const { radius, prefixCls, onPageSizeChange, onChange, locale } = this.props;
+    const { pageSize } = this.state;
+    let { pageSizeSource } = this.props;
+    let defaultPageSize = pageSizeSource && pageSizeSource.length > 0 && pageSizeSource[0];
+
+    if (!pageSizeSource) {
+      pageSizeSource = [10, 20, 30, 40, 50];
+      defaultPageSize = 10;
+    }
     return (
       <div className={`${prefixCls}-size`}>
         <Select
           isRadius={radius}
-          defaultValue={10}
+          defaultValue={defaultPageSize}
           size="sm"
-          // tslint:disable-next-line:jsx-no-multiline-js
           onChange={({ value }) => {
             if (value === pageSize) {
               return;
@@ -276,7 +289,7 @@ class Pagination extends Component<PropsType, any> {
           }}
         >
           {
-            [10, 20, 30, 40, 50].map((value) => {
+            pageSizeSource.map((value) => {
               return (
                 <Select.Option value={value} key={value}>{format(locale!.pagesize, { value })}</Select.Option>
               );
@@ -288,7 +301,9 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderJumper = () => {
-    const { radius, total, pageSize, prefixCls, locale } = this.props;
+    const { radius, total, prefixCls, locale } = this.props;
+    const { pageSize } = this.state;
+
     return (
       <div className={`${prefixCls}-jumper`}>
         {locale!.goto}
