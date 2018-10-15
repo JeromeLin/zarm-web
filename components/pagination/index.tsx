@@ -15,6 +15,7 @@ class Pagination extends Component<PropsType, any> {
     isBordered: false,
     isRadius: false,
     total: 0,
+    pageSize: 10,
     pageSizeSource: [10, 20, 30, 40, 50],
     showTotal: false,
     showJumper: false,
@@ -26,10 +27,8 @@ class Pagination extends Component<PropsType, any> {
 
   constructor(props) {
     super(props);
-    const firstPageSize = ( props.pageSizeSource && props.pageSizeSource.length > 0 && props.pageSizeSource[0]);
     this.state = {
       value: props.value || props.defaultValue,
-      pageSize: props.pageSize || firstPageSize || 10,
     };
   }
 
@@ -41,13 +40,22 @@ class Pagination extends Component<PropsType, any> {
     }
   }
 
+  getInitialPageSize = () => {
+    let result = this.props.pageSize;
+    const pageSizeSource = this.props.pageSizeSource || [];
+    if (!('pageSize' in this.props) && ('pageSizeSource' in this.props) && (pageSizeSource.length > 0)) {
+      result = pageSizeSource[0];
+    }
+    return result;
+  }
+
   getPagerList = () => {
     const {
       total,
       addonBefore,
       addonAfter,
     } = this.props;
-    const { pageSize } = this.state;
+    const pageSize = this.getInitialPageSize();
 
     const pageCount = Math.ceil(total / pageSize);
     const pagerList: JSX.Element[] = [];
@@ -190,7 +198,7 @@ class Pagination extends Component<PropsType, any> {
 
   _onPagerClick(value) {
     const { onPageChange, onChange } = this.props;
-    const { pageSize } = this.state;
+    const pageSize = this.getInitialPageSize();
 
     this.setState({
       value,
@@ -243,7 +251,7 @@ class Pagination extends Component<PropsType, any> {
 
   renderTotal = () => {
     const { total, prefixCls, locale } = this.props;
-    const { pageSize } = this.state;
+    const pageSize = this.getInitialPageSize();
 
     const { value } = this.state;
     return (
@@ -260,7 +268,7 @@ class Pagination extends Component<PropsType, any> {
 
   renderPageSizeSelector = () => {
     const { radius, prefixCls, onPageSizeChange, onChange, locale } = this.props;
-    const { pageSize } = this.state;
+    const pageSize = this.getInitialPageSize();
     let { pageSizeSource } = this.props;
     let defaultPageSize = pageSizeSource && pageSizeSource.length > 0 && pageSizeSource[0];
 
@@ -302,7 +310,7 @@ class Pagination extends Component<PropsType, any> {
 
   renderJumper = () => {
     const { radius, total, prefixCls, locale } = this.props;
-    const { pageSize } = this.state;
+    const pageSize = this.getInitialPageSize();
 
     return (
       <div className={`${prefixCls}-jumper`}>
