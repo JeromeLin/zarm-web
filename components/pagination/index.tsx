@@ -40,22 +40,13 @@ class Pagination extends Component<PropsType, any> {
     }
   }
 
-  getInitialPageSize = () => {
-    let result = this.props.pageSize;
-    const pageSizeSource = this.props.pageSizeSource || [];
-    if (!('pageSize' in this.props) && ('pageSizeSource' in this.props) && (pageSizeSource.length > 0)) {
-      result = pageSizeSource[0];
-    }
-    return result;
-  }
-
   getPagerList = () => {
     const {
       total,
       addonBefore,
       addonAfter,
+      pageSize,
     } = this.props;
-    const pageSize = this.getInitialPageSize();
 
     const pageCount = Math.ceil(total / pageSize);
     const pagerList: JSX.Element[] = [];
@@ -197,8 +188,7 @@ class Pagination extends Component<PropsType, any> {
   }
 
   _onPagerClick(value) {
-    const { onPageChange, onChange } = this.props;
-    const pageSize = this.getInitialPageSize();
+    const { onPageChange, onChange, pageSize } = this.props;
 
     this.setState({
       value,
@@ -250,8 +240,7 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderTotal = () => {
-    const { total, prefixCls, locale } = this.props;
-    const pageSize = this.getInitialPageSize();
+    const { total, prefixCls, locale, pageSize } = this.props;
 
     const { value } = this.state;
     return (
@@ -267,8 +256,7 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderPageSizeSelector = () => {
-    const { radius, prefixCls, onPageSizeChange, onChange, locale } = this.props;
-    const pageSize = this.getInitialPageSize();
+    const { radius, prefixCls, onPageSizeChange, onChange, locale, pageSize } = this.props;
     let { pageSizeSource } = this.props;
     let defaultPageSize = pageSizeSource && pageSizeSource.length > 0 && pageSizeSource[0];
 
@@ -309,8 +297,7 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderJumper = () => {
-    const { radius, total, prefixCls, locale } = this.props;
-    const pageSize = this.getInitialPageSize();
+    const { radius, total, prefixCls, locale, pageSize } = this.props;
 
     return (
       <div className={`${prefixCls}-jumper`}>
