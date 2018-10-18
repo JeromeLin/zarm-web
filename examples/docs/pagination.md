@@ -69,6 +69,22 @@
 ```
 :::
 
+### 设置页面下拉框的数据源
+
+添加`pageSizeSource`属性即可。
+
+:::demo
+
+```js
+  render() {
+    return (
+      <div>
+        <Pagination total={100} pageSizeSource={[50,100,150]} showTotal showJumper showPageSizeSelector />
+      </div>
+    )
+  }
+```
+:::
 
 ### 事件回调
 
@@ -177,6 +193,7 @@
 | defaultValue     | 默认页   | number   |   - |     1  |
 | total     | 总数   | number    | — | 0   |
 | pageSize     | 每页条数   | number    | — | 10   |
+| pageSizeSource |页数下拉框的数据源 | number[] | - | [10,20,30,40,50]
 | showTotal     | 是否展示总数   | boolean    | — | false  |
 | showJumper     | 是否展示跳转   | boolean    | — | false   |
 | showPageSizeSelector     | 是否展示每页条数选择器  | boolean   | — | false  |

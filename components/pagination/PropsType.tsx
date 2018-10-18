@@ -3,6 +3,7 @@ export default interface PropsType {
   value?: number;
   defaultValue?: number;
   pageSize: number;
+  pageSizeSource?: Array<number>;
   total: number;
   showTotal?: boolean;
   showJumper?: boolean;
