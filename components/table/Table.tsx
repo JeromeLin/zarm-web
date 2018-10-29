@@ -254,7 +254,7 @@ class Table extends Component<PropsType, any> {
         rowSpan={rowSpan}
       >
         <Checkbox
-          checked={dataSource.length > 0 && this.state.selectedRows.length === dataSource.length}
+          checked={dataSource.length > 0 && (this.state.selectedRows.length === dataSource.length)}
           onChange={(e) => {
             const selected = e.target.checked;
             const selectedRows = selected ? dataSource.map(data => data) : [];
