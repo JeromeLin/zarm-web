@@ -34,7 +34,7 @@
               selectValue : data.value,
             });
         }}>
-          <Select.Option value="a">我是A</Select.Option>
+          <Select.Option value="a">我是A {"测试字符空格bug"}</Select.Option>
           <Select.Option value="b" disabled>我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
@@ -157,7 +157,7 @@
   }
 ```
 :::
-  
+
 
 ### 多选并支持查找
 
