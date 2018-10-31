@@ -85,7 +85,7 @@ class InputWithTags extends React.Component<BasicProps> {
       tagList = (value as Array<ValueArray>).map((elem, index) => {
         return (
           <div
-            className="tag-list-box"
+            className="ui-tag-list-box"
             key={elem.key}
             ref={this.tagListBoxref}
           >
@@ -115,9 +115,9 @@ class InputWithTags extends React.Component<BasicProps> {
     }
 
     const boxCls = cn({
-      'tag-input-box': true,
+      'ui-tag-input-box': true,
       'radius': radius,
-      'tag-input-box-active': active,
+      'ui-tag-input-box-active': active,
       'disabled': disabled,
       [`size-${size}`]: !!size,
     });
@@ -130,7 +130,7 @@ class InputWithTags extends React.Component<BasicProps> {
       {tagList}
       {
         search && <div
-          className="input-div"
+          className="ui-tag-input-div"
           contentEditable={!disabled && search}
           onInput={this.onInput}
           onCompositionStart={this.onCompositionStart}
@@ -138,7 +138,7 @@ class InputWithTags extends React.Component<BasicProps> {
           ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
         />
       }
-      {showPlaceHolder && <span style={searchValueStyle} className="input-div-placeholder">{placeholder}</span>}
+      {showPlaceHolder && <span style={searchValueStyle} className="ui-tag-input-div-placeholder">{placeholder}</span>}
       <Icon style={Style.iconStyle} className="arrow-bottom" type="arrow-bottom" />
     </div>;
   }
