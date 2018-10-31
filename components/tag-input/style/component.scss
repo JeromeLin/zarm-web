@@ -6,17 +6,17 @@
     border-radius: $border-radius;
   }
 
-  .input-div {
+  .ui-tag-input-div {
     font-size: $font-size;
   }
 
-  .input-div-placeholder,
+  .ui-tag-input-div-placeholder,
   .value-text {
     font-size: $font-size;
   }
 }
 
-.tag-input-box {
+.ui-tag-input-box {
   @include tag-size($base-height,$base-padding, $base-fontSize-xs, $base-radius);
 
   font-size: 0;
@@ -44,7 +44,7 @@
     border-radius: 4px;
   }
 
-  .input-div {
+  .ui-tag-input-div {
     display: inline-block;
     vertical-align: middle;
     min-width: 5px;
@@ -56,7 +56,7 @@
     max-width: 100%;
   }
 
-  .input-div-placeholder,
+  .ui-tag-input-div-placeholder,
   .value-text {
     position: absolute;
     left: 0;
@@ -68,11 +68,11 @@
     max-width: calc(100% - 35px);
   }
 
-  .input-div-placeholder {
+  .ui-tag-input-div-placeholder {
     color: #999;
   }
 
-  .tag-list-box {
+  .ui-tag-list-box {
     padding: 4px 0;
     line-height: 0;
     display: inline-block;
@@ -90,7 +90,7 @@
   }
 }
 
-.tag-input-box-active {
+.ui-tag-input-box-active {
   border-color: #57c5f7;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 
@@ -103,7 +103,7 @@
   }
 }
 
-.tag-input-box {
+.ui-tag-input-box {
   &.size-xl {
     @include tag-size($base-height-xl, $base-padding-xl, $base-fontSize-lg, $base-radius-xl);
   }
