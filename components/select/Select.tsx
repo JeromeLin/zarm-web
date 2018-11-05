@@ -161,12 +161,12 @@ class Select extends Component<PropsType, StateProps> {
 
     const selected = {
       index,
-      value: props.value,
-      text: props.children,
+      value,
+      text: Array.isArray(props.children) ? props.children.join() : props.children,
     };
 
     this.setState({
-      value: props.value,
+      value,
     }, () => {
       this.setDropdown(false, () => this.props.onChange(selected));
     });
@@ -220,9 +220,15 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   onSearchValueChange = (e) => {
+    const { onSearchChange } = this.props;
+
     this.setState({
       searchValue: (e.target as HTMLDivElement).textContent,
       dropdown: true,
+    }, () => {
+      if (typeof onSearchChange === 'function') {
+        onSearchChange(this.state.searchValue);
+      }
     });
   }
 
@@ -263,7 +269,8 @@ class Select extends Component<PropsType, StateProps> {
     } else {
       let optionProps = this.optionMap[this.state.value as string];
       if (optionProps) {
-        valueText = optionProps.props.children;
+        let optionChildren = optionProps.props.children;
+        Array.isArray(optionChildren) ? valueText = optionChildren.join() : valueText = optionChildren;
       }
     }
 
@@ -296,8 +303,9 @@ class Select extends Component<PropsType, StateProps> {
     };
 
     const menus =
-      children && children.length > 0 ? (<Menu size={size} style={menuStyle}>{children}</Menu>)
-        : (<span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>);
+      children && children.length > 0
+        ? <Menu size={size} style={menuStyle}>{children}</Menu>
+        : <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>;
 
     return (
       <Dropdown

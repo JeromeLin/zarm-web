@@ -92,6 +92,34 @@
 ```
 :::
 
+###  命令式方式调用
+
+根据业务需要添加命令式调用
+
+::: demo 通过调用`Confirm.show(object)`来显示Confirm。
+```js
+  render() {
+    return (
+      <div>
+        <Button theme="success" onClick={()=>{
+          Confirm.show({
+            message:'hello world',
+            width:500,
+            okText:'保存',
+            cancelText:'退出',
+            onOk:()=>{
+              Confirm.hide(()=>{
+                console.log('test');
+              })
+            }
+          })
+        }}>命令式调用</Button>
+      </div>
+    );
+  }
+```
+:::
+
 
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |

@@ -207,12 +207,13 @@ class Table extends Component<PropsType, any> {
 
   // 渲染固定左侧的列
   renderFixedLeftCol() {
-    const { columns, prefixCls, dataSource, rowSelection } = this.props;
+    const { columns, prefixCls, dataSource, rowSelection, rowClassName } = this.props;
     const { fixedColAttrs } = this.state;
     return (
       <FixedColumn
         ref={(fixedColumn) => { this.fixedLeftColumn = fixedColumn; }}
         direction="left"
+        rowClassName={rowClassName}
         prefixCls={prefixCls}
         columns={columns}
         dataSource={dataSource}
@@ -228,12 +229,13 @@ class Table extends Component<PropsType, any> {
 
   // 渲染固定右侧的列
   renderFixedRightCol() {
-    const { columns, prefixCls, dataSource } = this.props;
+    const { columns, prefixCls, dataSource, rowClassName } = this.props;
     const { fixedColAttrs } = this.state;
     return (
       <FixedColumn
         ref={(fixedColumn) => { this.fixedRightColumn = fixedColumn; }}
         direction="right"
+        rowClassName={rowClassName}
         prefixCls={prefixCls}
         columns={columns}
         dataSource={dataSource}
@@ -252,7 +254,7 @@ class Table extends Component<PropsType, any> {
         rowSpan={rowSpan}
       >
         <Checkbox
-          checked={this.state.selectedRows.length === dataSource.length}
+          checked={dataSource.length > 0 && (this.state.selectedRows.length === dataSource.length)}
           onChange={(e) => {
             const selected = e.target.checked;
             const selectedRows = selected ? dataSource.map(data => data) : [];
@@ -319,6 +321,7 @@ class Table extends Component<PropsType, any> {
       style,
       width,
       expandedRowRender,
+      rowClassName,
     } = this.props;
     const { sort, expandedRowKeys } = this.state;
     const { headRows, dataColumns } = groupColumns(columns);
@@ -356,6 +359,7 @@ class Table extends Component<PropsType, any> {
           toggleExpandRow={this.toggleExpandRow}
           onEnterRow={this.onEnterRow}
           onLeaveRow={this.onLeaveRow}
+          rowClassName={rowClassName}
           rowClick={rowClick}
           renderCell={this.renderCell}
           renderSelect={this.renderSelect}

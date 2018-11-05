@@ -3,6 +3,7 @@ export default interface PropsType {
   value?: number;
   defaultValue?: number;
   pageSize: number;
+  pageSizeSource?: Array<number>;
   total: number;
   showTotal?: boolean;
   showJumper?: boolean;
@@ -17,6 +18,6 @@ export default interface PropsType {
   addonAfter?: React.ReactNode;
   onPageChange: (value: number) => void;
   onPageSizeChange: (value: number) => void;
-  locale: { [propName: string]: any };
+  locale?: { [propName: string]: any };
   onChange: (pageInfo: { currentPage: number, pageSize: number }) => void;
 }

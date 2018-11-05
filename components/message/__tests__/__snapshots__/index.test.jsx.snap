@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message renders message correctly 1`] = `
+<MessageExtension
+  duration={5000}
+  msg={
+    Array [
+      Object {
+        "m": "提交成功",
+      },
+    ]
+  }
+  prefixCls="ui-message"
+  theme="info"
+>
+  <div
+    className="ui-message"
+  >
+    <MessageItem
+      content="提交成功"
+      duration={5000}
+      key="0"
+      prefixCls="ui-message"
+      theme="info"
+    >
+      <div
+        className="ui-message-wrapper"
+      >
+        <div
+          className="ui-message-container"
+        >
+          <Icon
+            className="ui-message-info"
+            onClick={[Function]}
+            prefixCls="ui-icon"
+            style={
+              Object {
+                "fontSize": 15,
+              }
+            }
+            theme="default"
+            type="info-round"
+          >
+            <i
+              className="ui-icon ui-icon-info-round theme-default ui-message-info"
+              onClick={[Function]}
+              style={
+                Object {
+                  "fontSize": 15,
+                }
+              }
+            />
+          </Icon>
+          提交成功
+        </div>
+      </div>
+    </MessageItem>
+  </div>
+</MessageExtension>
+`;

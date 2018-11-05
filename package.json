@@ -1,6 +1,6 @@
 {
   "name": "dragon-ui",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.0-alpha.19",
   "description": "基于 React 的桌面端UI库",
   "tags": [
     "dragon-ui",
@@ -53,7 +53,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "css-animation": "^1.2.5",
-    "normalize.css": "^7.0.0",
+    "hoist-non-react-statics": "^3.0.1",
     "rc-animate": "^3.0.0-rc.5",
     "tslib": "^1.9.3"
   },

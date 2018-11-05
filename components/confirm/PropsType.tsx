@@ -5,7 +5,7 @@ export default interface PropsType {
   width?: number | string;
   okText?: string;
   cancelText?: string;
-  locale: {
+  locale?: {
     confirm: string,
     cancel: string,
   };

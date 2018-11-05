@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transfer renders Transfer correctly 1`] = `
+<div>
+  <div
+    class="ui-transfer ui-transfer-radius"
+    style="width:500px"
+  >
+    <div
+      class="ui-transfer-panel"
+    >
+      <h4
+        class="ui-transfer-panel-title"
+      >
+        初始值
+      </h4>
+      <span
+        class="ui-select radius"
+      >
+        <span
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="ui-select-selection"
+          role="combobox"
+          style="height:100%;max-height:250px;overflow:auto"
+        >
+          <ul
+            class="ui-menu ui-menu-light ui-menu-inline"
+            role="menu"
+          >
+            <li
+              class="ui-option-list"
+              style="padding-right:10px"
+            >
+              张三
+            </li>
+            <li
+              class="ui-option-list"
+              style="padding-right:10px"
+            >
+              李四
+            </li>
+            <li
+              class="ui-option-list"
+              style="padding-right:10px"
+            >
+              王五
+            </li>
+            <li
+              class="ui-option-list"
+              style="padding-right:10px"
+            >
+              奥巴马
+            </li>
+          </ul>
+        </span>
+      </span>
+    </div>
+    <div
+      class="ui-transfer-action-bar"
+    >
+      <div
+        class="button-wrapper"
+      >
+        <button
+          class="ui-button disabled theme-default"
+          disabled=""
+          type="button"
+        >
+          <i
+            class="ui-icon ui-icon-add theme-default"
+          />
+        </button>
+        <button
+          class="ui-button disabled theme-default"
+          disabled=""
+          type="button"
+        >
+          <i
+            class="ui-icon ui-icon-minus theme-default"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      class="ui-transfer-panel"
+    >
+      <h4
+        class="ui-transfer-panel-title"
+      >
+        已选值
+      </h4>
+      <span
+        class="ui-select radius"
+      >
+        <span
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="ui-select-selection"
+          role="combobox"
+          style="height:100%;max-height:250px;overflow:auto"
+        >
+          <ul
+            class="ui-menu ui-menu-light ui-menu-inline"
+            role="menu"
+          />
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;

@@ -43,6 +43,7 @@ export interface BodyProps {
   expandedRowRender?: (row: any, index: number) => React.ReactNode;
   renderCell: (column: column, row: any, rowIndex: number, columnIndex: number) => React.ReactNode;
   renderSelect: (rowSelection: rowSelection, row: any, height?: number) => React.ReactNode;
+  rowClassName?: (row: any) => string;
 }
 
 export interface CellProps {
@@ -67,6 +68,7 @@ export interface FixedColumnProps {
   dataSource: object[];
   colAttrs: colAttrsType;
   rowSelection?: rowSelection;
+  rowClassName?: (row: any) => string;
   onEnterRow: (index: number) => void;
   onLeaveRow: () => void;
   renderSelectAll?: (
@@ -98,10 +100,11 @@ export default interface PropsType {
   defaultExpandAllRows?: boolean;
   defaultExpandedRowKeys?: any[];
   expandedRowKeys?: any[];
-  expandedRowRender: (row: any, index: number) => React.ReactNode;
+  expandedRowRender?: (row: any, index: number) => React.ReactNode;
   onExpand?: (expanded: boolean, row: any) => void;
   style?: object;
   width?: number;
   maxCellSize: 20;
   dataSource: object[];
+  rowClassName?: (row: any) => string;
 }

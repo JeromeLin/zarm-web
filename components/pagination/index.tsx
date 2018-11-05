@@ -16,6 +16,7 @@ class Pagination extends Component<PropsType, any> {
     isRadius: false,
     total: 0,
     pageSize: 10,
+    pageSizeSource: [10, 20, 30, 40, 50],
     showTotal: false,
     showJumper: false,
     showPageSizeSelector: false,
@@ -42,9 +43,9 @@ class Pagination extends Component<PropsType, any> {
   getPagerList = () => {
     const {
       total,
-      pageSize,
       addonBefore,
       addonAfter,
+      pageSize,
     } = this.props;
 
     const pageCount = Math.ceil(total / pageSize);
@@ -101,7 +102,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={1}
-        title={locale.first_page}
+        title={locale!.first_page}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(1)}
       >
@@ -115,7 +116,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key={pageCount}
-        title={locale.last_page}
+        title={locale!.last_page}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(pageCount)}
       >
@@ -129,7 +130,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="prev"
-        title={locale.prev_page}
+        title={locale!.prev_page}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -148,7 +149,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="next"
-        title={locale.next_page}
+        title={locale!.next_page}
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
@@ -167,7 +168,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-prev"
-        title={locale.prev_5_page}
+        title={locale!.prev_5_page}
         className={`${prefixCls}-item ${prefixCls}-item-jump-prev`}
         onClick={() => this._onPagerClick(current - 5)}
       />
@@ -179,7 +180,7 @@ class Pagination extends Component<PropsType, any> {
     return (
       <li
         key="jump-next"
-        title={locale.next_5_page}
+        title={locale!.next_5_page}
         className={`${prefixCls}-item ${prefixCls}-item-jump-next`}
         onClick={() => this._onPagerClick(current + 5)}
       />
@@ -187,7 +188,8 @@ class Pagination extends Component<PropsType, any> {
   }
 
   _onPagerClick(value) {
-    const { pageSize, onPageChange, onChange } = this.props;
+    const { onPageChange, onChange, pageSize } = this.props;
+
     this.setState({
       value,
     });
@@ -238,14 +240,15 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderTotal = () => {
-    const { total, pageSize, prefixCls, locale } = this.props;
+    const { total, prefixCls, locale, pageSize } = this.props;
+
     const { value } = this.state;
     return (
       <div className={`${prefixCls}-total`}>
-        {format(locale.total, {
+        {format(locale!.total, {
           total,
         })}
-        {format(locale.current, {
+        {format(locale!.current, {
           current: `${value} / ${Math.ceil(total / pageSize)}`,
         })}
       </div>
@@ -253,14 +256,20 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderPageSizeSelector = () => {
-    const { radius, prefixCls, pageSize, onPageSizeChange, onChange, locale } = this.props;
+    const { radius, prefixCls, onPageSizeChange, onChange, locale, pageSize } = this.props;
+    let { pageSizeSource } = this.props;
+    let defaultPageSize = pageSizeSource && pageSizeSource.length > 0 && pageSizeSource[0];
+
+    if (!pageSizeSource) {
+      pageSizeSource = [10, 20, 30, 40, 50];
+      defaultPageSize = 10;
+    }
     return (
       <div className={`${prefixCls}-size`}>
         <Select
           isRadius={radius}
+          defaultValue={defaultPageSize}
           size="sm"
-          defaultValue={10}
-          // tslint:disable-next-line:jsx-no-multiline-js
           onChange={({ value }) => {
             if (value === pageSize) {
               return;
@@ -276,9 +285,9 @@ class Pagination extends Component<PropsType, any> {
           }}
         >
           {
-            [10, 20, 30, 40, 50].map((value) => {
+            pageSizeSource.map((value) => {
               return (
-                <Select.Option value={value} key={value}>{format(locale.pagesize, { value })}</Select.Option>
+                <Select.Option value={value} key={value}>{format(locale!.pagesize, { value })}</Select.Option>
               );
             })
           }
@@ -288,12 +297,14 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderJumper = () => {
-    const { radius, total, pageSize, prefixCls, locale } = this.props;
+    const { radius, total, prefixCls, locale, pageSize } = this.props;
+
     return (
       <div className={`${prefixCls}-jumper`}>
-        {locale.goto}
+        {locale!.goto}
         <Input
           isRadius={radius}
+          type="text"
           style={{ width: 50, textAlign: 'center', marginLeft: 5, marginRight: 5 }}
           size="sm"
           defaultValue=""
@@ -313,7 +324,7 @@ class Pagination extends Component<PropsType, any> {
             }
           }}
         />
-        {locale.pageClassifier}
+        {locale!.pageClassifier}
       </div>
     );
   }

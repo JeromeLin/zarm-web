@@ -111,6 +111,33 @@
 :::
 
 
+###  命令式方式调用
+
+根据业务需要添加命令式调用
+
+::: demo 通过调用`Message.show(object)`来显示Message。
+```js
+  render() {
+    return (
+      <div>
+        <Button theme="success" onClick={()=>{
+          Message.show({
+            msg:'hello world',
+            theme:'success',
+            duration:3000,
+            callback:()=>{
+              console.log('hello wordl');
+            }
+          })
+        }}>命令式调用</Button>
+      </div>
+    );
+  }
+```
+:::
+
+
+
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |

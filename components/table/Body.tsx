@@ -70,7 +70,7 @@ class Body extends Component<BodyProps, any> {
   render() {
     const {
       dataSource, dataColumns, rowSelection, renderSelect,
-      renderCell, onEnterRow, onLeaveRow, rowClick,
+      renderCell, onEnterRow, onLeaveRow, rowClick, rowClassName,
     } = this.props;
     return (
       <tbody ref={(scrollbody) => { this.scrollbody = scrollbody; }}>
@@ -82,6 +82,9 @@ class Body extends Component<BodyProps, any> {
             const cells = dataColumns.map((column, columnIndex) => {
               return renderCell(column, row, rowIndex, columnIndex);
             });
+            const rowClass = classnames({
+              [`${rowClassName && rowClassName(row)}`]: !!rowClassName && rowClassName(row),
+            });
 
             const refAttr = rowIndex === 0 ? { ref: (row) => { this.row = row; } } : {};
             return (
@@ -92,6 +95,7 @@ class Body extends Component<BodyProps, any> {
                   onMouseEnter={() => onEnterRow(rowIndex)}
                   onMouseLeave={() => onLeaveRow()}
                   onClick={() => typeof rowClick === 'function' && rowClick(row)}
+                  className={rowClass}
                 >
                   {this.renderExpandIcon(row, rowIndex)}
                   {selection}
