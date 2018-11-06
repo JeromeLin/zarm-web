@@ -24,6 +24,11 @@ class InputWithTags extends React.Component<BasicProps> {
   tagListBox: HTMLDivElement;
   isComposition: boolean;
 
+  state = {
+    isFocus: false,
+    compositionData: null,
+  };
+
   onInput = (e: UIEvent<HTMLDivElement>) => {
     if (this.props.disabled || this.isComposition) {
       return;
@@ -31,6 +36,18 @@ class InputWithTags extends React.Component<BasicProps> {
     if (typeof this.props.onSearchChange === 'function') {
       this.props.onSearchChange(e);
     }
+  }
+
+  onFocus = () => {
+    this.setState({
+      isFocus: true,
+    });
+  }
+
+  onBlur = () => {
+    this.setState({
+      isFocus: false,
+    });
   }
 
   componentWillReceiveProps(nextProps: BasicProps) {
@@ -61,20 +78,30 @@ class InputWithTags extends React.Component<BasicProps> {
     this.isComposition = true;
   }
 
+  onCompositionUpdate = (e: React.CompositionEvent<HTMLDivElement>) => {
+    this.setState({
+      compositionData: e.data,
+    });
+  }
+
   onCompositionEnd = (e) => {
     this.isComposition = false;
+    this.setState({
+      compositionData: null,
+    });
     this.onInput(e);
   }
 
   render() {
     const { search, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
       radius, disabled, ...others } = this.props;
+    const { compositionData, isFocus } = this.state;
     let showPlaceHolder = false;
-    if (value == null || (typeof value === 'string' && value.length === 0)) {
+    if ((value == null || (typeof value === 'string' && value.length === 0)) && !compositionData) {
       showPlaceHolder = true;
     }
 
-    const searchValueStyle = { display: searchValue ? 'none' : 'inline-block' };
+    const searchValueStyle = { display: isFocus && searchValue ? 'none' : 'inline-block' };
 
     let tagSizeHeight: number = (size ? sizeValue[size] : 32) - 10;
 
@@ -111,7 +138,11 @@ class InputWithTags extends React.Component<BasicProps> {
         );
       });
     } else {
-      tagList = <div title={value as string} style={searchValueStyle} className="value-text">{value}</div>;
+      tagList = (
+        <div title={value as string} style={searchValueStyle} className="value-text">
+          {compositionData || value}
+        </div>
+      );
     }
 
     const boxCls = cn({
@@ -133,7 +164,10 @@ class InputWithTags extends React.Component<BasicProps> {
           className="ui-tag-input-div"
           contentEditable={!disabled && search}
           onInput={this.onInput}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           onCompositionStart={this.onCompositionStart}
+          onCompositionUpdate={this.onCompositionUpdate}
           onCompositionEnd={this.onCompositionEnd}
           ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
         />

@@ -15,7 +15,8 @@ interface StateProps {
 }
 
 interface OptionDataProps {
-  props: OptionProps & { key?: any, children?: ReactNode };
+  props: OptionProps & { children?: ReactNode };
+  key: any;
   value: string | number;
   children: ReactNode;
 }
@@ -86,6 +87,7 @@ class Select extends Component<PropsType, StateProps> {
           optionMap[option.props.value] = option;
           // handle OptionData
           optionData.push({
+            key: option.key,
             props: option.props,
             value: option.props.value,
             children: option.props.children,
@@ -285,7 +287,7 @@ class Select extends Component<PropsType, StateProps> {
       const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
       children.push(
         <Option
-          key={elem.props.value}
+          key={elem.key || elem.props.value}
           showCheckIcon={checked}
           {...elem.props}
           checked={checked}
