@@ -12,6 +12,8 @@ interface StateProps {
   dropdown: boolean;
   searchValue: string | null;
   showPlacehoder: boolean;
+  optionMap: { [x: string]: any, [y: number]: any };
+  optionData: Array<OptionDataProps>;
 }
 
 interface OptionDataProps {
@@ -38,8 +40,6 @@ class Select extends Component<PropsType, StateProps> {
   static Multiple;
 
   inputBox: HTMLInputElement;
-  optionMap: { [x: string]: any, [y: number]: any };
-  optionData: Array<OptionDataProps>;
   inputWithTags: InputWithTags;
   oldInputDivHeight: number = 0;
 
@@ -51,6 +51,8 @@ class Select extends Component<PropsType, StateProps> {
       dropdown: false,
       searchValue: '',
       showPlacehoder: true,
+      optionMap: {},
+      optionData: [],
     };
 
     if (props.multiple) {
@@ -62,10 +64,10 @@ class Select extends Component<PropsType, StateProps> {
     } else {
       state.value = String(value);
     }
-    this.state = state;
     const [optionMap, optionData] = this.getOptionMap(this.props.children);
-    this.optionMap = optionMap;
-    this.optionData = optionData;
+    state.optionMap = optionMap;
+    state.optionData = optionData;
+    this.state = state;
   }
 
   componentDidMount() {
@@ -111,13 +113,15 @@ class Select extends Component<PropsType, StateProps> {
       } else {
         value = String(value);
       }
-      if (nextProps.children !== this.props.children) {
-        const [optionMap, optionData] = this.getOptionMap(nextProps.children);
-        this.optionData = optionData;
-        this.optionMap = optionMap;
-      }
       this.setState({
         value,
+      });
+    }
+    if (nextProps.children !== this.props.children) {
+      const [optionMap, optionData] = this.getOptionMap(nextProps.children);
+      this.setState({
+        optionData,
+        optionMap,
       });
     }
   }
@@ -148,9 +152,9 @@ class Select extends Component<PropsType, StateProps> {
         selected.splice(position, 1);
       }
       const selectedData = selected.map((select) => {
-        const vdom = this.optionMap[select];
+        const vdom = this.state.optionMap[select];
         const text = vdom ? vdom.props.children : '';
-        let index = this.optionData.findIndex(elem => String(elem.value) === String(select));
+        let index = this.state.optionData.findIndex(elem => String(elem.value) === String(select));
         return { text, value: select, index };
       });
       this.setState({
@@ -210,7 +214,7 @@ class Select extends Component<PropsType, StateProps> {
     const selected = (this.state.value as Array<string>).slice();
     selected.splice(index, 1);
     const selectedData = selected.map((select, selectIndex) => {
-      const vdom = this.optionMap[select];
+      const vdom = this.state.optionMap[select];
       const text = vdom ? vdom.props.children : '';
       return {
         text,
@@ -260,16 +264,16 @@ class Select extends Component<PropsType, StateProps> {
     let valueText;
     if (multiple && Array.isArray(this.state.value)) {
       valueText = this.state.value.reduce((prev: any, item) => {
-        if (this.optionMap[item]) {
+        if (this.state.optionMap[item]) {
           prev.push({
             key: item,
-            value: this.optionMap[item].props.children,
+            value: this.state.optionMap[item].props.children,
           });
         }
         return prev;
       }, []);
     } else {
-      let optionProps = this.optionMap[this.state.value as string];
+      let optionProps = this.state.optionMap[this.state.value as string];
       if (optionProps) {
         let optionChildren = optionProps.props.children;
         Array.isArray(optionChildren) ? valueText = optionChildren.join() : valueText = optionChildren;
@@ -278,7 +282,7 @@ class Select extends Component<PropsType, StateProps> {
 
     const { value } = this.state;
     const children: Array<ReactNode> = [];
-    this.optionData.forEach((elem, index) => {
+    this.state.optionData.forEach((elem, index) => {
       if (search && this.state.searchValue) {
         if (String(elem.props.children).indexOf(this.state.searchValue) === -1) {
           return null;
