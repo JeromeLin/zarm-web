@@ -25,7 +25,7 @@ export interface MultipleProps {
   isRadius?: boolean;
   size?: size;
   style?: CSSProperties;
-  onChange: (value: any, row: object) => () => void;
+  onChange: (value: any, row: object, shiftKey?: boolean) => () => void;
   onDoubleClick?: () => void;
 }
 
