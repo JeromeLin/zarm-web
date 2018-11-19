@@ -94,10 +94,12 @@ class Transfer extends Component<PropsType, any> {
     this.props.onDoubleMinus(selectedValue);
   }
 
-  handleMultipleSelection(selectedRows, { index: currentIndex, value: currentValue }) {
+  handleMultipleSelection(selectedRows, { index: currentIndex, value: currentValue }, operType) {
     const len = selectedRows.length;
     const { keyOfItem } = this.props;
-    const { initialValue } = this.state;
+    const { initialValue, selectedValue } = this.state;
+    const values = operType === 'add' ? initialValue : selectedValue;
+    const selectedName = operType === 'add' ? 'selectedLeft' : 'selectedRight';
     if (len >= 2) {
       // 有上一次选择
       let lastSelectedValue = selectedRows[len - 1];
@@ -110,24 +112,24 @@ class Transfer extends Component<PropsType, any> {
       }
       let lastIndex;
 
-      initialValue.forEach((item, index) => {
+      values.forEach((item, index) => {
         if (item[keyOfItem] === lastSelectedValue) {
           lastIndex = index;
         }
       });
 
-      const selectedLeft = [...initialValue].splice(
+      const selected = [...values].splice(
         Math.min(lastIndex, currentIndex),
         Math.abs(lastIndex - currentIndex) + 1,
       ).map(item => item[keyOfItem]);
 
       if (currentIndex < lastIndex) {
-        selectedLeft.shift();
-        selectedLeft.push(currentValue);
+        selected.shift();
+        selected.push(currentValue);
       }
 
       this.setState({
-        selectedLeft,
+        [selectedName]: selected,
       });
     }
   }
@@ -169,7 +171,7 @@ class Transfer extends Component<PropsType, any> {
             value={this.state.selectedLeft}
             onChange={(selectedRows, row, shiftKey) => {
               if (shiftKey) {
-                this.handleMultipleSelection(selectedRows, row);
+                this.handleMultipleSelection(selectedRows, row, 'add');
                 return;
               }
               this.setState({ selectedLeft: selectedRows });
@@ -203,8 +205,12 @@ class Transfer extends Component<PropsType, any> {
             isDisabled={disabled}
             isRadius={radius}
             value={this.state.selectedRight}
-            onChange={(selectedRows) => {
-            this.setState({ selectedRight: selectedRows });
+            onChange={(selectedRows, row, shiftKey) => {
+              if (shiftKey) {
+                this.handleMultipleSelection(selectedRows, row, 'minus');
+                return;
+              }
+              this.setState({ selectedRight: selectedRows });
             }}
             onDoubleClick={(e) => !disabled && this._onDoubleMinus(e)}
           >
