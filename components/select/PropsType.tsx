@@ -44,6 +44,7 @@ export default interface PropsType {
   disabled?: boolean;
   isDisabled?: boolean;
   search?: boolean;
+  remoteSearch?: boolean;
   isSearch?: boolean;
   placeholder?: string;
   searchPlaceholder?: string;

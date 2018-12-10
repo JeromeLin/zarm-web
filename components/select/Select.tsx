@@ -240,6 +240,7 @@ class Select extends Component<PropsType, StateProps> {
 
   render() {
     const { props } = this;
+    const { searchValue } = this.state;
     const {
       prefixCls,
       placeholder,
@@ -253,6 +254,7 @@ class Select extends Component<PropsType, StateProps> {
       multiple,
       getPopupContainer,
       locale,
+      remoteSearch,
     } = props;
 
     const disabled = 'disabled' in props || isDisabled;
@@ -282,12 +284,15 @@ class Select extends Component<PropsType, StateProps> {
 
     const { value } = this.state;
     const children: Array<ReactNode> = [];
-    this.state.optionData.forEach((elem, index) => {
-      if (search && this.state.searchValue) {
-        if (String(elem.props.children).indexOf(this.state.searchValue) === -1) {
-          return null;
-        }
+    const filterCondition = (option, optionIndex: number) => {
+      if (search && searchValue) {
+        return String(option.props.children).includes(searchValue);
+      } else { // remoteSearch会走此处逻辑
+        return optionIndex > -1;
       }
+    };
+
+    this.state.optionData.filter(filterCondition).forEach((elem, index) => {
       const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
       children.push(
         <Option
@@ -339,6 +344,7 @@ class Select extends Component<PropsType, StateProps> {
           style={style}
           searchValue={this.state.searchValue}
           search={search}
+          remoteSearch={remoteSearch}
           active={this.state.dropdown}
           value={valueText}
           placeholder={placeholderText}
