@@ -9,9 +9,12 @@
   align-items: center;
   justify-content: center;
   -webkit-overflow-scrolling: touch;
-  user-select: none;
   overflow: auto;
   z-index: $base-zindex-modal;
+
+  .ui-modal-wrapper {
+    overflow: auto;
+  }
 
   &.radius {
     .ui-modal-dialog {
@@ -74,9 +77,6 @@
 
 .ui-modal-body {
   padding: 20px;
-  overflow: auto;
-  user-select: auto;
-
   // TODO
   // .ui-popover-content {
   //   position: absolute !important;
