@@ -47,15 +47,9 @@ class Modal extends Component<ModalProps, any> {
     this.animationEnd = this.animationEnd.bind(this);
   }
 
-  componentWillMount() {
-    if (this.props.visible) {
-      this.enter();
-    }
-  }
-
   componentDidMount() {
     if (this.props.visible) {
-      this.insertModalNode();
+      this.enter();
     }
   }
 
