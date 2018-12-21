@@ -34,10 +34,10 @@
               selectValue : data.value,
             });
         }}>
-          <Select.Option value="a">我是A {"测试字符空格bug"}</Select.Option>
-          <Select.Option value="b" disabled>我是B</Select.Option>
-          <Select.Option value="c">我是C</Select.Option>
-          <Select.Option value="d">我是D</Select.Option>
+          <Select.Option key="a" value="a">我是A {"测试字符空格bug"}</Select.Option>
+          <Select.Option key="b" value="b" disabled>我是B</Select.Option>
+          <Select.Option key="c" value="c">我是C</Select.Option>
+          <Select.Option key="d" value="d">我是D</Select.Option>
           {options.map(elem=><div key={elem} value={elem}><span>{elem}</span></div>)}
         </Select>
       </div>
