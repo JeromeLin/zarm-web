@@ -12,17 +12,22 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     onChange: () => {},
   };
 
+  static getDerivedStateFromProps (props, state) {
+    if (props.value !== state.prevPropsValue) {
+      return {
+        value: props.value,
+        prevPropsValue: props.value,
+      };
+    }
+    return null;
+  }
+
   state = {
     value: this.props.value,
+    prevPropsValue: this.props.value,
     addState: false,
     reduceState: false,
   };
-
-  componentWillReceiveProps (nextProps, prevState) {
-    if (nextProps.value !== prevState.value) {
-      this.setState({ value: nextProps.value });
-    }
-  }
 
   componentDidMount () {
     this.calculateNum();
