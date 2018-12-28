@@ -73,7 +73,7 @@
 ```
 :::
 
-### 带搜索框
+### 支持本地搜索
 
 支持输入框搜索选项。
 
@@ -107,6 +107,49 @@
           <Select.Option value="b">我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
+        </Select>
+      </div>
+    )
+  }
+```
+:::
+
+### 支持远程搜索
+
+支持输入框搜索选项。
+
+:::demo 添加`search`属性，通过`onSearchChange`监听输入框值的变化。
+
+```js
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectValue: '',
+      options: []
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Select
+          remoteSearch
+          value={this.state.selectValue}
+          style={{ width: 200 }}
+          // searchPlaceholder="输入关键字"
+          onSearchChange={(value) => {
+             setTimeout(() => {
+                this.setState({ options: [4,5,6,7,8] })
+             }, 2000)
+          }}
+          onChange={(data) => {
+            console.log(data);
+            this.setState({
+              selectValue: data.value
+            });
+          }}
+        >
+          {this.state.options.map(elem=><Select.Option key={elem} value={elem}>{elem}</Select.Option>)}
         </Select>
       </div>
     )

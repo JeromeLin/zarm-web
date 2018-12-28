@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createPortal } from 'react-dom';
+import { createPortal, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
@@ -18,7 +18,6 @@ function toggleBodyOverflow(show) {
 }
 
 class Modal extends Component<ModalProps, any> {
-
   static Header: any;
   static Body: any;
   static Footer: any;
@@ -48,14 +47,10 @@ class Modal extends Component<ModalProps, any> {
     this.animationEnd = this.animationEnd.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.visible) {
       this.enter();
     }
-  }
-
-  componentDidMount() {
-    document.body.appendChild(this.div);
   }
 
   componentWillUpdate() {
@@ -68,6 +63,7 @@ class Modal extends Component<ModalProps, any> {
     Events.off(this.modal, 'animationend', this.animationEnd);
     toggleBodyOverflow(false);
     setTimeout(() => {
+      unmountComponentAtNode(this.div);
       document.body.removeChild(this.div);
     });
   }
@@ -82,6 +78,11 @@ class Modal extends Component<ModalProps, any> {
 
   shouldComponentUpdate(_, nextState) {
     return !!(this.state.isShow || nextState.isShow);
+  }
+
+  insertModalNode() {
+    (this.div as HTMLDivElement).setAttribute('role', 'dialog');
+    document.body.appendChild(this.div);
   }
 
   animationEnd() {
@@ -99,6 +100,7 @@ class Modal extends Component<ModalProps, any> {
   }
 
   enter() {
+    this.insertModalNode();
     toggleBodyOverflow(true);
     this.setState({
       isShow: true,

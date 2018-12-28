@@ -12,8 +12,19 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     onChange: () => {},
   };
 
+  static getDerivedStateFromProps (props, state) {
+    if (props.value !== state.prevPropsValue) {
+      return {
+        value: props.value,
+        prevPropsValue: props.value,
+      };
+    }
+    return null;
+  }
+
   state = {
     value: this.props.value,
+    prevPropsValue: this.props.value,
     addState: false,
     reduceState: false,
   };
@@ -42,8 +53,8 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     const { min, max } = this.props;
 
     if (min !== undefined || max !== undefined) {
-      parseInt(value, 10) < min ? value = min : value = value;
-      parseInt(value, 10) > max ? value = max : value = value;
+      parseInt(value, 10) < min! ? value = min : value = value;
+      parseInt(value, 10) > max! ? value = max : value = value;
     }
 
     this.setState({ value });
@@ -72,8 +83,8 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     }
 
     this.setState({
-      addState: Number(value) >= max,
-      reduceState: Number(value) <= min,
+      addState: Number(value) >= max!,
+      reduceState: Number(value) <= min!,
     });
     // this.calculateNum();
   }
