@@ -30,41 +30,39 @@ Modal组件的基础用法。
         <Modal visible={visible3}>
           <Modal.Header title="标题333" onClose={() => {this.toggleModal('visible3')}} />
           <Modal.Body className="test">
-            <p onClick={() => { this.setState({ visible2: true }) }}>我是模态框, 第三层</p>
-            <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-                        <p>dfsjfkjdshf</p>
-          </Modal.Body>
-        </Modal>
-
-        <Modal width={800} visible={visible2}>
-          <Modal.Header title="标题222" onClose={() => { this.setState({ visible2: false }) }} />
-          <Modal.Body className="test">
-            <p onClick={() => { this.setState({ visible3: true, visible2: false }) }}>我是模态框, 第二层</p>
-          </Modal.Body>
-        </Modal>
-
-        <Modal visible={visible1}>
-          <Modal.Header title="标题111" onClose={() => this.toggleModal('visible1')} />
-          <Modal.Body className="test">
-            <p>我是模态框, 第一层</p>
-            <div onClick={() => this.toggleModal('visible2')}>打开内层弹窗</div>
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={() => this.toggleModal('visible1')}>取消</Button>
