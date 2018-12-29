@@ -53,7 +53,7 @@ class InputWithTags extends React.Component<BasicProps> {
   componentWillReceiveProps(nextProps: BasicProps) {
     if (nextProps.active !== this.props.active) {
       // work without disabled and search prop;
-      if (!nextProps.disabled && (nextProps.search || nextProps.remoteSearch)) {
+      if (!nextProps.disabled && nextProps.search) {
         if (nextProps.active) {
           this.inputDiv.focus();
         } else {
@@ -68,8 +68,8 @@ class InputWithTags extends React.Component<BasicProps> {
   }
 
   onTagBoxClick = () => {
-    const { active, search, remoteSearch, value } = this.props;
-    if (active && (search || remoteSearch) && Array.isArray(value)) {
+    const { active, search, value } = this.props;
+    if (active && search && Array.isArray(value)) {
       this.inputDiv.focus();
     }
   }
@@ -93,7 +93,7 @@ class InputWithTags extends React.Component<BasicProps> {
   }
 
   render() {
-    const { search, remoteSearch, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
+    const { search, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
       radius, disabled, ...others } = this.props;
     const { compositionData, isFocus } = this.state;
     let showPlaceHolder = false;
@@ -160,9 +160,9 @@ class InputWithTags extends React.Component<BasicProps> {
     >
       {tagList}
       {
-        (search || remoteSearch) && <div
+        search && <div
           className="ui-tag-input-div"
-          contentEditable={!disabled && (search || remoteSearch)}
+          contentEditable={!disabled && search}
           onInput={this.onInput}
           onFocus={this.onFocus}
           onBlur={this.onBlur}

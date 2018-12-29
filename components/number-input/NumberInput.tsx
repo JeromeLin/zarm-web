@@ -13,17 +13,18 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
   };
 
   static getDerivedStateFromProps (props, state) {
-    if (props.value !== state.value) {
+    if (props.value !== state.prevPropsValue) {
       return {
         value: props.value,
+        prevPropsValue: props.value,
       };
     }
-
     return null;
   }
 
   state = {
     value: this.props.value,
+    prevPropsValue: this.props.value,
     addState: false,
     reduceState: false,
   };
