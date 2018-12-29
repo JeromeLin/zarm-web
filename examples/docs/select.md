@@ -12,33 +12,47 @@
   constructor(props) {
     super(props)
     this.state = {
-      selectValue: '',
-      options: [1,2,3]
+      value: '',
+      data: []
     };
   }
   componentDidMount(){
     setTimeout(()=>{
-      this.setState({options:[4,5,6]});
-    },1000);
+      // mock async data
+      this.setState({
+        data: [
+          {
+            value: 'a',
+            text: '我是A'
+          },
+          {
+            value: 'b',
+            text: '我是B'
+          }
+        ]
+      });
+    }, 1000);
   }
   render() {
-    const { options } = this.state;
+    const { data } = this.state;
     return (
       <div>
         <Select
           style={{ width: 200 }}
-          value={this.state.selectValue}
           onChange={(data) => {
             console.log(data);
             this.setState({
               selectValue : data.value,
             });
         }}>
-          <Select.Option key="a" value="a">我是A {"测试字符空格bug"}</Select.Option>
-          <Select.Option key="b" value="b" disabled>我是B</Select.Option>
-          <Select.Option key="c" value="c">我是C</Select.Option>
-          <Select.Option key="d" value="d">我是D</Select.Option>
-          {options.map(elem=><div key={elem} value={elem}><span>{elem}</span></div>)}
+          {
+            data.map(({ value, text }) => {
+              return (
+                <Select.Option key={value} value={value}>{text}</Select.Option>
+              )
+            })
+          }
+
         </Select>
       </div>
     )

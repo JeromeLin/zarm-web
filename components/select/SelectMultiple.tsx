@@ -47,18 +47,19 @@ class SelectMultiple extends Component<MultipleProps, any> {
     e.preventDefault();
   }
 
-  onOptionChange(_, props, rowIndex) {
+  onOptionChange(e, props, rowIndex) {
     if ('disabled' in props) {
       return;
     }
 
+    const shiftKey = e.shiftKey;
     const { value } = this.state;
     const index = value.indexOf(props.value);
     const isSelected = index > -1;
 
-    if (isSelected) {
+    if (isSelected && !shiftKey) {
       value.splice(index, 1);
-    } else {
+    } else if (!isSelected) {
       value.push(props.value);
     }
 
@@ -69,7 +70,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
       selected: !isSelected,
     };
 
-    this.setState({ value }, () => this.props.onChange(value, row));
+    this.setState({ value }, () => this.props.onChange(value, row, shiftKey));
   }
 
   render() {

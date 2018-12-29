@@ -11,7 +11,7 @@
     this.state = {
       initialValue: [
         {
-          id: '1',
+          id: '6',
           name: '张三',
           dept: '直营部',
           age: 46,
