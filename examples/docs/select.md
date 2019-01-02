@@ -22,6 +22,10 @@
       this.setState({
         data: [
           {
+            value: '',
+            text: '全部',
+          },
+          {
             value: 'a',
             text: '我是A'
           },
@@ -208,6 +212,7 @@
           <Select.Option value="f">我是F</Select.Option>
           <Select.Option value="g">我是G</Select.Option>
           <Select.Option value="h">我是H</Select.Option>
+          <Select.Option value="">我的Value是空字符串</Select.Option>
         </Select>
       </div>
     )
