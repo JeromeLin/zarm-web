@@ -1,45 +1,45 @@
 .ui-tab {
-
-  &.radius {
-    .ui-tab-header-item {
-      border-top-left-radius: $base-radius;
-      border-top-right-radius: $base-radius;
-    }
-  }
-
   .ui-tab-header {
     @include clearfix;
+
+    position: relative;
     margin: 0;
     list-style: none;
     padding: 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e8e8e8;
 
     .ui-tab-header-item {
       float: left;
       position: relative;
       margin-bottom: -1px;
-      padding: 6px 20px 6px;
+      padding: 6px 20px;
       margin-right: 8px;
-      background: #f4f4f4;
+      background: #fafafa;
       cursor: pointer;
       text-align: center;
       color: #666;
       height: 33px;
       line-height: normal;
       border: 1px solid transparent;
-      border-bottom-color: #ddd;
+      border-bottom-color: #e8e8e8;
 
       &.active {
         background: #fff;
-        border: 1px solid #ddd;
+        border: 1px solid #e8e8e8;
         border-bottom: 0;
-        color: #00b0e8;
+        color: #1890ff;
+      }
+
+      &-disabled {
+        color: $base-theme-default;
+        cursor: not-allowed;
       }
     }
   }
 
   .ui-tab-body {
     @include clearfix;
+
     position: relative;
     -webkit-transition: height .3s;
     transition: height .3s;
@@ -50,6 +50,34 @@
 
       &.ui-tab-body-item-active {
         display: block;
+      }
+    }
+  }
+
+  .ui-tab-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    border-bottom: 2px solid #1890ff;
+    transition: transform $default-transition;
+  }
+
+  &.radius {
+    .ui-tab-header-item {
+      border-top-left-radius: $base-radius;
+      border-top-right-radius: $base-radius;
+    }
+  }
+
+  &.line {
+    .ui-tab-header-item {
+      margin-bottom: 0;
+      background: none;
+      border: none;
+
+      &.active {
+        border: 0;
       }
     }
   }
