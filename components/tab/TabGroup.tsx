@@ -7,9 +7,13 @@ class TabGroup extends Component<GroupProps, any> {
   static defaultProps = {
     prefixCls: 'ui-tab',
     theme: 'default',
-    isRadius: false,
+    isRadius: true,
+    type: 'card',
     onChange: () => {},
   };
+
+  private tabHeader;
+  private activeTab;
 
   constructor(props) {
     super(props);
@@ -19,7 +23,14 @@ class TabGroup extends Component<GroupProps, any> {
         props.defaultValue ||
         this.getSelectIndex(props.children) ||
         0,
+      lineWidth: 0,
+      lineOffsetLeft: 0,
     };
+    this.tabHeader = React.createRef();
+  }
+
+  componentDidMount () {
+    this.setActiveLineStyle();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,7 +41,16 @@ class TabGroup extends Component<GroupProps, any> {
     }
   }
 
-  // eslint-disable-next-line
+  setActiveLineStyle () {
+    const { width = 0, left = 0 } = this.activeTab && this.activeTab.getBoundingClientRect() || {};
+    const { left: headerOffset = 0 } = this.tabHeader.current && this.tabHeader.current.getBoundingClientRect() || {};
+
+    this.setState({
+      lineWidth: width,
+      lineOffsetLeft: left - headerOffset,
+    });
+  }
+
   getSelectIndex(children) {
     let selectIndex;
     React.Children.forEach(children, (item, $index) => {
@@ -41,13 +61,6 @@ class TabGroup extends Component<GroupProps, any> {
     return selectIndex;
   }
 
-  getTitleItemCls(idx) {
-    const { prefixCls } = this.props;
-    return idx === this.state.value
-      ? `${prefixCls}-header-item active`
-      : `${prefixCls}-header-item`;
-  }
-
   getContentItemCls(idx) {
     const { prefixCls } = this.props;
     return idx === this.state.value
@@ -55,36 +68,53 @@ class TabGroup extends Component<GroupProps, any> {
       : `${prefixCls}-body-item`;
   }
 
+  handleTabClick = (index, disabled) => {
+    const { onChange } = this.props;
+
+    if (!disabled) {
+      this.setState({ value: index }, () => {
+        this.setActiveLineStyle();
+        onChange(index);
+      });
+    }
+  }
+
   render() {
-    const { props } = this;
     const {
-      isRadius, theme, className, children, onChange, style, prefixCls,
-    } = props;
+      isRadius, theme, className, children, style, prefixCls, type,
+    } = this.props;
 
     const cls = classnames({
       [prefixCls!]: true,
-      radius: 'radius' in props || isRadius,
+      radius: 'radius' in this.props || isRadius,
+      line: type === 'line',
       [`theme-${theme}`]: !!theme,
       [className!]: !!className,
     });
 
-    // eslint-disable-next-line
-    const items = React.Children.map(children, (item, $index) => {
+    const items = React.Children.map(children, (item: React.ReactElement<any>, $index) => {
+      const tabHeaderCls = classnames({
+        [`${prefixCls}-header-item`]: true,
+        [`${prefixCls}-header-item-disabled`]: !!item.props.disabled,
+        'active': $index === this.state.value,
+      });
+      const bindActiveRef = $index === this.state.value ? { ref: node => this.activeTab = node } : {};
+
       return (
         <li
           key={$index}
-          className={this.getTitleItemCls($index)}
-          onClick={() => { this.setState({ value: $index }, () => onChange($index)); }}
+          className={tabHeaderCls}
+          {...bindActiveRef}
+          onClick={() => { this.handleTabClick($index, item.props.disabled); }}
         >
-          {(item as ReactElement<any>).props.title}
+          {item.props.title}
         </li>
       );
     });
 
-    // eslint-disable-next-line
     const content = React.Children.map(children, (item, $index) => {
       return (
-        <Tab {...(item as ReactElement<any>).props} selected={!!(this.state.value === $index)}>
+        <Tab {...(item as ReactElement<any>).props} selected={this.state.value === $index}>
           {(item as ReactElement<any>).props.children}
         </Tab>
       );
@@ -92,7 +122,20 @@ class TabGroup extends Component<GroupProps, any> {
 
     return (
       <div className={cls} style={style}>
-        <ul className={`${prefixCls}-header`}>{items}</ul>
+        <ul className={`${prefixCls}-header`} ref={this.tabHeader}>
+          {items}
+          {
+            type === 'line' && (
+              <div
+                className={classnames(`${prefixCls}-line`)}
+                style={{
+                  width: this.state.lineWidth,
+                  transform: `translate3d(${this.state.lineOffsetLeft}px,0,0)`,
+                }}
+              />
+            )
+          }
+        </ul>
         <div className={`${prefixCls}-body`}>{content}</div>
       </div>
     );
