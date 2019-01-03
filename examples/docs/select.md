@@ -212,7 +212,7 @@
           <Select.Option value="f">我是F</Select.Option>
           <Select.Option value="g">我是G</Select.Option>
           <Select.Option value="h">我是H</Select.Option>
-          <Select.Option value="">我的Value是空字符串</Select.Option>
+          <Select.Option value="">我的value是空字符串</Select.Option>
         </Select>
       </div>
     )
