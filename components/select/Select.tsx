@@ -67,6 +67,8 @@ class Select extends Component<PropsType, StateProps> {
     } else {
       state.value = String(value);
     }
+
+    state.value = this.mapEmptyStringToEmptyValue(state.value);
     const [optionMap, optionData] = this.getOptionMap(this.props.children);
     state.optionMap = optionMap;
     state.optionData = optionData;
@@ -87,10 +89,7 @@ class Select extends Component<PropsType, StateProps> {
 
     React.Children.map(options, (option) => {
       if (option && typeof option === 'object' && option.type) {
-        let value = option.props.value;
-        if (value === EMPTY_STRING) {
-          value = EMPTY_STRING_VALUE;
-        }
+        let value = this.mapEmptyStringToEmptyValue(option.props.value);
         if (option.props && value) {
           // handle optionMap
           optionMap[value] = option;
@@ -243,10 +242,10 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   onDeleteTag = (_e, _key, _value, index) => {
-    const selected = (this.state.value as Array<string>).slice();
+    const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
     selected.splice(index, 1);
     const selectedData = selected.map((select, selectIndex) => {
-      const vdom = this.state.optionMap[select];
+      const vdom = this.state.optionMap[select || EMPTY_STRING_VALUE];
       const text = vdom ? vdom.props.children : '';
       return {
         text,
