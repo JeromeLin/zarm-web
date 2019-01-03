@@ -23,6 +23,9 @@ interface OptionDataProps {
   children: ReactNode;
 }
 
+const EMPTY_STRING = '';
+const EMPTY_STRING_VALUE = '$$EMPTY_STRING_VALUE';
+
 /**
  * placeholder
  */
@@ -64,6 +67,8 @@ class Select extends Component<PropsType, StateProps> {
     } else {
       state.value = String(value);
     }
+
+    state.value = this.mapEmptyStringToEmptyValue(state.value);
     const [optionMap, optionData] = this.getOptionMap(this.props.children);
     state.optionMap = optionMap;
     state.optionData = optionData;
@@ -84,14 +89,15 @@ class Select extends Component<PropsType, StateProps> {
 
     React.Children.map(options, (option) => {
       if (option && typeof option === 'object' && option.type) {
-        if (option.props && option.props.value) {
+        let value = this.mapEmptyStringToEmptyValue(option.props.value);
+        if (option.props && value) {
           // handle optionMap
-          optionMap[option.props.value] = option;
+          optionMap[value] = option;
           // handle OptionData
           optionData.push({
             key: option.key,
             props: option.props,
-            value: option.props.value,
+            value,
             children: option.props.children,
           });
         }
@@ -114,7 +120,7 @@ class Select extends Component<PropsType, StateProps> {
         value = String(value);
       }
       this.setState({
-        value,
+        value: this.mapEmptyStringToEmptyValue(value),
       });
     }
     if (nextProps.children !== this.props.children) {
@@ -144,7 +150,7 @@ class Select extends Component<PropsType, StateProps> {
     let value = String(props.value);
 
     if (this.props.multiple) {
-      const selected = (this.state.value as Array<string>).slice();
+      const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
       const position = selected.indexOf(value);
       if (position === -1) {
         selected.push(value);
@@ -152,13 +158,14 @@ class Select extends Component<PropsType, StateProps> {
         selected.splice(position, 1);
       }
       const selectedData = selected.map((select) => {
-        const vdom = this.state.optionMap[select];
+        let selectValue = select || EMPTY_STRING_VALUE;
+        const vdom = this.state.optionMap[selectValue];
         const text = vdom ? vdom.props.children : '';
-        let index = this.state.optionData.findIndex(elem => String(elem.value) === String(select));
+        let index = this.state.optionData.findIndex(elem => String(elem.value) === String(selectValue) );
         return { text, value: select, index };
       });
       this.setState({
-        value: selected,
+        value: this.mapEmptyStringToEmptyValue(selected),
       }, () => {
         this.props.onChange(selected, selectedData);
       });
@@ -172,7 +179,7 @@ class Select extends Component<PropsType, StateProps> {
     };
 
     this.setState({
-      value,
+      value: this.mapEmptyStringToEmptyValue(value),
     }, () => {
       this.setDropdown(false, () => this.props.onChange(selected));
     });
@@ -196,6 +203,30 @@ class Select extends Component<PropsType, StateProps> {
     );
   }
 
+  mapEmptyStringToEmptyValue(values) {
+    if (Array.isArray(values)) {
+      return values.map((value) => {
+        if (value === EMPTY_STRING) {
+          return EMPTY_STRING_VALUE;
+        }
+        return value;
+      });
+    } else if (values === EMPTY_STRING) {
+      return EMPTY_STRING_VALUE;
+    }
+
+    return values;
+  }
+
+  mapEmptyValueToEmptyString(selected) {
+    return selected.map((select) => {
+      if (select === EMPTY_STRING_VALUE) {
+        return EMPTY_STRING;
+      }
+      return select;
+    });
+  }
+
   handleKeyup(e) {
     if (this.state.dropdown === true && e.keyCode === 27) {
       this.setDropdown(false);
@@ -211,10 +242,10 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   onDeleteTag = (_e, _key, _value, index) => {
-    const selected = (this.state.value as Array<string>).slice();
+    const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
     selected.splice(index, 1);
     const selectedData = selected.map((select, selectIndex) => {
-      const vdom = this.state.optionMap[select];
+      const vdom = this.state.optionMap[select || EMPTY_STRING_VALUE];
       const text = vdom ? vdom.props.children : '';
       return {
         text,
@@ -291,7 +322,7 @@ class Select extends Component<PropsType, StateProps> {
       const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
       children.push(
         <Option
-          key={elem.key || elem.props.value}
+          key={elem.key || elem.value}
           showCheckIcon={checked}
           {...elem.props}
           checked={checked}

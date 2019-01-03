@@ -11,9 +11,7 @@ Modal组件的基础用法。
   constructor(props) {
     super(props);
     this.state = {
-      visible1: false,
-      visible2: false,
-      visible3: false
+      visible: false,
     };
   }
   toggleModal(key) {
@@ -22,13 +20,13 @@ Modal组件的基础用法。
     });
   }
   render() {
-    const { visible1, visible2, visible3 } = this.state;
+    const { visible } = this.state;
     return (
       <div>
-        <Button theme="info" onClick={() => this.toggleModal('visible1')}>展示模态框</Button>
+        <Button theme="info" onClick={() => this.toggleModal('visible')}>展示模态框</Button>
 
-        <Modal visible={visible3}>
-          <Modal.Header title="标题333" onClose={() => {this.toggleModal('visible3')}} />
+        <Modal visible={visible}>
+          <Modal.Header title="标题333" onClose={() => {this.toggleModal('visible')}} />
           <Modal.Body className="test">
             我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
             我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
@@ -65,7 +63,7 @@ Modal组件的基础用法。
             我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.toggleModal('visible1')}>取消</Button>
+            <Button onClick={() => this.toggleModal('visible')}>取消</Button>
             <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
           </Modal.Footer>
         </Modal>

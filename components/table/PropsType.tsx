@@ -104,7 +104,7 @@ export default interface PropsType {
   onExpand?: (expanded: boolean, row: any) => void;
   style?: object;
   width?: number;
-  maxCellSize: 20;
+  maxCellSize: number;
   dataSource: object[];
   rowClassName?: (row: any) => string;
 }
