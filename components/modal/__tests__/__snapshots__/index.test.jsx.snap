@@ -90,14 +90,14 @@ exports[`Modal renders closable Modal correctly 1`] = `
 
 exports[`Modal renders customized Modal correctly 1`] = `
 <div
-  class="ui-modal radius fade-enter"
-  style="-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms;position:fixed"
+  class="ui-modal radius"
+  style="-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms;position:fixed;display:none"
 >
   <div
     class="ui-modal-wrapper"
   >
     <div
-      class="ui-modal-dialog fade-enter"
+      class="ui-modal-dialog fade-leave"
       style="width:400px;min-width:270px;-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms"
     >
       <div

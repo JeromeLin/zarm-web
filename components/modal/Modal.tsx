@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
-  
+
 function toggleBodyOverflow(show: boolean) {
   let scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
   if (show === true) {
@@ -80,6 +80,7 @@ class Modal extends Component<ModalProps, StateIF> {
   private sleep: boolean = false;
   private modal!: HTMLDivElement | null;
   private div: HTMLDivElement = document.createElement('div');
+  private appended: boolean = false;
 
   constructor(props: ModalProps) {
     super(props);
@@ -92,14 +93,10 @@ class Modal extends Component<ModalProps, StateIF> {
     Modal.instanceList.push(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.visible) {
       this.enter();
     }
-  }
-
-  componentDidMount() {
-    document.body.appendChild(this.div);
   }
 
   componentWillUpdate() {
@@ -123,11 +120,15 @@ class Modal extends Component<ModalProps, StateIF> {
       return;
     }
     if (!this.props.visible && nextProps.visible) {
-      Modal.handleVisbibleList(this, true);
+      if (!this.appended) {
+        document.body.appendChild(this.div);
+        this.appended = true;
+      }
       this.enter();
+      Modal.handleVisbibleList(this, true);
     } else if (this.props.visible && !nextProps.visible) {
-      this.leave();
       Modal.handleVisbibleList(this, false);
+      this.leave();
     }
   }
 
@@ -150,7 +151,9 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   enter() {
-    toggleBodyOverflow(true);
+    if (Modal.visibleList.length === 0) {
+      toggleBodyOverflow(true);
+    }
     this.setState({
       isShow: true,
       isPending: true,
@@ -164,7 +167,9 @@ class Modal extends Component<ModalProps, StateIF> {
       isPending: true,
       animationState: 'leave',
     });
-    toggleBodyOverflow(false);
+    if (Modal.visibleList.length === 0) {
+      toggleBodyOverflow(false);
+    }
   }
 
   onMaskClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();

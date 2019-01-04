@@ -15,6 +15,12 @@ constructor (props) {
     }
 }
 
+componentDidMount () {
+    setTimeout(() => {
+        this.setState({ value: 44 })
+    }, 3000)
+}
+
 onChange (e) {
   this.setState({ value: e.target.value })
 }

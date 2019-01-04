@@ -15,9 +15,9 @@ Modal组件的基础用法。
       modalVisible2: false
     };
   }
-  toggleModal() {
+  toggleModal(key) {
     this.setState({
-      modalVisible: !this.state.modalVisible
+      [key]: !this.state[key]
     });
   }
   toggleModal2() {
@@ -29,21 +29,21 @@ Modal组件的基础用法。
     const { modalVisible, modalVisible2 } = this.state;
     return (
       <div>
-        <Button theme="info" onClick={() => this.toggleModal()}>展示模态框</Button>
+        <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal visible={modalVisible}>
-          <Modal.Header title="标题" onClose={() => this.toggleModal()} />
+          <Modal.Header title="我是弹框1" onClose={() => {this.toggleModal('modalVisible')}} />
           <Modal.Body className="test">
             我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
-           <Button onClick={() => this.toggleModal2()}>我是模态框2</Button>
+           <Button onClick={() => this.toggleModal2()}>显示Modal2</Button>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.toggleModal()}>取消</Button>
+            <Button onClick={() => this.toggleModal('modalVisible')}>取消</Button>
             <Button theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
           </Modal.Footer>
         </Modal>
 
         <Modal visible={modalVisible2}>
-          <Modal.Header title="标题" onClose={() => this.toggleModal2()} />
+          <Modal.Header title="我是弹框2" onClose={() => this.toggleModal2()} />
           <Modal.Body className="test">
             我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
            

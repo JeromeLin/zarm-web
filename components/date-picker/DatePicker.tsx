@@ -81,7 +81,7 @@ class DatePicker extends Component<PropsType, any> {
       if (Format.inrange(value, format)) {
         this.onDateChange(value, false);
       } else {
-        this.props.onInputInvalidDate(value);
+        this.props.onInputInvalidDate!(value);
       }
     }
     this.setState({
