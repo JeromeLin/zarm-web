@@ -64,7 +64,9 @@ class Modal extends Component<ModalProps, any> {
     toggleBodyOverflow(false);
     setTimeout(() => {
       unmountComponentAtNode(this.div);
-      document.body.removeChild(this.div);
+      if (this.div.getAttribute('role') === 'dialog') { // 对已插入document的节点进行删除
+        document.body.removeChild(this.div);
+      }
     });
   }
 
