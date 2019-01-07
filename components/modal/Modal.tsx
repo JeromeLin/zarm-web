@@ -53,15 +53,20 @@ class Modal extends Component<ModalProps, StateIF> {
     } else {
       Modal.visibleList.pop();
       let index = Modal.visibleList.length;
+      if (index > 0) {
+        const modal = Modal.visibleList[index - 1];
+        const currentVisible = modal.props.visible;
+        if (currentVisible) {
+          modal.enter();
+          modal.sleep = false;
+        }
+      }
       while (index--) {
         const modal = Modal.visibleList[index];
         const currentVisible = modal.props.visible;
-        modal.sleep = false;
-        if (currentVisible) {
-          modal.enter();
-        } else {
+        if (!currentVisible) {
+          modal.sleep = false;
           Modal.visibleList.splice(index, 1);
-          modal.leave();
         }
       }
     }
