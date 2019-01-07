@@ -41,6 +41,14 @@
         </Form.Item>
         <Form.Item
           className="col-sm-4"
+          label="类型"
+        >
+          <Select placeholder="请输入..." >
+            <Select.Option>fdsfdsfd</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item
+          className="col-sm-4"
           label="来源">
           <Input placeholder="请输入..." />
         </Form.Item>
