@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
 
-function toggleBodyOverflow(show) {
-  let scrollBarWidth = window.innerWidth - document.documentElement.offsetWidth;
+function toggleBodyOverflow(show: boolean) {
+  let scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
   if (show === true) {
     document.body.classList.add('ui-modal-body-overflow');
     if (scrollBarWidth > 0) {
@@ -17,8 +17,13 @@ function toggleBodyOverflow(show) {
   }
 }
 
-class Modal extends Component<ModalProps, any> {
+interface StateIF {
+  isShow: boolean;
+  isPending: boolean;
+  animationState: 'leave' | 'enter';
+}
 
+class Modal extends Component<ModalProps, StateIF> {
   static Header: any;
   static Body: any;
   static Footer: any;
@@ -35,10 +40,49 @@ class Modal extends Component<ModalProps, any> {
     onMaskClick() { },
   };
 
-  private modal: HTMLDivElement | null;
-  private div: HTMLDivElement = document.createElement('div');
+  private static instanceList: Modal[] = [];
+  private static visibleList: Modal[] = [];
+  private static handleVisbibleList(instance: Modal, visible: boolean) {
+    if (visible) {
+      const lastIndex = Modal.visibleList.length - 1;
+      if (lastIndex >= 0) {
+        Modal.visibleList[lastIndex].sleep = true;
+        Modal.visibleList[lastIndex].leave();
+      }
+      Modal.visibleList.push(instance);
+    } else {
+      Modal.visibleList.pop();
+      let index = Modal.visibleList.length;
+      while (index--) {
+        const modal = Modal.visibleList[index];
+        const currentVisible = modal.props.visible;
+        modal.sleep = false;
+        if (currentVisible) {
+          modal.enter();
+        } else {
+          Modal.visibleList.splice(index, 1);
+          modal.leave();
+        }
+      }
+    }
+  }
 
-  constructor(props) {
+  private static unmountModalInstance(instance: Modal, callback: () => void) {
+    const instanceIndex = Modal.instanceList.findIndex(item => item === instance);
+    if (instanceIndex >= 0) {
+      Modal.instanceList.splice(instanceIndex, 1);
+    }
+    if (Modal.instanceList.length === 0) {
+      callback();
+    }
+  }
+
+  private sleep: boolean = false;
+  private modal!: HTMLDivElement | null;
+  private div: HTMLDivElement = document.createElement('div');
+  private appended: boolean = false;
+
+  constructor(props: ModalProps) {
     super(props);
     this.state = {
       isShow: false,
@@ -46,16 +90,13 @@ class Modal extends Component<ModalProps, any> {
       animationState: 'leave',
     };
     this.animationEnd = this.animationEnd.bind(this);
-  }
-
-  componentWillMount() {
-    if (this.props.visible) {
-      this.enter();
-    }
+    Modal.instanceList.push(this);
   }
 
   componentDidMount() {
-    document.body.appendChild(this.div);
+    if (this.props.visible) {
+      this.enter();
+    }
   }
 
   componentWillUpdate() {
@@ -66,21 +107,32 @@ class Modal extends Component<ModalProps, any> {
   componentWillUnmount() {
     Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
     Events.off(this.modal, 'animationend', this.animationEnd);
-    toggleBodyOverflow(false);
+    Modal.unmountModalInstance(this, () => {
+      toggleBodyOverflow(false);
+    });
     setTimeout(() => {
       document.body.removeChild(this.div);
     });
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: ModalProps) {
+    if (this.sleep === true) {
+      return;
+    }
     if (!this.props.visible && nextProps.visible) {
+      if (!this.appended) {
+        document.body.appendChild(this.div);
+        this.appended = true;
+      }
       this.enter();
+      Modal.handleVisbibleList(this, true);
     } else if (this.props.visible && !nextProps.visible) {
+      Modal.handleVisbibleList(this, false);
       this.leave();
     }
   }
 
-  shouldComponentUpdate(_, nextState) {
+  shouldComponentUpdate(_: ModalProps, nextState: StateIF) {
     return !!(this.state.isShow || nextState.isShow);
   }
 
@@ -99,7 +151,9 @@ class Modal extends Component<ModalProps, any> {
   }
 
   enter() {
-    toggleBodyOverflow(true);
+    if (Modal.visibleList.length === 0) {
+      toggleBodyOverflow(true);
+    }
     this.setState({
       isShow: true,
       isPending: true,
@@ -113,8 +167,14 @@ class Modal extends Component<ModalProps, any> {
       isPending: true,
       animationState: 'leave',
     });
-    toggleBodyOverflow(false);
+    if (Modal.visibleList.length === 0) {
+      toggleBodyOverflow(false);
+    }
   }
+
+  onMaskClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
+
+  getModalRef = (ele: HTMLDivElement) => { this.modal = ele; };
 
   render() {
     const {
@@ -172,13 +232,13 @@ class Modal extends Component<ModalProps, any> {
         className={classes.modal}
         style={style.modal}
         onClick={onMaskClick}
-        ref={(ele) => { this.modal = ele; }}
+        ref={this.getModalRef}
       >
         <div className={`${prefixCls}-wrapper`}>
           <div
             className={classes.dialog}
             style={style.dialog}
-            onClick={e => e.stopPropagation()}
+            onClick={this.onMaskClick}
           >
             {children}
           </div>

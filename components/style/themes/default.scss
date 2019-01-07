@@ -6,7 +6,6 @@ $base-theme-success:       #5cb85c !default;
 $base-theme-info:          #2db7f5 !default;
 $base-theme-warning:       #f0ad4e !default;
 $base-theme-error:         #f50 !default;
-/*$base-theme-error:         #d9534f !default;*/
 
 $base-radius-xl:           6px !default;
 $base-radius-lg:           5px !default;
@@ -56,9 +55,6 @@ $base-btn-error-color:     #fff !default;
 $base-btn-error-bg:        $base-theme-error !default;
 $base-btn-error-border:    $base-btn-error-bg !default;
 
-
-
-
 $base-tag-default-color:   #444 !default;
 $base-tag-default-bg:      $base-theme-default !default;
 
@@ -74,18 +70,13 @@ $base-tag-warning-bg:      $base-theme-warning !default;
 $base-tag-error-color:     #fff !default;
 $base-tag-error-bg:        $base-theme-error !default;
 
-
 $base-zindex-mask:         1000 !default;
 $base-zindex-modal:        1100 !default;
 $base-zindex-loading:      1 !default;
 $base-zindex-message:      1300 !default;
 
-
 $base-modal-radius:        6px !default;
 $base-modal-round:         20px !default;
-
-
-
 $base-icon-url:            '//at.alicdn.com/t/font_64075_w7tvzqpf0n';
 
 $screen-xs:                 480px !default;
@@ -108,7 +99,6 @@ $screen-xs-max:             ($screen-sm-min - 1) !default;
 $screen-sm-max:             ($screen-md-min - 1) !default;
 $screen-md-max:             ($screen-lg-min - 1) !default;
 
-
 $grid-columns:              12 !default;
 $grid-gutter-width:         30px !default;
 $grid-float-breakpoint:     $screen-sm-min !default;
@@ -127,7 +117,7 @@ $menu-default-bg-color:     #fff;
 $menu-dark-bg-color:        #001529;
 $menu-collapsed-width:      80px;
 $submenu-dark-bg-color:     #000c17;
-$menuitem-dark-color:       hsla(0,0%,100%,.65);
+$menuitem-dark-color:       hsla(0, 0%, 100%, .65);
 $menuitem-dark-active-color:#fff;
 $menuitem-default-color:    #666;
 $menuitem-active-color:     #1890ff;
