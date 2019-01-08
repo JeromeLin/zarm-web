@@ -29,7 +29,7 @@ const LocaleReceiverWrapper = (WrappedComponent, name?) => {
   const forwardRef = (props, ref) => {
     return <LocaleReceiver {...props} forwardedRef={ref} />;
   };
-  const LocaleReceiverWithRef =  React.forwardRef(forwardRef);
+  const LocaleReceiverWithRef = React.forwardRef(forwardRef);
   hoistNonReactStatic(LocaleReceiverWithRef, WrappedComponent);
 
   return LocaleReceiverWithRef as (typeof LocaleReceiver);
