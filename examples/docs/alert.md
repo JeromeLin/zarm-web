@@ -15,9 +15,12 @@
     };
     this.showAlert = this.showAlert.bind(this);
     this.hideAlert = this.hideAlert.bind(this);
+
+    this.ref = React.createRef();
   }
 
   showAlert() {
+    console.log(this.ref.current);
     this.setState({
       alertVisible: true,
     });
@@ -37,6 +40,7 @@
         <Alert
           visible={alertVisible}
           theme="warning"
+          ref={this.ref}
           onClose={this.hideAlert}
           message='这是一个警告框'
         />
