@@ -27,7 +27,7 @@
   render() {
     return (
       <div>
-        <Input type="textarea" placeholder="请输入" rows={10} />
+        <Input type="textarea" placeholder="请输入" rows={10} style={{ height: 200 }}/>
       </div>
     )
   }

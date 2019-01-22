@@ -12,33 +12,54 @@
   constructor(props) {
     super(props)
     this.state = {
-      selectValue: '',
-      options: [1,2,3]
+      value: '',
+      data: []
     };
+    this.ref = React.createRef();
   }
   componentDidMount(){
     setTimeout(()=>{
-      this.setState({options:[4,5,6]});
-    },1000);
+      // mock async data
+      this.setState({
+        data: [
+          {
+            value: '',
+            text: '全部',
+          },
+          {
+            value: 'a',
+            text: '我是A'
+          },
+          {
+            value: 'b',
+            text: '我是B'
+          }
+        ]
+      });
+      console.log(this.ref.current);
+    }, 1000);
   }
   render() {
-    const { options } = this.state;
+    const { data } = this.state;
     return (
       <div>
         <Select
           style={{ width: 200 }}
-          value={this.state.selectValue}
+          ref={this.ref}
           onChange={(data) => {
             console.log(data);
             this.setState({
               selectValue : data.value,
             });
         }}>
-          <Select.Option key="a" value="a">我是A {"测试字符空格bug"}</Select.Option>
-          <Select.Option key="b" value="b" disabled>我是B</Select.Option>
-          <Select.Option key="c" value="c">我是C</Select.Option>
-          <Select.Option key="d" value="d">我是D</Select.Option>
-          {options.map(elem=><div key={elem} value={elem}><span>{elem}</span></div>)}
+          {
+            data.map(({ value, text }) => {
+              return (
+                <Select.Option key={value} value={value}>{text}</Select.Option>
+              )
+            })
+          }
+
         </Select>
       </div>
     )
@@ -194,6 +215,7 @@
           <Select.Option value="f">我是F</Select.Option>
           <Select.Option value="g">我是G</Select.Option>
           <Select.Option value="h">我是H</Select.Option>
+          <Select.Option value="">我的value是空字符串</Select.Option>
         </Select>
       </div>
     )
@@ -254,7 +276,7 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 ```
 + onChange回调的参数中的`value`值类型始终为`string`;
 + 当`multiple`属性为`true`时,若参数`value`中存在目前`option`列表中不存在的元素：则不会显示该元素，但也不会删除该元素。例如：
-```
+```js
   this.state = {
       selectValue: ['i am not the one']
   }

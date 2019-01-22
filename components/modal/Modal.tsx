@@ -1,5 +1,5 @@
 import React, { Component, MouseEvent, KeyboardEvent } from 'react';
-import { createPortal } from 'react-dom';
+import { createPortal, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
@@ -101,9 +101,11 @@ class Modal extends Component<ModalProps, StateIF> {
     if (this.props.visible) {
       this.enter();
     }
-    Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
-    Events.on(this.modal, 'animationend', this.animationEnd);
-    Events.on(document, 'keydown', this.onKeyPress);
+    if (this.modal) {
+      Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
+      Events.on(this.modal, 'animationend', this.animationEnd);
+      Events.on(document, 'keydown', this.onKeyPress);
+    }
   }
 
   componentWillUnmount() {
@@ -113,7 +115,10 @@ class Modal extends Component<ModalProps, StateIF> {
       toggleBodyOverflow(false);
     });
     setTimeout(() => {
-      document.body.removeChild(this.div);
+      unmountComponentAtNode(this.div);
+      if (this.div.getAttribute('role') === 'dialog') { // 对已插入document的节点进行删除
+        document.body.removeChild(this.div);
+      }
     });
   }
 
@@ -152,7 +157,7 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
   onKeyPress = (e: KeyboardEvent) => {
-    if (this.props.visible && e.keyCode === 27) {
+    if (this.state.isShow && e.keyCode === 27) {
       React.Children.forEach(this.props.children, (elem) => {
         if (typeof elem !== 'string' && typeof elem !== 'number') {
           if (elem.props.onClose) {
@@ -187,7 +192,11 @@ class Modal extends Component<ModalProps, StateIF> {
 
   onMaskClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
 
-  getModalRef = (ele: HTMLDivElement) => { this.modal = ele; };
+  getModalRef = (ele: HTMLDivElement) => {
+    if (ele) {
+      this.modal = ele;
+    }
+  }
 
   render() {
     const {

@@ -1,22 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import TimePicker from '../index';
 import TimeSelect from '../TimeSelect';
 
-// ReactDOM.createPortal = node => node
+jest.mock('react-dom', () => ({
+  createPortal: node => node,
+  findDOMNode: () => ({ children: [{
+    querySelector: () => ({ children: [{}] }),
+  }] }),
+}));
 
 describe('TimePicker', () => {
-  beforeAll(() => {
-    ReactDOM.createPortal = jest.fn((element) => {
-      return element;
-    });
-  });
+  // beforeAll(() => {
+  //   ReactDOM.createPortal = jest.fn((element) => {
+  //     return element;
+  //   });
+  // });
 
-  afterEach(() => {
-    ReactDOM.createPortal.mockClear();
-  });
+  // afterEach(() => {
+  //   ReactDOM.createPortal.mockClear();
+  // });
 
   it('renders normal time-picker correctly', () => {
     const wrapper = render(

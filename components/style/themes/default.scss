@@ -1,6 +1,8 @@
 $browser-default-font-size: 14;
 $browser-default-font-size-px: 14px !default;
 
+$default-transition: .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
 $base-theme-default:       #e6e6e6 !default;
 $base-theme-success:       #5cb85c !default;
 $base-theme-info:          #2db7f5 !default;

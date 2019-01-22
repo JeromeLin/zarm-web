@@ -62,7 +62,7 @@ exports[`Tab renders Tab correctly with more props 1`] = `
 exports[`Tab renders normal Tab correctly 1`] = `
 <div>
   <div
-    class="ui-tab theme-default"
+    class="ui-tab radius theme-default"
   >
     <ul
       class="ui-tab-header"
