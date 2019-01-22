@@ -36,7 +36,7 @@ Modal组件的基础用法。
     return (
       <div>
         <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
-        <Modal visible={modalVisible}>
+        <Modal visible={modalVisible} animationType="slideRight">
           <Modal.Header title="我是弹框1" onClose={() => {this.toggleModal('modalVisible')}} />
           <Modal.Body className="test">
             我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
@@ -48,7 +48,7 @@ Modal组件的基础用法。
           </Modal.Footer>
         </Modal>
 
-        <Modal visible={modalVisible2}>
+        <Modal visible={modalVisible2} animationType="slideRight">
           <Modal.Header title="我是弹框2" onClose={() => this.toggleModal2()} />
           <Modal.Body className="test">
             我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
@@ -60,7 +60,7 @@ Modal组件的基础用法。
           </Modal.Footer>
         </Modal>
 
-         <Modal visible={modalVisible3}>
+         <Modal visible={modalVisible3} animationType="slideRight">
           <Modal.Header title="我是弹框3" onClose={() => this.toggleModal3()} />
           <Modal.Body className="test">
             我是模态框3 <br/>我是模态框3<br/>我是模态框3<br/>我是模态框3 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 

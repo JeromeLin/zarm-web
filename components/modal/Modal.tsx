@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { Component, MouseEvent, KeyboardEvent } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
@@ -94,7 +94,6 @@ class Modal extends Component<ModalProps, StateIF> {
       isPending: false,
       animationState: 'leave',
     };
-    this.animationEnd = this.animationEnd.bind(this);
     Modal.instanceList.push(this);
   }
 
@@ -102,11 +101,9 @@ class Modal extends Component<ModalProps, StateIF> {
     if (this.props.visible) {
       this.enter();
     }
-  }
-
-  componentWillUpdate() {
     Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
     Events.on(this.modal, 'animationend', this.animationEnd);
+    Events.on(document, 'keydown', this.onKeyPress);
   }
 
   componentWillUnmount() {
@@ -141,7 +138,7 @@ class Modal extends Component<ModalProps, StateIF> {
     return !!(this.state.isShow || nextState.isShow);
   }
 
-  animationEnd() {
+  animationEnd = () => {
     if (this.state.animationState === 'leave') {
       this.setState({
         isShow: false,
@@ -151,6 +148,17 @@ class Modal extends Component<ModalProps, StateIF> {
       this.setState({
         isShow: true,
         isPending: false,
+      });
+    }
+  }
+  onKeyPress = (e: KeyboardEvent) => {
+    if (this.props.visible && e.keyCode === 27) {
+      React.Children.forEach(this.props.children, (elem) => {
+        if (typeof elem !== 'string' && typeof elem !== 'number') {
+          if (elem.props.onClose) {
+            elem.props.onClose();
+          }
+        }
       });
     }
   }

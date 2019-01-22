@@ -1,5 +1,5 @@
 .ui-modal {
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   position: fixed;
   left: 0;
   top: 0;
@@ -93,5 +93,5 @@
 }
 
 .ui-modal-body-overflow {
-  overflow: hidden;
+  overflow-y: hidden;
 }
