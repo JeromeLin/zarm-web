@@ -9,6 +9,7 @@ export interface ValueArray {
 
 export default interface Props {
   search?: boolean;
+  remoteSearch?: boolean;
   active?: boolean;
   placeholder?: string;
   searchValue?: string | null;

@@ -157,20 +157,22 @@
           remoteSearch
           value={this.state.selectValue}
           style={{ width: 200 }}
-          // searchPlaceholder="输入关键字"
+          searchPlaceholder="输入关键字"
           onSearchChange={(value) => {
+            console.log(value)
              setTimeout(() => {
-                this.setState({ options: [4,5,6,7,8] })
-             }, 2000)
+                this.setState({ options: [`${value}1`,`${value}2`,`${value}3`,`${value}4`,`${value}5`] })
+             }, 1000)
           }}
           onChange={(data) => {
-            console.log(data);
             this.setState({
               selectValue: data.value
+            }, () => {
+              console.log(this.state.selectValue);
             });
           }}
         >
-          {this.state.options.map(elem=><Select.Option key={elem} value={elem}>{elem}</Select.Option>)}
+          {this.state.options.map(elem => <Select.Option key={elem} value={elem}>{elem}</Select.Option>)}
         </Select>
       </div>
     )
@@ -337,95 +339,6 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 ```
 :::
 
-### 多选穿梭框
-
-使用`Select.Multiple`实现。
-
-:::demo
-
-```js
-  constructor(props) {
-    super(props)
-    this.state = {
-      mulSelectLeft: [
-        {value: 1, name: '我是选项一'},
-        {value: 2, name: '我是选项二'},
-        {value: 3, name: '我是选项三'},
-        {value: 4, name: '我是选项四'},
-      ],
-      mulSelectLeftValue: [],
-      mulSelectRight: [],
-      mulSelectRightValue: [],
-    }
-  }
-  render() {
-    return (
-      <div>
-        <Select.Multiple
-          style={{ width: 200, height: 200 }}
-          value={this.state.mulSelectLeftValue}
-          onChange={(selectedRows, row) => {
-            this.setState({ mulSelectLeftValue: selectedRows });
-          }}
-        >
-          {
-            this.state.mulSelectLeft.map((option, index) => {
-              return <Select.Option key={index} value={option.value}>{option.name}</Select.Option>
-            })
-          }
-        </Select.Multiple>
-
-        <span style={{margin: '-10px 10px 0 10px', textAlign: 'center', verticalAlign: 'middle', display: 'inline-block'}}>
-          <Button
-            radius
-            style={{float: 'left', clear: 'both'}}
-            isDisabled={this.state.mulSelectLeftValue.length == 0}
-            onClick={() => {
-              const mulSelectLeft = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) < 0) && item);
-              let selected = [...this.state.mulSelectLeft].filter(item => (this.state.mulSelectLeftValue.indexOf(item.value) > -1) && item);
-              let mulSelectRight = this.state.mulSelectRight.concat(selected);
-              this.setState({
-                mulSelectLeft,
-                mulSelectRight,
-                mulSelectLeftValue: [],
-                mulSelectRightValue: []
-            });
-          }}><Icon type="add" /></Button>
-          <Button
-            radius
-            style={{float: 'left', clear: 'both', marginTop: 10}}
-            isDisabled={this.state.mulSelectRightValue.length == 0}
-            onClick={()=> {
-              const mulSelectRight = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) < 0) && item);
-              let selected = [...this.state.mulSelectRight].filter(item => (this.state.mulSelectRightValue.indexOf(item.value) > -1) && item);
-              let mulSelectLeft = this.state.mulSelectLeft.concat(selected);
-              this.setState({
-                mulSelectLeft,
-                mulSelectRight,
-                mulSelectLeftValue: [],
-                mulSelectRightValue: []
-            });
-          }}><Icon type="minus" /></Button>
-        </span>
-
-        <Select.Multiple
-          style={{width: 200, height: 200}}
-          value={this.state.mulSelectRightValue}
-          onChange={(selectedRows, row) => {
-            this.setState({ mulSelectRightValue: selectedRows });
-          }}
-        >
-          {
-            this.state.mulSelectRight.map((option, index) => {
-              return <Select.Option key={index} value={option.value}>{option.name}</Select.Option>
-            })
-          }
-        </Select.Multiple>
-      </div>
-    )
-  }
-```
-:::
 
 ### Select Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
