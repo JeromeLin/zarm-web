@@ -156,8 +156,9 @@ class Modal extends Component<ModalProps, StateIF> {
       });
     }
   }
+
   onKeyPress = (e: KeyboardEvent) => {
-    if (this.state.isShow && e.keyCode === 27) {
+    if (this.state.isShow && e.keyCode === 27 && this.state.animationState !== 'leave') {
       React.Children.forEach(this.props.children, (elem) => {
         if (typeof elem !== 'string' && typeof elem !== 'number') {
           if (elem.props.onClose) {
