@@ -42,12 +42,19 @@ class Modal extends Component<ModalProps, StateIF> {
 
   private static instanceList: Modal[] = [];
   private static visibleList: Modal[] = [];
-  private static handleVisbibleList(instance: Modal, visible: boolean) {
+  private static handleVisbibleList(instance: Modal, visible: boolean, noAnimation?: boolean) {
     if (visible) {
       const lastIndex = Modal.visibleList.length - 1;
       if (lastIndex >= 0) {
         Modal.visibleList[lastIndex].sleep = true;
-        Modal.visibleList[lastIndex].leave();
+        if (noAnimation) {
+          Modal.visibleList[lastIndex].setState({
+            isPending: true,
+            isShow: false,
+          });
+        } else {
+          Modal.visibleList[lastIndex].leave();
+        }
       }
       Modal.visibleList.push(instance);
     } else {
@@ -98,8 +105,16 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   componentDidMount() {
+    if (this.sleep === true) {
+      return;
+    }
     if (this.props.visible) {
+      if (!this.appended) {
+        document.body.appendChild(this.div);
+        this.appended = true;
+      }
       this.enter();
+      Modal.handleVisbibleList(this, true, true);
     }
     if (this.modal) {
       Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
@@ -116,7 +131,9 @@ class Modal extends Component<ModalProps, StateIF> {
     });
     setTimeout(() => {
       unmountComponentAtNode(this.div);
-      if (this.div.getAttribute('role') === 'dialog') { // 对已插入document的节点进行删除
+      const parentNode = this.div.parentNode;
+      if (parentNode) {
+        // 对已插入document的节点进行删除
         document.body.removeChild(this.div);
       }
     });
@@ -131,6 +148,11 @@ class Modal extends Component<ModalProps, StateIF> {
         document.body.appendChild(this.div);
         this.appended = true;
       }
+      Modal.visibleList.forEach(item => {
+        item.setState({
+          isShow: false,
+        });
+      });
       this.enter();
       Modal.handleVisbibleList(this, true);
     } else if (this.props.visible && !nextProps.visible) {
@@ -160,7 +182,7 @@ class Modal extends Component<ModalProps, StateIF> {
   onKeyPress = (e: KeyboardEvent) => {
     if (this.state.isShow && e.keyCode === 27 && this.state.animationState !== 'leave') {
       React.Children.forEach(this.props.children, (elem) => {
-        if (typeof elem !== 'string' && typeof elem !== 'number') {
+        if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
           if (elem.props.onClose) {
             elem.props.onClose();
           }

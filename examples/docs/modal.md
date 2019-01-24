@@ -12,7 +12,8 @@ Modal组件的基础用法。
     super(props);
     this.state = {
       modalVisible: false,
-      modalVisible2: false
+      modalVisible2: false,
+      modalVisible3: false,
     };
   }
   toggleModal(key) {
