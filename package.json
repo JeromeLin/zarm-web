@@ -1,6 +1,6 @@
 {
   "name": "dragon-ui",
-  "version": "1.0.0-alpha.20",
+  "version": "1.0.0-alpha.22",
   "description": "基于 React 的桌面端UI库",
   "tags": [
     "dragon-ui",
@@ -115,7 +115,7 @@
     "jest": "^21.2.1",
     "lint-staged": "^4.3.0",
     "marked": "^0.4.0",
-    "mini-css-extract-plugin": "^0.4.0",
+    "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.5.2",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^2.1.5",

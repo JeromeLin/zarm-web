@@ -42,9 +42,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
       >
         <Portal
           containerInfo={
-            <div
-              role="dialog"
-            >
+            <div>
               <div
                 class="ui-modal fade-enter"
                 style="position: fixed;"

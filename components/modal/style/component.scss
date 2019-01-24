@@ -1,5 +1,5 @@
 .ui-modal {
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   position: fixed;
   left: 0;
   top: 0;
@@ -12,10 +12,7 @@
   -webkit-overflow-scrolling: touch;
   overflow: auto;
   z-index: $base-zindex-modal;
-
-  .ui-modal-wrapper {
-    overflow: auto;
-  }
+  will-change: opacity;
 
   &.radius {
     .ui-modal-dialog {
@@ -40,6 +37,7 @@
       box-shadow: 0 7px 21px rgba(0, 0, 0, .2);
       overflow: hidden;
       z-index: $base-zindex-modal + 1;
+      will-change: transform;
     }
   }
   // fix popover-content position when using in Modal
@@ -95,5 +93,5 @@
 }
 
 .ui-modal-body-overflow {
-  overflow: hidden;
+  overflow-y: hidden;
 }
