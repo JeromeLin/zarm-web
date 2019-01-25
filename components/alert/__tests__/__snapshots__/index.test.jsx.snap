@@ -36,114 +36,162 @@ exports[`Alert renders basic Alert correctly 1`] = `
       visible={true}
       width={270}
     >
-      <div
-        className="ui-modal fade-enter"
-        onClick={[Function]}
-        style={
-          Object {
-            "MozAnimationDuration": "300ms",
-            "OAnimationDuration": "300ms",
-            "WebkitAnimationDuration": "300ms",
-            "animationDuration": "300ms",
-            "msAnimationDuration": "300ms",
-            "position": "fixed",
-          }
+      <Portal
+        containerInfo={
+          <div
+            role="dialog"
+          >
+            <div
+              class="ui-modal fade-enter"
+              style="position: fixed;"
+            >
+              <div
+                class="ui-modal-wrapper"
+              >
+                <div
+                  class="ui-modal-dialog zoom-enter"
+                  style="width: 270px; min-width: 270px;"
+                >
+                  <div
+                    class="ui-modal-body"
+                    style="height: auto;"
+                  >
+                    <div
+                      class="ui-alert"
+                    >
+                      <i
+                        class="ui-icon ui-icon-warning-round theme-warning"
+                      />
+                      <span>
+                        这是一个警告框
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="ui-modal-footer"
+                  >
+                    <button
+                      class="ui-button radius theme-default"
+                      type="button"
+                    >
+                      关闭
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         }
       >
         <div
-          className="ui-modal-wrapper"
+          className="ui-modal fade-enter"
+          onClick={[Function]}
+          style={
+            Object {
+              "MozAnimationDuration": "300ms",
+              "OAnimationDuration": "300ms",
+              "WebkitAnimationDuration": "300ms",
+              "animationDuration": "300ms",
+              "msAnimationDuration": "300ms",
+              "position": "fixed",
+            }
+          }
         >
           <div
-            className="ui-modal-dialog zoom-enter"
-            onClick={[Function]}
-            style={
-              Object {
-                "MozAnimationDuration": "300ms",
-                "OAnimationDuration": "300ms",
-                "WebkitAnimationDuration": "300ms",
-                "animationDuration": "300ms",
-                "minWidth": 270,
-                "msAnimationDuration": "300ms",
-                "width": 270,
-              }
-            }
+            className="ui-modal-wrapper"
           >
-            <ModalBody
-              height="auto"
-              prefixCls="ui-modal"
-              style={Object {}}
-            >
-              <div
-                className="ui-modal-body"
-                style={
-                  Object {
-                    "height": "auto",
-                  }
+            <div
+              className="ui-modal-dialog zoom-enter"
+              onClick={[Function]}
+              style={
+                Object {
+                  "MozAnimationDuration": "300ms",
+                  "OAnimationDuration": "300ms",
+                  "WebkitAnimationDuration": "300ms",
+                  "animationDuration": "300ms",
+                  "minWidth": 270,
+                  "msAnimationDuration": "300ms",
+                  "width": 270,
                 }
-              >
-                <div
-                  className="ui-alert"
-                >
-                  <Icon
-                    className=""
-                    onClick={[Function]}
-                    prefixCls="ui-icon"
-                    style={Object {}}
-                    theme="warning"
-                    type="warning-round"
-                  >
-                    <i
-                      className="ui-icon ui-icon-warning-round theme-warning"
-                      onClick={[Function]}
-                      style={Object {}}
-                    />
-                  </Icon>
-                  <span>
-                    这是一个警告框
-                  </span>
-                </div>
-              </div>
-            </ModalBody>
-            <ModalFooter
-              prefixCls="ui-modal"
-              style={Object {}}
+              }
             >
-              <div
-                className="ui-modal-footer"
+              <ModalBody
+                height="auto"
+                prefixCls="ui-modal"
                 style={Object {}}
               >
-                <Button
-                  className={null}
-                  isActive={false}
-                  isBlock={false}
-                  isCircle={false}
-                  isDisabled={false}
-                  isFocus={false}
-                  isLoading={false}
-                  isRadius={false}
-                  isRound={false}
-                  onClick={[Function]}
-                  prefixCls="ui-button"
-                  size={null}
-                  style={Object {}}
-                  theme="default"
-                  type="button"
+                <div
+                  className="ui-modal-body"
+                  style={
+                    Object {
+                      "height": "auto",
+                    }
+                  }
                 >
-                  <button
-                    className="ui-button theme-default"
-                    disabled={false}
+                  <div
+                    className="ui-alert"
+                  >
+                    <Icon
+                      className=""
+                      onClick={[Function]}
+                      prefixCls="ui-icon"
+                      style={Object {}}
+                      theme="warning"
+                      type="warning-round"
+                    >
+                      <i
+                        className="ui-icon ui-icon-warning-round theme-warning"
+                        onClick={[Function]}
+                        style={Object {}}
+                      />
+                    </Icon>
+                    <span>
+                      这是一个警告框
+                    </span>
+                  </div>
+                </div>
+              </ModalBody>
+              <ModalFooter
+                prefixCls="ui-modal"
+                style={Object {}}
+              >
+                <div
+                  className="ui-modal-footer"
+                  style={Object {}}
+                >
+                  <Button
+                    className={null}
+                    isActive={false}
+                    isBlock={false}
+                    isCircle={false}
+                    isDisabled={false}
+                    isFocus={false}
+                    isLoading={false}
+                    isRadius={true}
+                    isRound={false}
                     onClick={[Function]}
+                    prefixCls="ui-button"
+                    size={null}
                     style={Object {}}
+                    theme="default"
                     type="button"
                   >
-                    关闭
-                  </button>
-                </Button>
-              </div>
-            </ModalFooter>
+                    <button
+                      className="ui-button radius theme-default"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={Object {}}
+                      type="button"
+                    >
+                      关闭
+                    </button>
+                  </Button>
+                </div>
+              </ModalFooter>
+            </div>
           </div>
         </div>
-      </div>
+      </Portal>
     </Modal>
   </AlertExtension>
 </LocaleReceiver>

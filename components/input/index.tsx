@@ -14,6 +14,7 @@ class Input extends Component<PropsType, any> {
     prefixCls: 'ui-input',
     type: 'text',
     size: null,
+    radius: true,
   };
 
   inputElem: HTMLInputElement | HTMLTextAreaElement;
@@ -87,7 +88,7 @@ class Input extends Component<PropsType, any> {
           />
         );
 
-    return <span>{input}</span>;
+    return input;
   }
 }
 

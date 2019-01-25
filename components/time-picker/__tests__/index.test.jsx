@@ -5,18 +5,20 @@ import toJson from 'enzyme-to-json';
 import TimePicker from '../index';
 import TimeSelect from '../TimeSelect';
 
-// ReactDOM.createPortal = node => node
+jest.mock('react-dom', () => ({
+  createPortal: node => node,
+}));
 
 describe('TimePicker', () => {
-  beforeAll(() => {
-    ReactDOM.createPortal = jest.fn((element) => {
-      return element;
-    });
-  });
-
-  afterEach(() => {
-    ReactDOM.createPortal.mockClear();
-  });
+  // beforeAll(() => {
+  //   ReactDOM.createPortal = jest.fn((element) => {
+  //     return element;
+  //   });
+  // });
+  //
+  // afterEach(() => {
+  //   ReactDOM.createPortal.mockClear();
+  // });
 
   it('renders normal time-picker correctly', () => {
     const wrapper = render(
@@ -61,20 +63,6 @@ describe('TimePicker', () => {
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('behaves correctly when item click', () => {
-    const onChange = jest.fn();
-    const initValue = '00:00:00';
-    const wrapper = mount(
-      <TimeSelect
-        value={initValue}
-        onChange={onChange}
-      />
-    );
-    wrapper.find('.ui-option-list').first().simulate('click');
-
-    expect(onChange).toHaveBeenCalledWith(initValue);
   });
 
   it('behaves correctly when clear button click', () => {

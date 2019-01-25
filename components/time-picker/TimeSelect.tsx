@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import rafObj from '../utils/rAF';
 import Select from '../select';
 import TimeSelectProps from './PropsType';
+import { FormItemContext } from '../form/createContext';
+import { isEmpty } from '../utils';
 
 const scrollTo = (element, to, duration) => {
   if (duration <= 0) {
@@ -22,6 +24,8 @@ const scrollTo = (element, to, duration) => {
 };
 
 class TimeSelect extends Component<TimeSelectProps, any> {
+  static contextType = FormItemContext;
+
   private hourDom: string;
   private minuteDom: string;
   private secondDom: string;
@@ -87,6 +91,9 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     if (type === 'H') { selectedH = arr; }
     if (type === 'M') { selectedM = arr; }
     if (type === 'S') { selectedS = arr; }
+    if (!isEmpty(this.context)) {
+      this.context.handleFieldChange();
+    }
     this.setState({ selectedH, selectedM, selectedS });
     const rVal = selectedH[0] + ':' + selectedM[0] + ':' + selectedS[0];
     this.scrollToSelected(element, selectIndex, 120);

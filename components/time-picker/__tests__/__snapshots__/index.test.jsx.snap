@@ -3,7 +3,7 @@
 exports[`TimePicker renders disabled time-picker correctly 1`] = `
 <div>
   <div
-    class="ui-select ui-time-select-wrapper disabled"
+    class="ui-select ui-time-select-wrapper disabled radius"
   >
     <div
       class="ui-dropdown-trigger-box"
@@ -272,7 +272,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
 exports[`TimePicker renders normal time-picker correctly 1`] = `
 <div>
   <div
-    class="ui-select ui-time-select-wrapper"
+    class="ui-select ui-time-select-wrapper radius"
   >
     <div
       class="ui-dropdown-trigger-box"

@@ -1,18 +1,19 @@
-import { CSSProperties } from '../../node_modules/@types/react';
+import { CSSProperties } from 'react';
 
-export type theme = 'success' | 'warning' | 'error' | 'validating' | 'default';
+export type triggerType = 'change' | 'blur' | 'none';
 
 export interface ItemProps {
   prefixCls?: string;
-  theme?: theme;
   id?: string;
   label?: string;
-  labelCol?: string;
+  labelClassName?: string;
   controlCol?: string;
   isRequired?: boolean;
   className?: string;
   help?: string;
   style?: CSSProperties;
+  rules?: object;
+  prop?: string;
 }
 
 export default interface PropsType {
@@ -20,4 +21,8 @@ export default interface PropsType {
   type?: 'horizontal' | 'inline';
   className?: string;
   style?: CSSProperties;
+  model?: object;
+  rules?: object;
+  labelWidth?: string | number;
+  labelPosition?: string;
 }

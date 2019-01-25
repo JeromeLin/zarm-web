@@ -6,7 +6,9 @@ import Modal from '../index';
 
 const { Header, Body, Footer } = Modal;
 
-ReactDOM.createPortal = node => node;
+jest.mock('react-dom', () => ({
+  createPortal: node => node,
+}));
 
 describe('Modal', () => {
   it('renders basic Modal correctly', () => {
@@ -51,7 +53,7 @@ describe('Modal', () => {
   it('triggers onClose callback correctly when clicks on closable icon', () => {
     const onClose = jest.fn();
     const wrapper = mount(
-      <Modal>
+      <Modal visible>
         <Header title="标题" onClose={onClose} />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>

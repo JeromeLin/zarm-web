@@ -8,53 +8,49 @@ exports[`Form renders inline Form with label correctly 1`] = `
     class="ui-form-item col-sm-4"
   >
     <label
-      class=""
+      style="text-align:right"
     >
       类型
     </label>
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
-      <span>
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </span>
+      <input
+        class="ui-input radius"
+        placeholder="请输入..."
+        type="text"
+      />
     </div>
   </div>
   <div
     class="ui-form-item col-sm-4"
   >
     <label
-      class=""
+      style="text-align:right"
     >
       来源
     </label>
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
-      <span>
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </span>
+      <input
+        class="ui-input radius"
+        placeholder="请输入..."
+        type="text"
+      />
     </div>
   </div>
   <div
     class="ui-form-item col-sm-4"
   >
     <label
-      class=""
+      style="text-align:right"
     />
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
       <button
-        class="ui-button theme-success"
+        class="ui-button radius theme-success"
         type="button"
       >
         查询
@@ -72,32 +68,25 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
     class="ui-form-item col-sm-4"
   >
     <label
-      class=""
+      style="text-align:right"
     >
       类型
     </label>
     <div
-      class="ui-form-item-control ui-form-item-control-help theme-default"
+      class="ui-form-item-control"
     >
-      <span>
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </span>
-      <div
-        class="ui-form-explain"
-      >
-        什么是类型
-      </div>
+      <input
+        class="ui-input radius"
+        placeholder="请输入..."
+        type="text"
+      />
     </div>
   </div>
   <div
     class="ui-form-item col-sm-4"
   >
     <label
-      class=""
+      style="text-align:right"
     >
       <span
         class="ui-form-item-required"
@@ -109,28 +98,26 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       来源
     </label>
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
-      <span>
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </span>
+      <input
+        class="ui-input radius"
+        placeholder="请输入..."
+        type="text"
+      />
     </div>
   </div>
   <div
     class="ui-form-item col-sm-4"
   >
     <label
-      class=""
+      style="text-align:right"
     />
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
       <button
-        class="ui-button theme-success"
+        class="ui-button radius theme-success"
         type="button"
       >
         查询
@@ -148,50 +135,46 @@ exports[`Form renders normal Form correctly 1`] = `
     class="ui-form-item"
   >
     <label
-      class=""
+      style="text-align:right"
     >
       账号
     </label>
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
-      <span>
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </span>
+      <input
+        class="ui-input radius"
+        placeholder="请输入..."
+        type="text"
+      />
     </div>
   </div>
   <div
     class="ui-form-item"
   >
     <label
-      class=""
+      style="text-align:right"
     >
       密码
     </label>
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
-      <span>
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </span>
+      <input
+        class="ui-input radius"
+        placeholder="请输入..."
+        type="text"
+      />
     </div>
   </div>
   <div
     class="ui-form-item"
   >
     <div
-      class="ui-form-item-control theme-default"
+      class="ui-form-item-control"
     >
       <button
-        class="ui-button theme-success"
+        class="ui-button radius theme-success"
         type="button"
       >
         登录
