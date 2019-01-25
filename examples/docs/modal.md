@@ -40,6 +40,7 @@ Modal组件的基础用法。
         <Modal visible={modalVisible} animationType="slideRight">
           <Modal.Header title="我是弹框1" onClose={() => {this.toggleModal('modalVisible')}} />
           <Modal.Body className="test">
+          <input name="ad"/>
             我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
            <Button onClick={() => this.toggleModal2()}>显示Modal2</Button>
           </Modal.Body>

@@ -3,6 +3,9 @@ import { createPortal, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { ModalProps, StyleType } from './PropsType';
+import ModalHeader from './ModalHeader';
+import ModalBody from './ModalBody';
+import ModalFooter from './ModalFooter';
 
 function toggleBodyOverflow(show: boolean) {
   let scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
@@ -24,9 +27,9 @@ interface StateIF {
 }
 
 class Modal extends Component<ModalProps, StateIF> {
-  static Header: any;
-  static Body: any;
-  static Footer: any;
+  static Header: typeof ModalHeader;
+  static Body: typeof ModalBody;
+  static Footer: typeof ModalFooter;
 
   static defaultProps = {
     prefixCls: 'ui-modal',
@@ -92,6 +95,7 @@ class Modal extends Component<ModalProps, StateIF> {
   private sleep: boolean = false;
   private modal!: HTMLDivElement | null;
   private div: HTMLDivElement = document.createElement('div');
+  private modalContent!: HTMLDivElement;
   private appended: boolean = false;
 
   constructor(props: ModalProps) {
@@ -119,7 +123,6 @@ class Modal extends Component<ModalProps, StateIF> {
     if (this.modal) {
       Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
       Events.on(this.modal, 'animationend', this.animationEnd);
-      Events.on(document, 'keydown', this.onKeyPress);
     }
   }
 
@@ -163,6 +166,16 @@ class Modal extends Component<ModalProps, StateIF> {
 
   shouldComponentUpdate(_: ModalProps, nextState: StateIF) {
     return !!(this.state.isShow || nextState.isShow);
+  }
+
+  componentDidUpdate() {
+    if (this.modalContent) {
+      if (this.state.isShow) {
+        this.modalContent.focus();
+      } else {
+        this.modalContent.blur();
+      }
+    }
   }
 
   animationEnd = () => {
@@ -219,6 +232,9 @@ class Modal extends Component<ModalProps, StateIF> {
     if (ele) {
       this.modal = ele;
     }
+  }
+  modalContentRef = (elem: HTMLDivElement) => {
+    this.modalContent = elem;
   }
 
   render() {
@@ -281,14 +297,18 @@ class Modal extends Component<ModalProps, StateIF> {
       >
         <div className={`${prefixCls}-wrapper`}>
           <div
+            ref={this.modalContentRef}
+            tabIndex={-1}
             className={classes.dialog}
             style={style.dialog}
             onClick={this.onMaskClick}
+            onKeyDown={this.onKeyPress}
           >
             {children}
           </div>
         </div>
-      </div>,
+      </div>
+      ,
       this.div,
     );
   }

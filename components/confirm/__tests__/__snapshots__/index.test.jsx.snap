@@ -53,6 +53,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                   <div
                     class="ui-modal-dialog zoom-enter"
                     style="width: 270px; min-width: 270px;"
+                    tabindex="-1"
                   >
                     <div
                       class="ui-modal-body"
@@ -111,6 +112,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
               <div
                 className="ui-modal-dialog zoom-enter"
                 onClick={[Function]}
+                onKeyDown={[Function]}
                 style={
                   Object {
                     "MozAnimationDuration": "300ms",
@@ -122,6 +124,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                     "width": 270,
                   }
                 }
+                tabIndex={-1}
               >
                 <ModalBody
                   height="auto"
