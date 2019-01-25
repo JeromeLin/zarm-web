@@ -270,6 +270,7 @@ class Pagination extends Component<PropsType, any> {
           isRadius={radius}
           defaultValue={defaultPageSize}
           size="sm"
+          value={pageSize === 10 ? defaultPageSize : pageSize}
           onChange={({ value }) => {
             if (value === pageSize) {
               return;

@@ -11,9 +11,12 @@ const LocaleReceiverWrapper = (WrappedComponent, name?) => {
             locale && locale[name || WrappedComponent.name];
           const localeCode = locale && locale.code;
 
+          const { forwardedRef, ...rest } = props;
+
           return (
             <WrappedComponent
-              {...props}
+              {...rest}
+              ref={forwardedRef}
               locale={componentLocale}
               localeCode={localeCode}
             />
@@ -22,8 +25,14 @@ const LocaleReceiverWrapper = (WrappedComponent, name?) => {
       </LocaleContext.Consumer>
     );
   };
-  hoistNonReactStatic(LocaleReceiver, WrappedComponent);
-  return LocaleReceiver;
+
+  const forwardRef = (props, ref) => {
+    return <LocaleReceiver {...props} forwardedRef={ref} />;
+  };
+  const LocaleReceiverWithRef = React.forwardRef(forwardRef);
+  hoistNonReactStatic(LocaleReceiverWithRef, WrappedComponent);
+
+  return LocaleReceiverWithRef as (typeof LocaleReceiver);
 };
 
 export default LocaleReceiverWrapper;

@@ -15,12 +15,17 @@
       value: '',
       data: []
     };
+    this.ref = React.createRef();
   }
   componentDidMount(){
     setTimeout(()=>{
       // mock async data
       this.setState({
         data: [
+          {
+            value: '',
+            text: '全部',
+          },
           {
             value: 'a',
             text: '我是A'
@@ -31,6 +36,7 @@
           }
         ]
       });
+      console.log(this.ref.current);
     }, 1000);
   }
   render() {
@@ -39,6 +45,7 @@
       <div>
         <Select
           style={{ width: 200 }}
+          ref={this.ref}
           onChange={(data) => {
             console.log(data);
             this.setState({
@@ -210,6 +217,7 @@
           <Select.Option value="f">我是F</Select.Option>
           <Select.Option value="g">我是G</Select.Option>
           <Select.Option value="h">我是H</Select.Option>
+          <Select.Option value="">我的value是空字符串</Select.Option>
         </Select>
       </div>
     )
@@ -270,7 +278,7 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 ```
 + onChange回调的参数中的`value`值类型始终为`string`;
 + 当`multiple`属性为`true`时,若参数`value`中存在目前`option`列表中不存在的元素：则不会显示该元素，但也不会删除该元素。例如：
-```
+```js
   this.state = {
       selectValue: ['i am not the one']
   }

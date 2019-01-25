@@ -11,7 +11,7 @@ class Cell extends Component<CellProps, any> {
       return null;
     }
     // 字符长度判断
-    if (typeof value === 'string' && value.length > maxCellSize) {
+    if (typeof value === 'string' && value.length > maxCellSize && maxCellSize !== 0) {
       return (
         <td
           key={column.dataIndex + columnIndex}
@@ -51,7 +51,7 @@ class Cell extends Component<CellProps, any> {
       return this.renderMergedCell(column, columnIndex, render);
     }
     // 字符长度判断
-    if (typeof render === 'string' && render.length > maxCellSize) {
+    if (typeof render === 'string' && render.length > maxCellSize && maxCellSize !== 0) {
       return (
         <td key={column.dataIndex + columnIndex} style={style}>
           <Popover trigger="hover" direction="top" content={render}>
