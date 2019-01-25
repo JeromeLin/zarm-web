@@ -2,7 +2,7 @@ import React, { Component, MouseEvent, KeyboardEvent } from 'react';
 import { createPortal, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import { ModalProps, StyleType } from './PropsType';
+import { ModalProps, StyleType, ModalBodyProps, ModalHeaderProps, ModalFooterProps } from './PropsType';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
@@ -307,11 +307,18 @@ class Modal extends Component<ModalProps, StateIF> {
             {children}
           </div>
         </div>
-      </div>
-      ,
+      </div>,
       this.div,
     );
   }
+}
+
+// tslint:disable-next-line:no-namespace
+declare namespace Modal {
+  export interface Props extends ModalProps { }
+  export interface BodyProps extends ModalBodyProps { }
+  export interface HeaderProps extends ModalHeaderProps { }
+  export interface FooterProps extends ModalFooterProps { }
 }
 
 export default Modal;
