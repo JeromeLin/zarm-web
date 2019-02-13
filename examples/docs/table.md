@@ -839,3 +839,12 @@
 |---------- |-------- |---------- |
 | rowClick | 点击row触发的事件 |  row |
 | onExpand | 点击展开行icon触发的事件 |  (expanded, row) |
+
+
+### rowSelection
+| 参数	 | 说明 | 类型	 | 默认值 |
+|---------- |-------- |---------- | -----|
+| value | 选中的行 | string[]	 | [] |
+| fixed	 | 把选择框列固定在左边	 |  boolean	 | - |
+| onSelect | 用户手动选择/取消选择某行的回调	 | Function(selected, row, selectedRows)	| - |
+| onSelectAll | 用户手动选择/取消选择所有行的回调		 | Function(selected, selectedRows)	| - |

@@ -115,7 +115,8 @@
 | defautValue     | 默认值  | string  |   -     |    -     |
 | className     | 类名   | string  |   -   |    -     |
 | placeholder     | 占位符   | string  |   -      |    -     |
-| disabled     | 是否禁用  | boolean  |   -      |    false    |
+| disabled  | 禁用    | -   | -  | -   |
+| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 
 
 ### Events
