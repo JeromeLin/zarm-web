@@ -134,7 +134,8 @@
 | radius     | 是否圆角   | boolean    | — | false   |
 | round     | 是否椭圆角   | boolean    | — | false   |
 | circle     | 是否圆形   | boolean    | — | false   |
-| disabled  | 是否禁用    | boolean   | true, false   | false   |
+| disabled  | 禁用    | -   | -  | -   |
+| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
