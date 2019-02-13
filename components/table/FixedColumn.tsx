@@ -15,7 +15,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
     return dataSource.map((data, index) => {
       const tdHeight = index === size - 1 ? iHeight - 1 : height;
       const rowClass = classnames({
-        [`${rowClassName && rowClassName(data)}`]: !!rowClassName && rowClassName(data),
+        [`${rowClassName && rowClassName(data)}`]: !!(rowClassName && rowClassName(data)),
       });
       return (
         <tr
@@ -75,7 +75,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
             dataSource.map((data, index) => {
               const height = index === size - 1 ? iHeight - 1 : tdHeight;
               const rowClass = classnames({
-                [`${rowClassName && rowClassName(data)}`]: !!rowClassName && rowClassName(data),
+                [`${rowClassName && rowClassName(data)}`]: !!(rowClassName && rowClassName(data)),
               });
               return (
                 <tr

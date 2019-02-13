@@ -96,7 +96,8 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | size     | 尺寸   | string |   'sm'   |    -    |
 | value   | 值 | boolean |   -   |    false   |
-| disabled   | 是否禁用 | boolean |   -   |    false   |
+| disabled  | 禁用    | -   | -  | -   |
+| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 | defaultValue  | 默认值 | boolean |   -   |    false   |
 | isCheckedText  | 选中文案 | element |   -   |    ''   |
 | unCheckedText  | 未选中文案 | element |   -   |    ''   |

@@ -83,7 +83,7 @@ class Body extends Component<BodyProps, any> {
               return renderCell(column, row, rowIndex, columnIndex);
             });
             const rowClass = classnames({
-              [`${rowClassName && rowClassName(row)}`]: !!rowClassName && rowClassName(row),
+              [`${rowClassName && rowClassName(row)}`]: !!(rowClassName && rowClassName(row)),
             });
 
             const refAttr = rowIndex === 0 ? { ref: (row) => { this.row = row; } } : {};

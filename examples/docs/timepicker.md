@@ -85,6 +85,7 @@
 | size  | 尺寸 | - |   -   |    -   |
 | style  | 样式覆盖 | - |   -   |    -   |
 | placeholder  | 占位内容 | string |   -   |    -   |
+| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 
 
 ### TimePicker Events
