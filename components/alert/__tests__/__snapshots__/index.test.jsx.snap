@@ -45,9 +45,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
       >
         <Portal
           containerInfo={
-            <div
-              role="dialog"
-            >
+            <div>
               <div
                 class="ui-modal fade-enter"
                 style="position: fixed;"
@@ -58,6 +56,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                   <div
                     class="ui-modal-dialog zoom-enter"
                     style="width: 270px; min-width: 270px;"
+                    tabindex="-1"
                   >
                     <div
                       class="ui-modal-body"
@@ -110,6 +109,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
               <div
                 className="ui-modal-dialog zoom-enter"
                 onClick={[Function]}
+                onKeyDown={[Function]}
                 style={
                   Object {
                     "MozAnimationDuration": "300ms",
@@ -121,6 +121,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                     "width": 270,
                   }
                 }
+                tabIndex={-1}
               >
                 <ModalBody
                   height="auto"
