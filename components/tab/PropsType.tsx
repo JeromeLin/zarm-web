@@ -23,4 +23,5 @@ export default interface PropsType {
   title?: string | React.ReactNode;
   className?: string;
   style?: object;
+  disabled?: boolean;
 }
