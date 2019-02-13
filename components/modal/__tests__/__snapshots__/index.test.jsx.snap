@@ -11,6 +11,7 @@ exports[`Modal renders basic Modal correctly 1`] = `
     <div
       class="ui-modal-dialog zoom-leave"
       style="width:600px;min-width:270px;-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms"
+      tabindex="-1"
     >
       <div
         class="ui-modal-header"
@@ -55,6 +56,7 @@ exports[`Modal renders closable Modal correctly 1`] = `
     <div
       class="ui-modal-dialog zoom-leave"
       style="width:600px;min-width:270px;-webkit-animation-duration:300ms;-moz-animation-duration:300ms;-ms-animation-duration:300ms;-o-animation-duration:300ms;animation-duration:300ms"
+      tabindex="-1"
     >
       <div
         class="ui-modal-header"
@@ -99,6 +101,7 @@ exports[`Modal renders customized Modal correctly 1`] = `
     <div
       class="ui-modal-dialog fade-leave"
       style="width:400px;min-width:270px;-webkit-animation-duration:500ms;-moz-animation-duration:500ms;-ms-animation-duration:500ms;-o-animation-duration:500ms;animation-duration:500ms"
+      tabindex="-1"
     >
       <div
         class="ui-modal-header"

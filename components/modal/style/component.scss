@@ -38,6 +38,10 @@
       overflow: hidden;
       z-index: $base-zindex-modal + 1;
       will-change: transform;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
   // fix popover-content position when using in Modal

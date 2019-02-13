@@ -1,4 +1,3 @@
-
 import Modal from './Modal';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
@@ -8,4 +7,5 @@ Modal.Header = ModalHeader;
 Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
 
+export * from './PropsType';
 export default Modal;

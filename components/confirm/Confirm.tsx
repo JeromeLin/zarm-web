@@ -9,8 +9,8 @@ class Confirm extends Component<PropsType, any> {
     prefixCls: 'ui-confirm',
     message: '',
     width: 270,
-    onOk: () => {},
-    onCancel: () => {},
+    onOk: () => { },
+    onCancel: () => { },
   };
 
   render() {
