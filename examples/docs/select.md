@@ -347,7 +347,8 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 | defaultValue     | 默认选中值   | string  |   - |     1  |
 | radius     | 是否圆角   | boolean   | — | false  |
 | search     | 是否支持搜索   | boolean    | — | false   |
-| disabled     | 是否禁用   | boolean   | — | false  |
+| disabled  | 禁用    | -   | -  | -   |
+| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 | tagTheme     | 多选状态下的tag标签主题   | string   | — | default  |
 | size | Select组件的大小 | string | xs,sm,lg,xl | - |
 
@@ -364,7 +365,8 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 | value     | 选中值   | string |   -            |    -   |
 | defaultValue     | 默认选中值   | string  |   - |     1  |
 | radius     | 是否圆角   | boolean   | — | false  |
-| disabled     | 是否禁用   | boolean   | — | false  |
+| disabled  | 禁用    | -   | -  | -   |
+| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 
 ### Select.Multiple Events
 | 事件名称 | 说明 | 回调参数 |

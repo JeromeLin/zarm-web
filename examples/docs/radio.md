@@ -90,7 +90,8 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | checked     | 是否选中  | boolean  |   -           |    false    |
 | defaultChecked    | 默认选中  | boolean   |   - |     false   |
-| disabled  | 是否禁用    | boolean   | true, false   | false   |
+| disabled  | 禁用    | -   | -  | -   |
+| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 | value  | 选择框对应的值    | string   | -  | -   |
 
 ### Radio Events

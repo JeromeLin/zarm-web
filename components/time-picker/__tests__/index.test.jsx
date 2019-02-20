@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import TimePicker from '../index';
@@ -6,9 +7,6 @@ import TimeSelect from '../TimeSelect';
 
 jest.mock('react-dom', () => ({
   createPortal: node => node,
-  findDOMNode: () => ({ children: [{
-    querySelector: () => ({ children: [{}] }),
-  }] }),
 }));
 
 describe('TimePicker', () => {
@@ -17,7 +15,7 @@ describe('TimePicker', () => {
   //     return element;
   //   });
   // });
-
+  //
   // afterEach(() => {
   //   ReactDOM.createPortal.mockClear();
   // });
@@ -65,20 +63,6 @@ describe('TimePicker', () => {
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('behaves correctly when item click', () => {
-    const onChange = jest.fn();
-    const initValue = '00:00:00';
-    const wrapper = mount(
-      <TimeSelect
-        value={initValue}
-        onChange={onChange}
-      />
-    );
-    wrapper.find('.ui-option-list').first().simulate('click');
-
-    expect(onChange).toHaveBeenCalledWith(initValue);
   });
 
   it('behaves correctly when clear button click', () => {
