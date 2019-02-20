@@ -1,63 +1,88 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Confirm from './Confirm';
-const div = document.createElement('div');
-let visible = false;
-class ConfirmExtension extends Confirm {
-  // constructor(props) {
-  //   super(props);
-  // }
+import ConfirmPropsType from './PropsType';
 
-  static defalut(option: any) {
-    document.body.appendChild(div);
-    let defalutValue = {
-      prefixCls: 'ui-confirm',
-      message: '',
-      width: 270,
-      okText: '确定',
-      cancelText: '取消',
-      locale: {
-        confirm: 'Cancel',
-        cancel: 'Ok',
-      },
-      onOk: () => {},
-      onCancel: () => {},
-    };
-    let object;
-    if (option) {
-      object = Object.assign(defalutValue, option);
+class ConfirmExtension extends Confirm {
+  static defaultValue = {
+    prefixCls: 'ui-confirm',
+    message: '',
+    width: 270,
+    okText: '确定',
+    cancelText: '取消',
+    animationDuration: 300,
+    locale: {
+      confirm: 'Cancel',
+      cancel: 'Ok',
+    },
+  };
+
+  static defalut(
+    visible: boolean,
+    option: ConfirmPropsType | ConfirmPropsType['message'],
+    cancelCallback?: () => void,
+  ) {
+    let defalutValue = ConfirmExtension.defaultValue;
+    let object: ConfirmPropsType;
+    if (typeof option === 'string') {
+      object = { ...defalutValue, message: option };
+    } else if (option) {
+      object = { ...defalutValue, ...option };
     } else {
-      object = Object.assign({}, defalutValue);
+      object = { ...defalutValue };
     }
-    ReactDOM.render(
-      <Confirm
-        width={object.width}
-        visible={visible}
-        message={object.message}
-        cancelText={object.cancelText}
-        okText={object.okText}
-        locale={object.locale}
-        onCancel={() => {
-          object.onCancel();
-          ConfirmExtension.hide();
-        }}
-        onOk={object.onOk}
-      />,
-      div,
-    );
+    const { onCancel, onOk, ...others } = object;
+    if (visible === false) {
+      setTimeout(() => {
+        if (cancelCallback) {
+          cancelCallback();
+        }
+      }, others.animationDuration);
+    }
+    document.body.appendChild(ConfirmExtension.div);
+    return new Promise((resolve) => {
+      ReactDOM.render(
+        <Confirm
+          {...others}
+          visible={visible}
+          onCancel={() => {
+            if (onCancel) {
+              onCancel();
+            }
+            ConfirmExtension.hide();
+            resolve(false);
+          }}
+          onOk={(e) => {
+            if (onOk) {
+              onOk(e);
+            }
+            ConfirmExtension.hide();
+            resolve(true);
+          }}
+        />,
+        ConfirmExtension.div,
+      );
+    });
   }
-  static show(object) {
-    visible = true;
-    this.defalut(object);
+  static show(object: ConfirmPropsType | ConfirmPropsType['message']) {
+    ConfirmExtension.currentProps = object;
+    return this.defalut(true, object);
   }
   static hide(callback?: () => void) {
-    visible = false;
+    this.defalut(false, ConfirmExtension.currentProps, () => {
+      ReactDOM.unmountComponentAtNode(ConfirmExtension.div);
+      const parentNode = ConfirmExtension.div.parentNode;
+      if (parentNode) {
+        parentNode.removeChild(ConfirmExtension.div);
+      }
+    });
     if (callback) {
       callback();
     }
-    ReactDOM.unmountComponentAtNode(div);
-    document.body.removeChild(div);
   }
+
+  private static currentProps: ConfirmPropsType | ConfirmPropsType['message'];
+  private static div = document.createElement('div');
 }
 
 export default ConfirmExtension;

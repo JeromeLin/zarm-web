@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import classnames from 'classnames';
 import ButtonProps from './PropsType';
 import Icon from '../icon';
@@ -19,10 +19,10 @@ class Button extends Component<ButtonProps, any> {
     isLoading: false,
     className: null,
     style: {},
-    onClick: () => { },
+    onClick: (e: MouseEvent) => { },
   };
 
-  render () {
+  render() {
     const { props } = this;
     const {
       prefixCls,
@@ -80,30 +80,32 @@ class Button extends Component<ButtonProps, any> {
     let textContent =
       loadingStatus ? (
         <span>
-          <Icon type="loading" className="rotate360"/> {children}
+          <Icon type="loading" className="rotate360" /> {children}
         </span>
       ) : (
-        children
-      );
+          children
+        );
 
     return (
       href
         ? <a
+          ref={props.fRef}
           className={classes}
           href={href}
           target={target}
           {...others}
-          onClick={e => (!disabledStatus && !loadingStatus) && onClick(e)}
+          onClick={e => (!disabledStatus && !loadingStatus) && onClick && onClick(e)}
         >
           {textContent}
         </a>
         : (
           <button
+            ref={props.fRef}
             type={type}
             className={classes}
             style={style}
             disabled={disabledStatus}
-            onClick={e => (!disabledStatus && !loadingStatus) && onClick(e)}
+            onClick={e => (!disabledStatus && !loadingStatus) && onClick && onClick(e)}
             {...others}
           >
             {textContent}
@@ -113,4 +115,7 @@ class Button extends Component<ButtonProps, any> {
   }
 }
 
-export default Button;
+export default React.forwardRef((props: ButtonProps, ref) => {
+  const { children, ...others } = props;
+  return <Button {...others} fRef={ref}>{children}</Button>;
+});

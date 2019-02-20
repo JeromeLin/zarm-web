@@ -101,18 +101,9 @@
   render() {
     return (
       <div>
-        <Button theme="success" onClick={()=>{
-          Confirm.show({
-            message:'hello world',
-            width:500,
-            okText:'保存',
-            cancelText:'退出',
-            onOk:()=>{
-              Confirm.hide(()=>{
-                console.log('test');
-              })
-            }
-          })
+        <Button theme="success" onClick={async ()=>{
+         let a = await Confirm.show("hello world");
+         console.log(a);
         }}>命令式调用</Button>
       </div>
     );

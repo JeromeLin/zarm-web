@@ -192,15 +192,27 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
 
-  onKeyPress = (e: KeyboardEvent) => {
-    if (this.state.isShow && e.keyCode === 27 && this.state.animationState !== 'leave') {
-      React.Children.forEach(this.props.children, (elem) => {
-        if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
-          if (elem.props.onClose) {
-            elem.props.onClose();
+  onKeyDown = (e: KeyboardEvent) => {
+    if (this.state.isShow && this.state.animationState !== 'leave') {
+      if (e.keyCode === 27) {
+        React.Children.forEach(this.props.children, (elem) => {
+          if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
+            if (elem.props.onClose) {
+              elem.props.onClose();
+            }
           }
+        });
+      }
+    }
+  }
+
+  onKeyPress = (e: KeyboardEvent) => {
+    if (document.activeElement === this.modalContent) {
+      if (this.state.isShow && this.state.animationState !== 'leave') {
+        if (this.props.onKeyPress) {
+          this.props.onKeyPress(e.nativeEvent);
         }
-      });
+      }
     }
   }
 
@@ -302,7 +314,8 @@ class Modal extends Component<ModalProps, StateIF> {
             className={classes.dialog}
             style={style.dialog}
             onClick={this.onMaskClick}
-            onKeyDown={this.onKeyPress}
+            onKeyDown={this.onKeyDown}
+            onKeyPress={this.onKeyPress}
           >
             {children}
           </div>

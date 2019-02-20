@@ -1,11 +1,11 @@
 // tslint:disable:no-bitwise
-import * as React from 'react';
+import React, { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import events from '../utils/events';
 import throttle from '../utils/throttle';
 import domUtil from '../utils/dom';
-import { propsType, StateType } from './PropsType';
+import { propsType, StateType, trigger } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
 function getOffsetElem(elem: HTMLElement) {
@@ -94,7 +94,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   // private static mountedInstance: Set<Dropdown> = new Set();
   // 根据定位点计算定位信息
   private static calcPosition(
-    placement: string,
+    placement: propsType['placement'] = 'bottomLeft',
     width: number,
     height: number,
     dropWidth: number,
@@ -153,15 +153,15 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   // 可滚动父容器滚动的时候调整定位
   onParentScroll: () => void;
   private div: HTMLDivElement = Dropdown.createDivBox();
-  private triggerBox: HTMLDivElement;
-  private DropdownContent: HTMLDivElement;
-  private popContainer: HTMLElement;
-  private scrollParent: HTMLElement;
+  private triggerBox!: HTMLDivElement;
+  private DropdownContent!: HTMLDivElement;
+  private popContainer!: HTMLElement;
+  private scrollParent!: HTMLElement;
   private isHoverOnDropContent: boolean = false;
   private hiddenTimer: number | undefined;
-  private triggerBoxOffsetHeight: number;
+  private triggerBoxOffsetHeight!: number;
 
-  constructor(props) {
+  constructor(props: Readonly<{ children?: ReactNode }> & Readonly<propsType>) {
     super(props);
     this.setEventObject(props.trigger);
     this.onWindowResize = throttle(this.reposition, 300);
@@ -169,7 +169,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   }
 
   // 根据trigger方式不同绑定事件
-  setEventObject = (triggerType: string) => {
+  setEventObject = (triggerType: propsType['trigger']) => {
     if (triggerType === 'hover') {
       this.DropdownContentEvent.onMouseLeave = this.onDropdownContentMouseLeave;
       this.DropdownContentEvent.onMouseEnter = this.onDropdownContentMouseEnter;
@@ -268,11 +268,11 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   }
 
   // 点击外部的时候
-  onDocumentClick = (e): void => {
+  onDocumentClick = (e: MouseEvent): void => {
     if (this.props.disabled === true || this.state.visible === false) {
       return;
     }
-    const target: Node = e.target;
+    const target = e.target as Node;
     if (this.div.contains(target) || this.triggerBox.contains(target)) {
       return;
     } else {
@@ -297,7 +297,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   }
 
   // 获取元素的定位信息
-  getDropdownPosition(placement) {
+  getDropdownPosition(placement: propsType['placement'] = 'bottomLeft') {
     let rectInfo = getElemPosition(this.triggerBox, this.popContainer);
     const { offsetWidth, offsetHeight } = this.DropdownContent;
     const computerStyle = window.getComputedStyle(this.DropdownContent);
@@ -324,7 +324,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Readonly<{ children?: ReactNode }> & Readonly<propsType>) {
     if (nextProps.visible === this.props.visible) {
       return;
     }
@@ -364,7 +364,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     }
   }
 
-  enter(callback): void {
+  enter(callback: () => void): void {
     this.setState({
       visible: true,
       isPending: true,
@@ -390,7 +390,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       prefixCls,
       style,
       isRadius,
-      placement,
+      placement = 'bottomLeft',
       zIndex,
       notRenderInDisabledMode,
       visible,
@@ -403,7 +403,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
 
     const { positionInfo, animationState } = this.state;
     // 根据placement判断向上动画还是向下动画
-    const animationProps = (placementMap[placement as string] & 1) ? 'scaleDown' : 'scaleUp';
+    const animationProps = (placementMap[placement] & 1) ? 'scaleDown' : 'scaleUp';
     const cls = classnames({
       [prefixCls!]: true,
       radius: 'radius' in this.props || isRadius,
