@@ -6,6 +6,13 @@ import { ModalProps, StyleType, ModalBodyProps, ModalHeaderProps, ModalFooterPro
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
+import domUtil from '../utils/dom';
+
+const { getSupportedPropertyName } = domUtil;
+let animationDurationKey = getSupportedPropertyName('animationDuration') || 'animationDuration';
+if (animationDurationKey && animationDurationKey !== 'animationDuration' && !animationDurationKey.startsWith('ms')) {
+  animationDurationKey = animationDurationKey.charAt(0).toUpperCase() + animationDurationKey.slice(1);
+}
 
 function toggleBodyOverflow(show: boolean) {
   let scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
@@ -280,21 +287,13 @@ class Modal extends Component<ModalProps, StateIF> {
 
     const style: StyleType = {
       modal: {
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
+        [animationDurationKey]: `${animationDuration}ms`,
         position: 'fixed',
       },
       dialog: {
         width: Number(width),
         minWidth: Number(minWidth),
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
+        [animationDurationKey]: `${animationDuration}ms`,
       },
     };
     if (!isShow) {

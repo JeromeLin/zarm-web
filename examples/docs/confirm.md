@@ -111,6 +111,47 @@
 ```
 :::
 
+使用 `Confirm.show(object)`调用时，参数有两种形式。
+```
+// 方式1
+Confirm.show("message");
+
+// 方式2
+Confirm.show({
+  message: "message",
+  onOk: ()=> {}
+});
+```
+
+在使用的时候也可以使用异步的方式获取点击的按钮。
+
++ 使用回调
+```
+Confirm.show({
+    message: "message",
+    onOk: ()=> {
+      doSomething();
+    }
+});
+```
++ 使用异步
+```
+Confirm.show({
+    message: "message",
+}).then(result =>{
+    if(result) {
+      doSomething();
+    }
+});
+```
++ 使用 `async`
+```
+onClick = async ()=> {
+    if(await Confirm.show("hello world")){
+      doSomething();
+    };
+}
+```
 
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |

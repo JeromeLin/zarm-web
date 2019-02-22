@@ -40,10 +40,6 @@ class Confirm extends Component<PropsType, any> {
     }
   }
 
-  componentDidMount() {
-    console.log(this.ButtonRef);
-  }
-
   render() {
     const {
       prefixCls,
@@ -65,9 +61,7 @@ class Confirm extends Component<PropsType, any> {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.onCancel}>{cancelText}</Button>
-          <Button ref={this.ButtonRef} theme="success" onClick={this.onOk}>
-            {okText}
-          </Button>
+          <Button theme="success" onClick={this.onOk}>{okText}</Button>
         </Modal.Footer>
       </Modal>
     );

@@ -115,7 +115,4 @@ class Button extends Component<ButtonProps, any> {
   }
 }
 
-export default React.forwardRef((props: ButtonProps, ref) => {
-  const { children, ...others } = props;
-  return <Button {...others} fRef={ref}>{children}</Button>;
-});
+export default Button;

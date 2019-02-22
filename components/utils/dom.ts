@@ -78,7 +78,7 @@ const domUtil = {
   // 获取元素完整尺寸(offset size + margin)
   getOuterSizes: (e) => {
     const _display = e.style.display;
-    const  _visibility = e.style.visibility;
+    const _visibility = e.style.visibility;
     e.style.display = 'block';
     e.style.visibility = 'hidden';
     // const calcWidthToForceRepaint = e.offsetWidth;
@@ -127,12 +127,12 @@ const domUtil = {
   },
 
   // 获取浏览器支持的带前缀属性名
-  getSupportedPropertyName: (property) => {
+  getSupportedPropertyName: (property: string) => {
     const prefixes = ['', 'ms', 'webkit', 'moz', 'o'];
-
     for (let i = 0; i < prefixes.length; i++) {
-      const toCheck = prefixes[i] ? prefixes[i] + property.charAt(0).toUpperCase() + property.slice(1) : property;
-      if (typeof window.document.body.style[toCheck] !== 'undefined') {
+      const toCheck: string = prefixes[i] ? prefixes[i] +
+        property.charAt(0).toUpperCase() + property.slice(1) : property;
+      if (typeof window.document.body.style[toCheck as keyof CSSStyleDeclaration] !== 'undefined') {
         return toCheck;
       }
     }

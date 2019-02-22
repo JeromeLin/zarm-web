@@ -6,6 +6,7 @@ import Menu from '../menu';
 import InputWithTags from '../tag-input';
 import PropsType, { OptionProps } from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
+import SelectMultiple from './SelectMultiple';
 
 interface StateProps {
   value: string | string[];
@@ -39,11 +40,11 @@ class Select extends Component<PropsType, StateProps> {
     onChange: () => { },
   };
 
-  static Option;
-  static Multiple;
+  static Option: typeof Option;
+  static Multiple: typeof SelectMultiple;
 
-  inputBox: HTMLInputElement;
-  inputWithTags: InputWithTags;
+  inputBox!: HTMLInputElement;
+  inputWithTags!: InputWithTags;
   oldInputDivHeight: number = 0;
 
   constructor(props: PropsType) {
@@ -85,7 +86,7 @@ class Select extends Component<PropsType, StateProps> {
     }
 
     let optionData: Array<OptionDataProps> = [];
-    let optionMap: {} = {};
+    let optionMap: { [x: string]: any } = {};
 
     React.Children.map(options, (option) => {
       if (option && typeof option === 'object' && option.type) {
@@ -161,7 +162,7 @@ class Select extends Component<PropsType, StateProps> {
         let selectValue = select || EMPTY_STRING_VALUE;
         const vdom = this.state.optionMap[selectValue];
         const text = vdom ? vdom.props.children : '';
-        let index = this.state.optionData.findIndex(elem => String(elem.value) === String(selectValue) );
+        let index = this.state.optionData.findIndex(elem => String(elem.value) === String(selectValue));
         return { text, value: select, index };
       });
       this.setState({

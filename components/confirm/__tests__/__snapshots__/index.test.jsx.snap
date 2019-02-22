@@ -15,6 +15,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
     visible={true}
   >
     <ConfirmExtension
+      cancelText="取消"
       locale={
         Object {
           "cancel": "取消",
@@ -23,6 +24,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
       }
       localeCode="zh-cn"
       message="确认删除吗？"
+      okText="确定"
       onCancel={[Function]}
       onOk={[Function]}
       prefixCls="ui-confirm"
@@ -35,6 +37,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
         isRadius={false}
         isRound={false}
         minWidth={270}
+        onKeyPress={[Function]}
         onMaskClick={[Function]}
         prefixCls="ui-modal"
         visible={true}
@@ -55,6 +58,21 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                     style="width: 270px; min-width: 270px;"
                     tabindex="-1"
                   >
+                    <div
+                      class="ui-modal-header"
+                      style="display: none;"
+                    >
+                      <div
+                        class="ui-modal-title"
+                      />
+                      <div
+                        class="ui-modal-close"
+                      >
+                        <i
+                          class="ui-icon ui-icon-wrong theme-default"
+                        />
+                      </div>
+                    </div>
                     <div
                       class="ui-modal-body"
                       style="height: auto;"
@@ -97,11 +115,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "MozAnimationDuration": "300ms",
-                "OAnimationDuration": "300ms",
                 "WebkitAnimationDuration": "300ms",
-                "animationDuration": "300ms",
-                "msAnimationDuration": "300ms",
                 "position": "fixed",
               }
             }
@@ -113,19 +127,58 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                 className="ui-modal-dialog zoom-enter"
                 onClick={[Function]}
                 onKeyDown={[Function]}
+                onKeyPress={[Function]}
                 style={
                   Object {
-                    "MozAnimationDuration": "300ms",
-                    "OAnimationDuration": "300ms",
                     "WebkitAnimationDuration": "300ms",
-                    "animationDuration": "300ms",
                     "minWidth": 270,
-                    "msAnimationDuration": "300ms",
                     "width": 270,
                   }
                 }
                 tabIndex={-1}
               >
+                <ModalHeader
+                  onClose={[Function]}
+                  prefixCls="ui-modal"
+                  style={
+                    Object {
+                      "display": "none",
+                    }
+                  }
+                  title=""
+                >
+                  <div
+                    className="ui-modal-header"
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    <div
+                      className="ui-modal-title"
+                    />
+                    <div
+                      className="ui-modal-close"
+                      onClick={[Function]}
+                    >
+                      <Icon
+                        className=""
+                        onClick={[Function]}
+                        prefixCls="ui-icon"
+                        style={Object {}}
+                        theme="default"
+                        type="wrong"
+                      >
+                        <i
+                          className="ui-icon ui-icon-wrong theme-default"
+                          onClick={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                    </div>
+                  </div>
+                </ModalHeader>
                 <ModalBody
                   height="auto"
                   prefixCls="ui-modal"
