@@ -10,7 +10,7 @@ class Button extends Component<ButtonProps, any> {
     theme: 'default',
     size: null,
     isBlock: false,
-    isRadius: false,
+    isRadius: true,
     isRound: false,
     isCircle: false,
     isActive: false,
@@ -79,9 +79,9 @@ class Button extends Component<ButtonProps, any> {
 
     let textContent =
       loadingStatus ? (
-        <span>
+        <React.Fragment>
           <Icon type="loading" className="rotate360"/> {children}
-        </span>
+        </React.Fragment>
       ) : (
         children
       );

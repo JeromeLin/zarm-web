@@ -1,6 +1,6 @@
 {
   "name": "dragon-ui",
-  "version": "1.0.0-alpha.22",
+  "version": "1.0.0-alpha.20",
   "description": "基于 React 的桌面端UI库",
   "tags": [
     "dragon-ui",
@@ -51,6 +51,7 @@
     "release": "bash scripts/release.sh"
   },
   "dependencies": {
+    "async-validator": "^1.10.1",
     "classnames": "^2.2.5",
     "css-animation": "^1.2.5",
     "hoist-non-react-statics": "^3.0.1",
@@ -89,7 +90,7 @@
     "css-loader": "^0.28.1",
     "cssnano": "^3.10.0",
     "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-adapter-react-16": "^1.8.0",
     "enzyme-to-json": "^3.3.5",
     "eslint": "^4.19.1",
     "eslint-config-za": "^1.0.1",
@@ -124,8 +125,8 @@
     "prop-types": "^15.5.10",
     "raf": "^3.4.0",
     "raw-loader": "^0.5.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-hot-loader": "^4.3.11",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^16.4.2",

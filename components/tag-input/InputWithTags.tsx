@@ -105,8 +105,10 @@ class InputWithTags extends React.Component<BasicProps> {
     const { compositionData, isFocus } = this.state;
     let showPlaceHolder = false;
     if (
-      (((search || remoteSearch) && !isFocus && value == null) || (typeof value === 'string' && value.length === 0)) &&
-      !compositionData
+      (((search || remoteSearch) && !isFocus && value === null) ||
+      (typeof value === 'string' && value.length === 0)) ||
+      !value
+      && !compositionData
     ) {
       showPlaceHolder = true;
     }

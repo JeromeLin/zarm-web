@@ -17,6 +17,9 @@ $icon-url: $base-icon-url;
 .ui-icon {
   font-family: "dragonicon" !important;
   font-style: normal;
+  display: inline-block;
+  text-transform: none;
+  vertical-align: baseline;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

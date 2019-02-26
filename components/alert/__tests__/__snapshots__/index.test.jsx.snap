@@ -77,7 +77,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       class="ui-modal-footer"
                     >
                       <button
-                        class="ui-button theme-default"
+                        class="ui-button radius theme-default"
                         type="button"
                       >
                         关闭
@@ -175,7 +175,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       isDisabled={false}
                       isFocus={false}
                       isLoading={false}
-                      isRadius={false}
+                      isRadius={true}
                       isRound={false}
                       onClick={[Function]}
                       prefixCls="ui-button"
@@ -185,7 +185,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       type="button"
                     >
                       <button
-                        className="ui-button theme-default"
+                        className="ui-button radius theme-default"
                         disabled={false}
                         onClick={[Function]}
                         style={Object {}}

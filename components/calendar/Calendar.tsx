@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-
+import { FormItemContext } from '../form/createContext';
 import Format from '../utils/format';
-
+import { isEmpty } from '../utils';
 import Button from '../button';
 import TimePicker from '../time-picker';
 import LocaleReceiver from '../locale/LocaleReceiver';
@@ -15,6 +15,7 @@ import CalendarYearTable from './CalendarYearTable';
 import PropsType from './PropsType';
 
 class Calendar extends Component<PropsType, any> {
+  static contextType = FormItemContext;
   static defaultProps = {
     prefixCls: 'ui-calendar',
     format: 'yyyy-MM-dd',
@@ -81,6 +82,9 @@ class Calendar extends Component<PropsType, any> {
     const { format, onChange, showTime } = this.props;
     let dropdownStatus = false;
 
+    if (!isEmpty(this.context)) {
+     this.context.handleFieldChange();
+    }
     if (!showTime) {
       dropdownStatus = false;
     } else {
