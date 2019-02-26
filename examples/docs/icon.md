@@ -124,7 +124,7 @@ render() {
         <div className="ui-icon-name">required</div>
       </li>
       <li>
-        <Icon type="loading" />
+        <Icon type="loading" className="rotate360" />
         <div className="ui-icon-name">loading</div>
       </li>
       <li>

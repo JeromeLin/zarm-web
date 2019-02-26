@@ -64,7 +64,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
         class="button-wrapper"
       >
         <button
-          class="ui-button disabled theme-default"
+          class="ui-button radius disabled theme-default"
           disabled=""
           type="button"
         >
@@ -73,7 +73,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           />
         </button>
         <button
-          class="ui-button disabled theme-default"
+          class="ui-button radius disabled theme-default"
           disabled=""
           type="button"
         >

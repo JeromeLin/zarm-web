@@ -1,5 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import Events from '../utils/events';
+import { FormItemContext } from '../form/createContext';
 import Option from './Option';
 import Dropdown from '../dropdown';
 import Menu from '../menu';
@@ -7,6 +8,7 @@ import InputWithTags from '../tag-input';
 import PropsType, { OptionProps } from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 import SelectMultiple from './SelectMultiple';
+import { isEmpty } from '../utils';
 
 interface StateProps {
   value: string | string[];
@@ -31,9 +33,10 @@ const EMPTY_STRING_VALUE = '$$EMPTY_STRING_VALUE';
  * placeholder
  */
 class Select extends Component<PropsType, StateProps> {
+  static contextType = FormItemContext;
   static defaultProps = {
     prefixCls: 'ui-select',
-    isRadius: false,
+    isRadius: true,
     isDisabled: false,
     isSearch: false,
     onSearchChange: () => { },
@@ -146,6 +149,9 @@ class Select extends Component<PropsType, StateProps> {
         searchValue: '',
       });
       this.inputBox.textContent = '';
+    }
+    if (!isEmpty(this.context)) {
+      this.context.handleFieldChange();
     }
 
     let value = String(props.value);
@@ -337,7 +343,8 @@ class Select extends Component<PropsType, StateProps> {
           }}
         >
           {elem.children}
-        </Option>);
+        </Option>,
+      );
     });
 
     const menuStyle = {
@@ -384,7 +391,6 @@ class Select extends Component<PropsType, StateProps> {
           onSearchChange={this.onSearchValueChange}
         />
       </Dropdown>
-
     );
   }
 }

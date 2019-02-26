@@ -25,6 +25,7 @@ export interface TimePickerProps {
 class TimePicker extends Component<TimePickerProps, any> {
   static defaultProps = {
     onChange: () => {},
+    isRadius: true,
   };
 
   private unmounted: boolean;

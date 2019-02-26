@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -7,6 +8,10 @@ class Tab extends Component<PropsType, any> {
 
   static defaultProps = {
     prefixCls: 'ui-tab',
+  };
+  static propTypes = {
+    disabled: PropTypes.bool,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   };
 
   constructor(props) {

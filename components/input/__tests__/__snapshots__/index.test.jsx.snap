@@ -2,26 +2,22 @@
 
 exports[`Input renders Disabled Input correctly 1`] = `
 <div>
-  <span>
-    <input
-      class="ui-input disabled"
-      disabled=""
-      type="text"
-      value="禁用"
-    />
-  </span>
+  <input
+    class="ui-input disabled radius"
+    disabled=""
+    type="text"
+    value="禁用"
+  />
 </div>
 `;
 
 exports[`Input renders Input with radius correctly 1`] = `
 <div>
-  <span>
-    <input
-      class="ui-input radius"
-      placeholder="请输入"
-      type="text"
-    />
-  </span>
+  <input
+    class="ui-input radius"
+    placeholder="请输入"
+    type="text"
+  />
 </div>
 `;
 
@@ -30,6 +26,7 @@ exports[`Input renders correctly with initial value 1`] = `
   <Input
     onChange={[Function]}
     prefixCls="ui-input"
+    radius={true}
     size={null}
     type="text"
     value="hey"
@@ -39,51 +36,39 @@ exports[`Input renders correctly with initial value 1`] = `
 
 exports[`Input renders different sizes of Input correctly 1`] = `
 <div>
-  <span>
-    <input
-      class="ui-input size-xl"
-      placeholder="请输入"
-      type="text"
-    />
-  </span>
-  <span>
-    <input
-      class="ui-input size-lg"
-      placeholder="请输入"
-      type="text"
-    />
-  </span>
-  <span>
-    <input
-      class="ui-input size-sm"
-      placeholder="请输入"
-      type="text"
-    />
-  </span>
-  <span>
-    <input
-      class="ui-input size-xs"
-      placeholder="请输入"
-      type="text"
-    />
-  </span>
+  <input
+    class="ui-input radius size-xl"
+    placeholder="请输入"
+    type="text"
+  />
+  <input
+    class="ui-input radius size-lg"
+    placeholder="请输入"
+    type="text"
+  />
+  <input
+    class="ui-input radius size-sm"
+    placeholder="请输入"
+    type="text"
+  />
+  <input
+    class="ui-input radius size-xs"
+    placeholder="请输入"
+    type="text"
+  />
 </div>
 `;
 
 exports[`Input renders different types of Input correctly 1`] = `
 <div>
-  <span>
-    <input
-      class="ui-input"
-      placeholder="请输入"
-      type="text"
-    />
-  </span>
-  <span>
-    <textarea
-      class="ui-input"
-      placeholder="请输入"
-    />
-  </span>
+  <input
+    class="ui-input radius"
+    placeholder="请输入"
+    type="text"
+  />
+  <textarea
+    class="ui-input radius"
+    placeholder="请输入"
+  />
 </div>
 `;

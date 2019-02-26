@@ -1,27 +1,51 @@
-@mixin form-item-control-theme($theme) {
-  $shadow-color: lighten($theme, 20%);
-  .ui-input {
-    border-color: $theme;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px $shadow-color;
-  }
-  .ui-form-explain {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    color: $theme;
-    font-size: 12px;
-  }
-}
-
-/* ui-form */
 .ui-form {
   display: block;
   margin-top: 0;
 }
 
+.ui-form-item {
+  margin-bottom: 24px;
+
+  > label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    color: #333;
+
+    .ui-form-item-required {
+      color: $base-theme-error;
+      margin-right: 3px;
+    }
+  }
+
+  $shadow-color: lighten($base-theme-error, 20%);
+
+  &.has-error {
+    .ui-form-item-control {
+      position: relative;
+
+      .ui-input,
+      .ui-tag-input-box,
+      .ui-select {
+        border-color: $base-theme-error;
+      }
+
+      .ui-form-item-error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding-top: 4px;
+        line-height: 1;
+        color: $base-theme-error;
+        font-size: 12px;
+        transition: color .3s $default-transition;
+      }
+    }
+  }
+}
+
 .ui-form-horizontal {
   .ui-form-item {
-
     &:before {
       content: " ";
       display: table;
@@ -71,50 +95,5 @@
       width: auto;
       vertical-align: middle;
     }
-
-    .ui-form-explain {
-      margin-top: 0;
-    }
   }
-}
-
-/* ui-form-item */
-.ui-form-item {
-  margin-bottom: 15px;
-
-  > label {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-    color: #333;
-
-    .ui-form-item-required {
-      color: $base-theme-error;
-      margin-right: 3px;
-    }
-  }
-
-  .ui-form-item-control {
-    &-help {
-      position: relative;
-    }
-
-    /* form-item-control theme */
-    &.theme-default {
-      @include form-item-control-theme($base-theme-default);
-    }
-    &.theme-error {
-      @include form-item-control-theme($base-theme-error);
-    }
-    &.theme-warning {
-      @include form-item-control-theme($base-theme-warning);
-    }
-  }
-
-  .ui-form-explain {
-    line-height: 1.5;
-    padding-top: 5px;
-    color: gray;
-  }
-
 }
