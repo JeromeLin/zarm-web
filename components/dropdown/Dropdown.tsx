@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import events from '../utils/events';
 import throttle from '../utils/throttle';
 import domUtil from '../utils/dom';
-import { propsType, StateType, trigger } from './PropsType';
+import { propsType, StateType } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
 function getOffsetElem(elem: HTMLElement) {
