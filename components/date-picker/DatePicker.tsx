@@ -183,7 +183,7 @@ class DatePicker extends Component<PropsType, any> {
           >
             <span className={textCls}>
               {
-                allowInput && !showTime ?
+                allowInput && !disabled && !showTime ?
                 <Input
                   onChange={this.onInputDateValue}
                   value={value}
