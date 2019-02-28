@@ -94,11 +94,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "MozAnimationDuration": "300ms",
-                "OAnimationDuration": "300ms",
                 "WebkitAnimationDuration": "300ms",
-                "animationDuration": "300ms",
-                "msAnimationDuration": "300ms",
                 "position": "fixed",
               }
             }
@@ -110,14 +106,11 @@ exports[`Alert renders basic Alert correctly 1`] = `
                 className="ui-modal-dialog zoom-enter"
                 onClick={[Function]}
                 onKeyDown={[Function]}
+                onKeyPress={[Function]}
                 style={
                   Object {
-                    "MozAnimationDuration": "300ms",
-                    "OAnimationDuration": "300ms",
                     "WebkitAnimationDuration": "300ms",
-                    "animationDuration": "300ms",
                     "minWidth": 270,
-                    "msAnimationDuration": "300ms",
                     "width": 270,
                   }
                 }
