@@ -6,6 +6,13 @@ import { ModalProps, StyleType, ModalBodyProps, ModalHeaderProps, ModalFooterPro
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
+import domUtil from '../utils/dom';
+
+const { getSupportedPropertyName } = domUtil;
+let animationDurationKey = getSupportedPropertyName('animationDuration') || 'animationDuration';
+if (animationDurationKey && animationDurationKey !== 'animationDuration' && !animationDurationKey.startsWith('ms')) {
+  animationDurationKey = animationDurationKey.charAt(0).toUpperCase() + animationDurationKey.slice(1);
+}
 
 function toggleBodyOverflow(show: boolean) {
   let scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
@@ -192,15 +199,27 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
 
-  onKeyPress = (e: KeyboardEvent) => {
-    if (this.state.isShow && e.keyCode === 27 && this.state.animationState !== 'leave') {
-      React.Children.forEach(this.props.children, (elem) => {
-        if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
-          if (elem.props.onClose) {
-            elem.props.onClose();
+  onKeyDown = (e: KeyboardEvent) => {
+    if (this.state.isShow && this.state.animationState !== 'leave') {
+      if (e.keyCode === 27) {
+        React.Children.forEach(this.props.children, (elem) => {
+          if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
+            if (elem.props.onClose) {
+              elem.props.onClose();
+            }
           }
+        });
+      }
+    }
+  }
+
+  onKeyPress = (e: KeyboardEvent) => {
+    if (document.activeElement === this.modalContent) {
+      if (this.state.isShow && this.state.animationState !== 'leave') {
+        if (this.props.onKeyPress) {
+          this.props.onKeyPress(e.nativeEvent);
         }
-      });
+      }
     }
   }
 
@@ -268,21 +287,13 @@ class Modal extends Component<ModalProps, StateIF> {
 
     const style: StyleType = {
       modal: {
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
+        [animationDurationKey]: `${animationDuration}ms`,
         position: 'fixed',
       },
       dialog: {
         width: Number(width),
         minWidth: Number(minWidth),
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
+        [animationDurationKey]: `${animationDuration}ms`,
       },
     };
     if (!isShow) {
@@ -302,7 +313,8 @@ class Modal extends Component<ModalProps, StateIF> {
             className={classes.dialog}
             style={style.dialog}
             onClick={this.onMaskClick}
-            onKeyDown={this.onKeyPress}
+            onKeyDown={this.onKeyDown}
+            onKeyPress={this.onKeyPress}
           >
             {children}
           </div>

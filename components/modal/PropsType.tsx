@@ -11,7 +11,8 @@ export interface ModalProps {
   className?: string;
   isRadius?: boolean;
   isRound?: boolean;
-  onMaskClick?: () => void;
+  onKeyPress?(e: KeyboardEvent): void;
+  onMaskClick?(): void;
 }
 
 export interface ModalBodyProps {

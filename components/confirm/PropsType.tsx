@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 export default interface PropsType {
   prefixCls?: string;
   message?: string;
@@ -5,10 +6,11 @@ export default interface PropsType {
   width?: number | string;
   okText?: string;
   cancelText?: string;
+  animationDuration?: number;
   locale?: {
     confirm: string,
     cancel: string,
   };
-  onOk: () => void;
-  onCancel: () => void;
+  onOk?: (e: MouseEvent | KeyboardEvent) => void;
+  onCancel?: () => void;
 }
