@@ -19,7 +19,7 @@ class Button extends Component<ButtonProps, any> {
     isLoading: false,
     className: null,
     style: {},
-    onClick: (e: MouseEvent) => { },
+    onClick: (_: MouseEvent) => {},
   };
 
   render() {
