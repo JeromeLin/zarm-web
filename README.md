@@ -1,12 +1,25 @@
-# dragon-ui
-  基于React的UI组件库。
+<p align="center">
+  <img width="200" src="https://zarm.design/images/logo.ce68565d.svg">
+</p>
 
-### Install 安装
+<h1 align="center">Zarm-web （原dragon-ui）</h1>
+
+<div align="center">
+  桌面端UI组件库，基于React。
+  移动端版本zarm [传送门](https://github.com/ZhonganTechENG/zarm)
+</div>
+
+## Version 版本
+
+- 历史版本：[![npm package](https://img.shields.io/npm/v/dragon-ui.svg)](https://www.npmjs.org/package/dragon-ui)
+- 开发版：暂未发布
+
+## Install 安装
 ```bash
 npm install dragon-ui --save
 ```
 
-### Usage 使用
+## Usage 使用
 
 * 全组件引入
 
@@ -42,8 +55,8 @@ import Button from 'dragon-ui/lib/Button';
 import 'dragon-ui/lib/Button/style';
 ```
 
-### Examples & Docs 示例和文档
+## Examples & Docs 示例和文档
 [中文](https://jeromelin.github.io/dragon-ui)
 
-### License
+## License
 MIT

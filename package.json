@@ -21,9 +21,9 @@
     "web"
   ],
   "license": "MIT",
-  "repository": "git://github.com/JeromeLin/dragon-ui",
+  "repository": "git://github.com/JeromeLin/zarm-web",
   "bugs": {
-    "url": "https://github.com/JeromeLin/dragon-ui"
+    "url": "https://github.com/JeromeLin/zarm-web"
   },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
