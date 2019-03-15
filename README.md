@@ -5,8 +5,7 @@
 <h1 align="center">Zarm-web （原dragon-ui）</h1>
 
 <div align="center">
-  桌面端UI组件库，基于React。
-  移动端版本zarm [传送门](https://github.com/ZhonganTechENG/zarm)
+  基于React的桌面端UI组件库。
 </div>
 
 ## Version 版本
