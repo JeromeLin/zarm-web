@@ -56,7 +56,7 @@ import 'dragon-ui/lib/Button/style';
 ```
 
 ## Examples & Docs 示例和文档
-[中文](https://jeromelin.github.io/dragon-ui)
+[中文](https://jeromelin.github.io/zarm-web)
 
 ## License
 MIT
