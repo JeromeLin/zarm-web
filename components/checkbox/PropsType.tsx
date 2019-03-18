@@ -1,4 +1,5 @@
 export interface GroupProps {
+  prefixCls?: string;
   value?: string;
   defaultValue?: string;
   onChange: (e: any) => void;

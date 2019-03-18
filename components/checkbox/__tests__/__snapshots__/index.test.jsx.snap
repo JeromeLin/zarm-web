@@ -2,65 +2,65 @@
 
 exports[`Checkbox renders CheckboxGroup correctly with defaultValue 1`] = `
 <div
-  class="ui-checkbox-group"
+  class="za-checkbox-group"
 >
   <label>
     <span
-      class="ui-checkbox checked"
+      class="za-checkbox is-checked"
     >
       <input
         checked=""
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="a"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     A
   </label>
   <label>
     <span
-      class="ui-checkbox"
+      class="za-checkbox"
     >
       <input
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="b"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     B
   </label>
   <label>
     <span
-      class="ui-checkbox"
+      class="za-checkbox"
     >
       <input
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="c"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     C
   </label>
   <label>
     <span
-      class="ui-checkbox"
+      class="za-checkbox"
     >
       <input
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="d"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     D
@@ -71,17 +71,17 @@ exports[`Checkbox renders CheckboxGroup correctly with defaultValue 1`] = `
 exports[`Checkbox renders disabled Checkbox correctly 1`] = `
 <label>
   <span
-    class="ui-checkbox checked disabled"
+    class="za-checkbox is-checked is-disabled"
   >
     <input
       checked=""
-      class="ui-checkbox-input"
+      class="za-checkbox__input"
       disabled=""
       type="checkbox"
       value="0"
     />
     <span
-      class="ui-checkbox-inner"
+      class="za-checkbox__inner"
     />
   </span>
   选择0
@@ -90,64 +90,64 @@ exports[`Checkbox renders disabled Checkbox correctly 1`] = `
 
 exports[`Checkbox renders disabled CheckboxGroup correctly 1`] = `
 <div
-  class="ui-checkbox-group"
+  class="za-checkbox-group"
 >
   <label>
     <span
-      class="ui-checkbox"
+      class="za-checkbox"
     >
       <input
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="a"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     A
   </label>
   <label>
     <span
-      class="ui-checkbox"
+      class="za-checkbox"
     >
       <input
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="b"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     B
   </label>
   <label>
     <span
-      class="ui-checkbox"
+      class="za-checkbox"
     >
       <input
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="c"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     C
   </label>
   <label>
     <span
-      class="ui-checkbox"
+      class="za-checkbox"
     >
       <input
-        class="ui-checkbox-input"
+        class="za-checkbox__input"
         type="checkbox"
         value="d"
       />
       <span
-        class="ui-checkbox-inner"
+        class="za-checkbox__inner"
       />
     </span>
     D
@@ -158,15 +158,15 @@ exports[`Checkbox renders disabled CheckboxGroup correctly 1`] = `
 exports[`Checkbox renders indeterminate Checkbox correctly 1`] = `
 <label>
   <span
-    class="ui-checkbox"
+    class="za-checkbox"
   >
     <input
-      class="ui-checkbox-input"
+      class="za-checkbox__input"
       type="checkbox"
       value="0"
     />
     <span
-      class="ui-checkbox-inner"
+      class="za-checkbox__inner"
     />
   </span>
   选择0
@@ -176,16 +176,16 @@ exports[`Checkbox renders indeterminate Checkbox correctly 1`] = `
 exports[`Checkbox renders normal Checkbox correctly 1`] = `
 <label>
   <span
-    class="ui-checkbox checked"
+    class="za-checkbox is-checked"
   >
     <input
       checked=""
-      class="ui-checkbox-input"
+      class="za-checkbox__input"
       type="checkbox"
       value="0"
     />
     <span
-      class="ui-checkbox-inner"
+      class="za-checkbox__inner"
     />
   </span>
   选择0

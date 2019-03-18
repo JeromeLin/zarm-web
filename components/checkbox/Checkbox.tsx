@@ -6,7 +6,7 @@ class Checkbox extends Component<PropsType, any> {
   static Group;
 
   static defaultProps = {
-    prefixCls: 'ui-checkbox',
+    prefixCls: 'za-checkbox',
     defaultChecked: false,
     isDisabled: false,
     indeterminate: false,
@@ -51,9 +51,9 @@ class Checkbox extends Component<PropsType, any> {
     const disabled = 'disabled' in props || isDisabled;
     const cls = classnames({
       [prefixCls!]: true,
-      checked: this.state.checked,
-      disabled,
-      indeterminate: this.state.checked && indeterminate,
+      'is-checked': this.state.checked,
+      'is-disabled': disabled,
+      'is-indeterminate': this.state.checked && indeterminate,
       [className!]: !!className,
     });
 
@@ -61,14 +61,14 @@ class Checkbox extends Component<PropsType, any> {
       <label style={style}>
         <span className={cls}>
           <input
-            className={`${prefixCls}-input`}
+            className={`${prefixCls}__input`}
             type="checkbox"
             value={value}
             checked={this.state.checked}
             disabled={disabled}
             onChange={e => this._onClick(e)}
           />
-          <span className={`${prefixCls}-inner`} />
+          <span className={`${prefixCls}__inner`} />
         </span>
         {children}
       </label>

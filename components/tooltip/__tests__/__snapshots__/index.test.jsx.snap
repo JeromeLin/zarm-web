@@ -14,7 +14,7 @@ exports[`Tooltip renders normal Tooltip correctly 1`] = `
   </div>
   <div>
     <button
-      class="ui-button radius theme-default"
+      class="is-radius za-button za-button--default"
       type="button"
     >
       left

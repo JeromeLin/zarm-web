@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
 class Radio extends Component<PropsType, any> {
-
   static defaultProps = {
+    prefixCls: 'za-radio',
     defaultChecked: false,
-    isDisabled: false,
+    disabled: false,
     onChange: () => {},
+  };
+  static propTypes = {
+    defaultChecked: PropTypes.bool,
+    onChange: PropTypes.func,
+    disabled: PropTypes.bool,
+    className: PropTypes.string,
   };
 
   static Group;
+  static Button;
 
   constructor(props) {
     super(props);
@@ -27,7 +35,7 @@ class Radio extends Component<PropsType, any> {
     }
   }
 
-  _onClick(e) {
+  onClick(e) {
     this.setState({
       checked: true,
     });
@@ -37,31 +45,30 @@ class Radio extends Component<PropsType, any> {
   render() {
     const { props } = this;
     const {
-      value, isDisabled, className, children,
+      prefixCls, value, disabled, className, children,
     } = props;
-    const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-radio': true,
-      checked: this.state.checked,
-      disabled,
+      [`${prefixCls}`]: true,
+      'is-checked': this.state.checked,
+      'is-disabled': disabled,
       [className!]: !!className,
     });
 
     return (
-      <label>
+      <label className={`${prefixCls}__wrapper`}>
         <span className={cls}>
           <input
-            className="ui-radio-input"
+            className="za-radio__input"
             type="radio"
             value={value}
             checked={this.state.checked}
             disabled={disabled}
-            onChange={e => this._onClick(e)}
+            onChange={e => this.onClick(e)}
           />
-          <span className="ui-radio-inner" />
+          <span className="za-radio__inner" />
+          {children}
         </span>
-        {children}
       </label>
     );
   }

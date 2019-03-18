@@ -25,7 +25,7 @@ exports[`Modal renders basic Modal correctly 1`] = `
           class="ui-modal-close"
         >
           <i
-            class="ui-icon ui-icon-wrong theme-default"
+            class="za-icon za-icon-wrong theme-default"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ exports[`Modal renders closable Modal correctly 1`] = `
           class="ui-modal-close"
         >
           <i
-            class="ui-icon ui-icon-wrong theme-default"
+            class="za-icon za-icon-wrong theme-default"
           />
         </div>
       </div>
@@ -115,7 +115,7 @@ exports[`Modal renders customized Modal correctly 1`] = `
           class="ui-modal-close"
         >
           <i
-            class="ui-icon ui-icon-wrong theme-default"
+            class="za-icon za-icon-wrong theme-default"
           />
         </div>
       </div>

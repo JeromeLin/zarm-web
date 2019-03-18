@@ -12,13 +12,13 @@ class Option extends Component<OptionProps, any> {
   render() {
     const { props } = this;
     const {
-      children, checked, disabled, isDisabled, onDoubleClick, showCheckIcon,
+      children, checked, disabled, onDoubleClick, showCheckIcon,
     } = props;
 
     const cls = cn({
-      'ui-option-list': true,
-      'checked': checked,
-      'disabled': isDisabled || disabled,
+      'za-option-list': true,
+      'is-checked': checked,
+      'is-disabled': disabled,
     });
     return (
       <li
@@ -28,7 +28,7 @@ class Option extends Component<OptionProps, any> {
         onDoubleClick={onDoubleClick}
       >
         {children}
-        {showCheckIcon && checked && <Icon className="checked-icon" theme="info" type="right" />}
+        {showCheckIcon && checked && <Icon className="checked-icon" theme="primary" type="right" />}
       </li>
     );
   }

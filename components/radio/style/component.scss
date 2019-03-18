@@ -1,17 +1,60 @@
-.ui-radio-group {
+@include b(radio-group) {
   display: inline-block;
 
-  label {
-    margin-right: 16px;
+  @include m(lg) {
+    @include b(radio-button) {
+      height: $--button-height-xl;
+      line-height: $--button-height-xl - 2;
+      font-size: $--button-fontSize-lg;
+      padding: 0 $--padding-size-16;
+    }
+  }
+
+  @include m(sm) {
+    @include b(radio-button) {
+      height: $--button-height-sm;
+      line-height: $--button-height-sm - 2;
+      font-size: $--button-fontSize-sm;
+      padding: 0 $--padding-size-8;
+    }
+  }
+
+  @include b(radio) {
+    @include e(wrapper) {
+      margin-right: $--margin-size-16;
+    }
+  }
+
+  @include b(radio-button) {
+    @include e(wrapper) {
+      &:first-child {
+        @include b(radio-button) {
+          border-radius: $--border-radius-base 0 0 $--border-radius-base;
+          border-left: $--border-base;
+        }
+      }
+
+      &:last-child {
+        @include b(radio-button) {
+          border-radius: 0 $--border-radius-base $--border-radius-base 0;
+        }
+      }
+
+      &:first-child:last-child {
+        @include b(radio-button) {
+          border-radius: $--border-radius-base;
+        }
+      }
+    }
   }
 }
 
 /* 一般状态 */
-.ui-radio {
+@include b(radio) {
   display: inline-block;
   position: relative;
-  padding-right: $base-padding-xs;
-  font-size: 14px;
+  padding-right: $--padding-size-4;
+  font-size: $--font-size-base;
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
@@ -19,44 +62,59 @@
   cursor: pointer;
 
   /* 选中状态 */
-  &.checked {
+  &.is-checked {
+    @include b(radio) {
+      @include e(inner) {
+        border-color: $--color-primary;
 
-    .ui-radio-inner {
-      border-color: #d9d9d9;
-
-      &:after {
-        transform: scale(1);
-        opacity: 1;
-        transition: transform .3s cubic-bezier(.12, .4, .29, 1.46),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+        &:after {
+          transform: scale(1);
+          opacity: 1;
+          transition:
+            transform .3s cubic-bezier(.12, .4, .29, 1.46),
+            opacity .3s cubic-bezier(.78, .14, .15, .86),
+            background-color .3s cubic-bezier(.78, .14, .15, .86);
+        }
       }
     }
   }
 
   /* 禁用状态 */
-  &.disabled {
+  &.is-disabled {
+    @include b(radio) {
+      @include e(inner) {
+        border-color: #d9d9d9;
+        background-color: #f3f3f3;
+        cursor: not-allowed;
 
-    .ui-radio-inner {
-      border-color: #d9d9d9;
-      background-color: #f3f3f3;
-      cursor: not-allowed;
-
-      &:after {
-        background-color: #ccc;
+        &:after {
+          background-color: #ccc;
+        }
       }
     }
   }
 
+  &:hover {
+    &:not(.is-disabled) {
+      @include b(radio) {
+        @include e(inner) {
+          border-color: $--color-primary;
+        }
+      }
+    }
+  }
 
-  .ui-radio-inner {
+  @include e(inner) {
     position: relative;
-    top: 0;
+    top: 2px;
+    margin-right: $--margin-size-4;
     left: 0;
     display: inline-block;
     width: 14px;
     height: 14px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid $--button-default-border;
     border-radius: 14px;
-    background-color: #fff;
+    background-color: $--color-white;
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
     &:after {
@@ -70,14 +128,17 @@
       border-top: 0;
       border-left: 0;
       content: ' ';
-      background-color: $base-theme-info;
+      background-color: $--color-primary;
       opacity: 0;
       transform: scale(0);
-      transition: transform .3s cubic-bezier(.78, .14, .15, .86), opacity .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
+      transition:
+        transform .3s cubic-bezier(.78, .14, .15, .86),
+        opacity .3s cubic-bezier(.78, .14, .15, .86),
+        background-color .3s cubic-bezier(.78, .14, .15, .86);
     }
   }
 
-  .ui-radio-input {
+  @include e(input) {
     position: absolute;
     left: 0;
     opacity: 0;
@@ -85,5 +146,47 @@
 
   & + span {
     margin-left: 5px;
+  }
+}
+
+@include b(radio-button) {
+  margin: 0;
+  height: $--button-height;
+  line-height: $--button-height - 2px;
+  color: $--color-text-secondary;
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid $--border-color-base;
+  border-left: 0;
+  background: $--color-white;
+  padding: 0 $--padding-size-16 - 1px;
+  position: relative;
+
+  &:not(.is-disabled):not(.is-checked):hover {
+    position: relative;
+    color: $--color-primary;
+  }
+
+  &.is-checked {
+    position: relative;
+    color: $--color-white;
+    background: $--color-primary;
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    color: $--button-radio-btn-disabled-color;
+    background: $--button-radio-btn-disabled-bg;
+  }
+
+  @include b(radio) {
+    @include e(inner) {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      border: none;
+      pointer-events: none;
+    }
   }
 }

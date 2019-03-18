@@ -15,13 +15,13 @@ exports[`Transfer renders Transfer correctly 1`] = `
         初始值
       </h4>
       <span
-        class="ui-select radius"
+        class="za-select"
       >
         <span
           aria-autocomplete="list"
           aria-expanded="false"
           aria-haspopup="true"
-          class="ui-select-selection"
+          class="za-select__selection"
           role="combobox"
           style="height:100%;max-height:250px;overflow:auto"
         >
@@ -30,25 +30,25 @@ exports[`Transfer renders Transfer correctly 1`] = `
             role="menu"
           >
             <li
-              class="ui-option-list"
+              class="za-option-list"
               style="padding-right:10px"
             >
               张三
             </li>
             <li
-              class="ui-option-list"
+              class="za-option-list"
               style="padding-right:10px"
             >
               李四
             </li>
             <li
-              class="ui-option-list"
+              class="za-option-list"
               style="padding-right:10px"
             >
               王五
             </li>
             <li
-              class="ui-option-list"
+              class="za-option-list"
               style="padding-right:10px"
             >
               奥巴马
@@ -64,21 +64,21 @@ exports[`Transfer renders Transfer correctly 1`] = `
         class="button-wrapper"
       >
         <button
-          class="ui-button radius disabled theme-default"
+          class="is-radius is-disabled za-button za-button--default"
           disabled=""
           type="button"
         >
           <i
-            class="ui-icon ui-icon-add theme-default"
+            class="za-icon za-icon-add theme-default"
           />
         </button>
         <button
-          class="ui-button radius disabled theme-default"
+          class="is-radius is-disabled za-button za-button--default"
           disabled=""
           type="button"
         >
           <i
-            class="ui-icon ui-icon-minus theme-default"
+            class="za-icon za-icon-minus theme-default"
           />
         </button>
       </div>
@@ -92,13 +92,13 @@ exports[`Transfer renders Transfer correctly 1`] = `
         已选值
       </h4>
       <span
-        class="ui-select radius"
+        class="za-select"
       >
         <span
           aria-autocomplete="list"
           aria-expanded="false"
           aria-haspopup="true"
-          class="ui-select-selection"
+          class="za-select__selection"
           role="combobox"
           style="height:100%;max-height:250px;overflow:auto"
         >

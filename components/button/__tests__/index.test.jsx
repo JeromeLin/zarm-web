@@ -2,14 +2,13 @@ import React from 'react';
 import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Button from '../index';
-import Icon from '../../icon'
 
 describe('Button', () => {
   it('renders Buttons of different theme correctly', () => {
     const wrapper = render(
       <div>
         <Button>default</Button>
-        <Button theme="info">info</Button>
+        <Button theme="primary">info</Button>
         <Button theme="success">success</Button>
         <Button theme="warning">warning</Button>
         <Button theme="error">error</Button>
@@ -31,18 +30,18 @@ describe('Button', () => {
     const wrapper = render(
       <div>
         <div>
-          <Button radius>default</Button>
-          <Button radius theme="info">info</Button>
-          <Button radius theme="success">success</Button>
-          <Button radius theme="warning">warning</Button>
-          <Button radius theme="error">error</Button>
+          <Button shape="radius">default</Button>
+          <Button shape="radius" theme="primary">info</Button>
+          <Button shape="radius" theme="success">success</Button>
+          <Button shape="radius" theme="warning">warning</Button>
+          <Button shape="radius" theme="danger">error</Button>
         </div>
         <div>
-          <Button round>default</Button>
-          <Button round theme="info">info</Button>
-          <Button round theme="success">success</Button>
-          <Button round theme="warning">warning</Button>
-          <Button round theme="error">error</Button>
+          <Button shape="round">default</Button>
+          <Button shape="round" theme="primary">info</Button>
+          <Button shape="round" theme="success">success</Button>
+          <Button shape="round" theme="warning">warning</Button>
+          <Button shape="round" theme="danger">error</Button>
         </div>
       </div>
     );
@@ -52,11 +51,11 @@ describe('Button', () => {
   it('renders Buttons of different size correctly', () => {
     const wrapper = render(
       <div>
-        <Button size="xl" theme="info">xl尺寸</Button>
-        <Button size="lg" theme="info">lg尺寸</Button>
-        <Button theme="info">默认尺寸</Button>
-        <Button size="sm" theme="info">sm尺寸</Button>
-        <Button size="xs" theme="info">xs尺寸</Button>
+        <Button size="xl" theme="primary">xl尺寸</Button>
+        <Button size="lg" theme="primary">lg尺寸</Button>
+        <Button theme="primary">默认尺寸</Button>
+        <Button size="sm" theme="primary">sm尺寸</Button>
+        <Button size="xs" theme="primary">xs尺寸</Button>
       </div>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -73,7 +72,7 @@ describe('Button', () => {
 
   it('renders anchor Button correctly', () => {
     const wrapper = render(
-      <Button radius href="https://www.baidu.com" theme="info" target="_blank">百度一下</Button>
+      <Button href="https://www.baidu.com" theme="primary" target="_blank">百度一下</Button>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -82,7 +81,7 @@ describe('Button', () => {
     const wrapper = shallow(
       <Button href="https://www.baidu.com">百度一下</Button>
     );
-    expect(wrapper.exists('a')).toEqual(true)
+    expect(wrapper.exists('a')).toEqual(true);
   });
 
   it('triggers onClick callback correctly on nomarl Button', () => {

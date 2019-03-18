@@ -62,6 +62,74 @@
 ```
 :::
 
+### 按钮样式单选、不同尺寸
+
+:::demo 使用`Radio.Group`组件。
+
+```js
+  constructor(props) {
+    super(props);
+    this.state = {
+      radioValue: ''
+    }
+  }
+  render() {
+    return (
+      <div>
+        <div style={{marginBottom: 8}}>选择了：{this.state.radioValue}</div>
+        <div className="multi-rows">
+          <Radio.Group
+            size="lg"
+            value={this.state.radioValue}
+            onChange={(e) => {
+              this.setState({
+                radioValue: e.target.value
+              });
+            }}
+          >
+            <Radio.Button value="上网">上网</Radio.Button>
+            <Radio.Button value="篮球">篮球</Radio.Button>
+            <Radio.Button value="足球">足球</Radio.Button>
+            <Radio.Button value="羽毛球">羽毛球</Radio.Button>
+          </Radio.Group>
+        </div>
+        <div className="multi-rows">
+          <Radio.Group
+            value={this.state.radioValue}
+            onChange={(e) => {
+              this.setState({
+                radioValue: e.target.value
+              });
+            }}
+          >
+            <Radio.Button value="上网1">上网1</Radio.Button>
+            <Radio.Button value="篮球1">篮球1</Radio.Button>
+            <Radio.Button value="足球1">足球1</Radio.Button>
+            <Radio.Button value="羽毛球1">羽毛球1</Radio.Button>
+          </Radio.Group>
+        </div>
+        <div className="multi-rows">
+          <Radio.Group
+            size="sm"
+            value={this.state.radioValue}
+            onChange={(e) => {
+              this.setState({
+                radioValue: e.target.value
+              });
+            }}
+          >
+            <Radio.Button disabled value="上网2">上网2</Radio.Button>
+            <Radio.Button value="篮球2">篮球2</Radio.Button>
+            <Radio.Button value="足球2">足球2</Radio.Button>
+            <Radio.Button value="羽毛球2">羽毛球2</Radio.Button>
+          </Radio.Group>
+        </div>
+      </div>
+    )
+  }
+```
+:::
+
 ### 禁用状态
 
 不可勾选状态。
@@ -72,12 +140,8 @@
   render() {
     return (
       <div>
-        <Radio
-          disabled
-          onChange={(e) => this.onChange(e)}
-        >
-          选择
-        </Radio>
+        <Radio disabled onChange={(e) => this.onChange(e)}>选择</Radio>&nbsp;&nbsp;&nbsp;&nbsp;
+        <Radio disabled checked onChange={(e) => this.onChange(e)}>选择</Radio>
       </div>
     )
   }
@@ -91,7 +155,6 @@
 | checked     | 是否选中  | boolean  |   -           |    false    |
 | defaultChecked    | 默认选中  | boolean   |   - |     false   |
 | disabled  | 禁用    | -   | -  | -   |
-| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 | value  | 选择框对应的值    | string   | -  | -   |
 
 ### Radio Events

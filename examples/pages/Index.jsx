@@ -9,6 +9,7 @@ export default {
     },
     Layout: {
       Layout: '../pages/layout',
+      Grid: '../pages/grid',
     },
     Form: {
       Radio: '../pages/radio',
@@ -55,6 +56,7 @@ export default {
       Popconfirm: '../pages/popconfirm',
       Mask: '../pages/mask',
       Swipe: '../pages/swipe',
+      Transition: '../pages/transition',
     },
   },
 };

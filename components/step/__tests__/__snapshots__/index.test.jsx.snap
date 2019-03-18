@@ -20,7 +20,7 @@ exports[`Step renders normal Step correctly 1`] = `
         >
           <span>
             <i
-              class="ui-icon ui-icon-right theme-default"
+              class="za-icon za-icon-right theme-default"
             />
           </span>
         </div>
@@ -46,7 +46,7 @@ exports[`Step renders normal Step correctly 1`] = `
         >
           <span>
             <i
-              class="ui-icon ui-icon-right theme-default"
+              class="za-icon za-icon-right theme-default"
             />
           </span>
         </div>

@@ -19,7 +19,7 @@ exports[`Pagination renders Pagination with customized props correctly 1`] = `
           title="上一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-left theme-default"
+            class="za-icon za-icon-arrow-left theme-default"
           />
         </li>
         <li
@@ -67,7 +67,7 @@ exports[`Pagination renders Pagination with customized props correctly 1`] = `
           title="下一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-right theme-default"
+            class="za-icon za-icon-arrow-right theme-default"
           />
         </li>
         <div
@@ -95,7 +95,7 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
           title="上一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-left theme-default"
+            class="za-icon za-icon-arrow-left theme-default"
           />
         </li>
         <li
@@ -143,7 +143,7 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
           title="下一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-right theme-default"
+            class="za-icon za-icon-arrow-right theme-default"
           />
         </li>
       </ul>
@@ -183,7 +183,7 @@ exports[`Pagination renders Pagination with total info correctly 1`] = `
           title="上一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-left theme-default"
+            class="za-icon za-icon-arrow-left theme-default"
           />
         </li>
         <li
@@ -231,7 +231,7 @@ exports[`Pagination renders Pagination with total info correctly 1`] = `
           title="下一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-right theme-default"
+            class="za-icon za-icon-arrow-right theme-default"
           />
         </li>
       </ul>
@@ -254,7 +254,7 @@ exports[`Pagination renders normal Pagination correctly 1`] = `
           title="上一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-left theme-default"
+            class="za-icon za-icon-arrow-left theme-default"
           />
         </li>
         <li
@@ -302,7 +302,7 @@ exports[`Pagination renders normal Pagination correctly 1`] = `
           title="下一页"
         >
           <i
-            class="ui-icon ui-icon-arrow-right theme-default"
+            class="za-icon za-icon-arrow-right theme-default"
           />
         </li>
       </ul>

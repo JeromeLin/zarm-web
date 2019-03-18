@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import rafObj from '../utils/rAF';
 import Notification from './Notification';
 
-const className: string = '.ui-notification';
 const NOTIFICATION_GAP = 16;
 
-export default function NotificationInstance (props: any, type: string) {
+export default function NotificationInstance (props?: any, theme?: string) {
+  const className: string = props.isMessage ? '.za-message' : '.za-notification';
   const div = document.createElement('div');
 
   document.body.appendChild(div);
@@ -17,8 +16,8 @@ export default function NotificationInstance (props: any, type: string) {
     };
   }
 
-  if (type) {
-    props.type = type;
+  if (theme) {
+    props.theme = theme;
   }
 
   const instances = document.querySelectorAll(className);
@@ -31,18 +30,18 @@ export default function NotificationInstance (props: any, type: string) {
   const element = React.createElement(Notification, {
     ...props,
     willUnMount (lastHeight, lastTop) {
-      ReactDOM.unmountComponentAtNode(div);
-      document.body.removeChild(div);
+      setTimeout(() => {
+        ReactDOM.unmountComponentAtNode(div);
+        document.body.removeChild(div);
+      });
 
-      rafObj.rAF(() => {
-        const instancesDom = document.querySelectorAll(className);
+      const instancesDom = document.querySelectorAll(className);
 
-        Array.from(instancesDom).forEach((instance: any) => {
-          const instanceTop = parseInt(instance.style.top, 10);
-          if (instanceTop > lastTop) {
-            instance.style.top = `${instanceTop - lastHeight - 16}px`;
-          }
-        });
+      Array.from(instancesDom).forEach((instance: any) => {
+        const instanceTop = parseInt(instance.style.top, 10);
+        if (instanceTop > lastTop) {
+          instance.style.top = `${instanceTop - lastHeight - 16}px`;
+        }
       });
     },
   });
@@ -50,9 +49,8 @@ export default function NotificationInstance (props: any, type: string) {
   ReactDOM.render(element, div);
 }
 
-// 注册单例方法
-['info', 'error', 'success', 'warning'].forEach(type => {
-  NotificationInstance[type] = (options: object = {}) => {
-    return NotificationInstance(options, type);
+['primary', 'danger', 'success', 'warning', 'loading'].forEach(theme => {
+  NotificationInstance[theme] = (options: object = {}) => {
+    return NotificationInstance(options, theme);
   };
 });

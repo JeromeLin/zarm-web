@@ -40,15 +40,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
     >
       <label>
         <span
-          class="ui-checkbox checked indeterminate"
+          class="za-checkbox is-checked is-indeterminate"
         >
           <input
             checked=""
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -79,14 +79,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -117,14 +117,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -155,16 +155,16 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                       >
                         <label>
                           <span
-                            class="ui-checkbox checked disabled"
+                            class="za-checkbox is-checked is-disabled"
                           >
                             <input
                               checked=""
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               disabled=""
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -191,14 +191,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -231,14 +231,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -269,16 +269,16 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked disabled"
+                      class="za-checkbox is-checked is-disabled"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -305,14 +305,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -339,14 +339,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -376,15 +376,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox checked indeterminate"
+                class="za-checkbox is-checked is-indeterminate"
               >
                 <input
                   checked=""
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -415,14 +415,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -449,15 +449,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked indeterminate"
+                      class="za-checkbox is-checked is-indeterminate"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -488,14 +488,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -526,14 +526,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -560,14 +560,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -597,15 +597,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                       >
                         <label>
                           <span
-                            class="ui-checkbox checked"
+                            class="za-checkbox is-checked"
                           >
                             <input
                               checked=""
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -635,14 +635,14 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -682,15 +682,15 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
     >
       <label>
         <span
-          class="ui-checkbox checked"
+          class="za-checkbox is-checked"
         >
           <input
             checked=""
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -721,15 +721,15 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox disabled"
+                class="za-checkbox is-disabled"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   disabled=""
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -760,16 +760,16 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked disabled"
+                      class="za-checkbox is-checked is-disabled"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -796,14 +796,14 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -833,15 +833,15 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox checked"
+                class="za-checkbox is-checked"
               >
                 <input
                   checked=""
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -872,15 +872,15 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked"
+                      class="za-checkbox is-checked"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -924,14 +924,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
     >
       <label>
         <span
-          class="ui-checkbox"
+          class="za-checkbox"
         >
           <input
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -962,14 +962,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -1000,14 +1000,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -1038,15 +1038,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                       >
                         <label>
                           <span
-                            class="ui-checkbox disabled"
+                            class="za-checkbox is-disabled"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               disabled=""
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -1073,14 +1073,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -1113,14 +1113,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -1151,15 +1151,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                 >
                   <label>
                     <span
-                      class="ui-checkbox disabled"
+                      class="za-checkbox is-disabled"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -1186,14 +1186,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -1220,14 +1220,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -1257,14 +1257,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -1295,14 +1295,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -1329,14 +1329,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -1367,14 +1367,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -1405,14 +1405,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -1439,14 +1439,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -1476,14 +1476,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -1513,14 +1513,14 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2250,14 +2250,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
     >
       <label>
         <span
-          class="ui-checkbox"
+          class="za-checkbox"
         >
           <input
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -2288,14 +2288,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -2326,14 +2326,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2364,15 +2364,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                       >
                         <label>
                           <span
-                            class="ui-checkbox disabled"
+                            class="za-checkbox is-disabled"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               disabled=""
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -2399,14 +2399,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -2439,14 +2439,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -2477,15 +2477,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                 >
                   <label>
                     <span
-                      class="ui-checkbox disabled"
+                      class="za-checkbox is-disabled"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2512,14 +2512,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2546,14 +2546,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2583,14 +2583,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -2621,14 +2621,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2655,14 +2655,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2693,14 +2693,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -2731,14 +2731,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -2765,14 +2765,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -2802,14 +2802,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -2839,14 +2839,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -2886,15 +2886,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
     >
       <label>
         <span
-          class="ui-checkbox checked indeterminate"
+          class="za-checkbox is-checked is-indeterminate"
         >
           <input
             checked=""
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -2925,14 +2925,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -2963,14 +2963,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3001,16 +3001,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                       >
                         <label>
                           <span
-                            class="ui-checkbox checked disabled"
+                            class="za-checkbox is-checked is-disabled"
                           >
                             <input
                               checked=""
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               disabled=""
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -3037,14 +3037,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -3077,14 +3077,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -3115,16 +3115,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked disabled"
+                      class="za-checkbox is-checked is-disabled"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3151,14 +3151,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3185,14 +3185,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3222,15 +3222,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
           >
             <label>
               <span
-                class="ui-checkbox checked indeterminate"
+                class="za-checkbox is-checked is-indeterminate"
               >
                 <input
                   checked=""
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -3261,14 +3261,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3295,15 +3295,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked indeterminate"
+                      class="za-checkbox is-checked is-indeterminate"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3334,14 +3334,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -3372,14 +3372,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -3406,14 +3406,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -3443,15 +3443,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                       >
                         <label>
                           <span
-                            class="ui-checkbox checked"
+                            class="za-checkbox is-checked"
                           >
                             <input
                               checked=""
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -3481,14 +3481,14 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3677,14 +3677,14 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
     >
       <label>
         <span
-          class="ui-checkbox"
+          class="za-checkbox"
         >
           <input
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -3715,14 +3715,14 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -3753,14 +3753,14 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -3791,15 +3791,15 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
                       >
                         <label>
                           <span
-                            class="ui-checkbox disabled"
+                            class="za-checkbox is-disabled"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               disabled=""
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -3826,14 +3826,14 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -3866,14 +3866,14 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -3901,14 +3901,14 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -3946,14 +3946,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
     >
       <label>
         <span
-          class="ui-checkbox"
+          class="za-checkbox"
         >
           <input
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -3984,14 +3984,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -4022,14 +4022,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4060,15 +4060,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                       >
                         <label>
                           <span
-                            class="ui-checkbox disabled"
+                            class="za-checkbox is-disabled"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               disabled=""
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -4095,14 +4095,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -4135,14 +4135,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -4173,15 +4173,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                 >
                   <label>
                     <span
-                      class="ui-checkbox disabled"
+                      class="za-checkbox is-disabled"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4208,14 +4208,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4242,14 +4242,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4279,14 +4279,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -4317,14 +4317,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4351,14 +4351,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4389,14 +4389,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -4427,14 +4427,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -4461,14 +4461,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -4498,14 +4498,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -4535,14 +4535,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4582,15 +4582,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
     >
       <label>
         <span
-          class="ui-checkbox checked indeterminate"
+          class="za-checkbox is-checked is-indeterminate"
         >
           <input
             checked=""
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -4621,14 +4621,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -4659,14 +4659,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4697,16 +4697,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                       >
                         <label>
                           <span
-                            class="ui-checkbox checked disabled"
+                            class="za-checkbox is-checked is-disabled"
                           >
                             <input
                               checked=""
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               disabled=""
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -4733,14 +4733,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -4773,14 +4773,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
           >
             <label>
               <span
-                class="ui-checkbox"
+                class="za-checkbox"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -4811,16 +4811,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked disabled"
+                      class="za-checkbox is-checked is-disabled"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4847,14 +4847,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4881,14 +4881,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4918,15 +4918,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
           >
             <label>
               <span
-                class="ui-checkbox checked indeterminate"
+                class="za-checkbox is-checked is-indeterminate"
               >
                 <input
                   checked=""
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -4957,14 +4957,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -4991,15 +4991,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked indeterminate"
+                      class="za-checkbox is-checked is-indeterminate"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -5030,14 +5030,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                       >
                         <label>
                           <span
-                            class="ui-checkbox"
+                            class="za-checkbox"
                           >
                             <input
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -5068,14 +5068,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -5102,14 +5102,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                             >
                               <label>
                                 <span
-                                  class="ui-checkbox"
+                                  class="za-checkbox"
                                 >
                                   <input
-                                    class="ui-checkbox-input"
+                                    class="za-checkbox__input"
                                     type="checkbox"
                                   />
                                   <span
-                                    class="ui-checkbox-inner"
+                                    class="za-checkbox__inner"
                                   />
                                 </span>
                               </label>
@@ -5139,15 +5139,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                       >
                         <label>
                           <span
-                            class="ui-checkbox checked"
+                            class="za-checkbox is-checked"
                           >
                             <input
                               checked=""
-                              class="ui-checkbox-input"
+                              class="za-checkbox__input"
                               type="checkbox"
                             />
                             <span
-                              class="ui-checkbox-inner"
+                              class="za-checkbox__inner"
                             />
                           </span>
                         </label>
@@ -5177,14 +5177,14 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -5224,15 +5224,15 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
     >
       <label>
         <span
-          class="ui-checkbox checked"
+          class="za-checkbox is-checked"
         >
           <input
             checked=""
-            class="ui-checkbox-input"
+            class="za-checkbox__input"
             type="checkbox"
           />
           <span
-            class="ui-checkbox-inner"
+            class="za-checkbox__inner"
           />
         </span>
       </label>
@@ -5263,15 +5263,15 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox disabled"
+                class="za-checkbox is-disabled"
               >
                 <input
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   disabled=""
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -5302,16 +5302,16 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked disabled"
+                      class="za-checkbox is-checked is-disabled"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         disabled=""
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -5338,14 +5338,14 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox"
+                      class="za-checkbox"
                     >
                       <input
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>
@@ -5375,15 +5375,15 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
           >
             <label>
               <span
-                class="ui-checkbox checked"
+                class="za-checkbox is-checked"
               >
                 <input
                   checked=""
-                  class="ui-checkbox-input"
+                  class="za-checkbox__input"
                   type="checkbox"
                 />
                 <span
-                  class="ui-checkbox-inner"
+                  class="za-checkbox__inner"
                 />
               </span>
             </label>
@@ -5414,15 +5414,15 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
                 >
                   <label>
                     <span
-                      class="ui-checkbox checked"
+                      class="za-checkbox is-checked"
                     >
                       <input
                         checked=""
-                        class="ui-checkbox-input"
+                        class="za-checkbox__input"
                         type="checkbox"
                       />
                       <span
-                        class="ui-checkbox-inner"
+                        class="za-checkbox__inner"
                       />
                     </span>
                   </label>

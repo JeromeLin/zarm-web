@@ -22,19 +22,19 @@
   border: 1px solid $base-theme-default;
   outline: none;
   transition:
-    border .3s cubic-bezier(0.645, 0.045, 0.355, 1),
-    background .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border .2s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   &:hover {
     border-color: #ccc;
   }
 
   &:focus {
-    border-color: #57c5f7;
+    border-color: $base-theme-info;
   }
 
   &:active {
-    border-color: #57c5f7;
+    border-color: $base-theme-info;
   }
 
   &.disabled,

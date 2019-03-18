@@ -1,4 +1,4 @@
-export type themeType = 'default' | 'info' | 'success' | 'warning' | 'error';
+export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 
 export default interface PropsType {
   prefixCls?: string;

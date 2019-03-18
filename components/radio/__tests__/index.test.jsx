@@ -73,7 +73,7 @@ describe('Radio', () => {
       </Radio>
     );
 
-    wrapper.find('.ui-radio-input').simulate('change');
+    wrapper.find('.za-radio__input').simulate('change');
     expect(onChange).toBeCalled();
   });
 
@@ -91,7 +91,7 @@ describe('Radio', () => {
       </Radio.Group>
     );
 
-    wrapper.find('.ui-radio-input').first().simulate('change');
+    wrapper.find('.za-radio__input').first().simulate('change');
     expect(onChange).toBeCalled();
   });
 });

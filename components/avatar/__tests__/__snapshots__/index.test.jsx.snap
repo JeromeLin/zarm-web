@@ -59,7 +59,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     class="ui-avatar ui-avatar-circle ui-avatar-icon"
   >
     <i
-      class="ui-icon ui-icon-user theme-default"
+      class="za-icon za-icon-user theme-default"
     />
   </span>
   <span

@@ -87,15 +87,19 @@
   &.theme-default {
     @include tag-theme($base-tag-default-color, $base-tag-default-bg);
   }
+
   &.theme-info {
     @include tag-theme($base-tag-info-color, $base-tag-info-bg);
   }
+
   &.theme-success {
     @include tag-theme($base-tag-success-color, $base-tag-success-bg);
   }
+
   &.theme-warning {
     @include tag-theme($base-tag-warning-color, $base-tag-warning-bg);
   }
+
   &.theme-error {
     @include tag-theme($base-tag-error-color, $base-tag-error-bg);
   }

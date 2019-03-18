@@ -14,16 +14,17 @@ $icon-url: $base-icon-url;
     url('#{$icon-url}.svg#dragonicon') format('svg');
 }
 
-.ui-icon {
+.za-icon {
   font-family: "dragonicon" !important;
   font-style: normal;
   display: inline-block;
+  line-height: 1;
   text-transform: none;
   vertical-align: baseline;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &.theme-info {
+  &.theme-primary {
     @include icon-theme($base-theme-info);
   }
 
@@ -35,12 +36,12 @@ $icon-url: $base-icon-url;
     @include icon-theme($base-theme-warning);
   }
 
-  &.theme-error {
+  &.theme-danger {
     @include icon-theme($base-theme-error);
   }
 }
 
-.ui-icon {
+.za-icon {
   &-right:before { content: '\e602'; }
   &-right-round-fill:before { content: '\e609'; }
   &-right-round:before { content: '\e60a'; }

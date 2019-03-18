@@ -50,7 +50,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
       class="ui-form-item-control"
     >
       <button
-        class="ui-button radius theme-success"
+        class="is-radius za-button za-button--success"
         type="button"
       >
         查询
@@ -92,7 +92,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
         class="ui-form-item-required"
       >
         <i
-          class="ui-icon ui-icon-required theme-default"
+          class="za-icon za-icon-required theme-default"
         />
       </span>
       来源
@@ -117,7 +117,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       class="ui-form-item-control"
     >
       <button
-        class="ui-button radius theme-success"
+        class="is-radius za-button za-button--success"
         type="button"
       >
         查询
@@ -174,7 +174,7 @@ exports[`Form renders normal Form correctly 1`] = `
       class="ui-form-item-control"
     >
       <button
-        class="ui-button radius theme-success"
+        class="is-radius za-button za-button--success"
         type="button"
       >
         登录

@@ -7,7 +7,7 @@ import AlertProps from './PropsType';
 class Alert extends Component<AlertProps, any> {
   static defaultProps = {
     prefixCls: 'ui-alert',
-    theme: 'info',
+    theme: 'primary',
     message: '',
     width: 270,
     className: '',
@@ -31,7 +31,7 @@ class Alert extends Component<AlertProps, any> {
       case 'success':
         iconType = 'right-round';
         break;
-      case 'error':
+      case 'danger':
         iconType = 'wrong-round';
         break;
       default:

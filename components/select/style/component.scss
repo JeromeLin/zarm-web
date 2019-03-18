@@ -33,7 +33,7 @@
   }
 }
 
-.ui-select {
+@include b(select) {
   @include select-size($base-height, $base-padding, $base-fontSize, $base-radius);
 
   display: inline-block;
@@ -43,7 +43,7 @@
   color: #666;
   width: 120px;
 
-  .ui-select-selection {
+  @include e(selection) {
     outline: none;
     user-select: none;
     display: block;
@@ -53,16 +53,16 @@
     cursor: pointer;
 
     &:hover {
-      border-color: #57c5f7;
+      border-color: $base-select-active-color;
     }
 
     &:active {
-      border-color: #57c5f7;
+      border-color: $base-select-active-color;
       outline: 0;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+      box-shadow: inset 0 1px 1px $base-select-active-color, 0 0 8px $base-select-active-color;
     }
 
-    .ui-select-text {
+    .za-select-text {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -74,7 +74,7 @@
         box-shadow: none;
       }
 
-      &.ui-select-text-placeholder-color {
+      &.za-select-text-placeholder-color {
         color: #ccc;
       }
     }
@@ -89,11 +89,10 @@
     }
   }
 
-  &.ui-select-open {
-    .ui-select-selection {
-      border-color: #57c5f7;
+  &.za-select--open {
+    .za-select-selection {
+      border-color: $base-select-active-color;
       outline: 0;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
 
       .ui-select-arrow {
         transform: rotate(180deg);
@@ -160,7 +159,7 @@
 }
 
 .ui-dropdown {
-  .ui-select-notfound {
+  .za-select--notfound {
     display: block;
     padding: 8px;
     color: #ccc;
@@ -172,7 +171,7 @@
   }
 }
 
-.ui-option-list {
+@include b(option-list) {
   position: relative;
   white-space: nowrap;
   padding: 10px;
@@ -180,16 +179,16 @@
   cursor: pointer;
 
   &:hover {
-    color: #1890ff;
-    background-color: #e6f7ff;
+    color: $base-select-focus-color;
+    background-color: $base-select-active-color;
   }
 
-  &.checked {
-    background-color: #e6f7ff;
-    color: #1890ff;
+  &.is-checked {
+    background-color: $base-select-active-color;
+    color: $base-select-focus-color;
   }
 
-  &.disabled {
+  &.is-disabled {
     color: #ccc;
     cursor: no-drop;
 
