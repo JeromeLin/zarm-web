@@ -27,7 +27,7 @@ describe('PopConfirm', () => {
       </div>
     );
 
-    wrapper.find('.ui-button').at(1).simulate('click');
+    wrapper.find('.za-button').at(1).simulate('click');
 
     expect(onOk).toHaveBeenCalled();
   });
@@ -42,7 +42,7 @@ describe('PopConfirm', () => {
       </div>
     );
 
-    wrapper.find('.ui-button').at(0).simulate('click');
+    wrapper.find('.za-button').at(0).simulate('click');
 
     expect(onCancel).toHaveBeenCalled();
   });

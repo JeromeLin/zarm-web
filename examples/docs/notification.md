@@ -28,7 +28,7 @@ open2() {
   Notification({
     title: '提示',
     message: '这是一条不会自动关闭的消息',
-    duration: 0
+    stayTime: 0
   });
 }
 ```
@@ -55,8 +55,7 @@ open3() {
   Notification({
     title: '成功',
     message: '这是一条成功的提示消息',
-    type: 'success',
-    duration: 0
+    theme: 'success',
   });
 }
 
@@ -64,19 +63,19 @@ open4() {
   Notification({
     title: '警告',
     message: '这是一条警告的提示消息',
-    type: 'warning'
+    theme: 'warning'
   });
 }
 
 open5() {
-  Notification.info({
+  Notification.primary({
     title: '消息',
     message: '这是一条消息的提示消息'
   });
 }
 
 open6() {
-  Notification.error({
+  Notification.danger({
     title: '错误',
     message: '这是一条错误的提示消息'
   });
@@ -99,7 +98,7 @@ open() {
   Notification({
     title: '点击',
     message: '这是一条成功的提示消息',
-    type: 'success',
+    theme: 'success',
     onClick () {alert('click')}
   });
 }
@@ -112,8 +111,8 @@ open() {
 | title | 标题 | string | — | — |
 | message | 说明文字 | string/ReactElement | — | — |
 | className | 自定义类名 | string | - | - |
-| type | 图标主题，只能为列举的四种之一，否则无效 | string | success/warning/info/error | — |
-| duration | 显示时间, 毫秒。设为 0 则不会自动关闭 | number | — | 4500 |
+| theme | 图标主题，只能为列举的四种之一，否则无效(默认default) | string | success/warning/primary/danger | — |
+| stayTime | 显示时间, 毫秒。设为 0 则不会自动关闭 | number | — | 4500 |
 | onClick | 点击 Notification 时的回调函数 | function | — | — |
 
 

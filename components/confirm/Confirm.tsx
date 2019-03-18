@@ -61,7 +61,7 @@ class Confirm extends Component<PropsType, any> {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.onCancel}>{cancelText}</Button>
-          <Button theme="success" onClick={this.onOk}>{okText}</Button>
+          <Button theme="primary" onClick={this.onOk}>{okText}</Button>
         </Modal.Footer>
       </Modal>
     );

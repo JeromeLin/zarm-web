@@ -4,6 +4,7 @@ import { GroupProps } from './PropsType';
 
 class CheckboxGroup extends Component<GroupProps, any> {
   static defaultProps = {
+    prefixCls: 'za-checkbox-group',
     onChange: () => {},
   };
 
@@ -36,10 +37,9 @@ class CheckboxGroup extends Component<GroupProps, any> {
       />
     ));
 
-    return <div className="ui-checkbox-group">{children}</div>;
+    return <div className={props.prefixCls}>{children}</div>;
   }
 
-  // eslint-disable-next-line
   getCheckedValue(children) {
     const checkedValue: ReactElement<any>[] = [];
     React.Children.forEach(children, (checkbox) => {

@@ -1,4 +1,4 @@
-.ui-checkbox-group {
+@include b(checkbox-group) {
   display: inline-block;
 
   label {
@@ -7,7 +7,7 @@
 }
 
 /* 一般状态 */
-.ui-checkbox {
+@include b(checkbox) {
   display: inline-block;
   position: relative;
   padding-right: $base-padding-xs;
@@ -18,8 +18,8 @@
   cursor: pointer;
 
   /* 选中状态 */
-  &.checked {
-    .ui-checkbox-inner {
+  &.is-checked {
+    .za-checkbox__inner {
       border-color: $base-theme-info;
       background-color: $base-theme-info;
 
@@ -31,8 +31,8 @@
   }
 
   /* 未全部选中状态 */
-  &.indeterminate {
-    .ui-checkbox-inner {
+  &.is-indeterminate {
+    .za-checkbox__inner {
       border-color: $base-theme-info;
       background-color: $base-theme-info;
 
@@ -44,9 +44,8 @@
   }
 
   /* 禁用状态 */
-  &.disabled {
-
-    .ui-checkbox-inner {
+  &.is-disabled {
+    .za-checkbox__inner {
       border-color: #d9d9d9;
       background-color: #f3f3f3;
       cursor: not-allowed;
@@ -57,14 +56,20 @@
     }
   }
 
-  .ui-checkbox-inner {
+  &:not(.is-disabled):hover {
+    .za-checkbox__inner {
+      border-color: $base-theme-info;
+    }
+  }
+
+  @include e(inner) {
     position: relative;
     top: 0;
     left: 0;
     display: inline-block;
     width: 14px;
     height: 14px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid #bcbcbc;
     border-radius: 3px;
     background-color: #fff;
     transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
@@ -85,7 +90,7 @@
     }
   }
 
-  .ui-checkbox-input {
+  @include e(input) {
     position: absolute;
     left: 0;
     opacity: 0;

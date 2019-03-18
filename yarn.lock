@@ -8239,8 +8239,8 @@ min-document@^2.19.0:
 
 mini-css-extract-plugin@^0.4.5:
   version "0.4.5"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.5.tgz#c99e9e78d54f3fa775633aee5933aeaa4e80719a"
-  integrity sha512-dqBanNfktnp2hwL2YguV9Jh91PFX7gu7nRLs4TGsbAfAG6WOtlynFRYzwDwmmeSb5uIwHo9nx1ta0f7vAZVp2w==
+  resolved "http://registry.npm.taobao.org/mini-css-extract-plugin/download/mini-css-extract-plugin-0.4.5.tgz#c99e9e78d54f3fa775633aee5933aeaa4e80719a"
+  integrity sha1-yZ6eeNVPP6d1YzruWTOuqk6AcZo=
   dependencies:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"

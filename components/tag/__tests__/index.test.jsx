@@ -52,7 +52,7 @@ describe('Tag', () => {
       <Tag theme="info" onClose={onClose}>可关闭标签</Tag>
     );
 
-    wrapper.find('.ui-icon').simulate('click');
+    wrapper.find('.za-icon').simulate('click');
     expect(onClose).toHaveBeenCalled();
   });
 });

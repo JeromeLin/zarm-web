@@ -3,18 +3,27 @@ $browser-default-font-size-px: 14px !default;
 
 $default-transition: .3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
+$base-color-white: #fff !default;
+
 $base-theme-default:       #e6e6e6 !default;
-$base-theme-success:       #5cb85c !default;
-$base-theme-info:          #2db7f5 !default;
-$base-theme-warning:       #f0ad4e !default;
-$base-theme-error:         #f56c6c !default;
+$base-theme-success:       #69c964 !default;
+$base-theme-info:          #12c287 !default;
+$base-theme-warning:       #eca632 !default;
+$base-theme-error:         #e55546 !default;
 
 $base-radius-xl:           6px !default;
-$base-radius-lg:           5px !default;
+$base-radius-lg:           6px !default;
 $base-radius:              4px !default;
 $base-radius-sm:           4px !default;
 $base-radius-xs:           4px !default;
 
+/* border */
+$border-width-base: 1px !default;
+$border-style-base: solid !default;
+$border-color-base: #dcdfe6 !default;
+$border-base: $border-width-base $border-style-base $border-color-base !default;
+
+/* box shadow */
 $box-shadow-base:          0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 
 $base-height-xl:           40px !default;
@@ -24,22 +33,25 @@ $base-height-sm:           28px !default;
 $base-height-xs:           24px !default;
 
 $base-padding-xl:          14px !default;
-$base-padding-lg:          12px !default;
-$base-padding:             10px !default;
-$base-padding-sm:          8px !default;
+$base-padding-lg:          15px !default;
+$base-padding:             15px !default;
+$base-padding-sm:          7px !default;
 $base-padding-xs:          4px !default;
 
 $base-fontSize-xl:         18px !default;
 $base-fontSize-lg:         16px !default;
 $base-fontSize:            14px !default;
-$base-fontSize-sm:         14px !default;
+$base-fontSize-sm:         12px !default;
 $base-fontSize-xs:         12px !default;
 
 $base-line-height:         1.5 !default;
 
-$base-btn-default-color:   #333 !default;
-$base-btn-default-bg:      $base-theme-default !default;
-$base-btn-default-border:  $base-btn-default-bg !default;
+/* btn */
+$base-btn-text-disabled-color: #c0c4cc !default;
+
+$base-btn-default-color:   rgba(0, 0, 0, 0.65) !default;
+$base-btn-default-bg:      $base-color-white !default;
+$base-btn-default-border:  #d9d9d9 !default;
 
 $base-btn-info-color:      #fff !default;
 $base-btn-info-bg:         $base-theme-info !default;
@@ -53,9 +65,20 @@ $base-btn-warning-color:   #fff !default;
 $base-btn-warning-bg:      $base-theme-warning !default;
 $base-btn-warning-border:  $base-btn-warning-bg !default;
 
+$base-ghost-btn-disabled-border: #e9e9e9 !default;
+$base-ghost-btn-disabled-color: rgba(0, 0, 0, 0.25) !default;
+
 $base-btn-error-color:     #fff !default;
 $base-btn-error-bg:        $base-theme-error !default;
 $base-btn-error-border:    $base-btn-error-bg !default;
+
+$base-radio-color: #909090 !default;
+$base-radio-btn-border-color: #e6e6e6 !default;
+$base-radio-btn-disabled-color: #999 !default;
+$base-radio-btn-disabled-bg: rgba(245, 245, 245, 1) !default;
+
+$base-select-active-color: rgba(18, 193, 135, .06);
+$base-select-focus-color: #343434;
 
 $base-tag-default-color:   #444 !default;
 $base-tag-default-bg:      $base-theme-default !default;
@@ -101,7 +124,7 @@ $screen-xs-max:             ($screen-sm-min - 1) !default;
 $screen-sm-max:             ($screen-md-min - 1) !default;
 $screen-md-max:             ($screen-lg-min - 1) !default;
 
-$grid-columns:              12 !default;
+$grid-columns:              24 !default;
 $grid-gutter-width:         30px !default;
 $grid-float-breakpoint:     $screen-sm-min !default;
 $grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;

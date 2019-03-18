@@ -66,7 +66,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                         class="ui-alert"
                       >
                         <i
-                          class="ui-icon ui-icon-warning-round theme-warning"
+                          class="za-icon za-icon-warning-round theme-warning"
                         />
                         <span>
                           这是一个警告框
@@ -77,7 +77,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       class="ui-modal-footer"
                     >
                       <button
-                        class="ui-button radius theme-default"
+                        class="is-radius za-button za-button--default"
                         type="button"
                       >
                         关闭
@@ -135,13 +135,13 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       <Icon
                         className=""
                         onClick={[Function]}
-                        prefixCls="ui-icon"
+                        prefixCls="za-icon"
                         style={Object {}}
                         theme="warning"
                         type="warning-round"
                       >
                         <i
-                          className="ui-icon ui-icon-warning-round theme-warning"
+                          className="za-icon za-icon-warning-round theme-warning"
                           onClick={[Function]}
                           style={Object {}}
                         />
@@ -161,27 +161,18 @@ exports[`Alert renders basic Alert correctly 1`] = `
                     style={Object {}}
                   >
                     <Button
-                      className={null}
-                      isActive={false}
-                      isBlock={false}
-                      isCircle={false}
-                      isDisabled={false}
-                      isFocus={false}
-                      isLoading={false}
-                      isRadius={true}
-                      isRound={false}
+                      block={false}
+                      ghost={false}
+                      htmlType="button"
                       onClick={[Function]}
-                      prefixCls="ui-button"
+                      prefixCls="za-button"
+                      shape="radius"
                       size={null}
-                      style={Object {}}
                       theme="default"
-                      type="button"
                     >
                       <button
-                        className="ui-button radius theme-default"
-                        disabled={false}
+                        className="is-radius za-button za-button--default"
                         onClick={[Function]}
-                        style={Object {}}
                         type="button"
                       >
                         关闭

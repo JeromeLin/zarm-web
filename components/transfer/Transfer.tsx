@@ -191,10 +191,10 @@ class Transfer extends Component<PropsType, any> {
         </div>
         <div className={prefixCls + '-action-bar'}>
           <div className="button-wrapper">
-          <Button isDisabled={this.state.selectedLeft.length === 0} onClick={() => !disabled && this._onAdd()}>
+          <Button disabled={this.state.selectedLeft.length === 0} onClick={() => !disabled && this._onAdd()}>
           <Icon type="add"/>
           </Button>
-          <Button isDisabled={this.state.selectedRight.length === 0} onClick={() => !disabled && this._onMinus()}>
+          <Button disabled={this.state.selectedRight.length === 0} onClick={() => !disabled && this._onMinus()}>
             <Icon type="minus" />
           </Button>
           </div>

@@ -2,129 +2,143 @@
 
 exports[`Radio renders Radio Group correctly 1`] = `
 <div
-  class="ui-radio-group"
+  class="za-radio-group"
 >
-  <label>
+  <label
+    class="za-radio__wrapper"
+  >
     <span
-      class="ui-radio checked"
+      class="za-radio is-checked"
     >
       <input
         checked=""
-        class="ui-radio-input"
+        class="za-radio__input"
         type="radio"
         value="a"
       />
       <span
-        class="ui-radio-inner"
+        class="za-radio__inner"
       />
+      A
     </span>
-    A
   </label>
-  <label>
+  <label
+    class="za-radio__wrapper"
+  >
     <span
-      class="ui-radio"
+      class="za-radio"
     >
       <input
-        class="ui-radio-input"
+        class="za-radio__input"
         type="radio"
         value="b"
       />
       <span
-        class="ui-radio-inner"
+        class="za-radio__inner"
       />
+      B
     </span>
-    B
   </label>
-  <label>
+  <label
+    class="za-radio__wrapper"
+  >
     <span
-      class="ui-radio"
+      class="za-radio"
     >
       <input
-        class="ui-radio-input"
+        class="za-radio__input"
         type="radio"
         value="c"
       />
       <span
-        class="ui-radio-inner"
+        class="za-radio__inner"
       />
+      C
     </span>
-    C
   </label>
-  <label>
+  <label
+    class="za-radio__wrapper"
+  >
     <span
-      class="ui-radio"
+      class="za-radio"
     >
       <input
-        class="ui-radio-input"
+        class="za-radio__input"
         type="radio"
         value="d"
       />
       <span
-        class="ui-radio-inner"
+        class="za-radio__inner"
       />
+      D
     </span>
-    D
   </label>
 </div>
 `;
 
 exports[`Radio renders checked Radio correctly 1`] = `
 <div>
-  <label>
+  <label
+    class="za-radio__wrapper"
+  >
     <span
-      class="ui-radio checked"
+      class="za-radio is-checked"
     >
       <input
         checked=""
-        class="ui-radio-input"
+        class="za-radio__input"
         type="radio"
       />
       <span
-        class="ui-radio-inner"
+        class="za-radio__inner"
       />
+      选择
     </span>
-    选择
   </label>
 </div>
 `;
 
 exports[`Radio renders disabled Radio correctly 1`] = `
 <div>
-  <label>
+  <label
+    class="za-radio__wrapper"
+  >
     <span
-      class="ui-radio disabled"
+      class="za-radio is-disabled"
     >
       <input
-        class="ui-radio-input"
+        class="za-radio__input"
         disabled=""
         type="radio"
         value="a"
       />
       <span
-        class="ui-radio-inner"
+        class="za-radio__inner"
       />
+      选择
     </span>
-    选择
   </label>
 </div>
 `;
 
 exports[`Radio renders normal Radio correctly 1`] = `
 <div>
-  <label>
+  <label
+    class="za-radio__wrapper"
+  >
     <span
-      class="ui-radio"
+      class="za-radio"
     >
       <input
-        class="ui-radio-input"
+        class="za-radio__input"
         type="radio"
         value="a"
       />
       <span
-        class="ui-radio-inner"
+        class="za-radio__inner"
       />
+      选择
     </span>
-    选择
   </label>
 </div>
 `;

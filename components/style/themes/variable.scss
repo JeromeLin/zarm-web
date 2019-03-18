@@ -1,0 +1,119 @@
+/*   default variables     */
+
+/* -------------  Colors  ------------- */
+$--color-white: #fff !default;
+$--color-black: #000 !default;
+
+$--color-primary: #00BC70 !default;
+$--color-primary-darker: hsl(156, 100%, 32.9%) !default;         // #00a865 active focus 颜色
+$--color-primary-light-80: rgba($--color-primary, .8) !default; // #33C98D hover颜色
+$--color-primary-light-50: rgba($--color-primary, .5) !default; // #7FDDB7 disable颜色
+$--color-primary-light-10: rgba($--color-primary, .1) !default; // #E5F8F0 辅助色值
+$--color-primary-light-6: rgba($--color-primary, .06) !default; // #F0FBF7 辅助色值
+
+$--color-success: #00BC70 !default;
+$--color-info: #00BC70 !default;
+$--color-warning: #EC9131 !default;
+$--color-danger: #FF5050 !default;
+
+$--color-success-darker: hsl(156, 100%, 32.9%) !default;
+$--color-info-darker: hsl(156, 100%, 32.9%) !default;
+$--color-warning-darker: hsl(31, 83.1%, 51.9%) !default;
+$--color-danger-darker: hsl(0, 100%, 61.7%) !default;
+
+$--color-success-lighter: hsla(156, 100%, 36.9%, .5) !default; // for disable color
+$--color-info-lighter: hsla(156, 100%, 36.9%, .5) !default;    // for disable color
+$--color-warning-lighter: hsla(31, 83.1%, 55.9%, .5) !default; // for disable color
+$--color-danger-lighter: hsla(0, 100%, 65.7%, .5) !default;    // for disable color
+
+/* -------------  Fonts  ------------- */
+$--font-family:
+  "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica,
+  Arial, sans- serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$--font-size-h1: 32px !default;
+$--font-size-h2: 22px !default;
+$--font-size-h3: 18px !default;
+$--font-size-large: 16px !default;
+$--font-size-base: 14px !default;
+$--font-size-small: 12px !default;
+$--font-size-remark: 10px !default;
+
+$--color-text-primary: #343434 !default;
+$--color-text-regular: #616161 !default;
+$--color-text-secondary: #909090 !default;
+$--color-text-placeholder-or-disabled: #BCBCBC !default;
+$--color-text-tip: #F2F2F2 !default;
+
+/* -------------  Line Height  ------------- */
+$--font-line-height-base: 1.5 !default;
+
+/* -------------  Margin  ------------- */
+$--margin-size-4: 4px !default;
+$--margin-size-8: 8px !default;
+$--margin-size-12: 12px !default;
+$--margin-size-16: 16px !default;
+$--margin-size-20: 20px !default;
+$--margin-size-24: 24px !default;
+$--margin-size-24: 28px !default;
+
+/* -------------  Padding  ------------- */
+$--padding-size-4: 4px !default;
+$--padding-size-8: 8px !default;
+$--padding-size-12: 12px !default;
+$--padding-size-16: 16px !default;
+$--padding-size-20: 20px !default;
+
+/* -------------  Border & Radius  ------------- */
+$--border-width-base: 1px !default;
+$--border-style-base: solid !default;
+$--border-color-base: #E6E6E6 !default;
+$--border-color-light: #BCBCBC !default;
+$--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
+$--border-radius-large: 6px !default;
+$--border-radius-base: 4px !default;
+$--border-radius-small: 2px !default;
+
+/* -------------  Box Shadow  ------------- */
+$--box-shadow-light: 0 2px 8px rgba(0, 0, 0, .1), 0 0 6px rgba(0, 0, 0, .1) !default;
+$--box-shadow-dark: 0 4px 16px 0 rgba(0, 0, 0, 0.2) !default;
+
+/* -------------  Button  ------------- */
+$--button-ghost-disabled-border: #e9e9e9 !default;
+$--button-ghost-disabled-color: rgba(0, 0, 0, 0.35) !default;
+
+$--button-height-xl: 40px !default;
+$--button-height-lg: 36px !default;
+$--button-height: 32px !default;
+$--button-height-sm: 28px !default;
+$--button-height-xs: 24px !default;
+
+$--button-fontSize-xl: 18px !default;
+$--button-fontSize-lg: 16px !default;
+$--button-fontSize: 14px !default;
+$--button-fontSize-sm: 12px !default;
+$--button-fontSize-xs: 12px !default;
+
+$--button-default-color:   rgba(0, 0, 0, 0.65) !default;
+$--button-default-bg:      $--color-white !default;
+$--button-default-border:  #d9d9d9 !default;
+
+$--button-info-color:      $--color-white !default;
+$--button-info-bg:         $--color-info !default;
+$--button-info-border:     $--color-info !default;
+
+$--button-success-color:   $--color-white !default;
+$--button-success-bg:      $--color-success !default;
+$--button-success-border:  $--color-success !default;
+
+$--button-warning-color:   $--color-white !default;
+$--button-warning-bg:      $--color-warning !default;
+$--button-warning-border:  $--color-warning !default;
+
+$--button-danger-color:   $--color-white !default;
+$--button-danger-bg:      $--color-danger !default;
+$--button-danger-border:  $--color-warning !default;
+
+/* -------------  Radio  ------------- */
+$--button-radio-btn-disabled-color: $--color-text-secondary !default;
+$--button-radio-btn-disabled-bg: rgba(250, 250, 250, 1) !default;

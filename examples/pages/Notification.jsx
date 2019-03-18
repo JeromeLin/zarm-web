@@ -2,6 +2,7 @@ import Markdown from '../components/markdown';
 import '../../components/notification/style';
 import '../../components/button/style';
 import '../../components/icon/style';
+import '../../components/transition/style';
 
 export default class Notification extends Markdown {
   // eslint-disable-next-line

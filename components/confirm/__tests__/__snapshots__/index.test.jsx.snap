@@ -69,7 +69,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         class="ui-modal-close"
                       >
                         <i
-                          class="ui-icon ui-icon-wrong theme-default"
+                          class="za-icon za-icon-wrong theme-default"
                         />
                       </div>
                     </div>
@@ -81,7 +81,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         class="ui-confirm"
                       >
                         <i
-                          class="ui-icon ui-icon-question-round theme-default"
+                          class="za-icon za-icon-question-round theme-default"
                         />
                         <span>
                           确认删除吗？
@@ -92,13 +92,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       class="ui-modal-footer"
                     >
                       <button
-                        class="ui-button radius theme-default"
+                        class="is-radius za-button za-button--default"
                         type="button"
                       >
                         取消
                       </button>
                       <button
-                        class="ui-button radius theme-success"
+                        class="is-radius za-button za-button--primary"
                         type="button"
                       >
                         确定
@@ -165,13 +165,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       <Icon
                         className=""
                         onClick={[Function]}
-                        prefixCls="ui-icon"
+                        prefixCls="za-icon"
                         style={Object {}}
                         theme="default"
                         type="wrong"
                       >
                         <i
-                          className="ui-icon ui-icon-wrong theme-default"
+                          className="za-icon za-icon-wrong theme-default"
                           onClick={[Function]}
                           style={Object {}}
                         />
@@ -198,13 +198,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       <Icon
                         className=""
                         onClick={[Function]}
-                        prefixCls="ui-icon"
+                        prefixCls="za-icon"
                         style={Object {}}
                         theme="default"
                         type="question-round"
                       >
                         <i
-                          className="ui-icon ui-icon-question-round theme-default"
+                          className="za-icon za-icon-question-round theme-default"
                           onClick={[Function]}
                           style={Object {}}
                         />
@@ -224,54 +224,36 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                     style={Object {}}
                   >
                     <Button
-                      className={null}
-                      isActive={false}
-                      isBlock={false}
-                      isCircle={false}
-                      isDisabled={false}
-                      isFocus={false}
-                      isLoading={false}
-                      isRadius={true}
-                      isRound={false}
+                      block={false}
+                      ghost={false}
+                      htmlType="button"
                       onClick={[Function]}
-                      prefixCls="ui-button"
+                      prefixCls="za-button"
+                      shape="radius"
                       size={null}
-                      style={Object {}}
                       theme="default"
-                      type="button"
                     >
                       <button
-                        className="ui-button radius theme-default"
-                        disabled={false}
+                        className="is-radius za-button za-button--default"
                         onClick={[Function]}
-                        style={Object {}}
                         type="button"
                       >
                         取消
                       </button>
                     </Button>
                     <Button
-                      className={null}
-                      isActive={false}
-                      isBlock={false}
-                      isCircle={false}
-                      isDisabled={false}
-                      isFocus={false}
-                      isLoading={false}
-                      isRadius={true}
-                      isRound={false}
+                      block={false}
+                      ghost={false}
+                      htmlType="button"
                       onClick={[Function]}
-                      prefixCls="ui-button"
+                      prefixCls="za-button"
+                      shape="radius"
                       size={null}
-                      style={Object {}}
-                      theme="success"
-                      type="button"
+                      theme="primary"
                     >
                       <button
-                        className="ui-button radius theme-success"
-                        disabled={false}
+                        className="is-radius za-button za-button--primary"
                         onClick={[Function]}
-                        style={Object {}}
                         type="button"
                       >
                         确定

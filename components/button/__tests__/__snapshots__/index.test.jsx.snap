@@ -3,31 +3,31 @@
 exports[`Button renders Buttons of different size correctly 1`] = `
 <div>
   <button
-    class="ui-button radius theme-info size-xl"
+    class="is-radius za-button za-button--primary za-button--xl"
     type="button"
   >
     xl尺寸
   </button>
   <button
-    class="ui-button radius theme-info size-lg"
+    class="is-radius za-button za-button--primary za-button--lg"
     type="button"
   >
     lg尺寸
   </button>
   <button
-    class="ui-button radius theme-info"
+    class="is-radius za-button za-button--primary"
     type="button"
   >
     默认尺寸
   </button>
   <button
-    class="ui-button radius theme-info size-sm"
+    class="is-radius za-button za-button--primary za-button--sm"
     type="button"
   >
     sm尺寸
   </button>
   <button
-    class="ui-button radius theme-info size-xs"
+    class="is-radius za-button za-button--primary za-button--xs"
     type="button"
   >
     xs尺寸
@@ -38,31 +38,31 @@ exports[`Button renders Buttons of different size correctly 1`] = `
 exports[`Button renders Buttons of different theme correctly 1`] = `
 <div>
   <button
-    class="ui-button radius theme-default"
+    class="is-radius za-button za-button--default"
     type="button"
   >
     default
   </button>
   <button
-    class="ui-button radius theme-info"
+    class="is-radius za-button za-button--primary"
     type="button"
   >
     info
   </button>
   <button
-    class="ui-button radius theme-success"
+    class="is-radius za-button za-button--success"
     type="button"
   >
     success
   </button>
   <button
-    class="ui-button radius theme-warning"
+    class="is-radius za-button za-button--warning"
     type="button"
   >
     warning
   </button>
   <button
-    class="ui-button radius theme-error"
+    class="is-radius za-button za-button--error"
     type="button"
   >
     error
@@ -74,31 +74,31 @@ exports[`Button renders Buttons with radius or round props correctly 1`] = `
 <div>
   <div>
     <button
-      class="ui-button radius theme-default"
+      class="is-radius za-button za-button--default"
       type="button"
     >
       default
     </button>
     <button
-      class="ui-button radius theme-info"
+      class="is-radius za-button za-button--primary"
       type="button"
     >
       info
     </button>
     <button
-      class="ui-button radius theme-success"
+      class="is-radius za-button za-button--success"
       type="button"
     >
       success
     </button>
     <button
-      class="ui-button radius theme-warning"
+      class="is-radius za-button za-button--warning"
       type="button"
     >
       warning
     </button>
     <button
-      class="ui-button radius theme-error"
+      class="is-radius za-button za-button--danger"
       type="button"
     >
       error
@@ -106,31 +106,31 @@ exports[`Button renders Buttons with radius or round props correctly 1`] = `
   </div>
   <div>
     <button
-      class="ui-button radius round theme-default"
+      class="is-round za-button za-button--default"
       type="button"
     >
       default
     </button>
     <button
-      class="ui-button radius round theme-info"
+      class="is-round za-button za-button--primary"
       type="button"
     >
       info
     </button>
     <button
-      class="ui-button radius round theme-success"
+      class="is-round za-button za-button--success"
       type="button"
     >
       success
     </button>
     <button
-      class="ui-button radius round theme-warning"
+      class="is-round za-button za-button--warning"
       type="button"
     >
       warning
     </button>
     <button
-      class="ui-button radius round theme-error"
+      class="is-round za-button za-button--danger"
       type="button"
     >
       error
@@ -141,7 +141,7 @@ exports[`Button renders Buttons with radius or round props correctly 1`] = `
 
 exports[`Button renders anchor Button correctly 1`] = `
 <a
-  class="ui-button radius theme-info"
+  class="is-radius za-button za-button--primary"
   href="https://www.baidu.com"
   target="_blank"
 >
@@ -152,7 +152,7 @@ exports[`Button renders anchor Button correctly 1`] = `
 exports[`Button renders disaled Button correctly 1`] = `
 <div>
   <button
-    class="ui-button radius disabled theme-default"
+    class="is-radius is-disabled za-button za-button--default"
     disabled=""
     type="button"
   >
@@ -164,13 +164,13 @@ exports[`Button renders disaled Button correctly 1`] = `
 exports[`Button renders loading Button correctly 1`] = `
 <div>
   <button
-    class="ui-button radius theme-info"
+    class="is-radius is-loading za-button za-button--info"
     type="button"
   >
     <i
-      class="ui-icon ui-icon-loading theme-default rotate360"
+      class="za-icon za-icon-loading theme-default rotate360"
     />
-     加载中
+      加载中
   </button>
 </div>
 `;

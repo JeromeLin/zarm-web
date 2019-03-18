@@ -2,6 +2,7 @@ export interface GroupProps {
   prefixCls?: string;
   value?: boolean;
   defaultValue?: boolean;
+  size?: 'lg' | 'sm';
   onChange: (e: any) => void;
 }
 
@@ -11,7 +12,6 @@ export default interface PropsType {
   checked?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
-  isDisabled?: boolean;
   value?: string;
   onChange: (e: any) => void;
 }

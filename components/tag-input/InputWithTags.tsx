@@ -124,7 +124,7 @@ class InputWithTags extends React.Component<BasicProps> {
       tagList = (value as Array<ValueArray>).map((elem, index) => {
         return (
           <div
-            className="ui-tag-list-box"
+            className="za-tag-list-box"
             key={elem.key}
             ref={this.tagListBoxref}
           >
@@ -158,10 +158,10 @@ class InputWithTags extends React.Component<BasicProps> {
     }
 
     const boxCls = cn({
-      'ui-tag-input-box': true,
-      'radius': radius,
-      'ui-tag-input-box-active': active,
-      'disabled': disabled,
+      'za-tag-input-box': true,
+      'is-radius': radius,
+      'za-tag-input-box--active': active,
+      'is-disabled': disabled,
       [`size-${size}`]: !!size,
     });
 
@@ -173,7 +173,7 @@ class InputWithTags extends React.Component<BasicProps> {
       {tagList}
       {
         (search || remoteSearch) && <div
-          className="ui-tag-input-div"
+          className="za-tag-input__div"
           contentEditable={!disabled && (search || remoteSearch)}
           onInput={(e) => { this.debouncedOnInputChange((e.target as HTMLDivElement).textContent); }}
           onFocus={this.onFocus}
@@ -184,7 +184,7 @@ class InputWithTags extends React.Component<BasicProps> {
           ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
         />
       }
-      {showPlaceHolder && <span style={searchValueStyle} className="ui-tag-input-div-placeholder">{placeholder}</span>}
+      {showPlaceHolder && <span style={searchValueStyle} className="za-tag-input__div-placeholder">{placeholder}</span>}
       <Icon style={Style.iconStyle} className="arrow-bottom" type="arrow-bottom" />
     </div>;
   }

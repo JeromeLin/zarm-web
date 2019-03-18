@@ -1,4 +1,5 @@
 import Markdown from '../components/markdown';
+import '../../components/notification/style';
 import '../../components/message/style';
 import '../../components/button/style';
 

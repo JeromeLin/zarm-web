@@ -4,143 +4,78 @@
 
 ### 使用方法
 
-顶部居中显示并自动消失。
+用户操作控件后，需要提示信息、成功、错误时。 浮于顶部居中，3s后自动消失，不会打断用户操作。
 
 :::demo 通过`type`属性输入类型。
 ```js
-  constructor(props) {
-    super(props);
-    this.state = {
-      msg: []
-    }
-  }
-  showMessage() {
-    const { msg } = this.state;
-    this.setState({
-      msg: [
-        ...msg,
-        {
-          m: '提交成功'
-        }
-      ]
+  showSuccess () {
+    Message.success({
+      message: '这是一条成功的消息提示，出现在网站顶部3s后消失',
     })
   }
+
+  showError () {
+    Message.danger({
+      message: '这是一条错误的消息提示，出现在网站顶部3s后消失',
+    })
+  }
+
+  showWarning () {
+    Message.warning({
+      message: '这是一条警告的消息提示，出现在网站顶部3s后消失',
+    })
+  }
+
+  showLoading () {
+    Message.loading({
+      message: '这是一条Loading的消息提示，出现在网站顶部3s后消失',
+      // duration: 0
+    })
+  }
+
   render() {
     return (
       <div>
-        <Button theme="info" onClick={() => this.showMessage()}>提示</Button>
-        <Message msg={this.state.msg} theme="info"/>
+        <Button onClick={() => this.showWarning()}>警告提示</Button>
+        <Button onClick={() => this.showSuccess()}>成功提示</Button>
+        <Button onClick={() => this.showError()}>错误提示</Button>
+        <Button onClick={() => this.showLoading()}>加载提示</Button>
       </div>
     )
   }
 ```
 :::
 
-### 五种主题
+### 自定义关闭时长
 
-通过`theme`设置。
+自定义关闭时长，鼠标移入时不会关闭提示
 
-:::demo 支持`info`,`success`,`warning`,`error`四种主题，默认`info`。
+:::demo 通过`duration`属性设置显示时长
 ```js
-  constructor(props) {
-    super(props);
-    this.state = {
-      msg: [],
-      theme: 'info'
-    }
-  }
-  showMessage(m, theme) {
-    const { msg } = this.state;
-    this.setState({
-      msg: [
-        ...msg,
-        {
-          m,
-        }
-      ],
-      theme
+  showMessage () {
+    Message.config({
+      theme: 'loading',
+      message: '这是一条Loading的消息提示，出现在网站顶部8s后消失',
+      stayTime: 8000
     })
   }
+
   render() {
-    const { msg, theme } = this.state;
     return (
       <div>
-        <Button theme="info" onClick={() => this.showMessage('info提示', 'info')}>info提示</Button>
-        <Button theme="success" onClick={() => this.showMessage('success提示', 'success')}>success提示</Button>
-        <Button theme="warning" onClick={() => this.showMessage('warning提示', 'warning')}>warning提示</Button>
-        <Button theme="error" onClick={() => this.showMessage('error提示', 'error')}>error提示</Button>
-        <Message msg={msg} theme={theme}/>
+        <Button onClick={() => this.showMessage()}>延迟关闭</Button>
       </div>
     )
   }
 ```
 :::
 
-### 自定义时长
-
-通过`duration`设置显示时长。
-
-:::demo 通过`radius`属性设置输入框是否圆角。
-```js
-  constructor(props) {
-    super(props);
-    this.state = {
-      msg: []
-    }
-  }
-  showMessage() {
-    const { msg } = this.state;
-    this.setState({
-      msg: [
-        ...msg,
-        {
-          m: '提交成功'
-        }
-      ]
-    })
-  }
-  render() {
-    return (
-      <div>
-        <Button theme="info" onClick={() => this.showMessage()}>提示5s</Button>
-        <Message msg={this.state.msg} theme="info" duration={5000} />
-      </div>
-    )
-  }
-```
-:::
-
-
-###  命令式方式调用
-
-根据业务需要添加命令式调用
-
-::: demo 通过调用`Message.show(object)`来显示Message。
-```js
-  render() {
-    return (
-      <div>
-        <Button theme="success" onClick={()=>{
-          Message.show({
-            msg:'hello world',
-            theme:'success',
-            duration:3000,
-            callback:()=>{
-              console.log('hello wordl');
-            }
-          })
-        }}>命令式调用</Button>
-      </div>
-    );
-  }
-```
-:::
 
 
 
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| msg    | 消息对象数组 [{ m, duration }] | array  |      -        |    []    |
-| theme     | 主题   | string  |   info, success, warning, error        |    info    |
-| duration     | 显示时长(ms) | number  |   -     |    1500    |
+| type     | 类型   | string  |   primary, success, warning, danger, loading        |    info    |
+| message  | 展示内容   | string/React.ReactElement  |   -      |    -    |
+| stayTime | 显示时长(ms) | number  |   -     |    3000    |

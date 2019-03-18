@@ -6,7 +6,7 @@ import { MultipleProps } from './PropsType';
 
 class SelectMultiple extends Component<MultipleProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-select',
+    prefixCls: 'za-select',
     isRadius: false,
     isDisabled: false,
     onChange: () => {},
@@ -76,10 +76,10 @@ class SelectMultiple extends Component<MultipleProps, any> {
   render() {
     const { props } = this;
     const {
-      prefixCls, isRadius, isDisabled, size, style, onDoubleClick,
+      prefixCls, size, style, onDoubleClick,
     } = props;
-    const disabled = 'disabled' in props || isDisabled;
-    const radius = 'radius' in props || isRadius;
+    const disabled = 'disabled' in props;
+    const radius = 'radius' in props;
 
     // eslint-disable-next-line
     let children = React.Children.map(props.children, (option, index) => {
@@ -95,16 +95,16 @@ class SelectMultiple extends Component<MultipleProps, any> {
 
     const cls = classnames({
       [prefixCls!]: true,
-      [`${prefixCls}-open`]: this.state.dropdown,
-      disabled,
-      radius,
+      [`${prefixCls}--open`]: this.state.dropdown,
+      'is-disabled': disabled,
+      'is-radius': radius,
       [`size-${size}`]: !!size,
     });
 
     return (
       <span className={cls} style={style}>
         <span
-          className={`${prefixCls}-selection`}
+          className={`${prefixCls}__selection`}
           style={{ height: '100%', maxHeight: 250, overflow: 'auto' }}
           role="combobox"
           aria-autocomplete="list"

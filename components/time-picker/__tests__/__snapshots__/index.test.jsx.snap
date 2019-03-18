@@ -21,7 +21,7 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
           00:00:00
         </span>
         <i
-          class="ui-icon ui-icon-time-circle theme-default ui-time-select-icon"
+          class="za-icon za-icon-time-circle theme-default ui-time-select-icon"
         />
       </div>
     </div>
@@ -33,13 +33,13 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
         class="ui-time-select"
       >
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -50,13 +50,13 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
           </span>
         </span>
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -67,13 +67,13 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
           </span>
         </span>
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -110,13 +110,13 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
   class="ui-time-select"
 >
   <span
-    class="ui-select"
+    class="za-select"
   >
     <span
       aria-autocomplete="list"
       aria-expanded="false"
       aria-haspopup="true"
-      class="ui-select-selection"
+      class="za-select__selection"
       role="combobox"
       style="height:100%;max-height:250px;overflow:auto"
     >
@@ -127,13 +127,13 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
     </span>
   </span>
   <span
-    class="ui-select"
+    class="za-select"
   >
     <span
       aria-autocomplete="list"
       aria-expanded="false"
       aria-haspopup="true"
-      class="ui-select-selection"
+      class="za-select__selection"
       role="combobox"
       style="height:100%;max-height:250px;overflow:auto"
     >
@@ -144,13 +144,13 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
     </span>
   </span>
   <span
-    class="ui-select"
+    class="za-select"
   >
     <span
       aria-autocomplete="list"
       aria-expanded="false"
       aria-haspopup="true"
-      class="ui-select-selection"
+      class="za-select__selection"
       role="combobox"
       style="height:100%;max-height:250px;overflow:auto"
     >
@@ -185,7 +185,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
           00:00:00
         </span>
         <i
-          class="ui-icon ui-icon-time-circle theme-default ui-time-select-icon"
+          class="za-icon za-icon-time-circle theme-default ui-time-select-icon"
         />
       </div>
     </div>
@@ -197,13 +197,13 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
         class="ui-time-select"
       >
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -214,13 +214,13 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
           </span>
         </span>
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -231,13 +231,13 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
           </span>
         </span>
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -290,7 +290,7 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
           00:00:00
         </span>
         <i
-          class="ui-icon ui-icon-time-circle theme-default ui-time-select-icon"
+          class="za-icon za-icon-time-circle theme-default ui-time-select-icon"
         />
       </div>
     </div>
@@ -302,13 +302,13 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
         class="ui-time-select"
       >
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -319,13 +319,13 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
           </span>
         </span>
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
@@ -336,13 +336,13 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
           </span>
         </span>
         <span
-          class="ui-select"
+          class="za-select"
         >
           <span
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
-            class="ui-select-selection"
+            class="za-select__selection"
             role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >

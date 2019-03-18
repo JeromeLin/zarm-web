@@ -2,21 +2,21 @@
   min-height: $height;
   line-height: $height - 2px;
 
-  .radius {
+  .is-radius {
     border-radius: $border-radius;
   }
 
-  .ui-tag-input-div {
+  .za-tag-input__div {
     font-size: $font-size;
   }
 
-  .ui-tag-input-div-placeholder,
+  .za-tag-input__div-placeholder,
   .value-text {
     font-size: $font-size;
   }
 }
 
-.ui-tag-input-box {
+@include b(tag-input-box) {
   @include tag-size($base-height,$base-padding, $base-fontSize-xs, $base-radius);
 
   font-size: 0;
@@ -36,16 +36,32 @@
     border-color: #ccc;
   }
 
-  &.disabled {
+  &.is-disabled {
     border-color: #d9d9d9;
     background-color: #f3f5f7;
   }
 
-  &.radius {
+  &.is-radius {
     border-radius: 4px;
   }
 
-  .ui-tag-input-div {
+  &.size-xl {
+    @include tag-size($base-height-xl, $base-padding-xl, $base-fontSize-lg, $base-radius-xl);
+  }
+
+  &.size-lg {
+    @include tag-size($base-height-lg, $base-padding-lg, $base-fontSize, $base-radius-lg);
+  }
+
+  &.size-sm {
+    @include tag-size($base-height-sm, $base-padding-sm, $base-fontSize-xs, $base-radius-sm);
+  }
+
+  &.size-xs {
+    @include tag-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs);
+  }
+
+  .za-tag-input__div {
     display: inline-block;
     vertical-align: middle;
     min-width: 5px;
@@ -57,7 +73,7 @@
     max-width: 100%;
   }
 
-  .ui-tag-input-div-placeholder,
+  .za-tag-input__div-placeholder,
   .value-text {
     position: absolute;
     left: 0;
@@ -69,11 +85,11 @@
     max-width: calc(100% - 35px);
   }
 
-  .ui-tag-input-div-placeholder {
+  .za-tag-input__div-placeholder {
     color: #999;
   }
 
-  .ui-tag-list-box {
+  .za-tag-list-box {
     padding: 4px 0;
     line-height: 0;
     display: inline-block;
@@ -91,9 +107,8 @@
   }
 }
 
-.ui-tag-input-box-active {
-  border-color: #57c5f7;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+.za-tag-input-box--active {
+  border-color: $base-theme-info;
 
   .value-text {
     color: #999;
@@ -101,23 +116,5 @@
 
   .arrow-bottom {
     transform: translateY(-50%) rotate(180deg);
-  }
-}
-
-.ui-tag-input-box {
-  &.size-xl {
-    @include tag-size($base-height-xl, $base-padding-xl, $base-fontSize-lg, $base-radius-xl);
-  }
-
-  &.size-lg {
-    @include tag-size($base-height-lg, $base-padding-lg, $base-fontSize, $base-radius-lg);
-  }
-
-  &.size-sm {
-    @include tag-size($base-height-sm, $base-padding-sm, $base-fontSize-xs, $base-radius-sm);
-  }
-
-  &.size-xs {
-    @include tag-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs);
   }
 }

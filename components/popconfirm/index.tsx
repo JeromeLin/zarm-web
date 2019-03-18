@@ -70,7 +70,7 @@ class Popconfirm extends Component<PropsType, any> {
           {content}
           <div className={`${prefixCls}-actions`}>
             <Button onClick={() => this.handleCancel()}>{cancelText || locale!.cancel}</Button>
-            <Button theme="info" onClick={() => this.handleConfirm()}>
+            <Button type="primary" onClick={() => this.handleConfirm()}>
               {okText || locale!.confirm}
             </Button>
           </div>

@@ -35,10 +35,8 @@ const EMPTY_STRING_VALUE = '$$EMPTY_STRING_VALUE';
 class Select extends Component<PropsType, StateProps> {
   static contextType = FormItemContext;
   static defaultProps = {
-    prefixCls: 'ui-select',
-    isRadius: true,
-    isDisabled: false,
-    isSearch: false,
+    prefixCls: 'za-select',
+    radius: true,
     onSearchChange: () => { },
     onChange: () => { },
   };
@@ -283,9 +281,6 @@ class Select extends Component<PropsType, StateProps> {
     const {
       prefixCls,
       placeholder,
-      isRadius,
-      isDisabled,
-      isSearch,
       size,
       tagTheme,
       style,
@@ -296,9 +291,9 @@ class Select extends Component<PropsType, StateProps> {
       remoteSearch,
     } = props;
 
-    const disabled = 'disabled' in props || isDisabled;
-    const radius = 'radius' in props || isRadius;
-    const search = 'search' in props || isSearch;
+    const disabled = 'disabled' in props;
+    const radius = 'radius' in props;
+    const search = 'search' in props;
 
     let placeholderText = placeholder || locale!.placeholder;
 
@@ -355,7 +350,7 @@ class Select extends Component<PropsType, StateProps> {
     const menus =
       children && children.length > 0
         ? <Menu size={size} style={menuStyle}>{children}</Menu>
-        : <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>;
+        : <span className={`${prefixCls}--notfound`}>{locale!.noMatch}</span>;
 
     return (
       <Dropdown

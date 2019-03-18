@@ -202,13 +202,13 @@ describe('Tree', () => {
     expect(wrapper.state('checkedKeys')).toEqual(expect.arrayContaining(['0-2-1-1', '0-0-0-0', '0-1-0']));
     expect(wrapper.state('halfCheckedKeys')).toEqual(expect.arrayContaining(['0', '0-2-1', '0-2']));
 
-    wrapper.find('li[data-keys="0-0-0-1"] .ui-checkbox-input').at(0).simulate('change');
+    wrapper.find('li[data-keys="0-0-0-1"] .za-checkbox__input').at(0).simulate('change');
     expect(onCheck).toBeCalled();
 
     expect(wrapper.state('checkedKeys')).toEqual(expect.arrayContaining(['0-2-1-1', '0-0-0-0', '0-1-0', '0-0-0-1', '0-0-0', '0-0']));
     expect(wrapper.state('halfCheckedKeys')).toEqual(expect.arrayContaining(['0', '0-2-1', '0-2']));
 
-    wrapper.find('li[data-keys="0-1"] .ui-checkbox-input').at(0).simulate('change');
+    wrapper.find('li[data-keys="0-1"] .za-checkbox__input').at(0).simulate('change');
     expect(onCheck).toBeCalled();
     expect(wrapper.state('checkedKeys')).toEqual(expect.arrayContaining(['0-0-0-0', '0-2-1-1', '0-1-0', '0-1', '0-1-1', '0-1-2']));
     expect(wrapper.state('halfCheckedKeys')).toEqual(expect.arrayContaining(['0', '0-2-1', '0-2']));
