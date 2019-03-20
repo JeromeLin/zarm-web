@@ -1,5 +1,5 @@
 @include b(notification) {
-  width: 330px;
+  width: 350px;
   padding: 16px;
   box-sizing: border-box;
   border-radius: $base-radius-xs;
@@ -9,7 +9,6 @@
   box-shadow: $box-shadow-base;
   transition: opacity 0.3s, transform .3s, right .3s, top 0.4s;
   overflow: hidden;
-  //animation: notification-in .3s;
 
   @include e(content) {
     margin-left: 0;
@@ -31,6 +30,7 @@
     }
 
     @include e(title) {
+      padding-right: 24px;
       font-weight: normal;
       font-size: $base-fontSize-lg;
       color: #1f2d3d;
@@ -51,6 +51,11 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 42px;
+    }
+
+    @include e(action-area) {
+      float: right;
+      margin-top: 16px;
     }
   }
 

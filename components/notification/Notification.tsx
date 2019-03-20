@@ -11,6 +11,7 @@ export default class Notification extends Component<NotificationProps, any> {
     top: 20,
     stayTime: 3000,
     onClick: () => {},
+    onClose: () => {},
   };
 
   state = {
@@ -50,15 +51,22 @@ export default class Notification extends Component<NotificationProps, any> {
     this.setState({ visible: false });
   }
 
-  onClick = (e: React.SyntheticEvent<any>) => {
+  onClick = (event: React.SyntheticEvent<any>) => {
     if (this.props.onClick) {
-      this.props.onClick(e);
+      this.props.onClick(event);
     }
   }
 
-  onClose = () => {
+  onClose = (event?: React.SyntheticEvent<any>) => {
+    const { onClose } = this.props;
+
     this.stopTimer();
     this.leave();
+
+    if (typeof onClose === 'function') {
+      event!.stopPropagation();
+      onClose(event);
+    }
   }
 
   onMouseEnter = () => {
@@ -87,7 +95,7 @@ export default class Notification extends Component<NotificationProps, any> {
   }
 
   render () {
-    const { prefixCls, className, top, style, title, message, theme, isMessage, willUnMount } = this.props;
+    const { prefixCls, className, top, style, title, message, theme, isMessage, willUnMount, btn } = this.props;
     const { visible } = this.state;
 
     return (
@@ -110,7 +118,9 @@ export default class Notification extends Component<NotificationProps, any> {
             {!isMessage && theme && <Icon type={this.type} className="za-notification__icon" theme={theme} />}
             {title && <div className="za-notification__title">{title}</div>}
             <div className="za-notification__custom-content" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-              {<Icon type={this.type} className="za-notification__icon" theme={theme} />}{message}
+              {<Icon type={this.type} className="za-notification__icon" theme={theme} />}
+              <div className="za-notification__description">{message}</div>
+              {!isMessage && <span className="za-notification__action-area">{btn}</span>}
             </div>
           </div>
         </div>
