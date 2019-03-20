@@ -65,6 +65,7 @@ class Button extends Component<ButtonProps, any> {
         ? <a
           className={classes}
           href={href}
+          style={style}
           target={target}
           {...others}
           onClick={e => (!disabled && !loading) && onClick!(e)}
