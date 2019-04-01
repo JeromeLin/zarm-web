@@ -111,16 +111,16 @@ class TimePicker extends Component<TimePickerProps, any> {
     }
 
     const cls = classnames({
-      'ui-select': true,
-      'ui-time-select-wrapper': true,
-      'ui-select-open': dropdown,
+      'za-select': true,
+      'za-time__select-wrapper': true,
+      'za-select--open': dropdown,
       disabled,
       radius,
       [`size-${size}`]: !!size,
     });
     const textCls = classnames({
-      'ui-select-text': true,
-      'ui-select-text-placeholder': !hasValue,
+      'za-select__text': true,
+      'za-select__text-placeholder': !hasValue,
     });
 
     const overlay = (
@@ -129,7 +129,7 @@ class TimePicker extends Component<TimePickerProps, any> {
           value={valueText}
           onChange={(value) => this.onDateChange(value)}
         />
-        <div className="ui-select-bottom">
+        <div className="za-select__bottom">
           <a className="clear-btn" href="javascript:;" onClick={() => this.onDateChange('')}>
             {locale.clear}
           </a>
@@ -153,14 +153,14 @@ class TimePicker extends Component<TimePickerProps, any> {
           placement={placement}
         >
           <div
-            className="ui-select-selection"
+            className="za-select__selection"
             role="combobox"
             aria-autocomplete="list"
             aria-haspopup="true"
             aria-expanded="false"
           >
             <span className={textCls}>{valueText}</span>
-            <Icon className="ui-time-select-icon" type="time-circle"/>
+            <Icon className="za-time__select-icon" type="time-circle"/>
           </div>
         </Dropdown>
       </div>

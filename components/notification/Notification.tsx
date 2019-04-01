@@ -64,7 +64,6 @@ export default class Notification extends Component<NotificationProps, any> {
     this.leave();
 
     if (typeof onClose === 'function') {
-      event!.stopPropagation();
       onClose(event);
     }
   }
@@ -119,7 +118,7 @@ export default class Notification extends Component<NotificationProps, any> {
             {title && <div className="za-notification__title">{title}</div>}
             <div className="za-notification__custom-content" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
               {<Icon type={this.type} className="za-notification__icon" theme={theme} />}
-              <div className="za-notification__description">{message}</div>
+              {message}
               {!isMessage && <span className="za-notification__action-area">{btn}</span>}
             </div>
           </div>

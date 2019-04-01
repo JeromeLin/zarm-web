@@ -69,7 +69,7 @@ describe('TimePicker', () => {
     const wrapper = mount(<TimePicker value="12:33:22" />);
     wrapper.find('.clear-btn').simulate('click');
 
-    expect(wrapper.find('.ui-select-text').text()).toBe('00:00:00');
+    expect(wrapper.find('.za-select__text').text()).toBe('00:00:00');
   });
 });
 

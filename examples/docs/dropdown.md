@@ -40,7 +40,7 @@
           }}
           overlay={overlay}
           >
-            <Button theme="info">
+            <Button theme="primary">
               toggle
             </Button>
         </Dropdown>
@@ -57,7 +57,7 @@
           }}
           overlay={overlay}
           >
-            <Button disabled theme="info">
+            <Button disabled theme="primary">
               disabled
             </Button>
         </Dropdown>
@@ -74,7 +74,7 @@
           }}
           overlay={overlay}
           >
-            <Button theme="info">
+            <Button theme="primary">
               hover me
             </Button>
         </Dropdown>
@@ -90,7 +90,7 @@
           }}
           overlay={overlay}
           >
-            <Button theme="info">
+            <Button theme="primary">
               right click me
             </Button>
         </Dropdown>
@@ -135,7 +135,7 @@
           }}
           overlay={overlay}
           >
-            <Button theme="info">
+            <Button theme="primary">
               点我从下面弹出
             </Button>
         </Dropdown>
@@ -151,7 +151,7 @@
           }}
           overlay={overlay}
           >
-            <Button theme="info">
+            <Button theme="primary">
               点我从上面弹出
             </Button>
         </Dropdown>

@@ -361,21 +361,21 @@ class RangeDatePicker extends Component<PropsType, any> {
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
-    const cls = classnames('ui-select', {
-      'ui-select-open': isShowDropdown,
+    const cls = classnames('za-select', {
+      'za-select--open': isShowDropdown,
       disabled,
       radius,
       [`size-${size}`]: !!size,
     });
 
-    const textCls = classnames('ui-select-text', {
-      'ui-select-text-placeholder': !hasValue,
+    const textCls = classnames('za-select__text', {
+      'za-select__text-placeholder': !hasValue,
     });
 
     return (
       <span className={cls} style={style}>
         <span
-          className="ui-select-selection"
+          className="za-select__selection"
           role="combobox"
           aria-autocomplete="list"
           aria-haspopup="true"
@@ -383,7 +383,7 @@ class RangeDatePicker extends Component<PropsType, any> {
           onClick={this.onSelectClick}
         >
           <span className={textCls}>{valueText}</span>
-          <Icon className="ui-select-icon" type="date"/>
+          <Icon className="za-select__icon" type="date"/>
         </span>
       </span>
     );
@@ -460,9 +460,9 @@ class RangeDatePicker extends Component<PropsType, any> {
       );
 
     const timeFooter = (
-      <div className="ui-range-date-picker-footer">
+      <div className="za-range__date-picker-footer">
         <a
-          className="ui-range-date-picker-footer-btn"
+          className="za-range__date-picker-footer-btn"
           href="javascript:;"
           onClick={this.handleCloseDropDown}
         >
@@ -478,14 +478,14 @@ class RangeDatePicker extends Component<PropsType, any> {
       </div>
     );
 
-    const rangeDatePickerStyle = classnames('ui-range-date-picker', {
-      'ui-range-date-time-picker': showTime,
+    const rangeDatePickerStyle = classnames('za-range__date-picker', {
+      'za-range__date-time-picker': showTime,
     });
 
     const rangeDatePicker =
       (
         <div className={rangeDatePickerStyle}>
-          <div className="ui-range-date-picker-table">
+          <div className="za-range__date-picker-table">
             {
               compRangeCalendar
             }

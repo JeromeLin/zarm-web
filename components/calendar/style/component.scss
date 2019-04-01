@@ -19,12 +19,12 @@
 
   @include clearfix;
 
-  .ui-time-select-wrapper {
+  .za-time__select-wrapper {
     float: right;
     margin: 4px;
   }
 
-  .ui-time-select {
+  .za-time__select {
     position: absolute;
     width: 100%;
     height: 230px;
@@ -33,7 +33,7 @@
     z-index: 10000;
   }
 
-  .ui-time-select .ui-select .ui-select-selection {
+  .za-time__select .za-select .za-select__selection {
     max-height: 250px !important;
   }
 }

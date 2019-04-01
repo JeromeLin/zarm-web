@@ -104,7 +104,7 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     const { selectH, selectM, selectS } = this.state;
 
     return (
-      <div className="ui-time-select">
+      <div className="za-time__select">
         <Select.Multiple
           value={this.state.selectedH}
           ref={el => this.hourDom = el}

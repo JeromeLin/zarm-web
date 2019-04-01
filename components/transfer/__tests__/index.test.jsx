@@ -97,7 +97,7 @@ describe('Transfer', () => {
         onAdd={value => selectedValue.push(value)}
       />);
     const wrapper = mount(component);
-    wrapper.find('.za-option-list').at(0).simulate('click');
+    wrapper.find('.za-option__list').at(0).simulate('click');
     expect((wrapper.state().selectedLeft)[0]).toBe('1');
   });
 
@@ -168,7 +168,7 @@ describe('Transfer', () => {
       />);
     const wrapper = mount(component);
     wrapper.setState({ selectedValue: [] });
-    wrapper.find('.za-option-list').at(0).simulate('doubleclick');
+    wrapper.find('.za-option__list').at(0).simulate('doubleclick');
     expect((wrapper.state().selectedValue).length).toBe(1);
   });
 
@@ -205,7 +205,7 @@ describe('Transfer', () => {
         },
       ],
     });
-    wrapper.find('.ui-menu').at(1).find('.za-option-list').at(0)
+    wrapper.find('.ui-menu').at(1).find('.za-option__list').at(0)
       .simulate('doubleclick');
     expect((wrapper.state().selectedValue).length).toBe(0);
   });

@@ -147,15 +147,15 @@ class DatePicker extends Component<PropsType, any> {
       hasValue = true;
     }
 
-    const cls = classnames('ui-select', {
-      'ui-select-open': dropdown,
+    const cls = classnames('za-select', {
+      'za-select--open': dropdown,
       disabled,
       radius,
       [`size-${size}`]: !!size,
     });
 
-    const textCls = classnames('ui-select-text', {
-      'ui-select-text-placeholder': !hasValue,
+    const textCls = classnames('za-select__text', {
+      'za-select__text-placeholder': !hasValue,
     });
 
     return (
@@ -175,7 +175,7 @@ class DatePicker extends Component<PropsType, any> {
       >
         <span className={cls} style={style}>
           <span
-            className="ui-select-selection"
+            className="za-select__selection"
             role="combobox"
             aria-autocomplete="list"
             aria-haspopup="true"
@@ -192,7 +192,7 @@ class DatePicker extends Component<PropsType, any> {
                 valueText
               }
             </span>
-            <Icon className="ui-select-icon" type="date"/>
+            <Icon className="za-select__icon" type="date"/>
           </span>
         </span>
       </Dropdown>

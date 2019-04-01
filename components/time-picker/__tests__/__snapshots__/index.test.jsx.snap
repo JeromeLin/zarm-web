@@ -3,7 +3,7 @@
 exports[`TimePicker renders disabled time-picker correctly 1`] = `
 <div>
   <div
-    class="ui-select ui-time-select-wrapper disabled radius"
+    class="za-select za-time__select-wrapper disabled radius"
   >
     <div
       class="ui-dropdown-trigger-box"
@@ -12,16 +12,16 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
         aria-autocomplete="list"
         aria-expanded="false"
         aria-haspopup="true"
-        class="ui-select-selection"
+        class="za-select__selection"
         role="combobox"
       >
         <span
-          class="ui-select-text ui-select-text-placeholder"
+          class="za-select__text za-select__text-placeholder"
         >
           00:00:00
         </span>
         <i
-          class="za-icon za-icon-time-circle theme-default ui-time-select-icon"
+          class="za-icon za-icon-time-circle theme-default za-time__select-icon"
         />
       </div>
     </div>
@@ -30,7 +30,7 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
       style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
     >
       <div
-        class="ui-time-select"
+        class="za-time__select"
       >
         <span
           class="za-select"
@@ -85,7 +85,7 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
         </span>
       </div>
       <div
-        class="ui-select-bottom"
+        class="za-select__bottom"
       >
         <a
           class="clear-btn"
@@ -107,7 +107,7 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
 
 exports[`TimePicker renders disabled time-select correctly 1`] = `
 <div
-  class="ui-time-select"
+  class="za-time__select"
 >
   <span
     class="za-select"
@@ -166,7 +166,7 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
 exports[`TimePicker renders isRadius time-picker correctly 1`] = `
 <div>
   <div
-    class="ui-select ui-time-select-wrapper radius"
+    class="za-select za-time__select-wrapper radius"
     style="width:160px"
   >
     <div
@@ -176,16 +176,16 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
         aria-autocomplete="list"
         aria-expanded="false"
         aria-haspopup="true"
-        class="ui-select-selection"
+        class="za-select__selection"
         role="combobox"
       >
         <span
-          class="ui-select-text ui-select-text-placeholder"
+          class="za-select__text za-select__text-placeholder"
         >
           00:00:00
         </span>
         <i
-          class="za-icon za-icon-time-circle theme-default ui-time-select-icon"
+          class="za-icon za-icon-time-circle theme-default za-time__select-icon"
         />
       </div>
     </div>
@@ -194,7 +194,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
       style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
     >
       <div
-        class="ui-time-select"
+        class="za-time__select"
       >
         <span
           class="za-select"
@@ -249,7 +249,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
         </span>
       </div>
       <div
-        class="ui-select-bottom"
+        class="za-select__bottom"
       >
         <a
           class="clear-btn"
@@ -272,7 +272,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
 exports[`TimePicker renders normal time-picker correctly 1`] = `
 <div>
   <div
-    class="ui-select ui-time-select-wrapper radius"
+    class="za-select za-time__select-wrapper radius"
   >
     <div
       class="ui-dropdown-trigger-box"
@@ -281,16 +281,16 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
         aria-autocomplete="list"
         aria-expanded="false"
         aria-haspopup="true"
-        class="ui-select-selection"
+        class="za-select__selection"
         role="combobox"
       >
         <span
-          class="ui-select-text ui-select-text-placeholder"
+          class="za-select__text za-select__text-placeholder"
         >
           00:00:00
         </span>
         <i
-          class="za-icon za-icon-time-circle theme-default ui-time-select-icon"
+          class="za-icon za-icon-time-circle theme-default za-time__select-icon"
         />
       </div>
     </div>
@@ -299,7 +299,7 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
       style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
     >
       <div
-        class="ui-time-select"
+        class="za-time__select"
       >
         <span
           class="za-select"
@@ -354,7 +354,7 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
         </span>
       </div>
       <div
-        class="ui-select-bottom"
+        class="za-select__bottom"
       >
         <a
           class="clear-btn"

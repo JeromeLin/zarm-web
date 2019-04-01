@@ -1,16 +1,16 @@
 @mixin select-size($height, $padding, $font-size, $border-radius) {
-  .ui-select-selection {
+  @include e(selection) {
     min-height: $height;
     font-size: $font-size;
 
-    .ui-select-text {
+    @include e(text) {
       line-height: $height - 2;
       padding-left: $padding;
       padding-right: $height;
     }
 
-    .ui-select-icon,
-    .ui-select-arrow {
+    .za-select__icon,
+    .za-select__arrow {
       right: ($height - $font-size) / 2;
       margin-top: - $font-size / 2;
     }
@@ -27,7 +27,7 @@
   }
 
   &.radius {
-    .ui-select-selection {
+    .za-select__selection {
       border-radius: $border-radius;
     }
   }
@@ -53,7 +53,7 @@
     cursor: pointer;
 
     &:hover {
-      border-color: $base-select-active-color;
+      border-color: $base-theme-info;
     }
 
     &:active {
@@ -62,7 +62,7 @@
       box-shadow: inset 0 1px 1px $base-select-active-color, 0 0 8px $base-select-active-color;
     }
 
-    .za-select-text {
+    @include e(text) {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -73,14 +73,10 @@
         border: 0;
         box-shadow: none;
       }
-
-      &.za-select-text-placeholder-color {
-        color: #ccc;
-      }
     }
 
-    .ui-select-icon,
-    .ui-select-arrow {
+    .za-select__icon,
+    .za-select__arrow {
       position: absolute;
       top: 50%;
       color: #d9d9d9;
@@ -101,7 +97,7 @@
   }
 
   &.disabled {
-    .ui-select-selection {
+    .za-select__selection {
       cursor: not-allowed;
       background-color: #f3f5f7;
 
@@ -132,32 +128,6 @@
   }
 }
 
-.ui-select-option {
-  list-style: none;
-  word-break: keep-all;
-  white-space: nowrap;
-  padding: 5px 10px;
-  color: #666;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #eaf8fe;
-  }
-
-  &.active {
-    background-color: #d5f1fd;
-  }
-
-  &.disabled {
-    cursor: auto;
-    color: #ccc;
-
-    &:hover {
-      background-color: transparent;
-    }
-  }
-}
-
 .ui-dropdown {
   .za-select--notfound {
     display: block;
@@ -171,29 +141,31 @@
   }
 }
 
-@include b(option-list) {
-  position: relative;
-  white-space: nowrap;
-  padding: 10px;
-  line-height: 20px;
-  cursor: pointer;
-
-  &:hover {
-    color: $base-select-focus-color;
-    background-color: $base-select-active-color;
-  }
-
-  &.is-checked {
-    background-color: $base-select-active-color;
-    color: $base-select-focus-color;
-  }
-
-  &.is-disabled {
-    color: #ccc;
-    cursor: no-drop;
+@include b(option) {
+  @include e(list) {
+    position: relative;
+    white-space: nowrap;
+    padding: 10px;
+    line-height: 20px;
+    cursor: pointer;
 
     &:hover {
-      background-color: transparent;
+      color: $base-select-focus-color;
+      background-color: $base-select-active-color;
+    }
+
+    &.is-checked {
+      background-color: $base-select-active-color;
+      color: $base-select-focus-color;
+    }
+
+    &.is-disabled {
+      color: #ccc;
+      cursor: no-drop;
+
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 }
