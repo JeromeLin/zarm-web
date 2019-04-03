@@ -11,6 +11,7 @@ import '../../components/radio/style';
 import '../../components/notification/style';
 import '../../components/message/style';
 import '../../components/layout/style';
+import '../../components/grid/style';
 
 export default class Form extends Markdown {
   // eslint-disable-next-line

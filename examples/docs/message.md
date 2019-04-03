@@ -6,31 +6,22 @@
 
 用户操作控件后，需要提示信息、成功、错误时。 浮于顶部居中，3s后自动消失，不会打断用户操作。
 
-:::demo 通过`type`属性输入类型。
+:::demo 通过`theme`属性设置提示主题类型。
 ```js
   showSuccess () {
-    Message.success({
-      message: '这是一条成功的消息提示，出现在网站顶部3s后消失',
-    })
+    Message.success('这是一条成功的消息提示，出现在网站顶部3s后消失')
   }
 
   showError () {
-    Message.danger({
-      message: '这是一条错误的消息提示，出现在网站顶部3s后消失',
-    })
+    Message.danger('这是一条错误的消息提示，出现在网站顶部3s后消失')
   }
 
   showWarning () {
-    Message.warning({
-      message: '这是一条警告的消息提示，出现在网站顶部3s后消失',
-    })
+    Message.warning('这是一条警告的消息提示，出现在网站顶部3s后消失')
   }
 
   showLoading () {
-    Message.loading({
-      message: '这是一条Loading的消息提示，出现在网站顶部3s后消失',
-      // duration: 0
-    })
+    Message.loading('这是一条Loading的消息提示，出现在网站顶部3s后消失')
   }
 
   render() {
@@ -48,9 +39,9 @@
 
 ### 自定义关闭时长
 
-自定义关闭时长，鼠标移入时不会关闭提示
+自定义关闭时长，鼠标移入时会重置timer，移出时候再重新计算关闭时长
 
-:::demo 通过`duration`属性设置显示时长
+:::demo 通过`stayTime`属性设置显示时长
 ```js
   showMessage () {
     Message.config({

@@ -46,7 +46,8 @@
           // transitionOnMount
           visible={this.state.visible} 
         >
-          <div style={{ position: 'relative', opacity: .6, background: '#ed1287', width: 200, height: 200, margin: '30px 0', zIndex: 20000 }}></div>
+          <div style={{ position: 'relative', opacity: .6, background: '#ed1287', width: 200, height: 200, margin: '30px 0', zIndex: 20000 }}>
+          </div>
         </Transition>
       </div>
     )

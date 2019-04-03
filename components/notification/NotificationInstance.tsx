@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Notification from './Notification';
+import PropsType from './PropsType';
 
-interface Instance {
+export interface Instance {
   key: string;
-  [key: string]: any;
-}
-
-interface NotificationInstanceFunc {
-  close?: object;
-  remove?: object;
   [key: string]: any;
 }
 
@@ -22,7 +17,7 @@ function getNotificationKey() {
   return `notification-${now}-${seed++}`;
 }
 
-export default function NotificationInstance (props?: any, theme?: string) {
+function NotificationInstance (props?: any, theme?: string) {
   const className: string = props.isMessage ? '.za-message' : '.za-notification';
   const div = document.createElement('div');
 
@@ -68,20 +63,36 @@ export default function NotificationInstance (props?: any, theme?: string) {
     }
   }
 
-  function remove (key) {
+  ReactDOM.render(<Notification {...props} willUnMount={willUnMount} ref={ref} />, div);
+}
+
+const api: any = {
+  open(props: PropsType) {
+    NotificationInstance(props);
+  },
+  remove(key: string) {
     notificationInstances.forEach((instance: Instance) => {
       if (instance.key === key) {
         instance.onClose();
       }
     });
-  }
-
-  ReactDOM.render(<Notification {...props} willUnMount={willUnMount} ref={ref} />, div);
-  (NotificationInstance as NotificationInstanceFunc).remove = remove;
-}
+  },
+};
 
 ['primary', 'danger', 'success', 'warning', 'loading'].forEach(theme => {
-  NotificationInstance[theme] = (options: object = {}) => {
+  api[theme] = (options: object = {}) => {
     NotificationInstance(options, theme);
   };
 });
+
+export interface NotificationApi {
+  primary(props: PropsType): void;
+  danger(props: PropsType): void;
+  success(props: PropsType): void;
+  warning(props: PropsType): void;
+  loading(props: PropsType): void;
+  open(props: PropsType): void;
+  remove(key: string): void;
+}
+
+export default api as NotificationApi;

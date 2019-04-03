@@ -324,6 +324,11 @@ a {
   }
 }
 
+.demo-form {
+  input,
+  .za-tag-input-box { width: 200px; }
+}
+
 .demo-block {
   border: solid 1px #eaeefb;
   border-radius: 4px;

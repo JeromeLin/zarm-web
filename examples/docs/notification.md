@@ -18,14 +18,14 @@ render() {
 }
 
 open() {
-  Notification({
+  Notification.open({
     title: '标题名称',
     message: '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案',
   });
 }
 
 open2() {
-  Notification({
+  Notification.open({
     title: '提示',
     message: '这是一条不会自动关闭的消息',
     stayTime: 0,
@@ -52,7 +52,7 @@ render() {
 }
 
 open3() {
-  Notification({
+  Notification.open({
     title: '成功',
     message: '这是一条成功的提示消息',
     theme: 'success',
@@ -60,7 +60,7 @@ open3() {
 }
 
 open4() {
-  Notification({
+  Notification.open({
     title: '警告',
     message: '这是一条警告的提示消息',
     theme: 'warning'
@@ -106,7 +106,7 @@ open() {
       <Button theme="primary" size="sm" onClick={() => alert('你点击了确定按钮')}>确定</Button>
     </React.Fragment>
   )
-  Notification({
+  Notification.open({
     title: '这是一段标题',
     message: '我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容',
     theme: 'success',
@@ -119,7 +119,7 @@ open() {
 open2() {
   const key = `open${Date.now()}`;
   const btn = <Button size="sm" onClick={() => Notification.remove(key)}>关闭通知</Button>
-  Notification({
+  Notification.open({
     title: '提示',
     message: '这是一条不会自动关闭的消息',
     stayTime: 0,
@@ -145,7 +145,7 @@ render() {
 }
 
 open() {
-  Notification({
+  Notification.open({
     title: '点击',
     message: '这是一条成功的提示消息',
     theme: 'success',
@@ -159,11 +159,12 @@ open() {
 <br/>
 
 ### Api:
+<p>Notification.open(props: NotificationProps)</p>
 <p>Notification.success()</p>
 <p>Notification.primary()</p>
 <p>Notification.danger()</p>
 <p>Notification.warning()</p>
-<p>Notification.remove(key)</p>
+<p>Notification.remove(key: string)</p>
 
 ### 参数
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |

@@ -17,7 +17,7 @@
             <Input placeholder="请输入..." />
           </Form.Item>
           <Form.Item>
-            <Button theme="success">登录</Button>
+            <Button theme="primary">登录</Button>
           </Form.Item>
         </Form>
       </div>
@@ -35,12 +35,12 @@
     return (
       <Form type="inline">
         <Form.Item
-          className="col-sm-4"
+          className="col-sm-8"
           label="类型">
           <Input placeholder="请输入..." />
         </Form.Item>
         <Form.Item
-          className="col-sm-4"
+          className="col-sm-8"
           label="类型"
         >
           <Select placeholder="请输入..." >
@@ -48,14 +48,9 @@
           </Select>
         </Form.Item>
         <Form.Item
-          className="col-sm-4"
-          label="来源">
-          <Input placeholder="请输入..." />
-        </Form.Item>
-        <Form.Item
-          className="col-sm-4"
+          className="col-sm-8"
           label="">
-          <Button theme="success">查询</Button>
+          <Button theme="primary">查询</Button>
         </Form.Item>
       </Form>
     )
@@ -108,7 +103,7 @@
       if (res) {
         Notification.success('表单验证通过')
       } else {
-        Notification.error('表单验证失败')
+        Notification.danger('表单验证失败')
       }
     })
   }
@@ -124,9 +119,8 @@
     return (
       <div>
         <Form labelWidth="90" labelPosition="left" type="inline" ref={el => this.form = el} model={this.state.params} rules={this.state.rules} onSubmit={this.handleSubmit.bind(this)}>
-          <Form.Item className="col-xs-12" label="账号" prop="account">
+          <Form.Item className="col-xs-24" label="账号" prop="account">
             <Input
-              style={{ width: 200 }}
               placeholder="请输入..."
               value={params.account}
               onChange={(e) => {
@@ -136,7 +130,7 @@
             />
           </Form.Item>
           <Form.Item 
-            className="col-xs-12"
+            className="col-xs-24"
             label="密码" 
             prop="password" 
             rules={
@@ -147,7 +141,6 @@
             }
           >
             <Input
-              style={{ width: 200 }}
               value={params.password}
               placeholder="请输入..." 
               onChange={(e) => {
@@ -156,10 +149,9 @@
               }}
             />
           </Form.Item>
-          <Form.Item className="col-xs-12" label="性别" prop="sex">
+          <Form.Item className="col-xs-24" label="性别" prop="sex">
             <Select
               searchPlaceholder="请选择性别"
-              style={{ width: 200 }}
               value={params.sex}
               onChange={(data) => {
                 params.sex = data.value
@@ -169,11 +161,11 @@
               <Select.Option key="girl" value="girl">girl</Select.Option>
             </Select>
           </Form.Item>
-          <Form.Item className="col-xs-12" label="出生日期" prop="birthday">
+          <Form.Item className="col-xs-24" label="出生日期" prop="birthday">
             <DatePicker
               radius
               allowInput
-              style={{width: 200}}
+              style={{ width: 200 }}
               value={params.birthday}
               placeholder="请选择日期"
               onChange={(date) => {
@@ -182,7 +174,7 @@
               }}
             />
           </Form.Item>
-          <Form.Item className="col-xs-12" label="爱好" prop="habits">
+          <Form.Item className="col-xs-24" label="爱好" prop="habits">
             <Checkbox.Group
               value={params.habits}
               onChange={(values) => {
@@ -196,7 +188,7 @@
               <Checkbox value="养猫">养猫</Checkbox>
             </Checkbox.Group>
           </Form.Item>
-          <Form.Item className="col-xs-12" prop="size" label="尺寸">
+          <Form.Item className="col-xs-24" prop="size" label="尺寸">
               <Radio.Group
                 value={params.size}
                 onChange={(e) => {
@@ -208,8 +200,8 @@
                 <Radio value="b">B</Radio>
               </Radio.Group>
           </Form.Item>
-          <Form.Item className="col-xs-12">
-            <Button theme="success" onClick={this.handleSubmit.bind(this)}>登录</Button>
+          <Form.Item className="col-xs-24">
+            <Button theme="primary" onClick={this.handleSubmit.bind(this)}>登录</Button>
             <Button theme="default" onClick={this.handleReset.bind(this)}>重置</Button>
           </Form.Item>
         </Form>
@@ -236,6 +228,33 @@
       rules: {
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
+          {
+            validator: (rule, value, callback) => {
+              if (value === '') {
+                callback(new Error('请输入密码'));
+              } else {
+                if (this.state.params.confirmPassword !== '') {
+                  this.formRef.validateField('confirmPassword');
+                }
+                callback();
+              }
+            },
+            trigger: 'blur'
+          }
+        ],
+        confirmPassword: [
+          { require: true, message: '请输入确认密码', trigger: 'blur' },
+          {
+            validator: (rule, value, callback) => {
+              const val = Number(value)
+              if (val !== Number(this.state.params.password)) {
+                callback(new Error('两次输入密码必须一致哦！'))
+              } else {
+                callback()
+              }
+            },
+            trigger: 'blur'
+          }
         ],
         money: [
           { required: true, message: '请输入重置金额', trigger: 'blur' },
@@ -258,7 +277,11 @@
   }
   handleSubmit() {
     this.formRef.validate(result => {
-      console.log(result) 
+      if (result) {
+        Message.success('validate success')
+      } else {
+        Message.danger('validate fail')
+      }
     })
   }
   
@@ -266,11 +289,10 @@
     const { params, rules } = this.state;
     
     return (
-      <Form type="inline" model={params} rules={rules} ref={el => this.formRef = el}>
+      <Form model={params} rules={rules} ref={el => this.formRef = el}>
         <Form.Item
           label="密码"
           prop="password"
-          className="col-xs-6"
         >
           <Input 
             placeholder="请输入密码" 
@@ -284,8 +306,8 @@
         
         <Form.Item
           label="确认密码"
+          prop="confirmPassword"
           required
-          className="col-xs-6"
         >
           <Input 
             placeholder="请再次输入密码" 
@@ -300,7 +322,6 @@
         <Form.Item
           label="重置金额"
           prop="money"
-          className="col-xs-6"
         >
           <Input 
             placeholder="请输入重置金额" 
@@ -312,8 +333,8 @@
           />
         </Form.Item>
         
-        <Form.Item className="col-xs-12">
-          <Button theme="success" onClick={this.handleSubmit.bind(this)}>确认</Button>
+        <Form.Item>
+          <Button theme="primary" onClick={this.handleSubmit.bind(this)}>确认</Button>
         </Form.Item>
       </Form>
     )

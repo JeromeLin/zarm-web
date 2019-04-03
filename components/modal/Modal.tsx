@@ -327,7 +327,7 @@ class Modal extends Component<ModalProps, StateIF> {
 
 // tslint:disable-next-line:no-namespace
 declare namespace Modal {
-  export interface Props extends ModalProps { }
+  export interface Props extends ModalProps {}
   export interface BodyProps extends ModalBodyProps { }
   export interface HeaderProps extends ModalHeaderProps { }
   export interface FooterProps extends ModalFooterProps { }

@@ -8,7 +8,7 @@ export default interface PropsType {
   title?: string;
   message?: string;
   stayTime?: number | string;
-  btn: React.ReactElement<any>;
+  btn?: React.ReactElement<any>;
   timeout?: null;
   willUnMount?: any;
   onClick?: (e?: React.SyntheticEvent<any>) => void;

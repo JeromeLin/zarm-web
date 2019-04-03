@@ -48,13 +48,13 @@ class Form extends PureComponent<PropsType, any> {
   }
 
   validateField (prop, callback) {
-    const field: any = this.state.fields.filter((field: ItemProps) => field.prop === prop)[0];
+    const field: any = this.state.fields.filter((field: ItemProps & { props: ItemProps }) => field.props.prop === prop)[0];
 
     if (!field) {
       throw new Error('please check a exist prop for validateField function');
     }
 
-    field.validate('', callback);
+    field.validateItem('', callback);
   }
 
   resetField () {
@@ -62,7 +62,7 @@ class Form extends PureComponent<PropsType, any> {
     fields.forEach((field: any) => field.resetItem());
   }
 
-  onSubmit = (event: React.SyntheticEvent) => {
+  onSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
   }
 

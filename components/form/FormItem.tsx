@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { FormContext, FormItemContext } from './createContext';
 import Icon from '../icon';
 import { noop } from '../utils';
+import Transition from '../transition';
 import { ItemProps, triggerType } from './PropsType';
 
 Schema.warning = noop;
@@ -22,12 +23,17 @@ class FormItem extends PureComponent<ItemProps, any> {
     isRequired: PropTypes.bool,
   };
 
-  state = {
-    validateStatus: '',
-    validateMessage: '',
-  };
-
   private initialData;
+  private validateMessage: string;
+
+  constructor (props) {
+    super(props);
+
+    this.validateMessage = '';
+    this.state = {
+      validateStatus: '',
+    };
+  }
 
   componentDidMount () {
     this.initialData = this.recordInitialData();
@@ -92,11 +98,11 @@ class FormItem extends PureComponent<ItemProps, any> {
     const validator = new Schema(descriptor);
     const model = { [prop!]: this.fieldValue };
     validator.validate(model, { firstFields: true }, errors => {
+      this.validateMessage = errors ? errors[0].message : '';
       this.setState({
         validateStatus: !errors ? 'success' : 'error',
-        validateMessage: errors ? errors[0].message : '',
       }, () => {
-        callback(this.state.validateMessage);
+        callback(this.validateMessage);
       });
     });
   }
@@ -106,8 +112,8 @@ class FormItem extends PureComponent<ItemProps, any> {
 
     this.setState({
       validateStatus: '',
-      validateMessage: '',
     });
+    this.validateMessage = '';
 
     if (Array.isArray(this.fieldValue) && this.fieldValue.length > 0) {
       this.context.model[prop!] = [];
@@ -140,15 +146,6 @@ class FormItem extends PureComponent<ItemProps, any> {
       ? <label style={{ ...styleObj }} htmlFor={id || this.getId()}>{star}{label}</label> : null;
   }
 
-  renderItemError() {
-    const { prefixCls } = this.props;
-    const { validateStatus, validateMessage } = this.state;
-    const showError = validateStatus === 'error';
-    const error = showError ? <div className={`${prefixCls}-item-error`}>{validateMessage}</div> : null;
-
-    return error;
-  }
-
   handleFieldBlur = () => {
     Promise.resolve('blur').then(this.validateItem.bind(this));
   }
@@ -177,7 +174,9 @@ class FormItem extends PureComponent<ItemProps, any> {
           {this.renderLabel()}
           <div className={controlCls} onBlur={this.handleFieldBlur} onChange={this.handleFieldChange}>
             {children}
-            {this.renderItemError()}
+            <Transition name="scaleDown" visible={validateStatus === 'error'}>
+              <div className={`${prefixCls}-item-error`}>{this.validateMessage}</div>
+            </Transition>
           </div>
         </div>
       </FormItemContext.Provider>

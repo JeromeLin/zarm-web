@@ -1,3 +1,3 @@
-import NotificationInstance from './NotificationInstance';
+import api from './NotificationInstance';
 
-export default NotificationInstance;
+export default api;
