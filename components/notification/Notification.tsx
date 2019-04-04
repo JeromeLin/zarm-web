@@ -9,7 +9,7 @@ export default class Notification extends Component<NotificationProps, any> {
     prefixCls: 'za-notification',
     message: '',
     top: 20,
-    stayTime: 3000,
+    stayTime: 4500,
     onClick: () => {},
     onClose: () => {},
   };
@@ -101,7 +101,7 @@ export default class Notification extends Component<NotificationProps, any> {
       <Transition
         visible={visible}
         name={isMessage ? 'message' : 'notification'}
-        duration={500}
+        duration={200}
         unmountOnHide
         onStart={() => this.offsetHeight = this.notification.offsetHeight}
         onBeforeHide={() => willUnMount(this.offsetHeight, parseInt(this.notification.style.top, 10))}
@@ -117,7 +117,7 @@ export default class Notification extends Component<NotificationProps, any> {
             {!isMessage && theme && <Icon type={this.type} className="za-notification__icon" theme={theme} />}
             {title && <div className="za-notification__title">{title}</div>}
             <div className="za-notification__custom-content" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-              {<Icon type={this.type} className="za-notification__icon" theme={theme} />}
+              {isMessage && <Icon type={this.type} className="za-notification__icon" theme={theme} />}
               {message}
               {!isMessage && <span className="za-notification__action-area">{btn}</span>}
             </div>

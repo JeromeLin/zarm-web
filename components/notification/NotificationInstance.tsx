@@ -8,7 +8,7 @@ export interface Instance {
   [key: string]: any;
 }
 
-const NOTIFICATION_GAP = 16;
+const NOTIFICATION_GAP = 12;
 const notificationInstances: Instance[] = [];
 const now = Date.now();
 let seed = 0;
@@ -51,7 +51,7 @@ function NotificationInstance (props?: any, theme?: string) {
     Array.from(instancesDom).forEach((instance: any) => {
       const instanceTop = parseInt(instance.style.top, 10);
       if (instanceTop > lastTop) {
-        instance.style.top = `${instanceTop - lastHeight - 16}px`;
+        instance.style.top = `${instanceTop - lastHeight - NOTIFICATION_GAP}px`;
       }
     });
   }

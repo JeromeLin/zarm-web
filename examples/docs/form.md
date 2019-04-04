@@ -378,18 +378,22 @@
   }
   handleSubmit() {
     this.formRef.validate(result => {
-      console.log(result) 
+      if (result) {
+        Message.success('congratulation! validate success')
+      } else {
+        Message.danger('sorry, validate failed')
+      } 
     })
   }
   
   render() {
     const { people } = this.state.family
     return (
-      <Form type="inline" model={this.state.family} ref={el => this.formRef = el}>
+      <Form type="inline" model={this.state.family} ref={el => this.formRef = el} labelWidth={90}>
         {
           people.map((person, index) => (
             <Form.Item
-              className="col-xs-12"
+              className="col-xs-24"
               key={person+index}
               label={`家人${index + 1}`}
               prop={`people.${index}`}
@@ -408,6 +412,7 @@
             >
               <Input 
                 placeholder="请输入家人姓名" 
+                style={{ width: 300 }}
                 value={person.name}
                 onChange={e => {
                   people[index].name = e.target.value
@@ -418,15 +423,19 @@
                   })
                 }}
               />
-              <Button theme="default" onClick={this.handleDel.bind(this, index)}>删除此项</Button>
+              <Button shape="circle" style={{ borderColor: 'transparent' }} onClick={this.handleDel.bind(this, index)}>
+                <Icon type="minus-round" style={{ fontSize: 20, color: '#909090' }} />
+              </Button>
             </Form.Item>
           ))
         }
-        <Form.Item className="col-xs-12">
-          <Button theme="success" onClick={this.handleAdd.bind(this)}>增加成员</Button>
+        <Form.Item className="col-xs-24" label={''}>
+          <Button style={{ width: 300, background: '#e6e6e6'}} onClick={this.handleAdd.bind(this)}>
+            <Icon type="add" style={{ marginRight: 12 }} />添加
+          </Button>
         </Form.Item>
-        <Form.Item className="col-xs-12">
-          <Button theme="info" onClick={this.handleSubmit.bind(this)}>提交</Button>
+        <Form.Item className="col-xs-24" label={''}>
+          <Button theme="primary" onClick={this.handleSubmit.bind(this)}>Submit</Button>
         </Form.Item>
       </Form>
     )
