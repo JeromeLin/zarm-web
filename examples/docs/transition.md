@@ -176,7 +176,48 @@
 ```
 :::
 
-### Attributes
+### Collapse Transition
+
+元素开闭动画过渡
+
+:::demo
+
+```js
+  constructor (props) {
+    super(props);
+    
+    this.state = {
+      visible: true,
+    }
+  }
+
+  render() {
+    const { visible } = this.state
+    return (
+      <div>
+        <CollapseTransition 
+          visible={this.state.visible} 
+        >
+          <div 
+            style={{ 
+              position: 'relative', 
+              background: '#ad65ec', 
+              width: 200, 
+              height: 200, 
+              margin: '30px 0', 
+              zIndex: 20000,
+              opacity: .6
+            }} 
+          />
+        </CollapseTransition>
+        <Button theme="primary" onClick={() => this.setState({ visible: !this.state.visible })}>open</Button>
+      </div>
+    )
+  }
+```
+:::
+
+### Transition Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | visible    | 是否显示/隐藏   | boolean  |   -          |    —     |
@@ -187,7 +228,7 @@
 | unmountOnHide  | 节点隐藏时候是否删除节点    | -   | -  |  false  |
 | mountOnShow  | 初始化的时候是否挂载节点    | boolean   | -  | true   |
 
-### Events
+### Transition Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onStart | 动画开始时候调用        | ({  ...props, status })   |
@@ -196,3 +237,8 @@
 | onHide | 动画完成之后 隐藏时候调用 | ({  ...props, status }) |
 | onBeforeShow | 显示前调用 | ({  ...props, status }) |
 | onBeforeHide | 隐藏之前调用 | ({  ...props, status }) |
+
+### CollapseTransition Attributes
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| visible    | 是否显示/隐藏   | boolean  |   -          |    —     |

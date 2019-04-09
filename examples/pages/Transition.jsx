@@ -1,4 +1,5 @@
 import Markdown from '../components/markdown';
+import CollapseTransition from '../../components/utils/collapseTransition'
 import '../../components/button/style';
 import '../../components/icon/style';
 import '../../components/transition/style';

@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const concat = require('gulp-concat');
@@ -27,6 +28,30 @@ gulp.task('copyFont', () => {
   return gulp.src(DIR.font)
     .pipe(gulp.dest(DIR.lib));
 });
+
+gulp.task('buildEntryScss', () => {
+  if (fs.existsSync(DIR.dist)) {
+    const componentsPath = path.join(process.cwd(), '../../components');
+    let componentsLessContent = '';
+
+    fs.readdir(componentsPath, (err, files) => {
+      files.forEach(file => {
+        if (fs.existsSync(path.join(componentsPath, file, 'style', 'index.scss'))) {
+          componentsLessContent += `@import "../${path.join(file, 'style', 'index.scss')}";\n`;
+        }
+      });
+      fs.writeFileSync(
+        path.join(process.cwd(), '../../', 'lib', 'style', 'components.scss'),
+        componentsLessContent,
+      );
+
+      fs.writeFileSync(
+        path.join(DIR.dist, 'dragon-ui.scss'),
+        '@import "../lib/style/index.scss";\n@import "../lib/style/components.scss";\n',
+      );
+    });
+  }
+})
 
 gulp.task('dist', () => {
   return gulp.src(DIR.buildSrc)
@@ -58,4 +83,4 @@ gulp.task('dist', () => {
     .pipe(gulp.dest(DIR.dist));
 });
 
-gulp.task('default', ['copySass', 'copyFont', 'dist']);
+gulp.task('default', ['copySass', 'copyFont', 'buildEntryScss', 'dist']);

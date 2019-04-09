@@ -26,19 +26,19 @@
       background: $--color-white;
       box-shadow: $--box-shadow-dark;
       border-radius: $--border-radius-base;
+    }
 
-      .za-notification__icon {
-        position: static;
-        top: -2px;
-        transform: translate(0, 0);
-        margin-right: 8px;
-        vertical-align: middle;
-        font-size: $--font-size-large;
+    @include e(icon) {
+      position: static;
+      top: -2px;
+      transform: translate(0, 0);
+      margin-right: 8px;
+      vertical-align: middle;
+      font-size: $--font-size-large;
 
-        &.theme-loading {
-          animation: rotate360 1s linear infinite;
-          font-size: $--font-size-base;
-        }
+      &.theme-loading {
+        animation: rotate360 1s linear infinite;
+        font-size: $--font-size-base;
       }
     }
   }
