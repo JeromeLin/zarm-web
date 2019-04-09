@@ -2,20 +2,25 @@ import React from 'react';
 import { LocaleContext } from './LocaleProvider';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-const LocaleReceiverWrapper = (WrappedComponent, name?) => {
-  const LocaleReceiver: any = props => {
+type GetContextInnerType<T extends React.Context<any>> = T extends React.Context<infer R> ? R : never;
+
+function LocaleReceiverWrapper<T extends { new(...args: any[]): any }>(
+  WrappedComponent: T,
+  name?: keyof GetContextInnerType<typeof LocaleContext>,
+) {
+  function LocaleReceiver(props: InstanceType<T>['props'] & { forwardedRef: React.Ref<InstanceType<T>> }) {
     return (
       <LocaleContext.Consumer>
         {locale => {
-          const componentLocale =
-            locale && locale[name || WrappedComponent.name];
+          const LocalName = name || WrappedComponent.name as keyof GetContextInnerType<typeof LocaleContext>;
+          const componentLocale = locale && locale[LocalName];
           const localeCode = locale && locale.code;
 
           const { forwardedRef, ...rest } = props;
-
+          const others = rest as JSX.IntrinsicClassAttributes<T> & JSX.LibraryManagedAttributes<T, any>;
           return (
             <WrappedComponent
-              {...rest}
+              {...others}
               ref={forwardedRef}
               locale={componentLocale}
               localeCode={localeCode}
@@ -26,13 +31,13 @@ const LocaleReceiverWrapper = (WrappedComponent, name?) => {
     );
   };
 
-  const forwardRef = (props, ref) => {
+  const forwardRef = (props: InstanceType<T>['props'], ref: React.Ref<InstanceType<T>>) => {
     return <LocaleReceiver {...props} forwardedRef={ref} />;
   };
-  const LocaleReceiverWithRef = React.forwardRef(forwardRef);
-  hoistNonReactStatic(LocaleReceiverWithRef, WrappedComponent);
 
-  return LocaleReceiverWithRef as (typeof LocaleReceiver);
-};
+  const LocaleReceiverWithRef = React.forwardRef<InstanceType<T>, InstanceType<T>['props']>(forwardRef);
+  hoistNonReactStatic(LocaleReceiverWithRef, WrappedComponent);
+  return LocaleReceiverWithRef as (T & typeof LocaleReceiverWithRef);
+}
 
 export default LocaleReceiverWrapper;
