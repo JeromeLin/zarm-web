@@ -121,4 +121,4 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
   }
 }
 
-export default LocaleReceiver(CalendarMonthTable, 'Calendar');
+export default LocaleReceiver('Calendar')(CalendarMonthTable);

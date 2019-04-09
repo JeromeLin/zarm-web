@@ -248,4 +248,4 @@ class CalendarHeader extends Component<HeaderProps, any> {
   }
 }
 
-export default LocaleReceiver(CalendarHeader, 'Calendar');
+export default LocaleReceiver('Calendar')(CalendarHeader);

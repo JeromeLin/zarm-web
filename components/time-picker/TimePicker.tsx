@@ -168,4 +168,4 @@ class TimePicker extends Component<TimePickerProps, any> {
   }
 }
 
-export default LocaleReceiver(TimePicker, 'TimePicker');
+export default LocaleReceiver('TimePicker')(TimePicker);

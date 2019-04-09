@@ -512,4 +512,4 @@ class RangeDatePicker extends Component<PropsType, any> {
   }
 }
 
-export default LocaleReceiver(RangeDatePicker, 'Calendar');
+export default LocaleReceiver('Calendar')(RangeDatePicker);

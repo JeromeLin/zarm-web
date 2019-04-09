@@ -41,8 +41,8 @@ class Select extends Component<PropsType, StateProps> {
     onChange: () => { },
   };
 
-  static Option: typeof Option;
-  static Multiple: typeof SelectMultiple;
+  static Option: typeof Option = Option;
+  static Multiple: typeof SelectMultiple = SelectMultiple;
 
   inputBox!: HTMLInputElement;
   inputWithTags!: InputWithTags;
@@ -390,4 +390,4 @@ class Select extends Component<PropsType, StateProps> {
   }
 }
 
-export default LocaleReceiver(Select, 'Select');
+export default LocaleReceiver('Select')(Select);
