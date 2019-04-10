@@ -1,10 +1,8 @@
-export default function debounce (func, wait, immediate) {
-  let timeout;
-  let result;
-  return function debounced () {
+export default function debounce(func: (...arg: any[]) => any, wait: number, immediate?: boolean) {
+  let timeout: number | null;
+  let result: any;
+  return function debounced(this: any, ...args: any[]) {
     const context = this;
-    const args = arguments;
-
     if (timeout) {
       clearTimeout(timeout);
     }
