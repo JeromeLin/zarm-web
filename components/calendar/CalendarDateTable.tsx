@@ -289,4 +289,4 @@ class CalendarDateTable extends Component<DateTableProps, any> {
   }
 }
 
-export default LocaleReceiver(CalendarDateTable, 'Calendar');
+export default LocaleReceiver('Calendar')(CalendarDateTable);

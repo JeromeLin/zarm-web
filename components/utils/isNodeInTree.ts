@@ -1,12 +1,13 @@
 
 /* eslint-disable */
-export default function (node, tree) {
+export default function (node: Node, tree: HTMLElement) {
   while (node) {
     if (node === tree) {
       return true;
     }
-    node = node.parentNode;
+    if (node.parentNode) {
+      node = node.parentNode;
+    }
   }
-
   return false;
 }

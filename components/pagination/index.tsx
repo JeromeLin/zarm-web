@@ -365,4 +365,4 @@ class Pagination extends Component<PropsType, any> {
   }
 }
 
-export default LocaleReceiver(Pagination, 'Pagination');
+export default LocaleReceiver('Pagination')(Pagination);
