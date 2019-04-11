@@ -13,12 +13,10 @@ function LocaleReceiverWrapper(name?: keyof GetContextInnerType<typeof LocaleCon
             const LocalName = name || WrappedComponent.name as keyof GetContextInnerType<typeof LocaleContext>;
             const componentLocale = locale && locale[LocalName];
             const localeCode = locale && locale.code;
-
             const { forwardedRef, ...rest } = props;
-            const others = rest as JSX.IntrinsicClassAttributes<T> & JSX.LibraryManagedAttributes<T, any>;
             return (
               <WrappedComponent
-                {...others}
+                {...rest}
                 ref={forwardedRef}
                 locale={componentLocale}
                 localeCode={localeCode}
@@ -37,4 +35,5 @@ function LocaleReceiverWrapper(name?: keyof GetContextInnerType<typeof LocaleCon
     return LocaleReceiverWithRef as (T & typeof LocaleReceiverWithRef);
   };
 }
+
 export default LocaleReceiverWrapper;
