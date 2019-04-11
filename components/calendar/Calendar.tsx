@@ -295,4 +295,4 @@ class Calendar extends Component<PropsType, any> {
   }
 }
 
-export default LocaleReceiver(Calendar, 'Calendar');
+export default LocaleReceiver('Calendar')(Calendar);

@@ -93,4 +93,4 @@ class Popconfirm extends Component<PropsType, any> {
   }
 }
 
-export default LocaleReceiver(Popconfirm, 'Confirm');
+export default LocaleReceiver('Confirm')(Popconfirm);
