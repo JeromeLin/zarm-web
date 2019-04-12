@@ -1,28 +1,67 @@
-.ui-form {
+@include b(form) {
   display: block;
   margin-top: 0;
-}
 
-.ui-form-item {
-  margin-bottom: 24px;
+  &:before {
+    content: " ";
+    display: table;
+    clear: both;
+  }
 
-  > label {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-    color: #333;
+  &:after {
+    content: " ";
+    display: table;
+  }
 
-    .ui-form-item-required {
-      color: $base-theme-error;
-      margin-right: 1px;
-      font-size: 6px;
+  @include m(label-left) {
+    @include b(form-item) {
+      @include e(label) {
+        text-align: left;
+      }
     }
   }
 
-  $shadow-color: lighten($base-theme-error, 20%);
+  @include m(label-top) {
+    @include b(form-item) {
+      .za-form-item__label {
+        text-align: left;
+      }
+
+      .za-form-item__control {
+        display: block;
+      }
+    }
+  }
+}
+
+@include b(form-item) {
+  margin-bottom: 24px;
+
+  @include e(label) {
+    //float: left;
+    vertical-align: middle;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin-bottom: 5px;
+    text-align: right;
+    line-height: 32px;
+    padding: 0 12px 0 0;
+    color: #333;
+  }
+
+  @include m(required) {
+    color: $base-theme-error;
+    margin-right: 1px;
+    font-size: 6px;
+  }
+
+  @include e(control) {
+    position: relative;
+    line-height: 32px;
+  }
 
   &.has-error {
-    .ui-form-item-control {
+    .za-form-item__control {
       position: relative;
 
       .ui-input,
@@ -31,7 +70,7 @@
         border-color: $base-theme-error;
       }
 
-      .ui-form-item-error {
+      .za-form-item__error {
         position: absolute;
         top: 100%;
         left: 0;
@@ -39,62 +78,9 @@
         line-height: 1;
         color: $base-theme-error;
         font-size: 12px;
-        //transition: color .3s $default-transition;
+        transition: color .3s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
     }
   }
 }
 
-.ui-form-horizontal {
-  .ui-form-item {
-    &:before {
-      content: " ";
-      display: table;
-    }
-
-    &:after {
-      content: " ";
-      display: table;
-      clear: both;
-      visibility: hidden;
-      font-size: 0;
-      height: 0;
-    }
-
-    > label {
-      padding-top: 6px;
-      text-align: right;
-    }
-  }
-}
-
-.ui-form-inline {
-  &:before {
-    content: " ";
-    display: table;
-  }
-
-  &:after {
-    content: " ";
-    display: table;
-    clear: both;
-    visibility: hidden;
-    font-size: 0;
-    height: 0;
-  }
-
-  .ui-form-item {
-    display: inline-block;
-
-    > label {
-      padding-right: 8px;
-      text-align: right;
-    }
-
-    > .ui-form-item-control {
-      display: inline-block;
-      width: auto;
-      vertical-align: middle;
-    }
-  }
-}

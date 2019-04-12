@@ -2,18 +2,18 @@
 
 exports[`Form renders inline Form with label correctly 1`] = `
 <form
-  class="ui-form ui-form-inline"
+  class="za-form za-form--label-right"
 >
   <div
-    class="ui-form-item col-sm-4"
+    class="za-form-item col-sm-4"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     >
       类型
     </label>
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <input
         class="ui-input radius"
@@ -23,15 +23,15 @@ exports[`Form renders inline Form with label correctly 1`] = `
     </div>
   </div>
   <div
-    class="ui-form-item col-sm-4"
+    class="za-form-item col-sm-4"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     >
       来源
     </label>
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <input
         class="ui-input radius"
@@ -41,13 +41,13 @@ exports[`Form renders inline Form with label correctly 1`] = `
     </div>
   </div>
   <div
-    class="ui-form-item col-sm-4"
+    class="za-form-item col-sm-4"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     />
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <button
         class="is-radius za-button za-button--success"
@@ -62,18 +62,18 @@ exports[`Form renders inline Form with label correctly 1`] = `
 
 exports[`Form renders inline Form with required fields and help correctly 1`] = `
 <form
-  class="ui-form ui-form-inline"
+  class="za-form za-form--label-right"
 >
   <div
-    class="ui-form-item col-sm-4"
+    class="za-form-item col-sm-4"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     >
       类型
     </label>
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <input
         class="ui-input radius"
@@ -83,13 +83,13 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
     </div>
   </div>
   <div
-    class="ui-form-item col-sm-4"
+    class="za-form-item col-sm-4"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     >
       <span
-        class="ui-form-item-required"
+        class="za-form-item--required"
       >
         <i
           class="za-icon za-icon-required theme-default"
@@ -98,7 +98,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       来源
     </label>
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <input
         class="ui-input radius"
@@ -108,13 +108,13 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
     </div>
   </div>
   <div
-    class="ui-form-item col-sm-4"
+    class="za-form-item col-sm-4"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     />
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <button
         class="is-radius za-button za-button--success"
@@ -129,18 +129,18 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
 
 exports[`Form renders normal Form correctly 1`] = `
 <form
-  class="ui-form ui-form-horizontal"
+  class="za-form za-form--label-right"
 >
   <div
-    class="ui-form-item"
+    class="za-form-item"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     >
       账号
     </label>
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <input
         class="ui-input radius"
@@ -150,15 +150,15 @@ exports[`Form renders normal Form correctly 1`] = `
     </div>
   </div>
   <div
-    class="ui-form-item"
+    class="za-form-item"
   >
     <label
-      style="text-align:right"
+      class="za-form-item__label"
     >
       密码
     </label>
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <input
         class="ui-input radius"
@@ -168,10 +168,10 @@ exports[`Form renders normal Form correctly 1`] = `
     </div>
   </div>
   <div
-    class="ui-form-item"
+    class="za-form-item"
   >
     <div
-      class="ui-form-item-control"
+      class="za-form-item__control"
     >
       <button
         class="is-radius za-button za-button--success"
