@@ -42,6 +42,7 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
 
     const fullDay = `${day.year}/${day.month}/${day.date}`;
 
+    // @ts-ignore
     const isDisabled = disabledMonth ? !disabledMonth(fullDay) : false;
 
     const cls = classnames({
@@ -55,10 +56,10 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
     return (
       <span
         className={cls}
-        title={locale[`month${day.month}`]}
+        title={locale![`month${day.month}`]}
         onClick={(isDisabled && fn) || onClick}
       >
-        {locale[`month${day.month}`]}
+        {locale![`month${day.month}`]}
       </span>
     );
   }

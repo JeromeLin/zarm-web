@@ -15,7 +15,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
         初始值
       </h4>
       <span
-        class="za-select"
+        class="za-select is-disabled"
       >
         <span
           aria-autocomplete="list"
@@ -92,7 +92,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
         已选值
       </h4>
       <span
-        class="za-select"
+        class="za-select is-disabled"
       >
         <span
           aria-autocomplete="list"

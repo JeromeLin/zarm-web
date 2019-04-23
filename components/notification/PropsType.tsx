@@ -7,7 +7,7 @@ export default interface PropsType {
   theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'loading';
   title?: string;
   message?: string;
-  stayTime?: number | string;
+  stayTime: number;
   btn?: React.ReactElement<any>;
   timeout?: null;
   willUnMount?: any;

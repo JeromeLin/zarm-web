@@ -6,6 +6,7 @@ const throttle = (func, delay) => {
     const curTime = Date.now();
     const remaining = delay - (curTime - startTime);
     const context = this;
+    // @ts-ignore
     const args = arguments;
 
     clearTimeout(timer);
