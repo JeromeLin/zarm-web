@@ -16,6 +16,7 @@ export interface ItemProps {
 }
 
 export default interface PropsType {
+  type?: string;
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;

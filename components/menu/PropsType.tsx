@@ -20,6 +20,7 @@ export interface ItemProps {
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;
+  inlineCollapsed?: boolean;
   className?: string;
   style: object;
   selectedKeys: string[];
@@ -29,6 +30,7 @@ export interface ItemProps {
   itemKey: string;
   onClick: (e: React.MouseEvent, itemKey: string) => void;
   toggleSelectedKeys: (itemKey: string) => void;
+  toggleSubMenuOpen: (itemKey: string) => void;
   onDoubleClick?: () => void;
 }
 

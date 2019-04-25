@@ -5,6 +5,7 @@ export type keysType = {
   selectedKeys: string[],
   toggleSelectedKeys?: (itemKey: string) => void;
   toggleOpenKeys?: (subMenuKey: string) => void;
+  inlineCollapsed?: boolean;
 };
 
 export const menuKeys: keysType = {

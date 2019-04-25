@@ -8,14 +8,16 @@ import { noop } from '../utils';
 class Form extends PureComponent<PropsType, any> {
   static defaultProps = {
     prefixCls: 'za-form',
+    type: 'horizontal',
     className: null,
     labelPosition: 'right',
     scrollToError: false,
     onSubmit: noop,
   };
   static propTypes = {
+    type: PropTypes.oneOf(['horizontal', 'inline']),
     labelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    labelPosition: PropTypes.oneOf(['left', 'right', 'top']),
+    labelPosition: PropTypes.oneOf(['left', 'right']),
     rules: PropTypes.object,
     model: PropTypes.object,
     scrollToError: PropTypes.bool,
@@ -88,9 +90,10 @@ class Form extends PureComponent<PropsType, any> {
   }
 
   render() {
-    const { className, children, style, prefixCls, labelWidth, labelPosition } = this.props;
+    const { type, className, children, style, prefixCls, labelWidth, labelPosition } = this.props;
     const cls = classnames({
       [prefixCls!]: true,
+      [`${prefixCls}--${type}`]: 'type' in this.props,
       [`${prefixCls}--label-${labelPosition}`]: labelPosition,
       [className!]: !!className,
     });

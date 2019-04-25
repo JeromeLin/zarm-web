@@ -7,7 +7,7 @@ import MenuContext from './menu-context';
 
 export class SubMenu extends Component<SubMenuProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-menu',
+    prefixCls: 'za-menu',
     title: '',
     level: 1,
     style: {},
@@ -16,6 +16,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
 
   subTitle: any;
   sub: any;
+  timeout: any;
 
   constructor(props) {
     super(props);
@@ -23,6 +24,57 @@ export class SubMenu extends Component<SubMenuProps, any> {
       collapsedSubVisible: false,
       collapsedSubAnimation: '',
     };
+  }
+
+  componentDidMount() {
+    const { openKeys, inlineCollapsed } = this.props;
+    if (openKeys.length > 0) {
+      if (!inlineCollapsed) {
+        this.setSubHeight({ openKeys: [] });
+      }
+    }
+    if (inlineCollapsed) {
+      events.on(document, 'click', this.onClickOutSide);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { inlineCollapsed } = nextProps;
+
+    if (!inlineCollapsed) {
+      if (this.props.inlineCollapsed) {
+        events.off(document, 'click', this.onClickOutSide);
+      }
+      return;
+    }
+    if (!this.props.inlineCollapsed) {
+      events.on(document, 'click', this.onClickOutSide);
+    }
+    const { subMenuKey, openKeys } = this.props;
+    const isOpenNow = openKeys.indexOf(subMenuKey) > -1;
+    const isOpenNext = nextProps.openKeys.indexOf(subMenuKey) > -1;
+
+    if (!isOpenNow && isOpenNext) {
+      // 展开菜单
+      this.slideDown();
+    } else if (isOpenNow && !isOpenNext) {
+      // 收起菜单
+      this.slideUp();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { inlineCollapsed } = this.props;
+    if (!inlineCollapsed) {
+      this.setSubHeight(prevProps);
+    }
+  }
+
+  componentWillUnmount() {
+    const { inlineCollapsed } = this.props;
+    if (inlineCollapsed) {
+      events.off(document, 'click', this.onClickOutSide);
+    }
   }
 
   toggleSubMenuOpen = (e) => {
@@ -102,7 +154,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
 
   slideUp() {
     this.setState({
-      collapsedSubVisible: true,
+      collapsedSubVisible: false,
       collapsedSubAnimation: 'up',
     });
   }
@@ -133,57 +185,6 @@ export class SubMenu extends Component<SubMenuProps, any> {
     }
   }
 
-  componentDidMount() {
-    const { openKeys, inlineCollapsed } = this.props;
-    if (openKeys.length > 0) {
-      if (!inlineCollapsed) {
-        this.setSubHeight({ openKeys: [] });
-      }
-    }
-    if (inlineCollapsed) {
-      events.on(document, 'click', this.onClickOutSide);
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { inlineCollapsed } = nextProps;
-
-    if (!inlineCollapsed) {
-      if (this.props.inlineCollapsed) {
-        events.off(document, 'click', this.onClickOutSide);
-      }
-      return;
-    }
-    if (!this.props.inlineCollapsed) {
-      events.on(document, 'click', this.onClickOutSide);
-    }
-    const { subMenuKey, openKeys } = this.props;
-    const isOpenNow = openKeys.indexOf(subMenuKey) > -1;
-    const isOpenNext = nextProps.openKeys.indexOf(subMenuKey) > -1;
-
-    if (!isOpenNow && isOpenNext || (!this.props.inlineCollapsed && isOpenNow)) {
-      // 展开菜单
-      this.slideDown();
-    } else if (isOpenNow && !isOpenNext) {
-      // 收起菜单
-      this.slideUp();
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { inlineCollapsed } = this.props;
-    if (!inlineCollapsed) {
-      this.setSubHeight(prevProps);
-    }
-  }
-
-  componentWillUnmount() {
-    const { inlineCollapsed } = this.props;
-    if (inlineCollapsed) {
-      events.off(document, 'click', this.onClickOutSide);
-    }
-  }
-
   render() {
     const {
       title, level, mode, style, inlineIndent,
@@ -192,12 +193,13 @@ export class SubMenu extends Component<SubMenuProps, any> {
     const { collapsedSubVisible, collapsedSubAnimation } = this.state;
 
     const subMenuStyle: styleType = {};
-    if (mode === 'inline') {
+    if (mode === 'inline' && !inlineCollapsed) {
       subMenuStyle.paddingLeft = level * inlineIndent;
     }
     const isOpen = openKeys.indexOf(subMenuKey) > -1;
     const cls = classnames(`${prefixCls}-submenu`, {
       open: isOpen,
+      [`${prefixCls}-level-${level}`]: level,
     });
     let subStyle: React.CSSProperties = {
       display: 'block',
@@ -207,7 +209,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
       subStyle = {
         display: collapsedSubVisible ? 'block' : 'none',
       };
-      subCls = classnames(`${prefixCls}-submenu-sub`, {
+      subCls = classnames(`${prefixCls}`, `${prefixCls}-submenu-sub`, {
         [`slide-${collapsedSubAnimation}`]: !!collapsedSubAnimation,
       });
     }
@@ -243,6 +245,7 @@ export default function SubMenuConsumer(props) {
         (menuKeys) => (
           <SubMenu
             {...props}
+            inlineCollapsed={menuKeys.inlineCollapsed}
             openKeys={menuKeys.openKeys}
             toggleOpenKeys={menuKeys.toggleOpenKeys}
           />

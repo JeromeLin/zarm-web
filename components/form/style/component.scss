@@ -1,23 +1,11 @@
 @include b(form) {
   display: block;
   margin-top: 0;
-
-  &:before {
-    content: " ";
-    display: table;
-    clear: both;
-  }
-
-  &:after {
-    content: " ";
-    display: table;
-  }
+  overflow: auto;
 
   @include m(label-left) {
-    @include b(form-item) {
-      @include e(label) {
-        text-align: left;
-      }
+    .za-form-item__label {
+      text-align: left;
     }
   }
 
@@ -32,13 +20,31 @@
       }
     }
   }
+
+  @include m(horizontal) {
+    .za-form-item__label {
+      display: inline-block;
+      float: none;
+    }
+  }
 }
 
 @include b(form-item) {
   margin-bottom: 24px;
 
+  &:before {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+
+  &:after {
+    content: " ";
+    display: table;
+  }
+
   @include e(label) {
-    //float: left;
+    float: left;
     vertical-align: middle;
     box-sizing: border-box;
     max-width: 100%;
@@ -83,4 +89,3 @@
     }
   }
 }
-

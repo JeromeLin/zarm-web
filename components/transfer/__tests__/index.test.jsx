@@ -205,7 +205,7 @@ describe('Transfer', () => {
         },
       ],
     });
-    wrapper.find('.ui-menu').at(1).find('.za-option__list').at(0)
+    wrapper.find('.za-menu').at(1).find('.za-option__list').at(0)
       .simulate('doubleclick');
     expect((wrapper.state().selectedValue).length).toBe(0);
   });

@@ -67,41 +67,48 @@ SubMenu内可以继续嵌套SubMenu
 
 :::demo 理赔子菜单下有理赔工作流子菜单
 ```js
+  constructor(props) {
+    super(props)
+    this.state = {
+      collapse: false
+    }
+  }
+  toggleCollapse(){
+    this.setState({ collapse: !this.state.collapse })
+  }
+
   render() {
     const wrapperStyle = {
-      width: 238,
-      border: '1px solid #e3e3e3'
+      width: 256,
     }
     return (
-      <div style={wrapperStyle}>
-        <Menu>
-          <Menu.SubMenu title="理赔">
-            <Menu.Item>报案</Menu.Item>
-            <Menu.Item>任务分配</Menu.Item>
-            <Menu.SubMenu title="理赔工作流">
-              <Menu.Item>休假维护</Menu.Item>
-              <Menu.Item>时效维护</Menu.Item>
+      <div>
+        <div style={wrapperStyle}>
+          <Button theme="primary" onClick={this.toggleCollapse.bind(this)} style={{ marginBottom: 16 }}>切换</Button>
+          <Menu inlineCollapsed={this.state.collapse}>
+            <Menu.SubMenu title={<span><Icon type="user-fill" /><span>理赔</span></span>}>
+              <Menu.Item><span>报案</span></Menu.Item>
+              <Menu.Item><span>任务分配</span></Menu.Item>
+              <Menu.SubMenu title={<React.Fragment><span>理赔工作流</span></React.Fragment>}>
+                <Menu.Item><span>休假维护</span></Menu.Item>
+                <Menu.Item><span>时效维护</span></Menu.Item>
+              </Menu.SubMenu>
             </Menu.SubMenu>
-          </Menu.SubMenu>
-          <Menu.SubMenu title="新契约">
-            <Menu.Item>投保单复核</Menu.Item>
-            <Menu.Item>在线投保单管理</Menu.Item>
-            <Menu.Item>投保单录入</Menu.Item>
-            <Menu.Item>新增计划</Menu.Item>
-          </Menu.SubMenu>
-          <Menu.SubMenu title="核保">
-            <Menu.Item>核保权限定义</Menu.Item>
-            <Menu.Item>核保权限分配</Menu.Item>
-            <Menu.Item>规则配置</Menu.Item>
-            <Menu.Item>人工核保</Menu.Item>
-          </Menu.SubMenu>
-          <Menu.SubMenu title="批改">
-            <Menu.Item>批改新增</Menu.Item>
-            <Menu.Item>批改复核</Menu.Item>
-            <Menu.Item>批改回退</Menu.Item>
-            <Menu.Item>批改共享池</Menu.Item>
-          </Menu.SubMenu>
-        </Menu>
+            <Menu.SubMenu title={<span><Icon type="user" /><span>新契约</span></span>}>
+              <Menu.Item><span>投保单复核</span></Menu.Item>
+              <Menu.Item><span>在线投保单管理</span></Menu.Item>
+              <Menu.Item><span>投保单录入</span></Menu.Item>
+              <Menu.Item><span>新增计划</span></Menu.Item>
+            </Menu.SubMenu>
+            <Menu.SubMenu title={<span><Icon type="folder-fill" /><span>核保</span></span>}>
+              <Menu.Item><span>核保权限定义</span></Menu.Item>
+              <Menu.Item><span>核保权限分配</span></Menu.Item>
+              <Menu.Item><span>规则配置</span></Menu.Item>
+              <Menu.Item><span>人工核保</span></Menu.Item>
+            </Menu.SubMenu>
+            <Menu.Item><Icon type="folder" /><span>批改</span></Menu.Item>
+          </Menu>
+        </div>
       </div>
     )
   }

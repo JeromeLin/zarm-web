@@ -9,7 +9,7 @@
   render() {
     return (
       <div>
-        <Form labelPosition="top">
+        <Form>
           <Form.Item label="账号">
             <Input placeholder="请输入..." />
           </Form.Item>
@@ -69,9 +69,9 @@
   handleSubmit (e) {
     this.form.validate().then(res => {
       if (res) {
-        Notification.success('表单验证通过')
+        Notification.success({ title: '成功', message: '表单验证通过' })
       } else {
-        Notification.danger('表单验证失败')
+        Notification.danger({ title: '失败', message: '表单验证失败' })
       }
     })
   }
@@ -86,7 +86,7 @@
     const { params } = this.state
     return (
       <div>
-        <Form scrollToError onSubmit={this.handleSubmit.bind(this)} labelWidth="90" labelPosition="left" ref={el => this.form = el} model={this.state.params} rules={this.state.rules} onSubmit={this.handleSubmit.bind(this)}>
+        <Form type="inline" scrollToError onSubmit={this.handleSubmit.bind(this)} labelWidth="90" labelPosition="left" ref={el => this.form = el} model={this.state.params} rules={this.state.rules} onSubmit={this.handleSubmit.bind(this)}>
           <Form.Item className="col-xs-24" label="账号" prop="account">
             <Input
               placeholder="请输入..."

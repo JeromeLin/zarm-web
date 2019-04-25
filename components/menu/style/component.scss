@@ -1,5 +1,5 @@
 @mixin menu-size($height, $font-size) {
-  .ui-menu-item {
+  .za-menu-item {
     height: $height;
     line-height: $height;
     font-size: $font-size;
@@ -32,29 +32,51 @@
 
 $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
-$prefixCls: ui-menu;
+$prefixCls: za-menu;
 
 .#{$prefixCls} {
   list-style: none;
   margin: 0;
   padding: 0;
   height: 100%;
-  background: $menu-default-bg-color;
+  background: $--menu-default-bg-color;
   outline: none;
-  @include menu-size($base-height-xl, $base-fontSize);
+  border-right: 1px solid #e8e8e8;
+  box-shadow: $--box-shadow-light;
+  transition: background .3s, width .2s;
+  zoom: 1;
+  font-feature-settings: 'tnum';
+  @include menu-size($--base-height-xl, $--font-size-base);
+
+  &.za-menu-root {
+    box-shadow: none;
+  }
 
   &-item {
     position: relative;
     display: block;
     font-weight: normal;
-    color: $menuitem-default-color;
+    color: $--menuitem-default-color;
     cursor: pointer;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    transition: background .3s ease;
     user-select: none;
     transition: color .3s $ease-in-out, border-color .3s $ease-in-out, background .3s $ease-in-out, padding .15s $ease-in-out;
+
+    .za-icon {
+      min-width: 14px;
+      margin-right: 10px;
+      font-size: 14px;
+      pointer-events: none;
+      transition: font-size .15s cubic-bezier(.215, .61, .355, 1), margin .3s cubic-bezier(.645, .045, .355, 1);
+
+      + span {
+        pointer-events: none;
+        transition: opacity 0.3s $ease-in-out, width 0.3s $ease-in-out;
+        opacity: 1;
+      }
+    }
 
     > a {
       display: block;
@@ -69,44 +91,72 @@ $prefixCls: ui-menu;
         background-color: transparent;
       }
     }
-    &:hover{
-      color: $menuitem-active-color;
+
+    &:hover {
+      color: $--menuitem-active-color;
     }
+
     &.selected,
     &.active {
-      color: $menuitem-active-color;
-      background: $menuitem-active-bg-color;
+      color: $--menuitem-active-color;
+      background: $--menuitem-active-bg-color;
     }
+
     &.disabled {
-      color: $menuitem-disabled-color;
+      color: $--menuitem-disabled-color;
       cursor: not-allowed;
     }
+
     &-divider {
       height: 1px;
       margin: 1px 0;
       overflow: hidden;
       padding: 0;
       line-height: 0;
-      background-color: $menuitem-divider-bg-color;
+      background-color: $--menuitem-divider-bg-color;
     }
   }
+
+  &-level-1 {
+    > .za-menu-submenu-title {
+      font-weight: 500;
+    }
+  }
+
   &-submenu {
+    &:not(.za-menu-level-1) {
+      min-width: 160px;
+    }
+
     height: auto;
 
     &-title {
-      height: $base-height-xl;
-      line-height: $base-height-xl;
+      height: $--base-height-xl;
+      line-height: $--base-height-xl;
       user-select: none;
       cursor: pointer;
+      font-weight: normal;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      transition: all 0.3s;
 
-      &:hover{
-        color: $menuitem-active-color;
+      &:hover {
+        color: $--menuitem-active-color;
       }
-      .iconfont {
+
+      .za-icon {
         min-width: 14px;
         margin-right: 10px;
+        font-size: 14px;
+        transition: font-size .15s cubic-bezier(.215, .61, .355, 1), margin .3s cubic-bezier(.645, .045, .355, 1);
+
+        + span {
+          transition: opacity 0.3s $ease-in-out, width 0.3s $ease-in-out;
+          opacity: 1;
+        }
       }
     }
+
     &-sub {
       height: 0;
       padding: 0;
@@ -116,49 +166,57 @@ $prefixCls: ui-menu;
   }
 
   &.size-xl {
-    @include menu-size($base-height-xl, $base-fontSize-xl);
+    @include menu-size($--base-height-xl, $--font-size-h3);
   }
+
   &.size-lg {
-    @include menu-size($base-height-lg, $base-fontSize-lg);
+    @include menu-size($--base-height-lg, $--font-size-large);
   }
+
   &.size-sm {
-    @include menu-size($base-height-sm, $base-fontSize-sm);
+    @include menu-size($--base-height-sm, $--font-size-small);
   }
+
   &.size-xs {
-    @include menu-size($base-height-xs, $base-fontSize-xs);
+    @include menu-size($--base-height-xs, $--font-size-small);
   }
 }
 
 // collapsed样式
 .#{$prefixCls}-collapsed {
-  width: $menu-collapsed-width;
-
   > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-title,
   > .#{$prefixCls}-item {
+    left: 0;
     text-overflow: clip;
-    padding: 0 ($menu-collapsed-width - 16) / 2;
+    padding: 0 ($--menu-collapsed-width - 16) / 2;
   }
+
   .#{$prefixCls}-item {
-    padding-right: ($menu-collapsed-width - 16) / 2;
+    padding-right: ($--menu-collapsed-width - 16) / 2;
   }
+
   > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-title {
     .#{$prefixCls}-submenu-arrow {
       display: none;
     }
   }
-  > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-sub {
+
+  .#{$prefixCls}-submenu .#{$prefixCls}-submenu-sub {
+    min-width: 160px;
     height: auto !important;
     opacity: 0;
     transform-origin: 0 0;
 
     &.slide-up {
-      animation: slide-up 0.2s both;
+      animation: slide-up 0.3s both;
     }
+
     &.slide-down {
-      animation: slide-down 0.2s both;
+      animation: slide-down 0.3s both;
     }
   }
-  .iconfont {
+
+  .za-icon {
     float: left;
     font-size: 16px;
     line-height: 40px;
@@ -174,6 +232,8 @@ $prefixCls: ui-menu;
 
 // inline模式
 .#{$prefixCls}-inline {
+  width: 100%;
+
   .#{$prefixCls}-submenu {
     &-title {
       position: relative;
@@ -182,62 +242,106 @@ $prefixCls: ui-menu;
         .#{$prefixCls}-submenu-arrow {
           &:after,
           &:before {
-            background: linear-gradient(to right, $menuitem-active-color,$menuitem-active-color);
+            background: linear-gradient(to right, $--menuitem-active-color, $--menuitem-active-color);
           }
         }
       }
     }
+
     &-arrow {
       transition: transform .3s $ease-in-out;
       position: absolute;
       top: 50%;
       right: 16px;
       width: 10px;
+
       &:before,
       &:after {
         content: '';
         position: absolute;
         vertical-align: baseline;
-        background: $menuitem-dark-active-color;
-        background-image: linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.65));
-        width: 6px;
-        height: 1.5px;
+        background: $--menuitem-dark-active-color;
+        background-image: linear-gradient(to right, #909090, #909090);
+        width: 8px;
+        height: 2px;
         border-radius: 2px;
         transition: background .3s $ease-in-out, transform .3s $ease-in-out, top .3s $ease-in-out;
       }
+
       &:before {
         transform: rotate(-45deg) translateX(2px);
       }
+
       &:after {
         transform: rotate(45deg) translateX(-2px);
       }
     }
+
     &.open {
       > .#{$prefixCls}-submenu-title .#{$prefixCls}-submenu-arrow {
         transform: translateY(-2px);
+
         &:before {
           transform: rotate(45deg) translateX(2px);
         }
+
         &:after {
           transform: rotate(-45deg) translateX(-2px);
         }
       }
     }
   }
+
   &.#{$prefixCls}-collapsed {
-    > .#{$prefixCls}-submenu {
+    width: $menu-collapsed-width;
+
+    &.za-menu-light {
+      .#{$prefixCls}-submenu {
+        .#{$prefixCls}-submenu-sub {
+          background: #fff;
+        }
+      }
+    }
+
+    .#{$prefixCls}-submenu {
       position: relative;
 
-      > .#{$prefixCls}-submenu-sub {
+      &-arrow {
+        &:before {
+          transform: rotate(-45deg) translateY(2px);
+        }
+
+        &:after {
+          transform: rotate(45deg) translateY(-2px);
+        }
+      }
+
+      &.open {
+        > .#{$prefixCls}-submenu-title .#{$prefixCls}-submenu-arrow {
+          transform: translateY(0);
+
+          &:before {
+            transform: rotate(-45deg) translateY(2px);
+          }
+
+          &:after {
+            transform: rotate(45deg) translateY(-2px);
+          }
+        }
+      }
+
+      .#{$prefixCls}-submenu-sub {
         position: absolute;
         top: 0;
-        left: $menu-collapsed-width + 8px;
+        left: calc(100% + 8px);
+        height: auto;
+        overflow: visible;
         z-index: 2;
-        background-color: $menu-dark-bg-color;
+        background-color: $--menu-dark-bg-color;
         border-radius: 2px;
 
-       > .#{$prefixCls}-item {
-          padding: 0 48px 0 24px !important;
+        .#{$prefixCls}-item, .#{$prefixCls}-submenu {
+          padding: 0 20px !important;
         }
       }
     }
@@ -248,25 +352,27 @@ $prefixCls: ui-menu;
 .#{$prefixCls}-horizontal {
   .#{$prefixCls}-item {
     float: left;
-    padding: 0 $menuitem-horizontal-padding;
-    height: $menuitem-horizontal-height;
-    line-height: $menuitem-horizontal-height - 2;
+    padding: 0 $--menuitem-horizontal-padding;
+    height: $--menuitem-horizontal-height;
+    line-height: $--menuitem-horizontal-height - 2;
     border-bottom: 2px solid transparent;
 
     > a {
-      color: $menuitem-default-color;
+      color: $--menuitem-default-color;
     }
+
     &.active,
     &:hover {
-      border-bottom: 2px solid $menuitem-active-color;
-      background: $menu-default-bg-color;
-      color: $menuitem-active-color;
+      border-bottom: 2px solid $--menuitem-active-color;
+      background: $--menu-default-bg-color;
+      color: $--menuitem-active-color;
 
       > a {
-        color: $menuitem-active-color;
+        color: $--menuitem-active-color;
       }
     }
   }
+
   &::after {
     content: '';
     display: block;
@@ -277,64 +383,74 @@ $prefixCls: ui-menu;
 
 // dark主题
 .#{$prefixCls}-dark {
-  background: $menu-dark-bg-color;
+  background: $--menu-dark-bg-color;
 
   .#{$prefixCls}-submenu-sub {
-    background: $submenu-dark-bg-color;
+    background: $--submenu-dark-bg-color;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .45) inset;
   }
+
   .#{$prefixCls}-item {
-    color: $menuitem-dark-color;
+    color: $--menuitem-dark-color;
 
     &:hover {
-      color: $menuitem-dark-active-color;
+      color: $--menuitem-dark-active-color;
       background: inherit;
     }
+
     &.selected,
     &.active {
-      color: $menuitem-dark-active-color;
-      background: $menuitem-active-color;
+      color: $--menuitem-dark-active-color;
+      background: $--menuitem-active-color;
     }
+
     > a {
-      color: $menuitem-dark-color;
+      color: $--menuitem-dark-color;
     }
+
     &:hover,
     &.selected,
     &.active {
       > a {
-        color: $menuitem-dark-active-color;
+        color: $--menuitem-dark-active-color;
       }
     }
   }
+
   &.#{$prefixCls}-inline {
     .#{$prefixCls}-submenu {
-      color: $menuitem-dark-color;
+      color: $--menuitem-dark-color;
 
       &-title {
         margin-top: 4px;
         margin-bottom: 4px;
+        transition: all 0.3s;
 
-        &:hover{
-          color: $menuitem-dark-active-color;
+        &:hover {
+          color: $--menuitem-dark-active-color;
 
           .#{$prefixCls}-submenu-arrow {
             opacity: 1;
+
             &:after,
             &:before {
-              background: $menuitem-dark-active-color;
+              background: $--menuitem-dark-active-color;
             }
           }
         }
       }
+
       &-arrow {
         opacity: .45;
         transition: all .3s;
+
         &:after,
         &:before {
-          background: $menuitem-dark-active-color;
+          background: $--menuitem-dark-active-color;
         }
       }
     }
+
     .#{$prefixCls}-item {
       margin-top: 4px;
       margin-bottom: 8px;

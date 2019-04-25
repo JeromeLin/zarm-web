@@ -2,7 +2,7 @@
 
 exports[`Form renders inline Form with label correctly 1`] = `
 <form
-  class="za-form za-form--label-right"
+  class="za-form za-form--inline za-form--label-right"
 >
   <div
     class="za-form-item col-sm-4"
@@ -62,7 +62,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
 
 exports[`Form renders inline Form with required fields and help correctly 1`] = `
 <form
-  class="za-form za-form--label-right"
+  class="za-form za-form--inline za-form--label-right"
 >
   <div
     class="za-form-item col-sm-4"
@@ -129,7 +129,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
 
 exports[`Form renders normal Form correctly 1`] = `
 <form
-  class="za-form za-form--label-right"
+  class="za-form za-form--horizontal za-form--label-right"
 >
   <div
     class="za-form-item"
