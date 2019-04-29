@@ -6,7 +6,7 @@ import MenuContext, { menuKeys, keysType } from './menu-context';
 
 class Menu extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'ui-menu',
+    prefixCls: 'za-menu',
     mode: 'inline',
     theme: 'light',
     inlineIndent: 24,
@@ -23,19 +23,8 @@ class Menu extends Component<PropsType, any> {
   static Item;
   static Divider;
 
-  static getDerivedStateFromProps(props) {
-    const state = {} as keysType;
-    if ('openKeys' in props) {
-      state.openKeys = props.openKeys;
-    }
-    if ('selectedKeys' in props) {
-      state.selectedKeys = props.selectedKeys;
-    }
-
-    return Object.keys(state).length > 0 ? state : null;
-  }
-
   menuKeys: any;
+  inlineOpenKeys: string[] = [];
 
   constructor(props) {
     super(props);
@@ -50,6 +39,26 @@ class Menu extends Component<PropsType, any> {
     this.menuKeys.toggleOpenKeys = this.toggleOpenKeys;
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (
+      (nextProps.inlineCollapsed && !this.props.inlineCollapsed)
+    ) {
+      // this.switchingModeFromInline = true;
+      this.inlineOpenKeys = this.state.openKeys;
+      this.setState({ openKeys: [] });
+    }
+
+    if (
+      (!nextProps.inlineCollapsed && this.props.inlineCollapsed)
+    ) {
+      this.setState({ openKeys: this.inlineOpenKeys });
+      this.inlineOpenKeys = [];
+    }
+    if (nextProps.selectedKeys) {
+      this.setState({ selectedKeys: nextProps.selectedKeys });
+    }
+  }
+
   toggleSelectedKeys = (itemKey) => {
     if (!('selectedKeys' in this.props)) {
       this.setState({
@@ -60,7 +69,7 @@ class Menu extends Component<PropsType, any> {
 
   toggleOpenKeys = (subMenuKey) => {
     const { openKeys } = this.state;
-    const { onOpenChange } = this.props;
+    const { onOpenChange, inlineCollapsed } = this.props;
     const newOpenKeys = [...openKeys];
 
     const keyIndex = openKeys.indexOf(subMenuKey);
@@ -68,6 +77,9 @@ class Menu extends Component<PropsType, any> {
       newOpenKeys.splice(keyIndex, 1);
     } else {
       newOpenKeys.push(subMenuKey);
+    }
+    if (inlineCollapsed && subMenuKey === '') { // inlineCollapsed状态点击item关闭所有的submenu
+      newOpenKeys.length = 0;
     }
 
     if (onOpenChange) {
@@ -108,6 +120,7 @@ class Menu extends Component<PropsType, any> {
     const { openKeys, selectedKeys } = this.state;
     const cls = classnames({
       [prefixCls!]: true,
+      [`${prefixCls}-root`]: true,
       [`${prefixCls}-${theme}`]: true,
       [`${prefixCls}-${mode}`]: true,
       [`${prefixCls}-collapsed`]: !!siderCollapsed || !!inlineCollapsed,
@@ -119,6 +132,7 @@ class Menu extends Component<PropsType, any> {
       ...this.menuKeys,
       openKeys,
       selectedKeys,
+      inlineCollapsed,
     };
 
     return (

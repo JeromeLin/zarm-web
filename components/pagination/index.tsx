@@ -256,7 +256,7 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderPageSizeSelector = () => {
-    const { radius, prefixCls, onPageSizeChange, onChange, locale, pageSize } = this.props;
+    const { prefixCls, onPageSizeChange, onChange, locale, pageSize } = this.props;
     let { pageSizeSource } = this.props;
     let defaultPageSize = pageSizeSource && pageSizeSource.length > 0 && pageSizeSource[0];
 
@@ -267,11 +267,10 @@ class Pagination extends Component<PropsType, any> {
     return (
       <div className={`${prefixCls}-size`}>
         <Select
-          isRadius={radius}
           defaultValue={defaultPageSize}
           size="sm"
           value={pageSize === 10 ? defaultPageSize : pageSize}
-          onChange={({ value }) => {
+          onChange={({ value }: any) => {
             if (value === pageSize) {
               return;
             }

@@ -157,7 +157,7 @@ class Calendar extends Component<PropsType, any> {
         return Format.date(selectedValue[0], 'yyyy-MM-dd');
       }
 
-      return locale.start_date;
+      return locale!.start_date;
     }
 
     if (isRightCalendar) {
@@ -165,7 +165,7 @@ class Calendar extends Component<PropsType, any> {
         return Format.date(selectedValue[1], 'yyyy-MM-dd');
       }
 
-      return locale.end_date;
+      return locale!.end_date;
     }
 
     return Format.date(current, 'yyyy-MM-dd');
@@ -264,7 +264,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick(new Date(), true)}
               className={`${prefixCls}-footer-btn`}
             >
-              {showTime ? locale.now : locale.today}
+              {showTime ? locale!.now : locale!.today}
             </a>
 
             <a
@@ -272,7 +272,7 @@ class Calendar extends Component<PropsType, any> {
               onClick={() => this.onDateClick('', true)}
               className={`${prefixCls}-footer-btn`}
             >
-              {locale.clear}
+              {locale!.clear}
             </a>
 
             {
@@ -284,7 +284,7 @@ class Calendar extends Component<PropsType, any> {
                   onClick={() => this.onConfirmClick(value)}
                   className={`${prefixCls}-footer-btn`}
                 >
-                  {locale.confirm}
+                  {locale!.confirm}
                 </Button>
               )
             }

@@ -48,6 +48,13 @@ $--color-text-tip: #F2F2F2 !default;
 /* -------------  Line Height  ------------- */
 $--font-line-height-base: 1.5 !default;
 
+/* -------------  Height  ------------- */
+$--base-height-xl: 40px !default;
+$--base-height-lg: 36px !default;
+$--base-height: 32px !default;
+$--base-height-sm: 28px !default;
+$--base-height-xs: 24px !default;
+
 /* -------------  Margin  ------------- */
 $--margin-size-4: 4px !default;
 $--margin-size-8: 8px !default;
@@ -117,3 +124,19 @@ $--button-danger-border:  $--color-warning !default;
 /* -------------  Radio  ------------- */
 $--button-radio-btn-disabled-color: $--color-text-secondary !default;
 $--button-radio-btn-disabled-bg: rgba(250, 250, 250, 1) !default;
+
+/* -------------  Menu  ------------- */
+$--menu-color: #343434 !default;
+$--menu-default-bg-color: $--color-white !default;
+$--menu-dark-bg-color: #001529 !default;
+$--menu-collapsed-width: 80px !default;
+$--submenu-dark-bg-color: #000c17 !default;
+$--menuitem-dark-color: hsla(0, 0%, 100%, .65) !default;
+$--menuitem-dark-active-color: $--color-white !default;
+$--menuitem-default-color: #343434 !default;
+$--menuitem-active-color: $--color-primary;
+$--menuitem-active-bg-color: rgba(0, 188, 112, .0625);
+$--menuitem-disabled-color: rgba(0, 0, 0, 0.25);
+$--menuitem-divider-bg-color: #e5e5e5;
+$--menuitem-horizontal-padding: 20px;
+$--menuitem-horizontal-height: 56px;

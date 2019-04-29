@@ -143,7 +143,7 @@ describe('Menu', () => {
 
     wrapper.setProps({ inlineCollapsed: true });
 
-    expect(wrapper.find('.ui-menu').hasClass('ui-menu-collapsed')).toBeTruthy();
+    expect(wrapper.find('.za-menu').hasClass('za-menu-collapsed')).toBeTruthy();
   });
 
   it('behaves correctly when toggling subMenu', () => {

@@ -7,8 +7,8 @@ export type dateType = {
 export interface HeaderProps {
   prefixCls?: string;
   panel?: string;
-  locale: { [propName: string]: any };
-  localeCode: string;
+  locale?: { [propName: string]: any };
+  localeCode?: string;
   current: string | Date;
   isShowPrev?: boolean;
   isShowNext?: boolean;
@@ -30,7 +30,7 @@ export interface MonthTableProps {
   value?: string;
   defaultValue?: string;
   visible?: boolean;
-  locale: { [propName: string]: any };
+  locale?: { [propName: string]: any };
   current?: string | Date;
   disabledMonth?: (value: any) => void;
   onMonthClick: (value: any) => void;
@@ -45,7 +45,7 @@ export interface DateTableProps {
   current?: string | Date;
   min?: string;
   max?: string;
-  locale: { [propName: string]: any };
+  locale?: { [propName: string]: any };
   onDateClick: (value: any, isNow?: boolean) => void;
 }
 
@@ -61,7 +61,7 @@ export default interface PropsType {
   className?: string;
   style?: object;
   hasFooter?: boolean;
-  locale: { [propName: string]: any };
+  locale?: { [propName: string]: any };
   isLeftCalendar?: boolean; // 在 rangeCalendar 中表示是开始日历，
   isRightCalendar?: boolean; // 在 rangeCalendar 中表示是结束日历，
   showTime?: boolean;

@@ -15,8 +15,8 @@ export interface TimePickerProps {
   isRadius?: string;
   size?: any;
   style?: React.CSSProperties;
-  locale: { clear: string, confirm: string };
-  localeCode: string;
+  locale?: { clear: string, confirm: string };
+  localeCode?: string;
   dropdownStyle?: React.CSSProperties;
   placement?: placement;
   onChange?: (value: any) => void;
@@ -29,7 +29,6 @@ class TimePicker extends Component<TimePickerProps, any> {
   };
 
   private unmounted: boolean;
-  private dropdownEl: React.ReactNode;
 
   constructor (props) {
     super(props);
@@ -131,10 +130,10 @@ class TimePicker extends Component<TimePickerProps, any> {
         />
         <div className="za-select__bottom">
           <a className="clear-btn" href="javascript:;" onClick={() => this.onDateChange('')}>
-            {locale.clear}
+            {locale!.clear}
           </a>
           <a className="confirm-btn" href="javascript:;" onClick={() => this.onConfirmBtn()}>
-            {locale.confirm}
+            {locale!.confirm}
           </a>
         </div>
       </Fragment>
@@ -143,7 +142,6 @@ class TimePicker extends Component<TimePickerProps, any> {
     return (
       <div className={cls} style={this.props.style} {...others}>
         <Dropdown
-          ref={el => this.dropdownEl = el}
           visible={dropdown}
           disabled={disabled}
           style={{ width: 240, ...dropdownStyle }}

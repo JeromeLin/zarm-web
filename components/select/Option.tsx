@@ -12,7 +12,7 @@ class Option extends Component<OptionProps, any> {
   render() {
     const { props } = this;
     const {
-      children, checked, disabled, onDoubleClick, showCheckIcon,
+      children, checked, disabled, onDoubleClick, showCheckIcon, onChange,
     } = props;
 
     const cls = cn({
@@ -24,7 +24,7 @@ class Option extends Component<OptionProps, any> {
       <li
         className={cls}
         style={{ paddingRight: showCheckIcon ? 25 : 10 }}
-        onClick={e => props.onChange(e)}
+        onClick={e => onChange && onChange(e)}
         onDoubleClick={onDoubleClick}
       >
         {children}

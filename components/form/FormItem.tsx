@@ -1,4 +1,4 @@
-import React, { PureComponent, ReactElement } from 'react';
+import React, { PureComponent, ReactElement, createRef } from 'react';
 import PropTypes from 'prop-types';
 import Schema from 'async-validator';
 import classnames from 'classnames';
@@ -13,22 +13,23 @@ Schema.warning = noop;
 class FormItem extends PureComponent<ItemProps, any> {
   static contextType = FormContext;
   static defaultProps = {
-    prefixCls: 'ui-form',
+    prefixCls: 'za-form',
   };
   static propTypes = {
     prop: PropTypes.string,
     rules: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     label: PropTypes.string,
     required: PropTypes.bool,
-    isRequired: PropTypes.bool,
   };
 
   private initialData;
   private validateMessage: string;
+  private formItemInstance: any;
 
   constructor (props) {
     super(props);
 
+    this.formItemInstance = createRef<HTMLDivElement>();
     this.validateMessage = '';
     this.state = {
       validateStatus: '',
@@ -122,28 +123,31 @@ class FormItem extends PureComponent<ItemProps, any> {
     }
   }
 
-  getId() {
+  getId () {
     const { children } = this.props;
     if ((children as ReactElement<any>).props) {
       return (children as ReactElement<any>).props.id;
     }
   }
 
-  renderLabel() {
-    const { id, label, isRequired, prefixCls, prop, rules } = this.props;
-    const { labelWidth, labelPosition } = this.context;
+  getControlNode () {
+    return this.formItemInstance.current;
+  }
+
+  renderLabel () {
+    const { id, label, prefixCls, prop, rules } = this.props;
+    const { labelWidth } = this.context;
     const styleObj: any = {};
     const star =
-      ('required' in this.props || isRequired || prop || rules) ? (
-        <span className={`${prefixCls}-item-required`}>
+      ('required' in this.props || prop || rules) ? (
+        <span className={`${prefixCls}-item--required`}>
           <Icon type="required" />
         </span>
       ) : null;
     if (labelWidth) { styleObj.width = parseInt(labelWidth, 10); }
-    if (labelPosition) { styleObj.textAlign = labelPosition; }
 
     return 'label' in this.props
-      ? <label style={{ ...styleObj }} htmlFor={id || this.getId()}>{star}{label}</label> : null;
+      ? <label className="za-form-item__label" style={{ ...styleObj }} htmlFor={id || this.getId()}>{star}{label}</label> : null;
   }
 
   handleFieldBlur = () => {
@@ -165,17 +169,17 @@ class FormItem extends PureComponent<ItemProps, any> {
       [className!]: !!className,
     });
     const controlCls = classnames({
-      [`${prefixCls}-item-control`]: true,
+      [`${prefixCls}-item__control`]: true,
     });
 
     return (
       <FormItemContext.Provider value={this}>
-        <div className={cls} style={style}>
+        <div className={cls} style={style} ref={this.formItemInstance}>
           {this.renderLabel()}
           <div className={controlCls} onBlur={this.handleFieldBlur} onChange={this.handleFieldChange}>
             {children}
             <Transition name="scaleDown" visible={validateStatus === 'error'}>
-              <div className={`${prefixCls}-item-error`}>{this.validateMessage}</div>
+              <div className={`${prefixCls}-item__error`}>{this.validateMessage}</div>
             </Transition>
           </div>
         </div>

@@ -47,7 +47,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
   renderWeek() {
     const weekDays: string[] = [];
     const { prefixCls, locale } = this.props;
-    const CALENDAR_WEEK_DAYS = locale.week_days;
+    const CALENDAR_WEEK_DAYS = locale!.week_days;
     for (let i = 0; i < CALENDAR_COL_COUNT.length; i++) {
       weekDays[i] = CALENDAR_WEEK_DAYS[i];
     }
@@ -62,7 +62,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
               // eslint-disable-next-line
               key={`weekdays-${index}`}
               className={`${prefixCls}-column`}
-              title={locale.week_days_hints[index]}
+              title={locale!.week_days_hints[index]}
             >
               {week}
             </th>

@@ -26,9 +26,9 @@ const scrollTo = (element, to, duration) => {
 class TimeSelect extends Component<TimeSelectProps, any> {
   static contextType = FormItemContext;
 
-  private hourDom: string;
-  private minuteDom: string;
-  private secondDom: string;
+  private hourDom: any;
+  private minuteDom: any;
+  private secondDom: any;
 
   constructor (props) {
     super(props);

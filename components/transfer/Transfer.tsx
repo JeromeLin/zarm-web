@@ -166,8 +166,7 @@ class Transfer extends Component<PropsType, any> {
         <div className={prefixCls + '-panel'}>
           <h4 className={prefixCls + '-panel-title'}>{initialPanelTitle}</h4>
           <Select.Multiple
-            isDisabled={disabled}
-            isRadius={radius}
+            disabled={disabled}
             value={this.state.selectedLeft}
             onChange={(selectedRows, row, shiftKey) => {
               if (shiftKey) {
@@ -202,8 +201,7 @@ class Transfer extends Component<PropsType, any> {
         <div className={prefixCls + '-panel'}>
           <h4 className={prefixCls + '-panel-title'}>{selectedPanelTitle}</h4>
           <Select.Multiple
-            isDisabled={disabled}
-            isRadius={radius}
+            disabled={disabled}
             value={this.state.selectedRight}
             onChange={(selectedRows, row, shiftKey) => {
               if (shiftKey) {

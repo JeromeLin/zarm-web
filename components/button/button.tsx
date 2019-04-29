@@ -20,6 +20,7 @@ class Button extends Component<ButtonProps, any> {
     type: PropTypes.string,
     shape: PropTypes.oneOf(['circle', 'round', 'rect', 'radius']),
     size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
+    htmlType: PropTypes.oneOf(['submit', 'button', 'reset']),
     onClick: PropTypes.func,
     loading: PropTypes.bool,
     className: PropTypes.string,

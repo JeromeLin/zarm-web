@@ -26,38 +26,6 @@
 ```
 :::
 
-### 行内排列
-
-:::demo 设置`type`属性为`inline`，并给`Form.Item`设置相应的栅格布局类。
-
-```js
-  render() {
-    return (
-      <Form type="inline">
-        <Form.Item
-          className="col-sm-8"
-          label="类型">
-          <Input placeholder="请输入..." />
-        </Form.Item>
-        <Form.Item
-          className="col-sm-8"
-          label="类型"
-        >
-          <Select placeholder="请输入..." >
-            <Select.Option>fdsfdsfd</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
-          className="col-sm-8"
-          label="">
-          <Button theme="primary">查询</Button>
-        </Form.Item>
-      </Form>
-    )
-  }
-```
-:::
-
 
 ### 表单验证
 
@@ -98,12 +66,12 @@
       }
     }
   }
-  handleSubmit (){
+  handleSubmit (e) {
     this.form.validate().then(res => {
       if (res) {
-        Notification.success('表单验证通过')
+        Notification.success({ title: '成功', message: '表单验证通过' })
       } else {
-        Notification.danger('表单验证失败')
+        Notification.danger({ title: '失败', message: '表单验证失败' })
       }
     })
   }
@@ -118,7 +86,7 @@
     const { params } = this.state
     return (
       <div>
-        <Form labelWidth="90" labelPosition="left" type="inline" ref={el => this.form = el} model={this.state.params} rules={this.state.rules} onSubmit={this.handleSubmit.bind(this)}>
+        <Form type="inline" scrollToError onSubmit={this.handleSubmit.bind(this)} labelWidth="90" labelPosition="left" ref={el => this.form = el} model={this.state.params} rules={this.state.rules} onSubmit={this.handleSubmit.bind(this)}>
           <Form.Item className="col-xs-24" label="账号" prop="account">
             <Input
               placeholder="请输入..."
@@ -201,7 +169,7 @@
               </Radio.Group>
           </Form.Item>
           <Form.Item className="col-xs-24">
-            <Button theme="primary" onClick={this.handleSubmit.bind(this)}>登录</Button>
+            <Button theme="primary" htmlType="submit">登录</Button>
             <Button theme="default" onClick={this.handleReset.bind(this)}>重置</Button>
           </Form.Item>
         </Form>
@@ -450,6 +418,7 @@
 | type     | 类型   | string  |   inline/horizontal       |    horizontal    |
 | model     | 表单数据对象   | object  |   -       |    -    |
 | rules     | 表单校验规则   | object  |   -       |    -    |
+| scrollToError     | 提交表单时是否滚动到第一个错误位置   | boolean  |   -       |    false    |
 
 ### Form Method
 | 参数       | 说明    | 类型      | 可选值       | 默认值   |
