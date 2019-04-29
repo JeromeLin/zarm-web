@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import classnames from 'classnames';
 import { BodyProps } from './PropsType';
 
@@ -10,7 +10,7 @@ class Body extends Component<BodyProps, any> {
   private row;
 
   getRowKey(row, index) {
-    const { rowKey } =  this.props;
+    const { rowKey } = this.props;
     let key;
 
     if (rowKey) {
@@ -76,6 +76,7 @@ class Body extends Component<BodyProps, any> {
       <tbody ref={(scrollbody) => { this.scrollbody = scrollbody; }}>
         {
           dataSource.map((row, rowIndex) => {
+            const rowKey = this.getRowKey(row, rowIndex);
             const selection = rowSelection
               ? renderSelect(rowSelection, row)
               : null;
@@ -88,9 +89,8 @@ class Body extends Component<BodyProps, any> {
 
             const refAttr = rowIndex === 0 ? { ref: (row) => { this.row = row; } } : {};
             return (
-              [
+              <Fragment key={rowKey}>
                 <tr
-                  key={rowIndex}
                   {...refAttr}
                   onMouseEnter={() => onEnterRow(rowIndex)}
                   onMouseLeave={() => onLeaveRow()}
@@ -100,11 +100,11 @@ class Body extends Component<BodyProps, any> {
                   {this.renderExpandIcon(row, rowIndex)}
                   {selection}
                   {cells}
-                </tr>,
-                this.renderExpandedRow(row, rowIndex),
-              ]
+                </tr>
+                {this.renderExpandedRow(row, rowIndex)}
+              </Fragment>
             );
-        })}
+          })}
       </tbody>
     );
   }
