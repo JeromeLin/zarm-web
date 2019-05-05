@@ -122,7 +122,7 @@ class Table extends Component<PropsType, any> {
   }
 
   getRowKey = (row, index) => {
-    const { rowKey } =  this.props;
+    const { rowKey } = this.props;
     let key;
 
     if (rowKey) {
@@ -391,16 +391,10 @@ class Table extends Component<PropsType, any> {
       [className!]: !!className,
     });
 
-    const content = isLoading ? (
-      <Loading visible>{this.renderTable()}</Loading>
-    ) : (
-      this.renderTable()
-    );
-
     return (
       <div className={cls}>
         <div className={`${prefixCls}-body`} onScroll={this.onScrollTable}>
-          {content}
+          <Loading visible={isLoading}>{this.renderTable()}</Loading>
           {this.renderFixedLeftCol()}
           {this.renderFixedRightCol()}
         </div>
