@@ -5,10 +5,10 @@ export type direction = 'top' | 'left' | 'right' | 'bottom' | 'topLeft' | 'topRi
 export default interface PropsType {
   prefixCls?: string;
   direction: direction;
-  trigger: 'hover' | 'click';
-  title?: string;
+  trigger?: 'hover' | 'click';
+  title?: any;
   tipStyle?: object;
   className?: string;
   style?: object;
-  onClose: () => void;
+  onClose?: () => void;
 }

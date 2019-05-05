@@ -27,16 +27,22 @@ class Tooltip extends Component<PropsType, any> {
       [className!]: !!className,
     });
     return (
-      <Popover
-        content={title}
-        direction={direction}
-        trigger={trigger}
-        className={cls}
-      >
+      title ? (
+        <Popover
+          content={title}
+          direction={direction}
+          trigger={trigger}
+          className={cls}
+        >
+          <div style={style}>
+            {children}
+          </div>
+        </Popover>
+      ) : (
         <div style={style}>
           {children}
         </div>
-      </Popover>
+      )
     );
   }
 }
