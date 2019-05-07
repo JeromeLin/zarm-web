@@ -96,11 +96,12 @@ export default class Notification extends Component<NotificationProps, any> {
   render () {
     const { prefixCls, className, top, style, title, message, theme, isMessage, willUnMount, btn } = this.props;
     const { visible } = this.state;
+    const componentName = isMessage ? 'message' : 'notification';
 
     return (
       <Transition
         visible={visible}
-        name={isMessage ? 'message' : 'notification'}
+        name={componentName}
         duration={200}
         unmountOnHide
         onStart={() => this.offsetHeight = this.notification.offsetHeight}
@@ -112,14 +113,14 @@ export default class Notification extends Component<NotificationProps, any> {
           onClick={this.onClick}
           style={{ ...style, top }}
         >
-          <div className={classnames('za-notification__content', { 'has-icon': theme })}>
-            {!isMessage && <div className="za-notification__close" onClick={this.onClose}><Icon type="wrong"/></div>}
-            {!isMessage && theme && <Icon type={this.type} className="za-notification__icon" theme={theme} />}
-            {title && <div className="za-notification__title">{title}</div>}
-            <div className="za-notification__custom-content" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-              {isMessage && <Icon type={this.type} className="za-notification__icon" theme={theme} />}
+          <div className={classnames(`za-${componentName}__content`, { 'has-icon': theme })}>
+            {!isMessage && <div className={`za-${componentName}__close`} onClick={this.onClose}><Icon type="wrong"/></div>}
+            {!isMessage && theme && <Icon type={this.type} className={`za-${componentName}__icon`} theme={theme} />}
+            {title && <div className={`za-${componentName}__title`}>{title}</div>}
+            <div className={`za-${componentName}__custom-content`} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+              {isMessage && <Icon type={this.type} className={`za-${componentName}__icon`} theme={theme} />}
               {message}
-              {!isMessage && <span className="za-notification__action-area">{btn}</span>}
+              {!isMessage && <span className={`za-${componentName}__action-area`}>{btn}</span>}
             </div>
           </div>
         </div>

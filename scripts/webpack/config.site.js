@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -71,6 +72,8 @@ Object.keys(config.entry).forEach((key) => {
 
 config.resolve.alias = {
   'dragon-ui': process.cwd(),
+  '@': path.resolve(__dirname, '../../'),
+  '@examples': path.resolve(__dirname, '../../examples')
 };
 
 module.exports = config;

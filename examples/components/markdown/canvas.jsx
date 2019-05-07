@@ -74,7 +74,6 @@ export default class Canvas extends React.Component {
       args.push(code);
       // eslint-disable-next-line
       new Function(...args)(...argv);
-
       this.source[2] = value;
     }).catch((err) => {
       if (process.env.NODE_ENV !== 'production') {

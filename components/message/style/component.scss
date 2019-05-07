@@ -8,38 +8,36 @@
   transition: opacity 0.3s, transform .3s, right .3s, top 0.4s;
   animation-duration: 0.3s;
 
-  @include b(notification) {
-    @include e(content) {
-      text-align: center;
+  @include e(content) {
+    text-align: center;
 
-      &.has-icon {
-        margin-left: 55px;
-      }
+    &.has-icon {
+      margin-left: 55px;
     }
+  }
 
-    @include e(custom-content) {
-      display: inline-block;
-      padding: 10px 16px;
-      pointer-events: all;
+  @include e(custom-content) {
+    display: inline-block;
+    padding: 10px 16px;
+    pointer-events: all;
+    font-size: $--font-size-base;
+    color: #8391a5;
+    background: $--color-white;
+    box-shadow: $--box-shadow-dark;
+    border-radius: $--border-radius-base;
+  }
+
+  @include e(icon) {
+    position: static !important;
+    top: -2px;
+    transform: translate(0, 0);
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: $--font-size-large;
+
+    &.theme-loading {
+      animation: rotate360 1s linear infinite;
       font-size: $--font-size-base;
-      color: #8391a5;
-      background: $--color-white;
-      box-shadow: $--box-shadow-dark;
-      border-radius: $--border-radius-base;
-    }
-
-    @include e(icon) {
-      position: static;
-      top: -2px;
-      transform: translate(0, 0);
-      margin-right: 8px;
-      vertical-align: middle;
-      font-size: $--font-size-large;
-
-      &.theme-loading {
-        animation: rotate360 1s linear infinite;
-        font-size: $--font-size-base;
-      }
     }
   }
 
