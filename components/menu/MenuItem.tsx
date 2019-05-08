@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import Tooltip from '../tooltip';
 import { ItemProps, styleType } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
@@ -48,20 +49,26 @@ class MenuItem extends Component<ItemProps, any> {
       itemStyle.paddingLeft = level * inlineIndent;
     }
     return (
-      <li
-        className={cls}
-        role="menuitem"
-        style={itemStyle}
-        onClick={this.handleClick}
-        onDoubleClick={onDoubleClick}
+      <Tooltip
+        title={(level === 1 && inlineCollapsed) ? children : ''}
+        direction="right"
+        className="za-menu-item__tooltip"
       >
-        {children}
-      </li>
+        <li
+          className={cls}
+          role="menuitem"
+          style={itemStyle}
+          onClick={this.handleClick}
+          onDoubleClick={onDoubleClick}
+        >
+          {children}
+        </li>
+      </Tooltip>
     );
   }
 }
 
-export default function MenuItemConsumer(props) {
+export default function MenuItemConsumer (props) {
   return (
     <MenuContext.Consumer>
       {

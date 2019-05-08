@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -61,6 +62,8 @@ config.devServer = {
 
 config.resolve.alias = {
   'dragon-ui': process.cwd(),
+  '@': path.resolve(__dirname, '../../'),
+  '@examples': path.resolve(__dirname, '../../examples')
 };
 
 module.exports = config;

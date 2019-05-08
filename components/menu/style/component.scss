@@ -192,7 +192,23 @@ $prefixCls: za-menu;
   }
 
   .#{$prefixCls}-item {
-    padding-right: ($--menu-collapsed-width - 16) / 2;
+    //padding-right: ($--menu-collapsed-width - 16) / 2;
+    &__tooltip {
+      width: 100%;
+      text-align: center;
+
+      .ui-popover-content {
+        .za-icon {
+          display: none;
+
+          + span {
+            max-width: fit-content;
+            transition: opacity 0.3s $ease-in-out, width 0.3s $ease-in-out;
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
 
   > .#{$prefixCls}-submenu > .#{$prefixCls}-submenu-title {
@@ -217,7 +233,7 @@ $prefixCls: za-menu;
   }
 
   .za-icon {
-    float: left;
+    //float: left;
     font-size: 16px;
     line-height: 40px;
     margin: 0;
@@ -293,7 +309,7 @@ $prefixCls: za-menu;
   }
 
   &.#{$prefixCls}-collapsed {
-    width: $menu-collapsed-width;
+    width: $--menu-collapsed-width;
 
     &.za-menu-light {
       .#{$prefixCls}-submenu {

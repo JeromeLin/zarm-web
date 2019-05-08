@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Loadable from 'react-loadable';
 import classnames from 'classnames';
 import { hot } from 'react-hot-loader';
 import AsyncComponent from './AsyncComponent';
 import { qs } from '../../components/locale/util';
+import Markdown from './markdown'
+import '@/components/style/index.scss'
+import '@/components/style/component.scss'
 import '../../components/style/index.scss';
-import '../styles/index';
-import '../styles/components/App';
+import '../styles/index.scss';
+import '../styles/components/App.scss';
 
-import pages from '../pages/Index';
+import pages from '../page.config';
 
 const changeLanguage = (_lang) => {
   const { href } = window.location;
   window.location.href = `${href.split('?')[0]}?lang=${_lang}`;
   window.location.reload();
+};
+
+const LoadableComponent = ({ component, name }) => {
+  return Loadable({
+    loader: component,
+    render: (loaded, props) => {
+      const C = loaded.default;
+      return <Markdown document={C} {...props} name={name} />;
+    },
+    loading: () => null,
+  });
 };
 
 class App extends Component {
@@ -53,13 +68,13 @@ class App extends Component {
           <nav className="side-nav">
             <ul>
               <li className="nav-item">
-                <a href={`#/quick-start?lang=${lang}`}>开发指南</a>
+                <a href={`#/QuickStart?lang=${lang}`}>开发指南</a>
                 <ul className="pure-menu-list sub-nav">
                   <li className="nav-item">
-                    <a href={`#/quick-start?lang=${lang}`}>快速上手</a>
+                    <a href={`#/QuickStart?lang=${lang}`}>快速上手</a>
                   </li>
                   <li className="nav-item">
-                    <a href={`#/i18n?lang=${lang}`} className={classnames({ active: hash[1] === 'i18n' })}>国际化</a>
+                    <a href={`#/I18n?lang=${lang}`} className={classnames({ active: hash[1] === 'i18n' })}>国际化</a>
                   </li>
                 </ul>
               </li>
@@ -91,19 +106,29 @@ class App extends Component {
           </nav>
           <div className="content">
             <Switch>
-              <Route path="/" exact component={AsyncComponent(() => import('../pages/QuikStart'))} />
-              <Route path="/quick-start" component={AsyncComponent(() => import('../pages/QuikStart'))} />
-              <Route path="/i18n" component={AsyncComponent(() => import('../pages/I18n'))} />
-              <Route path="/test" component={AsyncComponent(() => import('../pages/test'))} />
+              {
+                Object.keys(pages.documents).map((name) => {
+                  return (
+                    <Route
+                      path={`/${name}`}
+                      key={name}
+                      component={LoadableComponent({ component: pages.documents[name].component, name: pages.documents[name].name })}
+                    />
+                  )
+                })
+              }
               {
                 Object.keys(this.components).map((name) => {
-                  return <Route path={`/${name}`} key={name} component={AsyncComponent(() => import(`../pages/${name}`))} />;
+                  return (
+                    <Route
+                      path={`/${name}`}
+                      key={name}
+                      component={LoadableComponent({ component: this.components[name].component, name: this.components[name].name })}
+                    />
+                  )
                 })
               }
             </Switch>
-            {/* <ScrollToTop showUnder={210}>
-              <div className="page-up" />
-            </ScrollToTop> */}
           </div>
         </div>
       </div>
