@@ -1,6 +1,5 @@
-@mixin input-box-size($height, $font-size, $border-radius) {
+@mixin input-box-size($height, $font-size) {
   height: $height;
-  border-radius: $border-radius;
   font-size: $font-size;
 }
 
@@ -92,7 +91,11 @@ textarea {
     border-color: $base-theme-info;
   }
 
-  @include input-box-size($base-height, $base-fontSize, $base-radius);
+  @include input-box-size($base-height, $base-fontSize);
+
+  &.shape-radius {
+    border-radius: $base-radius;
+  }
 
   .ui-input {
     vertical-align: middle;
@@ -103,7 +106,11 @@ textarea {
 
   /* Input sizes */
   &.size-xl {
-    @include input-box-size($base-height-xl, $base-fontSize-xl, $base-radius-xl);
+    @include input-box-size($base-height-xl, $base-fontSize-xl);
+
+    &.shape-radius {
+      border-radius: $base-radius-xl;
+    }
 
     .ui-input {
       @include input-size($base-fontSize-xl, 4px 14px);
@@ -111,7 +118,11 @@ textarea {
   }
 
   &.size-lg {
-    @include input-box-size($base-height-lg, $base-fontSize-lg, $base-radius-lg);
+    @include input-box-size($base-height-lg, $base-fontSize-lg);
+
+    &.shape-radius {
+      border-radius: $base-radius-lg;
+    }
 
     .ui-input {
       @include input-size($base-fontSize-lg, 4px 11px);
@@ -119,7 +130,11 @@ textarea {
   }
 
   &.size-sm {
-    @include input-box-size($base-height-sm, $base-fontSize-sm, $base-radius-sm);
+    @include input-box-size($base-height-sm, $base-fontSize-sm);
+
+    &.shape-radius {
+      border-radius: $base-radius-sm;
+    }
 
     .ui-input {
       @include input-size($base-fontSize-sm, 4px 7px);
@@ -127,7 +142,11 @@ textarea {
   }
 
   &.size-xs {
-    @include input-box-size($base-height-xs, $base-fontSize-xs, $base-radius-xs);
+    @include input-box-size($base-height-xs, $base-fontSize-xs);
+
+    &.shape-radius {
+      border-radius: $base-radius-xs;
+    }
 
     .ui-input {
       @include input-size($base-fontSize-xs, 4px 4px);

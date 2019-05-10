@@ -15,11 +15,15 @@ exports[`Form renders inline Form with label correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <input
-        class="ui-input radius"
-        placeholder="请输入..."
-        type="text"
-      />
+      <div
+        class="ui-input-box shape-radius"
+      >
+        <input
+          class="ui-input"
+          placeholder="请输入..."
+          type="text"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -33,11 +37,15 @@ exports[`Form renders inline Form with label correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <input
-        class="ui-input radius"
-        placeholder="请输入..."
-        type="text"
-      />
+      <div
+        class="ui-input-box shape-radius"
+      >
+        <input
+          class="ui-input"
+          placeholder="请输入..."
+          type="text"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -75,11 +83,15 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
     <div
       class="za-form-item__control"
     >
-      <input
-        class="ui-input radius"
-        placeholder="请输入..."
-        type="text"
-      />
+      <div
+        class="ui-input-box shape-radius"
+      >
+        <input
+          class="ui-input"
+          placeholder="请输入..."
+          type="text"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -100,11 +112,15 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
     <div
       class="za-form-item__control"
     >
-      <input
-        class="ui-input radius"
-        placeholder="请输入..."
-        type="text"
-      />
+      <div
+        class="ui-input-box shape-radius"
+      >
+        <input
+          class="ui-input"
+          placeholder="请输入..."
+          type="text"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -142,11 +158,15 @@ exports[`Form renders normal Form correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <input
-        class="ui-input radius"
-        placeholder="请输入..."
-        type="text"
-      />
+      <div
+        class="ui-input-box shape-radius"
+      >
+        <input
+          class="ui-input"
+          placeholder="请输入..."
+          type="text"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -160,11 +180,15 @@ exports[`Form renders normal Form correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <input
-        class="ui-input radius"
-        placeholder="请输入..."
-        type="text"
-      />
+      <div
+        class="ui-input-box shape-radius"
+      >
+        <input
+          class="ui-input"
+          placeholder="请输入..."
+          type="text"
+        />
+      </div>
     </div>
   </div>
   <div

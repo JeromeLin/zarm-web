@@ -17,7 +17,7 @@ export function handleFillType(fillType: AddonIF['fillType']) {
   return color || fillType;
 }
 
-export function handlAddonProps<T = string>(addon: ReactNode | ReactNodeFn<T> | AddonIF<T>) {
+export function handlAddonProps(addon: ReactNode | ReactNodeFn | AddonIF) {
   if (typeof addon === 'function') {
     return {
       fillType: 'default',

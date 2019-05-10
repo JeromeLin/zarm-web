@@ -1,9 +1,7 @@
-@import '../../style/themes/default';
-
 .ui-addon {
   display: flex;
   height: 100%;
-  padding: 0 10px;
+  padding: 0 8px;
   align-items: center;
   font-size: $base-fontSize;
 
@@ -23,3 +21,5 @@
     font-size: $base-fontSize-xs;
   }
 }
+
+@import '../../style/themes/default';

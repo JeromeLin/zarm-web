@@ -2,7 +2,7 @@ import React from 'react';
 import { isAddon, AddonPropsIF } from '../PropsType';
 import { handleFillType } from '../handler';
 import classnames from 'classnames';
-import './Addon.scss';
+
 export default function Addon<T>(props: Readonly<AddonPropsIF>) {
   const { addon, size, param, shape, composePosition } = props;
   const cls = classnames({

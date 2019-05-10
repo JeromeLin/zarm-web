@@ -1,8 +1,9 @@
 import React, { InputHTMLAttributes, ReactNode, Component, MouseEventHandler, KeyboardEventHandler } from 'react';
 import Group from '../input-group';
 import Input from '../index';
-import PropsType from '../PropsType';
+import PropsType, { AddonIF } from '../PropsType';
 import classnames from 'classnames';
+import Icon from '../../icon';
 
 const Style = {
   group: { alignItems: 'stretch' },
@@ -23,6 +24,7 @@ class Search extends Component<PropsIF> {
     showIcon: true,
     button: '搜索',
     shape: 'radius',
+    showButton: true,
   };
 
   onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -42,9 +44,20 @@ class Search extends Component<PropsIF> {
       [`shape-${shape}`]: true,
       [`size-${props.size}`]: !!props.size,
     });
+    const addonIcon: { addonBefore?: AddonIF } = {};
+    if (showIcon) {
+      addonIcon.addonBefore = {
+        fillType: 'transparent',
+        addon: <Icon type="search" />,
+      };
+    }
+
+    if (!showButton) {
+      return <Input<'input'> shape={shape} {...others} onKeyPress={this.onKeyPress} {...addonIcon} />
+    }
     return (
       <Group style={Style.group}>
-        <Input<'input'> shape={shape} {...others} onKeyPress={this.onKeyPress} />
+        <Input<'input'> shape={shape} {...others} onKeyPress={this.onKeyPress} {...addonIcon} />
         <div className={cls} onClick={props.disabled ? undefined : props.onSearch as MouseEventHandler<HTMLDivElement>}>
           {button}
         </div>

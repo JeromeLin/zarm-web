@@ -12,7 +12,7 @@ export interface ReactNodeFn {
 }
 
 export interface AddonIF {
-  fillType?: 'fill' | 'default' | 'string';
+  fillType?: 'fill' | 'default' | string;
   addon: ReactNodeFn | ReactNode;
 }
 
@@ -31,7 +31,7 @@ export interface AddonPropsIF {
 
 interface PropsIF {
   prefixCls: 'string';
-  type: 'input' | 'textarea';                                 // default is text  若为 textarea 则转为 TextareaElement
+  type: string;                                 // default is text  若为 textarea 则转为 TextareaElement
   shape: 'rect' | 'radius';
   size?: 'xl' | 'lg' | 'sm' | 'xs';                          // 控制Input的大小
   value?: string | number;                                   // 组件的值
