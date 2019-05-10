@@ -13,5 +13,6 @@ module.exports = {
   ],
   plugins: [
     'transform-runtime',
+    'syntax-dynamic-import',
   ],
 };

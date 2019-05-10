@@ -69,6 +69,26 @@
 ```
 :::
 
+
+### 添加前置和后置标签
+
+通过addonBefore和addonAfter设置。
+
+:::demo 通过`addonBefore`和`addonAfter`属性设置前置和后置标签。
+```js
+  render() {
+    return (
+      <div>
+        <Input addonBefore="http://" radius type="text" placeholder="请输入" />
+        <br />
+        <Input addonAfter=".com" radius type="text" placeholder="请输入" />
+      </div>
+    )
+  }
+```
+:::
+
+
 ### 禁用状态
 
 通过disabled设置。
@@ -79,6 +99,42 @@
     return (
       <div>
         <Input disabled type="text" value="禁用" />
+      </div>
+    )
+  }
+```
+:::
+
+
+### 设置InputGroup
+
+使用InputGroup标签设置。
+
+:::demo 使用InputGroup标签设置。
+```js
+  render() {
+    return (
+      <div>
+        <Input.Group>
+          <Input type="text" placeholder="please input gender" />
+          <Input type="text" placeholder="please input name" />
+        </Input.Group>
+      </div>
+    )
+  }
+```
+:::
+
+### 设置InputSearch
+
+使用InputSearch标签设置。
+
+:::demo 通过`disabled`属性设置输入框是否禁用。
+```js
+  render() {
+    return (
+      <div>
+        <Input.Search placeholder="please input gender" />
       </div>
     )
   }
