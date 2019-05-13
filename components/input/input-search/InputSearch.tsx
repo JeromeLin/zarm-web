@@ -53,7 +53,7 @@ class Search extends Component<PropsIF> {
     }
 
     if (!showButton) {
-      return <Input<'input'> shape={shape} {...others} onKeyPress={this.onKeyPress} {...addonIcon} />
+      return <Input<'input'> shape={shape} {...others} onKeyPress={this.onKeyPress} {...addonIcon} />;
     }
     return (
       <Group style={Style.group}>
