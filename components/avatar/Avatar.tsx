@@ -78,7 +78,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
         {hasImage && !loadError && <img src={src} alt={alt} onError={this.onError} />}
         {!hasImage && hasIcon && <Icon type={icon} />}
         {(!hasImage || hasImage && loadError) && !hasIcon && hasString && <span style={spanStyle}>{children}</span>}
-       </span>
+      </span>
     );
   }
 }
