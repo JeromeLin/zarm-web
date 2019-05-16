@@ -1,10 +1,12 @@
-export default interface PropsType {
+export interface PropsType {
   prefixCls?: string;
-  style?: object;
   icon?: string;
   shape?: 'circle' | 'square';
-  size?: number | 'large' | 'small' | 'default';
+  size?: number | 'lg' | 'sm';
   src?: string;
   alt?: string;
-  onError: () => boolean;
+  className?: string;
+}
+export interface StateType {
+  loadError: boolean;
 }

@@ -1,7 +1,19 @@
+@mixin avatar-size($width, $height, $font-size) {
+  width: $width;
+  height: $height;
+  line-height: $height;
 
-.ui-avatar {
+  > * {
+    line-height: $height;
+  }
+
+  &.has-icon {
+    font-size: $font-size;
+  }
+}
+
+@include b(avatar) {
   font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 14px;
   font-variant: tabular-nums;
   box-sizing: border-box;
   margin: 0;
@@ -9,65 +21,52 @@
   list-style: none;
   display: inline-block;
   text-align: center;
-  background: #ccc;
-  color: #fff;
+  background: $--avatar-default-bg-color;
+  color: $--avatar-default-color;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
   vertical-align: middle;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  border-radius: 50%;
-
-  > * {
-    line-height: 32px;
-  }
+  border-radius: $--avatar-border-radius;
+  font-size: $--avatar-fontSize;
 
   > img {
     width: 100%;
     height: 100%;
   }
 
-  &.ui-avatar-image {
+  @include avatar-size($--avatar-width, $--avatar-height, $--avatar-fontSize-icon);
+
+  &.is-square {
+    border-radius: $--border-radius-base;
+  }
+
+  &.has-icon {
+    font-size: $--avatar-fontSize-icon;
+  }
+
+  &.has-image {
     background: transparent;
   }
 
-  &.ui-avatar-icon {
-    font-size: 18px;
+  &.has-string {
+    font-size: $--avatar-fontSize;
   }
 
-  &.ui-avatar-lg {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 50%;
-
-    > * {
-      line-height: 40px;
-    }
+  /* Avatar sizes */
+  @include m(xl) {
+    @include avatar-size($--avatar-width-xl, $--avatar-height-xl, $--avatar-fontSize-icon-xl);
   }
 
-  &.ui-avatar-lg.ui-avatar-icon {
-    font-size: 24px;
+  @include m(lg) {
+    @include avatar-size($--avatar-width-lg, $--avatar-height-lg, $--avatar-fontSize-icon-lg);
   }
 
-  &.ui-avatar-sm {
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    border-radius: 50%;
-
-    > * {
-      line-height: 24px;
-    }
+  @include m(sm) {
+    @include avatar-size($--avatar-width-sm, $--avatar-height-sm, $--avatar-fontSize-icon-sm);
   }
 
-  &.ui-avatar-sm.ui-avatar-icon {
-    font-size: 14px;
-  }
-
-  &.ui-avatar-square {
-    border-radius: 4px;
+  @include m(xs) {
+    @include avatar-size($--avatar-width-xs, $--avatar-height-xs, $--avatar-fontSize-icon-xs);
   }
 }

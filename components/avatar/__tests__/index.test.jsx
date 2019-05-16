@@ -7,10 +7,12 @@ describe('Avatar', () => {
   it('renders Avatars of different size correctly', () => {
     const wrapper = render(
       <div>
-        <Avatar size="default" />
-        <Avatar size="64" />
-        <Avatar size="large" />
-        <Avatar size="small" />
+        <Avatar size={80} icon="user" />
+        <Avatar size="xl" icon="user" />
+        <Avatar size="lg" icon="user" />
+        <Avatar icon="user" />
+        <Avatar size="sm" icon="user" />
+        <Avatar size="xs" icon="user" />
       </div>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
