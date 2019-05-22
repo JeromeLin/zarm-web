@@ -49,7 +49,7 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const { document } = this.props
+    const { document } = this.props;
 
     if (typeof document === 'string') {
       this.components.clear();

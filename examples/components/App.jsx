@@ -3,11 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import classnames from 'classnames';
 import { hot } from 'react-hot-loader';
-import AsyncComponent from './AsyncComponent';
+import '@/components/style/index.scss';
+import '@/components/style/component.scss';
 import { qs } from '../../components/locale/util';
-import Markdown from './markdown'
-import '@/components/style/index.scss'
-import '@/components/style/component.scss'
+import Markdown from './markdown';
 import '../../components/style/index.scss';
 import '../styles/index.scss';
 import '../styles/components/App.scss';
@@ -114,7 +113,7 @@ class App extends Component {
                       key={name}
                       component={LoadableComponent({ component: pages.documents[name].component, name: pages.documents[name].name })}
                     />
-                  )
+                  );
                 })
               }
               {
@@ -125,7 +124,7 @@ class App extends Component {
                       key={name}
                       component={LoadableComponent({ component: this.components[name].component, name: this.components[name].name })}
                     />
-                  )
+                  );
                 })
               }
             </Switch>
