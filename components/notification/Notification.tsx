@@ -48,7 +48,7 @@ export default class Notification extends Component<NotificationProps, any> {
     if (this.props.duration) {
       this.timeout = setTimeout(() => {
         this.onClose();
-      }, this.props.duration);
+      }, Number(this.props.duration));
     }
   }
 

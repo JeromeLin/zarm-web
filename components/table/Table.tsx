@@ -161,13 +161,11 @@ class Table extends Component<PropsType, any> {
     }
     const firstColumn = columns[0];
     const lastColumn = columns[columns.length - 1];
-    const { thead, leftCell, rightCell } = this.head;
+    const { thead } = this.head;
     const { row } = this.body;
 
     if (firstColumn.fixed || lastColumn.fixed || (rowSelection && rowSelection.fixed)) {
       const fixedColThHeight = getStyleComputedProperty(thead, 'height');
-      const fixedleftColWidth = getStyleComputedProperty(leftCell, 'width');
-      const fixedrightColWidth = getStyleComputedProperty(rightCell, 'width');
       let fixedColTdHeight = '40';
       if (row) {
         fixedColTdHeight = getStyleComputedProperty(row, 'height');
@@ -177,8 +175,6 @@ class Table extends Component<PropsType, any> {
         fixedColAttrs: {
           fixedColThHeight,
           fixedColTdHeight,
-          fixedleftColWidth,
-          fixedrightColWidth,
         },
       });
     }

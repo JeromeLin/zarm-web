@@ -3,9 +3,8 @@ import classnames from 'classnames';
 import { FixedColumnProps } from './PropsType';
 
 class FixedColumn extends Component<FixedColumnProps, any> {
-  renderRows(column, height) {
-    const { dataSource, onEnterRow, onLeaveRow, rowClassName } = this.props;
-    const { render, dataIndex } = column;
+  renderRows(fixedColumns, height) {
+    const { dataSource, onEnterRow, onLeaveRow, rowClassName, rowSelection, renderSelect } = this.props;
     const size = dataSource.length;
     let iHeight = parseInt(height, 10);
 
@@ -24,28 +23,42 @@ class FixedColumn extends Component<FixedColumnProps, any> {
           onMouseLeave={() => onLeaveRow()}
           className={rowClass}
         >
-          <td style={{ height: tdHeight }}>
-            {
-              typeof render === 'function'
-              ? render(data[dataIndex], data, index)
-              : data[dataIndex]
-            }
-          </td>
+          {rowSelection && renderSelect!(rowSelection, data, tdHeight)}
+          {fixedColumns.map(({ render, dataIndex, title }) => {
+              return (
+                <td key={title} style={{ height: tdHeight }}>
+                  {
+                    typeof render === 'function'
+                    ? render(data[dataIndex], data, index)
+                    : data[dataIndex]
+                  }
+                </td>
+              );
+            })}
         </tr>
       );
     });
   }
 
-  renderSelection(thHeight, tdHeight) {
-    const {
-      prefixCls, direction, rowSelection, renderSelect,
-      renderSelectAll, onEnterRow, onLeaveRow, dataSource, rowClassName,
-    } = this.props;
-    const size = dataSource.length;
-    let iHeight = parseInt(tdHeight, 10);
+  getFixedColumns() {
+    const { direction, columns = [] } = this.props;
 
-    if (isNaN(iHeight)) {
-      iHeight = 41;
+    return columns.filter(({ fixed }) => fixed === direction);
+  }
+
+  render() {
+    const {
+        direction, prefixCls, colAttrs, rowSelection,
+        renderSelectAll, dataSource,
+      } = this.props;
+    const {
+      fixedColThHeight, fixedColTdHeight,
+    } = colAttrs;
+    const fixedColumns = this.getFixedColumns();
+
+    if (!fixedColumns.length && (!rowSelection || (rowSelection && !rowSelection.fixed))) {
+      // 没有固定列，并且没有复选框或复选框不需要固定
+      return null;
     }
     const cls = `${prefixCls}-fixed-${direction}`;
 
@@ -57,86 +70,30 @@ class FixedColumn extends Component<FixedColumnProps, any> {
         <thead>
           <tr>
             {
-              rowSelection
-              ? renderSelectAll!(
-                  rowSelection,
-                  dataSource,
-                  1,
-                  thHeight,
-                )
-              : null
+              direction === 'left' && rowSelection &&
+              renderSelectAll!(
+                rowSelection,
+                dataSource,
+                1,
+                fixedColThHeight,
+              )
             }
+            {fixedColumns.map(({ title }) => {
+                return (
+                  <th key={title} style={{ height: fixedColThHeight }}>
+                    {title}
+                  </th>
+                );
+              })}
           </tr>
         </thead>
         <tbody
           ref={(fixedTbody) => { this[`fixed${direction}Tbody`] = fixedTbody; }}
         >
-          {
-            dataSource.map((data, index) => {
-              const height = index === size - 1 ? iHeight - 1 : tdHeight;
-              const rowClass = classnames({
-                [`${rowClassName && rowClassName(data)}`]: !!(rowClassName && rowClassName(data)),
-              });
-              return (
-                <tr
-                  key={index}
-                  onMouseEnter={() => onEnterRow(index)}
-                  onMouseLeave={() => onLeaveRow()}
-                  className={rowClass}
-                >
-                  {
-                    rowSelection
-                    ? renderSelect!(rowSelection, data, height)
-                    : null
-                  }
-                </tr>
-              );
-          })}
+          {this.renderRows(fixedColumns, fixedColTdHeight)}
         </tbody>
       </table>
     );
-  }
-
-  render() {
-    const { direction, columns = [],  prefixCls, colAttrs, rowSelection } = this.props;
-    const {
-      fixedColThHeight, fixedColTdHeight,
-      fixedleftColWidth, fixedrightColWidth,
-    } = colAttrs;
-    const column = direction === 'left' ? columns[0] : columns[columns.length - 1];
-    const columnWidth = direction === 'left' ? fixedleftColWidth : fixedrightColWidth;
-
-    if (!column) {
-      return null;
-    }
-    const { fixed, title } = column;
-    const cls = `${prefixCls}-fixed-${direction}`;
-
-    if (direction === 'left' && rowSelection && rowSelection.fixed) {
-      return this.renderSelection(fixedColThHeight, fixedColTdHeight);
-    }
-    if (fixed && fixed === direction) {
-      return (
-        <table
-          ref={(fixedCol) => { this[`fixed${direction}Col`] = fixedCol; }}
-          className={cls}
-        >
-          <thead>
-            <tr>
-              <th style={{ width: columnWidth, height: fixedColThHeight }}>
-                {title}
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            ref={(fixedTbody) => { this[`fixed${direction}Tbody`] = fixedTbody; }}
-          >
-            {this.renderRows(column, fixedColTdHeight)}
-          </tbody>
-        </table>
-      );
-    }
-    return null;
   }
 }
 

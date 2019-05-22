@@ -40,7 +40,7 @@ class Cell extends Component<CellProps, any> {
   render() {
     const { maxCellSize, column, row, rowIndex, columnIndex } = this.props;
     const value = row[column.dataIndex];
-    const { style = {} } = column;
+    const { style = {}, fixed } = column;
     const render =
       'render' in column ? column.render(value, row, rowIndex) : value;
 
@@ -57,6 +57,15 @@ class Cell extends Component<CellProps, any> {
           <Popover trigger="hover" direction="top" content={render}>
             <div className="ellipsis-cell" style={{ maxWidth: 15 * maxCellSize }}>{render}</div>
           </Popover>
+        </td>
+      );
+    }
+    if (fixed) {
+      return (
+        <td key={column.dataIndex + columnIndex} style={style}>
+          <div style={{ opacity: 0 }}>
+            {render}
+          </div>
         </td>
       );
     }
