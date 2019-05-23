@@ -3,7 +3,7 @@
 exports[`Avatar renders Avatars correctly when set src, icon and string 1`] = `
 <div>
   <span
-    class="za-avatar is-circle has-icon has-image has-string"
+    class="za-avatar za-avatar--circle za-avatar--icon za-avatar--image za-avatar--string"
   >
     <img
       alt=""
@@ -37,7 +37,7 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
 exports[`Avatar renders Avatars of different size correctly 1`] = `
 <div>
   <span
-    class="za-avatar is-circle has-icon"
+    class="za-avatar za-avatar--circle za-avatar--icon"
     style="width:80px;height:80px;line-height:80px;font-size:40px"
   >
     <i
@@ -45,35 +45,35 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
     />
   </span>
   <span
-    class="za-avatar za-avatar--xl is-circle has-icon"
+    class="za-avatar za-avatar--xl za-avatar--circle za-avatar--icon"
   >
     <i
       class="za-icon za-icon-user theme-default"
     />
   </span>
   <span
-    class="za-avatar za-avatar--lg is-circle has-icon"
+    class="za-avatar za-avatar--lg za-avatar--circle za-avatar--icon"
   >
     <i
       class="za-icon za-icon-user theme-default"
     />
   </span>
   <span
-    class="za-avatar is-circle has-icon"
+    class="za-avatar za-avatar--circle za-avatar--icon"
   >
     <i
       class="za-icon za-icon-user theme-default"
     />
   </span>
   <span
-    class="za-avatar za-avatar--sm is-circle has-icon"
+    class="za-avatar za-avatar--sm za-avatar--circle za-avatar--icon"
   >
     <i
       class="za-icon za-icon-user theme-default"
     />
   </span>
   <span
-    class="za-avatar za-avatar--xs is-circle has-icon"
+    class="za-avatar za-avatar--xs za-avatar--circle za-avatar--icon"
   >
     <i
       class="za-icon za-icon-user theme-default"
@@ -85,14 +85,14 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
 exports[`Avatar renders Avatars of different type correctly 1`] = `
 <div>
   <span
-    class="za-avatar is-circle has-icon"
+    class="za-avatar za-avatar--circle za-avatar--icon"
   >
     <i
       class="za-icon za-icon-user theme-default"
     />
   </span>
   <span
-    class="za-avatar is-circle has-string"
+    class="za-avatar za-avatar--circle za-avatar--string"
   >
     <span
       style="position:absolute;transform:scale(1);left:calc(50% - 4.5px )"
@@ -101,7 +101,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     </span>
   </span>
   <span
-    class="za-avatar is-circle has-string"
+    class="za-avatar za-avatar--circle za-avatar--string"
   >
     <span
       style="position:absolute;transform:scale(0.7);left:calc(50% - 18px )"
@@ -110,7 +110,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     </span>
   </span>
   <span
-    class="za-avatar is-circle has-image"
+    class="za-avatar za-avatar--circle za-avatar--image"
   >
     <img
       alt="my avatar"
@@ -118,7 +118,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     />
   </span>
   <span
-    class="za-avatar is-circle has-string"
+    class="za-avatar za-avatar--circle za-avatar--string"
     style="color:#2db7f5;background-color:rgb(249, 232, 8)"
   >
     <span

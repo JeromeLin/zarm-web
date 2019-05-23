@@ -37,22 +37,6 @@
 
   @include avatar-size($--avatar-width, $--avatar-height, $--avatar-fontSize-icon);
 
-  &.is-square {
-    border-radius: $--border-radius-base;
-  }
-
-  &.has-icon {
-    font-size: $--avatar-fontSize-icon;
-  }
-
-  &.has-image {
-    background: transparent;
-  }
-
-  &.has-string {
-    font-size: $--avatar-fontSize;
-  }
-
   /* Avatar sizes */
   @include m(xl) {
     @include avatar-size($--avatar-width-xl, $--avatar-height-xl, $--avatar-fontSize-icon-xl);
@@ -69,4 +53,25 @@
   @include m(xs) {
     @include avatar-size($--avatar-width-xs, $--avatar-height-xs, $--avatar-fontSize-icon-xs);
   }
+
+  /* Avatar shape */
+  @include m(square) {
+    border-radius: $--border-radius-base;
+  }
+
+  /* Avatar icon */
+  @include m(icon) {
+    font-size: $--avatar-fontSize-icon;
+  }
+
+  /* Avatar image */
+  @include m(image) {
+    background: transparent;
+  }
+
+  /* Avatar string */
+  @include m(string) {
+    font-size: $--avatar-fontSize;
+  }
 }
+

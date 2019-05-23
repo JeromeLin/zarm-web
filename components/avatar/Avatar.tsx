@@ -39,7 +39,6 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
     } = this.props;
     const { loadError } = this.state;
 
-    const circle = (shape === 'circle');
     const hasIcon = (icon && icon.trim() !== '');
     const hasImage = (src && src.trim() !== '');
     const hasString = (typeof children === 'string');
@@ -49,11 +48,10 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
       [prefixCls!]: true,
       [className!]: className,
       [`${prefixCls}--${size}`]: typeof size === 'string' && size,
-      'is-circle': circle,
-      'is-square': !circle,
-      'has-icon': hasIcon,
-      'has-image': hasImage && !loadError,
-      'has-string': hasString || (hasImage && loadError),
+      [`${prefixCls}--${shape}`]: true,
+      [`${prefixCls}--icon`]: hasIcon,
+      [`${prefixCls}--image`]: hasImage && !loadError,
+      [`${prefixCls}--string`]: hasString || (hasImage && loadError),
     });
     const inlineStyle = (typeof size === 'number') ? {
       ...style,
@@ -65,7 +63,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
 
     const spanStyle = {
       position: 'absolute' as 'absolute',
-      transform: 'scale(' + (1 - 0.1 * (strLength - 1 )) + ')',
+      transform: 'scale(' + (1 - 0.1 * (strLength - 1)) + ')',
       left: 'calc(50% - ' + 4.5 * strLength + 'px )',
     };
 
