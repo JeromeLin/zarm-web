@@ -29,7 +29,6 @@ class TimePicker extends Component<TimePickerProps, any> {
   };
 
   private unmounted: boolean;
-  private dropdownEl: React.ReactNode;
 
   constructor (props) {
     super(props);
@@ -143,7 +142,6 @@ class TimePicker extends Component<TimePickerProps, any> {
     return (
       <div className={cls} style={this.props.style} {...others}>
         <Dropdown
-          ref={el => this.dropdownEl = el}
           visible={dropdown}
           disabled={disabled}
           style={{ width: 240, ...dropdownStyle }}

@@ -32,7 +32,7 @@ export interface MonthTableProps {
   visible?: boolean;
   locale: { [propName: string]: any };
   current?: string | Date;
-  disabledMonth?: (value: any) => void;
+  disabledMonth?: (value: any) => boolean;
   onMonthClick: (value: any) => void;
 }
 

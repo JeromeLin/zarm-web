@@ -6,10 +6,6 @@ class Head extends Component<HeadProps, any> {
 
   // @ts-ignore
   private thead;
-  // @ts-ignore
-  private leftCell;
-  // @ts-ignore
-  private rightCell;
   // 排序渲染
   renderSorter(column) {
     const { prefixCls, sort, onSort } = this.props;
@@ -25,22 +21,29 @@ class Head extends Component<HeadProps, any> {
   }
 
   // 表头列渲染
-  renderColumn(column, index, rowIndex, length) {
+  renderColumn(column, index) {
     const render =
       'columnRender' in column
         ? column.columnRender(column, index)
         : column.title;
     const {
-      dataIndex, width, rowSpan, colSpan, style = {},
+      dataIndex, width, rowSpan, colSpan, style = {}, fixed,
     } = column;
 
-    let refAttr = {};
-    if (rowIndex === 0) {
-      if (index === 0) {
-        refAttr = { ref: (leftCell) => { this.leftCell = leftCell; } };
-      } else if (index === length - 1) {
-        refAttr = { ref: (rightCell) => { this.rightCell = rightCell; } };
-      }
+    if (fixed) {
+      return (
+        <th
+          key={dataIndex + index}
+          rowSpan={rowSpan}
+          colSpan={colSpan}
+          style={{ ...style, width }}
+        >
+          <div style={{ opacity: 0 }}>
+            {render}
+            {this.renderSorter(column)}
+          </div>
+        </th>
+      );
     }
     return (
       <th
@@ -48,7 +51,6 @@ class Head extends Component<HeadProps, any> {
         rowSpan={rowSpan}
         colSpan={colSpan}
         style={{ ...style, width }}
-        {...refAttr}
       >
         {render}
         {this.renderSorter(column)}
@@ -86,7 +88,7 @@ class Head extends Component<HeadProps, any> {
             : null}
           {
             row.map((column, columnIndex) =>
-            this.renderColumn(column, columnIndex, index, row.length))}
+            this.renderColumn(column, columnIndex))}
         </tr>
       );
     });
