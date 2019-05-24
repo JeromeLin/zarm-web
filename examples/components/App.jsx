@@ -56,8 +56,8 @@ class App extends Component {
               <li className="nav-item">
                 {
                   lang === 'en'
-                  ? <span className="lang" onClick={() => changeLanguage('zh')}>中文</span>
-                  : <span className="lang" onClick={() => changeLanguage('en')}>English</span>
+                    ? <span className="lang" onClick={() => changeLanguage('zh')}>中文</span>
+                    : <span className="lang" onClick={() => changeLanguage('en')}>English</span>
                 }
               </li>
             </ul>
@@ -111,7 +111,10 @@ class App extends Component {
                     <Route
                       path={`/${name}`}
                       key={name}
-                      component={LoadableComponent({ component: pages.documents[name].component, name: pages.documents[name].name })}
+                      component={LoadableComponent({
+                        component: pages.documents[name].component,
+                        name: pages.documents[name].name,
+                      })}
                     />
                   );
                 })
@@ -122,7 +125,10 @@ class App extends Component {
                     <Route
                       path={`/${name}`}
                       key={name}
-                      component={LoadableComponent({ component: this.components[name].component, name: this.components[name].name })}
+                      component={LoadableComponent({
+                        component: this.components[name].component,
+                        name: this.components[name].name,
+                      })}
                     />
                   );
                 })
