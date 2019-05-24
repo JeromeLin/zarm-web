@@ -55,8 +55,8 @@
 | 参数                | 说明                                   | 类型                                   | 可选值          | 默认值     | 
 |------------------  |-------------------------------------   |----------------------------------     |-------------   |---------  |
 | icon               |  icon头像的icon type, 具体查看Icon组件    | string                                |    -           |    -      |
-| shape              |  头像的形状                              | circle,square                       |   -            | circle    |
-| size               |  头像的大小                              | number/ xl,lg,sm,xs |    -           | - |
+| shape              |  头像的形状                              | string                       | circle,square    | circle
+| size               |  头像的大小                              | string  |    xl,lg,sm,xs           | - |
 | src                |  图片头像的图片地址                       | string                                 |    -           |    -     |
 | alt                |  描述图片的备用文字                       | string                                 |   -            |   -      |
 
