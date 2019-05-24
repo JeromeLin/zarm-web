@@ -297,13 +297,13 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderJumper = () => {
-    const { radius, total, prefixCls, locale, pageSize } = this.props;
+    const { shape, total, prefixCls, locale, pageSize } = this.props;
 
     return (
       <div className={`${prefixCls}-jumper`}>
         {locale!.goto}
         <Input
-          isRadius={radius}
+          shape={shape}
           type="text"
           style={{ width: 50, textAlign: 'center', marginLeft: 5, marginRight: 5 }}
           size="sm"
@@ -334,7 +334,7 @@ class Pagination extends Component<PropsType, any> {
     const {
       prefixCls,
       isBordered,
-      isRadius,
+      shape,
       className,
       showTotal,
       showJumper,
@@ -345,7 +345,7 @@ class Pagination extends Component<PropsType, any> {
     const cls = classnames({
       [prefixCls!]: true,
       bordered: 'bordered' in props || isBordered,
-      radius: 'radius' in props || isRadius,
+      [`shape-${shape}`]: !!shape,
       [className!]: !!className,
     });
 

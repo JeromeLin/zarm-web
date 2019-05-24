@@ -10,8 +10,7 @@ export default interface PropsType {
   showPageSizeSelector?: boolean;
   className?: string;
   style?: object;
-  radius?: boolean;
-  isRadius?: boolean;
+  shape: 'rect' | 'radius';
   bordered?: boolean;
   isBordered?: boolean;
   addonBefore?: React.ReactNode;

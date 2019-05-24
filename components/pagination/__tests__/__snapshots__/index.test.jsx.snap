@@ -3,7 +3,7 @@
 exports[`Pagination renders Pagination with customized props correctly 1`] = `
 <div>
   <div
-    class="ui-pagination bordered radius"
+    class="ui-pagination bordered"
   >
     <div
       class="ui-pagination-pagers"
@@ -151,12 +151,16 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
         class="ui-pagination-jumper"
       >
         跳至
-        <input
-          class="ui-input radius size-sm"
-          style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
-          type="text"
-          value=""
-        />
+        <div
+          class="ui-input-box shape-radius size-sm"
+        >
+          <input
+            class="ui-input"
+            style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
+            type="text"
+            value=""
+          />
+        </div>
         页
       </div>
     </div>
