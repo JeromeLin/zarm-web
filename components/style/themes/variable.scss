@@ -140,3 +140,31 @@ $--menuitem-disabled-color: rgba(0, 0, 0, 0.25);
 $--menuitem-divider-bg-color: #e5e5e5;
 $--menuitem-horizontal-padding: 20px;
 $--menuitem-horizontal-height: 56px;
+
+/* -------------  Avatar  ------------- */
+
+$--avatar-width: 40px !default;
+$--avatar-height: 40px !default;
+$--avatar-border-radius: 50% !default;
+
+$--avatar-width-xl: 72px !default;
+$--avatar-height-xl: 72px !default;
+
+$--avatar-width-lg: 48px !default;
+$--avatar-height-lg: 48px !default;
+
+$--avatar-width-sm: 32px !default;
+$--avatar-height-sm: 32px !default;
+
+$--avatar-width-xs: 24px !default;
+$--avatar-height-xs: 24px !default;
+
+$--avatar-fontSize: 14px !default;
+$--avatar-fontSize-icon-xl: 32px !default;
+$--avatar-fontSize-icon: 16px !default;
+$--avatar-fontSize-icon-lg: 18px !default;
+$--avatar-fontSize-icon-sm: 14px !default;
+$--avatar-fontSize-icon-xs: 12px !default;
+
+$--avatar-default-color: #fff !default;
+$--avatar-default-bg-color: #ccc !default;

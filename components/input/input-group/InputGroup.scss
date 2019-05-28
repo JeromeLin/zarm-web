@@ -1,0 +1,29 @@
+.ui-input-group {
+  display: flex;
+  align-items: center;
+
+  & > div {
+    position: relative;
+    margin-left: -1px;
+  }
+
+  & > div:not(:last-child):not(:first-child) {
+    border-radius: 0;
+  }
+
+  & > div:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: 0;
+  }
+
+  & > div:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  & > .active {
+    position: relative;
+    z-index: 1;
+  }
+}

@@ -31,7 +31,7 @@ describe('Input', () => {
   it('renders Input with radius correctly', () => {
     const wrapper = render(
       <div>
-        <Input radius type="text" placeholder="请输入" />
+        <Input shape="radius" type="text" placeholder="请输入" />
       </div>
     );
 
