@@ -148,7 +148,9 @@ export default class Transition extends Component<TransitionProps, any> {
     this.setState({ status, animating: true }, () => {
 
       (this.props as any).onStart({ ...this.props, status });
-      this.timeoutId = setTimeout(this.handleComplete, duration);
+      this.timeoutId = setTimeout(() => {
+        this.handleComplete();
+      }, duration);
     });
   }
 

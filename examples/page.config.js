@@ -167,6 +167,10 @@ export default {
         name: 'tooltip',
         component: () => import('@examples/docs/tooltip.md')
       },
+      Popper: {
+        name: 'popper',
+        component: () => import('@examples/docs/popper.md')
+      },
       Popover: {
         name: 'popover',
         component: () => import('@examples/docs/popover.md')
