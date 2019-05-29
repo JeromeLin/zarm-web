@@ -401,14 +401,12 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       ...others
     } = this.props;
 
-    const { positionInfo, animationState } = this.state;
-    // 根据placement判断向上动画还是向下动画
-    const animationProps = (placementMap[placement] & 1) ? 'scaleDown' : 'scaleUp';
+    const { positionInfo } = this.state;
     const cls = classnames({
       [prefixCls!]: true,
       radius: 'radius' in this.props || isRadius,
       [className!]: !!className,
-      [`${animationProps}-${animationState}`]: !!animationState,
+      active: visible,
     });
 
     const dropdownBoxStyle: React.CSSProperties = {
@@ -416,8 +414,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       ...style,
       ...positionInfo,
       position: 'absolute',
-      animationDuration: '300ms',
-      display: disabled ? 'none' : (this.state.visible ? 'block' : 'none'),
       overflow: 'hidden',
       zIndex,
     };

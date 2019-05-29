@@ -22,4 +22,12 @@
   &.ui-dropdown-hidden {
     display: none;
   }
+
+  transform: scale(1, 0);
+  transition: transform 0.3s;
+  transform-origin: center top;
+
+  &.active {
+    transform: scale(1, 1);
+  }
 }

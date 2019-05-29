@@ -7,6 +7,7 @@ export default class Test extends React.Component {
     super(props);
     this.state = {
       value: '1',
+      list: Array(10000).fill('').map((item, index) => `this is ${index}`),
     };
   }
 
@@ -33,21 +34,7 @@ export default class Test extends React.Component {
             });
           }}
         >
-          <Select.Option value="1">1234我是一个很长的代码11edasdasdcertwgtstyhbd</Select.Option>
-          <Select.Option value="2">13</Select.Option>
-          <Select.Option value="3">14</Select.Option>
-          <Select.Option value="4">15</Select.Option>
-          <Select.Option value="5">16</Select.Option>
-          <Select.Option value="6">16</Select.Option>
-          <Select.Option value="7">16</Select.Option>
-          <Select.Option value="8">16</Select.Option>
-          <Select.Option value="9">16</Select.Option>
-          <Select.Option value="10">16</Select.Option>
-          <Select.Option value="11">16</Select.Option>
-          <Select.Option value="12">16</Select.Option>
-          <Select.Option value="13">16</Select.Option>
-          <Select.Option value="14">16</Select.Option>
-          <Select.Option value="15">16</Select.Option>
+          {this.state.list.map((item, index) => <Select.Option value={index}>{item}</Select.Option>)}
         </Select>
       </div >
     );
