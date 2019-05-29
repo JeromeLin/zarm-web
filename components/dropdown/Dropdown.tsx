@@ -354,16 +354,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     });
   }
 
-  onAniEnd = (e: React.AnimationEvent) => {
-    if (e.type.toLowerCase().endsWith('animationend')) {
-      this.setState({
-        isPending: false,
-        visible: this.props.visible,
-        animationState: null,
-      });
-    }
-  }
-
   enter(callback: () => void): void {
     this.setState({
       visible: true,
@@ -430,7 +420,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       {
         createPortal(
           <div
-            onAnimationEnd={this.onAniEnd}
             className={cls}
             ref={(e) => this.DropdownContent = e as HTMLDivElement}
             style={dropdownBoxStyle}

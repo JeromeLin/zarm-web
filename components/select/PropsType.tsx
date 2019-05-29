@@ -1,14 +1,12 @@
-import { CSSProperties, MouseEvent, ReactNode } from 'react';
+import { CSSProperties, MouseEvent, ReactNode, LiHTMLAttributes } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
-export interface OptionProps {
+export interface OptionProps extends LiHTMLAttributes<HTMLLIElement> {
   value: string | number;
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;
   showCheckIcon?: boolean;
-  style?: CSSProperties;
-  onChange: (e: MouseEvent) => void;
   onDoubleClick?: (e: MouseEvent) => void;
 }
 

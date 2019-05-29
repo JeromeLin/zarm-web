@@ -29,6 +29,15 @@ interface OptionDataProps {
 const EMPTY_STRING = '';
 const EMPTY_STRING_VALUE = '$$EMPTY_STRING_VALUE';
 
+function stringArray(data: React.ReactNode) {
+  if (Array.isArray(data)) {
+    if (data.every(item => typeof item === 'string' || typeof item === 'number')) {
+      return data.join('');
+    }
+  }
+  return data;
+}
+
 /**
  * placeholder
  */
@@ -140,7 +149,14 @@ class Select extends Component<PropsType, StateProps> {
     this.unbindOuterHandlers();
   }
 
-  onOptionChange(_: React.MouseEvent, props, index) {
+  onOptionChange = (e: React.MouseEvent<HTMLLIElement>) => {
+    const { index } = e.currentTarget.dataset;
+    const currentData = this.state.optionMap[index];
+    if (!currentData) {
+      return;
+    }
+    const props = currentData.props;
+    console.log(props);
     if ('disabled' in props || props.isDisabled) {
       return;
     }
@@ -277,9 +293,40 @@ class Select extends Component<PropsType, StateProps> {
     });
   }
 
+  filterCondition(option, optionIndex: number) {
+    if (this.props.search && this.state.searchValue) {
+      return String(option.props.children).includes(this.state.searchValue);
+    } else { // remoteSearch会走此处逻辑
+      return optionIndex > -1;
+    }
+  }
+  renderChildren() {
+    const { optionData, value } = this.state;
+    const children: Array<ReactNode> = [];
+    for (let i = 0; i < optionData.length; i++) {
+      const elem = optionData[i];
+      if (this.filterCondition(elem, i)) {
+        const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
+        const childrenText = stringArray(elem.children);
+        children.push(
+          <Option
+            {...elem.props}
+            key={elem.value}
+            showCheckIcon={checked}
+            checked={checked}
+            data-index={elem.value}
+            onChange={this.onOptionChange}
+          >
+            {childrenText}
+          </Option>);
+      }
+    }
+    return children;
+  }
+
   render() {
+    console.count('render times');
     const { props } = this;
-    const { searchValue } = this.state;
     const {
       prefixCls,
       placeholder,
@@ -321,40 +368,15 @@ class Select extends Component<PropsType, StateProps> {
       }
     }
 
-    const { value } = this.state;
-    const children: Array<ReactNode> = [];
-    const filterCondition = (option, optionIndex: number) => {
-      if (search && searchValue) {
-        return String(option.props.children).includes(searchValue);
-      } else { // remoteSearch会走此处逻辑
-        return optionIndex > -1;
-      }
-    };
-    this.state.optionData.filter(filterCondition).forEach((elem, index) => {
-      const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
-      children.push(
-        <Option
-          key={elem.key || elem.value}
-          showCheckIcon={checked}
-          {...elem.props}
-          checked={checked}
-          onChange={(e) => {
-            this.onOptionChange(e, elem.props, index);
-          }}
-        >
-          {elem.children}
-        </Option>,
-      );
-    });
-
     const menuStyle = {
       maxHeight: 250,
       overflow: 'auto',
     };
 
+    const children = this.renderChildren();
     const menus =
       children && children.length > 0
-        ? <Menu size={size} style={menuStyle}>{children}</Menu>
+        ? <ul style={menuStyle}>{children}</ul>
         : <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>;
 
     return (

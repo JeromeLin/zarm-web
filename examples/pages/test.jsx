@@ -7,7 +7,7 @@ export default class Test extends React.Component {
     super(props);
     this.state = {
       value: '1',
-      list: Array(10000).fill('').map((item, index) => `this is ${index}`),
+      list: Array(3000).fill('').map((item, index) => `this is ${index}`),
     };
   }
 
