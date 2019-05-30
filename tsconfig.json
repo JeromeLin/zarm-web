@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "noImplicitAny": true,
+//    "strict": true,
+//    "noImplicitAny": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "react",

@@ -171,9 +171,9 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
 
-  shouldComponentUpdate(_: ModalProps, nextState: StateIF) {
-    return !!(this.state.isShow || nextState.isShow);
-  }
+  // shouldComponentUpdate(_: ModalProps, nextState: StateIF) {
+  //   return !!(this.state.isShow || nextState.isShow);
+  // }
 
   componentDidUpdate() {
     if (this.modalContent) {
