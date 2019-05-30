@@ -1,11 +1,18 @@
-export default interface PropsType {
+import React, { ReactNode } from 'react';
+
+export interface PropsType {
   prefixCls?: string;
-  size?: 'sm' | null;
-  value?: boolean;
-  isDisabled?: boolean;
-  defaultValue?: boolean;
-  isCheckedText?: string;
-  unCheckedText?: string;
-  style?: object;
-  onChange: (value: any) => void;
+  size?: 'sm';
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  checkedChildren?: ReactNode;
+  unCheckedChildren?: ReactNode;
+  onChange: (e: React.MouseEvent<HTMLSpanElement>, checked: boolean) => void;
+  className?: string;
+}
+
+export interface StateType {
+  checked?: boolean;
 }

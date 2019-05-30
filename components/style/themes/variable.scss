@@ -168,3 +168,29 @@ $--avatar-fontSize-icon-xs: 12px !default;
 
 $--avatar-default-color: #fff !default;
 $--avatar-default-bg-color: #ccc !default;
+
+/* -------------  Switch  ------------- */
+
+$--switch-width: 44px !default;
+$--switch-height: 22px !default;
+
+$--switch-width-sm: 28px !default;
+$--switch-height-sm: 16px !default;
+
+$--switch-default-color: #bcbcbc;
+$--switch-checked-margin-left: -2px;
+$--switch-loadingIcon-font-size: 12px;
+$--switch-sm-loadingIcon-scale: .66667;
+$--switch-disabled-opacity: .5;
+
+$--switch-font-size: 12px;
+$--switch-font-size-sm: 10px;
+
+$--switch-inner-left: 24px;
+$--switch-inner-right: 6px;
+$--switch-checked-inner-left: 6px;
+$--switch-checked-inner-right: 24px;
+$--switch-sm-inner-left: 18px;
+$--switch-sm-inner-right: 3px;
+$--switch-sm-checked-inner-left: 3px;
+$--switch-sm-checked-inner-right: 18px;

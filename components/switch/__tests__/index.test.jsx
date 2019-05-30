@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Switch from '../index';
+import Switch from '../Switch';
 
 describe('Switch', () => {
   it('renders normal Switch correctly', () => {
@@ -17,7 +17,7 @@ describe('Switch', () => {
   it('renders Switch correctly with more props', () => {
     const wrapper = render(
       <div>
-        <Switch disabled size="sm" isCheckedText="是" unCheckedText="否" />
+        <Switch disabled loading size="sm" checkedChildren="是" unCheckedChildren="否" />
       </div>
     );
 
@@ -26,22 +26,22 @@ describe('Switch', () => {
 
   it('behaves correctly when receving new value', () => {
     const wrapper = mount(
-      <Switch defaultValue={false} />
+      <Switch defaultChecked={false} />
     );
 
-    expect(wrapper.find('.ui-switch').hasClass('checked')).toBeFalsy();
-    wrapper.setProps({ value: true });
-    expect(wrapper.find('.ui-switch').hasClass('checked')).toBeTruthy();
+    expect(wrapper.find('.za-switch').hasClass('za-switch--checked')).toBeFalsy();
+    wrapper.setProps({ checked: true });
+    expect(wrapper.find('.za-switch').hasClass('za-switch--checked')).toBeTruthy();
   });
 
   it('behaves correctly when toggling status', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Switch defaultValue={false} onChange={onChange} />
+      <Switch defaultChecked={false} onChange={onChange} />
     );
 
-    wrapper.find('.ui-switch').simulate('click');
-    expect(onChange).toHaveBeenCalledWith(true);
+    wrapper.find('.za-switch').simulate('click');
+    expect(onChange).toHaveBeenCalledWith(expect.any(Object), true);
   });
 });
 

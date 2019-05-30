@@ -3,10 +3,13 @@
 exports[`Switch renders Switch correctly with more props 1`] = `
 <div>
   <span
-    class="ui-switch disabled size-sm"
+    class="za-switch za-switch--sm za-switch--disabled"
   >
+    <i
+      class="za-icon za-icon-loading theme-default za-switch__loadingIcon"
+    />
     <span
-      class="ui-switch-inner"
+      class="za-switch__inner"
     >
       否
     </span>
@@ -17,10 +20,10 @@ exports[`Switch renders Switch correctly with more props 1`] = `
 exports[`Switch renders normal Switch correctly 1`] = `
 <div>
   <span
-    class="ui-switch"
+    class="za-switch"
   >
     <span
-      class="ui-switch-inner"
+      class="za-switch__inner"
     />
   </span>
 </div>
