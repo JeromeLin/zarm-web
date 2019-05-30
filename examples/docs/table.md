@@ -278,12 +278,15 @@
           columns={[{
             dataIndex: 'id',
             width: 50,
+            title: 'ID',
+            fixed: 'left',
             render: (value, row, index) => {
               return index + 1;
             }
           },{
             title: '姓名',
             dataIndex: 'name',
+            // fixed: 'left',
             width: 100,
             render: (value, row, index) => {
               return <a href="javascript:;">{value}</a>;
@@ -339,6 +342,7 @@
             title: '状态',
             dataIndex: 'state',
             width: 100,
+            fixed: 'right',
             render: (value, row, index) => {
               return <Switch size="sm" value={value} />;
             },
@@ -375,7 +379,7 @@
             }
           }}
           rowSelection={{
-            fixed: true,
+            // fixed: true,
             onSelect: (selected, row, selectedRows) => {
               console.log(selected, row, selectedRows);
               let tableSelection = this.state.tableSelection;
@@ -388,7 +392,8 @@
               tableSelection = selectedRows;
               this.setState({tableSelection});
             }
-          }}>
+          }}
+          >
         </Table>
       </div>
     )
