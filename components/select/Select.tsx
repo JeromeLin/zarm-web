@@ -156,7 +156,6 @@ class Select extends Component<PropsType, StateProps> {
       return;
     }
     const props = currentData.props;
-    console.log(props);
     if ('disabled' in props || props.isDisabled) {
       return;
     }
@@ -325,7 +324,6 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   render() {
-    console.count('render times');
     const { props } = this;
     const {
       prefixCls,
