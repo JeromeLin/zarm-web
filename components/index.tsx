@@ -18,7 +18,7 @@ export { default as Radio } from './radio';
 export { default as Slider } from './slider';
 export { default as Step } from './step';
 export { default as Swipe } from './swipe';
-export { default as Switch } from './switch/Switch';
+export { default as Switch } from './switch';
 export { default as Tab } from './tab';
 export { default as Upload } from './upload';
 export { default as Tooltip } from './tooltip';
