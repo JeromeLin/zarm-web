@@ -1,41 +1,58 @@
 import React from 'react';
-import Select from '../../components/select';
-import '../../components/select/style';
+import Dropdown from '../../components/dropdown';
+import '../../components/dropdown/style';
 
 export default class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      visible: false,
       value: '1',
       list: Array(3000).fill('').map((item, index) => `this is ${index}`),
     };
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      // this.setState({
-      //   ss: "你大二",
-      // })
-    }, 2000);
+
   }
 
   render() {
+    const dom = (<div style={{ width: 50 }}>
+      123112
+      <br />
+      12311231
+      <br />
+      qweq
+      123112
+      <br />
+      12311231
+      <br />
+      qweq
+      123112
+      <br />
+      12311231
+      <br />
+      qweq
+      123112
+      <br />
+      12311231
+      <br />
+      qweq
+      </div>
+    );
     return (
-      <div
-        style={{ width: 200, cursor: 'pointer' }}
-      >
-        <Select
-          search
-          style={{ width: '100%' }}
-          value={this.state.value}
-          onChange={({ value }) => {
+      <div style={{ width: 200, height: 100, overflow: 'auto' }}>
+        <Dropdown
+          onVisibleChange={(visible) => {
             this.setState({
-              value,
+              visible,
             });
           }}
+          overlay={dom}
+          visible={this.state.visible}
         >
-          {this.state.list.map((item, index) => <Select.Option value={index}>{item}</Select.Option>)}
-        </Select>
+          <div style={{ whiteSpace: 'nowrap' }}>点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里</div>
+        </Dropdown>
       </div >
     );
   }

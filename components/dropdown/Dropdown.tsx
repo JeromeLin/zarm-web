@@ -14,7 +14,9 @@ function getOffsetElem(elem: HTMLElement) {
     if (parentElem instanceof HTMLElement) {
       if (parentElem.style.position === 'fixed' ||
         window.getComputedStyle(parentElem).position === 'fixed' ||
-        parentElem === document.body) {
+        parentElem === document.body ||
+        mountedInstance.find((item) => item.div === parentElem)
+      ) {
         return parentElem;
       }
       parentElem = parentElem.parentNode;
@@ -67,7 +69,7 @@ const defaultProps = {
   zIndex: 2018,
 };
 
-const mountedInstance = new Set();
+const mountedInstance: Dropdown[] = [];
 
 export default class Dropdown extends React.Component<propsType, StateType> {
   static defaultProps = defaultProps;
@@ -152,7 +154,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   onWindowResize: () => void;
   // 可滚动父容器滚动的时候调整定位
   onParentScroll: () => void;
-  private div: HTMLDivElement = Dropdown.createDivBox();
+  div: HTMLDivElement = Dropdown.createDivBox();
   private triggerBox!: HTMLDivElement;
   private DropdownContent!: HTMLDivElement;
   private popContainer!: HTMLElement;
@@ -249,13 +251,14 @@ export default class Dropdown extends React.Component<propsType, StateType> {
         },
       });
     }
-    this.scrollParent = domUtil.getScrollParent(this.triggerBox);
+    // this.scrollParent = domUtil.getScrollParent(this.triggerBox);
     events.on(document, 'click', this.onDocumentClick);
     events.on(window, 'resize', this.onWindowResize);
-    events.on(this.scrollParent, 'scroll', this.onParentScroll);
+    document.addEventListener('scroll', this.onScroll, true);
+    // events.on(this.scrollParent, 'scroll', this.onParentScroll);
 
     // 存储当前实例，方便静态方法统一处理
-    mountedInstance.add(this);
+    mountedInstance.push(this);
     this.triggerBoxOffsetHeight = this.triggerBox.offsetHeight;
   }
 
@@ -264,6 +267,15 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     if (height !== this.triggerBoxOffsetHeight) {
       this.reposition();
       this.triggerBoxOffsetHeight = height;
+    }
+  }
+  // 页面滚动的时候
+  onScroll = (e) => {
+    if (e.target !== e.currentTarget) {
+      this.scrollParent = e.target;
+      if (this.state.visible && e.target.contains(this.triggerBox)) {
+        this.reposition();
+      }
     }
   }
 
@@ -311,9 +323,9 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       offsetHeight,
     );
     const offset = placement.startsWith('bottom') ? 5 : -5;
-    const scrollParent = this.scrollParent;
     let scrollLeft = 0;
     let scrollTop = 0;
+    const { scrollParent } = this;
     if (scrollParent !== this.popContainer && this.popContainer.contains(scrollParent)) {
       scrollLeft = domUtil.getScrollLeftValue(scrollParent);
       scrollTop = domUtil.getScrollTopValue(scrollParent);
@@ -348,7 +360,8 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     events.off(document, 'click', this.onDocumentClick);
     events.off(window, 'click', this.onWindowResize);
     events.off(this.scrollParent, 'scroll', this.onParentScroll);
-    mountedInstance.delete(this);
+    const index = mountedInstance.indexOf(this);
+    mountedInstance.splice(index, 1);
     setTimeout(() => {
       this.popContainer.removeChild(this.div);
     });
