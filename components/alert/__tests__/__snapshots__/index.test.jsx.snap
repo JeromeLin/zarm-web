@@ -3,14 +3,14 @@
 exports[`Alert renders basic Alert correctly 1`] = `
 <ForwardRef(forwardRef)
   message="这是一个警告框"
-  onClose={[Function]}
+  onClose={[MockFunction]}
   theme="warning"
   visible={true}
 >
   <LocaleReceiver
     forwardedRef={null}
     message="这是一个警告框"
-    onClose={[Function]}
+    onClose={[MockFunction]}
     theme="warning"
     visible={true}
   >
@@ -25,7 +25,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
       }
       localeCode="zh-cn"
       message="这是一个警告框"
-      onClose={[Function]}
+      onClose={[MockFunction]}
       prefixCls="ui-alert"
       theme="warning"
       visible={true}
@@ -48,14 +48,14 @@ exports[`Alert renders basic Alert correctly 1`] = `
             <div>
               <div
                 class="ui-modal fade-enter"
-                style="position: fixed;"
+                style="animation-duration: 300ms; position: fixed;"
               >
                 <div
                   class="ui-modal-wrapper"
                 >
                   <div
                     class="ui-modal-dialog zoom-enter"
-                    style="width: 270px; min-width: 270px;"
+                    style="width: 270px; min-width: 270px; animation-duration: 300ms;"
                     tabindex="-1"
                   >
                     <div
@@ -94,7 +94,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "WebkitAnimationDuration": "300ms",
+                "animationDuration": "300ms",
                 "position": "fixed",
               }
             }
@@ -109,7 +109,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                 onKeyPress={[Function]}
                 style={
                   Object {
-                    "WebkitAnimationDuration": "300ms",
+                    "animationDuration": "300ms",
                     "minWidth": 270,
                     "width": 270,
                   }
@@ -164,7 +164,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       block={false}
                       ghost={false}
                       htmlType="button"
-                      onClick={[Function]}
+                      onClick={[MockFunction]}
                       prefixCls="za-button"
                       shape="radius"
                       size={null}
