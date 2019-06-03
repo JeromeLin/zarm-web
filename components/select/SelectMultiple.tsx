@@ -17,9 +17,9 @@ class SelectMultiple extends Component<MultipleProps, any> {
     super(props);
     this.state = {
       value:
-        props.value ||
-        props.defaultValue ||
-        this.getCheckedValue(props.children),
+        props.value
+        || props.defaultValue
+        || this.getCheckedValue(props.children),
     };
   }
 
@@ -52,7 +52,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
       return;
     }
 
-    const shiftKey = e.shiftKey;
+    const { shiftKey } = e;
     const { value } = this.state;
     const index = value.indexOf(props.value);
     const isSelected = index > -1;

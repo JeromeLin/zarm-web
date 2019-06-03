@@ -6,6 +6,7 @@ import Icon from '../icon';
 
 class Button extends Component<ButtonProps, any> {
   static Group;
+
   static defaultProps = {
     prefixCls: 'za-button',
     htmlType: 'button',
@@ -16,6 +17,7 @@ class Button extends Component<ButtonProps, any> {
     block: false,
     onClick: () => {},
   };
+
   static propTypes = {
     type: PropTypes.string,
     shape: PropTypes.oneOf(['circle', 'round', 'rect', 'radius']),
@@ -28,7 +30,7 @@ class Button extends Component<ButtonProps, any> {
     block: PropTypes.bool,
   };
 
-  render () {
+  render() {
     const {
       prefixCls, htmlType, type, size, block, shape, active, focus, disabled, ghost,
       loading, className, onClick, children, style, theme, href, target, icon, ...others
@@ -52,27 +54,30 @@ class Button extends Component<ButtonProps, any> {
       [className!]: className,
     });
 
-    const textContent =
-      loading ? (
-        <React.Fragment>
-          <Icon type="loading" className="rotate360"/>&nbsp;&nbsp;{children}
-        </React.Fragment>
-      ) : (
-        children
-      );
+    const textContent = loading ? (
+      <React.Fragment>
+        <Icon type="loading" className="rotate360" />
+&nbsp;&nbsp;
+        {children}
+      </React.Fragment>
+    ) : (
+      children
+    );
 
     return (
       href
-        ? <a
-          className={classes}
-          href={href}
-          style={style}
-          target={target}
-          {...others}
-          onClick={e => (!disabled && !loading) && onClick!(e)}
-        >
-          {textContent}
-        </a>
+        ? (
+          <a
+            className={classes}
+            href={href}
+            style={style}
+            target={target}
+            {...others}
+            onClick={e => (!disabled && !loading) && onClick!(e)}
+          >
+            {textContent}
+          </a>
+        )
         : (
           <button
             type={htmlType}

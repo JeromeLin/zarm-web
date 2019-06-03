@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { SiderPropsType } from './PropsType';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { SiderPropsType } from './PropsType';
 import Icon from '../icon';
 
 class Sider extends Component<SiderPropsType, any> {
@@ -49,12 +49,12 @@ class Sider extends Component<SiderPropsType, any> {
     if (onCollapse) {
       onCollapse(collapsed);
     }
-  }
+  };
 
   toggle = () => {
     const collapsed = !this.state.collapsed;
     this.setCollapsed(collapsed);
-  }
+  };
 
   render() {
     const {
@@ -66,10 +66,12 @@ class Sider extends Component<SiderPropsType, any> {
     const siderWidth = collapsed ? collapsedWidth : width;
     const defaultTrigger = collapsed ? <Icon type="arrow-right" /> : <Icon type="arrow-left" />;
     const triggerDom = (
-      trigger !== null &&
+      trigger !== null
+      && (
       <div className={`${prefixCls}-trigger`} onClick={this.toggle} style={{ width: siderWidth }}>
         {trigger || defaultTrigger}
       </div>
+      )
     );
     const siderStyle = {
       ...style,

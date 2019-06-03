@@ -17,7 +17,7 @@ function getNotificationKey() {
   return `notification-${now}-${seed++}`;
 }
 
-function NotificationInstance (props?: any, theme?: string) {
+function NotificationInstance(props?: any, theme?: string) {
   const className: string = props.isMessage ? '.za-message' : '.za-notification';
   const div = document.createElement('div');
 
@@ -33,14 +33,14 @@ function NotificationInstance (props?: any, theme?: string) {
     props.theme = theme;
   }
 
-  const key = props.key;
+  const { key } = props;
   const instances = document.querySelectorAll(className);
   const lastInstance: any = instances[instances.length - 1];
 
-  props.top = (lastInstance ? (parseInt(lastInstance.style.top, 10) +
-    lastInstance.offsetHeight) : 0) + NOTIFICATION_GAP;
+  props.top = (lastInstance ? (parseInt(lastInstance.style.top, 10)
+    + lastInstance.offsetHeight) : 0) + NOTIFICATION_GAP;
 
-  function willUnMount (lastHeight, lastTop) {
+  function willUnMount(lastHeight, lastTop) {
     setTimeout(() => {
       ReactDOM.unmountComponentAtNode(div);
       document.body.removeChild(div);
@@ -56,7 +56,7 @@ function NotificationInstance (props?: any, theme?: string) {
     });
   }
 
-  function ref (instance: Instance) {
+  function ref(instance: Instance) {
     if (instance) {
       instance.key = instance.key || key || getNotificationKey();
       notificationInstances.push(instance);
@@ -79,7 +79,7 @@ const api: any = {
   },
 };
 
-['primary', 'danger', 'success', 'warning', 'loading'].forEach(theme => {
+['primary', 'danger', 'success', 'warning', 'loading'].forEach((theme) => {
   api[theme] = (options: object = {}) => {
     NotificationInstance(options, theme);
   };

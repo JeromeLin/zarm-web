@@ -26,9 +26,13 @@ class Slider extends Component<PropsType, any> {
   };
 
   private draggingPayload;
+
   private offsetLeft;
+
   private isTouchSuported;
+
   private sliderBody;
+
   private removeTransition;
 
   constructor(props) {
@@ -135,10 +139,9 @@ class Slider extends Component<PropsType, any> {
         const {
           min, max, step, styleWidth, getValue, isPass,
         } = this.props;
-        const mouseMovedDist =
-          (this.isTouchSuported && e.touches && e.touches[0]
-            ? e.touches[0].clientX
-            : e.clientX) - this.draggingPayload.prevX;
+        const mouseMovedDist = (this.isTouchSuported && e.touches && e.touches[0]
+          ? e.touches[0].clientX
+          : e.clientX) - this.draggingPayload.prevX;
 
         const percent = mouseMovedDist / (styleWidth || 200);
         const value = percent * (max - min);
@@ -151,10 +154,9 @@ class Slider extends Component<PropsType, any> {
             return;
           }
 
-          this.draggingPayload.prevX =
-            this.isTouchSuported && e.touches && e.touches[0]
-              ? e.touches[0].clientX
-              : e.clientX;
+          this.draggingPayload.prevX = this.isTouchSuported && e.touches && e.touches[0]
+            ? e.touches[0].clientX
+            : e.clientX;
           if (newValue <= max && newValue >= min) {
             if (getValue) {
               getValue(newValue, i);
@@ -258,8 +260,8 @@ class Slider extends Component<PropsType, any> {
   }
 
   findClosestHandle(value) {
-    let stateKeys = Object.keys(this.state);
-    let states = stateKeys.map(v => this.state[v]);
+    const stateKeys = Object.keys(this.state);
+    const states = stateKeys.map(v => this.state[v]);
     /* eslint-disable */
     return states.reduce((pre, cur) => (value > Math.max(pre, cur)
       ? Math.max(pre, cur)
@@ -280,9 +282,9 @@ class Slider extends Component<PropsType, any> {
   // 判断handle是否互相接触
   isHandleMeet(index, value) {
     const { max, min } = this.props;
-    let stateKeys = Object.keys(this.state);
+    const stateKeys = Object.keys(this.state);
     // tslint:disable-next-line:no-shadowed-variable
-    let states = stateKeys.map(v => this.state[v]);
+    const states = stateKeys.map(v => this.state[v]);
     states.sort((a, b) => a - b);
 
     const v = this.state[`currentValue${index}`];

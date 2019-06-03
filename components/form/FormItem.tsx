@@ -12,9 +12,11 @@ Schema.warning = noop;
 
 class FormItem extends PureComponent<ItemProps, any> {
   static contextType = FormContext;
+
   static defaultProps = {
     prefixCls: 'za-form',
   };
+
   static propTypes = {
     prop: PropTypes.string,
     rules: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -23,10 +25,12 @@ class FormItem extends PureComponent<ItemProps, any> {
   };
 
   private initialData;
+
   private validateMessage: string;
+
   private formItemInstance: any;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.formItemInstance = createRef<HTMLDivElement>();
@@ -36,25 +40,25 @@ class FormItem extends PureComponent<ItemProps, any> {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.initialData = this.recordInitialData();
     this.addFormItem();
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.removeFormItem();
   }
 
-  recordInitialData () {
+  recordInitialData() {
     if (!this.context.model) { return; }
     const { prop } = this.props;
-    const { model }  = this.context;
+    const { model } = this.context;
     const value = model[prop!];
 
     return value === undefined ? undefined : JSON.parse(JSON.stringify(value));
   }
 
-  get fieldValue () {
+  get fieldValue() {
     const { model } = this.context;
     const { prop } = this.props;
     const propArr = prop!.split('.');
@@ -62,35 +66,35 @@ class FormItem extends PureComponent<ItemProps, any> {
     return propArr.length > 1 ? model[propArr[0]][propArr[1]] : model[prop!];
   }
 
-  addFormItem () {
+  addFormItem() {
     if ((this.props as ItemProps).prop) {
       this.context.fields.push(this);
     }
   }
 
-  removeFormItem () {
+  removeFormItem() {
     if ((this.props as ItemProps).prop) {
       const index = this.context.fields.indexOf(this);
       this.context.fields.splice(index, 1);
     }
   }
 
-  getRules () {
+  getRules() {
     const { rules, prop } = this.props;
     let formRules = this.context.rules;
-    let formItemRules = rules;
+    const formItemRules = rules;
 
     formRules = formRules ? formRules[prop!] : [];
     return [].concat(formItemRules || formRules || []);
   }
 
-  getFilteredRules (trigger: triggerType) {
+  getFilteredRules(trigger: triggerType) {
     const rules = this.getRules();
     const filteredRules = rules.filter((rule: any) => !rule.trigger || rule.trigger.includes(trigger));
     return filteredRules;
   }
 
-  validateItem (trigger: triggerType, callback = _ => {}) {
+  validateItem(trigger: triggerType, callback = (_) => {}) {
     const { prop } = this.props;
     const rules = this.getFilteredRules(trigger);
 
@@ -98,7 +102,7 @@ class FormItem extends PureComponent<ItemProps, any> {
     const descriptor = { [prop!]: rules };
     const validator = new Schema(descriptor);
     const model = { [prop!]: this.fieldValue };
-    validator.validate(model, { firstFields: true }, errors => {
+    validator.validate(model, { firstFields: true }, (errors) => {
       this.validateMessage = errors ? errors[0].message : '';
       this.setState({
         validateStatus: !errors ? 'success' : 'error',
@@ -108,7 +112,7 @@ class FormItem extends PureComponent<ItemProps, any> {
     });
   }
 
-  resetItem () {
+  resetItem() {
     const { prop } = this.props;
 
     this.setState({
@@ -123,41 +127,44 @@ class FormItem extends PureComponent<ItemProps, any> {
     }
   }
 
-  getId () {
+  getId() {
     const { children } = this.props;
     if ((children as ReactElement<any>).props) {
       return (children as ReactElement<any>).props.id;
     }
   }
 
-  getControlNode () {
+  getControlNode() {
     return this.formItemInstance.current;
   }
 
-  renderLabel () {
+  renderLabel() {
     const { id, label, prefixCls, prop, rules } = this.props;
     const { labelWidth } = this.context;
     const styleObj: any = {};
-    const star =
-      ('required' in this.props || prop || rules) ? (
-        <span className={`${prefixCls}-item--required`}>
-          <Icon type="required" />
-        </span>
-      ) : null;
+    const star = ('required' in this.props || prop || rules) ? (
+      <span className={`${prefixCls}-item--required`}>
+        <Icon type="required" />
+      </span>
+    ) : null;
     if (labelWidth) { styleObj.width = parseInt(labelWidth, 10); }
 
     return 'label' in this.props
-      ? <label className="za-form-item__label" style={{ ...styleObj }} htmlFor={id || this.getId()}>{star}{label}</label> : null;
+      ? (
+        <label className="za-form-item__label" style={{ ...styleObj }} htmlFor={id || this.getId()}>
+          {star}
+          {label}
+        </label>
+      ) : null;
   }
 
   handleFieldBlur = () => {
     Promise.resolve('blur').then(this.validateItem.bind(this));
-  }
+  };
 
   handleFieldChange = () => {
     Promise.resolve('change').then(this.validateItem.bind(this));
-
-  }
+  };
 
   render() {
     const { props, state } = this;

@@ -8,14 +8,14 @@ export default function debounce(func: (...arg: any[]) => any, wait: number, imm
     }
     if (immediate) {
       const callNow = !timeout;
-      timeout = setTimeout(function () {
+      timeout = setTimeout(() => {
         timeout = null;
       }, wait);
       if (callNow) {
         result = func.apply(context, args);
       }
     } else {
-      timeout = setTimeout(function () {
+      timeout = setTimeout(() => {
         func.apply(context, args);
       }, wait);
     }

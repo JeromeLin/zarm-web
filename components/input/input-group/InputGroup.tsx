@@ -9,6 +9,7 @@ class InputGroup extends Component<PropsIF, {}> {
   static defaultProps = {
     prefixCls: 'ui-input-group',
   };
+
   render() {
     const { prefixCls, className, ...others } = this.props;
     const cls = cn({

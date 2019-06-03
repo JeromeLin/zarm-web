@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OtherProps {
@@ -7,9 +8,7 @@ export interface OtherProps {
   [propName: string]: any;
 }
 
-export interface ReactNodeFn {
-  (): ReactNode;
-}
+export type ReactNodeFn = () => ReactNode;
 
 export interface AddonIF {
   fillType?: 'fill' | 'default' | string;

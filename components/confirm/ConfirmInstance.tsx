@@ -22,7 +22,7 @@ class ConfirmExtension extends Confirm {
     option: ConfirmPropsType | ConfirmPropsType['message'],
     cancelCallback?: () => void,
   ) {
-    let defalutValue = ConfirmExtension.defaultValue;
+    const defalutValue = ConfirmExtension.defaultValue;
     let object: ConfirmPropsType;
     if (typeof option === 'string') {
       object = { ...defalutValue, message: option };
@@ -64,14 +64,16 @@ class ConfirmExtension extends Confirm {
       );
     });
   }
+
   static show(object: ConfirmPropsType | ConfirmPropsType['message']) {
     ConfirmExtension.currentProps = object;
     return this.defalut(true, object);
   }
+
   static hide(callback?: () => void) {
     this.defalut(false, ConfirmExtension.currentProps, () => {
       ReactDOM.unmountComponentAtNode(ConfirmExtension.div);
-      const parentNode = ConfirmExtension.div.parentNode;
+      const { parentNode } = ConfirmExtension.div;
       if (parentNode) {
         parentNode.removeChild(ConfirmExtension.div);
       }
@@ -82,6 +84,7 @@ class ConfirmExtension extends Confirm {
   }
 
   private static currentProps: ConfirmPropsType | ConfirmPropsType['message'];
+
   private static div = document.createElement('div');
 }
 

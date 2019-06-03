@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 

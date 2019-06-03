@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Checkbox from '../checkbox';
 import Animate from 'rc-animate';
 import classnames from 'classnames';
+import Checkbox from '../checkbox';
 import { TreeNodePropsType } from './PropsType';
 import animation from './openAnimation';
 import { isCheckDisabled } from './utils';
@@ -11,7 +11,6 @@ const ICON_CLOSE = 'close';
 const ICON_NOOP = 'noop';
 
 class TreeNode extends Component<TreeNodePropsType, any> {
-
   static defaultProps = {
     prefixCls: 'ui-tree',
     title: '',
@@ -23,7 +22,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
       return true;
     }
     return false;
-  }
+  };
 
   getNodeState = () => {
     const { expanded } = this.props;
@@ -34,7 +33,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
       nodeState = expanded ? ICON_OPEN : ICON_CLOSE;
     }
     return nodeState;
-  }
+  };
 
   renderSwitcher = () => {
     const { prefixCls } = this.props;
@@ -47,7 +46,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
         onClick={this.onExpand}
       />
     );
-  }
+  };
 
   renderCheckbox = () => {
     const { checkDisabled, canCheck, checked, prefixCls, halfChecked } = this.props;
@@ -58,14 +57,14 @@ class TreeNode extends Component<TreeNodePropsType, any> {
     return (
       <span className={classnames(`${prefixCls}-checkbox`)}>
         <Checkbox
-          onChange={(e) => this.onCheck(e)}
+          onChange={e => this.onCheck(e)}
           isDisabled={checkDisabled}
           checked={checked || isHalfChecked}
           indeterminate={isHalfChecked}
         />
       </span>
     );
-  }
+  };
 
   renderContent = () => {
     const { prefixCls, title } = this.props;
@@ -82,7 +81,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
         <span className={`${prefixCls}-title`}>{title}</span>
       </span>
     );
-  }
+  };
 
   renderChildren = () => {
     const { children, expanded, prefixCls = '' } = this.props;
@@ -114,7 +113,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
         {$children}
       </Animate>
     );
-  }
+  };
 
   onCheck = (e) => {
     const { checked, onNodeCheck } = this.props;
@@ -122,7 +121,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
     if (!isCheckDisabled(this) && onNodeCheck) {
       onNodeCheck(this, targetChecked, e);
     }
-  }
+  };
 
   onExpand = (e) => {
     const { expanded, onNodeExpand } = this.props;
@@ -130,7 +129,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
     if (onNodeExpand) {
       onNodeExpand(this, targetExpanded, e);
     }
-  }
+  };
 
   render() {
     const { keys } = this.props;

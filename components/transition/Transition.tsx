@@ -57,38 +57,44 @@ export default class Transition extends Component<TransitionProps, any> {
     onBeforeShow: noop,
     onBeforeHide: noop,
   };
+
   static ENTERED = 'ENTERED';
+
   static ENTERING = 'ENTERING';
+
   static EXITED = 'EXITED';
+
   static EXITING = 'EXITING';
+
   static UNMOUNTED = 'UNMOUNTED';
 
   private nextStatus: any;
+
   private timeoutId: any;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
-    const { initial: status, next }: { initial: string, next?: string } = this.computeInitialStatus();
+    const { initial: status, next }: { initial: string; next?: string } = this.computeInitialStatus();
     this.nextStatus = next;
     this.state = { status };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.updateStatus();
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { status, next } = this.computeStatus(nextProps);
     this.nextStatus = next;
     if (status) this.setState({ status });
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this.updateStatus();
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearTimeout(this.timeoutId);
   }
 
@@ -106,14 +112,14 @@ export default class Transition extends Component<TransitionProps, any> {
     }
     if (mountOnShow || unmountOnHide) return { initial: Transition.UNMOUNTED };
     return { initial: Transition.EXITED };
-  }
+  };
 
   computeNextStatus = () => {
     const { animating, status } = this.state;
 
     if (animating) return status === Transition.ENTERING ? Transition.EXITING : Transition.ENTERING;
     return status === Transition.ENTERED ? Transition.EXITING : Transition.ENTERING;
-  }
+  };
 
   computeStatus = (props) => {
     const { status } = this.state;
@@ -129,7 +135,7 @@ export default class Transition extends Component<TransitionProps, any> {
     return {
       next: (status === Transition.ENTERING || status === Transition.ENTERED) && Transition.EXITING,
     };
-  }
+  };
 
   updateStatus = () => {
     const { animating } = this.state;
@@ -138,7 +144,7 @@ export default class Transition extends Component<TransitionProps, any> {
       this.nextStatus = this.computeNextStatus();
       if (!animating) this.handleStart();
     }
-  }
+  };
 
   handleStart = () => {
     const { duration } = this.props;
@@ -146,11 +152,10 @@ export default class Transition extends Component<TransitionProps, any> {
 
     this.nextStatus = null;
     this.setState({ status, animating: true }, () => {
-
       (this.props as any).onStart({ ...this.props, status });
       this.timeoutId = setTimeout(this.handleComplete, duration);
     });
-  }
+  };
 
   handleComplete = () => {
     const { status } = this.state;
@@ -168,7 +173,7 @@ export default class Transition extends Component<TransitionProps, any> {
     this.setState({ status: completeStatus, animating: false }, () => {
       (this.props as any)[callback]({ ...this.props, status: completeStatus });
     });
-  }
+  };
 
   computeCompletedStatus = () => {
     const { unmountOnHide } = this.props;
@@ -176,10 +181,10 @@ export default class Transition extends Component<TransitionProps, any> {
 
     if (status === Transition.ENTERING) return Transition.ENTERED;
     return unmountOnHide ? Transition.UNMOUNTED : Transition.EXITED;
-  }
+  };
 
   computeClasses = (): string => {
-    const { name, children, directional }: { name?: string, children?: any, directional?: boolean } = this.props;
+    const { name, children, directional }: { name?: string; children?: any; directional?: boolean } = this.props;
     const { animating, status } = this.state;
     const childrenClass = children.props.className;
 
@@ -189,25 +194,25 @@ export default class Transition extends Component<TransitionProps, any> {
         [`${name}`]: name,
         [`${name}-in`]: status === Transition.ENTERING,
         [`${name}-out`]: status === Transition.EXITING,
-        [`hidden`]: status === Transition.EXITED,
-        [`visible`]: status !== Transition.EXITED,
+        hidden: status === Transition.EXITED,
+        visible: status !== Transition.EXITED,
         transition: true,
       });
     }
     return classnames(childrenClass, { animating, transition: true, [`${name}`]: name });
-  }
+  };
 
   computeStyle = (): object => {
-    const { children, duration }: { children?: any, duration?: any }  = this.props;
+    const { children, duration }: { children?: any; duration?: any } = this.props;
     const { status } = this.state;
     const childrenStyle = children!.props.style;
     const type = TRANSITION_TYPE[status];
     const animationDuration = type && `${duration}ms`;
 
     return { ...childrenStyle, animationDuration };
-  }
+  };
 
-  render () {
+  render() {
     const { children }: { children? } = this.props;
     const { status } = this.state;
 

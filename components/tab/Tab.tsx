@@ -9,6 +9,7 @@ class Tab extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'ui-tab',
   };
+
   static propTypes = {
     disabled: PropTypes.bool,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),

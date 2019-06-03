@@ -22,8 +22,11 @@ type BasicProps = React.HTMLAttributes<HTMLDivElement> & PropsType;
 
 class InputWithTags extends React.Component<BasicProps> {
   inputDiv: HTMLDivElement;
+
   tagListBox: HTMLDivElement;
+
   isComposition: boolean;
+
   debouncedOnInputChange: any;
 
   state = {
@@ -31,7 +34,7 @@ class InputWithTags extends React.Component<BasicProps> {
     compositionData: null,
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.debouncedOnInputChange = debounce(this.onInput, 300, false);
   }
@@ -43,19 +46,19 @@ class InputWithTags extends React.Component<BasicProps> {
     if (typeof this.props.onSearchChange === 'function') {
       this.props.onSearchChange(value);
     }
-  }
+  };
 
   onFocus = () => {
     this.setState({
       isFocus: true,
     });
-  }
+  };
 
   onBlur = () => {
     this.setState({
       isFocus: false,
     });
-  }
+  };
 
   componentWillReceiveProps(nextProps: BasicProps) {
     if (nextProps.active !== this.props.active) {
@@ -72,24 +75,24 @@ class InputWithTags extends React.Component<BasicProps> {
 
   tagListBoxref = (e) => {
     this.tagListBox = e;
-  }
+  };
 
   onTagBoxClick = () => {
     const { active, search, remoteSearch, value } = this.props;
     if (active && (search || remoteSearch) && Array.isArray(value)) {
       this.inputDiv.focus();
     }
-  }
+  };
 
   onCompositionStart = () => {
     this.isComposition = true;
-  }
+  };
 
   onCompositionUpdate = (e: React.CompositionEvent<HTMLDivElement>) => {
     this.setState({
       compositionData: e.data,
     });
-  }
+  };
 
   onCompositionEnd = (value) => {
     this.isComposition = false;
@@ -97,17 +100,19 @@ class InputWithTags extends React.Component<BasicProps> {
       compositionData: null,
     });
     this.onInput(value);
-  }
+  };
 
   render() {
-    const { search, remoteSearch, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
-      radius, disabled, ...others } = this.props;
+    const {
+      search, remoteSearch, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
+      radius, disabled, ...others
+    } = this.props;
     const { compositionData, isFocus } = this.state;
     let showPlaceHolder = false;
     if (
-      (((search || remoteSearch) && !isFocus && value === null) ||
-      (typeof value === 'string' && value.length === 0)) ||
-      !value
+      (((search || remoteSearch) && !isFocus && value === null)
+      || (typeof value === 'string' && value.length === 0))
+      || !value
       && !compositionData
     ) {
       showPlaceHolder = true;
@@ -115,7 +120,7 @@ class InputWithTags extends React.Component<BasicProps> {
 
     const searchValueStyle = { display: isFocus && searchValue ? 'none' : 'inline-block' };
 
-    let tagSizeHeight: number = (size ? sizeValue[size] : 32) - 10;
+    const tagSizeHeight: number = (size ? sizeValue[size] : 32) - 10;
 
     let tagList;
 
@@ -132,7 +137,7 @@ class InputWithTags extends React.Component<BasicProps> {
               isDisabled={disabled}
               theme={tagTheme}
               title={Array.isArray(elem.value) ? elem.value.join('') : String(elem.value)}
-              style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: tagSizeHeight + 'px' }}
+              style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: `${tagSizeHeight}px` }}
               isRadius={radius}
               key={elem.key}
               onClose={(e) => {
@@ -146,7 +151,7 @@ class InputWithTags extends React.Component<BasicProps> {
             >
               {elem.value}
             </Tag>
-          </div >
+          </div>
         );
       });
     } else {
@@ -165,14 +170,16 @@ class InputWithTags extends React.Component<BasicProps> {
       [`size-${size}`]: !!size,
     });
 
-    return <div
-      className={boxCls}
-      onClick={this.onTagBoxClick}
-      {...others}
-    >
-      {tagList}
-      {
-        (search || remoteSearch) && <div
+    return (
+      <div
+        className={boxCls}
+        onClick={this.onTagBoxClick}
+        {...others}
+      >
+        {tagList}
+        {
+        (search || remoteSearch) && (
+        <div
           className="za-tag-input__div"
           contentEditable={!disabled && (search || remoteSearch)}
           onInput={(e) => { this.debouncedOnInputChange((e.target as HTMLDivElement).textContent); }}
@@ -183,10 +190,12 @@ class InputWithTags extends React.Component<BasicProps> {
           onCompositionEnd={(e) => { this.onCompositionEnd((e.target as HTMLDivElement).textContent); }}
           ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
         />
+        )
       }
-      {showPlaceHolder && <span style={searchValueStyle} className="za-tag-input__div-placeholder">{placeholder}</span>}
-      <Icon style={Style.iconStyle} className="arrow-bottom" type="arrow-bottom" />
-    </div>;
+        {showPlaceHolder && <span style={searchValueStyle} className="za-tag-input__div-placeholder">{placeholder}</span>}
+        <Icon style={Style.iconStyle} className="arrow-bottom" type="arrow-bottom" />
+      </div>
+    );
   }
 }
 

@@ -15,7 +15,6 @@ interface StateType {
 }
 
 class Tree extends Component<PropsType, StateType> {
-
   static defaultProps = {
     prefixCls: 'ui-tree',
     checkedKeys: [],
@@ -37,7 +36,7 @@ class Tree extends Component<PropsType, StateType> {
 
   initTreeNodes = (): void => {
     const { treeData = [], checkedKeys, expandedKeys, defaultExpandAll, children } = this.props;
-    let newState = {
+    const newState = {
       treeData: [] as object[],
       halfCheckedKeys: [] as string[],
       checkedKeys: [] as string[],
@@ -77,7 +76,7 @@ class Tree extends Component<PropsType, StateType> {
       newState.expandedKeys = conductExpandParent(expandedKeys, newState.treeData);
     }
     this.setState(newState);
-  }
+  };
 
   onNodeCheck = (node, targetChecked, event: MouseEvent) => {
     const { onCheck } = this.props;
@@ -102,7 +101,7 @@ class Tree extends Component<PropsType, StateType> {
         event,
       });
     }
-  }
+  };
 
   onNodeExpand = (node, targetExpanded, event) => {
     let { expandedKeys } = this.state;
@@ -126,7 +125,7 @@ class Tree extends Component<PropsType, StateType> {
         event,
       });
     }
-  }
+  };
 
   renderTreeNodes = (data) => {
     const { prefixCls, canCheck } = this.props;
@@ -152,7 +151,7 @@ class Tree extends Component<PropsType, StateType> {
         </TreeNode>
       );
     });
-  }
+  };
 
   render() {
     const { prefixCls } = this.props;

@@ -16,6 +16,7 @@ import PropsType from './PropsType';
 
 class Calendar extends Component<PropsType, any> {
   static contextType = FormItemContext;
+
   static defaultProps = {
     prefixCls: 'ui-calendar',
     format: 'yyyy-MM-dd',
@@ -63,7 +64,7 @@ class Calendar extends Component<PropsType, any> {
     }
 
     this.setState({ current });
-  }
+  };
 
   handleChangeYearOrMonth = (current) => {
     const { onPanelChange } = this.props;
@@ -76,14 +77,14 @@ class Calendar extends Component<PropsType, any> {
       current,
       panel: 'date',
     });
-  }
+  };
 
-  onDateClick (value, isNow = false) {
+  onDateClick(value, isNow = false) {
     const { format, onChange, showTime } = this.props;
     let dropdownStatus = false;
 
     if (!isEmpty(this.context)) {
-     this.context.handleFieldChange();
+      this.context.handleFieldChange();
     }
     if (!showTime) {
       dropdownStatus = false;
@@ -103,7 +104,7 @@ class Calendar extends Component<PropsType, any> {
     }
   }
 
-  onConfirmClick (value) {
+  onConfirmClick(value) {
     const valueWithTime = (value && `${value} ${this.state.timeValue}`) || '';
     const { format, onChange } = this.props;
 
@@ -112,12 +113,12 @@ class Calendar extends Component<PropsType, any> {
     }
   }
 
-  onTimeChange (timeValue) {
+  onTimeChange(timeValue) {
     const { format } = this.props;
     const { value } = this.state;
 
     if (!value) { // 判断先选择time的情况
-      this.setState({ value: String(Format.date(new Date(), format)).split(' ')[0] } , () => {
+      this.setState({ value: String(Format.date(new Date(), format)).split(' ')[0] }, () => {
         this.setValue(this.state.value, timeValue);
       });
     } else {
@@ -125,7 +126,7 @@ class Calendar extends Component<PropsType, any> {
     }
   }
 
-  setValue (value, timeValue) {
+  setValue(value, timeValue) {
     const {
       format,
       onChange,
@@ -133,7 +134,7 @@ class Calendar extends Component<PropsType, any> {
 
     this.setState({
       timeValue,
-      value: value,
+      value,
       current: `${value} ${timeValue}`,
     });
 
@@ -169,7 +170,7 @@ class Calendar extends Component<PropsType, any> {
     }
 
     return Format.date(current, 'yyyy-MM-dd');
-  }
+  };
 
   render() {
     const { props } = this;
@@ -199,7 +200,8 @@ class Calendar extends Component<PropsType, any> {
     return (
       <div className={cls} style={style}>
         {
-          showTime &&
+          showTime
+          && (
           <div className="ui-calendar-time-header">
             {
               this.getDisplayDate()
@@ -213,6 +215,7 @@ class Calendar extends Component<PropsType, any> {
               }}
             />
           </div>
+          )
         }
 
         <CalendarHeader
@@ -258,24 +261,24 @@ class Calendar extends Component<PropsType, any> {
         {
           // tslint:disable-next-line:jsx-no-multiline-js
           (hasFooter && panel === 'date') ? (
-          <div className={`${prefixCls}-footer`}>
-            <a
-              href="javascript:;"
-              onClick={() => this.onDateClick(new Date(), true)}
-              className={`${prefixCls}-footer-btn`}
-            >
-              {showTime ? locale!.now : locale!.today}
-            </a>
+            <div className={`${prefixCls}-footer`}>
+              <a
+                href="javascript:;"
+                onClick={() => this.onDateClick(new Date(), true)}
+                className={`${prefixCls}-footer-btn`}
+              >
+                {showTime ? locale!.now : locale!.today}
+              </a>
 
-            <a
-              href="javascript:;"
-              onClick={() => this.onDateClick('', true)}
-              className={`${prefixCls}-footer-btn`}
-            >
-              {locale!.clear}
-            </a>
+              <a
+                href="javascript:;"
+                onClick={() => this.onDateClick('', true)}
+                className={`${prefixCls}-footer-btn`}
+              >
+                {locale!.clear}
+              </a>
 
-            {
+              {
               showTime && (
                 <Button
                   type="primary"
@@ -288,8 +291,8 @@ class Calendar extends Component<PropsType, any> {
                 </Button>
               )
             }
-          </div>
-        ) : null}
+            </div>
+          ) : null}
       </div>
     );
   }

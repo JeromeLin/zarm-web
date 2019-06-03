@@ -15,7 +15,7 @@ interface StateProps {
   dropdown: boolean;
   searchValue: string | null;
   showPlacehoder: boolean;
-  optionMap: { [x: string]: any, [y: number]: any };
+  optionMap: { [x: string]: any; [y: number]: any };
   optionData: Array<OptionDataProps>;
 }
 
@@ -34,6 +34,7 @@ const EMPTY_STRING_VALUE = '$$EMPTY_STRING_VALUE';
  */
 class Select extends Component<PropsType, StateProps> {
   static contextType = FormItemContext;
+
   static defaultProps = {
     prefixCls: 'za-select',
     radius: true,
@@ -42,16 +43,19 @@ class Select extends Component<PropsType, StateProps> {
   };
 
   static Option: typeof Option = Option;
+
   static Multiple: typeof SelectMultiple = SelectMultiple;
 
   inputBox!: HTMLInputElement;
+
   inputWithTags!: InputWithTags;
+
   oldInputDivHeight: number = 0;
 
   constructor(props: PropsType) {
     super(props);
-    let value = props.value === undefined ? props.defaultValue : props.value;
-    let state: StateProps = {
+    const value = props.value === undefined ? props.defaultValue : props.value;
+    const state: StateProps = {
       value: String(value),
       dropdown: false,
       searchValue: '',
@@ -86,12 +90,12 @@ class Select extends Component<PropsType, StateProps> {
       options = [options];
     }
 
-    let optionData: Array<OptionDataProps> = [];
-    let optionMap: { [x: string]: any } = {};
+    const optionData: Array<OptionDataProps> = [];
+    const optionMap: { [x: string]: any } = {};
 
     React.Children.map(options, (option) => {
       if (option && typeof option === 'object' && option.type) {
-        let value = this.mapEmptyStringToEmptyValue(option.props.value);
+        const value = this.mapEmptyStringToEmptyValue(option.props.value);
         if (option.props && value) {
           // handle optionMap
           optionMap[value] = option;
@@ -152,7 +156,7 @@ class Select extends Component<PropsType, StateProps> {
       this.context.handleFieldChange();
     }
 
-    let value = String(props.value);
+    const value = String(props.value);
 
     if (this.props.multiple) {
       const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
@@ -163,10 +167,10 @@ class Select extends Component<PropsType, StateProps> {
         selected.splice(position, 1);
       }
       const selectedData = selected.map((select) => {
-        let selectValue = select || EMPTY_STRING_VALUE;
+        const selectValue = select || EMPTY_STRING_VALUE;
         const vdom = this.state.optionMap[selectValue];
         const text = vdom ? vdom.props.children : '';
-        let index = this.state.optionData.findIndex(elem => String(elem.value) === String(selectValue));
+        const index = this.state.optionData.findIndex(elem => String(elem.value) === String(selectValue));
         return { text, value: select, index };
       });
       this.setState({
@@ -192,7 +196,7 @@ class Select extends Component<PropsType, StateProps> {
 
   inputWithTagsRef = (e) => {
     this.inputWithTags = e;
-  }
+  };
 
   setDropdown(isOpen, callback?) {
     this.setState(
@@ -216,7 +220,7 @@ class Select extends Component<PropsType, StateProps> {
         }
         return value;
       });
-    } else if (values === EMPTY_STRING) {
+    } if (values === EMPTY_STRING) {
       return EMPTY_STRING_VALUE;
     }
 
@@ -259,7 +263,7 @@ class Select extends Component<PropsType, StateProps> {
       };
     });
     this.props.onChange(selected, selectedData);
-  }
+  };
 
   onSearchValueChange = (value) => {
     const { onSearchChange } = this.props;
@@ -273,7 +277,7 @@ class Select extends Component<PropsType, StateProps> {
         onSearchChange(this.state.searchValue);
       }
     });
-  }
+  };
 
   render() {
     const { props } = this;
@@ -295,7 +299,7 @@ class Select extends Component<PropsType, StateProps> {
     const radius = 'radius' in props;
     const search = 'search' in props;
 
-    let placeholderText = placeholder || locale!.placeholder;
+    const placeholderText = placeholder || locale!.placeholder;
 
     let valueText;
     if (multiple && Array.isArray(this.state.value)) {
@@ -309,9 +313,9 @@ class Select extends Component<PropsType, StateProps> {
         return prev;
       }, []);
     } else {
-      let optionProps = this.state.optionMap[this.state.value as string];
+      const optionProps = this.state.optionMap[this.state.value as string];
       if (optionProps) {
-        let optionChildren = optionProps.props.children;
+        const optionChildren = optionProps.props.children;
         Array.isArray(optionChildren) ? valueText = optionChildren.join() : valueText = optionChildren;
       }
     }
@@ -321,9 +325,8 @@ class Select extends Component<PropsType, StateProps> {
     const filterCondition = (option, optionIndex: number) => {
       if (search && searchValue) {
         return String(option.props.children).includes(searchValue);
-      } else { // remoteSearch会走此处逻辑
-        return optionIndex > -1;
-      }
+      }  // remoteSearch会走此处逻辑
+      return optionIndex > -1;
     };
     this.state.optionData.filter(filterCondition).forEach((elem, index) => {
       const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
@@ -347,10 +350,9 @@ class Select extends Component<PropsType, StateProps> {
       overflow: 'auto',
     };
 
-    const menus =
-      children && children.length > 0
-        ? <Menu size={size} style={menuStyle}>{children}</Menu>
-        : <span className={`${prefixCls}--notfound`}>{locale!.noMatch}</span>;
+    const menus = children && children.length > 0
+      ? <Menu size={size} style={menuStyle}>{children}</Menu>
+      : <span className={`${prefixCls}--notfound`}>{locale!.noMatch}</span>;
 
     return (
       <Dropdown

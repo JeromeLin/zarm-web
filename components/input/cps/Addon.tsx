@@ -1,7 +1,7 @@
 import React from 'react';
+import classnames from 'classnames';
 import { isAddon, AddonPropsIF } from '../PropsType';
 import { handleFillType } from '../handler';
-import classnames from 'classnames';
 
 export default function Addon<T>(props: Readonly<AddonPropsIF>) {
   const { addon, size, param, shape, composePosition } = props;
@@ -14,7 +14,7 @@ export default function Addon<T>(props: Readonly<AddonPropsIF>) {
   const params = Array.isArray(param) ? [param] : param;
   if (typeof addon === 'function') {
     return addon.apply(undefined, params);
-  } else if (isAddon(addon)) {
+  } if (isAddon(addon)) {
     const { fillType } = addon;
     const addonElem = addon.addon;
     let childElem: React.ReactNode;

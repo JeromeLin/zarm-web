@@ -21,7 +21,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
     if (this.props.onError) {
       this.props.onError(e);
     }
-  }
+  };
 
   render() {
     const {
@@ -56,14 +56,14 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
       ...style,
       width: size,
       height: size,
-      lineHeight: size + 'px',
-      fontSize: size / 2 + 'px',
+      lineHeight: `${size}px`,
+      fontSize: `${size / 2}px`,
     } : { ...style };
 
     const spanStyle: CSSProperties = {
       position: 'absolute',
-      transform: 'scale(' + (1 - 0.1 * (strLength - 1)) + ')',
-      left: 'calc(50% - ' + 4.5 * strLength + 'px )',
+      transform: `scale(${1 - 0.1 * (strLength - 1)})`,
+      left: `calc(50% - ${4.5 * strLength}px )`,
     };
 
     return (
