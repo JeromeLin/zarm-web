@@ -1,18 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const browserlist = require('../config/browserlist');
-const babelConfig = require('../config/babelConfig');
-
-const isDev = process.env.NODE_ENV === 'development';
-
-babelConfig.plugins.push([
-  'import',
-  {
-    libraryName: 'dragon-ui',
-    libraryDirectory: 'components',
-    style: true,
-  },
-]);
+const babelConfig = require('../babel/config');
 
 module.exports = {
   output: {
@@ -25,42 +13,36 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: babelConfig,
-          },
-        ],
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: babelConfig,
-          },
-          {
-            loader: 'awesome-typescript-loader',
           },
         ],
       },
       {
         test: /\.(css|scss)$/,
         use: [
-          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader?importLoaders=1',
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
               plugins: [
-                require('autoprefixer')({
-                  browsers: browserlist,
-                }),
+                require('postcss-flexbugs-fixes'),
+                require('autoprefixer')(),
               ],
             },
           },
@@ -68,30 +50,25 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              outputStyle: 'compact',
+              implementation: require('sass'),
             },
           },
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'url-loader?limit=8192&name=images/[name].[hash:8].[ext]',
+            loader: 'url-loader?limit=1&name=images/[name].[hash:8].[ext]',
           },
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg)$/,
-        exclude: /node_modules/,
+        test: /\.(woff|woff2|ttf|eot)$/,
         use: [
           {
-            loader: 'file-loader',
-            options: {
-              name: './fonts/[name].[hash:8].[ext]',
-              publicPath: '../',
-            },
+            loader: 'file-loader?name=fonts/[name].[hash:8].[ext]',
           },
         ],
       },
@@ -103,7 +80,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [' ', '.js', '.jsx', '.ts', '.tsx', '.scss'],
+    extensions: [' ', '.ts', '.tsx', '.js', '.jsx', '.scss'],
   },
 
   plugins: [],
