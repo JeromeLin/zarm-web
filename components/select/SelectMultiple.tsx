@@ -1,6 +1,7 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
 import Option from './Option';
+import Menu from '../menu';
 import { MultipleProps } from './PropsType';
 
 class SelectMultiple extends Component<MultipleProps, any> {
@@ -8,8 +9,8 @@ class SelectMultiple extends Component<MultipleProps, any> {
     prefixCls: 'ui-select',
     isRadius: false,
     isDisabled: false,
-    onChange: () => { },
-    onDoubleClick: () => { },
+    onChange: () => {},
+    onDoubleClick: () => {},
   };
 
   constructor(props) {
@@ -111,7 +112,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
           aria-expanded="false"
           onClick={e => !disabled && this.onSelectClick(e)}
         >
-          <ul className={`${prefixCls}-ul`}>{children}</ul>
+          <Menu size={size}>{children}</Menu>
         </span>
       </span>
     );
