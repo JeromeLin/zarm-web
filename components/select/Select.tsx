@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component, ReactNode, ReactElement } from 'react';
 import Events from '../utils/events';
 import { FormItemContext } from '../form/createContext';
 import Option from './Option';
@@ -91,7 +91,7 @@ class Select extends Component<PropsType, StateProps> {
     let optionData: Array<OptionDataProps> = [];
     let optionMap: { [x: string]: any } = {};
 
-    React.Children.map(options, (option) => {
+    React.Children.map(options, (option: ReactElement) => {
       if (option && typeof option === 'object' && option.type) {
         let value = this.mapEmptyStringToEmptyValue(option.props.value);
         if (option.props && value) {
