@@ -10,6 +10,7 @@ export interface OptionProps {
   style?: CSSProperties;
   onChange: (e: MouseEvent) => void;
   onDoubleClick?: (e: MouseEvent) => void;
+  children?: ReactNode;
 }
 
 export interface IDisableProps {
