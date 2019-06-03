@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import marked from 'marked';
-import { transform } from 'babel-standalone';
+import { transform } from '@babel/standalone';
 
 import Editor from '../editor';
 
@@ -115,16 +115,18 @@ export default class Canvas extends React.Component {
           {
             this.state.showBlock ? (
               <span>
-                <i className="el-icon-caret-top" />隐藏
+                <i className="el-icon-caret-top" />
+隐藏
               </span>
             ) : (
               <span>
-                <i className="el-icon-caret-bottom" />展开
+                <i className="el-icon-caret-bottom" />
+展开
               </span>
-              )
+            )
           }
         </div>
-      </div >
+      </div>
     );
   }
 }

@@ -4,7 +4,7 @@ import Loadable from 'react-loadable';
 import classnames from 'classnames';
 import { hot } from 'react-hot-loader';
 import '@/components/style/index.scss';
-import '@/components/style/component.scss';
+import '@/components/style/components.scss';
 import { qs } from '../../components/locale/util';
 import Markdown from './markdown';
 import '../../components/style/index.scss';
@@ -43,15 +43,13 @@ class App extends Component {
       <div className="app">
         <header className="header">
           <div className="container">
-            <h1>
-              dragon-ui
-            </h1>
+            <h1>zarm-web</h1>
             <ul className="nav">
               <li className="nav-item">
                 <a href="/#/" className="active">Components</a>
               </li>
               <li className="nav-item">
-                <a href="//github.com/JeromeLin/dragon-ui" target="_blank" rel="noopener noreferrer">Github</a>
+                <a href="//github.com/JeromeLin/zarm-web" target="_blank" rel="noopener noreferrer">Github</a>
               </li>
               <li className="nav-item">
                 {

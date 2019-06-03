@@ -1,0 +1,86 @@
+@mixin button-theme($color, $background, $border, $type: '') {
+  $active-background: darken($background, 4%);
+  $active-border: darken($border, 4%);
+  $hover-background: rgba($background, .8);
+  $hover-border: rgba($border, .8);
+  $disable-background: rgba($background, .5);
+  $disable-border: rgba($border, .5);
+
+  border-color: $border;
+  color: $color;
+  background: $background;
+
+  &:not(.is-loading):hover {
+    background-color: $hover-background;
+    border-color: $hover-border;
+    color: $color;
+    @if ($type == default) {
+      background-color: $--color-white;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+  }
+
+  &:not(.is-loading):focus,
+  &:not(.is-loading):active {
+    background-color: $active-background;
+    border-color: $active-border;
+    color: $color;
+    @if ($type == default) {
+      background-color: $--color-white;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+  }
+
+  &.is-disabled,
+  &:not(.is-loading):disabled {
+    cursor: not-allowed;
+
+    &.is-ghost {
+      color: $--button-ghost-disabled-color;
+      border-color: $--button-ghost-disabled-border;
+
+      &:focus,
+      &:hover {
+        color: $--button-ghost-disabled-color;
+        border-color: $--button-ghost-disabled-border;
+      }
+    }
+
+    &:focus,
+    &.is-focus,
+    &:hover {
+      background-color: $background;
+      border-color: $border;
+      color: $color;
+    }
+  }
+}
+
+@mixin button-size($height, $padding, $font-size, $border-radius) {
+  padding: $padding;
+  font-size: $font-size;
+  height: $height;
+  line-height: $height - 2;
+
+  &.is-radius {
+    border-radius: $border-radius;
+  }
+
+  &.is-round {
+    border-radius: 1000px;
+  }
+
+  &.is-circle {
+    width: $height;
+    height: $height;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .ui-icon + span,
+  span + .ui-icon {
+    margin-left: $height / 10;
+  }
+}

@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -8,13 +8,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config.base');
 
 config.mode = 'production';
-
-config.entry = {
-  index: ['./examples/index.js'],
-};
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
-
+config.entry = {
+  index: './site/index.js',
+};
 config.optimization = {
   minimizer: [
     new UglifyJsPlugin({
@@ -30,7 +28,6 @@ config.optimization = {
     new OptimizeCSSAssetsPlugin({}),
   ],
 };
-
 config.plugins.push(
   // new BundleAnalyzerPlugin({
   //   analyzerMode: 'static',
@@ -47,33 +44,30 @@ config.plugins.push(
     maxInitialRequests: 3,
     automaticNameDelimiter: '~',
     name: true,
-    cacheGroups: {
-      styles: {
-        name: 'styles',
-        test: /\.s?css$/,
-        chunks: 'all',
-        minChunks: 5,
-        enforce: true,
-      },
-    },
+    // cacheGroups: {
+    //   styles: {
+    //     name: 'styles',
+    //     test: /\.s?css$/,
+    //     chunks: 'all',
+    //     minChunks: 5,
+    //     enforce: true,
+    //   },
+    // },
   }),
   new webpack.optimize.RuntimeChunkPlugin({
     name: 'manifest',
-  })
+  }),
 );
-
-Object.keys(config.entry).forEach((key) => {
-  config.plugins.push(new HtmlWebpackPlugin({
-    template: `./examples/${key}.html`,
-    filename: `${key}.html`,
-    chunks: ['manifest', key],
-  }));
-});
-
+config.plugins.push(new HtmlWebpackPlugin({
+  template: './site/index.html',
+  filename: 'index.html',
+  chunks: ['manifest', 'index'],
+  favicon: './site/favicon.ico',
+}));
 config.resolve.alias = {
-  'dragon-ui': process.cwd(),
+  'zarm-web': process.cwd(),
   '@': path.resolve(__dirname, '../../'),
-  '@examples': path.resolve(__dirname, '../../examples')
+  '@site': path.resolve(__dirname, '../../site'),
 };
 
 module.exports = config;
