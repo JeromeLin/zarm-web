@@ -4,7 +4,6 @@ import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import events from '../utils/events';
 import throttle from '../utils/throttle';
-import domUtil from '../utils/dom';
 import { propsType, StateType } from './PropsType';
 type ReactMouseEvent = (e: React.MouseEvent) => void;
 
@@ -54,7 +53,7 @@ function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document
 }
 
 // todo [首次不创建]
-
+// bottom top left center right
 const placementMap = {
   bottomLeft: 5,
   bottomCenter: 9,
@@ -161,7 +160,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   private triggerBox!: HTMLDivElement;
   private DropdownContent!: HTMLDivElement;
   private popContainer!: HTMLElement;
-  private scrollParent!: HTMLElement;
   private isHoverOnDropContent: boolean = false;
   private hiddenTimer: number | undefined;
   private triggerBoxOffsetHeight!: number;
@@ -257,7 +255,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     events.on(document, 'click', this.onDocumentClick);
     events.on(window, 'resize', this.onWindowResize);
     document.addEventListener('scroll', this.onScroll, true);
-    // events.on(this.scrollParent, 'scroll', this.onParentScroll);
 
     // 存储当前实例，方便静态方法统一处理
     mountedInstance.push(this);
@@ -323,7 +320,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       offsetWidth,
       offsetHeight,
     );
-    const offset = placement.startsWith('bottom') ? 5 : -5;
+    const offset = placementMap[placement] & 1 ? 5 : -5;
     return {
       left: rectInfo.left + left - marginLeft,
       top: rectInfo.top + top - marginTop + offset,
