@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { FormContext } from './createContext';
 import PropsType, { ItemProps } from './PropsType';
+import FormItem from './FormItem';
 
 class Form extends PureComponent<PropsType, any> {
+  static Item: typeof FormItem;
   static defaultProps = {
     prefixCls: 'ui-form',
     type: 'horizontal',

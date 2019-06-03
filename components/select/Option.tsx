@@ -1,9 +1,9 @@
-import React, { PureComponent, Component } from 'react';
+import React, { Component } from 'react';
 import cn from 'classnames';
 import Icon from '../icon';
 import { OptionProps } from './PropsType';
 
-class Option extends PureComponent<OptionProps, any> {
+class Option extends Component<OptionProps, any> {
   static defaultProps = {
     isDisabled: false,
     onChange: () => { },
@@ -12,11 +12,10 @@ class Option extends PureComponent<OptionProps, any> {
   render() {
     const { props } = this;
     const {
-      children, className, checked, disabled, onChange, isDisabled, onDoubleClick, showCheckIcon, ...DOMProps
+      children, checked, disabled, isDisabled, onDoubleClick, showCheckIcon,
     } = props;
 
     const cls = cn({
-      [`${className}`]: !!className,
       'ui-option-list': true,
       'checked': checked,
       'disabled': isDisabled || disabled,
@@ -25,9 +24,8 @@ class Option extends PureComponent<OptionProps, any> {
       <li
         className={cls}
         style={{ paddingRight: showCheckIcon ? 25 : 10 }}
-        onClick={onChange}
+        onClick={e => props.onChange(e)}
         onDoubleClick={onDoubleClick}
-        {...DOMProps}
       >
         {children}
         {showCheckIcon && checked && <Icon className="checked-icon" theme="info" type="right" />}
