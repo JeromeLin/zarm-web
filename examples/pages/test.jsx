@@ -1,46 +1,53 @@
 import React from 'react';
-import Select from '../../components/select';
-import '../../components/select/style';
+import Dropdown from '../../components/dropdown';
+import '../../components/dropdown/style';
 
 export default class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '1',
+      visible: false,
     };
   }
 
   render() {
+    const dom = (
+      <div style={{ width: 50 }}>
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
+      </div>
+    );
     return (
-      <div
-        style={{ width: 200, cursor: 'pointer' }}
-      >
-        <Select
-          search
-          style={{ width: '100%' }}
-          value={this.state.value}
-          onChange={({ value }) => {
+      <div style={{ width: 200, height: 100, overflow: 'auto' }}>
+        <Dropdown
+          onVisibleChange={(visible) => {
             this.setState({
-              value,
+              visible,
             });
           }}
+          overlay={dom}
+          visible={this.state.visible}
         >
-          <Select.Option value="1">1234我是一个很长的代码11edasdasdcertwgtstyhbd</Select.Option>
-          <Select.Option value="2">13</Select.Option>
-          <Select.Option value="3">14</Select.Option>
-          <Select.Option value="4">15</Select.Option>
-          <Select.Option value="5">16</Select.Option>
-          <Select.Option value="6">16</Select.Option>
-          <Select.Option value="7">16</Select.Option>
-          <Select.Option value="8">16</Select.Option>
-          <Select.Option value="9">16</Select.Option>
-          <Select.Option value="10">16</Select.Option>
-          <Select.Option value="11">16</Select.Option>
-          <Select.Option value="12">16</Select.Option>
-          <Select.Option value="13">16</Select.Option>
-          <Select.Option value="14">16</Select.Option>
-          <Select.Option value="15">16</Select.Option>
-        </Select>
+          <div style={{ whiteSpace: 'nowrap' }}>点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里点击这里</div>
+        </Dropdown>
       </div >
     );
   }
