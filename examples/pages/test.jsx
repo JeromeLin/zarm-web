@@ -7,8 +7,6 @@ export default class Test extends React.Component {
     super(props);
     this.state = {
       visible: false,
-      value: '1',
-      list: Array(3000).fill('').map((item, index) => `this is ${index}`),
     };
   }
 
@@ -17,27 +15,28 @@ export default class Test extends React.Component {
   }
 
   render() {
-    const dom = (<div style={{ width: 50 }}>
-      123112
-      <br />
-      12311231
-      <br />
-      qweq
-      123112
-      <br />
-      12311231
-      <br />
-      qweq
-      123112
-      <br />
-      12311231
-      <br />
-      qweq
-      123112
-      <br />
-      12311231
-      <br />
-      qweq
+    const dom = (
+      <div style={{ width: 50 }}>
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
+        123112
+        <br />
+        12311231
+        <br />
+        qweq
       </div>
     );
     return (
