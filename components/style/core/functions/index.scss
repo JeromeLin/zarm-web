@@ -1,4 +1,4 @@
-@import 'string.scss';
+@import './string';
 
 @function r($px) {
   @return $px * 1px;
