@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-//    "strict": true,
-//    "noImplicitAny": true,
     "strictNullChecks": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "jsx": "react",
     "noUnusedParameters": true,

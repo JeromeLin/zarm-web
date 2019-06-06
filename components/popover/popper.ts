@@ -177,7 +177,7 @@ Popper.prototype.destroy = function () {
   this._popper.style.left = '';
   this._popper.style.position = '';
   this._popper.style.top = '';
-  this._popper.style[getSupportedPropertyName('transform')] = '';
+  this._popper.style[getSupportedPropertyName('transform')!] = '';
   this._removeEventListeners();
 
   if (this._options.removeOnDestroy) {

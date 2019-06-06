@@ -8,6 +8,7 @@ export interface OptionProps extends LiHTMLAttributes<HTMLLIElement> {
   isDisabled?: boolean;
   showCheckIcon?: boolean;
   onDoubleClick?: (e: MouseEvent) => void;
+  children?: ReactNode;
 }
 
 export interface IDisableProps {
