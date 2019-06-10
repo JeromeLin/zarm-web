@@ -8,7 +8,7 @@ describe('Switch', () => {
     const wrapper = render(
       <div>
         <Switch />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -18,7 +18,7 @@ describe('Switch', () => {
     const wrapper = render(
       <div>
         <Switch disabled loading size="sm" checkedChildren="是" unCheckedChildren="否" />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -26,7 +26,7 @@ describe('Switch', () => {
 
   it('behaves correctly when receving new value', () => {
     const wrapper = mount(
-      <Switch defaultChecked={false} />
+      <Switch defaultChecked={false} />,
     );
 
     expect(wrapper.find('.za-switch').hasClass('za-switch--checked')).toBeFalsy();
@@ -37,11 +37,10 @@ describe('Switch', () => {
   it('behaves correctly when toggling status', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Switch defaultChecked={false} onChange={onChange} />
+      <Switch defaultChecked={false} onChange={onChange} />,
     );
 
     wrapper.find('.za-switch').simulate('click');
     expect(onChange).toHaveBeenCalledWith(expect.any(Object), true);
   });
 });
-

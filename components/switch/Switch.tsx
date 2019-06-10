@@ -30,24 +30,23 @@ class Switch extends Component<SwitchPropsType, StateType> {
   }
 
   onClick: React.MouseEventHandler<HTMLSpanElement> = (e) => {
-    const checked = !this.state.checked;
+    const { checked } = this.state;
     this.setState({
-      checked,
+      checked: !checked,
     });
-    this.props.onChange(e, checked);
-  }
+    this.props.onChange(e, !checked);
+  };
 
   render() {
-    const { props } = this;
     const {
       size, checkedChildren, unCheckedChildren, prefixCls,
       loading, disabled, className, ...others
-    } = props;
+    } = this.props;
     const { checked } = this.state;
     const cls = classnames({
       [prefixCls!]: true,
       [className!]: className,
-      [`${prefixCls}--${size}`]: typeof size === 'string' && size,
+      [`${prefixCls}--${size}`]: (typeof size === 'string') && size,
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled || loading,
     });
@@ -55,7 +54,7 @@ class Switch extends Component<SwitchPropsType, StateType> {
     return (
       <span
         className={cls}
-        onClick={(e) => !disabled && !loading && this.onClick(e)}
+        onClick={e => !disabled && !loading && this.onClick(e)}
         {...others}
       >
         {loadingIcon}
