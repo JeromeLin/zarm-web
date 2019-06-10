@@ -44,7 +44,8 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -60,7 +61,8 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -76,7 +78,8 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -118,7 +121,8 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
-        class="ui-select-ul"
+        class="ui-menu ui-menu-light ui-menu-inline"
+        role="menu"
       />
     </span>
   </span>
@@ -134,7 +138,8 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
-        class="ui-select-ul"
+        class="ui-menu ui-menu-light ui-menu-inline"
+        role="menu"
       />
     </span>
   </span>
@@ -150,7 +155,8 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
-        class="ui-select-ul"
+        class="ui-menu ui-menu-light ui-menu-inline"
+        role="menu"
       />
     </span>
   </span>
@@ -202,7 +208,8 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -218,7 +225,8 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -234,7 +242,8 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -304,7 +313,8 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -320,7 +330,8 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>
@@ -336,7 +347,8 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
-              class="ui-select-ul"
+              class="ui-menu ui-menu-light ui-menu-inline"
+              role="menu"
             />
           </span>
         </span>

@@ -271,7 +271,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   // 页面滚动的时候
   onScroll = (e: Event) => {
     if (e.target !== e.currentTarget) {
-      if (this.state.visible && (e.target as HTMLElement).contains(this.triggerBox)) {
+      if (this.props.visible && (e.target as HTMLElement).contains(this.triggerBox)) {
         this.reposition();
       }
     }
@@ -279,7 +279,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
 
   // 点击外部的时候
   onDocumentClick = (e: MouseEvent): void => {
-    if (this.props.disabled === true || this.state.visible === false) {
+    if (this.props.disabled === true || this.props.visible === false) {
       return;
     }
     const target = e.target as Node;
@@ -294,7 +294,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   }
 
   reposition = () => {
-    if (!this.state.visible || this.props.disabled) {
+    if (!this.props.visible || this.props.disabled) {
       return;
     }
     const { left, top } = this.getDropdownPosition(this.props.placement);
@@ -374,6 +374,20 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     });
   }
 
+  onTransitionEnd = () => {
+    if (this.state.animationState === 'leave') {
+      this.setState({
+        visible: false,
+        isPending: false,
+      });
+    } else {
+      this.setState({
+        visible: true,
+        isPending: false,
+      });
+    }
+  }
+
   render() {
     const {
       disabled,
@@ -427,6 +441,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
             className={cls}
             ref={(e) => this.DropdownContent = e as HTMLDivElement}
             style={dropdownBoxStyle}
+            onTransitionEnd={this.onTransitionEnd}
             {...others}
             {...this.DropdownContentEvent}
           >

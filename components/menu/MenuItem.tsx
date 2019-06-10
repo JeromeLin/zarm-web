@@ -25,8 +25,9 @@ class MenuItem extends Component<ItemProps, any> {
   render() {
     const { props } = this;
     const {
-      checked, isDisabled, children, prefixCls, level, inlineIndent,
+      checked, isDisabled, children, prefixCls, level, inlineIndent, inlineCollapsed, subMenuKey, toggleSelectedKeys,
       className, style, onDoubleClick, selectedKeys, itemKey, mode,
+      ...DOMProps
     } = props;
 
     const cls = classnames({
@@ -44,11 +45,12 @@ class MenuItem extends Component<ItemProps, any> {
     }
     return (
       <li
+        {...DOMProps}
         className={cls}
         role="menuitem"
         style={itemStyle}
-        onClick={this.handleClick}
         onDoubleClick={onDoubleClick}
+        onClick={this.handleClick}
       >
         {children}
       </li>

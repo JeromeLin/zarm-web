@@ -1,3 +1,5 @@
+import { LiHTMLAttributes } from 'react';
+
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export type styleType = {
@@ -15,7 +17,7 @@ export type childPropsType = {
   subMenuKey?: any;
 };
 
-export interface ItemProps {
+interface ItemPropsBasicProp {
   prefixCls?: string;
   checked?: boolean;
   disabled?: boolean;
@@ -31,6 +33,11 @@ export interface ItemProps {
   toggleSelectedKeys: (itemKey: string) => void;
   onDoubleClick?: () => void;
 }
+
+type Omit<A, B> = Pick<A, Exclude<keyof A, B>>;
+type Merge<A, B> = Omit<A, keyof B> & B;
+
+export type ItemProps = Merge<LiHTMLAttributes<HTMLLIElement>, ItemPropsBasicProp>;
 
 export type DividerProps = {
   prefixCls?: string,

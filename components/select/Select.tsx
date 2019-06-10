@@ -149,7 +149,7 @@ class Select extends Component<PropsType, StateProps> {
     this.unbindOuterHandlers();
   }
 
-  onOptionChange = (e: React.MouseEvent<HTMLLIElement>) => {
+  onOptionChange = (e) => {
     const { index } = e.currentTarget.dataset;
     const currentData = this.state.optionMap[index];
     if (!currentData) {
@@ -249,18 +249,18 @@ class Select extends Component<PropsType, StateProps> {
     });
   }
 
-  handleKeyup(e) {
+  handleKeyup = (e) => {
     if (this.state.dropdown === true && e.keyCode === 27) {
       this.setDropdown(false);
     }
   }
 
   bindOuterHandlers() {
-    Events.on(document, 'keyup', e => this.handleKeyup(e));
+    Events.on(document, 'keyup', this.handleKeyup);
   }
 
   unbindOuterHandlers() {
-    Events.off(document, 'keyup', e => this.handleKeyup(e));
+    Events.off(document, 'keyup', this.handleKeyup);
   }
 
   onDeleteTag = (_e, _key, _value, index) => {
@@ -374,7 +374,7 @@ class Select extends Component<PropsType, StateProps> {
     const children = this.renderChildren();
     const menus =
       children && children.length > 0
-        ? <ul style={menuStyle}>{children}</ul>
+        ? <Menu style={menuStyle}>{children}</Menu>
         : <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>;
 
     return (

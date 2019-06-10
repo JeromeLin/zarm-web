@@ -26,32 +26,37 @@ exports[`Transfer renders Transfer correctly 1`] = `
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul
-            class="ui-select-ul"
+            class="ui-menu ui-menu-light ui-menu-inline"
+            role="menu"
           >
             <li
-              class="ui-option-list"
-              style="padding-right:10px"
+              class="ui-menu-item"
+              role="menuitem"
+              style="padding-right:10px;padding-left:24px"
               value="1"
             >
               张三
             </li>
             <li
-              class="ui-option-list"
-              style="padding-right:10px"
+              class="ui-menu-item"
+              role="menuitem"
+              style="padding-right:10px;padding-left:24px"
               value="2"
             >
               李四
             </li>
             <li
-              class="ui-option-list"
-              style="padding-right:10px"
+              class="ui-menu-item"
+              role="menuitem"
+              style="padding-right:10px;padding-left:24px"
               value="3"
             >
               王五
             </li>
             <li
-              class="ui-option-list"
-              style="padding-right:10px"
+              class="ui-menu-item"
+              role="menuitem"
+              style="padding-right:10px;padding-left:24px"
               value="4"
             >
               奥巴马
@@ -106,7 +111,8 @@ exports[`Transfer renders Transfer correctly 1`] = `
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul
-            class="ui-select-ul"
+            class="ui-menu ui-menu-light ui-menu-inline"
+            role="menu"
           />
         </span>
       </span>
