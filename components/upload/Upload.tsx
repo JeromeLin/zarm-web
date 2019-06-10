@@ -18,6 +18,7 @@ class Upload extends Component<PropsType, any> {
   };
 
   static List;
+
   private upload;
 
   constructor(props) {
@@ -152,13 +153,13 @@ class Upload extends Component<PropsType, any> {
         // 不是原生dom
         extendProps = {
           isLoading:
-            'loading' in (element as ReactElement<any>).props ||
-            (element as ReactElement<any>).props.isLoading ||
-            this.state.uploading,
+            'loading' in (element as ReactElement<any>).props
+            || (element as ReactElement<any>).props.isLoading
+            || this.state.uploading,
           isDisabled:
-            'disabled' in (element as ReactElement<any>).props ||
-            (element as ReactElement<any>).props.isDisabled ||
-            this.state.uploading,
+            'disabled' in (element as ReactElement<any>).props
+            || (element as ReactElement<any>).props.isDisabled
+            || this.state.uploading,
         };
       }
       if (index > 0) {

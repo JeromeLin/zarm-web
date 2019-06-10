@@ -1,4 +1,5 @@
-@import "../themes/default.scss";
+@import '../themes/default';
+@import './mixins/base';
 
 @mixin make-grid-columns($i: 1, $list: ".col-#{$i}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
   @for $i from (1 + 1) through $grid-columns {

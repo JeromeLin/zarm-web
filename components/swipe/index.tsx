@@ -104,16 +104,14 @@ class Swipe extends Component<PropsType, any> {
 
   // 自动轮播开始
   startAutoPlay() {
-    this.moveInterval =
-      this.props.autoPlay &&
-      setInterval(() => {
+    this.moveInterval = this.props.autoPlay
+      && setInterval(() => {
         let { activeIndex } = this.state;
         const maxLength = React.Children.count(this.props.children);
 
-        activeIndex =
-          ['left', 'top'].indexOf(this.props.direction) > -1
-            ? activeIndex + 1
-            : activeIndex - 1;
+        activeIndex = ['left', 'top'].indexOf(this.props.direction) > -1
+          ? activeIndex + 1
+          : activeIndex - 1;
 
         if (activeIndex > maxLength - 1) {
           activeIndex = 0;
@@ -224,10 +222,9 @@ class Swipe extends Component<PropsType, any> {
   }
 
   _onTouchEnd() {
-    const px =
-        this.state.pointEnd !== 0
-          ? this.state.pointEnd - this.state.pointStart
-          : 0;
+    const px = this.state.pointEnd !== 0
+      ? this.state.pointEnd - this.state.pointStart
+      : 0;
     const timeSpan = new Date().getTime() - this.state.timeStart.getTime();
     const dom = this.swipeItems;
 
@@ -237,11 +234,10 @@ class Swipe extends Component<PropsType, any> {
     // 1.滑动距离比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
     if (
-      Math.abs(px / dom.offsetWidth) >= this.props.moveDistanceRatio ||
-      timeSpan <= this.props.moveTimeSpan
+      Math.abs(px / dom.offsetWidth) >= this.props.moveDistanceRatio
+      || timeSpan <= this.props.moveTimeSpan
     ) {
-      activeIndex =
-        px > 0 ? this.state.activeIndex - 1 : this.state.activeIndex + 1;
+      activeIndex = px > 0 ? this.state.activeIndex - 1 : this.state.activeIndex + 1;
 
       this.onSlideTo(activeIndex);
     } else {
@@ -270,8 +266,7 @@ class Swipe extends Component<PropsType, any> {
 
   // 是否横向移动
   _isDirectionX() {
-    const dir =
-      ['left', 'right'].indexOf(this.props.direction) > -1;
+    const dir = ['left', 'right'].indexOf(this.props.direction) > -1;
     return dir;
   }
 
@@ -285,7 +280,7 @@ class Swipe extends Component<PropsType, any> {
       [className!]: !!className,
     });
 
-    type styleType = { items: { [propName: string]: any }, pagination: { [propName: string]: any } };
+    interface styleType { items: { [propName: string]: any }; pagination: { [propName: string]: any } }
     const style: styleType = {
       items: {},
       pagination: {},
@@ -317,17 +312,17 @@ class Swipe extends Component<PropsType, any> {
             {
               // tslint:disable-next-line:jsx-no-multiline-js
               Children.map(children, (_, index) => (
-              <li
-                key={`pagination-${index}`}
+                <li
+                  key={`pagination-${index}`}
                 // tslint:disable-next-line:jsx-no-multiline-js
-                className={classnames({
+                  className={classnames({
                   // eslint-disable-next-line
                   // tslint:disable-next-line:triple-equals
-                  active: index == this.state.activeIndex,
-                })}
-                style={style.pagination}
-                onClick={() => this.onSlideTo(index)}
-              />
+                    active: index == this.state.activeIndex,
+                  })}
+                  style={style.pagination}
+                  onClick={() => this.onSlideTo(index)}
+                />
               ))}
           </ul>
         </div>

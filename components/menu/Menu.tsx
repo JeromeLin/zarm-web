@@ -20,10 +20,13 @@ class Menu extends Component<PropsType, any> {
   };
 
   static SubMenu;
+
   static Item;
+
   static Divider;
 
   menuKeys: any;
+
   inlineOpenKeys: string[] = [];
 
   constructor(props) {
@@ -39,7 +42,7 @@ class Menu extends Component<PropsType, any> {
     this.menuKeys.toggleOpenKeys = this.toggleOpenKeys;
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (
       (nextProps.inlineCollapsed && !this.props.inlineCollapsed)
     ) {
@@ -65,7 +68,7 @@ class Menu extends Component<PropsType, any> {
         selectedKeys: [itemKey],
       });
     }
-  }
+  };
 
   toggleOpenKeys = (subMenuKey) => {
     const { openKeys } = this.state;
@@ -90,7 +93,7 @@ class Menu extends Component<PropsType, any> {
         openKeys: newOpenKeys,
       });
     }
-  }
+  };
 
   renderChildren() {
     const { children, inlineIndent, inlineCollapsed, mode } = this.props;
@@ -103,7 +106,7 @@ class Menu extends Component<PropsType, any> {
     };
     return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
-      const key = (child as ReactElement<any>).key;
+      const { key } = child as ReactElement<any>;
 
       childProps.subMenuKey = key || `0-${index}`;
       childProps.itemKey = key || `0-${index}`;

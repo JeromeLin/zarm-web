@@ -5,7 +5,7 @@ const defaultOptions = {
   isMessage: true,
 };
 
-function proxy (theme: string) {
+function proxy(theme: string) {
   return (config?: object | string) => {
     Notification[theme]({
       ...typeof config === 'string' ? { message: config } : { ...config },
@@ -20,7 +20,7 @@ export default {
   warning: proxy('warning'),
   danger: proxy('danger'),
   loading: proxy('loading'),
-  config (options) {
+  config(options) {
     Notification.open({ ...defaultOptions, ...options });
   },
 };

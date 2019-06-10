@@ -10,6 +10,7 @@ class Radio extends Component<PropsType, any> {
     disabled: false,
     onChange: () => {},
   };
+
   static propTypes = {
     defaultChecked: PropTypes.bool,
     onChange: PropTypes.func,
@@ -18,6 +19,7 @@ class Radio extends Component<PropsType, any> {
   };
 
   static Group;
+
   static Button;
 
   constructor(props) {

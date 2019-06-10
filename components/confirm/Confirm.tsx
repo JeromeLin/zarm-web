@@ -9,7 +9,6 @@ const Style = {
 };
 
 class Confirm extends Component<PropsType, any> {
-
   static defaultProps = {
     prefixCls: 'ui-confirm',
     message: '',
@@ -24,13 +23,13 @@ class Confirm extends Component<PropsType, any> {
     if (this.props.onCancel) {
       this.props.onCancel();
     }
-  }
+  };
 
   onOk = (e: MouseEvent) => {
     if (this.props.onOk) {
       this.props.onOk(e);
     }
-  }
+  };
 
   onKeyPress = (e: KeyboardEvent) => {
     if (e.keyCode === 13) {
@@ -38,7 +37,7 @@ class Confirm extends Component<PropsType, any> {
         this.props.onOk(e);
       }
     }
-  }
+  };
 
   render() {
     const {

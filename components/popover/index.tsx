@@ -34,10 +34,15 @@ class Popover extends Component<PropsType, any> {
   };
 
   private instance;
+
   private pop;
+
   private reference;
+
   private popper;
+
   private timer;
+
   private arrow;
 
   constructor(props) {
@@ -60,13 +65,13 @@ class Popover extends Component<PropsType, any> {
       });
       Events.on(document, 'click', ({ target }) => {
         if (
-          !instance ||
-          instance.contains(target) ||
-          !reference ||
-          reference.contains(target) ||
-          !pop ||
-          pop.contains(target) ||
-          !this.popper
+          !instance
+          || instance.contains(target)
+          || !reference
+          || reference.contains(target)
+          || !pop
+          || pop.contains(target)
+          || !this.popper
         ) {
           return;
         }

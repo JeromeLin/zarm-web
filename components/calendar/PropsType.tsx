@@ -1,9 +1,9 @@
-export type dateType = {
-  year?: number,
-  month?: number,
-  days?: number,
-  firstDayOfWeek?: number,
-};
+export interface dateType {
+  year?: number;
+  month?: number;
+  days?: number;
+  firstDayOfWeek?: number;
+}
 export interface HeaderProps {
   prefixCls?: string;
   panel?: string;

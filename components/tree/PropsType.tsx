@@ -11,13 +11,13 @@ export default interface PropsType {
 
   onCheck?(
     checkedMap: {
-      checkedKeys: Array<string>,
-      halfCheckedKeys: Array<string>,
+      checkedKeys: Array<string>;
+      halfCheckedKeys: Array<string>;
     },
     checkedObj: {
-      node: TreeNode,
-      checked: boolean,
-      event: MouseEvent,
+      node: TreeNode;
+      checked: boolean;
+      event: MouseEvent;
     }): void;
 
   onExpand?(expandedObj: {

@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import { BodyProps } from './PropsType';
 
 class Body extends Component<BodyProps, any> {
-
   // @ts-ignore
   private scrollbody;
+
   // @ts-ignore
   private row;
 
@@ -38,7 +38,7 @@ class Body extends Component<BodyProps, any> {
 
     if (expandedRowRender) {
       return (
-        <td onClick={(e) => this.handleToggleExpandRow(e, key, row)}><span className={cls} /></td>
+        <td onClick={e => this.handleToggleExpandRow(e, key, row)}><span className={cls} /></td>
       );
     }
   }
@@ -62,9 +62,8 @@ class Body extends Component<BodyProps, any> {
           </td>
         </tr>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   render() {

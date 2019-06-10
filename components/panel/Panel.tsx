@@ -9,9 +9,13 @@ class Panel extends Component<PropsType, any> {
   };
 
   static Header;
+
   static Body;
+
   static Footer;
+
   static More;
+
   static Title;
 
   render() {

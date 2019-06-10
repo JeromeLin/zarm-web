@@ -1,20 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "*": [
-        "types/*"
-      ]
-    },
     "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "react",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
-    "strict": true,
+    "skipLibCheck": true,
     "types": [
       "classnames",
       "react",
@@ -22,8 +15,8 @@
     ]
   },
   "include": [
-    "components/**/*",
-    "types/**/*"
+    "components/*.tsx",
+    "components/**/*.tsx"
   ],
   "exclude": [
     "node_modules",

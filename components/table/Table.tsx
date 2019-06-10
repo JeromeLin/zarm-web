@@ -26,17 +26,20 @@ class Table extends Component<PropsType, any> {
   };
 
   private scrollTable;
+
   private head;
+
   private body;
+
   private fixedLeftColumn;
+
   private fixedRightColumn;
 
   constructor(props) {
     super(props);
-    const selectedRows =
-      'rowSelection' in props
-        ? props.rowSelection.value || props.rowSelection.defaultValue || []
-        : [];
+    const selectedRows = 'rowSelection' in props
+      ? props.rowSelection.value || props.rowSelection.defaultValue || []
+      : [];
     const expandedRowKeys = this.getExpandedRowKeys();
     this.state = {
       selectedRows,
@@ -73,7 +76,7 @@ class Table extends Component<PropsType, any> {
         [`${column.dataIndex}`]: sort,
       },
     });
-  }
+  };
 
   onEnterRow = (index) => {
     const { fixedleftTbody } = this.fixedLeftColumn;
@@ -89,11 +92,11 @@ class Table extends Component<PropsType, any> {
         toggleHoverStatus(tbody.querySelectorAll('tr'), index);
       }
     });
-  }
+  };
 
   onLeaveRow = () => {
     this.onEnterRow(-1);
-  }
+  };
 
   onScrollTable = (e) => {
     const { fixedleftCol } = this.fixedLeftColumn;
@@ -119,7 +122,7 @@ class Table extends Component<PropsType, any> {
         }
       }
     }
-  }
+  };
 
   getRowKey = (row, index) => {
     const { rowKey } = this.props;
@@ -131,7 +134,7 @@ class Table extends Component<PropsType, any> {
       key = index;
     }
     return key;
-  }
+  };
 
   // 获取初始化展开行
   getExpandedRowKeys() {
@@ -203,7 +206,7 @@ class Table extends Component<PropsType, any> {
     this.setState({
       expandedRowKeys: keys,
     });
-  }
+  };
 
   // 渲染固定左侧的列
   renderFixedLeftCol() {
@@ -267,7 +270,7 @@ class Table extends Component<PropsType, any> {
         />
       </th>
     );
-  }
+  };
 
   // 渲染单选
   renderSelect = (rowSelection, row, height = 40) => {
@@ -293,7 +296,7 @@ class Table extends Component<PropsType, any> {
         />
       </td>
     );
-  }
+  };
 
   // 渲染单元格
   renderCell = (column, row, rowIndex, columnIndex) => {
@@ -308,7 +311,7 @@ class Table extends Component<PropsType, any> {
         columnIndex={columnIndex}
       />
     );
-  }
+  };
 
   renderTable() {
     const {

@@ -25,7 +25,7 @@ class MenuItem extends Component<ItemProps, any> {
     if (inlineCollapsed) {
       this.props.toggleSubMenuOpen('');
     }
-  }
+  };
 
   render() {
     const { props } = this;
@@ -68,11 +68,11 @@ class MenuItem extends Component<ItemProps, any> {
   }
 }
 
-export default function MenuItemConsumer (props) {
+export default function MenuItemConsumer(props) {
   return (
     <MenuContext.Consumer>
       {
-        (menuKeys) => (
+        menuKeys => (
           <MenuItem
             {...props}
             inlineCollapsed={menuKeys.inlineCollapsed}

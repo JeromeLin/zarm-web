@@ -1,4 +1,5 @@
 import { MouseEvent } from 'react';
+
 export type theme = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'loading';
 
 export default interface PropsType {

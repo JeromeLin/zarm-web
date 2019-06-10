@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OtherProps {
@@ -7,9 +8,7 @@ export interface OtherProps {
   [propName: string]: any;
 }
 
-export interface ReactNodeFn {
-  (): ReactNode;
-}
+export type ReactNodeFn = () => ReactNode;
 
 export interface AddonIF {
   fillType?: 'fill' | 'default' | string;
@@ -29,7 +28,7 @@ export interface AddonPropsIF {
   composePosition?: 'before' | 'after' | 'middle';
 }
 
-interface PropsIF {
+export interface PropsIF {
   prefixCls: 'string';
   type: string;                                 // default is text  若为 textarea 则转为 TextareaElement
   shape: 'rect' | 'radius';
@@ -40,5 +39,3 @@ interface PropsIF {
   addonAfter?: AddonIF | ReactNode | ReactNodeFn;
   showLength?: boolean;
 }
-
-export default PropsIF;

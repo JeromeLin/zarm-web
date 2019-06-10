@@ -15,11 +15,11 @@ if (animationDurationKey && animationDurationKey !== 'animationDuration' && !ani
 }
 
 function toggleBodyOverflow(show: boolean) {
-  let scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
+  const scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
   if (show === true) {
     document.body.classList.add('ui-modal-body-overflow');
     if (scrollBarWidth > 0) {
-      document.body.style.setProperty('padding-right', scrollBarWidth + 'px');
+      document.body.style.setProperty('padding-right', `${scrollBarWidth}px`);
     }
   } else {
     document.body.classList.remove('ui-modal-body-overflow');
@@ -35,7 +35,9 @@ interface StateIF {
 
 class Modal extends Component<ModalProps, StateIF> {
   static Header: typeof ModalHeader;
+
   static Body: typeof ModalBody;
+
   static Footer: typeof ModalFooter;
 
   static defaultProps = {
@@ -51,7 +53,9 @@ class Modal extends Component<ModalProps, StateIF> {
   };
 
   private static instanceList: Modal[] = [];
+
   private static visibleList: Modal[] = [];
+
   private static handleVisbibleList(instance: Modal, visible: boolean, noAnimation?: boolean) {
     if (visible) {
       const lastIndex = Modal.visibleList.length - 1;
@@ -100,9 +104,13 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   private sleep: boolean = false;
+
   private modal!: HTMLDivElement | null;
+
   private div: HTMLDivElement = document.createElement('div');
+
   private modalContent!: HTMLDivElement;
+
   private appended: boolean = false;
 
   constructor(props: ModalProps) {
@@ -141,7 +149,7 @@ class Modal extends Component<ModalProps, StateIF> {
     });
     setTimeout(() => {
       unmountComponentAtNode(this.div);
-      const parentNode = this.div.parentNode;
+      const { parentNode } = this.div;
       if (parentNode) {
         // 对已插入document的节点进行删除
         document.body.removeChild(this.div);
@@ -158,7 +166,7 @@ class Modal extends Component<ModalProps, StateIF> {
         document.body.appendChild(this.div);
         this.appended = true;
       }
-      Modal.visibleList.forEach(item => {
+      Modal.visibleList.forEach((item) => {
         item.setState({
           isShow: false,
         });
@@ -197,7 +205,7 @@ class Modal extends Component<ModalProps, StateIF> {
         isPending: false,
       });
     }
-  }
+  };
 
   onKeyDown = (e: KeyboardEvent) => {
     if (this.state.isShow && this.state.animationState !== 'leave') {
@@ -211,7 +219,7 @@ class Modal extends Component<ModalProps, StateIF> {
         });
       }
     }
-  }
+  };
 
   onKeyPress = (e: KeyboardEvent) => {
     if (document.activeElement === this.modalContent) {
@@ -221,7 +229,7 @@ class Modal extends Component<ModalProps, StateIF> {
         }
       }
     }
-  }
+  };
 
   enter() {
     if (Modal.visibleList.length === 0) {
@@ -251,10 +259,11 @@ class Modal extends Component<ModalProps, StateIF> {
     if (ele) {
       this.modal = ele;
     }
-  }
+  };
+
   modalContentRef = (elem: HTMLDivElement) => {
     this.modalContent = elem;
-  }
+  };
 
   render() {
     const {

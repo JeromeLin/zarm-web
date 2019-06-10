@@ -128,10 +128,10 @@ export function conductCheck(
   isChecked,
   treeData: Array<object>,
   originCheckedStateMap?: {
-    checkedKeys: Array<string>,
-    halfCheckedKeys: Array<string>,
+    checkedKeys: Array<string>;
+    halfCheckedKeys: Array<string>;
   },
-): { checkedKeys: Array<string>, halfCheckedKeys: Array<string>, treeData: Array<object> } {
+): { checkedKeys: Array<string>; halfCheckedKeys: Array<string>; treeData: Array<object> } {
   const checkedKeys: object = {};
   const halfCheckedKeys: object = {};
   const finalCheckedKeysList: Array<string> = [];
@@ -309,11 +309,10 @@ export function conductExpandParent(keysList, treeData) {
  * @param treeData {object} 当前树形结构的map对象
  */
 export function initialTreeData(treeData) {
-  let allExpandDataMap = {};
+  const allExpandDataMap = {};
   let finalTreeData;
 
   function loop(node, parentNode) {
-
     return node.map((_node) => {
       const { children, keys } = _node;
       _node.parent = parentNode;

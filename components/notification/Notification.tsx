@@ -19,19 +19,21 @@ export default class Notification extends Component<NotificationProps, any> {
   };
 
   private timeout: number | undefined;
+
   private offsetHeight;
+
   private notification: any;
 
-  componentDidMount () {
+  componentDidMount() {
     this.enter();
     this.startTimer();
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearInterval(this.timeout);
   }
 
-  startTimer () {
+  startTimer() {
     if (this.props.stayTime) {
       this.timeout = setTimeout(() => {
         this.onClose();
@@ -39,15 +41,15 @@ export default class Notification extends Component<NotificationProps, any> {
     }
   }
 
-  stopTimer () {
+  stopTimer() {
     clearInterval(this.timeout);
   }
 
-  enter () {
+  enter() {
     this.setState({ visible: true });
   }
 
-  leave () {
+  leave() {
     this.setState({ visible: false });
   }
 
@@ -55,7 +57,7 @@ export default class Notification extends Component<NotificationProps, any> {
     if (this.props.onClick) {
       this.props.onClick(event);
     }
-  }
+  };
 
   onClose = (event?: React.SyntheticEvent<any>) => {
     const { onClose } = this.props;
@@ -66,17 +68,17 @@ export default class Notification extends Component<NotificationProps, any> {
     if (typeof onClose === 'function') {
       onClose(event);
     }
-  }
+  };
 
   onMouseEnter = () => {
     this.stopTimer();
-  }
+  };
 
   onMouseLeave = () => {
     this.startTimer();
-  }
+  };
 
-  get type () {
+  get type() {
     switch (this.props.theme) {
       case 'success':
         return 'right-round-fill';
@@ -93,7 +95,7 @@ export default class Notification extends Component<NotificationProps, any> {
     }
   }
 
-  render () {
+  render() {
     const { prefixCls, className, top, style, title, message, theme, isMessage, willUnMount, btn } = this.props;
     const { visible } = this.state;
     const componentName = isMessage ? 'message' : 'notification';
@@ -114,7 +116,7 @@ export default class Notification extends Component<NotificationProps, any> {
           style={{ ...style, top }}
         >
           <div className={classnames(`za-${componentName}__content`, { 'has-icon': theme })}>
-            {!isMessage && <div className={`za-${componentName}__close`} onClick={this.onClose}><Icon type="wrong"/></div>}
+            {!isMessage && <div className={`za-${componentName}__close`} onClick={this.onClose}><Icon type="wrong" /></div>}
             {!isMessage && theme && <Icon type={this.type} className={`za-${componentName}__icon`} theme={theme} />}
             {title && <div className={`za-${componentName}__title`}>{title}</div>}
             <div className={`za-${componentName}__custom-content`} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
