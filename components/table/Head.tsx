@@ -3,13 +3,15 @@ import Sorter from './Sorter';
 import { HeadProps } from './PropsType';
 
 class Head extends Component<HeadProps, any> {
-
   // @ts-ignore
   private thead;
+
   // @ts-ignore
   private leftCell;
+
   // @ts-ignore
   private rightCell;
+
   // 排序渲染
   renderSorter(column) {
     const { prefixCls, sort, onSort } = this.props;
@@ -26,10 +28,9 @@ class Head extends Component<HeadProps, any> {
 
   // 表头列渲染
   renderColumn(column, index, rowIndex, length) {
-    const render =
-      'columnRender' in column
-        ? column.columnRender(column, index)
-        : column.title;
+    const render = 'columnRender' in column
+      ? column.columnRender(column, index)
+      : column.title;
     const {
       dataIndex, width, rowSpan, colSpan, style = {},
     } = column;
@@ -78,15 +79,14 @@ class Head extends Component<HeadProps, any> {
           {this.renderExpandIconPlaceholder()}
           {
             rowSelection && index === 0
-            ? renderSelectAll(
+              ? renderSelectAll(
                 rowSelection,
                 dataSource,
                 rows.length,
               )
-            : null}
+              : null}
           {
-            row.map((column, columnIndex) =>
-            this.renderColumn(column, columnIndex, index, row.length))}
+            row.map((column, columnIndex) => this.renderColumn(column, columnIndex, index, row.length))}
         </tr>
       );
     });

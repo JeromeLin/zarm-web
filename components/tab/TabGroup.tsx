@@ -13,23 +13,24 @@ class TabGroup extends Component<GroupProps, any> {
   };
 
   private tabHeader;
+
   private activeTab;
 
   constructor(props) {
     super(props);
     this.state = {
       value:
-        props.value ||
-        props.defaultValue ||
-        this.getSelectIndex(props.children) ||
-        0,
+        props.value
+        || props.defaultValue
+        || this.getSelectIndex(props.children)
+        || 0,
       lineWidth: 0,
       lineOffsetLeft: 0,
     };
     this.tabHeader = React.createRef();
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setActiveLineStyle();
   }
 
@@ -41,7 +42,7 @@ class TabGroup extends Component<GroupProps, any> {
     }
   }
 
-  setActiveLineStyle () {
+  setActiveLineStyle() {
     const { width = 0, left = 0 } = this.activeTab && this.activeTab.getBoundingClientRect() || {};
     const { left: headerOffset = 0 } = this.tabHeader.current && this.tabHeader.current.getBoundingClientRect() || {};
 
@@ -77,7 +78,7 @@ class TabGroup extends Component<GroupProps, any> {
         onChange(index);
       });
     }
-  }
+  };
 
   render() {
     const {
@@ -96,7 +97,7 @@ class TabGroup extends Component<GroupProps, any> {
       const tabHeaderCls = classnames({
         [`${prefixCls}-header-item`]: true,
         [`${prefixCls}-header-item-disabled`]: !!item.props.disabled,
-        'active': $index === this.state.value,
+        active: $index === this.state.value,
       });
       const bindActiveRef = $index === this.state.value ? { ref: node => this.activeTab = node } : {};
 

@@ -1,8 +1,8 @@
 import React, { InputHTMLAttributes, ReactNode, Component, MouseEventHandler, KeyboardEventHandler } from 'react';
+import classnames from 'classnames';
 import Group from '../input-group';
 import Input from '../index';
 import PropsType, { AddonIF } from '../PropsType';
-import classnames from 'classnames';
 import Icon from '../../icon';
 
 const Style = {
@@ -34,7 +34,8 @@ class Search extends Component<PropsIF> {
         (this.props.onSearch as KeyboardEventHandler<HTMLInputElement>)(e);
       }
     }
-  }
+  };
+
   render() {
     const { props } = this;
     const { showIcon, showButton, shape, button, onSearch, ...others } = props;

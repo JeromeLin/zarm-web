@@ -14,6 +14,7 @@ class Form extends PureComponent<PropsType, any> {
     scrollToError: false,
     onSubmit: noop,
   };
+
   static propTypes = {
     type: PropTypes.oneOf(['horizontal', 'inline']),
     labelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -28,18 +29,18 @@ class Form extends PureComponent<PropsType, any> {
     fields: [],
   };
 
-  validate (callback) {
+  validate(callback) {
     const { fields } = this.state;
     const { scrollToError } = this.props;
     const fieldsLength = fields.length;
 
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       let validateResult = true;
       let count = 0;
-      let errorsArr: Array<object> = [];
+      const errorsArr: Array<object> = [];
 
       fields.forEach((field: any) => {
-        field.validateItem('', errors => {
+        field.validateItem('', (errors) => {
           if (errors) {
             validateResult = false;
             errorsArr.push(field);
@@ -58,7 +59,7 @@ class Form extends PureComponent<PropsType, any> {
     });
   }
 
-  validateField (prop, callback) {
+  validateField(prop, callback) {
     const field: any = this.state.fields.filter((field: ItemProps & { props: ItemProps }) => field.props.prop === prop)[0];
 
     if (!field) {
@@ -68,12 +69,12 @@ class Form extends PureComponent<PropsType, any> {
     field.validateItem('', callback);
   }
 
-  resetField () {
+  resetField() {
     const { fields } = this.state;
     fields.forEach((field: any) => field.resetItem());
   }
 
-  scrollToError (field) {
+  scrollToError(field) {
     const fieldNode = field.getControlNode();
     const nodeBound = (fieldNode as Element).getBoundingClientRect();
     const y = nodeBound.top + window.scrollY;
@@ -87,7 +88,7 @@ class Form extends PureComponent<PropsType, any> {
     if (typeof onSubmit === 'function') {
       onSubmit(event);
     }
-  }
+  };
 
   render() {
     const { type, className, children, style, prefixCls, labelWidth, labelPosition } = this.props;

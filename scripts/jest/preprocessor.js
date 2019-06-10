@@ -1,17 +1,6 @@
 const babelJest = require('babel-jest');
-const browsers = require('../config/browserlist');
+const babelConfig = require('../babel/config');
 
-module.exports = babelJest.createTransformer({
-  presets: [
-    [
-      'env',
-      {
-        targets: {
-          browsers,
-        },
-      },
-    ],
-    'react',
-    'stage-0',
-  ],
-});
+babelConfig.plugins.push('@babel/plugin-transform-modules-commonjs');
+
+module.exports = babelJest.createTransformer(babelConfig);

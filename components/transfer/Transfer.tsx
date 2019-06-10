@@ -39,41 +39,47 @@ class Transfer extends Component<PropsType, any> {
   }
 
   _onAdd() {
-    let initialValue = [...this.state.initialValue].filter(
-      item => (this.state.selectedLeft.indexOf(item[this.props.keyOfItem]) < 0) && item);
-    let selected = [...this.state.initialValue].filter(
-      item => (this.state.selectedLeft.indexOf(item[this.props.keyOfItem]) > -1) && item);
-    let selectedValue = this.state.selectedValue.concat(selected);
+    const initialValue = [...this.state.initialValue].filter(
+      item => (this.state.selectedLeft.indexOf(item[this.props.keyOfItem]) < 0) && item,
+    );
+    const selected = [...this.state.initialValue].filter(
+      item => (this.state.selectedLeft.indexOf(item[this.props.keyOfItem]) > -1) && item,
+    );
+    const selectedValue = this.state.selectedValue.concat(selected);
     this.setState({
       initialValue,
       selectedValue,
-      selectedLeft:  [],
+      selectedLeft: [],
       selectedRight: [],
     });
     this.props.onAdd(selectedValue);
   }
 
   _onMinus() {
-    let selectedValue = [...this.state.selectedValue].filter(
-      item => (this.state.selectedRight.indexOf(item[this.props.keyOfItem]) < 0) && item);
-    let selected = [...this.state.selectedValue].filter(
-      item => (this.state.selectedRight.indexOf(item[this.props.keyOfItem]) > -1) && item);
-    let initialValue = this.state.initialValue.concat(selected);
+    const selectedValue = [...this.state.selectedValue].filter(
+      item => (this.state.selectedRight.indexOf(item[this.props.keyOfItem]) < 0) && item,
+    );
+    const selected = [...this.state.selectedValue].filter(
+      item => (this.state.selectedRight.indexOf(item[this.props.keyOfItem]) > -1) && item,
+    );
+    const initialValue = this.state.initialValue.concat(selected);
     this.setState({
       initialValue,
       selectedValue,
-      selectedLeft:  [],
+      selectedLeft: [],
       selectedRight: [],
     });
     this.props.onMinus(selectedValue);
   }
 
   _onDoubleAdd(e) {
-    let initialValue = [...this.state.initialValue].filter(
-      item => (e.target.textContent !== item[this.props.displayNameOfItem]) && item);
-    let selected = [...this.state.initialValue].filter(
-      item => (e.target.textContent === item[this.props.displayNameOfItem]) && item);
-    let selectedValue = this.state.selectedValue.concat(selected);
+    const initialValue = [...this.state.initialValue].filter(
+      item => (e.target.textContent !== item[this.props.displayNameOfItem]) && item,
+    );
+    const selected = [...this.state.initialValue].filter(
+      item => (e.target.textContent === item[this.props.displayNameOfItem]) && item,
+    );
+    const selectedValue = this.state.selectedValue.concat(selected);
     this.setState({
       initialValue,
       selectedValue,
@@ -82,11 +88,13 @@ class Transfer extends Component<PropsType, any> {
   }
 
   _onDoubleMinus(e) {
-    let selectedValue = [...this.state.selectedValue].filter(
-      item => (e.target.textContent !== item[this.props.displayNameOfItem]) && item);
-    let selected = [...this.state.selectedValue].filter(
-      item => (e.target.textContent === item[this.props.displayNameOfItem]) && item);
-    let initialValue = this.state.initialValue.concat(selected);
+    const selectedValue = [...this.state.selectedValue].filter(
+      item => (e.target.textContent !== item[this.props.displayNameOfItem]) && item,
+    );
+    const selected = [...this.state.selectedValue].filter(
+      item => (e.target.textContent === item[this.props.displayNameOfItem]) && item,
+    );
+    const initialValue = this.state.initialValue.concat(selected);
     this.setState({
       initialValue,
       selectedValue,
@@ -106,9 +114,8 @@ class Transfer extends Component<PropsType, any> {
       if (lastSelectedValue === currentValue) {
         if (len > 2) {
           return;
-        } else {
-          lastSelectedValue = selectedRows[len - 2];
         }
+        lastSelectedValue = selectedRows[len - 2];
       }
       let lastIndex;
 
@@ -149,7 +156,7 @@ class Transfer extends Component<PropsType, any> {
     } = this.props;
 
     const disabled = 'disabled' in this.props || isDisabled;
-    const radius =  'radius' in this.props || isRadius;
+    const radius = 'radius' in this.props || isRadius;
 
     const cls = classnames({
       [prefixCls!]: true,
@@ -163,8 +170,8 @@ class Transfer extends Component<PropsType, any> {
         style={{ ...style, width }}
         className={cls}
       >
-        <div className={prefixCls + '-panel'}>
-          <h4 className={prefixCls + '-panel-title'}>{initialPanelTitle}</h4>
+        <div className={`${prefixCls}-panel`}>
+          <h4 className={`${prefixCls}-panel-title`}>{initialPanelTitle}</h4>
           <Select.Multiple
             disabled={disabled}
             value={this.state.selectedLeft}
@@ -175,31 +182,31 @@ class Transfer extends Component<PropsType, any> {
               }
               this.setState({ selectedLeft: selectedRows });
             }}
-            onDoubleClick={(e) => !disabled && this._onDoubleAdd(e)}
+            onDoubleClick={e => !disabled && this._onDoubleAdd(e)}
           >
             {
             this.state.initialValue.map((option, index) => {
-                return (
-                <Select.Option key={index} value={option[keyOfItem]} >
-                      {option[displayNameOfItem]}
+              return (
+                <Select.Option key={index} value={option[keyOfItem]}>
+                  {option[displayNameOfItem]}
                 </Select.Option>
-                );
+              );
             })
             }
           </Select.Multiple>
         </div>
-        <div className={prefixCls + '-action-bar'}>
+        <div className={`${prefixCls}-action-bar`}>
           <div className="button-wrapper">
-          <Button disabled={this.state.selectedLeft.length === 0} onClick={() => !disabled && this._onAdd()}>
-          <Icon type="add"/>
-          </Button>
-          <Button disabled={this.state.selectedRight.length === 0} onClick={() => !disabled && this._onMinus()}>
-            <Icon type="minus" />
-          </Button>
+            <Button disabled={this.state.selectedLeft.length === 0} onClick={() => !disabled && this._onAdd()}>
+              <Icon type="add" />
+            </Button>
+            <Button disabled={this.state.selectedRight.length === 0} onClick={() => !disabled && this._onMinus()}>
+              <Icon type="minus" />
+            </Button>
           </div>
         </div>
-        <div className={prefixCls + '-panel'}>
-          <h4 className={prefixCls + '-panel-title'}>{selectedPanelTitle}</h4>
+        <div className={`${prefixCls}-panel`}>
+          <h4 className={`${prefixCls}-panel-title`}>{selectedPanelTitle}</h4>
           <Select.Multiple
             disabled={disabled}
             value={this.state.selectedRight}
@@ -210,11 +217,11 @@ class Transfer extends Component<PropsType, any> {
               }
               this.setState({ selectedRight: selectedRows });
             }}
-            onDoubleClick={(e) => !disabled && this._onDoubleMinus(e)}
+            onDoubleClick={e => !disabled && this._onDoubleMinus(e)}
           >
             {
             this.state.selectedValue.map((option, index) => {
-            return (<Select.Option key={index} value={option[keyOfItem]}>{option[displayNameOfItem]}</Select.Option>);
+              return (<Select.Option key={index} value={option[keyOfItem]}>{option[displayNameOfItem]}</Select.Option>);
             })
             }
           </Select.Multiple>

@@ -12,7 +12,7 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     onChange: () => {},
   };
 
-  static getDerivedStateFromProps (props, state) {
+  static getDerivedStateFromProps(props, state) {
     if (props.value !== state.prevPropsValue) {
       return {
         value: props.value,
@@ -29,16 +29,16 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     reduceState: false,
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.calculateNum();
   }
 
-  onChange = e => {
+  onChange = (e) => {
     const { decimal } = this.props;
-    let regex = decimal
-      ? new RegExp('^\\d+(\\.[0-9]{0,' + decimal + '})?$', 'g')
+    const regex = decimal
+      ? new RegExp(`^\\d+(\\.[0-9]{0,${decimal}})?$`, 'g')
       : new RegExp(/^\d+$/, 'g');
-    let value = e.target.value;
+    const { value } = e.target;
 
     if (!value) {
       this.setState({ value });
@@ -46,9 +46,9 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
       this.props.onChange(e);
       this.setState({ value });
     }
-  }
+  };
 
-  calculateNum () {
+  calculateNum() {
     let { value } = this.state;
     const { min, max } = this.props;
 
@@ -66,9 +66,9 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     if (onBlur) {
       onBlur();
     }
-  }
+  };
 
-  countField (type, step) {
+  countField(type, step) {
     const { min, max, isDisabled } = this.props;
     let { value, addState, reduceState } = this.state;
 
@@ -92,25 +92,25 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
   increase = () => {
     const { step } = this.props;
     this.countField('increase', step);
-  }
+  };
 
   decrease = () => {
     const { step } = this.props;
     this.countField('decrease', step);
-  }
+  };
 
   render() {
     const { className, style, isDisabled, placeholder, showStepper } = this.props;
     const { value, addState, reduceState } = this.state;
     const addCountClass = classnames({
-      [`ui-number-input-count`]: true,
-      [`ui-number-input-countadd`]: true,
-      [`ui-number-input-count-disable`]: isDisabled || addState,
+      'ui-number-input-count': true,
+      'ui-number-input-countadd': true,
+      'ui-number-input-count-disable': isDisabled || addState,
     });
     const reduceCountClass = classnames({
-      [`ui-number-input-count`]: true,
-      [`ui-number-input-countreduce`]: true,
-      [`ui-number-input-count-disable`]: isDisabled || reduceState,
+      'ui-number-input-count': true,
+      'ui-number-input-countreduce': true,
+      'ui-number-input-count-disable': isDisabled || reduceState,
     });
 
     return (

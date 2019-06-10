@@ -13,9 +13,9 @@ class RadioGroup extends Component<GroupProps, any> {
     super(props);
     this.state = {
       value:
-        props.value ||
-        props.defaultValue ||
-        this.getCheckedValue(props.children),
+        props.value
+        || props.defaultValue
+        || this.getCheckedValue(props.children),
     };
   }
 

@@ -1,19 +1,19 @@
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
-export type styleType = {
-  paddingLeft?: number,
-  [propName: string]: any,
-};
+export interface styleType {
+  paddingLeft?: number;
+  [propName: string]: any;
+}
 
-export type childPropsType = {
-  prefixCls?: string,
-  mode?: 'inline' | 'horizontal',
-  inlineIndent?: number,
-  inlineCollapsed?: boolean,
+export interface childPropsType {
+  prefixCls?: string;
+  mode?: 'inline' | 'horizontal';
+  inlineIndent?: number;
+  inlineCollapsed?: boolean;
   level?: number;
   itemKey?: any;
   subMenuKey?: any;
-};
+}
 
 export interface ItemProps {
   prefixCls?: string;
@@ -34,11 +34,11 @@ export interface ItemProps {
   onDoubleClick?: () => void;
 }
 
-export type DividerProps = {
-  prefixCls?: string,
+export interface DividerProps {
+  prefixCls?: string;
   className?: string;
   style: object;
-};
+}
 
 export interface SubMenuProps {
   prefixCls?: string;

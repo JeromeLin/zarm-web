@@ -18,6 +18,7 @@
         border-top-width: 1px;
       }
     }
+
     &[x-placement^=right] {
       margin-left: 10px;
 
@@ -27,6 +28,7 @@
         border-bottom-width: 1px;
       }
     }
+
     &[x-placement^=top] {
       margin-bottom: 10px;
 
@@ -36,6 +38,7 @@
         border-bottom-width: 1px;
       }
     }
+
     &[x-placement^=bottom] {
       margin-top: 10px;
 
@@ -45,13 +48,16 @@
         border-top-width: 1px;
       }
     }
+
     &-show {
       display: block;
     }
+
     &-radius {
       border-radius: 2px;
     }
   }
+
   &-arrow {
     position: absolute;
     width: 5px;
@@ -62,6 +68,7 @@
     background: #fff;
     transform: rotate(45deg);
   }
+
   &-mask {
     position: fixed;
     display: none;
@@ -77,6 +84,7 @@
       display: block;
     }
   }
+
   &-actions {
     padding-top: 10px;
     text-align: right;

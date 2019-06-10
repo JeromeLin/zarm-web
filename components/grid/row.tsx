@@ -28,7 +28,7 @@ export default class Row extends PureComponent<IProps> {
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
   };
 
-  render () {
+  render() {
     const { gutter, prefixCls, style, className, children, justify, align, type } = this.props;
     const rowStyle = gutter ? { marginLeft: -gutter / 2, marginRight: -gutter / 2 } : {};
     const cls = classnames(prefixCls, className, {
@@ -40,12 +40,10 @@ export default class Row extends PureComponent<IProps> {
     return (
       <div className={cls} style={{ ...style, ...rowStyle }}>
         {
-          React.Children.map(children, (element: React.ReactElement<any>, index) =>
-            cloneElement(element, {
-              gutter,
-              key: index,
-            }),
-          )
+          React.Children.map(children, (element: React.ReactElement<any>, index) => cloneElement(element, {
+            gutter,
+            key: index,
+          }))
         }
       </div>
     );

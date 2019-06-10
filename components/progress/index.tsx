@@ -16,14 +16,17 @@ class Progress extends Component<PropsType, any> {
 
   textRender(percent) {
     const { prefixCls } = this.props;
-    const render =
-      'render' in this.props ? (
+    const render = 'render' in this.props ? (
         this.props.render!(percent)
-      ) : (
-        <span className={`${prefixCls}-line-text`}>{percent}%</span>
-      );
+    ) : (
+      <span className={`${prefixCls}-line-text`}>
+        {percent}
+%
+      </span>
+    );
     return render;
   }
+
   render() {
     const { props } = this;
     const {

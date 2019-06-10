@@ -31,7 +31,7 @@ exports[`Input renders Input with radius correctly 1`] = `
 exports[`Input renders correctly with initial value 1`] = `
 <div>
   <Input
-    onChange={[Function]}
+    onChange={[MockFunction]}
     prefixCls="ui-input"
     shape="radius"
     size={null}

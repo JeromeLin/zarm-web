@@ -4,17 +4,17 @@
 $--color-white: #fff !default;
 $--color-black: #000 !default;
 
-$--color-primary: #00BC70 !default;
+$--color-primary: #00bc70 !default;
 $--color-primary-darker: hsl(156, 100%, 32.9%) !default;         // #00a865 active focus 颜色
 $--color-primary-light-80: rgba($--color-primary, .8) !default; // #33C98D hover颜色
 $--color-primary-light-50: rgba($--color-primary, .5) !default; // #7FDDB7 disable颜色
 $--color-primary-light-10: rgba($--color-primary, .1) !default; // #E5F8F0 辅助色值
 $--color-primary-light-6: rgba($--color-primary, .06) !default; // #F0FBF7 辅助色值
 
-$--color-success: #00BC70 !default;
-$--color-info: #00BC70 !default;
-$--color-warning: #EC9131 !default;
-$--color-danger: #FF5050 !default;
+$--color-success: #00bc70 !default;
+$--color-info: #00bc70 !default;
+$--color-warning: #ec9131 !default;
+$--color-danger: #ff5050 !default;
 
 $--color-success-darker: hsl(156, 100%, 32.9%) !default;
 $--color-info-darker: hsl(156, 100%, 32.9%) !default;
@@ -42,8 +42,8 @@ $--font-size-remark: 10px !default;
 $--color-text-primary: #343434 !default;
 $--color-text-regular: #616161 !default;
 $--color-text-secondary: #909090 !default;
-$--color-text-placeholder-or-disabled: #BCBCBC !default;
-$--color-text-tip: #F2F2F2 !default;
+$--color-text-placeholder-or-disabled: #bcbcbc !default;
+$--color-text-tip: #f2f2f2 !default;
 
 /* -------------  Line Height  ------------- */
 $--font-line-height-base: 1.5 !default;
@@ -74,8 +74,8 @@ $--padding-size-20: 20px !default;
 /* -------------  Border & Radius  ------------- */
 $--border-width-base: 1px !default;
 $--border-style-base: solid !default;
-$--border-color-base: #E6E6E6 !default;
-$--border-color-light: #BCBCBC !default;
+$--border-color-base: #e6e6e6 !default;
+$--border-color-light: #bcbcbc !default;
 $--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
 $--border-radius-large: 6px !default;
 $--border-radius-base: 4px !default;
