@@ -20,26 +20,19 @@
   user-select: none;
   transition: background-color 300ms ease-out, border-color 300ms ease-out;
 
-  & + & {
-    &:not(.is-block) {
-      margin-left: 10px;
-    }
-  }
-
   /* disabled Button */
-  &.is-disabled,
-  &:disabled {
+  @include m(disabled) {
     cursor: not-allowed;
     opacity: .65;
   }
 
   /* block Button */
-  &.is-block {
+  @include m(block) {
     width: 100%;
     display: block;
   }
 
-  &.is-loading {
+  @include m(loading) {
     cursor: default;
     opacity: .65;
 
@@ -48,7 +41,7 @@
     }
   }
 
-  &.is-ghost {
+  @include m(ghost) {
     background: transparent !important;
     border-color: #fff;
     color: #fff;
@@ -75,7 +68,7 @@
   @include m(default) {
     @include button-theme($--button-default-color, $--button-default-bg, $--button-default-border, default);
 
-    &.is-ghost {
+    @include m(ghost) {
       @include button-theme($--color-white, transparent, $--color-white, default);
     }
   }
@@ -83,15 +76,18 @@
   @include m(primary) {
     @include button-theme($--button-info-color, $--button-info-bg, $--button-info-border);
 
-    &.is-ghost {
+    @include m(ghost) {
       @include button-theme($--color-info, transparent, $--color-info);
     }
+    //&.is-ghost {
+    //  @include button-theme($--color-info, transparent, $--color-info);
+    //}
   }
 
   @include m(danger) {
     @include button-theme($--button-danger-color, $--button-danger-bg, $--button-danger-border);
 
-    &.is-ghost {
+    @include m(ghost) {
       @include button-theme($--color-danger, transparent, $--color-danger);
     }
   }

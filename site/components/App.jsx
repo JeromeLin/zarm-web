@@ -16,7 +16,7 @@ import pages from '../page.config';
 const changeLanguage = (_lang) => {
   const { href } = window.location;
   window.location.href = `${href.split('?')[0]}?lang=${_lang}`;
-  window.location.reload();
+  window.location.reloadd();
 };
 
 const LoadableComponent = ({ component, name }) => {

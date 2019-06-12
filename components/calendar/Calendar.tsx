@@ -81,10 +81,11 @@ class Calendar extends Component<PropsType, any> {
 
   onDateClick(value, isNow = false) {
     const { format, onChange, showTime } = this.props;
+    const { handleFieldChange } = this.context;
     let dropdownStatus = false;
 
     if (!isEmpty(this.context)) {
-      this.context.handleFieldChange();
+      handleFieldChange();
     }
     if (!showTime) {
       dropdownStatus = false;

@@ -253,6 +253,10 @@ a {
   }
 }
 
+.za-button + .za-button {
+  margin-left: 12px;
+}
+
 .demo-transition {
   .za-row {
     margin-bottom: 20px;
@@ -327,6 +331,12 @@ a {
 .demo-form {
   input,
   .za-tag-input-box { width: 200px; }
+}
+
+.demo-popper {
+  .za-popper {
+    margin: 12px;
+  }
 }
 
 .demo-block {

@@ -6,186 +6,186 @@ export default {
     },
     I18n: {
       name: 'i18n',
-      component: () => import('@site/docs/i18n.md'),
+      component: () => import('@/components/locale/i18n.md'),
     },
   },
   components: {
     Basic: {
       Icon: {
         name: 'icon',
-        component: () => import('@site/docs/icon.md'),
+        component: () => import('@/components/icon/icon.md'),
       },
       Button: {
         name: 'button',
-        component: () => import('@site/docs/button.md'),
+        component: () => import('@/components/button/button.md'),
       },
     },
     Layout: {
       Layout: {
         name: 'layout',
-        component: () => import('@site/docs/layout.md'),
+        component: () => import('@/components/layout/layout.md'),
       },
       Grid: {
         name: 'grid',
-        component: () => import('@site/docs/grid.md'),
+        component: () => import('@/components/grid/grid.md'),
       },
     },
     Form: {
       Radio: {
         name: 'radio',
-        component: () => import('@site/docs/radio.md'),
+        component: () => import('@/components/radio/radio.md'),
       },
       Checkbox: {
         name: 'checkbox',
-        component: () => import('@site/docs/checkbox.md'),
+        component: () => import('@/components/checkbox/checkbox.md'),
       },
       Input: {
         name: 'input',
-        component: () => import('@site/docs/input.md'),
+        component: () => import('@/components/input/input.md'),
       },
       NumberInput: {
         name: 'numberinput',
-        component: () => import('@site/docs/numberinput.md'),
+        component: () => import('@/components/number-input/numberinput.md'),
       },
       Select: {
         name: 'select',
-        component: () => import('@site/docs/select.md'),
+        component: () => import('@/components/select/select.md'),
       },
       Switch: {
         name: 'switch',
-        component: () => import('@site/docs/switch.md'),
+        component: () => import('@/components/switch/switch.md'),
       },
       Slider: {
         name: 'slider',
-        component: () => import('@site/docs/slider.md'),
+        component: () => import('@/components/slider/slider.md'),
       },
       Calendar: {
         name: 'calendar',
-        component: () => import('@site/docs/calendar.md'),
+        component: () => import('@/components/calendar/calendar.md'),
       },
       DatePicker: {
         name: 'datepicker',
-        component: () => import('@site/docs/datepicker.md'),
+        component: () => import('@/components/date-picker/datepicker.md'),
       },
       TimePicker: {
         name: 'timepicker',
-        component: () => import('@site/docs/timepicker.md'),
+        component: () => import('@/components/time-picker/timepicker.md'),
       },
       Upload: {
         name: 'upload',
-        component: () => import('@site/docs/upload.md'),
+        component: () => import('@/components/upload/upload.md'),
       },
       Form: {
         name: 'form',
-        component: () => import('@site/docs/form.md'),
+        component: () => import('@/components/form/form.md'),
       },
     },
     Data: {
       Table: {
         name: 'table',
-        component: () => import('@site/docs/table.md'),
+        component: () => import('@/components/table/table.md'),
       },
       Tag: {
         name: 'tag',
-        component: () => import('@site/docs/tag.md'),
+        component: () => import('@/components/tag/tag.md'),
       },
       Progress: {
         name: 'progress',
-        component: () => import('@site/docs/progress.md'),
+        component: () => import('@/components/progress/progress.md'),
       },
       Panel: {
         name: 'panel',
-        component: () => import('@site/docs/panel.md'),
+        component: () => import('@/components/panel/panel.md'),
       },
       Pagination: {
         name: 'pagination',
-        component: () => import('@site/docs/pagination.md'),
+        component: () => import('@/components/pagination/pagination.md'),
       },
       Tree: {
         name: 'tree',
-        component: () => import('@site/docs/tree.md'),
+        component: () => import('@/components/tree/tree.md'),
       },
       Transfer: {
         name: 'transfer',
-        component: () => import('@site/docs/transfer.md'),
+        component: () => import('@/components/transfer/transfer.md'),
       },
       Avatar: {
         name: 'avatar',
-        component: () => import('@site/docs/avatar.md'),
+        component: () => import('@/components/avatar/avatar.md'),
       },
     },
     Notice: {
       Alert: {
         name: 'alert',
-        component: () => import('@site/docs/alert.md'),
+        component: () => import('@/components/alert/alert.md'),
       },
       Loading: {
         name: 'loading',
-        component: () => import('@site/docs/loading.md'),
+        component: () => import('@/components/loading/loading.md'),
       },
       Message: {
         name: 'message',
-        component: () => import('@site/docs/message.md'),
+        component: () => import('@/components/message/message.md'),
       },
       Modal: {
         name: 'modal',
-        component: () => import('@site/docs/modal.md'),
+        component: () => import('@/components/modal/modal.md'),
       },
       Confirm: {
         name: 'confirm',
-        component: () => import('@site/docs/confirm.md'),
+        component: () => import('@/components/confirm/confirm.md'),
       },
       Notification: {
         name: 'notification',
-        component: () => import('@site/docs/notification.md'),
+        component: () => import('@/components/notification/notification.md'),
       },
     },
     Nav: {
       Menu: {
         name: 'menu',
-        component: () => import('@site/docs/menu.md'),
+        component: () => import('@/components/menu/menu.md'),
       },
       Tab: {
         name: 'tab',
-        component: () => import('@site/docs/tab.md'),
+        component: () => import('@/components/tab/tab.md'),
       },
       Breadcrumb: {
         name: 'breadcrumb',
-        component: () => import('@site/docs/breadcrumb.md'),
+        component: () => import('@/components/breadcrumb/breadcrumb.md'),
       },
       Step: {
         name: 'step',
-        component: () => import('@site/docs/step.md'),
+        component: () => import('@/components/step/step.md'),
       },
       Dropdown: {
         name: 'dropdown',
-        component: () => import('@site/docs/dropdown.md'),
+        component: () => import('@/components/dropdown/dropdown.md'),
       },
     },
     Others: {
       Tooltip: {
         name: 'tooltip',
-        component: () => import('@site/docs/tooltip.md'),
+        component: () => import('@/components/tooltip/tooltip.md'),
       },
       Popover: {
         name: 'popover',
-        component: () => import('@site/docs/popover.md'),
+        component: () => import('@/components/popover/popover.md'),
       },
       Popconfirm: {
         name: 'popconfirm',
-        component: () => import('@site/docs/popconfirm.md'),
+        component: () => import('@/components/popconfirm/popconfirm.md'),
       },
       Mask: {
         name: 'mask',
-        component: () => import('@site/docs/mask.md'),
+        component: () => import('@/components/mask/mask.md'),
       },
       Swipe: {
         name: 'swipe',
-        component: () => import('@site/docs/swipe.md'),
+        component: () => import('@/components/swipe/swipe.md'),
       },
       Transition: {
         name: 'transition',
-        component: () => import('@site/docs/transition.md'),
+        component: () => import('@/components/transition/transition.md'),
       },
     },
   },
