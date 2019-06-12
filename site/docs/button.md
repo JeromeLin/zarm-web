@@ -206,7 +206,6 @@ block按钮宽度为父元素宽度
 | size      | 尺寸   | string  |   xl,lg,sm,xs            |    —     |
 | theme     | 主题   | string    |   primary, danger, default |     default   |
 | icon      | 设置按钮图标   | ReactNode    | — | -   |
-| block     | 设置块级按钮   | boolean    | — | false   |
 | ghost     | 幽灵属性，使按钮背景透明   | boolean    | — | false   |
 | shape     | 设置形状   | string    | circle/round/rect/radius | radius   |
 | loading   | 是否加载中状态   | boolean    | — | false   |

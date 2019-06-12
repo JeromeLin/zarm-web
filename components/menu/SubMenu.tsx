@@ -15,7 +15,9 @@ export class SubMenu extends Component<SubMenuProps, any> {
   };
 
   subTitle: any;
+
   sub: any;
+
   timeout: any;
 
   constructor(props) {
@@ -82,7 +84,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
     const { subMenuKey } = this.props;
 
     this.props.toggleOpenKeys(subMenuKey);
-  }
+  };
 
   renderChildren() {
     const {
@@ -96,7 +98,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
     };
     return Children.map(children, (child, index) => {
       const c: ReactElement<any> = child as ReactElement<any>;
-      const key = (child as ReactElement<any>).key;
+      const { key } = child as ReactElement<any>;
 
       childProps.itemKey = key || `${subMenuKey}-${level}-${index}`;
       childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
@@ -140,11 +142,11 @@ export class SubMenu extends Component<SubMenuProps, any> {
       } else {
         // 否则，设置具体的高度产生过渡动画
         const height = this.getSubHeight();
-        this.sub.style.height = height + 'px';
+        this.sub.style.height = `${height}px`;
       }
     } else {
       const height = this.getSubHeight();
-      this.sub.style.height = height + 'px';
+      this.sub.style.height = `${height}px`;
 
       setTimeout(() => {
         this.sub.style.height = 0;
@@ -172,7 +174,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
     this.setState({
       collapsedSubVisible: isOpen,
     });
-  }
+  };
 
   onClickOutSide = (e) => {
     const { target } = e;
@@ -183,7 +185,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
     if (!this.sub.contains(target) && openKeys.indexOf(subMenuKey) > -1) {
       this.props.toggleOpenKeys(subMenuKey);
     }
-  }
+  };
 
   render() {
     const {
@@ -242,7 +244,7 @@ export default function SubMenuConsumer(props) {
   return (
     <MenuContext.Consumer>
       {
-        (menuKeys) => (
+        menuKeys => (
           <SubMenu
             {...props}
             inlineCollapsed={menuKeys.inlineCollapsed}

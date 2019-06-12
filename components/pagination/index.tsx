@@ -95,7 +95,7 @@ class Pagination extends Component<PropsType, any> {
     }
 
     return pagerList;
-  }
+  };
 
   firstPager = () => {
     const { prefixCls, locale } = this.props;
@@ -109,7 +109,7 @@ class Pagination extends Component<PropsType, any> {
         1
       </li>
     );
-  }
+  };
 
   lastPager = (pageCount) => {
     const { prefixCls, locale } = this.props;
@@ -123,7 +123,7 @@ class Pagination extends Component<PropsType, any> {
         {pageCount}
       </li>
     );
-  }
+  };
 
   prevPager = (current) => {
     const { prefixCls, locale } = this.props;
@@ -142,7 +142,7 @@ class Pagination extends Component<PropsType, any> {
         <Icon type="arrow-left" />
       </li>
     );
-  }
+  };
 
   nextPager = (current, pageCount) => {
     const { prefixCls, locale } = this.props;
@@ -161,7 +161,7 @@ class Pagination extends Component<PropsType, any> {
         <Icon type="arrow-right" />
       </li>
     );
-  }
+  };
 
   jumpPrev = (current) => {
     const { prefixCls, locale } = this.props;
@@ -173,7 +173,7 @@ class Pagination extends Component<PropsType, any> {
         onClick={() => this._onPagerClick(current - 5)}
       />
     );
-  }
+  };
 
   jumpNext = (current) => {
     const { prefixCls, locale } = this.props;
@@ -185,7 +185,7 @@ class Pagination extends Component<PropsType, any> {
         onClick={() => this._onPagerClick(current + 5)}
       />
     );
-  }
+  };
 
   _onPagerClick(value) {
     const { onPageChange, onChange, pageSize } = this.props;
@@ -219,7 +219,7 @@ class Pagination extends Component<PropsType, any> {
         {i}
       </li>
     );
-  }
+  };
 
   renderAddonBefore = (addonBefore) => {
     const { prefixCls } = this.props;
@@ -228,7 +228,7 @@ class Pagination extends Component<PropsType, any> {
         {addonBefore}
       </div>
     );
-  }
+  };
 
   renderAddonAfter = (addonAfter) => {
     const { prefixCls } = this.props;
@@ -237,7 +237,7 @@ class Pagination extends Component<PropsType, any> {
         {addonAfter}
       </div>
     );
-  }
+  };
 
   renderTotal = () => {
     const { total, prefixCls, locale, pageSize } = this.props;
@@ -253,7 +253,7 @@ class Pagination extends Component<PropsType, any> {
         })}
       </div>
     );
-  }
+  };
 
   renderPageSizeSelector = () => {
     const { prefixCls, onPageSizeChange, onChange, locale, pageSize } = this.props;
@@ -294,7 +294,7 @@ class Pagination extends Component<PropsType, any> {
         </Select>
       </div>
     );
-  }
+  };
 
   renderJumper = () => {
     const { shape, total, prefixCls, locale, pageSize } = this.props;
@@ -310,7 +310,7 @@ class Pagination extends Component<PropsType, any> {
           defaultValue=""
           // tslint:disable-next-line:jsx-no-multiline-js
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-            let { value } = e.target as HTMLInputElement;
+            const { value } = e.target as HTMLInputElement;
             if (e.keyCode === 13) {
               let sValue = parseInt(value, 10);
               // eslint-disable-next-line
@@ -327,7 +327,7 @@ class Pagination extends Component<PropsType, any> {
         {locale!.pageClassifier}
       </div>
     );
-  }
+  };
 
   render() {
     const { props } = this;

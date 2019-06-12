@@ -27,8 +27,8 @@ class FixedColumn extends Component<FixedColumnProps, any> {
           <td style={{ height: tdHeight }}>
             {
               typeof render === 'function'
-              ? render(data[dataIndex], data, index)
-              : data[dataIndex]
+                ? render(data[dataIndex], data, index)
+                : data[dataIndex]
             }
           </td>
         </tr>
@@ -58,13 +58,13 @@ class FixedColumn extends Component<FixedColumnProps, any> {
           <tr>
             {
               rowSelection
-              ? renderSelectAll!(
+                ? renderSelectAll!(
                   rowSelection,
                   dataSource,
                   1,
                   thHeight,
                 )
-              : null
+                : null
             }
           </tr>
         </thead>
@@ -86,19 +86,19 @@ class FixedColumn extends Component<FixedColumnProps, any> {
                 >
                   {
                     rowSelection
-                    ? renderSelect!(rowSelection, data, height)
-                    : null
+                      ? renderSelect!(rowSelection, data, height)
+                      : null
                   }
                 </tr>
               );
-          })}
+            })}
         </tbody>
       </table>
     );
   }
 
   render() {
-    const { direction, columns = [],  prefixCls, colAttrs, rowSelection } = this.props;
+    const { direction, columns = [], prefixCls, colAttrs, rowSelection } = this.props;
     const {
       fixedColThHeight, fixedColTdHeight,
       fixedleftColWidth, fixedrightColWidth,

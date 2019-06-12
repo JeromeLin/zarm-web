@@ -1,9 +1,9 @@
-export type dataSource = {
+export interface dataSource {
   percent?: number;
   name?: string;
   url?: string;
   thumbUrl?: string;
-};
+}
 
 export interface ListProps {
   prefixCls?: string;

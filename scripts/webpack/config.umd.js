@@ -13,13 +13,14 @@ config.mode = 'development';
 config.devtool = 'source-map';
 
 config.entry = {
-  'dragon-ui': [
+  'zarm-web': [
+    './components/style/entry.tsx',
     './components/index.tsx',
   ],
 };
 
 config.output = {
-  library: 'dragon-ui',
+  library: 'zarm-web',
   libraryTarget: 'umd',
   path: path.join(process.cwd(), 'dist'),
   filename: '[name].js',
@@ -64,28 +65,25 @@ if (env === 'production') {
     ],
   };
 
-  // config.plugins.push(new BundleAnalyzerPlugin({
-  //   analyzerMode: 'static',
-  // }));
+  // config.plugins.push(
+  //   new BundleAnalyzerPlugin({
+  //     analyzerMode: 'static',
+  //   })
+  // );
 }
 
 config.plugins.push(
   new MiniCssExtractPlugin(cssConfig),
   new webpack.BannerPlugin(`
-  dragon-ui v${version}
+    Zarm-Web v${version}
 
-  Github: https://jeromelin.github.io/dragon-ui/
+    Github: https://github.com/ZhonganTechENG/zarm-web
 
-  Copyright (c) 2013-present, ZhonganTech, Inc.
+    Copyright (c) 2013-present, ZhonganTech, Inc.
 
-  This source code is licensed under the MIT license found in the
-  LICENSE file in the root directory of this source tree.
-`)
+    This source code is licensed under the MIT license found in the
+    LICENSE file in the root directory of this source tree.
+  `),
 );
-
-config.plugins.push(new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify(env || 'production'),
-  __DEBUG__: false,
-}));
 
 module.exports = config;

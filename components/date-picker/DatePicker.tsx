@@ -21,6 +21,7 @@ class DatePicker extends Component<PropsType, any> {
   };
 
   private unmounted;
+
   constructor(props) {
     super(props);
     this.unmounted = false;
@@ -87,7 +88,7 @@ class DatePicker extends Component<PropsType, any> {
     this.setState({
       value,
     });
-  }
+  };
 
   setDropdown(isOpen, callback?) {
     if (!this.unmounted) {
@@ -106,7 +107,7 @@ class DatePicker extends Component<PropsType, any> {
     );
   }
 
-  renderOverlay () {
+  renderOverlay() {
     const { defaultValue, min, max, showTime, format } = this.props;
     const { value } = this.state;
 
@@ -160,7 +161,7 @@ class DatePicker extends Component<PropsType, any> {
 
     return (
       <Dropdown
-        onVisibleChange={visible => {
+        onVisibleChange={(visible) => {
           if (disabled) {
             return;
           }
@@ -183,16 +184,18 @@ class DatePicker extends Component<PropsType, any> {
           >
             <span className={textCls}>
               {
-                allowInput && !disabled && !showTime ?
-                <Input
-                  onChange={this.onInputDateValue}
-                  value={value}
-                  placeholder={valueText}
-                /> :
-                valueText
+                allowInput && !disabled && !showTime
+                  ? (
+                    <Input
+                      onChange={this.onInputDateValue}
+                      value={value}
+                      placeholder={valueText}
+                    />
+                  )
+                  : valueText
               }
             </span>
-            <Icon className="za-select__icon" type="date"/>
+            <Icon className="za-select__icon" type="date" />
           </span>
         </span>
       </Dropdown>

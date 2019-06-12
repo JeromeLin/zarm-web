@@ -15,7 +15,7 @@ export interface TimePickerProps {
   isRadius?: string;
   size?: any;
   style?: React.CSSProperties;
-  locale?: { clear: string, confirm: string };
+  locale?: { clear: string; confirm: string };
   localeCode?: string;
   dropdownStyle?: React.CSSProperties;
   placement?: placement;
@@ -30,7 +30,7 @@ class TimePicker extends Component<TimePickerProps, any> {
 
   private unmounted: boolean;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     const value = props.value || props.defaultValue;
     this.unmounted = false;
@@ -40,17 +40,17 @@ class TimePicker extends Component<TimePickerProps, any> {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.unmounted = true;
   }
 
-  componentWillReceiveProps (nextProps: TimePickerProps) {
+  componentWillReceiveProps(nextProps: TimePickerProps) {
     if ('value' in nextProps) {
       this.setState({ value: nextProps.value });
     }
   }
 
-  onDateChange (value) {
+  onDateChange(value) {
     if (value.indexOf('undefined') > -1) { return; }
     this.setState({
       value,
@@ -59,7 +59,7 @@ class TimePicker extends Component<TimePickerProps, any> {
     });
   }
 
-  setDropdown (isOpen, callback?) {
+  setDropdown(isOpen, callback?) {
     if (!this.unmounted) { return; }
 
     this.setState({
@@ -71,7 +71,7 @@ class TimePicker extends Component<TimePickerProps, any> {
     });
   }
 
-  isNodeInTree (node, tree) {
+  isNodeInTree(node, tree) {
     while (node) {
       if (node === tree) {
         return true;
@@ -82,17 +82,17 @@ class TimePicker extends Component<TimePickerProps, any> {
     return false;
   }
 
-  onVisibleChange = visible => {
+  onVisibleChange = (visible) => {
     this.setState({
       dropdown: visible,
     });
-  }
+  };
 
-  onConfirmBtn () {
+  onConfirmBtn() {
     this.setDropdown(false, this.props.onChange);
   }
 
-  render () {
+  render() {
     const {
       defaultValue, placeholder, isDisabled, isRadius, size, locale,
       localeCode, dropdownStyle, placement, onChange, ...others
@@ -126,7 +126,7 @@ class TimePicker extends Component<TimePickerProps, any> {
       <Fragment>
         <TimeSelect
           value={valueText}
-          onChange={(value) => this.onDateChange(value)}
+          onChange={value => this.onDateChange(value)}
         />
         <div className="za-select__bottom">
           <a className="clear-btn" href="javascript:;" onClick={() => this.onDateChange('')}>
@@ -158,7 +158,7 @@ class TimePicker extends Component<TimePickerProps, any> {
             aria-expanded="false"
           >
             <span className={textCls}>{valueText}</span>
-            <Icon className="za-time__select-icon" type="time-circle"/>
+            <Icon className="za-time__select-icon" type="time-circle" />
           </div>
         </Dropdown>
       </div>

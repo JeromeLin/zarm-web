@@ -10,14 +10,17 @@ class Layout extends Component<PropsType, any> {
   };
 
   static Header: any;
+
   static Sider: any;
+
   static Footer: any;
+
   static Content: any;
 
   render() {
     const { prefixCls, className, children, style } = this.props;
 
-    let hasSider = this.props.hasSider;
+    let { hasSider } = this.props;
     if (!hasSider && prefixCls === defaultPrefixCls) {
       Children.forEach(children, (child) => {
         if ('collapsible' in (child as ReactElement<any>).props) {

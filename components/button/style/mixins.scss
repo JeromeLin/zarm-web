@@ -1,0 +1,70 @@
+@mixin button-theme($color, $background, $border, $type: '') {
+  $active-background: darken($background, 4%);
+  $active-border: darken($border, 4%);
+  $hover-background: rgba($background, .8);
+  $hover-border: rgba($border, .8);
+  $disable-background: rgba($background, .5);
+  $disable-border: rgba($border, .5);
+
+  border-color: $border;
+  color: $color;
+  background: $background;
+
+  &:visited,
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $active-background;
+    border-color: $active-border;
+    color: $color;
+    @if ($type == default) {
+      background-color: $--color-white;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+
+    &:focus,
+    &.visited,
+    &:hover {
+      background-color: $background;
+      border-color: $border;
+      color: $color;
+    }
+  }
+
+  @include m(loading) {
+    &:focus,
+    &.visited,
+    &:hover {
+      background-color: $background;
+      border-color: $border;
+      color: $color;
+    }
+  }
+}
+
+@mixin button-size($height, $padding, $font-size, $border-radius) {
+  padding: $padding;
+  font-size: $font-size;
+  height: $height;
+  line-height: $height - 2;
+
+  @include m(radius) {
+    border-radius: $border-radius;
+  }
+
+  @include m(round) {
+    border-radius: 1000px;
+  }
+
+  @include m(circle) {
+    width: $height;
+    height: $height;
+    padding: 0;
+    border-radius: 50%;
+  }
+}

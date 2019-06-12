@@ -12,10 +12,10 @@ export const groupColumns = (
   function setRowSpan(column) {
     const rowSpan = rows.length - currentRow;
     if (
-      column &&
-      !column.children &&
-      rowSpan > 1 &&
-      (!column.rowSpan || column.rowSpan < rowSpan)
+      column
+      && !column.children
+      && rowSpan > 1
+      && (!column.rowSpan || column.rowSpan < rowSpan)
     ) {
       column.rowSpan = rowSpan;
     }

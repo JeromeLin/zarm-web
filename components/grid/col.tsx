@@ -41,11 +41,11 @@ export default class Col extends Component<ColProps, {}> {
     lg: objectOrNumber,
   };
 
-  render () {
-    const props: any = this.props;
+  render() {
+    const { props } = this;
     const { span, order, offset, push, pull, className, children, prefixCls = 'col', gutter, style, ...others } = props;
     let sizeClassObj = {};
-    ['xs', 'sm', 'md', 'lg'].forEach(size => {
+    ['xs', 'sm', 'md', 'lg'].forEach((size) => {
       let sizeProps: ColSize = {};
       if (typeof props[size] === 'number') {
         sizeProps.span = props[size];

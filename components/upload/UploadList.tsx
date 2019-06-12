@@ -36,16 +36,16 @@ class UploadList extends Component<ListProps, any> {
         <div className={listCls}>
           {// tslint:disable-next-line:jsx-no-multiline-js
             dataSource.map((item, index) => {
-            const progress = item.percent ? (
-              <Progress
-                className={`${prefixCls}-list-item-progress`}
-                percent={item.percent}
-                theme="info"
-                size="sm"
-              />
-            ) : null;
+              const progress = item.percent ? (
+                <Progress
+                  className={`${prefixCls}-list-item-progress`}
+                  percent={item.percent}
+                  theme="info"
+                  size="sm"
+                />
+              ) : null;
 
-            return (
+              return (
               // eslint-disable-next-line
               <div key={`upload-list-item-${index}`} className={itemCls}>
                 <a
@@ -72,8 +72,8 @@ class UploadList extends Component<ListProps, any> {
                 />
                 {progress}
               </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     );

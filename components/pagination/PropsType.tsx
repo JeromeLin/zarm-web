@@ -18,5 +18,5 @@ export default interface PropsType {
   onPageChange: (value: number) => void;
   onPageSizeChange: (value: number) => void;
   locale?: { [propName: string]: any };
-  onChange: (pageInfo: { currentPage: number, pageSize: number }) => void;
+  onChange: (pageInfo: { currentPage: number; pageSize: number }) => void;
 }

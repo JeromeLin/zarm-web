@@ -1,14 +1,4 @@
 {
-  "extends": "stylelint-config-standard",
-  "rules": {
-    "at-rule-empty-line-before": null,
-    "comment-empty-line-before": null,
-    "number-leading-zero": null,
-    "selector-pseudo-element-colon-notation": null,
-    "color-hex-case": null,
-    "function-name-case": null,
-    "block-closing-brace-newline-after": null,
-    "selector-list-comma-newline-after": null,
-    "number-no-trailing-zeros": null
-  }
+  "root": true,
+  "extends": "stylelint-config-za"
 }

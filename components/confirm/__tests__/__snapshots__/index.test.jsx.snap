@@ -3,15 +3,15 @@
 exports[`Confirm renders basic Confirm correctly 1`] = `
 <ForwardRef(forwardRef)
   message="确认删除吗？"
-  onCancel={[Function]}
-  onOk={[Function]}
+  onCancel={[MockFunction]}
+  onOk={[MockFunction]}
   visible={true}
 >
   <LocaleReceiver
     forwardedRef={null}
     message="确认删除吗？"
-    onCancel={[Function]}
-    onOk={[Function]}
+    onCancel={[MockFunction]}
+    onOk={[MockFunction]}
     visible={true}
   >
     <ConfirmExtension
@@ -25,8 +25,8 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
       localeCode="zh-cn"
       message="确认删除吗？"
       okText="确定"
-      onCancel={[Function]}
-      onOk={[Function]}
+      onCancel={[MockFunction]}
+      onOk={[MockFunction]}
       prefixCls="ui-confirm"
       visible={true}
       width={270}
@@ -48,14 +48,14 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
             <div>
               <div
                 class="ui-modal fade-enter"
-                style="position: fixed;"
+                style="animation-duration: 300ms; position: fixed;"
               >
                 <div
                   class="ui-modal-wrapper"
                 >
                   <div
                     class="ui-modal-dialog zoom-enter"
-                    style="width: 270px; min-width: 270px;"
+                    style="width: 270px; min-width: 270px; animation-duration: 300ms;"
                     tabindex="-1"
                   >
                     <div
@@ -115,7 +115,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "WebkitAnimationDuration": "300ms",
+                "animationDuration": "300ms",
                 "position": "fixed",
               }
             }
@@ -130,7 +130,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                 onKeyPress={[Function]}
                 style={
                   Object {
-                    "WebkitAnimationDuration": "300ms",
+                    "animationDuration": "300ms",
                     "minWidth": 270,
                     "width": 270,
                   }

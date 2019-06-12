@@ -1,4 +1,5 @@
 import { CSSProperties, MouseEvent, ReactNode } from 'react';
+
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OptionProps {
@@ -26,7 +27,7 @@ export interface MultipleProps {
   onDoubleClick?: (e: MouseEvent) => void;
 }
 
-interface ChangeValue { value: string | number; text: ReactNode; index: number; }
+interface ChangeValue { value: string | number; text: ReactNode; index: number }
 export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 export default interface PropsType {
   prefixCls?: string;
@@ -48,7 +49,7 @@ export default interface PropsType {
   zIndex?: number;
   title?: string;
   locale?: {
-    [propName: string]: any,
+    [propName: string]: any;
   };
   getPopupContainer?(): HTMLElement;
 }

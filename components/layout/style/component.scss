@@ -15,6 +15,7 @@
 
   &.ui-layout-has-sider {
     flex-direction: row;
+
     > &,
     > &-content {
       overflow-x: hidden;

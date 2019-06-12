@@ -19,7 +19,7 @@ const compareTime = (v1, v2) => new Date(v1) > new Date(v2);
 const now = () => new Date();
 
 // 获取原生 Date 对象
-const getDate = (v) => v ? new Date(v) : now();
+const getDate = v => (v ? new Date(v) : now());
 
 // 获取下月 1 号
 const nextMonthFirstDay = (v) => {
@@ -33,10 +33,10 @@ const nextMonthFirstDay = (v) => {
 };
 
 // 获取日期的年、月、日
-const getYearMonthDay = (v) => [v.getFullYear(), v.getMonth(), v.getDate()];
+const getYearMonthDay = v => [v.getFullYear(), v.getMonth(), v.getDate()];
 
 // 判断是否为空对象
-const isEmptyArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(i => !i));
+const isEmptyArray = arr => Array.isArray(arr) && (arr.length === 0 || arr.every(i => !i));
 
 //
 const getValueFromSelectedValue = (v = []) => {
@@ -108,7 +108,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     if (!disabled) {
       this.setDropdown(!this.state.isShowDropdown);
     }
-  }
+  };
 
   handleLeftPanelChange = (v) => {
     const current = [...this.state.current];
@@ -118,7 +118,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     this.setState({
       current,
     });
-  }
+  };
 
   handleRightPanelChange = (v) => {
     const current = [...this.state.current];
@@ -128,7 +128,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     this.setState({
       current,
     });
-  }
+  };
 
   handleLeftDateChange = (v, _dropdown, isTime) => {
     const { selectedValue } = this.state;
@@ -142,7 +142,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     }
 
     this.handleDateChange(v, isTime, true);
-  }
+  };
 
   handleRightDateChange = (v, _dropdown, isTime) => {
     const { selectedValue } = this.state;
@@ -156,7 +156,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     }
 
     this.handleDateChange(v, isTime, false);
-  }
+  };
 
   handleDateChange = (v, isTime, isLeft) => {
     const { selectedValue } = this.state;
@@ -196,17 +196,17 @@ class RangeDatePicker extends Component<PropsType, any> {
         selectedValue: [v],
       });
     }
-  }
+  };
 
   handleCloseDropDown = () => {
     this.setDropdown(false);
 
     this.props.onChange([]);
-  }
+  };
 
   handleConfirm = () => {
     this.handleCloseDropDownAndChangeDate(true);
-  }
+  };
 
   handleCloseDropDownAndChangeDate: (isConfirm?: boolean) => void = (isConfirm) => {
     const {
@@ -222,10 +222,10 @@ class RangeDatePicker extends Component<PropsType, any> {
     if (isConfirm || !showTime) {
       this.setDropdown(
         false,
-        () => onChange(selectedValue.map((v) => Format.date(v, format))),
+        () => onChange(selectedValue.map(v => Format.date(v, format))),
       );
     }
-  }
+  };
 
   setDropdown(isOpen, callback?) {
     if (!this.unmounted) {
@@ -254,7 +254,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     if (e.keyCode === 27) {
       this.setDropdown(false);
     }
-  }
+  };
 
   bindOuterHandlers() {
     Events.on(document, 'keyup', this.handleKeyup);
@@ -279,7 +279,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     this.setState({
       isShowDropdown: visible,
     });
-  }
+  };
 
   disabledStartMonth = (month) => {
     const { current, selectedValue } = this.state;
@@ -292,12 +292,11 @@ class RangeDatePicker extends Component<PropsType, any> {
 
     if (_year < endYear) {
       return true;
-    } else if (_year === endYear) {
+    } if (_year === endYear) {
       return _month < endMonth;
-    } else {
-      return false;
     }
-  }
+    return false;
+  };
 
   disabledEndMonth = (month) => {
     const { current, selectedValue } = this.state;
@@ -317,13 +316,13 @@ class RangeDatePicker extends Component<PropsType, any> {
     }
 
     return false;
-  }
+  };
 
   getStartDate = () => {
     const { current } = this.state;
 
     return getDate(current[0]);
-  }
+  };
 
   getEndDate = () => {
     const { current } = this.state;
@@ -332,7 +331,7 @@ class RangeDatePicker extends Component<PropsType, any> {
 
     // 当结束时间不存在时，结束时间初始值为开始时间月份加 1
     return getDate(end || nextMonthFirstDay(start));
-  }
+  };
 
   renderPlaceholder = () => {
     const { props } = this;
@@ -383,11 +382,11 @@ class RangeDatePicker extends Component<PropsType, any> {
           onClick={this.onSelectClick}
         >
           <span className={textCls}>{valueText}</span>
-          <Icon className="za-select__icon" type="date"/>
+          <Icon className="za-select__icon" type="date" />
         </span>
       </span>
     );
-  }
+  };
 
   render() {
     const { props } = this;
@@ -413,51 +412,50 @@ class RangeDatePicker extends Component<PropsType, any> {
     const endDate = this.getEndDate();
 
     // 开始时间月份加 1 且 年份与结束时间相同时，不允许点击左日历月份加 1，不允许右日历月份减 1
-    const isAllowJumpMonth = !((startDate.getMonth() + 1) === endDate.getMonth() &&
-      startDate.getFullYear() === endDate.getFullYear());
+    const isAllowJumpMonth = !((startDate.getMonth() + 1) === endDate.getMonth()
+      && startDate.getFullYear() === endDate.getFullYear());
 
-    const compRangeCalendar =
-      (
-        <React.Fragment>
-          <div style={{ float: 'left', width: '50%' }}>
-            <RangeCalendar
-              isLeftCalendar
-              defaultValue={defaultValue}
-              selectedValue={selectedValue}
-              current={current[0] || startDate}
-              value={selectedValue[0] || current[0]}
-              format={format}
-              min={min}
-              max={max}
-              showTime={showTime}
-              isShowPrev
-              isShowNext={isAllowJumpMonth}
-              disabledMonth={this.disabledStartMonth}
-              onPanelChange={this.handleLeftPanelChange}
-              onChange={this.handleLeftDateChange}
-            />
-          </div>
+    const compRangeCalendar = (
+      <React.Fragment>
+        <div style={{ float: 'left', width: '50%' }}>
+          <RangeCalendar
+            isLeftCalendar
+            defaultValue={defaultValue}
+            selectedValue={selectedValue}
+            current={current[0] || startDate}
+            value={selectedValue[0] || current[0]}
+            format={format}
+            min={min}
+            max={max}
+            showTime={showTime}
+            isShowPrev
+            isShowNext={isAllowJumpMonth}
+            disabledMonth={this.disabledStartMonth}
+            onPanelChange={this.handleLeftPanelChange}
+            onChange={this.handleLeftDateChange}
+          />
+        </div>
 
-          <div style={{ float: 'right', width: '50%' }}>
-            <RangeCalendar
-              isRightCalendar
-              defaultValue={defaultValue}
-              selectedValue={selectedValue}
-              current={current[1] || endDate}
-              value={selectedValue[1] || current[1]}
-              format={format}
-              min={min}
-              max={max}
-              showTime={showTime}
-              isShowPrev={isAllowJumpMonth}
-              isShowNext
-              disabledMonth={this.disabledEndMonth}
-              onPanelChange={this.handleRightPanelChange}
-              onChange={this.handleRightDateChange}
-            />
-          </div>
-        </React.Fragment>
-      );
+        <div style={{ float: 'right', width: '50%' }}>
+          <RangeCalendar
+            isRightCalendar
+            defaultValue={defaultValue}
+            selectedValue={selectedValue}
+            current={current[1] || endDate}
+            value={selectedValue[1] || current[1]}
+            format={format}
+            min={min}
+            max={max}
+            showTime={showTime}
+            isShowPrev={isAllowJumpMonth}
+            isShowNext
+            disabledMonth={this.disabledEndMonth}
+            onPanelChange={this.handleRightPanelChange}
+            onChange={this.handleRightDateChange}
+          />
+        </div>
+      </React.Fragment>
+    );
 
     const timeFooter = (
       <div className="za-range__date-picker-footer">
@@ -482,21 +480,20 @@ class RangeDatePicker extends Component<PropsType, any> {
       'za-range__date-time-picker': showTime,
     });
 
-    const rangeDatePicker =
-      (
-        <div className={rangeDatePickerStyle}>
-          <div className="za-range__date-picker-table">
-            {
+    const rangeDatePicker = (
+      <div className={rangeDatePickerStyle}>
+        <div className="za-range__date-picker-table">
+          {
               compRangeCalendar
             }
-          </div>
-
-          {
-            showTime &&
-            timeFooter
-          }
         </div>
-      );
+
+        {
+            showTime
+            && timeFooter
+          }
+      </div>
+    );
 
     return (
       <Dropdown

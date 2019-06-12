@@ -39,6 +39,7 @@ function isInputProps(props: Merge<InputTypeIF['input'], PropsType> |
 
 class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<InputTypeIF[T], PropsType>, StateIF> {
   static Group = InputGroup;
+
   static Search = Search;
 
   static defaultProps = {
@@ -59,14 +60,14 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
   };
 
   refMap: {
-    input?: InputElemIF[T],
+    input?: InputElemIF[T];
   } = {};
 
   inputElemRef = (elem: InputElemIF[T] | null) => {
     if (elem) {
       this.refMap.input = elem;
     }
-  }
+  };
 
   onFocus = (event: any) => {
     const { props } = this;
@@ -76,7 +77,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     this.setState({
       focused: true,
     });
-  }
+  };
 
   onBlur = (event: any) => {
     const { props } = this;
@@ -86,7 +87,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     this.setState({
       focused: false,
     });
-  }
+  };
 
   onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const onChange = this.props.onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined;
@@ -96,7 +97,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     if (this.props.showLength) {
       this.forceUpdate();
     }
-  }
+  };
 
   getLength() {
     const { maxLength, showLength } = this.props;
@@ -106,7 +107,15 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     }
 
     if (maxLength) {
-      if (length) return <span className="length-box">{length}/{maxLength}</span>;
+      if (length) {
+        return (
+          <span className="length-box">
+            {length}
+/
+            {maxLength}
+          </span>
+        );
+      }
       return <span className="length-box">{maxLength}</span>;
     }
     return null;
@@ -116,9 +125,11 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     props: Merge<InputTypeIF['input'], PropsType>,
     cls: string,
   ) {
-    const { type, prefixCls, shape, size,
+    const {
+      type, prefixCls, shape, size,
       className, addonPrefix, addonBefore,
-      addonAfter, showLength, value, ...others } = props;
+      addonAfter, showLength, value, ...others
+    } = props;
     return (
       <div className={cls}>
         {addonBefore && <Addon size={size} addon={addonBefore} />}
@@ -143,18 +154,21 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
       type, prefixCls, shape, size,
       className, addonPrefix, addonBefore,
       addonAfter, showLength, value, defaultValue,
-      ...others } = props;
-    return <span className={`${prefixCls}-textarea-box`}>
-      <textarea
-        {...others}
-        ref={this.inputElemRef}
-        className={cls}
-        onChange={this.onTextareaChange}
-      >
-        {defaultValue}
-      </textarea>
-      {this.getLength()}
-    </span>;
+      ...others
+    } = props;
+    return (
+      <span className={`${prefixCls}-textarea-box`}>
+        <textarea
+          {...others}
+          ref={this.inputElemRef}
+          className={cls}
+          onChange={this.onTextareaChange}
+        >
+          {defaultValue}
+        </textarea>
+        {this.getLength()}
+      </span>
+    );
   }
 
   render() {

@@ -41,12 +41,11 @@ class Cell extends Component<CellProps, any> {
     const { maxCellSize, column, row, rowIndex, columnIndex } = this.props;
     const value = row[column.dataIndex];
     const { style = {} } = column;
-    const render =
-      'render' in column ? column.render(value, row, rowIndex) : value;
+    const render = 'render' in column ? column.render(value, row, rowIndex) : value;
 
     // 渲染需合并的单元格
-    if (render && typeof render === 'object' &&
-      ('colSpan' in render || 'rowSpan' in render)
+    if (render && typeof render === 'object'
+      && ('colSpan' in render || 'rowSpan' in render)
     ) {
       return this.renderMergedCell(column, columnIndex, render);
     }

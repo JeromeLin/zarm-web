@@ -10,7 +10,7 @@ import LocaleReceiver from '../locale/LocaleReceiver';
 // 生成 [1, 2, 3, ...] 的序列
 const getSequence = length => [...Array.from({ length }).keys()];
 
-const CALENDAR_ROW_COUNT =  getSequence(6);
+const CALENDAR_ROW_COUNT = getSequence(6);
 const CALENDAR_COL_COUNT = getSequence(7);
 
 const compareTime = (v1, v2) => new Date(v1) > new Date(v2);
@@ -58,15 +58,15 @@ class CalendarDateTable extends Component<DateTableProps, any> {
           {
             // tslint:disable-next-line:jsx-no-multiline-js
             weekDays.map((week, index) => (
-            <th
+              <th
               // eslint-disable-next-line
               key={`weekdays-${index}`}
-              className={`${prefixCls}-column`}
-              title={locale!.week_days_hints[index]}
-            >
-              {week}
-            </th>
-          ))}
+                className={`${prefixCls}-column`}
+                title={locale!.week_days_hints[index]}
+              >
+                {week}
+              </th>
+            ))}
         </tr>
       </thead>
     );
@@ -116,11 +116,11 @@ class CalendarDateTable extends Component<DateTableProps, any> {
     // 当月最后一天不在周日时，后面日期用下个月的日期补齐
     for (
       let k = 1;
-      k <=
-      CALENDAR_ROW_COUNT.length * CALENDAR_COL_COUNT.length -
-        current.days -
-        current.firstDayOfWeek +
-        1;
+      k
+      <= CALENDAR_ROW_COUNT.length * CALENDAR_COL_COUNT.length
+        - current.days
+        - current.firstDayOfWeek
+        + 1;
       k++
     ) {
       dates.push(
@@ -139,8 +139,8 @@ class CalendarDateTable extends Component<DateTableProps, any> {
 
     return (
       <tbody>
-      {
-        CALENDAR_ROW_COUNT.map((m) => (
+        {
+        CALENDAR_ROW_COUNT.map(m => (
           <tr key={`row-${m}`} role="row">
             {
               CALENDAR_COL_COUNT.map((n) => {
@@ -197,12 +197,12 @@ class CalendarDateTable extends Component<DateTableProps, any> {
     let isRange = false;
     if (selectedValue && isArray(selectedValue) && type !== 'others') {
       if (selectedValue.length === 2) {
-        isRange = compareTime(fullDay, selectedValue[0]) &&
-          compareTime(selectedValue[1], fullDay);
+        isRange = compareTime(fullDay, selectedValue[0])
+          && compareTime(selectedValue[1], fullDay);
       }
 
-      isSelected = isEqualTime(selectedValue[0], fullDay) ||
-        isEqualTime(selectedValue[1], fullDay);
+      isSelected = isEqualTime(selectedValue[0], fullDay)
+        || isEqualTime(selectedValue[1], fullDay);
     } else {
       isSelected = isEqualTime(value, fullDay);
     }
@@ -212,8 +212,8 @@ class CalendarDateTable extends Component<DateTableProps, any> {
       [`${prefixCls}-text-selected`]: isSelected,
       [`${prefixCls}-text-range`]: isRange,
       [`${prefixCls}-text-today`]:
-        new Date().toLocaleDateString() ===
-        new Date(fullDay).toLocaleDateString(),
+        new Date().toLocaleDateString()
+        === new Date(fullDay).toLocaleDateString(),
     });
 
     return (

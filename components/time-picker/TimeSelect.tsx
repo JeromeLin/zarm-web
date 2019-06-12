@@ -27,10 +27,12 @@ class TimeSelect extends Component<TimeSelectProps, any> {
   static contextType = FormItemContext;
 
   private hourDom: any;
+
   private minuteDom: any;
+
   private secondDom: any;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       selectH: [],
@@ -44,16 +46,16 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.selectInit();
     this.setDataFromValue(this.props);
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.setDataFromValue(nextProps);
   }
 
-  setDataFromValue (props) {
+  setDataFromValue(props) {
     const arrTime = props.value.split(':');
 
     this.setState({
@@ -63,7 +65,7 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     });
   }
 
-  scrollToSelected (element, selectIndex, duration) {
+  scrollToSelected(element, selectIndex, duration) {
     // @ts-ignore
     const selectDom: any = ReactDOM.findDOMNode(element).children[0];
     const list = selectDom.querySelector('ul');
@@ -74,11 +76,11 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     scrollTo(selectDom, to, duration);
   }
 
-  selectInit () {
+  selectInit() {
     const { selectH, selectM, selectS } = this.state;
 
     for (let i = 0; i < 60; i++) {
-      const num = i < 10 ? '0' + i : i + '';
+      const num = i < 10 ? `0${i}` : `${i}`;
       if (i < 24) { selectH.push(num); }
       selectM.push(num);
       selectS.push(num);
@@ -86,7 +88,7 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     this.setState({ selectH, selectM, selectS });
   }
 
-  onSelect (type, element, arr, selectIndex) {
+  onSelect(type, element, arr, selectIndex) {
     let { selectedH, selectedM, selectedS } = this.state;
     if (type === 'H') { selectedH = arr; }
     if (type === 'M') { selectedM = arr; }
@@ -95,12 +97,12 @@ class TimeSelect extends Component<TimeSelectProps, any> {
       this.context.handleFieldChange();
     }
     this.setState({ selectedH, selectedM, selectedS });
-    const rVal = selectedH[0] + ':' + selectedM[0] + ':' + selectedS[0];
+    const rVal = `${selectedH[0]}:${selectedM[0]}:${selectedS[0]}`;
     this.scrollToSelected(element, selectIndex, 120);
     this.props.onChange(rVal);
   }
 
-  render () {
+  render() {
     const { selectH, selectM, selectS } = this.state;
 
     return (

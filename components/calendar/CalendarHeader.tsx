@@ -65,42 +65,44 @@ class CalendarHeader extends Component<HeaderProps, any> {
 
           {
             localeCode === 'zh-cn'
-            ? (
-              <span className={`${prefixCls}-header-time`}>
-                <a
-                  href="javascript:;"
-                  className={`${prefixCls}-header-btn`}
-                  onClick={() => this.onChangePanel('year')}
-                >
-                  {current.year}年
-                </a>
-                <a
-                  href="javascript:;"
-                  className={`${prefixCls}-header-btn`}
-                  onClick={() => this.onChangePanel('month')}
-                >
-                  {current.month}月
-                </a>
-              </span>
-            )
-            : (
-              <span className={`${prefixCls}-header-time`}>
-                <a
-                  href="javascript:;"
-                  className={`${prefixCls}-header-btn`}
-                  onClick={() => this.onChangePanel('month')}
-                >
-                  {locale![`month${current.month}`]}
-                </a>
-                <a
-                  href="javascript:;"
-                  className={`${prefixCls}-header-btn`}
-                  onClick={() => this.onChangePanel('year')}
-                >
-                  {current.year}
-                </a>
-              </span>
-            )
+              ? (
+                <span className={`${prefixCls}-header-time`}>
+                  <a
+                    href="javascript:;"
+                    className={`${prefixCls}-header-btn`}
+                    onClick={() => this.onChangePanel('year')}
+                  >
+                    {current.year}
+年
+                  </a>
+                  <a
+                    href="javascript:;"
+                    className={`${prefixCls}-header-btn`}
+                    onClick={() => this.onChangePanel('month')}
+                  >
+                    {current.month}
+月
+                  </a>
+                </span>
+              )
+              : (
+                <span className={`${prefixCls}-header-time`}>
+                  <a
+                    href="javascript:;"
+                    className={`${prefixCls}-header-btn`}
+                    onClick={() => this.onChangePanel('month')}
+                  >
+                    {locale![`month${current.month}`]}
+                  </a>
+                  <a
+                    href="javascript:;"
+                    className={`${prefixCls}-header-btn`}
+                    onClick={() => this.onChangePanel('year')}
+                  >
+                    {current.year}
+                  </a>
+                </span>
+              )
           }
 
           <a
@@ -133,7 +135,8 @@ class CalendarHeader extends Component<HeaderProps, any> {
               className={`${prefixCls}-header-year-btn`}
               onClick={() => this.onChangePanel('date')}
             >
-              {current.year}{locale!.year}
+              {current.year}
+              {locale!.year}
             </a>
           </span>
           <a
@@ -163,7 +166,12 @@ class CalendarHeader extends Component<HeaderProps, any> {
               className={`${prefixCls}-header-year-btn`}
               onClick={() => this.onChangePanel('date')}
             >
-              {beforeYear} - {beforeYear + 9} {locale!.year}
+              {beforeYear}
+              {' '}
+-
+              {beforeYear + 9}
+              {' '}
+              {locale!.year}
             </a>
           </span>
           <a
@@ -212,8 +220,7 @@ class CalendarHeader extends Component<HeaderProps, any> {
 
   // 切换月份
   onMonthClick(current, type) {
-    const newMonth =
-      type === 'pre' ? this.getPreMonth(current) : this.getNextMonth(current);
+    const newMonth = type === 'pre' ? this.getPreMonth(current) : this.getNextMonth(current);
     const currentString = `${newMonth.year}/${newMonth.month}/${newMonth.date}`;
 
     this.props.onChange(currentString);

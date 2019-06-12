@@ -16,14 +16,13 @@ class BreadcrumbItem extends Component<ItemPropsType, any> {
       [className!]: !!className,
     });
 
-    const text =
-      'href' in this.props ? (
-        <a className="ui-breadcrumb-link" href={href}>
-          {children}
-        </a>
-      ) : (
-        <span className="ui-breadcrumb-link">{children}</span>
-      );
+    const text = 'href' in this.props ? (
+      <a className="ui-breadcrumb-link" href={href}>
+        {children}
+      </a>
+    ) : (
+      <span className="ui-breadcrumb-link">{children}</span>
+    );
 
     return (
       <span className={cls} style={style}>

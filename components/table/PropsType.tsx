@@ -1,17 +1,17 @@
-export type column = {
+export interface column {
   fixed?: boolean | string;
   [propName: string]: any;
-};
-export type rowSelection = {
+}
+export interface rowSelection {
   fixed?: boolean;
   [propName: string]: any;
-};
-export type colAttrsType = {
+}
+export interface colAttrsType {
   fixedColThHeight: number;
   fixedColTdHeight: number;
   fixedleftColWidth: number;
   fixedrightColWidth: number;
-};
+}
 
 export interface HeadProps {
   prefixCls?: string;

@@ -253,6 +253,10 @@ a {
   }
 }
 
+.za-button + .za-button {
+  margin-left: 12px;
+}
+
 .demo-transition {
   .za-row {
     margin-bottom: 20px;
@@ -268,7 +272,7 @@ a {
       padding: 16px 0;
       font-size: 14px;
       color: #fff;
-      background: #00BC70;
+      background: #00bc70;
 
       &:nth-child(2n + 1) {
         background: rgba(0, 188, 122, .5);
@@ -282,7 +286,7 @@ a {
 
   .grid-box {
     padding: 10px 0;
-    background: #00BC70;
+    background: #00bc70;
   }
 
   p {
