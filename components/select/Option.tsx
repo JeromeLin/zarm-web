@@ -10,10 +10,9 @@ class Option extends Component<OptionProps, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       children, checked, disabled, onDoubleClick, showCheckIcon, onChange,
-    } = props;
+    } = this.props;
 
     const cls = cn({
       'za-option__list': true,

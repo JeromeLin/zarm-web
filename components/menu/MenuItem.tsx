@@ -28,11 +28,10 @@ class MenuItem extends Component<ItemProps, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       checked, isDisabled, children, prefixCls, level, inlineIndent,
       className, style, onDoubleClick, selectedKeys, itemKey, mode, inlineCollapsed,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       [`${prefixCls}-level-${level}`]: level,
@@ -40,7 +39,7 @@ class MenuItem extends Component<ItemProps, any> {
       active: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
       [className!]: !!className,
       selected: !!checked,
-      disabled: 'disabled' in props || isDisabled,
+      disabled: 'disabled' in this.props || isDisabled,
     });
     const itemStyle: styleType = {
       ...style,

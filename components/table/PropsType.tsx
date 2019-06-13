@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/class-name-casing */
 export interface column {
   fixed?: boolean | string;
   [propName: string]: any;

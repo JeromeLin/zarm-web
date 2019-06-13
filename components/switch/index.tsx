@@ -29,20 +29,21 @@ class Switch extends Component<PropsType, any> {
   }
 
   _onClick() {
-    const value = !this.state.value;
+    const { value: stateValue } = this.state;
+    const { onChange } = this.props;
+    const value = !stateValue.value;
     this.setState({
       value,
     });
-    this.props.onChange(value);
+    onChange(value);
   }
 
   render() {
-    const { props } = this;
     const {
       size, isCheckedText, unCheckedText, isDisabled, style, prefixCls,
-    } = props;
+    } = this.props;
     const { value } = this.state;
-    const disabled = 'disabled' in props || isDisabled;
+    const disabled = 'disabled' in this.props || isDisabled;
 
     const cls = classnames({
       [prefixCls!]: true,

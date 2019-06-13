@@ -53,24 +53,24 @@ class Popover extends Component<PropsType, any> {
   }
 
   componentDidMount() {
-    const { instance, pop } = this;
+    const { visible } = this.state;
     const reference = findDOMNode(this.reference); // eslint-disable-line
     const { trigger } = this.props;
 
     if (trigger === 'click') {
       Events.on(reference, 'click', () => {
         this.setState({
-          visible: !this.state.visible,
+          visible: !visible,
         });
       });
       Events.on(document, 'click', ({ target }) => {
         if (
-          !instance
-          || instance.contains(target)
+          !this.instance
+          || this.instance.contains(target)
           || !reference
           || reference.contains(target)
-          || !pop
-          || pop.contains(target)
+          || !this.pop
+          || this.pop.contains(target)
           || !this.popper
         ) {
           return;
@@ -84,17 +84,19 @@ class Popover extends Component<PropsType, any> {
       Events.on(reference, 'mouseleave', () => {
         this.hidePop();
       });
-      Events.on(pop, 'mouseenter', () => {
+      Events.on(this.pop, 'mouseenter', () => {
         this.showPop();
       });
-      Events.on(pop, 'mouseleave', () => {
+      Events.on(this.pop, 'mouseleave', () => {
         this.hidePop();
       });
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.visible !== nextProps.visible) {
+    const { visible } = this.state;
+
+    if (visible !== nextProps.visible) {
       this.setState({
         visible: !!nextProps.visible,
       });

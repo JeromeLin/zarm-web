@@ -5,7 +5,7 @@ export type size = 'xl' | 'lg' | 'sm' | 'xs';
 export type shape = 'circle' | 'round' | 'rect' | 'radius';
 export type buttonType = 'button' | 'submit' | 'reset';
 
-export default interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
+export default interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   prefixCls?: string;
   htmlType?: buttonType;
   theme?: theme;

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Radio from './Radio';
 import { GroupProps } from './PropsType';
 
-class RadioGroup extends Component<GroupProps, any> {
+class RadioGroup extends Component<GroupProps> {
   static defaultProps = {
     prefixCls: 'za-radio-group',
     onChange: () => {},
@@ -12,22 +12,33 @@ class RadioGroup extends Component<GroupProps, any> {
   constructor(props) {
     super(props);
     this.state = {
+      // eslint-disable-next-line react/no-unused-state
       value:
         props.value
         || props.defaultValue
-        || this.getCheckedValue(props.children),
+        || RadioGroup.getCheckedValue(props.children),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps || RadioGroup.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children),
+        // eslint-disable-next-line react/no-unused-state
+        value: nextProps.value || RadioGroup.getCheckedValue(nextProps.children),
       });
     }
   }
 
-  getCheckedValue(children) {
+  onRadioChange(e) {
+    const { onChange } = this.props;
+    this.setState({
+      // eslint-disable-next-line react/no-unused-state
+      value: e.target.value,
+    });
+    onChange(e);
+  }
+
+  static getCheckedValue(children) {
     let checkedValue = null;
     React.Children.forEach(children, (radio) => {
       if ((radio as ReactElement<any>).props && (radio as ReactElement<any>).props.checked) {
@@ -37,31 +48,23 @@ class RadioGroup extends Component<GroupProps, any> {
     return checkedValue;
   }
 
-  onRadioChange(e) {
-    this.setState({
-      value: e.target.value,
-    });
-    this.props.onChange(e);
-  }
-
   render() {
-    const { props } = this;
+    const { prefixCls, size, children } = this.props;
     const { value } = this.state as { value?: string };
-    const cls = classnames({
-      [`${props.prefixCls}`]: true,
-      [`${props.prefixCls}--${props.size}`]: props.size,
+    const cls = classnames(prefixCls, {
+      [`${prefixCls}--${size}`]: size,
     });
 
-    const children = React.Children.map(props.children, radio => (
+    const childrenNode = React.Children.map(children, radio => (
       <Radio
         {...(radio as ReactElement<any>).props}
         onChange={e => this.onRadioChange(e)}
         // tslint:disable-next-line:triple-equals
-        checked={value == (radio as ReactElement<any>).props.value}
+        checked={value === (radio as ReactElement<any>).props.value}
       />
     ));
 
-    return <div className={cls}>{children}</div>;
+    return <div className={cls}>{childrenNode}</div>;
   }
 }
 

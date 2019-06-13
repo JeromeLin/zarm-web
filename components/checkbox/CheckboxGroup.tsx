@@ -14,44 +14,21 @@ class CheckboxGroup extends Component<GroupProps, any> {
       value:
         props.value
         || props.defaultValue
-        || this.getCheckedValue(props.children),
+        || CheckboxGroup.getCheckedValue(props.children),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps || CheckboxGroup.getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || this.getCheckedValue(nextProps.children),
+        value: nextProps.value || CheckboxGroup.getCheckedValue(nextProps.children),
       });
     }
   }
 
-  render() {
-    const { props } = this;
-
-    const children = React.Children.map(props.children, checkbox => (
-      <Checkbox
-        {...(checkbox as ReactElement<any>).props}
-        onChange={e => this.onCheckboxChange(e)}
-        checked={!!(this.state.value.indexOf((checkbox as ReactElement<any>).props.value) > -1)}
-      />
-    ));
-
-    return <div className={props.prefixCls}>{children}</div>;
-  }
-
-  getCheckedValue(children) {
-    const checkedValue: ReactElement<any>[] = [];
-    React.Children.forEach(children, (checkbox) => {
-      if ((checkbox as ReactElement<any>).props && (checkbox as ReactElement<any>).props.checked) {
-        checkedValue.push((checkbox as ReactElement<any>).props.value);
-      }
-    });
-    return checkedValue;
-  }
-
   onCheckboxChange(e) {
     const { value } = this.state;
+    const { onChange } = this.props;
     const index = value.indexOf(e.target.value);
 
     if (index < 0) {
@@ -63,7 +40,32 @@ class CheckboxGroup extends Component<GroupProps, any> {
     this.setState({
       value,
     });
-    this.props.onChange(value);
+    onChange(value);
+  }
+
+  static getCheckedValue(children) {
+    const checkedValue: ReactElement<any>[] = [];
+    React.Children.forEach(children, (checkbox) => {
+      if ((checkbox as ReactElement<any>).props && (checkbox as ReactElement<any>).props.checked) {
+        checkedValue.push((checkbox as ReactElement<any>).props.value);
+      }
+    });
+    return checkedValue;
+  }
+
+  render() {
+    const { value } = this.state;
+    const { children, prefixCls } = this.props;
+
+    const childrenNode = React.Children.map(children, checkbox => (
+      <Checkbox
+        {...(checkbox as ReactElement<any>).props}
+        onChange={e => this.onCheckboxChange(e)}
+        checked={!!(value.indexOf((checkbox as ReactElement<any>).props.value) > -1)}
+      />
+    ));
+
+    return <div className={prefixCls}>{childrenNode}</div>;
   }
 }
 

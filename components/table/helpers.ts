@@ -35,7 +35,7 @@ export const groupColumns = (
       parentColumn.colSpan += newColumn.colSpan;
     } else {
       dataColumns.push(newColumn);
-      parentColumn.colSpan++;
+      parentColumn.colSpan += 1;
     }
 
     for (let i = 0; i < rows[currentRow].length - 1; ++i) {

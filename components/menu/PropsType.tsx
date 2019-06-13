@@ -1,10 +1,12 @@
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
+// eslint-disable-next-line @typescript-eslint/class-name-casing
 export interface styleType {
   paddingLeft?: number;
   [propName: string]: any;
 }
 
+// eslint-disable-next-line @typescript-eslint/class-name-casing
 export interface childPropsType {
   prefixCls?: string;
   mode?: 'inline' | 'horizontal';

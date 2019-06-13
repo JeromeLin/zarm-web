@@ -57,7 +57,7 @@ export const placementMap = {
   leftBottom: 'left-end',
 };
 
-function getOuterSizes (element: HTMLElement) {
+function getOuterSizes(element: HTMLElement) {
   const _display = element.style.display;
   const _visibility = element.style.visibility;
   element.style.display = 'block';
@@ -76,18 +76,18 @@ function getOuterSizes (element: HTMLElement) {
   return result;
 }
 
-function getPopperClientRect (popperOffsets) {
+function getPopperClientRect(popperOffsets) {
   const offsets = { ...popperOffsets };
   offsets.right = offsets.left + offsets.width;
   offsets.bottom = offsets.top + offsets.height;
   return offsets;
 }
 
-function customArrowOffsetFn (data: PopperJS.Data) {
+function customArrowOffsetFn(data: PopperJS.Data) {
   const placement = data.placement.split('-')[0];
   const placement1 = data.placement.split('-')[1];
   const arrow: any = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element;
-  const reference = data.offsets.reference;
+  const { reference } = data.offsets;
   const popper = getPopperClientRect(data.offsets.popper);
   const isVertical = ['left', 'right'].indexOf(placement) !== -1;
   const len = isVertical ? 'height' : 'width';
@@ -102,7 +102,7 @@ function customArrowOffsetFn (data: PopperJS.Data) {
     end: reference[opSide] - offsetSize - arrowSize,
   };
   const place = hashMap[placement1 || 'center'];
-  let sideValue = place - popper[side];
+  const sideValue = place - popper[side];
 
   data.arrowElement = arrow;
   data.arrowStyles[side] = Math.floor(sideValue) as any;
@@ -123,6 +123,7 @@ class Popper extends React.Component<PopperProps> {
   };
 
   static propTypes = {
+    prefixCls: PropTypes.string,
     children: PropTypes.element.isRequired,
     visible: PropTypes.bool,
     hasArrow: PropTypes.bool,
@@ -147,10 +148,10 @@ class Popper extends React.Component<PopperProps> {
     onVisibleChange: PropTypes.func,
   };
 
-  static getDerivedStateFromProps (props: PopperProps, state) {
+  static getDerivedStateFromProps(props: PopperProps, state) {
     if ('visible' in props && props.trigger === 'manual') {
       return {
-        ... state,
+        ...state,
         visible: props.visible,
       };
     }
@@ -164,26 +165,33 @@ class Popper extends React.Component<PopperProps> {
   };
 
   private popper: any;
+
   private popperNode: any;
+
   private reference: any;
+
   private arrowRef: any;
+
   private enterTimer: any;
+
   private leaveTimer: any;
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
+    const { visible } = this.state;
+    const { placement, popperOptions } = this.props;
     if (
-      !prevState.visible && prevState.visible !== this.state.visible ||
-      prevProps.placement !== this.props.placement ||
-      prevProps.popperOptions !== this.props.popperOptions
+      (!prevState.visible && prevState.visible !== visible)
+      || (prevProps.placement !== placement)
+      || (prevProps.popperOptions !== popperOptions)
     ) {
       this.handleOpen();
     }
-    if (prevState.visible && prevState.visible !== this.state.visible) {
+    if (prevState.visible && prevState.visible !== visible) {
       this.handleClose();
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.handleClose();
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
@@ -192,6 +200,7 @@ class Popper extends React.Component<PopperProps> {
   handleOpen = () => {
     const { placement, popperOptions = {}, onVisibleChange } = this.props;
     const { visible } = this.state;
+    /* eslint-disable react/no-find-dom-node */
     const reference: any = ReactDOM.findDOMNode(this.reference);
     const popperNode: any = ReactDOM.findDOMNode(this.popperNode);
 
@@ -222,15 +231,15 @@ class Popper extends React.Component<PopperProps> {
     });
 
     onVisibleChange!(true);
-  }
+  };
 
-  handlePopperUpdate = data => {
+  handlePopperUpdate = (data) => {
     if (data.placement !== this.state.placement) {
       this.setState({
         placement: invertKeyValues(placementMap)[data.placement],
       });
     }
-  }
+  };
 
   handleClose = () => {
     if (!this.popper) {
@@ -240,13 +249,14 @@ class Popper extends React.Component<PopperProps> {
     this.popper = null;
     this.setState({ visible: false });
     this.props.onVisibleChange!(false);
-  }
+  };
 
   handleClick = () => {
+    // eslint-disable-next-line react/no-access-state-in-setstate
     this.setState({ visible: !this.state.visible });
-  }
+  };
 
-  handleEnter = event => {
+  handleEnter = (event) => {
     const { children, mouseEnterDelay } = this.props;
     const childrenProps = children.props;
 
@@ -259,9 +269,9 @@ class Popper extends React.Component<PopperProps> {
     this.enterTimer = setTimeout(() => {
       this.setState({ visible: true });
     }, mouseEnterDelay);
-  }
+  };
 
-  handleLeave = event => {
+  handleLeave = (event) => {
     const { children, mouseLeaveDelay } = this.props;
     const childrenProps = children.props;
 
@@ -278,9 +288,9 @@ class Popper extends React.Component<PopperProps> {
     this.leaveTimer = setTimeout(() => {
       this.setState({ visible: false });
     }, mouseLeaveDelay);
-  }
+  };
 
-  render () {
+  render() {
     const {
       children,
       title,
@@ -330,12 +340,12 @@ class Popper extends React.Component<PopperProps> {
                     role="tooltip"
                     style={{ position: 'absolute' }}
                     className={innerCls}
-                    ref={node => this.popperNode = node}
+                    ref={(node) => { this.popperNode = node; }}
                     {...event}
                   >
                     {title && <div className={`${prefixCls}__title`}>{title}</div>}
                     <div className={`${prefixCls}__content`}>{content}</div>
-                    {hasArrow && <span className={`${prefixCls}__arrow`} ref={el => this.arrowRef = el} />}
+                    {hasArrow && <span className={`${prefixCls}__arrow`} ref={(el) => { this.arrowRef = el; }} />}
                   </div>
                 </ClickOutside>
               )

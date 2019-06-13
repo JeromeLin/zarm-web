@@ -51,35 +51,13 @@ class TimePicker extends Component<TimePickerProps, any> {
   }
 
   onDateChange(value) {
+    const { onChange } = this.props;
     if (value.indexOf('undefined') > -1) { return; }
     this.setState({
       value,
     }, () => {
-      this.setDropdown(!!value, this.props.onChange);
+      this.setDropdown(!!value, onChange);
     });
-  }
-
-  setDropdown(isOpen, callback?) {
-    if (!this.unmounted) { return; }
-
-    this.setState({
-      dropdown: isOpen,
-    }, () => {
-      if (callback) {
-        callback(this.state.value);
-      }
-    });
-  }
-
-  isNodeInTree(node, tree) {
-    while (node) {
-      if (node === tree) {
-        return true;
-      }
-      node = node.parentNode;
-    }
-
-    return false;
   }
 
   onVisibleChange = (visible) => {
@@ -89,12 +67,25 @@ class TimePicker extends Component<TimePickerProps, any> {
   };
 
   onConfirmBtn() {
-    this.setDropdown(false, this.props.onChange);
+    const { onChange } = this.props;
+    this.setDropdown(false, onChange);
+  }
+
+  setDropdown(isOpen, callback?) {
+    if (!this.unmounted) { return; }
+    const { value } = this.state;
+    this.setState({
+      dropdown: isOpen,
+    }, () => {
+      if (callback) {
+        callback(value);
+      }
+    });
   }
 
   render() {
     const {
-      defaultValue, placeholder, isDisabled, isRadius, size, locale,
+      defaultValue, placeholder, isDisabled, isRadius, size, locale, style,
       localeCode, dropdownStyle, placement, onChange, ...others
     } = this.props;
     const { value, dropdown } = this.state;
@@ -126,21 +117,21 @@ class TimePicker extends Component<TimePickerProps, any> {
       <Fragment>
         <TimeSelect
           value={valueText}
-          onChange={value => this.onDateChange(value)}
+          onChange={value1 => this.onDateChange(value1)}
         />
         <div className="za-select__bottom">
-          <a className="clear-btn" href="javascript:;" onClick={() => this.onDateChange('')}>
+          <span className="clear-btn" onClick={() => this.onDateChange('')}>
             {locale!.clear}
-          </a>
-          <a className="confirm-btn" href="javascript:;" onClick={() => this.onConfirmBtn()}>
+          </span>
+          <span className="confirm-btn" onClick={() => this.onConfirmBtn()}>
             {locale!.confirm}
-          </a>
+          </span>
         </div>
       </Fragment>
     );
 
     return (
-      <div className={cls} style={this.props.style} {...others}>
+      <div className={cls} style={style} {...others}>
         <Dropdown
           visible={dropdown}
           disabled={disabled}
@@ -152,7 +143,6 @@ class TimePicker extends Component<TimePickerProps, any> {
         >
           <div
             className="za-select__selection"
-            role="combobox"
             aria-autocomplete="list"
             aria-haspopup="true"
             aria-expanded="false"

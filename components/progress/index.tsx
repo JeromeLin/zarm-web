@@ -15,20 +15,16 @@ class Progress extends Component<PropsType, any> {
   };
 
   textRender(percent) {
-    const { prefixCls } = this.props;
-    const render = 'render' in this.props ? (
-        this.props.render!(percent)
+    const { prefixCls, render } = this.props;
+    const renderNode = 'render' in this.props ? (
+        render!(percent)
     ) : (
-      <span className={`${prefixCls}-line-text`}>
-        {percent}
-%
-      </span>
+      <span className={`${prefixCls}-line-text`}>{percent}%</span>
     );
-    return render;
+    return renderNode;
   }
 
   render() {
-    const { props } = this;
     const {
       prefixCls,
       isRadius,
@@ -42,8 +38,8 @@ class Progress extends Component<PropsType, any> {
 
     const cls = classnames({
       [prefixCls!]: true,
-      radius: 'radius' in props || isRadius,
-      round: 'round' in props || isRound,
+      radius: 'radius' in this.props || isRadius,
+      round: 'round' in this.props || isRound,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [className!]: !!className,

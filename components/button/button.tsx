@@ -5,7 +5,7 @@ import ButtonProps from './PropsType';
 import Icon from '../icon';
 import ButtonGroup from './button-group';
 
-class Button extends Component<ButtonProps, any> {
+class Button extends Component<ButtonProps> {
   static Group: typeof ButtonGroup;
 
   static defaultProps = {
@@ -36,16 +36,11 @@ class Button extends Component<ButtonProps, any> {
       loading, className, onClick, children, style, theme, href, target, ...others
     } = this.props;
 
-    const classes = classnames({
-      [`${prefixCls}`]: true,
+    const classes = classnames(prefixCls, className, {
       [`${prefixCls}--${theme}`]: theme,
       [`${prefixCls}--${size}`]: size,
-      [className!]: className,
       [`${prefixCls}--block`]: block,
-      [`${prefixCls}--rect`]: shape === 'rect',
-      [`${prefixCls}--radius`]: shape === 'radius',
-      [`${prefixCls}--round`]: shape === 'round',
-      [`${prefixCls}--circle`]: shape === 'circle',
+      [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--active`]: active,
       [`${prefixCls}--focus`]: focus,
       [`${prefixCls}--disabled`]: disabled,

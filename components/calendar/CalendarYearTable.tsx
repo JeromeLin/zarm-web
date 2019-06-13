@@ -28,24 +28,10 @@ class CalendarYearTable extends Component<YearTableProps, any> {
     }
   }
 
-  render() {
-    const { visible, prefixCls } = this.props;
-    const style = {
-      display: visible ? 'none' : 'block',
-    };
-
-    return (
-      <div style={style}>
-        <table className={`${prefixCls}-table ${prefixCls}-year`}>
-          {this.renderYear()}
-        </table>
-      </div>
-    );
-  }
-
   // 渲染年份
   renderYear() {
-    const dd = new Date(this.state.current);
+    const { current: stateCurrent } = this.state;
+    const dd = new Date(stateCurrent);
     const current = {
       year: dd.getFullYear(),
       month: dd.getMonth() + 1,
@@ -97,13 +83,14 @@ class CalendarYearTable extends Component<YearTableProps, any> {
 
   // 渲染年份单元
   renderYearCell(day, type) {
+    const { current: stateCurrent } = this.state;
     const { onYearClick, prefixCls } = this.props;
     const fullDay = `${day.year}/${day.month}/${day.date}`;
 
     const cls = classnames({
       [`${prefixCls}-text`]: true,
       [`${prefixCls}-text-others`]: type === 'others',
-      [`${prefixCls}-text-selected`]: this.state.current === fullDay,
+      [`${prefixCls}-text-selected`]: stateCurrent === fullDay,
     });
 
     return (
@@ -114,6 +101,21 @@ class CalendarYearTable extends Component<YearTableProps, any> {
       >
         {day.year}
       </span>
+    );
+  }
+
+  render() {
+    const { visible, prefixCls } = this.props;
+    const style = {
+      display: visible ? 'none' : 'block',
+    };
+
+    return (
+      <div style={style}>
+        <table className={`${prefixCls}-table ${prefixCls}-year`}>
+          {this.renderYear()}
+        </table>
+      </div>
     );
   }
 }
