@@ -3,12 +3,13 @@
 exports[`Input renders Disabled Input correctly 1`] = `
 <div>
   <div
-    class="ui-input-box disabled shape-radius"
+    class="ui-input-box ui-input--disabled shape-radius"
   >
     <input
       class="ui-input"
       disabled=""
       type="text"
+      value="禁用"
     />
   </div>
 </div>

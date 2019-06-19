@@ -6,11 +6,12 @@ import { transform } from '@babel/standalone';
 import Editor from '../editor';
 
 export default class Canvas extends React.Component {
+  playerElem = null;
+
   constructor(props) {
     super(props);
-
     this.playerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
-    this.document = this.props.children.match(/([^]*)\n?(```[^]+```)/);
+    this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
     this.description = marked(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
 
@@ -31,11 +32,10 @@ export default class Canvas extends React.Component {
     }
   }
 
-  playerElem = null;
-
   blockControl() {
+    const { showBlock } = this.state;
     this.setState({
-      showBlock: !this.state.showBlock,
+      showBlock: !showBlock,
     });
   }
 
@@ -83,8 +83,10 @@ export default class Canvas extends React.Component {
   }
 
   render() {
+    const { showBlock } = this.state;
+    const { name } = this.state;
     return (
-      <div className={`demo-block demo-box demo-${this.props.name}`}>
+      <div className={`demo-block demo-box demo-${name}`}>
         <div
           className="source"
           id={this.playerId}
@@ -93,7 +95,7 @@ export default class Canvas extends React.Component {
           }}
         />
         {
-          this.state.showBlock && (
+          showBlock && (
             <div className="meta">
               {
                 this.description && (
@@ -113,15 +115,15 @@ export default class Canvas extends React.Component {
         }
         <div className="demo-block-control" onClick={this.blockControl}>
           {
-            this.state.showBlock ? (
+            showBlock ? (
               <span>
                 <i className="el-icon-caret-top" />
-隐藏
+                隐藏
               </span>
             ) : (
               <span>
                 <i className="el-icon-caret-bottom" />
-展开
+                  展开
               </span>
             )
           }

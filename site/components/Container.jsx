@@ -4,19 +4,21 @@ import '../styles/components/Container';
 
 class Container extends Component {
   componentDidMount() {
-    if (this.props.className !== 'index-page') return;
+    const { className } = this.props;
+    if (className !== 'index-page') return;
 
-    const scrollTop = window.sessionStorage[this.props.className];
+    const scrollTop = window.sessionStorage[className];
     if (scrollTop) {
       this.container.scrollTop = scrollTop;
     }
   }
 
   componentWillUnmount() {
-    if (this.props.className !== 'index-page') return;
+    const { className } = this.props;
+    if (className !== 'index-page') return;
 
     const { scrollTop } = this.container;
-    window.sessionStorage[this.props.className] = scrollTop;
+    window.sessionStorage[className] = scrollTop;
   }
 
   render() {

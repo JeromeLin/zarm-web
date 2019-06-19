@@ -24,7 +24,8 @@ const asyncComponent = loadComponent => (
     }
 
     hasLoadedComponent() {
-      return this.state.Component !== null;
+      const { Component } = this.state;
+      return Component !== null;
     }
 
     render() {

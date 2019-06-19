@@ -6,6 +6,8 @@ import prism from 'prismjs';
 import Canvas from './canvas';
 
 export default class Markdown extends React.Component {
+  divList = [];
+
   constructor(props) {
     super(props);
 
@@ -32,8 +34,6 @@ export default class Markdown extends React.Component {
     });
     this.divList = [];
   }
-
-  divList = [];
 
 
   renderDOM() {
