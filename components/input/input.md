@@ -8,10 +8,21 @@
 
 :::demo 通过`type`属性输入类型。
 ```js
+  constructor(props){
+    super(props);
+    this.state={
+      value:'这是一个输入框'
+    }
+  }
   render() {
     return (
       <div>
-        <Input type="text" placeholder="请输入" />
+        <Input type="text" value={this.state.value} onChange={(e)=>{
+          console.log(e);
+          this.setState({
+            value:e.target.value
+          })
+        }} placeholder="请输入" />
       </div>
     )
   }
@@ -26,10 +37,24 @@
 设置了maxLength之后，会在右下角显示可以输入的字数。
 设置了showLength,会在右下角显示当前输入的字数。
 ```js
+  constructor(props){
+    super(props);
+    this.state={
+      value:'这是一个输入框'
+    }
+  }
   render() {
     return (
       <div>
-        <Input type="textarea" placeholder="请输入" rows={10} style={{ height: 200 }}/>
+        <Input
+          type="textarea" 
+          onChange={(e)=>{
+            console.log(e);
+            this.setState({
+              value:e.target.value
+            })
+          }} 
+        value={this.state.value} placeholder="请输入" rows={10} style={{ height: 200 }}/>
       </div>
     )
   }

@@ -67,9 +67,7 @@ export function arrAdd(list, value) {
 export const getTreeNodeChildren = (node: { children?: ReactNode }): Array<ReactElement<TreeNode>> => {
   const { children } = node;
   return React.Children.toArray(children).filter((item) => {
-    if (item && ((item as ReactElement<any>).type === TreeNode)) {
-      return true;
-    }
+    return item && ((item as ReactElement<any>).type === TreeNode);
   }).map(item => (item as ReactElement<TreeNode>));
 };
 
@@ -149,6 +147,20 @@ export function conductCheck(
     });
   }
 
+  /** 根据当前传入结点的选中状态，更新当前结点的已选中节点的总数
+ * @param node {object} 当前传入结点
+ * @param isChecked {bool} 目标变化是否选中
+ * @param conductDirection {string} 当前是向上还是向下关系的更新
+ */
+  function resetNodeCheckedState(node, nodeIsChecked, conductDirection) {
+    if (conductDirection === 'up') {
+      nodeIsChecked ? (node.checkedCount += 1) : (node.checkedCount -= 1);
+    } else {
+      const nodeLength = (node.children || []).filter(child => !isCheckDisabled(child)).length;
+      nodeIsChecked ? (node.checkedCount = nodeLength) : (node.checkedCount = 0);
+    }
+  }
+
   function conductUp(node) {
     const { parent } = node;
 
@@ -164,6 +176,23 @@ export function conductCheck(
     if ((isChecked && parent.checkedCount === 1) || (!isChecked && parent.checkedCount === 0)) {
       conductUp(parent);
     }
+  }
+
+  /**
+   * 分别获取所传入节点的有效节点（未禁用），选中状态以及半选中状态的节点
+   * @param node 传入节点
+   * @returns {validNotesLen: number; checkedNotesLen: number; halfCheckedNotesLen: number}
+   */
+  function getChildrenNodesLen(node) {
+    const resObj = { validNotesLen: 0, checkedNotesLen: 0, halfCheckedNotesLen: 0 };
+    let validNotes = [];
+    if (node && node.children) {
+      validNotes = node.children.filter(item => !isCheckDisabled(item));
+      resObj.validNotesLen = validNotes.length;
+      resObj.halfCheckedNotesLen = validNotes.filter((item: { keys: string }) => halfCheckedKeys[item.keys]).length;
+      resObj.checkedNotesLen = validNotes.filter((item: { keys: string }) => checkedKeys[item.keys]).length;
+    }
+    return resObj;
   }
 
   /**
@@ -187,23 +216,6 @@ export function conductCheck(
       checkedKeys[parent.keys] = false;
     }
     setParentNodeCheckedState(parent);
-  }
-
-  /**
-   * 分别获取所传入节点的有效节点（未禁用），选中状态以及半选中状态的节点
-   * @param node 传入节点
-   * @returns {validNotesLen: number; checkedNotesLen: number; halfCheckedNotesLen: number}
-   */
-  function getChildrenNodesLen(node) {
-    const resObj = { validNotesLen: 0, checkedNotesLen: 0, halfCheckedNotesLen: 0 };
-    let validNotes = [];
-    if (node && node.children) {
-      validNotes = node.children.filter(item => !isCheckDisabled(item));
-      resObj.validNotesLen = validNotes.length;
-      resObj.halfCheckedNotesLen = validNotes.filter((item: { keys: string }) => halfCheckedKeys[item.keys]).length;
-      resObj.checkedNotesLen = validNotes.filter((item: { keys: string }) => checkedKeys[item.keys]).length;
-    }
-    return resObj;
   }
 
   function conductDown(node) {
@@ -260,20 +272,6 @@ export function conductCheck(
   };
 }
 
-/** 根据当前传入结点的选中状态，更新当前结点的已选中节点的总数
- * @param node {object} 当前传入结点
- * @param isChecked {bool} 目标变化是否选中
- * @param conductDirection {string} 当前是向上还是向下关系的更新
- */
-function resetNodeCheckedState(node, isChecked, conductDirection) {
-  if (conductDirection === 'up') {
-    isChecked ? (node.checkedCount += 1) : (node.checkedCount -= 1);
-  } else {
-    const nodeLength = (node.children || []).filter(child => !isCheckDisabled(child)).length;
-    isChecked ? (node.checkedCount = nodeLength) : (node.checkedCount = 0);
-  }
-}
-
 /** 根据传入的展开结点keys的数组，初始化最终要展开的相关所有父结点
  * @param keysList {Array} 要展开的结点list数组
  * @param treeData {object} 当前树形结构的map对象
@@ -310,7 +308,6 @@ export function conductExpandParent(keysList, treeData) {
  */
 export function initialTreeData(treeData) {
   const allExpandDataMap = {};
-  let finalTreeData;
 
   function loop(node, parentNode) {
     return node.map((_node) => {
@@ -325,7 +322,7 @@ export function initialTreeData(treeData) {
     });
   }
 
-  finalTreeData = loop(treeData, null);
+  const finalTreeData = loop(treeData, null);
 
   return {
     allExpandDataMap,

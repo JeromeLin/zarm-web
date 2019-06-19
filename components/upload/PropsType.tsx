@@ -1,4 +1,4 @@
-export interface dataSource {
+export interface DataSource {
   percent?: number;
   name?: string;
   url?: string;
@@ -9,7 +9,7 @@ export interface ListProps {
   prefixCls?: string;
   className?: string;
   type?: string;
-  dataSource: dataSource[];
+  dataSource: DataSource[];
   isRadius?: boolean;
   radius?: boolean;
   onDelete: (item: any) => void;

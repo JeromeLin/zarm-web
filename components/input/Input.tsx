@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { Component, TextareaHTMLAttributes, InputHTMLAttributes, ChangeEventHandler } from 'react';
 import classnames from 'classnames';
-// @ts-ignore
 import PropsType from './PropsType';
 import Addon from './cps/Addon';
 import InputGroup from './input-group';
@@ -10,10 +9,6 @@ import Search from './input-search';
 interface InputTypeIF {
   textarea: TextareaHTMLAttributes<HTMLTextAreaElement>;
   input: InputHTMLAttributes<HTMLInputElement>;
-}
-interface InputElemIF {
-  textarea: HTMLTextAreaElement;
-  input: HTMLInputElement;
 }
 
 interface StateIF {
@@ -62,14 +57,20 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
   };
 
   refMap: {
-    input?: InputElemIF[T];
+    input?: HTMLInputElement | HTMLTextAreaElement;
   } = {};
 
-  inputElemRef = (elem: InputElemIF[T] | null) => {
+  inputElemRef = (elem: HTMLInputElement | null) => {
     if (elem) {
       this.refMap.input = elem;
     }
   };
+
+  textElemRef = (elem: HTMLTextAreaElement | null) => {
+    if (elem) {
+      this.refMap.input = elem;
+    }
+  }
 
   onFocus = (event: any) => {
     const { props } = this;
@@ -113,7 +114,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
         return (
           <span className="length-box">
             {length}
-/
+            /
             {maxLength}
           </span>
         );
@@ -130,7 +131,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     const {
       type, prefixCls, shape, size,
       className, addonPrefix, addonBefore,
-      addonAfter, showLength, value, ...others
+      addonAfter, showLength, ...others
     } = props;
     return (
       <div className={cls}>
@@ -155,14 +156,14 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     const {
       type, prefixCls, shape, size,
       className, addonPrefix, addonBefore,
-      addonAfter, showLength, value, defaultValue,
+      addonAfter, showLength, defaultValue,
       ...others
     } = props;
     return (
       <span className={`${prefixCls}-textarea-box`}>
         <textarea
           {...others}
-          ref={this.inputElemRef}
+          ref={this.textElemRef}
           className={cls}
           onChange={this.onTextareaChange}
         >
@@ -178,11 +179,11 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     const { disabled, defaultValue, shape, prefixCls, className, size } = props;
     const cls = classnames({
       [`${prefixCls}-box`]: true,
-      disabled,
+      [`${prefixCls}--disabled`]: disabled,
       [`shape-${shape}`]: true,
       [className!]: !!className,
       [`size-${size}`]: !!size,
-      active: this.state.focused,
+      [`${prefixCls}--active`]: this.state.focused,
     });
 
     const valueObject = {

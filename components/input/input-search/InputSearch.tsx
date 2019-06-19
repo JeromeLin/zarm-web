@@ -1,4 +1,6 @@
-import React, { InputHTMLAttributes, ReactNode, Component, MouseEventHandler, KeyboardEventHandler } from 'react';
+// eslint-disable-next-line
+/// <reference path="../../types/index.d.ts" />
+import React, { InputHTMLAttributes, Component, ReactNode, MouseEventHandler, KeyboardEventHandler } from 'react';
 import classnames from 'classnames';
 import Group from '../input-group';
 import Input from '../index';
@@ -37,13 +39,12 @@ class Search extends Component<PropsIF> {
   };
 
   render() {
-    const { props } = this;
-    const { showIcon, showButton, shape, button, onSearch, ...others } = props;
+    const { showIcon, disabled, size, showButton, shape, button, onSearch, ...others } = this.props;
     const cls = classnames({
       'ui-search-btn': true,
-      disabled: props.disabled,
+      disabled,
       [`shape-${shape}`]: true,
-      [`size-${props.size}`]: !!props.size,
+      [`size-${size}`]: !!size,
     });
     const addonIcon: { addonBefore?: AddonIF } = {};
     if (showIcon) {
@@ -58,8 +59,8 @@ class Search extends Component<PropsIF> {
     }
     return (
       <Group style={Style.group}>
-        <Input<'input'> shape={shape} {...others} onKeyPress={this.onKeyPress} {...addonIcon} />
-        <div className={cls} onClick={props.disabled ? undefined : props.onSearch as MouseEventHandler<HTMLDivElement>}>
+        <Input<'input'> shape={shape} disabled={disabled} size={size} {...others} onKeyPress={this.onKeyPress} {...addonIcon} />
+        <div className={cls} onClick={disabled ? undefined : onSearch as MouseEventHandler<HTMLDivElement>}>
           {button}
         </div>
       </Group>

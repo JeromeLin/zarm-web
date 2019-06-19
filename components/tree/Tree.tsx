@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { Component, MouseEvent } from 'react';
 import TreeNode from './TreeNode';
 import PropsType from './PropsType';

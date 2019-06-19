@@ -75,6 +75,7 @@ class Head extends Component<HeadProps, any> {
     } = this.props;
     const headRows = rows.map((row, index) => {
       return (
+        // eslint-disable-next-line react/no-array-index-key
         <tr key={index}>
           {this.renderExpandIconPlaceholder()}
           {
