@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import classnames from 'classnames';
 import { hot } from 'react-hot-loader';
@@ -39,6 +39,7 @@ class App extends Component {
   render() {
     const hash = window.location.hash.match(/#\/(\w+)?/);
     const lang = qs('lang') || 'zh';
+
     return (
       <div className="app">
         <header className="header">
@@ -88,7 +89,10 @@ class App extends Component {
                               this.components[page] = pages.components[group][page];
                               return (
                                 <li key={page} className="nav-item">
-                                  <a href={`#/${page}?lang=${lang}`} className={classnames({ active: page === hash[1] })}>{page}</a>
+                                  <NavLink
+                                    to={{ pathname: `/${page}`, search: `?lang=${lang}` }}
+                                  >{page}
+                                  </NavLink>
                                 </li>
                               );
                             })

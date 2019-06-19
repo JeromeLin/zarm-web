@@ -8,6 +8,9 @@
 
 :::demo 通过`type`属性输入类型。
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -15,6 +18,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -26,13 +32,19 @@
 设置了maxLength之后，会在右下角显示可以输入的字数。
 设置了showLength,会在右下角显示当前输入的字数。
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input type="textarea" placeholder="请输入" rows={10} style={{ height: 200 }}/>
+        <Input maxLength={500} showLength type="textarea" placeholder="请输入" rows={10} style={{ height: 200 }}/>
       </div>
     )
-  }
+  }  
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -42,6 +54,9 @@
 
 :::demo 除了默认大小外，可以设置`xl`,`lg`,`sm`,`xs`四种不同尺寸。
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -54,7 +69,10 @@
         <Input style={{width: 150, marginRight: 8}} size="xs" placeholder="请输入" />
       </div>
     )
-  }
+  } 
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -64,13 +82,19 @@
 
 :::demo 通过`shape`属性设置输入框是否直角。 shape?: 'rect' | 'radius';
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
         <Input shape="rect" type="text" placeholder="请输入" />
       </div>
     )
-  }
+  }  
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -83,6 +107,9 @@
 addon支持的类型请参考 `Attributes`
 
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -91,7 +118,10 @@ addon支持的类型请参考 `Attributes`
         <Input addonAfter=".com" type="text" placeholder="请输入" />
       </div>
     )
-  }
+  }  
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -102,13 +132,19 @@ addon支持的类型请参考 `Attributes`
 
 :::demo 通过`disabled`属性设置输入框是否禁用, 禁用状态下不可输入。
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
         <Input disabled type="text" value="禁用" />
       </div>
     )
-  }
+  }  
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -119,6 +155,9 @@ addon支持的类型请参考 `Attributes`
 
 :::demo 使用InputGroup标签设置。
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -128,7 +167,10 @@ addon支持的类型请参考 `Attributes`
         </Input.Group>
       </div>
     )
-  }
+  }  
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -138,6 +180,9 @@ addon支持的类型请参考 `Attributes`
 
 :::demo 设置InputSearch的属性来处理搜索框。
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -145,6 +190,10 @@ addon支持的类型请参考 `Attributes`
       </div>
     )
   }
+  
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -154,6 +203,9 @@ addon支持的类型请参考 `Attributes`
 
 :::demo 设置`onBlur`事件回调，在失去焦点时触发。
 ```js
+import { Input } from 'dragon-ui';
+
+class Demo extends React.Component {
   handleBlur(e) {
     alert('输入框的值是：' + e.target.value);
   }
@@ -164,7 +216,10 @@ addon支持的类型请参考 `Attributes`
         <Input type="text" placeholder="请输入" onBlur={(e) => { this.handleBlur(e); }} />
       </div>
     )
-  }
+  }  
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 

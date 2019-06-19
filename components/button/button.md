@@ -8,6 +8,9 @@
 :::demo 可以使用`ghost shape radius`属性来定义按钮是否可用。
 
 ```js
+import { Button } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -29,6 +32,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -40,6 +46,9 @@
 :::demo 可以使用`disabled`属性来定义按钮是否可用。
 
 ```js
+import { Button } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -66,6 +75,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -76,6 +88,9 @@ block按钮宽度为父元素宽度
 :::demo 使用`radius`，`round`属性设置圆角、椭圆角
 
 ```js
+import { Button, Icon } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -108,6 +123,9 @@ block按钮宽度为父元素宽度
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -118,6 +136,9 @@ block按钮宽度为父元素宽度
 :::demo 额外的尺寸：五种尺寸，若不设置尺寸，则默认为中等尺寸，通过设置`size`属性来配置它们。
 
 ```js
+import { Button, Icon } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -145,6 +166,9 @@ block按钮宽度为父元素宽度
       </React.Fragment>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -155,6 +179,9 @@ block按钮宽度为父元素宽度
 :::demo 可以在组件中通过Icon的方式添加图标
 
 ```js
+import { Button } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div className="ghost-btn-container">
@@ -165,6 +192,9 @@ block按钮宽度为父元素宽度
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -175,6 +205,9 @@ block按钮宽度为父元素宽度
 :::demo 只要设置`loading`属性为`true`。
 
 ```js
+import { Button } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -184,6 +217,9 @@ block按钮宽度为父元素宽度
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -194,9 +230,15 @@ block按钮宽度为父元素宽度
 :::demo
 
 ```js
+import { Button } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return <Button href="https://www.baidu.com/" theme="primary" target="_blank">百度一下</Button>
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 

@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import marked from 'marked';
 import prism from 'prismjs';
 
-import Canvas from './canvas';
+import Demo from './Demo';
 
 export default class Markdown extends React.Component {
+  divList = [];
+
   constructor(props) {
     super(props);
 
@@ -22,7 +24,7 @@ export default class Markdown extends React.Component {
   }
 
   componentDidUpdate() {
-    // this.renderDOM();
+    this.renderDOM();
   }
 
   componentWillUnmount() {
@@ -32,9 +34,6 @@ export default class Markdown extends React.Component {
     });
     this.divList = [];
   }
-
-  divList = [];
-
 
   renderDOM() {
     // eslint-disable-next-line
@@ -57,7 +56,7 @@ export default class Markdown extends React.Component {
       const html = marked(document.replace(/:::\s?demo\s?([^]+?):::/g, (match, p1, offset) => {
         const id = offset.toString(36);
 
-        this.components.set(id, React.createElement(Canvas, Object.assign({
+        this.components.set(id, React.createElement(Demo, Object.assign({
           name: this.constructor.name.toLowerCase(),
         }, this.props), p1));
 
@@ -66,7 +65,7 @@ export default class Markdown extends React.Component {
 
       return (
         // eslint-disable-next-line
-        <div dangerouslySetInnerHTML={{
+        <div className="con" dangerouslySetInnerHTML={{
           __html: html,
         }}
         />

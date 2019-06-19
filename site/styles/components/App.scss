@@ -224,7 +224,7 @@ a {
       transition: all .15s ease-out;
 
       &.active {
-        color: #24292e;
+        color: #12c287;
         font-weight: 600;
       }
     }
@@ -238,7 +238,7 @@ a {
         padding-left: 24px;
 
         &:hover {
-          color: #24292e;
+          color: #12c287;
         }
       }
     }
@@ -469,8 +469,8 @@ a {
     }
 
     &:hover {
-      color: #24292e;
-      background-color: #f9fafc;
+      color: rgba(18, 194, 135, .7);
+      background-color: rgba(18, 194, 135, .2);
     }
   }
 

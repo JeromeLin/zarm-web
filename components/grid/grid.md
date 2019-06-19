@@ -5,6 +5,9 @@
 :::demo
 
 ```js
+import { Row, Col } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -20,6 +23,9 @@
       </React.Fragment>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -28,6 +34,9 @@
 :::demo
 
 ```js
+import { Row, Col } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <Row gutter="16">
@@ -37,6 +46,9 @@
       </Row>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -45,6 +57,9 @@
 :::demo offset为偏移数量
 
 ```js
+import { Row, Col } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -59,6 +74,9 @@
       </React.Fragment>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -69,6 +87,9 @@ justify设置横轴对齐方式 align设置纵轴对齐方式
 :::demo type设置布局方式
 
 ```js
+import { Row, Col } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -123,6 +144,9 @@ justify设置横轴对齐方式 align设置纵轴对齐方式
       </React.Fragment>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -133,6 +157,9 @@ justify设置横轴对齐方式 align设置纵轴对齐方式
 :::demo
 
 ```js
+import { Row, Col } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <Row type="flex">
@@ -143,6 +170,9 @@ justify设置横轴对齐方式 align设置纵轴对齐方式
       </Row>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -151,6 +181,9 @@ justify设置横轴对齐方式 align设置纵轴对齐方式
 :::demo 预设四个响应尺寸：xs sm md lg
 
 ```js
+import { Row, Col } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -162,6 +195,9 @@ justify设置横轴对齐方式 align设置纵轴对齐方式
       </React.Fragment>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 

@@ -8,6 +8,9 @@
 
 :::demo 通过`theme`属性设置提示主题类型。
 ```js
+import { Message, Button } from 'dragon-ui';
+
+class Demo extends React.Component {
   showSuccess () {
     Message.success('这是一条成功的消息提示，出现在网站顶部3s后消失')
   }
@@ -34,6 +37,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -43,6 +49,9 @@
 
 :::demo 通过`stayTime`属性设置显示时长
 ```js
+import { Message, Button } from 'dragon-ui';
+
+class Demo extends React.Component {
   showMessage () {
     Message.config({
       theme: 'loading',
@@ -58,6 +67,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 

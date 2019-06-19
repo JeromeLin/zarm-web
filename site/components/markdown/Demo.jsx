@@ -2,15 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import marked from 'marked';
 import { transform } from '@babel/standalone';
-
+import { Icon } from '@/components';
 import Editor from '../editor';
 
 export default class Canvas extends React.Component {
+  playerElem = null;
+
   constructor(props) {
     super(props);
 
     this.playerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
-    this.document = this.props.children.match(/([^]*)\n?(```[^]+```)/);
+    this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
     this.description = marked(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
 
@@ -31,50 +33,32 @@ export default class Canvas extends React.Component {
     }
   }
 
-  playerElem = null;
-
   blockControl() {
-    this.setState({
-      showBlock: !this.state.showBlock,
-    });
+    const { showBlock } = this.state;
+    this.setState({ showBlock: !showBlock });
   }
 
   renderSource(value) {
-    import('../../../components').then((Element) => {
-      const args = ['context', 'React', 'ReactDOM'];
-      const argv = [this, React, ReactDOM];
-
-      Object.keys(Element).forEach((key) => {
-        args.push(key);
-        argv.push(Element[key]);
-      });
+    import('@/components').then((Element) => {
+      const args = ['context', 'React', 'ReactDOM', 'DragonUi'];
+      const argv = [this, React, ReactDOM, Element];
 
       return {
         args,
         argv,
       };
     }).then(({ args, argv }) => {
-      // eslint-disable-next-line
-      const code = transform(`
-        class Demo extends React.Component {
-          ${value}
-        }
+      this.source[2] = value;
 
-        if(!window.playerList){
-            window.playerList = [];
-        }
-        const container = document.getElementById('${this.playerId}');
-        window.playerList.push(container);
+      value = value
+        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'dragon-ui';/, 'const { $1 } = DragonUi;')
+        .replace('mountNode', `document.getElementById('${this.playerId}')`);
 
-        ReactDOM.render(<Demo {...context.props} />, container)
-      `, {
-        presets: ['es2015', 'react'],
-      }).code;
+      const { code } = transform(value, { presets: ['es2015', 'react'] });
 
       args.push(code);
       // eslint-disable-next-line
       new Function(...args)(...argv);
-      this.source[2] = value;
     }).catch((err) => {
       if (process.env.NODE_ENV !== 'production') {
         throw err;
@@ -83,8 +67,11 @@ export default class Canvas extends React.Component {
   }
 
   render() {
+    const { name } = this.props;
+    const { showBlock } = this.state;
+
     return (
-      <div className={`demo-block demo-box demo-${this.props.name}`}>
+      <div className={`demo-block demo-box demo-${name}`}>
         <div
           className="source"
           id={this.playerId}
@@ -93,7 +80,7 @@ export default class Canvas extends React.Component {
           }}
         />
         {
-          this.state.showBlock && (
+          showBlock && (
             <div className="meta">
               {
                 this.description && (
@@ -113,15 +100,13 @@ export default class Canvas extends React.Component {
         }
         <div className="demo-block-control" onClick={this.blockControl}>
           {
-            this.state.showBlock ? (
+            showBlock ? (
               <span>
-                <i className="el-icon-caret-top" />
-隐藏
+                <Icon type="arrow-top-fill" />隐藏
               </span>
             ) : (
               <span>
-                <i className="el-icon-caret-bottom" />
-展开
+                <Icon type="arrow-bottom-fill" />展开
               </span>
             )
           }

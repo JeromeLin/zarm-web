@@ -8,6 +8,9 @@
 
 :::demo
 ```js
+import { Layout } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -32,6 +35,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -41,6 +47,9 @@
 
 :::demo
 ```js
+import { Layout } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -72,11 +81,17 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
 :::demo
 ```js
+import { Layout } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -108,6 +123,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -115,6 +133,9 @@
 
 :::demo
 ```js
+import { Layout } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -142,6 +163,9 @@
       </div>
     )
   }
+} 
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
@@ -149,6 +173,9 @@
 
 :::demo
 ```js
+import { Layout } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -181,6 +208,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
 :::
 
