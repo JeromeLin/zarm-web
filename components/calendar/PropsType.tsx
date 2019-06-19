@@ -1,4 +1,4 @@
-export interface dateType {
+export interface DateType {
   year?: number;
   month?: number;
   days?: number;

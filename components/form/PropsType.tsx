@@ -13,6 +13,7 @@ export interface ItemProps {
   style?: CSSProperties;
   rules?: object;
   prop?: string;
+  required?: boolean;
 }
 
 export default interface PropsType {

@@ -33,24 +33,22 @@ export default class Notification extends Component<NotificationProps, any> {
     clearInterval(this.timeout);
   }
 
-  startTimer() {
-    if (this.props.stayTime) {
-      this.timeout = setTimeout(() => {
-        this.onClose();
-      }, this.props.stayTime);
+  get type() {
+    const { theme } = this.props;
+    switch (theme) {
+      case 'success':
+        return 'right-round-fill';
+      case 'danger':
+        return 'wrong-round-fill';
+      case 'primary':
+        return 'info-round-fill';
+      case 'warning':
+        return 'warning-round-fill';
+      case 'loading':
+        return 'loading';
+      default:
+        return '';
     }
-  }
-
-  stopTimer() {
-    clearInterval(this.timeout);
-  }
-
-  enter() {
-    this.setState({ visible: true });
-  }
-
-  leave() {
-    this.setState({ visible: false });
   }
 
   onClick = (event: React.SyntheticEvent<any>) => {
@@ -78,21 +76,25 @@ export default class Notification extends Component<NotificationProps, any> {
     this.startTimer();
   };
 
-  get type() {
-    switch (this.props.theme) {
-      case 'success':
-        return 'right-round-fill';
-      case 'danger':
-        return 'wrong-round-fill';
-      case 'primary':
-        return 'info-round-fill';
-      case 'warning':
-        return 'warning-round-fill';
-      case 'loading':
-        return 'loading';
-      default:
-        return '';
+  startTimer() {
+    const { stayTime } = this.props;
+    if (stayTime) {
+      this.timeout = setTimeout(() => {
+        this.onClose();
+      }, stayTime);
     }
+  }
+
+  stopTimer() {
+    clearInterval(this.timeout);
+  }
+
+  enter() {
+    this.setState({ visible: true });
+  }
+
+  leave() {
+    this.setState({ visible: false });
   }
 
   render() {
@@ -106,11 +108,11 @@ export default class Notification extends Component<NotificationProps, any> {
         name={componentName}
         duration={200}
         unmountOnHide
-        onStart={() => this.offsetHeight = this.notification.offsetHeight}
+        onStart={() => { this.offsetHeight = this.notification.offsetHeight; }}
         onBeforeHide={() => willUnMount(this.offsetHeight, parseInt(this.notification.style.top, 10))}
       >
         <div
-          ref={el => this.notification = el}
+          ref={(el) => { this.notification = el; }}
           className={classnames(prefixCls, className)}
           onClick={this.onClick}
           style={{ ...style, top }}

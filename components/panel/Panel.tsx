@@ -19,14 +19,13 @@ class Panel extends Component<PropsType, any> {
   static Title;
 
   render() {
-    const { props } = this;
     const {
       isRadius, theme, className, children, style,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       'ui-panel': true,
-      radius: 'radius' in props || isRadius,
+      radius: 'radius' in this.props || isRadius,
       [`theme-${theme}`]: !!theme,
       [className!]: !!className,
     });

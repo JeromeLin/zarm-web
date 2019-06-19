@@ -330,7 +330,6 @@ class Pagination extends Component<PropsType, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       prefixCls,
       isBordered,
@@ -340,11 +339,11 @@ class Pagination extends Component<PropsType, any> {
       showJumper,
       showPageSizeSelector,
       style,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       [prefixCls!]: true,
-      bordered: 'bordered' in props || isBordered,
+      bordered: 'bordered' in this.props || isBordered,
       [`shape-${shape}`]: !!shape,
       [className!]: !!className,
     });

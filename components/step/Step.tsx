@@ -34,11 +34,12 @@ class Step extends Component<PropsType, any> {
   }
 
   handleUpdate() {
+    const { children } = this.props;
     if (!this.unmounted) {
       return;
     }
 
-    const num = React.Children.count(this.props.children);
+    const num = React.Children.count(children);
     const itemWidth = `${100 / num}%`;
 
     this.setState({ itemWidth });
@@ -53,27 +54,27 @@ class Step extends Component<PropsType, any> {
   }
 
   render() {
-    const { props } = this;
-    const { className, current, style, prefixCls } = props;
+    const { className, current, style, prefixCls, children } = this.props;
+    const { itemWidth } = this.state;
 
     const cls = classnames({
       [prefixCls!]: true,
       [className!]: !!className,
     });
 
-    const children = React.Children.map(props.children, (item, index) => (
+    const childrenNode = React.Children.map(children, (item, index) => (
       <StepItem
         {...(item as ReactElement<any>).props}
         isFinished={index + 1 < current}
         isProcess={index + 1 === Number(current)}
         index={index + 1}
-        style={{ width: `${this.state.itemWidth}` }}
+        style={{ width: `${itemWidth}` }}
       />
     ));
 
     return (
       <div className={cls} style={style}>
-        {children}
+        {childrenNode}
       </div>
     );
   }

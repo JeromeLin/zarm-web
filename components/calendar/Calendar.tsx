@@ -56,41 +56,22 @@ class Calendar extends Component<PropsType, any> {
     }
   }
 
-  handleChangeHeader = (current) => {
-    const { onPanelChange } = this.props;
-
-    if (typeof onPanelChange === 'function') {
-      onPanelChange(current);
-    }
-
-    this.setState({ current });
-  };
-
-  handleChangeYearOrMonth = (current) => {
-    const { onPanelChange } = this.props;
-
-    if (typeof onPanelChange === 'function') {
-      onPanelChange(current);
-    }
-
-    this.setState({
-      current,
-      panel: 'date',
-    });
-  };
-
   onDateClick(value, isNow = false) {
     const { format, onChange, showTime } = this.props;
+    const { timeValue } = this.state;
+    const { handleFieldChange } = this.context;
     let dropdownStatus = false;
 
     if (!isEmpty(this.context)) {
-      this.context.handleFieldChange();
+      handleFieldChange();
     }
     if (!showTime) {
       dropdownStatus = false;
     } else {
       dropdownStatus = !isNow;
-      isNow ? value = value : value = `${value} ${this.state.timeValue}`;
+      if (!isNow) {
+        value = `${value} ${timeValue}`;
+      }
     }
 
     this.setState({
@@ -105,8 +86,9 @@ class Calendar extends Component<PropsType, any> {
   }
 
   onConfirmClick(value) {
-    const valueWithTime = (value && `${value} ${this.state.timeValue}`) || '';
     const { format, onChange } = this.props;
+    const { timeValue } = this.state;
+    const valueWithTime = (value && `${value} ${timeValue}`) || '';
 
     if (onChange) {
       onChange(Format.date(valueWithTime, format), false);
@@ -119,7 +101,7 @@ class Calendar extends Component<PropsType, any> {
 
     if (!value) { // 判断先选择time的情况
       this.setState({ value: String(Format.date(new Date(), format)).split(' ')[0] }, () => {
-        this.setValue(this.state.value, timeValue);
+        this.setValue(value, timeValue);
       });
     } else {
       this.setValue(value, timeValue);
@@ -142,6 +124,29 @@ class Calendar extends Component<PropsType, any> {
       onChange(Format.date(`${value} ${timeValue}`, format), true, true);
     }
   }
+
+  handleChangeHeader = (current) => {
+    const { onPanelChange } = this.props;
+
+    if (typeof onPanelChange === 'function') {
+      onPanelChange(current);
+    }
+
+    this.setState({ current });
+  };
+
+  handleChangeYearOrMonth = (current) => {
+    const { onPanelChange } = this.props;
+
+    if (typeof onPanelChange === 'function') {
+      onPanelChange(current);
+    }
+
+    this.setState({
+      current,
+      panel: 'date',
+    });
+  };
 
   getDisplayDate = () => {
     const {
@@ -173,7 +178,6 @@ class Calendar extends Component<PropsType, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       className,
       hasFooter,
@@ -187,34 +191,27 @@ class Calendar extends Component<PropsType, any> {
       isShowNext,
       selectedValue,
       disabledMonth,
-    } = props;
+    } = this.props;
+    const { current, value, panel, timeValue } = this.state;
 
-    const { current, value, panel } = this.state;
-
-    const cls = classnames({
-      [prefixCls!]: true,
-      [className!]: !!className,
-      [`${prefixCls}-showTime`]: !!showTime,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}-showTime`]: showTime,
     });
 
     return (
       <div className={cls} style={style}>
         {
-          showTime
-          && (
-          <div className="ui-calendar-time-header">
-            {
-              this.getDisplayDate()
-            }
-
-            <TimePicker
-              placement="bottomRight"
-              value={this.state.timeValue}
-              onChange={(value) => {
-                this.onTimeChange(value);
-              }}
-            />
-          </div>
+          showTime && (
+            <div className="ui-calendar-time-header">
+              {this.getDisplayDate()}
+              <TimePicker
+                placement="bottomRight"
+                value={timeValue}
+                onChange={(timeValueInner) => {
+                  this.onTimeChange(timeValueInner);
+                }}
+              />
+            </div>
           )
         }
 
@@ -226,7 +223,7 @@ class Calendar extends Component<PropsType, any> {
           // tslint:disable-next-line:no-shadowed-variable
           onChange={this.handleChangeHeader}
           // tslint:disable-next-line:no-shadowed-variable
-          onChangePanel={panel => this.setState({ panel })}
+          onChangePanel={panelInner => this.setState({ panel: panelInner })}
         />
 
         <div className={`${prefixCls}-body`}>
@@ -255,33 +252,31 @@ class Calendar extends Component<PropsType, any> {
             max={max}
             selectedValue={selectedValue}
             // tslint:disable-next-line:no-shadowed-variable
-            onDateClick={value => this.onDateClick(value)}
+            onDateClick={calendarValue => this.onDateClick(calendarValue)}
           />
         </div>
         {
           // tslint:disable-next-line:jsx-no-multiline-js
           (hasFooter && panel === 'date') ? (
             <div className={`${prefixCls}-footer`}>
-              <a
-                href="javascript:;"
+              <span
                 onClick={() => this.onDateClick(new Date(), true)}
                 className={`${prefixCls}-footer-btn`}
               >
                 {showTime ? locale!.now : locale!.today}
-              </a>
+              </span>
 
-              <a
-                href="javascript:;"
+              <span
                 onClick={() => this.onDateClick('', true)}
                 className={`${prefixCls}-footer-btn`}
               >
                 {locale!.clear}
-              </a>
+              </span>
 
               {
               showTime && (
                 <Button
-                  type="primary"
+                  theme="primary"
                   size="xs"
                   style={{ float: 'right' }}
                   onClick={() => this.onConfirmClick(value)}

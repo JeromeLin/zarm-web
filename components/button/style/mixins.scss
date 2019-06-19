@@ -10,19 +10,10 @@
   color: $color;
   background: $background;
 
-  &:not(.is-loading):hover {
-    background-color: $hover-background;
-    border-color: $hover-border;
-    color: $color;
-    @if ($type == default) {
-      background-color: $--color-white;
-      border-color: $--color-primary;
-      color: $--color-primary;
-    }
-  }
-
-  &:not(.is-loading):focus,
-  &:not(.is-loading):active {
+  &:visited,
+  &:focus,
+  &:hover,
+  &:active {
     background-color: $active-background;
     border-color: $active-border;
     color: $color;
@@ -33,23 +24,21 @@
     }
   }
 
-  &.is-disabled,
-  &:not(.is-loading):disabled {
+  @include m(disabled) {
     cursor: not-allowed;
 
-    &.is-ghost {
-      color: $--button-ghost-disabled-color;
-      border-color: $--button-ghost-disabled-border;
-
-      &:focus,
-      &:hover {
-        color: $--button-ghost-disabled-color;
-        border-color: $--button-ghost-disabled-border;
-      }
-    }
-
     &:focus,
-    &.is-focus,
+    &.visited,
+    &:hover {
+      background-color: $background;
+      border-color: $border;
+      color: $color;
+    }
+  }
+
+  @include m(loading) {
+    &:focus,
+    &.visited,
     &:hover {
       background-color: $background;
       border-color: $border;
@@ -64,23 +53,18 @@
   height: $height;
   line-height: $height - 2;
 
-  &.is-radius {
+  @include m(radius) {
     border-radius: $border-radius;
   }
 
-  &.is-round {
+  @include m(round) {
     border-radius: 1000px;
   }
 
-  &.is-circle {
+  @include m(circle) {
     width: $height;
     height: $height;
     padding: 0;
     border-radius: 50%;
-  }
-
-  .ui-icon + span,
-  span + .ui-icon {
-    margin-left: $height / 10;
   }
 }

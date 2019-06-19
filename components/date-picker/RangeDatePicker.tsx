@@ -110,8 +110,84 @@ class RangeDatePicker extends Component<PropsType, any> {
     }
   };
 
+  getStartDate = () => {
+    const { current } = this.state;
+
+    return getDate(current[0]);
+  };
+
+  getEndDate = () => {
+    const { current } = this.state;
+
+    const [start, end] = current.map(getDate);
+
+    // 当结束时间不存在时，结束时间初始值为开始时间月份加 1
+    return getDate(end || nextMonthFirstDay(start));
+  };
+
+  setDropdown(isOpen, callback?) {
+    if (!this.unmounted) {
+      return;
+    }
+
+    if (isOpen) {
+      this.bindOuterHandlers();
+    } else {
+      this.unbindOuterHandlers();
+    }
+
+    this.setState(
+      {
+        isShowDropdown: isOpen,
+      },
+      () => {
+        if (callback) {
+          callback();
+        }
+      },
+    );
+  }
+
+  disabledStartMonth = (month) => {
+    const { current, selectedValue } = this.state;
+
+    const end = getDate(current[1] || selectedValue[1] || nextMonthFirstDay(now()));
+
+    const [endYear, endMonth] = getYearMonthDay(end);
+
+    const [_year, _month] = getYearMonthDay(getDate(month));
+
+    if (_year < endYear) {
+      return true;
+    } if (_year === endYear) {
+      return _month < endMonth;
+    }
+    return false;
+  };
+
+  disabledEndMonth = (month) => {
+    const { current, selectedValue } = this.state;
+
+    const start = getDate(current[0] || selectedValue[0]);
+
+    const [startYear, startMonth] = getYearMonthDay(start);
+
+    const [_year, _month] = getYearMonthDay(getDate(month));
+
+    if (_year > startYear) {
+      return true;
+    }
+
+    if (_year === startYear) {
+      return _month > startMonth;
+    }
+
+    return false;
+  };
+
   handleLeftPanelChange = (v) => {
-    const current = [...this.state.current];
+    const { current: stateCurrent } = this.state;
+    const current = [...stateCurrent];
 
     current[0] = v;
 
@@ -121,7 +197,8 @@ class RangeDatePicker extends Component<PropsType, any> {
   };
 
   handleRightPanelChange = (v) => {
-    const current = [...this.state.current];
+    const { current: stateCurrent } = this.state;
+    const current = [...stateCurrent];
 
     current[1] = v;
 
@@ -227,50 +304,16 @@ class RangeDatePicker extends Component<PropsType, any> {
     }
   };
 
-  setDropdown(isOpen, callback?) {
-    if (!this.unmounted) {
-      return;
-    }
-
-    if (isOpen) {
-      this.bindOuterHandlers();
-    } else {
-      this.unbindOuterHandlers();
-    }
-
-    this.setState(
-      {
-        isShowDropdown: isOpen,
-      },
-      () => {
-        if (callback) {
-          callback();
-        }
-      },
-    );
-  }
-
   handleKeyup = (e) => {
     if (e.keyCode === 27) {
       this.setDropdown(false);
     }
   };
 
-  bindOuterHandlers() {
-    Events.on(document, 'keyup', this.handleKeyup);
-  }
-
-  unbindOuterHandlers() {
-    Events.off(document, 'keyup', this.handleKeyup);
-  }
-
   handleDropDownVisibleChange = (visible) => {
-    const { props } = this;
-    const {
-      isDisabled,
-    } = props;
+    const { isDisabled } = this.props;
 
-    const disabled = 'disabled' in props || isDisabled;
+    const disabled = 'disabled' in this.props || isDisabled;
 
     if (disabled) {
       return;
@@ -281,60 +324,15 @@ class RangeDatePicker extends Component<PropsType, any> {
     });
   };
 
-  disabledStartMonth = (month) => {
-    const { current, selectedValue } = this.state;
+  bindOuterHandlers() {
+    Events.on(document, 'keyup', this.handleKeyup);
+  }
 
-    const end = getDate(current[1] || selectedValue[1] || nextMonthFirstDay(now()));
-
-    const [endYear, endMonth] = getYearMonthDay(end);
-
-    const [_year, _month] = getYearMonthDay(getDate(month));
-
-    if (_year < endYear) {
-      return true;
-    } if (_year === endYear) {
-      return _month < endMonth;
-    }
-    return false;
-  };
-
-  disabledEndMonth = (month) => {
-    const { current, selectedValue } = this.state;
-
-    const start = getDate(current[0] || selectedValue[0]);
-
-    const [startYear, startMonth] = getYearMonthDay(start);
-
-    const [_year, _month] = getYearMonthDay(getDate(month));
-
-    if (_year > startYear) {
-      return true;
-    }
-
-    if (_year === startYear) {
-      return _month > startMonth;
-    }
-
-    return false;
-  };
-
-  getStartDate = () => {
-    const { current } = this.state;
-
-    return getDate(current[0]);
-  };
-
-  getEndDate = () => {
-    const { current } = this.state;
-
-    const [start, end] = current.map(getDate);
-
-    // 当结束时间不存在时，结束时间初始值为开始时间月份加 1
-    return getDate(end || nextMonthFirstDay(start));
-  };
+  unbindOuterHandlers() {
+    Events.off(document, 'keyup', this.handleKeyup);
+  }
 
   renderPlaceholder = () => {
-    const { props } = this;
     const {
       placeholder,
       isDisabled,
@@ -343,7 +341,7 @@ class RangeDatePicker extends Component<PropsType, any> {
       style,
       value = [],
       locale,
-    } = props;
+    } = this.props;
 
     const { isShowDropdown } = this.state;
 
@@ -357,8 +355,8 @@ class RangeDatePicker extends Component<PropsType, any> {
       hasValue = true;
     }
 
-    const disabled = 'disabled' in props || isDisabled;
-    const radius = 'radius' in props || isRadius;
+    const disabled = 'disabled' in this.props || isDisabled;
+    const radius = 'radius' in this.props || isRadius;
 
     const cls = classnames('za-select', {
       'za-select--open': isShowDropdown,
@@ -375,7 +373,6 @@ class RangeDatePicker extends Component<PropsType, any> {
       <span className={cls} style={style}>
         <span
           className="za-select__selection"
-          role="combobox"
           aria-autocomplete="list"
           aria-haspopup="true"
           aria-expanded="false"
@@ -389,7 +386,6 @@ class RangeDatePicker extends Component<PropsType, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       defaultValue,
       isRadius,
@@ -398,7 +394,7 @@ class RangeDatePicker extends Component<PropsType, any> {
       max,
       showTime,
       locale,
-    } = props;
+    } = this.props;
 
     const {
       selectedValue,
@@ -406,7 +402,7 @@ class RangeDatePicker extends Component<PropsType, any> {
       isShowDropdown,
     } = this.state;
 
-    const radius = 'radius' in props || isRadius;
+    const radius = 'radius' in this.props || isRadius;
 
     const startDate = this.getStartDate();
     const endDate = this.getEndDate();
@@ -459,20 +455,18 @@ class RangeDatePicker extends Component<PropsType, any> {
 
     const timeFooter = (
       <div className="za-range__date-picker-footer">
-        <a
+        <span
           className="za-range__date-picker-footer-btn"
-          href="javascript:;"
           onClick={this.handleCloseDropDown}
         >
           {locale!.clear}
-        </a>
+        </span>
 
-        <a
-          href="javascript:;"
+        <span
           onClick={this.handleConfirm}
         >
           {locale!.confirm}
-        </a>
+        </span>
       </div>
     );
 

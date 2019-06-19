@@ -42,6 +42,7 @@ export default class Col extends Component<ColProps, {}> {
   };
 
   render() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const { props } = this;
     const { span, order, offset, push, pull, className, children, prefixCls = 'col', gutter, style, ...others } = props;
     let sizeClassObj = {};

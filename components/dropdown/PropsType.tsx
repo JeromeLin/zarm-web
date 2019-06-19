@@ -27,6 +27,5 @@ export interface StateType {
     left: number;
     top: number;
   };
-  isPending: boolean;
   animationState: string | null;
 }

@@ -5,12 +5,11 @@ export type size = 'xl' | 'lg' | 'sm' | 'xs';
 export type shape = 'circle' | 'round' | 'rect' | 'radius';
 export type buttonType = 'button' | 'submit' | 'reset';
 
-interface BasicPropsType {
+export default interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   prefixCls?: string;
   htmlType?: buttonType;
   theme?: theme;
   size?: size;
-  icon?: string;
   block?: boolean;
   shape?: shape;
   active?: boolean;
@@ -32,7 +31,3 @@ export interface ButtonGroupProps {
   className?: string;
   prefixCls?: string;
 }
-
-type PropsType = ButtonHTMLAttributes<{}> & BasicPropsType;
-
-export default PropsType;

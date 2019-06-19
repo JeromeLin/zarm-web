@@ -2,7 +2,7 @@ import React, { Component, Children, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import PropsType, { childPropsType } from './PropsType';
-import MenuContext, { menuKeys, keysType } from './menu-context';
+import MenuContext, { menuKeys, KeysType } from './menu-context';
 
 class Menu extends Component<PropsType, any> {
   static defaultProps = {
@@ -43,16 +43,18 @@ class Menu extends Component<PropsType, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { inlineCollapsed } = this.props;
+    const { openKeys } = this.state;
     if (
-      (nextProps.inlineCollapsed && !this.props.inlineCollapsed)
+      (nextProps.inlineCollapsed && !inlineCollapsed)
     ) {
       // this.switchingModeFromInline = true;
-      this.inlineOpenKeys = this.state.openKeys;
+      this.inlineOpenKeys = openKeys;
       this.setState({ openKeys: [] });
     }
 
     if (
-      (!nextProps.inlineCollapsed && this.props.inlineCollapsed)
+      (!nextProps.inlineCollapsed && inlineCollapsed)
     ) {
       this.setState({ openKeys: this.inlineOpenKeys });
       this.inlineOpenKeys = [];
@@ -131,7 +133,7 @@ class Menu extends Component<PropsType, any> {
       [className!]: !!className,
     });
 
-    const newMenuKeys: keysType = {
+    const newMenuKeys: KeysType = {
       ...this.menuKeys,
       openKeys,
       selectedKeys,

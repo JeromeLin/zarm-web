@@ -11,7 +11,6 @@ class Tooltip extends Component<PropsType, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       title,
       direction,
@@ -20,7 +19,7 @@ class Tooltip extends Component<PropsType, any> {
       trigger,
       style,
       prefixCls,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       [prefixCls!]: true,

@@ -12,6 +12,7 @@ class Radio extends Component<PropsType, any> {
   };
 
   static propTypes = {
+    prefixCls: PropTypes.string,
     defaultChecked: PropTypes.bool,
     onChange: PropTypes.func,
     disabled: PropTypes.bool,
@@ -38,21 +39,22 @@ class Radio extends Component<PropsType, any> {
   }
 
   onClick(e) {
+    const { onChange } = this.props;
     this.setState({
       checked: true,
     });
-    this.props.onChange(e);
+    onChange(e);
   }
 
   render() {
-    const { props } = this;
+    const { checked } = this.state;
     const {
       prefixCls, value, disabled, className, children,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
-      'is-checked': this.state.checked,
+      'is-checked': checked,
       'is-disabled': disabled,
       [className!]: !!className,
     });
@@ -64,7 +66,7 @@ class Radio extends Component<PropsType, any> {
             className="za-radio__input"
             type="radio"
             value={value}
-            checked={this.state.checked}
+            checked={checked}
             disabled={disabled}
             onChange={e => this.onClick(e)}
           />

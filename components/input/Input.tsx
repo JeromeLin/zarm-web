@@ -1,5 +1,7 @@
+/* eslint-disable */
 import React, { Component, TextareaHTMLAttributes, InputHTMLAttributes, ChangeEventHandler } from 'react';
 import classnames from 'classnames';
+// @ts-ignore
 import PropsType from './PropsType';
 import Addon from './cps/Addon';
 import InputGroup from './input-group';

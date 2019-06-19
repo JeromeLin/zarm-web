@@ -30,15 +30,16 @@ class Checkbox extends Component<PropsType, any> {
 
   _onClick(e) {
     const { checked } = this.state;
+    const { onChange } = this.props;
 
     this.setState({
       checked: !checked,
     });
-    this.props.onChange(e);
+    onChange(e);
   }
 
   render() {
-    const { props } = this;
+    const { checked } = this.state;
     const {
       prefixCls,
       value,
@@ -47,14 +48,12 @@ class Checkbox extends Component<PropsType, any> {
       children,
       style,
       indeterminate,
-    } = props;
-    const disabled = 'disabled' in props || isDisabled;
-    const cls = classnames({
-      [prefixCls!]: true,
-      'is-checked': this.state.checked,
+    } = this.props;
+    const disabled = 'disabled' in this.props || isDisabled;
+    const cls = classnames(prefixCls, className, {
+      'is-checked': checked,
       'is-disabled': disabled,
-      'is-indeterminate': this.state.checked && indeterminate,
-      [className!]: !!className,
+      'is-indeterminate': checked && indeterminate,
     });
 
     return (
@@ -64,7 +63,7 @@ class Checkbox extends Component<PropsType, any> {
             className={`${prefixCls}__input`}
             type="checkbox"
             value={value}
-            checked={this.state.checked}
+            checked={checked}
             disabled={disabled}
             onChange={e => this._onClick(e)}
           />
