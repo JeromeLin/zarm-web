@@ -104,18 +104,20 @@ class Select extends Component<PropsType, StateProps> {
     let optionMap: { [x: string]: any } = {};
 
     React.Children.map(options, (option: ReactElement<OptionProps>) => {
-      if (option && typeof option === 'object' && option.type) {
-        let value = this.mapEmptyStringToEmptyValue(option.props.value);
-        if (option.props && value) {
-          // handle optionMap
-          optionMap[value] = option;
-          // handle OptionData
-          optionData.push({
-            key: option.key,
-            props: option.props,
-            value,
-            children: option.props.children,
-          });
+      if (option && React.isValidElement(option)) {
+        if (typeof option.type === 'function' && option.type.displayName === 'Option') {
+          let value = this.mapEmptyStringToEmptyValue(option.props.value);
+          if (option.props && value) {
+            // handle optionMap
+            optionMap[value] = option;
+            // handle OptionData
+            optionData.push({
+              key: option.key,
+              props: option.props,
+              value,
+              children: option.props.children,
+            });
+          }
         }
       }
       return optionMap;

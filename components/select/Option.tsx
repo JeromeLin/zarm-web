@@ -5,6 +5,8 @@ import { OptionProps } from './PropsType';
 import Menu from '../menu';
 
 class Option extends PureComponent<OptionProps, any> {
+  static displayName: 'Option';
+
   static defaultProps = {
     isDisabled: false,
     onChange: () => { },
