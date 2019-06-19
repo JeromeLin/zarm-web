@@ -1,4 +1,5 @@
 import React, { Component, ReactNode, ReactElement } from 'react';
+import classnames from 'classnames';
 import Events from '../utils/events';
 import { FormItemContext } from '../form/createContext';
 import Option from './Option';
@@ -9,6 +10,7 @@ import PropsType, { OptionProps } from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 import SelectMultiple from './SelectMultiple';
 import { isEmpty } from '../utils';
+import { Icon } from '..';
 
 interface StateProps {
   value: string | string[];
@@ -50,6 +52,7 @@ class Select extends Component<PropsType, StateProps> {
     isSearch: false,
     onSearchChange: () => { },
     onChange: () => { },
+    clearable: false,
   };
 
   static Option: typeof Option;
@@ -323,6 +326,26 @@ class Select extends Component<PropsType, StateProps> {
     return children;
   }
 
+  onClearBtnClick: React.MouseEventHandler = (e) => {
+    e.stopPropagation();
+    this.setState({
+      value: '',
+      searchValue: '',
+    }, () => {
+      if (this.props.onChange) {
+        this.props.onChange({
+          value: '',
+          text: '',
+          index: 0,
+        });
+      }
+      // TODO not able to make a input event
+      // if (this.props.isSearch && this.props.onSearchChange) {
+      //   this.props.onSearchChange(e);
+      // }
+    });
+  }
+
   render() {
     const { props } = this;
     const {
@@ -339,7 +362,11 @@ class Select extends Component<PropsType, StateProps> {
       getPopupContainer,
       locale,
       remoteSearch,
+      clearable,
+      triggerProps,
     } = props;
+
+    const triggerBoxStyle: React.CSSProperties = { ...style, position: 'relative' };
 
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -377,9 +404,22 @@ class Select extends Component<PropsType, StateProps> {
         ? <Menu style={menuStyle}>{children}</Menu>
         : <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>;
 
+    const triggerBoxProps = triggerProps ? {
+      ...triggerProps,
+      className: classnames({
+        [`${triggerProps.className}`]: !!triggerProps.className,
+        [`${prefixCls}-trigger-box`]: true,
+      }),
+    } : {
+        className: classnames({
+          [`${prefixCls}-trigger-box`]: true,
+        }),
+      };
+
     return (
       <Dropdown
-        triggerBoxStyle={style}
+        triggerBoxStyle={triggerBoxStyle}
+        triggerProps={triggerBoxProps}
         disabled={disabled}
         visible={this.state.dropdown}
         isRadius={radius}
@@ -410,6 +450,13 @@ class Select extends Component<PropsType, StateProps> {
           onDeleteTag={this.onDeleteTag}
           onSearchChange={this.onSearchValueChange}
         />
+        {
+          clearable && !disabled && !multiple && <Icon
+            type="wrong-round-fill"
+            className={`clear-btn${valueText ? ' clear-btn-show' : ''}`}
+            onClick={this.onClearBtnClick}
+          />
+        }
       </Dropdown>
     );
   }

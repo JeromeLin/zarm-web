@@ -406,6 +406,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       onVisibleChange,
       getPopupContainer,
       triggerBoxStyle,
+      triggerProps,
       ...others
     } = this.props;
 
@@ -426,12 +427,25 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       zIndex,
     };
 
+    const triggerBoxProps = triggerProps ? {
+      ...triggerProps,
+      className: classnames({
+        [`${triggerProps.className}`]: !!triggerProps.className,
+        [`${prefixCls}-trigger-box`]: true,
+      }),
+    } : {
+        className: classnames({
+          [`${prefixCls}-trigger-box`]: true,
+        }),
+      };
+
     return <React.Fragment>
       <div
         className={`${prefixCls}-trigger-box`}
         style={triggerBoxStyle}
         ref={(e) => { this.triggerBox = e as HTMLDivElement; }}
         {...this.triggerEvent}
+        {...triggerBoxProps}
       >
         {children}
       </div>

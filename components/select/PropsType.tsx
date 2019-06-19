@@ -1,4 +1,4 @@
-import { CSSProperties, MouseEvent, ReactNode, LiHTMLAttributes } from 'react';
+import { CSSProperties, MouseEvent, ReactNode, LiHTMLAttributes, HTMLProps } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export interface OptionProps extends LiHTMLAttributes<HTMLLIElement> {
@@ -30,6 +30,7 @@ export interface MultipleProps {
 
 interface ChangeValue { value: string | number; text: ReactNode; index: number; }
 export type themeType = 'default' | 'info' | 'success' | 'warning' | 'error';
+
 export default interface PropsType {
   prefixCls?: string;
   value?: string | number | Array<string | number>;
@@ -52,6 +53,8 @@ export default interface PropsType {
   tagTheme?: themeType;
   zIndex?: number;
   title?: string;
+  clearable: boolean;
+  triggerProps?: HTMLProps<HTMLDivElement>;
   locale?: {
     [propName: string]: any,
   };
