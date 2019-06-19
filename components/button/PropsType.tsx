@@ -22,7 +22,6 @@ export default interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButton
   onClick?: (e: MouseEvent) => void;
   href?: string | undefined;
   target?: string | undefined;
-  fRef?: any;
 }
 
 export interface ButtonGroupProps {

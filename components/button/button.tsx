@@ -48,15 +48,15 @@ class Button extends Component<ButtonProps> {
       [`${prefixCls}--ghost`]: ghost,
     });
 
-    const textContent = loading ? (
-      <React.Fragment>
-        <Icon type="loading" className="rotate360" />
-        &nbsp;&nbsp;
-        {children}
-      </React.Fragment>
-    ) : (
-      children
-    );
+    const textContent = loading
+      ? (
+        <React.Fragment>
+          <Icon type="loading" className="rotate360" />
+          &nbsp;&nbsp;
+          {children}
+        </React.Fragment>
+      )
+      : children;
 
     return (
       href
