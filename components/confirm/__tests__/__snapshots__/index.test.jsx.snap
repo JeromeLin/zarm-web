@@ -92,13 +92,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       class="ui-modal-footer"
                     >
                       <button
-                        class="is-radius za-button za-button--default"
+                        class="za-button za-button--default za-button--radius"
                         type="button"
                       >
                         取消
                       </button>
                       <button
-                        class="is-radius za-button za-button--primary"
+                        class="za-button za-button--primary za-button--radius"
                         type="button"
                       >
                         确定
@@ -224,9 +224,9 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                     style={Object {}}
                   >
                     <Button
-                      block={false}
                       ghost={false}
                       htmlType="button"
+                      loading={false}
                       onClick={[Function]}
                       prefixCls="za-button"
                       shape="radius"
@@ -234,7 +234,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       theme="default"
                     >
                       <button
-                        className="is-radius za-button za-button--default"
+                        className="za-button za-button--default za-button--radius"
                         onClick={[Function]}
                         type="button"
                       >
@@ -242,9 +242,9 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       </button>
                     </Button>
                     <Button
-                      block={false}
                       ghost={false}
                       htmlType="button"
+                      loading={false}
                       onClick={[Function]}
                       prefixCls="za-button"
                       shape="radius"
@@ -252,7 +252,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       theme="primary"
                     >
                       <button
-                        className="is-radius za-button za-button--primary"
+                        className="za-button za-button--primary za-button--radius"
                         onClick={[Function]}
                         type="button"
                       >
