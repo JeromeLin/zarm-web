@@ -1,6 +1,126 @@
-.ui-pagination {
+$height-md: $--pagination-height-md;
+$height-sm: $--pagination-height-sm;
+$line-height-md: $--pagination-height-md - 2 ;
+$line-height-sm: $--pagination-height-sm - 2;
+$base-radius: 4px !default;
+
+@mixin addon($line-height) {
+  float: left;
+  margin-right: 15px;
+  line-height: $line-height;
+}
+
+@mixin jumper() {
+  float: left;
+  margin-left: 12px;
+
+  .za-selectm,
+  .za-dropdown-trigger-box {
+    vertical-align: inherit;
+  }
+}
+
+@mixin input-box($height) {
+  .ui-input-box {
+    display: inline-block;
+    vertical-align: middle;
+    height: $height;
+    line-height: $height - 5;
+    margin: 0 8px;
+  }
+  .ui-input {
+    height: $height - 2;
+  }
+}
+
+@mixin total($line-height) {
+  float: left;
+  padding-right: 4px;
+  color: #999;
+  line-height: $line-height;
+}
+
+@mixin jump() {
   &:after {
-    content: " ";
+    content: '\2022\2022\2022';
+    display: block;
+    letter-spacing: 2px;
+    color: #ccc;
+    text-align: center;
+  }
+}
+
+@mixin pagination-public($height, $line-height) {
+  @include e(item) {
+    min-width: $height;
+    height: $height;
+    line-height: $line-height;
+    float: left;
+    border: 1px solid transparent;
+    padding: 0 6px;
+    text-align: center;
+    list-style: none;
+    background-color: #fff;
+    margin-right: 4px;
+    font-family: Arial;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $--color-info;
+      &.za-pagination__item--jump-prev,
+      &.za-pagination__item--jump-next {
+        &:after {
+          color: $--color-info;
+        }
+      }
+    }
+
+    &.za-pagination__item--disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+      &:hover {
+        color: #ccc;
+      }
+    }
+
+    &.za-pagination__item--active {
+      background-color: $--color-info;
+      color: #fff;
+    }
+  }
+
+  @include e(addon-before) {
+    @include addon($height);
+  }
+
+  @include e(addon-after) {
+    @include addon($height);
+  }
+
+  @include e(select) {
+    .za-tag-input-box {
+      min-height: $height;
+      line-height: $line-height;
+    }
+  }
+
+  @include e(jumper) {
+    @include input-box($height);
+  }
+
+  @include e(item) {
+    &--jump-prev,
+    &--jump-next {
+      @include jump();
+    }
+  }
+}
+
+@include b(pagination) {
+  // 清除浮动
+  &:after {
+    content: ' ';
     display: block;
     height: 0;
     clear: both;
@@ -8,25 +128,31 @@
     visibility: hidden;
   }
 
-  &.bordered {
-    .ui-pagination-item {
+  &.is-radius {
+    .za-pagination__item {
+      border-radius: $base-radius;
+    }
+  }
+
+  &.is-bordered {
+    .za-pagination__item {
       border: 1px solid #d9d9d9;
       margin-right: 8px;
 
       &:hover {
-        border-color: #2db7f5;
+        border-color: $--color-info;
       }
 
-      &.ui-pagination-item-jump-prev,
-      &.ui-pagination-item-jump-next {
+      &.za-pagination__item--jump-prev,
+      &.za-pagination__item--jump-next {
         border-width: 0;
       }
 
-      &.ui-pagination-item-active {
-        border-color: #2db7f5;
+      &.za-pagination__item--active {
+        border-color: $--color-info;
       }
 
-      &.ui-pagination-item-disabled {
+      &.za-pagination__item--disabled {
         &:hover {
           border-color: #d9d9d9;
         }
@@ -34,22 +160,26 @@
     }
   }
 
-  &.shape-radius {
-    .ui-pagination-item {
-      border-radius: $base-radius;
+  // size
+  @include m(md) {
+    font-size: 16px;
+    @include pagination-public($height-md, $line-height-md);
+    @include e(total) {
+      @include total($line-height-md);
     }
   }
 
-  &-total {
-    float: left;
-    line-height: 28px;
-    padding-right: 4px;
-    color: #999;
+  @include m(sm) {
+    font-size: 14px;
+    @include pagination-public($height-sm, $line-height-sm);
+    @include e(total) {
+      @include total($line-height-sm);
+    }
   }
 
-  &-pagers {
-    float: right;
 
+  @include e(pagers) {
+    float: right;
     & > ul {
       float: left;
       margin: 0;
@@ -57,85 +187,35 @@
     }
   }
 
-  &-size,
-  &-jumper {
-    float: left;
-    margin-left: 6px;
-    line-height: 28px;
+  @include e(select) {
+    @include jumper();
+  }
 
-    .ui-selectm,
-    .ui-dropdown-trigger-box {
-      vertical-align: inherit;
+  @include e(jumper) {
+    @include jumper();
+  }
+
+  @include m(simple) {
+    &:hover {
+      .za-pagination__item {
+        color: #383838;
+      }
     }
-  }
-}
 
-.ui-pagination-item {
-  float: left;
-  // display: inline-block;
-  border: 1px solid transparent;
-  min-width: 28px;
-  padding: 0 6px;
-  height: 28px;
-  line-height: 26px;
-  text-align: center;
-  list-style: none;
-  background-color: #fff;
-  margin-right: 4px;
-  font-family: Arial;
-  user-select: none;
-  cursor: pointer;
-
-  &.ui-pagination-item-prev,
-  &.ui-pagination-item-next {
-    color: #ccc;
-  }
-
-  &.ui-pagination-item-jump-prev,
-  &.ui-pagination-item-jump-next {
-    &:after {
-      content: "\2022\2022\2022";
-      display: block;
-      letter-spacing: 2px;
-      color: #ccc;
-      text-align: center;
-    }
-  }
-
-  &:hover {
-    color: #2db7f5;
-
-    &.ui-pagination-jump-prev,
-    &.ui-pagination-jump-next {
-      &:after {
-        color: #2db7f5;
+    @include e(item) {
+      float: left;
+      min-width: 24px;
+      height: 24px;
+      line-height: 22px;
+      border: 0;
+      @include input-box(24px);
+      span {
+        margin: 0 10px 0 5px;
+        vertical-align: middle;
+      }
+      .za-icon{
+        vertical-align: middle;
       }
     }
   }
-
-  &.ui-pagination-item-disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-
-    &:hover {
-      color: #ccc;
-    }
-  }
-
-  &.ui-pagination-item-active {
-    background-color: #2db7f5;
-    color: #fff;
-  }
-}
-
-.ui-pagination-addon-before {
-  float: left;
-  margin-right: 15px;
-  line-height: 28px;
-}
-
-.ui-pagination-addon-after {
-  float: left;
-  margin-left: 15px;
-  line-height: 28px;
 }

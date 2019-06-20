@@ -8,6 +8,10 @@
 :::demo 只需要设置`total`，`pageSize`默认为10。
 
 ```js
+
+import { Pagination } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -15,6 +19,57 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+
+```
+:::
+
+### 小型分页
+
+添加size属性即可
+
+:::demo 只需要设置`total`，`size`
+
+```js
+import { Pagination } from 'dragon-ui';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+         <Pagination size='sm' total={100} />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+
+```
+:::
+
+### 简洁型分页
+
+添加simple属性即可
+
+:::demo 只需要设置`total`，`simple`
+
+```js
+import { Pagination } from 'dragon-ui';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+          <Pagination simple total={100} />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -25,13 +80,20 @@
 :::demo
 
 ```js
+
+import { Pagination } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Pagination total={100} showTotal />
+          <Pagination total={100} showTotal />
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -42,13 +104,20 @@
 :::demo
 
 ```js
+
+import { Pagination } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Pagination total={100} showTotal showJumper />
+          <Pagination total={100} showTotal showJumper />
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -59,13 +128,18 @@
 :::demo
 
 ```js
+import { Pagination } from 'dragon-ui';
+class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Pagination total={100} showTotal showJumper showPageSizeSelector />
+          <Pagination total={100} showJumper showPageSizeSelector />
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -76,13 +150,18 @@
 :::demo
 
 ```js
+import { Pagination } from 'dragon-ui';
+class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Pagination total={100} pageSizeSource={[50,100,150]} showTotal showJumper showPageSizeSelector />
+          <Pagination total={100} pageSizeSource={[50,100,150]}  showJumper showPageSizeSelector />
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -93,13 +172,15 @@
 :::demo
 
 ```js
+import { Pagination } from 'dragon-ui';
+class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pageSize: 10
     }
   }
-  render() {
+ render() {
     const { pageSize } = this.state;
     return (
       <div>
@@ -121,6 +202,9 @@
       </div>
     )
   }
+}
+ReactDOM.render(<Demo />, mountNode);
+
 ```
 :::
 
@@ -132,7 +216,9 @@
 :::demo
 
 ```js
-  constructor(props) {
+import { Pagination } from 'dragon-ui';
+class Demo extends React.Component {
+   constructor(props) {
     super(props);
     this.state = {
       pageSize: 10,
@@ -160,22 +246,26 @@
       </div>
     )
   }
+}
+ReactDOM.render(<Demo />, mountNode);
+
 ```
 :::
 
 ### 更多设置
 
-通过`radius`，`bordered`设置样式。
+通过`bordered`设置样式。
 
 :::demo
 
 ```js
+import { Pagination } from 'dragon-ui';
+class Demo extends React.Component {
   render() {
     return (
       <div>
         <Pagination
           total={100}
-          radius
           bordered
           showJumper
           showPageSizeSelector
@@ -183,6 +273,10 @@
       </div>
     )
   }
+}
+ReactDOM.render(<Demo />, mountNode);
+
+
 ```
 :::
 
@@ -191,13 +285,14 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | value     | 当前页   | number  |   -            |    -   |
 | defaultValue     | 默认页   | number   |   - |     1  |
+| simple     |  简洁型分页   | boolean   |   true,false |     false |
+| size     |  尺寸   | number   |   md,sm |     md |
 | total     | 总数   | number    | — | 0   |
 | pageSize     | 每页条数   | number    | — | 10   |
 | pageSizeSource |页数下拉框的数据源 | number[] | - | [10,20,30,40,50]
 | showTotal     | 是否展示总数   | boolean    | — | false  |
 | showJumper     | 是否展示跳转   | boolean    | — | false   |
 | showPageSizeSelector     | 是否展示每页条数选择器  | boolean   | — | false  |
-| radius     | 是否圆角   | boolean    | — | false   |
 | bordered     | 是否有边框   | boolean    | — | false   |
 
 
