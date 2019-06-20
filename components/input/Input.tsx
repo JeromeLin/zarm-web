@@ -130,7 +130,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     const {
       type, prefixCls, shape, size,
       className, addonPrefix, addonBefore,
-      addonAfter, showLength, value, ...others
+      addonAfter, showLength, ...others
     } = props;
     return (
       <div className={cls}>
@@ -155,7 +155,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     const {
       type, prefixCls, shape, size,
       className, addonPrefix, addonBefore,
-      addonAfter, showLength, value, defaultValue,
+      addonAfter, showLength, defaultValue,
       ...others
     } = props;
     return (
