@@ -6,14 +6,13 @@ import MenuContext from './menu-context';
 class MenuItem extends Component<ItemProps, any> {
   static defaultProps = {
     prefixCls: 'ui-menu',
-    checked: false,
     isDisabled: false,
     level: 1,
     style: {},
     mode: 'inline',
     inlineIndent: 10,
-    onClick: () => {},
-    onDoubleClick: () => {},
+    onClick: () => { },
+    onDoubleClick: () => { },
   };
 
   handleClick = (e) => {
@@ -32,8 +31,8 @@ class MenuItem extends Component<ItemProps, any> {
 
     const cls = classnames({
       [`${prefixCls}-item`]: true,
-      active: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
-      [className!]: !!className,
+      active: checked !== undefined ? checked : !!itemKey && selectedKeys.indexOf(itemKey) > -1,
+      [`${className}`]: !!className,
       selected: !!checked,
       disabled: 'disabled' in props || isDisabled,
     });

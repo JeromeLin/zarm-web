@@ -156,8 +156,8 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   onOptionChange = (e) => {
-    const { index } = e.currentTarget.dataset;
-    const currentData = this.state.optionMap[index];
+    const { index, value } = e.currentTarget.dataset;
+    const currentData = this.state.optionMap[value];
     if (!currentData) {
       return;
     }
@@ -174,8 +174,6 @@ class Select extends Component<PropsType, StateProps> {
     if (!isEmpty(this.context)) {
       this.context.handleFieldChange();
     }
-
-    let value = String(props.value);
 
     if (this.props.multiple) {
       const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
@@ -201,7 +199,7 @@ class Select extends Component<PropsType, StateProps> {
     }
 
     const selected = {
-      index,
+      index: Number(index),
       value,
       text: Array.isArray(props.children) ? props.children.join() : props.children,
     };
@@ -319,7 +317,8 @@ class Select extends Component<PropsType, StateProps> {
             key={elem.value}
             showCheckIcon={checked}
             checked={checked}
-            data-index={elem.value}
+            data-index={i}
+            data-value={elem.value}
             onChange={this.onOptionChange}
           >
             {childrenText}
