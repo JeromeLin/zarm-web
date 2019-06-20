@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import marked from 'marked';
 import { transform } from '@babel/standalone';
-import { Icon } from './node_modules/@/components';
+import { Icon } from '@/components';
 import Editor from '../editor';
 
 export default class Canvas extends React.Component {
@@ -39,7 +39,7 @@ export default class Canvas extends React.Component {
   }
 
   renderSource(value) {
-    import('./node_modules/@/components').then((Element) => {
+    import('@/components').then((Element) => {
       const args = ['context', 'React', 'ReactDOM', 'DragonUi'];
       const argv = [this, React, ReactDOM, Element];
 
