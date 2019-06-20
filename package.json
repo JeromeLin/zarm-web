@@ -165,11 +165,6 @@
     "{components,site}/**/*.{js,jsx}": "eslint",
     "{styles,site}/**/*.scss": "stylelint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  },
   "browserslist": [
     "last 2 versions",
     "Firefox ESR",
@@ -185,5 +180,11 @@
     "es/**/style/*",
     "lib/**/style/*",
     "site/**"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
 }

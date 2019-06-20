@@ -23,7 +23,7 @@ class Header extends PureComponent {
         this.searchInput.focus();
       }
     });
-    initDocSearch();
+    // initDocSearch();
   }
 
   activeClassName = (keys) => {
@@ -34,20 +34,18 @@ class Header extends PureComponent {
   };
 
   render() {
-    const { match } = this.props;
-
     return (
       <header>
         <div className="header-container">
           <div className="logo">
             <a href="#/">
               <img alt="logo" src={require('./images/logo.svg')} />
-              Zarm
+              Zarm Web
             </a>
           </div>
-          <div className="search">
+          {/* <div className="search">
             <input placeholder="搜索组件..." ref={(ref) => { this.searchInput = ref; }} />
-          </div>
+          </div> */}
           <div className="version">
             <Select
               radius
@@ -58,11 +56,10 @@ class Header extends PureComponent {
           </div>
           <nav>
             <ul>
-              <li><a href="#/">首页</a></li>
-              <li><a href="#/components/quick-start" className={this.activeClassName(['components'])}>React 组件</a></li>
-              <li><a href="https://zhongantecheng.github.io/zarm-vue/#/documents/quick-start">Vue 组件</a></li>
-              <li><a href="#/design/download" className={this.activeClassName(['design'])}>设计</a></li>
-              <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
+              {/* <li><a href="#/">首页</a></li> */}
+              <li><a href="#/components/quick-start" className={this.activeClassName(['components'])}>组件</a></li>
+              {/* <li><a href="https://zarm.design/#/design" target="_blank" rel="noopener noreferrer" className={this.activeClassName(['design'])}>设计</a></li> */}
+              <li><a href="https://github.com/JeromeLin/zarm-web" target="_blank" rel="noopener noreferrer">Github</a></li>
             </ul>
           </nav>
         </div>

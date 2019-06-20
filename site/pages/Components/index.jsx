@@ -51,7 +51,8 @@ class Page extends PureComponent {
                   <Route key={+i} path={`/components/${Format.camel2Dash(component.name)}`} component={LoadableComponent(component)} />
                 ))
               }
-              <Redirect to="/" />
+              <Route path="*" component={LoadableComponent(documents[0])} />
+              {/* <Redirect to="/" /> */}
             </Switch>
           </div>
           <ScrollToTop>
