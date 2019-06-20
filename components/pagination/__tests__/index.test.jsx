@@ -8,7 +8,7 @@ describe('Pagination', () => {
     const wrapper = render(
       <div>
         <Pagination total={100} />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -18,7 +18,7 @@ describe('Pagination', () => {
     const wrapper = render(
       <div>
         <Pagination total={100} showTotal />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('Pagination', () => {
     const wrapper = render(
       <div>
         <Pagination total={100} showJumper />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -39,12 +39,11 @@ describe('Pagination', () => {
       <div>
         <Pagination
           total={100}
-          radius
           bordered
           addonBefore="addonBefore"
           addonAfter="addonAfter"
         />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -55,10 +54,10 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
-    wrapper.find('.ui-pagination-item').at(2).simulate('click');
+    wrapper.find('.za-pagination__item').at(2).simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(2);
   });
@@ -68,10 +67,10 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={6} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
-    wrapper.find('.ui-pagination-item-prev').simulate('click');
+    wrapper.find('.za-pagination__item--prev').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(5);
   });
@@ -81,10 +80,10 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={5} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
-    wrapper.find('.ui-pagination-item-next').simulate('click');
+    wrapper.find('.za-pagination__item--next').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(6);
   });
@@ -94,10 +93,10 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={6} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
-    wrapper.find('.ui-pagination-item-jump-prev').simulate('click');
+    wrapper.find('.za-pagination__item--jump-prev').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(1);
   });
@@ -107,10 +106,10 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={1} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
-    wrapper.find('.ui-pagination-item-jump-next').simulate('click');
+    wrapper.find('.za-pagination__item--jump-next').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(6);
   });
@@ -120,10 +119,10 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination showJumper total={100} value={1} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
-    wrapper.find('.ui-pagination-jumper input').simulate('keydown', {
+    wrapper.find('.za-pagination__jumper input').simulate('keydown', {
       keyCode: 13,
       target: {
         value: 6,
@@ -134,10 +133,10 @@ describe('Pagination', () => {
 
   it('behaves correctly when receiving new value', () => {
     const wrapper = mount(
-      <Pagination showJumper total={100} value={2} />
+      <Pagination showJumper total={100} value={2} />,
     );
 
     wrapper.setProps({ value: 1 });
-    expect(wrapper.find('.ui-pagination-item').at(1).hasClass('ui-pagination-item-active')).toBeTruthy();
+    expect(wrapper.find('.za-pagination__item').at(1).hasClass('za-pagination__item--active')).toBeTruthy();
   });
 });

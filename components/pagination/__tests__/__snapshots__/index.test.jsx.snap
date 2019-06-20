@@ -3,19 +3,19 @@
 exports[`Pagination renders Pagination with customized props correctly 1`] = `
 <div>
   <div
-    class="ui-pagination bordered"
+    class="za-pagination za-pagination--md is-bordered is-radius"
   >
     <div
-      class="ui-pagination-pagers"
+      class="za-pagination__pagers"
     >
       <ul>
         <div
-          class="ui-pagination-addon-before"
+          class="za-pagination__addon-before"
         >
           addonBefore
         </div>
         <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          class="za-pagination__item za-pagination__item--prev za-pagination__item--disabled"
           title="上一页"
         >
           <i
@@ -23,47 +23,47 @@ exports[`Pagination renders Pagination with customized props correctly 1`] = `
           />
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-active"
+          class="za-pagination__item za-pagination__item--active"
           title="1"
         >
           1
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="2"
         >
           2
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="3"
         >
           3
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="4"
         >
           4
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="5"
         >
           5
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
+          class="za-pagination__item za-pagination__item--jump-next"
           title="向后 5 页"
         />
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="最后一页"
         >
           10
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-next"
+          class="za-pagination__item za-pagination__item--next"
           title="下一页"
         >
           <i
@@ -71,7 +71,7 @@ exports[`Pagination renders Pagination with customized props correctly 1`] = `
           />
         </li>
         <div
-          class="ui-pagination-addon-after"
+          class="za-pagination__addon-after"
         >
           addonAfter
         </div>
@@ -84,14 +84,14 @@ exports[`Pagination renders Pagination with customized props correctly 1`] = `
 exports[`Pagination renders Pagination with jumper correctly 1`] = `
 <div>
   <div
-    class="ui-pagination"
+    class="za-pagination za-pagination--md is-radius"
   >
     <div
-      class="ui-pagination-pagers"
+      class="za-pagination__pagers"
     >
       <ul>
         <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          class="za-pagination__item za-pagination__item--prev za-pagination__item--disabled"
           title="上一页"
         >
           <i
@@ -99,47 +99,47 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
           />
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-active"
+          class="za-pagination__item za-pagination__item--active"
           title="1"
         >
           1
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="2"
         >
           2
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="3"
         >
           3
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="4"
         >
           4
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="5"
         >
           5
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
+          class="za-pagination__item za-pagination__item--jump-next"
           title="向后 5 页"
         />
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="最后一页"
         >
           10
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-next"
+          class="za-pagination__item za-pagination__item--next"
           title="下一页"
         >
           <i
@@ -148,17 +148,17 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
         </li>
       </ul>
       <div
-        class="ui-pagination-jumper"
+        class="za-pagination__jumper"
       >
         跳至
         <div
-          class="ui-input-box shape-radius size-sm"
+          class="ui-input-box shape-radius"
         >
           <input
             class="ui-input"
             style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
             type="text"
-            value=""
+            value="1"
           />
         </div>
         页
@@ -171,19 +171,19 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
 exports[`Pagination renders Pagination with total info correctly 1`] = `
 <div>
   <div
-    class="ui-pagination"
+    class="za-pagination za-pagination--md is-radius"
   >
     <div
-      class="ui-pagination-total"
+      class="za-pagination__total"
     >
       共有 100 条记录 第 1 / 10 页
     </div>
     <div
-      class="ui-pagination-pagers"
+      class="za-pagination__pagers"
     >
       <ul>
         <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          class="za-pagination__item za-pagination__item--prev za-pagination__item--disabled"
           title="上一页"
         >
           <i
@@ -191,47 +191,47 @@ exports[`Pagination renders Pagination with total info correctly 1`] = `
           />
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-active"
+          class="za-pagination__item za-pagination__item--active"
           title="1"
         >
           1
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="2"
         >
           2
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="3"
         >
           3
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="4"
         >
           4
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="5"
         >
           5
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
+          class="za-pagination__item za-pagination__item--jump-next"
           title="向后 5 页"
         />
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="最后一页"
         >
           10
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-next"
+          class="za-pagination__item za-pagination__item--next"
           title="下一页"
         >
           <i
@@ -247,14 +247,14 @@ exports[`Pagination renders Pagination with total info correctly 1`] = `
 exports[`Pagination renders normal Pagination correctly 1`] = `
 <div>
   <div
-    class="ui-pagination"
+    class="za-pagination za-pagination--md is-radius"
   >
     <div
-      class="ui-pagination-pagers"
+      class="za-pagination__pagers"
     >
       <ul>
         <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
+          class="za-pagination__item za-pagination__item--prev za-pagination__item--disabled"
           title="上一页"
         >
           <i
@@ -262,47 +262,47 @@ exports[`Pagination renders normal Pagination correctly 1`] = `
           />
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-active"
+          class="za-pagination__item za-pagination__item--active"
           title="1"
         >
           1
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="2"
         >
           2
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="3"
         >
           3
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="4"
         >
           4
         </li>
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="5"
         >
           5
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
+          class="za-pagination__item za-pagination__item--jump-next"
           title="向后 5 页"
         />
         <li
-          class="ui-pagination-item"
+          class="za-pagination__item"
           title="最后一页"
         >
           10
         </li>
         <li
-          class="ui-pagination-item ui-pagination-item-next"
+          class="za-pagination__item za-pagination__item--next"
           title="下一页"
         >
           <i
