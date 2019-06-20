@@ -34,7 +34,7 @@ export default class Canvas extends React.Component {
   }
 
   renderSource(value) {
-    import('./node_modules/@/components').then((Element) => {
+    import('@/components').then((Element) => {
       const args = ['context', 'React', 'ReactDOM', 'ZarmWeb'];
       const argv = [this, React, ReactDOM, Element];
       return { args, argv };
