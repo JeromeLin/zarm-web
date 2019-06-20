@@ -13,7 +13,6 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
         aria-expanded="false"
         aria-haspopup="true"
         class="za-select__selection"
-        role="combobox"
       >
         <span
           class="za-select__text za-select__text-placeholder"
@@ -40,7 +39,6 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -57,7 +55,6 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -74,7 +71,6 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -87,18 +83,16 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
       <div
         class="za-select__bottom"
       >
-        <a
+        <span
           class="clear-btn"
-          href="javascript:;"
         >
           清除
-        </a>
-        <a
+        </span>
+        <span
           class="confirm-btn"
-          href="javascript:;"
         >
           确认
-        </a>
+        </span>
       </div>
     </div>
   </div>
@@ -117,7 +111,6 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       aria-expanded="false"
       aria-haspopup="true"
       class="za-select__selection"
-      role="combobox"
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
@@ -134,7 +127,6 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       aria-expanded="false"
       aria-haspopup="true"
       class="za-select__selection"
-      role="combobox"
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
@@ -151,7 +143,6 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       aria-expanded="false"
       aria-haspopup="true"
       class="za-select__selection"
-      role="combobox"
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
@@ -177,7 +168,6 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
         aria-expanded="false"
         aria-haspopup="true"
         class="za-select__selection"
-        role="combobox"
       >
         <span
           class="za-select__text za-select__text-placeholder"
@@ -204,7 +194,6 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -221,7 +210,6 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -238,7 +226,6 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -251,18 +238,16 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
       <div
         class="za-select__bottom"
       >
-        <a
+        <span
           class="clear-btn"
-          href="javascript:;"
         >
           清除
-        </a>
-        <a
+        </span>
+        <span
           class="confirm-btn"
-          href="javascript:;"
         >
           确认
-        </a>
+        </span>
       </div>
     </div>
   </div>
@@ -282,7 +267,6 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
         aria-expanded="false"
         aria-haspopup="true"
         class="za-select__selection"
-        role="combobox"
       >
         <span
           class="za-select__text za-select__text-placeholder"
@@ -309,7 +293,6 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -326,7 +309,6 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -343,7 +325,6 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            role="combobox"
             style="height:100%;max-height:250px;overflow:auto"
           >
             <ul
@@ -356,18 +337,16 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
       <div
         class="za-select__bottom"
       >
-        <a
+        <span
           class="clear-btn"
-          href="javascript:;"
         >
           清除
-        </a>
-        <a
+        </span>
+        <span
           class="confirm-btn"
-          href="javascript:;"
         >
           确认
-        </a>
+        </span>
       </div>
     </div>
   </div>
