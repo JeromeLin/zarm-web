@@ -36,6 +36,7 @@ function stringArray(data: React.ReactNode) {
     if (data.every(item => typeof item === 'string' || typeof item === 'number')) {
       return data.join('');
     }
+    return data;
   }
   return data;
 }
