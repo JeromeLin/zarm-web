@@ -7,6 +7,7 @@ import '@/components/style/index.scss';
 import '@/components/style/components.scss';
 import { qs } from '../../components/locale/util';
 import Markdown from './markdown';
+import Header from './Header';
 import '../../components/style/index.scss';
 import '../styles/index.scss';
 import '../styles/components/App.scss';
@@ -42,26 +43,7 @@ class App extends Component {
 
     return (
       <div className="app">
-        <header className="header">
-          <div className="container">
-            <h1>zarm-web</h1>
-            <ul className="nav">
-              <li className="nav-item">
-                <a href="/#/" className="active">Components</a>
-              </li>
-              <li className="nav-item">
-                <a href="//github.com/JeromeLin/zarm-web" target="_blank" rel="noopener noreferrer">Github</a>
-              </li>
-              <li className="nav-item">
-                {
-                  lang === 'en'
-                    ? <span className="lang" onClick={() => changeLanguage('zh')}>中文</span>
-                    : <span className="lang" onClick={() => changeLanguage('en')}>English</span>
-                }
-              </li>
-            </ul>
-          </div>
-        </header>
+        <Header />
         <div className="main container">
           <nav className="side-nav">
             <ul>
