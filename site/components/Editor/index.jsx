@@ -11,7 +11,7 @@ import './style.scss';
 
 export default class Editor extends Component {
   componentDidMount() {
-    const { onChange, value } = this.props;
+    const { value } = this.props;
 
     this.cm = CodeMirror(this.editor, {
       mode: 'jsx',
@@ -23,16 +23,6 @@ export default class Editor extends Component {
     });
 
     this.cm.setValue(value);
-
-    this.cm.on('changes', (cm) => {
-      if (onChange) {
-        clearTimeout(this.timeout);
-
-        this.timeout = setTimeout(() => {
-          onChange(cm.getValue());
-        }, 300);
-      }
-    });
   }
 
   render() {
@@ -41,11 +31,9 @@ export default class Editor extends Component {
 }
 
 Editor.propTypes = {
-  onChange: PropTypes.func,
   value: PropTypes.string,
 };
 
 Editor.defaultProps = {
-  onChange: () => {},
   value: '',
 };

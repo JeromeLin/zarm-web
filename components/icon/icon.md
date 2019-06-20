@@ -6,9 +6,9 @@
 
 基本用法。
 
-:::demo 通过`type`属性设置图标类型
+通过`type`属性设置图标类型
 ```js
-import { Icon } from 'dragon-ui';
+import { Icon } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -193,15 +193,13 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
-
 
 ### 颜色主题
 
 用法。
-:::demo 通过`theme`属性设置主题。 或者通过style定制覆盖颜色和字体样式等...
+通过`theme`属性设置主题。 或者通过style定制覆盖颜色和字体样式等...
 ```js
-import { Icon } from 'dragon-ui';
+import { Icon } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -228,7 +226,6 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

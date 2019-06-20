@@ -1,21 +1,31 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body {
-  height: 100%;
-  -webkit-font-smoothing: antialiased;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-weight: 400;
+  font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Helvetica, Microsoft YaHei, Arial;
+  line-height: 1.42857143;
+  color: #383838;
+  font-size: 14px;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 a {
-  color: #2db7f5;
+  color: #00bc70;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+img {
+  vertical-align: middle;
 }
 
 .app {
@@ -130,7 +140,7 @@ a {
   }
 }
 
-.content {
+.main-container {
   display: inline-block;
   vertical-align: top;
   width: 75%;
@@ -263,65 +273,6 @@ a {
   }
 }
 
-.demo-grid {
-  .za-row {
-    text-align: center;
-    color: #fff;
-
-    .col:not(.gutter-row) {
-      padding: 16px 0;
-      font-size: 14px;
-      color: #fff;
-      background: #00bc70;
-
-      &:nth-child(2n + 1) {
-        background: rgba(0, 188, 122, .5);
-      }
-    }
-  }
-
-  .za-row + .za-row {
-    margin-top: 24px;
-  }
-
-  .grid-box {
-    padding: 10px 0;
-    background: #00bc70;
-  }
-
-  p {
-    color: #fff !important;
-  }
-
-  .height-50 {
-    height: 50px;
-    line-height: 50px;
-  }
-
-  .height-80 {
-    height: 80px;
-    line-height: 80px;
-  }
-
-  .height-100 {
-    height: 100px;
-    line-height: 100px;
-  }
-
-  .height-120 {
-    height: 120px;
-    line-height: 120px;
-  }
-
-  .za-row--flex {
-    background: #f5f5f5;
-
-    div {
-      margin: 16px 0;
-    }
-  }
-}
-
 .demo-dropdown {
   button {
     margin-right: 12px;
@@ -369,7 +320,7 @@ a {
     position: relative;
     padding: 24px;
 
-    .ui-tag {
+    .za-tag {
       margin-right: 8px;
     }
 
@@ -393,7 +344,7 @@ a {
     }
 
     .icons {
-      .ui-icon {
+      .za-icon {
         font-size: 28px;
       }
     }
@@ -522,4 +473,3 @@ a {
     }
   }
 }
-

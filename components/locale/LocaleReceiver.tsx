@@ -16,6 +16,7 @@ function LocaleReceiverWrapper(name?: keyof GetContextInnerType<typeof LocaleCon
             const { forwardedRef, ...rest } = props;
 
             return (
+              // @ts-ignore-start
               <WrappedComponent
                 {...rest}
                 ref={forwardedRef}
