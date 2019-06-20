@@ -1,4 +1,5 @@
 import React, { Component, ReactNode, ReactElement } from 'react';
+import classnames from 'classnames';
 import Events from '../utils/events';
 import { FormItemContext } from '../form/createContext';
 import Option from './Option';
@@ -9,6 +10,7 @@ import PropsType, { OptionProps } from './PropsType';
 import LocaleReceiver from '../locale/LocaleReceiver';
 import SelectMultiple from './SelectMultiple';
 import { isEmpty } from '../utils';
+import { Icon } from '..';
 
 interface StateProps {
   value: string | string[];
@@ -29,6 +31,16 @@ interface OptionDataProps {
 const EMPTY_STRING = '';
 const EMPTY_STRING_VALUE = '$$EMPTY_STRING_VALUE';
 
+function stringArray(data: React.ReactNode) {
+  if (Array.isArray(data)) {
+    if (data.every(item => typeof item === 'string' || typeof item === 'number')) {
+      return data.join('');
+    }
+    return data;
+  }
+  return data;
+}
+
 /**
  * placeholder
  */
@@ -41,6 +53,7 @@ class Select extends Component<PropsType, StateProps> {
     isSearch: false,
     onSearchChange: () => { },
     onChange: () => { },
+    clearable: false,
   };
 
   static Option: typeof Option;
@@ -92,18 +105,20 @@ class Select extends Component<PropsType, StateProps> {
     let optionMap: { [x: string]: any } = {};
 
     React.Children.map(options, (option: ReactElement<OptionProps>) => {
-      if (option && typeof option === 'object' && option.type) {
-        let value = this.mapEmptyStringToEmptyValue(option.props.value);
-        if (option.props && value) {
-          // handle optionMap
-          optionMap[value] = option;
-          // handle OptionData
-          optionData.push({
-            key: option.key,
-            props: option.props,
-            value,
-            children: option.props.children,
-          });
+      if (option && React.isValidElement(option)) {
+        if (typeof option.type === 'function' && option.type.displayName === 'Option') {
+          let value = this.mapEmptyStringToEmptyValue(option.props.value);
+          if (option.props && value) {
+            // handle optionMap
+            optionMap[value] = option;
+            // handle OptionData
+            optionData.push({
+              key: option.key,
+              props: option.props,
+              value,
+              children: option.props.children,
+            });
+          }
         }
       }
       return optionMap;
@@ -140,7 +155,13 @@ class Select extends Component<PropsType, StateProps> {
     this.unbindOuterHandlers();
   }
 
-  onOptionChange(_: React.MouseEvent, props, index) {
+  onOptionChange = (e) => {
+    const { index, value } = e.currentTarget.dataset;
+    const currentData = this.state.optionMap[value];
+    if (!currentData) {
+      return;
+    }
+    const props = currentData.props;
     if ('disabled' in props || props.isDisabled) {
       return;
     }
@@ -153,8 +174,6 @@ class Select extends Component<PropsType, StateProps> {
     if (!isEmpty(this.context)) {
       this.context.handleFieldChange();
     }
-
-    let value = String(props.value);
 
     if (this.props.multiple) {
       const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
@@ -180,7 +199,7 @@ class Select extends Component<PropsType, StateProps> {
     }
 
     const selected = {
-      index,
+      index: Number(index),
       value,
       text: Array.isArray(props.children) ? props.children.join() : props.children,
     };
@@ -234,18 +253,18 @@ class Select extends Component<PropsType, StateProps> {
     });
   }
 
-  handleKeyup(e) {
+  handleKeyup = (e) => {
     if (this.state.dropdown === true && e.keyCode === 27) {
       this.setDropdown(false);
     }
   }
 
   bindOuterHandlers() {
-    Events.on(document, 'keyup', e => this.handleKeyup(e));
+    Events.on(document, 'keyup', this.handleKeyup);
   }
 
   unbindOuterHandlers() {
-    Events.off(document, 'keyup', e => this.handleKeyup(e));
+    Events.off(document, 'keyup', this.handleKeyup);
   }
 
   onDeleteTag = (_e, _key, _value, index) => {
@@ -277,9 +296,60 @@ class Select extends Component<PropsType, StateProps> {
     });
   }
 
+  filterCondition(option, optionIndex: number) {
+    if (this.props.search && this.state.searchValue) {
+      return String(option.props.children).includes(this.state.searchValue);
+    } else { // remoteSearch会走此处逻辑
+      return optionIndex > -1;
+    }
+  }
+  renderChildren() {
+    const { optionData, value } = this.state;
+    const children: Array<ReactNode> = [];
+    for (let i = 0; i < optionData.length; i++) {
+      const elem = optionData[i];
+      if (this.filterCondition(elem, i)) {
+        const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
+        const childrenText = stringArray(elem.children);
+        children.push(
+          <Option
+            {...elem.props}
+            key={elem.value}
+            showCheckIcon={checked}
+            checked={checked}
+            data-index={i}
+            data-value={elem.value}
+            onChange={this.onOptionChange}
+          >
+            {childrenText}
+          </Option>);
+      }
+    }
+    return children;
+  }
+
+  onClearBtnClick: React.MouseEventHandler = (e) => {
+    e.stopPropagation();
+    this.setState({
+      value: '',
+      searchValue: '',
+    }, () => {
+      if (this.props.onChange) {
+        this.props.onChange({
+          value: '',
+          text: '',
+          index: 0,
+        });
+      }
+      // TODO not able to make a input event
+      // if (this.props.isSearch && this.props.onSearchChange) {
+      //   this.props.onSearchChange(e);
+      // }
+    });
+  }
+
   render() {
     const { props } = this;
-    const { searchValue } = this.state;
     const {
       prefixCls,
       placeholder,
@@ -294,7 +364,11 @@ class Select extends Component<PropsType, StateProps> {
       getPopupContainer,
       locale,
       remoteSearch,
+      clearable,
+      triggerProps,
     } = props;
+
+    const triggerBoxStyle: React.CSSProperties = { ...style, position: 'relative' };
 
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -321,45 +395,33 @@ class Select extends Component<PropsType, StateProps> {
       }
     }
 
-    const { value } = this.state;
-    const children: Array<ReactNode> = [];
-    const filterCondition = (option, optionIndex: number) => {
-      if (search && searchValue) {
-        return String(option.props.children).includes(searchValue);
-      } else { // remoteSearch会走此处逻辑
-        return optionIndex > -1;
-      }
-    };
-    this.state.optionData.filter(filterCondition).forEach((elem, index) => {
-      const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
-      children.push(
-        <Option
-          key={elem.key || elem.value}
-          showCheckIcon={checked}
-          {...elem.props}
-          checked={checked}
-          onChange={(e) => {
-            this.onOptionChange(e, elem.props, index);
-          }}
-        >
-          {elem.children}
-        </Option>,
-      );
-    });
-
     const menuStyle = {
       maxHeight: 250,
       overflow: 'auto',
     };
 
+    const children = this.renderChildren();
     const menus =
       children && children.length > 0
-        ? <Menu size={size} style={menuStyle}>{children}</Menu>
+        ? <Menu style={menuStyle}>{children}</Menu>
         : <span className={`${prefixCls}-notfound`}>{locale!.noMatch}</span>;
+
+    const triggerBoxProps = triggerProps ? {
+      ...triggerProps,
+      className: classnames({
+        [`${triggerProps.className}`]: !!triggerProps.className,
+        [`${prefixCls}-trigger-box`]: true,
+      }),
+    } : {
+        className: classnames({
+          [`${prefixCls}-trigger-box`]: true,
+        }),
+      };
 
     return (
       <Dropdown
-        triggerBoxStyle={style}
+        triggerBoxStyle={triggerBoxStyle}
+        triggerProps={triggerBoxProps}
         disabled={disabled}
         visible={this.state.dropdown}
         isRadius={radius}
@@ -390,6 +452,13 @@ class Select extends Component<PropsType, StateProps> {
           onDeleteTag={this.onDeleteTag}
           onSearchChange={this.onSearchValueChange}
         />
+        {
+          clearable && !disabled && !multiple && <Icon
+            type="wrong-round-fill"
+            className={`clear-btn${valueText ? ' clear-btn-show' : ''}`}
+            onClick={this.onClearBtnClick}
+          />
+        }
       </Dropdown>
     );
   }

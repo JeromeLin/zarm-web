@@ -27,7 +27,7 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
     </div>
     <div
       class="ui-dropdown"
-      style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
+      style="min-width:0;width:240px;left:0;top:0;position:absolute;overflow:hidden;z-index:2020"
     >
       <div
         class="ui-time-select"
@@ -191,7 +191,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
     </div>
     <div
       class="ui-dropdown"
-      style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
+      style="min-width:0;width:240px;left:0;top:0;position:absolute;overflow:hidden;z-index:2020"
     >
       <div
         class="ui-time-select"
@@ -296,7 +296,7 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
     </div>
     <div
       class="ui-dropdown"
-      style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
+      style="min-width:0;width:240px;left:0;top:0;position:absolute;overflow:hidden;z-index:2020"
     >
       <div
         class="ui-time-select"

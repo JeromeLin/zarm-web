@@ -1,14 +1,12 @@
-import { CSSProperties, MouseEvent, ReactNode } from 'react';
+import { CSSProperties, MouseEvent, ReactNode, LiHTMLAttributes, HTMLProps } from 'react';
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
-export interface OptionProps {
+export interface OptionProps extends LiHTMLAttributes<HTMLLIElement> {
   value: string | number;
   checked?: boolean;
   disabled?: boolean;
   isDisabled?: boolean;
   showCheckIcon?: boolean;
-  style?: CSSProperties;
-  onChange: (e: MouseEvent) => void;
   onDoubleClick?: (e: MouseEvent) => void;
   children?: ReactNode;
 }
@@ -32,6 +30,7 @@ export interface MultipleProps {
 
 interface ChangeValue { value: string | number; text: ReactNode; index: number; }
 export type themeType = 'default' | 'info' | 'success' | 'warning' | 'error';
+
 export default interface PropsType {
   prefixCls?: string;
   value?: string | number | Array<string | number>;
@@ -54,6 +53,8 @@ export default interface PropsType {
   tagTheme?: themeType;
   zIndex?: number;
   title?: string;
+  clearable: boolean;
+  triggerProps?: HTMLProps<HTMLDivElement>;
   locale?: {
     [propName: string]: any,
   };

@@ -198,3 +198,25 @@
     }
   }
 }
+
+.ui-select-trigger-box {
+  .clear-btn {
+    display: none;
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    font-size: 16px;
+    transform: translateY(-50%);
+    color: #999;
+    cursor: pointer;
+    opacity: 0;
+
+    &-show {
+      display: block;
+    }
+  }
+
+  &:hover .clear-btn {
+    opacity: 1;
+  }
+}

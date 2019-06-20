@@ -1,3 +1,5 @@
+import { HTMLProps } from 'react';
+
 type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
 export type trigger = 'click' | 'hover' | 'contextMenu';
 
@@ -10,6 +12,7 @@ interface BasicPropsType {
   radius?: boolean;
   isRadius?: boolean;
   triggerBoxStyle?: React.CSSProperties;
+  triggerProps?: HTMLProps<HTMLDivElement>;
   trigger?: trigger;
   disabled?: boolean;
   zIndex?: number;
