@@ -9,7 +9,7 @@ import Container from '@site/components/Container';
 import Header from '@site/components/Header';
 import SideBar from '@site/components/SideBar';
 import ScrollToTop from '@site/components/ScrollToTop';
-import Markdown from '@site/components/markdown';
+import Markdown from '@site/components/Markdown';
 import './style.scss';
 
 const isComponentPage = page => ['quick-start', 'change-log'].indexOf(page) === -1;
@@ -52,7 +52,7 @@ class Page extends PureComponent {
                 ))
               }
               <Route path="*" component={LoadableComponent(documents[0])} />
-              {/* <Redirect to="/" /> */}
+              <Redirect to="/" />
             </Switch>
           </div>
           <ScrollToTop>
