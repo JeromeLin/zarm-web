@@ -1,14 +1,10 @@
-## Button 按钮
+# Button 按钮
 常用的操作按钮。
 
-### 颜色类型
-
+## 颜色类型
 以下提供在不同场景中可选择不同颜色为特定功能所使用。
-
-:::demo 可以使用`ghost shape radius`属性来定义按钮是否可用。
-
-```js
-import { Button } from 'dragon-ui';
+```jsx
+import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -36,17 +32,12 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 
-### 禁用类型
-
+## 禁用类型
 按钮处于不可用状态的情况。
-
-:::demo 可以使用`disabled`属性来定义按钮是否可用。
-
-```js
-import { Button } from 'dragon-ui';
+```jsx
+import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -79,16 +70,14 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-### 图形按钮、block按钮、组合按钮
 
+
+## 图形按钮、block按钮、组合按钮
 block按钮宽度为父元素宽度
 
-:::demo 使用`radius`，`round`属性设置圆角、椭圆角
-
-```js
-import { Button, Icon } from 'dragon-ui';
+```jsx
+import { Button, Icon } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -127,16 +116,14 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-### 不同尺寸
 
+
+## 不同尺寸
 除了默认尺寸外，可以额外设置四种尺寸。
 
-:::demo 额外的尺寸：五种尺寸，若不设置尺寸，则默认为中等尺寸，通过设置`size`属性来配置它们。
-
-```js
-import { Button, Icon } from 'dragon-ui';
+```jsx
+import { Button, Icon } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -170,16 +157,14 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-### 幽灵按钮形式
 
+
+## 幽灵按钮形式
 幽灵按钮在背景为有色的情况下使用的按钮形式，以下为几项实例
 
-:::demo 可以在组件中通过Icon的方式添加图标
-
-```js
-import { Button } from 'dragon-ui';
+```jsx
+import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -196,16 +181,14 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-### 加载中
 
+
+## 加载中
 点击按钮后进行数据加载操作，在按钮上显示加载状态。
 
-:::demo 只要设置`loading`属性为`true`。
-
-```js
-import { Button } from 'dragon-ui';
+```jsx
+import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -221,16 +204,12 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-### 链接按钮
-
+## 链接按钮
 使用a标签代替button, 可设置href, target属性
 
-:::demo
-
-```js
-import { Button } from 'dragon-ui';
+```jsx
+import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -240,7 +219,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
+
+
+
+## API
 
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
@@ -254,10 +236,5 @@ ReactDOM.render(<Demo />, mountNode)
 | disabled  | 是否禁用    | boolean   | true, false   | false   |
 | href      | href属性   | string | - | - |
 | target    | target属性, href存在时生效 | string | - | - |
-| htmlType      | 按钮类型 | string | button/submit/reset | button |
+| htmlType  | 按钮类型 | string | button/submit/reset | button |
 | style     | 按钮样式 | React.CSSProperty | - | - |
-
-### Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onClick | 点击按钮触发的事件 | (event) => void |

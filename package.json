@@ -106,7 +106,7 @@
     "coveralls": "^2.13.1",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.1",
-    "docsearch.js": "^2.6.1",
+    "docsearch.js": "^2.6.3",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
@@ -122,6 +122,7 @@
     "gh-pages": "^1.0.0",
     "gulp": "^4.0.0",
     "gulp-sass": "^4.0.2",
+    "highlight.js": "^9.15.8",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^2.4.1",
@@ -164,11 +165,6 @@
     "{components,site}/**/*.{js,jsx}": "eslint",
     "{styles,site}/**/*.scss": "stylelint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  },
   "browserslist": [
     "last 2 versions",
     "Firefox ESR",
@@ -184,5 +180,11 @@
     "es/**/style/*",
     "lib/**/style/*",
     "site/**"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
 }
