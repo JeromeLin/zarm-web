@@ -1,4 +1,9 @@
 {
   "root": true,
-  "extends": "stylelint-config-za"
+  "extends": "stylelint-config-za",
+  "rules": {
+    "no-eol-whitespace": null,
+    "function-name-case": null,
+    "block-closing-brace-newline-after": null
+  }
 }

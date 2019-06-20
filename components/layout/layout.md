@@ -6,9 +6,8 @@
 
 上中下布局。
 
-:::demo
 ```js
-import { Layout } from 'dragon-ui';
+import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -39,15 +38,13 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### 带侧边
 
 上中下布局+侧边。
 
-:::demo
 ```js
-import { Layout } from 'dragon-ui';
+import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -85,11 +82,9 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-:::demo
 ```js
-import { Layout } from 'dragon-ui';
+import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -127,13 +122,11 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### 侧边布局
 
-:::demo
 ```js
-import { Layout } from 'dragon-ui';
+import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -167,13 +160,11 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### 可折叠侧边
 
-:::demo
 ```js
-import { Layout } from 'dragon-ui';
+import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -212,7 +203,6 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### Layout Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

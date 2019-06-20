@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component, TextareaHTMLAttributes, InputHTMLAttributes, ChangeEventHandler } from 'react';
 import classnames from 'classnames';
 // @ts-ignore
@@ -65,16 +64,10 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     input?: InputElemIF[T];
   } = {};
 
-  inputElemRef = (elem: InputElemIF[T] | null) => {
-    if (elem) {
-      this.refMap.input = elem;
-    }
-  };
-
   onFocus = (event: any) => {
-    const { props } = this;
-    if (props.onFocus) {
-      props.onFocus(event);
+    const { onFocus } = this.props;
+    if (onFocus) {
+      onFocus(event);
     }
     this.setState({
       focused: true,
@@ -82,9 +75,9 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
   };
 
   onBlur = (event: any) => {
-    const { props } = this;
-    if (props.onBlur) {
-      props.onBlur(event);
+    const { onBlur } = this.props;
+    if (onBlur) {
+      onBlur(event);
     }
     this.setState({
       focused: false,
@@ -122,6 +115,12 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     }
     return null;
   }
+
+  inputElemRef = (elem: InputElemIF[T] | null) => {
+    if (elem) {
+      this.refMap.input = elem;
+    }
+  };
 
   renderInput(
     props: Merge<InputTypeIF['input'], PropsType>,
@@ -174,28 +173,28 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
   }
 
   render() {
-    const { props } = this;
-    const { disabled, defaultValue, shape, prefixCls, className, size } = props;
+    const { disabled, defaultValue, shape, prefixCls, className, size, value } = this.props;
+    const { focused } = this.state;
     const cls = classnames({
       [`${prefixCls}-box`]: true,
       disabled,
       [`shape-${shape}`]: true,
       [className!]: !!className,
       [`size-${size}`]: !!size,
-      active: this.state.focused,
+      active: focused,
     });
 
     const valueObject = {
       value: defaultValue || '',
     };
-    if ('value' in props) {
-      valueObject.value = fixControlledValue(props.value);
+    if ('value' in this.props) {
+      valueObject.value = fixControlledValue(value);
     }
-    if (isTextAreaProps(props)) {
-      return this.renderTextarea(props, cls);
+    if (isTextAreaProps(this.props)) {
+      return this.renderTextarea(this.props, cls);
     }
-    if (isInputProps(props)) {
-      return this.renderInput(props, cls);
+    if (isInputProps(this.props)) {
+      return this.renderInput(this.props, cls);
     }
   }
 }

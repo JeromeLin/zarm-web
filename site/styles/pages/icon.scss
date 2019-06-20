@@ -1,32 +1,34 @@
-.icon-list {
-  display: flex;
-  flex-wrap: wrap;
-  overflow: hidden;
-  list-style: none;
-  padding: 0;
-  border-radius: 4px;
-
-  li {
+.icon-page {
+  .icon-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 16.66%;
-    text-align: center;
-    height: 120px;
-    color: #666;
-    font-size: 13px;
-    transition: color .15s linear;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    border-radius: 4px;
 
-    i {
-      display: block;
-      font-size: 32px;
-      //margin-bottom: 15px;
-      color: #606266;
-    }
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 16.66%;
+      text-align: center;
+      height: 120px;
+      color: #666;
+      font-size: 13px;
+      transition: color .15s linear;
 
-    .ui-icon-name {
-      width: 100%;
+      i {
+        display: block;
+        font-size: 32px;
+        //margin-bottom: 15px;
+        color: #606266;
+      }
+
+      .ui-icon-name {
+        width: 100%;
+      }
     }
   }
 }

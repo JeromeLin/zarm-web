@@ -1,9 +1,9 @@
-# Button 按钮
+## Button 按钮
 常用的操作按钮。
 
-## 颜色类型
+### 颜色类型
 以下提供在不同场景中可选择不同颜色为特定功能所使用。
-```jsx
+```js
 import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -34,9 +34,9 @@ ReactDOM.render(<Demo />, mountNode)
 ```
 
 
-## 禁用类型
+### 禁用类型
 按钮处于不可用状态的情况。
-```jsx
+```js
 import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -73,10 +73,10 @@ ReactDOM.render(<Demo />, mountNode)
 
 
 
-## 图形按钮、block按钮、组合按钮
+### 图形按钮、block按钮、组合按钮
 block按钮宽度为父元素宽度
 
-```jsx
+```js
 import { Button, Icon } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -119,10 +119,10 @@ ReactDOM.render(<Demo />, mountNode)
 
 
 
-## 不同尺寸
+### 不同尺寸
 除了默认尺寸外，可以额外设置四种尺寸。
 
-```jsx
+```js
 import { Button, Icon } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -160,10 +160,10 @@ ReactDOM.render(<Demo />, mountNode)
 
 
 
-## 幽灵按钮形式
+### 幽灵按钮形式
 幽灵按钮在背景为有色的情况下使用的按钮形式，以下为几项实例
 
-```jsx
+```js
 import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -184,7 +184,7 @@ ReactDOM.render(<Demo />, mountNode)
 
 
 
-## 加载中
+### 加载中
 点击按钮后进行数据加载操作，在按钮上显示加载状态。
 
 ```jsx
@@ -205,10 +205,10 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-## 链接按钮
+### 链接按钮
 使用a标签代替button, 可设置href, target属性
 
-```jsx
+```js
 import { Button } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -221,8 +221,6 @@ ReactDOM.render(<Demo />, mountNode)
 ```
 
 
-
-## API
 
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

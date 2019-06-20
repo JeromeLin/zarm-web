@@ -2,10 +2,8 @@
 
 ### 基础用法
 
-:::demo
-
 ```js
-import { Row, Col } from 'dragon-ui';
+import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -27,14 +25,11 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### 设置栅格间隙gutter
 
-:::demo
-
 ```js
-import { Row, Col } from 'dragon-ui';
+import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -50,14 +45,13 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### 设置栅格偏移
 
-:::demo offset为偏移数量
+offset为偏移数量
 
 ```js
-import { Row, Col } from 'dragon-ui';
+import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -78,16 +72,15 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### flex布局方式的栅格
 
 justify设置横轴对齐方式 align设置纵轴对齐方式
 
-:::demo type设置布局方式
+type设置布局方式
 
 ```js
-import { Row, Col } from 'dragon-ui';
+import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -148,16 +141,13 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### Flex 排序
 
 通过 Flex 布局的 Order 来改变元素的排序。
 
-:::demo
-
 ```js
-import { Row, Col } from 'dragon-ui';
+import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -174,14 +164,13 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### 响应式布局
 
-:::demo 预设四个响应尺寸：xs sm md lg
+预设四个响应尺寸：xs sm md lg
 
 ```js
-import { Row, Col } from 'dragon-ui';
+import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -199,7 +188,6 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
 ### Row Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

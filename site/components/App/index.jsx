@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 // import Loadable from 'react-loadable';
 import './style.scss';
+import '../../styles/pages/index.scss';
 
 // const LoadableComponent = (component) => {
 //   return Loadable({

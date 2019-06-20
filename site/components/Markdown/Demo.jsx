@@ -7,7 +7,6 @@ import '@/components/style/entry';
 
 export default class Canvas extends React.Component {
   constructor(props) {
-    console.log(props.children);
     super(props);
     this.containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
     this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
@@ -73,7 +72,6 @@ export default class Canvas extends React.Component {
             <div className="meta">
               <Editor
                 value={this.source[2]}
-                onChange={code => this.renderSource(code)}
               />
             </div>
           )
@@ -82,11 +80,11 @@ export default class Canvas extends React.Component {
           {
             showBlock ? (
               <span>
-                <Icon type="arrow-top-fill" />隐藏
+                <Icon type="arrow-top-fill" />隐藏代码
               </span>
             ) : (
               <span>
-                <Icon type="arrow-bottom-fill" />展开
+                <Icon type="arrow-bottom-fill" />显示代码
               </span>
             )
           }
