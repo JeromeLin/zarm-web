@@ -143,33 +143,7 @@ img {
 .main-container {
   display: inline-block;
   vertical-align: top;
-  width: 75%;
-
-  h2 {
-    font-size: 28px;
-    color: #1f2d3d;
-    margin: 0;
-  }
-
-  h3 {
-    font-size: 22px;
-    margin: 45px 0 15px;
-  }
-
-  h2,
-  h3,
-  h4,
-  h5 {
-    font-weight: normal;
-    color: #1f2f3d;
-  }
-
-  pre {
-    background-color: transparent;
-    //padding: 18px 24px;
-    line-height: 1.8;
-    font-size: 12px;
-  }
+  width: 100%;
 
   table.grid {
     border-collapse: collapse;
@@ -263,7 +237,7 @@ img {
   }
 }
 
-.za-button + .za-button {
+.za-button:not(.za-button--block) + .za-button:not(.za-button--block) {
   margin-left: 12px;
 }
 
@@ -291,12 +265,20 @@ img {
 }
 
 .demo-block {
+  padding-top: 20px;
   border: solid 1px #eaeefb;
   border-radius: 4px;
-  transition: .2s;
+  transition: all .2s;
 
-  &.hover {
+  &:hover {
     box-shadow: 0 0 8px 0 rgba(232, 237, 250, .6), 0 2px 4px 0 rgba(232, 237, 250, .5);
+    border-color: rgba(18, 194, 135, .2);
+  }
+
+  > p,
+  > div,
+  > h2 {
+    padding: 0 20px;
   }
 
   code {
@@ -318,7 +300,6 @@ img {
 
   .source {
     position: relative;
-    padding: 24px;
 
     .za-tag {
       margin-right: 8px;
@@ -353,6 +334,7 @@ img {
   .meta {
     position: relative;
     overflow: hidden;
+    margin-top: 20px;
     background-color: #f9fafc;
     border-top: solid 1px #eaeefb;
   }
@@ -398,7 +380,7 @@ img {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     text-align: center;
-    margin-top: -1px;
+    margin-top: 20px;
     color: #d3dce6;
     cursor: pointer;
     transition: .2s;
@@ -416,7 +398,7 @@ img {
       font-size: 14px;
       line-height: 36px;
       transition: .3s;
-      opacity: 0;
+      //opacity: 0;
     }
 
     &:hover {

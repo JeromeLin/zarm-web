@@ -3,6 +3,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
 import { Icon } from 'zarm-web';
+import 'highlight.js/styles/github-gist.css';
 import { documents, components } from '@site/site.config';
 import Format from '@site/utils/format';
 import Container from '@site/components/Container';

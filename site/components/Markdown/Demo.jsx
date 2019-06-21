@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Icon } from 'zarm-web';
-import Editor from '../Editor';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github-gist.css';
 import '@/components/style/entry';
 
-export default class Canvas extends React.Component {
+export default class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
     this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
+    this.title = String(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
     this.state = {
       showBlock: false,
@@ -19,6 +21,9 @@ export default class Canvas extends React.Component {
 
   componentDidMount() {
     this.renderSource(this.source[2]);
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightBlock(block);
+    });
   }
 
   componentWillUnmount() {
@@ -39,7 +44,7 @@ export default class Canvas extends React.Component {
       return { args, argv };
     }).then(({ args, argv }) => {
       value = value
-        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm-web';/, 'const { $1 } = ZarmWeb;')
+        .replace(/import\s+{\s+(.*)\s+}\s+from\s+'zarm-web';/, 'const { $1 } = ZarmWeb;')
         .replace('mountNode', `document.getElementById('${this.containerId}')`);
 
       const { code } = transform(value, {
@@ -62,19 +67,20 @@ export default class Canvas extends React.Component {
 
     return (
       <div className={`demo-block demo-box ${className}`}>
+        {this.title.split(('\n')).map((item, index) => {
+          if (index === 0) return <h2 key={item}>{item}</h2>;
+          if (item) return <p key={item}>{item}</p>;
+          return null;
+        })}
         <div
           className="source"
           id={this.containerId}
           ref={(elem) => { this.containerElem = elem; }}
         />
         {
-          showBlock && (
-            <div className="meta">
-              <Editor
-                value={this.source[2]}
-              />
-            </div>
-          )
+          <div className="meta" style={{ display: showBlock ? 'block' : 'none' }}>
+            <pre><code className="editor hljs jsx">{this.source[2]}</code></pre>
+          </div>
         }
         <div className="demo-block-control" onClick={() => this.blockControl()}>
           {

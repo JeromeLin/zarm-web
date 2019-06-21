@@ -1,8 +1,10 @@
-## Grid 栅格
+# Grid 栅格
 
-### 基础用法
 
-```js
+
+## 基础用法
+
+```jsx
 import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -26,9 +28,11 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### 设置栅格间隙gutter
 
-```js
+
+## 设置栅格间隙gutter
+
+```jsx
 import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -46,11 +50,13 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### 设置栅格偏移
+
+
+## 设置栅格偏移
 
 offset为偏移数量
 
-```js
+```jsx
 import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -73,13 +79,13 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### flex布局方式的栅格
+## flex布局方式的栅格
 
 justify设置横轴对齐方式 align设置纵轴对齐方式
 
 type设置布局方式
 
-```js
+```jsx
 import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -142,11 +148,13 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### Flex 排序
+
+
+## Flex 排序
 
 通过 Flex 布局的 Order 来改变元素的排序。
 
-```js
+```jsx
 import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -165,11 +173,13 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### 响应式布局
+
+
+## 响应式布局
 
 预设四个响应尺寸：xs sm md lg
 
-```js
+```jsx
 import { Row, Col } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -189,7 +199,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### Row Attributes
+## API Row 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | justify     | 横轴对齐方式   | start/end/center/space-between/space-around    | — | -   |
@@ -197,7 +207,7 @@ ReactDOM.render(<Demo />, mountNode)
 | gutter  | 间隔    | string/number   | -  | 0   |
 | type  | 布局模式，可选 flex，现代浏览器下有效    | string   | -  | -   |
 
-### Col Attributes
+## API Col
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | offset | 栅格左侧的间隔格数，间隔内不可以有栅格 | number | - | 0 | 

@@ -6,7 +6,7 @@
 
 上中下布局。
 
-```js
+```jsx
 import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -43,7 +43,7 @@ ReactDOM.render(<Demo />, mountNode)
 
 上中下布局+侧边。
 
-```js
+```jsx
 import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -83,7 +83,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-```js
+```jsx
 import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -125,7 +125,7 @@ ReactDOM.render(<Demo />, mountNode)
 
 ### 侧边布局
 
-```js
+```jsx
 import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
@@ -163,7 +163,7 @@ ReactDOM.render(<Demo />, mountNode)
 
 ### 可折叠侧边
 
-```js
+```jsx
 import { Layout } from 'zarm-web';
 
 class Demo extends React.Component {
