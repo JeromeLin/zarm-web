@@ -22,7 +22,7 @@
     border .2s cubic-bezier(0.645, 0.045, 0.355, 1),
     background .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-  &.disabled,
+  &.ui-input--disabled,
   &:disabled {
     cursor: not-allowed;
     background-color: #f3f5f7;
@@ -68,7 +68,7 @@ textarea {
       border-color: $base-theme-info;
     }
 
-    &.active {
+    &.ui-input--active {
       border-color: $base-theme-info;
     }
   }
@@ -87,7 +87,7 @@ textarea {
     border-color: $base-theme-info;
   }
 
-  &.active {
+  &.ui-input--active {
     border-color: $base-theme-info;
   }
 

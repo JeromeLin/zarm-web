@@ -356,7 +356,8 @@ $prefixCls: za-menu;
         background-color: $--menu-dark-bg-color;
         border-radius: 2px;
 
-        .#{$prefixCls}-item, .#{$prefixCls}-submenu {
+        .#{$prefixCls}-item,
+        .#{$prefixCls}-submenu {
           padding: 0 20px !important;
         }
       }

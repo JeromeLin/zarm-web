@@ -42,13 +42,20 @@
     opacity: .7;
     -webkit-filter: blur(1px);
     filter: blur(1px);
-    filter: progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false);
+    // filter: progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false);
     pointer-events: none;
     user-select: none;
   }
 }
 
 @keyframes loadingSpinPulse {
-  0%, 80%, 100% { opacity: 0 }
-  40% { opacity: 1 }
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
 }

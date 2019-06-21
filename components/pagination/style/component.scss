@@ -1,6 +1,6 @@
 $height-md: $--pagination-height-md;
 $height-sm: $--pagination-height-sm;
-$line-height-md: $--pagination-height-md - 2 ;
+$line-height-md: $--pagination-height-md - 2;
 $line-height-sm: $--pagination-height-sm - 2;
 $base-radius: 4px !default;
 
@@ -28,6 +28,7 @@ $base-radius: 4px !default;
     line-height: $height - 5;
     margin: 0 8px;
   }
+
   .ui-input {
     height: $height - 2;
   }
@@ -68,6 +69,7 @@ $base-radius: 4px !default;
 
     &:hover {
       color: $--color-info;
+
       &.za-pagination__item--jump-prev,
       &.za-pagination__item--jump-next {
         &:after {
@@ -79,6 +81,7 @@ $base-radius: 4px !default;
     &.za-pagination__item--disabled {
       cursor: not-allowed;
       opacity: 0.7;
+
       &:hover {
         color: #ccc;
       }
@@ -164,6 +167,7 @@ $base-radius: 4px !default;
   @include m(md) {
     font-size: 16px;
     @include pagination-public($height-md, $line-height-md);
+
     @include e(total) {
       @include total($line-height-md);
     }
@@ -172,14 +176,15 @@ $base-radius: 4px !default;
   @include m(sm) {
     font-size: 14px;
     @include pagination-public($height-sm, $line-height-sm);
+
     @include e(total) {
       @include total($line-height-sm);
     }
   }
 
-
   @include e(pagers) {
     float: right;
+    // stylelint-disable
     & > ul {
       float: left;
       margin: 0;
@@ -209,11 +214,13 @@ $base-radius: 4px !default;
       line-height: 22px;
       border: 0;
       @include input-box(24px);
+
       span {
         margin: 0 10px 0 5px;
         vertical-align: middle;
       }
-      .za-icon{
+
+      .za-icon {
         vertical-align: middle;
       }
     }

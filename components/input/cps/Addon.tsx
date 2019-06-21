@@ -13,12 +13,14 @@ export default function Addon<T>(props: Readonly<AddonPropsIF>) {
   });
   const params = Array.isArray(param) ? [param] : param;
   if (typeof addon === 'function') {
+    // eslint-disable-next-line prefer-spread
     return addon.apply(undefined, params);
   } if (isAddon(addon)) {
     const { fillType } = addon;
     const addonElem = addon.addon;
     let childElem: React.ReactNode;
     if (typeof addonElem === 'function') {
+      // eslint-disable-next-line prefer-spread
       childElem = addonElem.apply(undefined, params);
     } else {
       childElem = addonElem;

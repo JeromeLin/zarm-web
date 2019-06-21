@@ -91,7 +91,8 @@ class FormItem extends PureComponent<ItemProps, any> {
     Promise.resolve('change').then(this.validateItem.bind(this));
   };
 
-  validateItem(trigger: triggerType, callback = (_?) => {}) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  validateItem(trigger: triggerType, callback = (_?) => { }) {
     const { prop } = this.props;
     const rules = this.getFilteredRules(trigger);
 

@@ -21,6 +21,7 @@ module.exports = {
     '!components/*/PropsType.{ts,tsx}',
     '!components/**/style/*.{ts,tsx}',
     '!components/style/**/*',
+    '!components/types/**/*',
   ],
   moduleFileExtensions: [
     'ts',

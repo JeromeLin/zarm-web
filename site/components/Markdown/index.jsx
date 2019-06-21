@@ -5,6 +5,8 @@ import prism from 'prismjs';
 import Demo from './Demo';
 
 export default class Markdown extends React.Component {
+  divList = [];
+
   constructor(props) {
     super(props);
     this.components = new Map();

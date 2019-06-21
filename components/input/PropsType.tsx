@@ -16,7 +16,7 @@ export interface AddonIF {
 }
 
 export function isAddon(addon: ReactNode | AddonIF): addon is AddonIF {
-  return !!addon && addon.hasOwnProperty('addon');
+  return !!addon && {}.hasOwnProperty.call(addon, 'addon');
 }
 
 export interface AddonPropsIF {
@@ -28,9 +28,9 @@ export interface AddonPropsIF {
   composePosition?: 'before' | 'after' | 'middle';
 }
 
-export interface PropsIF {
+export default interface PropsIF {
   prefixCls: 'string';
-  type: string;                                 // default is text  若为 textarea 则转为 TextareaElement
+  type: string;                                              // default is text  若为 textarea 则转为 TextareaElement
   shape: 'rect' | 'radius';
   size?: 'xl' | 'lg' | 'sm' | 'xs';                          // 控制Input的大小
   value?: string | number;                                   // 组件的值

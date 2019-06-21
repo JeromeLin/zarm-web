@@ -16,5 +16,5 @@ dist
 es
 lib
 build
-types
+./types
 bundle

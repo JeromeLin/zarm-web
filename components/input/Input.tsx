@@ -1,6 +1,6 @@
+/* eslint-disable */
 import React, { Component, TextareaHTMLAttributes, InputHTMLAttributes, ChangeEventHandler } from 'react';
 import classnames from 'classnames';
-// @ts-ignore
 import PropsType from './PropsType';
 import Addon from './cps/Addon';
 import InputGroup from './input-group';
@@ -9,10 +9,6 @@ import Search from './input-search';
 interface InputTypeIF {
   textarea: TextareaHTMLAttributes<HTMLTextAreaElement>;
   input: InputHTMLAttributes<HTMLInputElement>;
-}
-interface InputElemIF {
-  textarea: HTMLTextAreaElement;
-  input: HTMLInputElement;
 }
 
 interface StateIF {
@@ -61,13 +57,25 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
   };
 
   refMap: {
-    input?: InputElemIF[T];
+    input?: HTMLInputElement | HTMLTextAreaElement;
   } = {};
 
+  inputElemRef = (elem: HTMLInputElement | null) => {
+    if (elem) {
+      this.refMap.input = elem;
+    }
+  };
+
+  textElemRef = (elem: HTMLTextAreaElement | null) => {
+    if (elem) {
+      this.refMap.input = elem;
+    }
+  }
+
   onFocus = (event: any) => {
-    const { onFocus } = this.props;
-    if (onFocus) {
-      onFocus(event);
+    const { props } = this;
+    if (props.onFocus) {
+      props.onFocus(event);
     }
     this.setState({
       focused: true,
@@ -75,9 +83,9 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
   };
 
   onBlur = (event: any) => {
-    const { onBlur } = this.props;
-    if (onBlur) {
-      onBlur(event);
+    const { props } = this;
+    if (props.onBlur) {
+      props.onBlur(event);
     }
     this.setState({
       focused: false,
@@ -106,7 +114,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
         return (
           <span className="length-box">
             {length}
-/
+            /
             {maxLength}
           </span>
         );
@@ -115,12 +123,6 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
     }
     return null;
   }
-
-  inputElemRef = (elem: InputElemIF[T] | null) => {
-    if (elem) {
-      this.refMap.input = elem;
-    }
-  };
 
   renderInput(
     props: Merge<InputTypeIF['input'], PropsType>,
@@ -161,7 +163,7 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
       <span className={`${prefixCls}-textarea-box`}>
         <textarea
           {...others}
-          ref={this.inputElemRef}
+          ref={this.textElemRef}
           className={cls}
           onChange={this.onTextareaChange}
         >
@@ -173,28 +175,28 @@ class Input<T extends 'input' | 'textarea' = 'input'> extends Component<Merge<In
   }
 
   render() {
-    const { disabled, defaultValue, shape, prefixCls, className, size, value } = this.props;
-    const { focused } = this.state;
+    const { props } = this;
+    const { disabled, defaultValue, shape, prefixCls, className, size } = props;
     const cls = classnames({
       [`${prefixCls}-box`]: true,
-      disabled,
+      [`${prefixCls}--disabled`]: disabled,
       [`shape-${shape}`]: true,
       [className!]: !!className,
       [`size-${size}`]: !!size,
-      active: focused,
+      [`${prefixCls}--active`]: this.state.focused,
     });
 
     const valueObject = {
       value: defaultValue || '',
     };
-    if ('value' in this.props) {
-      valueObject.value = fixControlledValue(value);
+    if ('value' in props) {
+      valueObject.value = fixControlledValue(props.value);
     }
-    if (isTextAreaProps(this.props)) {
-      return this.renderTextarea(this.props, cls);
+    if (isTextAreaProps(props)) {
+      return this.renderTextarea(props, cls);
     }
-    if (isInputProps(this.props)) {
-      return this.renderInput(this.props, cls);
+    if (isInputProps(props)) {
+      return this.renderInput(props, cls);
     }
   }
 }
