@@ -9,7 +9,7 @@
 
 ```js
 
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -33,7 +33,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::demo 只需要设置`total`，`size`
 
 ```js
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -57,7 +57,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::demo 只需要设置`total`，`simple`
 
 ```js
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -81,7 +81,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```js
 
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -105,7 +105,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```js
 
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -128,7 +128,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::demo
 
 ```js
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
@@ -150,7 +150,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::demo
 
 ```js
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
@@ -172,7 +172,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::demo
 
 ```js
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -216,7 +216,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::demo
 
 ```js
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 class Demo extends React.Component {
    constructor(props) {
     super(props);
@@ -259,7 +259,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::demo
 
 ```js
-import { Pagination } from 'dragon-ui';
+import { Pagination } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (

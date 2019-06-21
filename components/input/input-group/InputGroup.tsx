@@ -11,14 +11,14 @@ class InputGroup extends Component<PropsIF, {}> {
   };
 
   render() {
-    const { prefixCls, className, ...others } = this.props;
+    const { prefixCls, className, children, ...others } = this.props;
     const cls = cn({
       [`${prefixCls}`]: !!prefixCls,
       [`${className}`]: !!className,
     });
     return (
       <div className={cls} {...others}>
-        {this.props.children}
+        {children}
       </div>
     );
   }
