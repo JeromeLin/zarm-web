@@ -2,22 +2,21 @@ import React from 'react';
 
 const SvgArrowDown = props => (
   <svg
-    width="1em"
-    height="1em"
     viewBox="0 0 27 32"
     fill="currentColor"
     stroke="currentColor"
+    width="1em"
+    height="1em"
     {...props}
   >
-    <g
-
+    <path
+      d="M26 18.145l-12.468 12.52L1.33 18.145m12.202 12.52V0"
+      stroke="currentColor"
       strokeWidth={2.6}
       fill="none"
       fillRule="evenodd"
       strokeLinejoin="round"
-    >
-      <path d="M26 18.145l-12.468 12.52L1.33 18.145M13.532 30.665V0" />
-    </g>
+    />
   </svg>
 );
 

@@ -2,15 +2,15 @@ import React from 'react';
 
 const SvgSearch = props => (
   <svg
-    width="1em"
-    height="1em"
     viewBox="0 0 36 36"
     fill="currentColor"
     stroke="currentColor"
+    width="1em"
+    height="1em"
     {...props}
   >
     <g
-
+      stroke="currentColor"
       strokeWidth={2.6}
       fill="none"
       fillRule="evenodd"
