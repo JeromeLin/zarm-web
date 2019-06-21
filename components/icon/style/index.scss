@@ -1,2 +1,42 @@
-@import '../../style/themes/default.scss';
-@import './component.scss';
+@import '../../style/themes/variable';
+@import '../../style/core/index';
+@import 'mixins';
+
+$size: 'size-';
+$theme: 'theme-';
+
+@include b(icon) {
+
+  @include icon-size($--icon-font-size);
+
+  /* icon themes */
+  @include m($theme + 'default') {
+    @include icon-theme($--color-default);
+  }
+  @include m($theme + 'primary') {
+    @include icon-theme($--color-primary);
+  }
+  @include m($theme + 'success') {
+    @include icon-theme($--color-success);
+  }
+  @include m($theme + 'warning') {
+    @include icon-theme($--color-warning);
+  }
+  @include m($theme + 'danger') {
+    @include icon-theme($--color-danger);
+  }
+
+  /* icon sizes */
+  @include m($size + xs) {
+    @include icon-size($--icon-font-size-xs);
+  }
+  @include m($size + sm) {
+    @include icon-size($--icon-font-size-sm);
+  }
+  @include m($size + lg) {
+    @include icon-size($--icon-font-size-lg);
+  }
+  @include m($size + xl) {
+    @include icon-size($--icon-font-size-xl);
+  }
+}

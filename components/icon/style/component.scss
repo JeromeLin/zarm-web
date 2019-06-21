@@ -2,21 +2,9 @@
   color: $color;
 }
 
-$icon-url: $base-icon-url;
-
-@font-face {
-  font-family: "dragonicon";
-  src: url('#{$icon-url}.eot');
-  src:
-    url('#{$icon-url}.eot?#iefix') format('embedded-opentype'),
-    url('#{$icon-url}.woff') format('woff'),
-    url('#{$icon-url}.ttf') format('truetype'),
-    url('#{$icon-url}.svg#dragonicon') format('svg');
-}
-
 .za-icon {
-  font-family: "dragonicon" !important;
   font-style: normal;
+  font-size: 16px;
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -39,52 +27,4 @@ $icon-url: $base-icon-url;
   &.theme-danger {
     @include icon-theme($base-theme-error);
   }
-}
-
-.za-icon {
-  &-right:before { content: '\e602'; }
-  &-right-round-fill:before { content: '\e609'; }
-  &-right-round:before { content: '\e60a'; }
-  &-question-round-fill:before { content: '\e618'; }
-  &-question-round:before { content: '\e619'; }
-  &-info-round-fill:before { content: '\e624'; }
-  &-info-round:before { content: '\e625'; }
-  &-arrow-top:before { content: '\e600'; }
-  &-arrow-bottom:before { content: '\e601'; }
-  &-arrow-left:before { content: '\e603'; }
-  &-arrow-right:before { content: '\e604'; }
-  &-add:before { content: '\e606'; }
-  &-minus:before { content: '\e607'; }
-  &-warning-round-fill:before { content: '\e610'; }
-  &-warning-round:before { content: '\e611'; }
-  &-date:before { content: '\e63d'; }
-  &-wrong:before { content: '\e60f'; }
-  &-wrong-round-fill:before { content: '\e613'; }
-  &-wrong-round:before { content: '\e614'; }
-  &-add-round:before { content: '\e615'; }
-  &-add:before { content: '\e616'; }
-  &-add-round-fill:before { content: '\e617'; }
-  &-minus-round-fill:before { content: '\e60c'; }
-  &-required:before { content: '\e60d'; }
-  &-loading:before { content: '\e608'; }
-  &-minus-round:before { content: '\e612'; }
-  &-brush:before { content: '\e6e5'; }
-  &-brush-fill:before { content: '\e6e6'; }
-  &-empty:before { content: '\e6f7'; }
-  &-empty-fill:before { content: '\e6f8'; }
-  &-search:before { content: '\e741'; }
-  &-time-circle:before { content: '\e784'; }
-  &-folder:before { content: '\e7d1'; }
-  &-folder-open:before { content: '\e7d2'; }
-  &-folder-add:before { content: '\e7d3'; }
-  &-stop:before { content: '\e842'; }
-  &-folder-add-fill:before { content: '\e85e'; }
-  &-folder-fill:before { content: '\e85f'; }
-  &-folder-open-fill:before { content: '\e860'; }
-  &-arrow-left-fill:before { content: '\e6c2'; }
-  &-arrow-right-fill:before { content: '\e644'; }
-  &-arrow-top-fill:before { content: '\e6b2'; }
-  &-arrow-bottom-fill:before { content: '\e6a2'; }
-  &-user:before { content: '\e622'; }
-  &-user-fill:before { content: '\e626'; }
 }

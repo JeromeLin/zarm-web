@@ -4,15 +4,14 @@
 
 ### 使用方法
 
-通过`type`属性设置图标类型
-```js
-import { Icon } from 'zarm-web';
+基本用法。
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <ul className="icon-list icon-basic-list">
-        <li>
+:::demo 通过`type`属性设置图标类型
+```js
+render() {
+  return (
+    <ul className="icon-list">
+      <li>
         <Icon type="arrow-double-left" />
         <span>arrow-double-left</span>
       </li>
@@ -286,25 +285,24 @@ class Demo extends React.Component {
         <Icon type="up" />
         <span>up</span>
       </li>
-      </ul>
-    )
-  }
-}
 
-ReactDOM.render(<Demo />, mountNode)
+     
+    </ul>
+  )
+}
 ```
+:::
+
 
 ### 颜色主题
 
-通过`theme`属性设置主题, 或者通过style定制覆盖颜色
+用法。
+:::demo 通过`theme`属性设置主题。 或者通过style定制覆盖颜色和字体样式等...
 ```js
-import { Icon } from 'zarm-web';
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <ul className="icon-list icon-theme-list">
-        <li>
+render() {
+  return (
+    <ul className="icon-list">
+          <li>
         <Icon type="picture-outline" theme="primary"/>
         <span>picture-outline</span>
       </li>
@@ -313,52 +311,16 @@ class Demo extends React.Component {
         <Icon type="plus" style={{color: '#f50'}}/>
         <span>plus</span>
       </li>
-      </ul>
-    )
-  }
+
+    </ul>
+  )
 }
-
-ReactDOM.render(<Demo />, mountNode)
 ```
-
-### 尺寸主题
-
-通过`size`属性设置主题, 或者通过style定制覆盖尺寸
-```js
-import { Icon } from 'zarm-web';
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <ul className="icon-list icon-size-list">
-
-      <li>
-        <Icon type="star-on" size={24}/>
-        <span>star-on</span>
-      </li>
-
-      <li>
-        <Icon type="star-on" style={{fontSize: '32px'}}/>
-        <span>star-on</span>
-      </li>
-
-      <li>
-        <Icon type="star-on" theme="primary" size='lg'/>
-        <span>star-on</span>
-      </li>
-
-      </ul>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode)
-```
+:::
 
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | type     | 类型   | string  |   right,right-round...           |    —     |
-| theme     | 主题   | string    |  default, primary, success, warning, danger |   default   |
-| size     | 尺寸   | number, string    |  number, xs, sm, lg, xl |   -   |
+| theme     | 主题   | string    |   info,success,warning,error,default |   default   |
 | style    | 样式覆盖 | string |  -  |

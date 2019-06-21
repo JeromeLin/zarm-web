@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1em" height="1em" viewBox="0 0 36 36" version="1.1" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="new" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Icon-图标" transform="translate(-213.000000, -1587.000000)" stroke="#4E4E4E" stroke-width="2.6">
+            <g id="Group-11" transform="translate(204.000000, 1585.000000)">
+                <g id="Group-15" transform="translate(0.000000, 3.000000)">
+                    <g id="Group-10">
+                        <g id="Group-2">
+                            <g id="Group" transform="translate(10.000000, 0.000000)">
+                                <polygon id="Stroke-1" points="33.0449 29.9354 29.9459 33.0354 21.9879 25.0774 25.1379 22.0284"></polygon>
+                                <path d="M14.1455,0.9598 C21.4275,0.9598 27.3315,6.8638 27.3315,14.1458 C27.3315,21.4288 21.4275,27.3308 14.1455,27.3308 C6.8635,27.3308 0.9595,21.4288 0.9595,14.1458 C0.9595,6.8638 6.8635,0.9598 14.1455,0.9598 Z" id="Stroke-3"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,33 +1,57 @@
-.icon-page {
-  .icon-list {
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    list-style: none;
-    padding: 0;
-    border-radius: 4px;
+.icon-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  border-radius: 4px;
 
+  li {
+    width: 16.66%;
+    text-align: center;
+    height: 120px;
+    color: #666;
+    font-size: 13px;
+    transition: color .15s linear;
+
+    > * {
+      line-height: 2em;
+    }
+
+    i {
+      display: block;
+    }
+
+    span {
+      display: block;
+    }
+
+    .ui-icon-name {
+      width: 100%;
+    }
+  }
+
+  &.icon-basic-list {
     li {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      width: 16.66%;
-      text-align: center;
-      height: 120px;
-      color: #666;
-      font-size: 13px;
-      transition: color .15s linear;
-
       i {
-        display: block;
-        font-size: 32px;
-        //margin-bottom: 15px;
+        font-size: 26px;
         color: #606266;
       }
+    }
+  }
 
-      .ui-icon-name {
-        width: 100%;
+  &.icon-theme-list {
+    li {
+      i {
+        font-size: 26px;
+      }
+    }
+  }
+
+  &.icon-size-list {
+    li {
+      i {
+        color: #606266;
       }
     }
   }
