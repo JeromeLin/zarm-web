@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Icon } from 'zarm-web';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/github-gist.css';
+import Highlight from 'react-highlight';
 import '@/components/style/entry';
 
-export default class Demo extends React.Component {
+export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
@@ -21,9 +20,6 @@ export default class Demo extends React.Component {
 
   componentDidMount() {
     this.renderSource(this.source[2]);
-    document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightBlock(block);
-    });
   }
 
   componentWillUnmount() {
@@ -77,11 +73,9 @@ export default class Demo extends React.Component {
           id={this.containerId}
           ref={(elem) => { this.containerElem = elem; }}
         />
-        {
-          <div className="meta" style={{ display: showBlock ? 'block' : 'none' }}>
-            <pre><code className="editor hljs jsx">{this.source[2]}</code></pre>
-          </div>
-        }
+        <div style={{ display: showBlock ? 'block' : 'none' }}>
+          <Highlight>{this.source[2]}</Highlight>
+        </div>
         <div className="demo-block-control" onClick={() => this.blockControl()}>
           {
             showBlock ? (

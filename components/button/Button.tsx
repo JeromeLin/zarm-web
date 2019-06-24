@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ButtonProps from './PropsType';
 import Icon from '../icon';
-import ButtonGroup from './button-group';
+import ButtonGroup from './ButtonGroup';
 
 class Button extends Component<ButtonProps> {
   static Group: typeof ButtonGroup;

@@ -1,8 +1,10 @@
-## Icon 图标
+# Icon 图标
 
 提供了常用的图标。
 
-### 使用方法
+
+
+## 使用方法
 
 基本用法。
 
@@ -194,9 +196,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### 颜色主题
+## 颜色主题
 
-用法。
 通过`theme`属性设置主题。 或者通过style定制覆盖颜色和字体样式等...
 ```jsx
 import { Icon } from 'zarm-web';
@@ -209,12 +210,12 @@ class Demo extends React.Component {
           <Icon type="folder-fill" theme="error" />
           <div className="ui-icon-name">folder-fill</div>
         </li>
-  
+
         <li>
           <Icon type="folder" theme="success" />
           <div className="ui-icon-name">folder</div>
         </li>
-  
+
         <li>
           <Icon type="info-round" style={{ color: 'green', fontSize: '50px' }} />
           <div className="ui-icon-name">info-round</div>
@@ -227,7 +228,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### Attributes
+## API
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | type     | 类型   | string  |   right,right-round...           |    —     |

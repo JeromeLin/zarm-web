@@ -60,6 +60,12 @@ code {
 .markdown-demo-wrapper {
   column-count: 2;
   column-width: 50%;
+  column-fill: auto;
+
+  @media (max-width: 1366px) {
+    column-count: 1;
+    column-width: 100%;
+  }
 }
 
 .markdown-demo-item {

@@ -199,7 +199,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-## API Row 
+## API
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | justify     | 横轴对齐方式   | start/end/center/space-between/space-around    | — | -   |
@@ -207,15 +208,16 @@ ReactDOM.render(<Demo />, mountNode)
 | gutter  | 间隔    | string/number   | -  | 0   |
 | type  | 布局模式，可选 flex，现代浏览器下有效    | string   | -  | -   |
 
-## API Col
+Col Attribute
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| offset | 栅格左侧的间隔格数，间隔内不可以有栅格 | number | - | 0 | 
-| order | 栅格顺序，flex 布局模式下有效 | number | - | 0 | 
-| pull | 栅格向左移动格数 | number | - | 0 | 
-| push | 栅格向右移动格数 | number | - | 0 | 
-| span | 栅格占位格数 | number | - | 0 | 
-| xs | 响应式栅格 | number | - | - | 
-| sm | 响应式栅格 | number | - | - | 
-| md | 响应式栅格 | number | - | - | 
-| lg | 响应式栅格 | number | - | - | 
+| offset | 栅格左侧的间隔格数，间隔内不可以有栅格 | number | - | 0 |
+| order | 栅格顺序，flex 布局模式下有效 | number | - | 0 |
+| pull | 栅格向左移动格数 | number | - | 0 |
+| push | 栅格向右移动格数 | number | - | 0 |
+| span | 栅格占位格数 | number | - | 0 |
+| xs | 响应式栅格 | number | - | - |
+| sm | 响应式栅格 | number | - | - |
+| md | 响应式栅格 | number | - | - |
+| lg | 响应式栅格 | number | - | - |

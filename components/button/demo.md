@@ -93,9 +93,9 @@ class Demo extends React.Component {
           <Button shape="round" theme="danger">danger</Button>
         </div>
         <div className="multi-rows">
-          <Button shape="circle" theme="primary"><Icon type="right" /></Button>
-          <Button shape="circle" theme="primary"><Icon type="empty-fill" /></Button>
-          <Button shape="circle"><Icon type="search" /></Button>
+          <Button shape="circle" theme="primary"><Icon type="right"></Icon></Button>
+          <Button shape="circle" theme="primary"><Icon type="empty-fill"></Icon></Button>
+          <Button shape="circle"><Icon type="search"></Icon></Button>
         </div>
         <div className="multi-rows block-row">
           <Button block>default</Button>
@@ -108,9 +108,9 @@ class Demo extends React.Component {
             <Button theme="primary">下一页</Button>
           </Button.Group>
           <Button.Group>
-            <Button theme="primary"><Icon type="right" /></Button>
-            <Button theme="primary"><Icon type="empty-fill" /></Button>
-            <Button theme="primary"><Icon type="search" /></Button>
+            <Button theme="primary"><Icon type="right"></Icon></Button>
+            <Button theme="primary"><Icon type="empty-fill"></Icon></Button>
+            <Button theme="primary"><Icon type="search"></Icon></Button>
           </Button.Group>
         </div>
       </div>
@@ -148,11 +148,11 @@ class Demo extends React.Component {
           <Button shape="round" size='xs'>xs尺寸</Button>
         </div>
         <div className="multi-rows">
-          <Button shape="circle" theme="primary" size='xl'><Icon type="right" /></Button>
-          <Button shape="circle" theme="primary" size='lg'><Icon type="brush" /></Button>
-          <Button shape="circle" theme="primary"><Icon type="user-fill" /></Button>
-          <Button shape="circle" theme="primary" size='sm'><Icon type="empty-fill" /></Button>
-          <Button shape="circle" size='xs'><Icon type="search" /></Button>
+          <Button shape="circle" theme="primary" size='xl'><Icon type="right"></Icon></Button>
+          <Button shape="circle" theme="primary" size='lg'><Icon type="brush"></Icon></Button>
+          <Button shape="circle" theme="primary"><Icon type="user-fill"></Icon></Button>
+          <Button shape="circle" theme="primary" size='sm'><Icon type="empty-fill"></Icon></Button>
+          <Button shape="circle" size='xs'><Icon type="search"></Icon></Button>
         </div>
       </React.Fragment>
     )
@@ -241,3 +241,4 @@ ReactDOM.render(<Demo />, mountNode)
 | target    | target属性, href存在时生效 | string | - | - |
 | htmlType  | 按钮类型 | string | button/submit/reset | button |
 | style     | 按钮样式 | React.CSSProperty | - | - |
+| onClick     | - | (e) => void | - | - |

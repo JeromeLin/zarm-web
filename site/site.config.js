@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         name: 'Button',
-        module: () => import('@/components/button/button.md'),
+        module: () => import('@/components/button/demo.md'),
       },
     ],
     layout: [
