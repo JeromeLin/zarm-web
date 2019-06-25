@@ -3,25 +3,25 @@
 
   @include m(lg) {
     @include b(radio-button) {
-      height: $--button-height-xl;
-      line-height: $--button-height-xl - 2;
-      font-size: $--button-fontSize-lg;
-      padding: 0 $--padding-size-16;
+      height: var(--button-height-xl);
+      line-height: var(--button-height-xl);
+      font-size: var(--button-font-size-lg);
+      padding: 0 16;
     }
   }
 
   @include m(sm) {
     @include b(radio-button) {
-      height: $--button-height-sm;
-      line-height: $--button-height-sm - 2;
-      font-size: $--button-fontSize-sm;
-      padding: 0 $--padding-size-8;
+      height: var(--button-height-sm);
+      line-height: var(--button-height-sm) - 2;
+      font-size: var(--button-font-size-sm);
+      padding: 0 8;
     }
   }
 
   @include b(radio) {
     @include e(wrapper) {
-      margin-right: $--margin-size-16;
+      margin-right: 16;
     }
   }
 
@@ -29,20 +29,20 @@
     @include e(wrapper) {
       &:first-child {
         @include b(radio-button) {
-          border-radius: $--border-radius-base 0 0 $--border-radius-base;
-          border-left: $--border-base;
+          border-radius: var(--radius-md) 0 0 var(--radius-md);
+          border-left: var(--radius-md);
         }
       }
 
       &:last-child {
         @include b(radio-button) {
-          border-radius: 0 $--border-radius-base $--border-radius-base 0;
+          border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
       }
 
       &:first-child:last-child {
         @include b(radio-button) {
-          border-radius: $--border-radius-base;
+          border-radius: var(--radius-md);
         }
       }
     }
@@ -53,8 +53,8 @@
 @include b(radio) {
   display: inline-block;
   position: relative;
-  padding-right: $--padding-size-4;
-  font-size: $--font-size-base;
+  padding-right: 4;
+  font-size: var(--font-size-md);
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
@@ -65,7 +65,7 @@
   &.is-checked {
     @include b(radio) {
       @include e(inner) {
-        border-color: $--color-primary;
+        border-color: var(--theme-primary);
 
         &:after {
           transform: scale(1);
@@ -98,7 +98,7 @@
     &:not(.is-disabled) {
       @include b(radio) {
         @include e(inner) {
-          border-color: $--color-primary;
+          border-color: var(--theme-primary);
         }
       }
     }
@@ -107,14 +107,14 @@
   @include e(inner) {
     position: relative;
     top: 2px;
-    margin-right: $--margin-size-4;
+    margin-right: 4;
     left: 0;
     display: inline-block;
     width: 14px;
     height: 14px;
-    border: 1px solid $--button-default-border;
+    border: 1px solid var(--button-default-border);
     border-radius: 14px;
-    background-color: $--color-white;
+    background-color: var(--color-white);
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
     &:after {
@@ -128,7 +128,7 @@
       border-top: 0;
       border-left: 0;
       content: ' ';
-      background-color: $--color-primary;
+      background-color: var(--theme-primary);
       opacity: 0;
       transform: scale(0);
       transition:
@@ -151,33 +151,33 @@
 
 @include b(radio-button) {
   margin: 0;
-  height: $--button-height;
-  line-height: $--button-height - 2px;
-  color: $--color-text-secondary;
+  height: var(--button-height-md);
+  line-height: var(--button-height-md) - 2px;
+  color: var(--color-text-caption);
   display: inline-block;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid $--border-color-base;
+  border: 1px solid var(--radius-md);
   border-left: 0;
-  background: $--color-white;
-  padding: 0 $--padding-size-16 - 1px;
+  background: var(--color-white);
+  padding: 0 16 - 1px;
   position: relative;
 
   &:not(.is-disabled):not(.is-checked):hover {
     position: relative;
-    color: $--color-primary;
+    color: var(--theme-primary);
   }
 
   &.is-checked {
     position: relative;
-    color: $--color-white;
-    background: $--color-primary;
+    color: var(--color-white);
+    background: var(--theme-primary);
   }
 
   &.is-disabled {
     cursor: not-allowed;
-    color: $--button-radio-btn-disabled-color;
-    background: $--button-radio-btn-disabled-bg;
+    color: var(--button-radio-btn-disabled-color);
+    background: var(--button-radio-btn-disabled-bg);
   }
 
   @include b(radio) {

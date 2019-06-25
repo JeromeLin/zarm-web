@@ -135,7 +135,7 @@ module.exports = {
       },
       {
         name: 'message',
-        module: () => import('@/components/message/message.md'),
+        module: () => import('@/components/message/demo.md'),
       },
       {
         name: 'modal',

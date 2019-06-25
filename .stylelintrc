@@ -4,6 +4,7 @@
   "rules": {
     "no-eol-whitespace": null,
     "function-name-case": null,
-    "block-closing-brace-newline-after": null
+    "block-closing-brace-newline-after": null,
+    "custom-property-empty-line-before": null
   }
 }
