@@ -33,13 +33,14 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
 
 ## 禁用类型
 按钮处于不可用状态的情况。
+
 ```jsx
 import { Button } from 'zarm-web';
 
@@ -72,7 +73,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -118,7 +119,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -159,7 +160,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -183,7 +184,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -206,7 +207,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -223,7 +224,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## API

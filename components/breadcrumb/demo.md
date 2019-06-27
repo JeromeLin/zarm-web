@@ -1,13 +1,15 @@
-## Breadcrumb 面包屑
-
+# Breadcrumb 面包屑
 告知用户当前页面在系统中的位置。
 
-### 基本用法
 
+
+## 基本用法
 面包屑的基本用法。
 
-::: demo 通过`Breadcrumb.Item`设置层级，如需跳转可添加`href`属性。
-```js
+```jsx
+import { Breadcrumb } from 'zarm-web';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -19,15 +21,20 @@
       </div>
     );
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-### 自定义分隔符
 
+
+## 自定义分隔符
 可以自定义面包屑分隔符。
 
-::: demo 可以通过`separator`属性设置分隔符。
-```js
+```jsx
+import { Breadcrumb } from 'zarm-web';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -39,19 +46,23 @@
       </div>
     );
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
 
-### Breadcrumb Attributes
+## API
+
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | separator | 分隔符 | string | — | '/' |
 | className | 类名 | string | — | '' |
 
 
-### Breadcrumb.Item Attributes
+Breadcrumb.Item
+
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | href | 跳转链接 | string | — | - |

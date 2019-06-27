@@ -161,7 +161,7 @@ module.exports = {
       },
       {
         name: 'Breadcrumb',
-        module: () => import('@/components/breadcrumb/breadcrumb.md'),
+        module: () => import('@/components/breadcrumb/demo.md'),
       },
       {
         name: 'Step',
