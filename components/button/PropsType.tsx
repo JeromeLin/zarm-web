@@ -26,7 +26,7 @@ export default interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButton
 
 export interface ButtonGroupProps {
   size?: Size;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   className?: string;
   prefixCls?: string;
 }
