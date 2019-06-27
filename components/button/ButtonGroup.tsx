@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { ButtonGroupProps } from './PropsType';
 
 const ButtonGroup: React.SFC<ButtonGroupProps> = (props) => {
-  const { prefixCls = 'za-btn-group', size, className, ...others } = props;
+  const { prefixCls = 'zw-btn-group', size, className, ...others } = props;
 
   const cls = classNames(
     prefixCls,

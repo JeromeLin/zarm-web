@@ -9,7 +9,7 @@ class Button extends Component<ButtonProps> {
   static Group: typeof ButtonGroup;
 
   static defaultProps = {
-    prefixCls: 'za-button',
+    prefixCls: 'zw-button',
     htmlType: 'button',
     theme: 'default',
     shape: 'radius',
