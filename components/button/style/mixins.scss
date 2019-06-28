@@ -11,13 +11,14 @@
   $disabled-background,
   $disabled-border,
   $disabled-color,
-  $disabled-opacity
+  $disabled-opacity,
 ) {
   background-color: $background;
   border-color: $border;
   color: $color;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: $hover-background;
     border-color: $hover-border;
     color: $hover-color;
