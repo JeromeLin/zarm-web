@@ -92,13 +92,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       class="ui-modal-footer"
                     >
                       <button
-                        class="za-button za-button--default za-button--radius"
+                        class="zw-button zw-button--default zw-button--radius"
                         type="button"
                       >
                         取消
                       </button>
                       <button
-                        class="za-button za-button--primary za-button--radius"
+                        class="zw-button zw-button--primary zw-button--radius"
                         type="button"
                       >
                         确定
@@ -228,13 +228,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       htmlType="button"
                       loading={false}
                       onClick={[Function]}
-                      prefixCls="za-button"
+                      prefixCls="zw-button"
                       shape="radius"
                       size={null}
                       theme="default"
                     >
                       <button
-                        className="za-button za-button--default za-button--radius"
+                        className="zw-button zw-button--default zw-button--radius"
                         onClick={[Function]}
                         type="button"
                       >
@@ -246,13 +246,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       htmlType="button"
                       loading={false}
                       onClick={[Function]}
-                      prefixCls="za-button"
+                      prefixCls="zw-button"
                       shape="radius"
                       size={null}
                       theme="primary"
                     >
                       <button
-                        className="za-button za-button--primary za-button--radius"
+                        className="zw-button zw-button--primary zw-button--radius"
                         onClick={[Function]}
                         type="button"
                       >

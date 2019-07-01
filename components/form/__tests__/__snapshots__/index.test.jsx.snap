@@ -58,7 +58,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
       class="za-form-item__control"
     >
       <button
-        class="za-button za-button--success za-button--radius"
+        class="zw-button zw-button--success zw-button--radius"
         type="button"
       >
         查询
@@ -133,7 +133,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       class="za-form-item__control"
     >
       <button
-        class="za-button za-button--success za-button--radius"
+        class="zw-button zw-button--success zw-button--radius"
         type="button"
       >
         查询
@@ -198,7 +198,7 @@ exports[`Form renders normal Form correctly 1`] = `
       class="za-form-item__control"
     >
       <button
-        class="za-button za-button--success za-button--radius"
+        class="zw-button zw-button--success zw-button--radius"
         type="button"
       >
         登录

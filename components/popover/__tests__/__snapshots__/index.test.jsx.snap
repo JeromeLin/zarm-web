@@ -17,7 +17,7 @@ exports[`Popover behaves correctly when clicking on mask 1`] = `
       />
     </div>
     <button
-      class="za-button za-button--default za-button--radius"
+      class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
       Delete
@@ -40,7 +40,7 @@ exports[`Popover renders Popover correctly with customized props 1`] = `
       />
     </div>
     <button
-      class="za-button za-button--default za-button--radius"
+      class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
       Delete
@@ -66,7 +66,7 @@ exports[`Popover renders Popover correctly with mask 1`] = `
       />
     </div>
     <button
-      class="za-button za-button--default za-button--radius"
+      class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
       Delete
@@ -89,7 +89,7 @@ exports[`Popover renders Popover correctly with render props 1`] = `
       />
     </div>
     <button
-      class="za-button za-button--default za-button--radius"
+      class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
       Delete
@@ -112,7 +112,7 @@ exports[`Popover renders normal Popover correctly 1`] = `
       />
     </div>
     <button
-      class="za-button za-button--default za-button--radius"
+      class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
       Delete
