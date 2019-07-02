@@ -45,6 +45,7 @@ export default class Demo extends React.PureComponent {
 
       const { code } = transform(value, {
         presets: ['es2015', 'react'],
+        plugins: ['proposal-class-properties'],
       });
 
       args.push(code);
