@@ -161,6 +161,8 @@ exports[`Alert renders basic Alert correctly 1`] = `
                     style={Object {}}
                   >
                     <Button
+                      block={false}
+                      disabled={false}
                       ghost={false}
                       htmlType="button"
                       loading={false}
@@ -172,6 +174,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                     >
                       <button
                         className="zw-button zw-button--default zw-button--radius"
+                        disabled={false}
                         onClick={[Function]}
                         type="button"
                       >

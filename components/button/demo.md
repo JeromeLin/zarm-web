@@ -227,6 +227,31 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## Typescript中使用方式
+因为同时支持两种形式的参数，所以在不同的形式下，传递的参数的类型是不一致的。
+最明显的区别在于，事件回调函数中的event.currentTarget的类型不一致。
+在使用TS的过程中，我们需要使用泛型对其进行约束。
+作为链接按钮存在时，一定要传泛型，否则参数会被默认识别为button类型。
+```
+const btn =  <Button<'button'> onClick={(e)=>{ console.log(e) }}>这是一个点击按钮</Button>;
+// 因为默认的泛型是'button',您也可以不写泛型。例如：
+const btn2 = <Button onClick={(e)=>{ console.log(e) }}>这是一个点击按钮</Button>
+
+
+// 链接按钮 
+const linkElem = <Button<'anchor'>>这里是一个链接的按钮</Button>
+
+// 一些区别
+const btn =  <Button<'button'> formAction="post">这是一个点击按钮</Button>;  
+// ok, 因为button支持 formAction 参数。
+
+const btn =  <Button<'button'> href="/home">这是一个链接按钮</Button>;  
+// error因为 button上不存在 href属性。
+
+const btn2 = <Button<'anchor'> href="/home" target="_blank" formAction="post">这是一个点击按钮</Button>
+// error 参数中不存在formAction
+```
+
 ## API
 
 | 属性 | 类型 | 默认值 | 说明 |
