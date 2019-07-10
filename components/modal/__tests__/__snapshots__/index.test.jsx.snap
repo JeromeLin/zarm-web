@@ -2,44 +2,32 @@
 
 exports[`Modal renders basic Modal correctly 1`] = `
 <div
-  class="ui-modal"
+  class="zw-modal shape-rect"
   style="animation-duration:300ms;position:fixed;display:none"
 >
   <div
-    class="ui-modal-wrapper"
+    class="zw-modal--dialog zoom-leave"
+    style="width:600px;min-width:270px;animation-duration:300ms"
+    tabindex="-1"
   >
     <div
-      class="ui-modal-dialog zoom-leave"
-      style="width:600px;min-width:270px;animation-duration:300ms"
-      tabindex="-1"
+      class="zw-modal-header"
+      title="标题"
     >
       <div
-        class="ui-modal-header"
-      >
-        <div
-          class="ui-modal-title"
-        >
-          标题
-        </div>
-        <div
-          class="ui-modal-close"
-        >
-          <i
-            class="za-icon za-icon-wrong theme-default"
-          />
-        </div>
-      </div>
-      <div
-        class="ui-modal-body"
-        style="height:auto"
-      >
-        我是一个模态框
-      </div>
-      <div
-        class="ui-modal-footer"
-      >
-        页脚
-      </div>
+        class="zw-modal-title"
+      />
+    </div>
+    <div
+      class="zw-modal-body"
+      style="height:auto"
+    >
+      我是一个模态框
+    </div>
+    <div
+      class="zw-modal-footer"
+    >
+      页脚
     </div>
   </div>
 </div>
@@ -47,44 +35,39 @@ exports[`Modal renders basic Modal correctly 1`] = `
 
 exports[`Modal renders closable Modal correctly 1`] = `
 <div
-  class="ui-modal"
+  class="zw-modal shape-rect"
   style="animation-duration:300ms;position:fixed;display:none"
 >
   <div
-    class="ui-modal-wrapper"
+    class="zw-modal--dialog zoom-leave"
+    style="width:600px;min-width:270px;animation-duration:300ms"
+    tabindex="-1"
   >
     <div
-      class="ui-modal-dialog zoom-leave"
-      style="width:600px;min-width:270px;animation-duration:300ms"
-      tabindex="-1"
+      class="zw-modal-header"
+      title="标题"
     >
       <div
-        class="ui-modal-header"
-      >
-        <div
-          class="ui-modal-title"
-        >
-          标题
-        </div>
-        <div
-          class="ui-modal-close"
-        >
-          <i
-            class="za-icon za-icon-wrong theme-default"
-          />
-        </div>
-      </div>
+        class="zw-modal-title"
+      />
       <div
-        class="ui-modal-body"
-        style="height:auto"
+        class="zw-modal-close"
       >
-        我是一个模态框
+        <i
+          class="za-icon za-icon-wrong theme-default"
+        />
       </div>
-      <div
-        class="ui-modal-footer"
-      >
-        页脚
-      </div>
+    </div>
+    <div
+      class="zw-modal-body"
+      style="height:auto"
+    >
+      我是一个模态框
+    </div>
+    <div
+      class="zw-modal-footer"
+    >
+      页脚
     </div>
   </div>
 </div>
@@ -92,44 +75,32 @@ exports[`Modal renders closable Modal correctly 1`] = `
 
 exports[`Modal renders customized Modal correctly 1`] = `
 <div
-  class="ui-modal radius"
+  class="zw-modal shape-radius"
   style="animation-duration:500ms;position:fixed;display:none"
 >
   <div
-    class="ui-modal-wrapper"
+    class="zw-modal--dialog fade-leave"
+    style="width:400px;min-width:270px;animation-duration:500ms"
+    tabindex="-1"
   >
     <div
-      class="ui-modal-dialog fade-leave"
-      style="width:400px;min-width:270px;animation-duration:500ms"
-      tabindex="-1"
+      class="zw-modal-header"
+      title="标题"
     >
       <div
-        class="ui-modal-header"
-      >
-        <div
-          class="ui-modal-title"
-        >
-          标题
-        </div>
-        <div
-          class="ui-modal-close"
-        >
-          <i
-            class="za-icon za-icon-wrong theme-default"
-          />
-        </div>
-      </div>
-      <div
-        class="ui-modal-body"
-        style="height:auto"
-      >
-        我是一个模态框
-      </div>
-      <div
-        class="ui-modal-footer"
-      >
-        页脚
-      </div>
+        class="zw-modal-title"
+      />
+    </div>
+    <div
+      class="zw-modal-body"
+      style="height:auto"
+    >
+      我是一个模态框
+    </div>
+    <div
+      class="zw-modal-footer"
+    >
+      页脚
     </div>
   </div>
 </div>

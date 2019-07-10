@@ -35,11 +35,10 @@ exports[`Alert renders basic Alert correctly 1`] = `
         animationDuration={300}
         animationType="zoom"
         className=""
-        isRadius={false}
-        isRound={false}
         minWidth={270}
         onMaskClick={[Function]}
-        prefixCls="ui-modal"
+        prefixCls="zw-modal"
+        shape="rect"
         visible={true}
         width={270}
       >
@@ -47,42 +46,38 @@ exports[`Alert renders basic Alert correctly 1`] = `
           containerInfo={
             <div>
               <div
-                class="ui-modal fade-enter"
+                class="zw-modal shape-rect fade-enter"
                 style="animation-duration: 300ms; position: fixed;"
               >
                 <div
-                  class="ui-modal-wrapper"
+                  class="zw-modal--dialog zoom-enter"
+                  style="width: 270px; min-width: 270px; animation-duration: 300ms;"
+                  tabindex="-1"
                 >
                   <div
-                    class="ui-modal-dialog zoom-enter"
-                    style="width: 270px; min-width: 270px; animation-duration: 300ms;"
-                    tabindex="-1"
+                    class="zw-modal-body"
+                    style="height: auto;"
                   >
                     <div
-                      class="ui-modal-body"
-                      style="height: auto;"
+                      class="ui-alert"
                     >
-                      <div
-                        class="ui-alert"
-                      >
-                        <i
-                          class="za-icon za-icon-warning-round theme-warning"
-                        />
-                        <span>
-                          这是一个警告框
-                        </span>
-                      </div>
+                      <i
+                        class="za-icon za-icon-warning-round theme-warning"
+                      />
+                      <span>
+                        这是一个警告框
+                      </span>
                     </div>
-                    <div
-                      class="ui-modal-footer"
+                  </div>
+                  <div
+                    class="zw-modal-footer"
+                  >
+                    <button
+                      class="zw-button zw-button--default zw-button--radius"
+                      type="button"
                     >
-                      <button
-                        class="zw-button zw-button--default zw-button--radius"
-                        type="button"
-                      >
-                        关闭
-                      </button>
-                    </div>
+                      关闭
+                    </button>
                   </div>
                 </div>
               </div>
@@ -90,7 +85,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
           }
         >
           <div
-            className="ui-modal fade-enter"
+            className="zw-modal shape-rect fade-enter"
             onClick={[Function]}
             style={
               Object {
@@ -100,90 +95,84 @@ exports[`Alert renders basic Alert correctly 1`] = `
             }
           >
             <div
-              className="ui-modal-wrapper"
-            >
-              <div
-                className="ui-modal-dialog zoom-enter"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                style={
-                  Object {
-                    "animationDuration": "300ms",
-                    "minWidth": 270,
-                    "width": 270,
-                  }
+              className="zw-modal--dialog zoom-enter"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              style={
+                Object {
+                  "animationDuration": "300ms",
+                  "maxWidth": undefined,
+                  "minWidth": 270,
+                  "width": 270,
                 }
-                tabIndex={-1}
+              }
+              tabIndex={-1}
+            >
+              <ModalBody
+                height="auto"
+                prefixCls="zw-modal"
               >
-                <ModalBody
-                  height="auto"
-                  prefixCls="ui-modal"
-                  style={Object {}}
-                >
-                  <div
-                    className="ui-modal-body"
-                    style={
-                      Object {
-                        "height": "auto",
-                      }
+                <div
+                  className="zw-modal-body"
+                  style={
+                    Object {
+                      "height": "auto",
                     }
-                  >
-                    <div
-                      className="ui-alert"
-                    >
-                      <Icon
-                        className=""
-                        onClick={[Function]}
-                        prefixCls="za-icon"
-                        style={Object {}}
-                        theme="warning"
-                        type="warning-round"
-                      >
-                        <i
-                          className="za-icon za-icon-warning-round theme-warning"
-                          onClick={[Function]}
-                          style={Object {}}
-                        />
-                      </Icon>
-                      <span>
-                        这是一个警告框
-                      </span>
-                    </div>
-                  </div>
-                </ModalBody>
-                <ModalFooter
-                  prefixCls="ui-modal"
-                  style={Object {}}
+                  }
                 >
                   <div
-                    className="ui-modal-footer"
-                    style={Object {}}
+                    className="ui-alert"
                   >
-                    <Button
-                      block={false}
-                      disabled={false}
-                      ghost={false}
-                      htmlType="button"
-                      loading={false}
-                      onClick={[MockFunction]}
-                      prefixCls="zw-button"
-                      shape="radius"
-                      size={null}
-                      theme="default"
+                    <Icon
+                      className=""
+                      onClick={[Function]}
+                      prefixCls="za-icon"
+                      style={Object {}}
+                      theme="warning"
+                      type="warning-round"
                     >
-                      <button
-                        className="zw-button zw-button--default zw-button--radius"
-                        disabled={false}
+                      <i
+                        className="za-icon za-icon-warning-round theme-warning"
                         onClick={[Function]}
-                        type="button"
-                      >
-                        关闭
-                      </button>
-                    </Button>
+                        style={Object {}}
+                      />
+                    </Icon>
+                    <span>
+                      这是一个警告框
+                    </span>
                   </div>
-                </ModalFooter>
-              </div>
+                </div>
+              </ModalBody>
+              <ModalFooter
+                prefixCls="zw-modal"
+              >
+                <div
+                  className="zw-modal-footer"
+                >
+                  <Button
+                    block={false}
+                    disabled={false}
+                    ghost={false}
+                    htmlType="button"
+                    loading={false}
+                    onClick={[MockFunction]}
+                    prefixCls="zw-button"
+                    shape="radius"
+                    size={null}
+                    theme="default"
+                  >
+                    <button
+                      className="zw-button zw-button--default zw-button--radius"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      关闭
+                    </button>
+                  </Button>
+                </div>
+              </ModalFooter>
             </div>
           </div>
         </Portal>

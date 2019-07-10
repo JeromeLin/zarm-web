@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { ModalBodyProps } from './PropsType';
 
-class ModalBody extends Component<ModalBodyProps, any> {
+interface PropsType extends ModalBodyProps, HTMLAttributes<HTMLDivElement> { }
+
+class ModalBody extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'ui-modal',
+    prefixCls: 'zw-modal',
     height: 'auto',
-    style: {},
   };
 
   render() {
-    const { height, children, prefixCls, className, style } = this.props;
+    const { height, children, prefixCls, className, style, ...others } = this.props;
     const bodyStyle = {
       ...style,
       height,
@@ -22,7 +23,7 @@ class ModalBody extends Component<ModalBodyProps, any> {
     });
 
     return (
-      <div className={cls} style={bodyStyle}>
+      <div {...others} className={cls} style={bodyStyle}>
         {children}
       </div>
     );

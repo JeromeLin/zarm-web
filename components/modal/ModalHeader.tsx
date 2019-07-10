@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, HTMLProps } from 'react';
 import classnames from 'classnames';
 import { ModalHeaderProps } from './PropsType';
 import Icon from '../icon';
 
-class ModalHeader extends Component<ModalHeaderProps, any> {
+interface PropsType extends ModalHeaderProps, HTMLProps<HTMLDivElement> { }
+
+class ModalHeader extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'ui-modal',
-    title: '',
-    style: {},
-    onClose: () => {},
+    prefixCls: 'zw-modal',
   };
 
   render() {
-    const { title, onClose, prefixCls, className, style } = this.props;
+    const { onClose, prefixCls, className, children, ...others } = this.props;
     const btnClose = onClose ? (
       <div className={`${prefixCls}-close`} onClick={onClose}>
         <Icon type="wrong" />
@@ -25,8 +24,8 @@ class ModalHeader extends Component<ModalHeaderProps, any> {
     });
 
     return (
-      <div className={cls} style={style}>
-        <div className={`${prefixCls}-title`}>{title}</div>
+      <div {...others} className={cls}>
+        <div className={`${prefixCls}-title`}>{children}</div>
         {btnClose}
       </div>
     );

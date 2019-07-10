@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent, KeyboardEvent } from 'react';
+import React, { Component, MouseEvent, KeyboardEvent, KeyboardEventHandler, ReactNode, isValidElement, HTMLAttributes } from 'react';
 import { createPortal, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
@@ -17,15 +17,18 @@ if (animationDurationKey && animationDurationKey !== 'animationDuration' && !ani
 function toggleBodyOverflow(show: boolean) {
   const scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
   if (show === true) {
-    document.body.classList.add('ui-modal-body-overflow');
+    document.body.classList.add('zw-modal-body-overflow');
     if (scrollBarWidth > 0) {
       document.body.style.setProperty('padding-right', `${scrollBarWidth}px`);
     }
   } else {
-    document.body.classList.remove('ui-modal-body-overflow');
+    document.body.classList.remove('zw-modal-body-overflow');
     document.body.style.setProperty('padding-right', null);
   }
 }
+
+
+interface PropsIF extends ModalProps, HTMLAttributes<HTMLDivElement> { }
 
 interface StateIF {
   isShow: boolean;
@@ -33,30 +36,33 @@ interface StateIF {
   animationState: 'leave' | 'enter';
 }
 
-class Modal extends Component<ModalProps, StateIF> {
-  static Header: typeof ModalHeader;
+type DefaultPropsKeys = 'prefixCls' | 'visible' | 'animationType' | 'animationDuration' | 'width'
+  | 'minWidth' | 'shape' | 'onMaskClick';
 
-  static Body: typeof ModalBody;
+class Modal extends Component<PropsIF, StateIF> {
+  static Header = ModalHeader;
 
-  static Footer: typeof ModalFooter;
+  static Body = ModalBody;
 
-  static defaultProps = {
-    prefixCls: 'ui-modal',
+  static Footer = ModalFooter;
+
+  static defaultProps: Pick<ModalProps, DefaultPropsKeys> = {
+    prefixCls: 'zw-modal',
     visible: false,
     animationType: 'zoom',
     animationDuration: 300,
     width: 600,
     minWidth: 270,
-    isRadius: false,
-    isRound: false,
+    shape: 'rect',
     onMaskClick() { },
   };
 
-  private static instanceList: Modal[] = [];
+  private static instanceList: Modal[] = [];    // 实例收集系统
 
-  private static visibleList: Modal[] = [];
+  private static visibleList: Modal[] = [];     // 可以实例收集系统
 
-  private static handleVisbibleList(instance: Modal, visible: boolean, noAnimation?: boolean) {
+  //  处理可见组件实例
+  private static handleVisibleList(instance: Modal, visible: boolean, noAnimation?: boolean) {
     if (visible) {
       const lastIndex = Modal.visibleList.length - 1;
       if (lastIndex >= 0) {
@@ -104,7 +110,7 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
 
-  private sleep: boolean = false;
+  private sleep: boolean = false;             // 当前组件是否处于休眠状态，这决定了组件在接受到props.visible= true时候的行为
 
   private modal!: HTMLDivElement | null;
 
@@ -121,11 +127,13 @@ class Modal extends Component<ModalProps, StateIF> {
       isPending: false,
       animationState: 'leave',
     };
+    // 实例收集
     Modal.instanceList.push(this);
   }
 
   componentDidMount() {
     const { visible } = this.props;
+    // 忽略休眠的组件
     if (this.sleep === true) {
       return;
     }
@@ -135,7 +143,7 @@ class Modal extends Component<ModalProps, StateIF> {
         this.appended = true;
       }
       this.enter();
-      Modal.handleVisbibleList(this, true, true);
+      Modal.handleVisibleList(this, true, true);
     }
     if (this.modal) {
       Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
@@ -159,9 +167,9 @@ class Modal extends Component<ModalProps, StateIF> {
         });
       });
       this.enter();
-      Modal.handleVisbibleList(this, true);
+      Modal.handleVisibleList(this, true);
     } else if (visible && !nextProps.visible) {
-      Modal.handleVisbibleList(this, false);
+      Modal.handleVisibleList(this, false);
       this.leave();
     }
   }
@@ -210,8 +218,8 @@ class Modal extends Component<ModalProps, StateIF> {
   onKeyDown = (e: KeyboardEvent) => {
     if (this.state.isShow && this.state.animationState !== 'leave') {
       if (e.keyCode === 27) {
-        React.Children.forEach(this.props.children, (elem: any) => {
-          if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
+        React.Children.forEach(this.props.children, (elem: ReactNode) => {
+          if (isValidElement(elem)) {
             if (elem.props.onClose) {
               elem.props.onClose();
             }
@@ -221,11 +229,12 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   };
 
-  onKeyPress = (e: KeyboardEvent) => {
+  onKeyPress: KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (document.activeElement === this.modalContent) {
       if (this.state.isShow && this.state.animationState !== 'leave') {
-        if (this.props.onKeyPress) {
-          this.props.onKeyPress(e.nativeEvent);
+        const { onKeyPress } = this.props;
+        if (onKeyPress) {
+          onKeyPress(e);
         }
       }
     }
@@ -272,24 +281,25 @@ class Modal extends Component<ModalProps, StateIF> {
       animationDuration,
       width,
       minWidth,
-      isRadius,
-      isRound,
+      shape,
       className,
       onMaskClick,
       children,
+      maxWidth,
+      visible,
+      ...otherProps
     } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
     const classes = {
       modal: classnames({
         [prefixCls!]: true,
-        radius: 'radius' in this.props || isRadius,
-        round: 'round' in this.props || isRound,
+        [`shape-${shape}`]: true,
         [`fade-${animationState}`]: isPending,
         [className!]: !!className,
       }),
       dialog: classnames({
-        [`${prefixCls}-dialog`]: true,
+        [`${prefixCls}--dialog`]: true,
         [`${animationType}-${animationState}`]: true,
       }),
     };
@@ -300,8 +310,9 @@ class Modal extends Component<ModalProps, StateIF> {
         position: 'fixed',
       },
       dialog: {
-        width: Number(width),
-        minWidth: Number(minWidth),
+        width,
+        minWidth,
+        maxWidth,
         [animationDurationKey]: `${animationDuration}ms`,
       },
     };
@@ -310,23 +321,22 @@ class Modal extends Component<ModalProps, StateIF> {
     }
     return createPortal(
       <div
+        {...otherProps}
         className={classes.modal}
         style={style.modal}
         onClick={onMaskClick}
         ref={this.getModalRef}
       >
-        <div className={`${prefixCls}-wrapper`}>
-          <div
-            ref={this.modalContentRef}
-            tabIndex={-1}
-            className={classes.dialog}
-            style={style.dialog}
-            onClick={this.onMaskClick}
-            onKeyDown={this.onKeyDown}
-            onKeyPress={this.onKeyPress}
-          >
-            {children}
-          </div>
+        <div
+          ref={this.modalContentRef}
+          tabIndex={-1}
+          className={classes.dialog}
+          style={style.dialog}
+          onClick={this.onMaskClick}
+          onKeyDown={this.onKeyDown}
+          onKeyPress={this.onKeyPress}
+        >
+          {children}
         </div>
       </div>,
       this.div,
@@ -338,7 +348,7 @@ class Modal extends Component<ModalProps, StateIF> {
 // eslint-disable-next-line no-redeclare
 declare namespace Modal {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface Props extends ModalProps {}
+  export interface Props extends ModalProps { }
   export interface BodyProps extends ModalBodyProps { }
   export interface HeaderProps extends ModalHeaderProps { }
   export interface FooterProps extends ModalFooterProps { }

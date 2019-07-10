@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { ModalFooterProps } from './PropsType';
 
-class ModalFooter extends Component<ModalFooterProps, any> {
+interface PropsType extends ModalFooterProps, HTMLAttributes<HTMLDivElement> { }
+
+class ModalFooter extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'ui-modal',
-    style: {},
+    prefixCls: 'zw-modal',
   };
 
   render() {
-    const { children, style, prefixCls, className } = this.props;
+    const { children, prefixCls, className, ...others } = this.props;
 
     const cls = classnames({
       [`${prefixCls}-footer`]: true,
@@ -17,7 +18,7 @@ class ModalFooter extends Component<ModalFooterProps, any> {
     });
 
     return (
-      <div className={cls} style={style}>
+      <div {...others} className={cls}>
         {children}
       </div>
     );

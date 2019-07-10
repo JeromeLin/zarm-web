@@ -26,8 +26,8 @@ describe('Modal', () => {
     const wrapper = render(
       <Modal
         width={400}
-        radius
         visible
+        shape="radius"
         animationType="fade"
         animationDuration={500}
       >
@@ -42,7 +42,7 @@ describe('Modal', () => {
   it('renders closable Modal correctly', () => {
     const wrapper = render(
       <Modal>
-        <Header title="标题" onClose={() => {}} />
+        <Header title="标题" onClose={() => { }} />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>
       </Modal>
@@ -59,7 +59,7 @@ describe('Modal', () => {
         <Footer>页脚</Footer>
       </Modal>
     );
-    wrapper.find('.ui-modal-close').simulate('click');
+    wrapper.find('.zw-modal-close').simulate('click');
     expect(onClose).toHaveBeenCalled();
   });
 
@@ -73,7 +73,7 @@ describe('Modal', () => {
       </Modal>
     );
 
-    wrapper.find('.ui-modal').simulate('click');
+    wrapper.find('.zw-modal').simulate('click');
     expect(onMaskClick).toHaveBeenCalled();
   });
 });
