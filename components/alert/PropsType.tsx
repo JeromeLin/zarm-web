@@ -1,3 +1,5 @@
+import zhCn from '../locale/lang/zh-cn';
+
 export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 
 export default interface PropsType {
@@ -10,6 +12,6 @@ export default interface PropsType {
   hideIcon?: boolean;
   closable?: boolean;
   closeText?: string;
-  locale?: { close: string };
+  locale: typeof zhCn.Alert;
   onClose: () => void;
 }

@@ -12,7 +12,7 @@ const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
  * @return {String}
  */
 
-export default function(str, ...args) {
+export default function (str: string, ...args: any[]) {
   if (args.length === 1 && typeof args[0] === 'object') {
     args = args[0];
   }

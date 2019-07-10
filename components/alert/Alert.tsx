@@ -4,6 +4,8 @@ import Button from '../button';
 import Icon from '../icon';
 import AlertProps from './PropsType';
 
+import zhCn from '../locale/lang/zh-cn';
+
 class Alert extends Component<AlertProps, any> {
   static defaultProps = {
     prefixCls: 'ui-alert',
@@ -13,8 +15,9 @@ class Alert extends Component<AlertProps, any> {
     className: '',
     hideIcon: false,
     closable: true,
+    local: zhCn.Alert,
     // closeText: '关闭',
-    onClose: () => {},
+    onClose: () => { },
   };
 
   render() {
@@ -52,7 +55,7 @@ class Alert extends Component<AlertProps, any> {
         {
           closable && (
             <Modal.Footer>
-              <Button onClick={onClose}>{closeText || locale!.close}</Button>
+              <Button onClick={onClose}>{closeText || locale.close}</Button>
             </Modal.Footer>
           )
         }

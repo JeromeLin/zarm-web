@@ -4,11 +4,11 @@ import zh from './lang/zh-cn';
 
 let _lang = zh;
 
-function use(lang) {
+function use(lang: any) {
   _lang = lang;
 }
 
-function t(path, options?) {
+function t(path: string, options?: any) {
   const array = path.split('.');
   let current = _lang;
 
@@ -29,7 +29,7 @@ function t(path, options?) {
   return '';
 }
 
-export function qs(name, url?) {
+export function qs(name: string, url?: string) {
   if (!url) {
     url = window.location.href;
   }
