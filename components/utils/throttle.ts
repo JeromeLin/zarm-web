@@ -1,17 +1,15 @@
-const throttle = (func, delay) => {
+type AnyFn = (...args: any[]) => any;
+
+const throttle = (func: AnyFn, delay: number) => {
   let timer: number;
   let startTime = Date.now();
 
-  return () => {
+  return function decorateFn(this: any, ...args: any[]) {
     const curTime = Date.now();
     const remaining = delay - (curTime - startTime);
-    const context = this;
-    // @ts-ignore
-    const args = arguments;
-
     clearTimeout(timer);
     if (remaining <= 0) {
-      func.apply(context, args);
+      func.apply(this, args);
       startTime = Date.now();
     } else {
       timer = setTimeout(func, remaining);

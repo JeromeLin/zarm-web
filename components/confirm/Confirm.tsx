@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { Component, MouseEvent, KeyboardEventHandler } from 'react';
 import Modal from '../modal';
 import Button from '../button';
 import Icon from '../icon';
@@ -31,7 +31,7 @@ class Confirm extends Component<PropsType, any> {
     }
   };
 
-  onKeyPress = (e: KeyboardEvent) => {
+  onKeyPress:KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.keyCode === 13) {
       if (this.props.onOk) {
         this.props.onOk(e);
