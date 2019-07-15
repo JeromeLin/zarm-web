@@ -34,7 +34,7 @@ npm install zarm-web --save
 
 ```js
 import { Button, Cell } from 'zarm-web';
-import 'zarm/dist/zarm-web.min.css';
+import 'zarm-web/dist/zarm-web.min.css';
 ```
 
 ### 按需加载
