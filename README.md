@@ -22,8 +22,8 @@ npm install dragon-ui --save
 * 全组件引入
 
 ```js
-import { Button, Cell } from 'dragon-ui';
-import 'dragon-ui/dist/dragon-ui.min.css';
+import { Button, Cell } from 'zarm-web';
+import 'zarm-web/dist/zarm-web.min.css';
 ```
 
 * 按需引入
@@ -36,21 +36,21 @@ import 'dragon-ui/dist/dragon-ui.min.css';
   {
     "plugins": [
       ['import', {
-        libraryName: 'dragon-ui',
+        libraryName: 'zarm-web',
         style: true,
       }],
     ]
   }
 ```
 ```js
-import { Button, Cell } from 'dragon-ui';
+import { Button, Cell } from 'zarm-web';
 ```
 
 方法二
 
 ```js
-import Button from 'dragon-ui/lib/Button';
-import 'dragon-ui/lib/Button/style';
+import Button from 'zarm-web/lib/Button';
+import 'zarm-web/lib/Button/style';
 ```
 
 ### Examples & Docs 示例和文档 
