@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const safePostCssParser = require('postcss-safe-parser');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -25,7 +26,12 @@ config.optimization = {
         },
       },
     }),
-    new OptimizeCSSAssetsPlugin({}),
+    new OptimizeCSSAssetsPlugin({
+      cssProcessorPluginOptions: {
+        parser: safePostCssParser,
+        preset: ['default', { reduceTransforms: false }],
+      },
+    }),
   ],
 };
 config.plugins.push(
