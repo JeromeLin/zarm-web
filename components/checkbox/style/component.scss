@@ -19,7 +19,7 @@
 
   /* 选中状态 */
   &.is-checked {
-    .za-checkbox__inner {
+    .zw-checkbox__inner {
       border-color: $base-theme-info;
       background-color: $base-theme-info;
 
@@ -32,7 +32,7 @@
 
   /* 未全部选中状态 */
   &.is-indeterminate {
-    .za-checkbox__inner {
+    .zw-checkbox__inner {
       border-color: $base-theme-info;
       background-color: $base-theme-info;
 
@@ -45,7 +45,7 @@
 
   /* 禁用状态 */
   &.is-disabled {
-    .za-checkbox__inner {
+    .zw-checkbox__inner {
       border-color: #d9d9d9;
       background-color: #f3f3f3;
       cursor: not-allowed;
@@ -57,7 +57,7 @@
   }
 
   &:not(.is-disabled):hover {
-    .za-checkbox__inner {
+    .zw-checkbox__inner {
       border-color: $base-theme-info;
     }
   }

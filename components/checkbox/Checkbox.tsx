@@ -6,7 +6,7 @@ class Checkbox extends Component<PropsType, any> {
   static Group;
 
   static defaultProps = {
-    prefixCls: 'za-checkbox',
+    prefixCls: 'zw-checkbox',
     defaultChecked: false,
     isDisabled: false,
     indeterminate: false,
