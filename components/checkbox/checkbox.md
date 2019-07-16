@@ -1,14 +1,14 @@
-## Checkbox 多选框
+# Checkbox 多选框
 多选框。
 
-### 基础用法
+
+## 基础用法
 
 单独使用，表示在两种状态之间切换。
 
-:::demo
 
 ```js
-import { Checkbox } from 'dragon-ui';
+import { Checkbox } from 'zarm-web';
 
 class Demo extends React.Component {
   onChange(e) {
@@ -29,16 +29,15 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-### 组合使用
+
+## 组合使用
 
 一组可选项中进行多项选择。
 
-:::demo 使用`Checkbox.Group`组件。
 
 ```js
-import { Checkbox } from 'dragon-ui';
+import { Checkbox } from 'zarm-web';
 
 class Demo extends React.Component {
   constructor(props) {
@@ -71,16 +70,14 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-### 禁用状态
+## 禁用状态
 
 不可勾选状态。
 
-:::demo 可以使用`disabled`属性来定义是否可用。
 
 ```js
-import { Checkbox } from 'dragon-ui';
+import { Checkbox } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
@@ -99,16 +96,15 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-### 部分选中状态
+## 部分选中状态
 
 未全部选中，即部分选中状态。
 
-:::demo 可以使用`indeterminate`属性来定义样式是否为部分选中。
+可以使用`indeterminate`属性来定义样式是否为部分选中。
 
 ```js
-import { Checkbox } from 'dragon-ui';
+import { Checkbox } from 'zarm-web';
 
 class Demo extends React.Component {
   onChange(e) {
@@ -130,12 +126,13 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
+## API 
 
-### Checkbox Attributes
+Checkbox Attributes
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
+| :--- | :--- | :--- | :--- | :--- |
 | checked     | 是否选中  | boolean  |   -           |    false    |
 | defaultChecked    | 默认选中  | boolean   |   - |     false   |
 | disabled  | 禁用    | -   | -  | -   |
@@ -143,18 +140,23 @@ ReactDOM.render(<Demo />, mountNode);
 | value  | 选择框对应的值    | string   | -  | -   |
 | indeterminate  | 是否是部分选中状态    | boolean | true, false | false |
 
-### Checkbox Events
+Checkbox Events
+
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onChange | 勾选状态变化触发的事件 | event |
 
-### Checkbox.Group Attributes
+Checkbox.Group Attributes
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | value     | 选中的值  | []  |   -           |    false    |
 | defaultValue    | 默认选中的值  | []  |   - |     false   |
 
-### Checkbox.Group Events
+Checkbox.Group Events
+
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onChange | 勾选状态变化触发的事件 | values |
+
+
