@@ -136,9 +136,11 @@ Checkbox Attributes
 | checked     | 是否选中  | boolean  |   -           |    false    |
 | defaultChecked    | 默认选中  | boolean   |   - |     false   |
 | disabled  | 禁用    | -   | -  | -   |
-| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
-| value  | 选择框对应的值    | string   | -  | -   |
+| value  | 选择框对应的值    | string|number   | -  | -   |
 | indeterminate  | 是否是部分选中状态    | boolean | true, false | false |
+| className  | 追加类名    | string | string |  |
+| style  | 自定义样式   | React.CSSProperties |  -|  -|
+| id  | 方便外部带有for属性的label标签控制当前checkbox  | string |  -|  -|
 
 Checkbox Events
 
@@ -152,6 +154,9 @@ Checkbox.Group Attributes
 |---------- |-------- |---------- |-------------  |-------- |
 | value     | 选中的值  | []  |   -           |    false    |
 | defaultValue    | 默认选中的值  | []  |   - |     false   |
+| disabled  | 整组禁用    | -   | -  | false  |
+| className  | 追加类名    | string | string |  |
+| style  | 自定义样式   | React.CSSProperties |  -|  -|
 
 Checkbox.Group Events
 

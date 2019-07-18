@@ -6,8 +6,12 @@
   }
 }
 
+
+
 /* 一般状态 */
 @include b(checkbox) {
+  $name:selector-append($--namespace, $--block-separator + 'checkbox');
+
   display: inline-block;
   position: relative;
   padding-right: $base-padding-xs;
@@ -17,9 +21,11 @@
   outline: none;
   cursor: pointer;
 
+ 
+
   /* 选中状态 */
-  &.is-checked {
-    .zw-checkbox__inner {
+  &-checked {
+    .#{$name}__inner {
       border-color: $base-theme-info;
       background-color: $base-theme-info;
 
@@ -31,33 +37,40 @@
   }
 
   /* 未全部选中状态 */
-  &.is-indeterminate {
-    .zw-checkbox__inner {
-      border-color: $base-theme-info;
-      background-color: $base-theme-info;
+  &-indeterminate {
+    .#{$name}__inner {
+      border-color: #bcbcbc;
+      background-color: $base-color-white;
 
       &:after {
-        transform: rotate(90deg) translate(1px, -1px);
-        width: 0;
+        transform: rotate(90deg) translate(2px,1px);
+        width: 6px;
+        height: 6px;
+        border: 0px;
+        background-color: $base-theme-info;
       }
     }
   }
 
   /* 禁用状态 */
-  &.is-disabled {
-    .zw-checkbox__inner {
+  &-wrapper-disabled,&-disabled {
+    color:rgba(0,0,0,0.25);
+    cursor: not-allowed;
+    .#{$name}__inner {
       border-color: #d9d9d9;
       background-color: #f3f3f3;
       cursor: not-allowed;
-
+  
       &:after {
         border-color: #ccc;
       }
     }
+    
   }
+  
 
-  &:not(.is-disabled):hover {
-    .zw-checkbox__inner {
+  &:not(&-disabled):hover {
+    .#{$name}__inner {
       border-color: $base-theme-info;
     }
   }
@@ -69,8 +82,8 @@
     display: inline-block;
     width: 14px;
     height: 14px;
-    border: 1px solid #bcbcbc;
-    border-radius: 3px;
+    border: 1px solid rgba(188,188,188,1);
+    border-radius: 2px;
     background-color: #fff;
     transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
 
@@ -97,6 +110,7 @@
   }
 
   & + span {
-    margin-left: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 }

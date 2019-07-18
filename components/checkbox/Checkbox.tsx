@@ -47,29 +47,39 @@ class Checkbox extends Component<PropsType, any> {
       className,
       children,
       style,
+      id,
       indeterminate,
+      disabled,
     } = this.props;
-    const disabled = 'disabled' in this.props || isDisabled;
-    const cls = classnames(prefixCls, className, {
-      'is-checked': checked,
-      'is-disabled': disabled,
-      'is-indeterminate': checked && indeterminate,
+    const defualtDisabled = disabled || isDisabled;
+    const checkboxWrapperClass = classnames(className, {
+      [`${prefixCls}-wrapper`]: true,
+      [`${prefixCls}-wrapper-checked`]: checked,
+      [`${prefixCls}-wrapper-disabled`]: defualtDisabled,
+      [`${prefixCls}-wrapper-indeterminate`]: indeterminate,
+    });
+
+    const checkboxClass = classnames(prefixCls, {
+      [`${prefixCls}-disabled`]: defualtDisabled,
+      [`${prefixCls}-checked`]: checked,
+      [`${prefixCls}-indeterminate`]: indeterminate,
     });
 
     return (
-      <label style={style}>
-        <span className={cls}>
+      <label className={checkboxWrapperClass} style={style}>
+        <span className={checkboxClass}>
           <input
             className={`${prefixCls}__input`}
             type="checkbox"
             value={value}
             checked={checked}
             disabled={disabled}
+            id={id}
             onChange={e => this._onClick(e)}
           />
           <span className={`${prefixCls}__inner`} />
         </span>
-        {children}
+        {children !== undefined && <span>{children}</span>}
       </label>
     );
   }
