@@ -43,7 +43,7 @@ module.exports = {
     form: [
       {
         name: 'Radio',
-        module: () => import('@/components/radio/radio.md'),
+        module: () => import('@/components/radio/demo.md'),
       },
       {
         name: 'Checkbox',
