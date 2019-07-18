@@ -5,7 +5,7 @@ import PropsType from './PropsType';
 
 class Radio extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'za-radio',
+    prefixCls: 'zw-radio',
     defaultChecked: false,
     disabled: false,
     onChange: () => {},
@@ -48,9 +48,7 @@ class Radio extends Component<PropsType, any> {
 
   render() {
     const { checked } = this.state;
-    const {
-      prefixCls, value, disabled, className, children,
-    } = this.props;
+    const { prefixCls, value, disabled, className, children } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -59,20 +57,26 @@ class Radio extends Component<PropsType, any> {
       [className!]: !!className,
     });
 
+    const inputCls = classnames({
+      [`${prefixCls}__input`]: true,
+    });
+
+    const innerCls = classnames({
+      [`${prefixCls}__inner`]: true,
+    });
+
     return (
-      <label className={`${prefixCls}__wrapper`}>
-        <span className={cls}>
-          <input
-            className="za-radio__input"
-            type="radio"
-            value={value}
-            checked={checked}
-            disabled={disabled}
-            onChange={e => this.onClick(e)}
-          />
-          <span className="za-radio__inner" />
-          {children}
-        </span>
+      <label className={cls}>
+        <input
+          className={inputCls}
+          type="radio"
+          value={value}
+          checked={checked}
+          disabled={disabled}
+          onChange={e => this.onClick(e)}
+        />
+        <span className={innerCls} />
+        {children}
       </label>
     );
   }

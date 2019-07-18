@@ -5,7 +5,7 @@ import { GroupProps } from './PropsType';
 
 class RadioGroup extends Component<GroupProps> {
   static defaultProps = {
-    prefixCls: 'za-radio-group',
+    prefixCls: 'zw-radio-group',
     onChange: () => {},
   };
 

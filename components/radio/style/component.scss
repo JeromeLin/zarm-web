@@ -10,41 +10,41 @@
     }
   }
 
+  @include m(md) {
+    @include b(radio-button) {
+      height: var(--button-height-md);
+      line-height: var(--button-height-md);
+      font-size: var(--button-font-size-md);
+      padding: 0 8;
+    }
+  }
+
   @include m(sm) {
     @include b(radio-button) {
       height: var(--button-height-sm);
-      line-height: var(--button-height-sm) - 2;
+      line-height: var(--button-height-sm);
       font-size: var(--button-font-size-sm);
       padding: 0 8;
     }
   }
 
   @include b(radio) {
-    @include e(wrapper) {
-      margin-right: 16;
-    }
+    // @include e(wrapper) {
+    margin-right: 16;
+    // }
   }
 
   @include b(radio-button) {
-    @include e(wrapper) {
-      &:first-child {
-        @include b(radio-button) {
-          border-radius: var(--radius-md) 0 0 var(--radius-md);
-          border-left: var(--radius-md);
-        }
-      }
+    &:first-child {
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
 
-      &:last-child {
-        @include b(radio-button) {
-          border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
-      }
+    &:last-child {
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
 
-      &:first-child:last-child {
-        @include b(radio-button) {
-          border-radius: var(--radius-md);
-        }
-      }
+    &:first-child:last-child {
+      border-radius: var(--radius-md);
     }
   }
 }
@@ -70,10 +70,9 @@
         &:after {
           transform: scale(1);
           opacity: 1;
-          transition:
-            transform .3s cubic-bezier(.12, .4, .29, 1.46),
-            opacity .3s cubic-bezier(.78, .14, .15, .86),
-            background-color .3s cubic-bezier(.78, .14, .15, .86);
+          transition: transform 0.3s cubic-bezier(0.12, 0.4, 0.29, 1.46),
+            opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+            background-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
         }
       }
     }
@@ -115,7 +114,8 @@
     border: 1px solid var(--button-default-border);
     border-radius: 14px;
     background-color: var(--color-white);
-    transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
+    transition: border-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+      background-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
 
     &:after {
       position: absolute;
@@ -131,10 +131,8 @@
       background-color: var(--theme-primary);
       opacity: 0;
       transform: scale(0);
-      transition:
-        transform .3s cubic-bezier(.78, .14, .15, .86),
-        opacity .3s cubic-bezier(.78, .14, .15, .86),
-        background-color .3s cubic-bezier(.78, .14, .15, .86);
+      transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+        background-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
     }
   }
 
@@ -152,17 +150,20 @@
 @include b(radio-button) {
   margin: 0;
   height: var(--button-height-md);
-  line-height: var(--button-height-md) - 2px;
+  line-height: var(--button-height-md) - 2;
   color: var(--color-text-caption);
   display: inline-block;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid var(--radius-md);
+  border: 1px solid var(--button-default-border);
   border-left: 0;
   background: var(--color-white);
   padding: 0 16 - 1px;
   position: relative;
 
+  &:first-child {
+    border-left: 1px solid var(--button-default-border);
+  }
   &:not(.is-disabled):not(.is-checked):hover {
     position: relative;
     color: var(--theme-primary);
@@ -172,12 +173,19 @@
     position: relative;
     color: var(--color-white);
     background: var(--theme-primary);
+    border-color: var(--theme-primary);
   }
 
   &.is-disabled {
     cursor: not-allowed;
     color: var(--button-radio-btn-disabled-color);
     background: var(--button-radio-btn-disabled-bg);
+  }
+
+  @include e(input) {
+    position: absolute;
+    left: 0;
+    opacity: 0;
   }
 
   @include b(radio) {
