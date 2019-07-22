@@ -62,10 +62,45 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 无底色按钮样式/有底色按钮样式
+```jsx
+
+import { Radio } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      radioValue: ''
+    }
+  }
+  render() {
+    return (
+      <div>
+        <Radio.Group  style={{'marginRight':'15px'}} ghost>
+          <Radio.Button value="选项一">选项一</Radio.Button>
+          <Radio.Button value="选项二">选项二</Radio.Button>
+          <Radio.Button value="选项三">选项三</Radio.Button>
+        </Radio.Group>
+        <Radio.Group  style={{'marginRight':'15px'}} ghost>
+          <Radio.Button value="选项一">选项一</Radio.Button>
+          <Radio.Button disabled value="选项二">选项二</Radio.Button>
+          <Radio.Button value="选项三">选项三</Radio.Button>
+        </Radio.Group>
+        <Radio.Group >
+          <Radio.Button value="选项一">选项一</Radio.Button>
+          <Radio.Button value="选项二">选项二</Radio.Button>
+          <Radio.Button value="选项三">选项三</Radio.Button>
+        </Radio.Group>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## 三种大小
-
-
-
 
 ```jsx
 

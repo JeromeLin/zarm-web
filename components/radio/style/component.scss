@@ -1,52 +1,3 @@
-@include b(radio-group) {
-  display: inline-block;
-
-  @include m(lg) {
-    @include b(radio-button) {
-      height: var(--button-height-xl);
-      line-height: var(--button-height-xl);
-      font-size: var(--button-font-size-lg);
-      padding: 0 16;
-    }
-  }
-
-  @include m(md) {
-    @include b(radio-button) {
-      height: var(--button-height-md);
-      line-height: var(--button-height-md);
-      font-size: var(--button-font-size-md);
-      padding: 0 8;
-    }
-  }
-
-  @include m(sm) {
-    @include b(radio-button) {
-      height: var(--button-height-sm);
-      line-height: var(--button-height-sm);
-      font-size: var(--button-font-size-sm);
-      padding: 0 8;
-    }
-  }
-
-  @include b(radio) {
-    margin-right: 16;
-  }
-
-  @include b(radio-button) {
-    &:first-child {
-      border-radius: var(--radius-md) 0 0 var(--radius-md);
-    }
-
-    &:last-child {
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    }
-
-    &:first-child:last-child {
-      border-radius: var(--radius-md);
-    }
-  }
-}
-
 /* 一般状态 */
 @include b(radio) {
   display: inline-block;
@@ -148,7 +99,7 @@
 @include b(radio-button) {
   margin: 0;
   height: var(--button-height-md);
-  line-height: var(--button-height-md) - 2;
+  line-height: var(--button-height-md);
   color: var(--color-text-caption);
   display: inline-block;
   transition: all 0.3s ease;
@@ -162,6 +113,7 @@
   &:first-child {
     border-left: 1px solid var(--button-default-border);
   }
+
   &:not(.is-disabled):not(.is-checked):hover {
     position: relative;
     color: var(--theme-primary);
@@ -172,6 +124,11 @@
     color: var(--color-white);
     background: var(--theme-primary);
     border-color: var(--theme-primary);
+    box-shadow: -1px 0 0 0 var(--theme-primary);
+
+    &:first-child { 
+      box-shadow: none;
+    }
   }
 
   &.is-disabled {
@@ -196,3 +153,68 @@
     }
   }
 }
+
+@include b(radio-group) {
+  display: inline-block;
+
+  @include m(lg) {
+    @include b(radio-button) {
+      height: var(--button-height-xl);
+      line-height: var(--button-height-xl);
+      font-size: var(--button-font-size-lg);
+      padding: 0 16 - 1px;
+    }
+  }
+
+  @include m(md) {
+    @include b(radio-button) {
+      height: var(--button-height-md);
+      line-height: var(--button-height-md);
+      font-size: var(--button-font-size-md);
+      padding: 0 8 - 1px;
+    }
+  }
+
+  @include m(sm) {
+    @include b(radio-button) {
+      height: var(--button-height-sm);
+      line-height: var(--button-height-sm);
+      font-size: var(--button-font-size-sm);
+      padding: 0 8 - 1px;
+    }
+  }
+
+  @include m(block) {
+    display: block;
+    @include b(radio-button) {}
+  }
+
+  @include m(ghost) {
+    color: var(--theme-primary);
+    @include b(radio-button) {
+      &.is-checked {
+        color: var(--theme-primary);
+        background-color: transparent;
+      }
+    }
+  }
+
+  @include b(radio) {
+    margin-right: 16;
+  }
+
+  @include b(radio-button) {
+    &:first-child {
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
+
+    &:last-child {
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    &:first-child:last-child {
+      border-radius: var(--radius-md);
+    }
+  }
+}
+

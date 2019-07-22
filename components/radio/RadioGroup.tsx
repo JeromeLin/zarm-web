@@ -49,10 +49,12 @@ class RadioGroup extends Component<GroupProps> {
   }
 
   render() {
-    const { prefixCls, size, children } = this.props;
+    const { prefixCls, size, children, block, style, ghost } = this.props;
     const { value } = this.state as { value?: string };
     const cls = classnames(prefixCls, {
       [`${prefixCls}--${size}`]: size,
+      [`${prefixCls}--block`]: !!block,
+      [`${prefixCls}--ghost`]: !!ghost,
     });
 
     const childrenNode = React.Children.map(children, radio => (
@@ -64,7 +66,7 @@ class RadioGroup extends Component<GroupProps> {
       />
     ));
 
-    return <div className={cls}>{childrenNode}</div>;
+    return <div className={cls} style={style}>{childrenNode}</div>;
   }
 }
 

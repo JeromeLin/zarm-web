@@ -1,8 +1,13 @@
+import { MouseEvent, CSSProperties } from 'react';
 export interface GroupProps {
   prefixCls?: string;
   value?: boolean;
   defaultValue?: boolean;
-  size?: 'lg' | 'sm';
+  size?: 'lg' | 'sm' | 'md';
+  shape?: 'radius' | 'rect' | 'round';
+  block?: boolean;
+  ghost?: boolean;
+  style?: CSSProperties;
   onChange: (e: any) => void;
 }
 
@@ -14,6 +19,6 @@ export default interface PropsType {
   disabled?: boolean;
   value?: string;
   id?: string;
-  style?: object;
-  onChange: (e: any) => void;
+  style?: CSSProperties;
+  onChange: (e: MouseEvent) => void;
 }
