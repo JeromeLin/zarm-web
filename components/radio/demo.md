@@ -15,6 +15,7 @@ class Demo extends React.Component {
       <div className="za-row">
         <Radio
           value="a"
+          style={{'marginRight':'15px'}}
           onChange={(e) => this.onChange(e)}
         >
           <span className="content">未选中</span>
@@ -23,12 +24,14 @@ class Demo extends React.Component {
         <Radio
           value="a"
           onChange={(e) => this.onChange(e)}
+          style={{'marginRight':'15px'}}
         >
           <span className="content">hover</span>
         </Radio>
 
          <Radio
           value="a"
+          style={{'marginRight':'15px'}}
           onChange={(e) => this.onChange(e)}
         >
           <span className="content">已选中</span>
@@ -36,7 +39,8 @@ class Demo extends React.Component {
 
          <Radio
           value="a"
-          disabled='disabled'
+          disabled= {true}
+          style={{'marginRight':'15px'}}
           onChange={(e) => this.onChange(e)}
         >
           <span className="content" >禁用</span>
@@ -45,7 +49,7 @@ class Demo extends React.Component {
          <Radio
           value="a"
           checked={true}
-          disabled='disabled'
+          disabled={true}
           onChange={(e) => this.onChange(e)}
         >
           <span className="content" >禁用</span>
@@ -109,15 +113,27 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'default' | 设置主题，可选值为 `default`、`primary`、`danger` |
-| size | string | 'md' | 设置大小，可选值为 `lg`、`md`、`sm`、`xs` |
-| shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round`、`circle` |
-| block | boolean | false | 是否块级元素 |
-| ghost | boolean | false | 是否幽灵按钮 |
-| disabled | boolean | false | 是否禁用 |
-| loading | boolean | false | 是否加载中状态 |
-| icon | ReactNode | - | 设置图标 |
-| onClick | MouseEventHandler&lt;HTMLAnchorElement&gt; \| MouseEventHandler&lt;HTMLButtonElement&gt; | - | 点击后触发的回调函数 |
-| htmlType | string | 'button' | 设置`button`原生的`type`值，可选值为 `button`、`submit`、`reset` |
-| href | string | - | 点击跳转的地址，指定此属性`button`的行为和`a`链接一致 |
-| target | string | - | 相当于 a 链接的 target 属性，href 存在时生效 |
+| value | number，string | - | 值 |
+| checked | boolean | false | 选中值 |
+| disabled | boolean | false | 是否禁用|
+| onChange | (checked: boolean) => void | - | 值变化时触发的回调函数 |
+| id | string | - | 方便外部带有for属性的label标签控制当前radio |
+| style | boolean | React.CSSProperties | 自定义样式 |
+| className | string | - | 追加类名 |
+| defaultChecked | boolean | false | 初始选中值|
+
+>>>
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| value | number ， string | - | 选中值 |
+| size | `lg`、`md`、`sm` | 'md' | 大小，只对按钮类型生效  |
+| block | boolean | false | 是否为块级元素，type为button类型时有效 |
+| disabled | boolean | false | 是否禁用|
+| onChange | (checked: boolean) => void | - | 值变化时触发的回调函数 |
+| style | boolean | React.CSSProperties | 自定义样式 |
+| className | string | - | 追加类名 |
+| defaultValue | number ， string | - | 初始选中值|
+| type | 'button' ， 'normal' | 'normal' | 显示类型|
+| ghost | boolean | false | 按钮类型是否为幽灵按钮|
+| shape | 'radius' , 'rect' , 'round' | radius | 形状。 type为button类型时有效|

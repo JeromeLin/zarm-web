@@ -13,5 +13,7 @@ export default interface PropsType {
   defaultChecked?: boolean;
   disabled?: boolean;
   value?: string;
+  id?: string;
+  style?: object;
   onChange: (e: any) => void;
 }

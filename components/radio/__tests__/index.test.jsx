@@ -7,12 +7,8 @@ describe('Radio', () => {
   it('renders normal Radio correctly', () => {
     const wrapper = render(
       <div>
-        <Radio
-          value="a"
-        >
-          选择
-        </Radio>
-      </div>
+        <Radio value="a">选择</Radio>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -21,13 +17,10 @@ describe('Radio', () => {
   it('renders disabled Radio correctly', () => {
     const wrapper = render(
       <div>
-        <Radio
-          disabled
-          value="a"
-        >
+        <Radio disabled value="a">
           选择
         </Radio>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -36,12 +29,8 @@ describe('Radio', () => {
   it('renders checked Radio correctly', () => {
     const wrapper = render(
       <div>
-        <Radio
-          checked
-        >
-          选择
-        </Radio>
-      </div>
+        <Radio checked>选择</Radio>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -49,14 +38,12 @@ describe('Radio', () => {
 
   it('renders Radio Group correctly', () => {
     const wrapper = render(
-      <Radio.Group
-        value="a"
-      >
+      <Radio.Group value="a">
         <Radio value="a">A</Radio>
         <Radio value="b">B</Radio>
         <Radio value="c">C</Radio>
         <Radio value="d">D</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -65,34 +52,30 @@ describe('Radio', () => {
   it('behaves correctly when changing radio status', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Radio
-        value="a"
-        onChange={onChange}
-      >
+      <Radio value="a" onChange={onChange}>
         选择
-      </Radio>
+      </Radio>,
     );
 
-    wrapper.find('.za-radio__input').simulate('change');
+    wrapper.find('.zw-radio__input').simulate('change');
     expect(onChange).toBeCalled();
   });
 
   it('behaves correctly when choosing from Radio Group', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Radio.Group
-        value="a"
-        onChange={onChange}
-      >
+      <Radio.Group value="a" onChange={onChange}>
         <Radio value="a">A</Radio>
         <Radio value="b">B</Radio>
         <Radio value="c">C</Radio>
         <Radio value="d">D</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
 
-    wrapper.find('.za-radio__input').first().simulate('change');
+    wrapper
+      .find('.zw-radio__input')
+      .first()
+      .simulate('change');
     expect(onChange).toBeCalled();
   });
 });
-

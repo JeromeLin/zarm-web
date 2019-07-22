@@ -48,7 +48,7 @@ class Radio extends Component<PropsType, any> {
 
   render() {
     const { checked } = this.state;
-    const { prefixCls, value, disabled, className, children } = this.props;
+    const { prefixCls, value, disabled, className, children, style, id } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -66,13 +66,14 @@ class Radio extends Component<PropsType, any> {
     });
 
     return (
-      <label className={cls}>
+      <label className={cls} style={style}>
         <input
           className={inputCls}
           type="radio"
           value={value}
           checked={checked}
           disabled={disabled}
+          id={id}
           onChange={e => this.onClick(e)}
         />
         <span className={innerCls} />

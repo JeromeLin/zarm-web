@@ -29,9 +29,7 @@
   }
 
   @include b(radio) {
-    // @include e(wrapper) {
     margin-right: 16;
-    // }
   }
 
   @include b(radio-button) {
