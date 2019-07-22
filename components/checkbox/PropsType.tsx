@@ -1,11 +1,11 @@
 export interface GroupProps {
   prefixCls?: string;
-  value?: string;
-  defaultValue?: string;
+  value?: string[] | number[];
+  defaultValue?: string[] | number[];
   className?: string;
-  style?: object;
+  style?: React.CSSProperties;
   disabled?: boolean;
-  onChange: (e: any) => void;
+  onChange: (event: React.SyntheticEvent<HTMLFormElement>) => void;
 }
 
 export default interface PropsType {
@@ -14,10 +14,10 @@ export default interface PropsType {
   checked?: boolean;
   defaultChecked?: boolean;
   className?: string;
-  style?: object;
+  style?: React.CSSProperties;
   id?: string;
   disabled?: boolean;
   isDisabled?: boolean;
   indeterminate?: boolean;
-  onChange: (e: any) => void;
+  onChange: (event: React.SyntheticEvent<HTMLFormElement>) => void;
 }

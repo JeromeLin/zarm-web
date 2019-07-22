@@ -20,7 +20,6 @@ class CheckboxGroup extends Component<GroupProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if (
       'defaultValue' in nextProps
       || 'value' in nextProps
@@ -45,8 +44,6 @@ class CheckboxGroup extends Component<GroupProps, any> {
     } else {
       value.splice(index, 1);
     }
-
-    console.log(value);
 
     this.setState({
       value,
