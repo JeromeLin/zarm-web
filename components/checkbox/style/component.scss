@@ -9,7 +9,6 @@
 @include b(checkbox) {
   display: inline-block;
   position: relative;
-  padding-right: $base-padding-xs;
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
@@ -111,8 +110,8 @@
   }
 
   & + span {
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 8px;
+    padding-left: 8px;
     font-size: 14px;
     font-family: PingFangSC-Regular;
     font-weight: 400;
