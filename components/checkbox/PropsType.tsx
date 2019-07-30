@@ -3,6 +3,7 @@ export interface GroupProps {
   value?: string;
   defaultValue?: string;
   onChange: (e: any) => void;
+  disabled?: boolean;
 }
 
 export default interface PropsType {

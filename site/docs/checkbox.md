@@ -83,6 +83,43 @@
 ```
 :::
 
+### 禁用一组多项选择
+
+将一组的可选项都置于不可勾选状态。
+
+:::demo 可以使用`disabled`属性来定义是否可用。
+
+```js
+  constructor(props) {
+      super(props);
+      this.state = {
+        checkboxValue: []
+      }
+    }
+    render() {
+      return (
+        <div>
+          <div style={{marginBottom: 8}}>选择了：{this.state.checkboxValue.join(',')}</div>
+          <Checkbox.Group
+            disabled
+            value={this.state.checkboxValue}
+            onChange={(values) => {
+              this.setState({
+                checkboxValue: values
+              });
+            }}
+          >
+            <Checkbox value="a">A</Checkbox>
+            <Checkbox value="b">B</Checkbox>
+            <Checkbox value="c">C</Checkbox>
+            <Checkbox value="d">D</Checkbox>
+          </Checkbox.Group>
+        </div>
+      )
+    }
+```
+:::
+
 ### 部分选中状态
 
 未全部选中，即部分选中状态。
@@ -129,6 +166,7 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | value     | 选中的值  | []  |   -           |    false    |
 | defaultValue    | 默认选中的值  | []  |   - |     false   |
+| disabled  | 禁用    | -   | -  | false   |
 
 ### Checkbox.Group Events
 | 事件名称 | 说明 | 回调参数 |

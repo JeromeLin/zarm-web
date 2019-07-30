@@ -38,7 +38,7 @@ class Checkbox extends Component<PropsType, any> {
   }
 
   render() {
-    const { props } = this;
+    const { props, state: { checked } } = this;
     const {
       prefixCls,
       value,
@@ -51,9 +51,9 @@ class Checkbox extends Component<PropsType, any> {
     const disabled = 'disabled' in props || isDisabled;
     const cls = classnames({
       [prefixCls!]: true,
-      'is-checked': this.state.checked,
+      'is-checked': checked,
       'is-disabled': disabled,
-      'is-indeterminate': this.state.checked && indeterminate,
+      'is-indeterminate': checked && indeterminate,
       [className!]: !!className,
     });
 

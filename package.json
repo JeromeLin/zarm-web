@@ -58,6 +58,7 @@
     "css-animation": "^1.2.5",
     "hoist-non-react-statics": "^3.3.0",
     "normalize.css": "8.0.1",
+    "precommit": "^1.2.2",
     "rc-animate": "^3.0.0-rc.5",
     "tslib": "^1.9.3"
   },

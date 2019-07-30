@@ -45,7 +45,7 @@ describe('Checkbox', () => {
 
   it('renders disabled CheckboxGroup correctly', () => {
     const wrapper = render(
-      <Checkbox.Group>
+      <Checkbox.Group disabled>
         <Checkbox value="a">A</Checkbox>
         <Checkbox value="b">B</Checkbox>
         <Checkbox value="c">C</Checkbox>
