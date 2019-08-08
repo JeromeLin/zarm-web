@@ -42,6 +42,7 @@ class Layout extends Component<PropsType, any> {
 }
 
 const genSubComponent = (props: PropsType) => {
+  // eslint-disable-next-line react/no-multi-comp
   return class SubComponent extends Component<PropsType, any> {
     render() {
       const { prefixCls } = props;

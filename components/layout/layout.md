@@ -1,13 +1,17 @@
-## Layout 布局
+# Layout 布局
 
 页面整体布局组件。
 
-### 基础用法
+
+
+## 基础用法
 
 上中下布局。
 
-:::demo
-```js
+```jsx
+import { Layout } from 'zarm-web';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -32,15 +36,19 @@
       </div>
     )
   }
-```
-:::
+}
 
-### 带侧边
+ReactDOM.render(<Demo />, mountNode)
+```
+
+## 带侧边
 
 上中下布局+侧边。
 
-:::demo
-```js
+```jsx
+import { Layout } from 'zarm-web';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -72,49 +80,17 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-:::demo
-```js
-  render() {
-    const layoutStyle = {
-      color: '#fff',
-      textAlign: 'center'
-    };
-    const contentStyle = {
-      height: 140,
-      background: '#001529',
-      opacity: 0.4,
-      lineHeight: '140px',
-    };
-    const siderStyle = {
-      opacity: 0.8,
-      lineHeight: '140px',
-    }
-    const footerStyle = {
-      background: '#001529',
-    }
-    return (
-      <div>
-        <Layout style={layoutStyle}>
-          <Layout.Header>Header</Layout.Header>
-          <Layout>
-            <Layout.Content style={contentStyle}>Content</Layout.Content>
-            <Layout.Sider style={siderStyle}>Sider</Layout.Sider>
-          </Layout>
-          <Layout.Footer style={footerStyle}>Footer</Layout.Footer>
-        </Layout>
-      </div>
-    )
-  }
-```
-:::
+## 侧边布局
 
-### 侧边布局
+```jsx
+import { Layout } from 'zarm-web';
 
-:::demo
-```js
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -142,13 +118,17 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode)
 ```
-:::
 
-### 可折叠侧边
+## 可折叠侧边
 
-:::demo
-```js
+```jsx
+import { Layout } from 'zarm-web';
+
+class Demo extends React.Component {
   render() {
     const layoutStyle = {
       color: '#fff',
@@ -181,10 +161,13 @@
       </div>
     )
   }
-```
-:::
+}
 
-### Layout Attributes
+ReactDOM.render(<Demo />, mountNode)
+```
+
+## API
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | style     | 自定义样式   | object  |   -     |    -     |
@@ -192,7 +175,8 @@
 
 Header,Content,Footer组件属性同Layout。
 
-### Sider Attributes
+Sider Attributes
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | collapsible     | 是否可折叠 | boolean  |   -   |    False   |
@@ -201,7 +185,7 @@ Header,Content,Footer组件属性同Layout。
 | width  | 未折叠时候的宽度 | numer  |   -     |    236  |
 | trigger  | 自定义折叠触发的trigger，设为null隐藏 | string/ReactNode  |   -     |    -  |
 
-### Sider Events
+Sider Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onCollapse | 折叠事件发生时触发 | collapsed |

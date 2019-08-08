@@ -46,46 +46,22 @@ class Select extends Component<PropsType, StateProps> {
 
   static Multiple: typeof SelectMultiple = SelectMultiple;
 
-  inputBox!: HTMLInputElement;
-
-  inputWithTags!: InputWithTags;
-
-  oldInputDivHeight: number = 0;
-
-  constructor(props: PropsType) {
-    super(props);
-    const value = props.value === undefined ? props.defaultValue : props.value;
-    const state: StateProps = {
-      value: String(value),
-      dropdown: false,
-      searchValue: '',
-      showPlacehoder: true,
-      optionMap: {},
-      optionData: [],
-    };
-
-    if (props.multiple) {
-      if (!Array.isArray(value)) {
-        state.value = [String(value)];
-      } else {
-        state.value = value.map(val => String(val));
-      }
-    } else {
-      state.value = String(value);
+  static mapEmptyStringToEmptyValue(values) {
+    if (Array.isArray(values)) {
+      return values.map((value) => {
+        if (value === EMPTY_STRING) {
+          return EMPTY_STRING_VALUE;
+        }
+        return value;
+      });
+    } if (values === EMPTY_STRING) {
+      return EMPTY_STRING_VALUE;
     }
 
-    state.value = this.mapEmptyStringToEmptyValue(state.value);
-    const [optionMap, optionData] = this.getOptionMap(this.props.children);
-    state.optionMap = optionMap;
-    state.optionData = optionData;
-    this.state = state;
+    return values;
   }
 
-  componentDidMount() {
-    this.bindOuterHandlers();
-  }
-
-  getOptionMap(options: ReactNode): [{}, Array<any>] {
+  static getOptionMap(options: ReactNode): [{}, Array<any>] {
     if (!Array.isArray(options)) {
       options = [options];
     }
@@ -93,9 +69,9 @@ class Select extends Component<PropsType, StateProps> {
     const optionData: Array<OptionDataProps> = [];
     const optionMap: { [x: string]: any } = {};
 
-    React.Children.map(options, (option) => {
+    React.Children.map(options, (option: any) => {
       if (option && typeof option === 'object' && option.type) {
-        const value = this.mapEmptyStringToEmptyValue(option.props.value);
+        const value = Select.mapEmptyStringToEmptyValue(option.props.value);
         if (option.props && value) {
           // handle optionMap
           optionMap[value] = option;
@@ -113,8 +89,58 @@ class Select extends Component<PropsType, StateProps> {
     return [optionMap, optionData];
   }
 
+  static mapEmptyValueToEmptyString(selected) {
+    return selected.map((select) => {
+      if (select === EMPTY_STRING_VALUE) {
+        return EMPTY_STRING;
+      }
+      return select;
+    });
+  }
+
+  inputBox!: HTMLInputElement;
+
+  inputWithTags!: InputWithTags;
+
+  oldInputDivHeight: number = 0;
+
+  constructor(props: PropsType) {
+    super(props);
+    const value = props.value === undefined ? props.defaultValue : props.value;
+    const state: StateProps = {
+      value: String(value),
+      dropdown: false,
+      searchValue: '',
+      showPlacehoder: true,
+      optionMap: {},
+      optionData: [],
+    };
+    const { children } = this.props;
+
+    if (props.multiple) {
+      if (!Array.isArray(value)) {
+        state.value = [String(value)];
+      } else {
+        state.value = value.map(val => String(val));
+      }
+    } else {
+      state.value = String(value);
+    }
+
+    state.value = Select.mapEmptyStringToEmptyValue(state.value);
+    const [optionMap, optionData] = Select.getOptionMap(children);
+    state.optionMap = optionMap;
+    state.optionData = optionData;
+    this.state = state;
+  }
+
+  componentDidMount() {
+    this.bindOuterHandlers();
+  }
+
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || nextProps.defaultValue !== this.props.defaultValue) {
+    const { defaultValue, children } = this.props;
+    if ('value' in nextProps || nextProps.defaultValue !== defaultValue) {
       let value = nextProps.value === undefined ? nextProps.defaultValue : nextProps.value;
       if (nextProps.multiple) {
         if (!Array.isArray(value)) {
@@ -126,11 +152,11 @@ class Select extends Component<PropsType, StateProps> {
         value = String(value);
       }
       this.setState({
-        value: this.mapEmptyStringToEmptyValue(value),
+        value: Select.mapEmptyStringToEmptyValue(value),
       });
     }
-    if (nextProps.children !== this.props.children) {
-      const [optionMap, optionData] = this.getOptionMap(nextProps.children);
+    if (nextProps.children !== children) {
+      const [optionMap, optionData] = Select.getOptionMap(nextProps.children);
       this.setState({
         optionData,
         optionMap,
@@ -143,6 +169,9 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   onOptionChange(_: React.MouseEvent, props, index) {
+    const { multiple, onChange } = this.props;
+    const { handleFieldChange } = this.context;
+    const { optionMap, optionData, value: stateValue } = this.state;
     if ('disabled' in props || props.isDisabled) {
       return;
     }
@@ -153,13 +182,13 @@ class Select extends Component<PropsType, StateProps> {
       this.inputBox.textContent = '';
     }
     if (!isEmpty(this.context)) {
-      this.context.handleFieldChange();
+      handleFieldChange();
     }
 
     const value = String(props.value);
 
-    if (this.props.multiple) {
-      const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
+    if (multiple) {
+      const selected = Select.mapEmptyValueToEmptyString((stateValue as Array<string>).slice());
       const position = selected.indexOf(value);
       if (position === -1) {
         selected.push(value);
@@ -168,15 +197,15 @@ class Select extends Component<PropsType, StateProps> {
       }
       const selectedData = selected.map((select) => {
         const selectValue = select || EMPTY_STRING_VALUE;
-        const vdom = this.state.optionMap[selectValue];
+        const vdom = optionMap[selectValue];
         const text = vdom ? vdom.props.children : '';
-        const index = this.state.optionData.findIndex(elem => String(elem.value) === String(selectValue));
-        return { text, value: select, index };
+        const indexs = optionData.findIndex(elem => String(elem.value) === String(selectValue));
+        return { text, value: select, indexs };
       });
       this.setState({
-        value: this.mapEmptyStringToEmptyValue(selected),
+        value: Select.mapEmptyStringToEmptyValue(selected),
       }, () => {
-        this.props.onChange(selected, selectedData);
+        onChange(selected, selectedData);
       });
       return;
     }
@@ -188,15 +217,11 @@ class Select extends Component<PropsType, StateProps> {
     };
 
     this.setState({
-      value: this.mapEmptyStringToEmptyValue(value),
+      value: Select.mapEmptyStringToEmptyValue(value),
     }, () => {
-      this.setDropdown(false, () => this.props.onChange(selected));
+      this.setDropdown(false, () => onChange(selected));
     });
   }
-
-  inputWithTagsRef = (e) => {
-    this.inputWithTags = e;
-  };
 
   setDropdown(isOpen, callback?) {
     this.setState(
@@ -212,46 +237,12 @@ class Select extends Component<PropsType, StateProps> {
     );
   }
 
-  mapEmptyStringToEmptyValue(values) {
-    if (Array.isArray(values)) {
-      return values.map((value) => {
-        if (value === EMPTY_STRING) {
-          return EMPTY_STRING_VALUE;
-        }
-        return value;
-      });
-    } if (values === EMPTY_STRING) {
-      return EMPTY_STRING_VALUE;
-    }
-
-    return values;
-  }
-
-  mapEmptyValueToEmptyString(selected) {
-    return selected.map((select) => {
-      if (select === EMPTY_STRING_VALUE) {
-        return EMPTY_STRING;
-      }
-      return select;
-    });
-  }
-
-  handleKeyup(e) {
-    if (this.state.dropdown === true && e.keyCode === 27) {
-      this.setDropdown(false);
-    }
-  }
-
-  bindOuterHandlers() {
-    Events.on(document, 'keyup', e => this.handleKeyup(e));
-  }
-
-  unbindOuterHandlers() {
-    Events.off(document, 'keyup', e => this.handleKeyup(e));
-  }
+  inputWithTagsRef = (e) => {
+    this.inputWithTags = e;
+  };
 
   onDeleteTag = (_e, _key, _value, index) => {
-    const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
+    const selected = Select.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
     selected.splice(index, 1);
     const selectedData = selected.map((select, selectIndex) => {
       const vdom = this.state.optionMap[select || EMPTY_STRING_VALUE];
@@ -279,9 +270,24 @@ class Select extends Component<PropsType, StateProps> {
     });
   };
 
+  bindOuterHandlers() {
+    Events.on(document, 'keyup', e => this.handleKeyup(e));
+  }
+
+  unbindOuterHandlers() {
+    Events.off(document, 'keyup', e => this.handleKeyup(e));
+  }
+
+
+  handleKeyup(e) {
+    const { dropdown } = this.state;
+    if (dropdown === true && e.keyCode === 27) {
+      this.setDropdown(false);
+    }
+  }
+
   render() {
-    const { props } = this;
-    const { searchValue } = this.state;
+    const { searchValue, value, optionMap, optionData, dropdown } = this.state;
     const {
       prefixCls,
       placeholder,
@@ -293,34 +299,33 @@ class Select extends Component<PropsType, StateProps> {
       getPopupContainer,
       locale,
       remoteSearch,
-    } = props;
+    } = this.props;
 
-    const disabled = 'disabled' in props;
-    const radius = 'radius' in props;
-    const search = 'search' in props;
+    const disabled = 'disabled' in this.props;
+    const radius = 'radius' in this.props;
+    const search = 'search' in this.props;
 
     const placeholderText = placeholder || locale!.placeholder;
 
     let valueText;
-    if (multiple && Array.isArray(this.state.value)) {
-      valueText = this.state.value.reduce((prev: any, item) => {
-        if (this.state.optionMap[item]) {
+    if (multiple && Array.isArray(value)) {
+      valueText = value.reduce((prev: any, item) => {
+        if (optionMap[item]) {
           prev.push({
             key: item,
-            value: this.state.optionMap[item].props.children,
+            value: optionMap[item].props.children,
           });
         }
         return prev;
       }, []);
     } else {
-      const optionProps = this.state.optionMap[this.state.value as string];
+      const optionProps = optionMap[value as string];
       if (optionProps) {
         const optionChildren = optionProps.props.children;
         Array.isArray(optionChildren) ? valueText = optionChildren.join() : valueText = optionChildren;
       }
     }
 
-    const { value } = this.state;
     const children: Array<ReactNode> = [];
     const filterCondition = (option, optionIndex: number) => {
       if (search && searchValue) {
@@ -328,7 +333,7 @@ class Select extends Component<PropsType, StateProps> {
       }  // remoteSearch会走此处逻辑
       return optionIndex > -1;
     };
-    this.state.optionData.filter(filterCondition).forEach((elem, index) => {
+    optionData.filter(filterCondition).forEach((elem, index) => {
       const checked = Array.isArray(value) ? value.indexOf(String(elem.value)) > -1 : String(elem.value) === value;
       children.push(
         <Option
@@ -358,7 +363,7 @@ class Select extends Component<PropsType, StateProps> {
       <Dropdown
         triggerBoxStyle={style}
         disabled={disabled}
-        visible={this.state.dropdown}
+        visible={dropdown}
         isRadius={radius}
         overlay={menus}
         zIndex={zIndex}
@@ -378,10 +383,10 @@ class Select extends Component<PropsType, StateProps> {
           disabled={disabled}
           ref={this.inputWithTagsRef}
           style={style}
-          searchValue={this.state.searchValue}
+          searchValue={searchValue}
           search={search}
           remoteSearch={remoteSearch}
-          active={this.state.dropdown}
+          active={dropdown}
           value={valueText}
           placeholder={placeholderText}
           onDeleteTag={this.onDeleteTag}

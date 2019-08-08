@@ -30,13 +30,14 @@ class Upload extends Component<PropsType, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { startUpload } = this.state;
     if ('startUpload' in nextProps) {
       this.setState(
         {
           startUpload: !!nextProps.startUpload,
         },
         () => {
-          if (this.state.startUpload) {
+          if (startUpload) {
             this.onUploadClick();
           }
         },
@@ -62,8 +63,9 @@ class Upload extends Component<PropsType, any> {
   // 点击上传按钮
   onUploadClick() {
     const { files } = this.upload;
+    const { uploading } = this.state;
 
-    if (files.length === 0 || this.state.uploading) {
+    if (files.length === 0 || uploading) {
       return;
     }
 
@@ -107,7 +109,7 @@ class Upload extends Component<PropsType, any> {
           let { fileNumber } = this.state;
           const uploading = false;
 
-          fileNumber--;
+          fileNumber -= 1;
 
           if (fileNumber === 0) {
             this.setState({ fileNumber, uploading });
@@ -137,17 +139,17 @@ class Upload extends Component<PropsType, any> {
   }
 
   render() {
-    const { props } = this;
     const {
-      multiple, fileExt, className, style, prefixCls,
-    } = props;
+      multiple, fileExt, className, style, prefixCls, children,
+    } = this.props;
+    const { uploading } = this.state;
 
     const cls = classnames({
       [prefixCls!]: true,
       [className!]: !!className,
     });
 
-    const children = React.Children.map(props.children, (element, index) => {
+    const childrenNode = React.Children.map(children, (element, index) => {
       let extendProps = {};
       if (typeof (element as ReactElement<any>).type !== 'string') {
         // 不是原生dom
@@ -155,11 +157,11 @@ class Upload extends Component<PropsType, any> {
           isLoading:
             'loading' in (element as ReactElement<any>).props
             || (element as ReactElement<any>).props.isLoading
-            || this.state.uploading,
+            || uploading,
           isDisabled:
             'disabled' in (element as ReactElement<any>).props
             || (element as ReactElement<any>).props.isDisabled
-            || this.state.uploading,
+            || uploading,
         };
       }
       if (index > 0) {
@@ -183,9 +185,9 @@ class Upload extends Component<PropsType, any> {
           multiple={multiple}
           accept={fileExt}
           ref={(upload) => { this.upload = upload; }}
-          onChange={_ => this.onSelect()}
+          onChange={() => this.onSelect()}
         />
-        {children}
+        {childrenNode}
       </div>
     );
   }

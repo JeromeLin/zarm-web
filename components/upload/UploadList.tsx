@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
@@ -14,21 +15,20 @@ class UploadList extends Component<ListProps, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       className, type, dataSource, isRadius, onDelete, prefixCls,
-    } = props;
+    } = this.props;
 
     const listCls = classnames({
       [`${prefixCls}-list`]: true,
-      [`${prefixCls}-list-inline`]: 'inline' in props,
-      [`${prefixCls}-list-${type}`]: 'type' in props,
+      [`${prefixCls}-list-inline`]: 'inline' in this.props,
+      [`${prefixCls}-list-${type}`]: 'type' in this.props,
       [className!]: !!className,
     });
 
     const itemCls = classnames({
       [`${prefixCls}-list-item`]: true,
-      radius: 'radius' in props || isRadius,
+      radius: 'radius' in this.props || isRadius,
     });
 
     return (

@@ -8,29 +8,35 @@
 
 ::: demo 设置是否自动关闭
 ```js
-render() {
-  return (
-    <div>
-      <Button theme="primary" onClick={this.open.bind(this)}>会自动关闭</Button>
-      <Button theme="primary" onClick={this.open2.bind(this)}>不会自动关闭</Button>
-    </div>
-  )
+import { Notification, Button } from 'dragon-ui';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Button theme="primary" onClick={this.open.bind(this)}>会自动关闭</Button>
+        <Button theme="primary" onClick={this.open2.bind(this)}>不会自动关闭</Button>
+      </div>
+    )
+  }
+  
+  open() {
+    Notification.open({
+      title: '标题名称',
+      message: '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案',
+    });
+  }
+  
+  open2() {
+    Notification.open({
+      title: '提示',
+      message: '这是一条不会自动关闭的消息',
+      stayTime: 0,
+    });
+  }
 }
 
-open() {
-  Notification.open({
-    title: '标题名称',
-    message: '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案',
-  });
-}
-
-open2() {
-  Notification.open({
-    title: '提示',
-    message: '这是一条不会自动关闭的消息',
-    stayTime: 0,
-  });
-}
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -40,46 +46,52 @@ open2() {
 
 ::: demo Notification 组件有四种通知类型：`success`, `warning`, `info`, `error`。通过`type`字段来设置
 ```js
-render() {
-  return (
-    <div>
-      <Button onClick={this.open3.bind(this)}>成功</Button>
-      <Button onClick={this.open4.bind(this)}>警告</Button>
-      <Button onClick={this.open5.bind(this)}>消息</Button>
-      <Button onClick={this.open6.bind(this)}>错误</Button>
-    </div>
-  )
+import { Notification, Button } from 'dragon-ui';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Button onClick={this.open3.bind(this)}>成功</Button>
+        <Button onClick={this.open4.bind(this)}>警告</Button>
+        <Button onClick={this.open5.bind(this)}>消息</Button>
+        <Button onClick={this.open6.bind(this)}>错误</Button>
+      </div>
+    )
+  }
+  
+  open3() {
+    Notification.open({
+      title: '成功',
+      message: '这是一条成功的提示消息',
+      theme: 'success',
+    });
+  }
+  
+  open4() {
+    Notification.open({
+      title: '警告',
+      message: '这是一条警告的提示消息',
+      theme: 'warning'
+    });
+  }
+  
+  open5() {
+    Notification.primary({
+      title: '消息',
+      message: '这是一条消息的提示消息'
+    });
+  }
+  
+  open6() {
+    Notification.danger({
+      title: '错误',
+      message: '这是一条错误的提示消息'
+    });
+  }
 }
 
-open3() {
-  Notification.open({
-    title: '成功',
-    message: '这是一条成功的提示消息',
-    theme: 'success',
-  });
-}
-
-open4() {
-  Notification.open({
-    title: '警告',
-    message: '这是一条警告的提示消息',
-    theme: 'warning'
-  });
-}
-
-open5() {
-  Notification.primary({
-    title: '消息',
-    message: '这是一条消息的提示消息'
-  });
-}
-
-open6() {
-  Notification.danger({
-    title: '错误',
-    message: '这是一条错误的提示消息'
-  });
-}
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -89,44 +101,50 @@ open6() {
 
 ::: demo 通过btn prop传递需要展示在底部的操作按钮, 注意key必须是唯一的, 相同的key通知提醒会被统一关闭!
 ```js
-render() {
-  return (
-    <div>
-      <Button theme="primary" onClick={this.open.bind(this)}>自定义按钮1</Button>
-      <Button theme="primary" onClick={this.open2.bind(this)}>自定义按钮2</Button>
-    </div>
-  )
+import { Notification, Button } from 'dragon-ui';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Button theme="primary" onClick={this.open.bind(this)}>自定义按钮1</Button>
+        <Button theme="primary" onClick={this.open2.bind(this)}>自定义按钮2</Button>
+      </div>
+    )
+  }
+  
+  open() {
+    const key = `key-${Date.now()}`
+    const btn = (
+      <React.Fragment>
+        <Button size="sm" onClick={() => Notification.remove(key)}>关闭</Button>
+        <Button theme="primary" size="sm" onClick={() => alert('你点击了确定按钮')}>确定</Button>
+      </React.Fragment>
+    )
+    Notification.open({
+      title: '这是一段标题',
+      message: '我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容',
+      theme: 'success',
+      stayTime: 0,
+      btn,
+      key
+    });
+  }
+  
+  open2() {
+    const key = `open${Date.now()}`;
+    const btn = <Button size="sm" onClick={() => Notification.remove(key)}>关闭通知</Button>
+    Notification.open({
+      title: '提示',
+      message: '这是一条不会自动关闭的消息',
+      stayTime: 0,
+      btn,
+      key
+    });
+  }
 }
 
-open() {
-  const key = `key-${Date.now()}`
-  const btn = (
-    <React.Fragment>
-      <Button size="sm" onClick={() => Notification.remove(key)}>关闭</Button>
-      <Button theme="primary" size="sm" onClick={() => alert('你点击了确定按钮')}>确定</Button>
-    </React.Fragment>
-  )
-  Notification.open({
-    title: '这是一段标题',
-    message: '我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容',
-    theme: 'success',
-    stayTime: 0,
-    btn,
-    key
-  });
-}
-
-open2() {
-  const key = `open${Date.now()}`;
-  const btn = <Button size="sm" onClick={() => Notification.remove(key)}>关闭通知</Button>
-  Notification.open({
-    title: '提示',
-    message: '这是一条不会自动关闭的消息',
-    stayTime: 0,
-    btn,
-    key
-  });
-}
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -136,23 +154,29 @@ open2() {
 
 ::: demo 点击notification的回调函数
 ```js
-render() {
-  return (
-    <div>
-      <Button theme="primary" onClick={this.open.bind(this)}>点击我</Button>
-    </div>
-  )
+import { Notification, Button } from 'dragon-ui';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Button theme="primary" onClick={this.open.bind(this)}>点击我</Button>
+      </div>
+    )
+  }
+  
+  open() {
+    Notification.open({
+      title: '点击',
+      message: '这是一条成功的提示消息',
+      theme: 'success',
+      onClick () {alert('点击回调函数')},
+      onClose () { alert('关闭回调函数') }
+    });
+  }
 }
 
-open() {
-  Notification.open({
-    title: '点击',
-    message: '这是一条成功的提示消息',
-    theme: 'success',
-    onClick () {alert('点击回调函数')},
-    onClose () { alert('关闭回调函数') }
-  });
-}
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 

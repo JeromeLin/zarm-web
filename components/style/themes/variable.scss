@@ -1,170 +1,148 @@
-/*   default variables     */
+@import "../core/index";
 
-/* -------------  Colors  ------------- */
-$--color-white: #fff !default;
-$--color-black: #000 !default;
+:root {
+  @include defineColorHSL(--theme-default, 0, 0%, 90%);
+  @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-success, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
+  @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
-$--color-primary: #00bc70 !default;
-$--color-primary-darker: hsl(156, 100%, 32.9%) !default;         // #00a865 active focus 颜色
-$--color-primary-light-80: rgba($--color-primary, .8) !default; // #33C98D hover颜色
-$--color-primary-light-50: rgba($--color-primary, .5) !default; // #7FDDB7 disable颜色
-$--color-primary-light-10: rgba($--color-primary, .1) !default; // #E5F8F0 辅助色值
-$--color-primary-light-6: rgba($--color-primary, .06) !default; // #F0FBF7 辅助色值
+  --color-white: #fff;
+  --color-black: #000;
 
-$--color-success: #00bc70 !default;
-$--color-info: #00bc70 !default;
-$--color-warning: #ec9131 !default;
-$--color-danger: #ff5050 !default;
+  // 文字色
+  --color-text: #464646;                    // 基本
+  --color-text-inverse: #fff;               // 反色
+  --color-text-placeholder: #a9a9a9;        // 文本框提示
+  --color-text-disabled: #bcbcbc;           // 失效
+  --color-text-caption: #909090;            // 辅助描述
+  --color-link: var(--theme-primary);         // 链接
 
-$--color-success-darker: hsl(156, 100%, 32.9%) !default;
-$--color-info-darker: hsl(156, 100%, 32.9%) !default;
-$--color-warning-darker: hsl(31, 83.1%, 51.9%) !default;
-$--color-danger-darker: hsl(0, 100%, 61.7%) !default;
+  //阴影
+  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, .1), 0 0 6px rgba(0, 0, 0, .1);
+  --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-$--color-success-lighter: hsla(156, 100%, 36.9%, .5) !default; // for disable color
-$--color-info-lighter: hsla(156, 100%, 36.9%, .5) !default;    // for disable color
-$--color-warning-lighter: hsla(31, 83.1%, 55.9%, .5) !default; // for disable color
-$--color-danger-lighter: hsla(0, 100%, 65.7%, .5) !default;    // for disable color
+  // 背景色
+  --background-active: #e6e6e6;
+  --background-disabled: #bcbcbc;
 
-/* -------------  Fonts  ------------- */
-$--font-family:
-  "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI",
-  "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica,
-  Arial, sans- serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$--font-size-h1: 32px !default;
-$--font-size-h2: 22px !default;
-$--font-size-h3: 18px !default;
-$--font-size-large: 16px !default;
-$--font-size-base: 14px !default;
-$--font-size-small: 12px !default;
-$--font-size-remark: 10px !default;
+  // 边框色
+  --border-color: #e6e6e6;
+  --border-disabled: #bcbcbc;
 
-$--color-text-primary: #343434 !default;
-$--color-text-regular: #616161 !default;
-$--color-text-secondary: #909090 !default;
-$--color-text-placeholder-or-disabled: #bcbcbc !default;
-$--color-text-tip: #f2f2f2 !default;
+  // 透明度
+  --opacity-disabled: .5;
 
-/* -------------  Line Height  ------------- */
-$--font-line-height-base: 1.5 !default;
+  // 圆角
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-round: 1000px;
+  --radius-circle: 50%;
 
-/* -------------  Height  ------------- */
-$--base-height-xl: 40px !default;
-$--base-height-lg: 36px !default;
-$--base-height: 32px !default;
-$--base-height-sm: 28px !default;
-$--base-height-xs: 24px !default;
+  // 水平间距
+  --padding-h-xs: 8px;
+  --padding-h-sm: 12px;
+  --padding-h-md: 14px;
+  --padding-h-lg: 26px;
+  --padding-h-xl: 18px;
 
-/* -------------  Margin  ------------- */
-$--margin-size-4: 4px !default;
-$--margin-size-8: 8px !default;
-$--margin-size-12: 12px !default;
-$--margin-size-16: 16px !default;
-$--margin-size-20: 20px !default;
-$--margin-size-24: 24px !default;
-$--margin-size-24: 28px !default;
+  // 垂直间距
+  --padding-v-xs: 6px;
+  --padding-v-sm: 8px;
+  --padding-v-md: 12px;
+  --padding-v-lg: 14px;
+  --padding-v-xl: 18px;
 
-/* -------------  Padding  ------------- */
-$--padding-size-4: 4px !default;
-$--padding-size-8: 8px !default;
-$--padding-size-12: 12px !default;
-$--padding-size-16: 16px !default;
-$--padding-size-20: 20px !default;
+  // 字体大小
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
 
-/* -------------  Border & Radius  ------------- */
-$--border-width-base: 1px !default;
-$--border-style-base: solid !default;
-$--border-color-base: #e6e6e6 !default;
-$--border-color-light: #bcbcbc !default;
-$--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
-$--border-radius-large: 6px !default;
-$--border-radius-base: 4px !default;
-$--border-radius-small: 2px !default;
+  // Button
+  --button-ghost-disabled-border: #e9e9e9;
+  --button-ghost-disabled-color: rgba(0, 0, 0, 0.35);
+  --button-padding-h-xl: var(--padding-h-xl);
+  --button-padding-h-lg: var(--padding-h-lg);
+  --button-padding-h-md: var(--padding-h-md);
+  --button-padding-h-sm: var(--padding-h-sm);
+  --button-padding-h-xs: var(--padding-h-xs);
+  --button-height-xl: 40px;
+  --button-height-lg: 36px;
+  --button-height-md: 32px;
+  --button-height-sm: 28px;
+  --button-height-xs: 24px;
+  --button-font-size-xl: 18px;
+  --button-font-size-lg: 16px;
+  --button-font-size-md: 14px;
+  --button-font-size-sm: 12px;
+  --button-font-size-xs: 12px;
+  --button-icon-size-xl: 22px;
+  --button-icon-size-lg: 20px;
+  --button-icon-size-md: 18px;
+  --button-icon-size-sm: 16px;
+  --button-icon-size-xs: 14px;
+  --button-disabled-opacity: var(--opacity-disabled);
+  --button-disabled-color-ghost: var(--border-disabled);
+  --button-default-background: var(--color-text-inverse);
+  --button-default-border: var(--theme-default);
+  --button-default-color: var(--color-text);
+  --button-default-hover-background: var(--color-white);
+  --button-default-hover-border: var(--theme-primary);
+  --button-default-hover-color: var(--theme-primary);
+  --button-default-active-background: var(--theme-default);
+  --button-default-active-border: var(--theme-default);
+  --button-default-active-color: var(--color-text);
+  --button-default-ghost-border: var(--color-text-inverse);
+  --button-default-ghost-color: var(--color-text-inverse);
+  --button-default-ghost-active-border: var(--theme-default);
+  --button-default-ghost-active-color: var(--theme-default);
+  --button-primary-background: var(--theme-primary);
+  --button-primary-border: var(--theme-primary);
+  --button-primary-color: var(--color-text-inverse);
+  --button-primary-hover-background: var(--theme-primary-light);
+  --button-primary-hover-border: var(--theme-primary-light);
+  --button-primary-hover-color: var(--color-white);
+  --button-primary-active-background: var(--theme-primary-dark);
+  --button-primary-active-border: var(--theme-primary-dark);
+  --button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --button-primary-ghost-border: var(--theme-primary);
+  --button-primary-ghost-color: var(--theme-primary);
+  --button-primary-ghost-active-border: var(--theme-primary-dark);
+  --button-primary-ghost-active-color: var(--theme-primary-dark);
+  --button-danger-background: var(--theme-danger);
+  --button-danger-border: var(--theme-danger);
+  --button-danger-color: var(--color-text-inverse);
+  --button-danger-hover-background: var(--theme-danger-light);
+  --button-danger-hover-border: var(--theme-danger-light);
+  --button-danger-hover-color: var(--color-white);
+  --button-danger-active-background: var(--theme-danger-dark);
+  --button-danger-active-border: var(--theme-danger-dark);
+  --button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --button-danger-ghost-border: var(--theme-danger);
+  --button-danger-ghost-color: var(--theme-danger);
+  --button-danger-ghost-active-border: var(--theme-danger-dark);
+  --button-danger-ghost-active-color: var(--theme-danger-dark);
 
-/* -------------  Box Shadow  ------------- */
-$--box-shadow-light: 0 2px 8px rgba(0, 0, 0, .1), 0 0 6px rgba(0, 0, 0, .1) !default;
-$--box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2) !default;
+  // Radio
+  --button-radio-btn-disabled-color: --color-text-caption;
+  --button-radio-btn-disabled-bg: rgba(250, 250, 250, 1);
 
-/* -------------  Button  ------------- */
-$--button-ghost-disabled-border: #e9e9e9 !default;
-$--button-ghost-disabled-color: rgba(0, 0, 0, 0.35) !default;
-
-$--button-height-xl: 40px !default;
-$--button-height-lg: 36px !default;
-$--button-height: 32px !default;
-$--button-height-sm: 28px !default;
-$--button-height-xs: 24px !default;
-
-$--button-fontSize-xl: 18px !default;
-$--button-fontSize-lg: 16px !default;
-$--button-fontSize: 14px !default;
-$--button-fontSize-sm: 12px !default;
-$--button-fontSize-xs: 12px !default;
-
-$--button-default-color:   rgba(0, 0, 0, 0.65) !default;
-$--button-default-bg:      $--color-white !default;
-$--button-default-border:  #d9d9d9 !default;
-
-$--button-info-color:      $--color-white !default;
-$--button-info-bg:         $--color-info !default;
-$--button-info-border:     $--color-info !default;
-
-$--button-success-color:   $--color-white !default;
-$--button-success-bg:      $--color-success !default;
-$--button-success-border:  $--color-success !default;
-
-$--button-warning-color:   $--color-white !default;
-$--button-warning-bg:      $--color-warning !default;
-$--button-warning-border:  $--color-warning !default;
-
-$--button-danger-color:   $--color-white !default;
-$--button-danger-bg:      $--color-danger !default;
-$--button-danger-border:  $--color-warning !default;
-
-/* -------------  Radio  ------------- */
-$--button-radio-btn-disabled-color: $--color-text-secondary !default;
-$--button-radio-btn-disabled-bg: rgba(250, 250, 250, 1) !default;
-
-/* -------------  Menu  ------------- */
-$--menu-color: #343434 !default;
-$--menu-default-bg-color: $--color-white !default;
-$--menu-dark-bg-color: #001529 !default;
-$--menu-collapsed-width: 80px !default;
-$--submenu-dark-bg-color: #000c17 !default;
-$--menuitem-dark-color: hsla(0, 0%, 100%, .65) !default;
-$--menuitem-dark-active-color: $--color-white !default;
-$--menuitem-default-color: #343434 !default;
-$--menuitem-active-color: $--color-primary;
-$--menuitem-active-bg-color: rgba(0, 188, 112, .0625);
-$--menuitem-disabled-color: rgba(0, 0, 0, 0.25);
-$--menuitem-divider-bg-color: #e5e5e5;
-$--menuitem-horizontal-padding: 20px;
-$--menuitem-horizontal-height: 56px;
-
-/* -------------  Avatar  ------------- */
-
-$--avatar-width: 40px !default;
-$--avatar-height: 40px !default;
-$--avatar-border-radius: 50% !default;
-
-$--avatar-width-xl: 72px !default;
-$--avatar-height-xl: 72px !default;
-
-$--avatar-width-lg: 48px !default;
-$--avatar-height-lg: 48px !default;
-
-$--avatar-width-sm: 32px !default;
-$--avatar-height-sm: 32px !default;
-
-$--avatar-width-xs: 24px !default;
-$--avatar-height-xs: 24px !default;
-
-$--avatar-fontSize: 14px !default;
-$--avatar-fontSize-icon-xl: 32px !default;
-$--avatar-fontSize-icon: 16px !default;
-$--avatar-fontSize-icon-lg: 18px !default;
-$--avatar-fontSize-icon-sm: 14px !default;
-$--avatar-fontSize-icon-xs: 12px !default;
-
-$--avatar-default-color: #fff !default;
-$--avatar-default-bg-color: #ccc !default;
+  // Menu
+  --menu-color: #343434;
+  --menu-default-bg-color: var(--color-white);
+  --menu-dark-bg-color: #001529;
+  --menu-collapsed-width: 80px;
+  --submenu-dark-bg-color: #000c17;
+  --menuitem-dark-color: hsla(0, 0%, 100%, .65);
+  --menuitem-dark-active-color: var(--color-white);
+  --menuitem-default-color: #343434;
+  --menuitem-active-color: var(--theme-primary);
+  --menuitem-active-bg-color: rgba(0, 188, 112, .0625);
+  --menuitem-disabled-color: rgba(0, 0, 0, 0.25);
+  --menuitem-divider-bg-color: #e5e5e5;
+  --menuitem-horizontal-padding: 20px;
+  --menuitem-horizontal-height: 56px;
+}

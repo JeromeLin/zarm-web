@@ -9,6 +9,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
     const size = dataSource.length;
     let iHeight = parseInt(height, 10);
 
+    // eslint-disable-next-line no-restricted-globals
     if (isNaN(iHeight)) {
       iHeight = 41;
     }
@@ -19,7 +20,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
       });
       return (
         <tr
-          key={index}
+          key={index.toString()}
           onMouseEnter={() => onEnterRow(index)}
           onMouseLeave={() => onLeaveRow()}
           className={rowClass}
@@ -44,6 +45,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
     const size = dataSource.length;
     let iHeight = parseInt(tdHeight, 10);
 
+    // eslint-disable-next-line no-restricted-globals
     if (isNaN(iHeight)) {
       iHeight = 41;
     }
@@ -79,7 +81,7 @@ class FixedColumn extends Component<FixedColumnProps, any> {
               });
               return (
                 <tr
-                  key={index}
+                  key={index.toString()}
                   onMouseEnter={() => onEnterRow(index)}
                   onMouseLeave={() => onLeaveRow()}
                   className={rowClass}

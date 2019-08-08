@@ -1,0 +1,75 @@
+pre {
+  overflow: auto;
+  font-size: 14px;
+  background-color: #f6f8fa;
+
+  span {
+    font-size: 14px;
+  }
+}
+
+.hljs {
+  background: transparent;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  color: #1f2d3d;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+h3 {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #1f2d3d;
+}
+
+p {
+  color: #666;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0 20px;
+  color: #6a737d;
+  border-left: 4px solid #dfe2e5;
+}
+
+code {
+  background-color: #f1f1f1;
+  padding: 2px 6px;
+  margin: 0 1px;
+  border-radius: 3px;
+}
+
+.markdown-demo-wrapper {
+  column-count: 2;
+  column-width: 50%;
+  column-fill: auto;
+
+  @media (max-width: 1366px) {
+    column-count: 1;
+    column-width: 100%;
+  }
+}
+
+.markdown-demo-item {
+  //width: 50%;
+  break-inside: avoid;
+  margin-bottom: 22px;
+}

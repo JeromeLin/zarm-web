@@ -25,18 +25,19 @@ class Sider extends Component<SiderPropsType, any> {
     };
   }
 
+  getChildContext() {
+    const { collapsed } = this.state;
+    return {
+      siderCollapsed: collapsed,
+    };
+  }
+
   componentWillReceiveProps(nextProps: SiderPropsType) {
     if ('collapsed' in nextProps) {
       this.setState({
         collapsed: nextProps.collapsed,
       });
     }
-  }
-
-  getChildContext() {
-    return {
-      siderCollapsed: this.state.collapsed,
-    };
   }
 
   setCollapsed = (collapsed: boolean) => {

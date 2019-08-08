@@ -1,95 +1,149 @@
 @import '../../style/themes/variable';
-@import '../../style/core/index';
 @import 'mixins';
 
 @include b(button) {
   display: inline-block;
-  margin: 0;
-  @include button-size($--button-height, 0 $--padding-size-16, $--button-fontSize, $--border-radius-base); // default button size
-
-  font-weight: normal;
-  text-align: center;
   vertical-align: middle;
-  white-space: nowrap;
-  background-image: none;
-  border: $--border-base;
-  cursor: pointer;
-  outline: 0;
-  text-decoration: none;
-  -webkit-appearance: none;
-  user-select: none;
-  transition: background-color 300ms ease-out, border-color 300ms ease-out;
-
-  /* disabled Button */
-  @include m(disabled) {
-    cursor: not-allowed;
-    opacity: .65;
-  }
-
-  /* block Button */
-  @include m(block) {
-    width: 100%;
-    display: block;
-  }
-
-  @include m(loading) {
-    cursor: default;
-    opacity: .65;
-
-    @include b(icon) {
-      animation: rotate360 1s linear infinite;
-    }
-  }
-
-  @include m(ghost) {
-    background: transparent !important;
-    border-color: #fff;
-    color: #fff;
-  }
+  @include button-base();
+  @include button-size(
+    var(--button-height-md),
+    var(--button-padding-h-md),
+    var(--button-font-size-md),
+    var(--button-icon-size-md)
+  );
+  @include button-ghost(
+    var(--button-default-ghost-border),
+    var(--button-default-ghost-color),
+    var(--button-default-ghost-active-border),
+    var(--button-default-ghost-active-color)
+  );
 
   /* Button sizes */
   @include m(xl) {
-    @include button-size($--button-height-xl, 0 12px, $--button-fontSize-xl, $--border-radius-base);
+    @include button-size(
+      var(--button-height-xl),
+      var(--button-padding-h-xl),
+      var(--button-font-size-xl),
+      var(--button-icon-size-xl)
+    );
   }
 
   @include m(lg) {
-    @include button-size($--button-height-lg, 0 12px, $--button-fontSize-lg, $--border-radius-base);
+    @include button-size(
+      var(--button-height-lg),
+      var(--button-padding-h-lg),
+      var(--button-font-size-lg),
+      var(--button-icon-size-lg)
+    );
   }
 
   @include m(sm) {
-    @include button-size($--button-height-sm, 0 8px, $--button-fontSize-sm, $--border-radius-base);
+    @include button-size(
+      var(--button-height-sm),
+      var(--button-padding-h-sm),
+      var(--button-font-size-sm),
+      var(--button-icon-size-sm)
+    );
   }
 
   @include m(xs) {
-    @include button-size($--button-height-xs, 0 8px, $--button-fontSize-xs, $--border-radius-base);
+    @include button-size(
+      var(--button-height-xs),
+      var(--button-padding-h-xs),
+      var(--button-font-size-xs),
+      var(--button-icon-size-xs)
+    );
   }
 
   /* Button themes */
   @include m(default) {
-    @include button-theme($--button-default-color, $--button-default-bg, $--button-default-border, default);
+    @include button-theme(
+      var(--button-default-background),
+      var(--button-default-border),
+      var(--button-default-color),
+      var(--button-default-hover-background),
+      var(--button-default-hover-border),
+      var(--button-default-hover-color),
+      var(--button-default-active-background),
+      var(--button-default-active-border),
+      var(--button-default-active-color),
+      var(--button-default-background),
+      var(--button-default-border),
+      var(--color-text-disabled),
+      var(--button-disabled-opacity)
+    );
 
-    @include m(ghost) {
-      @include button-theme($--color-white, transparent, $--color-white, default);
-    }
+    @include button-ghost(
+      var(--button-default-ghost-border),
+      var(--button-default-ghost-color),
+      var(--button-default-ghost-active-border),
+      var(--button-default-ghost-active-color)
+    );
   }
 
   @include m(primary) {
-    @include button-theme($--button-info-color, $--button-info-bg, $--button-info-border);
+    @include button-theme(
+      var(--button-primary-background),
+      var(--button-primary-border),
+      var(--button-primary-color),
+      var(--button-primary-hover-background),
+      var(--button-primary-hover-border),
+      var(--button-primary-hover-color),
+      var(--button-primary-active-background),
+      var(--button-primary-active-border),
+      var(--button-primary-active-color),
+      var(--button-primary-background),
+      var(--button-primary-border),
+      var(--button-primary-color),
+      var(--button-disabled-opacity)
+    );
 
-    @include m(ghost) {
-      @include button-theme($--color-info, transparent, $--color-info);
-    }
-    //&.is-ghost {
-    //  @include button-theme($--color-info, transparent, $--color-info);
-    //}
+    @include button-ghost(
+      var(--button-primary-ghost-border),
+      var(--button-primary-ghost-color),
+      var(--button-primary-ghost-active-border),
+      var(--button-primary-ghost-active-color)
+    );
   }
 
   @include m(danger) {
-    @include button-theme($--button-danger-color, $--button-danger-bg, $--button-danger-border);
+    @include button-theme(
+      var(--button-danger-background),
+      var(--button-danger-border),
+      var(--button-danger-color),
+      var(--button-danger-hover-background),
+      var(--button-danger-hover-border),
+      var(--button-danger-hover-color),
+      var(--button-danger-active-background),
+      var(--button-danger-active-border),
+      var(--button-danger-active-color),
+      var(--button-danger-background),
+      var(--button-danger-border),
+      var(--button-danger-color),
+      var(--button-disabled-opacity)
+    );
+    @include button-ghost(
+      var(--button-danger-ghost-border),
+      var(--button-danger-ghost-color),
+      var(--button-danger-ghost-active-border),
+      var(--button-danger-ghost-active-color)
+    );
+  }
 
-    @include m(ghost) {
-      @include button-theme($--color-danger, transparent, $--color-danger);
-    }
+  @include m(rect) {
+    @include button-shape(0);
+  }
+
+  @include m(radius) {
+    @include button-shape(var(--radius-md));
+  }
+
+  @include m(round) {
+    @include button-shape(var(--radius-round));
+  }
+
+  @include m(circle) {
+    @include button-shape(var(--radius-circle));
   }
 }
 
@@ -99,15 +153,15 @@
   display: inline-block;
   vertical-align: middle;
 
-  & > .za-button {
+  @include b(button) {
     float: left;
     position: relative;
 
-    & + .za-button {
-      margin-left: 0;
+    & + .zw-button {
+      margin-left: 0 !important;
     }
 
-    &.is-disabled {
+    @include m(disabled) {
       z-index: 1;
     }
 
@@ -122,7 +176,7 @@
     }
 
     &:first-child:last-child {
-      border-radius: $--border-radius-base;
+      border-radius: var(--radius-md);
 
       &.is-round {
         border-radius: 20px;
@@ -149,18 +203,18 @@
   }
 
   @each $type in (default, primary, danger) {
-    .za-button--#{$type} {
+    .zw-button--#{$type} {
       &:first-child {
-        border-right-color: rgba($--color-white, 0.5);
+        border-right-color: rgba(var(--color-white), 0.5);
       }
 
       &:last-child {
-        border-left-color: rgba($--color-white, 0.5);
+        border-left-color: rgba(var(--color-white), 0.5);
       }
 
       &:not(:first-child):not(:last-child) {
-        border-left-color: rgba($--color-white, 0.5);
-        border-right-color: rgba($--color-white, 0.5);
+        border-left-color: rgba(var(--color-white), 0.5);
+        border-right-color: rgba(var(--color-white), 0.5);
       }
     }
   }

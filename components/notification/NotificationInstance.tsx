@@ -14,7 +14,8 @@ const now = Date.now();
 let seed = 0;
 
 function getNotificationKey() {
-  return `notification-${now}-${seed++}`;
+  const key = `notification-${now}-${seed += 1}`;
+  return key;
 }
 
 function NotificationInstance(props?: any, theme?: string) {

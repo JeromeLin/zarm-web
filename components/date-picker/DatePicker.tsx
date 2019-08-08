@@ -37,9 +37,10 @@ class DatePicker extends Component<PropsType, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { format } = this.props;
     if ('value' in nextProps) {
       this.setState({
-        value: Format.date(nextProps.value, this.props.format),
+        value: Format.date(nextProps.value, format),
       });
     }
   }
@@ -49,6 +50,7 @@ class DatePicker extends Component<PropsType, any> {
   }
 
   onDateChange(value, dropdown, isTimeChange = false) {
+    const { onChange } = this.props;
     if (isTimeChange) { // hack方法 临时解决datetimePicker点击空白区域需要关闭的问题
       this.setState({
         flag: false,
@@ -67,7 +69,7 @@ class DatePicker extends Component<PropsType, any> {
         dropdown,
       },
       () => {
-        this.setDropdown(dropdown, () => this.props.onChange(value));
+        this.setDropdown(dropdown, () => onChange(value));
       },
     );
   }
@@ -128,17 +130,16 @@ class DatePicker extends Component<PropsType, any> {
         min={min}
         max={max}
         showTime={showTime}
-        onChange={(value, dropdown, isTimeChange) => this.onDateChange(value, dropdown, isTimeChange)}
+        onChange={(calendarValue, dropdown, isTimeChange) => this.onDateChange(calendarValue, dropdown, isTimeChange)}
       />
     );
   }
 
   render() {
-    const { props } = this;
-    const { placeholder, isDisabled, isRadius, size, style, locale, showTime, allowInput } = props;
-    const { value, dropdown } = this.state;
-    const disabled = 'disabled' in props || isDisabled;
-    const radius = 'radius' in props || isRadius;
+    const { placeholder, isDisabled, isRadius, size, style, locale, showTime, allowInput } = this.props;
+    const { value, dropdown, flag } = this.state;
+    const disabled = 'disabled' in this.props || isDisabled;
+    const radius = 'radius' in this.props || isRadius;
 
     let valueText = placeholder || locale!.placeholder;
     let hasValue = false;
@@ -172,12 +173,11 @@ class DatePicker extends Component<PropsType, any> {
         overlay={this.renderOverlay()}
         isRadius={radius}
         visible={dropdown}
-        hideOnClick={this.state.flag}
+        hideOnClick={flag}
       >
         <span className={cls} style={style}>
           <span
             className="za-select__selection"
-            role="combobox"
             aria-autocomplete="list"
             aria-haspopup="true"
             aria-expanded="false"

@@ -26,7 +26,8 @@ class Popconfirm extends Component<PropsType, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.visible !== nextProps.visible) {
+    const { visible } = this.state;
+    if (visible !== nextProps.visible) {
       this.setState({
         visible: !!nextProps.visible,
       });
@@ -70,7 +71,7 @@ class Popconfirm extends Component<PropsType, any> {
           {content}
           <div className={`${prefixCls}-actions`}>
             <Button onClick={() => this.handleCancel()}>{cancelText || locale!.cancel}</Button>
-            <Button type="primary" onClick={() => this.handleConfirm()}>
+            <Button theme="primary" onClick={() => this.handleConfirm()}>
               {okText || locale!.confirm}
             </Button>
           </div>

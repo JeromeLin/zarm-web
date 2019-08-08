@@ -8,6 +8,9 @@
 :::demo
 
 ```js
+import { Radio } from 'dragon-ui';
+
+class Demo extends React.Component {
   onChange(e) {
     console.log(e.target.value);
   }
@@ -23,6 +26,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -33,6 +39,9 @@
 :::demo 使用`Radio.Group`组件。
 
 ```js
+import { Radio } from 'dragon-ui';
+
+class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,6 +68,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -67,6 +79,9 @@
 :::demo 使用`Radio.Group`组件。
 
 ```js
+import { Radio } from 'dragon-ui';
+
+class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -127,6 +142,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -137,6 +155,9 @@
 :::demo 可以使用`disabled`属性来定义是否可用。
 
 ```js
+import { Radio } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -145,6 +166,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 

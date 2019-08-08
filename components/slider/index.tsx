@@ -42,7 +42,7 @@ class Slider extends Component<PropsType, any> {
     let i = 0;
     while (i < handleAmount) {
       states[`currentValue${i}`] = 0;
-      i++;
+      i += 1;
     }
     this.state = states;
 
@@ -74,7 +74,7 @@ class Slider extends Component<PropsType, any> {
           dv[i] = min;
         }
         states[`currentValue${i}`] = this.validateDefault(dv[i], min, max);
-        i++;
+        i += 1;
       }
       this.setState(states);
     }, 0);
@@ -97,7 +97,7 @@ class Slider extends Component<PropsType, any> {
           dv[i] = min;
         }
         states[`currentValue${i}`] = this.validateDefault(dv[i], min, max);
-        i++;
+        i += 1;
       }
       this.setState(states);
     }, 0);
@@ -148,6 +148,7 @@ class Slider extends Component<PropsType, any> {
         if (Math.abs(value) >= step) {
           // 寻找最接近value的step倍数
           const closestStepToValue = Math.round(value / step) * step;
+          // eslint-disable-next-line react/destructuring-assignment
           const newValue = this.state[`currentValue${i}`] + closestStepToValue;
 
           if (!isPass && this.isHandleMeet(i, newValue)) {
@@ -237,12 +238,14 @@ class Slider extends Component<PropsType, any> {
       const closestStepToDelta = Math.round(delta / step) * step;
       if (getValue) {
         getValue(
+          // eslint-disable-next-line react/destructuring-assignment
           this.state[`currentValue${handleIndex}`] + closestStepToDelta,
           handleIndex,
         );
       }
       this.setState({
         [`currentValue${handleIndex}`]:
+        // eslint-disable-next-line react/destructuring-assignment,react/no-access-state-in-setstate
           this.state[`currentValue${handleIndex}`] + closestStepToDelta,
       });
     }
@@ -261,6 +264,7 @@ class Slider extends Component<PropsType, any> {
 
   findClosestHandle(value) {
     const stateKeys = Object.keys(this.state);
+    // eslint-disable-next-line react/destructuring-assignment
     const states = stateKeys.map(v => this.state[v]);
     /* eslint-disable */
     return states.reduce((pre, cur) => (value > Math.max(pre, cur)
@@ -275,6 +279,7 @@ class Slider extends Component<PropsType, any> {
 
   findHandleIndex(state, v) {
     let states = Object.keys(state);
+    // eslint-disable-next-line react/destructuring-assignment
     states = states.map(value => this.state[value]);
     return states.indexOf(v);
   }
@@ -283,10 +288,11 @@ class Slider extends Component<PropsType, any> {
   isHandleMeet(index, value) {
     const { max, min } = this.props;
     const stateKeys = Object.keys(this.state);
-    // tslint:disable-next-line:no-shadowed-variable
+    // eslint-disable-next-line react/destructuring-assignment
     const states = stateKeys.map(v => this.state[v]);
     states.sort((a, b) => a - b);
 
+    // eslint-disable-next-line react/destructuring-assignment
     const v = this.state[`currentValue${index}`];
     const vIndex = states.indexOf(v);
     const vMax = states[vIndex + 1] ? states[vIndex + 1] : max;
@@ -345,6 +351,7 @@ class Slider extends Component<PropsType, any> {
     let i = 0;
     let styleObjArr;
     while (i < handleAmount) {
+      // eslint-disable-next-line react/destructuring-assignment
       const percent = (this.state[`currentValue${i}`] - min) / (max - min) * 100;
 
       styleObjArr = {
@@ -382,11 +389,12 @@ class Slider extends Component<PropsType, any> {
             onTouchMove={this.isTouchSuported ? this.onHandleMove(i) : noop}
             onTouchEnd={this.isTouchSuported ? this.onHandleMove(i) : noop}
           >
+            {/* eslint-disable-next-line react/destructuring-assignment */}
             {showTip && (<em className={tipClass}>{this.state[`currentValue${i}`]}</em>)}
           </span>
         </div>,
       );
-      i++;
+      i += 1;
     }
 
     return (

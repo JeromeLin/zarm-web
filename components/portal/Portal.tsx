@@ -11,6 +11,7 @@ export interface PortalProps {
 
 function getContainer(container, defaultContainer) {
   container = typeof container === 'function' ? container() : container;
+  // eslint-disable-next-line react/no-find-dom-node
   return ReactDOM.findDOMNode(container) || defaultContainer;
 }
 
@@ -37,31 +38,15 @@ class Portal extends React.Component<PortalProps> {
     }
   }
 
-  /*componentDidUpdate(prevProps) {
-    if (
-      prevProps.container !== this.props.container ||
-      prevProps.disablePortal !== this.props.disablePortal
-    ) {
-      this.setMountNode(this.props.container);
-
-      if (!this.props.disablePortal) {
-        this.forceUpdate(() => {
-          if (this.props.onRendered) {
-            clearTimeout(this.renderedTimer);
-            this.renderedTimer = setTimeout(this.props.onRendered);
-          }
-        });
-      }
-    }
-  }*/
-
   componentWillUnmount() {
     this.mountNode = null;
     // clearTimeout(this.renderedTimer);
   }
 
   setMountNode(container) {
-    if (this.props.disablePortal) {
+    const { disablePortal } = this.props;
+    if (disablePortal) {
+      // eslint-disable-next-line react/no-find-dom-node
       this.mountNode = ReactDOM.findDOMNode(this)!.parentElement;
       return;
     }
@@ -69,7 +54,7 @@ class Portal extends React.Component<PortalProps> {
     this.mountNode = getContainer(container, document.body);
   }
 
-  getMountNode () {
+  getMountNode() {
     return this.mountNode;
   }
 

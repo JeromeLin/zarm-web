@@ -9,12 +9,12 @@ $notification-margin-bottom: 16px;
   width: $notification-width;
   padding: $notification-padding;
   box-sizing: border-box;
-  border-radius: $--border-radius-base;
+  border-radius: var(--radius-md);
   right: 16px;
-  background-color: $--color-white;
-  box-shadow: $--box-shadow-dark;
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow-dark);
   transition: opacity 0.3s, transform .3s, right .3s, top 0.4s;
-  line-height: $--font-line-height-base;
+  line-height: 1.5;
   overflow: hidden;
 
   @include e(content) {
@@ -40,13 +40,13 @@ $notification-margin-bottom: 16px;
     @include e(title) {
       padding-right: 24px;
       font-weight: normal;
-      font-size: $--font-size-large;
+      font-size: var(--font-size-lg);
       color: #1f2d3d;
       margin: 0;
     }
 
     @include e(custom-content) {
-      font-size: $--font-size-base;
+      font-size: var(--font-size-md);
       line-height: 21px;
       margin: 10px 0 0;
       color: #8391a5;

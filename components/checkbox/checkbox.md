@@ -8,6 +8,9 @@
 :::demo
 
 ```js
+import { Checkbox } from 'dragon-ui';
+
+class Demo extends React.Component {
   onChange(e) {
     console.log(e.target.checked);
   }
@@ -22,6 +25,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -32,6 +38,9 @@
 :::demo 使用`Checkbox.Group`组件。
 
 ```js
+import { Checkbox } from 'dragon-ui';
+
+class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,6 +67,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -68,6 +80,9 @@
 :::demo 可以使用`disabled`属性来定义是否可用。
 
 ```js
+import { Checkbox } from 'dragon-ui';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -80,6 +95,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
@@ -90,6 +108,9 @@
 :::demo 可以使用`indeterminate`属性来定义样式是否为部分选中。
 
 ```js
+import { Checkbox } from 'dragon-ui';
+
+class Demo extends React.Component {
   onChange(e) {
     console.log(e.target.checked);
   }
@@ -105,6 +126,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 

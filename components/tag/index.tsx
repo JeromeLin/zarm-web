@@ -14,7 +14,6 @@ class Tag extends Component<PropsType, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       theme,
       size,
@@ -28,15 +27,15 @@ class Tag extends Component<PropsType, any> {
       children,
       style,
       title,
-    } = props;
-    const disabled = 'disabled' in props || isDisabled;
+    } = this.props;
+    const disabled = 'disabled' in this.props || isDisabled;
 
     const cls = classnames({
       'ui-tag': true,
-      radius: 'radius' in props || isRadius,
-      round: 'round' in props || isRound,
-      active: 'active' in props || isActive,
-      focus: 'focus' in props || isFocus,
+      radius: 'radius' in this.props || isRadius,
+      round: 'round' in this.props || isRound,
+      active: 'active' in this.props || isActive,
+      focus: 'focus' in this.props || isFocus,
       disabled,
       hasCloseButton: typeof onClose === 'function',
       [`theme-${theme}`]: !!theme,

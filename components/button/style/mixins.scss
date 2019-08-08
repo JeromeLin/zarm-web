@@ -1,70 +1,165 @@
-@mixin button-theme($color, $background, $border, $type: '') {
-  $active-background: darken($background, 4%);
-  $active-border: darken($border, 4%);
-  $hover-background: rgba($background, .8);
-  $hover-border: rgba($border, .8);
-  $disable-background: rgba($background, .5);
-  $disable-border: rgba($border, .5);
-
+@mixin button-theme(
+  $background,
+  $border,
+  $color,
+  $hover-background,
+  $hover-border,
+  $hover-color,
+  $active-background,
+  $active-border,
+  $active-color,
+  $disabled-background,
+  $disabled-border,
+  $disabled-color,
+  $disabled-opacity,
+) {
+  background-color: $background;
   border-color: $border;
   color: $color;
-  background: $background;
 
-  &:visited,
-  &:focus,
   &:hover,
-  &:active {
-    background-color: $active-background;
-    border-color: $active-border;
-    color: $color;
-    @if ($type == default) {
-      background-color: $--color-white;
-      border-color: $--color-primary;
-      color: $--color-primary;
-    }
+  &:focus {
+    background-color: $hover-background;
+    border-color: $hover-border;
+    color: $hover-color;
   }
 
   @include m(disabled) {
+    background-color: $disabled-background;
+    border-color: $disabled-border;
+    color: $disabled-color;
+    opacity: $disabled-opacity;
     cursor: not-allowed;
 
+    &:active,
     &:focus,
-    &.visited,
-    &:hover {
-      background-color: $background;
-      border-color: $border;
-      color: $color;
+    &:hover,
+    &:visited {
+      background-color: $disabled-background;
+      border-color: $disabled-border;
+      color: $disabled-color;
     }
   }
 
   @include m(loading) {
+    background-color: $disabled-background;
+    border-color: $disabled-border;
+    color: $disabled-color;
+
+    &:active,
     &:focus,
-    &.visited,
-    &:hover {
-      background-color: $background;
-      border-color: $border;
-      color: $color;
+    &:hover,
+    &:visited {
+      background-color: $disabled-background;
+      border-color: $disabled-border;
+      color: $disabled-color;
     }
   }
 }
 
-@mixin button-size($height, $padding, $font-size, $border-radius) {
-  padding: $padding;
+@mixin button-ghost(
+  $border,
+  $color,
+  $active-border,
+  $active-color
+) {
+  @include m(ghost) {
+    &,
+    &:hover {
+      background-color: transparent;
+      border-color: $border;
+      color: $color;
+    }
+
+    &:active {
+      background-color: transparent;
+      border-color: $active-border;
+      color: $active-color;
+    }
+
+    @include m(disabled) {
+      &,
+      &:active,
+      &:hover,
+      &:focus,
+      &:visited {
+        background-color: transparent;
+        border-color: var(--border-disabled);
+        color: var(--color-text-disabled);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@mixin button-size($height, $padding, $font-size, $icon-size) {
+  padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height - 2;
-
-  @include m(radius) {
-    border-radius: $border-radius;
-  }
-
-  @include m(round) {
-    border-radius: 1000px;
-  }
+  line-height: $height;
 
   @include m(circle) {
     width: $height;
-    height: $height;
     padding: 0;
-    border-radius: 50%;
   }
+
+  @include b(icon) {
+    font-size: $icon-size;
+  }
+
+  * + span {
+    margin-left: calc(#{$padding} / 2);
+  }
+}
+
+@mixin button-base() {
+  padding: 0;
+  font-weight: normal;
+  text-align: center;
+  overflow: hidden;
+  color: var(--color-text);
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  outline: 0 none;
+  -webkit-appearance: none;
+  user-select: none;
+
+  &,
+  &:active,
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+
+  /* disabled Button */
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+  }
+
+  /* block Button */
+  @include m(block) {
+    display: block;
+    width: 100%;
+  }
+
+  /* loading btn */
+  @include m(loading) {
+    cursor: default;
+    opacity: .65;
+
+    @include b(icon) {
+      animation: rotate360 1s linear infinite;
+    }
+  }
+}
+
+// 形状
+@mixin button-shape($border-radius: 0) {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $border-radius;
 }

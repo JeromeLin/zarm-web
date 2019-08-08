@@ -56,7 +56,7 @@
 
   /* Avatar shape */
   @include m(square) {
-    border-radius: $--border-radius-base;
+    border-radius: var(--radius-md);
   }
 
   /* Avatar icon */

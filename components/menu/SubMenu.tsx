@@ -44,11 +44,13 @@ export class SubMenu extends Component<SubMenuProps, any> {
     const { inlineCollapsed } = nextProps;
 
     if (!inlineCollapsed) {
+      // eslint-disable-next-line react/destructuring-assignment
       if (this.props.inlineCollapsed) {
         events.off(document, 'click', this.onClickOutSide);
       }
       return;
     }
+    // eslint-disable-next-line react/destructuring-assignment
     if (!this.props.inlineCollapsed) {
       events.on(document, 'click', this.onClickOutSide);
     }
@@ -77,34 +79,6 @@ export class SubMenu extends Component<SubMenuProps, any> {
     if (inlineCollapsed) {
       events.off(document, 'click', this.onClickOutSide);
     }
-  }
-
-  toggleSubMenuOpen = (e) => {
-    e.stopPropagation();
-    const { subMenuKey } = this.props;
-
-    this.props.toggleOpenKeys(subMenuKey);
-  };
-
-  renderChildren() {
-    const {
-      children, level, inlineIndent, mode, prefixCls, subMenuKey,
-    } = this.props;
-    const childProps: childPropsType = {
-      mode,
-      level: level + 1,
-      inlineIndent,
-      prefixCls,
-    };
-    return Children.map(children, (child, index) => {
-      const c: ReactElement<any> = child as ReactElement<any>;
-      const { key } = child as ReactElement<any>;
-
-      childProps.itemKey = key || `${subMenuKey}-${level}-${index}`;
-      childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
-
-      return cloneElement(c, childProps);
-    });
   }
 
   getSubHeight() {
@@ -136,7 +110,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
     const keyIndex = openKeys.indexOf(subMenuKey);
     const keysLength = openKeys.length;
     if (keyIndex > -1) {
-      if (keysLength > 1 && keyIndex < keysLength - 1 || keysLength < lastOpenKeys.length) {
+      if ((keysLength > 1 && keyIndex < keysLength - 1) || keysLength < lastOpenKeys.length) {
         // 如果不是最后一级子菜单，或者嵌套的子菜单被收起，当前子菜单高度自适应
         this.sub.style.height = 'auto';
       } else {
@@ -154,19 +128,12 @@ export class SubMenu extends Component<SubMenuProps, any> {
     }
   }
 
-  slideUp() {
-    this.setState({
-      collapsedSubVisible: false,
-      collapsedSubAnimation: 'up',
-    });
-  }
+  toggleSubMenuOpen = (e) => {
+    e.stopPropagation();
+    const { subMenuKey } = this.props;
 
-  slideDown() {
-    this.setState({
-      collapsedSubVisible: true,
-      collapsedSubAnimation: 'down',
-    });
-  }
+    this.props.toggleOpenKeys(subMenuKey);
+  };
 
   onSubAnimationEnd = () => {
     const { subMenuKey, openKeys } = this.props;
@@ -186,6 +153,41 @@ export class SubMenu extends Component<SubMenuProps, any> {
       this.props.toggleOpenKeys(subMenuKey);
     }
   };
+
+  slideUp() {
+    this.setState({
+      collapsedSubVisible: false,
+      collapsedSubAnimation: 'up',
+    });
+  }
+
+  slideDown() {
+    this.setState({
+      collapsedSubVisible: true,
+      collapsedSubAnimation: 'down',
+    });
+  }
+
+  renderChildren() {
+    const {
+      children, level, inlineIndent, mode, prefixCls, subMenuKey,
+    } = this.props;
+    const childProps: childPropsType = {
+      mode,
+      level: level + 1,
+      inlineIndent,
+      prefixCls,
+    };
+    return Children.map(children, (child, index) => {
+      const c: ReactElement<any> = child as ReactElement<any>;
+      const { key } = child as ReactElement<any>;
+
+      childProps.itemKey = key || `${subMenuKey}-${level}-${index}`;
+      childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
+
+      return cloneElement(c, childProps);
+    });
+  }
 
   render() {
     const {

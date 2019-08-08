@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface keysType {
+export interface KeysType {
   openKeys: string[];
   selectedKeys: string[];
   toggleSelectedKeys?: (itemKey: string) => void;
@@ -8,7 +8,7 @@ export interface keysType {
   inlineCollapsed?: boolean;
 }
 
-export const menuKeys: keysType = {
+export const menuKeys: KeysType = {
   openKeys: [],
   selectedKeys: [],
   toggleSelectedKeys: () => {},

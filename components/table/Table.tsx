@@ -54,20 +54,22 @@ class Table extends Component<PropsType, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { dataSource } = this.props;
     if ('rowSelection' in nextProps && 'value' in nextProps.rowSelection) {
       this.setState({
         selectedRows: nextProps.rowSelection.value,
       });
     }
-    if (nextProps.dataSource !== this.props.dataSource) {
+    if (nextProps.dataSource !== dataSource) {
       // 数据变更重新计算固定列宽高
       rAF.rAF(() => this.getFixedColAttrs());
     }
   }
 
   onSort = (column) => {
+    const { stateSort } = this.state;
     const { dataSource } = this.props;
-    const sort = !this.state.sort[column.dataIndex];
+    const sort = !stateSort[column.dataIndex];
 
     sort ? dataSource.sort(column.sorter) : dataSource.reverse();
 
@@ -372,7 +374,6 @@ class Table extends Component<PropsType, any> {
   }
 
   render() {
-    const { props } = this;
     const {
       isBordered,
       isStriped,
@@ -382,14 +383,14 @@ class Table extends Component<PropsType, any> {
       size,
       className,
       prefixCls,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       [prefixCls!]: true,
-      [`${prefixCls}-bordered`]: 'bordered' in props || isBordered,
-      [`${prefixCls}-striped`]: 'striped' in props || isStriped,
-      [`${prefixCls}-radius`]: 'radius' in props || isRadius,
-      [`${prefixCls}-hover`]: 'hover' in props || isHover,
+      [`${prefixCls}-bordered`]: 'bordered' in this.props || isBordered,
+      [`${prefixCls}-striped`]: 'striped' in this.props || isStriped,
+      [`${prefixCls}-radius`]: 'radius' in this.props || isRadius,
+      [`${prefixCls}-hover`]: 'hover' in this.props || isHover,
       [`size-${size}`]: !!size,
       [className!]: !!className,
     });

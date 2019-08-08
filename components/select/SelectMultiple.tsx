@@ -54,6 +54,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
 
     const { shiftKey } = e;
     const { value } = this.state;
+    const { onChange } = this.props;
     const index = value.indexOf(props.value);
     const isSelected = index > -1;
 
@@ -70,32 +71,32 @@ class SelectMultiple extends Component<MultipleProps, any> {
       selected: !isSelected,
     };
 
-    this.setState({ value }, () => this.props.onChange(value, row, shiftKey));
+    this.setState({ value }, () => onChange(value, row, shiftKey));
   }
 
   render() {
-    const { props } = this;
     const {
-      prefixCls, size, style, onDoubleClick,
-    } = props;
-    const disabled = 'disabled' in props;
-    const radius = 'radius' in props;
+      prefixCls, size, style, onDoubleClick, children,
+    } = this.props;
+    const { value, dropdown } = this.state;
+    const disabled = 'disabled' in this.props;
+    const radius = 'radius' in this.props;
 
     // eslint-disable-next-line
-    let children = React.Children.map(props.children, (option, index) => {
+    let childrenNode = React.Children.map(children, (option, index) => {
       return (
         <Option
           {...(option as ReactElement<any>).props}
           onDoubleClick={onDoubleClick}
           onChange={e => this.onOptionChange(e, (option as ReactElement<any>).props, index)}
-          checked={!!(this.state.value.indexOf((option as ReactElement<any>).props.value) > -1)}
+          checked={!!(value.indexOf((option as ReactElement<any>).props.value) > -1)}
         />
       );
     });
 
     const cls = classnames({
       [prefixCls!]: true,
-      [`${prefixCls}--open`]: this.state.dropdown,
+      [`${prefixCls}--open`]: dropdown,
       'is-disabled': disabled,
       'is-radius': radius,
       [`size-${size}`]: !!size,
@@ -106,13 +107,12 @@ class SelectMultiple extends Component<MultipleProps, any> {
         <span
           className={`${prefixCls}__selection`}
           style={{ height: '100%', maxHeight: 250, overflow: 'auto' }}
-          role="combobox"
           aria-autocomplete="list"
           aria-haspopup="true"
           aria-expanded="false"
           onClick={e => !disabled && this.onSelectClick(e)}
         >
-          <Menu size={size}>{children}</Menu>
+          <Menu size={size}>{childrenNode}</Menu>
         </span>
       </span>
     );
