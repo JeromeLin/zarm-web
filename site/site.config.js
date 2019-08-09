@@ -197,6 +197,10 @@ module.exports = {
         name: 'Transition',
         module: () => import('@/components/transition/transition.md'),
       },
+      {
+        name: 'LocaleProvider',
+        module: () => import('@/components/locale/i18n.md'),
+      },
     ],
   },
 };
