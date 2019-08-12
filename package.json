@@ -100,7 +100,6 @@
     "coveralls": "^2.13.1",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.1",
-    "css-vars-ponyfill": "^2.0.2",
     "docsearch.js": "^2.6.3",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
