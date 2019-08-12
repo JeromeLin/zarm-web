@@ -25,13 +25,14 @@ Object.keys(config.entry).forEach((key) => {
 config.module.rules[0].use[0].options.plugins.push('react-hot-loader/babel');
 
 config.devServer = {
-  host: '0.0.0.0',
+  host: 'localhost',
   port: 3001,
   compress: true,
   noInfo: true,
   inline: true,
   hot: true,
   progress: true,
+  open: true,
 };
 
 module.exports = config;
