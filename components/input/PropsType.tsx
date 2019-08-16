@@ -16,6 +16,7 @@ export interface AddonIF {
 }
 
 export function isAddon(addon: ReactNode | AddonIF): addon is AddonIF {
+  // eslint-disable-next-line
   return !!addon && addon.hasOwnProperty('addon');
 }
 
@@ -28,7 +29,7 @@ export interface AddonPropsIF {
   composePosition?: 'before' | 'after' | 'middle';
 }
 
-export interface PropsIF {
+export default interface PropsIF {
   prefixCls: 'string';
   type: string;                                 // default is text  若为 textarea 则转为 TextareaElement
   shape: 'rect' | 'radius';
