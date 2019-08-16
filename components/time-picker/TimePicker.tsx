@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Dropdown from '../dropdown';
 import Icon from '../icon';
 import TimeSelect from './TimeSelect';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
 

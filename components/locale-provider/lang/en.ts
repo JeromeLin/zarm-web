@@ -1,5 +1,5 @@
 export default {
-  code: 'en',
+  locale: 'en',
   Alert: {
     close: 'Close',
   },

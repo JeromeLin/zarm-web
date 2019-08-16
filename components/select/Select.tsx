@@ -6,7 +6,7 @@ import Dropdown from '../dropdown';
 import Menu from '../menu';
 import InputWithTags from '../tag-input';
 import PropsType, { OptionProps } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 import SelectMultiple from './SelectMultiple';
 import { isEmpty } from '../utils';
 
