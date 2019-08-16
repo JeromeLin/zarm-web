@@ -20,7 +20,7 @@ const LoadableComponent = (component) => {
     loader: component.module,
     render: (loaded, props) => {
       const C = loaded.default;
-      return <Markdown document={C} className={`${Format.camel2Dash(component.name)}-page`} {...props} />;
+      return <Markdown document={C} name={component.name} className={`${Format.camel2Dash(component.name)}-page`} {...props} />;
     },
     loading: () => null,
   });

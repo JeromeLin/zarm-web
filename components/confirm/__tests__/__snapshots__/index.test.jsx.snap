@@ -18,8 +18,8 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
       cancelText="取消"
       locale={
         Object {
-          "cancel": "取消",
-          "confirm": "确定",
+          "cancelText": "取消",
+          "okText": "确定",
         }
       }
       localeCode="zh-cn"
