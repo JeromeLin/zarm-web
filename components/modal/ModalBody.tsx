@@ -4,9 +4,8 @@ import { ModalBodyProps } from './PropsType';
 
 class ModalBody extends Component<ModalBodyProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-modal',
+    prefixCls: 'zw-modal',
     height: 'auto',
-    style: {},
   };
 
   render() {

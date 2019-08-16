@@ -1,3 +1,5 @@
+import { MouseEventHandler, HTMLAttributes } from 'react';
+
 // tslint:disable-next-line:max-line-length
 export type animationType = 'fade' | 'door' | 'flip' | 'rotate' | 'zoom' | 'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
 
@@ -15,25 +17,19 @@ export interface ModalProps {
   onMaskClick?(): void;
 }
 
-export interface ModalBodyProps {
+export interface ModalBodyProps extends HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   height?: number | string;
-  style?: object;
-  className?: string;
 }
 
-export interface ModalFooterProps {
+export interface ModalFooterProps extends HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
-  style?: object;
-  className?: string;
 }
 
-export interface ModalHeaderProps {
+export interface ModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
-  title?: string;
-  style?: object;
-  className?: string;
-  onClose?: () => void;
+  closable: boolean;
+  onClose?: MouseEventHandler<HTMLDivElement>;
 }
 
 export interface StyleType {

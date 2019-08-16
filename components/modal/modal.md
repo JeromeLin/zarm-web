@@ -1,13 +1,16 @@
-## Modal 模态框
+# Modal 模态框
 在当前页面打开一个模态对话框。
 
-### 基础用法
+## 基础用法
 
 Modal组件的基础用法。
 
-:::demo 可以通过`Modal.Header`,`Modal.Body`,`Modal.Footer`子组件定义模态框的不同部分。
+demo 可以通过`Modal.Header`,`Modal.Body`,`Modal.Footer`子组件定义模态框的不同部分。
 
-```js
+```jsx
+import { Modal, Button } from 'zarm-web';
+
+class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,16 +79,21 @@ Modal组件的基础用法。
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
-### 不同的动画
+## 不同的动画
 
 支持多种展示动画。
 
 :::demo 可以通过`animationType`属性设置不同的动画方式，默认`zoom`。
 
-```js
+```jsx
+import { Modal, Button } from 'zarm-web';
+class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -128,16 +136,18 @@ Modal组件的基础用法。
       </div>
     )
   }
+}
+ReactDOM.render(<Demo />, mountNode); 
 ```
-:::
 
-### 圆角模态框
-
+## 圆角模态框
 可以设置圆角模态框。
+Demo 使用`radius`属性设置圆角
 
-:::demo 使用`radius`属性设置圆角
+```jsx
+import { Modal, Button } from 'zarm-web';
 
-```js
+class Demo1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -155,7 +165,10 @@ Modal组件的基础用法。
       <div>
         <Button theme="info" onClick={() => this.toggleModal()}>圆角模态框</Button>
         <Modal visible={modalVisible} radius>
-          <Modal.Header title="标题" onClose={() => this.toggleModal()} />
+          <Modal.Header 
+            title="标题"
+            onClose={() => this.toggleModal()} 
+          />
           <Modal.Body>
             我是一个模态框
           </Modal.Body>
@@ -167,32 +180,7 @@ Modal组件的基础用法。
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo1 />, mountNode);   
 ```
-:::
-
-
-### Modal Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| visible    | 是否可见  | boolean  |   -            |    false     |
-| width     | 宽度   | number  |   -            |    600     |
-| radius     | 是否圆角   | boolean    | - | false   |
-| animationType     | 动画方式  | string    | zoom,door,flip... | zoom   |
-| animationDuration     | 动画时长(ms)  | number   | - | 300  |
-
-
-### Modal Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onMaskClick | 点击遮罩触发的事件 | — |
-
-
-### Modal.Header Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| title    | 标题  | string  |   -            |    ''     |
-
-### Modal.Header Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onClose | 点击关闭图标触发的事件 | — |

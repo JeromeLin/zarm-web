@@ -19,6 +19,7 @@ class App extends Component {
         <Route path="/components/:component" component={LoadableComponent(() => import('@site/pages/Components'))} />
         <Route path="*" component={LoadableComponent(() => import('@site/pages/NotFoundPage'))} /> */}
         <Route path="/components/:component" component={require('@site/pages/Components').default} />
+        <Route path="/test" component={require('@site/pages/Test').default} />
         <Redirect exact from="/" to="/components/quick-start" />
         <Route component={require('@site/pages/NotFoundPage').default} />
       </Switch>

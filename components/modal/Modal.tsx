@@ -1,8 +1,13 @@
-import React, { Component, MouseEvent, KeyboardEvent } from 'react';
-import { createPortal, unmountComponentAtNode } from 'react-dom';
-import classnames from 'classnames';
+import React, { Component, MouseEvent, KeyboardEvent, ReactNode } from 'react';
+import Popup from 'zarm/lib/popup';
+import 'zarm/lib/popup/style';
+import cn from 'classnames';
+import PopupTypes from 'zarm/types/popup/PropsType';
+import { unmountComponentAtNode } from 'react-dom';
 import Events from '../utils/events';
 import { ModalProps, StyleType, ModalBodyProps, ModalHeaderProps, ModalFooterProps } from './PropsType';
+import Button from '../button';
+
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
@@ -33,23 +38,35 @@ interface StateIF {
   animationState: 'leave' | 'enter';
 }
 
-class Modal extends Component<ModalProps, StateIF> {
-  static Header: typeof ModalHeader;
+interface PropsIF extends PopupTypes {
+  prefixCls: string;
+  okText: ReactNode;                     // 确认按钮的事件
+  cancelText: ReactNode;                 // 取消按钮的事件
+  closable: boolean;                     // 是显示关闭按钮
+  title?: ReactNode;                     // modal的标题
+  maskClosable: boolean;                 // 点击空白区域是否关闭
+  mask: boolean;                         // 是否显示遮罩层
+  footer?: ReactNode;                    // modal底部的内容，为null时不显示底部
+  centered: boolean;                     // 是否居中显示
+  onOk?: () => void;                     // 点击了确定按钮的回调函数
+  onCancel?: () => void;                 // 点击了取消按钮的回调函数
+  autoFocus: boolean;                    // 打开弹框时自动获取焦点
+  disableEscapeKeyDown: boolean;         // 禁用按esc按键的时候，执行onCancel的行为
+  disableEnterKeyDown: boolean;          // 禁用按enter按键的时候，执行onOk的行为
+}
 
-  static Body: typeof ModalBody;
-
-  static Footer: typeof ModalFooter;
-
+class Modal extends Component<PropsIF, StateIF> {
   static defaultProps = {
-    prefixCls: 'ui-modal',
-    visible: false,
-    animationType: 'zoom',
-    animationDuration: 300,
-    width: 600,
-    minWidth: 270,
-    isRadius: false,
-    isRound: false,
-    onMaskClick() { },
+    prefixCls: 'zw-modal',
+    okText: '确定',
+    cancelText: '取消',
+    closable: true,
+    maskClosable: false,
+    mask: true,
+    centered: false,
+    autoFocus: true,
+    disableEscapeKeyDown: false,
+    disableEnterKeyDown: false,
   };
 
   private static instanceList: Modal[] = [];
@@ -114,7 +131,9 @@ class Modal extends Component<ModalProps, StateIF> {
 
   private appended: boolean = false;
 
-  constructor(props: ModalProps) {
+  private zwModalContainer = React.createRef<HTMLDivElement>();
+
+  constructor(props: PropsIF) {
     super(props);
     this.state = {
       isShow: false,
@@ -168,18 +187,17 @@ class Modal extends Component<ModalProps, StateIF> {
 
   componentDidUpdate() {
     const { isShow } = this.state;
-    if (this.modalContent) {
+    const { current } = this.zwModalContainer;
+    if (current) {
       if (isShow) {
-        this.modalContent.focus();
+        current.focus();
       } else {
-        this.modalContent.blur();
+        current.blur();
       }
     }
   }
 
   componentWillUnmount() {
-    Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
-    Events.off(this.modal, 'animationend', this.animationEnd);
     Modal.unmountModalInstance(this, () => {
       toggleBodyOverflow(false);
     });
@@ -192,20 +210,6 @@ class Modal extends Component<ModalProps, StateIF> {
       }
     });
   }
-
-  animationEnd = () => {
-    if (this.state.animationState === 'leave') {
-      this.setState({
-        isShow: false,
-        isPending: false,
-      });
-    } else {
-      this.setState({
-        isShow: true,
-        isPending: false,
-      });
-    }
-  };
 
   onKeyDown = (e: KeyboardEvent) => {
     if (this.state.isShow && this.state.animationState !== 'leave') {
@@ -267,69 +271,30 @@ class Modal extends Component<ModalProps, StateIF> {
 
   render() {
     const {
-      prefixCls,
-      animationType,
-      animationDuration,
-      width,
-      minWidth,
-      isRadius,
-      isRound,
-      className,
-      onMaskClick,
-      children,
+      prefixCls, children, title, closable, visible,
+      onOk, onCancel,
+      okText, cancelText,
     } = this.props;
-    const { isShow, isPending, animationState } = this.state;
-
-    const classes = {
-      modal: classnames({
-        [prefixCls!]: true,
-        radius: 'radius' in this.props || isRadius,
-        round: 'round' in this.props || isRound,
-        [`fade-${animationState}`]: isPending,
-        [className!]: !!className,
-      }),
-      dialog: classnames({
-        [`${prefixCls}-dialog`]: true,
-        [`${animationType}-${animationState}`]: true,
-      }),
-    };
-
-    const style: StyleType = {
-      modal: {
-        [animationDurationKey]: `${animationDuration}ms`,
-        position: 'fixed',
-      },
-      dialog: {
-        width: Number(width),
-        minWidth: Number(minWidth),
-        [animationDurationKey]: `${animationDuration}ms`,
-      },
-    };
-    if (!isShow) {
-      style.modal.display = 'none';
-    }
-    return createPortal(
-      <div
-        className={classes.modal}
-        style={style.modal}
-        onClick={onMaskClick}
-        ref={this.getModalRef}
+    const showHeader = title !== undefined && closable;
+    const classname = cn({
+      [prefixCls]: true,
+    });
+    return (
+      <Popup
+        visible={visible}
+        direction="center"
       >
-        <div className={`${prefixCls}-wrapper`}>
-          <div
-            ref={this.modalContentRef}
-            tabIndex={-1}
-            className={classes.dialog}
-            style={style.dialog}
-            onClick={this.onMaskClick}
-            onKeyDown={this.onKeyDown}
-            onKeyPress={this.onKeyPress}
-          >
-            {children}
-          </div>
+        <div className={classname} tabIndex={-1} ref={this.zwModalContainer}>
+          {showHeader && <ModalHeader onClose={onCancel}>{title}</ModalHeader>}
+          <ModalBody>{children}</ModalBody>
+          <ModalFooter>
+            <div className={`${prefixCls}-button__warpper`}>
+              <Button onClick={onCancel}>{cancelText}</Button>
+              <Button theme="primary" onClick={onOk}>{okText}</Button>
+            </div>
+          </ModalFooter>
         </div>
-      </div>,
-      this.div,
+      </Popup>
     );
   }
 }
@@ -338,7 +303,7 @@ class Modal extends Component<ModalProps, StateIF> {
 // eslint-disable-next-line no-redeclare
 declare namespace Modal {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface Props extends ModalProps {}
+  export interface Props extends ModalProps { }
   export interface BodyProps extends ModalBodyProps { }
   export interface HeaderProps extends ModalHeaderProps { }
   export interface FooterProps extends ModalFooterProps { }

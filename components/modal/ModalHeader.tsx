@@ -5,15 +5,13 @@ import Icon from '../icon';
 
 class ModalHeader extends Component<ModalHeaderProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-modal',
-    title: '',
-    style: {},
-    onClose: () => {},
+    prefixCls: 'zw-modal',
+    closable: true,
   };
 
   render() {
-    const { title, onClose, prefixCls, className, style } = this.props;
-    const btnClose = onClose ? (
+    const { children, closable, onClose, prefixCls, className, style } = this.props;
+    const btnClose = closable ? (
       <div className={`${prefixCls}-close`} onClick={onClose}>
         <Icon type="wrong" />
       </div>
@@ -26,7 +24,7 @@ class ModalHeader extends Component<ModalHeaderProps, any> {
 
     return (
       <div className={cls} style={style}>
-        <div className={`${prefixCls}-title`}>{title}</div>
+        <div className={`${prefixCls}-title`}>{children}</div>
         {btnClose}
       </div>
     );
