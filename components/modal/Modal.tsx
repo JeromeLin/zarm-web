@@ -12,6 +12,7 @@ import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import domUtil from '../utils/dom';
+import { element } from 'prop-types';
 
 const { getSupportedPropertyName } = domUtil;
 let animationDurationKey = getSupportedPropertyName('animationDuration') || 'animationDuration';
@@ -127,11 +128,9 @@ class Modal extends Component<PropsIF, StateIF> {
 
   private div: HTMLDivElement = document.createElement('div');
 
-  private modalContent!: HTMLDivElement;
+  private modalContent!: HTMLFormElement;
 
   private appended: boolean = false;
-
-  private zwModalContainer = React.createRef<HTMLDivElement>();
 
   constructor(props: PropsIF) {
     super(props);
@@ -149,16 +148,7 @@ class Modal extends Component<PropsIF, StateIF> {
       return;
     }
     if (visible) {
-      if (!this.appended) {
-        document.body.appendChild(this.div);
-        this.appended = true;
-      }
-      this.enter();
       Modal.handleVisbibleList(this, true, true);
-    }
-    if (this.modal) {
-      Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
-      Events.on(this.modal, 'animationend', this.animationEnd);
     }
   }
 
@@ -177,22 +167,29 @@ class Modal extends Component<PropsIF, StateIF> {
           isShow: false,
         });
       });
-      this.enter();
       Modal.handleVisbibleList(this, true);
     } else if (visible && !nextProps.visible) {
       Modal.handleVisbibleList(this, false);
-      this.leave();
     }
   }
 
-  componentDidUpdate() {
-    const { isShow } = this.state;
-    const { current } = this.zwModalContainer;
-    if (current) {
-      if (isShow) {
-        current.focus();
-      } else {
-        current.blur();
+  componentDidUpdate(prevProps: PropsIF) {
+    const { visible } = this.props;
+    if (this.modalContent) {
+      if (visible && !prevProps.visible) {
+        setTimeout(() => {
+          this.modalContent.focus();
+          const { length } = this.modalContent;
+          Array.prototype.forEach.call(this.modalContent, (element, index) => {
+            element.setAttribute('tabIndex', index + 1);
+          });
+        }, 50);
+      }
+      if (prevProps && !visible) {
+        const { length } = this.modalContent;
+        const lastFormElem = this.modalContent[length - 1];
+        lastFormElem.removeEventListener('blur', this.onLastElemBlur);
+        this.modalContent.blur();
       }
     }
   }
@@ -211,27 +208,37 @@ class Modal extends Component<PropsIF, StateIF> {
     });
   }
 
+  setModalContainer = (elem: null | HTMLFormElement) => {
+    if (elem) {
+      this.modalContent = elem;
+    }
+  };
+
   onKeyDown = (e: KeyboardEvent) => {
-    if (this.state.isShow && this.state.animationState !== 'leave') {
+    const { visible, onCancel, onKeyDown } = this.props;
+    if (visible) {
       if (e.keyCode === 27) {
-        React.Children.forEach(this.props.children, (elem: any) => {
-          if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
-            if (elem.props.onClose) {
-              elem.props.onClose();
-            }
-          }
-        });
+        if (onCancel) {
+          onCancel();
+        }
       }
+    }
+    if (onKeyDown) {
+      onKeyDown(e);
     }
   };
 
   onKeyPress = (e: KeyboardEvent) => {
-    if (document.activeElement === this.modalContent) {
-      if (this.state.isShow && this.state.animationState !== 'leave') {
-        if (this.props.onKeyPress) {
-          this.props.onKeyPress(e.nativeEvent);
+    const { visible, onOk, onKeyPress, disableEnterKeyDown } = this.props;
+    if (disableEnterKeyDown === false) {
+      if (document.activeElement === this.modalContent && visible && e.nativeEvent.keyCode === 13) {
+        if (onOk) {
+          onOk();
         }
       }
+    }
+    if (onKeyPress) {
+      onKeyPress(e);
     }
   };
 
@@ -242,32 +249,6 @@ class Modal extends Component<PropsIF, StateIF> {
       this.modal = ele;
     }
   };
-
-  modalContentRef = (elem: HTMLDivElement) => {
-    this.modalContent = elem;
-  };
-
-  enter() {
-    if (Modal.visibleList.length === 0) {
-      toggleBodyOverflow(true);
-    }
-    this.setState({
-      isShow: true,
-      isPending: true,
-      animationState: 'enter',
-    });
-  }
-
-  leave() {
-    this.setState({
-      isShow: true,
-      isPending: true,
-      animationState: 'leave',
-    });
-    if (Modal.visibleList.length === 0) {
-      toggleBodyOverflow(false);
-    }
-  }
 
   render() {
     const {
@@ -284,7 +265,14 @@ class Modal extends Component<PropsIF, StateIF> {
         visible={visible}
         direction="center"
       >
-        <div className={classname} tabIndex={-1} ref={this.zwModalContainer}>
+        <form
+          className={classname}
+          tabIndex={-1}
+          onKeyDown={this.onKeyDown}
+          onKeyPress={this.onKeyPress}
+          ref={this.setModalContainer}
+          onBlur={this.onBlur}
+        >
           {showHeader && <ModalHeader onClose={onCancel}>{title}</ModalHeader>}
           <ModalBody>{children}</ModalBody>
           <ModalFooter>
@@ -293,7 +281,7 @@ class Modal extends Component<PropsIF, StateIF> {
               <Button theme="primary" onClick={onOk}>{okText}</Button>
             </div>
           </ModalFooter>
-        </div>
+        </form>
       </Popup>
     );
   }
