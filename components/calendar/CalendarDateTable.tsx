@@ -5,7 +5,7 @@ import Format from '../utils/format';
 import { isArray } from '../utils/validate';
 
 import { DateTableProps, DateType } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 // 生成 [1, 2, 3, ...] 的序列
 const getSequence = length => [...Array.from({ length }).keys()];

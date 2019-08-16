@@ -16,7 +16,7 @@ module.exports = {
     // },
     // I18n: {
     //   name: 'i18n',
-    //   module: () => import('@/components/locale/i18n.md'),
+    //   module: () => import('@/components/locale/demo.md'),
     // },
   ],
   components: {
@@ -199,7 +199,7 @@ module.exports = {
       },
       {
         name: 'LocaleProvider',
-        module: () => import('@/components/locale/i18n.md'),
+        module: () => import('@/components/locale-provider/demo.md'),
       },
     ],
   },

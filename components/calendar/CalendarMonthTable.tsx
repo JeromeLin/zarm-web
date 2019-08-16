@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { MonthTableProps } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const CALENDAR_ROW_COUNT = 4;
 const CALENDAR_COL_COUNT = 3;

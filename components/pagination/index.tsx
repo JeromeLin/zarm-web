@@ -4,8 +4,8 @@ import Select from '../select';
 import Input from '../input';
 import Icon from '../icon';
 import PropsType from './PropsType';
-import format from '../locale/format';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import format from '../locale-provider/format';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const noop = () => { };
 class Pagination extends Component<PropsType, any> {

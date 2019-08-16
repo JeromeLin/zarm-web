@@ -5,7 +5,7 @@ import Format from '../utils/format';
 import { isEmpty } from '../utils';
 import Button from '../button';
 import TimePicker from '../time-picker';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 import CalendarHeader from './CalendarHeader';
 import CalendarDateTable from './CalendarDateTable';
@@ -37,8 +37,6 @@ class Calendar extends Component<PropsType, any> {
       ),
       value: Format.date(props.value || props.defaultValue, props.format),
       panel: 'date',
-
-      showTime: false,
       timeValue: '00:00:00',
     };
   }
