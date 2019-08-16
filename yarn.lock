@@ -14094,8 +14094,8 @@ yargs@^7.0.0, yargs@^7.1.0:
 
 zarm@2.0.0-alpha.49:
   version "2.0.0-alpha.49"
-  resolved "https://npm.zhonganonline.com/zarm/-/zarm-2.0.0-alpha.49.tgz#1bd6665c80395aeb440d91c6c18132cef8ab824b"
-  integrity sha1-G9ZmXIA5WutEDZHGwYEyzvirgks=
+  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.0.0-alpha.49.tgz#1bd6665c80395aeb440d91c6c18132cef8ab824b"
+  integrity sha512-fXf5kMR8ttTUT7AFeWjyjb/E+6s9roo3EDNaD0gDctD+tGsVyu3iuh20ErJfbFkoHl1eLv47MZ2yZWNKeL95/A==
   dependencies:
     better-scroll "1.15.1"
     classnames "2.2.6"
