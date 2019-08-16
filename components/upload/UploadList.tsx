@@ -46,32 +46,31 @@ class UploadList extends Component<ListProps, any> {
               ) : null;
 
               return (
-              // eslint-disable-next-line
-              <div key={`upload-list-item-${index}`} className={itemCls}>
-                <a
-                  className={`${prefixCls}-list-item-thumbnail`}
-                  href={item.url || item.thumbUrl}
-                  target="_blank"
-                >
-                  <img src={item.thumbUrl || item.url} alt={item.name} />
-                </a>
-                <span className={`${prefixCls}-list-item-name`}>
+                <div key={`upload-list-item-${index}`} className={itemCls}>
                   <a
+                    className={`${prefixCls}-list-item-thumbnail`}
                     href={item.url || item.thumbUrl}
-                    title={item.name}
                     target="_blank"
                   >
-                    {item.name}
+                    <img src={item.thumbUrl || item.url} alt={item.name} />
                   </a>
-                </span>
-                <Icon
-                  type="wrong"
-                  // title="删除"
-                  className={`${prefixCls}-list-item-icon`}
-                  onClick={() => onDelete(item)}
-                />
-                {progress}
-              </div>
+                  <span className={`${prefixCls}-list-item-name`}>
+                    <a
+                      href={item.url || item.thumbUrl}
+                      title={item.name}
+                      target="_blank"
+                    >
+                      {item.name}
+                    </a>
+                  </span>
+                  <Icon
+                    type="wrong"
+                    // title="删除"
+                    className={`${prefixCls}-list-item-icon`}
+                    onClick={() => onDelete(item)}
+                  />
+                  {progress}
+                </div>
               );
             })}
         </div>

@@ -2,7 +2,6 @@ export default function debounce(func: (...arg: any[]) => any, wait: number, imm
   let timeout: number | null;
   let result: any;
   return function debounced(this: any, ...args: any[]) {
-    const context = this;
     if (timeout) {
       clearTimeout(timeout);
     }
@@ -12,11 +11,11 @@ export default function debounce(func: (...arg: any[]) => any, wait: number, imm
         timeout = null;
       }, wait);
       if (callNow) {
-        result = func.apply(context, args);
+        result = func.apply(this, args);
       }
     } else {
       timeout = setTimeout(() => {
-        func.apply(context, args);
+        func.apply(this, args);
       }, wait);
     }
     return result;

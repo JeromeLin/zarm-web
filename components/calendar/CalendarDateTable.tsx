@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import Format from '../utils/format';
-import { isArray } from '../utils/validate';
+import isArray from '../utils/validate';
 
 import { DateTableProps, DateType } from './PropsType';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
