@@ -29,7 +29,7 @@ export interface AddonPropsIF {
   composePosition?: 'before' | 'after' | 'middle';
 }
 
-export default interface PropsIF {
+export interface PropsIF {
   prefixCls: 'string';
   type: string;                                 // default is text  若为 textarea 则转为 TextareaElement
   shape: 'rect' | 'radius';
