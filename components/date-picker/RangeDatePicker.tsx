@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import Events from '../utils/events';
 import Format from '../utils/format';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 import Dropdown from '../dropdown/index';
 import RangeCalendar from '../calendar/Calendar';

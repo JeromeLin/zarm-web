@@ -16,6 +16,7 @@ export interface AddonIF {
 }
 
 export function isAddon(addon: ReactNode | AddonIF): addon is AddonIF {
+  // eslint-disable-next-line
   return !!addon && addon.hasOwnProperty('addon');
 }
 

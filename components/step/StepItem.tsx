@@ -9,15 +9,14 @@ class StepItem extends Component<ItemProps, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       isFinished, isProcess, index, children, style, prefixCls,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       [`${prefixCls}-item`]: true,
-      [`${prefixCls}-item-finish`]: 'finished' in props || isFinished,
-      [`${prefixCls}-item-process`]: 'process' in props || isProcess,
+      [`${prefixCls}-item-finish`]: 'finished' in this.props || isFinished,
+      [`${prefixCls}-item-process`]: 'process' in this.props || isProcess,
     });
 
     return (
@@ -26,7 +25,7 @@ class StepItem extends Component<ItemProps, any> {
         <div className={`${prefixCls}-item-header`}>
           <div className={`${prefixCls}-item-header-inner`}>
             <span>
-              {!('finished' in props || isFinished) ? (index) : (<Icon type="right" />)}
+              {!('finished' in this.props || isFinished) ? (index) : (<Icon type="right" />)}
             </span>
           </div>
         </div>

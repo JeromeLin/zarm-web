@@ -6,6 +6,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "target": "es6",
     "skipLibCheck": true,
     "types": [

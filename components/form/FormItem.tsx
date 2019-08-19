@@ -91,7 +91,7 @@ class FormItem extends PureComponent<ItemProps, any> {
     Promise.resolve('change').then(this.validateItem.bind(this));
   };
 
-  validateItem(trigger: triggerType, callback = (_?) => {}) {
+  validateItem(trigger: triggerType, callback: (messge: string) => void = () => {}) {
     const { prop } = this.props;
     const rules = this.getFilteredRules(trigger);
 
