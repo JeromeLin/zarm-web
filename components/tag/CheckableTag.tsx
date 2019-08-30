@@ -1,19 +1,13 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import Icon from '../icon';
 import PropsType from './PropsType';
 
-const Style = {
-  iconStyle: { marginLeft: '8px', cursor: 'pointer' },
-};
-
-class Tag extends Component<PropsType, any> {
+class CheckableTag extends Component<PropsType, any> {
   static defaultProps = {
     theme: '',
     prefixCls: 'zw-tag',
     size: '',
-    onClick: () => {},
   };
 
   static propTypes = {
@@ -26,40 +20,39 @@ class Tag extends Component<PropsType, any> {
     ghost: PropTypes.bool,
   };
 
+  onClick = () => {
+    const { checked, onChange } = this.props;
+    if (onChange) {
+      onChange(!checked);
+    }
+  };
+
   render() {
     const {
       prefixCls,
       theme,
       size,
       shape,
+      checked,
       className,
-      onClose,
-      onClick,
-      closable,
       children,
       style,
       title,
     } = this.props;
+
     const classes = classnames(prefixCls, className, {
       [`${prefixCls}--${theme}`]: theme,
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--checked`]: checked,
     });
 
-    const closeIcon = closable ? (
-      <Icon
-        style={Style.iconStyle}
-        type="wrong"
-        onClick={(e: MouseEvent) => { onClose && onClose(e); }}
-      />
-    ) : null;
     return (
-      <div className={classes} style={style} title={title} onClick={(e: MouseEvent) => { onClick && onClick(e); }}>
-        { children }
-        { closeIcon }
+      <div className={classes} style={style} title={title} onClick={this.onClick}>
+        {children}
       </div>
     );
   }
 }
 
-export default Tag;
+export default CheckableTag;
