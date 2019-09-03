@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag behaves correctly when click CheckableTag 1`] = `
+<CheckableTag
+  checked={true}
+  onChange={[MockFunction]}
+  prefixCls="zw-tag"
+  size=""
+>
+  <div
+    className="zw-tag zw-tag--checked"
+    onClick={[Function]}
+  >
+    default
+  </div>
+</CheckableTag>
+`;
+
+exports[`Tag behaves correctly when disabled CheckableTag clicked uncalled onChange 1`] = `
+<CheckableTag
+  disabled={true}
+  onChange={[MockFunction]}
+  prefixCls="zw-tag"
+  size=""
+>
+  <div
+    className="zw-tag zw-tag--disabled"
+    onClick={[Function]}
+  >
+    default
+  </div>
+</CheckableTag>
+`;
+
+exports[`Tag render CheckableTag correctly 1`] = `
+<div
+  class="multi-rows"
+>
+  <div
+    class="zw-tag zw-tag--checked"
+  >
+    default
+  </div>
+</div>
+`;
+
+exports[`Tag render CheckableTag size correctly 1`] = `
+<div
+  class="multi-rows"
+>
+  <div
+    class="zw-tag zw-tag--large"
+  >
+    large
+  </div>
+  <div
+    class="zw-tag"
+  >
+    middle
+  </div>
+  <div
+    class="zw-tag zw-tag--small"
+  >
+    large
+  </div>
+  <div
+    class="zw-tag zw-tag--xsmall"
+  >
+    large
+  </div>
+</div>
+`;
+
+exports[`Tag renders Tag color correctly 1`] = `
+<div
+  class="multi-rows"
+>
+  <div
+    class="zw-tag zw-tag--red"
+  >
+    normal
+  </div>
+</div>
+`;
+
+exports[`Tag renders Tag shape correctly 1`] = `
+<div>
+  <div
+    class="zw-tag"
+  >
+    radius
+  </div>
+  <div
+    class="zw-tag zw-tag--rect"
+  >
+    rect
+  </div>
+  <div
+    class="zw-tag zw-tag--round"
+  >
+    round
+  </div>
+</div>
+`;
+
+exports[`Tag renders Tag size correctly  1`] = `
+<div
+  class="multi-rows"
+>
+  <div
+    class="zw-tag"
+  >
+    default
+  </div>
+  <div
+    class="zw-tag zw-tag--large"
+  >
+    large
+  </div>
+  <div
+    class="zw-tag zw-tag--middle"
+  >
+    middle
+  </div>
+  <div
+    class="zw-tag zw-tag--small"
+  >
+    small
+  </div>
+  <div
+    class="zw-tag zw-tag--xsmall"
+  >
+    xsmall
+  </div>
+</div>
+`;
+
+exports[`Tag renders normal Tag correctly 1`] = `
+<div
+  class="multi-rows"
+>
+  <div
+    class="zw-tag"
+  >
+    normal
+  </div>
+</div>
+`;

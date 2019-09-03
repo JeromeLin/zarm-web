@@ -5,19 +5,17 @@ import PropsType from './PropsType';
 
 class CheckableTag extends Component<PropsType, any> {
   static defaultProps = {
-    theme: '',
     prefixCls: 'zw-tag',
     size: '',
   };
 
   static propTypes = {
     prefixCls: PropTypes.string,
-    theme: PropTypes.string,
     size: PropTypes.oneOf(['', 'large', 'middle', 'small', 'xsmall']),
     shape: PropTypes.oneOf(['', 'rect', 'radius', 'round']),
     onClick: PropTypes.func,
     loading: PropTypes.bool,
-    ghost: PropTypes.bool,
+    disabled: PropTypes.bool,
   };
 
   onClick = () => {
@@ -30,25 +28,24 @@ class CheckableTag extends Component<PropsType, any> {
   render() {
     const {
       prefixCls,
-      theme,
       size,
       shape,
       checked,
       className,
+      disabled,
       children,
       style,
-      title,
     } = this.props;
 
     const classes = classnames(prefixCls, className, {
-      [`${prefixCls}--${theme}`]: theme,
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--checked`]: checked,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     return (
-      <div className={classes} style={style} title={title} onClick={this.onClick}>
+      <div className={classes} style={style} onClick={() => { !disabled && this.onClick(); }}>
         {children}
       </div>
     );

@@ -12,47 +12,36 @@
     --tag-icon-size-large: 14px;
     --tag-icon-size: 12px;
     --tag-icon-size-xsmall: 10px;
-    --tag-color-diabled: #CCCCCC;
-    --tag-default-background: var(--color-text-inverse);
+    --tag-color-disabled: var(--color-text-disabled);
+    --tag-disabled-opacity: var(--opacity-disabled);
+    --tag-default-background: #f9f9f9;
     --tag-default-color: #616161;
     --tag-default-border: var(--border-color);
     --tag-primary-color: var(--theme-primary);
     --tag-success-color: var(--theme-success);
     --tag-warning-color: var(--theme-warning);
     --tag-danger-color: var(--theme-danger);
+    --tag-color-green: 0, 188, 112;
+    --tag-color-blue: 84, 192, 232;
+    --tag-color-orange: 236, 145, 49;
+    --tag-color-red: 255, 80, 80;
+    --tag-color-gray: 97, 97, 97;
 }
 
-$tag-default-color: #616161;
-$tag-default-bg: #f9f9f9;
-$tag-default-border: #CECECE;
-$tag-font-size: var(--tag-font-size);
-@mixin tag-theme($color) {
-    // $active-background: darken($background, 10%);
-    background: rgba($color, 1);
-    border-color: rgba($color, 0.3);
-    color: $color;
-    // &.disabled,
-    // &:disabled {
-    //     cursor: not-allowed;
-    //     &:focus,
-    //     &.focus {
-    //         background-color: $background;
-    //     }
-    //     &:hover {
-    //         background-color: $background;
-    //     }
-    //     .ui-icon {
-    //         cursor: not-allowed;
-    //     }
-    // }
+@mixin tag-color($color) {
+    background-color: rgba($color, 0.04);
+    border-color: rgba($color, 0.2);
+    color: rgba($color, 1);
+    &:hover {
+        background-color: rgba($color, 0.2);
+    }
 }
 
 @mixin tag-size($height, $padding, $icon-size) {
     padding: 0 $padding;
-    font-size: $tag-font-size;
+    font-size: var(--tag-font-size);
     height: $height;
     line-height: $height;
-    // border-radius: $height;
     height: $height;
     @include b(icon) {
         font-size: $icon-size;
@@ -67,53 +56,22 @@ $tag-font-size: var(--tag-font-size);
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
-    font-size: $tag-font-size;
+    font-size: var(--tag-font-size);
     border-width: 1px;
     border-style: solid;
-    background-color: rgba(var(--tag-default-color), 0.71);
-    border-color: rgba(var(--tag-default-color), 0.3);
+    background-color: var(--tag-default-background);
+    border-color: var(--tag-default-border);
     color: var(--tag-default-color);
     margin: 0 8px 8px 0;
+    border-radius: var(--radius-md);
     cursor: pointer;
 }
 
-// @mixin tag-size($height, $padding, $paddingRight, $font-size, $border-radius) {
-//     padding: $padding;
-//     font-size: $font-size;
-//     height: $height - 2;
-//     line-height: $height - 2;
-//     border-radius: $height / 2;
-//     &.hasCloseButton {
-//         padding-right: $paddingRight;
-//     }
-//     // &.radius {
-//     // }
-//     &.round {
-//         border-radius: 1000px;
-//     }
-//     .ui-icon+span,
-//     span+.ui-icon {
-//         cursor: pointer;
-//         margin-left: $height / 10;
-//     }
-// }
 @include b(tag) {
-    display: inline-block;
-    position: relative;
-    transition: all .3s cubic-bezier(.78, .14, .15, .86);
-    vertical-align: middle;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
-    font-size: $tag-font-size;
-    border-width: 1px;
-    border-style: solid;
-    background-color: $tag-default-bg;
-    border-color: $tag-default-border;
-    color: $tag-default-color;
-    margin: 0 8px 8px 0;
-    border-radius: 4px;
-    cursor: pointer;
+    @include tag-base();
+    &:hover {
+        background-color: rgba(var(--tag-default-background), 0.5);
+    }
     &--rect {
         border-radius: 0px;
     }
@@ -125,95 +83,50 @@ $tag-font-size: var(--tag-font-size);
     @include m(large) {
         @include tag-size(var(--tag-height-large), var(--tag-padding-h-large), var(--tag-icon-size-large));
     }
+    @include m(middle) {
+        @include tag-size(var(--tag-height-middle), var(--tag-padding-h), var(--tag-icon-size));
+    }
     @include m(small) {
         @include tag-size(var(--tag-height-small), var(--tag-padding-h), var(--tag-icon-size));
     }
     @include m(xsmall) {
         @include tag-size(var(--tag-height-xsmall), var(--tag-padding-h), var(--tag-icon-size-xsmall));
     }
-    /* tag theme */
+    /* tag color */
+    @include m(gray) {
+        @include tag-color(var(--tag-color-gray));
+    }
+    @include m(green) {
+        @include tag-color(var(--tag-color-green));
+    }
+    @include m(blue) {
+        @include tag-color(var(--tag-color-blue));
+    }
+    @include m(orange) {
+        @include tag-color(var(--tag-color-orange));
+    }
+    @include m(red) {
+        @include tag-color(var(--tag-color-red));
+    }
     @include m(checked) {
-        background-color: var(--tag-default-color);
-        border-color: var(--tag-default-color);
+        background-color: var(--tag-primary-color);
+        border-color: var(--tag-primary-color);
         color: var(--tag-default-background);
-    }
-    @include m(primary) {
-        @include tag-theme(var(--tag-primary-color));
-        @include m(checked) {
+        &:hover {
             background-color: var(--tag-primary-color);
-            border-color: var(--tag-primary-color);
             color: var(--tag-default-background);
         }
     }
-    @include m(success) {
-        @include tag-theme( var(--tag-success-color));
-        @include m(checked) {
-            background-color: var(--tag-success-color);
-            border-color: var(--tag-success-color);
-            color: var(--tag-default-background);
-        }
-    }
-    @include m(warning) {
-        @include tag-theme(var(--tag-warning-color));
-        @include m(checked) {
-            background-color: var(--tag-warning-color);
-            border-color: var(--tag-warning-color);
-            color: var(--tag-default-background);
-        }
-    }
-    @include m(danger) {
-        @include tag-theme(var(--tag-danger-color));
-        @include m(checked) {
-            background-color: var(--tag-danger-color);
-            border-color: var(--tag-danger-color);
-            color: var(--tag-default-background);
+    @include m(disabled) {
+        cursor: not-allowed;
+        opacity: var(--tag-disabled-opacity);
+        box-shadow: none;
+        background-color: var(--tag-default-background);
+        border-color: var(--tag-default-border);
+        color: var(--tag-color-disabled);
+        &:hover {
+            background-color: var(--tag-default-background);
+            color: var(--tag-color-disabled);
         }
     }
 }
-
-// .ui-tag {
-//     @include tag-size($base-height, 0 10px, 20px, $base-fontSize, $base-radius);
-//     display: inline-block;
-//     position: relative;
-//     text-overflow: ellipsis;
-//     transition: all .3s cubic-bezier(.78, .14, .15, .86);
-//     vertical-align: middle;
-//     overflow: hidden;
-//     white-space: nowrap;
-//     /* disabled Tag */
-//     &.disabled,
-//     &:disabled {
-//         cursor: not-allowed;
-//         opacity: .65;
-//         box-shadow: none;
-//     }
-//     /* Tag sizes */
-//     &.size-xl {
-//         @include tag-size($base-height-xl, 0 14px, 24px, $base-fontSize-xl, $base-height-xl / 2);
-//     }
-//     &.size-lg {
-//         @include tag-size($base-height-lg, 0 12px, 22px, $base-fontSize-lg, $base-height-lg / 2);
-//     }
-//     &.size-sm {
-//         @include tag-size($base-height-sm, 0 8px, 20px, $base-fontSize-sm, $base-height-sm / 2);
-//     }
-//     &.size-xs {
-//         @include tag-size($base-height-xs, 0 4px, 16px, $base-fontSize-xs, $base-height-xs / 2);
-//     }
-//     /* Tag themes */
-//     &.theme-default {
-//         @include tag-theme($base-tag-default-color, $base-tag-default-bg);
-//     }
-//     &.theme-info {
-//         @include tag-theme($base-tag-info-color, $base-tag-info-bg);
-//     }
-//     &.theme-success {
-//         @include tag-theme($base-tag-success-color, $base-tag-success-bg);
-//     }
-//     &.theme-warning {
-//         @include tag-theme($base-tag-warning-color, $base-tag-warning-bg);
-//     }
-//     &.theme-error {
-//         @include tag-theme($base-tag-error-color, $base-tag-error-bg);
-//     }
-// }

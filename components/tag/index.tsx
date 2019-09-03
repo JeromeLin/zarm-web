@@ -3,45 +3,61 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Icon from '../icon';
 import PropsType from './PropsType';
+import CheckableTag from './CheckableTag';
 
 const Style = {
   iconStyle: { marginLeft: '8px', cursor: 'pointer' },
 };
+const presetColors = ['green', 'blue', 'orange', 'red', 'gray'];
 
 class Tag extends Component<PropsType, any> {
+  static CheckableTag = CheckableTag;
+
   static defaultProps = {
-    theme: '',
+    color: '',
     prefixCls: 'zw-tag',
     size: '',
-    onClick: () => {},
   };
 
   static propTypes = {
     prefixCls: PropTypes.string,
-    theme: PropTypes.string,
+    color: PropTypes.string,
     size: PropTypes.oneOf(['', 'large', 'middle', 'small', 'xsmall']),
     shape: PropTypes.oneOf(['', 'rect', 'radius', 'round']),
-    onClick: PropTypes.func,
-    loading: PropTypes.bool,
-    ghost: PropTypes.bool,
+  };
+
+  isPresetColor = () => {
+    const { color } = this.props;
+    return !!color && presetColors.indexOf(color) > -1;
+  };
+
+  getStyle = () => {
+    const { style, color } = this.props;
+    // style权重高于定义color
+    const customStyle = color && !this.isPresetColor() ? {
+      backgroundColor: color,
+      color: '#fff',
+    } : {};
+    return {
+      ...customStyle,
+      ...style,
+    };
   };
 
   render() {
     const {
       prefixCls,
-      theme,
+      color,
       size,
       shape,
       className,
       onClose,
-      onClick,
       closable,
       children,
-      style,
-      title,
+      ...other
     } = this.props;
     const classes = classnames(prefixCls, className, {
-      [`${prefixCls}--${theme}`]: theme,
+      [`${prefixCls}--${color}`]: this.isPresetColor(),
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
     });
@@ -54,7 +70,7 @@ class Tag extends Component<PropsType, any> {
       />
     ) : null;
     return (
-      <div className={classes} style={style} title={title} onClick={(e: MouseEvent) => { onClick && onClick(e); }}>
+      <div {...other} className={classes} style={this.getStyle()}>
         { children }
         { closeIcon }
       </div>
