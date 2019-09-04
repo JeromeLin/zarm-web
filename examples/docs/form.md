@@ -66,7 +66,7 @@
 
 ### 表单验证
 
-:::demo 
+:::demo
   rules支持外部和Form.Item的内联形式, 回调支持promise和callback两种形式,
   如果需要重置表单值 需要如下面例子<font color=red size=2 >手动调用forceUpdate</font>的更新一次组件,
   否则只会重置组件的验证和内部数据, 页面不会更新
@@ -112,18 +112,18 @@
       }
     })
   }
-  
+
   handleReset () {
     this.form.resetField();
     console.log(this.state)
     this.forceUpdate();
   }
-  
+
   render() {
     const { params } = this.state
     return (
       <div>
-        <Form labelWidth="90" labelPosition="left" type="inline" ref={el => this.form = el} model={this.state.params} rules={this.state.rules} onSubmit={this.handleSubmit.bind(this)}>
+        <Form scrollToError labelWidth="90" labelPosition="left" type="inline" ref={el => this.form = el} model={this.state.params} rules={this.state.rules} onSubmit={this.handleSubmit.bind(this)}>
           <Form.Item className="col-xs-12" label="账号" prop="account">
             <Input
               style={{ width: 200 }}
@@ -135,10 +135,10 @@
               }}
             />
           </Form.Item>
-          <Form.Item 
+          <Form.Item
             className="col-xs-12"
-            label="密码" 
-            prop="password" 
+            label="密码"
+            prop="password"
             rules={
               [
                 { required: true, message: '请输入密码', trigger: 'blur' },
@@ -149,7 +149,7 @@
             <Input
               style={{ width: 200 }}
               value={params.password}
-              placeholder="请输入..." 
+              placeholder="请输入..."
               onChange={(e) => {
                 params.password = e.target.value
                 this.setState({ params })
@@ -226,7 +226,7 @@
 ```js
   constructor(props) {
     super(props)
-    
+
     this.state = {
       params: {
         password: '',
@@ -258,13 +258,13 @@
   }
   handleSubmit() {
     this.formRef.validate(result => {
-      console.log(result) 
+      console.log(result)
     })
   }
-  
+
   render() {
     const { params, rules } = this.state;
-    
+
     return (
       <Form type="inline" model={params} rules={rules} ref={el => this.formRef = el}>
         <Form.Item
@@ -272,8 +272,8 @@
           prop="password"
           className="col-xs-6"
         >
-          <Input 
-            placeholder="请输入密码" 
+          <Input
+            placeholder="请输入密码"
             value={params.password}
             onChange={e => {
               params.password = e.target.value
@@ -281,14 +281,14 @@
             }}
           />
         </Form.Item>
-        
+
         <Form.Item
           label="确认密码"
           required
           className="col-xs-6"
         >
-          <Input 
-            placeholder="请再次输入密码" 
+          <Input
+            placeholder="请再次输入密码"
             value={params.confirmPassword}
             onChange={e => {
               params.confirmPassword = e.target.value
@@ -296,14 +296,14 @@
             }}
           />
         </Form.Item>
-        
+
         <Form.Item
           label="重置金额"
           prop="money"
           className="col-xs-6"
         >
-          <Input 
-            placeholder="请输入重置金额" 
+          <Input
+            placeholder="请输入重置金额"
             value={params.money}
             onChange={e => {
               params.money = e.target.value
@@ -311,7 +311,7 @@
             }}
           />
         </Form.Item>
-        
+
         <Form.Item className="col-xs-12">
           <Button theme="success" onClick={this.handleSubmit.bind(this)}>确认</Button>
         </Form.Item>
@@ -328,7 +328,7 @@
 ```js
   constructor(props) {
     super(props)
-    
+
     this.state = {
       family: {
         people: [
@@ -357,10 +357,10 @@
   }
   handleSubmit() {
     this.formRef.validate(result => {
-      console.log(result) 
+      console.log(result)
     })
   }
-  
+
   render() {
     const { people } = this.state.family
     return (
@@ -373,20 +373,20 @@
               label={`家人${index + 1}`}
               prop={`people.${index}`}
               rules={
-                { 
-                  type: 'object', 
-                  required: true, 
+                {
+                  type: 'object',
+                  required: true,
                   fields: {
                     name: [
                       { required: true, message: '姓名不能为空', trigger: 'blur' },
                       { type: 'string', min:3, max: 6, message: '姓名必须在3到6个字符', trigger: 'change' }
                     ]
-                  } 
+                  }
                 }
               }
             >
-              <Input 
-                placeholder="请输入家人姓名" 
+              <Input
+                placeholder="请输入家人姓名"
                 value={person.name}
                 onChange={e => {
                   people[index].name = e.target.value

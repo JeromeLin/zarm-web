@@ -7,9 +7,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
   <div
     class="ui-form-item col-sm-4"
   >
-    <label
-      style="text-align:right"
-    >
+    <label>
       类型
     </label>
     <div
@@ -25,9 +23,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
   <div
     class="ui-form-item col-sm-4"
   >
-    <label
-      style="text-align:right"
-    >
+    <label>
       来源
     </label>
     <div
@@ -43,9 +39,6 @@ exports[`Form renders inline Form with label correctly 1`] = `
   <div
     class="ui-form-item col-sm-4"
   >
-    <label
-      style="text-align:right"
-    />
     <div
       class="ui-form-item-control"
     >
@@ -67,9 +60,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
   <div
     class="ui-form-item col-sm-4"
   >
-    <label
-      style="text-align:right"
-    >
+    <label>
       类型
     </label>
     <div
@@ -85,9 +76,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
   <div
     class="ui-form-item col-sm-4"
   >
-    <label
-      style="text-align:right"
-    >
+    <label>
       <span
         class="ui-form-item-required"
       >
@@ -110,9 +99,6 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
   <div
     class="ui-form-item col-sm-4"
   >
-    <label
-      style="text-align:right"
-    />
     <div
       class="ui-form-item-control"
     >
@@ -134,9 +120,7 @@ exports[`Form renders normal Form correctly 1`] = `
   <div
     class="ui-form-item"
   >
-    <label
-      style="text-align:right"
-    >
+    <label>
       账号
     </label>
     <div
@@ -152,9 +136,7 @@ exports[`Form renders normal Form correctly 1`] = `
   <div
     class="ui-form-item"
   >
-    <label
-      style="text-align:right"
-    >
+    <label>
       密码
     </label>
     <div

@@ -1,6 +1,20 @@
 .ui-form {
   display: block;
   margin-top: 0;
+
+  &:before {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
 }
 
 .ui-form-item {
@@ -26,6 +40,7 @@
 
       .ui-input,
       .ui-tag-input-box,
+      .ui-select-selection,
       .ui-select {
         border-color: $base-theme-error;
       }
@@ -68,20 +83,6 @@
 }
 
 .ui-form-inline {
-  &:before {
-    content: " ";
-    display: table;
-  }
-
-  &:after {
-    content: " ";
-    display: table;
-    clear: both;
-    visibility: hidden;
-    font-size: 0;
-    height: 0;
-  }
-
   .ui-form-item {
     display: inline-block;
 

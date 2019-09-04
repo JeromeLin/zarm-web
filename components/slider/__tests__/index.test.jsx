@@ -118,7 +118,7 @@ describe('Slider', () => {
         clientX: 50,
       });
 
-    expect(setTimeout).toHaveBeenCalledTimes(5);
+    expect(setTimeout).toHaveBeenCalledTimes(6);
   });
 
   it('behaves correctly when clicking slider', () => {

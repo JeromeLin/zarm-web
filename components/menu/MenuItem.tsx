@@ -22,19 +22,17 @@ class MenuItem extends Component<ItemProps, any> {
   }
 
   render() {
-    const { props } = this;
     const {
-      checked, isDisabled, children, prefixCls, level, inlineIndent, inlineCollapsed, subMenuKey, toggleSelectedKeys,
-      className, style, onDoubleClick, selectedKeys, itemKey, mode,
+      checked, isDisabled, disabled, children, prefixCls, level, inlineIndent, inlineCollapsed, subMenuKey,
+      toggleSelectedKeys, className, style, onDoubleClick, selectedKeys, itemKey, mode,
       ...DOMProps
-    } = props;
+    } = this.props;
 
-    const cls = classnames({
+    const cls = classnames(className, {
       [`${prefixCls}-item`]: true,
       active: checked !== undefined ? checked : !!itemKey && selectedKeys.indexOf(itemKey) > -1,
-      [`${className}`]: !!className,
-      selected: !!checked,
-      disabled: 'disabled' in props || isDisabled,
+      selected: checked,
+      disabled: disabled || isDisabled,
     });
     const itemStyle: styleType = {
       ...style,

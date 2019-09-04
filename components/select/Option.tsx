@@ -1,10 +1,10 @@
-import React, { PureComponent, Component } from 'react';
+import React, { Component } from 'react';
 import cn from 'classnames';
 import Icon from '../icon';
 import { OptionProps } from './PropsType';
 import Menu from '../menu';
 
-class Option extends PureComponent<OptionProps, any> {
+class Option extends Component<OptionProps, any> {
   static displayName: 'Option';
 
   static defaultProps = {
@@ -21,8 +21,8 @@ class Option extends PureComponent<OptionProps, any> {
 
     const cls = cn({
       [`${className}`]: !!className,
-      'checked': checked,
-      'disabled': isDisabled || disabled,
+      checked,
+      disabled: isDisabled || disabled,
     });
     return (
       <Menu.Item

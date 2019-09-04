@@ -28,6 +28,8 @@ interface ItemPropsBasicProp {
   level: number;
   mode: 'inline' | 'horizontal';
   inlineIndent: number;
+  inlineCollapsed: boolean;
+  subMenuKey: string;
   itemKey: string;
   onClick: (e: React.MouseEvent, itemKey: string) => void;
   toggleSelectedKeys: (itemKey: string) => void;

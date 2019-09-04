@@ -34,7 +34,7 @@ function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document
     top: elem.offsetTop,
     left: elem.offsetLeft,
   };
-  while (relativeElem.contains(parentElem)) {
+  while (relativeElem.contains(parentElem!)) {
     if (parentElem instanceof HTMLElement) {
       if (relativeElem === parentElem) {
         return position;
