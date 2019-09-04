@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, PureComponent } from 'react'
+import React, { HTMLAttributes, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { FormContext } from './createContext';
@@ -91,7 +91,7 @@ class Form extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>> {
     if (typeof onSubmit === 'function') {
       onSubmit(event);
     }
-  };
+  }
 
   render() {
     const { type, className, children, style, prefixCls, labelWidth, labelPosition } = this.props;

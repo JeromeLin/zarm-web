@@ -1,6 +1,6 @@
 export type triggerType = 'change' | 'blur' | 'none' | '';
 
-type LabelPosition = 'left' | 'right' | ''
+type LabelPosition = 'left' | 'right' | '';
 
 export interface ItemProps {
   prefixCls?: string;

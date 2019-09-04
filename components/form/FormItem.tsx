@@ -1,4 +1,4 @@
-import React, { createRef, HTMLAttributes, PureComponent, ReactElement, RefObject } from 'react'
+import React, { createRef, HTMLAttributes, PureComponent, ReactElement, RefObject } from 'react';
 import PropTypes from 'prop-types';
 import Schema from 'async-validator';
 import classnames from 'classnames';
@@ -51,7 +51,7 @@ class FormItem extends PureComponent<ItemProps & HTMLAttributes<HTMLDivElement>,
     const { model } = this.context;
     const { prop } = this.props;
     if (prop && !model) {
-      throw new Error('Form Component must have model attribute when FormItem prop have defined')
+      throw new Error('Form Component must have model attribute when FormItem prop have defined');
     }
     if (prop) {
       const propArr = prop.split('.');
