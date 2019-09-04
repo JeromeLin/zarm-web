@@ -10,9 +10,9 @@ class ModalHeader extends Component<ModalHeaderProps, any> {
   };
 
   render() {
-    const { children, closable, onClose, prefixCls, className, style } = this.props;
+    const { children, closable, onCancel, prefixCls, className, style } = this.props;
     const btnClose = closable ? (
-      <div className={`${prefixCls}-close`} onClick={onClose}>
+      <div className={`${prefixCls}-close`} onClick={onCancel}>
         <Icon type="wrong" />
       </div>
     ) : null;

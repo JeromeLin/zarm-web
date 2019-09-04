@@ -3,6 +3,14 @@ import Button from '../../components/button';
 import Modal from '../../components/modal';
 import Input from '../../components/input';
 
+
+const instance = Modal.Alert({
+  content: '这是一个Alert',
+  title: '提示',
+}).then(() => {
+  console.log(1);
+});
+
 class Page extends PureComponent {
   state = {
     visible: false,
@@ -15,10 +23,30 @@ class Page extends PureComponent {
   };
 
   render() {
-    const { visible } = this.state;
+    const { visible, visible2 } = this.state;
     return (
       <div>
         <Button onClick={this.onClick}>点击我</Button>
+
+
+        <Modal
+          onCancel={() => {
+            this.setState({
+              visible2: false,
+            });
+          }}
+          onOk={() => {
+            alert(1);
+          }}
+          title="test"
+          direction="center"
+          visible={visible2}
+        >
+          this is modal 2
+        </Modal>
+
+
+
         <Modal
           onCancel={() => {
             this.setState({
@@ -44,7 +72,18 @@ class Page extends PureComponent {
           hello world
           <br />
           <Input />
+
+          <Button
+            onClick={() => {
+              this.setState({
+                visible2: true,
+              });
+            }}
+          >
+            点击我2
+          </Button>
         </Modal>
+
       </div>
     );
   }

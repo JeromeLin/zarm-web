@@ -1,7 +1,6 @@
 .zw-modal {
   background-color: #fff;
   min-width: 380px;
-  min-height: 160px;
   border-radius: 6px;
 
   .zw-modal-header {
@@ -28,6 +27,12 @@
       &:hover {
         color: #666;
       }
+    }
+
+    &-hidden__elem {
+      width: 0;
+      height: 0;
+      overflow: hidden;
     }
   }
 

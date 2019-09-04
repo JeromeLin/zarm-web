@@ -1,24 +1,15 @@
-import React, { Component, MouseEvent, KeyboardEvent, ReactNode } from 'react';
+import React, { Component, KeyboardEvent, Fragment } from 'react';
 import Popup from 'zarm/lib/popup';
 import 'zarm/lib/popup/style';
 import cn from 'classnames';
-import PopupTypes from 'zarm/types/popup/PropsType';
-import { unmountComponentAtNode } from 'react-dom';
-import Events from '../utils/events';
-import { ModalProps, StyleType, ModalBodyProps, ModalHeaderProps, ModalFooterProps } from './PropsType';
+
+import { ModalProps, ModalBodyProps, ModalHeaderProps, ModalFooterProps } from './PropsType';
 import Button from '../button';
 
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
-import domUtil from '../utils/dom';
-import { element } from 'prop-types';
-
-const { getSupportedPropertyName } = domUtil;
-let animationDurationKey = getSupportedPropertyName('animationDuration') || 'animationDuration';
-if (animationDurationKey && animationDurationKey !== 'animationDuration' && !animationDurationKey.startsWith('ms')) {
-  animationDurationKey = animationDurationKey.charAt(0).toUpperCase() + animationDurationKey.slice(1);
-}
+import { Alert } from './alert';
 
 function toggleBodyOverflow(show: boolean) {
   const scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
@@ -35,28 +26,12 @@ function toggleBodyOverflow(show: boolean) {
 
 interface StateIF {
   isShow: boolean;
-  isPending: boolean;
-  animationState: 'leave' | 'enter';
+  sleep: boolean;
 }
 
-interface PropsIF extends PopupTypes {
-  prefixCls: string;
-  okText: ReactNode;                     // 确认按钮的事件
-  cancelText: ReactNode;                 // 取消按钮的事件
-  closable: boolean;                     // 是显示关闭按钮
-  title?: ReactNode;                     // modal的标题
-  maskClosable: boolean;                 // 点击空白区域是否关闭
-  mask: boolean;                         // 是否显示遮罩层
-  footer?: ReactNode;                    // modal底部的内容，为null时不显示底部
-  centered: boolean;                     // 是否居中显示
-  onOk?: () => void;                     // 点击了确定按钮的回调函数
-  onCancel?: () => void;                 // 点击了取消按钮的回调函数
-  autoFocus: boolean;                    // 打开弹框时自动获取焦点
-  disableEscapeKeyDown: boolean;         // 禁用按esc按键的时候，执行onCancel的行为
-  disableEnterKeyDown: boolean;          // 禁用按enter按键的时候，执行onOk的行为
-}
+class Modal extends Component<ModalProps, StateIF> {
+  static Alert = Alert;
 
-class Modal extends Component<PropsIF, StateIF> {
   static defaultProps = {
     prefixCls: 'zw-modal',
     okText: '确定',
@@ -68,25 +43,21 @@ class Modal extends Component<PropsIF, StateIF> {
     autoFocus: true,
     disableEscapeKeyDown: false,
     disableEnterKeyDown: false,
+    zIndex: 2020,
   };
 
   private static instanceList: Modal[] = [];
 
   private static visibleList: Modal[] = [];
 
-  private static handleVisbibleList(instance: Modal, visible: boolean, noAnimation?: boolean) {
+  private static handleVisbibleList(instance: Modal, visible: boolean) {
     if (visible) {
       const lastIndex = Modal.visibleList.length - 1;
       if (lastIndex >= 0) {
-        Modal.visibleList[lastIndex].sleep = true;
-        if (noAnimation) {
-          Modal.visibleList[lastIndex].setState({
-            isPending: true,
-            isShow: false,
-          });
-        } else {
-          Modal.visibleList[lastIndex].leave();
-        }
+        Modal.visibleList[lastIndex].state.sleep = true;
+        Modal.visibleList[lastIndex].setState({
+          isShow: false,
+        });
       }
       Modal.visibleList.push(instance);
     } else {
@@ -96,8 +67,10 @@ class Modal extends Component<PropsIF, StateIF> {
         const modal = Modal.visibleList[index - 1];
         const currentVisible = modal.props.visible;
         if (currentVisible) {
-          modal.enter();
-          modal.sleep = false;
+          modal.setState({
+            isShow: true,
+          });
+          modal.state.sleep = false;
         }
       }
       // eslint-disable-next-line no-plusplus
@@ -105,11 +78,20 @@ class Modal extends Component<PropsIF, StateIF> {
         const modal = Modal.visibleList[index];
         const currentVisible = modal.props.visible;
         if (!currentVisible) {
-          modal.sleep = false;
+          modal.state.sleep = false;
           Modal.visibleList.splice(index, 1);
         }
       }
     }
+  }
+
+  static getDerivedStateFromProps(props: ModalProps, state: StateIF) {
+    if (state.sleep) {
+      return null;
+    }
+    return {
+      isShow: !!props.visible,
+    };
   }
 
   private static unmountModalInstance(instance: Modal, callback: () => void) {
@@ -122,73 +104,60 @@ class Modal extends Component<PropsIF, StateIF> {
     }
   }
 
-  private sleep: boolean = false;
+  private modalContent!: HTMLDivElement;
 
-  private modal!: HTMLDivElement | null;
+  state: StateIF;
 
-  private div: HTMLDivElement = document.createElement('div');
-
-  private modalContent!: HTMLFormElement;
-
-  private appended: boolean = false;
-
-  constructor(props: PropsIF) {
+  constructor(props: ModalProps) {
     super(props);
+    const { visible } = this.props;
     this.state = {
-      isShow: false,
-      isPending: false,
-      animationState: 'leave',
+      isShow: !!visible,
+      sleep: false,
     };
     Modal.instanceList.push(this);
   }
 
   componentDidMount() {
-    const { visible } = this.props;
-    if (this.sleep === true) {
-      return;
-    }
-    if (visible) {
-      Modal.handleVisbibleList(this, true, true);
-    }
-  }
-
-  componentWillReceiveProps(nextProps: ModalProps) {
-    const { visible } = this.props;
-    if (this.sleep === true) {
-      return;
-    }
-    if (!visible && nextProps.visible) {
-      if (!this.appended) {
-        document.body.appendChild(this.div);
-        this.appended = true;
-      }
-      Modal.visibleList.forEach((item) => {
-        item.setState({
-          isShow: false,
-        });
-      });
-      Modal.handleVisbibleList(this, true);
-    } else if (visible && !nextProps.visible) {
-      Modal.handleVisbibleList(this, false);
-    }
-  }
-
-  componentDidUpdate(prevProps: PropsIF) {
-    const { visible } = this.props;
-    if (this.modalContent) {
-      if (visible && !prevProps.visible) {
+    const { isShow } = this.state;
+    const { autoFocus, visible } = this.props;
+    // todo 第一次加载的时候不能正确获取this.modalContent
+    if (this.modalContent && autoFocus) {
+      if (visible) {
+        Modal.handleVisbibleList(this, !!visible);
         setTimeout(() => {
           this.modalContent.focus();
-          const { length } = this.modalContent;
-          Array.prototype.forEach.call(this.modalContent, (element, index) => {
-            element.setAttribute('tabIndex', index + 1);
-          });
+        }, 500);
+      }
+      if (isShow) {
+        setTimeout(() => {
+          this.modalContent.focus();
         }, 50);
       }
-      if (prevProps && !visible) {
-        const { length } = this.modalContent;
-        const lastFormElem = this.modalContent[length - 1];
-        lastFormElem.removeEventListener('blur', this.onLastElemBlur);
+      if (visible === false) {
+        Modal.handleVisbibleList(this, !!visible);
+        this.modalContent.blur();
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps: ModalProps, prevState: StateIF) {
+    const { isShow } = this.state;
+    const { autoFocus, visible } = this.props;
+    if (this.modalContent && autoFocus) {
+      if (visible && !prevProps.visible) {
+        Modal.handleVisbibleList(this, !!visible);
+        setTimeout(() => {
+          this.modalContent.focus();
+        }, 500);
+      }
+      if (isShow && !prevState.isShow) {
+        setTimeout(() => {
+          this.modalContent.focus();
+        }, 50);
+      }
+      if (prevProps.visible && visible === false) {
+        Modal.handleVisbibleList(this, !!visible);
         this.modalContent.blur();
       }
     }
@@ -198,25 +167,17 @@ class Modal extends Component<PropsIF, StateIF> {
     Modal.unmountModalInstance(this, () => {
       toggleBodyOverflow(false);
     });
-    setTimeout(() => {
-      unmountComponentAtNode(this.div);
-      const { parentNode } = this.div;
-      if (parentNode) {
-        // 对已插入document的节点进行删除
-        document.body.removeChild(this.div);
-      }
-    });
   }
 
-  setModalContainer = (elem: null | HTMLFormElement) => {
+  setModalContainer = (elem: null | HTMLDivElement) => {
     if (elem) {
       this.modalContent = elem;
     }
   };
 
   onKeyDown = (e: KeyboardEvent) => {
-    const { visible, onCancel, onKeyDown } = this.props;
-    if (visible) {
+    const { visible, onCancel, onKeyDown, disableEscapeKeyDown } = this.props;
+    if (visible && !disableEscapeKeyDown) {
       if (e.keyCode === 27) {
         if (onCancel) {
           onCancel();
@@ -230,7 +191,7 @@ class Modal extends Component<PropsIF, StateIF> {
 
   onKeyPress = (e: KeyboardEvent) => {
     const { visible, onOk, onKeyPress, disableEnterKeyDown } = this.props;
-    if (disableEnterKeyDown === false) {
+    if (visible && disableEnterKeyDown === false) {
       if (document.activeElement === this.modalContent && visible && e.nativeEvent.keyCode === 13) {
         if (onOk) {
           onOk();
@@ -242,46 +203,59 @@ class Modal extends Component<PropsIF, StateIF> {
     }
   };
 
-  onMaskClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
-
-  getModalRef = (ele: HTMLDivElement) => {
-    if (ele) {
-      this.modal = ele;
-    }
+  onBlur = () => {
+    this.modalContent.focus();
   };
 
   render() {
     const {
-      prefixCls, children, title, closable, visible,
+      prefixCls, children, title, closable, visible, zIndex, style,
       onOk, onCancel,
       okText, cancelText,
+      footer,
     } = this.props;
-    const showHeader = title !== undefined && closable;
+
+    const styles = { ...style, zIndex };
+
+    const { isShow } = this.state;
+
+    const show = isShow;
+    const hasFooter = footer !== null;
+    const showHeader = title !== undefined || closable;
     const classname = cn({
       [prefixCls]: true,
     });
     return (
       <Popup
-        visible={visible}
+        visible={show}
         direction="center"
       >
-        <form
+        <div
           className={classname}
           tabIndex={-1}
           onKeyDown={this.onKeyDown}
           onKeyPress={this.onKeyPress}
           ref={this.setModalContainer}
-          onBlur={this.onBlur}
+          style={styles}
+          data-show={show}
+          data-visible={visible}
         >
-          {showHeader && <ModalHeader onClose={onCancel}>{title}</ModalHeader>}
+          {showHeader && <ModalHeader closable={closable} onCancel={onCancel}>{title}</ModalHeader>}
           <ModalBody>{children}</ModalBody>
           <ModalFooter>
             <div className={`${prefixCls}-button__warpper`}>
-              <Button onClick={onCancel}>{cancelText}</Button>
-              <Button theme="primary" onClick={onOk}>{okText}</Button>
+              {
+                hasFooter && (footer || (
+                  <Fragment>
+                    <Button onClick={onCancel}>{cancelText}</Button>
+                    <Button theme="primary" onClick={onOk}>{okText}</Button>
+                  </Fragment>
+                ))
+              }
             </div>
           </ModalFooter>
-        </form>
+        </div>
+        <div className={`${prefixCls}-hidden__elem`} tabIndex={0} aria-hidden={true} onFocus={this.onBlur} />
       </Popup>
     );
   }
