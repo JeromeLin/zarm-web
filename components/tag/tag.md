@@ -14,8 +14,8 @@ class Demo extends React.Component {
     return (
       <div>
         <div  className="multi-rows">
-          <h3>5种预置颜色 default 为 gray</h3>
-          <Tag color="gray">gray</Tag>
+          <Tag>default</Tag>
+          <h3>4种预置颜色</h3>
           <Tag color="green">green</Tag>
           <Tag color="blue">blue</Tag>
           <Tag color="orange">orange</Tag>
@@ -28,6 +28,44 @@ class Demo extends React.Component {
           <Tag color="#EC9131">#EC9131</Tag>
           <Tag color="#FF5050">#FF5050</Tag>
           <Tag color="#616161">#616161</Tag>
+          <Tag color="pink">pink bordered</Tag>
+        </div>
+      </div>
+    )
+  }
+}
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 边框
+bordered 默认有边框
+
+```jsx
+import { Tag } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="multi-rows">
+          <Tag>default</Tag>
+          <Tag bordered={false}>unbordered</Tag>
+          <h3>有边框</h3>
+          <Tag color="green">green</Tag>
+          <Tag color="blue">blue</Tag>
+          <Tag color="#EC9131">#EC9131</Tag>
+          <Tag color="#FF5050">#FF5050</Tag>
+          <Tag color="#616161">#616161</Tag>
+          <Tag color="pink">pink bordered</Tag>
+        </div>
+        <div className="multi-rows">
+          <h3>无边框</h3>
+          <Tag bordered={false} color="green">green</Tag>
+          <Tag bordered={false} color="blue">blue</Tag>
+          <Tag bordered={false} color="#EC9131">#EC9131</Tag>
+          <Tag bordered={false} color="#FF5050">#FF5050</Tag>
+          <Tag bordered={false} color="#616161">#616161</Tag>
+          <Tag bordered={false} color="pink">pink unbordered</Tag>
         </div>
       </div>
     )
@@ -68,10 +106,10 @@ class Demo extends React.Component {
     return (
       <div>
         <Tag>default</Tag>
-        <Tag size="large">large</Tag>
-        <Tag size="middle">middle</Tag>
-        <Tag size="small">small</Tag>
-        <Tag size="xsmall">xsmall</Tag>
+        <Tag size="lg">large</Tag>
+        <Tag size="md">middle</Tag>
+        <Tag size="sm">small</Tag>
+        <Tag size="xs">xsmall</Tag>
       </div>
     );
   }
@@ -240,9 +278,17 @@ ReactDOM.render(<DemoCheck />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| color | string | 'gray' | 设置主题，可选值为 `gray`、`green`、`blue`, `red`, `orange` 或这个自定义颜色值 |
-| size | string | 'middle' | 设置大小，可选值为 `large`、`middle`、`small`、`xsmall` |
+| color | string | 'gray' | 设置主题，可选值为 `gray`、`green`、`blue`, `red`, `orange` 或者自定义颜色值 |
+| size | string | 'middle' | 设置大小，可选值为 `lg`、`md`、`sm`、`xs` |
 | shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round` |
+| bordered | boolean | true | 是否边框样式 |
 | closable | boolean | false | 是否可关闭 |
-| onClose | func | fn | 关闭回调事件，closable为true时生效 |
+| onClose | (e) => void | fn | 关闭回调事件，closable为true时生效 |
 
+# Tag.CheckableTag
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| size | string | 'middle' | 设置大小，可选值为 `lg`、`md`、`sm`、`xs` |
+| shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round` |
+| onChange | function | - | 选中状态变化事件，参数为切换后的状态 |

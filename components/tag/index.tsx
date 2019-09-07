@@ -1,30 +1,35 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { PureComponent, MouseEvent } from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import Color from 'color';
 import Icon from '../icon';
-import PropsType from './PropsType';
+import TagProps from './PropsType';
 import CheckableTag from './CheckableTag';
 
-const Style = {
-  iconStyle: { marginLeft: '8px', cursor: 'pointer' },
-};
-const presetColors = ['green', 'blue', 'orange', 'red', 'gray'];
+const presetColors = ['green', 'blue', 'orange', 'red'];
 
-class Tag extends Component<PropsType, any> {
+class Tag extends PureComponent<TagProps, any> {
   static CheckableTag = CheckableTag;
 
   static defaultProps = {
-    color: '',
     prefixCls: 'zw-tag',
-    size: '',
+    color: '',
+    size: 'md',
+    shape: 'radius',
+    bordered: true,
   };
 
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    color: PropTypes.string,
-    size: PropTypes.oneOf(['', 'large', 'middle', 'small', 'xsmall']),
-    shape: PropTypes.oneOf(['', 'rect', 'radius', 'round']),
-  };
+  getColorStyle() {
+    const { color, bordered } = this.props;
+    return !bordered ? {
+      backgroundColor: color,
+      borderColor: color,
+      color: '#fff',
+    } : {
+      color,
+      borderColor: Color(color).alpha(0.3),
+      backgroundColor: Color(color).alpha(0.05),
+    };
+  }
 
   isPresetColor = () => {
     const { color } = this.props;
@@ -32,14 +37,20 @@ class Tag extends Component<PropsType, any> {
   };
 
   getStyle = () => {
-    const { style, color } = this.props;
-    // style权重高于定义color
-    const customStyle = color && !this.isPresetColor() ? {
-      backgroundColor: color,
-      color: '#fff',
-    } : {};
+    const { style, color, bordered } = this.props;
+    const customStyle = color && !this.isPresetColor() ? this.getColorStyle() : {};
+    let borderStyle = {};
+
+    if (!bordered && color) {
+      borderStyle = {
+        color: '#fff',
+        border: 'hidden',
+      };
+    }
+
     return {
       ...customStyle,
+      ...borderStyle,
       ...style,
     };
   };
@@ -54,17 +65,18 @@ class Tag extends Component<PropsType, any> {
       onClose,
       closable,
       children,
+      bordered,
       ...other
     } = this.props;
     const classes = classnames(prefixCls, className, {
       [`${prefixCls}--${color}`]: this.isPresetColor(),
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--unborder`]: !bordered,
     });
 
     const closeIcon = closable ? (
       <Icon
-        style={Style.iconStyle}
         type="wrong"
         onClick={(e: MouseEvent) => { onClose && onClose(e); }}
       />

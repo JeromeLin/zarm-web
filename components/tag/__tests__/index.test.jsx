@@ -37,21 +37,32 @@ describe('Tag', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders Tag bordered correctly', () => {
+    const unBorder = false;
+    const wrapper = render(
+      <div className="multi-rows">
+        <Tag color="red">normal</Tag>
+        <Tag color="green" bordered={unBorder}>unbordered</Tag>
+      </div>,
+    );
+    expect(wrapper.find('.zw-tag--unborder').length).toEqual(1);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('renders Tag size correctly ', () => {
     const wrapper = render(
       <div className="multi-rows">
         <Tag>default</Tag>
-        <Tag size="large">large</Tag>
-        <Tag size="middle">middle</Tag>
-        <Tag size="small">small</Tag>
-        <Tag size="xsmall">xsmall</Tag>
+        <Tag size="lg">lg</Tag>
+        <Tag size="md">md</Tag>
+        <Tag size="sm">sm</Tag>
+        <Tag size="xs">xs</Tag>
       </div>,
     );
     expect(wrapper.find('.zw-tag').length).toEqual(5);
-    expect(wrapper.find('.zw-tag--large').length).toEqual(1);
-    expect(wrapper.find('.zw-tag--middle').length).toEqual(1);
-    expect(wrapper.find('.zw-tag--small').length).toEqual(1);
-    expect(wrapper.find('.zw-tag--xsmall').length).toEqual(1);
+    expect(wrapper.find('.zw-tag--lg').length).toEqual(1);
+    expect(wrapper.find('.zw-tag--sm').length).toEqual(1);
+    expect(wrapper.find('.zw-tag--xs').length).toEqual(1);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -73,16 +84,16 @@ describe('Tag', () => {
   it('render CheckableTag size correctly', () => {
     const wrapper = render(
       <div className="multi-rows">
-        <Tag.CheckableTag size="large">large</Tag.CheckableTag>
-        <Tag.CheckableTag>middle</Tag.CheckableTag>
-        <Tag.CheckableTag size="small">large</Tag.CheckableTag>
-        <Tag.CheckableTag size="xsmall">large</Tag.CheckableTag>
+        <Tag.CheckableTag size="lg">lg</Tag.CheckableTag>
+        <Tag.CheckableTag size="md">md</Tag.CheckableTag>
+        <Tag.CheckableTag size="sm">lg</Tag.CheckableTag>
+        <Tag.CheckableTag size="xs">lg</Tag.CheckableTag>
       </div>,
     );
     expect(wrapper.find('.zw-tag').length).toEqual(4);
-    expect(wrapper.find('.zw-tag--large').length).toEqual(1);
-    expect(wrapper.find('.zw-tag--small').length).toEqual(1);
-    expect(wrapper.find('.zw-tag--xsmall').length).toEqual(1);
+    expect(wrapper.find('.zw-tag--lg').length).toEqual(1);
+    expect(wrapper.find('.zw-tag--sm').length).toEqual(1);
+    expect(wrapper.find('.zw-tag--xs').length).toEqual(1);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
   it('behaves correctly when click CheckableTag', () => {

@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
-import PropsType from './PropsType';
+import { CheckableTagProps } from './PropsType';
 
-class CheckableTag extends Component<PropsType, any> {
+class CheckableTag extends Component<CheckableTagProps, any> {
   static defaultProps = {
     prefixCls: 'zw-tag',
     size: '',
-  };
-
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    size: PropTypes.oneOf(['', 'large', 'middle', 'small', 'xsmall']),
-    shape: PropTypes.oneOf(['', 'rect', 'radius', 'round']),
-    onClick: PropTypes.func,
-    loading: PropTypes.bool,
-    disabled: PropTypes.bool,
   };
 
   onClick = () => {

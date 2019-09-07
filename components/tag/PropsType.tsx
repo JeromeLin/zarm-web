@@ -1,21 +1,29 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
-export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
-export type shapeType = 'radius' | 'round' | 'rect';
-export default interface PropsType {
+export type TagSize = 'lg' | 'md' | 'sm' | 'xs';
+export type TagShape = 'radius' | 'round' | 'rect';
+
+export default interface TagProps {
   prefixCls?: string;
-  theme?: themeType;
-  size?: size;
-  shape: shapeType;
+  size?: TagSize;
+  shape: TagShape;
   color?: string;
   closable?: boolean;
-  checked?: boolean;
-  disabled?: boolean;
+  bordered?: boolean;
   className?: ReactNode;
-  chidlen?: ReactNode;
-  style?: object;
+  style?: CSSProperties;
   onClick: (e) => void;
   onClose: (e) => void;
-  onChange: (e) => void;
+}
+
+export interface CheckableTagProps {
+  prefixCls?: string;
+  style?: CSSProperties;
+  className?: string;
+  shape?: TagShape;
+  size?: TagSize;
+  bordered?: boolean;
+  checked?: boolean;
+  disabled?: boolean;
+  onChange: (e: boolean) => void;
 }
