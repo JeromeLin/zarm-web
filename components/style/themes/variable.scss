@@ -11,12 +11,12 @@
   --color-black: #000;
 
   // 文字色
-  --color-text: #464646;                    // 基本
-  --color-text-inverse: #fff;               // 反色
-  --color-text-placeholder: #a9a9a9;        // 文本框提示
-  --color-text-disabled: #bcbcbc;           // 失效
-  --color-text-caption: #909090;            // 辅助描述
-  --color-link: var(--theme-primary);         // 链接
+  --color-text: #464646; // 基本
+  --color-text-inverse: #fff; // 反色
+  --color-text-placeholder: #a9a9a9; // 文本框提示
+  --color-text-disabled: #bcbcbc; // 失效
+  --color-text-caption: #909090; // 辅助描述
+  --color-link: var(--theme-primary); // 链接
 
   //阴影
   --box-shadow-light: 0 2px 8px rgba(0, 0, 0, .1), 0 0 6px rgba(0, 0, 0, .1);
@@ -125,6 +125,19 @@
   --button-danger-ghost-color: var(--theme-danger);
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
+  --button-warning-background: var(--theme-warning);
+  --button-warning-border: var(--theme-warning);
+  --button-warning-color: var(--color-text-inverse);
+  --button-warning-hover-background: var(--theme-warning-light);
+  --button-warning-hover-border: var(--theme-warning-light);
+  --button-warning-hover-color: var(--color-white);
+  --button-warning-active-background: var(--theme-warning-dark);
+  --button-warning-active-border: var(--theme-warning-dark);
+  --button-warning-active-color: rgba(255, 255, 255, 0.4);
+  --button-warning-ghost-border: var(--theme-warning);
+  --button-warning-ghost-color: var(--theme-warning);
+  --button-warning-ghost-active-border: var(--theme-warning-dark);
+  --button-warning-ghost-active-color: var(--theme-warning-dark);
 
   // Radio
   --button-radio-btn-disabled-color: --color-text-caption;

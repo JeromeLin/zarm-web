@@ -3,13 +3,15 @@ import Button from '../../components/button';
 import Modal from '../../components/modal';
 import Input from '../../components/input';
 
+(async () => {
+  const instance = await Modal.Alert({
+    content: '这是一个Alert',
+    title: '提示',
+    theme: 'success',
+  });
+  console.log(instance);
+})();
 
-const instance = Modal.Alert({
-  content: '这是一个Alert',
-  title: '提示',
-}).then(() => {
-  console.log(1);
-});
 
 class Page extends PureComponent {
   state = {

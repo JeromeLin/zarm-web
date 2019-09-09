@@ -6,7 +6,7 @@ export type animationType = 'fade' | 'door' | 'flip' | 'rotate' | 'zoom' | 'move
 
 type FnReactNode = () => ReactNode;
 
-export interface ModalProps extends PopupTypes, HTMLAttributes<HTMLDivElement> {
+export interface ModalBasicProps extends PopupTypes {
   prefixCls: string;
   zIndex: number;
   okText: ReactNode;                     // 确认按钮的事件
@@ -23,6 +23,8 @@ export interface ModalProps extends PopupTypes, HTMLAttributes<HTMLDivElement> {
   disableEscapeKeyDown: boolean;         // 禁用按esc按键的时候，执行onCancel的行为
   disableEnterKeyDown: boolean;          // 禁用按enter按键的时候，执行onOk的行为
 }
+
+export type ModalProps = Merge<HTMLAttributes<HTMLDivElement>, ModalBasicProps>;
 
 export interface ModalBodyProps extends HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;

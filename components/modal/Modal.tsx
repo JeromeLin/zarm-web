@@ -9,7 +9,7 @@ import Button from '../button';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
-import { Alert } from './alert';
+import { Alert, Confirm } from './alert';
 
 function toggleBodyOverflow(show: boolean) {
   const scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
@@ -31,6 +31,8 @@ interface StateIF {
 
 class Modal extends Component<ModalProps, StateIF> {
   static Alert = Alert;
+
+  static Confirm = Confirm;
 
   static defaultProps = {
     prefixCls: 'zw-modal',
@@ -255,7 +257,7 @@ class Modal extends Component<ModalProps, StateIF> {
             </div>
           </ModalFooter>
         </div>
-        <div className={`${prefixCls}-hidden__elem`} tabIndex={0} aria-hidden={true} onFocus={this.onBlur} />
+        <div className={`${prefixCls}-hidden__elem`} tabIndex={0} onFocus={this.onBlur} />
       </Popup>
     );
   }

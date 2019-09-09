@@ -130,6 +130,30 @@
     );
   }
 
+  @include m(warning) {
+    @include button-theme(
+      var(--button-warning-background),
+      var(--button-warning-border),
+      var(--button-warning-color),
+      var(--button-warning-hover-background),
+      var(--button-warning-hover-border),
+      var(--button-warning-hover-color),
+      var(--button-warning-active-background),
+      var(--button-warning-active-border),
+      var(--button-warning-active-color),
+      var(--button-warning-background),
+      var(--button-warning-border),
+      var(--button-warning-color),
+      var(--button-disabled-opacity)
+    );
+    @include button-ghost(
+      var(--button-warning-ghost-border),
+      var(--button-warning-ghost-color),
+      var(--button-warning-ghost-active-border),
+      var(--button-warning-ghost-active-color)
+    );
+  }
+
   @include m(rect) {
     @include button-shape(0);
   }
@@ -202,7 +226,7 @@
     }
   }
 
-  @each $type in (default, primary, danger) {
+  @each $type in (default, primary, danger, warning) {
     .zw-button--#{$type} {
       &:first-child {
         border-right-color: rgba(var(--color-white), 0.5);

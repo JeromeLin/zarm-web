@@ -3,11 +3,29 @@ import ReactDOM from 'react-dom';
 import Modal from './index';
 import { ModalProps } from './PropsType';
 import Button from '../button';
+import Icon from '../icon';
 
-type AlertProps = MergeProps<typeof Modal, ModalProps> & { content: ReactNode };
+const themeMapIcon = {
+  success: {
+    icon: 'right-round-fill',
+  },
+  danger: {
+    icon: 'wrong-round-fill',
+  },
+  primary: {
+    icon: 'info-round-fill',
+  },
+  warning: {
+    icon: 'warning-round-fill',
+  },
+};
+
+type ThemeType = 'success' | 'primary' | 'warning' | 'danger';
+
+type AlertProps = MergeProps<typeof Modal, ModalProps> & { content: ReactNode; theme?: ThemeType };
 
 function isObject(obj: any) {
-  return Object.prototype.toString.call(obj) === '[object object]';
+  return Object.prototype.toString.call(obj).toLowerCase() === '[object object]';
 }
 
 function isReactNode(props: AlertProps | ReactNode): props is ReactNode {
@@ -15,6 +33,14 @@ function isReactNode(props: AlertProps | ReactNode): props is ReactNode {
 }
 
 function AlertMethod(props: AlertProps, isConfirm = false) {
+  const { theme = 'primary', title, ...others } = props;
+  const themeTitleConfig = themeMapIcon[theme];
+  const themeTitle = (
+    <Fragment>
+      <Icon className="modal-alert-icon" type={themeTitleConfig.icon} theme={theme} />
+      <span className="modal-alert-icon-text">{title}</span>
+    </Fragment>
+  );
   const div = document.createElement('div');
   let resolveFn = (result: boolean) => result;
 
@@ -48,7 +74,6 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
         closable={false}
         visible={visible}
         style={{ maxWidth: 340 }}
-        disableEscapeKeyDown
         afterClose={() => {
           if (props.afterClose) {
             props.afterClose();
@@ -58,7 +83,8 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
             div.parentNode.removeChild(div);
           }
         }}
-        {...props}
+        title={themeTitle}
+        {...others}
         autoFocus
         onOk={() => {
           handleOnOk(render, true);
@@ -69,8 +95,8 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
         }}
         footer={(
           <Fragment>
-            {isConfirm && <Button onClick={() => handleOnOk(render, false)} theme="primary">取消</Button>}
-            <Button onClick={() => handleOnOk(render, true)} theme="primary">确定</Button>
+            {isConfirm && <Button onClick={() => handleOnOk(render, false)}>取消</Button>}
+            <Button theme={theme === 'success' ? 'primary' : 'theme'} onClick={() => handleOnOk(render, true)}>确定</Button>
           </Fragment>
         )}
       >
@@ -85,23 +111,34 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
     render(true);
   });
 
-  Object.setPrototypeOf(Object.getPrototypeOf(returnResult), {
-    hide: () => {
+  return {
+    hide() {
       render(false);
       resolveFn(false);
     },
-  });
-
-  return returnResult;
+    then: (resolve) => {
+      return returnResult.then((res) => {
+        resolve(res);
+      });
+    },
+    catch: (resolve, reject) => {
+      return returnResult.catch((res) => {
+        reject(res);
+      });
+    },
+  };
 }
 
-export function Alert(props: ModalProps | ReactNode, isConfirm = false) {
+export function Alert(props: ModalProps | ReactNode) {
   const modalProps: AlertProps = isReactNode(props) ? {
     content: props,
   } : props;
-  return AlertMethod(modalProps, isConfirm);
+  return AlertMethod(modalProps);
 }
 
 export function Confirm(props: ModalProps | ReactNode) {
-  return Alert(props, true);
+  const modalProps: AlertProps = isReactNode(props) ? {
+    content: props,
+  } : props;
+  return AlertMethod(modalProps, true);
 }

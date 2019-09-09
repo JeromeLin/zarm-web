@@ -16,11 +16,13 @@ class Demo extends React.Component {
         <div className="multi-rows">
           <Button theme="primary">primary</Button>
           <Button theme="danger">error</Button>
+          <Button theme="warning">warning</Button>
           <Button>default</Button>
         </div>
         <div className="multi-rows" style={{ background: '#ccc', height: 60, lineHeight: '60px', paddingLeft: 12 }}>
           <Button ghost theme="primary">primary</Button>
           <Button ghost theme="danger">error</Button>
+          <Button ghost theme="warning">warning</Button>
           <Button ghost>default</Button>
         </div>
         <div className="multi-rows">
