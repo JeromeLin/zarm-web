@@ -2,6 +2,7 @@ import React, { InputHTMLAttributes, ReactNode, Component, MouseEventHandler, Ke
 import classnames from 'classnames';
 import Group from '../input-group';
 import Input from '../index';
+// @ts-ignore
 import PropsType, { AddonIF } from '../PropsType';
 import Icon from '../../icon';
 
@@ -37,13 +38,12 @@ class Search extends Component<PropsIF> {
   };
 
   render() {
-    const { props } = this;
-    const { showIcon, showButton, shape, button, onSearch, ...others } = props;
+    const { showIcon, showButton, shape, button, onSearch, disabled, size, ...others } = this.props;
     const cls = classnames({
       'ui-search-btn': true,
-      disabled: props.disabled,
+      disabled,
       [`shape-${shape}`]: true,
-      [`size-${props.size}`]: !!props.size,
+      [`size-${size}`]: !!size,
     });
     const addonIcon: { addonBefore?: AddonIF } = {};
     if (showIcon) {
@@ -59,7 +59,7 @@ class Search extends Component<PropsIF> {
     return (
       <Group style={Style.group}>
         <Input<'input'> shape={shape} {...others} onKeyPress={this.onKeyPress} {...addonIcon} />
-        <div className={cls} onClick={props.disabled ? undefined : props.onSearch as MouseEventHandler<HTMLDivElement>}>
+        <div className={cls} onClick={disabled ? undefined : onSearch as MouseEventHandler<HTMLDivElement>}>
           {button}
         </div>
       </Group>

@@ -56,7 +56,7 @@
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
     "react-highlight": "^0.12.0",
-    "zarm": "2.0.0-alpha.48"
+    "zarm": "2.0.0-alpha.49"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -145,7 +145,7 @@
     "stylelint": "^7.12.0",
     "stylelint-config-za": "^0.1.0",
     "through2": "^3.0.1",
-    "ts-jest": "^22.4.6",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.5.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",

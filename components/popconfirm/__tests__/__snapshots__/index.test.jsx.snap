@@ -16,11 +16,15 @@ exports[`PopConfirm renders PopConfirm correctly 1`] = `
           <button
             class="zw-button zw-button--default zw-button--radius"
             type="button"
-          />
+          >
+            取消
+          </button>
           <button
             class="zw-button zw-button--primary zw-button--radius"
             type="button"
-          />
+          >
+            确定
+          </button>
         </div>
       </div>
       <span

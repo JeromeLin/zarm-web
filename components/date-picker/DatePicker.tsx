@@ -6,7 +6,7 @@ import Calendar from '../calendar';
 import Icon from '../icon';
 import Input from '../input';
 import PropsType from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 class DatePicker extends Component<PropsType, any> {
   static defaultProps = {

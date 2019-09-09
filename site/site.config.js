@@ -199,7 +199,7 @@ module.exports = {
       },
       {
         name: 'LocaleProvider',
-        module: () => import('@/components/locale/demo.md'),
+        module: () => import('@/components/locale-provider/demo.md'),
       },
     ],
   },

@@ -1,3 +1,5 @@
-export const isArray = (val: any) => {
+const isArray = (val: any) => {
   return Object.prototype.toString.call(val) === '[object Array]';
 };
+
+export default isArray;

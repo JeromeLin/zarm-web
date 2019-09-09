@@ -68,7 +68,7 @@ const defaultProps = {
   zIndex: 2018,
 };
 
-const mountedInstance = new Set();
+const mountedInstance = new Set<Dropdown>();
 
 export default class Dropdown extends React.Component<propsType, StateType> {
   static defaultProps = defaultProps;

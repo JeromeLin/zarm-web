@@ -20,7 +20,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
       hideIcon={false}
       locale={
         Object {
-          "cancelText": "关闭",
+          "close": "关闭",
         }
       }
       localeCode="zh-cn"
@@ -79,7 +79,9 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       <button
                         class="zw-button zw-button--default zw-button--radius"
                         type="button"
-                      />
+                      >
+                        关闭
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -175,7 +177,9 @@ exports[`Alert renders basic Alert correctly 1`] = `
                         disabled={false}
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        关闭
+                      </button>
                     </Button>
                   </div>
                 </ModalFooter>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Popover from '../popover';
 import Button from '../button';
 import PropsType from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const noop = () => {};
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Icon from '../icon';
 import { HeaderProps } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 class CalendarHeader extends Component<HeaderProps, any> {
   static defaultProps = {
