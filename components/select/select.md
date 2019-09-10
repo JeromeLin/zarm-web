@@ -2,13 +2,14 @@
 
 常用的下拉选择器。
 
-### 基础用法
-
-最简单的选择器。
-
-:::demo 通过`value`设置值，通过`onChange`来监听值的变化。
+:::demo
+## 基础用法
+通过`value`设置值，通过`onChange`来监听值的变化。
 
 ```js
+import { Select } from 'zarm-web';
+
+class Demo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -64,16 +65,19 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo /> ,mountNode);  
 ```
 :::
 
-### 是否禁用
-
-添加`disabled`属性即可禁用。
-
 :::demo
-
+## 是否禁用
+添加`disabled`属性即可禁用。
 ```js
+import { Select } from 'zarm-web';
+
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -91,16 +95,22 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
-### 支持本地搜索
+
+:::demo
+## 支持本地搜索
 
 支持输入框搜索选项。
-
-:::demo 添加`search`属性，通过`onSearchChange`监听输入框值的变化。
+添加`search`属性，通过`onSearchChange`监听输入框值的变化。
 
 ```js
+import { Select } from 'zarm-web';
+class Demo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -132,16 +142,22 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);  
 ```
 :::
 
-### 支持远程搜索
+
+:::demo
+## 支持远程搜索
 
 支持输入框搜索选项。
-
-:::demo 添加`search`属性，通过`onSearchChange`监听输入框值的变化。
+添加`search`属性，通过`onSearchChange`监听输入框值的变化。
 
 ```js
+import { Select } from 'zarm-web';
+class Demo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -177,17 +193,23 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode); 
 ```
 :::
 
 
-### 多选
+:::demo
+## 多选
 
 支持输入框多选。
-
-:::demo 添加`multiple`属性，可支持多选。
+添加`multiple`属性，可支持多选。
 
 ```js
+import { Select } from 'zarm-web';
+
+class Demo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -213,7 +235,7 @@
           <Select.Option value="b">我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
-           <Select.Option value="e">我是E</Select.Option>
+          <Select.Option value="e">我是E</Select.Option>
           <Select.Option value="f">我是F</Select.Option>
           <Select.Option value="g">我是G</Select.Option>
           <Select.Option value="h">我是H</Select.Option>
@@ -222,17 +244,22 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode); 
 ```
 :::
 
 
-### 多选并支持查找
+:::demo
+## 多选并支持查找
 
 支持输入框搜索选项。
-
-:::demo 添加`multiple` 和`search`属性，可支持多选和查找。
+添加`multiple` 和`search`属性，可支持多选和查找。
 
 ```js
+import { Select } from 'zarm-web';
+class Demo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -266,6 +293,9 @@
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);   
 ```
 :::
 
@@ -278,7 +308,7 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 ```
 + onChange回调的参数中的`value`值类型始终为`string`;
 + 当`multiple`属性为`true`时,若参数`value`中存在目前`option`列表中不存在的元素：则不会显示该元素，但也不会删除该元素。例如：
-```js
+```
   this.state = {
       selectValue: ['i am not the one']
   }
@@ -302,13 +332,14 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 以上代码中`'i am not the one'`并不存在于Select.Option中，当你执行`onChange`操作的时候`selectedArr`中依然会保留改字段,但并不会显示在输入框内。
 
 
-### 更多设置
+:::demo
+## 更多设置
 
 通过`radius`设置圆角。
 
-:::demo
-
 ```js
+import { Select } from 'zarm-web';
+class Demo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -336,11 +367,14 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);  
 ```
 :::
 
 
-### Select Attributes
+## API Select Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | value     | 选中值   | string, string[] |   -            |    -   |

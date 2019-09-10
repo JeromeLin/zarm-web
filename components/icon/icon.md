@@ -7,7 +7,7 @@
 ## 使用方法
 
 基本用法。
-
+:::demo
 通过`type`属性设置图标类型
 ```jsx
 import { Icon } from 'zarm-web';
@@ -195,9 +195,11 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
+:::
 
 ## 颜色主题
 
+::: demo
 通过`theme`属性设置主题。 或者通过style定制覆盖颜色和字体样式等...
 ```jsx
 import { Icon } from 'zarm-web';
@@ -227,7 +229,7 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-
+:::
 ## API
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

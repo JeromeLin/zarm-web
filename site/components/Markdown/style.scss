@@ -51,8 +51,8 @@ blockquote {
 }
 
 code {
-  background-color: #f1f1f1;
   padding: 2px 6px;
+  display: inline-block;
   margin: 0 1px;
   border-radius: 3px;
 }
@@ -71,5 +71,14 @@ code {
 .markdown-demo-item {
   //width: 50%;
   break-inside: avoid;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
+
+  .demo-block {
+    padding: 20px;
+  }
+
+  .source {
+    border: 1px dashed #ccc;
+    padding: 20px;
+  }
 }
