@@ -5,7 +5,7 @@ import { OptionProps } from './PropsType';
 import Menu from '../menu';
 
 class Option extends Component<OptionProps, any> {
-  static displayName: 'Option';
+  static displayName = 'Option';
 
   static defaultProps = {
     isDisabled: false,

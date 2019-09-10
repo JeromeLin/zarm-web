@@ -366,6 +366,7 @@ class Select extends Component<PropsType, StateProps> {
       remoteSearch,
       clearable,
       triggerProps,
+      className,
     } = props;
 
     const triggerBoxStyle: React.CSSProperties = { ...style, position: 'relative' };
@@ -428,6 +429,7 @@ class Select extends Component<PropsType, StateProps> {
         overlay={menus}
         zIndex={zIndex}
         getPopupContainer={getPopupContainer}
+        className={className}
         onVisibleChange={(visible) => {
           if (visible === true) {
             this.setState({ dropdown: visible, searchValue: '' });
