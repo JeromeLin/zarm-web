@@ -4,7 +4,8 @@
   flex: auto;
   background: #f0f2f5;
 
-  &, * {
+  &,
+  * {
     box-sizing: border-box;
   }
 
@@ -62,7 +63,7 @@
       height: 48px;
       line-height: 48px;
       color: #fff;
-      background:#002140;
+      background: #002140;
       z-index: 1;
       transition: all .2s;
     }

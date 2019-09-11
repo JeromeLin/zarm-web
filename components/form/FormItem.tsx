@@ -15,12 +15,11 @@ class FormItem extends PureComponent<ItemProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-form',
+    required: false,
   };
 
   static propTypes = {
-    prop: PropTypes.string,
-    rules: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-    label: PropTypes.string,
+    prefixCls: PropTypes.string,
     required: PropTypes.bool,
   };
 
@@ -49,15 +48,6 @@ class FormItem extends PureComponent<ItemProps, any> {
     this.removeFormItem();
   }
 
-  recordInitialData() {
-    if (!this.context.model) { return; }
-    const { prop } = this.props;
-    const { model } = this.context;
-    const value = model[prop!];
-
-    return value === undefined ? undefined : JSON.parse(JSON.stringify(value));
-  }
-
   get fieldValue() {
     const { model } = this.context;
     const { prop } = this.props;
@@ -66,22 +56,10 @@ class FormItem extends PureComponent<ItemProps, any> {
     return propArr.length > 1 ? model[propArr[0]][propArr[1]] : model[prop!];
   }
 
-  addFormItem() {
-    if ((this.props as ItemProps).prop) {
-      this.context.fields.push(this);
-    }
-  }
-
-  removeFormItem() {
-    if ((this.props as ItemProps).prop) {
-      const index = this.context.fields.indexOf(this);
-      this.context.fields.splice(index, 1);
-    }
-  }
-
   getRules() {
     const { rules, prop } = this.props;
-    let formRules = this.context.rules;
+    const { rules: contextRules } = this.context;
+    let formRules = contextRules;
     const formItemRules = rules;
 
     formRules = formRules ? formRules[prop!] : [];
@@ -94,7 +72,26 @@ class FormItem extends PureComponent<ItemProps, any> {
     return filteredRules;
   }
 
-  validateItem(trigger: triggerType, callback = (_) => {}) {
+  getId() {
+    const { children } = this.props;
+    if ((children as ReactElement<any>).props) {
+      return (children as ReactElement<any>).props.id;
+    }
+  }
+
+  getControlNode() {
+    return this.formItemInstance.current;
+  }
+
+  handleFieldBlur = () => {
+    Promise.resolve('blur').then(this.validateItem.bind(this));
+  };
+
+  handleFieldChange = () => {
+    Promise.resolve('change').then(this.validateItem.bind(this));
+  };
+
+  validateItem(trigger: triggerType, callback: (messge: string) => void = () => {}) {
     const { prop } = this.props;
     const rules = this.getFilteredRules(trigger);
 
@@ -114,6 +111,7 @@ class FormItem extends PureComponent<ItemProps, any> {
 
   resetItem() {
     const { prop } = this.props;
+    const { model } = this.context;
 
     this.setState({
       validateStatus: '',
@@ -121,28 +119,41 @@ class FormItem extends PureComponent<ItemProps, any> {
     this.validateMessage = '';
 
     if (Array.isArray(this.fieldValue) && this.fieldValue.length > 0) {
-      this.context.model[prop!] = [];
+      model[prop!] = [];
     } else {
-      this.context.model[prop!] = this.initialData;
+      model[prop!] = this.initialData;
     }
   }
 
-  getId() {
-    const { children } = this.props;
-    if ((children as ReactElement<any>).props) {
-      return (children as ReactElement<any>).props.id;
+  recordInitialData() {
+    const { model } = this.context;
+    if (!model) { return; }
+    const { prop } = this.props;
+    const value = model[prop!];
+
+    return value === undefined ? undefined : JSON.parse(JSON.stringify(value));
+  }
+
+  addFormItem() {
+    const { fields } = this.context;
+    if ((this.props as ItemProps).prop) {
+      fields.push(this);
     }
   }
 
-  getControlNode() {
-    return this.formItemInstance.current;
+  removeFormItem() {
+    const { fields } = this.context;
+    if ((this.props as ItemProps).prop) {
+      const index = fields.indexOf(this);
+      fields.splice(index, 1);
+    }
   }
 
   renderLabel() {
-    const { id, label, prefixCls, prop, rules } = this.props;
+    const { id, label, prefixCls, prop, rules, required } = this.props;
     const { labelWidth } = this.context;
     const styleObj: any = {};
-    const star = ('required' in this.props || prop || rules) ? (
+    const star = (required || prop || rules) ? (
       <span className={`${prefixCls}-item--required`}>
         <Icon type="required" />
       </span>
@@ -158,18 +169,9 @@ class FormItem extends PureComponent<ItemProps, any> {
       ) : null;
   }
 
-  handleFieldBlur = () => {
-    Promise.resolve('blur').then(this.validateItem.bind(this));
-  };
-
-  handleFieldChange = () => {
-    Promise.resolve('change').then(this.validateItem.bind(this));
-  };
-
   render() {
-    const { props, state } = this;
-    const { validateStatus } = state;
-    const { className, children, style, prefixCls } = props;
+    const { validateStatus } = this.state;
+    const { className, children, style, prefixCls } = this.props;
     const cls = classnames({
       [`${prefixCls}-item`]: true,
       'has-error': validateStatus === 'error',

@@ -11,7 +11,7 @@ describe('PopConfirm', () => {
         <Popconfirm content="确认删除吗" direction="top">
           <Button>Delete</Button>
         </Popconfirm>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -24,10 +24,10 @@ describe('PopConfirm', () => {
         <Popconfirm content="确认删除吗" direction="top" onOk={onOk}>
           Delete
         </Popconfirm>
-      </div>
+      </div>,
     );
 
-    wrapper.find('.za-button').at(1).simulate('click');
+    wrapper.find('.zw-button').at(1).simulate('click');
 
     expect(onOk).toHaveBeenCalled();
   });
@@ -39,10 +39,10 @@ describe('PopConfirm', () => {
         <Popconfirm content="确认删除吗" direction="top" onCancel={onCancel}>
           Delete
         </Popconfirm>
-      </div>
+      </div>,
     );
 
-    wrapper.find('.za-button').at(0).simulate('click');
+    wrapper.find('.zw-button').at(0).simulate('click');
 
     expect(onCancel).toHaveBeenCalled();
   });
@@ -51,7 +51,7 @@ describe('PopConfirm', () => {
     const wrapper = mount(
       <Popconfirm content="确认删除吗" direction="top">
         Delete
-      </Popconfirm>
+      </Popconfirm>,
     );
 
     expect(wrapper.find('.ui-popover-content').hasClass('ui-popover-content-show')).toBeFalsy();

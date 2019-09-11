@@ -1,4 +1,4 @@
-// tslint:disable:no-bitwise
+/* eslint-disable no-bitwise */
 import React, { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
@@ -68,7 +68,7 @@ const defaultProps = {
   zIndex: 2018,
 };
 
-const mountedInstance = new Set();
+const mountedInstance = new Set<Dropdown>();
 
 export default class Dropdown extends React.Component<propsType, StateType> {
   static defaultProps = defaultProps;
@@ -137,8 +137,8 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       left: 0,
       top: 0,
     },
-    isPending: false,
     animationState: null,
+    // eslint-disable-next-line react/no-unused-state
     animationProps: null,
   };
 
@@ -181,6 +181,73 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     this.setEventObject(props.trigger);
     this.onWindowResize = throttle(this.reposition, 300);
     this.onParentScroll = this.reposition;
+  }
+
+  componentDidMount() {
+    const { getPopupContainer, visible, placement } = this.props;
+    if (typeof getPopupContainer === 'function') {
+      this.popContainer = getPopupContainer();
+      this.popContainer.style.position = 'relative';
+    } else {
+      this.popContainer = getOffsetElem(this.triggerBox);
+    }
+    this.popContainer.appendChild(this.div);
+    if (visible) {
+      const { left, top } = this.getDropdownPosition(placement);
+      this.setState({
+        positionInfo: {
+          left,
+          top,
+        },
+      });
+    }
+    this.scrollParent = domUtil.getScrollParent(this.triggerBox);
+    events.on(document, 'click', this.onDocumentClick);
+    events.on(window, 'resize', this.onWindowResize);
+    events.on(this.scrollParent, 'scroll', this.onParentScroll);
+
+    // 存储当前实例，方便静态方法统一处理
+    mountedInstance.add(this);
+    this.triggerBoxOffsetHeight = this.triggerBox.offsetHeight;
+  }
+
+  componentWillReceiveProps(nextProps: Readonly<{ children?: ReactNode }> & Readonly<propsType>) {
+    const { visible, trigger } = this.props;
+    if (nextProps.visible === visible) {
+      return;
+    }
+    if (nextProps.trigger !== trigger) {
+      this.setEventObject(nextProps.trigger);
+    }
+    if (nextProps.visible) {
+      this.enter(() => {
+        if (nextProps.visible) {
+          this.setState({
+            positionInfo: this.getDropdownPosition(nextProps.placement),
+          });
+        }
+      });
+    } else {
+      this.leave();
+    }
+  }
+
+  componentDidUpdate() {
+    const height = this.triggerBox.offsetHeight;
+    if (height !== this.triggerBoxOffsetHeight) {
+      this.reposition();
+      this.triggerBoxOffsetHeight = height;
+    }
+  }
+
+  componentWillUnmount() {
+    events.off(document, 'click', this.onDocumentClick);
+    events.off(window, 'click', this.onWindowResize);
+    events.off(this.scrollParent, 'scroll', this.onParentScroll);
+    mountedInstance.delete(this);
+    setTimeout(() => {
+      this.popContainer.removeChild(this.div);
+    });
   }
 
   // 根据trigger方式不同绑定事件
@@ -245,68 +312,22 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     }, 300);
   };
 
-  componentDidMount() {
-    if (typeof this.props.getPopupContainer === 'function') {
-      this.popContainer = this.props.getPopupContainer();
-      this.popContainer.style.position = 'relative';
-    } else {
-      this.popContainer = getOffsetElem(this.triggerBox);
-    }
-    this.popContainer.appendChild(this.div);
-    if (this.props.visible) {
-      const { left, top } = this.getDropdownPosition(this.props.placement);
-      this.setState({
-        positionInfo: {
-          left,
-          top,
-        },
-      });
-    }
-    this.scrollParent = domUtil.getScrollParent(this.triggerBox);
-    events.on(document, 'click', this.onDocumentClick);
-    events.on(window, 'resize', this.onWindowResize);
-    events.on(this.scrollParent, 'scroll', this.onParentScroll);
-
-    // 存储当前实例，方便静态方法统一处理
-    mountedInstance.add(this);
-    this.triggerBoxOffsetHeight = this.triggerBox.offsetHeight;
-  }
-
-  componentDidUpdate() {
-    const height = this.triggerBox.offsetHeight;
-    if (height !== this.triggerBoxOffsetHeight) {
-      this.reposition();
-      this.triggerBoxOffsetHeight = height;
-    }
-  }
-
   // 点击外部的时候
   onDocumentClick = (e: MouseEvent): void => {
+    const { hideOnClick, onVisibleChange } = this.props;
     if (this.props.disabled === true || this.state.visible === false) {
       return;
     }
     const target = e.target as Node;
+    // eslint-disable-next-line no-empty
     if (this.div.contains(target) || this.triggerBox.contains(target)) {
 
     } else {
-      // this.props.onVisibleChange(false);
-      if (this.props.hideOnClick) {
-        this.props.onVisibleChange(false);
+      // eslint-disable-next-line no-lonely-if
+      if (hideOnClick) {
+        onVisibleChange(false);
       }
     }
-  };
-
-  reposition = () => {
-    if (!this.state.visible || this.props.disabled) {
-      return;
-    }
-    const { left, top } = this.getDropdownPosition(this.props.placement);
-    if (left === this.state.positionInfo.left && top === this.state.positionInfo.top) {
-      return;
-    }
-    this.setState({
-      positionInfo: { left, top },
-    });
   };
 
   // 获取元素的定位信息
@@ -324,12 +345,11 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       offsetHeight,
     );
     const offset = placement.startsWith('bottom') ? 5 : -5;
-    const { scrollParent } = this;
     let scrollLeft = 0;
     let scrollTop = 0;
-    if (scrollParent !== this.popContainer && this.popContainer.contains(scrollParent)) {
-      scrollLeft = domUtil.getScrollLeftValue(scrollParent);
-      scrollTop = domUtil.getScrollTopValue(scrollParent);
+    if (this.scrollParent !== this.popContainer && this.popContainer.contains(this.scrollParent)) {
+      scrollLeft = domUtil.getScrollLeftValue(this.scrollParent);
+      scrollTop = domUtil.getScrollTopValue(this.scrollParent);
     }
     return {
       left: rectInfo.left + left - marginLeft - scrollLeft,
@@ -337,40 +357,22 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     };
   }
 
-  componentWillReceiveProps(nextProps: Readonly<{ children?: ReactNode }> & Readonly<propsType>) {
-    if (nextProps.visible === this.props.visible) {
+  reposition = () => {
+    if (!this.state.visible || this.props.disabled) {
       return;
     }
-    if (nextProps.trigger !== this.props.trigger) {
-      this.setEventObject(nextProps.trigger);
+    const { left, top } = this.getDropdownPosition(this.props.placement);
+    if (left === this.state.positionInfo.left && top === this.state.positionInfo.top) {
+      return;
     }
-    if (nextProps.visible) {
-      this.enter(() => {
-        if (nextProps.visible) {
-          this.setState({
-            positionInfo: this.getDropdownPosition(nextProps.placement),
-          });
-        }
-      });
-    } else {
-      this.leave();
-    }
-  }
-
-  componentWillUnmount() {
-    events.off(document, 'click', this.onDocumentClick);
-    events.off(window, 'click', this.onWindowResize);
-    events.off(this.scrollParent, 'scroll', this.onParentScroll);
-    mountedInstance.delete(this);
-    setTimeout(() => {
-      this.popContainer.removeChild(this.div);
+    this.setState({
+      positionInfo: { left, top },
     });
-  }
+  };
 
   onAniEnd = (e: React.AnimationEvent) => {
     if (e.type.toLowerCase().endsWith('animationend')) {
       this.setState({
-        isPending: false,
         visible: this.props.visible,
         animationState: null,
       });
@@ -380,7 +382,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   enter(callback: () => void): void {
     this.setState({
       visible: true,
-      isPending: true,
       animationState: 'enter',
     }, callback);
   }
@@ -388,7 +389,6 @@ export default class Dropdown extends React.Component<propsType, StateType> {
   leave(): void {
     this.setState({
       visible: true,
-      isPending: true,
       animationState: 'leave',
     });
   }
@@ -414,7 +414,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       ...others
     } = this.props;
 
-    const { positionInfo, animationState } = this.state;
+    const { positionInfo, animationState, visible: stateVisible } = this.state;
     // 根据placement判断向上动画还是向下动画
     const animationProps = (placementMap[placement] & 1) ? 'scaleDown' : 'scaleUp';
     const cls = classnames({
@@ -430,7 +430,8 @@ export default class Dropdown extends React.Component<propsType, StateType> {
       ...positionInfo,
       position: 'absolute',
       animationDuration: '300ms',
-      display: disabled ? 'none' : (this.state.visible ? 'block' : 'none'),
+      // eslint-disable-next-line no-nested-ternary
+      display: disabled ? 'none' : (stateVisible ? 'block' : 'none'),
       overflow: 'hidden',
       zIndex,
     };
@@ -450,7 +451,9 @@ export default class Dropdown extends React.Component<propsType, StateType> {
           <div
             onAnimationEnd={this.onAniEnd}
             className={cls}
-            ref={e => this.DropdownContent = e as HTMLDivElement}
+            ref={(e) => {
+              this.DropdownContent = e as HTMLDivElement;
+            }}
             style={dropdownBoxStyle}
             {...others}
             {...this.DropdownContentEvent}

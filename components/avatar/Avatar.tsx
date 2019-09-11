@@ -5,7 +5,7 @@ import Icon from '../icon';
 
 class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, StateType> {
   static defaultProps: PropsType = {
-    prefixCls: 'za-avatar',
+    prefixCls: 'zw-avatar',
     icon: '',
     shape: 'circle',
     src: '',

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import Format from '../utils/format';
-import { isArray } from '../utils/validate';
+import isArray from '../utils/validate';
 
-import { DateTableProps, dateType } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import { DateTableProps, DateType } from './PropsType';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 // 生成 [1, 2, 3, ...] 的序列
-const getSequence = length => [...Array.from({ length }).keys()];
+const getSequence = length => [...Array.from({ length }).keys()];
 
 const CALENDAR_ROW_COUNT = getSequence(6);
 const CALENDAR_COL_COUNT = getSequence(7);
@@ -74,13 +74,14 @@ class CalendarDateTable extends Component<DateTableProps, any> {
 
   // 渲染日期
   renderDate() {
-    const dd = new Date(this.state.current);
-    const current: dateType = {
+    const { current: stateCurrent } = this.state;
+    const dd = new Date(stateCurrent);
+    const current: DateType = {
       year: dd.getFullYear(),
       month: dd.getMonth() + 1,
     };
-    const pre: dateType = this.getPreMonth(current);
-    const next: dateType = this.getNextMonth(current);
+    const pre: DateType = this.getPreMonth(current);
+    const next: DateType = this.getNextMonth(current);
 
     current.days = this.getDays(current);
     current.firstDayOfWeek = this.getFirstDayOfWeek(current);
@@ -241,7 +242,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
   // 获取下个月
   // eslint-disable-next-line
   getNextMonth(current) {
-    const result: dateType = {};
+    const result: DateType = {};
     if (current.month === 12) {
       result.year = current.year + 1;
       result.month = 1;
@@ -255,7 +256,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
   // 获取上个月
   // eslint-disable-next-line
   getPreMonth(current) {
-    const result: dateType = {};
+    const result: DateType = {};
     if (current.month === 1) {
       result.year = current.year - 1;
       result.month = 12;

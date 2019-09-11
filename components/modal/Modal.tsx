@@ -82,6 +82,7 @@ class Modal extends Component<ModalProps, StateIF> {
           modal.sleep = false;
         }
       }
+      // eslint-disable-next-line no-plusplus
       while (index--) {
         const modal = Modal.visibleList[index];
         const currentVisible = modal.props.visible;
@@ -124,10 +125,11 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   componentDidMount() {
+    const { visible } = this.props;
     if (this.sleep === true) {
       return;
     }
-    if (this.props.visible) {
+    if (visible) {
       if (!this.appended) {
         document.body.appendChild(this.div);
         this.appended = true;
@@ -138,6 +140,40 @@ class Modal extends Component<ModalProps, StateIF> {
     if (this.modal) {
       Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
       Events.on(this.modal, 'animationend', this.animationEnd);
+    }
+  }
+
+  componentWillReceiveProps(nextProps: ModalProps) {
+    const { visible } = this.props;
+    if (this.sleep === true) {
+      return;
+    }
+    if (!visible && nextProps.visible) {
+      if (!this.appended) {
+        document.body.appendChild(this.div);
+        this.appended = true;
+      }
+      Modal.visibleList.forEach((item) => {
+        item.setState({
+          isShow: false,
+        });
+      });
+      this.enter();
+      Modal.handleVisbibleList(this, true);
+    } else if (visible && !nextProps.visible) {
+      Modal.handleVisbibleList(this, false);
+      this.leave();
+    }
+  }
+
+  componentDidUpdate() {
+    const { isShow } = this.state;
+    if (this.modalContent) {
+      if (isShow) {
+        this.modalContent.focus();
+      } else {
+        this.modalContent.blur();
+      }
     }
   }
 
@@ -157,42 +193,6 @@ class Modal extends Component<ModalProps, StateIF> {
     });
   }
 
-  componentWillReceiveProps(nextProps: ModalProps) {
-    if (this.sleep === true) {
-      return;
-    }
-    if (!this.props.visible && nextProps.visible) {
-      if (!this.appended) {
-        document.body.appendChild(this.div);
-        this.appended = true;
-      }
-      Modal.visibleList.forEach((item) => {
-        item.setState({
-          isShow: false,
-        });
-      });
-      this.enter();
-      Modal.handleVisbibleList(this, true);
-    } else if (this.props.visible && !nextProps.visible) {
-      Modal.handleVisbibleList(this, false);
-      this.leave();
-    }
-  }
-
-  shouldComponentUpdate(_: ModalProps, nextState: StateIF) {
-    return !!(this.state.isShow || nextState.isShow);
-  }
-
-  componentDidUpdate() {
-    if (this.modalContent) {
-      if (this.state.isShow) {
-        this.modalContent.focus();
-      } else {
-        this.modalContent.blur();
-      }
-    }
-  }
-
   animationEnd = () => {
     if (this.state.animationState === 'leave') {
       this.setState({
@@ -210,7 +210,7 @@ class Modal extends Component<ModalProps, StateIF> {
   onKeyDown = (e: KeyboardEvent) => {
     if (this.state.isShow && this.state.animationState !== 'leave') {
       if (e.keyCode === 27) {
-        React.Children.forEach(this.props.children, (elem) => {
+        React.Children.forEach(this.props.children, (elem: any) => {
           if (elem && typeof elem !== 'string' && typeof elem !== 'number') {
             if (elem.props.onClose) {
               elem.props.onClose();
@@ -229,6 +229,18 @@ class Modal extends Component<ModalProps, StateIF> {
         }
       }
     }
+  };
+
+  onMaskClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
+
+  getModalRef = (ele: HTMLDivElement) => {
+    if (ele) {
+      this.modal = ele;
+    }
+  };
+
+  modalContentRef = (elem: HTMLDivElement) => {
+    this.modalContent = elem;
   };
 
   enter() {
@@ -252,18 +264,6 @@ class Modal extends Component<ModalProps, StateIF> {
       toggleBodyOverflow(false);
     }
   }
-
-  onMaskClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
-
-  getModalRef = (ele: HTMLDivElement) => {
-    if (ele) {
-      this.modal = ele;
-    }
-  };
-
-  modalContentRef = (elem: HTMLDivElement) => {
-    this.modalContent = elem;
-  };
 
   render() {
     const {
@@ -335,7 +335,9 @@ class Modal extends Component<ModalProps, StateIF> {
 }
 
 // tslint:disable-next-line:no-namespace
+// eslint-disable-next-line no-redeclare
 declare namespace Modal {
+  /* eslint-disable @typescript-eslint/no-empty-interface */
   export interface Props extends ModalProps {}
   export interface BodyProps extends ModalBodyProps { }
   export interface HeaderProps extends ModalHeaderProps { }

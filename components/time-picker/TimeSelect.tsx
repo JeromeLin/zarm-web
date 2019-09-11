@@ -26,6 +26,17 @@ const scrollTo = (element, to, duration) => {
 class TimeSelect extends Component<TimeSelectProps, any> {
   static contextType = FormItemContext;
 
+  static scrollToSelected(element, selectIndex, duration) {
+    // eslint-disable-next-line react/no-find-dom-node
+    const selectDom: any = (ReactDOM.findDOMNode(element) as any).children[0];
+    const list = selectDom.querySelector('ul');
+    const topOption = list.children[selectIndex];
+    const to = topOption.offsetTop;
+
+    if (!list) { return; }
+    scrollTo(selectDom, to, duration);
+  }
+
   private hourDom: any;
 
   private minuteDom: any;
@@ -55,6 +66,22 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     this.setDataFromValue(nextProps);
   }
 
+  onSelect(type, element, arr, selectIndex) {
+    const { handleFieldChange } = this.context;
+    const { onChange } = this.props;
+    let { selectedH, selectedM, selectedS } = this.state;
+    if (type === 'H') { selectedH = arr; }
+    if (type === 'M') { selectedM = arr; }
+    if (type === 'S') { selectedS = arr; }
+    if (!isEmpty(this.context)) {
+      handleFieldChange();
+    }
+    this.setState({ selectedH, selectedM, selectedS });
+    const rVal = `${selectedH[0]}:${selectedM[0]}:${selectedS[0]}`;
+    TimeSelect.scrollToSelected(element, selectIndex, 120);
+    onChange(rVal);
+  }
+
   setDataFromValue(props) {
     const arrTime = props.value.split(':');
 
@@ -63,17 +90,6 @@ class TimeSelect extends Component<TimeSelectProps, any> {
       selectedM: [arrTime[1]],
       selectedS: [arrTime[2]],
     });
-  }
-
-  scrollToSelected(element, selectIndex, duration) {
-    // @ts-ignore
-    const selectDom: any = ReactDOM.findDOMNode(element).children[0];
-    const list = selectDom.querySelector('ul');
-    const topOption = list.children[selectIndex];
-    const to = topOption.offsetTop;
-
-    if (!list) { return; }
-    scrollTo(selectDom, to, duration);
   }
 
   selectInit() {
@@ -88,55 +104,41 @@ class TimeSelect extends Component<TimeSelectProps, any> {
     this.setState({ selectH, selectM, selectS });
   }
 
-  onSelect(type, element, arr, selectIndex) {
-    let { selectedH, selectedM, selectedS } = this.state;
-    if (type === 'H') { selectedH = arr; }
-    if (type === 'M') { selectedM = arr; }
-    if (type === 'S') { selectedS = arr; }
-    if (!isEmpty(this.context)) {
-      this.context.handleFieldChange();
-    }
-    this.setState({ selectedH, selectedM, selectedS });
-    const rVal = `${selectedH[0]}:${selectedM[0]}:${selectedS[0]}`;
-    this.scrollToSelected(element, selectIndex, 120);
-    this.props.onChange(rVal);
-  }
-
   render() {
-    const { selectH, selectM, selectS } = this.state;
+    const { selectH, selectM, selectS, selectedH, selectedS, selectedM } = this.state;
 
     return (
       <div className="za-time__select">
         <Select.Multiple
-          value={this.state.selectedH}
-          ref={el => this.hourDom = el}
+          value={selectedH}
+          ref={(el) => { this.hourDom = el; }}
           onChange={(_, row) => this.onSelect('H', this.hourDom, [row.value], row.index)}
         >
           {
             selectH && selectH.map((option, index) => {
-              return <Select.Option key={index} value={option}>{option}</Select.Option>;
+              return <Select.Option key={index.toString()} value={option}>{option}</Select.Option>;
             })
           }
         </Select.Multiple>
         <Select.Multiple
-          value={this.state.selectedM}
-          ref={el => this.minuteDom = el}
+          value={selectedM}
+          ref={(el) => { this.minuteDom = el; }}
           onChange={(_, row) => this.onSelect('M', this.minuteDom, [row.value], row.index)}
         >
           {
             selectM && selectM.map((option, index) => {
-              return <Select.Option key={index} value={option}>{option}</Select.Option>;
+              return <Select.Option key={index.toString()} value={option}>{option}</Select.Option>;
             })
           }
         </Select.Multiple>
         <Select.Multiple
-          value={this.state.selectedS}
-          ref={el => this.secondDom = el}
+          value={selectedS}
+          ref={(el) => { this.secondDom = el; }}
           onChange={(_, row) => this.onSelect('S', this.secondDom, [row.value], row.index)}
         >
           {
             selectS && selectS.map((option, index) => {
-              return <Select.Option key={index} value={option}>{option}</Select.Option>;
+              return <Select.Option key={index.toString()} value={option}>{option}</Select.Option>;
             })
           }
         </Select.Multiple>

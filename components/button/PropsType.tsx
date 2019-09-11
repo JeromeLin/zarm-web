@@ -1,18 +1,17 @@
 import { ButtonHTMLAttributes, MouseEvent, CSSProperties } from 'react';
 
-export type theme = 'default' | 'primary' | 'danger';
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
-export type shape = 'circle' | 'round' | 'rect' | 'radius';
-export type buttonType = 'button' | 'submit' | 'reset';
+export type Theme = 'default' | 'primary' | 'danger';
+export type Size = 'xl' | 'lg' | 'sm' | 'xs';
+export type Shape = 'circle' | 'round' | 'rect' | 'radius';
+export type ButtonType = 'button' | 'submit' | 'reset';
 
-interface BasicPropsType {
+export default interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   prefixCls?: string;
-  htmlType?: buttonType;
-  theme?: theme;
-  size?: size;
-  icon?: string;
+  htmlType?: ButtonType;
+  theme?: Theme;
+  size?: Size;
   block?: boolean;
-  shape?: shape;
+  shape?: Shape;
   active?: boolean;
   focus?: boolean;
   disabled?: boolean;
@@ -23,16 +22,11 @@ interface BasicPropsType {
   onClick?: (e: MouseEvent) => void;
   href?: string | undefined;
   target?: string | undefined;
-  fRef?: any;
 }
 
 export interface ButtonGroupProps {
-  size?: size;
-  style?: React.CSSProperties;
+  size?: Size;
+  style?: CSSProperties;
   className?: string;
   prefixCls?: string;
 }
-
-type PropsType = ButtonHTMLAttributes<{}> & BasicPropsType;
-
-export default PropsType;

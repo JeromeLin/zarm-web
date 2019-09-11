@@ -1,5 +1,5 @@
-import Button from './button';
-import ButtonGroup from './button-group';
+import Button from './Button';
+import ButtonGroup from './ButtonGroup';
 
 Button.Group = ButtonGroup;
 export default Button;

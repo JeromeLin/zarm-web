@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { MonthTableProps } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const CALENDAR_ROW_COUNT = 4;
 const CALENDAR_COL_COUNT = 3;
@@ -39,6 +39,7 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
       disabledMonth,
       locale,
     } = this.props;
+    const { current } = this.state;
 
     const fullDay = `${day.year}/${day.month}/${day.date}`;
 
@@ -48,7 +49,7 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
     const cls = classnames({
       [`${prefixCls}-text`]: true,
       [`${prefixCls}-text-disabled`]: isDisabled,
-      [`${prefixCls}-text-selected`]: this.state.current === fullDay,
+      [`${prefixCls}-text-selected`]: current === fullDay,
     });
 
     const onClick = () => onMonthClick(fullDay);
@@ -66,7 +67,8 @@ class CalendarMonthTable extends Component<MonthTableProps, any> {
 
   // 渲染月份
   renderMonth() {
-    const dd = new Date(this.state.current);
+    const { current: stateCurrent } = this.state;
+    const dd = new Date(stateCurrent);
     const current = {
       year: dd.getFullYear(),
       month: dd.getMonth() + 1,

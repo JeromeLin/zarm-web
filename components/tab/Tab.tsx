@@ -11,6 +11,7 @@ class Tab extends Component<PropsType, any> {
   };
 
   static propTypes = {
+    prefixCls: PropTypes.string,
     disabled: PropTypes.bool,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   };
@@ -31,12 +32,12 @@ class Tab extends Component<PropsType, any> {
   }
 
   render() {
-    const { props } = this;
-    const { className, children, style, prefixCls } = props;
+    const { className, children, style, prefixCls } = this.props;
+    const { selected } = this.state;
 
     const cls = classnames({
       [`${prefixCls}-body-item`]: true,
-      [`${prefixCls}-body-item-active`]: this.state.selected,
+      [`${prefixCls}-body-item-active`]: selected,
       [className!]: !!className,
     });
 

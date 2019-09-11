@@ -39,7 +39,7 @@ $prefixCls: ui-table;
 
     &.shadow {
       border-right: 0;
-      box-shadow: 6px 0 6px -4px rgba(0,0,0,.12);
+      box-shadow: 6px 0 6px -4px rgba(0, 0, 0, .12);
     }
   }
 
@@ -52,7 +52,7 @@ $prefixCls: ui-table;
 
     &.shadow {
       border-left: 0;
-      box-shadow: -6px 0 6px -4px rgba(0,0,0,.12);
+      box-shadow: -6px 0 6px -4px rgba(0, 0, 0, .12);
     }
   }
 
@@ -208,7 +208,8 @@ $prefixCls: ui-table;
 
   &.#{$prefixCls}-hover {
     tbody {
-      tr:hover, tr.hover {
+      tr:hover,
+      tr.hover {
         background-color: #ecf6fd !important;
       }
     }

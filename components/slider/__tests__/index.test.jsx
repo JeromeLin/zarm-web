@@ -8,7 +8,7 @@ describe('Slider', () => {
     const wrapper = render(
       <div>
         <Slider round min={0} max={300} step={1} defaultValue={80} />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -22,7 +22,7 @@ describe('Slider', () => {
         <Slider round min={0} max={300} step={1} defaultValue={80} theme="success" />
         <Slider round min={0} max={300} step={1} defaultValue={80} theme="warning" />
         <Slider round min={0} max={300} step={1} defaultValue={80} theme="error" />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -32,7 +32,7 @@ describe('Slider', () => {
     const wrapper = render(
       <div>
         <Slider round isRange handleAmount={2} rangeColors={['red', 'yellow']} styleWidth={600} min={0} max={300} step={1} defaultValue={[80, 150]} />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('Slider', () => {
     const wrapper = render(
       <div>
         <Slider round min={0} max={300} step={1} defaultValue={80} handleAmount={2} styleWidth={600} />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -51,7 +51,7 @@ describe('Slider', () => {
   it('behaves correctly when moving handle', () => {
     const getValue = jest.fn();
     const wrapper = mount(
-      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />
+      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />,
     );
 
     wrapper.find('.ui-slider-handle')
@@ -68,7 +68,7 @@ describe('Slider', () => {
   it('behaves correctly when moving out of max', () => {
     const getValue = jest.fn();
     const wrapper = mount(
-      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />
+      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />,
     );
 
     wrapper.find('.ui-slider-handle')
@@ -85,7 +85,7 @@ describe('Slider', () => {
   it('behaves correctly when moving out of min', () => {
     const getValue = jest.fn();
     const wrapper = mount(
-      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />
+      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />,
     );
 
     wrapper.find('.ui-slider-handle')
@@ -104,7 +104,7 @@ describe('Slider', () => {
   it('behaves correctly when moving end', () => {
     const getValue = jest.fn();
     const wrapper = mount(
-      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />
+      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />,
     );
 
     wrapper.find('.ui-slider-handle')
@@ -118,13 +118,13 @@ describe('Slider', () => {
         clientX: 50,
       });
 
-    expect(setTimeout).toHaveBeenCalledTimes(5);
+    expect(setTimeout).toHaveBeenCalledTimes(6);
   });
 
   it('behaves correctly when clicking slider', () => {
     const getValue = jest.fn();
     const wrapper = mount(
-      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />
+      <Slider min={0} max={100} styleWidth={100} getValue={getValue} />,
     );
 
     wrapper.find('.ui-slider-horizontal')
@@ -137,7 +137,7 @@ describe('Slider', () => {
 
   it('behaves correctly when initing with defaultValue', () => {
     const wrapper = mount(
-      <Slider min={0} max={100} styleWidth={100} defaultValue={50} />
+      <Slider min={0} max={100} styleWidth={100} defaultValue={50} />,
     );
 
     jest.runAllTimers();
@@ -147,7 +147,7 @@ describe('Slider', () => {
 
   it('behaves correctly when receiving new props', () => {
     const wrapper = mount(
-      <Slider min={0} max={100} styleWidth={100} />
+      <Slider min={0} max={100} styleWidth={100} />,
     );
 
     wrapper.setProps({ defaultValue: 50 });
@@ -156,4 +156,3 @@ describe('Slider', () => {
     expect(wrapper.state('currentValue0')).toEqual(50);
   });
 });
-

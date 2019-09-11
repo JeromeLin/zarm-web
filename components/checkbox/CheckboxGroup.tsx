@@ -6,18 +6,7 @@ class CheckboxGroup extends Component<GroupProps, any> {
   static defaultProps = {
     prefixCls: 'za-checkbox-group',
     onChange: () => {},
-    disabled: false,
   };
-
-  static getCheckedValue(children) {
-    const checkedValue: ReactElement<any>[] = [];
-    React.Children.forEach(children, (checkbox) => {
-      if ((checkbox as ReactElement<any>).props && (checkbox as ReactElement<any>).props.checked) {
-        checkedValue.push((checkbox as ReactElement<any>).props.value);
-      }
-    });
-    return checkedValue;
-  }
 
   constructor(props) {
     super(props);
@@ -54,19 +43,29 @@ class CheckboxGroup extends Component<GroupProps, any> {
     onChange(value);
   }
 
+  static getCheckedValue(children) {
+    const checkedValue: ReactElement<any>[] = [];
+    React.Children.forEach(children, (checkbox) => {
+      if ((checkbox as ReactElement<any>).props && (checkbox as ReactElement<any>).props.checked) {
+        checkedValue.push((checkbox as ReactElement<any>).props.value);
+      }
+    });
+    return checkedValue;
+  }
 
   render() {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const { props, props: { disabled }, state: { value } } = this;
-    const children = React.Children.map(props.children, checkbox => (
+    const { value } = this.state;
+    const { children, prefixCls } = this.props;
+
+    const childrenNode = React.Children.map(children, checkbox => (
       <Checkbox
         {...(checkbox as ReactElement<any>).props}
-        disabled={disabled}
         onChange={e => this.onCheckboxChange(e)}
         checked={!!(value.indexOf((checkbox as ReactElement<any>).props.value) > -1)}
       />
     ));
-    return <div className={props.prefixCls}>{children}</div>;
+
+    return <div className={prefixCls}>{childrenNode}</div>;
   }
 }
 

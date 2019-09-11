@@ -86,7 +86,7 @@ class Body extends Component<BodyProps, any> {
               [`${rowClassName && rowClassName(row)}`]: !!(rowClassName && rowClassName(row)),
             });
 
-            const refAttr = rowIndex === 0 ? { ref: (row) => { this.row = row; } } : {};
+            const refAttr = rowIndex === 0 ? { ref: (rowNode) => { this.row = rowNode; } } : {};
             return (
               <Fragment key={rowKey}>
                 <tr

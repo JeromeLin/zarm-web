@@ -4,8 +4,8 @@ import Select from '../select';
 import Input from '../input';
 import Icon from '../icon';
 import PropsType from './PropsType';
-import format from '../locale/format';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import format from '../locale-provider/format';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const noop = () => { };
 class Pagination extends Component<PropsType, any> {
@@ -330,7 +330,6 @@ class Pagination extends Component<PropsType, any> {
   };
 
   render() {
-    const { props } = this;
     const {
       prefixCls,
       isBordered,
@@ -340,11 +339,11 @@ class Pagination extends Component<PropsType, any> {
       showJumper,
       showPageSizeSelector,
       style,
-    } = props;
+    } = this.props;
 
     const cls = classnames({
       [prefixCls!]: true,
-      bordered: 'bordered' in props || isBordered,
+      bordered: 'bordered' in this.props || isBordered,
       [`shape-${shape}`]: !!shape,
       [className!]: !!className,
     });

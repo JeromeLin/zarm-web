@@ -3,5 +3,9 @@
   "extends": ["za/react", "za/typescript"],
   "env": {
     "jest": true
+  },
+  "rules": {
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": "off"
   }
 }

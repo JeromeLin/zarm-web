@@ -48,18 +48,6 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     }
   };
 
-  calculateNum() {
-    let { value } = this.state;
-    const { min, max } = this.props;
-
-    if (min !== undefined || max !== undefined) {
-      parseInt(value, 10) < min! ? value = min : value = value;
-      parseInt(value, 10) > max! ? value = max : value = value;
-    }
-
-    this.setState({ value });
-  }
-
   onBlur = () => {
     const { onBlur } = this.props;
     this.calculateNum();
@@ -68,9 +56,36 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     }
   };
 
+  increase = () => {
+    const { step } = this.props;
+    this.countField('increase', step);
+  };
+
+  decrease = () => {
+    const { step } = this.props;
+    this.countField('decrease', step);
+  };
+
+  calculateNum() {
+    let { value } = this.state;
+    const { min, max } = this.props;
+
+    if (min !== undefined || max !== undefined) {
+      if (parseInt(value, 10) < min!) {
+        value = min;
+      }
+      if (parseInt(value, 10) > max!) {
+        value = max;
+      }
+    }
+
+    this.setState({ value });
+  }
+
   countField(type, step) {
     const { min, max, isDisabled } = this.props;
-    let { value, addState, reduceState } = this.state;
+    const { addState, reduceState } = this.state;
+    let { value } = this.state;
 
     if (type === 'increase' && !addState && !isDisabled) {
       value += step;
@@ -88,16 +103,6 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
     });
     // this.calculateNum();
   }
-
-  increase = () => {
-    const { step } = this.props;
-    this.countField('increase', step);
-  };
-
-  decrease = () => {
-    const { step } = this.props;
-    this.countField('decrease', step);
-  };
 
   render() {
     const { className, style, isDisabled, placeholder, showStepper } = this.props;

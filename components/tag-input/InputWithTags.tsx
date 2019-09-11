@@ -39,6 +39,20 @@ class InputWithTags extends React.Component<BasicProps> {
     this.debouncedOnInputChange = debounce(this.onInput, 300, false);
   }
 
+  componentWillReceiveProps(nextProps: BasicProps) {
+    const { active } = this.props;
+    if (nextProps.active !== active) {
+      // work without disabled and search prop;
+      if (!nextProps.disabled && (nextProps.search || nextProps.remoteSearch)) {
+        if (nextProps.active) {
+          this.inputDiv.focus();
+        } else {
+          this.inputDiv.innerText = '';
+        }
+      }
+    }
+  }
+
   onInput = (value) => {
     if (this.props.disabled || this.isComposition) {
       return;
@@ -59,19 +73,6 @@ class InputWithTags extends React.Component<BasicProps> {
       isFocus: false,
     });
   };
-
-  componentWillReceiveProps(nextProps: BasicProps) {
-    if (nextProps.active !== this.props.active) {
-      // work without disabled and search prop;
-      if (!nextProps.disabled && (nextProps.search || nextProps.remoteSearch)) {
-        if (nextProps.active) {
-          this.inputDiv.focus();
-        } else {
-          this.inputDiv.innerText = '';
-        }
-      }
-    }
-  }
 
   tagListBoxref = (e) => {
     this.tagListBox = e;
@@ -112,7 +113,9 @@ class InputWithTags extends React.Component<BasicProps> {
     if (
       (((search || remoteSearch) && !isFocus && value === null)
       || (typeof value === 'string' && value.length === 0))
+      // eslint-disable-next-line no-mixed-operators
       || !value
+      // eslint-disable-next-line no-mixed-operators
       && !compositionData
     ) {
       showPlaceHolder = true;

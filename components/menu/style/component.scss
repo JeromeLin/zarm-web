@@ -39,14 +39,14 @@ $prefixCls: za-menu;
   margin: 0;
   padding: 0;
   height: 100%;
-  background: $--menu-default-bg-color;
+  background: var(--menu-default-bg-color);
   outline: none;
   border-right: 1px solid #e8e8e8;
-  box-shadow: $--box-shadow-light;
+  box-shadow: var(--box-shadow-light);
   transition: background .3s, width .2s;
   zoom: 1;
   font-feature-settings: 'tnum';
-  @include menu-size($--base-height-xl, $--font-size-base);
+  @include menu-size(40px, var(--font-size-md));
 
   &.za-menu-root {
     box-shadow: none;
@@ -56,7 +56,7 @@ $prefixCls: za-menu;
     position: relative;
     display: block;
     font-weight: normal;
-    color: $--menuitem-default-color;
+    color: var(--menuitem-default-color);
     cursor: pointer;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -93,17 +93,17 @@ $prefixCls: za-menu;
     }
 
     &:hover {
-      color: $--menuitem-active-color;
+      color: var(--menuitem-active-color);
     }
 
     &.selected,
     &.active {
-      color: $--menuitem-active-color;
-      background: $--menuitem-active-bg-color;
+      color: var(--menuitem-active-color);
+      background: var(--menuitem-active-bg-color);
     }
 
     &.disabled {
-      color: $--menuitem-disabled-color;
+      color: var(--menuitem-disabled-color);
       cursor: not-allowed;
     }
 
@@ -113,7 +113,7 @@ $prefixCls: za-menu;
       overflow: hidden;
       padding: 0;
       line-height: 0;
-      background-color: $--menuitem-divider-bg-color;
+      background-color: var(--menuitem-divider-bg-color);
     }
   }
 
@@ -131,8 +131,8 @@ $prefixCls: za-menu;
     height: auto;
 
     &-title {
-      height: $--base-height-xl;
-      line-height: $--base-height-xl;
+      height: 40px;
+      line-height: 40px;
       user-select: none;
       cursor: pointer;
       font-weight: normal;
@@ -141,7 +141,7 @@ $prefixCls: za-menu;
       transition: all 0.3s;
 
       &:hover {
-        color: $--menuitem-active-color;
+        color: var(--menuitem-active-color);
       }
 
       .za-icon {
@@ -166,19 +166,19 @@ $prefixCls: za-menu;
   }
 
   &.size-xl {
-    @include menu-size($--base-height-xl, $--font-size-h3);
+    @include menu-size(40px, var(--font-size-xl));
   }
 
   &.size-lg {
-    @include menu-size($--base-height-lg, $--font-size-large);
+    @include menu-size(36px, var(--font-size-lg));
   }
 
   &.size-sm {
-    @include menu-size($--base-height-sm, $--font-size-small);
+    @include menu-size(28px, var(--font-size-sm));
   }
 
   &.size-xs {
-    @include menu-size($--base-height-xs, $--font-size-small);
+    @include menu-size(24px, var(--font-size-sm));
   }
 }
 
@@ -188,7 +188,7 @@ $prefixCls: za-menu;
   > .#{$prefixCls}-item {
     left: 0;
     text-overflow: clip;
-    padding: 0 ($--menu-collapsed-width - 16) / 2;
+    padding: 0 (var(--menu-collapsed-width) - 16) / 2;
   }
 
   .#{$prefixCls}-item {
@@ -258,7 +258,7 @@ $prefixCls: za-menu;
         .#{$prefixCls}-submenu-arrow {
           &:after,
           &:before {
-            background: linear-gradient(to right, $--menuitem-active-color, $--menuitem-active-color);
+            background: linear-gradient(to right, var(--menuitem-active-color), var(--menuitem-active-color));
           }
         }
       }
@@ -276,7 +276,7 @@ $prefixCls: za-menu;
         content: '';
         position: absolute;
         vertical-align: baseline;
-        background: $--menuitem-dark-active-color;
+        background: var(--menuitem-dark-active-color);
         background-image: linear-gradient(to right, #909090, #909090);
         width: 8px;
         height: 2px;
@@ -309,7 +309,7 @@ $prefixCls: za-menu;
   }
 
   &.#{$prefixCls}-collapsed {
-    width: $--menu-collapsed-width;
+    width: var(--menu-collapsed-width);
 
     &.za-menu-light {
       .#{$prefixCls}-submenu {
@@ -353,10 +353,11 @@ $prefixCls: za-menu;
         height: auto;
         overflow: visible;
         z-index: 2;
-        background-color: $--menu-dark-bg-color;
+        background-color: var(--menu-dark-bg-color);
         border-radius: 2px;
 
-        .#{$prefixCls}-item, .#{$prefixCls}-submenu {
+        .#{$prefixCls}-item,
+        .#{$prefixCls}-submenu {
           padding: 0 20px !important;
         }
       }
@@ -368,23 +369,23 @@ $prefixCls: za-menu;
 .#{$prefixCls}-horizontal {
   .#{$prefixCls}-item {
     float: left;
-    padding: 0 $--menuitem-horizontal-padding;
-    height: $--menuitem-horizontal-height;
-    line-height: $--menuitem-horizontal-height - 2;
+    padding: 0 var(--menuitem-horizontal-padding);
+    height: var(--menuitem-horizontal-height);
+    line-height: var(--menuitem-horizontal-height) - 2;
     border-bottom: 2px solid transparent;
 
     > a {
-      color: $--menuitem-default-color;
+      color: var(--menuitem-default-color);
     }
 
     &.active,
     &:hover {
-      border-bottom: 2px solid $--menuitem-active-color;
-      background: $--menu-default-bg-color;
-      color: $--menuitem-active-color;
+      border-bottom: 2px solid var(--menuitem-active-color);
+      background: var(--menu-default-bg-color);
+      color: var(--menuitem-active-color);
 
       > a {
-        color: $--menuitem-active-color;
+        color: var(--menuitem-active-color);
       }
     }
   }
@@ -399,43 +400,43 @@ $prefixCls: za-menu;
 
 // dark主题
 .#{$prefixCls}-dark {
-  background: $--menu-dark-bg-color;
+  background: var(--menu-dark-bg-color);
 
   .#{$prefixCls}-submenu-sub {
-    background: $--submenu-dark-bg-color;
+    background: var(--submenu-dark-bg-color);
     box-shadow: 0 2px 8px rgba(0, 0, 0, .45) inset;
   }
 
   .#{$prefixCls}-item {
-    color: $--menuitem-dark-color;
+    color: var(--menuitem-dark-color);
 
     &:hover {
-      color: $--menuitem-dark-active-color;
+      color: var(--menuitem-dark-active-color);
       background: inherit;
     }
 
     &.selected,
     &.active {
-      color: $--menuitem-dark-active-color;
-      background: $--menuitem-active-color;
+      color: var(--menuitem-dark-active-color);
+      background: var(--menuitem-active-color);
     }
 
     > a {
-      color: $--menuitem-dark-color;
+      color: var(--menuitem-dark-color);
     }
 
     &:hover,
     &.selected,
     &.active {
       > a {
-        color: $--menuitem-dark-active-color;
+        color: var(--menuitem-dark-active-color);
       }
     }
   }
 
   &.#{$prefixCls}-inline {
     .#{$prefixCls}-submenu {
-      color: $--menuitem-dark-color;
+      color: var(--menuitem-dark-color);
 
       &-title {
         margin-top: 4px;
@@ -443,14 +444,14 @@ $prefixCls: za-menu;
         transition: all 0.3s;
 
         &:hover {
-          color: $--menuitem-dark-active-color;
+          color: var(--menuitem-dark-active-color);
 
           .#{$prefixCls}-submenu-arrow {
             opacity: 1;
 
             &:after,
             &:before {
-              background: $--menuitem-dark-active-color;
+              background: var(--menuitem-dark-active-color);
             }
           }
         }
@@ -462,7 +463,7 @@ $prefixCls: za-menu;
 
         &:after,
         &:before {
-          background: $--menuitem-dark-active-color;
+          background: var(--menuitem-dark-active-color);
         }
       }
     }

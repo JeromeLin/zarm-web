@@ -22,7 +22,6 @@ exports[`Transfer renders Transfer correctly 1`] = `
           aria-expanded="false"
           aria-haspopup="true"
           class="za-select__selection"
-          role="combobox"
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul
@@ -64,7 +63,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
         class="button-wrapper"
       >
         <button
-          class="is-radius is-disabled za-button za-button--default"
+          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >
@@ -73,7 +72,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           />
         </button>
         <button
-          class="is-radius is-disabled za-button za-button--default"
+          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >
@@ -99,7 +98,6 @@ exports[`Transfer renders Transfer correctly 1`] = `
           aria-expanded="false"
           aria-haspopup="true"
           class="za-select__selection"
-          role="combobox"
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul

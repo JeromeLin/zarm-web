@@ -78,7 +78,7 @@ describe('Transfer', () => {
           width={500}
           onAdd={(value) => { this.setState({ selectedValue: value }); }}
         />
-      </div>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -95,7 +95,8 @@ describe('Transfer', () => {
         displayNameOfItem="name"
         width={500}
         onAdd={value => selectedValue.push(value)}
-      />);
+      />
+    );
     const wrapper = mount(component);
     wrapper.find('.za-option__list').at(0).simulate('click');
     expect((wrapper.state().selectedLeft)[0]).toBe('1');
@@ -113,10 +114,11 @@ describe('Transfer', () => {
         displayNameOfItem="name"
         width={500}
         onAdd={value => selectedValue.push(value)}
-      />);
+      />
+    );
     const wrapper = mount(component);
     wrapper.setState({ selectedLeft: ['1'] });
-    wrapper.find('.za-button').at(0).simulate('click');
+    wrapper.find('.zw-button').at(0).simulate('click');
     expect((wrapper.state().selectedValue)[0].id).toBe('1');
   });
 
@@ -132,24 +134,27 @@ describe('Transfer', () => {
         displayNameOfItem="name"
         width={500}
         onAdd={value => selectedValue.push(value)}
-      />);
+      />
+    );
     const wrapper = mount(component);
-    wrapper.setState({ selectedValue: [{
-      id: '1',
-      name: '张三',
-      dept: '直营部',
-      age: 46,
-      iphone: '15617283931',
-      android: '15617283930',
-      tel: '23412341231',
-      address: {
-        home: '上海市杨浦区四平路324号',
-        comp: '1xxx公司',
-      },
-      state: true,
-    }] });
+    wrapper.setState({
+      selectedValue: [{
+        id: '1',
+        name: '张三',
+        dept: '直营部',
+        age: 46,
+        iphone: '15617283931',
+        android: '15617283930',
+        tel: '23412341231',
+        address: {
+          home: '上海市杨浦区四平路324号',
+          comp: '1xxx公司',
+        },
+        state: true,
+      }],
+    });
     wrapper.setState({ selectedRight: ['1'] });
-    wrapper.find('.za-button').at(1).simulate('click');
+    wrapper.find('.zw-button').at(1).simulate('click');
     expect((wrapper.state().selectedValue).length).toBe(0);
   });
 
@@ -165,7 +170,8 @@ describe('Transfer', () => {
         displayNameOfItem="name"
         width={500}
         onAdd={value => selectedValue.push(value)}
-      />);
+      />
+    );
     const wrapper = mount(component);
     wrapper.setState({ selectedValue: [] });
     wrapper.find('.za-option__list').at(0).simulate('doubleclick');
@@ -184,7 +190,8 @@ describe('Transfer', () => {
         displayNameOfItem="name"
         width={500}
         onAdd={value => selectedValue.push(value)}
-      />);
+      />
+    );
     const wrapper = mount(component);
     wrapper.setState({
       selectedValue:

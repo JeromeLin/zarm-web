@@ -11,23 +11,22 @@ export default class CollapseTransition extends Component<IProps, any> {
   collapseWrap = createRef<HTMLDivElement>();
 
   componentDidMount(): void {
+    const { visible } = this.props;
     this.beforeEnter();
-    if (this.props.visible) {
+    if (visible) {
       this.enter();
     }
+  }
+
+  componentDidUpdate(props) {
+    const { visible } = this.props;
+
+    if (visible !== props.visible) this.triggerChange(visible);
   }
 
   componentWillUnmount(): void {
     this.beforeLeave();
     this.leave();
-  }
-
-  componentDidUpdate(props) {
-    if (this.props.visible !== props.visible) this.triggerChange(this.props.visible);
-  }
-
-  shouldComponentUpdate(props) {
-    return this.props.visible !== props.visiblel;
   }
 
   triggerChange(visible: boolean): void {
@@ -130,13 +129,15 @@ export default class CollapseTransition extends Component<IProps, any> {
   }
 
   render() {
+    const { children } = this.props;
+
     return (
       <div
         className="collapse-transition"
         ref={this.collapseWrap}
         style={{ overflow: 'hidden' }}
       >
-        {this.props.children}
+        {children}
       </div>
     );
   }

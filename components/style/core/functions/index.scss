@@ -5,7 +5,7 @@
 }
 
 // return css color variable with different opacity value
-@function alpha($color, $opacity){
+@function alpha($color, $opacity) {
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
   $color-h: var(#{$color+'-h'});
@@ -14,7 +14,7 @@
   @return hsla($color-h, $color-s, $color-l, $opacity);
 }
 
-@function lightness($color, $lightnessMultiplier){
+@function lightness($color, $lightnessMultiplier) {
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
   $color-h: var(#{$color+'-h'});
