@@ -2,7 +2,7 @@ import React, { PureComponent, MouseEvent } from 'react';
 import classnames from 'classnames';
 import Color from 'color';
 import Icon from '../icon';
-import TagProps from './PropsType';
+import { TagProps } from './PropsType';
 import CheckableTag from './CheckableTag';
 
 const presetColors = ['green', 'blue', 'orange', 'red'];

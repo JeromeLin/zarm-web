@@ -27,7 +27,7 @@ class CheckableTag extends Component<CheckableTagProps, any> {
       style,
     } = this.props;
 
-    const classes = classnames(prefixCls, className, {
+    const classes = classnames(prefixCls, className, `${prefixCls}--checkable`, {
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--checked`]: checked,

@@ -8,7 +8,7 @@ exports[`Tag behaves correctly when click CheckableTag 1`] = `
   size=""
 >
   <div
-    className="zw-tag zw-tag--checked"
+    className="zw-tag zw-tag--checkable zw-tag--checked"
     onClick={[Function]}
   >
     default
@@ -24,7 +24,7 @@ exports[`Tag behaves correctly when disabled CheckableTag clicked uncalled onCha
   size=""
 >
   <div
-    className="zw-tag zw-tag--disabled"
+    className="zw-tag zw-tag--checkable zw-tag--disabled"
     onClick={[Function]}
   >
     default
@@ -39,7 +39,7 @@ exports[`Tag render CheckableTag correctly 1`] = `
   size=""
 >
   <div
-    className="zw-tag zw-tag--checked"
+    className="zw-tag zw-tag--checkable zw-tag--checked"
     onClick={[Function]}
   >
     default
@@ -52,22 +52,22 @@ exports[`Tag render CheckableTag size correctly 1`] = `
   class="multi-rows"
 >
   <div
-    class="zw-tag zw-tag--lg"
+    class="zw-tag zw-tag--checkable zw-tag--lg"
   >
     lg
   </div>
   <div
-    class="zw-tag zw-tag--md"
+    class="zw-tag zw-tag--checkable zw-tag--md"
   >
     md
   </div>
   <div
-    class="zw-tag zw-tag--sm"
+    class="zw-tag zw-tag--checkable zw-tag--sm"
   >
     lg
   </div>
   <div
-    class="zw-tag zw-tag--xs"
+    class="zw-tag zw-tag--checkable zw-tag--xs"
   >
     lg
   </div>

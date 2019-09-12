@@ -28,7 +28,6 @@ class Demo extends React.Component {
           <Tag color="#EC9131">#EC9131</Tag>
           <Tag color="#FF5050">#FF5050</Tag>
           <Tag color="#616161">#616161</Tag>
-          <Tag color="pink">pink bordered</Tag>
         </div>
       </div>
     )
@@ -291,4 +290,5 @@ ReactDOM.render(<DemoCheck />, mountNode);
 | :--- | :--- | :--- | :--- |
 | size | string | 'middle' | 设置大小，可选值为 `lg`、`md`、`sm`、`xs` |
 | shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round` |
+| disabled | boolean | false | 设置是否可切换 |
 | onChange | function | - | 选中状态变化事件，参数为切换后的状态 |

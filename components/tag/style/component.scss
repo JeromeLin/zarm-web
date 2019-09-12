@@ -21,6 +21,8 @@
   --tag-success-color: var(--theme-success);
   --tag-warning-color: var(--theme-warning);
   --tag-danger-color: var(--theme-danger);
+  --tag-primary-hover-background: var(--theme-primary-light);
+  --tag-primary-active-background: var(--theme-primary-dark);
   --tag-color-green: 0, 188, 112;
   --tag-color-blue: 84, 192, 232;
   --tag-color-orange: 236, 145, 49;
@@ -72,7 +74,11 @@
   color: var(--tag-default-color);
   margin: 0 8px 8px 0;
   border-radius: var(--radius-md);
-  cursor: pointer;
+  cursor: default;
+
+  &:hover {
+    opacity: 0.8;
+  }
 
   &.zw-tag--unborder {
     border: hidden;
@@ -87,10 +93,6 @@
 @include b(tag) {
   @include tag-base();
 
-  &:hover {
-    background-color: rgba(var(--tag-default-background), 0.5);
-  }
-
   &--rect {
     border-radius: 0;
   }
@@ -101,6 +103,10 @@
 
   &--unborder {
     border: hidden;
+  }
+
+  &--checkable {
+    cursor: pointer;
   }
 
   /* tag sizes: default md */
@@ -145,8 +151,11 @@
     color: var(--tag-default-background);
 
     &:hover {
-      background-color: var(--tag-primary-color);
-      color: var(--tag-default-background);
+      background-color: var(--tag-primary-hover-background);
+    }
+
+    &:active {
+      background-color: var(--tag-primary-active-background);
     }
   }
 
