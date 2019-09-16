@@ -1,4 +1,4 @@
-@import "../core/index";
+@import '../core/index';
 
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
@@ -141,8 +141,23 @@
   --menuitem-default-color: #343434;
   --menuitem-active-color: var(--theme-primary);
   --menuitem-active-bg-color: rgba(0, 188, 112, .0625);
-  --menuitem-disabled-color: rgba(0, 0, 0, 0.25);
+  --menuitem-disabled-color: rgba(0, 0, 0, .25);
   --menuitem-divider-bg-color: #e5e5e5;
   --menuitem-horizontal-padding: 20px;
   --menuitem-horizontal-height: 56px;
+
+  // loading
+  --loading-height-sm: 12px;
+  --loading-height-md: 24px;
+  --loading-height-lg: 36px;
+  --loading-margin-h-sm: var(--padding-h-sm);
+  --loading-margin-h-md: var(--padding-h-md);
+  --loading-margin-h-lg: var(--padding-h-lg);
+  --loading-font-size-sm: var(--font-size-sm);
+  --loading-font-size-md: var(--font-size-md);
+  --loading-font-size-lg: var(--font-size-lg);
+  --loading-default-svg-color: var(--theme-primary);
+  --loading-default-text-color: var(--color-text-disabled);
+  --loading-default-mask-color: rgba(255, 255, 255, 0.4);
+  --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
 }

@@ -1,0 +1,102 @@
+@mixin loading-base() {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  user-select: none;
+  z-index: var(--zindex-loading);
+
+  @include e(mask) {
+    display: block;
+    position: absolute;
+    z-index: 657;
+    margin: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.901961);
+  }
+
+  @include e(svg) {
+    animation: loading-rotate .8s linear infinite;
+  }
+
+  @include e(path) {
+    // animation: loading-dash 1.5s ease-in-out infinite;
+    stroke-dasharray: 20, 150;
+    stroke-dashoffset: 0;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  @include e(spin) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    user-select: none;
+    z-index: $base-zindex-loading + 1;
+  }
+  @include e(text) {
+    font-size: 14px;
+    margin: 3px 0;
+  }
+}
+
+@mixin loading-size($height, $margin, $font-size,) {
+  @include e(svg) {
+    height: $height;
+    width: $height;
+  }
+  @include e(path) {
+    stroke-width: 2;
+  }
+  // @include e(spin) { 
+  //   line-height: $height;
+  // }
+  @include e(text) {
+    font-size: $font-size;
+    margin: calc(#{$margin} / 2);
+  }
+}
+
+@mixin loading-theme($color, $mask-color, $text-color) {
+  @include e(path) {
+    stroke: $color;
+  }
+  @include e(text) {
+    color: $text-color;
+  }
+  @include e(mask) {
+    background-color: $mask-color;
+  }
+}
+
+@keyframes loading-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -40px;
+  }
+
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -120px;
+  }
+}

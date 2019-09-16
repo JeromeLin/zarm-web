@@ -1,2 +1,35 @@
-@import '../../style/themes/default';
-@import './component';
+
+@import '../../style/themes/variable';
+@import "./mixins.scss";
+
+@include b(loading) {
+  @include loading-base();
+
+  @include loading-size(
+    var(--loading-height-md),
+    var(--loading-margin-h-md),
+    var(--loading-font-size-md),
+  );
+
+  @include loading-theme(
+    var(--loading-default-svg-color),
+    var(--loading-default-mask-color),
+    var(--loading-default-text-color),
+  );
+
+  @include m(lg) {
+    @include loading-size(
+      var(--loading-height-lg),
+      var(--loading-margin-h-lg),
+      var(--loading-font-size-lg),
+    );
+  }
+  @include m(sm) {
+    @include loading-size(
+      var(--loading-height-sm),
+      var(--loading-margin-h-sm),
+      var(--loading-font-size-sm),
+    );
+  }
+}
+

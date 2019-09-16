@@ -1,38 +1,78 @@
-## Loading 加载
-加载中组件。
+# 加载 Loading 
 
-### 基础用法
+## 基础用法
 
-:::demo 通过`visible`属性控制显隐。
-```js
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false
+```jsx
+  import { Loading } from 'zarm-web';
+  class Demo extends React.Component {
+    render() {
+      return (
+        <div>
+          <Loading visible={true}>
+            <p>这里是内容</p>
+            <p>梅子金黄杏子肥</p>
+            <p>麦花雪白菜花稀</p>
+          </Loading>
+        </div>
+      )
     }
   }
-  toggleLoading() {
-    this.setState({
-      loading: !this.state.loading
-    });
-  }
-  render() {
-    return (
-      <div>
-        <Loading visible={this.state.loading}>
-          这里是内容
-        </Loading>
-        <br />
-        <Button theme="info" onClick={() => this.toggleLoading()}>
-          显示/隐藏
-        </Button>
-      </div>
-    )
-  }
-```
-:::
 
-### Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| visible   |  是否显示  | boolean |  -     |    false    |
+ReactDOM.render(<Demo />, mountNode);
+```
+## 自定义文字
+
+```jsx
+  import { Loading } from 'zarm-web';
+  class Demo extends React.Component {
+    render() {
+      return (
+        <div>
+          <Loading visible={true} text='努力加载中...' size='sm'>
+            <p>这里是内容</p>
+          </Loading>
+        </div>
+      )
+    }
+  }
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 不同尺寸
+
+```jsx
+  import { Loading } from 'zarm-web';
+  class Demo extends React.Component {
+    render() {
+      return (
+        <div>
+          <Loading visible={true} size='sm'>
+            <p>这里是内容</p>
+            <p>梅子金黄杏子肥</p>
+            <p>麦花雪白菜花稀</p>
+          </Loading>
+           <Loading visible={true} size='md'>
+            <p>这里是内容</p>
+            <p>梅子金黄杏子肥</p>
+            <p>麦花雪白菜花稀</p>
+          </Loading>
+           <Loading visible={true} size='lg'>
+            <p>这里是内容</p>
+            <p>梅子金黄杏子肥</p>
+            <p>麦花雪白菜花稀</p>
+          </Loading>
+        </div>
+      )
+    }
+  }
+
+ReactDOM.render(<Demo />, mountNode);
+```
+## API
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| visible | boolean | false | 是否显示 |
+| fullscreen | boolean | false | 是否显示全屏 |
+| size | string | 'md' | 设置大小，可选值为 `lg`、`md`、`sm`|

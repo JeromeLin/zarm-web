@@ -2,52 +2,44 @@
 
 exports[`Loading renders hidden Loading correctly 1`] = `
 <div
-  class="ui-loading"
+  class="zw-loading"
 >
-  <div
-    class="ui-loading-spins"
-    style="display:none"
-  >
-    <span
-      class="ui-loading-spin ui-loading-spin-first"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-second"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-third"
-    />
-  </div>
-  <div
-    class=""
-  >
-    这里是内容
-  </div>
+  这里是内容
 </div>
 `;
 
 exports[`Loading renders visible Loading correctly 1`] = `
 <div
-  class="ui-loading"
+  class="zw-loading"
+  style="position:relative"
 >
   <div
-    class="ui-loading-spins"
-    style="display:block"
+    class="zw-loading__mask"
   >
-    <span
-      class="ui-loading-spin ui-loading-spin-first"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-second"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-third"
-    />
+    <div
+      class="zw-loading__spin"
+    >
+      <svg
+        class="zw-loading__svg"
+        viewBox="25 25 50 50"
+      >
+        <circle
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+          stroke="#E6E6E6"
+        />
+        <circle
+          class="zw-loading__path"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+        />
+      </svg>
+    </div>
   </div>
-  <div
-    class="ui-loading-inner"
-  >
-    这里是内容
-  </div>
+  这里是内容
 </div>
 `;
