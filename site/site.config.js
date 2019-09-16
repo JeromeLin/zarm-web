@@ -97,7 +97,7 @@ module.exports = {
       },
       {
         name: 'Tag',
-        module: () => import('@/components/tag/tag.md'),
+        module: () => import('@/components/tag/demo.md'),
       },
       {
         name: 'Progress',

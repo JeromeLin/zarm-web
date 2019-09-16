@@ -5,14 +5,11 @@ import { CheckableTagProps } from './PropsType';
 class CheckableTag extends Component<CheckableTagProps, any> {
   static defaultProps = {
     prefixCls: 'zw-tag',
-    size: '',
   };
 
   onClick = () => {
     const { checked, onChange } = this.props;
-    if (onChange) {
-      onChange(!checked);
-    }
+    typeof onChange === 'function' && onChange(!checked);
   };
 
   render() {

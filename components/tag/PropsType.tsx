@@ -1,15 +1,11 @@
-import { ReactNode, CSSProperties } from 'react';
-
 export type TagSize = 'lg' | 'md' | 'sm' | 'xs';
 export type TagShape = 'radius' | 'round' | 'rect';
 
 interface BasicProps {
   prefixCls?: string;
   size?: TagSize;
+  shape?: TagShape;
   bordered?: boolean;
-  shape: TagShape;
-  className?: ReactNode;
-  style?: CSSProperties;
 }
 
 interface CommonTagProps extends BasicProps {

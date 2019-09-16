@@ -80,11 +80,7 @@
     opacity: 0.8;
   }
 
-  &.zw-tag--unborder {
-    border: hidden;
-  }
-
-  & > .za-icon-wrong {
+  @include b(icon) {
     margin-left: 8px;
     cursor: pointer;
   }
@@ -93,19 +89,18 @@
 @include b(tag) {
   @include tag-base();
 
-  &--rect {
+  @include m(rect) {
     border-radius: 0;
   }
-
-  &--round {
+  @include m(round) {
     border-radius: var(--tag-height-lg);
   }
 
-  &--unborder {
+  @include m(unborder) {
     border: hidden;
   }
 
-  &--checkable {
+  @include m(checkable) {
     cursor: pointer;
   }
 
@@ -162,7 +157,6 @@
   @include m(disabled) {
     cursor: not-allowed;
     opacity: var(--tag-disabled-opacity);
-    box-shadow: none;
     background-color: var(--tag-default-background);
     border-color: var(--tag-default-border);
     color: var(--tag-color-disabled);
@@ -170,6 +164,7 @@
     &:hover {
       background-color: var(--tag-default-background);
       color: var(--tag-color-disabled);
+      opacity: var(--tag-disabled-opacity);
     }
   }
 }
