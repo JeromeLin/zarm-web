@@ -1,25 +1,25 @@
-import { ReactNode } from 'react';
+export type TagSize = 'lg' | 'md' | 'sm' | 'xs';
+export type TagShape = 'radius' | 'round' | 'rect';
 
-export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
-
-export default interface PropsType {
+interface BasicProps {
   prefixCls?: string;
-  theme?: themeType;
-  size?: size;
-  radius?: boolean;
-  round?: boolean;
-  active?: boolean;
-  focus?: boolean;
-  isRadius?: boolean;
-  isRound?: boolean;
-  isCircle?: boolean;
-  isActive?: boolean;
-  isFocus?: boolean;
-  isDisabled?: boolean;
-  disabled?: boolean;
-  className?: ReactNode;
-  style?: object;
-  title?: string;
-  onClose: (e) => void;
+  size?: TagSize;
+  shape?: TagShape;
+  bordered?: boolean;
 }
+
+interface CommonTagProps extends BasicProps {
+  color?: string;
+  closable?: boolean;
+  onClose?: (e) => void;
+}
+
+interface CheckableProps extends BasicProps {
+  checked?: boolean;
+  disabled?: boolean;
+  onChange: (e: boolean) => void;
+}
+
+export type TagProps = React.HTMLAttributes<any> & CommonTagProps;
+
+export type CheckableTagProps = React.HTMLAttributes<any> & CheckableProps;
