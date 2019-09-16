@@ -8,6 +8,8 @@ import CheckableTag from './CheckableTag';
 const presetColors = ['green', 'blue', 'orange', 'red'];
 
 class Tag extends PureComponent<TagProps, {}> {
+  static displayName = 'Tag';
+
   static CheckableTag = CheckableTag;
 
   static defaultProps = {

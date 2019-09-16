@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { CheckableTagProps } from './PropsType';
 
-class CheckableTag extends Component<CheckableTagProps, any> {
+class CheckableTag extends Component<CheckableTagProps, {}> {
   static defaultProps = {
     prefixCls: 'zw-tag',
   };

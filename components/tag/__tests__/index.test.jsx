@@ -69,8 +69,8 @@ describe('Tag', () => {
   it('behaves correctly when closing tag', () => {
     const onClose = jest.fn();
     const wrapper = mount(<Tag closable onClose={onClose}>可关闭标签</Tag>);
-    expect(wrapper.find('.za-icon').length).toEqual(1);
-    wrapper.find('.za-icon').simulate('click');
+    expect(wrapper.find('.zw-icon').length).toEqual(1);
+    wrapper.find('.zw-icon').simulate('click');
     expect(onClose).toHaveBeenCalled();
   });
 
@@ -87,7 +87,7 @@ describe('Tag', () => {
         <Tag.CheckableTag size="lg">lg</Tag.CheckableTag>
         <Tag.CheckableTag size="md">md</Tag.CheckableTag>
         <Tag.CheckableTag size="sm">lg</Tag.CheckableTag>
-        <Tag.CheckableTag size="xs">lg</Tag.CheckableTag>
+        <Tag.CheckableTag size="xs">xs</Tag.CheckableTag>
       </div>,
     );
     expect(wrapper.find('.zw-tag').length).toEqual(4);
