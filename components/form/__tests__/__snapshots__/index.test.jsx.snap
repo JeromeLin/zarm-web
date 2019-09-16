@@ -104,7 +104,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
         class="za-form-item--required"
       >
         <i
-          class="za-icon za-icon-required theme-default"
+          class="zw-icon zw-icon-required theme-default"
         />
       </span>
       来源

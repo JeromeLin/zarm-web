@@ -41,42 +41,42 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
     style="width:80px;height:80px;line-height:80px;font-size:40px"
   >
     <i
-      class="za-icon za-icon-user theme-default"
+      class="zw-icon zw-icon-user theme-default"
     />
   </span>
   <span
     class="za-avatar za-avatar--xl za-avatar--circle za-avatar--icon"
   >
     <i
-      class="za-icon za-icon-user theme-default"
+      class="zw-icon zw-icon-user theme-default"
     />
   </span>
   <span
     class="za-avatar za-avatar--lg za-avatar--circle za-avatar--icon"
   >
     <i
-      class="za-icon za-icon-user theme-default"
+      class="zw-icon zw-icon-user theme-default"
     />
   </span>
   <span
     class="za-avatar za-avatar--circle za-avatar--icon"
   >
     <i
-      class="za-icon za-icon-user theme-default"
+      class="zw-icon zw-icon-user theme-default"
     />
   </span>
   <span
     class="za-avatar za-avatar--sm za-avatar--circle za-avatar--icon"
   >
     <i
-      class="za-icon za-icon-user theme-default"
+      class="zw-icon zw-icon-user theme-default"
     />
   </span>
   <span
     class="za-avatar za-avatar--xs za-avatar--circle za-avatar--icon"
   >
     <i
-      class="za-icon za-icon-user theme-default"
+      class="zw-icon zw-icon-user theme-default"
     />
   </span>
 </div>
@@ -88,7 +88,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     class="za-avatar za-avatar--circle za-avatar--icon"
   >
     <i
-      class="za-icon za-icon-user theme-default"
+      class="zw-icon zw-icon-user theme-default"
     />
   </span>
   <span

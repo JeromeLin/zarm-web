@@ -5,7 +5,6 @@ exports[`Tag behaves correctly when click CheckableTag 1`] = `
   checked={true}
   onChange={[MockFunction]}
   prefixCls="zw-tag"
-  size=""
 >
   <div
     className="zw-tag zw-tag--checkable zw-tag--checked"
@@ -21,7 +20,6 @@ exports[`Tag behaves correctly when disabled CheckableTag clicked uncalled onCha
   disabled={true}
   onChange={[MockFunction]}
   prefixCls="zw-tag"
-  size=""
 >
   <div
     className="zw-tag zw-tag--checkable zw-tag--disabled"
@@ -36,7 +34,6 @@ exports[`Tag render CheckableTag correctly 1`] = `
 <CheckableTag
   checked={true}
   prefixCls="zw-tag"
-  size=""
 >
   <div
     className="zw-tag zw-tag--checkable zw-tag--checked"
@@ -69,7 +66,7 @@ exports[`Tag render CheckableTag size correctly 1`] = `
   <div
     class="zw-tag zw-tag--checkable zw-tag--xs"
   >
-    lg
+    xs
   </div>
 </div>
 `;
@@ -79,13 +76,12 @@ exports[`Tag renders Tag bordered correctly 1`] = `
   class="multi-rows"
 >
   <div
-    class="zw-tag zw-tag--red zw-tag--md zw-tag--radius"
+    class="zw-tag zw-tag--red"
   >
     normal
   </div>
   <div
-    class="zw-tag zw-tag--green zw-tag--md zw-tag--radius zw-tag--unborder"
-    style="color:#fff;border:hidden"
+    class="zw-tag zw-tag--green zw-tag--unborder"
   >
     unbordered
   </div>
@@ -97,7 +93,7 @@ exports[`Tag renders Tag color correctly 1`] = `
   class="multi-rows"
 >
   <div
-    class="zw-tag zw-tag--red zw-tag--md zw-tag--radius"
+    class="zw-tag zw-tag--red"
   >
     normal
   </div>
@@ -107,17 +103,17 @@ exports[`Tag renders Tag color correctly 1`] = `
 exports[`Tag renders Tag shape correctly 1`] = `
 <div>
   <div
-    class="zw-tag zw-tag--md zw-tag--radius"
+    class="zw-tag"
   >
     radius
   </div>
   <div
-    class="zw-tag zw-tag--md zw-tag--rect"
+    class="zw-tag zw-tag--rect"
   >
     rect
   </div>
   <div
-    class="zw-tag zw-tag--md zw-tag--round"
+    class="zw-tag zw-tag--round"
   >
     round
   </div>
@@ -129,27 +125,27 @@ exports[`Tag renders Tag size correctly  1`] = `
   class="multi-rows"
 >
   <div
-    class="zw-tag zw-tag--md zw-tag--radius"
+    class="zw-tag"
   >
     default
   </div>
   <div
-    class="zw-tag zw-tag--lg zw-tag--radius"
+    class="zw-tag zw-tag--lg"
   >
     lg
   </div>
   <div
-    class="zw-tag zw-tag--md zw-tag--radius"
+    class="zw-tag zw-tag--md"
   >
     md
   </div>
   <div
-    class="zw-tag zw-tag--sm zw-tag--radius"
+    class="zw-tag zw-tag--sm"
   >
     sm
   </div>
   <div
-    class="zw-tag zw-tag--xs zw-tag--radius"
+    class="zw-tag zw-tag--xs"
   >
     xs
   </div>
@@ -161,7 +157,7 @@ exports[`Tag renders normal Tag correctly 1`] = `
   class="multi-rows"
 >
   <div
-    class="zw-tag zw-tag--md zw-tag--radius"
+    class="zw-tag"
   >
     normal
   </div>
