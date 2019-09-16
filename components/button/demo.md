@@ -5,7 +5,6 @@
 
 ## 颜色类型
 以下提供在不同场景中可选择不同颜色为特定功能所使用。
-::: demo
 ```jsx
 import { Button } from 'zarm-web';
 
@@ -35,9 +34,9 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-:::demo
+
+demo
 ## 禁用类型
 按钮处于不可用状态的情况。
 
@@ -74,10 +73,10 @@ class Demo extends React.Component {
 }
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo
+
+demo
 ## 图形按钮、block按钮、组合按钮
 block按钮宽度为父元素宽度
 
@@ -121,9 +120,7 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-:::demo
 ## 不同尺寸
 除了默认尺寸外，可以额外设置四种尺寸。
 
@@ -162,9 +159,9 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-:::demo
+
+demo
 ## 幽灵按钮形式
 幽灵按钮在背景为有色的情况下使用的按钮形式，以下为几项实例
 
@@ -186,10 +183,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo
+
+demo
 ## 加载中
 点击按钮后进行数据加载操作，在按钮上显示加载状态。
 
@@ -210,11 +207,11 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-:::demo
+
+demo
 ## 链接按钮
-使用a标签代替button, 可设置href, target属性
+使用a标签代替`button`, 可设置`href`, `target`属性
 
 ```jsx
 import { Button } from 'zarm-web';
@@ -227,14 +224,14 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-:::demo
+
 ## Typescript中使用方式
 因为同时支持两种形式的参数，所以在不同的形式下，传递的参数的类型是不一致的。
 最明显的区别在于，事件回调函数中的event.currentTarget的类型不一致。
 在使用TS的过程中，我们需要使用泛型对其进行约束。
 作为链接按钮存在时，一定要传泛型，否则参数会被默认识别为button类型。
+
 ```
 const btn =  <Button<'button'> onClick={(e)=>{ console.log(e) }}>这是一个点击按钮</Button>;
 // 因为默认的泛型是'button',您也可以不写泛型。例如：
@@ -254,8 +251,6 @@ const btn =  <Button<'button'> href="/home">这是一个链接按钮</Button>;
 const btn2 = <Button<'anchor'> href="/home" target="_blank" formAction="post">这是一个点击按钮</Button>
 // error 参数中不存在formAction
 ```
-:::
-
 
 ## API
 

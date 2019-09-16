@@ -58,18 +58,14 @@ code {
 }
 
 .markdown-demo-wrapper {
-  column-count: 2;
-  column-width: 50%;
-  column-fill: auto;
-
-  @media (max-width: 1366px) {
-    column-count: 1;
-    column-width: 100%;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 0 20px;
 }
 
 .markdown-demo-item {
-  //width: 50%;
+  width: 50%;
   break-inside: avoid;
   margin-bottom: 20px;
 

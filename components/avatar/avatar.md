@@ -1,9 +1,9 @@
-## Avatar 
+# Avatar 
 头像,支持图片、图标或字符展示。
 
 ### 基础用法
 
-:::demo 指定`icon`、`size`、`shape`、 属性。
+指定`icon`、`size`、`shape`、 属性。
 
 ```js
   render() {
@@ -29,12 +29,11 @@
     )
   }
 ```
-:::
+
 
 ### 类型
 
-:::demo 指定`icon`、`size`、`shape`、 属性。
-
+指定`icon`、`size`、`shape`、 属性。
 ```js
   render() {
     return (
@@ -49,19 +48,22 @@
     )
   }
 ```
-:::
 
-### Attributes
-| 参数                | 说明                                   | 类型                                   | 可选值          | 默认值     | 
-|------------------  |-------------------------------------   |----------------------------------     |-------------   |---------  |
-| icon               |  icon头像的icon type, 具体查看Icon组件    | string                                |    -           |    -      |
-| shape              |  头像的形状                              | string                       | circle,square    | circle
-| size               |  头像的大小                              | string  |    xl,lg,sm,xs           | - |
-| src                |  图片头像的图片地址                       | string                                 |    -           |    -     |
-| alt                |  描述图片的备用文字                       | string                                 |   -            |   -      |
+## API
+
+## Attributes
+
+| 参数                | 说明                                   | 类型      | 可选值          | 默认值   | 
+|------------------  |-------------------------------------   |----------|-------------   | ---------  |
+| icon               |  icon头像的icon type, 具体查看Icon组件    | string   |    -           |    -       |
+| shape              |  头像的形状                              | string   | circle,square  | circle     |
+| size               |  头像的大小                              | string   |  xl,lg,sm,xs   |   -         |
+| src                |  图片头像的图片地址                       | string   |    -           |    -     |
+| alt                |  描述图片的备用文字                       | string   |   -            |   -      |
 
 
-### Events
+## Events
+
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onError | 当图片加载失败时的处理函数，返回false可以阻止默认行为 |  - |

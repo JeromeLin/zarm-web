@@ -6,7 +6,7 @@ import Highlight from 'react-highlight';
 import '@/components/style/entry';
 
 function parserCodeString(code) {
-  const doc = code.match(/([^]*)\n?(```jsx?[^]+```)/);
+  const doc = code.match(/([^]*)\n?(```js(x)?[^]+```)/);
   const title = doc[1] || '';
   const source = doc[2].match(/```(.*)\n?([^]+)```/);
   return {
