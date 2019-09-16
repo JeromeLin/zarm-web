@@ -1,107 +1,170 @@
-@mixin tag-theme($color, $background) {
-  $active-background: darken($background, 10%);
+@import '../../style/themes/variable';
+@import '../../style/core/index';
 
-  background-color: $background;
-  color: $color;
+:root {
+  --tag-height-lg: 32px;
+  --tag-height-md: 28px;
+  --tag-height-sm: 24px;
+  --tag-height-xs: 20px;
+  --tag-padding-h-lg: 16px;
+  --tag-padding-h: 12px;
+  --tag-font-size: 12px;
+  --tag-icon-size-lg: 14px;
+  --tag-icon-size: 12px;
+  --tag-icon-size-xs: 10px;
+  --tag-color-disabled: var(--color-text-disabled);
+  --tag-disabled-opacity: var(--opacity-disabled);
+  --tag-default-background: #f9f9f9;
+  --tag-default-color: #616161;
+  --tag-default-border: var(--border-color);
+  --tag-primary-color: var(--theme-primary);
+  --tag-success-color: var(--theme-success);
+  --tag-warning-color: var(--theme-warning);
+  --tag-danger-color: var(--theme-danger);
+  --tag-primary-hover-background: var(--theme-primary-light);
+  --tag-primary-active-background: var(--theme-primary-dark);
+  --tag-color-green: 0, 188, 112;
+  --tag-color-blue: 84, 192, 232;
+  --tag-color-orange: 236, 145, 49;
+  --tag-color-red: 255, 80, 80;
+}
 
-  &.disabled,
-  &:disabled {
-    cursor: not-allowed;
+@mixin tag-color($color) {
+  background-color: rgba($color, 0.05);
+  border-color: rgba($color, 0.3);
+  color: rgba($color, 1);
 
-    &:focus,
-    &.focus {
-      background-color: $background;
-    }
-
-    &:hover {
-      background-color: $background;
-    }
-
-    .ui-icon {
-      cursor: not-allowed;
-    }
+  &.zw-tag--unborder {
+    color: #fff;
+    background-color: rgba($color, 1);
+    border: hidden;
   }
 }
 
-@mixin tag-size($height, $padding, $paddingRight, $font-size, $border-radius) {
-  padding: $padding;
-  font-size: $font-size;
-  height: $height - 2;
-  line-height: $height - 2;
+@mixin color-reverser($color) {
+  color: #fff;
+  background-color: rgba($color, 1);
+  border-color: rgba($color, 1);
+}
 
-  &.hasCloseButton {
-    padding-right: $paddingRight;
-  }
+@mixin tag-size($height, $padding, $icon-size) {
+  padding: 0 $padding;
+  font-size: var(--tag-font-size);
+  height: $height;
+  line-height: $height;
 
-  &.radius {
-    border-radius: $border-radius;
-  }
-
-  &.round {
-    border-radius: 1000px;
-  }
-
-  .ui-icon + span,
-  span + .ui-icon {
-    cursor: pointer;
-    margin-left: $height / 10;
+  @include b(icon) {
+    font-size: $icon-size;
   }
 }
 
-.ui-tag {
-  @include tag-size($base-height, 0 10px, 20px, $base-fontSize, $base-radius);
-
+@mixin tag-base {
   display: inline-block;
   position: relative;
-  text-overflow: ellipsis;
   transition: all .3s cubic-bezier(.78, .14, .15, .86);
   vertical-align: middle;
   overflow: hidden;
   white-space: nowrap;
+  text-align: center;
+  font-size: var(--tag-font-size);
+  border-width: 1px;
+  border-style: solid;
+  background-color: var(--tag-default-background);
+  border-color: var(--tag-default-border);
+  color: var(--tag-default-color);
+  margin: 0 8px 8px 0;
+  border-radius: var(--radius-md);
+  cursor: default;
 
-  /* disabled Tag */
-  &.disabled,
-  &:disabled {
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @include b(icon) {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}
+
+@include b(tag) {
+  @include tag-base();
+
+  @include m(rect) {
+    border-radius: 0;
+  }
+  @include m(round) {
+    border-radius: var(--tag-height-lg);
+  }
+
+  @include m(unborder) {
+    border: hidden;
+  }
+
+  @include m(checkable) {
+    cursor: pointer;
+  }
+
+  /* tag sizes: default md */
+  @include tag-size(var(--tag-height-md), var(--tag-padding-h), var(--tag-icon-size));
+
+  @include m(lg) {
+    @include tag-size(var(--tag-height-lg), var(--tag-padding-h-lg), var(--tag-icon-size-lg));
+  }
+
+  @include m(md) {
+    @include tag-size(var(--tag-height-md), var(--tag-padding-h), var(--tag-icon-size));
+  }
+
+  @include m(sm) {
+    @include tag-size(var(--tag-height-sm), var(--tag-padding-h), var(--tag-icon-size));
+  }
+
+  @include m(xs) {
+    @include tag-size(var(--tag-height-xs), var(--tag-padding-h), var(--tag-icon-size-xs));
+  }
+
+  /* tag preset color */
+  @include m(green) {
+    @include tag-color(var(--tag-color-green));
+  }
+
+  @include m(blue) {
+    @include tag-color(var(--tag-color-blue));
+  }
+
+  @include m(orange) {
+    @include tag-color(var(--tag-color-orange));
+  }
+
+  @include m(red) {
+    @include tag-color(var(--tag-color-red));
+  }
+
+  @include m(checked) {
+    background-color: var(--tag-primary-color);
+    border-color: var(--tag-primary-color);
+    color: var(--tag-default-background);
+
+    &:hover {
+      background-color: var(--tag-primary-hover-background);
+    }
+
+    &:active {
+      background-color: var(--tag-primary-active-background);
+    }
+  }
+
+  @include m(disabled) {
     cursor: not-allowed;
-    opacity: .65;
-    box-shadow: none;
-  }
+    opacity: var(--tag-disabled-opacity);
+    background-color: var(--tag-default-background);
+    border-color: var(--tag-default-border);
+    color: var(--tag-color-disabled);
 
-  /* Tag sizes */
-  &.size-xl {
-    @include tag-size($base-height-xl, 0 14px, 24px, $base-fontSize-xl, $base-radius-xl);
-  }
-
-  &.size-lg {
-    @include tag-size($base-height-lg, 0 12px, 22px, $base-fontSize-lg, $base-radius-lg);
-  }
-
-  &.size-sm {
-    @include tag-size($base-height-sm, 0 8px, 20px, $base-fontSize-sm, $base-radius-sm);
-  }
-
-  &.size-xs {
-    @include tag-size($base-height-xs, 0 4px, 16px, $base-fontSize-xs, $base-radius-xs);
-  }
-
-  /* Tag themes */
-  &.theme-default {
-    @include tag-theme($base-tag-default-color, $base-tag-default-bg);
-  }
-
-  &.theme-info {
-    @include tag-theme($base-tag-info-color, $base-tag-info-bg);
-  }
-
-  &.theme-success {
-    @include tag-theme($base-tag-success-color, $base-tag-success-bg);
-  }
-
-  &.theme-warning {
-    @include tag-theme($base-tag-warning-color, $base-tag-warning-bg);
-  }
-
-  &.theme-error {
-    @include tag-theme($base-tag-error-color, $base-tag-error-bg);
+    &:hover {
+      background-color: var(--tag-default-background);
+      color: var(--tag-color-disabled);
+      opacity: var(--tag-disabled-opacity);
+    }
   }
 }

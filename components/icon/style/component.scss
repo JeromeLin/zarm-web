@@ -14,7 +14,7 @@ $icon-url: $base-icon-url;
     url('#{$icon-url}.svg#dragonicon') format('svg');
 }
 
-.za-icon {
+.zw-icon {
   font-family: "dragonicon" !important;
   font-style: normal;
   display: inline-block;
@@ -41,7 +41,7 @@ $icon-url: $base-icon-url;
   }
 }
 
-.za-icon {
+.zw-icon {
   &-right:before { content: '\e602'; }
   &-right-round-fill:before { content: '\e609'; }
   &-right-round:before { content: '\e60a'; }
