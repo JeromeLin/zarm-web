@@ -29,19 +29,38 @@ export default class Markdown extends React.Component {
     const divNode = document.createElement('div');
     const h2Node = document.getElementById('api-node');
     divNode.setAttribute('class', 'markdown-demo-wrapper');
+    const fg = [0, 1].reduce((prev, item, index) => {
+      const demoWrapper = document.createElement('div');
+      demoWrapper.classList.add('demo-wrapper', `demo-wrapper-${item ? 'right' : 'left'}`);
+      prev.appendChild(demoWrapper);
+      return prev;
+    }, document.createDocumentFragment());
+
+    let index = 0;
     // eslint-disable-next-line
     for (const [id, component] of this.components) {
       const div = document.getElementById(id);
-      divNode.append(div);
+      if ((index & 1) === 0) {
+        fg.children[0].appendChild(div);
+      } else {
+        fg.children[1].appendChild(div);
+      }
+      // divNode.append(div);
       this.nodeList.push(div);
       if (div instanceof HTMLElement) {
         ReactDOM.render(component, div);
       }
+      index++;
     }
+
+    const header = document.createElement('h2');
+    header.innerText = '代码演示';
+    header.classList.add('demo-wrapper-header');
+    fg.prepend(header);
     if (h2Node) {
-      h2Node.parentNode.insertBefore(divNode, h2Node);
+      h2Node.parentNode.insertBefore(fg, h2Node);
     } else {
-      this.markdownCon.appendChild(divNode);
+      this.markdownCon.appendChild(fg);
     }
   }
 

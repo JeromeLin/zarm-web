@@ -59,14 +59,27 @@ code {
 
 .markdown-demo-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding: 0 20px;
+}
+
+.demo-wrapper-header {
+  margin-top: 50px;
+}
+
+.demo-wrapper {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+
+  &-left {
+    padding-right: 10px;
+  }
+
+  &-right {
+    padding-left: 10px;
+  }
 }
 
 .markdown-demo-item {
-  width: 50%;
-  break-inside: avoid;
   margin-bottom: 20px;
 
   .demo-block {
@@ -74,7 +87,7 @@ code {
   }
 
   .source {
-    border: 1px dashed #ccc;
+    border: 1px dashed #eee;
     padding: 20px;
   }
 }
