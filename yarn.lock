@@ -1648,10 +1648,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zarm-design/cli@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.5.tgz#c1041bbafc2576b473fc163ef1463789a62d46dc"
-  integrity sha512-zPZuvBZjARYw4Ejjc3ZBZkOBCQuAAse5BZUqz2hs1rKU0Ah0njr5VnHH788/mXp5GGwUZm+6BLA3UgzsD7xidQ==
+"@zarm-design/cli@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.7.tgz#f4b8fb6e63ce1d507499ce7d242dabac4e9ef0b1"
+  integrity sha512-qPuExxooDzr5OQ5Ax/bxlAat3RtdZ+rI5SQid8U0cOCi7/+CS4usey+5hf1alhPBu2rRYj1Ng2ch8GYb8hLemw==
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
@@ -4585,9 +4585,9 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.191:
   integrity sha512-vTH9UcMbi53x/pZKQrEcD83obE8agqQwUIx/G03/mpE1vzLm0KA3cHwuZXCysvxI1gXfNjV7Nu7Vjtp89kDzmg==
 
 electron-to-chromium@^1.3.247:
-  version "1.3.260"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.260.tgz#ffd686b4810bab0e1a428e7af5f08c21fe7c1fa2"
-  integrity sha512-wGt+OivF1C1MPwaSv3LJ96ebNbLAWlx3HndivDDWqwIVSQxmhL17Y/YmwUdEMtS/bPyommELt47Dct0/VZNQBQ==
+  version "1.3.261"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.261.tgz#51b35a3126fb09b6852f24e907a6d3bd01c67724"
+  integrity sha512-nA9xFj1SgHXlW/6T4+udW2u/Ic/bne25UoFsddoNM7Ut2bgNGLLQUhLhk+vQlbKh9WiRgDDlHaC36Oy7AgRR9w==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
