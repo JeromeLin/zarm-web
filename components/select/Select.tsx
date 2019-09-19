@@ -102,7 +102,7 @@ class Select extends Component<PropsType, StateProps> {
 
   inputWithTags!: InputWithTags;
 
-  oldInputDivHeight: number = 0;
+  oldInputDivHeight = 0;
 
   constructor(props: PropsType) {
     super(props);
