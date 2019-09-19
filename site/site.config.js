@@ -23,7 +23,7 @@ module.exports = {
     basic: [
       {
         name: 'Icon',
-        module: () => import('@/components/icon/icon.md'),
+        module: () => import('@/components/icon/demo.md'),
       },
       {
         name: 'Button',
