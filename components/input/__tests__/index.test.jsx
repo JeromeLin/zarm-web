@@ -9,7 +9,7 @@ describe('Input', () => {
       <div>
         <Input type="text" placeholder="请输入" />
         <Input type="textarea" placeholder="请输入" />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -22,7 +22,7 @@ describe('Input', () => {
         <Input size="lg" placeholder="请输入" />
         <Input size="sm" placeholder="请输入" />
         <Input size="xs" placeholder="请输入" />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -32,7 +32,7 @@ describe('Input', () => {
     const wrapper = render(
       <div>
         <Input shape="radius" type="text" placeholder="请输入" />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('Input', () => {
     const wrapper = render(
       <div>
         <Input disabled type="text" value="禁用" />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -53,7 +53,7 @@ describe('Input', () => {
     const wrapper = shallow(
       <div>
         <Input onChange={onChange} value="hey" type="text" />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -64,7 +64,7 @@ describe('Input', () => {
     const wrapper = mount(
       <div>
         <Input onChange={onChange} type="text" />
-      </div>
+      </div>,
     );
 
     wrapper.find('input').simulate('change');
