@@ -25,21 +25,43 @@ export default class Markdown extends React.Component {
     this.nodeList = [];
   }
 
-
   renderDOM() {
     const divNode = document.createElement('div');
     const h2Node = document.getElementById('api-node');
     divNode.setAttribute('class', 'markdown-demo-wrapper');
+    const fg = [0, 1].reduce((prev, item, index) => {
+      const demoWrapper = document.createElement('div');
+      demoWrapper.classList.add('demo-wrapper', `demo-wrapper-${item ? 'right' : 'left'}`);
+      prev.appendChild(demoWrapper);
+      return prev;
+    }, document.createDocumentFragment());
+
+    let index = 0;
     // eslint-disable-next-line
     for (const [id, component] of this.components) {
       const div = document.getElementById(id);
-      divNode.append(div);
+      if ((index & 1) === 0) {
+        fg.children[0].appendChild(div);
+      } else {
+        fg.children[1].appendChild(div);
+      }
+      // divNode.append(div);
       this.nodeList.push(div);
       if (div instanceof HTMLElement) {
         ReactDOM.render(component, div);
       }
+      index++;
     }
-    this.markdownCon.insertBefore(divNode, h2Node);
+
+    const header = document.createElement('h2');
+    header.innerText = '代码演示';
+    header.classList.add('demo-wrapper-header');
+    fg.prepend(header);
+    if (h2Node) {
+      h2Node.parentNode.insertBefore(fg, h2Node);
+    } else {
+      this.markdownCon.appendChild(fg);
+    }
   }
 
   render() {
@@ -54,29 +76,31 @@ export default class Markdown extends React.Component {
           return `<table class="grid" id="grid"><thead>${header}</thead><tbody>${body}</tbody></table>`;
         };
 
-        let html = marked(
-          document
+        const documentString = document
           // .replace(/## API\s?([^]+)/g, '')
-          //   .replace(/##\s*API\s?([^]+)/g, '$1')
+          // .replace(/##\s*API\s?([^]+)/g, '$1')
           // .replace(/(```\s?jsx([^]+?)```)/g, (match, p1) => {
-            .replace(/##\s?([^]+?)((?=##))/g, (match, p1) => {
-              const id = parseInt(Math.random() * 1e9, 10).toString(36);
-              // console.log(p1)
-              this.components.set(id, React.createElement(Demo, { ...this.props }, p1));
-              return `<div id=${id} class="markdown-demo-item"></div>`;
-            }),
-          {
-            renderer,
-          },
-        );
+          .replace(/#+\s[\s\S]+?(?=\n#|\n$)/g, (p1) => {
+            const id = parseInt(Math.random() * 1e9, 10).toString(36);
+            if (p1.match(/```jsx?[\s\S]+```/)) {
+              this.components.set(id, React.createElement(Demo, {
+                ...this.props,
+                renderTitle: (str) => {
+                  return marked(str);
+                },
+              }, p1));
+              return `<div id="${id}" class="markdown-demo-item"></div>`;
+            }
+            return `\n${p1}`;
+          });
 
-        html = html.replace('##', '').replace('API', '<h2 id="api-node" style="margin-top: 50px">API</h2>');
+        let html = documentString.replace('## API', '<h2 id="api-node" style="margin-top: 50px">API</h2>');
+        html = marked(html, { renderer });
         // eslint-disable-next-line react/no-danger
-        return <div dangerouslySetInnerHTML={{ __html: html }} className="markdown-outer" ref={(el) => { this.markdownCon = el; }} />;
+        return <div dangerouslySetInnerHTML={{ __html: html }} className="markdown-outer s13" ref={(el) => { this.markdownCon = el; }} />;
       }
 
       const html = marked(document, { renderer });
-
       // eslint-disable-next-line react/no-danger
       return <div dangerouslySetInnerHTML={{ __html: html }} className="markdown-outer" ref={(el) => { this.markdownCon = el; }} />;
     }
