@@ -5,8 +5,10 @@ export default interface PropsType {
   prefixCls?: string;
   visible?: boolean;
   style?: CSSProperties;
-  text?: React.ReactElement<any>;
+  text?: React.ReactElement;
   size?: Size;
   className?: string;
   fullscreen?: boolean;
+  indicator?: React.ReactElement;
+  delay?: number;
 }

@@ -147,17 +147,44 @@
   --menuitem-horizontal-height: 56px;
 
   // loading
-  --loading-height-sm: 12px;
+  --loading-height-xs: 12px;
   --loading-height-md: 24px;
   --loading-height-lg: 36px;
-  --loading-margin-h-sm: var(--padding-h-sm);
+  --loading-margin-h-xs: var(--padding-h-xs);
   --loading-margin-h-md: var(--padding-h-md);
   --loading-margin-h-lg: var(--padding-h-lg);
-  --loading-font-size-sm: var(--font-size-sm);
+  --loading-font-size-xs: var(--font-size-xs);
   --loading-font-size-md: var(--font-size-md);
   --loading-font-size-lg: var(--font-size-lg);
   --loading-default-svg-color: var(--theme-primary);
   --loading-default-text-color: var(--color-text-disabled);
   --loading-default-mask-color: rgba(255, 255, 255, 0.4);
   --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
+
+  // Tag
+  --tag-height-lg: 32px;
+  --tag-height-md: 28px;
+  --tag-height-sm: 24px;
+  --tag-height-xs: 20px;
+  --tag-padding-h-lg: 16px;
+  --tag-padding-h: 12px;
+  --tag-font-size: 12px;
+  --tag-icon-size-lg: 14px;
+  --tag-icon-size: 12px;
+  --tag-icon-size-xs: 10px;
+  --tag-color-disabled: var(--color-text-disabled);
+  --tag-disabled-opacity: var(--opacity-disabled);
+  --tag-default-background: #f9f9f9;
+  --tag-default-color: #616161;
+  --tag-default-border: var(--border-color);
+  --tag-primary-color: var(--theme-primary);
+  --tag-success-color: var(--theme-success);
+  --tag-warning-color: var(--theme-warning);
+  --tag-danger-color: var(--theme-danger);
+  --tag-primary-hover-background: var(--theme-primary-light);
+  --tag-primary-active-background: var(--theme-primary-dark);
+  --tag-color-green: 0, 188, 112;
+  --tag-color-blue: 84, 192, 232;
+  --tag-color-orange: 236, 145, 49;
+  --tag-color-red: 255, 80, 80;
 }

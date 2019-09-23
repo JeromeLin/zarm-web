@@ -131,7 +131,7 @@ module.exports = {
       },
       {
         name: 'loading',
-        module: () => import('@/components/loading/loading.md'),
+        module: () => import('@/components/loading/demo.md'),
       },
       {
         name: 'message',

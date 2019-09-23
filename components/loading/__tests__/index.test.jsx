@@ -8,7 +8,7 @@ describe('Loading', () => {
     const wrapper = render(
       <Loading visible={false}>
         这里是内容
-      </Loading>
+      </Loading>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -18,7 +18,7 @@ describe('Loading', () => {
     const wrapper = render(
       <Loading visible>
         这里是内容
-      </Loading>
+      </Loading>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();

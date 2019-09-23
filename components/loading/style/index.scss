@@ -31,5 +31,13 @@
       var(--loading-font-size-sm),
     );
   }
+
+  @include m(xs) {
+    @include loading-size(
+      var(--loading-height-xs),
+      var(--loading-margin-h-xs),
+      var(--loading-font-size-xs),
+    );
+  }
 }
 

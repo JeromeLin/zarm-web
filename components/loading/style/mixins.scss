@@ -1,17 +1,33 @@
+$PI: 3.141592674;
+
 @mixin loading-base() {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+  position: relative;
+  display: inline-block;
   user-select: none;
-  z-index: var(--zindex-loading);
+  text-align: center;
+  vertical-align: middle;
+
+  @include m (nested--loading) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--zindex-loading);
+  }
+  @include m (fullscreen) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+  }
 
   @include e(mask) {
     display: block;
     position: absolute;
-    z-index: 657;
+    z-index: 1657;
     margin: 0;
     top: 0;
     right: 0;
@@ -21,14 +37,14 @@
   }
 
   @include e(svg) {
-    animation: loading-rotate .8s linear infinite;
+    animation: za-rotate360 2s linear infinite;
   }
 
   @include e(path) {
-    // animation: loading-dash 1.5s ease-in-out infinite;
-    stroke-dasharray: 20, 150;
+    animation: za-rotate-circular 1.5s ease-in-out infinite;
+    stroke-dasharray: 20, 100 * $PI;
     stroke-dashoffset: 0;
-    stroke-width: 2;
+    stroke-width: 5;
     stroke-linecap: round;
   }
 
@@ -54,12 +70,7 @@
     height: $height;
     width: $height;
   }
-  @include e(path) {
-    stroke-width: 2;
-  }
-  // @include e(spin) { 
-  //   line-height: $height;
-  // }
+
   @include e(text) {
     font-size: $font-size;
     margin: calc(#{$margin} / 2);
@@ -78,25 +89,29 @@
   }
 }
 
-@keyframes loading-rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loading-dash {
+@keyframes za-rotate-circular {
   0% {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
   }
 
   50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -40px;
+    stroke-dasharray: 120, 200;
+    stroke-dashoffset: -60;
   }
 
   100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -120px;
+    stroke-dasharray: 120, 200;
+    stroke-dashoffset: -180;
+  }
+}
+
+@keyframes za-rotate360 {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
