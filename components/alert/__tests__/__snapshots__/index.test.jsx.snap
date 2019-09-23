@@ -66,7 +66,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                         class="ui-alert"
                       >
                         <i
-                          class="za-icon za-icon-warning-round theme-warning"
+                          class="zw-icon zw-icon-warning-round theme-warning"
                         />
                         <span>
                           这是一个警告框
@@ -135,13 +135,13 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       <Icon
                         className=""
                         onClick={[Function]}
-                        prefixCls="za-icon"
+                        prefixCls="zw-icon"
                         style={Object {}}
                         theme="warning"
                         type="warning-round"
                       >
                         <i
-                          className="za-icon za-icon-warning-round theme-warning"
+                          className="zw-icon zw-icon-warning-round theme-warning"
                           onClick={[Function]}
                           style={Object {}}
                         />

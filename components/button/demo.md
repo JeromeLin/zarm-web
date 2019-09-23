@@ -109,9 +109,9 @@ class Demo extends React.Component {
             <Button theme="primary">下一页</Button>
           </Button.Group>
           <Button.Group>
-            <Button theme="primary"><Icon type="right" /></Button>
-            <Button theme="primary"><Icon type="empty-fill" /></Button>
-            <Button theme="primary"><Icon type="search" /></Button>
+            <Button theme="primary"><Icon type="arrow-left" /></Button>
+            <Button theme="primary"><Icon type="broadcast" /></Button>
+            <Button theme="primary"><Icon type="arrow-right" /></Button>
           </Button.Group>
         </div>
       </div>
@@ -135,25 +135,11 @@ class Demo extends React.Component {
     return (
       <React.Fragment>
         <div className="multi-rows">
-          <Button theme="primary" size='xl'>xl尺寸</Button>
-          <Button theme="primary" size='lg'>lg尺寸</Button>
-          <Button theme="primary">默认尺寸</Button>
-          <Button theme="primary" size='sm'>sm尺寸</Button>
-          <Button theme="primary" size='xs'>xs尺寸</Button>
-        </div>
-        <div className="multi-rows">
-          <Button shape="round" theme="primary" size='xl'>xl尺寸</Button>
-          <Button shape="round" theme="primary" size='lg'>lg尺寸</Button>
-          <Button shape="round" theme="primary">默认尺寸</Button>
-          <Button shape="round" theme="primary" size='sm'>sm尺寸</Button>
-          <Button shape="round" size='xs'>xs尺寸</Button>
-        </div>
-        <div className="multi-rows">
-          <Button shape="circle" theme="primary" size='xl'><Icon type="right" /></Button>
-          <Button shape="circle" theme="primary" size='lg'><Icon type="brush" /></Button>
-          <Button shape="circle" theme="primary"><Icon type="user-fill" /></Button>
-          <Button shape="circle" theme="primary" size='sm'><Icon type="empty-fill" /></Button>
-          <Button shape="circle" size='xs'><Icon type="search" /></Button>
+          <Button theme="primary" size="xl">xl</Button>
+          <Button theme="primary" size="lg">lg</Button>
+          <Button theme="primary">md</Button>
+          <Button theme="primary" size="sm">sm</Button>
+          <Button theme="primary" size="xs">xs</Button>
         </div>
       </React.Fragment>
     )

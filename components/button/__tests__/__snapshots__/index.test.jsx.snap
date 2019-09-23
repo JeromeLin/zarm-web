@@ -168,7 +168,7 @@ exports[`Button renders loading Button correctly 1`] = `
     type="button"
   >
     <i
-      class="za-icon za-icon-loading theme-default rotate360"
+      class="zw-icon zw-icon-loading theme-default rotate360"
     />
       加载中
   </button>

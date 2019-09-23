@@ -9,10 +9,8 @@ describe('Tooltip', () => {
     const wrapper = render(
       <Tooltip title="这是一个left定位的Tooltip" direction="left">
         <Button>left</Button>
-      </Tooltip>
+      </Tooltip>,
     );
-
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
-

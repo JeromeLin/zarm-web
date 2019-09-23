@@ -18,7 +18,7 @@ describe('Form', () => {
         <Form.Item>
           <Button theme="success">登录</Button>
         </Form.Item>
-      </Form>
+      </Form>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -45,7 +45,7 @@ describe('Form', () => {
         >
           <Button theme="success">查询</Button>
         </Form.Item>
-      </Form>
+      </Form>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -74,7 +74,7 @@ describe('Form', () => {
         >
           <Button theme="success">查询</Button>
         </Form.Item>
-      </Form>
+      </Form>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();

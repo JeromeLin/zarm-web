@@ -16,7 +16,7 @@ describe('Step', () => {
           <Step.Item>被保人清单导入</Step.Item>
           <Step.Item>录入完成</Step.Item>
         </Step>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -32,7 +32,7 @@ describe('Step', () => {
           <Step.Item>总单险种定义</Step.Item>
           <Step.Item>计划创建</Step.Item>
         </Step>
-      </div>
+      </div>,
     );
 
     expect(wrapper.find('.ui-step-item')).toHaveLength(5);
@@ -47,10 +47,9 @@ describe('Step', () => {
         <Step.Item>产品选择</Step.Item>
         <Step.Item>总单险种定义</Step.Item>
         <Step.Item>计划创建</Step.Item>
-      </Step>
+      </Step>,
     );
 
     expect(wrapper.state('itemWidth')).toEqual('20%');
   });
 });
-

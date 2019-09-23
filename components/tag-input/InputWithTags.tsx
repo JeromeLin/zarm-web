@@ -105,7 +105,7 @@ class InputWithTags extends React.Component<BasicProps> {
 
   render() {
     const {
-      search, remoteSearch, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
+      search, remoteSearch, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size,
       radius, disabled, ...others
     } = this.props;
     const { compositionData, isFocus } = this.state;
@@ -137,12 +137,10 @@ class InputWithTags extends React.Component<BasicProps> {
             ref={this.tagListBoxref}
           >
             <Tag
-              isDisabled={disabled}
-              theme={tagTheme}
-              title={Array.isArray(elem.value) ? elem.value.join('') : String(elem.value)}
               style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: `${tagSizeHeight}px` }}
-              isRadius={radius}
               key={elem.key}
+              closable
+              onClick={() => {}}
               onClose={(e) => {
                 e.stopPropagation();
                 if (typeof onDeleteTag === 'function') {
@@ -159,7 +157,7 @@ class InputWithTags extends React.Component<BasicProps> {
       });
     } else {
       tagList = (
-        <div title={value as string} style={searchValueStyle} className="value-text">
+        <div style={searchValueStyle} className="value-text">
           {compositionData || value}
         </div>
       );

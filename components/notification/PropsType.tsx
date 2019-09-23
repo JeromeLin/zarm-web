@@ -4,7 +4,8 @@ export default interface PropsType {
   prefixCls?: string;
   style?: React.CSSProperties;
   top?: number | string;
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'loading';
+  // theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'loading';
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
   title?: string;
   message?: string;
   stayTime: number;

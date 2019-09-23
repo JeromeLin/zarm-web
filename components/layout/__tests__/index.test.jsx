@@ -12,7 +12,7 @@ describe('Layout', () => {
         <Header>Header</Header>
         <Content>Content</Content>
         <Footer>Footer</Footer>
-      </Layout>
+      </Layout>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -26,7 +26,7 @@ describe('Layout', () => {
           <Content>Content</Content>
         </Layout>
         <Footer>Footer</Footer>
-      </Layout>
+      </Layout>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -39,7 +39,7 @@ describe('Layout', () => {
           <Header>Header</Header>
           <Content>Content</Content>
         </Layout>
-      </Layout>
+      </Layout>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -52,7 +52,7 @@ describe('Layout', () => {
           <Header>Header</Header>
           <Content>Content</Content>
         </Layout>
-      </Layout>
+      </Layout>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -66,7 +66,7 @@ describe('Layout', () => {
           <Header>Header</Header>
           <Content>Content</Content>
         </Layout>
-      </Layout>
+      </Layout>,
     );
     wrapper.find('.ui-layout-sider-trigger').simulate('click');
     expect(onCollapse).toHaveBeenCalledWith(true);

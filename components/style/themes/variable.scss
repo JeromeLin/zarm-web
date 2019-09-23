@@ -145,4 +145,37 @@
   --menuitem-divider-bg-color: #e5e5e5;
   --menuitem-horizontal-padding: 20px;
   --menuitem-horizontal-height: 56px;
+
+  // Tag
+  --tag-height-lg: 32px;
+  --tag-height-md: 28px;
+  --tag-height-sm: 24px;
+  --tag-height-xs: 20px;
+  --tag-padding-h-lg: 16px;
+  --tag-padding-h: 12px;
+  --tag-font-size: 12px;
+  --tag-icon-size-lg: 14px;
+  --tag-icon-size: 12px;
+  --tag-icon-size-xs: 10px;
+  --tag-color-disabled: var(--color-text-disabled);
+  --tag-disabled-opacity: var(--opacity-disabled);
+  --tag-default-background: #f9f9f9;
+  --tag-default-color: #616161;
+  --tag-default-border: var(--border-color);
+  --tag-primary-color: var(--theme-primary);
+  --tag-success-color: var(--theme-success);
+  --tag-warning-color: var(--theme-warning);
+  --tag-danger-color: var(--theme-danger);
+  --tag-primary-hover-background: var(--theme-primary-light);
+  --tag-primary-active-background: var(--theme-primary-dark);
+  --tag-color-green: 0, 188, 112;
+  --tag-color-blue: 84, 192, 232;
+  --tag-color-orange: 236, 145, 49;
+  --tag-color-red: 255, 80, 80;
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
 }

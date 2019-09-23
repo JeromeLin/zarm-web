@@ -170,7 +170,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
 
   private scrollParent!: HTMLElement;
 
-  private isHoverOnDropContent: boolean = false;
+  private isHoverOnDropContent = false;
 
   private hiddenTimer: number | undefined;
 

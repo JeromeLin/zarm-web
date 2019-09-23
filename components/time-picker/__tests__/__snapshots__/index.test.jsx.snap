@@ -20,7 +20,7 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
           00:00:00
         </span>
         <i
-          class="za-icon za-icon-time-circle theme-default za-time__select-icon"
+          class="zw-icon zw-icon-time-circle theme-default za-time__select-icon"
         />
       </div>
     </div>
@@ -175,7 +175,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
           00:00:00
         </span>
         <i
-          class="za-icon za-icon-time-circle theme-default za-time__select-icon"
+          class="zw-icon zw-icon-time-circle theme-default za-time__select-icon"
         />
       </div>
     </div>
@@ -274,7 +274,7 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
           00:00:00
         </span>
         <i
-          class="za-icon za-icon-time-circle theme-default za-time__select-icon"
+          class="zw-icon zw-icon-time-circle theme-default za-time__select-icon"
         />
       </div>
     </div>

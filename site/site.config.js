@@ -23,7 +23,7 @@ module.exports = {
     basic: [
       {
         name: 'Icon',
-        module: () => import('@/components/icon/icon.md'),
+        module: () => import('@/components/icon/demo.md'),
       },
       {
         name: 'Button',
@@ -97,7 +97,7 @@ module.exports = {
       },
       {
         name: 'Tag',
-        module: () => import('@/components/tag/tag.md'),
+        module: () => import('@/components/tag/demo.md'),
       },
       {
         name: 'Progress',
