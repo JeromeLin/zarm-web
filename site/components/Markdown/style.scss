@@ -51,25 +51,43 @@ blockquote {
 }
 
 code {
-  background-color: #f1f1f1;
   padding: 2px 6px;
+  display: inline-block;
   margin: 0 1px;
   border-radius: 3px;
 }
 
 .markdown-demo-wrapper {
-  column-count: 2;
-  column-width: 50%;
-  column-fill: auto;
+  display: flex;
+}
 
-  @media (max-width: 1366px) {
-    column-count: 1;
-    column-width: 100%;
+.demo-wrapper-header {
+  margin-top: 50px;
+}
+
+.demo-wrapper {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+
+  &-left {
+    padding-right: 10px;
+  }
+
+  &-right {
+    padding-left: 10px;
   }
 }
 
 .markdown-demo-item {
-  //width: 50%;
-  break-inside: avoid;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
+
+  .demo-block {
+    padding: 20px;
+  }
+
+  .source {
+    border: 1px dashed #eee;
+    padding: 20px;
+  }
 }

@@ -5,13 +5,25 @@ import { Icon } from 'zarm-web';
 import Highlight from 'react-highlight';
 import '@/components/style/entry';
 
+function parserCodeString(code) {
+  const doc = code.match(/([^]*)\n?(```js(x)?[^]+```)/);
+  const title = doc[1] || '';
+  const source = doc[2].match(/```(.*)\n?([^]+)```/);
+  return {
+    doc,
+    title,
+    source,
+  };
+}
+
 export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { doc, title, source } = parserCodeString(props.children);
     this.containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
-    this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
-    this.title = String(this.document[1]);
-    this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
+    this.document = doc;
+    this.title = <span dangerouslySetInnerHTML={{ __html: title ? props.renderTitle(this.document[1]) : '' }} />;
+    this.source = source;
     this.state = {
       showBlock: false,
     };
@@ -64,11 +76,7 @@ export default class Demo extends React.PureComponent {
 
     return (
       <div className={`demo-block demo-box ${className}`}>
-        {this.title.split(('\n')).map((item, index) => {
-          if (index === 0) return <h2 key={item}>{item}</h2>;
-          if (item) return <p key={item}>{item}</p>;
-          return null;
-        })}
+        {this.title}
         <div
           className="source"
           id={this.containerId}
@@ -84,10 +92,10 @@ export default class Demo extends React.PureComponent {
                 <Icon type="arrow-top-fill" />隐藏代码
               </span>
             ) : (
-              <span>
-                <Icon type="arrow-bottom-fill" />显示代码
+                <span>
+                  <Icon type="arrow-bottom-fill" />显示代码
               </span>
-            )
+              )
           }
         </div>
       </div>
