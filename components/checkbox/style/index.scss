@@ -7,6 +7,52 @@
     margin-right: 16px;
   }
 }
+@mixin checkbox-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+  @include b(checkbox__inner) {
+    border-color: #d9d9d9;
+    background-color: #f3f3f3;
+    cursor: not-allowed;
+    &:after {
+      border-color: #ccc;
+    }
+  }
+}
+/* 选中状态 */
+@include b(checkbox-checked) {
+  @include b(checkbox__inner) {
+    border-color: var(--theme-primary);
+    background-color: var(--theme-primary);
+    &:after {
+      transform: rotate(45deg) scale(1);
+      transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    }
+  }
+}
+
+/* 未全部选中状态 */
+@include b(checkbox-indeterminate) {
+  @include b(checkbox__inner) {
+    border-color: #bcbcbc;
+    background-color: var(--checkbox-color-white);
+    &:after {
+      transform: rotate(90deg) translate(2px, 1px);
+      width: 6px;
+      height: 6px;
+      border: 0px;
+      background-color: var(--theme-primary);
+    }
+  }
+}
+
+/* 禁用状态 */
+@include b(checkbox-wrapper-disabled) {
+  @include checkbox-disabled;
+}
+@include b(checkbox-disabled) {
+  @include checkbox-disabled;
+}
 
 /* 一般状态 */
 @include b(checkbox) {
@@ -18,62 +64,9 @@
   outline: none;
   cursor: pointer;
 
-  /* 选中状态 */
-  &-checked {
-    @include b(checkbox) {
-      &__inner {
-        border-color: $base-theme-info;
-        background-color: $base-theme-info;
-
-        &:after {
-          transform: rotate(45deg) scale(1);
-          transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
-        }
-      }
-    }
-  }
-
-  /* 未全部选中状态 */
-  &-indeterminate {
-    @include b(checkbox) {
-      &__inner {
-        border-color: #bcbcbc;
-        background-color: $base-color-white;
-
-        &:after {
-          transform: rotate(90deg) translate(2px, 1px);
-          width: 6px;
-          height: 6px;
-          border: 0px;
-          background-color: $base-theme-info;
-        }
-      }
-    }
-  }
-
-  /* 禁用状态 */
-  &-wrapper-disabled,
-  &-disabled {
-    color: rgba(0, 0, 0, 0.25);
-    cursor: not-allowed;
-    @include b(checkbox) {
-      &__inner {
-        border-color: #d9d9d9;
-        background-color: #f3f3f3;
-        cursor: not-allowed;
-
-        &:after {
-          border-color: #ccc;
-        }
-      }
-    }
-  }
-
   &:not(&-disabled):hover {
-    @include b(checkbox) {
-      &__inner {
-        border-color: $base-theme-info;
-      }
+    @include b(checkbox__inner) {
+      border-color: var(--theme-primary);
     }
   }
 
@@ -89,7 +82,6 @@
     background-color: #fff;
     transition: border-color 0.1s cubic-bezier(0.71, -0.46, 0.29, 1.46),
       background-color 0.1s cubic-bezier(0.71, -0.46, 0.29, 1.46);
-
     &:after {
       transform: rotate(45deg) scale(0);
       position: absolute;
