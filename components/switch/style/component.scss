@@ -26,8 +26,8 @@
   }
 
   &.checked {
-    border: 1px solid $base-theme-info;
-    background-color: $base-theme-info;
+    border: 1px solid var(--theme-primary);
+    background-color: var(--theme-primary);
 
     &:after {
       left: 28px;
@@ -46,8 +46,8 @@
       cursor: not-allowed;
     }
     &.checked {
-      border: 1px solid $base-theme-info-disabled;
-      background: $base-theme-info-disabled;
+      border: 1px solid var(--theme-primary-disabled);
+      background: var(--theme-primary-disabled);
     }
   }
 
