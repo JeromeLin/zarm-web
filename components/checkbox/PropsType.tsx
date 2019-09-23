@@ -5,7 +5,7 @@ export interface GroupProps {
   className?: string;
   style?: React.CSSProperties;
   disabled?: boolean;
-  onChange: (event: React.SyntheticEvent<HTMLFormElement>) => void;
+  onChange: (checkedValue: Array<string | number | boolean>) => void;
 }
 
 export default interface PropsType {

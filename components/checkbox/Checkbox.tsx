@@ -8,7 +8,6 @@ class Checkbox extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'zw-checkbox',
     defaultChecked: false,
-    isDisabled: false,
     indeterminate: false,
     onChange: () => {},
   };
@@ -20,12 +19,13 @@ class Checkbox extends Component<PropsType, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if ('checked' in nextProps) {
-      this.setState({
+      return {
         checked: !!nextProps.checked,
-      });
+      };
     }
+    return null;
   }
 
   _onClick(e) {

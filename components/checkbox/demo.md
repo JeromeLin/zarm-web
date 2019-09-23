@@ -169,18 +169,18 @@ Checkbox
 | :------------- | :-------- | :------------------ | :---------- | :----- |
 | checked        | 是否选中   | boolean             | -           | false  |
 | defaultChecked | 默认选中   | boolean             | -           | false  |
-| disabled       | 禁用        | boolean             | -           | -      |
-| value          | 选择框对应的值   | string              | number      | -      | - |
-| indeterminate  | 是否是部分选中状态 | boolean             | true, false | false  |
-| className      | 追加类名     | string              | string      |       
+| disabled       | 禁用       | boolean            | -           | -    |
+| value          | 选择框对应的值  | string          | number      | - | - |
+| indeterminate  | 是否是部分选中状态 | boolean        | true, false | false  |
+| className      | 追加类名     | string            | string      |       
 | style          | 自定义样式    | React.CSSProperties | -           | -      |
-| id             | 方便外部带有 for 属性的 label 标签控制当前 checkbox | string  | -           | -      |
-| onChange       | 勾选状态变化触发的事件  | Function(value)   |
+| id             | 方便外部带有 for 属性的 label 标签控制当前 checkbox | string  | -  | - |
+| onChange       | 勾选状态变化触发的事件  | Function(value)  |
 
 Checkbox.Group 
 
 | 参数         | 说明                   | 类型                | 可选值   | 默认值 |
-| ------------ | ---------------------- | ------------------- | -------- | ------ |
+| ------------ | ---------------------- | ------------------| -------- | ------ |
 | value        | 选中的值               | string[]            | number[] | false  |
 | defaultValue | 默认选中的值           | string[]            | number[] | false  |
 | disabled     | 整组禁用               | boolean             | -        | false  |

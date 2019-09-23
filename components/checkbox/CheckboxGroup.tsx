@@ -19,19 +19,20 @@ class CheckboxGroup extends Component<GroupProps, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if (
       'defaultValue' in nextProps
       || 'value' in nextProps
       || CheckboxGroup.getCheckedValue(nextProps.children)
     ) {
-      this.setState({
+      return {
         value:
           nextProps.defaultValue
           || nextProps.value
           || CheckboxGroup.getCheckedValue(nextProps.children),
-      });
+      };
     }
+    return null;
   }
 
   onCheckboxChange(e) {
