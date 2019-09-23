@@ -1,109 +1,101 @@
-## Switch 开关
-开关选择器。
+## Swtich 组件
+一个最基本的swtich组件。
 
-### 基础用法
-普通开关
+```jsx
+import { Switch } from 'zarm-web';
 
-:::demo
-
-```js
-  render() {
-    return (
-      <div>
-        <Switch />
-      </div>
-    )
-  }
-```
-:::
-
-### 带图标
-图标开关
-
-:::demo
-
-```js
-  render() {
-    return (
-      <div>
-        <Switch isCheckedText={<Icon type="right" />} unCheckedText={<Icon type="wrong" />} />
-      </div>
-    )
-  }
-```
-:::
-
-### 带默认值
-设定默认值为true
-
-:::demo
-
-```js
-  render() {
-    return (
-      <div>
-        <Switch isCheckedText="是" unCheckedText="否" defaultValue={true} />
-      </div>
-    )
-  }
-```
-:::
-
-### 禁用状态
-
-:::demo
-
-```js
-  render() {
-    return (
-      <div>
-         <Switch disabled />
-      </div>
-    )
-  }
-```
-:::
-
-### 事件回调
-
-:::demo
-
-```js
-  constructor(props) {
-    super(props);
+class Demo extends React.Component {
+  constructor(){
+    super();
     this.state = {
-      switchValue: false,
-    };
+      value:false
+    }
   }
   render() {
     return (
       <div>
-         <Switch value={this.state.switchValue} onChange={(value) => {
-            console.log(value)
-            this.setState({
-              switchValue: value,
-            });
-          }} />
+        <div className="multi-rows">
+          <Switch 
+          onChange={(value)=>{
+           console.log("current value ",value)
+          }}
+          value={this.state.value} />
+        </div>
+        
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-### Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| size     | 尺寸   | string |   'sm'   |    -    |
-| value   | 值 | boolean |   -   |    false   |
-| disabled  | 禁用    | -   | -  | -   |
-| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
-| defaultValue  | 默认值 | boolean |   -   |    false   |
-| isCheckedText  | 选中文案 | element |   -   |    ''   |
-| unCheckedText  | 未选中文案 | element |   -   |    ''   |
+
+## 禁用类型
+按钮处于不可用状态的情况。
+
+```jsx
+import { Switch } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      value:false
+    }
+  }
+  render() {
+    return (
+      <div>
+        <div className="multi-rows">
+          <Switch 
+          disabled
+          value={this.state.value} />
+        </div>
+        
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 不同尺寸
+除了默认尺寸外，可以额外设置四种尺寸。
+
+```jsx
+import { Switch } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <div className="multi-rows">
+          <Switch value={false} >默认尺寸</Switch>
+        </div>
+        <div className="multi-rows">
+          <Switch value={false} size="sm" >sm尺寸</Switch>
+        </div>
+
+        
+      </React.Fragment>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
 
 
-### Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onChange | 状态变化触发的事件 |  value |
+
+## API
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| size | string | 'md' | 设置大小，可选值为 `sm`|
+| value | boolean | false | switch开关状态 |
+| disabled | boolean | false | 是否禁用 |
+| onChange | function | - | 点击后触发的回调函数 |
+| style | object | - | 自定义样式 |

@@ -10,7 +10,7 @@ class Switch extends Component<PropsType, any> {
     defaultValue: false,
     isCheckedText: '',
     unCheckedText: '',
-    onChange: () => {},
+    onChange: () => { },
   };
 
   constructor(props) {
@@ -29,13 +29,12 @@ class Switch extends Component<PropsType, any> {
   }
 
   _onClick() {
-    const { value: stateValue } = this.state;
     const { onChange } = this.props;
-    const value = !stateValue.value;
+    const { value } = this.state;
     this.setState({
-      value,
+      value: !value,
     });
-    onChange(value);
+    onChange(!value);
   }
 
   render() {
