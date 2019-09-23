@@ -1,5 +1,5 @@
 ## Swtich 组件
-一个最基本的swtich组件。
+需要表示开关状态/两种状态之间的切换时使用，这是一个最基本的swtich组件。
 
 ```jsx
 import { Switch } from 'zarm-web';
@@ -39,21 +39,19 @@ ReactDOM.render(<Demo />, mountNode);
 import { Switch } from 'zarm-web';
 
 class Demo extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      value:false
-    }
-  }
   render() {
     return (
       <div>
         <div className="multi-rows">
           <Switch 
           disabled
-          value={this.state.value} />
+          value={false} />
         </div>
-        
+        <div className="multi-rows">
+          <Switch 
+          disabled
+          value={true} />
+        </div>
       </div>
     )
   }
