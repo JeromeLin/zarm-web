@@ -17,7 +17,7 @@ describe('Modal', () => {
         <Header title="标题" />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>
-      </Modal>
+      </Modal>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -34,7 +34,7 @@ describe('Modal', () => {
         <Header title="标题" />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>
-      </Modal>
+      </Modal>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -45,7 +45,7 @@ describe('Modal', () => {
         <Header title="标题" onClose={() => {}} />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>
-      </Modal>
+      </Modal>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -57,7 +57,7 @@ describe('Modal', () => {
         <Header title="标题" onClose={onClose} />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>
-      </Modal>
+      </Modal>,
     );
     wrapper.find('.ui-modal-close').simulate('click');
     expect(onClose).toHaveBeenCalled();
@@ -70,7 +70,7 @@ describe('Modal', () => {
         <Header title="标题" />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>
-      </Modal>
+      </Modal>,
     );
 
     wrapper.find('.ui-modal').simulate('click');

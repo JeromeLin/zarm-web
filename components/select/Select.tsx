@@ -6,7 +6,7 @@ import Dropdown from '../dropdown';
 import Menu from '../menu';
 import InputWithTags from '../tag-input';
 import PropsType, { OptionProps } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 import SelectMultiple from './SelectMultiple';
 import { isEmpty } from '../utils';
 
@@ -102,7 +102,7 @@ class Select extends Component<PropsType, StateProps> {
 
   inputWithTags!: InputWithTags;
 
-  oldInputDivHeight: number = 0;
+  oldInputDivHeight = 0;
 
   constructor(props: PropsType) {
     super(props);

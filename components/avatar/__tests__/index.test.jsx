@@ -13,7 +13,7 @@ describe('Avatar', () => {
         <Avatar icon="user" />
         <Avatar size="sm" icon="user" />
         <Avatar size="xs" icon="user" />
-      </div>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -23,7 +23,7 @@ describe('Avatar', () => {
       <div>
         <Avatar size="circle" />
         <Avatar size="square" />
-      </div>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -36,7 +36,7 @@ describe('Avatar', () => {
         <Avatar>USER</Avatar>
         <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" alt="my avatar" onError={() => console.log('load error')} />
         <Avatar style={{ color: '#2db7f5', backgroundColor: 'rgb(249, 232, 8)' }}>U</Avatar>
-      </div>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -44,8 +44,8 @@ describe('Avatar', () => {
   it('renders Avatars correctly when set src, icon and string', () => {
     const wrapper = render(
       <div>
-        <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" icon="user" >USER</Avatar>
-      </div>
+        <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" icon="user">USER</Avatar>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

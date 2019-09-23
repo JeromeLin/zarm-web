@@ -16,14 +16,14 @@ module.exports = {
     // },
     // I18n: {
     //   name: 'i18n',
-    //   module: () => import('@/components/locale/i18n.md'),
+    //   module: () => import('@/components/locale/demo.md'),
     // },
   ],
   components: {
     basic: [
       {
         name: 'Icon',
-        module: () => import('@/components/icon/icon.md'),
+        module: () => import('@/components/icon/demo.md'),
       },
       {
         name: 'Button',
@@ -97,7 +97,7 @@ module.exports = {
       },
       {
         name: 'Tag',
-        module: () => import('@/components/tag/tag.md'),
+        module: () => import('@/components/tag/demo.md'),
       },
       {
         name: 'Progress',
@@ -196,6 +196,10 @@ module.exports = {
       {
         name: 'Transition',
         module: () => import('@/components/transition/transition.md'),
+      },
+      {
+        name: 'LocaleProvider',
+        module: () => import('@/components/locale-provider/demo.md'),
       },
     ],
   },

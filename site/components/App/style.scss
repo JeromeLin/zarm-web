@@ -258,12 +258,6 @@ img {
   .za-tag-input-box { width: 200px; }
 }
 
-.demo-popper {
-  .za-popper {
-    margin: 12px;
-  }
-}
-
 .demo-block {
   padding-top: 20px;
   border: solid 1px #eaeefb;
@@ -285,7 +279,7 @@ img {
     font-family: Menlo, Monaco, Consolas, Courier, monospace;
   }
 
-  .za-btn-group + .za-btn-group {
+  .zw-btn-group + .zw-btn-group {
     margin-left: 12px;
   }
 
@@ -301,7 +295,7 @@ img {
   .source {
     position: relative;
 
-    .za-tag {
+    .zw-tag {
       margin-right: 8px;
     }
 
@@ -310,7 +304,7 @@ img {
       margin-bottom: 24px;
 
       &.block-row {
-        .za-button {
+        .zw-button {
           margin-bottom: 12px;
         }
       }
@@ -323,7 +317,7 @@ img {
     }
 
     .icons {
-      .za-icon {
+      .zw-icon {
         font-size: 28px;
       }
     }
@@ -447,7 +441,7 @@ img {
 
 .demo-avatar {
   .avatar-list {
-    .za-avatar {
+    .zw-avatar {
       margin-top: 16px;
       margin-right: 16px;
     }

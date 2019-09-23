@@ -69,7 +69,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         class="ui-modal-close"
                       >
                         <i
-                          class="za-icon za-icon-wrong theme-default"
+                          class="zw-icon zw-icon-wrong theme-default"
                         />
                       </div>
                     </div>
@@ -81,7 +81,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         class="ui-confirm"
                       >
                         <i
-                          class="za-icon za-icon-question-round theme-default"
+                          class="zw-icon zw-icon-question-round theme-default"
                         />
                         <span>
                           确认删除吗？
@@ -165,13 +165,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       <Icon
                         className=""
                         onClick={[Function]}
-                        prefixCls="za-icon"
+                        prefixCls="zw-icon"
                         style={Object {}}
                         theme="default"
                         type="wrong"
                       >
                         <i
-                          className="za-icon za-icon-wrong theme-default"
+                          className="zw-icon zw-icon-wrong theme-default"
                           onClick={[Function]}
                           style={Object {}}
                         />
@@ -198,13 +198,13 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       <Icon
                         className=""
                         onClick={[Function]}
-                        prefixCls="za-icon"
+                        prefixCls="zw-icon"
                         style={Object {}}
                         theme="default"
                         type="question-round"
                       >
                         <i
-                          className="za-icon za-icon-question-round theme-default"
+                          className="zw-icon zw-icon-question-round theme-default"
                           onClick={[Function]}
                           style={Object {}}
                         />

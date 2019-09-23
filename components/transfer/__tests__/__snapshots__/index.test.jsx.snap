@@ -68,7 +68,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           type="button"
         >
           <i
-            class="za-icon za-icon-add theme-default"
+            class="zw-icon zw-icon-add theme-default"
           />
         </button>
         <button
@@ -77,7 +77,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           type="button"
         >
           <i
-            class="za-icon za-icon-minus theme-default"
+            class="zw-icon zw-icon-minus theme-default"
           />
         </button>
       </div>

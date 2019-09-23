@@ -11,7 +11,7 @@ describe('Alert', () => {
         theme="warning"
         onClose={onClose}
         message="这是一个警告框"
-      />
+      />,
     );
     wrapper.setProps({ visible: true });
     expect(toJson(wrapper)).toMatchSnapshot();

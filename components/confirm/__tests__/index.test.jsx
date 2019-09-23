@@ -8,7 +8,7 @@ describe('Confirm', () => {
     const onOk = jest.fn();
     const onCancel = jest.fn();
     const wrapper = mount(
-      <Confirm onOk={onOk} onCancel={onCancel} message="确认删除吗？" />
+      <Confirm onOk={onOk} onCancel={onCancel} message="确认删除吗？" />,
     );
     wrapper.setProps({ visible: true });
     expect(toJson(wrapper)).toMatchSnapshot();
