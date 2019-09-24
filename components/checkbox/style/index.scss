@@ -54,6 +54,16 @@
   @include checkbox-disabled;
 }
 
+/* hover状态 */
+@include b(checkbox-wrapper) {
+  &:not(&-disabled):hover {
+    cursor: pointer;
+    @include b(checkbox__inner) {
+      border-color: var(--theme-primary);
+    }
+  }
+}
+
 /* 一般状态 */
 @include b(checkbox) {
   display: inline-block;
@@ -63,12 +73,6 @@
   white-space: nowrap;
   outline: none;
   cursor: pointer;
-
-  &:not(&-disabled):hover {
-    @include b(checkbox__inner) {
-      border-color: var(--theme-primary);
-    }
-  }
 
   @include e(inner) {
     position: relative;
