@@ -1,15 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { Popup } from 'zarm';
-import 'zarm/lib/popup/style';
 
 import DrawerContext from './createDrawerContext';
 import Icon from '../icon';
-import PropsType from './PropsType';
+import PropsType, { StateType } from './PropsType';
 
 const BUTTONLAYER = 10;
 
-class Drawer extends PureComponent<PropsType, any> {
+class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
   static defaultProps = {
     direction: 'right',  // 抽屉的方向 top | right | bottom | lef
     closable: true,      // 是否显示右上角的关闭按钮
@@ -45,9 +44,9 @@ class Drawer extends PureComponent<PropsType, any> {
     }
   }
 
-  private CalculationLayer = (parentDrawer) => {
+  private CalculationLayer = (parentDrawer: Drawer) => {
     let layer = 0;
-    function layers(drawer) {
+    function layers(drawer: Drawer) {
       if (drawer) {
         layer += 1;
         if (drawer.parentDrawer) {
@@ -117,8 +116,8 @@ class Drawer extends PureComponent<PropsType, any> {
       ...thickness[direction],
     };
 
-    const cls = classnames('za-drawer-cell-box', {
-      [`za-drawer-cell-box-${direction}`]: direction,
+    const cls = classnames('zw-drawer__cell-box', {
+      [`zw-drawer__cell-box__${direction}`]: direction,
     });
 
     return (
@@ -126,7 +125,7 @@ class Drawer extends PureComponent<PropsType, any> {
         <Popup
           mask={mask}
           direction={direction}
-          className="za-drawer-box"
+          className="zw-drawer"
           visible={visible}
           onMaskClick={maskClosable ? () => {
             onMaskClick && onMaskClick();
@@ -136,10 +135,10 @@ class Drawer extends PureComponent<PropsType, any> {
           afterClose={afterClose}
         >
           <div className={cls}>
-            {closable && (<button className="za-drawer-cell-closebtn" style={{ ...buttonlocation[direction] }} onClick={() => onClose && onClose()}><Icon type="wrong" /></button>)}
-            <div className="za-drawer-cell" style={{ ...siderStyle }}>
-              {title && (<div className="za-drawer-cell-title">{title}</div>)}
-              <div className="za-drawer-cell-body">{children}</div>
+            {closable && (<button className="zw-drawer__cell__closebtn" style={{ ...buttonlocation[direction] }} onClick={() => onClose && onClose()}><Icon type="wrong" /></button>)}
+            <div className="zw-drawer__cell" style={{ ...siderStyle }}>
+              {title && (<div className="zw-drawer__cell__title">{title}</div>)}
+              <div className="zw-drawer__cell__body">{children}</div>
             </div>
           </div>
         </Popup>

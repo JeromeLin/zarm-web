@@ -6,7 +6,6 @@ export default interface PropsType {
   handlePortalUnmount?: () => void;
   direction?: 'top' | 'bottom' | 'left' | 'right';
   closable?: boolean;
-  // animationDuration?: number;
   width?: number | string;
   height?: number | string;
   style?: CSSProperties;
@@ -18,4 +17,8 @@ export default interface PropsType {
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
+}
+
+export interface StateType {
+  layer: number;
 }
