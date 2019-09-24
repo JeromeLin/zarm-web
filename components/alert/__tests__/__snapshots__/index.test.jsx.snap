@@ -66,8 +66,21 @@ exports[`Alert renders basic Alert correctly 1`] = `
                         class="ui-alert"
                       >
                         <i
-                          class="zw-icon zw-icon-warning-round theme-warning"
-                        />
+                          class="zw-icon zw-icon--warning-round zw-icon--warning zw-icon--md"
+                          theme="warning"
+                          type="warning-round"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlink:href="#warning-round"
+                            />
+                          </svg>
+                        </i>
                         <span>
                           这是一个警告框
                         </span>
@@ -133,18 +146,45 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       className="ui-alert"
                     >
                       <Icon
-                        className=""
-                        onClick={[Function]}
                         prefixCls="zw-icon"
-                        style={Object {}}
+                        size="md"
                         theme="warning"
                         type="warning-round"
+                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="zw-icon zw-icon-warning-round theme-warning"
-                          onClick={[Function]}
-                          style={Object {}}
-                        />
+                        <Iconfont
+                          className="zw-icon zw-icon--warning-round zw-icon--warning zw-icon--md"
+                          size="md"
+                          theme="warning"
+                          type="warning-round"
+                        >
+                          <Icon
+                            className="zw-icon zw-icon--warning-round zw-icon--warning zw-icon--md"
+                            prefixCls="zw-icon"
+                            size="md"
+                            theme="warning"
+                            type="warning-round"
+                            viewBox="0 0 32 32"
+                          >
+                            <i
+                              className="zw-icon zw-icon--warning-round zw-icon--warning zw-icon--md"
+                              size="md"
+                              theme="warning"
+                              type="warning-round"
+                            >
+                              <svg
+                                fill="currentColor"
+                                height="1em"
+                                viewBox="0 0 32 32"
+                                width="1em"
+                              >
+                                <use
+                                  xlinkHref="#warning-round"
+                                />
+                              </svg>
+                            </i>
+                          </Icon>
+                        </Iconfont>
                       </Icon>
                       <span>
                         这是一个警告框
