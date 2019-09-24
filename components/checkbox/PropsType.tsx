@@ -8,6 +8,10 @@ export interface GroupProps {
   onChange: (checkedValue: Array<string | number | boolean>) => void;
 }
 
+interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
+
 export default interface PropsType {
   prefixCls?: string;
   value?: string | number;
@@ -19,5 +23,5 @@ export default interface PropsType {
   disabled?: boolean;
   isDisabled?: boolean;
   indeterminate?: boolean;
-  onChange: (event: React.SyntheticEvent<HTMLFormElement>) => void;
+  onChange: (event: HTMLInputEvent) => void;
 }
