@@ -1,6 +1,7 @@
 @import '../../style/themes/variable';
+@import '../../style/core/index';
 
-.ui-switch {
+@include b(switch){
   position: relative;
   display: inline-block;
   width: 48px;
@@ -27,7 +28,7 @@
     transition: left .3s cubic-bezier(.78, .14, .15, .86);
   }
 
-  &.checked {
+  @include m(checked) {
     border: 1px solid var(--theme-primary);
     background-color: var(--theme-primary);
 
@@ -35,25 +36,26 @@
       left: 28px;
     }
 
-    .ui-switch-inner {
+    @include e(inner){
       left: 6px;
     }
   }
 
-  &.disabled {
+  @include m(disabled) {
     cursor: not-allowed;
     border: 1px solid #dedede;
     background-color: #dedede;
     &:after {
       cursor: not-allowed;
     }
-    &.checked {
+    @include m(checked) {
+      background-color: var(--theme-primary);
       border: 1px solid var(--background-primary-disabled);
-      background: var(--background-primary-disabled);
+      opacity: var(--opacity-disabled);
     }
   }
 
-  &.size-sm {
+  @include m(sm){
     height: 11px;
     line-height: 8px;
     width: 28px;
@@ -65,23 +67,23 @@
       left: 1;
     }
 
-    &.checked {
+    @include m(checked) {
       &:after {
         left: 16px;
       }
 
-      .ui-switch-inner {
+      @include e(inner) {
         left: 3px;
       }
     }
 
-    .ui-switch-inner {
+    @include e(inner) {
       left: 13px;
       font-size: 10px;
     }
   }
 
-  .ui-switch-inner {
+  @include e(inner) {
     position: absolute;
     left: 24px;
     color: #fff;

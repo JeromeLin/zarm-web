@@ -4,7 +4,7 @@ import PropsType from './PropsType';
 
 class Switch extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'ui-switch',
+    prefixCls: 'zw-switch',
     size: null,
     value: false,
     defaultValue: false,
@@ -44,11 +44,10 @@ class Switch extends Component<PropsType, any> {
     const { value } = this.state;
     const disabled = 'disabled' in this.props || isDisabled;
 
-    const cls = classnames({
-      [prefixCls!]: true,
-      checked: value,
-      disabled,
-      [`size-${size}`]: !!size,
+    const cls = classnames(prefixCls, '', {
+      [`${prefixCls}--checked`]: value,
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--${'sm'}`]: size === 'sm',
     });
 
     return (
@@ -57,7 +56,7 @@ class Switch extends Component<PropsType, any> {
         onClick={() => !disabled && this._onClick()}
         style={style}
       >
-        <span className={`${prefixCls}-inner`}>
+        <span className={`${prefixCls}__inner`}>
           {value ? isCheckedText : unCheckedText}
         </span>
       </span>
