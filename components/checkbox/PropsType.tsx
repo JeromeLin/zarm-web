@@ -1,27 +1,23 @@
+import { HTMLAttributes, CSSProperties } from 'react';
+
 export interface GroupProps {
   prefixCls?: string;
   value?: string[] | number[];
   defaultValue?: string[] | number[];
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   disabled?: boolean;
   onChange: (checkedValue: Array<string | number | boolean>) => void;
 }
 
-interface HTMLInputEvent extends Event {
-  target: HTMLInputElement & EventTarget;
-}
-
-export default interface PropsType {
+export default interface PropsType extends HTMLAttributes<HTMLInputElement> {
   prefixCls?: string;
   value?: string | number;
   checked?: boolean;
   defaultChecked?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
   id?: string;
   disabled?: boolean;
   isDisabled?: boolean;
   indeterminate?: boolean;
-  onChange: (event: HTMLInputEvent) => void;
+  onChange: (event) => void;
 }
