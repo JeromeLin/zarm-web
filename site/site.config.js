@@ -171,6 +171,10 @@ module.exports = {
         name: 'Dropdown',
         module: () => import('@/components/dropdown/dropdown.md'),
       },
+      {
+        name: 'Drawer',
+        module: () => import('@/components/drawer/drawer.md'),
+      },
     ],
     others: [
       {
