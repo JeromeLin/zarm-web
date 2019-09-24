@@ -24,7 +24,7 @@ class Drawer extends PureComponent<PropsType, any> {
     layer: 1,
   };
 
-  parentDrawer: Drawer | null;
+  private parentDrawer: Drawer | null;
 
   componentDidMount() {
     const { visible, direction } = this.props;
@@ -45,7 +45,7 @@ class Drawer extends PureComponent<PropsType, any> {
     }
   }
 
-  CalculationLayer = (parentDrawer) => {
+  private CalculationLayer = (parentDrawer) => {
     let layer = 0;
     function layers(drawer) {
       if (drawer) {
@@ -61,7 +61,7 @@ class Drawer extends PureComponent<PropsType, any> {
     });
   };
 
-  renderProvider = (value: Drawer) => {
+  private renderProvider = (value: Drawer) => {
     const {
       width,
       height,
