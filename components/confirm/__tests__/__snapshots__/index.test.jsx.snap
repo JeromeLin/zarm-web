@@ -69,8 +69,21 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         class="ui-modal-close"
                       >
                         <i
-                          class="zw-icon zw-icon-wrong theme-default"
-                        />
+                          class="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                          theme="default"
+                          type="wrong"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlink:href="#wrong"
+                            />
+                          </svg>
+                        </i>
                       </div>
                     </div>
                     <div
@@ -81,8 +94,21 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         class="ui-confirm"
                       >
                         <i
-                          class="zw-icon zw-icon-question-round theme-default"
-                        />
+                          class="zw-icon zw-icon--question-round zw-icon--default zw-icon--md"
+                          theme="default"
+                          type="question-round"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlink:href="#question-round"
+                            />
+                          </svg>
+                        </i>
                         <span>
                           确认删除吗？
                         </span>
@@ -163,18 +189,45 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       onClick={[Function]}
                     >
                       <Icon
-                        className=""
-                        onClick={[Function]}
                         prefixCls="zw-icon"
-                        style={Object {}}
+                        size="md"
                         theme="default"
                         type="wrong"
+                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="zw-icon zw-icon-wrong theme-default"
-                          onClick={[Function]}
-                          style={Object {}}
-                        />
+                        <Iconfont
+                          className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                          size="md"
+                          theme="default"
+                          type="wrong"
+                        >
+                          <Icon
+                            className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                            prefixCls="zw-icon"
+                            size="md"
+                            theme="default"
+                            type="wrong"
+                            viewBox="0 0 32 32"
+                          >
+                            <i
+                              className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                              size="md"
+                              theme="default"
+                              type="wrong"
+                            >
+                              <svg
+                                fill="currentColor"
+                                height="1em"
+                                viewBox="0 0 32 32"
+                                width="1em"
+                              >
+                                <use
+                                  xlinkHref="#wrong"
+                                />
+                              </svg>
+                            </i>
+                          </Icon>
+                        </Iconfont>
                       </Icon>
                     </div>
                   </div>
@@ -196,18 +249,45 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       className="ui-confirm"
                     >
                       <Icon
-                        className=""
-                        onClick={[Function]}
                         prefixCls="zw-icon"
-                        style={Object {}}
+                        size="md"
                         theme="default"
                         type="question-round"
+                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="zw-icon zw-icon-question-round theme-default"
-                          onClick={[Function]}
-                          style={Object {}}
-                        />
+                        <Iconfont
+                          className="zw-icon zw-icon--question-round zw-icon--default zw-icon--md"
+                          size="md"
+                          theme="default"
+                          type="question-round"
+                        >
+                          <Icon
+                            className="zw-icon zw-icon--question-round zw-icon--default zw-icon--md"
+                            prefixCls="zw-icon"
+                            size="md"
+                            theme="default"
+                            type="question-round"
+                            viewBox="0 0 32 32"
+                          >
+                            <i
+                              className="zw-icon zw-icon--question-round zw-icon--default zw-icon--md"
+                              size="md"
+                              theme="default"
+                              type="question-round"
+                            >
+                              <svg
+                                fill="currentColor"
+                                height="1em"
+                                viewBox="0 0 32 32"
+                                width="1em"
+                              >
+                                <use
+                                  xlinkHref="#question-round"
+                                />
+                              </svg>
+                            </i>
+                          </Icon>
+                        </Iconfont>
                       </Icon>
                       <span>
                         确认删除吗？
