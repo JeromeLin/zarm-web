@@ -14,11 +14,10 @@ class Pagination extends Component<PropsType, any> {
     defaultValue: 1,
     total: 0,
     pageSize: 10,
-    pageSizeSource: [10, 20, 30, 40, 50],
+    pageSizeOptions: [10, 20, 30, 40, 50],
     showTotal: false,
-    showJumper: false,
-    showPageSizeSelector: false,
-    onPageChange: noop,
+    showQuickJumper: false,
+    showPageSizeChanger: false,
     onPageSizeChange: noop,
     onChange: noop,
   };
@@ -108,7 +107,7 @@ class Pagination extends Component<PropsType, any> {
       <li
         key={pageCount}
         title={`${value}/${pageCount}`}
-        className={`${prefixCls}-simple-pager`}
+        className={`${prefixCls}--simple-pager`}
       >
         <input
           type="text"
@@ -145,6 +144,7 @@ class Pagination extends Component<PropsType, any> {
     const { prefixCls, locale } = this.props;
     return (
       <li
+        key="lastPager"
         title={locale!.last_page}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(pageSize)}
@@ -164,7 +164,7 @@ class Pagination extends Component<PropsType, any> {
         className={classnames({
           [`${prefixCls}-item`]: true,
           [`${prefixCls}-prev`]: true,
-          [`${prefixCls}-disabled`]: Number(page) === 1,
+          [`${prefixCls}-item--disabled`]: Number(page) === 1,
         })}
         onClick={() => page > 1 && this._onPagerClick(page - 1)}
       >
@@ -183,7 +183,7 @@ class Pagination extends Component<PropsType, any> {
         className={classnames({
           [`${prefixCls}-item`]: true,
           [`${prefixCls}-next`]: true,
-          [`${prefixCls}-disabled`]: Number(page) === pageSize,
+          [`${prefixCls}-item--disabled`]: Number(page) === pageSize,
         })}
         onClick={() => page < pageSize && this._onPagerClick(page + 1)}
       >
@@ -198,7 +198,7 @@ class Pagination extends Component<PropsType, any> {
       <li
         key="jump-prev"
         title={locale!.prev_5_page}
-        className={`${prefixCls}-item ${prefixCls}-item-jump-prev`}
+        className={`${prefixCls}-item ${prefixCls}-item--ellipsis`}
         onClick={() => this._onPagerClick(page - 5)}
       />
     );
@@ -210,7 +210,7 @@ class Pagination extends Component<PropsType, any> {
       <li
         key="jump-next"
         title={locale!.next_5_page}
-        className={`${prefixCls}-item ${prefixCls}-item-jump-next`}
+        className={`${prefixCls}-item ${prefixCls}-item--ellipsis`}
         onClick={() => this._onPagerClick(page + 5)}
       />
     );
@@ -250,16 +250,13 @@ class Pagination extends Component<PropsType, any> {
   };
 
   _onPagerClick(value: number) {
-    const { onPageChange, onChange, pageSize } = this.props;
+    const { onChange, pageSize } = this.props;
 
     this.setState({
       value,
       currentInputValue: value,
     });
-    if (onPageChange !== noop) {
-      onPageChange(value, pageSize);
-      return;
-    }
+
     onChange({
       currentPage: value,
       pageSize,
@@ -275,7 +272,7 @@ class Pagination extends Component<PropsType, any> {
         // tslint:disable-next-line:jsx-no-multiline-js
         className={classnames({
           [`${prefixCls}-item`]: true,
-          [`${prefixCls}-item-active`]: page === i,
+          [`${prefixCls}-item--active`]: page === i,
         })}
         onClick={() => this._onPagerClick(i)}
       >
@@ -326,17 +323,17 @@ class Pagination extends Component<PropsType, any> {
       locale,
       pageSize,
     } = this.props;
-    let { pageSizeSource } = this.props;
-    let defaultPageSize = pageSizeSource && pageSizeSource.length > 0 && pageSizeSource[0];
+    let { pageSizeOptions } = this.props;
+    let defaultPageSize = pageSizeOptions && pageSizeOptions.length > 0 && pageSizeOptions[0];
 
-    if (!pageSizeSource) {
-      pageSizeSource = [10, 20, 30, 40, 50];
+    if (!pageSizeOptions) {
+      pageSizeOptions = [10, 20, 30, 40, 50];
       defaultPageSize = 10;
     }
     return (
       <li className={`${prefixCls}-options`}>
         <Select
-          className={`${prefixCls}-options-size-changer`}
+          className={`${prefixCls}-options--size__changer`}
           defaultValue={defaultPageSize}
           value={pageSize === 10 ? defaultPageSize : pageSize}
           onChange={({ value }: any) => {
@@ -353,7 +350,7 @@ class Pagination extends Component<PropsType, any> {
             });
           }}
         >
-          {pageSizeSource.map((value) => {
+          {pageSizeOptions.map((value) => {
             return (
               <Select.Option value={value} key={value}>
                 {format(locale!.pagesize, { value })}
@@ -370,7 +367,7 @@ class Pagination extends Component<PropsType, any> {
 
     return (
       <li className={`${prefixCls}-options`}>
-        <div className={`${prefixCls}-options-quick-jumper`}>
+        <div className={`${prefixCls}-options--quick__jumper`}>
           {locale!.goto}
           <input type="text" onKeyDown={this.handleJumpKeyDown} />
           {locale!.pageClassifier}
@@ -384,8 +381,8 @@ class Pagination extends Component<PropsType, any> {
       prefixCls,
       className,
       showTotal,
-      showJumper,
-      showPageSizeSelector,
+      showQuickJumper,
+      showPageSizeChanger,
       simple,
       size,
       style,
@@ -393,8 +390,8 @@ class Pagination extends Component<PropsType, any> {
 
     const cls = classnames({
       [prefixCls!]: true,
-      [`${prefixCls}-${size}`]: !!size,
-      [`${prefixCls}-simple`]: simple,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--simple`]: simple,
       [className!]: !!className,
     });
 
@@ -402,8 +399,8 @@ class Pagination extends Component<PropsType, any> {
       <ul className={cls} style={style}>
         {showTotal && this.renderTotal()}
         {simple ? this.renderSimple() : this.getPagerList()}
-        {showPageSizeSelector && this.renderPageSizeSelector()}
-        {showJumper && this.renderJumper()}
+        {showPageSizeChanger && this.renderPageSizeSelector()}
+        {showQuickJumper && this.renderJumper()}
       </ul>
     );
   }

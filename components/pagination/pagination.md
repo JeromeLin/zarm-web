@@ -36,14 +36,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 显示跳转
 
-添加`showJumper`属性即可。
+添加`showQuickJumper`属性即可。
 
 ```jsx
 import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
-    return <Pagination total={100} showJumper />;
+    return <Pagination total={100} showQuickJumper />;
   }
 }
 
@@ -52,14 +52,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 显示每页条数选择器
 
-添加`showPageSizeSelector`属性即可。
+添加`showPageSizeChanger`属性即可。
 
 ```jsx
 import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
-    return <Pagination total={100} showPageSizeSelector />;
+    return <Pagination total={100} showPageSizeChanger />;
   }
 }
 
@@ -68,7 +68,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 指定每页可以显示多少条
 
-添加`pageSizeSource`属性即可。
+添加`pageSizeOptions`属性即可。
 
 ```jsx
 import { Pagination } from 'zarm-web';
@@ -78,8 +78,8 @@ class Demo extends React.Component {
     return (
       <Pagination
         total={100}
-        pageSizeSource={[50, 100, 150]}
-        showPageSizeSelector
+        pageSizeOptions={[50, 100, 150]}
+        showPageSizeChanger
       />
     );
   }
@@ -97,7 +97,7 @@ import { Pagination } from 'zarm-web';
 
 class Demo extends React.Component {
   render() {
-    return <Pagination total={100} showTotal showJumper size="small" />;
+    return <Pagination total={100} showTotal showQuickJumper size="sm" />;
   }
 }
 
@@ -120,7 +120,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 事件回调
 
-通过`onPageChange`监听翻页和跳转，通过`onPageSizeChange`监听每页条数变更事件。
+通过`onChange`监听翻页和跳转，通过`onPageSizeChange`监听每页条数变更事件。
 
 ```jsx
 import { Pagination } from 'zarm-web';
@@ -138,8 +138,8 @@ class Demo extends React.Component {
       <Pagination
         total={100}
         pageSize={pageSize}
-        showPageSizeSelector
-        onPageChange={page => {
+        showPageSizeChanger
+        onChange={page => {
           alert('翻页到：' + page);
         }}
         onPageSizeChange={pageSize => {
@@ -162,16 +162,17 @@ ReactDOM.render(<Demo />, mountNode);
 <Pagination onChange="{onChange}" total="{50}" />
 ```
 
-| 参数                 | 说明                                         | 类型                     | 可选值 | 默认值           |
-| -------------------- | -------------------------------------------- | ------------------------ | ------ | ---------------- |
-| value                | 当前页数                                     | number                   | -      | -                |
-| defaultValue         | 默认的当前页数                               | number                   | -      | 1                |
-| total                | 数据总数                                     | number                   | —      | 0                |
-| pageSize             | 每页条数                                     | number                   | —      | 10               |
-| pageSizeSource       | 指定每页可以显示多少条                       | number[]                 | -      | [10,20,30,40,50] |
-| showTotal            | 用于显示数据总量                             | boolean                  | —      | false            |
-| showJumper           | 是否可以快速跳转至某页                       | boolean                  | —      | false            |
-| showPageSizeSelector | 是否展示每页条数选择器                       | boolean                  | —      | false            |
-| onChange             | 页码改变的回调，参数是改变后的页码及每页条数 | Function(page, pageSize) | —      | noop             |
-| onPageSizeChange     | pageSize 变化的回调                          | Function(page, pageSize) | —      | noop             |
-| onPageChange         | 翻页或跳转触发的事件                         | page                     | —      | noop             |
+| 参数                | 说明                       | 类型                        | 默认值           |
+| ------------------- | -------------------------- | --------------------------- | ---------------- |
+| value               | 当前页                     | number                      | -                |
+| defaultValue        | 默认页                     | number                      | 1                |
+| simple              | 是否简洁分页               | boolean                     | false            |
+| size                | 分页器尺寸                 | 'md' or 'sm'                | md               |
+| total               | 数据总数                   | number                      | 0                |
+| pageSize            | 每页条数                   | number                      | 10               |
+| pageSizeOptions     | 每页条数下拉框的选项       | number[]                    | [10,20,30,40,50] |
+| showTotal           | 是否展示总数               | boolean                     | false            |
+| showQuickJumper     | 是否展示跳转               | boolean                     | false            |
+| showPageSizeChanger | 是否展示每页条数选择器     | boolean                     | false            |
+| onPageSizeChange    | 每页展示条数变更触发的事件 | (pageSize?: number) => void |                  |
+| onChange            | 页面切换和跳转时触发的事件 | (page?: number) => void     |                  |
