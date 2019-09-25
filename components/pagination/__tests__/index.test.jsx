@@ -39,8 +39,6 @@ describe('Pagination', () => {
       <div>
         <Pagination
           total={100}
-          radius
-          bordered
           addonBefore="addonBefore"
           addonAfter="addonAfter"
         />
@@ -58,7 +56,10 @@ describe('Pagination', () => {
       </div>,
     );
 
-    wrapper.find('.ui-pagination-item').at(2).simulate('click');
+    wrapper
+      .find('.zw-pagination-item')
+      .at(2)
+      .simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(2);
   });
@@ -71,7 +72,7 @@ describe('Pagination', () => {
       </div>,
     );
 
-    wrapper.find('.ui-pagination-item-prev').simulate('click');
+    wrapper.find('.zw-pagination-item-prev').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(5);
   });
@@ -84,7 +85,7 @@ describe('Pagination', () => {
       </div>,
     );
 
-    wrapper.find('.ui-pagination-item-next').simulate('click');
+    wrapper.find('.zw-pagination-next').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(6);
   });
@@ -97,7 +98,7 @@ describe('Pagination', () => {
       </div>,
     );
 
-    wrapper.find('.ui-pagination-item-jump-prev').simulate('click');
+    wrapper.find('.zw-pagination-item-jump-prev').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(1);
   });
@@ -110,7 +111,7 @@ describe('Pagination', () => {
       </div>,
     );
 
-    wrapper.find('.ui-pagination-item-jump-next').simulate('click');
+    wrapper.find('.zw-pagination-item-jump-next').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(6);
   });
@@ -123,21 +124,36 @@ describe('Pagination', () => {
       </div>,
     );
 
-    wrapper.find('.ui-pagination-jumper input').simulate('keydown', {
-      keyCode: 13,
-      target: {
-        value: 6,
-      },
-    });
+    wrapper
+      .find('.zw-pagination-options-quick-jumper input')
+      .simulate('keydown', {
+        keyCode: 13,
+        target: {
+          value: 6,
+        },
+      });
     expect(onChange).toHaveBeenCalledWith(6);
   });
 
   it('behaves correctly when receiving new value', () => {
-    const wrapper = mount(
-      <Pagination showJumper total={100} value={2} />,
-    );
+    const wrapper = mount(<Pagination showJumper total={100} value={2} />);
 
     wrapper.setProps({ value: 1 });
-    expect(wrapper.find('.ui-pagination-item').at(1).hasClass('ui-pagination-item-active')).toBeTruthy();
+    expect(
+      wrapper
+        .find('.zw-pagination-item')
+        .at(1)
+        .hasClass('zw-pagination-item-active'),
+    ).toBeTruthy();
+  });
+
+  it('renders size correctly', () => {
+    const wrapper = render(
+      <div>
+        <Pagination total={100} size="small" />
+      </div>,
+    );
+    expect(wrapper.find('.zw-pagination-small').length).toEqual(1);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

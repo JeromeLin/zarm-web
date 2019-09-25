@@ -8,15 +8,14 @@ export default interface PropsType {
   showTotal?: boolean;
   showJumper?: boolean;
   showPageSizeSelector?: boolean;
+  simple?: boolean;
+  size?: string;
   className?: string;
   style?: object;
-  shape: 'rect' | 'radius';
-  bordered?: boolean;
-  isBordered?: boolean;
   addonBefore?: React.ReactNode;
   addonAfter?: React.ReactNode;
-  onPageChange: (value: number) => void;
-  onPageSizeChange: (value: number) => void;
+  onPageChange: (value: number, pageSize: number) => void;
+  onPageSizeChange: (value: number, pageSize: number) => void;
   locale?: { [propName: string]: any };
   onChange: (pageInfo: { currentPage: number; pageSize: number }) => void;
 }
