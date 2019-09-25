@@ -76,20 +76,20 @@ class Demo extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Radio.Group  style={{'marginRight':'15px'}} ghost>
+      <div className="r-con">
+        <Radio.Group ghost shape='rect'>
           <Radio.Button value="选项一">选项一</Radio.Button>
           <Radio.Button value="选项二">选项二</Radio.Button>
           <Radio.Button value="选项三">选项三</Radio.Button>
         </Radio.Group>
-        <Radio.Group  style={{'marginRight':'15px'}} ghost>
+        <Radio.Group ghost>
           <Radio.Button value="选项一">选项一</Radio.Button>
           <Radio.Button disabled value="选项二">选项二</Radio.Button>
           <Radio.Button value="选项三">选项三</Radio.Button>
         </Radio.Group>
         <Radio.Group >
           <Radio.Button value="选项一">选项一</Radio.Button>
-          <Radio.Button value="选项二">选项二</Radio.Button>
+          <Radio.Button disabled value="选项二">选项二</Radio.Button>
           <Radio.Button value="选项三">选项三</Radio.Button>
         </Radio.Group>
       </div>

@@ -127,8 +127,21 @@
   --button-danger-ghost-active-color: var(--theme-danger-dark);
 
   // Radio
-  --button-radio-btn-disabled-color: --color-text-caption;
-  --button-radio-btn-disabled-bg: rgba(250, 250, 250, 1);
+  --radio-height-sm: 24px;
+  --radio-height-md: 32px;
+  --radio-height-lg: 40px;
+  --radio-padding-v-sm: 10px;
+  --radio-padding-v-md: 16px;
+  --radio-padding-v-lg: 16px;
+  --radio-color: var(--color-text-caption);
+  --radio-default-border: var(--theme-default);
+  --radio-default-background: var(--color-white);
+  --radio-disabled-color: #c2c2c2;
+  --radio-disabled-border: #e6e6e6;
+  --radio-disabled-background: #fafafa;
+  --radio-checked-color: var(--color-white);
+  --radio-checked-border: var(--theme-primary);
+  --radio-checked-background: var(--theme-primary);
 
   // Menu
   --menu-color: #343434;

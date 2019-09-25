@@ -1,72 +1,92 @@
-import React, { Component, ReactElement } from 'react';
+import React, { Component, ReactElement, ReactNode, isValidElement, cloneElement } from 'react';
 import classnames from 'classnames';
-import Radio from './Radio';
 import { GroupProps } from './PropsType';
+
+const getCheckedValue = (children: ReactNode) => {
+  let val = null;
+  React.Children.forEach(children, (element: ReactNode) => {
+    if (isValidElement(element)
+      && element.props
+      && element.props.checked
+    ) {
+      const { props: { value } } = element;
+      val = value;
+    }
+  });
+  return val;
+};
+
+const getValue = (props: RadioGroup['props']) => {
+  let val;
+  const { value, defaultValue, children } = props;
+  if ('value' in props) {
+    val = value;
+  } else if ('defaultValue' in props) {
+    val = defaultValue;
+  } else {
+    val = getCheckedValue(children);
+  }
+  return val;
+};
+
+export interface RadioGroupStates {
+  value: string | number | null;
+}
 
 class RadioGroup extends Component<GroupProps> {
   static defaultProps = {
     prefixCls: 'zw-radio-group',
-    onChange: () => {},
+    size: 'md',
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // eslint-disable-next-line react/no-unused-state
-      value:
-        props.value
-        || props.defaultValue
-        || RadioGroup.getCheckedValue(props.children),
-    };
-  }
+  state: RadioGroupStates = {
+    value: getValue(this.props),
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || RadioGroup.getCheckedValue(nextProps.children)) {
-      this.setState({
-        // eslint-disable-next-line react/no-unused-state
-        value: nextProps.value || RadioGroup.getCheckedValue(nextProps.children),
-      });
+  static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
+    if ('value' in nextProps || getCheckedValue(nextProps.children)) {
+      return {
+        value: nextProps.value || getCheckedValue(nextProps.children),
+      };
     }
+
+    return null;
   }
 
   onRadioChange(e) {
     const { onChange } = this.props;
     this.setState({
-      // eslint-disable-next-line react/no-unused-state
       value: e.target.value,
     });
-    onChange(e);
-  }
-
-  static getCheckedValue(children) {
-    let checkedValue = null;
-    React.Children.forEach(children, (radio) => {
-      if ((radio as ReactElement<any>).props && (radio as ReactElement<any>).props.checked) {
-        checkedValue = (radio as ReactElement<any>).props.value;
-      }
-    });
-    return checkedValue;
+    onChange && onChange(e);
   }
 
   render() {
-    const { prefixCls, size, children, block, style, ghost } = this.props;
-    const { value } = this.state as { value?: string };
+    const { prefixCls, size, children, block, ghost, type, shape, disabled, ...others } = this.props;
+    const { value } = this.state;
+
     const cls = classnames(prefixCls, {
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--block`]: !!block,
       [`${prefixCls}--ghost`]: !!ghost,
     });
 
-    const childrenNode = React.Children.map(children, radio => (
-      <Radio
-        {...(radio as ReactElement<any>).props}
-        onChange={e => this.onRadioChange(e)}
-        // tslint:disable-next-line:triple-equals
-        checked={value === (radio as ReactElement<any>).props.value}
-      />
-    ));
+    const childrenNode = React.Children.map(children, (element: ReactElement, index) => {
+      return cloneElement(element, {
+        ...others,
+        key: index,
+        type,
+        shape,
+        block: block || element.props.block,
+        disabled: disabled || element.props.disabled,
+        checked: value === element.props.value || Number(value) === Number(element.props.value),
+        onChange: (e) => {
+          this.onRadioChange(e);
+        },
+      });
+    });
 
-    return <div className={cls} style={style}>{childrenNode}</div>;
+    return <div className={cls}>{childrenNode}</div>;
   }
 }
 

@@ -2,10 +2,10 @@
 
 exports[`Radio renders Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group"
+  class="zw-radio-group zw-radio-group--md"
 >
   <label
-    class="zw-radio is-checked"
+    class="zw-radio zw-radio--checked"
   >
     <input
       checked=""
@@ -24,7 +24,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     <input
       class="zw-radio__input"
       type="radio"
-      value="b"
+      value="a"
     />
     <span
       class="zw-radio__inner"
@@ -37,7 +37,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     <input
       class="zw-radio__input"
       type="radio"
-      value="c"
+      value="a"
     />
     <span
       class="zw-radio__inner"
@@ -50,7 +50,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     <input
       class="zw-radio__input"
       type="radio"
-      value="d"
+      value="a"
     />
     <span
       class="zw-radio__inner"
@@ -63,7 +63,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
 exports[`Radio renders checked Radio correctly 1`] = `
 <div>
   <label
-    class="zw-radio is-checked"
+    class="zw-radio zw-radio--checked"
   >
     <input
       checked=""
@@ -81,7 +81,7 @@ exports[`Radio renders checked Radio correctly 1`] = `
 exports[`Radio renders disabled Radio correctly 1`] = `
 <div>
   <label
-    class="zw-radio is-disabled"
+    class="zw-radio zw-radio--disabled"
   >
     <input
       class="zw-radio__input"
