@@ -7,22 +7,63 @@
     margin-right: 16px;
   }
 }
-@mixin checkbox-disabled {
-  color: rgba(0, 0, 0, 0.25);
-  cursor: not-allowed;
-  @include b(checkbox__inner) {
-    border-color: #d9d9d9;
-    background-color: #f3f3f3;
-    cursor: not-allowed;
 
-    &:after {
-      border-color: #ccc;
+@include b(checkbox) {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+
+  /* 禁用状态 */
+  @include m(wrapper--disabled) {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+  }
+  @include m(disabled) {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+    @include e(inner) {
+      border-color: #d9d9d9;
+      background-color: #f3f3f3;
+      cursor: not-allowed;
+
+      &:after {
+        border-color: #ccc;
+      }
     }
   }
-}
-/* 选中状态 */
-@include b(checkbox-checked) {
-  @include b(checkbox) {
+
+  /* 未全部选中状态 */
+  @include m(indeterminate) {
+    @include e(inner) {
+      border-color: #bcbcbc;
+      background-color: var(--color-white);
+
+      &:after {
+        transform: rotate(90deg) translate(2px, 1px);
+        width: 6px;
+        height: 6px;
+        border: none;
+        background-color: var(--theme-primary);
+      }
+    }
+  }
+
+  /* hover状态 */
+  @include m(wrapper) {
+    &:not(&--disabled):hover {
+      cursor: pointer;
+      @include e(inner) {
+        border-color: var(--theme-primary);
+      }
+    }
+  }
+
+  /* 选中状态 */
+  @include m(checked) {
     @include e(inner) {
       border-color: var(--theme-primary);
       background-color: var(--theme-primary);
@@ -33,52 +74,8 @@
       }
     }
   }
-}
 
-/* 未全部选中状态 */
-@include b(checkbox-indeterminate) {
-  @include b(checkbox__inner) {
-    border-color: #bcbcbc;
-    background-color: var(--color-white);
-
-    &:after {
-      transform: rotate(90deg) translate(2px, 1px);
-      width: 6px;
-      height: 6px;
-      border: none;
-      background-color: var(--theme-primary);
-    }
-  }
-}
-
-/* 禁用状态 */
-@include b(checkbox-wrapper-disabled) {
-  @include checkbox-disabled;
-}
-@include b(checkbox-disabled) {
-  @include checkbox-disabled;
-}
-
-/* hover状态 */
-@include b(checkbox-wrapper) {
-  &:not(&-disabled):hover {
-    cursor: pointer;
-    @include b(checkbox__inner) {
-      border-color: var(--theme-primary);
-    }
-  }
-}
-
-/* 一般状态 */
-@include b(checkbox) {
-  display: inline-block;
-  position: relative;
-  line-height: 1;
-  vertical-align: middle;
-  white-space: nowrap;
-  outline: none;
-  cursor: pointer;
-
+  /* 一般状态 */
   @include e(inner) {
     position: relative;
     top: 0;
