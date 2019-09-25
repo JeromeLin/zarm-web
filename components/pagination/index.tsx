@@ -145,6 +145,7 @@ class Pagination extends Component<PropsType, any> {
     const { prefixCls, locale } = this.props;
     return (
       <li
+        key="lastPager"
         title={locale!.last_page}
         className={`${prefixCls}-item`}
         onClick={() => this._onPagerClick(pageSize)}
