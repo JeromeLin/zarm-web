@@ -37,7 +37,7 @@
 @include b(checkbox-indeterminate) {
   @include b(checkbox__inner) {
     border-color: #bcbcbc;
-    background-color: var(--checkbox-color-white);
+    background-color: var(--color-white);
 
     &:after {
       transform: rotate(90deg) translate(2px, 1px);
@@ -82,8 +82,8 @@
     top: 0;
     left: 0;
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: var(--checkbox-inner-w);
+    height: var(--checkbox-inner-h);
     border: 1px solid rgba(188, 188, 188, 1);
     border-radius: 2px;
     background-color: #fff;
