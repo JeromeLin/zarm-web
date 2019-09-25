@@ -22,13 +22,15 @@
 }
 /* 选中状态 */
 @include b(checkbox-checked) {
-  @include b(checkbox__inner) {
-    border-color: var(--theme-primary);
-    background-color: var(--theme-primary);
+  @include b(checkbox) {
+    @include e(inner) {
+      border-color: var(--theme-primary);
+      background-color: var(--theme-primary);
 
-    &:after {
-      transform: rotate(45deg) scale(1);
-      transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+      &:after {
+        transform: rotate(45deg) scale(1);
+        transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+      }
     }
   }
 }

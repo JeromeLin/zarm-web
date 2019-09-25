@@ -52,12 +52,10 @@ class Checkbox extends Component<PropsType, any> {
       disabled,
     } = this.props;
     const defualtDisabled = disabled || isDisabled;
-    const checkboxWrapperClass = classnames(className, {
-      [`${prefixCls}-wrapper`]: true,
+    const checkboxWrapperClass = classnames(className, `${prefixCls}-wrapper`, {
       [`${prefixCls}-wrapper-disabled`]: defualtDisabled,
     });
-    const checkboxClass = classnames(className, {
-      [`${prefixCls}`]: true,
+    const checkboxClass = classnames(className, `${prefixCls}`, {
       [`${prefixCls}-checked`]: checked,
       [`${prefixCls}-disabled`]: defualtDisabled,
       [`${prefixCls}-indeterminate`]: indeterminate,
