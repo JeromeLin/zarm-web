@@ -61,8 +61,7 @@ class Radio extends Component<RadioProps, any> {
     const { checked } = this.state;
 
 
-    const cls = classnames(className, {
-      [`${prefixCls}`]: true,
+    const cls = classnames(className, prefixCls, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--${shape}`]: shape,

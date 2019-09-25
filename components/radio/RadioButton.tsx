@@ -10,6 +10,6 @@ export default class RadioButton extends Component<PropsType> {
   render() {
     const radioProps = { ...this.props };
 
-    return <Radio prefixCls="zw-radio-button" {...radioProps} />;
+    return <Radio {...radioProps} />;
   }
 }
