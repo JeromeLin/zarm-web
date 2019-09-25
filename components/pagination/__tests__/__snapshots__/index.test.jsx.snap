@@ -19,8 +19,21 @@ exports[`Pagination renders Pagination with customized props correctly 1`] = `
           title="上一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-left theme-default"
-          />
+            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-left"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-left"
+              />
+            </svg>
+          </i>
         </li>
         <li
           class="ui-pagination-item ui-pagination-item-active"
@@ -67,8 +80,21 @@ exports[`Pagination renders Pagination with customized props correctly 1`] = `
           title="下一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-right theme-default"
-          />
+            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-right"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-right"
+              />
+            </svg>
+          </i>
         </li>
         <div
           class="ui-pagination-addon-after"
@@ -95,8 +121,21 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
           title="上一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-left theme-default"
-          />
+            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-left"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-left"
+              />
+            </svg>
+          </i>
         </li>
         <li
           class="ui-pagination-item ui-pagination-item-active"
@@ -143,8 +182,21 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
           title="下一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-right theme-default"
-          />
+            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-right"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-right"
+              />
+            </svg>
+          </i>
         </li>
       </ul>
       <div
@@ -187,8 +239,21 @@ exports[`Pagination renders Pagination with total info correctly 1`] = `
           title="上一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-left theme-default"
-          />
+            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-left"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-left"
+              />
+            </svg>
+          </i>
         </li>
         <li
           class="ui-pagination-item ui-pagination-item-active"
@@ -235,8 +300,21 @@ exports[`Pagination renders Pagination with total info correctly 1`] = `
           title="下一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-right theme-default"
-          />
+            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-right"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-right"
+              />
+            </svg>
+          </i>
         </li>
       </ul>
     </div>
@@ -258,8 +336,21 @@ exports[`Pagination renders normal Pagination correctly 1`] = `
           title="上一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-left theme-default"
-          />
+            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-left"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-left"
+              />
+            </svg>
+          </i>
         </li>
         <li
           class="ui-pagination-item ui-pagination-item-active"
@@ -306,8 +397,21 @@ exports[`Pagination renders normal Pagination correctly 1`] = `
           title="下一页"
         >
           <i
-            class="zw-icon zw-icon-arrow-right theme-default"
-          />
+            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+            theme="default"
+            type="arrow-right"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#arrow-right"
+              />
+            </svg>
+          </i>
         </li>
       </ul>
     </div>

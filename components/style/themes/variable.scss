@@ -200,4 +200,10 @@
   --tag-color-blue: 84, 192, 232;
   --tag-color-orange: 236, 145, 49;
   --tag-color-red: 255, 80, 80;
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
 }

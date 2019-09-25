@@ -44,8 +44,8 @@ export default class Notification extends Component<NotificationProps, any> {
         return 'info-round-fill';
       case 'warning':
         return 'warning-round-fill';
-      case 'loading':
-        return 'loading';
+      // case 'loading':
+      //   return 'loading';
       default:
         return '';
     }

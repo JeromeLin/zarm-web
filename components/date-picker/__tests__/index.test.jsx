@@ -7,7 +7,7 @@ import DatePicker from '../index';
 describe('DatePicker', () => {
   it('renders normal date-picker correctly', () => {
     const wrapper = shallow(
-      <DatePicker value="2018/8/5" />
+      <DatePicker value="2018/8/5" />,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -18,7 +18,7 @@ describe('DatePicker', () => {
       <DatePicker
         showTime
         format="yyyy-MM-dd hh:mm:ss"
-      />
+      />,
     );
 
     wrapper.setProps({ value: '2018/8/5 00:00:00' });
@@ -46,7 +46,7 @@ describe('DatePicker', () => {
         showTime
         value={['2018/8/5 00:00:00', '2018/8/6 00:00:00']}
         format="yyyy-MM-dd hh:mm:ss"
-      />
+      />,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();

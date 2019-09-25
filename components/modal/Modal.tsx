@@ -104,7 +104,7 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
 
-  private sleep: boolean = false;
+  private sleep = false;
 
   private modal!: HTMLDivElement | null;
 
@@ -112,7 +112,7 @@ class Modal extends Component<ModalProps, StateIF> {
 
   private modalContent!: HTMLDivElement;
 
-  private appended: boolean = false;
+  private appended = false;
 
   constructor(props: ModalProps) {
     super(props);
