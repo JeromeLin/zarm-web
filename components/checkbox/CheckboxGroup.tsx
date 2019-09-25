@@ -6,7 +6,6 @@ import { GroupProps } from './PropsType';
 class CheckboxGroup extends Component<GroupProps, any> {
   static defaultProps = {
     prefixCls: 'zw-checkbox-group',
-    onChange: () => {},
   };
 
   constructor(props) {

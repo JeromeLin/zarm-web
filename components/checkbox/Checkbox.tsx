@@ -9,7 +9,6 @@ class Checkbox extends Component<PropsType, any> {
     prefixCls: 'zw-checkbox',
     defaultChecked: false,
     indeterminate: false,
-    onChange: () => {},
   };
 
   constructor(props) {
