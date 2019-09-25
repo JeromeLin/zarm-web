@@ -1,17 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading renders hidden Loading correctly 1`] = `
+exports[`Loading renders Loading of different size correctly 1`] = `
 <div
-  class="zw-loading"
->
-  这里是内容
-</div>
-`;
-
-exports[`Loading renders visible Loading correctly 1`] = `
-<div
-  class="zw-loading"
-  style="position:relative"
+  class="zw-loading zw-loading--lg"
 >
   <div
     class="zw-loading__mask"
@@ -19,27 +10,32 @@ exports[`Loading renders visible Loading correctly 1`] = `
     <div
       class="zw-loading__spin"
     >
-      <svg
-        class="zw-loading__svg"
-        viewBox="25 25 50 50"
+      <span
+        class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator__circular--loading"
       >
-        <circle
-          cx="50"
-          cy="50"
-          fill="none"
-          r="20"
-          stroke="#E6E6E6"
-        />
-        <circle
-          class="zw-loading__path"
-          cx="50"
-          cy="50"
-          fill="none"
-          r="20"
-        />
-      </svg>
+        <svg
+          class="zw-activity-indicator__circular--lg"
+          viewBox="31 31 62 62"
+        >
+          <circle
+            cx="62"
+            cy="62"
+            fill="none"
+            r="28.5"
+            style="stroke-width:5"
+          />
+        </svg>
+      </span>
     </div>
   </div>
+  这里是内容
+</div>
+`;
+
+exports[`Loading renders hidden Loading correctly 1`] = `
+<div
+  class="zw-loading zw-loading--md"
+>
   这里是内容
 </div>
 `;

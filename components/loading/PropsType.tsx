@@ -1,12 +1,12 @@
 import { CSSProperties } from 'react';
 
-export type Size = 'xl' | 'lg' | 'sm' | 'xs';
+export type LoadingSize = 'lg' | 'sm' | 'xs';
 export default interface PropsType {
   prefixCls?: string;
   visible?: boolean;
   style?: CSSProperties;
-  text?: React.ReactElement;
-  size?: Size;
+  text?: React.ReactNode;
+  size?: LoadingSize;
   className?: string;
   fullscreen?: boolean;
   indicator?: React.ReactElement;

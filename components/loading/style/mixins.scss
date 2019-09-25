@@ -15,6 +15,7 @@ $PI: 3.141592674;
     height: 100%;
     z-index: var(--zindex-loading);
   }
+
   @include m (fullscreen) {
     position: fixed;
     top: 0;
@@ -38,6 +39,12 @@ $PI: 3.141592674;
 
   @include e(svg) {
     animation: za-rotate360 2s linear infinite;
+
+    circle {
+      stroke-linecap: round;
+      stroke: #00bc71;
+      stroke: var(--theme-primary);
+    }
   }
 
   @include e(path) {
@@ -59,6 +66,7 @@ $PI: 3.141592674;
     user-select: none;
     z-index: $base-zindex-loading + 1;
   }
+
   @include e(text) {
     font-size: 14px;
     margin: 3px 0;

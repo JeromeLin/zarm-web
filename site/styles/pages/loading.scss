@@ -1,9 +1,24 @@
 .loading-page {
   .source {
-    text-align: center;
+    padding: 42px 24px;
   }
 
   .zw-loading {
     margin-right: 16px;
+  }
+
+  .loading-container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    // margin-bottom: 20px;
+    padding: 30px 50px;
+    margin: 20px 0;
+    color: #fff;
+  }
+
+  .exp {
+    background-color: rgba(0, 188, 112, .0625);
+    border: 1px solid #00bc70;
   }
 }

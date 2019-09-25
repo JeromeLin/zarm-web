@@ -1,4 +1,5 @@
 
+@import 'zarm/lib/activity-indicator/style/component.scss';
 @import '../../style/themes/variable';
 @import "./mixins.scss";
 
@@ -24,6 +25,7 @@
       var(--loading-font-size-lg),
     );
   }
+
   @include m(sm) {
     @include loading-size(
       var(--loading-height-sm),

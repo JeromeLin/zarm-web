@@ -1,8 +1,11 @@
 import React, { Component, ReactElement } from 'react';
+import { ActivityIndicator } from 'zarm';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import debounce from '../utils/debounce';
 import PropsType from './PropsType';
+
+ActivityIndicator.defaultProps.prefixCls = 'zw-activity-indicator';
 
 function shouldDelay(visible?: boolean, delay?: number): boolean {
   return !!visible && !!delay && !Number.isNaN(Number(delay));
@@ -16,7 +19,7 @@ class Loading extends Component<PropsType, any> {
 
   static propTypes = {
     prefixCls: PropTypes.string,
-    size: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
+    size: PropTypes.oneOf(['lg', 'md', 'xs']),
     delay: PropTypes.number,
     visible: PropTypes.bool,
     className: PropTypes.string,
@@ -28,6 +31,9 @@ class Loading extends Component<PropsType, any> {
     super(props);
     const { visible, delay } = props;
     const shouldBeDelayed = shouldDelay(visible, delay);
+    if (delay) {
+      this.updateSpinning = debounce(this.updateSpinning, delay);
+    }
     this.state = {
       visible: visible && !shouldBeDelayed,
     };
@@ -38,7 +44,7 @@ class Loading extends Component<PropsType, any> {
   }
 
   componentDidUpdate() {
-    this.debouncifyUpdateSpinning();
+    // this.debouncifyUpdateSpinning();
     this.updateSpinning();
   }
 
@@ -94,17 +100,20 @@ class Loading extends Component<PropsType, any> {
   }
 
   renderIndicator = () => {
-    const { indicator, prefixCls } = this.props;
+    const { indicator, size, prefixCls } = this.props;
     const dotClassName = `${prefixCls}__svg`;
-    const svg = (
-      <svg className={dotClassName} viewBox="31 31 62 62">
-        <circle className={`${prefixCls}__path`} cx="62" cy="62" r="28.5" fill="none" />
-      </svg>
+    const hash = {
+      lg: 'lg',
+      md: 'md',
+    };
+    const ele = (
+      <ActivityIndicator size={hash[size || 'md']} className={dotClassName} />
     );
+
     if (React.isValidElement(indicator)) {
       return React.cloneElement(indicator as ReactElement<any>);
     }
-    return svg;
+    return ele;
   };
 
   renderLoading = () => {

@@ -4,9 +4,8 @@
 
 ```jsx
   import { Loading } from 'zarm-web';
-
   ReactDOM.render(
-    <Loading visible={true} />,
+    <Loading visible={true}/>,
     mountNode
   );
 ```
@@ -27,7 +26,7 @@
 ```jsx
   import { Loading, Icon, Alert } from 'zarm-web';
 
-  const icon = <Icon type="loading" className="rotate360" />
+  const icon = <Icon type="minus-round" className="rotate360" />
 
   ReactDOM.render( 
     <Loading visible={true} indicator={ icon} />,
@@ -43,31 +42,43 @@
 
   ReactDOM.render( 
     <Loading visible={true} >
-      <p>这里是一个卡片</p>
-      <p>这里是内容</p>
+      <div className="loading-container">
+        <p>这里是一个容器</p>
+        <p>这里是内容</p>
+      </div>
+     
     </Loading>,
     mountNode
   );
 ```
 ## 延时加载
 ```jsx
-  import { Loading } from 'zarm-web';
+  import { Loading, Switch } from 'zarm-web';
 
   class Demo extends React.Component {
     state = {
-      visible: true
+      loadingState: false
     }
-    toggle = () => {
-      this.setState((state) =>({
-         visible: !state.visible
+
+    toggle = value => {
+      this.setState(state=> ({
+        loadingState: !state.loadingState
       }))
     }
 
     render() {
+      const {loadingState} = this.state
       return (
         <div> 
-          <Loading visible={this.state.visible} delay={300}>
+          <Loading visible={loadingState} delay={500}>
+            <div className="loading-container exp">
+              <p>这里是一个容器</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
           </Loading>
+          <p>
+            <Switch value={loadingState} onChange={this.toggle} />
+          </p>
       </div>
       )
     }
