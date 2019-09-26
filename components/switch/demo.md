@@ -1,5 +1,9 @@
-## Swtich 组件
-需要表示开关状态/两种状态之间的切换时使用，这是一个最基本的swtich组件。
+# Swtich 开关
+需要表示开关状态/两种状态之间的切换时使用。
+
+
+## 基本开关
+这是一个最基本的开关
 
 ```jsx
 import { Switch } from 'zarm-web';
@@ -60,6 +64,46 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 加载中
+点击开关后进行数据加载操作，在按钮上显示加载状态。
+
+```jsx
+import { Switch } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="multi-rows">
+          <Switch 
+          loading
+          value={false} />
+        </div>
+        <div className="multi-rows">
+          <Switch 
+          loading
+          value={true} />
+        </div>
+        <div className="multi-rows">
+          <Switch 
+          loading
+          size={'sm'}
+          value={false} />
+        </div>
+        <div className="multi-rows">
+          <Switch 
+          loading
+          size={'sm'}
+          value={true} />
+        </div>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## 不同尺寸
 除了默认尺寸外，可以额外设置四种尺寸。
 
@@ -95,5 +139,6 @@ ReactDOM.render(<Demo />, mountNode);
 | size | string | 'md' | 设置大小，可选值为 `sm`|
 | value | boolean | false | switch开关状态 |
 | disabled | boolean | false | 是否禁用 |
-| onChange | function | - | 点击后触发的回调函数 |
+| loading | boolean | false | 是否显示加载中的状态 |
+| onChange | (checked: boolean) => void | - | 点击后触发的回调函数 |
 | style | object | - | 自定义样式 |

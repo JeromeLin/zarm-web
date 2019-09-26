@@ -39,6 +39,18 @@
     @include e(inner){
       left: 6px;
     }
+    @include e(loading) {
+      display: inline-block;
+      transform: scale(0.5);
+      top: -1px;
+      left: 19px;
+      z-index: 2;
+      position: relative;
+      circle{
+        stroke: var(--theme-primary);
+        stroke-width: 10 !important;
+      }
+    }
   }
 
   @include m(disabled) {
@@ -56,15 +68,15 @@
   }
 
   @include m(sm){
-    height: 11px;
-    line-height: 8px;
-    width: 28px;
+    height: 16px;
+    line-height: 12px;
+    width: 32px;
 
     &:after {
-      width: 8px;
-      height: 8px;
-      top: 0;
-      left: 1;
+      width: 12px;
+      height: 12px;
+      top: 1px;
+      left: 2px;
     }
 
     @include m(checked) {
@@ -74,12 +86,42 @@
 
       @include e(inner) {
         left: 3px;
+        position: relative;
+      }
+
+      @include e(loading) {
+        display: inline-block;
+        font-size: 10px;
+        transform: scale(0.4);
+        top: -5px;
+        left: 9px;
+        z-index: 2;
+        position: relative;
+        circle{
+          stroke: var(--theme-primary) !important;
+          stroke-width: 10 !important;
+        }
       }
     }
 
     @include e(inner) {
       left: 13px;
       font-size: 10px;
+      position: relative;
+    }
+
+    @include e(loading) {
+      display: inline-block;
+      font-size: 10px;
+      transform: scale(0.4);
+      top: -5px;
+      left: -15px;
+      z-index: 2;
+      position: relative;
+      circle{
+        stroke: #dedede !important;
+        stroke-width: 10 !important;
+      }
     }
   }
 
@@ -88,6 +130,18 @@
     left: 24px;
     color: #fff;
     font-size: 12px;
+  }
+  @include e(loading) {
+    display: inline-block;
+    transform: scale(0.5);
+    top: -1px;
+    left: -25px;
+    z-index: 2;
+    position: relative;
+    circle{
+      stroke: #dedede;
+      stroke-width: 10 !important;
+    }
   }
 }
 

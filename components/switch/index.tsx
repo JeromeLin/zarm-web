@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { ActivityIndicator } from 'zarm';
 import classnames from 'classnames';
+import 'zarm/components/activity-indicator/style';
 import PropsType from './PropsType';
+
 
 class Switch extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'zw-switch',
+    loading: false,
     size: null,
     value: false,
     defaultValue: false,
@@ -39,14 +43,12 @@ class Switch extends Component<PropsType, any> {
 
   render() {
     const {
-      size, isCheckedText, unCheckedText, isDisabled, style, prefixCls,
+      size, isCheckedText, unCheckedText, disabled, style, prefixCls, loading,
     } = this.props;
     const { value } = this.state;
-    const disabled = 'disabled' in this.props || isDisabled;
-
     const cls = classnames(prefixCls, '', {
       [`${prefixCls}--checked`]: value,
-      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--disabled`]: disabled || loading,
       [`${prefixCls}--${'sm'}`]: size === 'sm',
     });
 
@@ -58,6 +60,12 @@ class Switch extends Component<PropsType, any> {
       >
         <span className={`${prefixCls}__inner`}>
           {value ? isCheckedText : unCheckedText}
+
+          {loading ? (
+            <span className={`${prefixCls}__loading`}>
+              <ActivityIndicator />
+            </span>
+          ) : <span />}
         </span>
       </span>
     );
