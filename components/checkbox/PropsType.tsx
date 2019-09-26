@@ -7,7 +7,7 @@ export interface GroupProps {
   className?: string;
   style?: CSSProperties;
   disabled?: boolean;
-  onChange: (checkedValue: Array<string | number | boolean>) => void;
+  onChange: (checkedValue: Array<string | number >) => void;
 }
 
 export default interface PropsType extends HTMLAttributes<HTMLInputElement> {
