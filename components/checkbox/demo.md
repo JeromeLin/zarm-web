@@ -89,6 +89,13 @@ class Demo extends React.Component {
         >
           选择
         </Checkbox>
+        <Checkbox
+          disabled
+          checked
+          onChange={(e) => this.onChange(e)}
+        >
+          选择
+        </Checkbox>
       </div>
     )
   }
