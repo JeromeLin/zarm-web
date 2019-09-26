@@ -9,45 +9,46 @@ class Switch extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'zw-switch',
     loading: false,
-    size: null,
-    value: false,
-    defaultValue: false,
+    className: '',
+    size: 'md',
+    checked: false,
+    defaultChecked: false,
     isCheckedText: '',
     unCheckedText: '',
-    onChange: () => { },
+    onChange: () => {},
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue,
+      checked: props.checked || props.defaultChecked,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
+    if ('checked' in nextProps) {
       this.setState({
-        value: !!nextProps.value,
+        checked: !!nextProps.checked,
       });
     }
   }
 
   _onClick() {
     const { onChange } = this.props;
-    const { value } = this.state;
+    const { checked } = this.state;
     this.setState({
-      value: !value,
+      checked: !checked,
     });
-    onChange(!value);
+    onChange(!checked);
   }
 
   render() {
     const {
-      size, isCheckedText, unCheckedText, disabled, style, prefixCls, loading,
+      size, isCheckedText, unCheckedText, disabled, className, prefixCls, loading,
     } = this.props;
-    const { value } = this.state;
-    const cls = classnames(prefixCls, '', {
-      [`${prefixCls}--checked`]: value,
+    const { checked } = this.state;
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled || loading,
       [`${prefixCls}--${'sm'}`]: size === 'sm',
     });
@@ -56,10 +57,9 @@ class Switch extends Component<PropsType, any> {
       <span
         className={cls}
         onClick={() => !disabled && this._onClick()}
-        style={style}
       >
         <span className={`${prefixCls}__inner`}>
-          {value ? isCheckedText : unCheckedText}
+          {checked ? isCheckedText : unCheckedText}
 
           {loading ? (
             <span className={`${prefixCls}__loading`}>

@@ -1,12 +1,12 @@
 export default interface PropsType {
   prefixCls?: string;
   size?: 'sm' | null;
-  value?: boolean;
+  checked?: boolean;
   disabled?: boolean;
-  defaultValue?: boolean;
+  defaultChecked?: boolean;
   isCheckedText?: string;
   unCheckedText?: string;
-  style?: object;
+  className?: string;
   loading?: boolean;
-  onChange: (value: any) => void;
+  onChange: (value: boolean) => void;
 }

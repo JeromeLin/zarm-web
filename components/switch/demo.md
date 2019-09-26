@@ -23,7 +23,8 @@ class Demo extends React.Component {
           onChange={(value)=>{
            console.log("current value ",value)
           }}
-          value={this.state.value} />
+          defaultChecked={true}
+          />
         </div>
         
       </div>
@@ -49,12 +50,12 @@ class Demo extends React.Component {
         <div className="multi-rows">
           <Switch 
           disabled
-          value={false} />
+          checked={false} />
         </div>
         <div className="multi-rows">
           <Switch 
           disabled
-          value={true} />
+          checked={true} />
         </div>
       </div>
     )
@@ -77,24 +78,24 @@ class Demo extends React.Component {
         <div className="multi-rows">
           <Switch 
           loading
-          value={false} />
+          checked={false} />
         </div>
         <div className="multi-rows">
           <Switch 
           loading
-          value={true} />
-        </div>
-        <div className="multi-rows">
-          <Switch 
-          loading
-          size={'sm'}
-          value={false} />
+          checked={true} />
         </div>
         <div className="multi-rows">
           <Switch 
           loading
           size={'sm'}
-          value={true} />
+          checked={false} />
+        </div>
+        <div className="multi-rows">
+          <Switch 
+          loading
+          size={'sm'}
+          checked={true} />
         </div>
       </div>
     )
@@ -115,10 +116,10 @@ class Demo extends React.Component {
     return (
       <React.Fragment>
         <div className="multi-rows">
-          <Switch value={false} >默认尺寸</Switch>
+          <Switch checked={false} >默认尺寸</Switch>
         </div>
         <div className="multi-rows">
-          <Switch value={false} size="sm" >sm尺寸</Switch>
+          <Switch checked={false} size="sm" >sm尺寸</Switch>
         </div>
 
         
@@ -136,9 +137,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| size | string | 'md' | 设置大小，可选值为 `sm`|
-| value | boolean | false | switch开关状态 |
+| checked | boolean | false | 值 |
+| defaultChecked | boolean | false | 初始值 |
+| size | string | 'md' | 开关大小，可选值为`md`，`sm`|
 | disabled | boolean | false | 是否禁用 |
-| loading | boolean | false | 是否显示加载中的状态 |
-| onChange | (checked: boolean) => void | - | 点击后触发的回调函数 |
-| style | object | - | 自定义样式 |
+| loading | boolean | false | 是否是加载中的开关 |
+| className | string | - | Switch 器类名 |
+| onChange | (value: boolean) => void | - | 点击后触发的回调函数 |
