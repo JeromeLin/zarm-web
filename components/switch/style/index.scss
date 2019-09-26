@@ -40,7 +40,6 @@
     @include e(loading) {
       display: inline-block;
       transform: scale(0.5);
-      top: 0px;
       left: 21px;
       z-index: 2;
       position: relative;
@@ -136,7 +135,6 @@
   @include e(loading) {
     display: inline-block;
     transform: scale(0.5);
-    top: 0px;
     left: -24px;
     z-index: 2;
     position: relative;
