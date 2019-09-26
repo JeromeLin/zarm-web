@@ -23,7 +23,7 @@ class Switch extends Component<PropsType, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  getDerivedStateFromProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
         checked: !!nextProps.checked,
