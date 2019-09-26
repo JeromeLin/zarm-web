@@ -1,7 +1,7 @@
 @import '../../style/themes/variable';
 @import '../../style/core/index';
 
-@include b(switch){
+@include b(switch) {
   position: relative;
   display: inline-block;
   width: 48px;
@@ -9,8 +9,8 @@
   line-height: 18px;
   vertical-align: middle;
   border-radius: 18px;
-  border: 1px solid #BCBCBC;
-  background-color: #BCBCBC;
+  border: 1px solid #bcbcbc;
+  background-color: #bcbcbc;
   cursor: pointer;
   transition: left .3s cubic-bezier(.78, .14, .15, .86);
   user-select: none;
@@ -36,7 +36,7 @@
       left: 28px;
     }
 
-    @include e(inner){
+    @include e(inner) {
       left: 6px;
     }
     @include e(loading) {
@@ -46,7 +46,8 @@
       left: 19px;
       z-index: 2;
       position: relative;
-      circle{
+
+      circle {
         stroke: var(--theme-primary);
         stroke-width: 10 !important;
       }
@@ -57,6 +58,7 @@
     cursor: not-allowed;
     border: 1px solid #dedede;
     background-color: #dedede;
+
     &:after {
       cursor: not-allowed;
     }
@@ -67,7 +69,7 @@
     }
   }
 
-  @include m(sm){
+  @include m(sm) {
     height: 16px;
     line-height: 12px;
     width: 32px;
@@ -97,7 +99,8 @@
         left: 9px;
         z-index: 2;
         position: relative;
-        circle{
+
+        circle {
           stroke: var(--theme-primary) !important;
           stroke-width: 10 !important;
         }
@@ -118,7 +121,8 @@
       left: -15px;
       z-index: 2;
       position: relative;
-      circle{
+
+      circle {
         stroke: #dedede !important;
         stroke-width: 10 !important;
       }
@@ -131,6 +135,7 @@
     color: #fff;
     font-size: 12px;
   }
+
   @include e(loading) {
     display: inline-block;
     transform: scale(0.5);
@@ -138,7 +143,8 @@
     left: -25px;
     z-index: 2;
     position: relative;
-    circle{
+
+    circle {
       stroke: #dedede;
       stroke-width: 10 !important;
     }
