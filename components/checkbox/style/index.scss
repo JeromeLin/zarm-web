@@ -18,10 +18,7 @@
   cursor: pointer;
 
   /* 禁用状态 */
-  @include m(wrapper--disabled) {
-    color: rgba(0, 0, 0, 0.25);
-    cursor: not-allowed;
-  }
+
   @include m(disabled) {
     color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
@@ -40,7 +37,7 @@
   @include m(indeterminate) {
     @include e(inner) {
       border-color: #bcbcbc;
-      background-color: var(--color-white);
+      background-color: #fff;
 
       &:after {
         transform: rotate(90deg) translate(2px, 1px);
@@ -53,12 +50,11 @@
   }
 
   /* hover状态 */
-  @include m(wrapper) {
-    &:not(&--disabled):hover {
-      cursor: pointer;
-      @include e(inner) {
-        border-color: var(--theme-primary);
-      }
+
+  &:not(&--disabled):hover {
+    cursor: pointer;
+    @include e(inner) {
+      border-color: var(--theme-primary);
     }
   }
 
@@ -110,11 +106,14 @@
     opacity: 0;
   }
 
-  & + span {
+  @include e(children) {
     padding-right: 8px;
     padding-left: 8px;
     font-size: 14px;
     font-family: PingFangSC-Regular;
     font-weight: 400;
+    line-height: 20px;
+    position: relative;
+    top: -2px;
   }
 }
