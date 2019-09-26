@@ -11,12 +11,12 @@
   --color-black: #000;
 
   // 文字色
-  --color-text: #464646;                    // 基本
-  --color-text-inverse: #fff;               // 反色
-  --color-text-placeholder: #a9a9a9;        // 文本框提示
-  --color-text-disabled: #bcbcbc;           // 失效
-  --color-text-caption: #909090;            // 辅助描述
-  --color-link: var(--theme-primary);         // 链接
+  --color-text: #464646; // 基本
+  --color-text-inverse: #fff; // 反色
+  --color-text-placeholder: #a9a9a9; // 文本框提示
+  --color-text-disabled: #bcbcbc; // 失效
+  --color-text-caption: #909090; // 辅助描述
+  --color-link: var(--theme-primary); // 链接
 
   //阴影
   --box-shadow-light: 0 2px 8px rgba(0, 0, 0, .1), 0 0 6px rgba(0, 0, 0, .1);
@@ -178,4 +178,36 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  // Avatar
+  --avatar-width: 40px;
+  --avatar-height: 40px;
+  --avatar-border-radius: 50%;
+  --avatar-width-xl: 72px;
+  --avatar-height-xl: 72px;
+  --avatar-width-lg: 48px;
+  --avatar-height-lg: 48px;
+  --avatar-width-sm: 32px;
+  --avatar-height-sm: 32px;
+  --avatar-width-xs: 24px;
+  --avatar-height-xs: 24px;
+  --avatar-fontSize: 14px;
+  --avatar-fontSize-icon-xl: 32px;
+  --avatar-fontSize-icon: 16px;
+  --avatar-fontSize-icon-lg: 18px;
+  --avatar-fontSize-icon-sm: 14px;
+  --avatar-fontSize-icon-xs: 12px;
+  --avatar-default-color: #fff;
+  --avatar-default-bg-color: #ccc;
+
+  // Badge
+  --badge-height: 14px;
+  --badge-font-size: var(--font-size-xs);
+  --badge-padding-h: 4px;
+  --badge-dot-diameter: 8px;
+  --badge-border-radius-rect: var(--radius-sm);
+  --badge-border-radius-round: var(--radius-round);
+  --badge-sup-top: -4px;
+  --badge-text-color: #fff;
 }
+
