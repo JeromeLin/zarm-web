@@ -9,6 +9,10 @@
   overflow-y: scroll;
   z-index: 1;
 
+  .za-menu {
+    border-right-width: 0;
+  }
+
   .za-menu-submenu-title {
     &:hover {
       color: #00bc70;

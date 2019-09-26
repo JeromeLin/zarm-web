@@ -12,12 +12,6 @@
   }
 }
 
-@mixin color-reverser($color) {
-  color: #fff;
-  background-color: rgba($color, 1);
-  border-color: rgba($color, 1);
-}
-
 @mixin tag-size($height, $padding, $icon-size) {
   padding: 0 $padding;
   font-size: var(--tag-font-size);

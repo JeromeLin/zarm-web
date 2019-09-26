@@ -1,60 +1,93 @@
-pre {
-  overflow: auto;
-  font-size: 14px;
-  background-color: #f6f8fa;
+.markdown {
+  color: #1f2d3d;
 
-  span {
+  .hljs {
+    background-color: transparent;
+  }
+
+  .grid-container {
+    overflow-x: auto;
+  }
+
+  pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: normal;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  h4,
+  p {
     font-size: 14px;
   }
-}
 
-.hljs {
-  background: transparent;
-}
+  blockquote {
+    margin: 0;
+    padding: 0 20px;
+    color: #6a737d;
+    border-left: 4px solid #dfe2e5;
+  }
 
-h1,
-h2,
-h3 {
-  font-weight: normal;
-  color: #1f2d3d;
-}
+  code {
+    background-color: #f1f1f1;
+    padding: 2px 6px;
+    margin: 0 1px;
+    border-radius: 3px;
+  }
 
-h1 {
-  font-size: 28px;
-}
+  table.grid {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    width: 100%;
+    min-width: 600px;
+    font-size: 14px;
+    margin-bottom: 45px;
 
-h2 {
-  font-size: 20px;
-  margin-top: 20px;
-}
+    strong {
+      font-weight: normal;
+    }
 
-h3 {
-  font-size: 16px;
-  margin-top: 20px;
-}
+    th {
+      text-align: left;
+      border-top: 1px solid #eaeefb;
+      background-color: #f9fafc;
+      white-space: nowrap;
+      font-weight: normal;
+      color: #999;
+    }
 
-h4 {
-  font-size: 14px;
-  font-weight: normal;
-  color: #1f2d3d;
-}
+    td,
+    th {
+      border-bottom: 1px solid #eaeefb;
+      padding: 10px;
+      max-width: 250px;
+    }
 
-p {
-  color: #666;
-}
-
-blockquote {
-  margin: 0;
-  padding: 0 20px;
-  color: #6a737d;
-  border-left: 4px solid #dfe2e5;
-}
-
-code {
-  background-color: #f1f1f1;
-  padding: 2px 6px;
-  margin: 0 1px;
-  border-radius: 3px;
+    th:first-child,
+    td:first-child {
+      padding-left: 15px;
+    }
+  }
 }
 
 .markdown-demo-wrapper {
@@ -72,4 +105,142 @@ code {
   //width: 50%;
   break-inside: avoid;
   margin-bottom: 22px;
+}
+
+.demo-block {
+  padding-top: 10px;
+  border: solid 1px #eaeefb;
+  border-radius: 4px;
+  transition: all .2s;
+
+  &:hover {
+    box-shadow: 0 0 8px 0 rgba(232, 237, 250, .6), 0 2px 4px 0 rgba(232, 237, 250, .5);
+  }
+
+  > p,
+  > div,
+  > h2 {
+    padding: 0 20px;
+  }
+
+  code {
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
+  }
+
+  .zw-btn-group + .zw-btn-group {
+    margin-left: 12px;
+  }
+
+  .ghost-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85px;
+    background: rgba(204, 204, 204, 1);
+  }
+
+  .source {
+    position: relative;
+
+    .zw-tag {
+      margin-right: 8px;
+    }
+
+    .multi-rows {
+      overflow: hidden;
+      margin-bottom: 24px;
+
+      &.block-row {
+        .zw-button {
+          margin-bottom: 12px;
+        }
+      }
+    }
+
+    .buttons {
+      > button {
+        margin-bottom: 8px;
+      }
+    }
+
+    .icons {
+      .zw-icon {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .meta {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    background-color: #f9fafc;
+    border-top: solid 1px #eaeefb;
+  }
+
+  .highlight {
+    overflow: auto;
+    border-right: 1px solid #eaeefb;
+  }
+
+  .description {
+    float: right;
+    padding: 18px 24px;
+    width: 270px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #5e6d82;
+    margin-left: -1px;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-left: 1px solid #eaeefb;
+
+    p {
+      margin: 0;
+    }
+
+    code {
+      color: #5e6d82;
+      background-color: #e6effb;
+      margin: 0 4px;
+      transform: translateY(-2px);
+      display: inline-block;
+      padding: 1px 5px;
+      font-size: 12px;
+      border-radius: 3px;
+    }
+  }
+
+  .demo-block-control {
+    border-top: solid 1px #eaeefb;
+    height: 36px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+    color: #d3dce6;
+    cursor: pointer;
+    transition: .2s;
+    position: relative;
+
+    i {
+      font-size: 12px;
+      line-height: 36px;
+      margin-right: 5px;
+    }
+
+    span {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 36px;
+    }
+
+    &:hover {
+      color: #00bc70;
+      background-color: #e5f8f0;
+    }
+  }
 }
