@@ -4,8 +4,6 @@ export default interface PropsType {
   checked?: boolean;
   disabled?: boolean;
   defaultChecked?: boolean;
-  isCheckedText?: string;
-  unCheckedText?: string;
   className?: string;
   loading?: boolean;
   onChange: (value: boolean) => void;

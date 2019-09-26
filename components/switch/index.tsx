@@ -13,8 +13,6 @@ class Switch extends Component<PropsType, any> {
     size: 'md',
     checked: false,
     defaultChecked: false,
-    isCheckedText: '',
-    unCheckedText: '',
     onChange: () => {},
   };
 
@@ -44,7 +42,7 @@ class Switch extends Component<PropsType, any> {
 
   render() {
     const {
-      size, isCheckedText, unCheckedText, disabled, className, prefixCls, loading,
+      size, disabled, className, prefixCls, loading,
     } = this.props;
     const { checked } = this.state;
     const cls = classnames(prefixCls, className, {
@@ -59,8 +57,6 @@ class Switch extends Component<PropsType, any> {
         onClick={() => !disabled && !loading && this._onClick()}
       >
         <span className={`${prefixCls}__inner`}>
-          {checked ? isCheckedText : unCheckedText}
-
           {loading ? (
             <span className={`${prefixCls}__loading`}>
               <ActivityIndicator />
