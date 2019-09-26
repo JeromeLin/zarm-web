@@ -56,7 +56,7 @@ class Switch extends Component<PropsType, any> {
     return (
       <span
         className={cls}
-        onClick={() => !disabled && this._onClick()}
+        onClick={() => !disabled && !loading && this._onClick()}
       >
         <span className={`${prefixCls}__inner`}>
           {checked ? isCheckedText : unCheckedText}
