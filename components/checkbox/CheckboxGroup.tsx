@@ -34,7 +34,11 @@ class CheckboxGroup extends Component<GroupProps, any> {
     return null;
   }
 
-  onCheckboxChange(e) {
+  onCheckboxChange(e, checkbox) {
+    const { props } = checkbox;
+    if (props.onChange) {
+      props.onChange(e);
+    }
     const { value } = this.state;
     const { onChange } = this.props;
     const index = value.indexOf(e.target.value);
@@ -73,7 +77,7 @@ class CheckboxGroup extends Component<GroupProps, any> {
       <Checkbox
         disabled={disabled}
         {...(checkbox as ReactElement<any>).props}
-        onChange={e => this.onCheckboxChange(e)}
+        onChange={e => this.onCheckboxChange(e, checkbox)}
         checked={
           !!(value.indexOf((checkbox as ReactElement<any>).props.value) > -1)
         }
