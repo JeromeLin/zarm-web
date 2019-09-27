@@ -5,6 +5,8 @@ import { CheckboxProps, CheckboxStates } from './PropsType';
 class Checkbox extends Component<CheckboxProps, CheckboxStates> {
   static Group;
 
+  static displayName = 'Checkbox';
+
   static defaultProps = {
     prefixCls: 'zw-checkbox',
     defaultChecked: false,

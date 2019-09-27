@@ -4,6 +4,8 @@ import Checkbox from './Checkbox';
 import { CheckboxGroupProps, CheckboxGroupStates } from './PropsType';
 
 class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupStates> {
+  static displayName = 'CheckboxGroup';
+
   static defaultProps = {
     prefixCls: 'zw-checkbox-group',
   };
