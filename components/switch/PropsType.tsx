@@ -1,4 +1,4 @@
-export default interface PropsType {
+export default interface SwitchProps {
   prefixCls?: string;
   size?: 'sm' | null;
   checked?: boolean;
