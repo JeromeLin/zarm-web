@@ -11,7 +11,7 @@ describe('Checkbox', () => {
         value="0"
       >
         选择0
-      </Checkbox>
+      </Checkbox>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -25,7 +25,7 @@ describe('Checkbox', () => {
         value="0"
       >
         选择0
-      </Checkbox>
+      </Checkbox>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -38,7 +38,7 @@ describe('Checkbox', () => {
         value="0"
       >
         选择0
-      </Checkbox>
+      </Checkbox>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -50,7 +50,7 @@ describe('Checkbox', () => {
         <Checkbox value="b">B</Checkbox>
         <Checkbox value="c">C</Checkbox>
         <Checkbox value="d">D</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -63,7 +63,7 @@ describe('Checkbox', () => {
         <Checkbox value="b">B</Checkbox>
         <Checkbox value="c">C</Checkbox>
         <Checkbox value="d">D</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -77,7 +77,7 @@ describe('Checkbox', () => {
         value="0"
       >
         选择0
-      </Checkbox>
+      </Checkbox>,
     );
 
     wrapper.find('input').simulate('change');
@@ -93,7 +93,7 @@ describe('Checkbox', () => {
         value="0"
       >
         选择0
-      </Checkbox>
+      </Checkbox>,
     );
 
     wrapper.find('input').simulate('change');
@@ -109,7 +109,7 @@ describe('Checkbox', () => {
         <Checkbox value="b">B</Checkbox>
         <Checkbox value="c">C</Checkbox>
         <Checkbox value="d">D</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
 
     wrapper.find('input').first().simulate('change');
@@ -124,11 +124,11 @@ describe('Checkbox', () => {
         <Checkbox value="b">B</Checkbox>
         <Checkbox value="c">C</Checkbox>
         <Checkbox value="d">D</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
 
-    expect(wrapper.find('.za-checkbox').first().hasClass('is-checked')).toBeFalsy();
+    expect(wrapper.find('.zw-checkbox').first().hasClass('zw-checkbox--checked')).toBeFalsy();
     wrapper.setProps({ value: ['a'] });
-    expect(wrapper.find('.za-checkbox').first().hasClass('is-checked')).toBeTruthy();
+    expect(wrapper.find('.zw-checkbox').first().hasClass('zw-checkbox--checked')).toBeTruthy();
   });
 });
