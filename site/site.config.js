@@ -47,7 +47,7 @@ module.exports = {
       },
       {
         name: 'Checkbox',
-        module: () => import('@/components/checkbox/checkbox.md'),
+        module: () => import('@/components/checkbox/demo.md'),
       },
       {
         name: 'Input',

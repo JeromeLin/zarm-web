@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { CheckboxProps } from './PropsType';
 
-class Checkbox extends Component<PropsType, any> {
+class Checkbox extends Component<CheckboxProps, any> {
   static Group;
 
   static defaultProps = {
-    prefixCls: 'za-checkbox',
+    prefixCls: 'zw-checkbox',
     defaultChecked: false,
-    isDisabled: false,
     indeterminate: false,
-    onChange: () => {},
   };
 
   constructor(props) {
@@ -20,12 +18,13 @@ class Checkbox extends Component<PropsType, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if ('checked' in nextProps) {
-      this.setState({
+      return {
         checked: !!nextProps.checked,
-      });
+      };
     }
+    return null;
   }
 
   _onClick(e) {
@@ -47,29 +46,33 @@ class Checkbox extends Component<PropsType, any> {
       className,
       children,
       style,
+      id,
       indeterminate,
+      disabled,
     } = this.props;
-    const disabled = 'disabled' in this.props || isDisabled;
-    const cls = classnames(prefixCls, className, {
-      'is-checked': checked,
-      'is-disabled': disabled,
-      'is-indeterminate': checked && indeterminate,
+    const defualtDisabled = disabled || isDisabled;
+    const checkboxWrapperClass = classnames(className, `${prefixCls}`, {
+      [`${prefixCls}--disabled`]: defualtDisabled,
+      [`${prefixCls}--checked`]: checked,
+      [`${prefixCls}--disabled`]: defualtDisabled,
+      [`${prefixCls}--indeterminate`]: indeterminate,
     });
 
     return (
-      <label style={style}>
-        <span className={cls}>
-          <input
-            className={`${prefixCls}__input`}
-            type="checkbox"
-            value={value}
-            checked={checked}
-            disabled={disabled}
-            onChange={e => this._onClick(e)}
-          />
-          <span className={`${prefixCls}__inner`} />
-        </span>
-        {children}
+      <label className={checkboxWrapperClass} style={style}>
+        <input
+          className={`${prefixCls}__input`}
+          type="checkbox"
+          value={value}
+          checked={checked}
+          disabled={disabled}
+          id={id}
+          onChange={e => this._onClick(e)}
+        />
+        <span className={`${prefixCls}__inner`} />
+        {children !== undefined && (
+          <span className={`${prefixCls}__children`}>{children}</span>
+        )}
       </label>
     );
   }
