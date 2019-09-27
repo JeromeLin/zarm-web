@@ -327,18 +327,14 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
   // 点击外部的时候
   onDocumentClick = (e: MouseEvent): void => {
     const { hideOnClick, onVisibleChange } = this.props;
+    // 禁用或者非显示情况下不处理
     if (this.props.disabled === true || this.state.visible === false) {
       return;
     }
     const target = e.target as Node;
-    // eslint-disable-next-line no-empty
-    if (this.div.contains(target) || this.triggerBox.contains(target)) {
-
-    } else {
-      // eslint-disable-next-line no-lonely-if
-      if (hideOnClick) {
-        onVisibleChange(false);
-      }
+    // 若不包含 且有 hideOnClick
+    if (!this.div.contains(target) && !this.triggerBox.contains(target) && hideOnClick) {
+      onVisibleChange(false);
     }
   };
 
@@ -411,7 +407,7 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
       trigger,
       prefixCls,
       style,
-      direction = 'bottomLeft',
+      direction,
       zIndex,
       notRenderInDisabledMode,
       visible,
