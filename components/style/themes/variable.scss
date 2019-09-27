@@ -181,4 +181,7 @@
 
   // Checkbox
   --checkbox-size: 14px;
+  --checkbox-radius: var(--radius-sm);
+  --checkbox-border-color: var(--border-color);
+  --checkbox-background: var(--color-text-inverse);
 }

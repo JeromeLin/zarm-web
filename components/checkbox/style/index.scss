@@ -26,7 +26,7 @@
     width: var(--checkbox-size);
     height: var(--checkbox-size);
     border: 1px solid #bcbcbc;
-    border-radius: 2px;
+    border-radius: var(--checkbox-radius);
     background-color: #fff;
 
     &:after {
