@@ -39,20 +39,16 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+        class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
       >
+        <input
+          checked=""
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-        >
-          <input
-            checked=""
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -80,19 +76,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -120,19 +112,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -160,20 +148,17 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                          class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                         >
+                          <input
+                            checked=""
+                            class="zw-checkbox__input"
+                            disabled=""
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                          >
-                            <input
-                              checked=""
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -197,19 +182,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -239,19 +220,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -279,20 +256,17 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -316,19 +290,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -352,19 +322,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -391,20 +357,16 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+              class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
             >
+              <input
+                checked=""
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-              >
-                <input
-                  checked=""
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -432,19 +394,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -468,20 +426,16 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -509,19 +463,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -549,19 +499,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -585,19 +531,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -624,20 +566,16 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+                          class="zw-checkbox zw-checkbox--checked"
                         >
+                          <input
+                            checked=""
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-checked"
-                          >
-                            <input
-                              checked=""
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -664,19 +602,15 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -713,20 +647,16 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+        class="zw-checkbox zw-checkbox--checked"
       >
+        <input
+          checked=""
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox zw-checkbox-checked"
-        >
-          <input
-            checked=""
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -754,19 +684,16 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+              class="zw-checkbox zw-checkbox--disabled"
             >
+              <input
+                class="zw-checkbox__input"
+                disabled=""
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox zw-checkbox-disabled"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -794,20 +721,17 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -831,19 +755,15 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -870,20 +790,16 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+              class="zw-checkbox zw-checkbox--checked"
             >
+              <input
+                checked=""
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox zw-checkbox-checked"
-              >
-                <input
-                  checked=""
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -911,20 +827,16 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+                    class="zw-checkbox zw-checkbox--checked"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-checked"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -965,19 +877,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper"
+        class="zw-checkbox"
       >
+        <input
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox"
-        >
-          <input
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -1005,19 +913,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -1045,19 +949,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -1085,19 +985,16 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+                          class="zw-checkbox zw-checkbox--disabled"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            disabled=""
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-disabled"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -1121,19 +1018,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -1163,19 +1056,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -1203,19 +1092,16 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -1239,19 +1125,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -1275,19 +1157,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -1314,19 +1192,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -1354,19 +1228,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -1390,19 +1260,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -1430,19 +1296,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -1470,19 +1332,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -1506,19 +1364,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -1545,19 +1399,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -1584,19 +1434,15 @@ exports[`Tree renders basic Tree with defaultExpandAll canCheck correctly 1`] = 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2323,19 +2169,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper"
+        class="zw-checkbox"
       >
+        <input
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox"
-        >
-          <input
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -2363,19 +2205,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -2403,19 +2241,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2443,19 +2277,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+                          class="zw-checkbox zw-checkbox--disabled"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            disabled=""
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-disabled"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -2479,19 +2310,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -2521,19 +2348,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -2561,19 +2384,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2597,19 +2417,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2633,19 +2449,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2672,19 +2484,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -2712,19 +2520,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2748,19 +2552,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2788,19 +2588,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -2828,19 +2624,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -2864,19 +2656,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -2903,19 +2691,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -2942,19 +2726,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck correctly 1`] =
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -2991,20 +2771,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+        class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
       >
+        <input
+          checked=""
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-        >
-          <input
-            checked=""
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -3032,19 +2808,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -3072,19 +2844,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3112,20 +2880,17 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                          class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                         >
+                          <input
+                            checked=""
+                            class="zw-checkbox__input"
+                            disabled=""
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                          >
-                            <input
-                              checked=""
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -3149,19 +2914,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -3191,19 +2952,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -3231,20 +2988,17 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3268,19 +3022,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3304,19 +3054,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3343,20 +3089,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+              class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
             >
+              <input
+                checked=""
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-              >
-                <input
-                  checked=""
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -3384,19 +3126,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3420,20 +3158,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3461,19 +3195,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -3501,19 +3231,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -3537,19 +3263,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -3576,20 +3298,16 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+                          class="zw-checkbox zw-checkbox--checked"
                         >
+                          <input
+                            checked=""
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-checked"
-                          >
-                            <input
-                              checked=""
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -3616,19 +3334,15 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3814,19 +3528,15 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper"
+        class="zw-checkbox"
       >
+        <input
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox"
-        >
-          <input
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -3854,19 +3564,15 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -3894,19 +3600,15 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -3934,19 +3636,16 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+                          class="zw-checkbox zw-checkbox--disabled"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            disabled=""
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-disabled"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -3970,19 +3669,15 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -4012,19 +3707,15 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -4049,19 +3740,15 @@ exports[`Tree renders basic Tree with expandedKeys, canCheck correctly 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -4096,19 +3783,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper"
+        class="zw-checkbox"
       >
+        <input
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox"
-        >
-          <input
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -4136,19 +3819,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -4176,19 +3855,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4216,19 +3891,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+                          class="zw-checkbox zw-checkbox--disabled"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            disabled=""
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-disabled"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -4252,19 +3924,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -4294,19 +3962,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -4334,19 +3998,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4370,19 +4031,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4406,19 +4063,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4445,19 +4098,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -4485,19 +4134,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4521,19 +4166,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4561,19 +4202,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -4601,19 +4238,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -4637,19 +4270,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -4676,19 +4305,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -4715,19 +4340,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4764,20 +4385,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+        class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
       >
+        <input
+          checked=""
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-        >
-          <input
-            checked=""
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -4805,19 +4422,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -4845,19 +4458,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -4885,20 +4494,17 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                          class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                         >
+                          <input
+                            checked=""
+                            class="zw-checkbox__input"
+                            disabled=""
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                          >
-                            <input
-                              checked=""
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -4922,19 +4528,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -4964,19 +4566,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper"
+              class="zw-checkbox"
             >
+              <input
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -5004,20 +4602,17 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5041,19 +4636,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5077,19 +4668,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5116,20 +4703,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+              class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
             >
+              <input
+                checked=""
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-              >
-                <input
-                  checked=""
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -5157,19 +4740,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5193,20 +4772,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-indeterminate"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--indeterminate"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-checked zw-checkbox-indeterminate"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5234,19 +4809,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper"
+                          class="zw-checkbox"
                         >
+                          <input
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox"
-                          >
-                            <input
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -5274,19 +4845,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -5310,19 +4877,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                               class="ui-tree-checkbox"
                             >
                               <label
-                                class="zw-checkbox-wrapper"
+                                class="zw-checkbox"
                               >
+                                <input
+                                  class="zw-checkbox__input"
+                                  type="checkbox"
+                                />
                                 <span
-                                  class="zw-checkbox"
-                                >
-                                  <input
-                                    class="zw-checkbox__input"
-                                    type="checkbox"
-                                  />
-                                  <span
-                                    class="zw-checkbox__inner"
-                                  />
-                                </span>
+                                  class="zw-checkbox__inner"
+                                />
                               </label>
                             </span>
                             <span
@@ -5349,20 +4912,16 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+                          class="zw-checkbox zw-checkbox--checked"
                         >
+                          <input
+                            checked=""
+                            class="zw-checkbox__input"
+                            type="checkbox"
+                          />
                           <span
-                            class="zw-checkbox zw-checkbox-checked"
-                          >
-                            <input
-                              checked=""
-                              class="zw-checkbox__input"
-                              type="checkbox"
-                            />
-                            <span
-                              class="zw-checkbox__inner"
-                            />
-                          </span>
+                            class="zw-checkbox__inner"
+                          />
                         </label>
                       </span>
                       <span
@@ -5389,19 +4948,15 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5438,20 +4993,16 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
       class="ui-tree-checkbox"
     >
       <label
-        class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+        class="zw-checkbox zw-checkbox--checked"
       >
+        <input
+          checked=""
+          class="zw-checkbox__input"
+          type="checkbox"
+        />
         <span
-          class="zw-checkbox zw-checkbox-checked"
-        >
-          <input
-            checked=""
-            class="zw-checkbox__input"
-            type="checkbox"
-          />
-          <span
-            class="zw-checkbox__inner"
-          />
-        </span>
+          class="zw-checkbox__inner"
+        />
       </label>
     </span>
     <span
@@ -5479,19 +5030,16 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper zw-checkbox-wrapper-disabled"
+              class="zw-checkbox zw-checkbox--disabled"
             >
+              <input
+                class="zw-checkbox__input"
+                disabled=""
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox zw-checkbox-disabled"
-              >
-                <input
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -5519,20 +5067,17 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked zw-checkbox-wrapper-disabled"
+                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      disabled=""
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-disabled zw-checkbox-checked"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5556,19 +5101,15 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper"
+                    class="zw-checkbox"
                   >
+                    <input
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox"
-                    >
-                      <input
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span
@@ -5595,20 +5136,16 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
             class="ui-tree-checkbox"
           >
             <label
-              class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+              class="zw-checkbox zw-checkbox--checked"
             >
+              <input
+                checked=""
+                class="zw-checkbox__input"
+                type="checkbox"
+              />
               <span
-                class="zw-checkbox zw-checkbox-checked"
-              >
-                <input
-                  checked=""
-                  class="zw-checkbox__input"
-                  type="checkbox"
-                />
-                <span
-                  class="zw-checkbox__inner"
-                />
-              </span>
+                class="zw-checkbox__inner"
+              />
             </label>
           </span>
           <span
@@ -5636,20 +5173,16 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox-wrapper zw-checkbox-wrapper-checked"
+                    class="zw-checkbox zw-checkbox--checked"
                   >
+                    <input
+                      checked=""
+                      class="zw-checkbox__input"
+                      type="checkbox"
+                    />
                     <span
-                      class="zw-checkbox zw-checkbox-checked"
-                    >
-                      <input
-                        checked=""
-                        class="zw-checkbox__input"
-                        type="checkbox"
-                      />
-                      <span
-                        class="zw-checkbox__inner"
-                      />
-                    </span>
+                      class="zw-checkbox__inner"
+                    />
                   </label>
                 </span>
                 <span

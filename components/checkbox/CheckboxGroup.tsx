@@ -1,7 +1,11 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
 import Checkbox from './Checkbox';
-import { CheckboxGroupProps, CheckboxGroupStates } from './PropsType';
+import { CheckboxGroupProps, CheckboxProps } from './PropsType';
+
+interface CheckboxGroupStates {
+  value: string[];
+}
 
 class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupStates> {
   static displayName = 'CheckboxGroup';
@@ -43,6 +47,7 @@ class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupStates> {
     }
     const { value } = this.state;
     const { onChange } = this.props;
+    // const value =[] as string [];
     const index = value.indexOf(e.target.value);
 
     if (index < 0) {
@@ -80,7 +85,7 @@ class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupStates> {
     const childrenNode = React.Children.map(children, checkbox => (
       <Checkbox
         disabled={disabled}
-        {...(checkbox as ReactElement<any>).props}
+        {...(checkbox as ReactElement<CheckboxProps>).props}
         onChange={e => this.onCheckboxChange(e, checkbox)}
         checked={
           !!(value.indexOf((checkbox as ReactElement<any>).props.value) > -1)

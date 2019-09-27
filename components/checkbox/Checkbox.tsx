@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { CheckboxProps, CheckboxStates } from './PropsType';
+import { CheckboxProps } from './PropsType';
+
+interface CheckboxStates {
+  checked: boolean;
+}
 
 class Checkbox extends Component<CheckboxProps, CheckboxStates> {
   static Group;

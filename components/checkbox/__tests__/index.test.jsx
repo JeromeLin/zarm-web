@@ -127,8 +127,8 @@ describe('Checkbox', () => {
       </Checkbox.Group>,
     );
 
-    expect(wrapper.find('.zw-checkbox').first().hasClass('zw-checkbox-checked')).toBeFalsy();
+    expect(wrapper.find('.zw-checkbox').first().hasClass('zw-checkbox--checked')).toBeFalsy();
     wrapper.setProps({ value: ['a'] });
-    expect(wrapper.find('.zw-checkbox').first().hasClass('zw-checkbox-checked')).toBeTruthy();
+    expect(wrapper.find('.zw-checkbox').first().hasClass('zw-checkbox--checked')).toBeTruthy();
   });
 });
