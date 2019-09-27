@@ -1,68 +1,76 @@
-## Avatar 
-头像,支持图片、图标或字符展示。
+# Avatar 头像
+支持图片、图标或字符展示。
 
-### 基础用法
+## 基础用法
+指定`icon`、`size`、`shape`、 属性。
 
-:::demo 指定`icon`、`size`、`shape`、 属性。
+```jsx
+import { Avatar } from 'zarm-web';
 
-```js
+class Demo extends React.Component {
   render() {
     return (
       <div className="avatar-list">
-        <div>
-          <Avatar size={80} icon="user" />
-          <Avatar size="xl" icon="user"/>
-          <Avatar size="lg" icon="user"/>
-          <Avatar icon="user"/>
-          <Avatar size="sm" icon="user"/>
-          <Avatar size="xs" icon="user"/>
-        </div>
-        <div>
-          <Avatar shape="square" size={80} icon="user"/>
-          <Avatar shape="square" size="xl" icon="user"/>
-          <Avatar shape="square" size="lg" icon="user"/>
-          <Avatar shape="square" icon="user"/>
-          <Avatar shape="square" size="sm" icon="user"/>
-          <Avatar shape="square" size="xs" icon="user"/>
-        </div>
-      </div>
+         <div>
+           <Avatar size={100} icon="time" />
+           <Avatar size="xl" icon="time"/>
+           <Avatar size="lg" icon="time"/>
+           <Avatar icon="time"/>
+           <Avatar size="sm" icon="time"/>
+           <Avatar size="xs" icon="time"/>
+         </div>
+         <div>
+           <Avatar shape="square" size={80} icon="time"/>
+           <Avatar shape="square" size="xl" icon="time"/>
+           <Avatar shape="square" size="lg" icon="time"/>
+           <Avatar shape="square" icon="time"/>
+           <Avatar shape="square" size="sm" icon="time"/>
+           <Avatar shape="square" size="xs" icon="time"/>
+         </div>
+       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-### 类型
 
-:::demo 指定`icon`、`size`、`shape`、 属性。
+## 类型
 
-```js
+```jsx
+import { Avatar } from 'zarm-web';
+
+class Demo extends React.Component {
   render() {
     return (
       <div className="avatar-list">
-        <Avatar icon="user"/>
+        <Avatar icon="date"/>
         <Avatar style={{ backgroundColor: 'rgb(245, 106, 0)' }}>U</Avatar>
         <Avatar>USER</Avatar>
         <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" alt="my avatar" onError={()=>console.log('load error')}/>
         <Avatar style={{ color: '#2db7f5', backgroundColor: 'rgb(249, 232, 8)' }}>U</Avatar>
-        <Avatar style={{ backgroundColor: 'rgba(228, 45, 154, 0.88)' }} icon="user-fill" />
+        <Avatar style={{ backgroundColor: 'rgba(228, 45, 154, 0.88)' }} icon="time" />
       </div>
     )
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-### Attributes
-| 参数                | 说明                                   | 类型                                   | 可选值          | 默认值     | 
-|------------------  |-------------------------------------   |----------------------------------     |-------------   |---------  |
-| icon               |  icon头像的icon type, 具体查看Icon组件    | string                                |    -           |    -      |
-| shape              |  头像的形状                              | string                       | circle,square    | circle
-| size               |  头像的大小                              | string  |    xl,lg,sm,xs           | - |
-| src                |  图片头像的图片地址                       | string                                 |    -           |    -     |
-| alt                |  描述图片的备用文字                       | string                                 |   -            |   -      |
+## API
 
+| 属性 | 类型 | 默认值 | 可选值 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| icon | string | - | - |icon头像的icon type, 具体查看Icon组件|
+| shape | string | 'circle','square' | 'circle' | 头像的形状
+| size | string | `xl`、`lg`、`sm`、`xs` | - | 头像的大小
+| src | string | - | - | 图片头像的图片地址 |
+| alt | string | - | - | 描述图片的备用文字 |
 
-### Events
+Events
+
 | 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onError | 当图片加载失败时的处理函数，返回false可以阻止默认行为 |  - |
-
+| :--- | :--- | :--- |
+| onError | 当图片加载失败时的处理函数，返回false可以阻止默认行为 | - |

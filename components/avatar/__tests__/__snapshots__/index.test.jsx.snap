@@ -3,7 +3,7 @@
 exports[`Avatar renders Avatars correctly when set src, icon and string 1`] = `
 <div>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon za-avatar--image za-avatar--string"
+    class="zw-avatar zw-avatar--circle zw-avatar--image zw-avatar--string"
   >
     <img
       alt=""
@@ -18,7 +18,7 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
   <Avatar
     alt=""
     icon=""
-    prefixCls="za-avatar"
+    prefixCls="zw-avatar"
     shape="circle"
     size="circle"
     src=""
@@ -26,7 +26,7 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
   <Avatar
     alt=""
     icon=""
-    prefixCls="za-avatar"
+    prefixCls="zw-avatar"
     shape="circle"
     size="square"
     src=""
@@ -37,13 +37,14 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
 exports[`Avatar renders Avatars of different size correctly 1`] = `
 <div>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--circle"
     style="width:80px;height:80px;line-height:80px;font-size:40px"
   >
     <i
-      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      class="zw-icon zw-avatar--icon zw-icon--time zw-icon--default zw-icon--md"
+      style="font-size:40px"
       theme="default"
-      type="user"
+      type="time"
     >
       <svg
         fill="currentColor"
@@ -52,18 +53,18 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
         width="1em"
       >
         <use
-          href="#user"
+          href="#time"
         />
       </svg>
     </i>
   </span>
   <span
-    class="za-avatar za-avatar--xl za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--xl zw-avatar--circle"
   >
     <i
-      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      class="zw-icon zw-avatar--icon zw-icon--xl zw-icon--time zw-icon--default zw-icon--md"
       theme="default"
-      type="user"
+      type="time"
     >
       <svg
         fill="currentColor"
@@ -72,18 +73,18 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
         width="1em"
       >
         <use
-          href="#user"
+          href="#time"
         />
       </svg>
     </i>
   </span>
   <span
-    class="za-avatar za-avatar--lg za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--lg zw-avatar--circle"
   >
     <i
-      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      class="zw-icon zw-avatar--icon zw-icon--lg zw-icon--time zw-icon--default zw-icon--md"
       theme="default"
-      type="user"
+      type="time"
     >
       <svg
         fill="currentColor"
@@ -92,18 +93,18 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
         width="1em"
       >
         <use
-          href="#user"
+          href="#time"
         />
       </svg>
     </i>
   </span>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--circle"
   >
     <i
-      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      class="zw-icon zw-avatar--icon zw-icon--time zw-icon--default zw-icon--md"
       theme="default"
-      type="user"
+      type="time"
     >
       <svg
         fill="currentColor"
@@ -112,18 +113,18 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
         width="1em"
       >
         <use
-          href="#user"
+          href="#time"
         />
       </svg>
     </i>
   </span>
   <span
-    class="za-avatar za-avatar--sm za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
   >
     <i
-      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      class="zw-icon zw-avatar--icon zw-icon--sm zw-icon--time zw-icon--default zw-icon--md"
       theme="default"
-      type="user"
+      type="time"
     >
       <svg
         fill="currentColor"
@@ -132,18 +133,18 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
         width="1em"
       >
         <use
-          href="#user"
+          href="#time"
         />
       </svg>
     </i>
   </span>
   <span
-    class="za-avatar za-avatar--xs za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--xs zw-avatar--circle"
   >
     <i
-      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      class="zw-icon zw-avatar--icon zw-icon--xs zw-icon--time zw-icon--default zw-icon--md"
       theme="default"
-      type="user"
+      type="time"
     >
       <svg
         fill="currentColor"
@@ -152,7 +153,7 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
         width="1em"
       >
         <use
-          href="#user"
+          href="#time"
         />
       </svg>
     </i>
@@ -163,12 +164,12 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
 exports[`Avatar renders Avatars of different type correctly 1`] = `
 <div>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--circle"
   >
     <i
-      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      class="zw-icon zw-avatar--icon zw-icon--time zw-icon--default zw-icon--md"
       theme="default"
-      type="user"
+      type="time"
     >
       <svg
         fill="currentColor"
@@ -177,13 +178,13 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
         width="1em"
       >
         <use
-          href="#user"
+          href="#time"
         />
       </svg>
     </i>
   </span>
   <span
-    class="za-avatar za-avatar--circle za-avatar--string"
+    class="zw-avatar zw-avatar--circle zw-avatar--string"
   >
     <span
       style="position:absolute;transform:scale(1);left:calc(50% - 4.5px )"
@@ -192,7 +193,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     </span>
   </span>
   <span
-    class="za-avatar za-avatar--circle za-avatar--string"
+    class="zw-avatar zw-avatar--circle zw-avatar--string"
   >
     <span
       style="position:absolute;transform:scale(0.7);left:calc(50% - 18px )"
@@ -201,7 +202,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     </span>
   </span>
   <span
-    class="za-avatar za-avatar--circle za-avatar--image"
+    class="zw-avatar zw-avatar--circle zw-avatar--image"
   >
     <img
       alt="my avatar"
@@ -209,7 +210,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     />
   </span>
   <span
-    class="za-avatar za-avatar--circle za-avatar--string"
+    class="zw-avatar zw-avatar--circle zw-avatar--string"
     style="color:#2db7f5;background-color:rgb(249, 232, 8)"
   >
     <span

@@ -7,12 +7,12 @@ describe('Avatar', () => {
   it('renders Avatars of different size correctly', () => {
     const wrapper = render(
       <div>
-        <Avatar size={80} icon="user" />
-        <Avatar size="xl" icon="user" />
-        <Avatar size="lg" icon="user" />
-        <Avatar icon="user" />
-        <Avatar size="sm" icon="user" />
-        <Avatar size="xs" icon="user" />
+        <Avatar size={80} icon="time" />
+        <Avatar size="xl" icon="time" />
+        <Avatar size="lg" icon="time" />
+        <Avatar icon="time" />
+        <Avatar size="sm" icon="time" />
+        <Avatar size="xs" icon="time" />
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -31,7 +31,7 @@ describe('Avatar', () => {
   it('renders Avatars of different type correctly', () => {
     const wrapper = render(
       <div>
-        <Avatar icon="user" />
+        <Avatar icon="time" />
         <Avatar>U</Avatar>
         <Avatar>USER</Avatar>
         <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" alt="my avatar" onError={() => console.log('load error')} />
@@ -44,7 +44,7 @@ describe('Avatar', () => {
   it('renders Avatars correctly when set src, icon and string', () => {
     const wrapper = render(
       <div>
-        <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" icon="user">USER</Avatar>
+        <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" icon="time">USER</Avatar>
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
