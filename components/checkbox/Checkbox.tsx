@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { CheckboxProps } from './PropsType';
 
-export interface CheckboxStates {
+interface CheckboxStates {
   checked: boolean;
 }
 

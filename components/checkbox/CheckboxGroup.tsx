@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Checkbox from './Checkbox';
 import { CheckboxGroupProps, CheckboxProps } from './PropsType';
 
-export interface CheckboxGroupStates {
+interface CheckboxGroupStates {
   value: string[];
 }
 
