@@ -20,11 +20,3 @@ export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   indeterminate?: boolean;
   onChange?: (event) => void;
 }
-
-export interface CheckboxStates {
-  checked: boolean;
-}
-
-export interface CheckboxGroupStates {
-  value: string[] | number[];
-}
