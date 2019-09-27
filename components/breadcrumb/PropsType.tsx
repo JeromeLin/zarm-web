@@ -8,6 +8,7 @@ export interface PropsType {
 }
 
 export interface ItemPropsType {
+  prefixCls?: string;
   separator?: string;
   href?: string;
   className?: string;

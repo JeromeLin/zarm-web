@@ -4,7 +4,7 @@ import { PropsType } from './PropsType';
 
 class Breadcrumb extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'ui-breadcrumb',
+    prefixCls: 'zw-breadcrumb',
     separator: '/',
   };
 
@@ -12,12 +12,10 @@ class Breadcrumb extends Component<PropsType, any> {
 
   render() {
     const {
-      className, separator, children, style,
+      className, separator, children, style, prefixCls,
     } = this.props;
 
-    const cls = classnames({
-      'ui-breadcrumb': true,
-      [className!]: !!className,
+    const cls = classnames(prefixCls, className, {
     });
 
     // eslint-disable-next-line

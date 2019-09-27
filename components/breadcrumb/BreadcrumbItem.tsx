@@ -4,30 +4,30 @@ import { ItemPropsType } from './PropsType';
 
 class BreadcrumbItem extends Component<ItemPropsType, any> {
   static defaultProps = {
+    prefixCls: 'zw-breadcrumb-item',
     separator: '/',
   };
 
   render() {
     const {
-      className, href, separator, children, style,
+      className, href, separator, children, style, prefixCls,
     } = this.props;
 
-    const cls = classnames({
-      [className!]: !!className,
+    const cls = classnames(prefixCls, className, {
     });
 
     const text = 'href' in this.props ? (
-      <a className="ui-breadcrumb-link" href={href}>
+      <a className={`${prefixCls}__link`} href={href}>
         {children}
       </a>
     ) : (
-      <span className="ui-breadcrumb-link">{children}</span>
+      <span className={`${prefixCls}__content`}>{children}</span>
     );
 
     return (
       <span className={cls} style={style}>
         {text}
-        <span className="ui-breadcrumb-separator">{separator}</span>
+        <span className={`${prefixCls}__separator`}>{separator}</span>
       </span>
     );
   }

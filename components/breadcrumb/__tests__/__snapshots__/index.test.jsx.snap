@@ -2,18 +2,18 @@
 
 exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] = `
 <div
-  class="ui-breadcrumb"
+  class="zw-breadcrumb"
 >
   <span
     class=""
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
     >
-      首页
+      一级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       &gt;
     </span>
@@ -22,12 +22,12 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
     class=""
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
     >
-      模块
+      二级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       &gt;
     </span>
@@ -36,13 +36,13 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
     class=""
   >
     <a
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
       href="https://t.zhongan.com"
     >
-      应用
+      三级菜单
     </a>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       &gt;
     </span>
@@ -52,18 +52,18 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
 
 exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
 <div
-  class="ui-breadcrumb"
+  class="za-breadcrumb"
 >
   <span
     class=""
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
     >
-      首页
+      一级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       /
     </span>
@@ -72,12 +72,12 @@ exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
     class=""
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
     >
-      模块
+      二级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       /
     </span>
@@ -86,13 +86,13 @@ exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
     class=""
   >
     <a
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
       href="https://t.zhongan.com"
     >
-      应用
+      三级菜单
     </a>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       /
     </span>

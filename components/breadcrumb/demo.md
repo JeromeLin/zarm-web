@@ -14,9 +14,9 @@ class Demo extends React.Component {
     return (
       <div>
         <Breadcrumb>
-          <Breadcrumb.Item>首页</Breadcrumb.Item>
-          <Breadcrumb.Item>模块</Breadcrumb.Item>
-          <Breadcrumb.Item href="https://t.zhongan.com">应用</Breadcrumb.Item>
+          <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item>二级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
         </Breadcrumb>
       </div>
     );
@@ -39,9 +39,9 @@ class Demo extends React.Component {
     return (
       <div>
         <Breadcrumb separator=">">
-          <Breadcrumb.Item>首页</Breadcrumb.Item>
-          <Breadcrumb.Item>模块</Breadcrumb.Item>
-          <Breadcrumb.Item href="https://t.zhongan.com">应用</Breadcrumb.Item>
+          <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item href="https://t.zhongan.com">二级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
         </Breadcrumb>
       </div>
     );
