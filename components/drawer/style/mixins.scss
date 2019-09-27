@@ -1,0 +1,44 @@
+@import '../../style/core/index';
+@mixin drawerPadding($top, $right, $bottom, $left) {
+  padding: $top $right $bottom $left;
+
+  @include b(drawer__cell) {
+    @include b(drawer__cell__title) {
+      font-size: 22px;
+      width: 100%;
+      font-weight: 500;
+      color: rgba(52, 52, 52, 1);
+      line-height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+@mixin drawerheader() {
+  @include b(drawer__cell) {
+    @include b(drawer__cell__title) {
+      position: relative;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      border-radius: 4px 4px 0 0;
+      font-size: 22px;
+      width: 100%;
+      font-weight: 500;
+      color: rgba(52, 52, 52, 1);
+      line-height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @include b(drawer__cell__body) {
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+  }
+}

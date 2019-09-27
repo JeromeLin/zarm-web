@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-17 10:45:04
- * @LastEditTime: 2019-09-20 11:04:56
+ * @LastEditTime: 2019-09-26 18:45:00
  * @LastEditors: Please set LastEditors
  -->
 # Drawer抽屉
@@ -89,11 +89,20 @@ class Demo extends React.Component {
       <>
         <Button size="xs" onClick={() => {
           this.toggle('popTop');
-          // setTimeout(() => {
-          //   this.toggle('popTop');
-          // }, 3000);
         }}>上方</Button>
-
+        <Drawer
+          visible={visible.popTop}
+          direction="top"
+          onClose={() => this.toggle('popTop')}
+          closable
+          title="top"
+          maskClosable
+          // afterOpen={() => console.log('afterOpen1')}
+          afterClose={() => console.log('afterClose')}
+          onMaskClick={() => console.log('onMaskClick')}
+        >
+        dksuhfksdhfkdshjkds
+        </Drawer>
 
         <Button size="xs" onClick={() => {
           this.toggle('popBottom');
@@ -118,33 +127,15 @@ class Demo extends React.Component {
           // }, 3000);
         }}>右边</Button>
 
-
-
-
-        <Drawer
-          visible={visible.popTop}
-          direction="top"
-          onClose={() => this.toggle('popTop')}
-          width={1000}
-          closable
-          // title="一级标题"
-          maskClosable
-          afterOpen={() => console.log('afterOpen')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-        12321321321321
-        <div>ks;jgflkdlkdflk</div>
-        </Drawer>
-
         <Drawer
           visible={visible.popRight}
           direction="right"
           onClose={() => this.toggle('popRight')}
           closable
-          title="嵌套"
+          width={200}
+          title="嵌套1"
           maskClosable
-          afterOpen={() => console.log('afterOpen')}
+          // afterOpen={() => console.log('afterOpen1')}
           afterClose={() => console.log('afterClose')}
           onMaskClick={() => console.log('onMaskClick')}
         >
@@ -153,19 +144,21 @@ class Demo extends React.Component {
             visible={drawerVisible}
             onClose={this.drawerHide}
             direction="right"
+            title="嵌套2"
             closable
             maskClosable={false}
-            afterOpen={() => console.log('afterOpen')}
+            // afterOpen={() => console.log('afterOpen2')}
             afterClose={() => console.log('afterClose')}
             onMaskClick={() => console.log('onMaskClick')}
           >
             <Button theme="danger" onClick={this.drawerShow1}>右划1</Button>
             <Drawer
               visible={drawerVisible1}
+              title="嵌套3"
               onClose={this.drawerHide1}
               closable
               maskClosable={false}
-              afterOpen={() => console.log('afterOpen')}
+              // afterOpen={() => console.log('afterOpen3')}
               afterClose={() => console.log('afterClose')}
               onMaskClick={() => console.log('onMaskClick')}
             >
@@ -173,9 +166,10 @@ class Demo extends React.Component {
               <Drawer
                 visible={drawerVisible2}
                 onClose={this.drawerHide2}
+                title="嵌套4"
                 closable
                 maskClosable={false}
-                afterOpen={() => console.log('afterOpen')}
+                // afterOpen={() => console.log('afterOpen4')}
                 afterClose={() => console.log('afterClose')}
                 onMaskClick={() => console.log('onMaskClick')}
               >
@@ -183,34 +177,7 @@ class Demo extends React.Component {
             </Drawer>
           </Drawer>
         </Drawer>
-        <Drawer
-          visible={visible.popBottom}
-          direction="bottom"
-          onClose={() => this.toggle('popBottom')}
-          closable
-          title="一级标题"
-          maskClosable
-          afterOpen={() => console.log('afterOpen')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-        12321321321321
-        <div>ks;jgflkdlkdflk</div>
-        </Drawer>
-        <Drawer
-          visible={visible.popLeft}
-          direction="left"
-          title="一级标题"
-          onClose={() => this.toggle('popLeft')}
-          closable
-          maskClosable
-          afterOpen={() => console.log('afterOpen')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-        12321321321321
-        <div>ks;jgflkdlkdflk</div>
-        </Drawer>
+
       </>
     );
   }
@@ -229,6 +196,7 @@ ReactDOM.render(<Demo />, mountNode);
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | - | 弹层宽度 |
 | mask | boolean | true | 是否展示遮罩层 |
+| maskover | boolean | true | 嵌套遮罩层是否叠加黑色背景 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |

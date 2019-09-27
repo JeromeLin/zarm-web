@@ -13,12 +13,18 @@ export default interface PropsType {
   visible?: boolean;
   maskClosable?: boolean;
   title?: ReactNode;
+  maskover?: boolean;
   onClose?: () => void;
-  afterOpen?: () => void;
+  // afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
 }
 
 export interface StateType {
-  layer: number;
+  layer?: number;
+  top?: number;
+  left?: number;
+  totallayers?: number;
+  direction?: 'top' | 'bottom' | 'left' | 'right';
+  btnstyle: CSSProperties;
 }
