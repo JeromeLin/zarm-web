@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { ActivityIndicator } from 'zarm';
 import classnames from 'classnames';
-import 'zarm/components/activity-indicator/style';
 import PropsType from './PropsType';
+import 'zarm/components/activity-indicator/style';
 
+export interface SwitchState {
+  checked?: boolean;
+}
 
-class Switch extends Component<PropsType, any> {
+class Switch extends Component<PropsType, SwitchState> {
+  static displayName = 'Switch';
+
   static defaultProps = {
     prefixCls: 'zw-switch',
     loading: false,
-    className: '',
     size: 'md',
     checked: false,
     defaultChecked: false,
-    onChange: () => {},
   };
 
   constructor(props) {
@@ -23,26 +26,18 @@ class Switch extends Component<PropsType, any> {
     };
   }
 
-  getDerivedStateFromProps(nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
-    }
-  }
-
   _onClick() {
     const { onChange } = this.props;
     const { checked } = this.state;
     this.setState({
       checked: !checked,
     });
-    onChange(!checked);
+    onChange && onChange(!checked);
   }
 
   render() {
     const {
-      size, disabled, className, prefixCls, loading,
+      size, disabled, className, prefixCls, loading, style,
     } = this.props;
     const { checked } = this.state;
     const cls = classnames(prefixCls, className, {
@@ -54,6 +49,7 @@ class Switch extends Component<PropsType, any> {
     return (
       <span
         className={cls}
+        style={{ ...style }}
         onClick={() => !disabled && !loading && this._onClick()}
       >
         <span className={`${prefixCls}__inner`}>
