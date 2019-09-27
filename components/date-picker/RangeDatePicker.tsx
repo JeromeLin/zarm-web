@@ -492,8 +492,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     return (
       <Dropdown
         onVisibleChange={this.handleDropDownVisibleChange}
-        overlay={rangeDatePicker}
-        isRadius={radius}
+        content={rangeDatePicker}
         visible={isShowDropdown}
         hideOnClick={!showTime}
       >

@@ -6,7 +6,7 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
     class="za-select za-time__select-wrapper disabled radius"
   >
     <div
-      class="ui-dropdown-trigger-box"
+      class="zw-dropdown-trigger-box"
     >
       <div
         aria-autocomplete="list"
@@ -38,8 +38,9 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
       </div>
     </div>
     <div
-      class="ui-dropdown"
+      class="zw-dropdown"
       style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
+      width="auto"
     >
       <div
         class="za-time__select"
@@ -174,7 +175,7 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
     style="width:160px"
   >
     <div
-      class="ui-dropdown-trigger-box"
+      class="zw-dropdown-trigger-box"
     >
       <div
         aria-autocomplete="list"
@@ -206,8 +207,9 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
       </div>
     </div>
     <div
-      class="ui-dropdown"
+      class="zw-dropdown"
       style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
+      width="auto"
     >
       <div
         class="za-time__select"
@@ -286,7 +288,7 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
     class="za-select za-time__select-wrapper radius"
   >
     <div
-      class="ui-dropdown-trigger-box"
+      class="zw-dropdown-trigger-box"
     >
       <div
         aria-autocomplete="list"
@@ -318,8 +320,9 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
       </div>
     </div>
     <div
-      class="ui-dropdown"
+      class="zw-dropdown"
       style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
+      width="auto"
     >
       <div
         class="za-time__select"

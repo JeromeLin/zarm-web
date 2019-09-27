@@ -170,8 +170,7 @@ class DatePicker extends Component<PropsType, any> {
             dropdown: visible,
           });
         }}
-        overlay={this.renderOverlay()}
-        isRadius={radius}
+        content={this.renderOverlay()}
         visible={dropdown}
         hideOnClick={flag}
       >

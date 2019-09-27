@@ -1,17 +1,6 @@
-@mixin dropdown-size($border-radius) {
-  &.radius {
-    border-radius: $border-radius;
-  }
-}
+@import '../../style/themes/variable';
 
-.ui-dropdown-trigger-box {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.ui-dropdown {
-  @include dropdown-size($base-radius);
-
+@include b(dropdown) {
   min-width: 100%;
   background-color: #fff;
   border: 1px solid #d9d9d9;
@@ -19,7 +8,8 @@
   text-align: left;
   will-change: transform, opacity;
 
-  &.ui-dropdown-hidden {
-    display: none;
+  &-trigger-box {
+    display: inline-block;
+    vertical-align: middle;
   }
 }

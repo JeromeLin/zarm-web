@@ -1,25 +1,25 @@
-type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
-export type trigger = 'click' | 'hover' | 'contextMenu';
+import { ReactNode, HTMLAttributes } from 'react';
 
-interface BasicPropsType {
-  prefixCls?: string;
+export type Direction = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight' | 'bottomScreen' | 'topScreen';
+export type Trigger = 'click' | 'hover' | 'contextMenu';
+
+export interface BasicPropsType {
+  prefixCls: string;
   visible?: boolean;
-  overlay?: React.ReactElement<any>;
-  placement?: placement;
-  className?: string;
-  radius?: boolean;
-  isRadius?: boolean;
-  triggerBoxStyle?: React.CSSProperties;
-  trigger?: trigger;
+  content?: ReactNode;
+  direction: Direction;
+  triggerBoxProps: HTMLAttributes<HTMLDivElement>;
+  trigger: Trigger;
   disabled?: boolean;
-  zIndex?: number;
-  hideOnClick?: boolean;
+  zIndex: number;
+  hideOnClick: boolean;
   notRenderInDisabledMode?: boolean;
   onVisibleChange(flag: boolean): void;
   getPopupContainer?(): HTMLElement;
+  width: string | number;
 }
 
-export type propsType = React.HTMLAttributes<any> & BasicPropsType;
+export type PropsType = React.HTMLAttributes<HTMLDivElement> & BasicPropsType;
 
 export interface StateType {
   visible?: boolean;

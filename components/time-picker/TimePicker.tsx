@@ -138,8 +138,8 @@ class TimePicker extends Component<TimePickerProps, any> {
           style={{ width: 240, ...dropdownStyle }}
           zIndex={2020}
           onVisibleChange={this.onVisibleChange}
-          overlay={overlay}
-          placement={placement}
+          content={overlay}
+          direction={placement}
         >
           <div
             className="za-select__selection"

@@ -15,7 +15,7 @@ interface StateProps {
   dropdown: boolean;
   searchValue: string | null;
   showPlacehoder: boolean;
-  optionMap: { [x: string]: any; [y: number]: any };
+  optionMap: { [x: string]: any;[y: number]: any };
   optionData: Array<OptionDataProps>;
 }
 
@@ -361,11 +361,10 @@ class Select extends Component<PropsType, StateProps> {
 
     return (
       <Dropdown
-        triggerBoxStyle={style}
+        triggerBoxProps={{ style }}
         disabled={disabled}
         visible={dropdown}
-        isRadius={radius}
-        overlay={menus}
+        content={menus}
         zIndex={zIndex}
         getPopupContainer={getPopupContainer}
         onVisibleChange={(visible) => {
