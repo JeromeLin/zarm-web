@@ -4,49 +4,9 @@ import classnames from 'classnames';
 import events from '../utils/events';
 import throttle from '../utils/throttle';
 import { PropsType, StateType, Direction } from './PropsType';
+import { getElemPosition, getOffsetElem } from './elemCalc';
 
-function getOffsetElem(elem: HTMLElement) {
-  let parentElem = elem.parentNode;
-  while (parentElem) {
-    if (parentElem instanceof HTMLElement) {
-      if (parentElem.style.position === 'fixed'
-        || window.getComputedStyle(parentElem).position === 'fixed'
-        || parentElem === document.body) {
-        return parentElem;
-      }
-      parentElem = parentElem.parentNode;
-    } else {
-      break;
-    }
-  }
-  return document.body;
-}
-
-// 获取元素坐标
-function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document.body) {
-  let parentElem = elem.parentElement;
-  let offsetParentElem = elem.offsetParent;
-  const position: { top: number; left: number } = {
-    top: elem.offsetTop,
-    left: elem.offsetLeft,
-  };
-  while (relativeElem.contains(parentElem!)) {
-    if (parentElem instanceof HTMLElement) {
-      if (relativeElem === parentElem) {
-        return position;
-      }
-      if (offsetParentElem === parentElem) {
-        position.top += parentElem.offsetTop;
-        position.left += parentElem.offsetLeft;
-        offsetParentElem = parentElem.offsetParent;
-      }
-      position.top -= parentElem.scrollTop;
-      position.left -= parentElem.scrollLeft;
-      parentElem = parentElem.parentElement;
-    }
-  }
-  return position;
-}
+const hiddenTimerDuration = 300;
 
 // todo [首次不创建]
 // bottom top left center right screen
@@ -73,34 +33,32 @@ const defaultProps = {
   triggerBoxProps: {},
 };
 
-const mountedInstance = new Set<Dropdown>();
-
 export default class Dropdown extends React.Component<PropsType, StateType> {
   static defaultProps = defaultProps;
 
+  private static mountedInstance = new Set<Dropdown>();
+
   // 隐藏全部的Dropdown
   static hide(): void {
-    mountedInstance.forEach((instance) => {
+    Dropdown.mountedInstance.forEach((instance) => {
       instance.props.onVisibleChange(false);
     });
   }
 
   // 显示全部的Dropdown 除了disable
   static show(): void {
-    mountedInstance.forEach((instance) => {
+    Dropdown.mountedInstance.forEach((instance) => {
       instance.props.onVisibleChange(true);
     });
   }
 
-  // 重新计算Dropdown定位
+  // 重新计算全部的Dropdown定位 不计算隐藏的和禁用状态的
   static reposition() {
-    mountedInstance.forEach((instance) => {
+    Dropdown.mountedInstance.forEach((instance) => {
       instance.reposition();
     });
   }
 
-  // 用于存储已生成的全部实例的Set
-  // private static mountedInstance: Set<Dropdown> = new Set();
   // 根据定位点计算定位信息
   private static calcPosition(
     placement: PropsType['direction'] = 'bottomLeft',
@@ -165,8 +123,6 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
 
   private popContainer!: HTMLElement;
 
-  private scrollParent!: HTMLElement;
-
   private isHoverOnDropContent = false;
 
   private hiddenTimer: number | undefined;
@@ -198,12 +154,13 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
         },
       });
     }
+
     events.on(document, 'click', this.onDocumentClick);
     events.on(window, 'resize', this.onWindowResize);
     document.addEventListener('scroll', this.onParentScroll, true);
 
     // 存储当前实例，方便静态方法统一处理
-    mountedInstance.add(this);
+    Dropdown.mountedInstance.add(this);
     this.triggerBoxOffsetHeight = this.triggerBox.offsetHeight;
   }
 
@@ -234,8 +191,7 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
   componentWillUnmount() {
     events.off(document, 'click', this.onDocumentClick);
     events.off(window, 'click', this.onWindowResize);
-    events.off(this.scrollParent, 'scroll', this.onParentScroll);
-    mountedInstance.delete(this);
+    Dropdown.mountedInstance.delete(this);
     setTimeout(() => {
       this.popContainer.removeChild(this.div);
     });
@@ -301,7 +257,7 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
         if (this.isHoverOnDropContent === false) {
           this.props.onVisibleChange(false);
         }
-      }, 300);
+      }, hiddenTimerDuration);
     }
   };
 
@@ -321,7 +277,7 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
     // 给消失一点缓冲时间
     this.hiddenTimer = setTimeout(() => {
       this.props.onVisibleChange(false);
-    }, 300);
+    }, hiddenTimerDuration);
   };
 
   // 点击外部的时候

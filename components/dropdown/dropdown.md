@@ -334,6 +334,7 @@ Drop.reposition();   // 重新定位所有的组件(不包括隐藏和禁用的�
 ## API
 
 | 属性 | 类型 | 默认值 | 说明 |
+
 | :--- | :--- | :--- | :--- |
 | prefixCls | string | zw-dropdown |  |
 | direction | Direction | bottomLeft | 设置打开方向，可选值为 bottomLeft bottomCenter bottomRight topLeft topCenter topRight bottomScreen topScreen|
