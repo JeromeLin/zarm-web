@@ -1,6 +1,6 @@
 import { HTMLAttributes, CSSProperties } from 'react';
 
-export interface GroupProps {
+export interface CheckboxGroupProps {
   prefixCls?: string;
   value?: string[] | number[];
   defaultValue?: string[] | number[];
@@ -10,7 +10,7 @@ export interface GroupProps {
   onChange: (checkedValue: Array<string | number >) => void;
 }
 
-export default interface PropsType extends HTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   prefixCls?: string;
   value?: string | number;
   checked?: boolean;

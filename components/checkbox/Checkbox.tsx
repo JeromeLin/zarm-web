@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { CheckboxProps } from './PropsType';
 
-class Checkbox extends Component<PropsType, any> {
+class Checkbox extends Component<CheckboxProps, any> {
   static Group;
 
   static defaultProps = {

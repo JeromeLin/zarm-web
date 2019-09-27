@@ -1,9 +1,9 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
 import Checkbox from './Checkbox';
-import { GroupProps } from './PropsType';
+import { CheckboxGroupProps } from './PropsType';
 
-class CheckboxGroup extends Component<GroupProps, any> {
+class CheckboxGroup extends Component<CheckboxGroupProps, any> {
   static defaultProps = {
     prefixCls: 'zw-checkbox-group',
   };
