@@ -5,7 +5,7 @@ import Icon from '../icon';
 
 class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, StateType> {
   static defaultProps: PropsType = {
-    prefixCls: 'zw-avatar',
+    prefixCls: 'za-avatar',
     icon: '',
     shape: 'circle',
     src: '',
@@ -48,6 +48,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
       [className!]: className,
       [`${prefixCls}--${size}`]: typeof size === 'string' && size,
       [`${prefixCls}--${shape}`]: true,
+      [`${prefixCls}--icon`]: hasIcon,
       [`${prefixCls}--image`]: hasImage && !loadError,
       [`${prefixCls}--string`]: hasString || (hasImage && loadError),
     });
@@ -65,15 +66,6 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
       left: `calc(50% - ${4.5 * strLength}px )`,
     };
 
-    const clsIcon = classnames({
-      [`${prefixCls}--icon`]: hasIcon,
-      [`zw-icon--${size}`]: typeof size === 'string' && size,
-    });
-
-    const inlineStyleOfIcon: CSSProperties = (typeof size === 'number') ? {
-      fontSize: `${size / 2}px`,
-    } : {};
-
     return (
       <span
         style={inlineStyle}
@@ -81,7 +73,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
         {...others}
       >
         {hasImage && !loadError && <img src={src} alt={alt} onError={this.onError} />}
-        {!hasImage && hasIcon && <Icon type={icon} className={clsIcon} style={inlineStyleOfIcon} />}
+        {!hasImage && hasIcon && <Icon type={icon} />}
         {(!hasImage || (hasImage && loadError)) && !hasIcon && hasString && <span style={spanStyle}>{children}</span>}
       </span>
     );
