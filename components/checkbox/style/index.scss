@@ -1,5 +1,5 @@
-@import "../../style/themes/default";
-@import "../../style/core/mixins/index";
+@import '../../style/core/index';
+
 @include b(checkbox-group) {
   display: inline-block;
 
@@ -16,6 +16,50 @@
   white-space: nowrap;
   outline: none;
   cursor: pointer;
+
+  /* 一般状态 */
+  @include e(inner) {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border: 1px solid #bcbcbc;
+    border-radius: 2px;
+    background-color: #fff;
+
+    &:after {
+      content: '';
+      display: table;
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 8px;
+      border: 2px solid #fff;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(45deg) scale(0);
+      transition: all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+    }
+  }
+
+  @include e(input) {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+  }
+
+  @include e(children) {
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    position: relative;
+    top: -2px;
+  }
 
   /* 未全部选中状态 */
   @include m(indeterminate) {
@@ -34,7 +78,6 @@
   }
 
   /* hover状态 */
-
   &:not(&--disabled):hover {
     cursor: pointer;
     @include e(inner) {
@@ -56,10 +99,10 @@
   }
 
   /* 禁用状态 */
-
   @include m(disabled) {
     color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
+
     @include e(inner) {
       border-color: #d9d9d9;
       background-color: #f3f3f3;
@@ -69,51 +112,5 @@
         border-color: #ccc;
       }
     }
-  }
-
-  /* 一般状态 */
-  @include e(inner) {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    width: var(--checkbox-inner-w);
-    height: var(--checkbox-inner-h);
-    border: 1px solid rgba(188, 188, 188, 1);
-    border-radius: 2px;
-    background-color: #fff;
-    transition: border-color 0.1s cubic-bezier(0.71, -0.46, 0.29, 1.46), background-color 0.1s cubic-bezier(0.71, -0.46, 0.29, 1.46);
-
-    &:after {
-      transform: rotate(45deg) scale(0);
-      position: absolute;
-      left: 4px;
-      top: 1px;
-      display: table;
-      width: 5px;
-      height: 8px;
-      border: 2px solid #fff;
-      border-top: 0;
-      border-left: 0;
-      content: " ";
-      transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
-    }
-  }
-
-  @include e(input) {
-    position: absolute;
-    left: 0;
-    opacity: 0;
-  }
-
-  @include e(children) {
-    padding-right: 8px;
-    padding-left: 8px;
-    font-size: 14px;
-    font-family: PingFangSC-Regular;
-    font-weight: 400;
-    line-height: 20px;
-    position: relative;
-    top: -2px;
   }
 }

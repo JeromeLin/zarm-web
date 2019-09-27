@@ -4,7 +4,7 @@ import Checkbox from './Checkbox';
 import { CheckboxGroupProps, CheckboxProps } from './PropsType';
 
 interface CheckboxGroupStates {
-  value: string[];
+  value: Array<string | number>;
 }
 
 class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupStates> {

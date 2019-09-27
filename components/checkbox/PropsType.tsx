@@ -1,4 +1,4 @@
-import { HTMLAttributes, CSSProperties } from 'react';
+import { HTMLAttributes, CSSProperties, ChangeEventHandler } from 'react';
 
 export interface CheckboxGroupProps {
   prefixCls?: string;
@@ -7,7 +7,7 @@ export interface CheckboxGroupProps {
   className?: string;
   style?: CSSProperties;
   disabled?: boolean;
-  onChange?: (checkedValue: Array<string | number>) => void;
+  onChange?: (values: Array<string | number>) => void;
 }
 
 export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
@@ -18,5 +18,5 @@ export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   id?: string;
   disabled?: boolean;
   indeterminate?: boolean;
-  onChange?: (event) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }

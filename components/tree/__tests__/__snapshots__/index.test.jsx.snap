@@ -148,7 +148,7 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                          class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                         >
                           <input
                             checked=""
@@ -256,7 +256,7 @@ exports[`Tree renders basic Tree with TreeNode children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                   >
                     <input
                       checked=""
@@ -721,7 +721,7 @@ exports[`Tree renders basic Tree with TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                   >
                     <input
                       checked=""
@@ -2880,7 +2880,7 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                          class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                         >
                           <input
                             checked=""
@@ -2988,7 +2988,7 @@ exports[`Tree renders basic Tree with defaultExpandAll, canCheck, checkedKeys  c
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                   >
                     <input
                       checked=""
@@ -4494,7 +4494,7 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                         class="ui-tree-checkbox"
                       >
                         <label
-                          class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                          class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                         >
                           <input
                             checked=""
@@ -4602,7 +4602,7 @@ exports[`Tree renders basic Tree with expandedKeys, defaultExpandAll, canCheck, 
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                   >
                     <input
                       checked=""
@@ -5067,7 +5067,7 @@ exports[`Tree renders basic Tree with not completely TreeNodes children 1`] = `
                   class="ui-tree-checkbox"
                 >
                   <label
-                    class="zw-checkbox zw-checkbox--disabled zw-checkbox--checked"
+                    class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
                   >
                     <input
                       checked=""
