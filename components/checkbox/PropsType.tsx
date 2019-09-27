@@ -7,7 +7,7 @@ export interface CheckboxGroupProps {
   className?: string;
   style?: CSSProperties;
   disabled?: boolean;
-  onChange: (checkedValue: Array<string | number >) => void;
+  onChange?: (checkedValue: Array<string | number>) => void;
 }
 
 export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
@@ -17,7 +17,14 @@ export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   defaultChecked?: boolean;
   id?: string;
   disabled?: boolean;
-  isDisabled?: boolean;
   indeterminate?: boolean;
-  onChange: (event) => void;
+  onChange?: (event) => void;
+}
+
+export interface CheckboxStates {
+  checked: boolean;
+}
+
+export interface CheckboxGroupStates {
+  value: string[] | number[];
 }

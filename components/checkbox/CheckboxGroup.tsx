@@ -1,9 +1,9 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
 import Checkbox from './Checkbox';
-import { CheckboxGroupProps } from './PropsType';
+import { CheckboxGroupProps, CheckboxGroupStates } from './PropsType';
 
-class CheckboxGroup extends Component<CheckboxGroupProps, any> {
+class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupStates> {
   static defaultProps = {
     prefixCls: 'zw-checkbox-group',
   };
@@ -52,7 +52,9 @@ class CheckboxGroup extends Component<CheckboxGroupProps, any> {
     this.setState({
       value,
     });
-    onChange(value);
+    if (onChange) {
+      onChange(value);
+    }
   }
 
   static getCheckedValue(children) {

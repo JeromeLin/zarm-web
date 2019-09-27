@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { CheckboxProps } from './PropsType';
+import { CheckboxProps, CheckboxStates } from './PropsType';
 
-class Checkbox extends Component<CheckboxProps, any> {
+class Checkbox extends Component<CheckboxProps, CheckboxStates> {
   static Group;
 
   static defaultProps = {
@@ -34,7 +34,9 @@ class Checkbox extends Component<CheckboxProps, any> {
     this.setState({
       checked: !checked,
     });
-    onChange(e);
+    if (onChange) {
+      onChange(e);
+    }
   }
 
   render() {
@@ -42,7 +44,6 @@ class Checkbox extends Component<CheckboxProps, any> {
     const {
       prefixCls,
       value,
-      isDisabled,
       className,
       children,
       style,
@@ -50,7 +51,7 @@ class Checkbox extends Component<CheckboxProps, any> {
       indeterminate,
       disabled,
     } = this.props;
-    const defualtDisabled = disabled || isDisabled;
+    const defualtDisabled = disabled;
     const checkboxWrapperClass = classnames(className, `${prefixCls}`, {
       [`${prefixCls}--disabled`]: defualtDisabled,
       [`${prefixCls}--checked`]: checked,
