@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-17 10:45:04
- * @LastEditTime: 2019-09-26 18:45:00
+ * @LastEditTime: 2019-09-27 11:26:45
  * @LastEditors: Please set LastEditors
  -->
 # Drawer抽屉
@@ -90,19 +90,6 @@ class Demo extends React.Component {
         <Button size="xs" onClick={() => {
           this.toggle('popTop');
         }}>上方</Button>
-        <Drawer
-          visible={visible.popTop}
-          direction="top"
-          onClose={() => this.toggle('popTop')}
-          closable
-          title="top"
-          maskClosable
-          // afterOpen={() => console.log('afterOpen1')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-        dksuhfksdhfkdshjkds
-        </Drawer>
 
         <Button size="xs" onClick={() => {
           this.toggle('popBottom');
@@ -145,6 +132,7 @@ class Demo extends React.Component {
             onClose={this.drawerHide}
             direction="right"
             title="嵌套2"
+            width={100}
             closable
             maskClosable={false}
             // afterOpen={() => console.log('afterOpen2')}

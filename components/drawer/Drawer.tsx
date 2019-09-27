@@ -30,8 +30,14 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
   private parentDrawer: Drawer | null;
 
+  private DrawerDiv;
+
+  private DrawerProperty;
+
   componentDidMount() {
     const { direction } = this.props;
+
+    console.log(12);
 
     if (this.parentDrawer && !!this.parentDrawer.props && this.parentDrawer.props.visible && this.parentDrawer.props.direction !== direction) {
       throw new Error('The direction of the child drawer is the same as that of the father drawer.');
@@ -66,6 +72,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     this.setState({
       layer: totallayer,
     }, () => {
+      setTimeout(() => console.log(this.DrawerProperty));
       this.noticeBrother(totallayer, Drawers);
     });
   };
@@ -148,6 +155,12 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       [`${prefixCls}__mask__hidden`]: layer > 1 && !maskover,
     });
 
+    const element = this.DrawerDiv;
+
+    const object = element && element.getBoundingClientRect();
+
+    this.DrawerProperty = object;
+
     this.parentDrawer = value;
 
     return (
@@ -166,7 +179,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           // afterOpen={afterOpen}
           afterClose={afterClose}
         >
-          <div className={cls}>
+          <div className={cls} ref={(e) => { this.DrawerDiv = e as HTMLDivElement; }}>
             {closable && (<button className={`${prefixCls}__cell__closebtn`} style={{ ...btnstyle }} onClick={() => onClose && onClose()}><Icon type="wrong" /></button>)}
             <div className={`${prefixCls}__cell`} style={{ ...siderStyle }}>
               {title && (<div className={`${prefixCls}__cell__title`}>{title}</div>)}
