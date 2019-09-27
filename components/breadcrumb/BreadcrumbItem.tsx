@@ -10,7 +10,7 @@ class BreadcrumbItem extends Component<ItemPropsType, any> {
 
   render() {
     const {
-      className, href, separator, children, style, prefixCls,
+      className, href, separator, children, style, prefixCls, ...restProps
     } = this.props;
 
     const cls = classnames(prefixCls, className, {
@@ -25,7 +25,7 @@ class BreadcrumbItem extends Component<ItemPropsType, any> {
     );
 
     return (
-      <span className={cls} style={style}>
+      <span className={cls} style={style} {...restProps}>
         {text}
         <span className={`${prefixCls}__separator`}>{separator}</span>
       </span>

@@ -3,44 +3,42 @@
 @include b(breadcrumb) {
   margin-bottom: 20px;
   padding: 10px 15px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   line-height: normal;
-  font-size:14px; 
+  font-size: 14px;
   color: #909090;
 
-
   @include b(breadcrumb-item) {
- 
+
     @include e(link) {
       color: #909090;
       text-decoration: none;
 
       &:hover {
-        color: #00BC70;            
+        color: #00bc70;
       }
     }
 
     @include e(separator) {
-        margin: 0 8px;
-        color:rgba(0,0,0,0.45);
-
+      margin: 0 8px;
+      color: rgba(0, 0, 0, 0.45);
     }
 
     &:last-child {
-        font-weight: 400;
+      font-weight: 400;
+      color: #343434;
+
+      > a {
         color: #343434;
 
-        > a {
-            color: #343434;
-
-            &:hover {
-                color: #00BC70;            
-            }
+        &:hover {
+          color: #00bc70;
         }
+      }
 
-       > span:last-child {
-            display: none;  
-        }
+      > span:last-child {
+        display: none;
+      }
     }
   }
 }

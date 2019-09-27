@@ -5,10 +5,10 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
   class="zw-breadcrumb"
 >
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="zw-breadcrumb-item__link"
+      class="zw-breadcrumb-item__content"
     >
       一级菜单
     </span>
@@ -19,10 +19,10 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="zw-breadcrumb-item__link"
+      class="zw-breadcrumb-item__content"
     >
       二级菜单
     </span>
@@ -33,7 +33,7 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <a
       class="zw-breadcrumb-item__link"
@@ -52,13 +52,13 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
 
 exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
 <div
-  class="za-breadcrumb"
+  class="zw-breadcrumb"
 >
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="zw-breadcrumb-item__link"
+      class="zw-breadcrumb-item__content"
     >
       一级菜单
     </span>
@@ -69,10 +69,10 @@ exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="zw-breadcrumb-item__link"
+      class="zw-breadcrumb-item__content"
     >
       二级菜单
     </span>
@@ -83,7 +83,7 @@ exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <a
       class="zw-breadcrumb-item__link"

@@ -55,15 +55,19 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| separator | 分隔符 | string | — | '/' |
-| className | 类名 | string | — | '' |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| prefixCls | string | 'zw-breadcrumb' | 类名前缀 |
+| separator | ReactNode | '/' | 分隔符 |
+| ...restProps | HTMLAttributes<HTMLDivElement> | - | 
 
 
 Breadcrumb.Item
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| href | 跳转链接 | string | — | - |
-| className | 类名 | string | — | '' |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| separator | ReactNode | '/' | 分隔符 |
+| href | string | - | 链接地址 |
+| children | ReactNode | - | 内容 |
+| ...restProps | HTMLAttributes<HTMLDivElement> | - | 
+

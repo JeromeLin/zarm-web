@@ -12,7 +12,7 @@ class Breadcrumb extends Component<PropsType, any> {
 
   render() {
     const {
-      className, separator, children, style, prefixCls,
+      className, separator, children, style, prefixCls, ...restProps
     } = this.props;
 
     const cls = classnames(prefixCls, className, {
@@ -27,7 +27,7 @@ class Breadcrumb extends Component<PropsType, any> {
     });
 
     return (
-      <div className={cls} style={style}>
+      <div className={cls} style={style} {...restProps}>
         {items}
       </div>
     );
