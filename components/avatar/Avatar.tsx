@@ -1,19 +1,42 @@
 import React, { Component, ReactEventHandler, HTMLAttributes, CSSProperties } from 'react';
 import classnames from 'classnames';
 import { PropsType, StateType } from './PropsType';
-import Icon from '../icon';
 
 class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, StateType> {
   static defaultProps: PropsType = {
     prefixCls: 'zw-avatar',
-    icon: '',
     shape: 'circle',
     src: '',
+    size: 'md',
     alt: '',
   };
 
+  private avatarChildrenNode: HTMLElement;
+
+  private avatarWrapperNode: HTMLElement;
+
   state: StateType = {
     loadError: false,
+    childrenScale: 1,
+  };
+
+
+  componentDidMount() {
+    this.setChildrenScale();
+  }
+
+  setChildrenScale = () => {
+    if (!this.avatarChildrenNode || !this.avatarWrapperNode) {
+      return;
+    }
+    const avatarChildrenWidth = this.avatarChildrenNode.offsetWidth;
+    const avatarWrapperWidth = this.avatarWrapperNode.offsetWidth;
+    const childrenScale = (avatarWrapperWidth - 8) / avatarChildrenWidth;
+    this.setState({
+      childrenScale: (childrenScale < 1)
+        ? childrenScale
+        : 1,
+    });
   };
 
   onError: ReactEventHandler<HTMLImageElement> = (e) => {
@@ -29,60 +52,56 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
       style,
       size,
       shape,
-      icon,
       src,
       alt,
       children,
       className,
       ...others
     } = this.props;
-    const { loadError } = this.state;
+    const { loadError, childrenScale } = this.state;
 
-    const hasIcon = (icon && icon.trim() !== '');
+    const hasFontSizeStyle = (style && style.fontSize);
     const hasImage = (src && src.trim() !== '');
     const hasString = (typeof children === 'string');
-    const strLength = (typeof children === 'string' && children.length) || 0;
 
     const cls = classnames({
       [prefixCls!]: true,
       [className!]: className,
       [`${prefixCls}--${size}`]: typeof size === 'string' && size,
       [`${prefixCls}--${shape}`]: true,
-      [`${prefixCls}--image`]: hasImage && !loadError,
-      [`${prefixCls}--string`]: hasString || (hasImage && loadError),
-    });
-    const inlineStyle: CSSProperties = (typeof size === 'number') ? {
-      ...style,
-      width: size,
-      height: size,
-      lineHeight: `${size}px`,
-      fontSize: `${size / 2}px`,
-    } : { ...style };
-
-    const spanStyle: CSSProperties = {
-      position: 'absolute',
-      transform: `scale(${1 - 0.1 * (strLength - 1)})`,
-      left: `calc(50% - ${4.5 * strLength}px )`,
-    };
-
-    const clsIcon = classnames({
-      [`${prefixCls}--icon`]: hasIcon,
-      [`zw-icon--${size}`]: typeof size === 'string' && size,
     });
 
-    const inlineStyleOfIcon: CSSProperties = (typeof size === 'number') ? {
-      fontSize: `${size / 2}px`,
-    } : {};
+    const clsImage = classnames({ [`${prefixCls}--image`]: hasImage && !loadError });
+    const clsString = classnames({ [`${prefixCls}--string`]: hasString || (hasImage && loadError) });
+    const childrenTransformStr = `scale(${childrenScale}) translateX(-50%)`;
+    const spanStyle: CSSProperties = hasFontSizeStyle
+      ? {} : {
+        transform: childrenTransformStr,
+        WebkitTransform: childrenTransformStr,
+        msTransform: childrenTransformStr,
+      };
 
     return (
       <span
-        style={inlineStyle}
+        style={style}
         className={cls}
         {...others}
+        ref={(node: HTMLElement) => {
+          this.avatarWrapperNode = node;
+        }}
       >
-        {hasImage && !loadError && <img src={src} alt={alt} onError={this.onError} />}
-        {!hasImage && hasIcon && <Icon type={icon} className={clsIcon} style={inlineStyleOfIcon} />}
-        {(!hasImage || (hasImage && loadError)) && !hasIcon && hasString && <span style={spanStyle}>{children}</span>}
+        {hasImage && !loadError && <img src={src} alt={alt} onError={this.onError} className={clsImage} />}
+        {(!hasImage || (hasImage && loadError)) && hasString && (
+          <span
+            className={clsString}
+            style={spanStyle}
+            ref={(node: HTMLElement) => {
+              this.avatarChildrenNode = node;
+            }}
+          >
+            {children}
+          </span>
+        )}
       </span>
     );
   }

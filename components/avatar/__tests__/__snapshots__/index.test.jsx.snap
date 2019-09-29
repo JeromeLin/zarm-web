@@ -3,11 +3,12 @@
 exports[`Avatar renders Avatars correctly when set src, icon and string 1`] = `
 <div>
   <span
-    class="zw-avatar zw-avatar--circle zw-avatar--image zw-avatar--string"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
   >
     <img
-      alt=""
-      src="http://img95.699pic.com/element/40044/5588.png_860.png"
+      alt="my avatar"
+      class="zw-avatar--image"
+      src="site/images/avatar/avatar.png"
     />
   </span>
 </div>
@@ -17,18 +18,23 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
 <div>
   <Avatar
     alt=""
-    icon=""
     prefixCls="zw-avatar"
     shape="circle"
-    size="circle"
+    size="md"
     src=""
   />
   <Avatar
     alt=""
-    icon=""
     prefixCls="zw-avatar"
     shape="circle"
-    size="square"
+    size="md"
+    src=""
+  />
+  <Avatar
+    alt=""
+    prefixCls="zw-avatar"
+    shape="square"
+    size="md"
     src=""
   />
 </div>
@@ -37,126 +43,54 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
 exports[`Avatar renders Avatars of different size correctly 1`] = `
 <div>
   <span
-    class="zw-avatar zw-avatar--circle"
-    style="width:80px;height:80px;line-height:80px;font-size:40px"
-  >
-    <i
-      class="zw-icon zw-avatar--icon zw-icon--time zw-icon--default zw-icon--md"
-      style="font-size:40px"
-      theme="default"
-      type="time"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#time"
-        />
-      </svg>
-    </i>
-  </span>
-  <span
     class="zw-avatar zw-avatar--xl zw-avatar--circle"
   >
-    <i
-      class="zw-icon zw-avatar--icon zw-icon--xl zw-icon--time zw-icon--default zw-icon--md"
-      theme="default"
-      type="time"
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#time"
-        />
-      </svg>
-    </i>
+      XL
+    </span>
   </span>
   <span
     class="zw-avatar zw-avatar--lg zw-avatar--circle"
   >
-    <i
-      class="zw-icon zw-avatar--icon zw-icon--lg zw-icon--time zw-icon--default zw-icon--md"
-      theme="default"
-      type="time"
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#time"
-        />
-      </svg>
-    </i>
+      LG
+    </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--circle"
+    class="zw-avatar zw-avatar--md zw-avatar--circle"
   >
-    <i
-      class="zw-icon zw-avatar--icon zw-icon--time zw-icon--default zw-icon--md"
-      theme="default"
-      type="time"
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#time"
-        />
-      </svg>
-    </i>
+      MD
+    </span>
   </span>
   <span
     class="zw-avatar zw-avatar--sm zw-avatar--circle"
   >
-    <i
-      class="zw-icon zw-avatar--icon zw-icon--sm zw-icon--time zw-icon--default zw-icon--md"
-      theme="default"
-      type="time"
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#time"
-        />
-      </svg>
-    </i>
+      SM
+    </span>
   </span>
   <span
     class="zw-avatar zw-avatar--xs zw-avatar--circle"
   >
-    <i
-      class="zw-icon zw-avatar--icon zw-icon--xs zw-icon--time zw-icon--default zw-icon--md"
-      theme="default"
-      type="time"
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#time"
-        />
-      </svg>
-    </i>
+      XS
+    </span>
   </span>
 </div>
 `;
@@ -164,60 +98,34 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
 exports[`Avatar renders Avatars of different type correctly 1`] = `
 <div>
   <span
-    class="zw-avatar zw-avatar--circle"
-  >
-    <i
-      class="zw-icon zw-avatar--icon zw-icon--time zw-icon--default zw-icon--md"
-      theme="default"
-      type="time"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#time"
-        />
-      </svg>
-    </i>
-  </span>
-  <span
-    class="zw-avatar zw-avatar--circle zw-avatar--string"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    style="font-size:12px"
   >
     <span
-      style="position:absolute;transform:scale(1);left:calc(50% - 4.5px )"
-    >
-      U
-    </span>
-  </span>
-  <span
-    class="zw-avatar zw-avatar--circle zw-avatar--string"
-  >
-    <span
-      style="position:absolute;transform:scale(0.7);left:calc(50% - 18px )"
+      class="zw-avatar--string"
     >
       USER
     </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--circle zw-avatar--image"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    style="color:red;background-color:rgb(249, 232, 8)"
+  >
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
+    >
+      USER
+    </span>
+  </span>
+  <span
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
   >
     <img
       alt="my avatar"
-      src="http://img95.699pic.com/element/40044/5588.png_860.png"
+      class="zw-avatar--image"
+      src="site/images/avatar/avatar.png"
     />
-  </span>
-  <span
-    class="zw-avatar zw-avatar--circle zw-avatar--string"
-    style="color:#2db7f5;background-color:rgb(249, 232, 8)"
-  >
-    <span
-      style="position:absolute;transform:scale(1);left:calc(50% - 4.5px )"
-    >
-      U
-    </span>
   </span>
 </div>
 `;
