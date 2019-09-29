@@ -29,6 +29,10 @@ module.exports = {
         name: 'Button',
         module: () => import('@/components/button/demo.md'),
       },
+      {
+        name: 'Badge',
+        module: () => import('@/components/badge/demo.md'),
+      },
     ],
     layout: [
       {
