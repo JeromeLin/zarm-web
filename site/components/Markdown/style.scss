@@ -50,7 +50,6 @@
   }
 
   code {
-    background-color: #f1f1f1;
     padding: 2px 6px;
     margin: 0 1px;
     border-radius: 3px;
@@ -91,6 +90,7 @@
 }
 
 .markdown-demo-wrapper {
+  margin-top: 40px;
   column-count: 2;
   column-width: 50%;
   column-fill: auto;
@@ -198,17 +198,6 @@
 
     p {
       margin: 0;
-    }
-
-    code {
-      color: #5e6d82;
-      background-color: #e6effb;
-      margin: 0 4px;
-      transform: translateY(-2px);
-      display: inline-block;
-      padding: 1px 5px;
-      font-size: 12px;
-      border-radius: 3px;
     }
   }
 

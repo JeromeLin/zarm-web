@@ -1,0 +1,51 @@
+.badge-page {
+  .custom-panel {
+    display: flex;
+    justify-content: flex-start;
+    padding: 25px 0 0;
+    background: #fff;
+    width: 100%;
+    flex-flow: wrap;
+  }
+
+  .box {
+    width: 25%;
+    margin-bottom: 25px;
+    text-align: center;
+
+    &-item {
+      width: 24px;
+      height: 24px;
+      background: #ddd;
+    }
+  }
+
+  .dot-change-box {
+    & > div {
+      margin-bottom: 20px;
+    }
+
+    .zw-btn-group,
+    .zw-switch,
+    .ui-switch {
+      display: inline-block;
+      margin-left: 25px;
+    }
+  }
+
+  .text-panel {
+    padding: 25px 30px;
+    display: flex;
+    justify-content: flex-start;
+
+    .box {
+      margin-right: 25px;
+      display: flex;
+      align-items: center;
+
+      &-text {
+        padding-right: 10px;
+      }
+    }
+  }
+}

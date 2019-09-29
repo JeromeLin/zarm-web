@@ -29,6 +29,10 @@ module.exports = {
         name: 'Button',
         module: () => import('@/components/button/demo.md'),
       },
+      {
+        name: 'Badge',
+        module: () => import('@/components/badge/demo.md'),
+      },
     ],
     layout: [
       {
@@ -47,7 +51,7 @@ module.exports = {
       },
       {
         name: 'Checkbox',
-        module: () => import('@/components/checkbox/checkbox.md'),
+        module: () => import('@/components/checkbox/demo.md'),
       },
       {
         name: 'Input',
