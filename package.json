@@ -55,7 +55,7 @@
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
     "react-highlight": "^0.12.0",
-    "zarm": "2.0.0-alpha.54"
+    "zarm": "2.0.0-alpha.55"
   },
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
