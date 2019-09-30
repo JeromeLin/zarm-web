@@ -7,12 +7,13 @@ class Tab extends Component<PropsType, any> {
   static Group;
 
   static defaultProps = {
-    prefixCls: 'ui-tab',
+    prefixCls: 'zw-tabs',
   };
 
   static propTypes = {
     prefixCls: PropTypes.string,
     disabled: PropTypes.bool,
+    closable: PropTypes.bool,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   };
 
@@ -37,7 +38,7 @@ class Tab extends Component<PropsType, any> {
 
     const cls = classnames({
       [`${prefixCls}-body-item`]: true,
-      [`${prefixCls}-body-item-active`]: selected,
+      [`${prefixCls}-body-item--active`]: selected,
       [className!]: !!className,
     });
 

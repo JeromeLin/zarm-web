@@ -1,27 +1,32 @@
 import React from 'react';
 
-export type theme = 'default' | 'info' | 'success' | 'warning' | 'error';
-
-export type cardType = 'card' | 'line';
+export type cardType = 'card' | 'line' | 'noborder-card';
+export type directionType = 'horizontal' | 'vertical';
+export type sizeType = 'sm' | 'md' | 'lg';
 
 export interface GroupProps {
-  prefixCls?: string;
-  theme?: theme;
-  value?: string;
-  defaultValue?: string;
-  radius?: boolean;
-  isRadius?: boolean;
-  className?: string;
-  style?: object;
+  value?: number;
+  defaultValue?: number;
   type?: cardType;
-  onChange: (value: any) => void;
+  direction?: directionType;
+  animated?: boolean;
+  closable?: boolean;
+  size?: sizeType;
+  style?: object;
+  className?: string;
+  prefixCls?: string;
+  onChange: (index: number) => void;
+  onClose: (index: number) => void;
+  onTabClose: (targetIndex: number) => void;
+  onPrevClick: (index: number) => void;
+  onNextClick: (index: number) => void;
 }
 
 export default interface PropsType {
   prefixCls?: string;
-  selected?: boolean;
-  title?: string | React.ReactNode;
   className?: string;
   style?: object;
   disabled?: boolean;
+  closable?: boolean;
+  title?: string | React.ReactNode;
 }

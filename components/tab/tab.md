@@ -1,97 +1,222 @@
-## Tab 标签页
+# Tab 标签页
 选项卡切换组件。
 
-### 基础用法
 
-卡片样式选项卡, 支持动态宽度tab, 结合icon。
 
-:::demo
+## line
 
-```js
+```jsx
+import { Tab } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fields: [{
+        closable: true,
+        title: "Tab1",
+        key: "1"
+      }, {
+        closable: false,
+        title: "Tab2",
+        key: "2",
+      }, {
+        closable: false,
+        title: "Tab3",
+        key: "3",
+      }, {
+        closable: false,
+        title: "Tab4",
+        key: "4"
+      }, {
+        closable: false,
+        title: "Tab5",
+        key: "5",
+      }, {
+        closable: false,
+        title: "Tab6",
+        key: "6",
+      }, {
+        closable: false,
+        title: "Tab7",
+        key: "7"
+      }, {
+        closable: false,
+        title: "Tab8",
+        key: "8",
+      }, {
+        closable: false,
+        title: "Tab9",
+        key: "9",
+      }, {
+        closable: false,
+        title: "Tab10",
+        key: "10"
+      }]
+    };
+  }
+
+  onTabClose = (targetIndex) => {
+    const { fields } = this.state;
+    this.setState({
+      fields: fields.filter((item, index) => targetIndex !== index),
+    });
+  }
+
   render() {
     return (
       <div>
-        <Tab.Group defaultValue={0} onChange={(i) => console.log(i)}>
-          <Tab title="选项卡1">
+        <Tab.Group type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose}>
+          {
+            this.state.fields.map((item, index) => (
+              <Tab key={item.key} title={item.title} disabled={item.disabled} closable={item.closable}>
+                这是选项卡{index}的文字
+              </Tab>
+            ))
+          }
+        </Tab.Group>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## card
+
+```jsx
+import { Tab } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fields: [{
+        closable: true,
+        title: "Tab1",
+        key: "1"
+      }, {
+        closable: false,
+        title: "Tab2",
+        key: "2",
+      }, {
+        closable: false,
+        title: "Tab3",
+        key: "3",
+      }, {
+        closable: false,
+        title: "Tab4",
+        key: "4"
+      }, {
+        closable: false,
+        title: "Tab5",
+        key: "5",
+      }, {
+        closable: false,
+        title: "Tab6",
+        key: "6",
+      }, {
+        closable: false,
+        title: "Tab7",
+        key: "7"
+      }, {
+        closable: false,
+        title: "Tab8",
+        key: "8",
+      }, {
+        closable: false,
+        title: "Tab9",
+        key: "9",
+      }, {
+        closable: false,
+        title: "Tab10",
+        key: "10"
+      }]
+    };
+  }
+
+  onTabClose = (targetIndex) => {
+    const { fields } = this.state;
+    this.setState({
+      fields: fields.filter((item, index) => targetIndex !== index),
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Tab.Group type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '300px'}}>
+          {
+            this.state.fields.map((item, index) => (
+              <Tab key={item.key} title={item.title} disabled={item.disabled} closable={item.closable}>
+                这是选项卡{index}的文字
+              </Tab>
+            ))
+          }
+        </Tab.Group>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## noborder-card
+
+```jsx
+import { Tab } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
+        <Tab.Group type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
+          <Tab title="Tab1">
             <div style={{padding: 10}}>
               这是选项卡1的文字
             </div>
           </Tab>
-          <Tab disabled title="选项卡2">
+          <Tab disabled title="Tab2">
             <div style={{padding: 10}}>
               这是选项卡2的文字
             </div>
           </Tab>
-          <Tab title="选项卡3">
+          <Tab title="Tab3">
             <div style={{padding: 10}}>
               这是选项卡3的文字
             </div>
           </Tab>
-          <Tab title={<span><Icon type="user-fill" /> 选项卡4</span>}>
+          <Tab title="Tab4">
             <div style={{padding: 10}}>
               这是选项卡4的文字
             </div>
           </Tab>
         </Tab.Group>
       </div>
-    )
+    );
   }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-普通选项卡，支持动态宽度tab。
+## API
 
-:::demo
+Tab.Group
 
-```js
-  render() {
-    return (
-      <div>
-        <Tab.Group type="line" defaultValue={0} onChange={(i) => console.log(i)}>
-          <Tab title="选项卡1">
-            <div style={{padding: 10}}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="选项卡2">
-            <div style={{padding: 10}}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="选项卡3">
-            <div style={{padding: 10}}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="选项卡4444444">
-             <div style={{padding: 10}}>
-               这是选项卡4的文字
-             </div>
-           </Tab>
-        </Tab.Group>
-      </div>
-    )
-  }
-```
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| value | number | 0 | 当前选中的tab索引值 |
+| defaultValue | number | 0 | 默认选中的tab索引值 |
+| type | string | 'line' | tab的类型，包含线型 卡片型 无边框卡片型，可选值为 `line` | `card` | `noborder-card`  |
+| disabled | boolean | false | 禁用 |
+| closable | boolean | false | 是否关闭 |
+| size | string | 'md' | 大小 `sm` | `md` | `lg`  |
+| onChange | function | - | 面板切换时触发的回调函数，参数为当前选中的tab索引值 |
+| onTabClose | function | 处理Tab关闭函数 |
+| style | object | -' | 自定义容器样式 |
+| className | string | - | 添加自定义容器类名 |
+| prefixCls | string | - | 类名的前缀 |
 
-### Tab Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| title    | 选项名称  | string/ReactElement |   -  |    -  |
-| disabled    | 是否禁用  | boolean |   -  |    false  |
-
-
-### Tab.Group Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| radius    | 是否圆角   | boolean |   -  |    false   |
-| value   | 值 | number |   -   |    false   |
-| defaultValue  | 默认值 | number |   -   |    false   |
-| type  | 选项卡形式 | string |   card/line   |    'card'   |
-
-
-### Tab.Group Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onChange | 状态变化触发的事件 |  value |

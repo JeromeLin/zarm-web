@@ -1,15 +1,33 @@
 import React, { Component, ReactElement } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tab from './Tab';
+import Icon from '../icon';
 import { GroupProps } from './PropsType';
 
 class TabGroup extends Component<GroupProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-tab',
-    theme: 'default',
-    isRadius: true,
+    prefixCls: 'zw-tabs',
     type: 'card',
+    direction: 'horizontal',
+    size: 'md',
     onChange: () => {},
+    onTabClose: () => {},
+  };
+
+  static propTypes = {
+    value: PropTypes.number,
+    defaultValue: PropTypes.number,
+    type: PropTypes.oneOf(['card', 'line', 'noborder-card']),
+    direction: PropTypes.oneOf(['horizontal', 'vertical']),
+    closable: PropTypes.bool,
+    size: PropTypes.oneOf(['sm', 'md', 'lg']),
+    className: PropTypes.string,
+    prefixCls: PropTypes.string,
+    onChange: PropTypes.func,
+    onTabClose: PropTypes.func,
+    onPrevClick: PropTypes.func,
+    onNextClick: PropTypes.func,
   };
 
   private tabHeader;
@@ -36,6 +54,9 @@ class TabGroup extends Component<GroupProps, any> {
         || 0,
       lineWidth: 0,
       lineOffsetLeft: 0,
+      headerWidth: 0,
+      headerHeight: 0,
+      isArrowShown: false,
     };
     this.tabHeader = React.createRef();
   }
@@ -54,11 +75,15 @@ class TabGroup extends Component<GroupProps, any> {
 
   setActiveLineStyle() {
     const { width = 0, left = 0 } = (this.activeTab && this.activeTab.getBoundingClientRect()) || {};
-    const { left: headerOffset = 0 } = (this.tabHeader.current && this.tabHeader.current.getBoundingClientRect()) || {};
-
+    const { scrollWidth = 0, scrollHeight = 0, scrollLeft = 0 } = this.tabHeader.current || {};
+    const { left: headerOffset = 0, width: headerWidth = 0, height: headerHeight = 0 } = (this.tabHeader.current && this.tabHeader.current.getBoundingClientRect()) || {};
+    const { direction } = this.props;
     this.setState({
       lineWidth: width,
-      lineOffsetLeft: left - headerOffset,
+      lineOffsetLeft: left + scrollLeft - headerOffset,
+      headerWidth,
+      headerHeight,
+      isArrowShown: (direction === 'horizontal' && scrollWidth > headerWidth) || (direction === 'vertical' && scrollHeight > headerHeight),
     });
   }
 
@@ -66,7 +91,7 @@ class TabGroup extends Component<GroupProps, any> {
     const { prefixCls } = this.props;
     const { value } = this.state;
     return idx === value
-      ? `${prefixCls}-body-item active`
+      ? `${prefixCls}-body-item--active`
       : `${prefixCls}-body-item`;
   }
 
@@ -81,25 +106,61 @@ class TabGroup extends Component<GroupProps, any> {
     }
   };
 
+  handleTabClose = (index, disabled) => {
+    const { onTabClose } = this.props;
+
+    if (!disabled) {
+      onTabClose(index);
+    }
+  };
+
+  scrollLeftOrTop = () => {
+    const { direction } = this.props;
+    const { headerWidth, headerHeight } = this.state;
+    if (direction === 'horizontal') {
+      this.tabHeader.current.scrollLeft -= headerWidth;
+    } else {
+      this.tabHeader.current.scrollTop -= headerHeight;
+    }
+  };
+
+  scrollRightOrBottom = () => {
+    const { direction } = this.props;
+    const { headerWidth, headerHeight } = this.state;
+    if (direction === 'horizontal') {
+      this.tabHeader.current.scrollLeft += headerWidth;
+    } else {
+      this.tabHeader.current.scrollTop += headerHeight;
+    }
+  };
+
   render() {
     const {
-      isRadius, theme, className, children, style, prefixCls, type,
+      className, children, style, prefixCls, type, direction, size, closable,
     } = this.props;
-    const { value, lineWidth, lineOffsetLeft } = this.state;
+    const { value, lineWidth, lineOffsetLeft, isArrowShown } = this.state;
 
     const cls = classnames({
       [prefixCls!]: true,
-      radius: 'radius' in this.props || isRadius,
-      line: type === 'line',
-      [`theme-${theme}`]: !!theme,
+      [`tabs-${type}`]: true,
+      [`tabs-${direction}`!]: true,
       [className!]: !!className,
     });
+
+    const headerCls = classnames({
+      [`${prefixCls}-header`]: true,
+      [`size-${size}`!]: true,
+    });
+
+    const arrowL = direction === 'horizontal' ? 'left' : 'top';
+    const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
 
     const items = React.Children.map(children, (item: React.ReactElement<any>, $index) => {
       const tabHeaderCls = classnames({
         [`${prefixCls}-header-item`]: true,
-        [`${prefixCls}-header-item-disabled`]: !!item.props.disabled,
-        active: $index === value,
+        [`${prefixCls}-header-item--disabled`]: !!item.props.disabled,
+        [`${prefixCls}-header-item--closable`]: !!closable,
+        [`${prefixCls}-header-item--active`]: $index === value,
       });
       const bindActiveRef = $index === value ? { ref: (node) => { this.activeTab = node; } } : {};
 
@@ -111,6 +172,7 @@ class TabGroup extends Component<GroupProps, any> {
           onClick={() => { this.handleTabClick($index, item.props.disabled); }}
         >
           {item.props.title}
+          {closable && <Icon type="wrong" onClick={() => { this.handleTabClose($index, item.props.disabled); }} />}
         </li>
       );
     });
@@ -125,20 +187,28 @@ class TabGroup extends Component<GroupProps, any> {
 
     return (
       <div className={cls} style={style}>
-        <ul className={`${prefixCls}-header`} ref={this.tabHeader}>
-          {items}
+        <div className={headerCls}>
+          <ul className='scroll-content' ref={this.tabHeader}>
+            {items}
+            {
+              type === 'line' && (
+                <div
+                  className={classnames(`${prefixCls}-line`)}
+                  style={{
+                    width: lineWidth,
+                    transform: `translate3d(${lineOffsetLeft}px,0,0)`,
+                  }}
+                />
+              )
+            }
+          </ul>
           {
-            type === 'line' && (
-              <div
-                className={classnames(`${prefixCls}-line`)}
-                style={{
-                  width: lineWidth,
-                  transform: `translate3d(${lineOffsetLeft}px,0,0)`,
-                }}
-              />
-            )
+            isArrowShown && <Icon type={`arrow-${arrowL}`} className={`tabs-arrow tabs-arrow-${arrowL}`} onClick={() => this.scrollLeftOrTop()} />
           }
-        </ul>
+          {
+            isArrowShown && <Icon type={`arrow-${arrowR}`} className={`tabs-arrow tabs-arrow-${arrowR}`} onClick={() => this.scrollRightOrBottom()} />
+          }
+        </div>
         <div className={`${prefixCls}-body`}>{content}</div>
       </div>
     );
