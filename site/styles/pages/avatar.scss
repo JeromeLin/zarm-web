@@ -1,6 +1,17 @@
 .avatar-page {
-  .zw-avatar {
-    margin-top: 16px;
-    margin-right: 16px;
+  .avatar-list {
+    .zw-avatar {
+      margin-top: 16px;
+      margin-right: 16px;
+    }
+
+    .zw-badge {
+      margin-top: 16px;
+      margin-right: 16px;
+
+      .zw-avatar {
+        margin: 0;
+      }
+    }
   }
 }

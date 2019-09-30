@@ -37,7 +37,6 @@ describe('Avatar', () => {
           size="sm"
           src="site/images/avatar/avatar.png"
           alt="my avatar"
-          onError={() => console.log('load error')}
         />
       </div>,
     );
@@ -51,7 +50,6 @@ describe('Avatar', () => {
           size="sm"
           src="site/images/avatar/avatar.png"
           alt="my avatar"
-          onError={() => console.log('load error')}
         />
       </div>,
     );

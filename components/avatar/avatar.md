@@ -46,9 +46,72 @@ class Demo extends React.Component {
       <div className="avatar-list">
         <Avatar size="sm" style={{ fontSize: '12px' }}>USER</Avatar>
         <Avatar size="sm" style={{ color: 'red', backgroundColor: 'rgb(249, 232, 8)' }}>USER</Avatar>
-        <Avatar size="sm" src="site/images/avatar/avatar.png" alt="my avatar" onError={()=>console.log('load error')}/>
+        <Avatar size="sm" src="site/images/avatar/avatar.png" alt="my avatar" />
       </div>
     )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 自动调整字符大小
+对字符型头像的字符大小自适应调整。同时也支持style自定义字符大小进行覆盖
+
+```jsx
+import { Avatar, Button } from 'zarm-web';
+
+const textList = ['Zhong', 'An', 'Component', 'Library', 'Zarm-Web'];
+const colorList = ['#48f57b', '#a6e62f', '#ffbf00', '#38ae83', '#34cd83'];
+
+class Demo extends React.Component {
+  state = {
+    showIndex: 0,
+  };
+
+  textListLastIndex = textList.length - 1;
+
+  onChangeTextPlay = () => {
+    const { showIndex } = this.state;
+    const { textListLastIndex } = this;
+    this.setState({
+      showIndex: (showIndex < textListLastIndex) ? showIndex + 1 : 0,
+    });
+  };
+
+  render() {
+    const { showIndex } = this.state;
+    console.log(showIndex)
+
+    return (
+      <div className="avatar-change-list">
+        <Avatar size={'lg'} style={{ backgroundColor: `${colorList[showIndex]}` }}>{textList[showIndex]}</Avatar>
+        <Button onClick={this.onChangeTextPlay} style={{ marginLeft: 15 }}>Change</Button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 带徽标的头像
+
+```jsx
+import { Avatar, Badge } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+        <div className="avatar-list">
+             <Badge sup shape="round" text="5">
+               <Avatar shape="square">L</Avatar>
+             </Badge>
+             <Badge sup>
+               <Avatar shape="square">W</Avatar>
+             </Badge>
+        </div>
+    );
   }
 }
 
@@ -63,9 +126,3 @@ ReactDOM.render(<Demo />, mountNode);
 | size | string | 'md' | 头像的大小, 可选值为`xl`、`lg`、`md`、`sm`、`xs`
 | src | string | - | 图片头像的图片地址 |
 | alt | string | - | 描述图片的备用文字 |
-
-Events
-
-| 事件名称 | 说明 | 回调参数 |
-| :--- | :--- | :--- |
-| onError | 当图片加载失败时的处理函数，返回false可以阻止默认行为 | event |

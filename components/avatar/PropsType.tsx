@@ -8,6 +8,5 @@ export interface PropsType {
 }
 
 export interface StateType {
-  loadError: boolean;
   childrenScale: number;
 }

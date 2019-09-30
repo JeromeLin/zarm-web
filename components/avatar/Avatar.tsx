@@ -1,4 +1,4 @@
-import React, { Component, ReactEventHandler, HTMLAttributes, CSSProperties } from 'react';
+import React, { Component, HTMLAttributes, CSSProperties } from 'react';
 import classnames from 'classnames';
 import { PropsType, StateType } from './PropsType';
 
@@ -16,7 +16,6 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
   private avatarWrapperNode: HTMLElement;
 
   state: StateType = {
-    loadError: false,
     childrenScale: 1,
   };
 
@@ -25,25 +24,27 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
     this.setChildrenScale();
   }
 
+  componentDidUpdate(prevProps: PropsType) {
+    if (this.props !== prevProps) {
+      this.setChildrenScale();
+    }
+  }
+
   setChildrenScale = () => {
     if (!this.avatarChildrenNode || !this.avatarWrapperNode) {
       return;
     }
     const avatarChildrenWidth = this.avatarChildrenNode.offsetWidth;
     const avatarWrapperWidth = this.avatarWrapperNode.offsetWidth;
+    if (!avatarChildrenWidth || !avatarWrapperWidth) {
+      return;
+    }
     const childrenScale = (avatarWrapperWidth - 8) / avatarChildrenWidth;
     this.setState({
       childrenScale: (childrenScale < 1)
         ? childrenScale
         : 1,
     });
-  };
-
-  onError: ReactEventHandler<HTMLImageElement> = (e) => {
-    this.setState({ loadError: true });
-    if (this.props.onError) {
-      this.props.onError(e);
-    }
   };
 
   render() {
@@ -58,7 +59,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
       className,
       ...others
     } = this.props;
-    const { loadError, childrenScale } = this.state;
+    const { childrenScale } = this.state;
 
     const hasFontSizeStyle = (style && style.fontSize);
     const hasImage = (src && src.trim() !== '');
@@ -71,8 +72,8 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
       [`${prefixCls}--${shape}`]: true,
     });
 
-    const clsImage = classnames({ [`${prefixCls}--image`]: hasImage && !loadError });
-    const clsString = classnames({ [`${prefixCls}--string`]: hasString || (hasImage && loadError) });
+    const clsImage = classnames({ [`${prefixCls}--image`]: hasImage });
+    const clsString = classnames({ [`${prefixCls}--string`]: hasString || hasImage });
     const childrenTransformStr = `scale(${childrenScale}) translateX(-50%)`;
     const spanStyle: CSSProperties = hasFontSizeStyle
       ? {} : {
@@ -90,8 +91,8 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
           this.avatarWrapperNode = node;
         }}
       >
-        {hasImage && !loadError && <img src={src} alt={alt} onError={this.onError} className={clsImage} />}
-        {(!hasImage || (hasImage && loadError)) && hasString && (
+        {hasImage && <img src={src} alt={alt} className={clsImage} />}
+        {(!hasImage) && hasString && (
           <span
             className={clsString}
             style={spanStyle}
