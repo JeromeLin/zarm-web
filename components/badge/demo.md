@@ -9,17 +9,7 @@
 import { Badge } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="custom-panel">
-    <div className="box" >
-      <Badge shape="dot"><div className="box-item" /></Badge>
-    </div>
-    <div className="box">
-      <Badge shape="round" text="4" />
-    </div>
-    <div className="box">
-      <Badge theme="primary" shape="round" text="免费" />
-    </div>
-  </div>
+  <Badge shape="dot"><div className="box-item" /></Badge>
 , mountNode);
 ```
 
@@ -32,17 +22,10 @@ ReactDOM.render(
 import { Badge } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="custom-panel">
-    <div className="box" >
-      <Badge shape="dot"><div className="box-item" /></Badge>
-    </div>
-    <div className="box">
-      <Badge shape="round" text="4" />
-    </div>
-    <div className="box">
-      <Badge theme="primary" shape="round" text="免费" />
-    </div>
-  </div>
+  <>
+    <Badge shape="round" text="4" />
+    <Badge theme="primary" shape="round" text="免费" />
+  </>
 , mountNode);
 ```
 
@@ -55,26 +38,14 @@ ReactDOM.render(
 import { Badge } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="custom-panel">
-    <div className="box">
-      <Badge shape="rect" text="免费"><div className="box-item" /></Badge>
-    </div>
-    <div className="box">
-      <Badge shape="radius" text="new"><div className="box-item" /></Badge>
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+"><div className="box-item" /></Badge>
-    </div>
-    <div className="box">
-      <Badge shape="circle" text="3"><div className="box-item" /></Badge>
-    </div>
-    <div className="box">
-      <Badge shape="leaf" text="新品"><div className="box-item" /></Badge>
-    </div>
-    <div className="box">
-      <Badge><div className="box-item" /></Badge>
-    </div>
-  </div>
+  <>
+    <Badge><div className="box-item" /></Badge>
+    <Badge shape="rect" text="免费"><div className="box-item" /></Badge>
+    <Badge shape="radius" text="new"><div className="box-item" /></Badge>
+    <Badge shape="round" text="999+"><div className="box-item" /></Badge>
+    <Badge shape="circle" text="3"><div className="box-item" /></Badge>
+    <Badge shape="leaf" text="新品"><div className="box-item" /></Badge>
+  </>
 , mountNode);
 ```
 
@@ -87,32 +58,12 @@ ReactDOM.render(
 import { Badge } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="custom-panel">
-    <div className="box">
-      <Badge theme="primary" />
-    </div>
-    <div className="box">
-      <Badge theme="success" />
-    </div>
-    <div className="box">
-      <Badge theme="warning" />
-    </div>
-    <div className="box">
-      <Badge theme="danger" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="primary" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="success" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="warning" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="danger" />
-    </div>
-  </div>
+  <>
+    <Badge shape="round" text="999+" theme="primary"><div className="box-item" /></Badge>
+    <Badge shape="round" text="999+" theme="success"><div className="box-item" /></Badge>
+    <Badge shape="round" text="999+" theme="warning"><div className="box-item" /></Badge>
+    <Badge shape="round" text="999+" theme="danger"><div className="box-item" /></Badge>
+  </>
 , mountNode);
 ```
 
@@ -124,14 +75,10 @@ ReactDOM.render(
 import { Badge } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="text-panel">
-    <div className="box">
-      <Badge shape="dot"><span className="box-text">邀请有奖</span></Badge>
-    </div>
-    <div className="box">
-      <span className="box-text">邀请有奖</span><Badge shape="dot"/>
-    </div>
-  </div>
+  <>
+    <Badge shape="dot"><span className="box-text">邀请有奖</span></Badge>
+    <span className="box-text">邀请有奖</span><Badge shape="dot" />
+  </>
 , mountNode);
 ```
 
@@ -176,28 +123,25 @@ class Demo extends React.Component {
 
     return (
       <div className="dot-change-box">
-        <div>
-          <Badge text={count} shape="round">
-            <div className="box-item" />
-          </Badge>
-          <ButtonGroup>
-            <Button theme="primary" onClick={this.minus}>
-              <Icon type="minus" />
-            </Button>
-            <Button theme="primary" onClick={this.add}>
-              <Icon type="add" />
-            </Button>
-          </ButtonGroup>
-        </div>
-
-        <div>
-          {
-            isDotVisible
-              ? <Badge><div className="box-item" /></Badge>
-              : <div className="box-item" style={{ display: 'inline-block', verticalAlign: 'top' }} />
-          }
-          <Switch onChange={this.onToggle} value={isDotVisible} />
-        </div>
+        <Badge text={count} shape="round">
+          <div className="box-item" />
+        </Badge>
+        <ButtonGroup>
+          <Button theme="primary" onClick={this.minus}>
+            <Icon type="minus" />
+          </Button>
+          <Button theme="primary" onClick={this.add}>
+            <Icon type="add" />
+          </Button>
+        </ButtonGroup>
+        <br />
+        <br />
+        {
+          isDotVisible
+            ? <Badge><div className="box-item" /></Badge>
+            : <div className="box-item" style={{ marginRight: 48 }} />
+        }
+        <Switch onChange={this.onToggle} value={isDotVisible} />
       </div>
     )
   }
