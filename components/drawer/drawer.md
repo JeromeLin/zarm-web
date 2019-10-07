@@ -119,7 +119,8 @@ class Demo extends React.Component {
           direction="right"
           onClose={() => this.toggle('popRight')}
           closable
-          width={200}
+          width={100}
+          size='lg'
           title="嵌套1"
           maskClosable
           // afterOpen={() => console.log('afterOpen1')}
@@ -183,6 +184,7 @@ ReactDOM.render(<Demo />, mountNode);
 | animationType | string | 'fade' | 当弹出方向为中间位置（direction="center"）时的动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | - | 弹层宽度 |
+| size | string | normal | 可选值`lg`, `normal`, `sm`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskover | boolean | true | 嵌套遮罩层是否叠加黑色背景 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |

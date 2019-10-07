@@ -2,8 +2,10 @@ import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { Popup } from 'zarm';
 
+import throttle from '../utils/throttle';
 import DrawerContext from './createDrawerContext';
 import Icon from '../icon';
+import events from '../utils/events';
 import PropsType, { StateType } from './PropsType';
 
 const BUTTONLAYER = 40;
@@ -12,13 +14,12 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
   static defaultProps = {
     direction: 'right',       // 抽屉的方向 top | right | bottom | lef
     closable: true,           // 是否显示右上角的关闭按钮
-    width: 200,               // 抽屉的宽度
-    height: 200,              // 抽屉的高度 在 placement 为 'top' 或者 'bottom' 时生效 其他情况高度撑满屏幕
+    size: 'normal',           // size
     mask: true,               // 是否展示遮罩
     visible: false,           // 抽屉是否可见
     maskClosable: false,      // 点击遮罩是否关闭
     prefixCls: 'zw-drawer',   // 样式前缀
-    maskover: true,          // 是否重叠遮罩层背景
+    maskover: true,           // 是否重叠遮罩层背景
   };
 
   readonly state = {
@@ -26,38 +27,48 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     totallayers: 0,
     direction: this.props.direction,
     btnstyle: {},
+    drawerWidth: 0, // 抽屉大小
   };
 
-  private parentDrawer: Drawer | null;
-
-  private DrawerDiv;
-
-  private DrawerProperty;
-
   componentDidMount() {
-    const { direction } = this.props;
+    const { direction, width } = this.props;
 
-    console.log(12);
+    if (!width) {
+      events.on(window, 'resize', this.onWindowResize);
+    }
+
+    this.drawerWidth();
 
     if (this.parentDrawer && !!this.parentDrawer.props && this.parentDrawer.props.visible && this.parentDrawer.props.direction !== direction) {
       throw new Error('The direction of the child drawer is the same as that of the father drawer.');
     }
+
+    this.btnFix(0)
   }
 
   componentDidUpdate(preProps: PropsType) {
     const { visible } = this.props;
     if (preProps.visible !== visible) {
       if (visible) {
-        this.CalculationLayer(this);
+        this.calculationLayer(this);
       }
 
       if (!visible && this.parentDrawer) {
-        this.CalculationLayer(this.parentDrawer);
+        this.calculationLayer(this.parentDrawer);
       }
     }
   }
 
-  private CalculationLayer = (Drawers: Drawer) => {
+  private parentDrawer: Drawer | null;
+
+  private parentWidth: number;
+
+  // private DrawerDiv;
+
+  // private DrawerProperty;
+
+  private calculationLayer = (Drawers: Drawer) => {
+    const { drawerWidth } = this.state;
     let totallayer = 0;
     function layers(drawer: Drawer) {
       if (drawer) {
@@ -69,22 +80,53 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     }
     layers(Drawers);
 
+    console.log('drawerWidth', drawerWidth)
     this.setState({
       layer: totallayer,
     }, () => {
-      setTimeout(() => console.log(this.DrawerProperty));
       this.noticeBrother(totallayer, Drawers);
     });
   };
 
   private noticeBrother = (total, drawer) => {
+    if (!drawer) return false;
+
+    // console.log(drawer);
+    // if (this.drawerWidth === drawer.parentDrawer.drawerWidth) {
+    //   return false;
+    // }
     drawer.btnFix && drawer.btnFix(total);
     if (drawer.parentDrawer) {
       this.noticeBrother(total, drawer.parentDrawer);
     }
   };
 
-  btnFix(totallayers: number) {
+  private drawerWidth = () => {
+    const { size = 'normal', width } = this.props;
+    const windowWidth = window.innerWidth;
+    const sizeWidth = {
+      lg: .8 * windowWidth - 160,
+      normal: .62 * windowWidth - 160,
+      sm: .38 * windowWidth - 160,
+    }
+
+    if (!width) {
+      this.drawerWidth = sizeWidth[size];
+      return this.setState({
+        drawerWidth: sizeWidth[size],
+      })
+    }
+
+    this.drawerWidth = width;
+    this.setState({
+      drawerWidth: width,
+    })
+  }
+
+  private onWindowResize = throttle(this.drawerWidth, 300);
+
+  private btnFix = (totallayers: number) => {
+    if(!totallayers) return false;
     const { layer, direction = 'right' } = this.state;
     const distance = (totallayers - layer) * BUTTONLAYER;
     const btnstyle = {
@@ -112,7 +154,6 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       prefixCls,
       width,
       height,
-      style,
       mask,
       closable,
       onClose,
@@ -125,41 +166,40 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       maskover,
       visible,
     } = this.props;
-    const { layer, totallayers, direction = 'right', btnstyle } = this.state;
+    const {
+      layer,
+      totallayers,
+      direction = 'right',
+      btnstyle,
+      drawerWidth,
+    } = this.state;
 
     const thickness = {
       left: {
-        width,
+        width: drawerWidth ? drawerWidth : width,
       },
       right: {
-        width,
+        width: drawerWidth ? drawerWidth : width,
       },
       top: {
-        height,
+        height: drawerWidth ? drawerWidth : height,
       },
       bottom: {
-        height,
+        height: drawerWidth ? drawerWidth : height,
       },
     };
 
     const siderStyle = {
-      ...style,
       ...thickness[direction],
     };
-
-    const cls = classnames(`${prefixCls}__cell-box`, {
-      [`${prefixCls}__cell-box__${direction}`]: direction,
-    });
 
     const drawerBox = classnames(`${prefixCls}`, {
       [`${prefixCls}__mask__hidden`]: layer > 1 && !maskover,
     });
 
-    const element = this.DrawerDiv;
-
-    const object = element && element.getBoundingClientRect();
-
-    this.DrawerProperty = object;
+    const cls = classnames(`${prefixCls}__cell-box`, {
+      [`${prefixCls}__cell-box__${direction}`]: direction,
+    });
 
     this.parentDrawer = value;
 
@@ -179,7 +219,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           // afterOpen={afterOpen}
           afterClose={afterClose}
         >
-          <div className={cls} ref={(e) => { this.DrawerDiv = e as HTMLDivElement; }}>
+          <div className={cls}>
             {closable && (<button className={`${prefixCls}__cell__closebtn`} style={{ ...btnstyle }} onClick={() => onClose && onClose()}><Icon type="wrong" /></button>)}
             <div className={`${prefixCls}__cell`} style={{ ...siderStyle }}>
               {title && (<div className={`${prefixCls}__cell__title`}>{title}</div>)}

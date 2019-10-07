@@ -1,14 +1,13 @@
-import { CSSProperties, ReactNode, RefObject } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export default interface PropsType {
   prefixCls?: string;
-  className?: string;
   handlePortalUnmount?: () => void;
   direction?: 'top' | 'bottom' | 'left' | 'right';
   closable?: boolean;
   width?: number | string;
   height?: number | string;
-  style?: CSSProperties;
+  // style?: CSSProperties;
   mask?: boolean;
   visible?: boolean;
   maskClosable?: boolean;
@@ -18,6 +17,7 @@ export default interface PropsType {
   // afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
+  size?: 'lg' | 'normal' | 'sm';
 }
 
 export interface StateType {
