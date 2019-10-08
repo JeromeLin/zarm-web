@@ -27,8 +27,12 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     totallayers: 0,
     direction: this.props.direction,
     btnstyle: {},
-    drawerWidth: 0, // 抽屉大小
+    drawerWidth: 0, // 抽屉宽度
   };
+
+  private parentDrawer: Drawer | null;
+
+  private parentWidth: Number | String;
 
   componentDidMount() {
     const { direction, width } = this.props;
@@ -37,13 +41,13 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       events.on(window, 'resize', this.onWindowResize);
     }
 
-    this.drawerWidth();
+    this.calcDrawerWidth();
 
     if (this.parentDrawer && !!this.parentDrawer.props && this.parentDrawer.props.visible && this.parentDrawer.props.direction !== direction) {
       throw new Error('The direction of the child drawer is the same as that of the father drawer.');
     }
 
-    this.btnFix(0)
+    this.btnFix(0);
   }
 
   componentDidUpdate(preProps: PropsType) {
@@ -59,16 +63,30 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     }
   }
 
-  private parentDrawer: Drawer | null;
+  private onWindowResize = throttle(this.calcDrawerWidth, 300);
 
-  private parentWidth: number;
+  private calcDrawerWidth = () => {
+    const { size = 'normal', width } = this.props;
+    const windowWidth = window.innerWidth;
+    const sizeWidth = {
+      lg: 0.8 * windowWidth - 160,
+      normal: 0.62 * windowWidth - 160,
+      sm: 0.38 * windowWidth - 160,
+    };
 
-  // private DrawerDiv;
-
-  // private DrawerProperty;
+    if (!width) {
+      this.parentWidth = sizeWidth[size];
+      return this.setState({
+        drawerWidth: sizeWidth[size],
+      });
+    }
+    this.parentWidth = width;
+    this.setState({
+      drawerWidth: width,
+    });
+  };
 
   private calculationLayer = (Drawers: Drawer) => {
-    const { drawerWidth } = this.state;
     let totallayer = 0;
     function layers(drawer: Drawer) {
       if (drawer) {
@@ -80,7 +98,6 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     }
     layers(Drawers);
 
-    console.log('drawerWidth', drawerWidth)
     this.setState({
       layer: totallayer,
     }, () => {
@@ -91,43 +108,18 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
   private noticeBrother = (total, drawer) => {
     if (!drawer) return false;
 
-    // console.log(drawer);
-    // if (this.drawerWidth === drawer.parentDrawer.drawerWidth) {
-    //   return false;
-    // }
-    drawer.btnFix && drawer.btnFix(total);
     if (drawer.parentDrawer) {
       this.noticeBrother(total, drawer.parentDrawer);
     }
+    drawer.btnFix && drawer.btnFix(total);
   };
 
-  private drawerWidth = () => {
-    const { size = 'normal', width } = this.props;
-    const windowWidth = window.innerWidth;
-    const sizeWidth = {
-      lg: .8 * windowWidth - 160,
-      normal: .62 * windowWidth - 160,
-      sm: .38 * windowWidth - 160,
-    }
-
-    if (!width) {
-      this.drawerWidth = sizeWidth[size];
-      return this.setState({
-        drawerWidth: sizeWidth[size],
-      })
-    }
-
-    this.drawerWidth = width;
-    this.setState({
-      drawerWidth: width,
-    })
-  }
-
-  private onWindowResize = throttle(this.drawerWidth, 300);
-
   private btnFix = (totallayers: number) => {
-    if(!totallayers) return false;
-    const { layer, direction = 'right' } = this.state;
+    if (!totallayers) return false;
+    const { layer, direction = 'right', drawerWidth } = this.state;
+    if (!!this.parentWidth && this.parentWidth !== drawerWidth) {
+      return false;
+    }
     const distance = (totallayers - layer) * BUTTONLAYER;
     const btnstyle = {
       left: {
@@ -147,7 +139,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     this.setState({
       btnstyle: btnstyle[direction],
     });
-  }
+  };
 
   private renderProvider = (value: Drawer) => {
     const {
@@ -176,16 +168,16 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
     const thickness = {
       left: {
-        width: drawerWidth ? drawerWidth : width,
+        width: drawerWidth || width,
       },
       right: {
-        width: drawerWidth ? drawerWidth : width,
+        width: drawerWidth || width,
       },
       top: {
-        height: drawerWidth ? drawerWidth : height,
+        height: drawerWidth || height,
       },
       bottom: {
-        height: drawerWidth ? drawerWidth : height,
+        height: drawerWidth || height,
       },
     };
 
