@@ -1,21 +1,23 @@
-import React, { Component, HTMLAttributes, CSSProperties } from 'react';
+import React, { Component, CSSProperties } from 'react';
 import classnames from 'classnames';
-import { PropsType, StateType } from './PropsType';
+import AvatarProps from './PropsType';
 
-class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, StateType> {
-  static defaultProps: PropsType = {
+interface AvatarStates {
+  childrenScale: number;
+}
+
+class Avatar extends Component<AvatarProps, AvatarStates> {
+  static defaultProps: AvatarProps = {
     prefixCls: 'zw-avatar',
     shape: 'circle',
-    src: '',
     size: 'md',
-    alt: '',
   };
 
   private avatarChildrenNode: HTMLElement;
 
   private avatarWrapperNode: HTMLElement;
 
-  state: StateType = {
+  state: AvatarStates = {
     childrenScale: 1,
   };
 
@@ -24,7 +26,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
     this.setChildrenScale();
   }
 
-  componentDidUpdate(prevProps: PropsType) {
+  componentDidUpdate(prevProps: AvatarProps) {
     if (this.props !== prevProps) {
       this.setChildrenScale();
     }
@@ -65,9 +67,7 @@ class Avatar extends Component<PropsType & HTMLAttributes<HTMLSpanElement>, Stat
     const hasImage = (src && src.trim() !== '');
     const hasString = (typeof children === 'string');
 
-    const cls = classnames({
-      [prefixCls!]: true,
-      [className!]: className,
+    const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${size}`]: typeof size === 'string' && size,
       [`${prefixCls}--${shape}`]: true,
     });
