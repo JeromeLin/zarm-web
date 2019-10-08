@@ -154,6 +154,7 @@ class TabGroup extends Component<GroupProps, any> {
 
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
     const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
+    const scrollPadding = direction === 'horizontal' ? '0 20px' : '20px 0';
 
     const items = React.Children.map(children, (item: React.ReactElement<any>, $index) => {
       const tabHeaderCls = classnames({
@@ -187,7 +188,7 @@ class TabGroup extends Component<GroupProps, any> {
 
     return (
       <div className={cls} style={style}>
-        <div className={headerCls}>
+        <div className={headerCls} style={{ padding: isArrowShown ? scrollPadding : 0 }}>
           <ul className='scroll-content' ref={this.tabHeader}>
             {items}
             {

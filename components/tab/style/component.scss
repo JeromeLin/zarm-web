@@ -104,7 +104,6 @@
 
       @include b(tabs-header-item) {
         float: left;
-        margin-bottom: -1px;
         margin-right: 0;
         text-align: center;
       }
@@ -172,6 +171,9 @@
           background: #FFF;
           border: none;
         }
+      }
+      .scroll-content {
+        margin-bottom: -1px;
       }
     }
   }

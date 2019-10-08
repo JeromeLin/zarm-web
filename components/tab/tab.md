@@ -1,9 +1,120 @@
 # Tab 标签页
 选项卡切换组件。
 
-
-
 ## line
+
+```jsx
+import { Tab } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <Tab.Group type="line" onChange={(i) => console.log(i)}>
+        <Tab title="Tab1">
+          <div style={{padding: 10}}>
+            这是选项卡1的文字
+          </div>
+        </Tab>
+        <Tab disabled title="Tab2">
+          <div style={{padding: 10}}>
+            这是选项卡2的文字
+          </div>
+        </Tab>
+        <Tab title="Tab3">
+          <div style={{padding: 10}}>
+            这是选项卡3的文字
+          </div>
+        </Tab>
+        <Tab title="Tab4">
+          <div style={{padding: 10}}>
+            这是选项卡4的文字
+          </div>
+        </Tab>
+      </Tab.Group>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## card
+
+```jsx
+import { Tab } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <Tab.Group type="card" onChange={(i) => console.log(i)}>
+        <Tab title="Tab1">
+          <div style={{padding: 10}}>
+            这是选项卡1的文字
+          </div>
+        </Tab>
+        <Tab disabled title="Tab2">
+          <div style={{padding: 10}}>
+            这是选项卡2的文字
+          </div>
+        </Tab>
+        <Tab title="Tab3">
+          <div style={{padding: 10}}>
+            这是选项卡3的文字
+          </div>
+        </Tab>
+        <Tab title="Tab4">
+          <div style={{padding: 10}}>
+            这是选项卡4的文字
+          </div>
+        </Tab>
+      </Tab.Group>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## noborder-card
+
+```jsx
+import { Tab } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
+        <Tab.Group type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
+          <Tab title="Tab1">
+            <div style={{padding: 10}}>
+              这是选项卡1的文字
+            </div>
+          </Tab>
+          <Tab disabled title="Tab2">
+            <div style={{padding: 10}}>
+              这是选项卡2的文字
+            </div>
+          </Tab>
+          <Tab title="Tab3">
+            <div style={{padding: 10}}>
+              这是选项卡3的文字
+            </div>
+          </Tab>
+          <Tab title="Tab4">
+            <div style={{padding: 10}}>
+              这是选项卡4的文字
+            </div>
+          </Tab>
+        </Tab.Group>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## line scroll
 
 ```jsx
 import { Tab } from 'zarm-web';
@@ -83,7 +194,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## card
+## card scroll
 
 ```jsx
 import { Tab } from 'zarm-web';
@@ -154,45 +265,6 @@ class Demo extends React.Component {
               </Tab>
             ))
           }
-        </Tab.Group>
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## noborder-card
-
-```jsx
-import { Tab } from 'zarm-web';
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
-        <Tab.Group type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
-          <Tab title="Tab1">
-            <div style={{padding: 10}}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{padding: 10}}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{padding: 10}}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{padding: 10}}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
         </Tab.Group>
       </div>
     );
