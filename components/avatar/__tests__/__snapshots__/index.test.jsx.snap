@@ -17,25 +17,19 @@ exports[`Avatar renders Avatars correctly when set src, icon and string 1`] = `
 exports[`Avatar renders Avatars of different shape correctly 1`] = `
 <div>
   <Avatar
-    alt=""
     prefixCls="zw-avatar"
     shape="circle"
     size="md"
-    src=""
   />
   <Avatar
-    alt=""
     prefixCls="zw-avatar"
     shape="circle"
     size="md"
-    src=""
   />
   <Avatar
-    alt=""
     prefixCls="zw-avatar"
     shape="square"
     size="md"
-    src=""
   />
 </div>
 `;
