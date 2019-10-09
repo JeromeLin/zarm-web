@@ -17,7 +17,7 @@
 }
 
 .ui-tag-input-box {
-  @include tag-size($base-height,$base-padding, $base-fontSize-xs, $base-radius);
+  @include tag-size($base-height, $base-padding, $base-fontSize-xs, $base-radius);
 
   font-size: 0;
   width: 100%;
@@ -74,10 +74,15 @@
   }
 
   .ui-tag-list-box {
+    max-width: 100%;
     padding: 4px 0;
     line-height: 0;
     display: inline-block;
     vertical-align: middle;
+
+    .ui-tag {
+      margin-right: 8px;
+    }
   }
 
   .arrow-bottom {
