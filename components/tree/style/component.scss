@@ -77,6 +77,15 @@ $treePrefixCls: ui-tree;
         text-align: center;
       }
 
+      &.#{$treePrefixCls}-checkbox-halfChecked {
+        .ui-checkbox.checked .ui-checkbox-inner:after {
+          transform: rotate(90deg) scale(1);
+          width: 0;
+          left: 5px;
+          top: 2px;
+        }
+      }
+
       &.#{$treePrefixCls}-node-content-wrapper {
         line-height: 24px;
         height: 24px;
