@@ -1,68 +1,121 @@
-## Avatar 
-头像,支持图片、图标或字符展示。
+# Avatar 头像
+支持图片或字符展示。
 
-### 基础用法
 
-:::demo 指定`icon`、`size`、`shape`、 属性。
 
-```js
-  render() {
-    return (
-      <div className="avatar-list">
-        <div>
-          <Avatar size={80} icon="user" />
-          <Avatar size="xl" icon="user"/>
-          <Avatar size="lg" icon="user"/>
-          <Avatar icon="user"/>
-          <Avatar size="sm" icon="user"/>
-          <Avatar size="xs" icon="user"/>
-        </div>
-        <div>
-          <Avatar shape="square" size={80} icon="user"/>
-          <Avatar shape="square" size="xl" icon="user"/>
-          <Avatar shape="square" size="lg" icon="user"/>
-          <Avatar shape="square" icon="user"/>
-          <Avatar shape="square" size="sm" icon="user"/>
-          <Avatar shape="square" size="xs" icon="user"/>
-        </div>
-      </div>
-    )
-  }
+## 基础用法
+可指定大小、形状
+
+```jsx
+import { Avatar } from 'zarm-web';
+
+ReactDOM.render(
+  <>
+    <div className="rows">
+      <Avatar size="xl">xl</Avatar>
+      <Avatar size="lg">lg</Avatar>
+      <Avatar>md</Avatar>
+      <Avatar size="sm">sm</Avatar>
+      <Avatar size="xs">xs</Avatar>
+    </div>
+    <div className="rows">
+      <Avatar shape="square" size="xl">xl</Avatar>
+      <Avatar shape="square" size="lg">lg</Avatar>
+      <Avatar shape="square">md</Avatar>
+      <Avatar shape="square" size="sm">sm</Avatar>
+      <Avatar shape="square" size="xs">xs</Avatar>
+    </div>
+  </>
+, mountNode);
 ```
-:::
 
-### 类型
 
-:::demo 指定`icon`、`size`、`shape`、 属性。
 
-```js
-  render() {
-    return (
-      <div className="avatar-list">
-        <Avatar icon="user"/>
-        <Avatar style={{ backgroundColor: 'rgb(245, 106, 0)' }}>U</Avatar>
-        <Avatar>USER</Avatar>
-        <Avatar src="http://img95.699pic.com/element/40044/5588.png_860.png" alt="my avatar" onError={()=>console.log('load error')}/>
-        <Avatar style={{ color: '#2db7f5', backgroundColor: 'rgb(249, 232, 8)' }}>U</Avatar>
-        <Avatar style={{ backgroundColor: 'rgba(228, 45, 154, 0.88)' }} icon="user-fill" />
-      </div>
-    )
-  }
+## 多种类型
+支持两种类型：图片、字符，其中字符型可以自定义图标颜色及背景色，同时也支持style自定义字符大小进行覆盖。
+
+```jsx
+import { Avatar } from 'zarm-web';
+
+const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
+
+ReactDOM.render(
+  <>
+    <Avatar src={img} alt="my avatar" />
+    <Avatar style={{ color: 'red', backgroundColor: 'rgb(249, 232, 8)' }}>User</Avatar>
+    <Avatar style={{ fontSize: 24 }}>U</Avatar>
+  </>
+, mountNode);
 ```
-:::
-
-### Attributes
-| 参数                | 说明                                   | 类型                                   | 可选值          | 默认值     | 
-|------------------  |-------------------------------------   |----------------------------------     |-------------   |---------  |
-| icon               |  icon头像的icon type, 具体查看Icon组件    | string                                |    -           |    -      |
-| shape              |  头像的形状                              | string                       | circle,square    | circle
-| size               |  头像的大小                              | string  |    xl,lg,sm,xs           | - |
-| src                |  图片头像的图片地址                       | string                                 |    -           |    -     |
-| alt                |  描述图片的备用文字                       | string                                 |   -            |   -      |
 
 
-### Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onError | 当图片加载失败时的处理函数，返回false可以阻止默认行为 |  - |
 
+## 自动调整字符大小
+对字符型头像的字符大小自适应调整
+
+```jsx
+import { Avatar, Button } from 'zarm-web';
+
+const textList = ['Zhong', 'An', 'Component', 'Library', 'Zarm-Web'];
+const colorList = ['#48f57b', '#a6e62f', '#ffbf00', '#38ae83', '#34cd83'];
+
+class Demo extends React.Component {
+  state = {
+    showIndex: 0,
+  };
+
+  textListLastIndex = textList.length - 1;
+
+  onChangeTextPlay = () => {
+    const { showIndex } = this.state;
+    const { textListLastIndex } = this;
+    this.setState({
+      showIndex: (showIndex < textListLastIndex) ? showIndex + 1 : 0,
+    });
+  };
+
+  render() {
+    const { showIndex } = this.state;
+    console.log(showIndex)
+
+    return (
+      <>
+        <Avatar size={'lg'} style={{ backgroundColor: `${colorList[showIndex]}` }}>{textList[showIndex]}</Avatar>
+        <Button onClick={this.onChangeTextPlay} style={{ marginLeft: 15 }}>Change</Button>
+      </>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
+## 带徽标的头像
+
+```jsx
+import { Avatar, Badge } from 'zarm-web';
+
+ReactDOM.render(
+  <>
+    <Badge shape="round" text="5">
+      <Avatar shape="square">L</Avatar>
+    </Badge>
+    <Badge>
+      <Avatar shape="square">W</Avatar>
+    </Badge>
+  </>
+, mountNode);
+```
+
+
+
+## API
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| shape | string | 'circle' | 头像的形状，可选值为`circle`、`square`
+| size | string | 'md' | 头像的大小, 可选值为`xl`、`lg`、`md`、`sm`、`xs`
+| src | string | - | 图片头像的图片地址 |
+| alt | string | - | 描述图片的备用文字 |

@@ -1,12 +1,9 @@
-export interface PropsType {
+import { HTMLAttributes } from 'react';
+
+export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   prefixCls?: string;
-  icon?: string;
   shape?: 'circle' | 'square';
-  size?: number | 'lg' | 'sm';
+  size?: 'lg' | 'sm' | 'md' | 'xl' | 'xs';
   src?: string;
   alt?: string;
-  className?: string;
-}
-export interface StateType {
-  loadError: boolean;
 }
