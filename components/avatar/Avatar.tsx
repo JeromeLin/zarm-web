@@ -1,6 +1,6 @@
 import React, { Component, CSSProperties } from 'react';
 import classnames from 'classnames';
-import AvatarProps from './PropsType';
+import { AvatarProps } from './PropsType';
 
 interface AvatarStates {
   childrenScale: number;
@@ -67,16 +67,16 @@ class Avatar extends Component<AvatarProps, AvatarStates> {
     const hasImage = (src && src.trim() !== '');
     const hasString = (typeof children === 'string');
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${size}`]: typeof size === 'string' && size,
-      [`${prefixCls}--${shape}`]: true,
+    const cls = classnames(prefixCls, className, `${prefixCls}--${shape}`, {
+      [`${prefixCls}--${size}`]: !!size,
     });
 
     const clsImage = classnames({ [`${prefixCls}--image`]: hasImage });
     const clsString = classnames({ [`${prefixCls}--string`]: hasString || hasImage });
     const childrenTransformStr = `scale(${childrenScale}) translateX(-50%)`;
     const spanStyle: CSSProperties = hasFontSizeStyle
-      ? {} : {
+      ? {}
+      : {
         transform: childrenTransformStr,
         WebkitTransform: childrenTransformStr,
         msTransform: childrenTransformStr,

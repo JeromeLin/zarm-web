@@ -1,62 +1,57 @@
 # Avatar 头像
 支持图片或字符展示。
 
+
+
 ## 基础用法
-指定'size''、'shape'属性。默认shape为'circle'，默认size为'md'
+可指定大小、形状
 
 ```jsx
 import { Avatar } from 'zarm-web';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div className="avatar-list">
-         <div>
-           <Avatar size="xl">XL</Avatar>
-           <Avatar size="lg">LG</Avatar>
-           <Avatar>MD</Avatar>
-           <Avatar size="sm">SM</Avatar>
-           <Avatar size="xs">XS</Avatar>
-         </div>
-         <div>
-           <Avatar shape="square" size="xl">XL</Avatar>
-           <Avatar shape="square" size="lg">LG</Avatar>
-           <Avatar shape="square">MD</Avatar>
-           <Avatar shape="square" size="sm">SM</Avatar>
-           <Avatar shape="square" size="xs">XS</Avatar>
-         </div>
-       </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <div className="rows">
+      <Avatar size="xl">xl</Avatar>
+      <Avatar size="lg">lg</Avatar>
+      <Avatar>md</Avatar>
+      <Avatar size="sm">sm</Avatar>
+      <Avatar size="xs">xs</Avatar>
+    </div>
+    <div className="rows">
+      <Avatar shape="square" size="xl">xl</Avatar>
+      <Avatar shape="square" size="lg">lg</Avatar>
+      <Avatar shape="square">md</Avatar>
+      <Avatar shape="square" size="sm">sm</Avatar>
+      <Avatar shape="square" size="xs">xs</Avatar>
+    </div>
+  </>
+, mountNode);
 ```
 
 
-## 类型
-支持style自定义，字符自动调整大小。且支持两种类型：图片、字符
+
+## 多种类型
+支持两种类型：图片、字符，其中字符型可以自定义图标颜色及背景色，同时也支持style自定义字符大小进行覆盖。
 
 ```jsx
 import { Avatar } from 'zarm-web';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div className="avatar-list">
-        <Avatar size="sm" style={{ fontSize: '12px' }}>USER</Avatar>
-        <Avatar size="sm" style={{ color: 'red', backgroundColor: 'rgb(249, 232, 8)' }}>USER</Avatar>
-        <Avatar size="sm" src="site/images/avatar/avatar.png" alt="my avatar" />
-      </div>
-    )
-  }
-}
+const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
 
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Avatar src={img} alt="my avatar" />
+    <Avatar style={{ color: 'red', backgroundColor: 'rgb(249, 232, 8)' }}>User</Avatar>
+    <Avatar style={{ fontSize: 24 }}>U</Avatar>
+  </>
+, mountNode);
 ```
+
+
 
 ## 自动调整字符大小
-对字符型头像的字符大小自适应调整。同时也支持style自定义字符大小进行覆盖
+对字符型头像的字符大小自适应调整
 
 ```jsx
 import { Avatar, Button } from 'zarm-web';
@@ -84,39 +79,37 @@ class Demo extends React.Component {
     console.log(showIndex)
 
     return (
-      <div className="avatar-change-list">
+      <>
         <Avatar size={'lg'} style={{ backgroundColor: `${colorList[showIndex]}` }}>{textList[showIndex]}</Avatar>
         <Button onClick={this.onChangeTextPlay} style={{ marginLeft: 15 }}>Change</Button>
-      </div>
+      </>
     );
   }
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+
 
 ## 带徽标的头像
 
 ```jsx
 import { Avatar, Badge } from 'zarm-web';
 
-class Demo extends React.Component {
-  render() {
-    return (
-        <div className="avatar-list">
-             <Badge sup shape="round" text="5">
-               <Avatar shape="square">L</Avatar>
-             </Badge>
-             <Badge sup>
-               <Avatar shape="square">W</Avatar>
-             </Badge>
-        </div>
-    );
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Badge shape="round" text="5">
+      <Avatar shape="square">L</Avatar>
+    </Badge>
+    <Badge>
+      <Avatar shape="square">W</Avatar>
+    </Badge>
+  </>
+, mountNode);
 ```
+
+
 
 ## API
 
