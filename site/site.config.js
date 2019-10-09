@@ -125,7 +125,7 @@ module.exports = {
       },
       {
         name: 'Avatar',
-        module: () => import('@/components/avatar/avatar.md'),
+        module: () => import('@/components/avatar/demo.md'),
       },
       {
         name: 'Swipe',
