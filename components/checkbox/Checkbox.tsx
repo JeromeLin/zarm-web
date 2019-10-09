@@ -73,7 +73,7 @@ class Checkbox extends Component<CheckboxProps, CheckboxStates> {
           checked={checked}
           disabled={disabled}
           id={id}
-          onChange={e => this._onClick(e)}
+          onChange={(e) => this._onClick(e)}
         />
         <span className={`${prefixCls}__inner`} />
         {children && <span className={`${prefixCls}__children`}>{children}</span>}

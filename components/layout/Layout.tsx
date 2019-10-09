@@ -1,8 +1,10 @@
+// eslint-disable-next-line max-classes-per-file
 import React, { Component, Children, ReactElement } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
 const defaultPrefixCls = 'ui-layout';
+
 class Layout extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: defaultPrefixCls,

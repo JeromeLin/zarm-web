@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
-
-const objectOrNumber = PropTypes.oneOfType([PropTypes.object, PropTypes.number]);
 
 export interface ColSize {
   span?: number;
@@ -27,20 +24,6 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default class Col extends Component<ColProps, {}> {
-  static propTypes = {
-    span: PropTypes.number,
-    order: PropTypes.number,
-    offset: PropTypes.number,
-    push: PropTypes.number,
-    pull: PropTypes.number,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    xs: objectOrNumber,
-    sm: objectOrNumber,
-    md: objectOrNumber,
-    lg: objectOrNumber,
-  };
-
   render() {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const { props } = this;
