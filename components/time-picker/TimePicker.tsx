@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import Dropdown from '../dropdown';
 import Icon from '../icon';
@@ -114,10 +114,10 @@ class TimePicker extends Component<TimePickerProps, any> {
     });
 
     const overlay = (
-      <Fragment>
+      <>
         <TimeSelect
           value={valueText}
-          onChange={value1 => this.onDateChange(value1)}
+          onChange={(value1) => this.onDateChange(value1)}
         />
         <div className="za-select__bottom">
           <span className="clear-btn" onClick={() => this.onDateChange('')}>
@@ -127,7 +127,7 @@ class TimePicker extends Component<TimePickerProps, any> {
             {locale!.confirm}
           </span>
         </div>
-      </Fragment>
+      </>
     );
 
     return (

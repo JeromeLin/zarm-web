@@ -10,6 +10,7 @@
   }
 
   pre {
+    margin: 0;
     padding: 16px;
     overflow: auto;
     font-size: 14px;
@@ -91,6 +92,7 @@
 }
 
 .markdown-demo-wrapper {
+  margin-top: 40px;
   column-count: 2;
   column-width: 50%;
   column-fill: auto;
@@ -102,14 +104,12 @@
 }
 
 .markdown-demo-item {
-  //width: 50%;
   break-inside: avoid;
   margin-bottom: 22px;
 }
 
 .demo-block {
-  padding-top: 10px;
-  border: solid 1px #eaeefb;
+  border: 1px solid #eaeefb;
   border-radius: 4px;
   transition: all .2s;
 
@@ -118,109 +118,38 @@
   }
 
   > p,
-  > div,
   > h2 {
     padding: 0 20px;
   }
 
-  code {
-    font-family: Menlo, Monaco, Consolas, Courier, monospace;
-  }
-
-  .zw-btn-group + .zw-btn-group {
-    margin-left: 12px;
-  }
-
-  .ghost-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 85px;
-    background: rgba(204, 204, 204, 1);
-  }
-
   .source {
     position: relative;
+    padding: 32px 24px;
+    // border-top: 1px solid #eaeefb;
 
-    .zw-tag {
-      margin-right: 8px;
-    }
-
-    .multi-rows {
+    .rows {
       overflow: hidden;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
 
-      &.block-row {
-        .zw-button {
-          margin-bottom: 12px;
-        }
+      &:last-of-type {
+        margin-bottom: 0;
       }
-    }
 
-    .buttons {
-      > button {
-        margin-bottom: 8px;
+      &-dark {
+        background: #bec8c8;
+        padding: 12px;
       }
-    }
-
-    .icons {
-      .zw-icon {
-        font-size: 28px;
-      }
-    }
-  }
-
-  .meta {
-    position: relative;
-    overflow: hidden;
-    margin-top: 20px;
-    background-color: #f9fafc;
-    border-top: solid 1px #eaeefb;
-  }
-
-  .highlight {
-    overflow: auto;
-    border-right: 1px solid #eaeefb;
-  }
-
-  .description {
-    float: right;
-    padding: 18px 24px;
-    width: 270px;
-    font-size: 14px;
-    line-height: 1.8;
-    color: #5e6d82;
-    margin-left: -1px;
-    word-break: break-word;
-    box-sizing: border-box;
-    border-left: 1px solid #eaeefb;
-
-    p {
-      margin: 0;
-    }
-
-    code {
-      color: #5e6d82;
-      background-color: #e6effb;
-      margin: 0 4px;
-      transform: translateY(-2px);
-      display: inline-block;
-      padding: 1px 5px;
-      font-size: 12px;
-      border-radius: 3px;
     }
   }
 
   .demo-block-control {
-    border-top: solid 1px #eaeefb;
+    border-top: 1px solid #eaeefb;
     height: 36px;
     box-sizing: border-box;
     background-color: #fff;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     text-align: center;
-    margin-top: 20px;
     color: #d3dce6;
     cursor: pointer;
     transition: .2s;

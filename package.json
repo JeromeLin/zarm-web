@@ -27,13 +27,12 @@
   },
   "module": "es/index.js",
   "main": "lib/index.js",
-  "typings": "types/index.d.ts",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "clean": "rimraf types lib es dist assets coverage",
     "dev": "zarm dev -p 3001",
-    "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
-    "build:es": "rimraf es && zarm build --mode es",
-    "build:lib": "rimraf lib && zarm build --mode lib",
+    "build:es": "rimraf es && zarm build --mode es && tsc --outDir es -d --emitDeclarationOnly",
+    "build:lib": "rimraf lib && zarm build --mode lib && tsc --outDir lib -d --emitDeclarationOnly",
     "build:umd": "rimraf dist && zarm build --mode umd",
     "build": "npm run build:lib && npm run build:es && npm run build:umd",
     "deploy:build": "rimraf assets && zarm deploy",
@@ -55,7 +54,7 @@
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
     "react-highlight": "^0.12.0",
-    "zarm": "2.0.0-alpha.53"
+    "zarm": "2.0.0-alpha.55"
   },
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
@@ -82,7 +81,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
     "eslint": "^5.16.0",
-    "eslint-config-za": "^2.1.0-alpha.2",
+    "eslint-config-za": "^2.1.0-alpha.4",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",

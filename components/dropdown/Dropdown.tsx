@@ -402,7 +402,7 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
       [`${triggerBoxPropsClassName}`]: !!(triggerBoxProps && triggerBoxProps.className),
     });
     return (
-      <React.Fragment>
+      <>
         <div
           ref={(e) => { this.triggerBox = e as HTMLDivElement; }}
           {...triggerBoxProps}
@@ -428,7 +428,7 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
             this.div,
           )
         }
-      </React.Fragment>
+      </>
     );
   }
 }

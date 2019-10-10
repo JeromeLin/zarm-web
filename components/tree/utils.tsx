@@ -71,7 +71,7 @@ export const getTreeNodeChildren = (node: { children?: ReactNode }): Array<React
       return true;
     }
     return false;
-  }).map(item => (item as ReactElement<TreeNode>));
+  }).map((item) => (item as ReactElement<TreeNode>));
 };
 
 /**
@@ -125,7 +125,7 @@ function resetNodeCheckedState(node, isChecked, conductDirection) {
   if (conductDirection === 'up') {
     isChecked ? (node.checkedCount += 1) : (node.checkedCount -= 1);
   } else {
-    const nodeLength = (node.children || []).filter(child => !isCheckDisabled(child)).length;
+    const nodeLength = (node.children || []).filter((child) => !isCheckDisabled(child)).length;
     isChecked ? (node.checkedCount = nodeLength) : (node.checkedCount = 0);
   }
 }
@@ -190,7 +190,7 @@ export function conductCheck(
     const resObj = { validNotesLen: 0, checkedNotesLen: 0, halfCheckedNotesLen: 0 };
     let validNotes = [];
     if (node && node.children) {
-      validNotes = node.children.filter(item => !isCheckDisabled(item));
+      validNotes = node.children.filter((item) => !isCheckDisabled(item));
       resObj.validNotesLen = validNotes.length;
       resObj.halfCheckedNotesLen = validNotes.filter((item: { keys: string }) => halfCheckedKeys[item.keys]).length;
       resObj.checkedNotesLen = validNotes.filter((item: { keys: string }) => checkedKeys[item.keys]).length;
@@ -230,7 +230,7 @@ export function conductCheck(
     halfCheckedKeys[keys] = false;
     resetNodeCheckedState(node, isChecked, 'down');
     if (children) {
-      children.filter(child => !isCheckDisabled(child)).forEach((_node) => {
+      children.filter((child) => !isCheckDisabled(child)).forEach((_node) => {
         conductDown(_node);
       });
     }

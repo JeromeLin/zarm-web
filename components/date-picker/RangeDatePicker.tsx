@@ -19,7 +19,7 @@ const compareTime = (v1, v2) => new Date(v1) > new Date(v2);
 const now = () => new Date();
 
 // 获取原生 Date 对象
-const getDate = v => (v ? new Date(v) : now());
+const getDate = (v) => (v ? new Date(v) : now());
 
 // 获取下月 1 号
 const nextMonthFirstDay = (v) => {
@@ -33,10 +33,10 @@ const nextMonthFirstDay = (v) => {
 };
 
 // 获取日期的年、月、日
-const getYearMonthDay = v => [v.getFullYear(), v.getMonth(), v.getDate()];
+const getYearMonthDay = (v) => [v.getFullYear(), v.getMonth(), v.getDate()];
 
 // 判断是否为空对象
-const isEmptyArray = arr => Array.isArray(arr) && (arr.length === 0 || arr.every(i => !i));
+const isEmptyArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every((i) => !i));
 
 //
 const getValueFromSelectedValue = (v = []) => {
@@ -299,7 +299,7 @@ class RangeDatePicker extends Component<PropsType, any> {
     if (isConfirm || !showTime) {
       this.setDropdown(
         false,
-        () => onChange(selectedValue.map(v => Format.date(v, format))),
+        () => onChange(selectedValue.map((v) => Format.date(v, format))),
       );
     }
   };
@@ -412,7 +412,7 @@ class RangeDatePicker extends Component<PropsType, any> {
       && startDate.getFullYear() === endDate.getFullYear());
 
     const compRangeCalendar = (
-      <React.Fragment>
+      <>
         <div style={{ float: 'left', width: '50%' }}>
           <RangeCalendar
             isLeftCalendar
@@ -450,7 +450,7 @@ class RangeDatePicker extends Component<PropsType, any> {
             onChange={this.handleRightDateChange}
           />
         </div>
-      </React.Fragment>
+      </>
     );
 
     const timeFooter = (
