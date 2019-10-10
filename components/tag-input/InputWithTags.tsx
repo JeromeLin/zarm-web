@@ -14,7 +14,7 @@ const sizeValue = {
 };
 
 const Style = {
-  tagStyle: { maxWidth: 100 },
+  tagStyle: { maxWidth: '100%' },
   iconStyle: { fontSize: 'initial' },
 };
 
