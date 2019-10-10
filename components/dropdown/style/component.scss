@@ -8,8 +8,13 @@
   text-align: left;
   will-change: transform, opacity;
 
-  &-trigger-box {
+  @include e(trigger-box) {
     display: inline-block;
     vertical-align: middle;
   }
+
+  // &-trigger-box {
+  //   display: inline-block;
+  //   vertical-align: middle;
+  // }
 }

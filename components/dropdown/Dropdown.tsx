@@ -398,7 +398,7 @@ export default class Dropdown extends React.Component<PropsType, StateType> {
     const { triggerEvent, dropdownContentEvent } = this.getEventObject(trigger);
     const { className: triggerBoxPropsClassName } = triggerBoxProps;
     const triggerBoxCls = classnames({
-      [`${prefixCls}-trigger-box`]: true,
+      [`${prefixCls}__trigger-box`]: true,
       [`${triggerBoxPropsClassName}`]: !!(triggerBoxProps && triggerBoxProps.className),
     });
     return (
