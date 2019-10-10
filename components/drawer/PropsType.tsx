@@ -3,10 +3,8 @@ import { CSSProperties, ReactNode } from 'react';
 export default interface PropsType {
   prefixCls?: string;
   handlePortalUnmount?: () => void;
-  direction?: 'top' | 'bottom' | 'left' | 'right';
   closable?: boolean;
   width?: number | string;
-  height?: number | string;
   // style?: CSSProperties;
   mask?: boolean;
   visible?: boolean;
@@ -14,7 +12,7 @@ export default interface PropsType {
   title?: ReactNode;
   maskover?: boolean;
   onClose?: () => void;
-  // afterOpen?: () => void;
+  afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
   size?: 'lg' | 'normal' | 'sm';
@@ -25,6 +23,5 @@ export interface StateType {
   top?: number;
   left?: number;
   totallayers?: number;
-  direction?: 'top' | 'bottom' | 'left' | 'right';
   btnstyle: CSSProperties;
 }

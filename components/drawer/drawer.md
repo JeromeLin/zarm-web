@@ -88,30 +88,7 @@ class Demo extends React.Component {
     return (
       <>
         <Button size="xs" onClick={() => {
-          this.toggle('popTop');
-        }}>上方</Button>
-
-        <Button size="xs" onClick={() => {
-          this.toggle('popBottom');
-          // setTimeout(() => {
-          //   this.toggle('popBottom');
-          // }, 3000);
-        }}>下方</Button>
-
-
-        <Button size="xs" onClick={() => {
-          this.toggle('popLeft');
-          // setTimeout(() => {
-          //   this.toggle('popLeft');
-          // }, 3000);
-        }}>左边</Button>
-
-
-        <Button size="xs" onClick={() => {
           this.toggle('popRight');
-          // setTimeout(() => {
-          //   this.toggle('popRight');
-          // }, 3000);
         }}>右边</Button>
 
         <Drawer
@@ -119,8 +96,7 @@ class Demo extends React.Component {
           direction="right"
           onClose={() => this.toggle('popRight')}
           closable
-          width={100}
-          size='lg'
+          size='large'
           title="嵌套1"
           maskClosable
           // afterOpen={() => console.log('afterOpen1')}
@@ -133,7 +109,7 @@ class Demo extends React.Component {
             onClose={this.drawerHide}
             direction="right"
             title="嵌套2"
-            width={100}
+            size='small'
             closable
             maskClosable={false}
             // afterOpen={() => console.log('afterOpen2')}
@@ -180,11 +156,9 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
-| direction | string | 'bottom' | 弹出方向，可选值 `top`, `bottom`, `left`, `right`, `center` |
-| animationType | string | 'fade' | 当弹出方向为中间位置（direction="center"）时的动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | - | 弹层宽度 |
-| size | string | normal | 可选值`lg`, `normal`, `sm`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
+| size | string | normal | 可选值`large`, `normal`, `small`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskover | boolean | true | 嵌套遮罩层是否叠加黑色背景 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |

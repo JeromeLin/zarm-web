@@ -10,6 +10,10 @@
     height: 100%;
     background-color: #fff;
 
+    @include b(drawer__cell) {
+      transition: all 300ms ease-in-out;
+    }
+
     @include b(drawer__cell__closebtn) {
       width: 33px;
       height: 52px;
