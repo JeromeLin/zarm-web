@@ -52,7 +52,7 @@ describe('Pagination', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <div>
-        <Pagination total={100} onPageChange={onChange} />
+        <Pagination total={100} onChange={onChange} />
       </div>,
     );
 
@@ -68,7 +68,7 @@ describe('Pagination', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <div>
-        <Pagination total={100} value={6} onPageChange={onChange} />
+        <Pagination total={100} value={6} onChange={onChange} />
       </div>,
     );
 
@@ -81,7 +81,7 @@ describe('Pagination', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <div>
-        <Pagination total={100} value={5} onPageChange={onChange} />
+        <Pagination total={100} value={5} onChange={onChange} />
       </div>,
     );
 
@@ -94,7 +94,7 @@ describe('Pagination', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <div>
-        <Pagination total={100} value={6} onPageChange={onChange} />
+        <Pagination total={100} value={6} onChange={onChange} />
       </div>,
     );
 
@@ -107,7 +107,7 @@ describe('Pagination', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <div>
-        <Pagination total={100} value={1} onPageChange={onChange} />
+        <Pagination total={100} value={1} onChange={onChange} />
       </div>,
     );
 
@@ -120,7 +120,7 @@ describe('Pagination', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <div>
-        <Pagination showJumper total={100} value={1} onPageChange={onChange} />
+        <Pagination showJumper total={100} value={1} onChange={onChange} />
       </div>,
     );
 
@@ -150,7 +150,7 @@ describe('Pagination', () => {
   it('renders size correctly', () => {
     const wrapper = render(
       <div>
-        <Pagination total={100} size="small" />
+        <Pagination total={100} size="sm" />
       </div>,
     );
     expect(wrapper.find('.zw-pagination-small').length).toEqual(1);

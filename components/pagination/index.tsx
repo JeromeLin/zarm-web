@@ -44,8 +44,6 @@ class Pagination extends Component<PropsType, any> {
   };
 
   getPagerList = () => {
-    const { addonBefore, addonAfter } = this.props;
-
     const pageCount = this.getPageSize();
     const pagerList: JSX.Element[] = [];
     let { value } = this.state;
@@ -85,13 +83,6 @@ class Pagination extends Component<PropsType, any> {
       pagerList.push(this.nextPager(value, pageCount));
     }
 
-    if (addonBefore) {
-      pagerList.unshift(this.renderAddonBefore(addonBefore));
-    }
-    if (addonAfter) {
-      pagerList.push(this.renderAddonAfter(addonAfter));
-    }
-
     return pagerList;
   };
 
@@ -107,7 +98,7 @@ class Pagination extends Component<PropsType, any> {
       <li
         key={pageCount}
         title={`${value}/${pageCount}`}
-        className={`${prefixCls}--simple-pager`}
+        className={`${prefixCls}__pager`}
       >
         <input
           type="text"
@@ -116,7 +107,7 @@ class Pagination extends Component<PropsType, any> {
           onChange={this.handleJumpChange}
           onKeyDown={this.handleJumpKeyDown}
         />
-        <span className={`${prefixCls}-slash`}>／</span>
+        <span className={`${prefixCls}__options--slash`}>／</span>
         {pageCount}
       </li>,
     );
@@ -132,7 +123,7 @@ class Pagination extends Component<PropsType, any> {
       <li
         key={1}
         title={locale!.first_page}
-        className={`${prefixCls}-item`}
+        className={`${prefixCls}__item`}
         onClick={() => this._onPagerClick(1)}
       >
         1
@@ -146,7 +137,7 @@ class Pagination extends Component<PropsType, any> {
       <li
         key="lastPager"
         title={locale!.last_page}
-        className={`${prefixCls}-item`}
+        className={`${prefixCls}__item`}
         onClick={() => this._onPagerClick(pageSize)}
       >
         {pageSize}
@@ -156,16 +147,17 @@ class Pagination extends Component<PropsType, any> {
 
   prevPager = (page: number) => {
     const { prefixCls, locale } = this.props;
+    const cls = classnames({
+      [`${prefixCls}__item`]: true,
+      [`${prefixCls}__prev`]: true,
+      [`${prefixCls}__item--disabled`]: Number(page) === 1,
+    });
+
     return (
       <li
         key="prev"
         title={locale!.prev_page}
-        // tslint:disable-next-line:jsx-no-multiline-js
-        className={classnames({
-          [`${prefixCls}-item`]: true,
-          [`${prefixCls}-prev`]: true,
-          [`${prefixCls}-item--disabled`]: Number(page) === 1,
-        })}
+        className={classnames(cls)}
         onClick={() => page > 1 && this._onPagerClick(page - 1)}
       >
         <Icon type="arrow-left" />
@@ -175,16 +167,17 @@ class Pagination extends Component<PropsType, any> {
 
   nextPager = (page: number, pageSize: number) => {
     const { prefixCls, locale } = this.props;
+    const cls = classnames({
+      [`${prefixCls}__item`]: true,
+      [`${prefixCls}__next`]: true,
+      [`${prefixCls}__item--disabled`]: Number(page) === pageSize,
+    });
+
     return (
       <li
         key="next"
         title={locale!.next_page}
-        // tslint:disable-next-line:jsx-no-multiline-js
-        className={classnames({
-          [`${prefixCls}-item`]: true,
-          [`${prefixCls}-next`]: true,
-          [`${prefixCls}-item--disabled`]: Number(page) === pageSize,
-        })}
+        className={cls}
         onClick={() => page < pageSize && this._onPagerClick(page + 1)}
       >
         <Icon type="arrow-right" />
@@ -194,11 +187,16 @@ class Pagination extends Component<PropsType, any> {
 
   jumpPrev = (page: number) => {
     const { prefixCls, locale } = this.props;
+    const cls = classnames({
+      [`${prefixCls}__item`]: true,
+      [`${prefixCls}__item--ellipsis`]: true,
+    });
+
     return (
       <li
         key="jump-prev"
         title={locale!.prev_5_page}
-        className={`${prefixCls}-item ${prefixCls}-item--ellipsis`}
+        className={cls}
         onClick={() => this._onPagerClick(page - 5)}
       />
     );
@@ -206,11 +204,16 @@ class Pagination extends Component<PropsType, any> {
 
   jumpNext = (page: number) => {
     const { prefixCls, locale } = this.props;
+    const cls = classnames({
+      [`${prefixCls}__item`]: true,
+      [`${prefixCls}__item--ellipsis`]: true,
+    });
+
     return (
       <li
         key="jump-next"
         title={locale!.next_5_page}
-        className={`${prefixCls}-item ${prefixCls}-item--ellipsis`}
+        className={cls}
         onClick={() => this._onPagerClick(page + 5)}
       />
     );
@@ -250,30 +253,28 @@ class Pagination extends Component<PropsType, any> {
   };
 
   _onPagerClick(value: number) {
-    const { onChange, pageSize } = this.props;
+    const { onChange } = this.props;
 
     this.setState({
       value,
       currentInputValue: value,
     });
 
-    onChange({
-      currentPage: value,
-      pageSize,
-    });
+    onChange(value);
   }
 
   renderPager = (i: number, page: number) => {
     const { prefixCls } = this.props;
+    const cls = classnames({
+      [`${prefixCls}__item`]: true,
+      [`${prefixCls}__item--active`]: page === i,
+    });
+
     return (
       <li
         key={i}
         title={`${i}`}
-        // tslint:disable-next-line:jsx-no-multiline-js
-        className={classnames({
-          [`${prefixCls}-item`]: true,
-          [`${prefixCls}-item--active`]: page === i,
-        })}
+        className={cls}
         onClick={() => this._onPagerClick(i)}
       >
         {i}
@@ -281,30 +282,15 @@ class Pagination extends Component<PropsType, any> {
     );
   };
 
-  renderAddonBefore = (addonBefore: React.ReactNode) => {
-    const { prefixCls } = this.props;
-    return (
-      <li key="addon-before" className={`${prefixCls}-addon-before`}>
-        {addonBefore}
-      </li>
-    );
-  };
-
-  renderAddonAfter = (addonAfter: React.ReactNode) => {
-    const { prefixCls } = this.props;
-    return (
-      <li key="addon-after" className={`${prefixCls}-addon-after`}>
-        {addonAfter}
-      </li>
-    );
-  };
-
   renderTotal = () => {
     const { total, prefixCls, locale, pageSize } = this.props;
+    const cls = classnames({
+      [`${prefixCls}__total`]: true,
+    });
 
     const { value } = this.state;
     return (
-      <li key="total" className={`${prefixCls}-total`}>
+      <li key="total" className={cls}>
         {format(locale!.total, {
           total,
         })}
@@ -331,9 +317,9 @@ class Pagination extends Component<PropsType, any> {
       defaultPageSize = 10;
     }
     return (
-      <li className={`${prefixCls}-options`}>
+      <li className={`${prefixCls}__options`}>
         <Select
-          className={`${prefixCls}-options--size__changer`}
+          className={`${prefixCls}__options--changer`}
           defaultValue={defaultPageSize}
           value={pageSize === 10 ? defaultPageSize : pageSize}
           onChange={({ value }: any) => {
@@ -341,13 +327,10 @@ class Pagination extends Component<PropsType, any> {
               return;
             }
             if (onPageSizeChange !== noop) {
-              onPageSizeChange(value, pageSize);
+              onPageSizeChange(pageSize);
               return;
             }
-            onChange({
-              currentPage: 1,
-              pageSize: value,
-            });
+            onChange(1);
           }}
         >
           {pageSizeOptions.map((value) => {
@@ -366,8 +349,8 @@ class Pagination extends Component<PropsType, any> {
     const { prefixCls, locale } = this.props;
 
     return (
-      <li className={`${prefixCls}-options`}>
-        <div className={`${prefixCls}-options--quick__jumper`}>
+      <li className={`${prefixCls}__options`}>
+        <div className={`${prefixCls}__options--jumper`}>
           {locale!.goto}
           <input type="text" onKeyDown={this.handleJumpKeyDown} />
           {locale!.pageClassifier}
@@ -392,6 +375,7 @@ class Pagination extends Component<PropsType, any> {
       [prefixCls!]: true,
       [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--simple`]: simple,
+      [`${prefixCls}--primary`]: true,
       [className!]: !!className,
     });
 

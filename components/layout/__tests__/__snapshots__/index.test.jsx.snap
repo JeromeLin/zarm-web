@@ -76,8 +76,21 @@ exports[`Layout renders collapsible sider layout correctly 1`] = `
       style="width:236px"
     >
       <i
-        class="zw-icon zw-icon-arrow-left theme-default"
-      />
+        class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+        theme="default"
+        type="arrow-left"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#arrow-left"
+          />
+        </svg>
+      </i>
     </div>
   </div>
   <div

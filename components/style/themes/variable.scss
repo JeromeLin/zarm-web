@@ -178,4 +178,15 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  // pagination
+  --pagination-color: #343434;
+  --pagination-default-hover-color: var(--theme-primary);
+  --pagination-default-bg-color: #fafafa;
+  --pagination-default-active-background: var(--theme-primary);
+  --pagination-font-size-md: 14px;
+  --pagination-font-size-sm: 12px;
+  --pagination-height-md: 32px;
+  --pagination-height-sm: 24px;
+  --pagination-opacity: var(--opacity-disabled);
 }

@@ -41,43 +41,121 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
     style="width:80px;height:80px;line-height:80px;font-size:40px"
   >
     <i
-      class="zw-icon zw-icon-user theme-default"
-    />
+      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      theme="default"
+      type="user"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#user"
+        />
+      </svg>
+    </i>
   </span>
   <span
     class="za-avatar za-avatar--xl za-avatar--circle za-avatar--icon"
   >
     <i
-      class="zw-icon zw-icon-user theme-default"
-    />
+      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      theme="default"
+      type="user"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#user"
+        />
+      </svg>
+    </i>
   </span>
   <span
     class="za-avatar za-avatar--lg za-avatar--circle za-avatar--icon"
   >
     <i
-      class="zw-icon zw-icon-user theme-default"
-    />
+      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      theme="default"
+      type="user"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#user"
+        />
+      </svg>
+    </i>
   </span>
   <span
     class="za-avatar za-avatar--circle za-avatar--icon"
   >
     <i
-      class="zw-icon zw-icon-user theme-default"
-    />
+      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      theme="default"
+      type="user"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#user"
+        />
+      </svg>
+    </i>
   </span>
   <span
     class="za-avatar za-avatar--sm za-avatar--circle za-avatar--icon"
   >
     <i
-      class="zw-icon zw-icon-user theme-default"
-    />
+      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      theme="default"
+      type="user"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#user"
+        />
+      </svg>
+    </i>
   </span>
   <span
     class="za-avatar za-avatar--xs za-avatar--circle za-avatar--icon"
   >
     <i
-      class="zw-icon zw-icon-user theme-default"
-    />
+      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      theme="default"
+      type="user"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#user"
+        />
+      </svg>
+    </i>
   </span>
 </div>
 `;
@@ -88,8 +166,21 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     class="za-avatar za-avatar--circle za-avatar--icon"
   >
     <i
-      class="zw-icon zw-icon-user theme-default"
-    />
+      class="zw-icon zw-icon--user zw-icon--default zw-icon--md"
+      theme="default"
+      type="user"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#user"
+        />
+      </svg>
+    </i>
   </span>
   <span
     class="za-avatar za-avatar--circle za-avatar--string"

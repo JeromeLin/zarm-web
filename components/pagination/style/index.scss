@@ -1,23 +1,35 @@
 @import '../../style/core/index';
 @import 'mixins';
 
-// 全局变量
-:root {
-  --pagination-color: #343434;
-  --pagination-default-hover-color: var(--theme-primary);
-  --pagination-default-bg-color: #fafafa;
-  --pagination-default-active-background: var(--theme-primary);
-  --pagination-font-size-md: 14px;
-  --pagination-font-size-sm: 12px;
-  --pagination-height-md: 32px;
-  --pagination-height-sm: 24px;
-  --pagination-opacity: var(--opacity-disabled);
-}
-
 @include b(pagination) {
   margin: 0;
   padding: 0;
   @include clearfix();
+
+  @include e(item) {
+    @include pagination-item(
+      var(--pagination-color),
+      var(--pagination-default-bg-color),
+      var(--pagination-default-hover-color),
+      var(--pagination-default-active-background),
+      var(--pagination-font-size-md),
+      var(--pagination-opacity),
+      var(--pagination-height-md),
+      var(--radius-md)
+    );
+  }
+
+  @include e(total) {
+    @include pagination-total(var(--pagination-font-size-md));
+  }
+
+  @include e(options) {
+    @include pagination-options(
+      var(--pagination-default-bg-color),
+      var(--pagination-font-size-sm),
+      var(--radius-md)
+    );
+  }
 
   @include m(sm) {
     @include pagination-size(
@@ -28,7 +40,10 @@
   }
 
   @include m(simple) {
-    @include pagination-shape(var(--pagination-height-sm));
+    @include pagination-shape(
+      var(--pagination-default-bg-color),
+      var(--pagination-height-sm)
+    );
   }
 
   @include m(primary) {
@@ -38,30 +53,3 @@
     );
   }
 }
-
-@include b(pagination-total) {
-  @include pagination-total(var(--pagination-font-size-md));
-}
-
-@include b(pagination-options) {
-  @include pagination-options(
-    var(--pagination-default-bg-color),
-    var(--pagination-font-size-sm),
-    var(--radius-md)
-  );
-}
-
-@include b(pagination-item) {
-  @include pagination-item(
-    var(--pagination-color),
-    var(--pagination-default-bg-color),
-    var(--pagination-default-hover-color),
-    var(--pagination-default-active-background),
-    var(--pagination-font-size-md),
-    var(--pagination-opacity),
-    var(--pagination-height-md),
-    var(--radius-md)
-  );
-}
-
-@include pagination-simple(var(--pagination-default-bg-color));

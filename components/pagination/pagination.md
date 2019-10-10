@@ -158,21 +158,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-```jsx
-<Pagination onChange="{onChange}" total="{50}" />
-```
-
-| 参数                | 说明                       | 类型                        | 默认值           |
-| ------------------- | -------------------------- | --------------------------- | ---------------- |
-| value               | 当前页                     | number                      | -                |
-| defaultValue        | 默认页                     | number                      | 1                |
-| simple              | 是否简洁分页               | boolean                     | false            |
-| size                | 分页器尺寸                 | 'md' or 'sm'                | md               |
-| total               | 数据总数                   | number                      | 0                |
-| pageSize            | 每页条数                   | number                      | 10               |
-| pageSizeOptions     | 每页条数下拉框的选项       | number[]                    | [10,20,30,40,50] |
-| showTotal           | 是否展示总数               | boolean                     | false            |
-| showQuickJumper     | 是否展示跳转               | boolean                     | false            |
-| showPageSizeChanger | 是否展示每页条数选择器     | boolean                     | false            |
-| onPageSizeChange    | 每页展示条数变更触发的事件 | (pageSize?: number) => void |                  |
-| onChange            | 页面切换和跳转时触发的事件 | (page?: number) => void     |                  |
+| 属性                | 类型                        | 默认值           | 说明                       |
+| ------------------- | --------------------------- | ---------------- | -------------------------- |
+| value               | number                      | -                | 当前页                     |
+| defaultValue        | number                      | 1                | 默认页                     |
+| simple              | boolean                     | false            | 是否简洁分页               |
+| size                | 'md' or 'sm'                | md               | 分页器尺寸                 |
+| total               | number                      | 0                | 数据总数                   |
+| pageSize            | number                      | 10               | 每页条数                   |
+| pageSizeOptions     | number[]                    | [10,20,30,40,50] | 每页条数下拉框的选项       |
+| showTotal           | boolean                     | false            | 是否展示总数               |
+| showQuickJumper     | boolean                     | false            | 是否展示跳转               |
+| showPageSizeChanger | boolean                     | false            | 是否展示每页条数选择器     |
+| onPageSizeChange    | (pageSize?: number) => void | -                | 每页展示条数变更触发的事件 |
+| onChange            | (page?: number) => void     | -                | 页面切换和跳转时触发的事件 |

@@ -73,11 +73,11 @@
   margin-left: 8px;
   vertical-align: middle;
 
-  @include m(size__changer) {
+  @include m(changer) {
     font-size: $font-size;
   }
 
-  @include m(quick__jumper) {
+  @include m(jumper) {
     display: inline-block;
     vertical-align: top;
 
@@ -103,80 +103,77 @@
 }
 
 @mixin pagination-size($active-background, $font-size, $height) {
-  @include b(pagination-item) {
+  @include e(item) {
     background-color: transparent;
     min-width: $height;
     height: $height;
     line-height: $height;
     margin: 0;
-
-    @include m(active) {
-      background-color: $active-background;
-    }
   }
 
-  @include b(pagination-total) {
+  @include e(item--active) {
+    background-color: $active-background;
+  }
+
+  @include e(total) {
     height: $height;
     line-height: $height;
     font-size: $font-size;
   }
 }
 
-@mixin pagination-shape($height) {
-  @include b(pagination-item) {
+@mixin pagination-shape($background, $height) {
+  @include e(item) {
     background-color: transparent;
     min-width: $height;
     height: $height;
     line-height: $height;
     margin: 0;
   }
-}
 
-@mixin pagination-simple($background) {
-  .zw-pagination--simple {
-    &-pager {
-      display: inline-block;
-      height: 24px;
+  @include e(pager) {
+    display: inline-block;
+    height: 24px;
+    margin-right: 8px;
+
+    > input {
+      box-sizing: border-box;
+      height: 100%;
       margin-right: 8px;
-
-      > input {
-        box-sizing: border-box;
-        height: 100%;
-        margin-right: 8px;
-        padding: 0 6px;
-        border-radius: 4px;
-        outline: none;
-        transition: border-color 0.3s;
-        text-align: center;
-        border-width: 1px;
-        border-style: solid;
-        border-color: $background;
-        background-color: $background;
-      }
+      padding: 0 6px;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s;
+      text-align: center;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $background;
+      background-color: $background;
     }
   }
 }
 
 @mixin pagination-theme($active-background, $disabled-opacity) {
-  @include b(pagination-item) {
+  @include e(item) {
     &:hover {
       color: $active-background;
     }
+  }
 
-    @include m(active) {
-      background-color: $active-background;
+  @include e(item--active) {
+    background-color: $active-background;
+    color: #fff;
+
+    &:hover {
       color: #fff;
-
-      &:hover {
-        color: #fff;
-      }
     }
+  }
 
-    @include m(disabled) {
-      opacity: $disabled-opacity;
-      &:hover {
-        color: #000;
-      }
+  @include e(item--disabled) {
+    opacity: $disabled-opacity;
+
+    &:hover {
+      color: #000;
     }
   }
 }

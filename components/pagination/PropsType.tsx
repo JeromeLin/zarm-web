@@ -1,9 +1,10 @@
 export default interface PropsType {
   prefixCls?: string;
   className?: string;
-  style?: object;
+  style?: React.CSSProperties;
   value?: number;
   defaultValue?: number;
+  locale?: { [propName: string]: any };
   pageSize: number;
   pageSizeOptions?: Array<number>;
   total: number;
@@ -11,10 +12,7 @@ export default interface PropsType {
   showQuickJumper?: boolean;
   showPageSizeChanger?: boolean;
   simple?: boolean;
-  size?: string;
-  addonBefore?: React.ReactNode;
-  addonAfter?: React.ReactNode;
-  onPageSizeChange: (value: number, pageSize: number) => void;
-  locale?: { [propName: string]: any };
-  onChange: (pageInfo: { currentPage: number; pageSize: number }) => void;
+  size?: 'md' | 'sm';
+  onPageSizeChange: (pageSize?: number) => void;
+  onChange: (page?: number) => void;
 }
