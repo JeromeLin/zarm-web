@@ -28,13 +28,13 @@ $PI: 3.141592674;
   @include e(mask) {
     display: block;
     position: absolute;
-    z-index: 1657;
+    z-index: var(--loading-default-mask-zIndex);
     margin: 0;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(255, 255, 255, 0.901961);
+    background: var(--loading-default-mask-color);
   }
 
   @include e(svg) {

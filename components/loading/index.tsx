@@ -3,14 +3,14 @@ import { ActivityIndicator } from 'zarm';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import debounce from '../utils/debounce';
-import PropsType from './PropsType';
+import LoadingProps from './PropsType';
 
 ActivityIndicator.defaultProps.prefixCls = 'zw-activity-indicator';
 
 function shouldDelay(visible?: boolean, delay?: number): boolean {
   return !!visible && !!delay && !Number.isNaN(Number(delay));
 }
-class Loading extends Component<PropsType, any> {
+class Loading extends Component<LoadingProps, any> {
   static defaultProps = {
     prefixCls: 'zw-loading',
     visible: false,
