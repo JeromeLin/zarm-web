@@ -1,2 +1,135 @@
-@import '../../style/themes/default';
-@import './component';
+@import '../../style/core/index';
+
+@mixin tag-color($color) {
+  background-color: rgba($color, 0.05);
+  border-color: rgba($color, 0.3);
+  color: rgba($color, 1);
+
+  @include m(unborder) {
+    color: #fff;
+    background-color: rgba($color, 1);
+    border: hidden;
+  }
+}
+
+@mixin tag-size($height, $padding, $icon-size) {
+  padding: 0 $padding;
+  font-size: var(--tag-font-size);
+  height: $height;
+  line-height: $height;
+
+  @include b(icon) {
+    font-size: $icon-size;
+  }
+}
+
+@mixin tag-base {
+  display: inline-block;
+  position: relative;
+  transition: all .3s cubic-bezier(.78, .14, .15, .86);
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  font-size: var(--tag-font-size);
+  border-width: 1px;
+  border-style: solid;
+  background-color: var(--tag-default-background);
+  border-color: var(--tag-default-border);
+  color: var(--tag-default-color);
+  margin: 0 8px 8px 0;
+  border-radius: var(--radius-md);
+  cursor: default;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @include b(icon) {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}
+
+@include b(tag) {
+  @include tag-base();
+
+  @include m(rect) {
+    border-radius: 0;
+  }
+  @include m(round) {
+    border-radius: var(--tag-height-lg);
+  }
+
+  @include m(unborder) {
+    border: hidden;
+  }
+
+  @include m(checkable) {
+    cursor: pointer;
+  }
+
+  /* tag sizes: default md */
+  @include tag-size(var(--tag-height-md), var(--tag-padding-h), var(--tag-icon-size));
+
+  @include m(lg) {
+    @include tag-size(var(--tag-height-lg), var(--tag-padding-h-lg), var(--tag-icon-size-lg));
+  }
+
+  @include m(md) {
+    @include tag-size(var(--tag-height-md), var(--tag-padding-h), var(--tag-icon-size));
+  }
+
+  @include m(sm) {
+    @include tag-size(var(--tag-height-sm), var(--tag-padding-h), var(--tag-icon-size));
+  }
+
+  @include m(xs) {
+    @include tag-size(var(--tag-height-xs), var(--tag-padding-h), var(--tag-icon-size-xs));
+  }
+
+  /* tag preset color */
+  @include m(green) {
+    @include tag-color(var(--tag-color-green));
+  }
+
+  @include m(blue) {
+    @include tag-color(var(--tag-color-blue));
+  }
+
+  @include m(orange) {
+    @include tag-color(var(--tag-color-orange));
+  }
+
+  @include m(red) {
+    @include tag-color(var(--tag-color-red));
+  }
+
+  @include m(checked) {
+    background-color: var(--tag-primary-color);
+    border-color: var(--tag-primary-color);
+    color: var(--tag-default-background);
+
+    &:hover {
+      background-color: var(--tag-primary-hover-background);
+    }
+
+    &:active {
+      background-color: var(--tag-primary-active-background);
+    }
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: var(--tag-disabled-opacity);
+    background-color: var(--tag-default-background);
+    border-color: var(--tag-default-border);
+    color: var(--tag-color-disabled);
+
+    &:hover {
+      background-color: var(--tag-default-background);
+      color: var(--tag-color-disabled);
+      opacity: var(--tag-disabled-opacity);
+    }
+  }
+}

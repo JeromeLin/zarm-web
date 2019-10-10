@@ -1,34 +1,27 @@
+@import "@site/styles/index";
+
 .icon-page {
-  .icon-list {
+  .za-icon {
+    display: block;
+    margin-bottom: 15px;
+
+    & + span {
+      font-size: 12px;
+    }
+  }
+
+  .grid {
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden;
-    list-style: none;
-    padding: 0;
-    border-radius: 4px;
 
-    li {
+    &-column {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
       align-items: center;
-      width: 16.66%;
-      text-align: center;
-      height: 120px;
-      color: #666;
-      font-size: 13px;
-      transition: color .15s linear;
-
-      i {
-        display: block;
-        font-size: 32px;
-        //margin-bottom: 15px;
-        color: #606266;
-      }
-
-      .ui-icon-name {
-        width: 100%;
-      }
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      width: 20%;
+      height: 125px;
     }
   }
 }

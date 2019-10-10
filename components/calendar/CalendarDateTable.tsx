@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import Format from '../utils/format';
-import { isArray } from '../utils/validate';
+import isArray from '../utils/validate';
 
 import { DateTableProps, DateType } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 // 生成 [1, 2, 3, ...] 的序列
-const getSequence = length => [...Array.from({ length }).keys()];
+const getSequence = (length) => [...Array.from({ length }).keys()];
 
 const CALENDAR_ROW_COUNT = getSequence(6);
 const CALENDAR_COL_COUNT = getSequence(7);
@@ -56,17 +56,16 @@ class CalendarDateTable extends Component<DateTableProps, any> {
       <thead>
         <tr>
           {
-            // tslint:disable-next-line:jsx-no-multiline-js
             weekDays.map((week, index) => (
               <th
-              // eslint-disable-next-line
-              key={`weekdays-${index}`}
+                key={`weekdays-${index}`}
                 className={`${prefixCls}-column`}
                 title={locale!.week_days_hints[index]}
               >
                 {week}
               </th>
-            ))}
+            ))
+          }
         </tr>
       </thead>
     );
@@ -141,7 +140,7 @@ class CalendarDateTable extends Component<DateTableProps, any> {
     return (
       <tbody>
         {
-        CALENDAR_ROW_COUNT.map(m => (
+        CALENDAR_ROW_COUNT.map((m) => (
           <tr key={`row-${m}`} role="row">
             {
               CALENDAR_COL_COUNT.map((n) => {
@@ -229,19 +228,17 @@ class CalendarDateTable extends Component<DateTableProps, any> {
   }
 
   // 获取第一天的星期
-  // eslint-disable-next-line
-  getFirstDayOfWeek(current) {
+  getFirstDayOfWeek = (current) => {
     const date = new Date(`${current.year}/${current.month}/1`);
     let week = date.getDay();
     if (week === 0) {
       week = 7;
     }
     return week;
-  }
+  };
 
   // 获取下个月
-  // eslint-disable-next-line
-  getNextMonth(current) {
+  getNextMonth = (current) => {
     const result: DateType = {};
     if (current.month === 12) {
       result.year = current.year + 1;
@@ -251,11 +248,10 @@ class CalendarDateTable extends Component<DateTableProps, any> {
       result.month = current.month + 1;
     }
     return result;
-  }
+  };
 
   // 获取上个月
-  // eslint-disable-next-line
-  getPreMonth(current) {
+  getPreMonth = (current) => {
     const result: DateType = {};
     if (current.month === 1) {
       result.year = current.year - 1;
@@ -265,13 +261,12 @@ class CalendarDateTable extends Component<DateTableProps, any> {
       result.month = current.month - 1;
     }
     return result;
-  }
+  };
 
   // 获取指定月份的天数
-  // eslint-disable-next-line
-  getDays(current) {
+  getDays = (current) => {
     return new Date(current.year, current.month, 0).getDate();
-  }
+  };
 
   render() {
     const { visible, prefixCls } = this.props;

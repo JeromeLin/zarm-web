@@ -36,10 +36,10 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
   const { theme = 'primary', title, ...others } = props;
   const themeTitleConfig = themeMapIcon[theme];
   const themeTitle = (
-    <Fragment>
+    <>
       <Icon className="modal-alert-icon" type={themeTitleConfig.icon} theme={theme} />
       <span className="modal-alert-icon-text">{title}</span>
-    </Fragment>
+    </>
   );
   const div = document.createElement('div');
   let resolveFn = (result: boolean) => result;
@@ -94,10 +94,10 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
           resolveFn(false);
         }}
         footer={(
-          <Fragment>
+          <>
             {isConfirm && <Button onClick={() => handleOnOk(render, false)}>取消</Button>}
             <Button theme={theme === 'success' ? 'primary' : 'theme'} onClick={() => handleOnOk(render, true)}>确定</Button>
-          </Fragment>
+          </>
         )}
       >
         {props.content}
@@ -121,7 +121,7 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
         resolve(res);
       });
     },
-    catch: (resolve, reject) => {
+    catch: (_resolve, reject) => {
       return returnResult.catch((res) => {
         reject(res);
       });

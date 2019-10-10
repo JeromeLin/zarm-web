@@ -51,7 +51,7 @@ export const groupColumns = (
 
 // 鼠标hover效果
 export const toggleHoverStatus = (trs, index) => {
-  trs.forEach(tr => tr.classList.remove('hover'));
+  trs.forEach((tr) => tr.classList.remove('hover'));
   if (index >= 0) {
     trs[index].classList.add('hover');
   }

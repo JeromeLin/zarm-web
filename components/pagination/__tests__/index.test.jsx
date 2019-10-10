@@ -8,7 +8,7 @@ describe('Pagination', () => {
     const wrapper = render(
       <div>
         <Pagination total={100} />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -18,7 +18,7 @@ describe('Pagination', () => {
     const wrapper = render(
       <div>
         <Pagination total={100} showTotal />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('Pagination', () => {
     const wrapper = render(
       <div>
         <Pagination total={100} showJumper />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -44,7 +44,7 @@ describe('Pagination', () => {
           addonBefore="addonBefore"
           addonAfter="addonAfter"
         />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -55,7 +55,7 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
     wrapper.find('.ui-pagination-item').at(2).simulate('click');
@@ -68,7 +68,7 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={6} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
     wrapper.find('.ui-pagination-item-prev').simulate('click');
@@ -81,7 +81,7 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={5} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
     wrapper.find('.ui-pagination-item-next').simulate('click');
@@ -94,7 +94,7 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={6} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
     wrapper.find('.ui-pagination-item-jump-prev').simulate('click');
@@ -107,7 +107,7 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination total={100} value={1} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
     wrapper.find('.ui-pagination-item-jump-next').simulate('click');
@@ -120,7 +120,7 @@ describe('Pagination', () => {
     const wrapper = mount(
       <div>
         <Pagination showJumper total={100} value={1} onPageChange={onChange} />
-      </div>
+      </div>,
     );
 
     wrapper.find('.ui-pagination-jumper input').simulate('keydown', {
@@ -134,7 +134,7 @@ describe('Pagination', () => {
 
   it('behaves correctly when receiving new value', () => {
     const wrapper = mount(
-      <Pagination showJumper total={100} value={2} />
+      <Pagination showJumper total={100} value={2} />,
     );
 
     wrapper.setProps({ value: 1 });

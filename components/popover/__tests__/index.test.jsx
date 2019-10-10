@@ -11,7 +11,7 @@ describe('Popover', () => {
         <Popover content="确认删除吗" direction="top">
           <Button>Delete</Button>
         </Popover>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -23,7 +23,7 @@ describe('Popover', () => {
         <Popover content="确认删除吗" direction="top" radius className="customized">
           <Button>Delete</Button>
         </Popover>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -35,7 +35,7 @@ describe('Popover', () => {
         <Popover content={() => '确认删除吗?'} direction="top">
           <Button>Delete</Button>
         </Popover>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -47,7 +47,7 @@ describe('Popover', () => {
         <Popover mask content={() => '确认删除吗?'} direction="top">
           <Button>Delete</Button>
         </Popover>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -65,7 +65,7 @@ describe('Popover', () => {
         >
           <Button>Delete</Button>
         </Popover>
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -79,7 +79,7 @@ describe('Popover', () => {
         direction="top"
       >
         <Button>Delete</Button>
-      </Popover>
+      </Popover>,
     );
 
     expect(wrapper.find('.ui-popover-content').hasClass('ui-popover-content-show')).toBeFalsy();
@@ -87,4 +87,3 @@ describe('Popover', () => {
     expect(wrapper.find('.ui-popover-content').hasClass('ui-popover-content-show')).toBeTruthy();
   });
 });
-

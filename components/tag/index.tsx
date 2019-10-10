@@ -1,57 +1,80 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { PureComponent, MouseEvent } from 'react';
 import classnames from 'classnames';
+import Color from 'color';
 import Icon from '../icon';
-import PropsType from './PropsType';
+import { TagProps } from './PropsType';
+import CheckableTag from './CheckableTag';
 
-const Style = {
-  iconStyle: { position: 'absolute', right: 3, top: 0, cursor: 'pointer' },
-};
+const presetColors = ['green', 'blue', 'orange', 'red'];
 
-class Tag extends Component<PropsType, any> {
+class Tag extends PureComponent<TagProps, {}> {
+  static displayName = 'Tag';
+
+  static CheckableTag = CheckableTag;
+
   static defaultProps = {
-    theme: 'default',
-    size: null,
+    prefixCls: 'zw-tag',
+    bordered: true,
+  };
+
+  getColorStyle() {
+    const { color, bordered } = this.props;
+    return !bordered ? {
+      backgroundColor: color,
+      borderColor: color,
+      color: '#fff',
+    } : {
+      color,
+      borderColor: Color(color).alpha(0.3),
+      backgroundColor: Color(color).alpha(0.05),
+    };
+  }
+
+  isPresetColor = () => {
+    const { color } = this.props;
+    return !!color && presetColors.indexOf(color) > -1;
+  };
+
+  getStyle = () => {
+    const { style, color } = this.props;
+    const customStyle = color && !this.isPresetColor() ? this.getColorStyle() : {};
+
+    return {
+      ...customStyle,
+      ...style,
+    };
   };
 
   render() {
     const {
-      theme,
+      prefixCls,
+      color,
       size,
-      isRadius,
-      isRound,
-      isActive,
-      isFocus,
-      isDisabled,
+      shape,
       className,
       onClose,
+      closable,
       children,
-      style,
-      title,
+      bordered,
+      ...other
     } = this.props;
-    const disabled = 'disabled' in this.props || isDisabled;
 
-    const cls = classnames({
-      'ui-tag': true,
-      radius: 'radius' in this.props || isRadius,
-      round: 'round' in this.props || isRound,
-      active: 'active' in this.props || isActive,
-      focus: 'focus' in this.props || isFocus,
-      disabled,
-      hasCloseButton: typeof onClose === 'function',
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
-      [(className as string)]: !!className,
+    const classes = classnames(prefixCls, className, {
+      [`${prefixCls}--${color}`]: this.isPresetColor(),
+      [`${prefixCls}--${size}`]: size,
+      [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--unborder`]: !bordered,
     });
 
-    const closeIcon = typeof onClose === 'function' ? (
+    const closeIcon = closable && (
       <Icon
-        style={Style.iconStyle}
         type="wrong"
-        onClick={(e: MouseEvent) => { if (!disabled) { onClose(e); } }}
+        onClick={(e: MouseEvent) => { onClose && onClose(e); }}
       />
-    ) : null;
+    );
+
     return (
-      <div className={cls} style={style} title={title}>
+      <div {...other} className={classes} style={this.getStyle()}>
         {children}
         {closeIcon}
       </div>

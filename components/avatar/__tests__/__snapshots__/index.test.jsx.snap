@@ -3,11 +3,12 @@
 exports[`Avatar renders Avatars correctly when set src, icon and string 1`] = `
 <div>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon za-avatar--image za-avatar--string"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
   >
     <img
-      alt=""
-      src="http://img95.699pic.com/element/40044/5588.png_860.png"
+      alt="my avatar"
+      class="zw-avatar--image"
+      src="site/images/avatar/avatar.png"
     />
   </span>
 </div>
@@ -16,20 +17,19 @@ exports[`Avatar renders Avatars correctly when set src, icon and string 1`] = `
 exports[`Avatar renders Avatars of different shape correctly 1`] = `
 <div>
   <Avatar
-    alt=""
-    icon=""
-    prefixCls="za-avatar"
+    prefixCls="zw-avatar"
     shape="circle"
-    size="circle"
-    src=""
+    size="md"
   />
   <Avatar
-    alt=""
-    icon=""
-    prefixCls="za-avatar"
+    prefixCls="zw-avatar"
     shape="circle"
-    size="square"
-    src=""
+    size="md"
+  />
+  <Avatar
+    prefixCls="zw-avatar"
+    shape="square"
+    size="md"
   />
 </div>
 `;
@@ -37,47 +37,54 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
 exports[`Avatar renders Avatars of different size correctly 1`] = `
 <div>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon"
-    style="width:80px;height:80px;line-height:80px;font-size:40px"
+    class="zw-avatar zw-avatar--xl zw-avatar--circle"
   >
-    <i
-      class="za-icon za-icon-user theme-default"
-    />
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
+    >
+      XL
+    </span>
   </span>
   <span
-    class="za-avatar za-avatar--xl za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--lg zw-avatar--circle"
   >
-    <i
-      class="za-icon za-icon-user theme-default"
-    />
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
+    >
+      LG
+    </span>
   </span>
   <span
-    class="za-avatar za-avatar--lg za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--md zw-avatar--circle"
   >
-    <i
-      class="za-icon za-icon-user theme-default"
-    />
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
+    >
+      MD
+    </span>
   </span>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
   >
-    <i
-      class="za-icon za-icon-user theme-default"
-    />
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
+    >
+      SM
+    </span>
   </span>
   <span
-    class="za-avatar za-avatar--sm za-avatar--circle za-avatar--icon"
+    class="zw-avatar zw-avatar--xs zw-avatar--circle"
   >
-    <i
-      class="za-icon za-icon-user theme-default"
-    />
-  </span>
-  <span
-    class="za-avatar za-avatar--xs za-avatar--circle za-avatar--icon"
-  >
-    <i
-      class="za-icon za-icon-user theme-default"
-    />
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
+    >
+      XS
+    </span>
   </span>
 </div>
 `;
@@ -85,47 +92,34 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
 exports[`Avatar renders Avatars of different type correctly 1`] = `
 <div>
   <span
-    class="za-avatar za-avatar--circle za-avatar--icon"
-  >
-    <i
-      class="za-icon za-icon-user theme-default"
-    />
-  </span>
-  <span
-    class="za-avatar za-avatar--circle za-avatar--string"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    style="font-size:12px"
   >
     <span
-      style="position:absolute;transform:scale(1);left:calc(50% - 4.5px )"
-    >
-      U
-    </span>
-  </span>
-  <span
-    class="za-avatar za-avatar--circle za-avatar--string"
-  >
-    <span
-      style="position:absolute;transform:scale(0.7);left:calc(50% - 18px )"
+      class="zw-avatar--string"
     >
       USER
     </span>
   </span>
   <span
-    class="za-avatar za-avatar--circle za-avatar--image"
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    style="color:red;background-color:rgb(249, 232, 8)"
+  >
+    <span
+      class="zw-avatar--string"
+      style="transform:scale(1) translateX(-50%);-webkit-transform:scale(1) translateX(-50%);-ms-transform:scale(1) translateX(-50%)"
+    >
+      USER
+    </span>
+  </span>
+  <span
+    class="zw-avatar zw-avatar--sm zw-avatar--circle"
   >
     <img
       alt="my avatar"
-      src="http://img95.699pic.com/element/40044/5588.png_860.png"
+      class="zw-avatar--image"
+      src="site/images/avatar/avatar.png"
     />
-  </span>
-  <span
-    class="za-avatar za-avatar--circle za-avatar--string"
-    style="color:#2db7f5;background-color:rgb(249, 232, 8)"
-  >
-    <span
-      style="position:absolute;transform:scale(1);left:calc(50% - 4.5px )"
-    >
-      U
-    </span>
   </span>
 </div>
 `;

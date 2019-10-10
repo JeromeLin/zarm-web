@@ -3,16 +3,6 @@ import Button from '../../components/button';
 import Modal from '../../components/modal';
 import Input from '../../components/input';
 
-(async () => {
-  const instance = await Modal.Alert({
-    content: '这是一个Alert',
-    title: '提示',
-    theme: 'success',
-  });
-  console.log(instance);
-})();
-
-
 class Page extends PureComponent {
   state = {
     visible: false,
@@ -29,7 +19,6 @@ class Page extends PureComponent {
     return (
       <div>
         <Button onClick={this.onClick}>点击我</Button>
-
 
         <Modal
           onCancel={() => {

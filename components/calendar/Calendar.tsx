@@ -5,7 +5,7 @@ import Format from '../utils/format';
 import { isEmpty } from '../utils';
 import Button from '../button';
 import TimePicker from '../time-picker';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 import CalendarHeader from './CalendarHeader';
 import CalendarDateTable from './CalendarDateTable';
@@ -37,8 +37,6 @@ class Calendar extends Component<PropsType, any> {
       ),
       value: Format.date(props.value || props.defaultValue, props.format),
       panel: 'date',
-
-      showTime: false,
       timeValue: '00:00:00',
     };
   }
@@ -220,10 +218,8 @@ class Calendar extends Component<PropsType, any> {
           current={current}
           isShowPrev={isShowPrev}
           isShowNext={isShowNext}
-          // tslint:disable-next-line:no-shadowed-variable
           onChange={this.handleChangeHeader}
-          // tslint:disable-next-line:no-shadowed-variable
-          onChangePanel={panelInner => this.setState({ panel: panelInner })}
+          onChangePanel={(panelInner) => this.setState({ panel: panelInner })}
         />
 
         <div className={`${prefixCls}-body`}>
@@ -231,7 +227,6 @@ class Calendar extends Component<PropsType, any> {
             visible={panel !== 'year'}
             value={value}
             current={current}
-            // tslint:disable-next-line:no-shadowed-variable
             onYearClick={this.handleChangeYearOrMonth}
           />
 
@@ -240,7 +235,6 @@ class Calendar extends Component<PropsType, any> {
             value={value}
             current={current}
             disabledMonth={disabledMonth}
-            // tslint:disable-next-line:no-shadowed-variable
             onMonthClick={this.handleChangeYearOrMonth}
           />
 
@@ -251,12 +245,10 @@ class Calendar extends Component<PropsType, any> {
             min={min}
             max={max}
             selectedValue={selectedValue}
-            // tslint:disable-next-line:no-shadowed-variable
-            onDateClick={calendarValue => this.onDateClick(calendarValue)}
+            onDateClick={(calendarValue) => this.onDateClick(calendarValue)}
           />
         </div>
         {
-          // tslint:disable-next-line:jsx-no-multiline-js
           (hasFooter && panel === 'date') ? (
             <div className={`${prefixCls}-footer`}>
               <span
@@ -287,7 +279,8 @@ class Calendar extends Component<PropsType, any> {
               )
             }
             </div>
-          ) : null}
+          ) : null
+        }
       </div>
     );
   }

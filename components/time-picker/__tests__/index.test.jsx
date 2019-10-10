@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import TimePicker from '../index';
@@ -24,7 +23,7 @@ describe('TimePicker', () => {
     const wrapper = render(
       <div>
         <TimePicker />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -36,7 +35,7 @@ describe('TimePicker', () => {
         <TimePicker
           isDisabled
         />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -46,7 +45,7 @@ describe('TimePicker', () => {
     const wrapper = render(
       <TimeSelect
         value="00:00:00"
-      />
+      />,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -59,7 +58,7 @@ describe('TimePicker', () => {
           isRadius
           style={{ width: 160 }}
         />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -72,4 +71,3 @@ describe('TimePicker', () => {
     expect(wrapper.find('.za-select__text').text()).toBe('00:00:00');
   });
 });
-

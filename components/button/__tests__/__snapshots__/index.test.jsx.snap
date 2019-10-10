@@ -168,8 +168,21 @@ exports[`Button renders loading Button correctly 1`] = `
     type="button"
   >
     <i
-      class="za-icon za-icon-loading theme-default rotate360"
-    />
+      class="zw-icon rotate360 zw-icon--loading zw-icon--default zw-icon--md"
+      theme="default"
+      type="loading"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#loading"
+        />
+      </svg>
+    </i>
       加载中
   </button>
 </div>

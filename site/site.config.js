@@ -23,7 +23,7 @@ module.exports = {
     basic: [
       {
         name: 'Icon',
-        module: () => import('@/components/icon/icon.md'),
+        module: () => import('@/components/icon/demo.md'),
       },
       {
         name: 'Button',
@@ -47,7 +47,7 @@ module.exports = {
       },
       {
         name: 'Checkbox',
-        module: () => import('@/components/checkbox/checkbox.md'),
+        module: () => import('@/components/checkbox/demo.md'),
       },
       {
         name: 'Input',
@@ -89,15 +89,23 @@ module.exports = {
         name: 'Form',
         module: () => import('@/components/form/form.md'),
       },
+      {
+        name: 'Transfer',
+        module: () => import('@/components/transfer/transfer.md'),
+      },
     ],
     data: [
+      {
+        name: 'Badge',
+        module: () => import('@/components/badge/demo.md'),
+      },
       {
         name: 'Table',
         module: () => import('@/components/table/table.md'),
       },
       {
         name: 'Tag',
-        module: () => import('@/components/tag/tag.md'),
+        module: () => import('@/components/tag/demo.md'),
       },
       {
         name: 'Progress',
@@ -116,12 +124,12 @@ module.exports = {
         module: () => import('@/components/tree/tree.md'),
       },
       {
-        name: 'Transfer',
-        module: () => import('@/components/transfer/transfer.md'),
+        name: 'Avatar',
+        module: () => import('@/components/avatar/demo.md'),
       },
       {
-        name: 'Avatar',
-        module: () => import('@/components/avatar/avatar.md'),
+        name: 'Swipe',
+        module: () => import('@/components/swipe/swipe.md'),
       },
     ],
     notice: [
@@ -149,6 +157,14 @@ module.exports = {
         name: 'notification',
         module: () => import('@/components/notification/notification.md'),
       },
+      {
+        name: 'Popover',
+        module: () => import('@/components/popover/popover.md'),
+      },
+      {
+        name: 'Popconfirm',
+        module: () => import('@/components/popconfirm/popconfirm.md'),
+      },
     ],
     navigation: [
       {
@@ -156,7 +172,7 @@ module.exports = {
         module: () => import('@/components/menu/menu.md'),
       },
       {
-        name: 'Tab',
+        name: 'Tabs',
         module: () => import('@/components/tab/tab.md'),
       },
       {
@@ -178,20 +194,8 @@ module.exports = {
         module: () => import('@/components/tooltip/tooltip.md'),
       },
       {
-        name: 'Popover',
-        module: () => import('@/components/popover/popover.md'),
-      },
-      {
-        name: 'Popconfirm',
-        module: () => import('@/components/popconfirm/popconfirm.md'),
-      },
-      {
         name: 'Mask',
         module: () => import('@/components/mask/mask.md'),
-      },
-      {
-        name: 'swipe',
-        module: () => import('@/components/swipe/swipe.md'),
       },
       {
         name: 'Transition',
@@ -199,7 +203,7 @@ module.exports = {
       },
       {
         name: 'LocaleProvider',
-        module: () => import('@/components/locale/demo.md'),
+        module: () => import('@/components/locale-provider/demo.md'),
       },
     ],
   },

@@ -1,9 +1,9 @@
-import React, { Component, KeyboardEvent, Fragment } from 'react';
+import React, { Component, KeyboardEvent } from 'react';
 import Popup from 'zarm/lib/popup';
 import 'zarm/lib/popup/style';
 import cn from 'classnames';
 
-import { ModalProps, ModalBodyProps, ModalHeaderProps, ModalFooterProps } from './PropsType';
+import { ModalProps } from './PropsType';
 import Button from '../button';
 
 import ModalHeader from './ModalHeader';
@@ -46,6 +46,7 @@ class Modal extends Component<ModalProps, StateIF> {
     disableEscapeKeyDown: false,
     disableEnterKeyDown: false,
     zIndex: 2020,
+    hideWhenShowOthers: true,
   };
 
   private static instanceList: Modal[] = [];
@@ -56,10 +57,13 @@ class Modal extends Component<ModalProps, StateIF> {
     if (visible) {
       const lastIndex = Modal.visibleList.length - 1;
       if (lastIndex >= 0) {
-        Modal.visibleList[lastIndex].state.sleep = true;
-        Modal.visibleList[lastIndex].setState({
-          isShow: false,
-        });
+        const theLastInstance = Modal.visibleList[lastIndex];
+        if (theLastInstance.props.hideWhenShowOthers === true) {
+          theLastInstance.state.sleep = true;
+          theLastInstance.setState({
+            isShow: false,
+          });
+        }
       }
       Modal.visibleList.push(instance);
     } else {
@@ -151,7 +155,7 @@ class Modal extends Component<ModalProps, StateIF> {
         Modal.handleVisbibleList(this, !!visible);
         setTimeout(() => {
           this.modalContent.focus();
-        }, 500);
+        }, 200);
       }
       if (isShow && !prevState.isShow) {
         setTimeout(() => {
@@ -215,6 +219,7 @@ class Modal extends Component<ModalProps, StateIF> {
       onOk, onCancel,
       okText, cancelText,
       footer,
+      ...others
     } = this.props;
 
     const styles = { ...style, zIndex };
@@ -231,6 +236,7 @@ class Modal extends Component<ModalProps, StateIF> {
       <Popup
         visible={show}
         direction="center"
+        {...others}
       >
         <div
           className={classname}
@@ -248,10 +254,10 @@ class Modal extends Component<ModalProps, StateIF> {
             <div className={`${prefixCls}-button__warpper`}>
               {
                 hasFooter && (footer || (
-                  <Fragment>
+                  <>
                     <Button onClick={onCancel}>{cancelText}</Button>
                     <Button theme="primary" onClick={onOk}>{okText}</Button>
-                  </Fragment>
+                  </>
                 ))
               }
             </div>
@@ -261,16 +267,6 @@ class Modal extends Component<ModalProps, StateIF> {
       </Popup>
     );
   }
-}
-
-// tslint:disable-next-line:no-namespace
-// eslint-disable-next-line no-redeclare
-declare namespace Modal {
-  /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface Props extends ModalProps { }
-  export interface BodyProps extends ModalBodyProps { }
-  export interface HeaderProps extends ModalHeaderProps { }
-  export interface FooterProps extends ModalFooterProps { }
 }
 
 export default Modal;

@@ -1,9 +1,6 @@
 import { MouseEventHandler, HTMLAttributes, ReactNode } from 'react';
 import PopupTypes from 'zarm/types/popup/PropsType';
 
-// tslint:disable-next-line:max-line-length
-export type animationType = 'fade' | 'door' | 'flip' | 'rotate' | 'zoom' | 'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
-
 type FnReactNode = () => ReactNode;
 
 export interface ModalBasicProps extends PopupTypes {
@@ -22,6 +19,7 @@ export interface ModalBasicProps extends PopupTypes {
   autoFocus: boolean;                    // 打开弹框时自动获取焦点
   disableEscapeKeyDown: boolean;         // 禁用按esc按键的时候，执行onCancel的行为
   disableEnterKeyDown: boolean;          // 禁用按enter按键的时候，执行onOk的行为
+  hideWhenShowOthers: boolean;
 }
 
 export type ModalProps = Merge<HTMLAttributes<HTMLDivElement>, ModalBasicProps>;

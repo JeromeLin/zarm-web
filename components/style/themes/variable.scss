@@ -19,7 +19,7 @@
   --color-link: var(--theme-primary); // 链接
 
   //阴影
-  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, .1), 0 0 6px rgba(0, 0, 0, .1);
+  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.1);
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // 背景色
@@ -31,7 +31,7 @@
   --border-disabled: #bcbcbc;
 
   // 透明度
-  --opacity-disabled: .5;
+  --opacity-disabled: 0.5;
 
   // 圆角
   --radius-sm: 2px;
@@ -44,7 +44,7 @@
   --padding-h-xs: 8px;
   --padding-h-sm: 12px;
   --padding-h-md: 14px;
-  --padding-h-lg: 26px;
+  --padding-h-lg: 16px;
   --padding-h-xl: 18px;
 
   // 垂直间距
@@ -60,6 +60,16 @@
   --font-size-md: 14px;
   --font-size-lg: 16px;
   --font-size-xl: 18px;
+
+  // Badge
+  --badge-height: 14px;
+  --badge-font-size: var(--font-size-xs);
+  --badge-padding-h: 4px;
+  --badge-dot-diameter: 8px;
+  --badge-border-radius-rect: var(--radius-sm);
+  --badge-border-radius-round: var(--radius-round);
+  --badge-sup-top: -4px;
+  --badge-text-color: #fff;
 
   // Button
   --button-ghost-disabled-border: #e9e9e9;
@@ -139,6 +149,12 @@
   --button-warning-ghost-active-border: var(--theme-warning-dark);
   --button-warning-ghost-active-color: var(--theme-warning-dark);
 
+  // Checkbox
+  --checkbox-size: 14px;
+  --checkbox-radius: var(--radius-sm);
+  --checkbox-border-color: var(--border-color);
+  --checkbox-background: var(--color-text-inverse);
+
   // Radio
   --button-radio-btn-disabled-color: --color-text-caption;
   --button-radio-btn-disabled-bg: rgba(250, 250, 250, 1);
@@ -149,13 +165,63 @@
   --menu-dark-bg-color: #001529;
   --menu-collapsed-width: 80px;
   --submenu-dark-bg-color: #000c17;
-  --menuitem-dark-color: hsla(0, 0%, 100%, .65);
+  --menuitem-dark-color: hsla(0, 0%, 100%, 0.65);
   --menuitem-dark-active-color: var(--color-white);
   --menuitem-default-color: #343434;
   --menuitem-active-color: var(--theme-primary);
-  --menuitem-active-bg-color: rgba(0, 188, 112, .0625);
+  --menuitem-active-bg-color: rgba(0, 188, 112, 0.0625);
   --menuitem-disabled-color: rgba(0, 0, 0, 0.25);
   --menuitem-divider-bg-color: #e5e5e5;
   --menuitem-horizontal-padding: 20px;
   --menuitem-horizontal-height: 56px;
+
+  // Tag
+  --tag-height-lg: 32px;
+  --tag-height-md: 28px;
+  --tag-height-sm: 24px;
+  --tag-height-xs: 20px;
+  --tag-padding-h-lg: 16px;
+  --tag-padding-h: 12px;
+  --tag-font-size: 12px;
+  --tag-icon-size-lg: 14px;
+  --tag-icon-size: 12px;
+  --tag-icon-size-xs: 10px;
+  --tag-color-disabled: var(--color-text-disabled);
+  --tag-disabled-opacity: var(--opacity-disabled);
+  --tag-default-background: #f9f9f9;
+  --tag-default-color: #616161;
+  --tag-default-border: var(--border-color);
+  --tag-primary-color: var(--theme-primary);
+  --tag-success-color: var(--theme-success);
+  --tag-warning-color: var(--theme-warning);
+  --tag-danger-color: var(--theme-danger);
+  --tag-primary-hover-background: var(--theme-primary-light);
+  --tag-primary-active-background: var(--theme-primary-dark);
+  --tag-color-green: 0, 188, 112;
+  --tag-color-blue: 84, 192, 232;
+  --tag-color-orange: 236, 145, 49;
+  --tag-color-red: 255, 80, 80;
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
+
+  // Avatar
+  --avatar-border-radius: 50%;
+  --avatar-fontSize: 14px;
+  --avatar-width-md: 40px;
+  --avatar-height-md: 40px;
+  --avatar-width-xl: 72px;
+  --avatar-height-xl: 72px;
+  --avatar-width-lg: 48px;
+  --avatar-height-lg: 48px;
+  --avatar-width-sm: 32px;
+  --avatar-height-sm: 32px;
+  --avatar-width-xs: 24px;
+  --avatar-height-xs: 24px;
+  --avatar-default-color: #fff;
+  --avatar-default-bg-color: #ccc;
 }
+

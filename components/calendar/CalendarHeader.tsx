@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Icon from '../icon';
 import { HeaderProps } from './PropsType';
-import LocaleReceiver from '../locale/LocaleReceiver';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 class CalendarHeader extends Component<HeaderProps, any> {
   static defaultProps = {
@@ -72,32 +72,28 @@ class CalendarHeader extends Component<HeaderProps, any> {
   }
 
   // 获取下个月
-  // eslint-disable-next-line
-  getNextMonth(current) {
+  getNextMonth = (current) => {
     const result = current;
     if (result.month === 12) {
       result.year += 1;
       result.month = 1;
     } else {
-      result.year = result.year;
       result.month += 1;
     }
     return result;
-  }
+  };
 
   // 获取上个月
-  // eslint-disable-next-line
-  getPreMonth(current) {
+  getPreMonth = (current) => {
     const result = current;
     if (result.month === 1) {
       result.year -= 1;
       result.month = 12;
     } else {
-      result.year = result.year;
       result.month -= 1;
     }
     return result;
-  }
+  };
 
   render() {
     const {

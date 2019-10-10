@@ -1,5 +1,5 @@
 export default {
-  code: 'zh-cn',
+  locale: 'zh-cn',
   Alert: {
     close: '关闭',
   },
