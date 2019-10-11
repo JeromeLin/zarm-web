@@ -5,15 +5,10 @@ import Tab from './Tab';
 import Icon from '../icon';
 import { GroupProps } from './PropsType';
 
-class TabGroup extends Component<GroupProps, any> {
-  static defaultProps = {
-    prefixCls: 'zw-tabs',
-    type: 'card',
-    direction: 'horizontal',
-    size: 'md',
-    onChange: () => {},
-    onTabClose: () => {},
-  };
+class Tabs extends Component<GroupProps, any> {
+  private tabHeader;
+
+  private activeTab;
 
   static propTypes = {
     value: PropTypes.number,
@@ -30,9 +25,14 @@ class TabGroup extends Component<GroupProps, any> {
     onNextClick: PropTypes.func,
   };
 
-  private tabHeader;
-
-  private activeTab;
+  static defaultProps = {
+    prefixCls: 'zw-tabs',
+    type: 'card',
+    direction: 'horizontal',
+    size: 'md',
+    onChange: () => {},
+    onTabClose: () => {},
+  };
 
   static getSelectIndex(children) {
     let selectIndex;
@@ -50,7 +50,7 @@ class TabGroup extends Component<GroupProps, any> {
       value:
         props.value
         || props.defaultValue
-        || TabGroup.getSelectIndex(props.children)
+        || Tabs.getSelectIndex(props.children)
         || 0,
       lineWidth: 0,
       lineOffsetLeft: 0,
@@ -65,8 +65,8 @@ class TabGroup extends Component<GroupProps, any> {
     this.setActiveLineStyle();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || TabGroup.getSelectIndex(nextProps.children)) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps || Tabs.getSelectIndex(nextProps.children)) {
       this.setState({
         value: nextProps.value,
       });
@@ -75,8 +75,8 @@ class TabGroup extends Component<GroupProps, any> {
 
   setActiveLineStyle() {
     const { width = 0, left = 0 } = (this.activeTab && this.activeTab.getBoundingClientRect()) || {};
-    const { scrollWidth = 0, scrollHeight = 0, scrollLeft = 0 } = this.tabHeader.current || {};
-    const { left: headerOffset = 0, width: headerWidth = 0, height: headerHeight = 0 } = (this.tabHeader.current && this.tabHeader.current.getBoundingClientRect()) || {};
+    const { scrollWidth = 0, scrollHeight = 0, scrollLeft = 0, offsetWidth: headerWidth = 0, offsetHeight: headerHeight = 0 } = this.tabHeader.current || {};
+    const { left: headerOffset = 0 } = (this.tabHeader.current && this.tabHeader.current.getBoundingClientRect()) || {};
     const { direction } = this.props;
     this.setState({
       lineWidth: width,
@@ -134,23 +134,15 @@ class TabGroup extends Component<GroupProps, any> {
     }
   };
 
+  static Tab: typeof Tab;
+
   render() {
     const {
       className, children, style, prefixCls, type, direction, size, closable,
     } = this.props;
     const { value, lineWidth, lineOffsetLeft, isArrowShown } = this.state;
-
-    const cls = classnames({
-      [prefixCls!]: true,
-      [`tabs-${type}`]: true,
-      [`tabs-${direction}`!]: true,
-      [className!]: !!className,
-    });
-
-    const headerCls = classnames({
-      [`${prefixCls}-header`]: true,
-      [`size-${size}`!]: true,
-    });
+    const cls = classnames(prefixCls, `${type}`, `${direction}`, className);
+    const headerCls = classnames(`${prefixCls}-header`, `size-${size}`);
 
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
     const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
@@ -160,7 +152,6 @@ class TabGroup extends Component<GroupProps, any> {
       const tabHeaderCls = classnames({
         [`${prefixCls}-header-item`]: true,
         [`${prefixCls}-header-item--disabled`]: !!item.props.disabled,
-        [`${prefixCls}-header-item--closable`]: !!closable,
         [`${prefixCls}-header-item--active`]: $index === value,
       });
       const bindActiveRef = $index === value ? { ref: (node) => { this.activeTab = node; } } : {};
@@ -173,7 +164,7 @@ class TabGroup extends Component<GroupProps, any> {
           onClick={() => { this.handleTabClick($index, item.props.disabled); }}
         >
           {item.props.title}
-          {closable && <Icon type="wrong" onClick={() => { this.handleTabClose($index, item.props.disabled); }} />}
+          {closable && <Icon className={`${prefixCls}-header-item-icon`} type="wrong" onClick={() => { this.handleTabClose($index, item.props.disabled); }} />}
         </li>
       );
     });
@@ -204,10 +195,12 @@ class TabGroup extends Component<GroupProps, any> {
             }
           </ul>
           {
-            isArrowShown && <Icon type={`arrow-${arrowL}`} className={`tabs-arrow tabs-arrow-${arrowL}`} onClick={() => this.scrollLeftOrTop()} />
-          }
-          {
-            isArrowShown && <Icon type={`arrow-${arrowR}`} className={`tabs-arrow tabs-arrow-${arrowR}`} onClick={() => this.scrollRightOrBottom()} />
+            isArrowShown && (
+              <>
+                <Icon type={`arrow-${arrowL}`} className={`${prefixCls}-arrow ${prefixCls}-arrow--${arrowL}`} onClick={() => this.scrollLeftOrTop()} />
+                <Icon type={`arrow-${arrowR}`} className={`${prefixCls}-arrow ${prefixCls}-arrow--${arrowR}`} onClick={() => this.scrollRightOrBottom()} />
+              </>
+            )
           }
         </div>
         <div className={`${prefixCls}-body`}>{content}</div>
@@ -216,4 +209,4 @@ class TabGroup extends Component<GroupProps, any> {
   }
 }
 
-export default TabGroup;
+export default Tabs;

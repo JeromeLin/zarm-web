@@ -1,13 +1,15 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Tab from '../index';
+import Tabs from '../index';
 
-describe('Tab', () => {
-  it('renders normal Tab correctly', () => {
+const { Tab } = Tabs;
+
+describe('Tabs', () => {
+  it('renders normal Tabs correctly', () => {
     const wrapper = render(
       <div>
-        <Tab.Group defaultValue={1}>
+        <Tabs defaultValue={1}>
           <Tab title="选项卡1">
             <div style={{ padding: 10 }}>
               这是选项卡1的文字
@@ -23,8 +25,8 @@ describe('Tab', () => {
               这是选项卡3的文字
             </div>
           </Tab>
-        </Tab.Group>
-      </div>
+        </Tabs>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -33,7 +35,7 @@ describe('Tab', () => {
   it('renders Tab correctly with more props', () => {
     const wrapper = render(
       <div>
-        <Tab.Group defaultValue={1} isRadius theme="error">
+        <Tabs defaultValue={1} isRadius theme="error">
           <Tab title="选项卡1">
             <div style={{ padding: 10 }}>
               这是选项卡1的文字
@@ -49,8 +51,8 @@ describe('Tab', () => {
               这是选项卡3的文字
             </div>
           </Tab>
-        </Tab.Group>
-      </div>
+        </Tabs>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -58,7 +60,7 @@ describe('Tab', () => {
 
   it('behaves correctly when receiving new value', () => {
     const wrapper = mount(
-      <Tab.Group defaultValue={1}>
+      <Tabs defaultValue={1}>
         <Tab title="选项卡1">
           <div style={{ padding: 10 }}>
             这是选项卡1的文字
@@ -74,7 +76,7 @@ describe('Tab', () => {
             这是选项卡3的文字
           </div>
         </Tab>
-      </Tab.Group>
+      </Tabs>,
     );
 
     expect(wrapper.state('value')).toEqual(1);
@@ -85,7 +87,7 @@ describe('Tab', () => {
   it('behaves correctly when changing tab', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Tab.Group defaultValue={1} onChange={onChange}>
+      <Tabs defaultValue={1} onChange={onChange}>
         <Tab title="选项卡1">
           <div style={{ padding: 10 }}>
             这是选项卡1的文字
@@ -101,11 +103,10 @@ describe('Tab', () => {
             这是选项卡3的文字
           </div>
         </Tab>
-      </Tab.Group>
+      </Tabs>,
     );
 
     wrapper.find('.ui-tab-header-item').at(2).simulate('click');
     expect(onChange).toHaveBeenCalledWith(2);
   });
 });
-

@@ -1,15 +1,16 @@
-# Tab 标签页
+# Tabs 标签页
 选项卡切换组件。
 
 ## line
 
 ```jsx
-import { Tab } from 'zarm-web';
+import { Tabs } from 'zarm-web';
+const { Tab } = Tabs;
 
 class Demo extends React.Component {
   render() {
     return (
-      <Tab.Group type="line" onChange={(i) => console.log(i)}>
+      <Tabs type="line" onChange={(i) => console.log(i)}>
         <Tab title="Tab1">
           <div style={{padding: 10}}>
             这是选项卡1的文字
@@ -30,7 +31,7 @@ class Demo extends React.Component {
             这是选项卡4的文字
           </div>
         </Tab>
-      </Tab.Group>
+      </Tabs>
     );
   }
 }
@@ -41,12 +42,13 @@ ReactDOM.render(<Demo />, mountNode);
 ## card
 
 ```jsx
-import { Tab } from 'zarm-web';
+import { Tabs } from 'zarm-web';
+const { Tab } = Tabs;
 
 class Demo extends React.Component {
   render() {
     return (
-      <Tab.Group type="card" onChange={(i) => console.log(i)}>
+      <Tabs type="card" onChange={(i) => console.log(i)}>
         <Tab title="Tab1">
           <div style={{padding: 10}}>
             这是选项卡1的文字
@@ -67,7 +69,7 @@ class Demo extends React.Component {
             这是选项卡4的文字
           </div>
         </Tab>
-      </Tab.Group>
+      </Tabs>
     );
   }
 }
@@ -78,13 +80,14 @@ ReactDOM.render(<Demo />, mountNode);
 ## noborder-card
 
 ```jsx
-import { Tab } from 'zarm-web';
+import { Tabs } from 'zarm-web';
+const { Tab } = Tabs;
 
 class Demo extends React.Component {
   render() {
     return (
       <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
-        <Tab.Group type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
+        <Tabs type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
           <Tab title="Tab1">
             <div style={{padding: 10}}>
               这是选项卡1的文字
@@ -105,7 +108,7 @@ class Demo extends React.Component {
               这是选项卡4的文字
             </div>
           </Tab>
-        </Tab.Group>
+        </Tabs>
       </div>
     );
   }
@@ -117,7 +120,8 @@ ReactDOM.render(<Demo />, mountNode);
 ## line scroll
 
 ```jsx
-import { Tab } from 'zarm-web';
+import { Tabs } from 'zarm-web';
+const { Tab } = Tabs;
 
 class Demo extends React.Component {
   constructor(props) {
@@ -177,7 +181,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tab.Group type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose}>
+        <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose}>
           {
             this.state.fields.map((item, index) => (
               <Tab key={item.key} title={item.title} disabled={item.disabled} closable={item.closable}>
@@ -185,7 +189,7 @@ class Demo extends React.Component {
               </Tab>
             ))
           }
-        </Tab.Group>
+        </Tabs>
       </div>
     );
   }
@@ -197,7 +201,8 @@ ReactDOM.render(<Demo />, mountNode);
 ## card scroll
 
 ```jsx
-import { Tab } from 'zarm-web';
+import { Tabs } from 'zarm-web';
+const { Tab } = Tabs;
 
 class Demo extends React.Component {
   constructor(props) {
@@ -257,7 +262,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tab.Group type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '300px'}}>
+        <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '300px'}}>
           {
             this.state.fields.map((item, index) => (
               <Tab key={item.key} title={item.title} disabled={item.disabled} closable={item.closable}>
@@ -265,7 +270,7 @@ class Demo extends React.Component {
               </Tab>
             ))
           }
-        </Tab.Group>
+        </Tabs>
       </div>
     );
   }
@@ -276,7 +281,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-Tab.Group
+Tabs
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

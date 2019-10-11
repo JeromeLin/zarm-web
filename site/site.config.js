@@ -173,7 +173,7 @@ module.exports = {
       },
       {
         name: 'Tabs',
-        module: () => import('@/components/tab/tab.md'),
+        module: () => import('@/components/tabs/tabs.md'),
       },
       {
         name: 'Breadcrumb',

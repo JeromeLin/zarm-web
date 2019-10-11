@@ -1,8 +1,12 @@
-@import '../../style/themes/variable';
-
 @mixin tab-size($font-size) {
-  .zw-tabs-header-item {
+  @include b(tabs-header-item) {
     font-size: $font-size;
+    @include b(tabs-header-item-icon) {
+      font-size: $font-size;
+      display: inline-block;
+      color: #BCBCBC;
+      margin-left: 8px;
+    }
   }
 }
 
@@ -13,6 +17,7 @@
     margin: 0;
     list-style: none;
     padding: 0;
+    margin-bottom: -1px;
 
     @include b(tabs-header-item) {
       position: relative;
@@ -26,14 +31,6 @@
       @include m(disabled) {
         color: #BCBCBC;
         cursor: not-allowed;
-      }
-  
-      @include m(closable) {
-        .za-icon {
-          display: inline-block;
-          color: #BCBCBC;
-          margin-left: 8px;
-        }
       }
   
       @include m(active) {
@@ -59,7 +56,7 @@
     @include tab-size(16px);
   }
 
-  .tabs-arrow {
+  @include b(tabs-arrow) {
     color: #909090;
     font-size: 12px;
     cursor: pointer;
@@ -73,7 +70,6 @@
   position: relative;
   -webkit-transition: height .3s;
   transition: height .3s;
-  background: #FFF;
 
   @include b(tabs-body-item) {
     display: none;
@@ -87,7 +83,7 @@
 
 @include b(tabs) {
 
-  &.tabs-horizontal {
+  &.horizontal {
 
     @include b(tabs-header) {
       @include clearfix;
@@ -119,24 +115,26 @@
 
     }
 
-    .tabs-arrow-left {
-      position: absolute;
-      left: 0;
-      top: 5px;
+    @include b(tabs-arrow) {
+      @include m(left) {
+        position: absolute;
+        left: 0;
+        top: 5px;
+      }
+      @include m(right) {
+        position: absolute;
+        right: 0;
+        top: 5px;
+      }
     }
   
-    .tabs-arrow-right {
-      position: absolute;
-      right: 0;
-      top: 5px;
-    }
 
     @include b(tabs-body) {
       
       @include tabs-body-style();
     }
 
-    &.tabs-line {
+    &.line {
       @include b(tabs-header-item) {
         padding: 0 16px 12px;
         height: 34px;
@@ -147,12 +145,11 @@
       }
     }
   
-    &.tabs-card {
+    &.card {
       @include b(tabs-header-item) {
         padding: 10px 16px 12px;
         border: 1px solid #E6E6E6;
         border-radius: 4px 4px 0px 0px;
-        border-bottom: none;
         margin-right: 4px;
         background: #FAFAFA;
   
@@ -162,7 +159,7 @@
       }
     }
   
-    &.tabs-noborder-card {
+    &.noborder-card {
       @include b(tabs-header-item) {
         padding: 10px 16px 12px;
         background: #F2F2F2;
@@ -172,13 +169,15 @@
           border: none;
         }
       }
-      .scroll-content {
-        margin-bottom: -1px;
+
+      @include b(tabs-body) {
+        background: #FFF;
       }
+
     }
   }
 
-  &.tabs-vertical {
+  &.vertical {
     display: flex;
     @include b(tabs-header) {
       overflow: hidden;
@@ -207,16 +206,17 @@
       @include tabs-body-style();
     }
 
-    .tabs-arrow-top {
-      position: absolute;
-      top: 0;
-      left: 10px;
-    }
-  
-    .tabs-arrow-bottom {
-      position: absolute;
-      bottom: 0;
-      left: 10px;
+    @include b(tabs-arrow) {
+      @include m(top) {
+        position: absolute;
+        top: 0;
+        left: 10px;
+      }
+      @include m(bottom) {
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+      }
     }
 
   }

@@ -4,17 +4,15 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 
 class Tab extends Component<PropsType, any> {
-  static Group;
-
-  static defaultProps = {
-    prefixCls: 'zw-tabs',
-  };
-
   static propTypes = {
     prefixCls: PropTypes.string,
     disabled: PropTypes.bool,
     closable: PropTypes.bool,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  };
+
+  static defaultProps = {
+    prefixCls: 'zw-tabs',
   };
 
   constructor(props) {
@@ -24,7 +22,7 @@ class Tab extends Component<PropsType, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if ('selected' in nextProps) {
       this.setState({
         selected: !!nextProps.selected,
@@ -36,10 +34,8 @@ class Tab extends Component<PropsType, any> {
     const { className, children, style, prefixCls } = this.props;
     const { selected } = this.state;
 
-    const cls = classnames({
-      [`${prefixCls}-body-item`]: true,
+    const cls = classnames(`${prefixCls}-body-item`, className, {
       [`${prefixCls}-body-item--active`]: selected,
-      [className!]: !!className,
     });
 
     return (
