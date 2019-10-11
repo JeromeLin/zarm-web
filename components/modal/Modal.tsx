@@ -1,4 +1,4 @@
-import React, { Component, KeyboardEvent } from 'react';
+import React, { Component, KeyboardEvent, KeyboardEventHandler } from 'react';
 import Popup from 'zarm/lib/popup';
 import 'zarm/lib/popup/style';
 import cn from 'classnames';
@@ -10,6 +10,8 @@ import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import { Alert, Confirm } from './alert';
+
+const activeElem: Element[] = [document.activeElement || document.body];
 
 function toggleBodyOverflow(show: boolean) {
   const scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
@@ -41,12 +43,14 @@ class Modal extends Component<ModalProps, StateIF> {
     closable: true,
     maskClosable: false,
     mask: true,
-    centered: false,
+    centered: true,
     autoFocus: true,
     disableEscapeKeyDown: false,
     disableEnterKeyDown: false,
     zIndex: 2020,
     hideWhenShowOthers: true,
+    destroy: false,
+    scrollInModal: false,
   };
 
   private static instanceList: Modal[] = [];
@@ -101,7 +105,7 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   private static unmountModalInstance(instance: Modal, callback: () => void) {
-    const instanceIndex = Modal.instanceList.findIndex(item => item === instance);
+    const instanceIndex = Modal.instanceList.findIndex((item) => (item === instance));
     if (instanceIndex >= 0) {
       Modal.instanceList.splice(instanceIndex, 1);
     }
@@ -127,45 +131,40 @@ class Modal extends Component<ModalProps, StateIF> {
   componentDidMount() {
     const { isShow } = this.state;
     const { autoFocus, visible } = this.props;
-    // todo 第一次加载的时候不能正确获取this.modalContent
-    if (this.modalContent && autoFocus) {
-      if (visible) {
-        Modal.handleVisbibleList(this, !!visible);
-        setTimeout(() => {
-          this.modalContent.focus();
-        }, 500);
+    setTimeout(() => {
+      if (this.modalContent && autoFocus) {
+        if (visible) {
+          Modal.handleVisbibleList(this, !!visible);
+          if (this.modalContent && autoFocus) {
+            activeElem.push(this.modalContent);
+            this.modalContent.focus();
+          }
+        }
       }
-      if (isShow) {
-        setTimeout(() => {
-          this.modalContent.focus();
-        }, 50);
-      }
-      if (visible === false) {
-        Modal.handleVisbibleList(this, !!visible);
-        this.modalContent.blur();
-      }
-    }
+    });
   }
 
   componentDidUpdate(prevProps: ModalProps, prevState: StateIF) {
     const { isShow } = this.state;
     const { autoFocus, visible } = this.props;
-    if (this.modalContent && autoFocus) {
-      if (visible && !prevProps.visible) {
-        Modal.handleVisbibleList(this, !!visible);
-        setTimeout(() => {
+    if (prevProps.visible && visible === false) {
+      Modal.handleVisbibleList(this, !!visible);
+      setTimeout(() => {
+        if (this.modalContent && autoFocus) {
+          activeElem.pop();
+          activeElem[activeElem.length - 1].focus();
+        }
+        console.log(activeElem);
+      });
+    }
+    if (visible && !prevProps.visible) {
+      setTimeout(() => {
+        if (this.modalContent && autoFocus) {
+          activeElem.push(this.modalContent);
           this.modalContent.focus();
-        }, 200);
-      }
-      if (isShow && !prevState.isShow) {
-        setTimeout(() => {
-          this.modalContent.focus();
-        }, 50);
-      }
-      if (prevProps.visible && visible === false) {
-        Modal.handleVisbibleList(this, !!visible);
-        this.modalContent.blur();
-      }
+        }
+      });
+      Modal.handleVisbibleList(this, !!visible);
     }
   }
 
@@ -195,10 +194,10 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   };
 
-  onKeyPress = (e: KeyboardEvent) => {
+  onKeyPress: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { visible, onOk, onKeyPress, disableEnterKeyDown } = this.props;
     if (visible && disableEnterKeyDown === false) {
-      if (document.activeElement === this.modalContent && visible && e.nativeEvent.keyCode === 13) {
+      if (this.modalContent === document.activeElement && visible && e.nativeEvent.keyCode === 13) {
         if (onOk) {
           onOk();
         }
@@ -215,10 +214,21 @@ class Modal extends Component<ModalProps, StateIF> {
 
   render() {
     const {
-      prefixCls, children, title, closable, visible, zIndex, style,
-      onOk, onCancel,
-      okText, cancelText,
+      prefixCls,
+      children,
+      title,
+      closable,
+      visible,
+      zIndex,
+      style,
+      onOk,
+      onCancel,
+      okText,
+      cancelText,
+      className,
+      centered,
       footer,
+      scrollInModal,
       ...others
     } = this.props;
 
@@ -229,17 +239,22 @@ class Modal extends Component<ModalProps, StateIF> {
     const show = isShow;
     const hasFooter = footer !== null;
     const showHeader = title !== undefined || closable;
-    const classname = cn({
+    const rewriteClassName = cn({
       [prefixCls]: true,
+      [`${className}`]: !!className,
+      [`${prefixCls}-popup`]: true,
+      [`${prefixCls}-popup__top`]: !centered,
+      [`${prefixCls}-scroll__modal`]: scrollInModal,
     });
     return (
       <Popup
         visible={show}
         direction="center"
         {...others}
+        className={rewriteClassName}
       >
         <div
-          className={classname}
+          className={`${prefixCls}-content`}
           tabIndex={-1}
           onKeyDown={this.onKeyDown}
           onKeyPress={this.onKeyPress}
@@ -263,7 +278,9 @@ class Modal extends Component<ModalProps, StateIF> {
             </div>
           </ModalFooter>
         </div>
-        <div className={`${prefixCls}-hidden__elem`} tabIndex={0} onFocus={this.onBlur} />
+        <div className={`${prefixCls}-hidden__elem`}>
+          <input type="readonly" tabIndex={0} onFocus={this.onBlur} />
+        </div>
       </Popup>
     );
   }

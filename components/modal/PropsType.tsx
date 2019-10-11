@@ -1,5 +1,5 @@
 import { MouseEventHandler, HTMLAttributes, ReactNode } from 'react';
-import PopupTypes from 'zarm/types/popup/PropsType';
+import PopupTypes from 'zarm/lib/popup/PropsType';
 
 type FnReactNode = () => ReactNode;
 
@@ -19,7 +19,8 @@ export interface ModalBasicProps extends PopupTypes {
   autoFocus: boolean;                    // 打开弹框时自动获取焦点
   disableEscapeKeyDown: boolean;         // 禁用按esc按键的时候，执行onCancel的行为
   disableEnterKeyDown: boolean;          // 禁用按enter按键的时候，执行onOk的行为
-  hideWhenShowOthers: boolean;
+  hideWhenShowOthers: boolean;           // 显示其他Modal的时候，是否隐藏当前Modal
+  scrollInModal: boolean;                // 是否开启在Modal内部滚动的效果
 }
 
 export type ModalProps = Merge<HTMLAttributes<HTMLDivElement>, ModalBasicProps>;

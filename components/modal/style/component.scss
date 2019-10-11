@@ -1,7 +1,39 @@
 .zw-modal {
-  background-color: #fff;
-  min-width: 380px;
-  border-radius: 6px;
+  &-content {
+    background-color: #fff;
+    min-width: 380px;
+    border-radius: 6px;
+  }
+
+  &-popup__top {
+    align-items: baseline;
+
+    .za-popup--center {
+      margin: unset;
+    }
+  }
+
+  &-scroll__modal {
+    height: 100%;
+
+    .za-popup--center {
+      height: 100%;
+      max-height: 80%;
+    }
+
+    .zw-modal-content {
+      max-height: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    .zw-modal-body {
+      flex-grow: 1;
+      height: auto;
+      overflow: auto;
+    }
+  }
 
   .zw-modal-header {
     height: 48px;
@@ -28,12 +60,12 @@
         color: #666;
       }
     }
+  }
 
-    &-hidden__elem {
-      width: 0;
-      height: 0;
-      overflow: hidden;
-    }
+  &-hidden__elem {
+    width: 0;
+    height: 0;
+    overflow: hidden;
   }
 
   .zw-modal-body {

@@ -5,14 +5,12 @@ import { ModalBodyProps } from './PropsType';
 class ModalBody extends Component<ModalBodyProps, any> {
   static defaultProps = {
     prefixCls: 'zw-modal',
-    height: 'auto',
   };
 
   render() {
-    const { height, children, prefixCls, className, style } = this.props;
+    const { children, prefixCls, className, style } = this.props;
     const bodyStyle = {
       ...style,
-      height,
     };
 
     const cls = classnames({

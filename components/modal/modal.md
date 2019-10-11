@@ -14,10 +14,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: false,
-      modalVisible2: false,
-      modalVisible3: false,
-      modalVisible4: false,
+      modalVisible: true,
     };
   }
   toggleModal(key) {
@@ -27,51 +24,23 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { modalVisible, modalVisible2, modalVisible3, modalVisible4 } = this.state;
+    const { modalVisible } = this.state;
     return (
       <div>
         <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
-        <Modal 
-          title="我是弹框1"
-          visible={modalVisible} 
+        <Modal
+          scrollInModal
+          centered={true}
+          title="我是弹框"
+          visible={modalVisible}
           animationType="slideRight" 
           onCancel={() => {this.toggleModal('modalVisible')}}
+          onOk={()=> alert("您点击了确定按钮")}
         >
-          <Modal.Body className="test">
-          <input name="ad"/>
             我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
-           <Button onClick={() => this.toggleModal('modalVisible2')}>显示Modal2</Button>
-          </Modal.Body>
-        </Modal>
-
-        <Modal
-          hideWhenShowOthers={false}
-          visible={modalVisible2} 
-          onCancel={() => this.toggleModal('modalVisible2')} 
-          animationType="slideRight" 
-          title="我是弹框2" 
-        >
-            我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
-            <Button onClick={() => this.toggleModal('modalVisible3')}>显示Modal3</Button>
-        </Modal>
-
-        <Modal 
-          visible={modalVisible3}
-          animationType="slideRight"
-          onCancel={() => this.toggleModal('modalVisible3')}
-          title="弹框3"
-        >
-          我是模态框3 <br/>我是模态框3<br/>我是模态框3<br/>我是模态框3 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
-          <Button onClick={() => this.toggleModal('modalVisible4')}>显示Modal4</Button>
-        </Modal>
-
-        <Modal 
-          visible={modalVisible4}
-          animationType="zoom"
-          onCancel={() => this.toggleModal('modalVisible4')}
-          title="弹框4"
-        >
-          我是模态框4 <br/>我是模态框4<br/>我是模态框4<br/>我是模态框4
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
         </Modal>
       </div>
     )
@@ -250,6 +219,49 @@ class Demo extends React.Component {
 }
 
 ReactDOM.render(<Demo />, mountNode);
+```
+
+## 静态方法调用
+
+可以使用Alert和Confirm静态方法
+```jsx
+import { Modal, Button } from 'zarm-web';
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false,
+      modalVisible2: false,
+      modalVisible3: false,
+      modalVisible4: false,
+    };
+  }
+  toggleModal(key) {
+    this.setState({
+      [key]: !this.state[key]
+    });
+  }
+
+  render() {
+    const { modalVisible, modalVisible2, modalVisible3, modalVisible4 } = this.state;
+    return (
+      <div>
+        <Button theme="info" onClick={() => Modal.Alert({
+          content:"发生了一些事情",
+          title:"提示"
+        })}>Alert</Button>
+        <Button theme="info" onClick={() => Modal.Confirm({
+          content:"删除无法恢复哦",
+          title:"确认删除吗",
+          theme:"warning"
+        })}>Confirm</Button>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+
 ```
 
 ## API
