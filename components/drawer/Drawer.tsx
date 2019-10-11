@@ -9,6 +9,12 @@ import events from '../utils/events';
 import PropsType, { StateType } from './PropsType';
 
 const BUTTONLAYER = 40;
+const PADDING = 160;
+const DRAWERSIZE = {
+  LARGE: 0.8,
+  NORMAL: 0.62,
+  SMALL: 0.38,
+};
 
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
   static defaultProps = {
@@ -32,25 +38,27 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
   private parentWidth: Number | String;
 
-  componentDidMount() {
+  componentWillMount() {
     const { width } = this.props;
+    const { totallayers } = this.state;
 
     if (!width) {
       events.on(window, 'resize', this.onWindowResize);
     }
 
     this.calcDrawerWidth();
+    this.fixDrawer(totallayers, width);
   }
 
   componentDidUpdate(preProps: PropsType) {
     const { visible } = this.props;
     if (preProps.visible !== visible) {
       if (visible) {
-        this.calcLayer(this);
+        this.calcLayer(this, this.parentWidth);
       }
 
       if (!visible && this.parentDrawer) {
-        this.calcLayer(this.parentDrawer);
+        this.calcLayer(this.parentDrawer, this.parentDrawer.parentWidth);
       }
     }
   }
@@ -64,9 +72,9 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     if (!width) {
       const windowWidth = window.innerWidth;
       const sizeWidth = {
-        large: 0.8 * windowWidth - 160,
-        normal: 0.62 * windowWidth - 160,
-        sm: 0.38 * windowWidth - 160,
+        large: DRAWERSIZE.LARGE * windowWidth - PADDING,
+        normal: DRAWERSIZE.NORMAL * windowWidth - PADDING,
+        small: DRAWERSIZE.SMALL * windowWidth - PADDING,
       };
       this.parentWidth = sizeWidth[size];
 
@@ -75,10 +83,10 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       });
     }
 
-    this.parentWidth = width;
+    this.parentWidth = +width + 160;
   };
 
-  private calcLayer = (Drawers: Drawer) => {
+  private calcLayer = (Drawers: Drawer, width) => {
     let totallayer = 0;
     function layers(drawer: Drawer) {
       if (drawer) {
@@ -93,21 +101,21 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     this.setState({
       layer: totallayer,
     }, () => {
-      this.noticeBrother(totallayer, Drawers);
+      this.noticeBrother(totallayer, Drawers, width);
     });
   };
 
-  private noticeBrother = (total, drawer, fn) => {
+  private noticeBrother = (total, drawer, width) => {
     if (!drawer) return false;
 
     if (drawer.parentDrawer) {
-      this.noticeBrother(total, drawer.parentDrawer);
+      this.noticeBrother(total, drawer.parentDrawer, width);
     }
-    drawer.fixBtnPosition && drawer.fixBtnPosition(total);
-    drawer.fixDrawerWidth && drawer.fixDrawerWidth(this.parentWidth);
+
+    drawer.fixDrawer && drawer.fixDrawer(total, width);
   };
 
-  private fixBtnPosition = (totallayers: number) => {
+  private fixDrawer(totallayers: number, width) {
     if (!totallayers) return false;
     const { layer } = this.state;
     const distance = (totallayers - layer) * BUTTONLAYER;
@@ -116,14 +124,9 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       btnstyle: {
         top: distance,
       },
+      width,
     });
-  };
-
-  private fixDrawerWidth = (parentWidth: number) => {
-    this.setState({
-      width: parentWidth,
-    });
-  };
+  }
 
   private renderProvider = (value: Drawer) => {
     const {

@@ -1,10 +1,3 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-09-17 10:45:04
- * @LastEditTime: 2019-09-27 11:26:45
- * @LastEditors: Please set LastEditors
- -->
 # Drawer抽屉
 屏幕边缘滑出的浮层面板。
 
@@ -18,33 +11,9 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      drawerVisible: false,
-      drawerVisible1: false,
-      drawerVisible2: false,
-      visible: {
-      popBottom: false,
-      popTop: false,
-      popLeft: false,
-      popRight: false,
-      picker: false,
-    },
-    value: '',
-  };
-
-    this.drawerShow = this.drawerShow.bind(this);
+      drawerVisible: false
+    }
     this.drawerHide = this.drawerHide.bind(this);
-    this.drawerShow1 = this.drawerShow1.bind(this);
-    this.drawerHide1 = this.drawerHide1.bind(this);
-    this.drawerShow2 = this.drawerShow2.bind(this);
-    this.drawerHide2 = this.drawerHide2.bind(this);
-
-    this.ref = React.createRef();
-  }
-
-  drawerShow() {
-    this.setState({
-      drawerVisible: true,
-    });
   }
 
   drawerHide() {
@@ -53,9 +22,101 @@ class Demo extends React.Component {
     });
   }
 
-  drawerShow1() {
+  render() {
+    return (
+      <React.Fragment>
+        <div className="multi-rows">
+          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+        </div>
+        <Drawer
+          visible={this.state.drawerVisible}
+          onClose={this.drawerHide}
+          title="Drawer Title"
+          closable
+          maskClosable={false}
+          afterOpen={() => console.log('afterOpen1')}
+          afterClose={() => console.log('afterClose')}
+          onMaskClick={() => console.log('onMaskClick')}
+        >
+          <div>
+            sdljfgdlskjgfkldsgflksdgfljgsklfgklsd
+          </div>
+        </Drawer>
+      </React.Fragment>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 基本用法
+基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭
+
+```jsx
+import { Drawer, Button } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      drawerVisible: false
+    }
+    this.drawerHide = this.drawerHide.bind(this);
+  }
+
+  drawerHide() {
     this.setState({
-      drawerVisible1: true,
+      drawerVisible: false,
+    });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <div className="multi-rows">
+          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+        </div>
+        <Drawer
+          visible={this.state.drawerVisible}
+          onClose={this.drawerHide}
+          title="点击遮罩区关闭"
+          maskClosable={this.drawerHide}
+          afterOpen={() => console.log('afterOpen1')}
+          afterClose={() => console.log('afterClose')}
+          onMaskClick={() => console.log('onMaskClick')}
+        >
+          点击遮罩区关闭
+        </Drawer>
+      </React.Fragment>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+## 嵌套
+多个Drawer嵌套
+
+```jsx
+import { Drawer, Button } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      drawerVisible: false,
+      drawerVisible1: false
+    }
+    this.drawerHide = this.drawerHide.bind(this);
+    this.drawerHide1 = this.drawerHide1.bind(this);
+  }
+
+  drawerHide() {
+    this.setState({
+      drawerVisible: false,
     });
   }
 
@@ -65,86 +126,39 @@ class Demo extends React.Component {
     });
   }
 
-  drawerShow2() {
-    this.setState({
-      drawerVisible2: true,
-    });
-  }
-
-  drawerHide2() {
-    this.setState({
-      drawerVisible2: false,
-    });
-  }
-
-  toggle = (key) => {
-    const visible = this.state.visible;
-    visible[key] = !visible[key];
-    this.setState({ visible });
-  }
-
   render() {
-    const { drawerVisible, visible, drawerVisible1, drawerVisible2 } = this.state;
     return (
-      <>
-        <Button size="xs" onClick={() => {
-          this.toggle('popRight');
-        }}>右边</Button>
-
+      <React.Fragment>
+        <div className="multi-rows">
+          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+        </div>
         <Drawer
-          visible={visible.popRight}
-          direction="right"
-          onClose={() => this.toggle('popRight')}
+          visible={this.state.drawerVisible}
+          onClose={this.drawerHide}
+          title="Drawer Title"
           closable
-          size='large'
-          title="嵌套1"
-          maskClosable
-          // afterOpen={() => console.log('afterOpen1')}
+          size="large"
+          maskClosable={this.drawerHide}
+          afterOpen={() => console.log('afterOpen1')}
           afterClose={() => console.log('afterClose')}
           onMaskClick={() => console.log('onMaskClick')}
         >
-          <Button theme="danger" onClick={this.drawerShow}>右划</Button>
           <Drawer
-            visible={drawerVisible}
-            onClose={this.drawerHide}
-            direction="right"
-            title="嵌套2"
-            size='small'
+            visible={this.state.drawerVisible1}
+            onClose={this.drawerHide1}
             closable
-            maskClosable={false}
-            // afterOpen={() => console.log('afterOpen2')}
+            size="small"
+            maskClosable={this.drawerHide1}
+            afterOpen={() => console.log('afterOpen1')}
             afterClose={() => console.log('afterClose')}
             onMaskClick={() => console.log('onMaskClick')}
           >
-            <Button theme="danger" onClick={this.drawerShow1}>右划1</Button>
-            <Drawer
-              visible={drawerVisible1}
-              title="嵌套3"
-              onClose={this.drawerHide1}
-              closable
-              maskClosable={false}
-              // afterOpen={() => console.log('afterOpen3')}
-              afterClose={() => console.log('afterClose')}
-              onMaskClick={() => console.log('onMaskClick')}
-            >
-              <Button theme="danger" onClick={this.drawerShow2}>右划2</Button>
-              <Drawer
-                visible={drawerVisible2}
-                onClose={this.drawerHide2}
-                title="嵌套4"
-                closable
-                maskClosable={false}
-                // afterOpen={() => console.log('afterOpen4')}
-                afterClose={() => console.log('afterClose')}
-                onMaskClick={() => console.log('onMaskClick')}
-              >
-              </Drawer>
-            </Drawer>
+            123 => 321
           </Drawer>
+          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
         </Drawer>
-
-      </>
-    );
+      </React.Fragment>
+    )
   }
 }
 
@@ -160,6 +174,7 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | - | 弹层宽度 |
 | size | string | normal | 可选值`large`, `normal`, `small`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
 | mask | boolean | true | 是否展示遮罩层 |
+| maskClosable | () => void | - | 点击遮罩层事件 |
 | maskover | boolean | true | 嵌套遮罩层是否叠加黑色背景 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
 | afterOpen | () => void | - | 弹层展示后的回调 |

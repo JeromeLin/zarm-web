@@ -5,7 +5,6 @@ export default interface PropsType {
   handlePortalUnmount?: () => void;
   closable?: boolean;
   width?: number | string;
-  // style?: CSSProperties;
   mask?: boolean;
   visible?: boolean;
   maskClosable?: boolean;
@@ -15,13 +14,14 @@ export default interface PropsType {
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
-  size?: 'lg' | 'normal' | 'sm';
+  size?: 'large' | 'normal' | 'small';
 }
 
 export interface StateType {
+  width?: number | string;
   layer?: number;
   top?: number;
   left?: number;
   totallayers?: number;
-  btnstyle: CSSProperties;
+  btnstyle?: CSSProperties;
 }
