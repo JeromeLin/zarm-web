@@ -175,11 +175,13 @@ class Demo1 extends React.Component {
 ReactDOM.render(<Demo1 />, mountNode);   
 ```
 
-## Modal的叠加显示
+## 多个Modal的叠加显示
 
-Modal组件的基础用法。
-
-demo 可以通过`Modal.Header`,`Modal.Body`,`Modal.Footer`子组件定义模态框的不同部分。
+当页面中有Modal组件显示的时候，我们再显示一个Modal组件，两个Modal组件就会层叠在一起，这对界面显示很不友好。
+Modal组件使用了内部管理组件实例的方式，做了以下处理。
++ 当显示一个Modal时，如果当前页面已有显示的Modal，则会隐藏已有的Modal
++ 关闭当前Modal时，会显示上一个被隐藏的Modal
++ 当props.hideWhenShowOthers 为false时，改弹框不会被隐藏。
 
 ```jsx
 import { Modal, Button } from 'zarm-web';
@@ -210,21 +212,17 @@ class Demo extends React.Component {
           animationType="slideRight" 
           onCancel={() => {this.toggleModal('modalVisible')}}
         >
-          <Modal.Body className="test">
-          <input name="ad"/>
-            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
-           <Button onClick={() => this.toggleModal('modalVisible2')}>显示Modal2</Button>
-          </Modal.Body>
+          我是模态框<br />
+          <Button onClick={() => this.toggleModal('modalVisible2')}>显示Modal2</Button>
         </Modal>
 
         <Modal
-          hideWhenShowOthers={false}
           visible={modalVisible2} 
           onCancel={() => this.toggleModal('modalVisible2')} 
           animationType="slideRight" 
           title="我是弹框2" 
         >
-            我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
+            我是模态框2<br />
             <Button onClick={() => this.toggleModal('modalVisible3')}>显示Modal3</Button>
         </Modal>
 
@@ -234,7 +232,7 @@ class Demo extends React.Component {
           onCancel={() => this.toggleModal('modalVisible3')}
           title="弹框3"
         >
-          我是模态框3 <br/>我是模态框3<br/>我是模态框3<br/>我是模态框3 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
+          我是模态框3 <br />
           <Button onClick={() => this.toggleModal('modalVisible4')}>显示Modal4</Button>
         </Modal>
         
@@ -244,7 +242,7 @@ class Demo extends React.Component {
           onCancel={() => this.toggleModal('modalVisible4')}
           title="弹框4"
         >
-          我是模态框4 <br/>我是模态框4<br/>我是模态框4<br/>我是模态框4
+          我是模态框4
         </Modal>
       </div>
     )
