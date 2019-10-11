@@ -1,12 +1,13 @@
 @import '../../style/themes/variable';
 
 @include b(dropdown) {
-  min-width: 100%;
+  width: auto;
   background-color: #fff;
   border: 1px solid #d9d9d9;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 0, 0, 0.17);
   text-align: left;
   will-change: transform, opacity;
+  margin: 5px 0;
 
   @include e(trigger-box) {
     display: inline-block;

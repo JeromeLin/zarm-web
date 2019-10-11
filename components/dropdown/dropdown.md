@@ -36,7 +36,6 @@ class Demo1 extends React.Component {
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
           visible={this.state.dropdown}
-          onVisibleChange={this.change}
           content={overlay}
           >
             <Button theme="primary">
@@ -47,13 +46,6 @@ class Demo1 extends React.Component {
     
         <Dropdown
           disabled
-          visible={this.state.dropdown2}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
-          onVisibleChange={(visible) => {
-            this.setState({
-              dropdown2: visible
-            });
-          }}
           content={overlay}
           >
             <Button disabled theme="primary">
@@ -63,13 +55,6 @@ class Demo1 extends React.Component {
     
         <Dropdown
           trigger="hover"
-          visible={this.state.dropdown3}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
-          onVisibleChange={visible => {
-            this.setState({
-              dropdown3: visible
-            });
-          }}
           content={overlay}
           >
             <Button theme="primary">
@@ -79,13 +64,6 @@ class Demo1 extends React.Component {
     
         <Dropdown
           trigger="contextMenu"
-          visible={this.state.dropdown4}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
-          onVisibleChange={visible => {
-            this.setState({
-              dropdown4: visible
-            });
-          }}
           content={overlay}
           >
             <Button theme="primary">
@@ -102,7 +80,7 @@ ReactDOM.render(<Demo1 />, mountNode);
 
 ## 弹窗的定位
 
-定位信息有6种 `bottomLeft, bottomCenter, bottomRight, topLeft, topCenter, topRight, bottomScreen, topScreen` 。通过 `direction` 控制显示位置
+定位信息有6种 `bottomLeft, bottomCenter, bottomRight, topLeft, topCenter, topRight` 。通过 `direction` 控制显示位置
 demo 通过 `direction` 属性控制弹窗的位置。
 
 ```jsx
@@ -126,7 +104,6 @@ class Demo2 extends React.Component {
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
           visible={this.state.dropdown}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
           onVisibleChange={(visible) => {
             this.setState({
               dropdown: visible
@@ -142,79 +119,11 @@ class Demo2 extends React.Component {
         <Dropdown
           direction="topLeft"
           visible={this.state.dropdown2}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
           onVisibleChange={visible => {
             this.setState({
               dropdown2: visible
             });
           }}
-          content={overlay}
-          >
-            <Button theme="primary">
-              点我从上面弹出
-            </Button>
-        </Dropdown>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo2 />, mountNode);
-```
-
-## 特殊弹窗的定位 bottomScreen topScreen
-
-有两种特殊的定位形式 `bottomScreen, topScreen` 。他通常需要搭配 width="100%"来使用。
-主要为了处理宽度为100%的弹框定位的问题。
-
-```jsx
-import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
-
-class Demo2 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dropdown: false,
-      dropdown2:false,
-    }
-  }
-  render() {
-    const overlay = <Menu>
-                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
-              </Menu>;
-    
-    return (
-      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
-        <Dropdown
-          direction="bottomScreen"
-          visible={this.state.dropdown}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
-          onVisibleChange={(visible) => {
-            this.setState({
-              dropdown: visible
-            });
-          }}
-          width="100%"
-          content={overlay}
-          style={{width:'100%'}}
-          >
-            <Button theme="primary">
-              点我从下面弹出
-            </Button>
-        </Dropdown>
-    
-        <Dropdown
-          direction="topScreen"
-          visible={this.state.dropdown2}
-          style={{position: 'absolute', left: 0, top: 36, minWidth: 200}}
-          onVisibleChange={visible => {
-            this.setState({
-              dropdown2: visible
-            });
-          }}
-          width="100%"
-          style={{width:'100%'}}
           content={overlay}
           >
             <Button theme="primary">
@@ -271,15 +180,7 @@ class Demo2 extends React.Component {
             onClose={this.toggleModalVisible}
           />
           <Modal.Body>
-            <Dropdown
-              visible={this.state.dropdown}
-                onVisibleChange={(visible) => {
-                  this.setState({
-                    dropdown: visible
-                  });
-                }}
-                content={overlay}
-              >
+            <Dropdown content={overlay}>
                 <Button theme="primary">
                   显示dropdown
                 </Button>
@@ -294,48 +195,9 @@ class Demo2 extends React.Component {
 ReactDOM.render(<Demo2 />, mountNode);
 ```
 
-## `onVisibleChange` 参数
-
-这个参数为当显示属性发生变化的回调函数 为必传项，一般情况下, 我们都需要保持外部数据和内部数据的一致性。参考下面用法
-
-``` 
-onVisibleChange={(visible)=>{
-      this.setState({
-        dropdownVisible: visible
-      })
-  }
-}
-```
-
-## 静态方法
-
-``` 
-Drop.hide();         // 隐藏所有的Dropdown组件
-Drop.show();         // 显示所有的Dropdown组件(不包括禁用的组件)
-Drop.reposition();   // 重新定位所有的组件(不包括隐藏和禁用的组件)
-```
-
-# `notRenderInDisabledMode` 参数
-
-当这个参数为true 且 disable参数也为true的时候，将不会渲染弹窗，这会在一些一直都是disabled状态下的组件节省渲染开销，尤其在渲染大量数据的情况下。
-
-# 内部实现
-
-设 点击的触发组件为 triggerBox, 弹出的组件为 DropdownBox
-
-* Dropdown组件在实现的时候，考虑到定位信息的获取，把所有的DropdownBox都动态创建到body的根节点下。然后相对于body进行绝对定位。计算出当前triggerBox的位置然后设置弹出框的绝对定位信息， 若父级中有position:fixed样式，则动态创建到该元素下。
-* 监听了window.resize事件，当window.resize的时候自动计算目前已弹出的DropdownBox的位置。  
-* 监听了document的点击事件，当点击外部的时候回自动隐藏DropdownBox。  
-* 默认在triggerBox和DropdownBox之间有5px的间隙。  
-* 当trigger参数为hover的时候，鼠标移出之后会延迟300ms后，DropdownBox才会消失，为了让用户在从triggerBox滑到DropdownBox的时候，经过间隙不会直接隐藏DropdownBox。  
-* DropdownBox的动画效果时长为300ms，目前不支持自定义。  
-* 当前的弹出框的最小宽度为当前triggerBox的宽度。可以自己设置宽度。
-
 ## API
 
 | 属性 | 类型 | 默认值 | 说明 |
-
-| :--- | :--- | :--- | :--- |
 | prefixCls | string | zw-dropdown |  |
 | direction | Direction | bottomLeft | 设置打开方向，可选值为 bottomLeft bottomCenter bottomRight topLeft topCenter topRight bottomScreen topScreen|
 | trigger | Trigger | 'click' | 设置触发方式，可选值为 `click`、`hover`、`contextMenu` |

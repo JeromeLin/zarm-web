@@ -3000,7 +3000,6 @@ concurrently@^3.5.1:
 confusing-browser-globals@^1.0.7:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.9.tgz#72bc13b483c0276801681871d4898516f8f54fdd"
-  integrity sha512-KbS1Y0jMtyPgIxjO7ZzMAuUpAKMt1SzCL9fsrKsX6b0zJPTaT0SiSPmewwVZg9UAO83HVIlEhZF84LIjZ0lmAw==
 
 connect-history-api-fallback@^1.6.0:
   version "1.6.0"
@@ -4244,7 +4243,6 @@ escodegen@^1.9.1:
 eslint-config-airbnb-base@^14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-14.0.0.tgz#8a7bcb9643d13c55df4dd7444f138bf4efa61e17"
-  integrity sha512-2IDHobw97upExLmsebhtfoD3NAKhV4H0CJWP3Uprd/uk+cHuWYOczPVxQ8PxLFUAw7o3Th1RAU8u1DoUpr+cMA==
   dependencies:
     confusing-browser-globals "^1.0.7"
     object.assign "^4.1.0"
@@ -4253,7 +4251,6 @@ eslint-config-airbnb-base@^14.0.0:
 eslint-config-airbnb@^18.0.1:
   version "18.0.1"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-18.0.1.tgz#a3a74cc29b46413b6096965025381df8fb908559"
-  integrity sha512-hLb/ccvW4grVhvd6CT83bECacc+s4Z3/AEyWQdIT2KeTsG9dR7nx1gs7Iw4tDmGKozCNHFn4yZmRm3Tgy+XxyQ==
   dependencies:
     eslint-config-airbnb-base "^14.0.0"
     object.assign "^4.1.0"
@@ -4262,7 +4259,6 @@ eslint-config-airbnb@^18.0.1:
 eslint-config-za@^2.1.0-alpha.4:
   version "2.1.0-alpha.4"
   resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.1.0-alpha.4.tgz#dd94689013b309c068f40f8179bd31a148be1dbe"
-  integrity sha512-w3zIafE0LWhvXjr9ya+Bw35wHlMV/xVAqMXIXKjmDtYuVv1Jrf7sZaXfi4F8P1QSOEOa4/y0uy0Ca2T2qQNIPQ==
   dependencies:
     eslint-config-airbnb "^18.0.1"
 
@@ -12254,10 +12250,9 @@ yargs@^7.0.0, yargs@^7.1.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-zarm@2.0.0-alpha.55:
-  version "2.0.0-alpha.55"
-  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.0.0-alpha.55.tgz#344eeece0399a9ee2da1240bd27d1b197bf749b9"
-  integrity sha512-Zr38rWaoKh5sb2XoyXbj+mgNMXcUp7XV7SBNN76Uy61gAxQxoG8mliTuJRCjfSnI+QD9uJ/iBz5ZI4o32PMszw==
+zarm@2.0.0-alpha.56:
+  version "2.0.0-alpha.56"
+  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.0.0-alpha.56.tgz#da4d848a83230f79bd3d2cfb0bab84e906bbce4a"
   dependencies:
     better-scroll "1.15.1"
     classnames "2.2.6"
