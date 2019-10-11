@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -9,14 +8,6 @@ class Radio extends Component<PropsType, any> {
     defaultChecked: false,
     disabled: false,
     onChange: () => {},
-  };
-
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    defaultChecked: PropTypes.bool,
-    onChange: PropTypes.func,
-    disabled: PropTypes.bool,
-    className: PropTypes.string,
   };
 
   static Group;
@@ -68,7 +59,7 @@ class Radio extends Component<PropsType, any> {
             value={value}
             checked={checked}
             disabled={disabled}
-            onChange={e => this.onClick(e)}
+            onChange={(e) => this.onClick(e)}
           />
           <span className="za-radio__inner" />
           {children}

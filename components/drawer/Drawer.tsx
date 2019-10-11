@@ -17,6 +17,10 @@ const DRAWERSIZE = {
 };
 
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
+  private parentDrawer: Drawer | null;
+
+  private parentWidth: Number | String;
+
   static defaultProps = {
     closable: true,
     size: 'normal',
@@ -34,11 +38,30 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     width: this.props.width,
   };
 
-  private parentDrawer: Drawer | null;
+  private calcDrawerWidth = () => {
+    const { size = 'normal' } = this.props;
+    const { width } = this.state;
 
-  private parentWidth: Number | String;
+    if (!width) {
+      const windowWidth = window.innerWidth;
+      const sizeWidth = {
+        large: DRAWERSIZE.LARGE * windowWidth - PADDING,
+        normal: DRAWERSIZE.NORMAL * windowWidth - PADDING,
+        small: DRAWERSIZE.SMALL * windowWidth - PADDING,
+      };
+      this.parentWidth = sizeWidth[size];
 
-  componentWillMount() {
+      return this.setState({
+        width: sizeWidth[size],
+      });
+    }
+
+    this.parentWidth = +width + 160;
+  };
+
+  private onWindowResize = throttle(this.calcDrawerWidth, 300);
+
+  componentDidMount() {
     const { width } = this.props;
     const { totallayers } = this.state;
 
@@ -62,29 +85,6 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       }
     }
   }
-
-  private onWindowResize = throttle(this.calcDrawerWidth, 300);
-
-  private calcDrawerWidth = () => {
-    const { size = 'normal' } = this.props;
-    const { width } = this.state;
-
-    if (!width) {
-      const windowWidth = window.innerWidth;
-      const sizeWidth = {
-        large: DRAWERSIZE.LARGE * windowWidth - PADDING,
-        normal: DRAWERSIZE.NORMAL * windowWidth - PADDING,
-        small: DRAWERSIZE.SMALL * windowWidth - PADDING,
-      };
-      this.parentWidth = sizeWidth[size];
-
-      return this.setState({
-        width: sizeWidth[size],
-      });
-    }
-
-    this.parentWidth = +width + 160;
-  };
 
   private calcLayer = (Drawers: Drawer, width) => {
     let totallayer = 0;
@@ -165,7 +165,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
         <Popup
           key={totallayers}
           mask={mask}
-          direction='right'
+          direction="right"
           animationDuration={100}
           className={drawerBox}
           visible={visible}

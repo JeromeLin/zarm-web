@@ -75,7 +75,7 @@ class Head extends Component<HeadProps, any> {
     } = this.props;
     const headRows = rows.map((row, index) => {
       return (
-        <tr key={index}>
+        <tr key={+index}>
           {this.renderExpandIconPlaceholder()}
           {
             rowSelection && index === 0
@@ -84,9 +84,11 @@ class Head extends Component<HeadProps, any> {
                 dataSource,
                 rows.length,
               )
-              : null}
+              : null
+          }
           {
-            row.map((column, columnIndex) => this.renderColumn(column, columnIndex, index, row.length))}
+            row.map((column, columnIndex) => this.renderColumn(column, columnIndex, index, row.length))
+          }
         </tr>
       );
     });

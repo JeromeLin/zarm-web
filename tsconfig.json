@@ -6,9 +6,9 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
     "target": "es6",
     "skipLibCheck": true,
+    "esModuleInterop": true,
     "types": [
       "classnames",
       "react",

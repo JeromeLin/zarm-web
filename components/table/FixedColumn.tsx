@@ -93,7 +93,8 @@ class FixedColumn extends Component<FixedColumnProps, any> {
                   }
                 </tr>
               );
-            })}
+            })
+          }
         </tbody>
       </table>
     );

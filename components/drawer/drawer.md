@@ -136,7 +136,6 @@ class Demo extends React.Component {
           visible={this.state.drawerVisible}
           onClose={this.drawerHide}
           title="Drawer Title"
-          closable
           size="large"
           maskClosable={this.drawerHide}
           afterOpen={() => console.log('afterOpen1')}
@@ -146,7 +145,6 @@ class Demo extends React.Component {
           <Drawer
             visible={this.state.drawerVisible1}
             onClose={this.drawerHide1}
-            closable
             size="small"
             maskClosable={this.drawerHide1}
             afterOpen={() => console.log('afterOpen1')}

@@ -246,14 +246,15 @@ export default function SubMenuConsumer(props) {
   return (
     <MenuContext.Consumer>
       {
-        menuKeys => (
+        (menuKeys) => (
           <SubMenu
             {...props}
             inlineCollapsed={menuKeys.inlineCollapsed}
             openKeys={menuKeys.openKeys}
             toggleOpenKeys={menuKeys.toggleOpenKeys}
           />
-        )}
+        )
+      }
     </MenuContext.Consumer>
   );
 }

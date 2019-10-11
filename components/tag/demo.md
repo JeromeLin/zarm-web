@@ -4,13 +4,14 @@
 
 
 ## 颜色类型
-以下提供在不同场景中可选择不同颜色为特定功能所使用。
+以下提供在不同场景中可选择不同颜色为特定功能所使用
+
 ```jsx
 import { Tag } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="multi-rows">
+    <div className="rows">
       <Tag>default</Tag>
       <h3>四种预置颜色</h3>
       <Tag color="green">green</Tag>
@@ -18,7 +19,7 @@ ReactDOM.render(
       <Tag color="orange">orange</Tag>
       <Tag color="red">red</Tag>
     </div>
-    <div className="multi-rows">
+    <div className="rows">
       <h3>自定义颜色</h3>
       <Tag color="#00bc70">#00bc70</Tag>
       <Tag color="#54c0e8">#54c0e8</Tag>
@@ -34,6 +35,7 @@ ReactDOM.render(
 
 ## 边框
 可以设置边框属性
+
 ```jsx
 import { Tag } from 'zarm-web';
 
@@ -52,6 +54,7 @@ ReactDOM.render(
 
 ## 圆角
 可以设置圆角大小
+
 ```jsx
 import { Tag } from 'zarm-web';
 
@@ -68,6 +71,7 @@ ReactDOM.render(
 
 ## 尺寸
 可以设置尺寸大小
+
 ```jsx
 import { Tag } from 'zarm-web';
 
@@ -84,7 +88,8 @@ ReactDOM.render(
 
 
 ## 可删除
-用数组生成一组标签，可以动态添加和删除。
+用数组生成一组标签，可以动态添加和删除
+
 ```jsx
 import { Tag, Icon } from 'zarm-web';
 
@@ -206,7 +211,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 ## 可选择
-可通过 `CheckableTag` 实现类似 Checkbox 的效果，点击切换选中效果。
+可通过 `CheckableTag` 实现类似 Checkbox 的效果，点击切换选中效果
+
 ```jsx
 import { Tag } from 'zarm-web';
 
@@ -272,6 +278,7 @@ class Demo extends React.Component {
     )
   }
 }
+
 ReactDOM.render(<Demo />, mountNode);
 ```
 
