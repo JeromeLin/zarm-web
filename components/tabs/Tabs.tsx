@@ -141,7 +141,7 @@ class Tabs extends Component<GroupProps, any> {
       className, children, style, prefixCls, type, direction, size, closable,
     } = this.props;
     const { value, lineWidth, lineOffsetLeft, isArrowShown } = this.state;
-    const cls = classnames(prefixCls, `${type}`, `${direction}`, className);
+    const cls = classnames(prefixCls, type, direction, className);
     const headerCls = classnames(`${prefixCls}-header`, `size-${size}`);
 
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
