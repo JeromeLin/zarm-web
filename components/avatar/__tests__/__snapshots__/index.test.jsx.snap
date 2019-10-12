@@ -3,7 +3,7 @@
 exports[`Avatar renders Avatars correctly when set src, icon and string 1`] = `
 <div>
   <span
-    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--sm"
   >
     <img
       alt="my avatar"
@@ -37,7 +37,7 @@ exports[`Avatar renders Avatars of different shape correctly 1`] = `
 exports[`Avatar renders Avatars of different size correctly 1`] = `
 <div>
   <span
-    class="zw-avatar zw-avatar--xl zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--xl"
   >
     <span
       class="zw-avatar--string"
@@ -47,7 +47,7 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
     </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--lg zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--lg"
   >
     <span
       class="zw-avatar--string"
@@ -57,7 +57,7 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
     </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--md zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--md"
   >
     <span
       class="zw-avatar--string"
@@ -67,7 +67,7 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
     </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--sm"
   >
     <span
       class="zw-avatar--string"
@@ -77,7 +77,7 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
     </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--xs zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--xs"
   >
     <span
       class="zw-avatar--string"
@@ -92,7 +92,7 @@ exports[`Avatar renders Avatars of different size correctly 1`] = `
 exports[`Avatar renders Avatars of different type correctly 1`] = `
 <div>
   <span
-    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--sm"
     style="font-size:12px"
   >
     <span
@@ -102,7 +102,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--sm"
     style="color:red;background-color:rgb(249, 232, 8)"
   >
     <span
@@ -113,7 +113,7 @@ exports[`Avatar renders Avatars of different type correctly 1`] = `
     </span>
   </span>
   <span
-    class="zw-avatar zw-avatar--sm zw-avatar--circle"
+    class="zw-avatar zw-avatar--circle zw-avatar--sm"
   >
     <img
       alt="my avatar"
