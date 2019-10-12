@@ -38,6 +38,31 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     width: this.props.width,
   };
 
+  componentDidMount() {
+    const { width } = this.props;
+    const { totallayers } = this.state;
+
+    if (!width) {
+      events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
+    }
+
+    this.calcDrawerWidth();
+    this.fixDrawer(totallayers, width);
+  }
+
+  componentDidUpdate(preProps: PropsType) {
+    const { visible } = this.props;
+    if (preProps.visible !== visible) {
+      if (visible) {
+        this.calcLayer(this, this.parentWidth);
+      }
+
+      if (!visible && this.parentDrawer) {
+        this.calcLayer(this.parentDrawer, this.parentDrawer.parentWidth);
+      }
+    }
+  }
+
   private calcDrawerWidth = () => {
     const { size = 'normal' } = this.props;
     const { width } = this.state;
@@ -58,33 +83,6 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
     this.parentWidth = +width + 160;
   };
-
-  private onWindowResize = throttle(this.calcDrawerWidth, 300);
-
-  componentDidMount() {
-    const { width } = this.props;
-    const { totallayers } = this.state;
-
-    if (!width) {
-      events.on(window, 'resize', this.onWindowResize);
-    }
-
-    this.calcDrawerWidth();
-    this.fixDrawer(totallayers, width);
-  }
-
-  componentDidUpdate(preProps: PropsType) {
-    const { visible } = this.props;
-    if (preProps.visible !== visible) {
-      if (visible) {
-        this.calcLayer(this, this.parentWidth);
-      }
-
-      if (!visible && this.parentDrawer) {
-        this.calcLayer(this.parentDrawer, this.parentDrawer.parentWidth);
-      }
-    }
-  }
 
   private calcLayer = (Drawers: Drawer, width) => {
     let totallayer = 0;
@@ -177,7 +175,18 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           afterClose={afterClose}
         >
           <div className={cls}>
-            {closable && (<button className={`${prefixCls}__cell__closebtn`} style={{ ...btnstyle }} onClick={() => onClose && onClose()}><Icon type="wrong" /></button>)}
+            {closable && (
+              <button
+                className={`${prefixCls}__cell__closebtn`}
+                style={{ ...btnstyle }}
+                onClick={() => onClose && onClose()}
+              >
+                <Icon
+                  size="sm"
+                  type="wrong"
+                />
+              </button>
+            )}
             <div className={drawerCell} style={{ width }}>
               {title && (<div className={`${prefixCls}__cell__title`}>{title}</div>)}
               <div className={`${prefixCls}__cell__body`}>{children}</div>
