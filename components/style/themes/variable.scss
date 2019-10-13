@@ -178,4 +178,11 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  // Breadcrumb
+  --breadcrumb-default-font-size: 14px;
+  --breadcrumb-default-color: #909090;
+  --breadcrumb-color: #343434;
+  --breadcrumb-hover-color: #00bc70;
+  --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 }
