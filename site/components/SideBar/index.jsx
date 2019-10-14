@@ -7,7 +7,7 @@ import './style.scss';
 
 class SideBar extends PureComponent {
   getDocs = () => {
-    return documents.map(doc => (
+    return documents.map((doc) => (
       <Menu.Item
         key={Format.camel2Dash(doc.name)}
       >
@@ -26,7 +26,7 @@ class SideBar extends PureComponent {
             .sort((a, b) => {
               return a.name.localeCompare(b.name);
             })
-            .map(component => (
+            .map((component) => (
               <Menu.Item key={Format.camel2Dash(component.name)}>
                 <a href={`#/components/${Format.camel2Dash(component.name)}`}>
                   <span>{component.name}</span>

@@ -1,6 +1,5 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 
 type Align = 'top' | 'middle' | 'top';
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
@@ -19,13 +18,6 @@ export default class Row extends PureComponent<IProps> {
   static defaultProps = {
     prefixCls: 'za-row',
     gutter: 0,
-  };
-
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
-    align: PropTypes.oneOf(['top', 'middle', 'bottom']),
   };
 
   render() {

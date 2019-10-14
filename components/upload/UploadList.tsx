@@ -72,7 +72,8 @@ class UploadList extends Component<ListProps, any> {
                   {progress}
                 </div>
               );
-            })}
+            })
+          }
         </div>
       </div>
     );

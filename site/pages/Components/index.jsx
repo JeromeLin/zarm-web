@@ -13,7 +13,7 @@ import ScrollToTop from '@site/components/ScrollToTop';
 import Markdown from '@site/components/Markdown';
 import './style.scss';
 
-const isComponentPage = page => ['quick-start', 'change-log'].indexOf(page) === -1;
+const isComponentPage = (page) => ['quick-start', 'change-log'].indexOf(page) === -1;
 
 const LoadableComponent = (component) => {
   return Loadable({

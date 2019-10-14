@@ -1,11 +1,7 @@
 {
   "root": true,
-  "extends": ["za/react", "za/typescript"],
+  "extends": ["za/typescript-react"],
   "env": {
     "jest": true
-  },
-  "rules": {
-    "react/no-unused-prop-types": "off",
-    "react/require-default-props": "off"
   }
 }

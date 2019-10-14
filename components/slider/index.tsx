@@ -265,7 +265,7 @@ class Slider extends Component<PropsType, any> {
   findClosestHandle(value) {
     const stateKeys = Object.keys(this.state);
     // eslint-disable-next-line react/destructuring-assignment
-    const states = stateKeys.map(v => this.state[v]);
+    const states = stateKeys.map((v) => this.state[v]);
     /* eslint-disable */
     return states.reduce((pre, cur) => (value > Math.max(pre, cur)
       ? Math.max(pre, cur)
@@ -280,7 +280,7 @@ class Slider extends Component<PropsType, any> {
   findHandleIndex(state, v) {
     let states = Object.keys(state);
     // eslint-disable-next-line react/destructuring-assignment
-    states = states.map(value => this.state[value]);
+    states = states.map((value) => this.state[value]);
     return states.indexOf(v);
   }
 
@@ -289,7 +289,7 @@ class Slider extends Component<PropsType, any> {
     const { max, min } = this.props;
     const stateKeys = Object.keys(this.state);
     // eslint-disable-next-line react/destructuring-assignment
-    const states = stateKeys.map(v => this.state[v]);
+    const states = stateKeys.map((v) => this.state[v]);
     states.sort((a, b) => a - b);
 
     // eslint-disable-next-line react/destructuring-assignment
@@ -351,7 +351,7 @@ class Slider extends Component<PropsType, any> {
     let i = 0;
     let styleObjArr;
     while (i < handleAmount) {
-      // eslint-disable-next-line react/destructuring-assignment
+      // eslint-disable-next-line
       const percent = (this.state[`currentValue${i}`] - min) / (max - min) * 100;
 
       styleObjArr = {
@@ -384,7 +384,7 @@ class Slider extends Component<PropsType, any> {
             onMouseDown={!this.isTouchSuported ? this.onHandleDown(i) : noop}
             onMouseMove={!this.isTouchSuported ? this.onHandleMove(i) : noop}
             onMouseUp={!this.isTouchSuported ? this.onHandleUp() : noop}
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
             onTouchStart={this.isTouchSuported ? this.onHandleDown(i) : noop}
             onTouchMove={this.isTouchSuported ? this.onHandleMove(i) : noop}
             onTouchEnd={this.isTouchSuported ? this.onHandleMove(i) : noop}
