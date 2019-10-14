@@ -136,7 +136,7 @@ class Demo extends React.Component {
           visible={this.state.drawerVisible}
           onClose={this.drawerHide}
           title="Drawer Title"
-          size="large"
+          size="lg"
           maskClosable={this.drawerHide}
           afterOpen={() => console.log('afterOpen1')}
           afterClose={() => console.log('afterClose')}
@@ -145,13 +145,13 @@ class Demo extends React.Component {
           <Drawer
             visible={this.state.drawerVisible1}
             onClose={this.drawerHide1}
-            size="small"
+            size="sm"
             maskClosable={this.drawerHide1}
             afterOpen={() => console.log('afterOpen1')}
             afterClose={() => console.log('afterClose')}
             onMaskClick={() => console.log('onMaskClick')}
           >
-            123 => 321
+            It`s Me
           </Drawer>
           <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
         </Drawer>

@@ -1,12 +1,11 @@
-import React, { PureComponent, HTMLAttributes } from 'react';
+import React, { PureComponent, HTMLAttributes, CSSProperties } from 'react';
 import classnames from 'classnames';
 import { Popup } from 'zarm';
-
 import throttle from '../utils/throttle';
 import DrawerContext from './createDrawerContext';
 import Icon from '../icon';
 import events from '../utils/events';
-import PropsType, { StateType } from './PropsType';
+import PropsType from './PropsType';
 
 const BUTTONLAYER = 40;
 const PADDING = 160;
@@ -16,6 +15,15 @@ const DRAWERSIZE = {
   SMALL: 0.38,
 };
 
+export interface StateType {
+  width?: number | string;
+  layer?: number;
+  top?: number;
+  left?: number;
+  totallayers?: number;
+  btnstyle?: CSSProperties;
+}
+
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
   private parentDrawer: Drawer | null;
 
@@ -23,12 +31,11 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
   static defaultProps = {
     closable: true,
-    size: 'normal',
+    size: 'md',
     mask: true,
     visible: false,
     maskClosable: false,
     prefixCls: 'zw-drawer',
-    maskover: true,
   };
 
   readonly state = {
@@ -64,15 +71,19 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
   }
 
   private calcDrawerWidth = () => {
-    const { size = 'normal' } = this.props;
+    let { size = 'md' } = this.props;
     const { width } = this.state;
+
+    if (['lg', 'md', 'sm'].indexOf(size) === -1) {
+      size = 'md';
+    }
 
     if (!width) {
       const windowWidth = window.innerWidth;
       const sizeWidth = {
-        large: DRAWERSIZE.LARGE * windowWidth - PADDING,
-        normal: DRAWERSIZE.NORMAL * windowWidth - PADDING,
-        small: DRAWERSIZE.SMALL * windowWidth - PADDING,
+        lg: DRAWERSIZE.LARGE * windowWidth - PADDING,
+        md: DRAWERSIZE.NORMAL * windowWidth - PADDING,
+        sm: DRAWERSIZE.SMALL * windowWidth - PADDING,
       };
       this.parentWidth = sizeWidth[size];
 
@@ -138,7 +149,6 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       afterClose,
       onMaskClick,
       children,
-      maskover,
       visible,
     } = this.props;
     const {
@@ -149,12 +159,10 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     } = this.state;
 
     const drawerBox = classnames(`${prefixCls}`, {
-      [`${prefixCls}__mask__hidden`]: layer > 1 && !maskover,
+      [`${prefixCls}__mask__hidden`]: layer > 1,
     });
 
     const drawerCell = classnames(`${prefixCls}__cell`);
-
-    const cls = classnames(`${prefixCls}__cell-box`, `${prefixCls}__cell-box__right`);
 
     this.parentDrawer = value;
 
@@ -174,10 +182,10 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
-          <div className={cls}>
+          <div className={`${prefixCls}__cell-box`}>
             {closable && (
               <button
-                className={`${prefixCls}__cell__closebtn`}
+                className={`${prefixCls}__closebtn`}
                 style={{ ...btnstyle }}
                 onClick={() => onClose && onClose()}
               >
@@ -188,8 +196,8 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
               </button>
             )}
             <div className={drawerCell} style={{ width }}>
-              {title && (<div className={`${prefixCls}__cell__title`}>{title}</div>)}
-              <div className={`${prefixCls}__cell__body`}>{children}</div>
+              {title && (<div className={`${prefixCls}__cell--title`}>{title}</div>)}
+              <div className={`${prefixCls}__cell--body`}>{children}</div>
             </div>
           </div>
         </Popup>

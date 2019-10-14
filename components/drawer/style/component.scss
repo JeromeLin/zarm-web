@@ -1,20 +1,42 @@
 @import '../../style/core/index';
-@import 'mixins';
 
 @include b(drawer) {
   z-index: 1100;
   position: relative;
 
-  @include b(drawer__cell-box) {
+  @include e(cell-box) {
+    padding: 80px 80px 0;
     width: 100%;
     height: 100%;
     background-color: #fff;
 
-    @include b(drawer__cell) {
+    @include e(cell) {
       transition: all 300ms ease-in-out;
+
+      @include m(title) {
+        width: 100%;
+        position: relative;
+        padding: 16px 24px;
+        background: #fff;
+        border-bottom: 1px solid #e8e8e8;
+        border-radius: 4px 4px 0 0;
+        font-size: 22px;
+        color: rgba(52, 52, 52, 1);
+        line-height: 30px;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      @include m(body) {
+        font-size: 14px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
     }
 
-    @include b(drawer__cell__closebtn) {
+    @include e(closebtn) {
       width: 33px;
       height: 52px;
       position: absolute;
@@ -25,6 +47,8 @@
       border: none;
       color: #bcbcbc;
       transition: all 300ms ease-in-out;
+      left: -33px;
+      top: 0;
 
       i {
         position: absolute;
@@ -38,45 +62,9 @@
     }
   }
 
-  @include b(drawer__cell-box__right) {
-    @include drawerPadding(80px, 80px, 0, 80px);
-    @include b(drawer__cell__closebtn) {
-      left: -33px;
-      top: 0;
-    }
-  }
-
-  @include b(drawer__cell-box__left) {
-    @include drawerPadding(80px, 80px, 0, 80px);
-    @include b(drawer__cell__closebtn) {
-      transform: rotate(180deg);
-      right: -32px;
-      top: -4px;
-    }
-  }
-
-  @include b(drawer__cell-box__top) {
-    @include drawerheader();
-    @include b(drawer__cell__closebtn) {
-      transform: rotate(270deg);
-      left: 10px;
-      bottom: -42px;
-    }
-  }
-
-  @include b(drawer__cell-box__bottom) {
-    @include drawerheader();
-    @include b(drawer__cell__closebtn) {
-      transform: rotate(90deg);
-      left: 6px;
-      top: -42px;
+  @include e(mask__hidden) {
+    @include b(mask) {
+      background-color: rgba(0, 0, 0, 0);
     }
   }
 }
-
-@include b(drawer__mask__hidden) {
-  @include b(mask) {
-    background-color: rgba(0, 0, 0, 0);
-  }
-}
-

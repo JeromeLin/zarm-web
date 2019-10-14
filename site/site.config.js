@@ -189,7 +189,7 @@ module.exports = {
       },
       {
         name: 'Drawer',
-        module: () => import('@/components/drawer/drawer.md'),
+        module: () => import('@/components/drawer/demo.md'),
       },
     ],
     others: [
