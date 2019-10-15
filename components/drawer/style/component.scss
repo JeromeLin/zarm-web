@@ -5,7 +5,7 @@
   position: relative;
 
   @include e(cell-box) {
-    padding: 80px 80px 0;
+    padding: 24px 24px 0;
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -49,11 +49,12 @@
       transition: all 300ms ease-in-out;
       left: -33px;
       top: 0;
+      padding: 0;
 
       i {
         position: absolute;
         top: 18px;
-        left: 12px;
+        left: 14px;
       }
 
       &:hover {

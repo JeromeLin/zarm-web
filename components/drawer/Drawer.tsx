@@ -172,7 +172,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           key={totallayers}
           mask={mask}
           direction="right"
-          animationDuration={100}
+          animationDuration={300}
           className={drawerBox}
           visible={visible}
           onMaskClick={maskClosable ? () => {

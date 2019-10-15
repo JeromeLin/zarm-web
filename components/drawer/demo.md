@@ -31,7 +31,6 @@ class Demo extends React.Component {
         <Drawer
           visible={this.state.drawerVisible}
           onClose={this.drawerHide}
-          title="Drawer Title"
           closable
           maskClosable={false}
           afterOpen={() => console.log('afterOpen1')}
@@ -50,7 +49,118 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 基本用法
+## 抽屉尺寸
+抽屉尺寸分为 ‘lg’, 'md', 'sm'。 分别占窗口宽度的80%， 62%， 38%。 默认大小为 ‘md’
+
+```jsx
+import { Drawer, Button, Radio } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      drawerVisible: false,
+      radioValue: 'md',
+      drawerVisiblelg: false,
+      drawerVisiblemd: false,
+      drawerVisiblesm: false,
+    }
+    this.drawerHide = this.drawerHide.bind(this);
+    this.drawerShow = this.drawerShow.bind(this);
+  }
+
+  drawerHide() {
+    const { radioValue } = this.state;
+    const drawerVisible = `drawerVisible${radioValue}`;
+
+    this.setState({
+      [drawerVisible]: false,
+    });
+  }
+
+  drawerShow() {
+    const { radioValue } = this.state;
+    const drawerVisible = `drawerVisible${radioValue}`;
+
+    this.setState({
+      [drawerVisible]: true,
+    });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <div style={{ padding: 40 }}>
+          <Radio.Group
+            value={this.state.radioValue}
+            onChange={(e) => {
+              this.setState({
+                radioValue: e.target.value
+              });
+            }}
+          >
+            <Radio value="lg">lg </Radio>
+            <Radio value="md">md </Radio>
+            <Radio value="sm">sm </Radio>
+          </Radio.Group>
+        </div>
+        <div className="multi-rows">
+          <Button theme="primary" size="xl" onClick={() => this.drawerShow()}>Drawer</Button>
+        </div>
+
+        <Drawer
+          visible={this.state.drawerVisiblelg}
+          onClose={this.drawerHide}
+          size="lg"
+          closable
+          maskClosable={false}
+          afterOpen={() => console.log('afterOpen1')}
+          afterClose={() => console.log('afterClose')}
+          onMaskClick={() => console.log('onMaskClick')}
+        >
+          <div>
+            Drawer lg
+          </div>
+        </Drawer>
+
+        <Drawer
+          visible={this.state.drawerVisiblemd}
+          onClose={this.drawerHide}
+          size="md"
+          closable
+          maskClosable={false}
+          afterOpen={() => console.log('afterOpen1')}
+          afterClose={() => console.log('afterClose')}
+          onMaskClick={() => console.log('onMaskClick')}
+        >
+          <div>
+            Drawer lg
+          </div>
+        </Drawer>
+
+        <Drawer
+          visible={this.state.drawerVisiblesm}
+          onClose={this.drawerHide}
+          size="sm"
+          closable
+          maskClosable={false}
+          afterOpen={() => console.log('afterOpen1')}
+          afterClose={() => console.log('afterClose')}
+          onMaskClick={() => console.log('onMaskClick')}
+        >
+          <div>
+            Drawer lg
+          </div>
+        </Drawer>
+      </React.Fragment>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 点击遮罩区关闭
 基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭
 
 ```jsx
@@ -80,7 +190,6 @@ class Demo extends React.Component {
         <Drawer
           visible={this.state.drawerVisible}
           onClose={this.drawerHide}
-          title="点击遮罩区关闭"
           maskClosable={this.drawerHide}
           afterOpen={() => console.log('afterOpen1')}
           afterClose={() => console.log('afterClose')}
@@ -135,7 +244,6 @@ class Demo extends React.Component {
         <Drawer
           visible={this.state.drawerVisible}
           onClose={this.drawerHide}
-          title="Drawer Title"
           size="lg"
           maskClosable={this.drawerHide}
           afterOpen={() => console.log('afterOpen1')}
@@ -168,13 +276,9 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
-| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
-| width | string &#124; number | - | 弹层宽度 |
-| size | string | normal | 可选值`large`, `normal`, `small`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
+| size | string | normal | 可选值`lg`, `md`, `sm`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
 | mask | boolean | true | 是否展示遮罩层 |
-| maskClosable | () => void | - | 点击遮罩层事件 |
-| maskover | boolean | true | 嵌套遮罩层是否叠加黑色背景 |
-| maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
+| maskClosable | boolean | - | 是否点击遮罩层来关闭抽屉 |
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
