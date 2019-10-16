@@ -244,4 +244,30 @@
   --steps-status-error: var(--theme-danger);
   --steps-icon-size: 28px;
   --steps-content-width: 140px;
+  // Avatar
+  --avatar-border-radius: 50%;
+  --avatar-fontSize: 14px;
+  --avatar-width-md: 40px;
+  --avatar-height-md: 40px;
+  --avatar-width-xl: 72px;
+  --avatar-height-xl: 72px;
+  --avatar-width-lg: 48px;
+  --avatar-height-lg: 48px;
+  --avatar-width-sm: 32px;
+  --avatar-height-sm: 32px;
+  --avatar-width-xs: 24px;
+  --avatar-height-xs: 24px;
+  --avatar-default-color: #fff;
+  --avatar-default-bg-color: #ccc;
+
+  // pagination
+  --pagination-color: #343434;
+  --pagination-default-hover-color: var(--theme-primary);
+  --pagination-default-bg-color: #fafafa;
+  --pagination-default-active-background: var(--theme-primary);
+  --pagination-font-size-md: 14px;
+  --pagination-font-size-sm: 12px;
+  --pagination-height-md: 32px;
+  --pagination-height-sm: 24px;
+  --pagination-opacity: var(--opacity-disabled);
 }

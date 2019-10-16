@@ -1,22 +1,18 @@
 export default interface PropsType {
   prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
   value?: number;
   defaultValue?: number;
+  locale?: { [propName: string]: any };
   pageSize: number;
-  pageSizeSource?: Array<number>;
+  pageSizeOptions?: Array<number>;
   total: number;
   showTotal?: boolean;
-  showJumper?: boolean;
-  showPageSizeSelector?: boolean;
-  className?: string;
-  style?: object;
-  shape: 'rect' | 'radius';
-  bordered?: boolean;
-  isBordered?: boolean;
-  addonBefore?: React.ReactNode;
-  addonAfter?: React.ReactNode;
-  onPageChange: (value: number) => void;
-  onPageSizeChange: (value: number) => void;
-  locale?: { [propName: string]: any };
-  onChange: (pageInfo: { currentPage: number; pageSize: number }) => void;
+  showQuickJumper?: boolean;
+  showPageSizeChanger?: boolean;
+  simple?: boolean;
+  size?: 'md' | 'sm';
+  onPageSizeChange: (pageSize?: number) => void;
+  onChange: (page?: number) => void;
 }
