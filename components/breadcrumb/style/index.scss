@@ -1,3 +1,40 @@
-@import '../../style/themes/variable';
-@import "../../style/core/mixins/index";
-@import './component';
+@import '../../style/core/index';
+
+@include b(breadcrumb) {
+  padding: 10px 15px;
+  font-size: var(--breadcrumb-default-font-size);
+  color: var(--breadcrumb-default-color);
+
+  @include b(breadcrumb-item) {
+
+    @include e(link) {
+      color: var(--breadcrumb-default-color);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--breadcrumb-hover-color);
+      }
+    }
+
+    @include e(separator) {
+      margin: 0 8px;
+      color: var(--breadcrumb-separator-color);
+    }
+
+    &:last-child {
+      color: var(--breadcrumb-color);
+
+      > a {
+        color: var(--breadcrumb-color);
+
+        &:hover {
+          color: var(--breadcrumb-hover-color);
+        }
+      }
+
+      > span:last-child {
+        display: none;
+      }
+    }
+  }
+}

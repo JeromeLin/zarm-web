@@ -1,8 +1,14 @@
-import React, { Component, cloneElement, ReactElement } from 'react';
+import React, { Component, cloneElement, ReactElement, HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import { PropsType } from './PropsType';
 
-class Breadcrumb extends Component<PropsType, any> {
+export type BreadcrumbProps = {
+  prefixCls?: string;
+  separator?: string;
+} & HTMLAttributes<HTMLDivElement>;
+
+class Breadcrumb extends Component<BreadcrumbProps, {}> {
+  static displayName = 'Breadcrumb';
+
   static defaultProps = {
     prefixCls: 'zw-breadcrumb',
     separator: '/',
@@ -11,14 +17,9 @@ class Breadcrumb extends Component<PropsType, any> {
   static Item;
 
   render() {
-    const {
-      className, separator, children, style, prefixCls, ...restProps
-    } = this.props;
+    const { prefixCls, className, separator, children, ...restProps } = this.props;
+    const cls = classnames(prefixCls, className);
 
-    const cls = classnames(prefixCls, className, {
-    });
-
-    // eslint-disable-next-line
     const items = React.Children.map(children, (element, index) => {
       return cloneElement(element as ReactElement<any>, {
         separator,
@@ -27,7 +28,7 @@ class Breadcrumb extends Component<PropsType, any> {
     });
 
     return (
-      <div className={cls} style={style} {...restProps}>
+      <div className={cls} {...restProps}>
         {items}
       </div>
     );
