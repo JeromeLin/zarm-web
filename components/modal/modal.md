@@ -14,7 +14,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: true,
+      modalVisible: false,
     };
   }
   toggleModal(key) {
@@ -29,11 +29,11 @@ class Demo extends React.Component {
       <div>
         <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
-          scrollInModal
-          centered={true}
-          title="我是弹框"
           visible={modalVisible}
-          animationType="slideRight" 
+          okText="你大爷的"
+          cancelText="你二大爷的"
+          closable
+          title="我们是社会主义接班人"
           onCancel={() => {this.toggleModal('modalVisible')}}
           onOk={()=> alert("您点击了确定按钮")}
         >
@@ -144,6 +144,50 @@ class Demo1 extends React.Component {
 ReactDOM.render(<Demo1 />, mountNode);   
 ```
 
+## 自定义Footer
+
+Modal默认的设置了一个footer。就是在右边的<Button>确定</Button>和取消两个按钮。
+注意：自定义的Button将不会自动调用onOk和onCancel
+
+```jsx
+import { Modal, Button } from 'zarm-web';
+
+class Demo1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false
+    };
+  }
+  toggleModal() {
+    this.setState({
+      modalVisible: !this.state.modalVisible
+    });
+  }
+  render() {
+    const { modalVisible } = this.state;
+    return (
+      <div>
+        <Button theme="info" onClick={() => this.toggleModal()}>显示弹框</Button>
+        <Modal 
+          visible={modalVisible} 
+          radius
+          title="标题"
+          footer={<Button>我才是真正的footer</Button>}
+          onCancel={() => this.toggleModal()} 
+        >
+          不 你不是
+        </Modal>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo1 />, mountNode);   
+```
+
+
+
 ## 多个Modal的叠加显示
 
 当页面中有Modal组件显示的时候，我们再显示一个Modal组件，两个Modal组件就会层叠在一起，这对界面显示很不友好。
@@ -231,9 +275,6 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       modalVisible: false,
-      modalVisible2: false,
-      modalVisible3: false,
-      modalVisible4: false,
     };
   }
   toggleModal(key) {
@@ -243,18 +284,27 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { modalVisible, modalVisible2, modalVisible3, modalVisible4 } = this.state;
     return (
       <div>
-        <Button theme="info" onClick={() => Modal.Alert({
-          content:"发生了一些事情",
-          title:"提示"
-        })}>Alert</Button>
-        <Button theme="info" onClick={() => Modal.Confirm({
-          content:"删除无法恢复哦",
-          title:"确认删除吗",
-          theme:"warning"
-        })}>Confirm</Button>
+        <Button 
+          theme="info" 
+          onClick={() => Modal.Alert({
+            content:"发生了一些事情",
+            title:"提示"
+          })}
+        >
+          Alert
+        </Button>
+        <Button 
+          theme="info" 
+          onClick={() => Modal.Confirm({
+            content:"删除无法恢复哦",
+            title:"确认删除吗",
+            theme:"warning"
+          })}
+        >
+          Confirm
+        </Button>
       </div>
     )
   }
@@ -268,6 +318,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
+| visible | boolean | false | Modal是否显示 |
 | prefixCls | string | zw-modal | |
 | okText | ReactNode | 确定 |  确定按钮的文字内容  |
 | cancelText | ReactNode | 取消 |  取消按钮的文字内容  |
@@ -280,6 +331,17 @@ ReactDOM.render(<Demo />, mountNode);
 | autoFocus | boolean  | true |  弹框显示后自动聚焦到弹框上 |
 | disableEscapeKeyDown | boolean  | false |  禁用按esc键关闭当前弹框 |
 | disableEnterKeyDown  | boolean  | false |  禁用按回车键自动触发onOk回调函数 |
-| ...others  | PopupProps  | false |   |
+| scrollInModal | boolean | false |  是否开启在modal内部滚动 |
+| zIndex | number | 2018|设置modal弹框的zIndex值 |
+| animationType | AnimationType | zoom | 弹出动画的方式 |
+| mask | boolean | true | 是否显示半透明背景层 |
+| disableBodyScroll | boolean | true | 显示弹框的时候是否关闭body滚动 |
+| destroy | boolean | false | 是否在关闭弹框后删除节点 |
+| afterOpen | ()=>void | undefined |  设置打开之后的回调函数 |
+| afterClose | ()=>void | undefined |  设置完全关闭之后的回调函数 |
+| onMaskClick | ()=>void | undefined |  设置点击背景层时候的回调函数 |
+| getContainer | ()=>Element | undefined | 设置Modal的挂载点 默认为Body |
+
+
 
 
