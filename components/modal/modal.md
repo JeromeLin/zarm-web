@@ -26,14 +26,12 @@ class Demo extends React.Component {
   render() {
     const { modalVisible } = this.state;
     return (
-      <div>
+      <div class="modal-page">
         <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
           visible={modalVisible}
-          okText="你大爷的"
-          cancelText="你二大爷的"
           closable
-          title="我们是社会主义接班人"
+          title="这是一个简单的弹框"
           onCancel={() => {this.toggleModal('modalVisible')}}
           onOk={()=> alert("您点击了确定按钮")}
         >
@@ -76,7 +74,7 @@ class Demo extends React.Component {
   render() {
     const { modalVisible, animationType } = this.state;
     return (
-      <div className="buttons">
+      <div className="modal-page buttons">
         <Button onClick={() => this.toggleModal('zoom')}>zoom</Button>
         <Button onClick={() => this.toggleModal('door')}>door</Button>
         <Button onClick={() => this.toggleModal('flip')}>flip</Button>
@@ -126,7 +124,7 @@ class Demo1 extends React.Component {
   render() {
     const { modalVisible } = this.state;
     return (
-      <div>
+      <div className="modal-page">
         <Button theme="info" onClick={() => this.toggleModal()}>圆角模态框</Button>
         <Modal 
           visible={modalVisible} 
@@ -167,7 +165,7 @@ class Demo1 extends React.Component {
   render() {
     const { modalVisible } = this.state;
     return (
-      <div>
+      <div className="modal-page">
         <Button theme="info" onClick={() => this.toggleModal()}>显示弹框</Button>
         <Modal 
           visible={modalVisible} 
@@ -217,7 +215,7 @@ class Demo extends React.Component {
   render() {
     const { modalVisible, modalVisible2, modalVisible3, modalVisible4 } = this.state;
     return (
-      <div>
+      <div className="modal-page">
         <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal 
           title="我是弹框1"
@@ -267,7 +265,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 静态方法调用
 
-可以使用Alert和Confirm静态方法
+可以使用Alert和Confirm静态方法。它可以直接传一个ReactNode，或者Modal的Props作为属性。我们新增了一个content属性作为Modal的内容。
+静态方法的调用可以使用很多方式去承接，比如我们想执行点击之后的回调可以使用以下方法
+可以使用onOk和onCancel去处理。但是也可以使用Promise的方式来处理。
+
 ```jsx
 import { Modal, Button } from 'zarm-web';
 class Demo extends React.Component {
@@ -285,7 +286,7 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="modal-page">
         <Button 
           theme="info" 
           onClick={() => Modal.Alert({
@@ -304,6 +305,40 @@ class Demo extends React.Component {
           })}
         >
           Confirm
+        </Button>
+
+        <Button 
+          theme="info" 
+          onClick={() => {
+            Modal.Confirm({
+              content:"删除无法恢复哦",
+              title:"确认删除吗",
+              theme:"warning"
+            }).then((result)=>{
+              console.log(result);
+              alert(`您点击了${result?'确定':'取消'}`);
+            })
+          }}
+        >
+          Confirm with Promise
+        </Button>
+
+        <Button
+          theme="info" 
+          onClick={() => {
+            Modal.Confirm({
+              content:"删除无法恢复哦",
+              title:"确认删除吗",
+              theme:"warning",
+              onOk:()=> {
+                alert('因为您在onOk里返回了false,所以无法关闭该弹框');
+                // 可以return Promise。弹框会在Promise resolve之后关闭。如果Promise是reject的状态 或者是resolve(false),将不会关闭弹框。
+                return false;
+              }
+            })
+          }}
+        >
+          阻止弹框关闭
         </Button>
       </div>
     )

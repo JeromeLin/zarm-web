@@ -11,21 +11,6 @@ import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import { Alert, Confirm } from './alert';
 
-const activeElem: Element[] = [document.activeElement || document.body];
-
-function toggleBodyOverflow(show: boolean) {
-  const scrollBarWidth = window.innerWidth - (document.documentElement as HTMLElement).offsetWidth;
-  if (show === true) {
-    document.body.classList.add('ui-modal-body-overflow');
-    if (scrollBarWidth > 0) {
-      document.body.style.setProperty('padding-right', `${scrollBarWidth}px`);
-    }
-  } else {
-    document.body.classList.remove('ui-modal-body-overflow');
-    document.body.style.setProperty('padding-right', null);
-  }
-}
-
 interface StateIF {
   isShow: boolean;
   sleep: boolean;
@@ -52,11 +37,12 @@ class Modal extends Component<ModalProps, StateIF> {
     destroy: false,
     scrollInModal: false,
     animationType: 'zoom',
+    radius: true,
   };
 
-  private static instanceList: Modal[] = [];
-
   private static visibleList: Modal[] = [];
+
+  private static activeElem: Element[] = [document.activeElement || document.body];
 
   private static handleVisbibleList(instance: Modal, visible: boolean) {
     if (visible) {
@@ -105,16 +91,6 @@ class Modal extends Component<ModalProps, StateIF> {
     };
   }
 
-  private static unmountModalInstance(instance: Modal, callback: () => void) {
-    const instanceIndex = Modal.instanceList.findIndex((item) => (item === instance));
-    if (instanceIndex >= 0) {
-      Modal.instanceList.splice(instanceIndex, 1);
-    }
-    if (Modal.instanceList.length === 0) {
-      callback();
-    }
-  }
-
   private modalContent!: HTMLDivElement;
 
   state: StateIF;
@@ -126,7 +102,6 @@ class Modal extends Component<ModalProps, StateIF> {
       isShow: !!visible,
       sleep: false,
     };
-    Modal.instanceList.push(this);
   }
 
   componentDidMount() {
@@ -136,7 +111,7 @@ class Modal extends Component<ModalProps, StateIF> {
         if (visible) {
           Modal.handleVisbibleList(this, !!visible);
           if (this.modalContent && autoFocus) {
-            activeElem.push(this.modalContent);
+            Modal.activeElem.push(this.modalContent);
             this.modalContent.focus();
           }
         }
@@ -150,8 +125,8 @@ class Modal extends Component<ModalProps, StateIF> {
       Modal.handleVisbibleList(this, !!visible);
       setTimeout(() => {
         if (this.modalContent && autoFocus) {
-          activeElem.pop();
-          const lastElem = activeElem[activeElem.length - 1];
+          Modal.activeElem.pop();
+          const lastElem = Modal.activeElem[Modal.activeElem.length - 1];
           if (lastElem instanceof HTMLElement) {
             lastElem.focus();
           }
@@ -161,18 +136,12 @@ class Modal extends Component<ModalProps, StateIF> {
     if (visible && !prevProps.visible) {
       setTimeout(() => {
         if (this.modalContent && autoFocus) {
-          activeElem.push(this.modalContent);
+          Modal.activeElem.push(this.modalContent);
           this.modalContent.focus();
         }
       });
       Modal.handleVisbibleList(this, !!visible);
     }
-  }
-
-  componentWillUnmount() {
-    Modal.unmountModalInstance(this, () => {
-      toggleBodyOverflow(false);
-    });
   }
 
   setModalContainer = (elem: null | HTMLDivElement) => {
@@ -230,13 +199,11 @@ class Modal extends Component<ModalProps, StateIF> {
       centered,
       footer,
       scrollInModal,
+      radius,
       ...others
     } = this.props;
-
     const styles = { ...style, zIndex };
-
     const { isShow } = this.state;
-
     const show = isShow;
     const hasFooter = footer !== null;
     const showHeader = title !== undefined || closable;
@@ -246,6 +213,7 @@ class Modal extends Component<ModalProps, StateIF> {
       [`${prefixCls}--popup`]: true,
       [`${prefixCls}--popup--top`]: !centered,
       [`${prefixCls}--scroll`]: scrollInModal,
+      [`${prefixCls}--radius`]: radius,
     });
     return (
       <Popup

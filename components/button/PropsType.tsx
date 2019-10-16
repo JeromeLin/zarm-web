@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, MouseEvent, CSSProperties } from 'react';
 
-export type ButtonTheme = 'default' | 'primary' | 'danger';
+export type ButtonTheme = 'default' | 'primary' | 'danger' | 'warning';
 export type ButtonSize = 'xl' | 'lg' | 'sm' | 'xs';
 export type ButtonShape = 'circle' | 'round' | 'rect' | 'radius';
 export type ButtonType = 'button' | 'submit' | 'reset';

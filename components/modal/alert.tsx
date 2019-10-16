@@ -1,4 +1,4 @@
-import React, { ReactNode, Fragment } from 'react';
+import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import cn from 'classnames';
 import Modal from './index';
@@ -68,7 +68,7 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
 
   function handleOnOk(renderTemp: (visible: boolean) => void, resolveResult: boolean) {
     const { onOk } = props;
-    if (onOk) {
+    if (onOk && resolveResult) {
       const result: any = onOk();
       if (result instanceof Promise) {
         return result.then((res) => {
@@ -118,7 +118,7 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
         footer={(
           <>
             {isConfirm && <Button onClick={() => handleOnOk(render, false)}>取消</Button>}
-            <Button theme={theme === 'success' ? 'primary' : theme} onClick={() => handleOnOk(render, true)}>确定</Button>
+            <Button theme={theme === 'success' ? 'primary' : theme || 'primary'} onClick={() => handleOnOk(render, true)}>确定</Button>
           </>
         )}
       >

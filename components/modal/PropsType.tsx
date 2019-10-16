@@ -5,14 +5,15 @@ type FnReactNode = () => ReactNode;
 
 export interface ModalBasicProps extends PopupTypes {
   prefixCls: string;
-  zIndex: number;
   okText: ReactNode;                     // 确认按钮的事件
   cancelText: ReactNode;                 // 取消按钮的事件
   closable: boolean;                     // 是显示关闭按钮
   title?: ReactNode;                     // modal的标题
+  zIndex: number;                        // modal组件的zIndex
   maskClosable: boolean;                 // 点击空白区域是否关闭
   mask: boolean;                         // 是否显示遮罩层
-  footer?: (ReactNode | FnReactNode);                    // modal底部的内容，为null时不显示底部
+  radius: boolean;                       // 是否显示圆角
+  footer?: (ReactNode | FnReactNode);    // modal底部的内容，为null时不显示底部
   centered: boolean;                     // 是否居中显示
   onOk?: () => void;                     // 点击了确定按钮的回调函数
   onCancel?: () => void;                 // 点击了取消按钮的回调函数
