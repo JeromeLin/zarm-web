@@ -69,8 +69,7 @@ describe('Tag', () => {
   it('behaves correctly when closing tag', () => {
     const onClose = jest.fn();
     const wrapper = mount(<Tag closable onClose={onClose}>可关闭标签</Tag>);
-    expect(wrapper.find('.zw-icon').length).toEqual(1);
-    wrapper.find('.zw-icon').simulate('click');
+    wrapper.find('.zw-icon').at(0).simulate('click');
     expect(onClose).toHaveBeenCalled();
   });
 

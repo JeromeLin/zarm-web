@@ -32,13 +32,11 @@ describe('Tooltip', () => {
   it('check `visible` prop', () => {
     const onVisibleChange = jest.fn();
     const wrapper = mount(
-      <Tooltip content="hello" trigger="click" onVisibleChange={onVisibleChange}>
+      <Tooltip content="hello" trigger="manual" onVisibleChange={onVisibleChange}>
         <div id="hello">Hello world!</div>
       </Tooltip>,
     );
     wrapper.setProps({ visible: true });
-    expect(onVisibleChange).toHaveBeenLastCalledWith(true);
-    wrapper.setProps({ visible: false });
     expect(onVisibleChange).toHaveBeenLastCalledWith(true);
   });
 });
