@@ -26,7 +26,7 @@ const format = {
   },
   camel2Dash: (_str) => {
     const str = _str[0].toLowerCase() + _str.substr(1);
-    return str.replace(/([A-Z])/g, $1 => `-${$1.toLowerCase()}`);
+    return str.replace(/([A-Z])/g, ($1) => `-${$1.toLowerCase()}`);
   },
 };
 

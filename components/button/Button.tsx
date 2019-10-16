@@ -50,11 +50,11 @@ class Button extends Component<ButtonProps> {
 
     const textContent = loading
       ? (
-        <React.Fragment>
+        <>
           <Icon type="loading" className="rotate360" />
           &nbsp;&nbsp;
           {children}
-        </React.Fragment>
+        </>
       )
       : children;
 
@@ -67,7 +67,7 @@ class Button extends Component<ButtonProps> {
             style={style}
             target={target}
             {...others}
-            onClick={e => (!disabled && !loading) && onClick!(e)}
+            onClick={(e) => (!disabled && !loading) && onClick!(e)}
           >
             {textContent}
           </a>
@@ -78,7 +78,7 @@ class Button extends Component<ButtonProps> {
             className={classes}
             style={style}
             disabled={disabled}
-            onClick={e => (!disabled && !loading) && onClick!(e)}
+            onClick={(e) => (!disabled && !loading) && onClick!(e)}
             {...others}
           >
             {textContent}

@@ -1,0 +1,14 @@
+@mixin avatar-size($width, $height, $font-size) {
+  width: $width;
+  height: $height;
+  line-height: $height;
+  font-size: $font-size;
+
+  > * {
+    line-height: $height;
+  }
+
+  &.has-icon {
+    font-size: $font-size;
+  }
+}

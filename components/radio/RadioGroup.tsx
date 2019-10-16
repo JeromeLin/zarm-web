@@ -55,11 +55,10 @@ class RadioGroup extends Component<GroupProps> {
       [`${prefixCls}--${size}`]: size,
     });
 
-    const childrenNode = React.Children.map(children, radio => (
+    const childrenNode = React.Children.map(children, (radio) => (
       <Radio
         {...(radio as ReactElement<any>).props}
-        onChange={e => this.onRadioChange(e)}
-        // tslint:disable-next-line:triple-equals
+        onChange={(e) => this.onRadioChange(e)}
         checked={value === (radio as ReactElement<any>).props.value}
       />
     ));

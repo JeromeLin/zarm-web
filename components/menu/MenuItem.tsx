@@ -72,7 +72,7 @@ export default function MenuItemConsumer(props) {
   return (
     <MenuContext.Consumer>
       {
-        menuKeys => (
+        (menuKeys) => (
           <MenuItem
             {...props}
             inlineCollapsed={menuKeys.inlineCollapsed}
@@ -80,7 +80,8 @@ export default function MenuItemConsumer(props) {
             toggleSubMenuOpen={menuKeys.toggleOpenKeys}
             toggleSelectedKeys={menuKeys.toggleSelectedKeys}
           />
-        )}
+        )
+      }
     </MenuContext.Consumer>
   );
 }
