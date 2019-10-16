@@ -8,7 +8,7 @@ import events from '../utils/events';
 import PropsType from './PropsType';
 
 const BUTTONLAYER = 40;
-const PADDING = 160;
+const PADDING = 24;
 const DRAWERSIZE = {
   LARGE: 0.8,
   NORMAL: 0.62,
