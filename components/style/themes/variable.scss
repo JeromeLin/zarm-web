@@ -61,6 +61,22 @@
   --font-size-lg: 16px;
   --font-size-xl: 18px;
 
+  // Avatar
+  --avatar-border-radius: 50%;
+  --avatar-fontSize: 14px;
+  --avatar-width-md: 40px;
+  --avatar-height-md: 40px;
+  --avatar-width-xl: 72px;
+  --avatar-height-xl: 72px;
+  --avatar-width-lg: 48px;
+  --avatar-height-lg: 48px;
+  --avatar-width-sm: 32px;
+  --avatar-height-sm: 32px;
+  --avatar-width-xs: 24px;
+  --avatar-height-xs: 24px;
+  --avatar-default-color: #fff;
+  --avatar-default-bg-color: #ccc;
+
   // Badge
   --badge-height: 14px;
   --badge-font-size: var(--font-size-xs);
@@ -70,6 +86,13 @@
   --badge-border-radius-round: var(--radius-round);
   --badge-sup-top: -4px;
   --badge-text-color: #fff;
+
+  // Breadcrumb
+  --breadcrumb-default-font-size: 14px;
+  --breadcrumb-default-color: #909090;
+  --breadcrumb-color: #343434;
+  --breadcrumb-hover-color: #00bc70;
+  --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 
   // Button
   --button-ghost-disabled-border: #e9e9e9;
@@ -194,27 +217,4 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
-
-  // Breadcrumb
-  --breadcrumb-default-font-size: 14px;
-  --breadcrumb-default-color: #909090;
-  --breadcrumb-color: #343434;
-  --breadcrumb-hover-color: #00bc70;
-  --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
-
-  // Avatar
-  --avatar-border-radius: 50%;
-  --avatar-fontSize: 14px;
-  --avatar-width-md: 40px;
-  --avatar-height-md: 40px;
-  --avatar-width-xl: 72px;
-  --avatar-height-xl: 72px;
-  --avatar-width-lg: 48px;
-  --avatar-height-lg: 48px;
-  --avatar-width-sm: 32px;
-  --avatar-height-sm: 32px;
-  --avatar-width-xs: 24px;
-  --avatar-height-xs: 24px;
-  --avatar-default-color: #fff;
-  --avatar-default-bg-color: #ccc;
 }
