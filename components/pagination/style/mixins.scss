@@ -1,0 +1,182 @@
+@mixin pagination-item(
+  $color,
+  $background,
+  $hover-color,
+  $active-background,
+  $font-size,
+  $disabled-opacity,
+  $height,
+  $radius
+) {
+  min-width: $height;
+  height: $height;
+  line-height: $height;
+  padding: 0 6px;
+  margin-right: 8px;
+  display: inline-block;
+  text-align: center;
+  list-style: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  background-color: $background;
+  border-radius: $radius;
+  font-size: $font-size;
+
+  &:hover {
+    color: $hover-color;
+  }
+
+  @include m(active) {
+    background-color: $active-background;
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: $disabled-opacity;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  @include m(ellipsis) {
+    background-color: transparent;
+
+    &:after {
+      content: '\2022\2022\2022';
+      display: block;
+      letter-spacing: 2px;
+      color: #ccc;
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+
+  @include m(icon) {
+    font-size: 14px;
+  }
+}
+
+@mixin pagination-total($font-size) {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 8px;
+  color: #999;
+  font-size: $font-size;
+}
+
+@mixin pagination-options($background, $font-size, $radius) {
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+
+  @include m(changer) {
+    font-size: $font-size;
+  }
+
+  @include m(jumper) {
+    display: inline-block;
+    vertical-align: top;
+
+    > input {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 32px;
+      margin: 0 8px;
+      text-align: center;
+      border-radius: $radius;
+      font-size: $font-size;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $background;
+      background-color: $background;
+    }
+  }
+
+  @include m(slash) {
+    margin: 0 10px 0 5px;
+  }
+}
+
+@mixin pagination-size($active-background, $font-size, $height) {
+  @include e(item) {
+    background-color: transparent;
+    min-width: $height;
+    height: $height;
+    line-height: $height;
+    margin: 0;
+  }
+
+  @include e(item--active) {
+    background-color: $active-background;
+  }
+
+  @include e(total) {
+    height: $height;
+    line-height: $height;
+    font-size: $font-size;
+  }
+}
+
+@mixin pagination-shape($background, $height) {
+  @include e(item) {
+    background-color: transparent;
+    min-width: $height;
+    height: $height;
+    line-height: $height;
+    margin: 0;
+  }
+
+  @include e(pager) {
+    display: inline-block;
+    height: 24px;
+
+    > input {
+      box-sizing: border-box;
+      height: 100%;
+      margin-right: 8px;
+      padding: 0 6px;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s;
+      text-align: center;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $background;
+      background-color: $background;
+    }
+  }
+}
+
+@mixin pagination-theme($active-background, $disabled-opacity) {
+  @include e(item) {
+    &:hover {
+      color: $active-background;
+    }
+  }
+
+  @include e(item--active) {
+    background-color: $active-background;
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  @include e(item--disabled) {
+    opacity: $disabled-opacity;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}

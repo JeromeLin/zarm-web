@@ -210,5 +210,16 @@
   --avatar-height-xs: 24px;
   --avatar-default-color: #fff;
   --avatar-default-bg-color: #ccc;
+
+  // pagination
+  --pagination-color: #343434;
+  --pagination-default-hover-color: var(--theme-primary);
+  --pagination-default-bg-color: #fafafa;
+  --pagination-default-active-background: var(--theme-primary);
+  --pagination-font-size-md: 14px;
+  --pagination-font-size-sm: 12px;
+  --pagination-height-md: 32px;
+  --pagination-height-sm: 24px;
+  --pagination-opacity: var(--opacity-disabled);
 }
 
