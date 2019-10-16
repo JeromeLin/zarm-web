@@ -50,7 +50,7 @@ class MenuItem extends Component<ItemProps, any> {
     return (
       <Tooltip
         hasArrow
-        content={null}
+        content={(level === 1 && inlineCollapsed) ? children : ''}
         direction="right"
         className="za-menu-item__tooltip"
       >

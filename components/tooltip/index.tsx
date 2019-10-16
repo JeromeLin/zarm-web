@@ -41,6 +41,10 @@ class Tooltip extends Component<TooltipProps, any> {
     prefixCls: 'zw-tooltip',
     direction: 'top' as TooltipPlacement,
     hasArrow: true,
+    mouseEnterDelay: 0,
+    mouseLeaveDelay: 0,
+    content: '',
+    visible: false,
     theme: 'dark',
     onVisibleChange: () => {},
   };
