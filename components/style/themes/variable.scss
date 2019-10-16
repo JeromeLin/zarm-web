@@ -30,8 +30,12 @@
   --border-color: #e6e6e6;
   --border-disabled: #bcbcbc;
 
+  // 堆叠顺序
+  --zindex-tooltip: 1500;
+
   // 透明度
   --opacity-disabled: .5;
+  --opacity-tooltip: .8;
 
   // 圆角
   --radius-sm: 2px;
@@ -178,4 +182,13 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  // Tooltip
+  --tooltip-font-size: 12px;
+  --tooltip-color: var(--color-text-inverse);
+  --tooltip-arrow-size: 4px;
+  --tooltip-light-background-color: #f2f2f2;
+  --tooltip-dark-background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+  --tooltip-padding-v: var(--padding-v-xs);
+  --tooltip-padding-h: var(--padding-h-xs);
 }

@@ -1,48 +1,82 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Popover from '../popover';
-import PropsType from './PropsType';
+import { Popper } from 'zarm';
 
-class Tooltip extends Component<PropsType, any> {
+export type TooltipPlacement =
+  | 'top'
+  | 'left'
+  | 'right'
+  | 'bottom'
+  | 'topLeft'
+  | 'topRight'
+  | 'bottomLeft'
+  | 'bottomRight'
+  | 'leftTop'
+  | 'leftBottom'
+  | 'rightTop'
+  | 'rightBottom';
+
+export type TooltipTheme = 'dark' | 'light';
+
+export type TooltipTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
+
+export interface TooltipProps {
+  prefixCls?: string;
+  visible?: boolean;
+  hasArrow?: boolean;
+  className?: string;
+  arrowPointAtCenter?: boolean;
+  direction?: TooltipPlacement;
+  trigger?: TooltipTrigger;
+  content?: React.ReactNode;
+  mouseEnterDelay?: number;
+  mouseLeaveDelay?: number;
+  theme?: TooltipTheme;
+  onVisibleChange?: (visible: boolean) => void;
+}
+
+class Tooltip extends Component<TooltipProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-tooltip',
-    direction: 'bottom',
-    trigger: 'hover',
+    prefixCls: 'zw-tooltip',
+    direction: 'top' as TooltipPlacement,
+    hasArrow: true,
+    theme: 'dark',
+    onVisibleChange: () => {},
   };
 
-  render() {
-    const {
-      title,
-      direction,
-      className,
-      children,
-      trigger,
-      style,
-      prefixCls,
-    } = this.props;
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    direction: PropTypes.string,
+    visible: PropTypes.bool,
+    hasArrow: PropTypes.bool,
+    mouseEnterDelay: PropTypes.number,
+    mouseLeaveDelay: PropTypes.number,
+    content: PropTypes.node,
+    onVisibleChange: PropTypes.func,
+    theme: PropTypes.oneOf(['dark', 'light']),
+  };
 
-    const cls = classnames({
-      [prefixCls!]: true,
-      [className!]: !!className,
+  static updateAll() {
+    Popper.update();
+  }
+
+  render() {
+    const { children, content, className, theme, ...others } = this.props;
+
+    const cls = classnames(className, {
+      [`zw-tooltip--${theme}`]: theme,
     });
-    return (
-      title ? (
-        <Popover
-          content={title}
-          direction={direction}
-          trigger={trigger}
-          className={cls}
-        >
-          <div style={style}>
-            {children}
-          </div>
-        </Popover>
-      ) : (
-        <div style={style}>
-          {children}
-        </div>
-      )
-    );
+
+    return content ? (
+      <Popper
+        className={cls}
+        content={content}
+        {...others}
+      >
+        {children}
+      </Popper>
+    ) : children;
   }
 }
 
