@@ -1,5 +1,6 @@
 import React, { ReactNode, Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import cn from 'classnames';
 import Modal from './index';
 import { ModalProps } from './PropsType';
 import Button from '../button';
@@ -33,16 +34,37 @@ function isReactNode(props: AlertProps | ReactNode): props is ReactNode {
 }
 
 function AlertMethod(props: AlertProps, isConfirm = false) {
-  const { theme = 'primary', title, ...others } = props;
-  const themeTitleConfig = themeMapIcon[theme];
-  const themeTitle = (
+  const {
+    theme,
+    prefixCls = Modal.defaultProps.prefixCls,
+    title,
+    className,
+    content,
+    ...others
+  } = props;
+
+  let iconElem: ReactNode = null;
+  if (theme) {
+    const themeTitleConfig = themeMapIcon[theme];
+    iconElem = <Icon className={`${prefixCls}__alert-icon`} size="md" type={themeTitleConfig.icon} theme={theme} />
+  }
+
+  const titleAndContent = (
     <>
-      <Icon className="modal-alert-icon" type={themeTitleConfig.icon} theme={theme} />
-      <span className="modal-alert-icon-text">{title}</span>
+      {theme && iconElem}
+      <div className={`${prefixCls}__alert-body`}>
+        <div className={`${prefixCls}__alert-title`}>{title}</div>
+        {content}
+      </div>
     </>
   );
   const div = document.createElement('div');
   let resolveFn = (result: boolean) => result;
+
+  const cls = cn({
+    [`${className}`]: !!className,
+    [`${prefixCls}-${isConfirm ? 'confirm' : 'alert'}`]: true,
+  });
 
   function handleOnOk(renderTemp: (visible: boolean) => void, resolveResult: boolean) {
     const { onOk } = props;
@@ -83,9 +105,9 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
             div.parentNode.removeChild(div);
           }
         }}
-        title={themeTitle}
         {...others}
         autoFocus
+        className={cls}
         onOk={() => {
           handleOnOk(render, true);
         }}
@@ -96,11 +118,11 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
         footer={(
           <>
             {isConfirm && <Button onClick={() => handleOnOk(render, false)}>取消</Button>}
-            <Button theme={theme === 'success' ? 'primary' : 'theme'} onClick={() => handleOnOk(render, true)}>确定</Button>
+            <Button theme={theme === 'success' ? 'primary' : theme} onClick={() => handleOnOk(render, true)}>确定</Button>
           </>
         )}
       >
-        {props.content}
+        {titleAndContent}
       </Modal>,
       div,
     );

@@ -1,53 +1,88 @@
-.zw-modal {
-  &-content {
+@import '../../style/core/index';
+
+$zarmPrefixCls: za-popup;
+
+@include b(modal) {
+  @include e(content) {
     background-color: #fff;
     min-width: 380px;
     border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px 7px rgba(0, 0, 0, 0.15);
   }
 
-  &-popup__top {
-    align-items: baseline;
+  .#{$zarmPrefixCls}--center {
+    max-width: 95%;
+  }
 
-    .za-popup--center {
-      margin: unset;
+  @include e(popup) {
+    @include m(top) {
+      align-items: baseline;
+
+      .#{$zarmPrefixCls}--center {
+        margin: unset;
+      }
     }
   }
 
-  &-scroll__modal {
+  // 仅适用于 Alert和Confirm
+  @include e(alert-icon) {
+    margin-right: 16px;
+  }
+
+  @include e(alert-body) {
+    display: inline-block;
+    vertical-align: top;
+    max-width: calc(100% - 60px);
+
+    @include e(alert-title) {
+      font-size: 16px;
+      font-weight: bold;
+      vertical-align: 0.2em;
+      padding-bottom: 10px;
+    }
+  }
+
+  @include m(scroll) {
     height: 100%;
 
-    .za-popup--center {
+    .#{$zarmPrefixCls}--center {
       height: 100%;
       max-height: 80%;
     }
 
-    .zw-modal-content {
+    @include e(content) {
       max-height: 100%;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
     }
 
-    .zw-modal-body {
+    @include e(body) {
       flex-grow: 1;
       height: auto;
       overflow: auto;
     }
   }
 
-  .zw-modal-header {
+  @include e(header) {
     height: 48px;
     line-height: 48px;
     padding: 0 24px;
     position: relative;
+    background-color: #fafafa;
 
-    .zw-modal-title {
+    @include e(title) {
       color: #343434;
       font-size: 16px;
       font-weight: bold;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin-right: 30px;
     }
 
-    .zw-modal-close {
+    @include e(close) {
       position: absolute;
       top: 0;
       right: 15px;
@@ -62,40 +97,25 @@
     }
   }
 
-  &-hidden__elem {
+  @include e(hidden-elem) {
     width: 0;
     height: 0;
     overflow: hidden;
   }
 
-  .zw-modal-body {
+  @include e(body) {
     padding: 16px 24px;
   }
 
-  .zw-modal-footer {
+  @include e(footer) {
     padding: 10px 18px;
   }
 
-  &-button__warpper {
+  @include e(button-warpper) {
     text-align: right;
 
     button {
       margin-left: 10px;
     }
   }
-}
-
-.ui-modal-body-overflow {
-  overflow-y: hidden;
-}
-
-.modal-alert-icon {
-  vertical-align: middle;
-  font-size: 22px;
-}
-
-.modal-alert-icon-text {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 5px;
 }

@@ -14,7 +14,7 @@ class ModalBody extends Component<ModalBodyProps, any> {
     };
 
     const cls = classnames({
-      [`${prefixCls}-body`]: true,
+      [`${prefixCls}__body`]: true,
       [className!]: !!className,
     });
 

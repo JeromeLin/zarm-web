@@ -1,4 +1,4 @@
-import React, { Component, KeyboardEvent, KeyboardEventHandler } from 'react';
+import React, { Component, KeyboardEventHandler } from 'react';
 import Popup from 'zarm/lib/popup';
 import 'zarm/lib/popup/style';
 import cn from 'classnames';
@@ -51,6 +51,7 @@ class Modal extends Component<ModalProps, StateIF> {
     hideWhenShowOthers: true,
     destroy: false,
     scrollInModal: false,
+    animationType: 'zoom',
   };
 
   private static instanceList: Modal[] = [];
@@ -129,7 +130,6 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   componentDidMount() {
-    const { isShow } = this.state;
     const { autoFocus, visible } = this.props;
     setTimeout(() => {
       if (this.modalContent && autoFocus) {
@@ -144,17 +144,18 @@ class Modal extends Component<ModalProps, StateIF> {
     });
   }
 
-  componentDidUpdate(prevProps: ModalProps, prevState: StateIF) {
-    const { isShow } = this.state;
+  componentDidUpdate(prevProps: ModalProps) {
     const { autoFocus, visible } = this.props;
     if (prevProps.visible && visible === false) {
       Modal.handleVisbibleList(this, !!visible);
       setTimeout(() => {
         if (this.modalContent && autoFocus) {
           activeElem.pop();
-          activeElem[activeElem.length - 1].focus();
+          const lastElem = activeElem[activeElem.length - 1];
+          if (lastElem instanceof HTMLElement) {
+            lastElem.focus();
+          }
         }
-        console.log(activeElem);
       });
     }
     if (visible && !prevProps.visible) {
@@ -180,7 +181,7 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   };
 
-  onKeyDown = (e: KeyboardEvent) => {
+  onKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { visible, onCancel, onKeyDown, disableEscapeKeyDown } = this.props;
     if (visible && !disableEscapeKeyDown) {
       if (e.keyCode === 27) {
@@ -242,9 +243,9 @@ class Modal extends Component<ModalProps, StateIF> {
     const rewriteClassName = cn({
       [prefixCls]: true,
       [`${className}`]: !!className,
-      [`${prefixCls}-popup`]: true,
-      [`${prefixCls}-popup__top`]: !centered,
-      [`${prefixCls}-scroll__modal`]: scrollInModal,
+      [`${prefixCls}--popup`]: true,
+      [`${prefixCls}--popup--top`]: !centered,
+      [`${prefixCls}--scroll`]: scrollInModal,
     });
     return (
       <Popup
@@ -254,7 +255,7 @@ class Modal extends Component<ModalProps, StateIF> {
         className={rewriteClassName}
       >
         <div
-          className={`${prefixCls}-content`}
+          className={`${prefixCls}__content`}
           tabIndex={-1}
           onKeyDown={this.onKeyDown}
           onKeyPress={this.onKeyPress}
@@ -266,7 +267,7 @@ class Modal extends Component<ModalProps, StateIF> {
           {showHeader && <ModalHeader closable={closable} onCancel={onCancel}>{title}</ModalHeader>}
           <ModalBody>{children}</ModalBody>
           <ModalFooter>
-            <div className={`${prefixCls}-button__warpper`}>
+            <div className={`${prefixCls}__button-warpper`}>
               {
                 hasFooter && (footer || (
                   <>
@@ -278,7 +279,7 @@ class Modal extends Component<ModalProps, StateIF> {
             </div>
           </ModalFooter>
         </div>
-        <div className={`${prefixCls}-hidden__elem`}>
+        <div className={`${prefixCls}__hidden-elem`}>
           <input type="readonly" tabIndex={0} onFocus={this.onBlur} />
         </div>
       </Popup>
