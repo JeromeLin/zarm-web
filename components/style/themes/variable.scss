@@ -195,6 +195,13 @@
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
 
+  // Breadcrumb
+  --breadcrumb-default-font-size: 14px;
+  --breadcrumb-default-color: #909090;
+  --breadcrumb-color: #343434;
+  --breadcrumb-hover-color: #00bc70;
+  --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
+
   // Avatar
   --avatar-border-radius: 50%;
   --avatar-fontSize: 14px;
@@ -211,4 +218,3 @@
   --avatar-default-color: #fff;
   --avatar-default-bg-color: #ccc;
 }
-
