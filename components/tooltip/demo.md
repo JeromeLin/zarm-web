@@ -40,33 +40,6 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 颜色主题
-支持深色和浅色两种主题色
-```jsx
-import { Tooltip, Button } from 'zarm-web';
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Tooltip theme="dark" content={<div><p>我是第一行内容</p><p>我是第二行内容</p></div>}>
-          <Button>dark theme</Button>
-        </Tooltip>
-        <Tooltip
-          theme="light"
-          content={<div><p>我是第一行内容</p><p>我是第二行内容</p></div>}
-         >
-          <Button>light theme</Button>
-        </Tooltip>
-      </div>
-    )
-  }
-}
-
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
 ## 触发方式
 通过trigger属性设置不同的tooltip触发方式
 ```jsx
