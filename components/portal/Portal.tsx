@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
 export interface PortalProps {
   children: any;
@@ -18,13 +17,6 @@ function getContainer(container, defaultContainer) {
 class Portal extends React.Component<PortalProps> {
   static defaultProps = {
     disablePortal: false,
-  };
-
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    container: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-    disablePortal: PropTypes.bool,
-    onRendered: PropTypes.func,
   };
 
   private mountNode: HTMLElement | null;

@@ -57,11 +57,10 @@ class Checkbox extends Component<CheckboxProps, CheckboxStates> {
       indeterminate,
       disabled,
     } = this.props;
-    const defualtDisabled = disabled;
-    const checkboxWrapperClass = classnames(className, `${prefixCls}`, {
-      [`${prefixCls}--disabled`]: defualtDisabled,
+
+    const checkboxWrapperClass = classnames(className, prefixCls, {
       [`${prefixCls}--checked`]: checked,
-      [`${prefixCls}--disabled`]: defualtDisabled,
+      [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--indeterminate`]: indeterminate,
     });
 
@@ -74,12 +73,10 @@ class Checkbox extends Component<CheckboxProps, CheckboxStates> {
           checked={checked}
           disabled={disabled}
           id={id}
-          onChange={e => this._onClick(e)}
+          onChange={(e) => this._onClick(e)}
         />
         <span className={`${prefixCls}__inner`} />
-        {children !== undefined && (
-          <span className={`${prefixCls}__children`}>{children}</span>
-        )}
+        {children && <span className={`${prefixCls}__children`}>{children}</span>}
       </label>
     );
   }

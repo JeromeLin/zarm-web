@@ -2,47 +2,47 @@
 
 exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] = `
 <div
-  class="ui-breadcrumb"
+  class="zw-breadcrumb"
 >
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__content"
     >
-      首页
+      一级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       &gt;
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__content"
     >
-      模块
+      二级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       &gt;
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <a
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
       href="https://t.zhongan.com"
     >
-      应用
+      三级菜单
     </a>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       &gt;
     </span>
@@ -52,47 +52,47 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
 
 exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
 <div
-  class="ui-breadcrumb"
+  class="zw-breadcrumb"
 >
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__content"
     >
-      首页
+      一级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       /
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <span
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__content"
     >
-      模块
+      二级菜单
     </span>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       /
     </span>
   </span>
   <span
-    class=""
+    class="zw-breadcrumb-item"
   >
     <a
-      class="ui-breadcrumb-link"
+      class="zw-breadcrumb-item__link"
       href="https://t.zhongan.com"
     >
-      应用
+      三级菜单
     </a>
     <span
-      class="ui-breadcrumb-separator"
+      class="zw-breadcrumb-item__separator"
     >
       /
     </span>

@@ -88,7 +88,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
         <Option
           {...(option as ReactElement<any>).props}
           onDoubleClick={onDoubleClick}
-          onChange={e => this.onOptionChange(e, (option as ReactElement<any>).props, index)}
+          onChange={(e) => this.onOptionChange(e, (option as ReactElement<any>).props, index)}
           checked={!!(value.indexOf((option as ReactElement<any>).props.value) > -1)}
         />
       );
@@ -110,7 +110,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
           aria-autocomplete="list"
           aria-haspopup="true"
           aria-expanded="false"
-          onClick={e => !disabled && this.onSelectClick(e)}
+          onClick={(e) => !disabled && this.onSelectClick(e)}
         >
           <Menu size={size}>{childrenNode}</Menu>
         </span>

@@ -23,7 +23,7 @@ class Option extends Component<OptionProps, any> {
       <li
         className={cls}
         style={{ paddingRight: showCheckIcon ? 25 : 10 }}
-        onClick={e => onChange && onChange(e)}
+        onClick={(e) => onChange && onChange(e)}
         onDoubleClick={onDoubleClick}
       >
         {children}
