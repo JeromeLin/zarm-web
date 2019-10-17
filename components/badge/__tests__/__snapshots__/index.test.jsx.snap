@@ -14,6 +14,9 @@ exports[`Badge sup 1`] = `
 <span
   class="zw-badge zw-badge--danger zw-badge--dot zw-badge--sup"
 >
+  <span>
+    foo
+  </span>
   <sup
     class="zw-badge__content"
   />
