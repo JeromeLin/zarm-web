@@ -46,11 +46,11 @@ class Step extends Component<PropsType, any> {
   }
 
   bindHandlers() {
-    Events.on(window, 'resize', _ => this.handleUpdate());
+    Events.on(window, 'resize', () => this.handleUpdate());
   }
 
   unbindHandlers() {
-    Events.off(window, 'resize', _ => this.handleUpdate());
+    Events.off(window, 'resize', () => this.handleUpdate());
   }
 
   render() {

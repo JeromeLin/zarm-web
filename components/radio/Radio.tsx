@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import RadioProps from './PropsType';
 
 class Radio extends Component<RadioProps, any> {
@@ -13,10 +13,7 @@ class Radio extends Component<RadioProps, any> {
   static propTypes = {
     prefixCls: PropTypes.string,
     defaultChecked: PropTypes.bool,
-    onChange: PropTypes.func,
     disabled: PropTypes.bool,
-    className: PropTypes.string,
-    checked: PropTypes.bool,
   };
 
   static Group;
@@ -30,13 +27,6 @@ class Radio extends Component<RadioProps, any> {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if ('checked' in nextProps) {
-  //     this.setState({
-  //       checked: !!nextProps.checked,
-  //     });
-  //   }
-  // }
   static getDerivedStateFromProps(props, state) {
     if ('checked' in props) {
       return {
@@ -84,7 +74,7 @@ class Radio extends Component<RadioProps, any> {
           checked={checked}
           disabled={disabled}
           id={id}
-          onChange={e => !disabled && this.onClick(e)}
+          onChange={(e) => !disabled && this.onClick(e)}
         />
         <span className={innerCls} />
         {children}

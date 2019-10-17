@@ -38,7 +38,7 @@ class Body extends Component<BodyProps, any> {
 
     if (expandedRowRender) {
       return (
-        <td onClick={e => this.handleToggleExpandRow(e, key, row)}><span className={cls} /></td>
+        <td onClick={(e) => this.handleToggleExpandRow(e, key, row)}><span className={cls} /></td>
       );
     }
   }
@@ -103,7 +103,8 @@ class Body extends Component<BodyProps, any> {
                 {this.renderExpandedRow(row, rowIndex)}
               </Fragment>
             );
-          })}
+          })
+        }
       </tbody>
     );
   }

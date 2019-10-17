@@ -21,7 +21,7 @@ class AlertExtension extends Alert {
     if (option) {
       object = Object.assign(defalutValue, option);
     } else {
-      object = Object.assign({}, defalutValue);
+      object = { ...defalutValue };
     }
     ReactDOM.render(
       <Alert

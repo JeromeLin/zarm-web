@@ -73,77 +73,77 @@ const { TreeNode } = Tree;
 describe('Tree', () => {
   it('renders basic Tree correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} />
+      <Tree treeData={treeData} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with defaultExpandAll correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} defaultExpandAll />
+      <Tree treeData={treeData} defaultExpandAll />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with defaultExpandAll canCheck correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} canCheck defaultExpandAll />
+      <Tree treeData={treeData} canCheck defaultExpandAll />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with defaultExpandAll correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} defaultExpandAll />
+      <Tree treeData={treeData} defaultExpandAll />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with defaultExpandAll, canCheck correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} defaultExpandAll canCheck />
+      <Tree treeData={treeData} defaultExpandAll canCheck />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with defaultExpandAll, canCheck, checkedKeys  correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} defaultExpandAll canCheck checkedKeys={checkedKeys} />
+      <Tree treeData={treeData} defaultExpandAll canCheck checkedKeys={checkedKeys} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with expandedKeys correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} expandedKeys={expandedKeys} />
+      <Tree treeData={treeData} expandedKeys={expandedKeys} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with expandedKeys, canCheck correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck />
+      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with expandedKeys, defaultExpandAll, canCheck correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll />
+      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with expandedKeys, defaultExpandAll, canCheck, checkedKeys correctly', () => {
     const wrapper = render(
-      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll checkedKeys={checkedKeys} />
+      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll checkedKeys={checkedKeys} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders basic Tree with TreeNode children', () => {
     const wrapper = render(
-      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll checkedKeys={checkedKeys} />
+      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll checkedKeys={checkedKeys} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -160,7 +160,7 @@ describe('Tree', () => {
             <TreeNode title={<span style={{ color: '#1890ff' }}>sss</span>} keys="0-1-0" />
           </TreeNode>
         </TreeNode>
-      </Tree>
+      </Tree>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -189,7 +189,7 @@ describe('Tree', () => {
         </div>
         <i>invalid element here invalid element here</i>
         <span>invalid element here invalid element here</span>
-      </Tree>
+      </Tree>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -197,18 +197,18 @@ describe('Tree', () => {
   it('behave correctly when change treeNode checked status', () => {
     const onCheck = jest.fn();
     const wrapper = mount(
-      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll checkedKeys={checkedKeys} onCheck={onCheck} />
+      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck defaultExpandAll checkedKeys={checkedKeys} onCheck={onCheck} />,
     );
     expect(wrapper.state('checkedKeys')).toEqual(expect.arrayContaining(['0-2-1-1', '0-0-0-0', '0-1-0']));
     expect(wrapper.state('halfCheckedKeys')).toEqual(expect.arrayContaining(['0', '0-2-1', '0-2']));
 
-    wrapper.find('li[data-keys="0-0-0-1"] .za-checkbox__input').at(0).simulate('change');
+    wrapper.find('li[data-keys="0-0-0-1"] .zw-checkbox__input').at(0).simulate('change');
     expect(onCheck).toBeCalled();
 
     expect(wrapper.state('checkedKeys')).toEqual(expect.arrayContaining(['0-2-1-1', '0-0-0-0', '0-1-0', '0-0-0-1', '0-0-0', '0-0']));
     expect(wrapper.state('halfCheckedKeys')).toEqual(expect.arrayContaining(['0', '0-2-1', '0-2']));
 
-    wrapper.find('li[data-keys="0-1"] .za-checkbox__input').at(0).simulate('change');
+    wrapper.find('li[data-keys="0-1"] .zw-checkbox__input').at(0).simulate('change');
     expect(onCheck).toBeCalled();
     expect(wrapper.state('checkedKeys')).toEqual(expect.arrayContaining(['0-0-0-0', '0-2-1-1', '0-1-0', '0-1', '0-1-1', '0-1-2']));
     expect(wrapper.state('halfCheckedKeys')).toEqual(expect.arrayContaining(['0', '0-2-1', '0-2']));
@@ -217,7 +217,7 @@ describe('Tree', () => {
   it('behave correctly when expand treeNode', () => {
     const onExpand = jest.fn();
     const wrapper = mount(
-      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck checkedKeys={checkedKeys} onExpand={onExpand} />
+      <Tree treeData={treeData} expandedKeys={expandedKeys} canCheck checkedKeys={checkedKeys} onExpand={onExpand} />,
     );
     expect(wrapper.state('expandedKeys')).toEqual(expect.arrayContaining(['0', '0-0-0', '0-0']));
 
