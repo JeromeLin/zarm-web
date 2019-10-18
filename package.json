@@ -67,7 +67,7 @@
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
-    "@zarm-design/cli": "^0.0.7",
+    "@zarm-design/cli": "^0.0.9",
     "babel-eslint": "^10.0.1",
     "browserslist": "^4.6.6",
     "color": "^3.1.0",
