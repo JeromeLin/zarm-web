@@ -11,15 +11,15 @@
   --color-black: #000;
 
   // 文字色
-  --color-text: #464646;                    // 基本
-  --color-text-inverse: #fff;               // 反色
-  --color-text-placeholder: #a9a9a9;        // 文本框提示
-  --color-text-disabled: #bcbcbc;           // 失效
-  --color-text-caption: #909090;            // 辅助描述
-  --color-link: var(--theme-primary);         // 链接
+  --color-text: #464646; // 基本
+  --color-text-inverse: #fff; // 反色
+  --color-text-placeholder: #a9a9a9; // 文本框提示
+  --color-text-disabled: #bcbcbc; // 失效
+  --color-text-caption: #909090; // 辅助描述
+  --color-link: var(--theme-primary); // 链接
 
   //阴影
-  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, .1), 0 0 6px rgba(0, 0, 0, .1);
+  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.1);
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // 背景色
@@ -31,7 +31,7 @@
   --border-disabled: #bcbcbc;
 
   // 透明度
-  --opacity-disabled: .5;
+  --opacity-disabled: 0.5;
 
   // 圆角
   --radius-sm: 2px;
@@ -44,7 +44,7 @@
   --padding-h-xs: 8px;
   --padding-h-sm: 12px;
   --padding-h-md: 14px;
-  --padding-h-lg: 26px;
+  --padding-h-lg: 16px;
   --padding-h-xl: 18px;
 
   // 垂直间距
@@ -60,6 +60,39 @@
   --font-size-md: 14px;
   --font-size-lg: 16px;
   --font-size-xl: 18px;
+
+  // Avatar
+  --avatar-border-radius: 50%;
+  --avatar-fontSize: 14px;
+  --avatar-width-md: 40px;
+  --avatar-height-md: 40px;
+  --avatar-width-xl: 72px;
+  --avatar-height-xl: 72px;
+  --avatar-width-lg: 48px;
+  --avatar-height-lg: 48px;
+  --avatar-width-sm: 32px;
+  --avatar-height-sm: 32px;
+  --avatar-width-xs: 24px;
+  --avatar-height-xs: 24px;
+  --avatar-default-color: #fff;
+  --avatar-default-bg-color: #ccc;
+
+  // Badge
+  --badge-height: 14px;
+  --badge-font-size: var(--font-size-xs);
+  --badge-padding-h: 4px;
+  --badge-dot-diameter: 8px;
+  --badge-border-radius-rect: var(--radius-sm);
+  --badge-border-radius-round: var(--radius-round);
+  --badge-sup-top: -4px;
+  --badge-text-color: #fff;
+
+  // Breadcrumb
+  --breadcrumb-default-font-size: 14px;
+  --breadcrumb-default-color: #909090;
+  --breadcrumb-color: #343434;
+  --breadcrumb-hover-color: #00bc70;
+  --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 
   // Button
   --button-ghost-disabled-border: #e9e9e9;
@@ -126,6 +159,12 @@
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
 
+  // Checkbox
+  --checkbox-size: 14px;
+  --checkbox-radius: var(--radius-sm);
+  --checkbox-border-color: var(--border-color);
+  --checkbox-background: var(--color-text-inverse);
+
   // Radio
   --button-radio-btn-disabled-color: --color-text-caption;
   --button-radio-btn-disabled-bg: rgba(250, 250, 250, 1);
@@ -136,11 +175,11 @@
   --menu-dark-bg-color: #001529;
   --menu-collapsed-width: 80px;
   --submenu-dark-bg-color: #000c17;
-  --menuitem-dark-color: hsla(0, 0%, 100%, .65);
+  --menuitem-dark-color: hsla(0, 0%, 100%, 0.65);
   --menuitem-dark-active-color: var(--color-white);
   --menuitem-default-color: #343434;
   --menuitem-active-color: var(--theme-primary);
-  --menuitem-active-bg-color: rgba(0, 188, 112, .0625);
+  --menuitem-active-bg-color: rgba(0, 188, 112, 0.0625);
   --menuitem-disabled-color: rgba(0, 0, 0, 0.25);
   --menuitem-divider-bg-color: #e5e5e5;
   --menuitem-horizontal-padding: 20px;

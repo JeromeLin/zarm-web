@@ -5,17 +5,11 @@
   border-color: rgba($color, 0.3);
   color: rgba($color, 1);
 
-  &.zw-tag--unborder {
+  @include m(unborder) {
     color: #fff;
     background-color: rgba($color, 1);
     border: hidden;
   }
-}
-
-@mixin color-reverser($color) {
-  color: #fff;
-  background-color: rgba($color, 1);
-  border-color: rgba($color, 1);
 }
 
 @mixin tag-size($height, $padding, $icon-size) {

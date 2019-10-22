@@ -1,5 +1,4 @@
 import { Component, isValidElement, Children, cloneElement } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { noop } from '../utils';
 
@@ -25,23 +24,6 @@ const TRANSITION_TYPE = {
 };
 
 export default class Transition extends Component<TransitionProps, any> {
-  static propTypes = {
-    name: PropTypes.string,
-    children: PropTypes.element.isRequired,
-    visible: PropTypes.bool,
-    directional: PropTypes.bool, // 控制是否动画显示隐藏
-    duration: PropTypes.number,
-    onComplete: PropTypes.func, // 动画结束后调用
-    onHide: PropTypes.func,  // 隐藏时候调用
-    onShow: PropTypes.func, // 显示时候调用
-    onStart: PropTypes.func, // 动画开始时候调用
-    onBeforeShow: PropTypes.func, // 动画开始时候调用
-    onBeforeHide: PropTypes.func, // 动画开始时候调用
-    transitionOnMount: PropTypes.bool, // 是否在初始化dom插入时候启用动画
-    unmountOnHide: PropTypes.bool, // 隐藏之后是否存在于document文档中
-    mountOnShow: PropTypes.bool, // 初始化的时候是否挂载节点
-  };
-
   static defaultProps = {
     name: 'fade',
     duration: 500,

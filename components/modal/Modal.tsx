@@ -95,7 +95,7 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   private static unmountModalInstance(instance: Modal, callback: () => void) {
-    const instanceIndex = Modal.instanceList.findIndex(item => item === instance);
+    const instanceIndex = Modal.instanceList.findIndex((item) => item === instance);
     if (instanceIndex >= 0) {
       Modal.instanceList.splice(instanceIndex, 1);
     }
