@@ -20,6 +20,7 @@
   /* 一般状态 */
   @include e(inner) {
     position: relative;
+    float: left;
     top: 0;
     left: 0;
     display: inline-block;
@@ -33,11 +34,11 @@
       content: '';
       display: table;
       position: absolute;
-      left: 4px;
-      top: 1px;
-      width: 5px;
-      height: 8px;
-      border: 2px solid #fff;
+      left: calc(var(--checkbox-size) * 0.3);
+      top: calc(var(--checkbox-size) * 0.1);
+      width: calc(var(--checkbox-size) * 0.4);
+      height: calc(var(--checkbox-size) * 0.6);
+      border: calc(var(--checkbox-size) * 0.12) solid #fff;
       border-top: 0;
       border-left: 0;
       transform: rotate(45deg) scale(0);
@@ -47,18 +48,23 @@
 
   @include e(input) {
     position: absolute;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     left: 0;
     opacity: 0;
   }
 
   @include e(children) {
+    display: inline-block;
     padding-right: 8px;
     padding-left: 8px;
-    font-size: 14px;
+    padding-top: 0px;
+    float: left;
+    font-size: var(--checkbox-children-size);
     font-weight: 400;
-    line-height: 20px;
+    line-height: calc(var(--checkbox-size));
     position: relative;
-    top: -2px;
+    top: 0px;
   }
 
   /* 未全部选中状态 */
@@ -69,8 +75,11 @@
 
       &:after {
         transform: rotate(90deg) translate(2px, 1px);
-        width: 6px;
-        height: 6px;
+        width: calc(var(--checkbox-size) * 0.43);
+        height: calc(var(--checkbox-size) * 0.43);
+        position: relative;
+        top: calc(var(--checkbox-size) * 0.1);
+        left: calc(var(--checkbox-size) * 0.3);
         border: none;
         background-color: var(--theme-primary);
       }

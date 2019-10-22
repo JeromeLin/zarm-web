@@ -160,10 +160,11 @@
   --button-danger-ghost-active-color: var(--theme-danger-dark);
 
   // Checkbox
-  --checkbox-size: 14px;
-  --checkbox-radius: var(--radius-sm);
+  --checkbox-size: 20px;
+  --checkbox-radius: calc(var(--checkbox-size) * 0.12);
   --checkbox-border-color: var(--border-color);
   --checkbox-background: var(--color-text-inverse);
+  --checkbox-children-size: 14px;
 
   // Radio
   --button-radio-btn-disabled-color: --color-text-caption;
