@@ -4,7 +4,7 @@ const defaultOptions = {
   prefixCls: 'zw-message',
   isMessage: true,
   stayTime: 3000,
-  type: 'info'
+  type: 'info',
 };
 
 function proxy(type: string) {
@@ -12,7 +12,7 @@ function proxy(type: string) {
     return Notification[type]({
       ...defaultOptions,
       ...typeof config === 'string' ? { message: config } : config,
-      type
+      type,
     });
   };
 }

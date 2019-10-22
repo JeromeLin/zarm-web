@@ -48,6 +48,7 @@ export default class Notification extends Component<PropsType, any> {
         return '';
     }
   }
+
   get theme() {
     const { type } = this.props;
     switch (type) {
@@ -63,21 +64,22 @@ export default class Notification extends Component<PropsType, any> {
     }
   }
 
-  onClick = event => {
+  onClick = (event) => {
     const { onClick } = this.props;
 
     if (typeof onClick === 'function') {
-      let target = event.target;
+      let { target } = event;
       do {
-        const className = target.className;
+        const { className } = target;
         // trigger click only when clicks the content
         if (
-          className && className.indexOf &&
-          className.indexOf('zw-notification__custom-content') != -1) {
+          className && className.indexOf
+          && className.indexOf('zw-notification__custom-content') !== -1) {
           onClick(event);
-          return
+          return;
         }
-      } while (target = target.parentNode)
+        target = target.parentNode;
+      } while (target);
     }
   };
 

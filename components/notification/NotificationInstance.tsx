@@ -13,11 +13,20 @@ const notificationInstances: Instance[] = [];
 let seed = 0;
 
 function getNotificationKey() {
-  return `notification-${++seed}`;
+  seed += 1;
+  return `notification-${seed}`;
+}
+
+function closeInstance(key: string) {
+  notificationInstances.forEach((instance: Instance) => {
+    if (instance.key === key) {
+      instance.onClose();
+    }
+  });
 }
 
 function NotificationInstance(props?: any, type?: Type) {
-  const className: string = '.' + props.prefixCls;
+  const className = `.${props.prefixCls}`;
   const div = document.createElement('div');
 
   document.body.appendChild(div);
@@ -66,23 +75,15 @@ function NotificationInstance(props?: any, type?: Type) {
 
   return {
     close() {
-      closeInstance(key)
-    }
-  }
-}
-
-function closeInstance(key: string) {
-  notificationInstances.forEach((instance: Instance) => {
-    if (instance.key === key) {
-      instance.onClose();
-    }
-  });
+      closeInstance(key);
+    },
+  };
 }
 
 const api: any = {
   open(props: PropsType) {
     return NotificationInstance(props);
-  }
+  },
 };
 
 ['info', 'error', 'success', 'warning'].forEach((type: Type) => {
