@@ -217,4 +217,28 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  //Switch 
+  --switch-height-md: 20px;
+  --switch-height-sm: 16px;
+  --switch-width-md: 48px;
+  --switch-width-sm: 32px;
+  --switch-inner-size-md: 14px;
+  --switch-inner-size-sm: 12px;
+  --switch-line-height-sm: 12px;
+  --switch-line-height-md: 18px;
+  --switch-disabled-background: #dedede;
+  --switch-transition: left .3s cubic-bezier(.78, .14, .15, .86);
+  --switch-checked-left-md: 30px;
+  --switch-inner-left-md: 24px;
+  --switch-checked-inner-left-md: 6px;
+  --switch-loading-left-md: -24px;
+  --switch-loading-checked-left-md: 21px;
+  --switch-checked-left-sm: 17px;
+  --switch-checked-inner-left-sm: 4px;
+  --switch-inner-left-sm: 13px;
+  --switch-loading-checked-left-sm: 9px;
+  --switch-loading-checked-top-sm: -4px;
+  --switch-loading-left-sm: -15px;
+  --switch-loading-top-sm: -4px;
 }

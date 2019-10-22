@@ -4,44 +4,43 @@
 @include b(switch) {
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 20px;
-  line-height: 18px;
+  width: var(--switch-width-md);
+  height: var(--switch-height-md);
+  line-height: var(--switch-line-height-md);
   vertical-align: middle;
-  border-radius: 18px;
-  background-color: #bcbcbc;
+  border-radius: var(--switch-line-height-md);
+  background-color: var(--background-disabled);
   cursor: pointer;
-  transition: left .3s cubic-bezier(.78, .14, .15, .86);
+  transition: var(--switch-transition);
   user-select: none;
 
   &:after {
     position: absolute;
-    width: 14px;
-    height: 14px;
-    left: 4px;
-    top: 3px;
+    width: var(--switch-inner-size-md);
+    height: var(--switch-inner-size-md);
+    left: calc((var(--switch-height-md) - var(--switch-inner-size-md)) / 2);
+    top: calc((var(--switch-height-md) - var(--switch-inner-size-md)) / 2);
     border-radius: 100%;
-    background-color: #fff;
+    background-color: var(--color-white);
     content: " ";
     cursor: pointer;
-    transition: left .3s cubic-bezier(.78, .14, .15, .86);
+    transition: var(--switch-transition);
   }
 
   @include m(checked) {
     background-color: var(--theme-primary);
 
     &:after {
-      left: 30px;
+      left: var(--switch-checked-left-md);
     }
 
     @include e(inner) {
-      left: 6px;
+      left: var(--switch-checked-inner-left-md);
     }
     @include e(loading) {
       display: inline-block;
       transform: scale(0.5);
-      left: 21px;
-      z-index: 2;
+      left: var(--switch-loading-checked-left-md);
       position: relative;
 
       circle {
@@ -53,11 +52,12 @@
 
   @include m(disabled) {
     cursor: not-allowed;
-    background-color: #dedede;
+    background-color: var(--switch-disabled-background);
 
     &:after {
       cursor: not-allowed;
     }
+
     @include m(checked) {
       background-color: var(--theme-primary);
       border: 1px solid var(--background-primary-disabled);
@@ -66,24 +66,25 @@
   }
 
   @include m(sm) {
-    height: 16px;
-    line-height: 12px;
-    width: 32px;
+    height: var(--switch-height-sm);
+    width: var(--switch-width-sm);
+    line-height: var(--switch-line-height-sm);
+    border-radius: var(--switch-line-height-sm);
 
     &:after {
-      width: 12px;
-      height: 12px;
-      top: 2px;
-      left: 3px;
+      width: var(--switch-inner-size-sm);
+      height: var(--switch-inner-size-sm);
+      top: calc((var(--switch-height-sm) - var(--switch-inner-size-sm)) / 2);
+      left: calc((var(--switch-height-sm) - var(--switch-inner-size-sm)) / 2);
     }
 
     @include m(checked) {
       &:after {
-        left: 17px;
+        left: var(--switch-checked-left-sm);
       }
 
       @include e(inner) {
-        left: 4px;
+        left: var(--switch-checked-inner-left-sm);
         position: relative;
       }
 
@@ -91,9 +92,8 @@
         display: inline-block;
         font-size: 10px;
         transform: scale(0.4);
-        top: -4px;
-        left: 9px;
-        z-index: 2;
+        top: var(--switch-loading-checked-top-sm);
+        left: var(--switch-loading-checked-left-sm);
         position: relative;
 
         circle {
@@ -104,7 +104,7 @@
     }
 
     @include e(inner) {
-      left: 13px;
+      left: var(--switch-inner-left-sm);
       font-size: 10px;
       position: relative;
     }
@@ -113,8 +113,8 @@
       display: inline-block;
       font-size: 10px;
       transform: scale(0.4);
-      top: -4px;
-      left: -14px;
+      top: var(--switch-loading-top-sm);
+      left: var(--switch-loading-left-sm);
       z-index: 2;
       position: relative;
 
@@ -127,7 +127,7 @@
 
   @include e(inner) {
     position: absolute;
-    left: 24px;
+    left: var(--switch-inner-left-md);
     color: #fff;
     font-size: 12px;
   }
@@ -135,7 +135,7 @@
   @include e(loading) {
     display: inline-block;
     transform: scale(0.5);
-    left: -24px;
+    left: var(--switch-loading-left-md);
     z-index: 2;
     position: relative;
 
