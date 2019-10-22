@@ -1,8 +1,8 @@
-$notification-width: 384px;
+$notification-width: 336px;
 $notification-padding-vertical: 16px;
-$notification-padding-horizontal: 24px;
+$notification-padding-horizontal: 20px;
 $notification-padding: $notification-padding-vertical $notification-padding-horizontal;
-$notification-margin-bottom: 16px;
+$notification-margin-bottom: 20px;
 
 @include b(notification) {
   position: fixed;
@@ -10,18 +10,20 @@ $notification-margin-bottom: 16px;
   padding: $notification-padding;
   box-sizing: border-box;
   border-radius: var(--radius-md);
-  right: 16px;
+  right: 20px;
+  top: 20px;
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-dark);
   transition: opacity 0.3s, transform .3s, right .3s, top 0.4s;
   line-height: 1.5;
   overflow: hidden;
+  z-index: $base-zindex-notification;
 
   @include e(content) {
     margin-left: 0;
 
     &.has-icon {
-      margin-left: 45px;
+      margin-left: 32px;
     }
 
     @include e(close) {
@@ -48,14 +50,14 @@ $notification-margin-bottom: 16px;
     @include e(custom-content) {
       font-size: var(--font-size-md);
       line-height: 21px;
-      margin: 10px 0 0;
+      margin: 4px 0 0;
       color: #8391a5;
       text-align: justify;
     }
 
     @include e(icon) {
       position: absolute;
-      left: 27px;
+      left: 20px;
       top: 16px;
       font-size: 24px;
     }

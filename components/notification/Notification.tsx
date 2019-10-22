@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Transition from '../transition';
-import NotificationProps from './PropsType';
+import { PropsType } from './PropsType';
 import Icon from '../icon';
 
-export default class Notification extends Component<NotificationProps, any> {
+export default class Notification extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'za-notification',
+    prefixCls: 'zw-notification',
     message: '',
     top: 20,
-    stayTime: 4500,
-    onClick: () => {},
-    onClose: () => {},
+    stayTime: 5000,
+    onClick: () => { },
+    onClose: () => { },
   };
 
   state = {
@@ -34,26 +34,50 @@ export default class Notification extends Component<NotificationProps, any> {
   }
 
   get type() {
-    const { theme } = this.props;
-    switch (theme) {
+    const { type } = this.props;
+    switch (type) {
       case 'success':
         return 'right-round-fill';
-      case 'danger':
+      case 'error':
         return 'wrong-round-fill';
-      case 'primary':
+      case 'info':
         return 'info-round-fill';
       case 'warning':
         return 'warning-round-fill';
-      // case 'loading':
-      //   return 'loading';
+      default:
+        return '';
+    }
+  }
+  get theme() {
+    const { type } = this.props;
+    switch (type) {
+      case 'success':
+      case 'warning':
+        return type;
+      case 'error':
+        return 'danger';
+      case 'info':
+        return 'primary';
       default:
         return '';
     }
   }
 
-  onClick = (event: React.SyntheticEvent<any>) => {
-    if (this.props.onClick) {
-      this.props.onClick(event);
+  onClick = event => {
+    const { onClick } = this.props;
+
+    if (typeof onClick === 'function') {
+      let target = event.target;
+      do {
+        const className = target.className;
+        // trigger click only when clicks the content
+        if (
+          className && className.indexOf &&
+          className.indexOf('zw-notification__custom-content') != -1) {
+          onClick(event);
+          return
+        }
+      } while (target = target.parentNode)
     }
   };
 
@@ -98,7 +122,7 @@ export default class Notification extends Component<NotificationProps, any> {
   }
 
   render() {
-    const { prefixCls, className, top, style, title, message, theme, isMessage, willUnMount, btn } = this.props;
+    const { prefixCls, className, top, style, title, message, type, isMessage, willUnMount, btn } = this.props;
     const { visible } = this.state;
     const componentName = isMessage ? 'message' : 'notification';
 
@@ -117,15 +141,15 @@ export default class Notification extends Component<NotificationProps, any> {
           onClick={this.onClick}
           style={{ ...style, top }}
         >
-          <div className={classnames(`za-${componentName}__content`, { 'has-icon': theme })}>
-            {!isMessage && <div className={`za-${componentName}__close`} onClick={this.onClose}><Icon type="wrong" /></div>}
-            {!isMessage && theme && <Icon type={this.type} className={`za-${componentName}__icon`} theme={theme} />}
-            {title && <div className={`za-${componentName}__title`}>{title}</div>}
-            <div className={`za-${componentName}__custom-content`} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-              {isMessage && <Icon type={this.type} className={`za-${componentName}__icon`} theme={theme} />}
+          <div className={classnames(`${prefixCls}__content`, { 'has-icon': type })}>
+            {!isMessage && <div className={`${prefixCls}__close`} onClick={this.onClose}><Icon type="wrong" /></div>}
+            {!isMessage && type && <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />}
+            {!isMessage && title && <div className={`${prefixCls}__title`}>{title}</div>}
+            <div className={`${prefixCls}__custom-content`} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+              {isMessage && <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />}
               {message}
-              {!isMessage && <span className={`za-${componentName}__action-area`}>{btn}</span>}
             </div>
+            {!isMessage && btn && <div className={`${prefixCls}__action-area`}>{btn}</div>}
           </div>
         </div>
       </Transition>

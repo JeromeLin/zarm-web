@@ -1,12 +1,13 @@
 @import '../../style/themes/variable';
+@import '../../style/themes/default';
 @import "../../style/core/mixins/index";
 
 @include b(message) {
   position: fixed;
   width: 100%;
-  top: 16px;
+  top: 20px;
   left: 0;
-  z-index: 1000;
+  z-index: $base-zindex-message;
   pointer-events: none;
   transition: opacity 0.3s, transform .3s, right .3s, top 0.4s;
   animation-duration: 0.3s;
@@ -14,28 +15,28 @@
   @include e(content) {
     text-align: center;
 
-    &.has-icon {
-      margin-left: 55px;
-    }
+    // &.has-icon {
+    // }
   }
 
   @include e(custom-content) {
     display: inline-block;
-    padding: 10px 16px;
+    padding: 10px 16px 10px 40px;
     pointer-events: all;
     font-size: var(--font-size-md);
     color: #8391a5;
     background: var(--color-white);
     box-shadow: var(--box-shadow-dark);
     border-radius: var(--radius-md);
+    max-width: 500px;
+    min-width: 150px;
+    text-align: left;
+    text-indent: -12px;
   }
 
   @include e(icon) {
-    position: static !important;
-    top: -2px;
-    transform: translate(0, 0);
     margin-right: 8px;
-    vertical-align: middle;
+    vertical-align: -0.25em;
     font-size: var(--font-size-lg);
 
     &.theme-loading {

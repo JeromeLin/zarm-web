@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default interface PropsType {
+export type Type = 'success' | 'warning' | 'info' | 'error';
+export interface PropsType {
   prefixCls?: string;
   style?: React.CSSProperties;
   top?: number | string;
-  // theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'loading';
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
+  type?: Type;
   title?: string;
   message?: string;
   stayTime: number;
@@ -16,5 +16,4 @@ export default interface PropsType {
   onClose?: (e?: React.SyntheticEvent<any>) => void;
   className?: string;
   isMessage?: boolean;
-  key?: string;
 }

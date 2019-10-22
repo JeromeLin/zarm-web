@@ -1,26 +1,28 @@
 import Notification from '../notification';
 
 const defaultOptions = {
-  prefixCls: 'za-message',
+  prefixCls: 'zw-message',
   isMessage: true,
+  stayTime: 3000,
+  type: 'info'
 };
 
-function proxy(theme: string) {
+function proxy(type: string) {
   return (config?: object | string) => {
-    Notification[theme]({
-      ...typeof config === 'string' ? { message: config } : { ...config },
+    return Notification[type]({
       ...defaultOptions,
+      ...typeof config === 'string' ? { message: config } : config,
+      type
     });
   };
 }
 
 export default {
-  primary: proxy('primary'),
+  info: proxy('info'),
   success: proxy('success'),
   warning: proxy('warning'),
-  danger: proxy('danger'),
-  loading: proxy('loading'),
-  config(options) {
-    Notification.open({ ...defaultOptions, ...options });
+  error: proxy('error'),
+  open(options) {
+    return Notification.open({ ...defaultOptions, ...options });
   },
 };
