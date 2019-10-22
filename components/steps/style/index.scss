@@ -1,24 +1,6 @@
 @import '../../style/core/index';
 @import './mixins';
 
-:root {
-  // color
-  --steps-title-color: var(--color-text);
-  --steps-desc-color: var(--color-text-caption);
-  --steps-wait-color: var(--color-text-disabled);
-
-  // font size
-  --steps-title-font-size: var(--font-size-md);
-  --steps-desc-font-size: var(--font-size-sm);
-
-  // border
-  --steps-border-color: var(--color-text-disabled);
-
-  // status
-  --steps-status-process: var(--theme-primary);
-  --steps-status-error: var(--theme-danger);
-}
-
 $steps-icon-size: 28px;
 $steps-content-width: 120px;
 
@@ -69,7 +51,7 @@ $steps-content-width: 120px;
 
   @include m(icon) {
     font-size: var(--steps-title-font-size);
-    color: var(--steps-wait-color);
+    color: var(--steps-status-wait);
   }
   @include m(title) {
     font-size: var(--steps-title-font-size);
