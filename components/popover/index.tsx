@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Popper from './popper';
 import Events from '../utils/events';
@@ -29,9 +30,11 @@ class Popover extends Component<PropsType, any> {
     mask: false,
     radius: true,
     direction: 'bottomRight',
-    onMaskClick() {},
+    onMaskClick() { },
     content: null,
   };
+
+  mountNode: HTMLDivElement;
 
   private instance;
   private pop;
@@ -45,6 +48,10 @@ class Popover extends Component<PropsType, any> {
     this.state = {
       visible: false,
     };
+    this.mountNode = document.createElement('div');
+    this.mountNode.classList.add('ui-popover-mount-node');
+    this.mountNode.style.setProperty('z-index', '2021');
+    this.mountNode.style.setProperty('postion', 'relative');
   }
 
   componentDidMount() {
@@ -100,8 +107,8 @@ class Popover extends Component<PropsType, any> {
     const { visible } = this.state;
     const { direction } = this.props;
     const reference = findDOMNode(this.reference); // eslint-disable-line
-
     if (visible) {
+      document.body.appendChild(this.mountNode);
       if (this.popper) {
         this.popper.update();
       } else {
@@ -113,6 +120,9 @@ class Popover extends Component<PropsType, any> {
         });
       }
     } else {
+      if (this.mountNode.parentNode) {
+        this.mountNode.parentNode.removeChild(this.mountNode);
+      }
       if (this.popper) {
         this.popper.destroy();
       }
@@ -123,6 +133,9 @@ class Popover extends Component<PropsType, any> {
   componentWillUnmount() {
     if (this.popper) {
       this.popper.destroy();
+    }
+    if (this.mountNode.parentNode) {
+      this.mountNode.parentNode.removeChild(this.mountNode);
     }
     delete this.popper;
   }
@@ -159,12 +172,13 @@ class Popover extends Component<PropsType, any> {
       radius,
       mask,
       onMaskClick,
+      popoverClassName,
     } = this.props;
     const child = React.isValidElement(children) ? (
       children
     ) : (
-      <span>{children}</span>
-    );
+        <span>{children}</span>
+      );
     const popContent = typeof content === 'function' ? content() : content;
     const cls = classnames({
       'ui-popover': true,
@@ -174,12 +188,30 @@ class Popover extends Component<PropsType, any> {
       [`${prefixCls}-content`]: true,
       [`${prefixCls}-content-show`]: visible,
       [`${prefixCls}-content-radius`]: !!radius,
+      [`${popoverClassName}`]: !!popoverClassName,
     });
     const maskCls = classnames({
       [`${prefixCls}-mask`]: true,
       [`${prefixCls}-mask-show`]: visible,
     });
 
+    const popoverContent = (
+      <div
+        className={contentCls}
+        // tslint:disable-next-line:jsx-no-multiline-js
+        ref={(pop) => {
+          this.pop = pop;
+        }}
+      >
+        {popContent}
+        <span
+          className={`${prefixCls}-arrow`}
+          // tslint:disable-next-line:jsx-no-multiline-js
+          ref={(arrow) => {
+            this.arrow = arrow;
+          }}
+        />
+      </div>);
     return (
       <div
         className={cls}
@@ -189,22 +221,7 @@ class Popover extends Component<PropsType, any> {
         }}
       >
         {mask ? <div className={maskCls} onClick={onMaskClick} /> : null}
-        <div
-          className={contentCls}
-          // tslint:disable-next-line:jsx-no-multiline-js
-          ref={(pop) => {
-            this.pop = pop;
-          }}
-        >
-          {popContent}
-          <span
-            className={`${prefixCls}-arrow`}
-            // tslint:disable-next-line:jsx-no-multiline-js
-            ref={(arrow) => {
-              this.arrow = arrow;
-            }}
-          />
-        </div>
+        {ReactDOM.createPortal(popoverContent, this.mountNode)}
         {React.cloneElement(child, { ref: (reference) => { this.reference = reference; } })}
       </div>
     );
