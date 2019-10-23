@@ -298,4 +298,12 @@ Tabs
 | prefixCls | string | - | 类名的前缀 |
 | animated | boolean | - | 是否使用切换动画，在direction为horizontal时生效 |
 
+Tabs.Tab
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| title | string | - | 自定义tab名称 |
+| disabled | boolean | false | 禁用 |
+| closable | boolean | false | 是否关闭 |
+
 

@@ -163,7 +163,7 @@ class Tabs extends Component<GroupProps, any> {
           onClick={() => { this.handleTabClick($index, item.props.disabled); }}
         >
           {item.props.title}
-          {closable && <Icon className={`${prefixCls}-header-item-icon`} type="wrong" onClick={() => { this.handleTabClose($index, item.props.disabled); }} />}
+          {item.props.closable && <Icon className={`${prefixCls}-header-item-icon`} type="wrong" onClick={() => { this.handleTabClose($index, item.props.disabled); }} />}
         </li>
       );
     });
