@@ -10,7 +10,7 @@ const { Tab } = Tabs;
 class Demo extends React.Component {
   render() {
     return (
-      <Tabs type="line" onChange={(i) => console.log(i)}>
+      <Tabs type="line" onChange={(i) => console.log(i)} value={2}>
         <Tab title="Tab1">
           <div style={{padding: 10}}>
             这是选项卡1的文字

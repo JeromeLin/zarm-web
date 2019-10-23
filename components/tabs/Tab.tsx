@@ -15,19 +15,21 @@ class Tab extends Component<PropsType, any> {
     prefixCls: 'zw-tabs',
   };
 
+
+  static getDerivedStateFromProps(props) {
+    if ('selected' in props) {
+      return {
+        selected: !!props.selected,
+      };
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       selected: props.selected || props.defaultSelected,
     };
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if ('selected' in nextProps) {
-      this.setState({
-        selected: !!nextProps.selected,
-      });
-    }
   }
 
   render() {

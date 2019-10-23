@@ -67,14 +67,6 @@ class Tabs extends Component<GroupProps, any> {
     this.setActiveLineStyle();
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || Tabs.getSelectIndex(nextProps.children)) {
-      this.setState({
-        value: nextProps.value,
-      });
-    }
-  }
-
   setActiveLineStyle() {
     const { width = 0, left = 0 } = (this.activeTab && this.activeTab.getBoundingClientRect()) || {};
     const { scrollWidth = 0, scrollHeight = 0, scrollLeft = 0, offsetWidth: headerWidth = 0, offsetHeight: headerHeight = 0 } = this.tabHeader.current || {};
