@@ -135,7 +135,10 @@ class Tabs extends Component<GroupProps, any> {
       className, children, style, prefixCls, type, direction, size, closable, animated,
     } = this.props;
     const { value, lineWidth, lineOffsetLeft, isArrowShown } = this.state;
-    const cls = classnames(prefixCls, type, direction, className);
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${direction}`]: direction,
+      [`${prefixCls}--${type}`]: type,
+    });
     const headerCls = classnames(`${prefixCls}-header`, `size-${size}`);
 
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
@@ -148,6 +151,7 @@ class Tabs extends Component<GroupProps, any> {
         [`${prefixCls}-header-item`]: true,
         [`${prefixCls}-header-item--disabled`]: !!item.props.disabled,
         [`${prefixCls}-header-item--active`]: $index === value,
+        [`${prefixCls}-header-item--${size}`]: size,
       });
       const bindActiveRef = $index === value ? { ref: (node) => { this.activeTab = node; } } : {};
 
@@ -175,7 +179,7 @@ class Tabs extends Component<GroupProps, any> {
     return (
       <div className={cls} style={style}>
         <div className={headerCls} style={{ padding: isArrowShown ? scrollPadding : 0 }}>
-          <ul className='scroll-content' ref={this.tabHeader}>
+          <ul className={`${prefixCls}-scroll`} ref={this.tabHeader}>
             {items}
             {
               type === 'line' && (

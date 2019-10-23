@@ -1,99 +1,16 @@
-@mixin tab-size($font-size) {
-  @include b(tabs-header-item) {
-    font-size: $font-size;
-    @include b(tabs-header-item-icon) {
-      font-size: $font-size;
-      display: inline-block;
-      color: #BCBCBC;
-      margin-left: 8px;
-    }
-  }
-}
-
-@mixin tabs-header-style() {
-  position: relative;
-  .scroll-content {
-    position: relative;
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    margin-bottom: -1px;
-
-    @include b(tabs-header-item) {
-      position: relative;
-      cursor: pointer;
-      line-height: normal;
-      color: #616161;
-      flex-shrink: 0;
-      flex-grow: 0;
-      flex-basis: auto;
-  
-      @include m(disabled) {
-        color: #BCBCBC;
-        cursor: not-allowed;
-      }
-  
-      @include m(active) {
-        background: #fff;
-        color: #00BC70;
-      }
-    }
-  
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  &.size-sm {
-    @include tab-size(12px);
-  }
-
-  &.size-md {
-    @include tab-size(14px);
-  }
-
-  &.size-lg {
-    @include tab-size(16px);
-  }
-
-  @include b(tabs-arrow) {
-    color: #909090;
-    font-size: 12px;
-    cursor: pointer;
-  }
-
-}
-
-@mixin tabs-body-style {
-  @include clearfix;
-  
-  position: relative;
-  transition: height .3s;
-
-  @include b(tabs-body-item) {
-    line-height: normal;
-    opacity: 0;
-    overflow: hidden;
-    height: 0;
-
-    @include m(active) {
-      opacity: 1;
-      height: auto;
-    }
-  }
-}
+@import './mixin';
 
 @include b(tabs) {
 
   overflow: hidden;
 
-  &.horizontal {
+  @include m(horizontal) {
 
     @include b(tabs-header) {
       @include clearfix;
       border-bottom: 1px solid #e8e8e8;
       padding: 0 20px;
-      .scroll-content {
+      @include b(tabs-scroll) {
         display: flex;
         flex-direction: row;
         flex: 1 0 auto;
@@ -153,14 +70,14 @@
       
     }
 
-    &.line {
+    @include m(line) {
       @include b(tabs-header-item) {
         padding: 0 16px 12px;
         height: 34px;
       }
     }
   
-    &.card {
+    @include m(card) {
       @include b(tabs-header-item) {
         padding: 10px 16px 12px;
         border: 1px solid #E6E6E6;
@@ -174,7 +91,7 @@
       }
     }
   
-    &.noborder-card {
+    @include m(noborder-card) {
       @include b(tabs-header-item) {
         padding: 10px 16px 12px;
         background: #F2F2F2;
@@ -196,13 +113,13 @@
     }
   }
 
-  &.vertical {
+  @include m(vertical) {
     @include b(tabs-header) {
       overflow: hidden;
       padding: 20px 0;
       float: left;
       height: 100%;
-      .scroll-content {
+      @include b(tabs-scroll) {
         overflow-y: scroll;
         height: 100%;
       }
