@@ -64,15 +64,16 @@ export default class Notification extends Component<PropsType, any> {
   onClick = (event) => {
     const { onClick, prefixCls } = this.props;
     if (typeof onClick === 'function') {
-      let { target, currentTarget } = event;
-      let reg = new RegExp(`${prefixCls}__close`);
+      const reg = new RegExp(`${prefixCls}__close`);
+      const { currentTarget } = event;
+      let { target } = event;
       do {
         if (currentTarget === target) {
           onClick(event);
           return;
         }
         if (reg.test(target.className)) {
-          return
+          return;
         }
         target = target.parentNode;
       } while (target);
@@ -119,6 +120,33 @@ export default class Notification extends Component<PropsType, any> {
     this.setState({ visible: false });
   }
 
+  renderMessage() {
+    const { prefixCls, message } = this.props;
+    return (
+      <>
+        <div className={`${prefixCls}__custom-content`}>
+          <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />
+          {message}
+        </div>
+      </>
+    );
+  }
+
+  renderNotification() {
+    const { prefixCls, title, message, btn } = this.props;
+    return (
+      <>
+        <div className={`${prefixCls}__close`} onClick={this.onClose}><Icon type="wrong" /></div>
+        {this.type && <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />}
+        <div className={`${prefixCls}__title`}>{title}</div>
+        <div className={`${prefixCls}__custom-content`}>
+          {message}
+        </div>
+        {btn && <div className={`${prefixCls}__action-area`}>{btn}</div>}
+      </>
+    );
+  }
+
   render() {
     const { prefixCls, className, top, style, type, isMessage, willUnMount } = this.props;
     const { visible } = this.state;
@@ -147,32 +175,5 @@ export default class Notification extends Component<PropsType, any> {
         </div>
       </Transition>
     );
-  }
-
-  renderMessage() {
-    const { prefixCls, message } = this.props;
-    return (
-      <>
-        <div className={`${prefixCls}__custom-content`} >
-          <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />
-          {message}
-        </div>
-      </>
-    )
-  }
-
-  renderNotification() {
-    const { prefixCls, title, message, btn } = this.props;
-    return (
-      <>
-        <div className={`${prefixCls}__close`} onClick={this.onClose}><Icon type="wrong" /></div>
-        {this.type && <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />}
-        <div className={`${prefixCls}__title`}>{title}</div>
-        <div className={`${prefixCls}__custom-content`} >
-          {message}
-        </div>
-        {btn && <div className={`${prefixCls}__action-area`}>{btn}</div>}
-      </>
-    )
   }
 }
