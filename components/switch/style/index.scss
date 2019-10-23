@@ -6,41 +6,36 @@
   display: inline-block;
   width: var(--switch-width-md);
   height: var(--switch-height-md);
-  line-height: var(--switch-line-height-md);
   vertical-align: middle;
-  border-radius: var(--switch-line-height-md);
+  border-radius: var(--switch-height-md);
   background-color: var(--background-disabled);
   cursor: pointer;
-  transition: var(--switch-transition);
+  transition: left .3s cubic-bezier(.78, .14, .15, .86);
   user-select: none;
 
   &:after {
     position: absolute;
-    width: var(--switch-inner-size-md);
-    height: var(--switch-inner-size-md);
-    left: calc((var(--switch-height-md) - var(--switch-inner-size-md)) / 2);
-    top: calc((var(--switch-height-md) - var(--switch-inner-size-md)) / 2);
+    width: calc(var(--switch-height-md) * 0.7);
+    height: calc(var(--switch-height-md) * 0.7);
+    left: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
+    top: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
     border-radius: 100%;
     background-color: var(--color-white);
     content: " ";
     cursor: pointer;
-    transition: var(--switch-transition);
+    transition: left .3s cubic-bezier(.78, .14, .15, .86);
   }
 
   @include m(checked) {
     background-color: var(--theme-primary);
 
     &:after {
-      left: var(--switch-checked-left-md);
-    }
-
-    @include e(inner) {
-      left: var(--switch-checked-inner-left-md);
+      left: calc(var(--switch-width-md) * 0.625);
     }
     @include e(loading) {
       display: inline-block;
       transform: scale(0.5);
-      left: var(--switch-loading-checked-left-md);
+      left: calc(var(--switch-width-md) * 0.5625);
       position: relative;
 
       circle {
@@ -68,23 +63,21 @@
   @include m(sm) {
     height: var(--switch-height-sm);
     width: var(--switch-width-sm);
-    line-height: var(--switch-line-height-sm);
-    border-radius: var(--switch-line-height-sm);
+    border-radius: var(--switch-height-sm);
 
     &:after {
-      width: var(--switch-inner-size-sm);
-      height: var(--switch-inner-size-sm);
-      top: calc((var(--switch-height-sm) - var(--switch-inner-size-sm)) / 2);
-      left: calc((var(--switch-height-sm) - var(--switch-inner-size-sm)) / 2);
+      width: calc(var(--switch-height-sm) * 0.75);
+      height: calc(var(--switch-height-sm) * 0.75);
+      top: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
+      left: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
     }
 
     @include m(checked) {
       &:after {
-        left: var(--switch-checked-left-sm);
+        left: calc(var(--switch-width-sm) * 0.53125);
       }
 
       @include e(inner) {
-        left: var(--switch-checked-inner-left-sm);
         position: relative;
       }
 
@@ -92,9 +85,9 @@
         display: inline-block;
         font-size: 10px;
         transform: scale(0.4);
-        top: var(--switch-loading-checked-top-sm);
-        left: var(--switch-loading-checked-left-sm);
-        position: relative;
+        left: calc(var(--switch-width-sm) * 0.40625);
+        top: calc(var(--switch-height-sm) / -8);
+        position: absolute;
 
         circle {
           stroke: var(--theme-primary) !important;
@@ -104,7 +97,6 @@
     }
 
     @include e(inner) {
-      left: var(--switch-inner-left-sm);
       font-size: 10px;
       position: relative;
     }
@@ -113,13 +105,13 @@
       display: inline-block;
       font-size: 10px;
       transform: scale(0.4);
-      top: var(--switch-loading-top-sm);
-      left: var(--switch-loading-left-sm);
+      position: absolute;
+      top: calc(var(--switch-height-sm) / -8);
+      left: calc(var(--switch-height-sm) / -8);
       z-index: 2;
-      position: relative;
 
       circle {
-        stroke: #dedede !important;
+        stroke: var(--switch-disabled-background) !important;
         stroke-width: 10 !important;
       }
     }
@@ -127,7 +119,6 @@
 
   @include e(inner) {
     position: absolute;
-    left: var(--switch-inner-left-md);
     color: #fff;
     font-size: 12px;
   }
@@ -135,7 +126,6 @@
   @include e(loading) {
     display: inline-block;
     transform: scale(0.5);
-    left: var(--switch-loading-left-md);
     z-index: 2;
     position: relative;
 
