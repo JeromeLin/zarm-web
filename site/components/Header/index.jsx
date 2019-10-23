@@ -2,19 +2,19 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Select } from 'zarm-web';
 import classnames from 'classnames';
-import docsearch from 'docsearch.js';
+// import docsearch from 'docsearch.js';
 import { version } from '@/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
 
-const initDocSearch = () => {
-  docsearch({
-    apiKey: '44e980b50447a3a5fac9dc2a4808c439',
-    indexName: 'zarm',
-    inputSelector: '.search input',
-    debug: false,
-  });
-};
+// const initDocSearch = () => {
+//   docsearch({
+//     apiKey: '44e980b50447a3a5fac9dc2a4808c439',
+//     indexName: 'zarm',
+//     inputSelector: '.search input',
+//     debug: false,
+//   });
+// };
 
 class Header extends PureComponent {
   componentDidMount() {

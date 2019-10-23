@@ -19,15 +19,17 @@ class Tag extends PureComponent<TagProps, {}> {
 
   getColorStyle() {
     const { color, bordered } = this.props;
-    return !bordered ? {
-      backgroundColor: color,
-      borderColor: color,
-      color: '#fff',
-    } : {
-      color,
-      borderColor: Color(color).alpha(0.3),
-      backgroundColor: Color(color).alpha(0.05),
-    };
+    return !bordered
+      ? {
+        backgroundColor: color,
+        borderColor: color,
+        color: '#fff',
+      }
+      : {
+        color,
+        borderColor: Color(color).alpha(0.3),
+        backgroundColor: Color(color).alpha(0.05),
+      };
   }
 
   isPresetColor = () => {
