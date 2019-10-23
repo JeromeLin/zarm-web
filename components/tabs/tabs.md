@@ -296,4 +296,6 @@ Tabs
 | style | object | -' | 自定义容器样式 |
 | className | string | - | 添加自定义容器类名 |
 | prefixCls | string | - | 类名的前缀 |
+| animated | boolean | - | 是否使用切换动画，在direction为horizontal时生效 |
+
 

@@ -68,20 +68,24 @@
   @include clearfix;
   
   position: relative;
-  -webkit-transition: height .3s;
   transition: height .3s;
 
   @include b(tabs-body-item) {
-    display: none;
     line-height: normal;
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
 
     @include m(active) {
-      display: block;
+      opacity: 1;
+      height: auto;
     }
   }
 }
 
 @include b(tabs) {
+
+  overflow: hidden;
 
   &.horizontal {
 
@@ -132,16 +136,27 @@
     @include b(tabs-body) {
       
       @include tabs-body-style();
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      @include m(animate) {
+        transition: margin-left $default-transition;
+      }
+      @include m(no-animate) {
+        transition: none;
+      }
+
+      @include b(tabs-body-item) {
+        width: 100%;
+        flex-shrink: 0;
+      }
+      
     }
 
     &.line {
       @include b(tabs-header-item) {
         padding: 0 16px 12px;
         height: 34px;
-  
-        @include m(active) {
-          border-bottom: 2px solid #00BC70;
-        }
       }
     }
   
@@ -172,20 +187,22 @@
 
       @include b(tabs-body) {
         background: #FFF;
+        transition: none;
+      }
+      @include b(tabs-body-item) {
+        background: #FFF;
       }
 
     }
   }
 
   &.vertical {
-    display: flex;
     @include b(tabs-header) {
       overflow: hidden;
       padding: 20px 0;
+      float: left;
+      height: 100%;
       .scroll-content {
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 auto;
         overflow-y: scroll;
         height: 100%;
       }
@@ -201,9 +218,17 @@
     }
 
     @include b(tabs-body) {
-      flex: 1;
       padding-left: 10px;
+      overflow: hidden;
+      position: relative;
       @include tabs-body-style();
+
+      @include b(tabs-body-item) {
+        height: 0;
+        @include m(active) {
+          height: auto;
+        }
+      }
     }
 
     @include b(tabs-arrow) {

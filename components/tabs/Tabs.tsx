@@ -16,6 +16,7 @@ class Tabs extends Component<GroupProps, any> {
     type: PropTypes.oneOf(['card', 'line', 'noborder-card']),
     direction: PropTypes.oneOf(['horizontal', 'vertical']),
     closable: PropTypes.bool,
+    animated: PropTypes.bool,
     size: PropTypes.oneOf(['sm', 'md', 'lg']),
     className: PropTypes.string,
     prefixCls: PropTypes.string,
@@ -32,6 +33,7 @@ class Tabs extends Component<GroupProps, any> {
     size: 'md',
     onChange: () => {},
     onTabClose: () => {},
+    animated: true,
   };
 
   static getSelectIndex(children) {
@@ -138,7 +140,7 @@ class Tabs extends Component<GroupProps, any> {
 
   render() {
     const {
-      className, children, style, prefixCls, type, direction, size, closable,
+      className, children, style, prefixCls, type, direction, size, closable, animated,
     } = this.props;
     const { value, lineWidth, lineOffsetLeft, isArrowShown } = this.state;
     const cls = classnames(prefixCls, type, direction, className);
@@ -147,6 +149,7 @@ class Tabs extends Component<GroupProps, any> {
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
     const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
     const scrollPadding = direction === 'horizontal' ? '0 20px' : '20px 0';
+    const animateStyle = direction === 'horizontal' ? { marginLeft: `-${value * 100}%` } : {};
 
     const items = React.Children.map(children, (item: React.ReactElement<any>, $index) => {
       const tabHeaderCls = classnames({
@@ -203,7 +206,7 @@ class Tabs extends Component<GroupProps, any> {
             )
           }
         </div>
-        <div className={`${prefixCls}-body`}>{content}</div>
+        <div className={`${prefixCls}-body ${prefixCls}-body--${animated ? 'animate' : 'no-animate'}`} style={animateStyle}>{content}</div>
       </div>
     );
   }
