@@ -138,3 +138,4 @@ ReactDOM.render(<Demo />, mountNode);
 | message  | 展示内容         | string          | -                             | -      |
 | stayTime | 显示时长(ms)     | number          | -                             | 3000   |
 | onClose  | 关闭时的回调函数 | (event) => void | —                             | —      |
+| onClick  | 点击时的回调函数 | (event) => void | —                             | —      |

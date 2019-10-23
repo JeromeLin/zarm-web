@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Notification from './Notification';
-import { PropsType, Type } from './PropsType';
+import { PropsType, Type, NotificationApi } from './PropsType';
 
 export interface Instance {
   key: string;
@@ -26,7 +26,7 @@ function closeInstance(key: string) {
 }
 
 function NotificationInstance(props?: any, type?: Type) {
-  const className = `.${props.prefixCls}`;
+  const className = `.${props.prefixCls || 'zw-notification'}`;
   const div = document.createElement('div');
 
   document.body.appendChild(div);
@@ -91,13 +91,5 @@ const api: any = {
     return NotificationInstance(options, type);
   };
 });
-
-export interface NotificationApi {
-  info(props: PropsType): void;
-  error(props: PropsType): void;
-  success(props: PropsType): void;
-  warning(props: PropsType): void;
-  open(props: PropsType): void;
-}
 
 export default api as NotificationApi;

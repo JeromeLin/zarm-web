@@ -17,3 +17,10 @@ export interface PropsType {
   className?: string;
   isMessage?: boolean;
 }
+export interface NotificationApi {
+  info(props: PropsType): void;
+  error(props: PropsType): void;
+  success(props: PropsType): void;
+  warning(props: PropsType): void;
+  open(props: PropsType): void;
+}

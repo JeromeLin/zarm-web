@@ -45,38 +45,34 @@ export default class Notification extends Component<PropsType, any> {
       case 'warning':
         return 'warning-round-fill';
       default:
-        return '';
+        return type;
     }
   }
 
   get theme() {
     const { type } = this.props;
     switch (type) {
-      case 'success':
-      case 'warning':
-        return type;
       case 'error':
         return 'danger';
       case 'info':
         return 'primary';
       default:
-        return '';
+        return type;
     }
   }
 
   onClick = (event) => {
-    const { onClick } = this.props;
-
+    const { onClick, prefixCls } = this.props;
     if (typeof onClick === 'function') {
-      let { target } = event;
+      let { target, currentTarget } = event;
+      let reg = new RegExp(`${prefixCls}__close`);
       do {
-        const { className } = target;
-        // trigger click only when clicks the content
-        if (
-          className && className.indexOf
-          && className.indexOf('zw-notification__custom-content') !== -1) {
+        if (currentTarget === target) {
           onClick(event);
           return;
+        }
+        if (reg.test(target.className)) {
+          return
         }
         target = target.parentNode;
       } while (target);
@@ -124,7 +120,7 @@ export default class Notification extends Component<PropsType, any> {
   }
 
   render() {
-    const { prefixCls, className, top, style, title, message, type, isMessage, willUnMount, btn } = this.props;
+    const { prefixCls, className, top, style, type, isMessage, willUnMount } = this.props;
     const { visible } = this.state;
     const componentName = isMessage ? 'message' : 'notification';
 
@@ -141,20 +137,42 @@ export default class Notification extends Component<PropsType, any> {
           ref={(el) => { this.notification = el; }}
           className={classnames(prefixCls, className)}
           onClick={this.onClick}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
           style={{ ...style, top }}
         >
           <div className={classnames(`${prefixCls}__content`, { 'has-icon': type })}>
-            {!isMessage && <div className={`${prefixCls}__close`} onClick={this.onClose}><Icon type="wrong" /></div>}
-            {!isMessage && type && <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />}
-            {!isMessage && title && <div className={`${prefixCls}__title`}>{title}</div>}
-            <div className={`${prefixCls}__custom-content`} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-              {isMessage && <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />}
-              {message}
-            </div>
-            {!isMessage && btn && <div className={`${prefixCls}__action-area`}>{btn}</div>}
+            {isMessage ? this.renderMessage() : this.renderNotification()}
           </div>
         </div>
       </Transition>
     );
+  }
+
+  renderMessage() {
+    const { prefixCls, message } = this.props;
+    return (
+      <>
+        <div className={`${prefixCls}__custom-content`} >
+          <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />
+          {message}
+        </div>
+      </>
+    )
+  }
+
+  renderNotification() {
+    const { prefixCls, title, message, btn } = this.props;
+    return (
+      <>
+        <div className={`${prefixCls}__close`} onClick={this.onClose}><Icon type="wrong" /></div>
+        {this.type && <Icon type={this.type} theme={this.theme} className={`${prefixCls}__icon`} />}
+        <div className={`${prefixCls}__title`}>{title}</div>
+        <div className={`${prefixCls}__custom-content`} >
+          {message}
+        </div>
+        {btn && <div className={`${prefixCls}__action-area`}>{btn}</div>}
+      </>
+    )
   }
 }

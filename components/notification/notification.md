@@ -193,19 +193,21 @@ class Demo extends React.Component {
     this.instance = Notification.success({
       title: '通知',
       message: '主动关闭示例',
-      stayTime: 80000
+      stayTime: 80000,
+      onClose: () => {
+        this.setState({ visible: false });
+      }
     });
     this.setState({ visible: true });
-  }
-  closeMsg() {
-    this.setState({ visible: false });
-    this.instance.close();
   }
   render() {
     return (
       <div>
         <Button onClick={() => this.showMessage()}>弹出</Button>
-        <Button disabled={!this.state.visible} onClick={() => this.closeMsg()}>
+        <Button
+          disabled={!this.state.visible}
+          onClick={() => this.instance.close()}
+        >
           关闭
         </Button>
       </div>
@@ -225,5 +227,5 @@ ReactDOM.render(<Demo />, mountNode);
 | className | 自定义类名                            | string              | -                          | -      |
 | type      | 通知类型                              | string              | success/warning/info/error | —      |
 | stayTime  | 显示时间, 毫秒。设为 0 则不会自动关闭 | number              | —                          | 5000   |
-| onClick   | 点击内容区域时的回调函数              | (event) => void     | —                          | —      |
+| onClick   | 点击时的回调函数                      | (event) => void     | —                          | —      |
 | onClose   | 关闭时的回调函数                      | (event) => void     | —                          | —      |
