@@ -23,9 +23,6 @@
       cursor: pointer;
       line-height: normal;
       color: #616161;
-      flex-shrink: 0;
-      flex-grow: 0;
-      flex-basis: auto;
   
       @include m(disabled) {
         color: #BCBCBC;
@@ -33,7 +30,7 @@
       }
   
       @include m(active) {
-        background: #fff;
+        background: #FFF;
         color: #00BC70;
       }
 

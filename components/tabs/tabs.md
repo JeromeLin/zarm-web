@@ -288,8 +288,6 @@ Tabs
 | value | number | 0 | 当前选中的tab索引值 |
 | defaultValue | number | 0 | 默认选中的tab索引值 |
 | type | string | 'line' | tab的类型，包含线型 卡片型 无边框卡片型，可选值为 `line` 、 `card` 、 `noborder-card`  |
-| disabled | boolean | false | 禁用 |
-| closable | boolean | false | 是否关闭 |
 | size | string | 'md' | 大小 可选值为`sm` 、 `md` 、 `lg`  |
 | onChange | function | - | 面板切换时触发的回调函数，参数为当前选中的tab索引值 |
 | onTabClose | function | 处理Tab关闭函数 |

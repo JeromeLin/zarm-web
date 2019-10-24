@@ -132,14 +132,14 @@ class Tabs extends Component<GroupProps, any> {
 
   render() {
     const {
-      className, children, style, prefixCls, type, direction, size, closable, animated,
+      className, children, style, prefixCls, type, direction, size, animated,
     } = this.props;
     const { value, lineWidth, lineOffsetLeft, isArrowShown } = this.state;
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${direction}`]: direction,
       [`${prefixCls}--${type}`]: type,
     });
-    const headerCls = classnames(`${prefixCls}-header`, `size-${size}`);
+    const headerCls = classnames(`${prefixCls}-header`);
 
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
     const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
