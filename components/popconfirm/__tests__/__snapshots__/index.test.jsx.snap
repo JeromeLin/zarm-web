@@ -31,12 +31,14 @@ exports[`PopConfirm renders PopConfirm correctly 1`] = `
         class="ui-popover-arrow"
       />
     </div>
-    <button
-      class="ui-button radius theme-default"
-      type="button"
-    >
-      Delete
-    </button>
+    <span>
+      <button
+        class="ui-button radius theme-default"
+        type="button"
+      >
+        Delete
+      </button>
+    </span>
   </div>
 </div>
 `;

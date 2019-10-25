@@ -12,4 +12,5 @@ export default interface PropsType {
   direction: direction;
   onMaskClick?: () => void;
   content?: content;
+  popoverClassName?: string;
 }

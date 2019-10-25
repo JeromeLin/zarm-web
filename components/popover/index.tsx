@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Popper from './popper';
-import Events from '../utils/events';
 import PropsType from './PropsType';
 
 const directMap = {
@@ -29,15 +28,17 @@ class Popover extends Component<PropsType, any> {
     mask: false,
     radius: true,
     direction: 'bottomRight',
-    onMaskClick() {},
+    onMaskClick() { },
     content: null,
   };
 
-  private instance;
-  private pop;
-  private reference;
+  mountNode: HTMLDivElement;
+
+  private instance: HTMLDivElement | null;
+  private pop: HTMLDivElement | null;
+  private reference: HTMLSpanElement | null;
   private popper;
-  private timer;
+  private timer: number;
   private arrow;
 
   constructor(props) {
@@ -45,50 +46,65 @@ class Popover extends Component<PropsType, any> {
     this.state = {
       visible: false,
     };
+    this.mountNode = document.createElement('div');
+    this.mountNode.classList.add('ui-popover-mount-node');
+    this.mountNode.style.setProperty('z-index', '2021');
+    this.mountNode.style.setProperty('postion', 'relative');
+  }
+
+  onDocumentClick = (e: MouseEvent) => {
+    if (!this.instance || !this.pop) {
+      return;
+    }
+    if (e.target) {
+      if (this.instance.contains(e.target as Node) || this.pop.contains(e.target as Node)) {
+        return;
+      }
+    }
+    this.hidePop();
   }
 
   componentDidMount() {
-    const { instance, pop } = this;
-    const reference = findDOMNode(this.reference); // eslint-disable-line
-    const { trigger } = this.props;
+    document.addEventListener('click', this.onDocumentClick);
+  }
 
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onDocumentClick);
+    if (this.popper) {
+      this.popper.destroy();
+    }
+    if (this.mountNode.parentNode) {
+      this.mountNode.parentNode.removeChild(this.mountNode);
+    }
+    delete this.popper;
+  }
+
+  referenceRef = (elem: HTMLSpanElement | null) => this.reference = elem;
+
+  trigger = () => {
+    const { trigger } = this.props;
     if (trigger === 'click') {
-      Events.on(reference, 'click', () => {
-        this.setState({
-          visible: !this.state.visible,
-        });
-      });
-      Events.on(document, 'click', ({ target }) => {
-        if (
-          !instance ||
-          instance.contains(target) ||
-          !reference ||
-          reference.contains(target) ||
-          !pop ||
-          pop.contains(target) ||
-          !this.popper
-        ) {
-          return;
-        }
-        this.hidePop();
-      });
-    } else {
-      Events.on(reference, 'mouseenter', () => {
-        this.showPop();
-      });
-      Events.on(reference, 'mouseleave', () => {
-        this.hidePop();
-      });
-      Events.on(pop, 'mouseenter', () => {
-        this.showPop();
-      });
-      Events.on(pop, 'mouseleave', () => {
-        this.hidePop();
+      this.setState({
+        visible: !this.state.visible,
       });
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  onTriggerEnter = () => {
+    const { trigger } = this.props;
+    if (trigger !== 'click') {
+      this.showPop();
+    }
+  }
+
+  onTriggerLeave = () => {
+    const { trigger } = this.props;
+    if (trigger !== 'click') {
+      this.hidePop();
+    }
+  }
+
+  componentWillReceiveProps(nextProps: this['props']) {
     if (this.state.visible !== nextProps.visible) {
       this.setState({
         visible: !!nextProps.visible,
@@ -99,32 +115,28 @@ class Popover extends Component<PropsType, any> {
   componentDidUpdate() {
     const { visible } = this.state;
     const { direction } = this.props;
-    const reference = findDOMNode(this.reference); // eslint-disable-line
+    const { reference } = this; // eslint-disable-line
 
     if (visible) {
-      if (this.popper) {
-        this.popper.update();
-      } else {
-        if (this.arrow) {
-          this.arrow.setAttribute('x-arrow', '');
-        }
-        this.popper = new Popper(reference, this.pop, {
+      document.body.appendChild(this.mountNode);
+      if (this.arrow) {
+        this.arrow.setAttribute('x-arrow', '');
+      }
+      if (reference) {
+        const triggerElem = reference.children[0] || reference;
+        this.popper = new Popper(triggerElem, this.pop, {
           placement: directMap[direction],
         });
       }
     } else {
+      if (this.mountNode.parentNode) {
+        this.mountNode.parentNode.removeChild(this.mountNode);
+      }
       if (this.popper) {
         this.popper.destroy();
       }
       delete this.popper;
     }
-  }
-
-  componentWillUnmount() {
-    if (this.popper) {
-      this.popper.destroy();
-    }
-    delete this.popper;
   }
 
   showPop() {
@@ -159,12 +171,16 @@ class Popover extends Component<PropsType, any> {
       radius,
       mask,
       onMaskClick,
+      popoverClassName,
     } = this.props;
-    const child = React.isValidElement(children) ? (
-      children
-    ) : (
-      <span>{children}</span>
-    );
+    const child = <span
+      ref={this.referenceRef}
+      onClick={this.trigger}
+      onMouseEnter={this.onTriggerEnter}
+      onMouseLeave={this.onTriggerLeave}
+    >
+      {children}
+    </span>;
     const popContent = typeof content === 'function' ? content() : content;
     const cls = classnames({
       'ui-popover': true,
@@ -174,12 +190,32 @@ class Popover extends Component<PropsType, any> {
       [`${prefixCls}-content`]: true,
       [`${prefixCls}-content-show`]: visible,
       [`${prefixCls}-content-radius`]: !!radius,
+      [`${popoverClassName}`]: !!popoverClassName,
     });
     const maskCls = classnames({
       [`${prefixCls}-mask`]: true,
       [`${prefixCls}-mask-show`]: visible,
     });
 
+    const popoverContent = (
+      <div
+        className={contentCls}
+        onMouseEnter={this.onTriggerEnter}
+        onMouseLeave={this.onTriggerLeave}
+        // tslint:disable-next-line:jsx-no-multiline-js
+        ref={(pop) => {
+          this.pop = pop;
+        }}
+      >
+        {popContent}
+        <span
+          className={`${prefixCls}-arrow`}
+          // tslint:disable-next-line:jsx-no-multiline-js
+          ref={(arrow) => {
+            this.arrow = arrow;
+          }}
+        />
+      </div>);
     return (
       <div
         className={cls}
@@ -189,23 +225,8 @@ class Popover extends Component<PropsType, any> {
         }}
       >
         {mask ? <div className={maskCls} onClick={onMaskClick} /> : null}
-        <div
-          className={contentCls}
-          // tslint:disable-next-line:jsx-no-multiline-js
-          ref={(pop) => {
-            this.pop = pop;
-          }}
-        >
-          {popContent}
-          <span
-            className={`${prefixCls}-arrow`}
-            // tslint:disable-next-line:jsx-no-multiline-js
-            ref={(arrow) => {
-              this.arrow = arrow;
-            }}
-          />
-        </div>
-        {React.cloneElement(child, { ref: (reference) => { this.reference = reference; } })}
+        {ReactDOM.createPortal(popoverContent, this.mountNode)}
+        {React.cloneElement(child)}
       </div>
     );
   }

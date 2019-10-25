@@ -43,8 +43,8 @@ $prefixCls: ui-table;
     position: absolute;
     top: 0;
     right: 0;
-    height: 100%;
     transition: box-shadow 0.3s ease-out;
+    transform: translate3d(0, 0, 0);
 
     &.shadow {
       border-left: 0;
@@ -248,4 +248,8 @@ $prefixCls: ui-table;
       border-color: #2db7f5 transparent transparent;
     }
   }
+}
+
+.ui-table-cell-poppover {
+  max-width: 350px;
 }

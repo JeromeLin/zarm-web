@@ -397,8 +397,8 @@ class Table extends Component<PropsType, any> {
       <div className={cls}>
         <div className={`${prefixCls}-body`} onScroll={this.onScrollTable}>
           {content}
-          {this.renderFixedLeftCol()}
           {this.renderFixedRightCol()}
+          {this.renderFixedLeftCol()}
         </div>
       </div>
     );

@@ -12,13 +12,15 @@ exports[`Tooltip renders normal Tooltip correctly 1`] = `
       class="ui-popover-arrow"
     />
   </div>
-  <div>
-    <button
-      class="ui-button radius theme-default"
-      type="button"
-    >
-      left
-    </button>
-  </div>
+  <span>
+    <div>
+      <button
+        class="ui-button radius theme-default"
+        type="button"
+      >
+        left
+      </button>
+    </div>
+  </span>
 </div>
 `;
