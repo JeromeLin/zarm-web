@@ -13,6 +13,7 @@
     }
   }
 }
+
 @mixin step-status-content($status) {
   @include m($status) {
     @include b(steps-item--title) {
@@ -36,6 +37,7 @@
   }
   @include step-status-tail(finish) {
     background: var(--steps-status-process);
+
     &::after {
       background: var(--steps-status-process) !important;
     }

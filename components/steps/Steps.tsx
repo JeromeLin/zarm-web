@@ -1,4 +1,3 @@
-
 import React, { PureComponent, Children, cloneElement } from 'react';
 import classnames from 'classnames';
 import Step from './Step';
@@ -10,6 +9,8 @@ export default class Steps extends PureComponent<StepsProps> {
   static defaultProps = {
     prefixCls: 'zw-steps',
     direction: 'horizontal',
+    current: 0,
+    status: 'process',
   };
 
   render() {
@@ -19,9 +20,9 @@ export default class Steps extends PureComponent<StepsProps> {
       style,
       direction,
       children,
-      current = 0,
+      current,
       onChange,
-      status = 'process',
+      status,
     } = this.props;
 
     const classStr = classnames(

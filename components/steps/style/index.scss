@@ -15,6 +15,7 @@ $steps-content-width: 120px;
   display: inline-block;
   position: relative;
   flex: 1;
+
   &[role='button'] {
     cursor: pointer;
   }
@@ -42,7 +43,7 @@ $steps-content-width: 120px;
   @include m(tail) {
     position: absolute;
     top: $steps-icon-size / 2;
-    width: calc(100% - #{$steps-icon-size * 2});
+    width: calc(100% - #{$steps-icon-size + 24});
     padding: 0 $steps-icon-size / 2;
     height: 1px;
     background: var(--steps-border-color);
@@ -95,10 +96,10 @@ $steps-content-width: 120px;
     @include m(tail) {
       width: 1px;
       height: 100%;
-      padding: ($steps-icon-size / 2) 0;
       left: $steps-icon-size / 2;
       padding: ($steps-icon-size / 2 + 8) 0;
       background: transparent;
+
       &::after {
         display: block;
         content: '';
