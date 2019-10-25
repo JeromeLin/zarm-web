@@ -4,6 +4,10 @@ import toJson from 'enzyme-to-json';
 import Popover from '../index';
 import Button from '../../button';
 
+jest.mock('react-dom', () => ({
+  createPortal: node => node,
+}));
+
 describe('Popover', () => {
   it('renders normal Popover correctly', () => {
     const wrapper = render(

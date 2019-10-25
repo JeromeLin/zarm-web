@@ -4,6 +4,10 @@ import toJson from 'enzyme-to-json';
 import Popconfirm from '../index';
 import Button from '../../button';
 
+jest.mock('react-dom', () => ({
+  createPortal: node => node,
+}));
+
 describe('PopConfirm', () => {
   it('renders PopConfirm correctly', () => {
     const wrapper = render(

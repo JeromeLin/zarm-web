@@ -4,6 +4,10 @@ import toJson from 'enzyme-to-json';
 import Tooltip from '../index';
 import Button from '../../button';
 
+jest.mock('react-dom', () => ({
+  createPortal: node => node,
+}));
+
 describe('Tooltip', () => {
   it('renders normal Tooltip correctly', () => {
     const wrapper = render(

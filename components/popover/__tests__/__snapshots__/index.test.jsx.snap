@@ -16,12 +16,14 @@ exports[`Popover behaves correctly when clicking on mask 1`] = `
         class="ui-popover-arrow"
       />
     </div>
-    <button
-      class="ui-button radius theme-default"
-      type="button"
-    >
-      Delete
-    </button>
+    <span>
+      <button
+        class="ui-button radius theme-default"
+        type="button"
+      >
+        Delete
+      </button>
+    </span>
   </div>
 </div>
 `;
@@ -39,12 +41,14 @@ exports[`Popover renders Popover correctly with customized props 1`] = `
         class="ui-popover-arrow"
       />
     </div>
-    <button
-      class="ui-button radius theme-default"
-      type="button"
-    >
-      Delete
-    </button>
+    <span>
+      <button
+        class="ui-button radius theme-default"
+        type="button"
+      >
+        Delete
+      </button>
+    </span>
   </div>
 </div>
 `;
@@ -65,12 +69,14 @@ exports[`Popover renders Popover correctly with mask 1`] = `
         class="ui-popover-arrow"
       />
     </div>
-    <button
-      class="ui-button radius theme-default"
-      type="button"
-    >
-      Delete
-    </button>
+    <span>
+      <button
+        class="ui-button radius theme-default"
+        type="button"
+      >
+        Delete
+      </button>
+    </span>
   </div>
 </div>
 `;
@@ -88,12 +94,14 @@ exports[`Popover renders Popover correctly with render props 1`] = `
         class="ui-popover-arrow"
       />
     </div>
-    <button
-      class="ui-button radius theme-default"
-      type="button"
-    >
-      Delete
-    </button>
+    <span>
+      <button
+        class="ui-button radius theme-default"
+        type="button"
+      >
+        Delete
+      </button>
+    </span>
   </div>
 </div>
 `;
@@ -111,12 +119,14 @@ exports[`Popover renders normal Popover correctly 1`] = `
         class="ui-popover-arrow"
       />
     </div>
-    <button
-      class="ui-button radius theme-default"
-      type="button"
-    >
-      Delete
-    </button>
+    <span>
+      <button
+        class="ui-button radius theme-default"
+        type="button"
+      >
+        Delete
+      </button>
+    </span>
   </div>
 </div>
 `;
