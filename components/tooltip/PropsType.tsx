@@ -10,5 +10,5 @@ export default interface PropsType {
   tipStyle?: object;
   className?: string;
   style?: object;
-  onClose: () => void;
+  onClose?: () => void;
 }

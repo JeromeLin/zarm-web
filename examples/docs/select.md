@@ -208,7 +208,7 @@
               selectValue: selectedArr
             });
           }}>
-          <Select.Option value="a">{[this.state.c,this.state.b]}</Select.Option>
+          <Select.Option value="a" title="这是自定义title">{[this.state.c,this.state.b]}</Select.Option>
           <Select.Option value="b">我是B</Select.Option>
           <Select.Option value="c">我是C</Select.Option>
           <Select.Option value="d">我是D</Select.Option>
