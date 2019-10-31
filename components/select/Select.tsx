@@ -380,10 +380,13 @@ class Select extends Component<PropsType, StateProps> {
     let valueText;
     if (multiple && Array.isArray(this.state.value)) {
       valueText = this.state.value.reduce((prev: any, item) => {
-        if (this.state.optionMap[item]) {
+        const option = this.state.optionMap[item];
+        if (option) {
+          const { children, title } = option.props;
           prev.push({
             key: item,
-            value: this.state.optionMap[item].props.children,
+            value: children,
+            title: title,
           });
         }
         return prev;

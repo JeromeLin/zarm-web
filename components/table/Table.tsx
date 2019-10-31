@@ -59,6 +59,25 @@ class Table extends Component<PropsType, any> {
     if (nextProps.dataSource !== this.props.dataSource) {
       // 数据变更重新计算固定列宽高
       rAF.rAF(() => this.getFixedColAttrs());
+      // 如果之前有排序，按照之前排序dataSource
+      this.sortDataSource(nextProps.dataSource);
+    }
+  }
+
+  sortDataSource(dataSource) {
+    const { columns } = this.props;
+    const { sort } = this.state;
+    const sortKey = Object.keys(sort)[0];
+    if (sortKey) {
+      let column;
+      columns.forEach(({ dataIndex }, index) => {
+        if (dataIndex === sortKey) {
+          column = columns[index];
+        }
+      });
+      if (column && column.sorter) {
+        dataSource.sort(column.sorter);
+      }
     }
   }
 

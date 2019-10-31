@@ -3,6 +3,7 @@ import cn from 'classnames';
 import debounce from '../utils/debounce';
 import Tag from '../tag';
 import Icon from '../icon';
+import Tooltip from '../tooltip';
 
 import PropsType, { ValueArray } from './PropsType';
 
@@ -122,30 +123,39 @@ class InputWithTags extends React.Component<BasicProps> {
     // if value is array, make a Tag list;
     if (Array.isArray(value)) {
       tagList = (value as Array<ValueArray>).map((elem, index) => {
+        const tag = (
+          <Tag
+            isDisabled={disabled}
+            theme={tagTheme}
+            title={Array.isArray(elem.value) ? elem.value.join('') : String(elem.value)}
+            style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: tagSizeHeight + 'px' }}
+            isRadius={radius}
+            key={elem.key}
+            onClose={(e) => {
+              e.stopPropagation();
+              if (typeof onDeleteTag === 'function') {
+                setTimeout(() => {
+                  onDeleteTag(e, elem.key, elem.value, index);
+                });
+              }
+            }}
+          >
+            {elem.value}
+          </Tag>
+        );
         return (
           <div
             className="ui-tag-list-box"
             key={elem.key}
             ref={this.tagListBoxref}
           >
-            <Tag
-              isDisabled={disabled}
-              theme={tagTheme}
-              title={Array.isArray(elem.value) ? elem.value.join('') : String(elem.value)}
-              style={{ ...Style.tagStyle, height: tagSizeHeight, lineHeight: tagSizeHeight + 'px' }}
-              isRadius={radius}
-              key={elem.key}
-              onClose={(e) => {
-                e.stopPropagation();
-                if (typeof onDeleteTag === 'function') {
-                  setTimeout(() => {
-                    onDeleteTag(e, elem.key, elem.value, index);
-                  });
-                }
-              }}
-            >
-              {elem.value}
-            </Tag>
+            {
+              elem.title ? (
+                <Tooltip title={elem.title}>
+                  {tag}
+                </Tooltip>
+              ) : tag
+            }
           </div >
         );
       });
