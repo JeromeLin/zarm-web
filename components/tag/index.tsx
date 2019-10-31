@@ -1,4 +1,4 @@
-import React, { PureComponent, MouseEvent } from 'react';
+import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Color from 'color';
 import Icon from '../icon';
@@ -71,7 +71,7 @@ class Tag extends PureComponent<TagProps, {}> {
     const closeIcon = closable && (
       <Icon
         type="wrong"
-        onClick={(e: MouseEvent) => { onClose && onClose(e); }}
+        onClick={(e) => { onClose && onClose(e); }}
       />
     );
 
