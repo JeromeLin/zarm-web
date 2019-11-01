@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { StepProps } from './PropsType';
+import { StepsItemProps } from './PropsType';
 import Icon from '../icon';
 
-export default class Step extends PureComponent<StepProps & any> {
+export default class Step extends PureComponent<StepsItemProps & any> {
   renderIconNode = () => {
     const {
       current,

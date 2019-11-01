@@ -19,16 +19,6 @@ $steps-content-width: 120px;
   &[role='button'] {
     cursor: pointer;
   }
-  // &:hover {
-  //   @include b(steps-item) {
-  //     @include m(title) {
-  //       color: var(--steps-status-process);
-  //     }
-  //     @include m(desc) {
-  //       color: var(--steps-status-process);
-  //     }
-  //   }
-  // }
   @include m(icon) {
     border: solid 1px var(--steps-border-color);
     box-sizing: border-box;

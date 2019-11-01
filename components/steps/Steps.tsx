@@ -1,10 +1,10 @@
 import React, { PureComponent, Children, cloneElement } from 'react';
 import classnames from 'classnames';
-import Step from './Step';
+import StepsItem from './StepsItem';
 import { StepsProps } from './PropsType';
 
 export default class Steps extends PureComponent<StepsProps> {
-  static Step: typeof Step;
+  static Item: typeof StepsItem;
 
   static defaultProps = {
     prefixCls: 'zw-steps',

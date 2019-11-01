@@ -4,15 +4,14 @@
 
 ```jsx
 import { Steps } from 'zarm-web';
-const { Step } = Steps;
 
 ReactDOM.render(
   <>
     <Steps>
-      <Step title="步骤1" description="步骤1描述文案" />
-      <Step title="步骤2" description="步骤2描述文案" />
-      <Step title="步骤3" description="步骤3描述文案" />
-      <Step title="步骤4" />
+      <Steps.Item title="步骤1" description="步骤1描述文案" />
+      <Steps.Item title="步骤2" description="步骤2描述文案" />
+      <Steps.Item title="步骤3" description="步骤3描述文案" />
+      <Steps.Item title="步骤4" />
     </Steps>
   </>, mountNode);
 ```
@@ -21,15 +20,14 @@ ReactDOM.render(
 
 ```jsx
 import { Steps } from 'zarm-web';
-const { Step } = Steps;
 
 ReactDOM.render(
   <>
     <Steps direction="vertical">
-      <Step title="步骤1" description="步骤1描述文案" />
-      <Step title="步骤2" description="步骤2描述文案" />
-      <Step title="步骤3" description="步骤3描述文案" />
-      <Step title="步骤4" />
+      <Steps.Item title="步骤1" description="步骤1描述文案" />
+      <Steps.Item title="步骤2" description="步骤2描述文案" />
+      <Steps.Item title="步骤3" description="步骤3描述文案" />
+      <Steps.Item title="步骤4" />
     </Steps>
   </>, mountNode);
 ```
@@ -38,15 +36,14 @@ ReactDOM.render(
 
 ```jsx
 import { Steps } from 'zarm-web';
-const { Step } = Steps;
 
 ReactDOM.render(
   <>
     <Steps current={2} status="error">
-      <Step title="步骤1" description="步骤1描述文案" />
-      <Step title="步骤2" disabled description="步骤2描述文案" />
-      <Step title="步骤3" description="步骤3描述文案" />
-      <Step title="步骤4" />
+      <Steps.Item title="步骤1" description="步骤1描述文案" />
+      <Steps.Item title="步骤2" disabled description="步骤2描述文案" />
+      <Steps.Item title="步骤3" description="步骤3描述文案" />
+      <Steps.Item title="步骤4" />
     </Steps>
   </>, mountNode);
 ```
@@ -55,7 +52,6 @@ ReactDOM.render(
 
 ```jsx
 import { Steps } from 'zarm-web';
-const { Step } = Steps;
 
 class StepsDemo extends React.Component {
   state = {
@@ -73,10 +69,10 @@ class StepsDemo extends React.Component {
     return (
       <>
         <Steps current={current} onChange={this.onChange}>
-          <Step title="步骤1" description="步骤1描述文案" />
-          <Step title="步骤2" disabled description="步骤2描述文案" />
-          <Step title="步骤3" description="步骤3描述文案" />
-          <Step title="步骤4" />
+          <Steps.Item title="步骤1" description="步骤1描述文案" />
+          <Steps.Item title="步骤2" disabled description="步骤2描述文案" />
+          <Steps.Item title="步骤3" description="步骤3描述文案" />
+          <Steps.Item title="步骤4" />
         </Steps>
       </>
     );

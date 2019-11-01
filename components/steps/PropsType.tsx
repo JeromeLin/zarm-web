@@ -13,7 +13,7 @@ export interface StepsProps {
   onChange?: (current: number) => void;
 }
 
-export interface StepProps {
+export interface StepsItemProps {
   className?: string;
   style?: CSSProperties;
   title: ReactNode;

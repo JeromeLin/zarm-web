@@ -9,9 +9,9 @@ describe('Steps', () => {
     const wrapper = render(
       <div>
         <Steps current={2}>
-          <Steps.Step title="Finished" />
-          <Steps.Step title="In Progress" />
-          <Steps.Step title="Waiting" />
+          <Steps.Item title="Finished" />
+          <Steps.Item title="In Progress" />
+          <Steps.Item title="Waiting" />
         </Steps>
       </div>,
     );
@@ -24,9 +24,9 @@ describe('Steps', () => {
     const wrapper = mount(
       <div>
         <Steps onChange={onChange}>
-          <Steps.Step title="Finished" />
-          <Steps.Step title="In Progress" disabled />
-          <Steps.Step title="Waiting" />
+          <Steps.Item title="Finished" />
+          <Steps.Item title="In Progress" disabled />
+          <Steps.Item title="Waiting" />
         </Steps>
       </div>,
     );
@@ -42,9 +42,9 @@ describe('Steps', () => {
     const wrapper = mount(
       <div>
         <Steps current={1} direction="vertical" status="error">
-          <Steps.Step title="Finished" description="description" />
-          <Steps.Step title="In Progress" />
-          <Steps.Step title="Waiting" />
+          <Steps.Item title="Finished" description="description" />
+          <Steps.Item title="In Progress" />
+          <Steps.Item title="Waiting" />
         </Steps>
       </div>,
     );

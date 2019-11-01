@@ -1,5 +1,5 @@
 import Steps from './Steps';
-import Step from './Step';
+import StepsItem from './StepsItem';
 
-Steps.Step = Step;
+Steps.Item = StepsItem;
 export default Steps;
