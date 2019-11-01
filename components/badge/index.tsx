@@ -1,6 +1,5 @@
-import Badge, { BadgeProps } from 'zarm/lib/badge';
+import Badge from 'zarm/es/badge';
 
 Badge.defaultProps.prefixCls = 'zw-badge';
 
-export { BadgeProps };
 export default Badge;
