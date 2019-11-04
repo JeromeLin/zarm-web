@@ -1,19 +1,22 @@
-export interface GroupProps {
+import { HTMLAttributes, CSSProperties, ChangeEventHandler } from 'react';
+
+export interface CheckboxGroupProps {
   prefixCls?: string;
-  value?: string;
-  defaultValue?: string;
-  onChange: (e: any) => void;
+  value?: string[] | number[];
+  defaultValue?: string[] | number[];
+  className?: string;
+  style?: CSSProperties;
+  disabled?: boolean;
+  onChange?: (values: Array<string | number>) => void;
 }
 
-export default interface PropsType {
+export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   prefixCls?: string;
-  value?: string;
+  value?: string | number;
   checked?: boolean;
   defaultChecked?: boolean;
-  className?: string;
-  style?: object;
+  id?: string;
   disabled?: boolean;
-  isDisabled?: boolean;
   indeterminate?: boolean;
-  onChange: (e: any) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }

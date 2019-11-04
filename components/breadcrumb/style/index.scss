@@ -1,1 +1,39 @@
-@import './component';
+@import '../../style/core/index';
+
+@include b(breadcrumb) {
+  padding: 10px 15px;
+  font-size: var(--breadcrumb-default-font-size);
+  color: var(--breadcrumb-default-color);
+
+  @include b(breadcrumb-item) {
+    color: var(--breadcrumb-default-color);
+
+    @include e(separator) {
+      margin: 0 8px;
+      color: var(--breadcrumb-separator-color);
+    }
+
+    &:last-child {
+      color: var(--breadcrumb-color);
+
+      > a {
+        color: var(--breadcrumb-color);
+      }
+
+      > span:last-child {
+        display: none;
+      }
+    }
+
+    @include m(link) {
+      @include e(content) {
+        color: var(--breadcrumb-default-color);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--breadcrumb-hover-color);
+        }
+      }
+    }
+  }
+}

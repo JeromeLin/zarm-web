@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent, KeyboardEvent } from 'react';
+import React, { Component, KeyboardEvent } from 'react';
 import { createPortal, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
@@ -95,7 +95,7 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 
   private static unmountModalInstance(instance: Modal, callback: () => void) {
-    const instanceIndex = Modal.instanceList.findIndex(item => item === instance);
+    const instanceIndex = Modal.instanceList.findIndex((item) => item === instance);
     if (instanceIndex >= 0) {
       Modal.instanceList.splice(instanceIndex, 1);
     }
@@ -231,7 +231,7 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   };
 
-  onMaskClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
+  onMaskClick = (e) => e.stopPropagation();
 
   getModalRef = (ele: HTMLDivElement) => {
     if (ele) {

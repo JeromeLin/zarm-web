@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge renders shape is dot correctly 1`] = `
+<span
+  class="zw-badge zw-badge--danger zw-badge--dot"
+>
+  <sup
+    class="zw-badge__content"
+  />
+</span>
+`;
+
+exports[`Badge sup 1`] = `
+<span
+  class="zw-badge zw-badge--danger zw-badge--dot zw-badge--sup"
+>
+  <span>
+    foo
+  </span>
+  <sup
+    class="zw-badge__content"
+  />
+</span>
+`;
+
+exports[`Badge text 1`] = `
+<span
+  class="zw-badge zw-badge--danger zw-badge--rect"
+>
+  <sup
+    class="zw-badge__content"
+  >
+    99+
+  </sup>
+</span>
+`;
+
+exports[`Badge theme 1`] = `
+<span
+  class="zw-badge zw-badge--warning zw-badge--dot"
+>
+  <sup
+    class="zw-badge__content"
+  />
+</span>
+`;

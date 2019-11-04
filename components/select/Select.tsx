@@ -121,7 +121,7 @@ class Select extends Component<PropsType, StateProps> {
       if (!Array.isArray(value)) {
         state.value = [String(value)];
       } else {
-        state.value = value.map(val => String(val));
+        state.value = value.map((val) => String(val));
       }
     } else {
       state.value = String(value);
@@ -146,7 +146,7 @@ class Select extends Component<PropsType, StateProps> {
         if (!Array.isArray(value)) {
           value = [String(value)];
         } else {
-          value = value.map(val => String(val));
+          value = value.map((val) => String(val));
         }
       } else {
         value = String(value);
@@ -199,7 +199,7 @@ class Select extends Component<PropsType, StateProps> {
         const selectValue = select || EMPTY_STRING_VALUE;
         const vdom = optionMap[selectValue];
         const text = vdom ? vdom.props.children : '';
-        const indexs = optionData.findIndex(elem => String(elem.value) === String(selectValue));
+        const indexs = optionData.findIndex((elem) => String(elem.value) === String(selectValue));
         return { text, value: select, indexs };
       });
       this.setState({
@@ -271,11 +271,11 @@ class Select extends Component<PropsType, StateProps> {
   };
 
   bindOuterHandlers() {
-    Events.on(document, 'keyup', e => this.handleKeyup(e));
+    Events.on(document, 'keyup', (e) => this.handleKeyup(e));
   }
 
   unbindOuterHandlers() {
-    Events.off(document, 'keyup', e => this.handleKeyup(e));
+    Events.off(document, 'keyup', (e) => this.handleKeyup(e));
   }
 
 

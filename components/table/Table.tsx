@@ -262,7 +262,7 @@ class Table extends Component<PropsType, any> {
           checked={dataSource.length > 0 && (this.state.selectedRows.length === dataSource.length)}
           onChange={(e) => {
             const selected = e.target.checked;
-            const selectedRows = selected ? dataSource.map(data => data) : [];
+            const selectedRows = selected ? dataSource.map((data) => data) : [];
 
             this.setState({ selectedRows });
             if (rowSelection.onSelectAll) {

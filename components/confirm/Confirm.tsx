@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { Component } from 'react';
 import Modal from '../modal';
 import Button from '../button';
 import Icon from '../icon';
@@ -25,7 +25,7 @@ class Confirm extends Component<PropsType, any> {
     }
   };
 
-  onOk = (e: MouseEvent) => {
+  onOk = (e) => {
     if (this.props.onOk) {
       this.props.onOk(e);
     }
