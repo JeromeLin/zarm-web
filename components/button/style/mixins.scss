@@ -11,7 +11,7 @@
   $disabled-background,
   $disabled-border,
   $disabled-color,
-  $disabled-opacity,
+  $disabled-opacity
 ) {
   background-color: $background;
   border-color: $border;
@@ -45,15 +45,6 @@
     background-color: $disabled-background;
     border-color: $disabled-border;
     color: $disabled-color;
-
-    &:active,
-    &:focus,
-    &:hover,
-    &:visited {
-      background-color: $disabled-background;
-      border-color: $disabled-border;
-      color: $disabled-color;
-    }
   }
 }
 
@@ -84,8 +75,8 @@
       &:focus,
       &:visited {
         background-color: transparent;
-        border-color: var(--border-disabled);
-        color: var(--color-text-disabled);
+        border-color: var(--button-ghost-disabled-border);
+        color: var(--button-ghost-disabled-color);
         cursor: not-allowed;
       }
     }
@@ -96,7 +87,11 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height;
+  line-height: 1.5;
+
+  @include m (link) {
+    line-height: $height;
+  }
 
   @include m(circle) {
     width: $height;
@@ -105,6 +100,7 @@
 
   @include b(icon) {
     font-size: $icon-size;
+    vertical-align: middle;
   }
 
   * + span {
@@ -150,10 +146,6 @@
   @include m(loading) {
     cursor: default;
     opacity: .65;
-
-    @include b(icon) {
-      animation: rotate360 1s linear infinite;
-    }
   }
 }
 

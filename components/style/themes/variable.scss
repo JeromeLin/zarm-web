@@ -124,7 +124,7 @@
   --button-disabled-opacity: var(--opacity-disabled);
   --button-disabled-color-ghost: var(--border-disabled);
   --button-default-background: var(--color-text-inverse);
-  --button-default-border: var(--theme-default);
+  --button-default-border: #e6e6e6;
   --button-default-color: var(--color-text);
   --button-default-hover-background: var(--color-white);
   --button-default-hover-border: var(--theme-primary);
@@ -162,6 +162,11 @@
   --button-danger-ghost-color: var(--theme-danger);
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
+
+  // activity-indicator
+  --activity-indicator-size-md: 16px;
+  --activity-indicator-size-lg: 32px;
+  --activity-indicator-path-color: #e6e6e6;
 
   // Checkbox
   --checkbox-size: 14px;

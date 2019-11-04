@@ -2214,7 +2214,8 @@ bcrypt-pbkdf@^1.0.0:
 
 better-scroll@1.15.1:
   version "1.15.1"
-  resolved "https://registry.yarnpkg.com/better-scroll/-/better-scroll-1.15.1.tgz#cd390715704fe2d1654bba0778ddf0fd28015572"
+  resolved "https://registry.npm.taobao.org/better-scroll/download/better-scroll-1.15.1.tgz#cd390715704fe2d1654bba0778ddf0fd28015572"
+  integrity sha1-zTkHFXBP4tFlS7oHeN3w/SgBVXI=
   dependencies:
     babel-runtime "^6.0.0"
 
@@ -3324,7 +3325,8 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
 
 create-react-context@0.2.3:
   version "0.2.3"
-  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
+  resolved "https://registry.npm.taobao.org/create-react-context/download/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
+  integrity sha1-nsFAppFKIu8EuLCbd3HeiVZ8tvM=
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
@@ -8779,8 +8781,9 @@ pn@^1.1.0:
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
 popper.js@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
+  version "1.16.0"
+  resolved "https://registry.npm.taobao.org/popper.js/download/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
+  integrity sha1-LhgWvLuqUY6mwuFaRm9Mucbi+7M=
 
 portfinder@^1.0.24:
   version "1.0.24"
@@ -9758,7 +9761,8 @@ react-loadable@^5.5.0:
 
 react-native-camera-roll-picker@1.2.3:
   version "1.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-camera-roll-picker/-/react-native-camera-roll-picker-1.2.3.tgz#b117fd3a2b9012dcccee1261a9bc427226b8d6d2"
+  resolved "https://registry.npm.taobao.org/react-native-camera-roll-picker/download/react-native-camera-roll-picker-1.2.3.tgz#b117fd3a2b9012dcccee1261a9bc427226b8d6d2"
+  integrity sha1-sRf9OiuQEtzM7hJhqbxCcia41tI=
 
 react-refresh@^0.4.0:
   version "0.4.2"
@@ -12352,10 +12356,10 @@ yargs@^7.0.0, yargs@^7.1.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-zarm@2.0.0-alpha.55:
-  version "2.0.0-alpha.55"
-  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.0.0-alpha.55.tgz#344eeece0399a9ee2da1240bd27d1b197bf749b9"
-  integrity sha512-Zr38rWaoKh5sb2XoyXbj+mgNMXcUp7XV7SBNN76Uy61gAxQxoG8mliTuJRCjfSnI+QD9uJ/iBz5ZI4o32PMszw==
+zarm@2.0.0-alpha.59:
+  version "2.0.0-alpha.59"
+  resolved "https://registry.npm.taobao.org/zarm/download/zarm-2.0.0-alpha.59.tgz#783bf55d8d2897c7ccb19818a7f838406fc09531"
+  integrity sha1-eDv1XY0ol8fMsZgYp/g4QG/AlTE=
   dependencies:
     better-scroll "1.15.1"
     classnames "2.2.6"

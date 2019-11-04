@@ -70,11 +70,6 @@ ReactDOM.render(
       <Button disabled theme="danger">danger</Button>
       <Button disabled>default</Button>
     </div>
-    <div className="rows rows-dark">
-      <Button disabled ghost theme="primary">primary</Button>
-      <Button disabled ghost theme="danger">danger</Button>
-      <Button disabled ghost>default</Button>
-    </div>
   </>
 , mountNode);
 ```
@@ -89,9 +84,9 @@ import { Button, Icon } from 'zarm-web';
 ReactDOM.render(
   <>
     <div className="rows">
-      <Button icon="search">default</Button>
-      <Button theme="primary" icon="search">primary</Button>
-      <Button theme="danger" icon="search">danger</Button>
+      <Button><Icon type="search" /> default</Button>
+      <Button theme="primary"><Icon type="time" /> primary</Button>
+      <Button theme="danger"><Icon type="keyboard" /> danger</Button>
     </div>
     <div className="rows">
       <Button shape="circle"><Icon type="search" /></Button>
@@ -189,6 +184,7 @@ import { Button } from 'zarm-web';
 ReactDOM.render(
   <>
     <Button theme="primary" loading>加载中</Button>
+    <Button theme="danger" loading>加载中</Button>
     <Button loading>加载中</Button>
     <Button shape="round" loading>加载中</Button>
   </>
