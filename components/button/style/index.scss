@@ -12,12 +12,6 @@
     var(--button-font-size-md),
     var(--button-icon-size-md)
   );
-  @include button-ghost(
-    var(--button-default-ghost-border),
-    var(--button-default-ghost-color),
-    var(--button-default-ghost-active-border),
-    var(--button-default-ghost-active-color)
-  );
 
   /* Button sizes */
   @include m(xl) {
@@ -74,6 +68,13 @@
       var(--button-disabled-opacity)
     );
 
+    @include m(link) {
+      @include button-link(
+        var(--button-default-color),
+        var(--color-link)
+      );
+    }
+
     @include button-ghost(
       var(--button-default-ghost-border),
       var(--button-default-ghost-color),
@@ -99,6 +100,13 @@
       var(--button-disabled-opacity)
     );
 
+    @include m(link) {
+      @include button-link(
+        var(--color-link),
+        var(--button-primary-hover-background)
+      );
+    }
+
     @include button-ghost(
       var(--button-primary-ghost-border),
       var(--button-primary-ghost-color),
@@ -123,6 +131,14 @@
       var(--button-danger-color),
       var(--button-disabled-opacity)
     );
+
+    @include m(link) {
+      @include button-link(
+        var(--button-danger-ghost-color),
+        var(--button-danger-hover-background)
+      );
+    }
+
     @include button-ghost(
       var(--button-danger-ghost-border),
       var(--button-danger-ghost-color),

@@ -48,6 +48,33 @@
   }
 }
 
+@mixin button-link(
+  $color,
+  $active-color
+) {
+  background-color: transparent;
+  border-color: transparent;
+  color: $color;
+
+  &:hover,
+  &:active {
+    color: $active-color;
+  }
+
+  @include m(disabled) {
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:visited {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+  }
+}
+
 @mixin button-ghost(
   $border,
   $color,
@@ -55,13 +82,11 @@
   $active-color
 ) {
   @include m(ghost) {
-    &,
-    &:hover {
-      background-color: transparent;
-      border-color: $border;
-      color: $color;
-    }
+    background-color: transparent;
+    border-color: $border;
+    color: $color;
 
+    &:hover,
     &:active {
       background-color: transparent;
       border-color: $active-border;

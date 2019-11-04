@@ -200,7 +200,12 @@ ReactDOM.render(
 import { Button } from 'zarm-web';
 
 ReactDOM.render(
-  <Button href="https://www.baidu.com/" theme="primary" target="_blank">百度一下</Button>
+  <>
+    <Button href="https://www.baidu.com/" theme="primary" target="_blank">primary</Button>
+    <Button href="https://www.baidu.com/" theme="default" target="_blank">default</Button>
+    <Button href="https://www.baidu.com/" theme="danger" target="_blank">danger</Button>
+    <Button href="https://www.baidu.com/" disabled theme="danger" target="_blank">danger</Button>
+  </>
 , mountNode);
 ```
 

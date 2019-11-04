@@ -65,7 +65,7 @@ class Button extends Component<ButtonProps> {
         ? (
           <a
             className={classes}
-            href={href}
+            href={disabled ? undefined : href}
             style={style}
             target={target}
             {...others}

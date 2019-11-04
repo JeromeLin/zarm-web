@@ -17,20 +17,6 @@ class Demo extends React.Component {
         <Tooltip direction="top" content="我是提示框内容" onVisibleChange={this.onVisibleChange}>
           <Button>鼠标移入显示提示框</Button>
         </Tooltip>
-        <Tooltip
-          direction="top"
-          content={<div><p>我是第一行内容</p><p>我是第二行内容</p></div>}
-          onVisibleChange={this.onVisibleChange}
-         >
-          <Button>设置多行内容</Button>
-        </Tooltip>
-        <Tooltip
-          direction="top"
-          content={<div><p>我是第一行内容</p><p>我是第二行内容</p></div>}
-          onVisibleChange={this.onVisibleChange}
-         >
-          <Button disabled>禁用按钮上的tooltip</Button>
-        </Tooltip>
       </div>
     )
   }
