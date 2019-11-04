@@ -58,11 +58,11 @@ export default class Step extends PureComponent<StepsItemProps & any> {
 
     return (
       <div className={classStr} style={style} {...stepItemProps}>
-        <div className={`${prefixCls}-item--icon`}>{this.renderIconNode()}</div>
-        {!isLastStep && <div className={`${prefixCls}-item--tail`} />}
-        <div className={`${prefixCls}-item--content`}>
-          <div className={`${prefixCls}-item--title`}>{title}</div>
-          {description && <div className={`${prefixCls}-item--desc`}>{description}</div>}
+        <div className={`${prefixCls}-item__icon`}>{this.renderIconNode()}</div>
+        {!isLastStep && <div className={`${prefixCls}-item__tail`} />}
+        <div className={`${prefixCls}-item__content`}>
+          <div className={`${prefixCls}-item__title`}>{title}</div>
+          {description && <div className={`${prefixCls}-item__desc`}>{description}</div>}
         </div>
         {disabled}
       </div>

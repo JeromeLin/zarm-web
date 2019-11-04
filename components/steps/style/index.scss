@@ -8,9 +8,51 @@ $steps-content-width: 120px;
   display: flex;
   box-sizing: border-box;
   width: 100%;
+  @include m(horizontal) {
+    @include b(steps-item) {
+      padding-left: $steps-content-width / 2;
+      @include e(tail) {
+        left: ($steps-icon-size + 12) + ($steps-content-width / 2);
+      }
+      @include e(content) {
+        margin-top: 8px;
+        width: $steps-content-width;
+        margin-left: -$steps-content-width / 2 + 12;
+        text-align: center;
+      }
+    }
+  }
+  @include m(vertical) {
+    display: block;
+    @include b(steps-item) {
+      display: block;
+      @include e(tail) {
+        width: 1px;
+        height: 100%;
+        left: $steps-icon-size / 2;
+        padding: ($steps-icon-size / 2 + 8) 0;
+        background: transparent;
+
+        &::after {
+          display: block;
+          content: '';
+          width: 100%;
+          height: 100%;
+          background: var(--steps-border-color);
+        }
+      }
+      @include e(icon) {
+        float: left;
+      }
+      @include e(content) {
+        min-height: 60px;
+        margin-left: $steps-icon-size + 12;
+        padding-bottom: 10px;
+      }
+    }
+  }
 }
 
-// common
 @include b(steps-item) {
   display: inline-block;
   position: relative;
@@ -19,7 +61,8 @@ $steps-content-width: 120px;
   &[role='button'] {
     cursor: pointer;
   }
-  @include m(icon) {
+
+  @include e(icon) {
     border: solid 1px var(--steps-border-color);
     box-sizing: border-box;
     display: flex;
@@ -28,9 +71,10 @@ $steps-content-width: 120px;
     border-radius: 50%;
     justify-content: center;
     align-items: center;
+    font-size: var(--steps-title-font-size);
+    color: var(--steps-status-wait);
   }
-
-  @include m(tail) {
+  @include e(tail) {
     position: absolute;
     top: $steps-icon-size / 2;
     width: calc(100% - #{$steps-icon-size + 24});
@@ -39,17 +83,11 @@ $steps-content-width: 120px;
     background: var(--steps-border-color);
     left: $steps-icon-size + 12;
   }
-
-  @include m(icon) {
-    font-size: var(--steps-title-font-size);
-    color: var(--steps-status-wait);
-  }
-  @include m(title) {
+  @include e(title) {
     font-size: var(--steps-title-font-size);
     color: var(--steps-title-color);
   }
-
-  @include m(desc) {
+  @include e(desc) {
     font-size: var(--steps-desc-font-size);
     color: var(--steps-desc-color);
   }
@@ -58,54 +96,4 @@ $steps-content-width: 120px;
   @include step-error;
   @include step-process;
   @include step-disabled;
-}
-
-// horizontal
-@include b(steps-horizontal) {
-  @include b(steps-item) {
-    padding-left: $steps-content-width / 2;
-    @include m(tail) {
-      left: ($steps-icon-size + 12) + ($steps-content-width / 2);
-    }
-    @include m(content) {
-      margin-top: 8px;
-      width: $steps-content-width;
-      margin-left: -$steps-content-width / 2 + 12;
-      text-align: center;
-    }
-  }
-}
-
-// vertical
-@include b(steps-vertical) {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  @include b(steps-item) {
-    display: block;
-    @include m(tail) {
-      width: 1px;
-      height: 100%;
-      left: $steps-icon-size / 2;
-      padding: ($steps-icon-size / 2 + 8) 0;
-      background: transparent;
-
-      &::after {
-        display: block;
-        content: '';
-        width: 100%;
-        height: 100%;
-        background: var(--steps-border-color);
-      }
-    }
-    @include m(icon) {
-      float: left;
-    }
-    @include m(content) {
-      // float: left;
-      min-height: 60px;
-      margin-left: $steps-icon-size + 12;
-      padding-bottom: 10px;
-    }
-  }
 }

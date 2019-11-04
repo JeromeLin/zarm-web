@@ -49,7 +49,7 @@ describe('Steps', () => {
       </div>,
     );
 
-    expect(wrapper.find('.zw-steps').hasClass('zw-steps-vertical')).toBeTruthy();
+    expect(wrapper.find('.zw-steps').hasClass('zw-steps--vertical')).toBeTruthy();
     expect(wrapper.find('.zw-steps-item').at(1).hasClass('zw-steps-item--error')).toBeTruthy();
   });
 });

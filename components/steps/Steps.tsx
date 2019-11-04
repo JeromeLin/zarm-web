@@ -28,7 +28,7 @@ export default class Steps extends PureComponent<StepsProps> {
     const classStr = classnames(
       prefixCls,
       className,
-      `${prefixCls}-${direction}`,
+      `${prefixCls}--${direction}`,
     );
 
     const filteredChildren = Children.toArray(children).filter((c) => !!c);

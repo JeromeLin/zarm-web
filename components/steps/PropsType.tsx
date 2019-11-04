@@ -1,15 +1,15 @@
 import { CSSProperties, ReactNode } from 'react';
 
-export type directionType = 'horizontal' | 'vertical';
-export type stepStatus = 'wait' | 'process' | 'finish' | 'error';
+export type StepsDirection = 'horizontal' | 'vertical';
+export type StepsStatus = 'wait' | 'process' | 'finish' | 'error';
 
 export interface StepsProps {
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;
   current?: number;
-  direction?: directionType;
-  status?: stepStatus;
+  direction?: StepsDirection;
+  status?: StepsStatus;
   onChange?: (current: number) => void;
 }
 
@@ -18,6 +18,6 @@ export interface StepsItemProps {
   style?: CSSProperties;
   title: ReactNode;
   description?: ReactNode;
-  status?: stepStatus;
+  status?: StepsStatus;
   disabled?: boolean;
 }

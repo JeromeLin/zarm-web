@@ -1,14 +1,6 @@
-@mixin step-status-icon($status) {
+@mixin step-status($status, $centent) {
   @include m($status) {
-    @include b(steps-item--icon) {
-      @content;
-    }
-  }
-}
-
-@mixin step-status-tail($status) {
-  @include m($status) {
-    @include b(steps-item--tail) {
+    @include e($centent) {
       @content;
     }
   }
@@ -16,10 +8,10 @@
 
 @mixin step-status-content($status) {
   @include m($status) {
-    @include b(steps-item--title) {
+    @include e(title) {
       @content;
     }
-    @include b(steps-item--desc) {
+    @include e(desc) {
       @content;
     }
   }
@@ -32,10 +24,10 @@
 }
 
 @mixin step-finish {
-  @include step-status-icon(finish) {
+  @include step-status(finish, icon) {
     border-color: var(--steps-status-process);
   }
-  @include step-status-tail(finish) {
+  @include step-status(finish, tail) {
     background: var(--steps-status-process);
 
     &::after {
@@ -45,7 +37,7 @@
 }
 
 @mixin step-process {
-  @include step-status-icon(process) {
+  @include step-status(process, icon) {
     border-color: var(--steps-status-process);
     background: var(--steps-status-process);
     color: #fff;
@@ -56,7 +48,8 @@
 }
 
 @mixin step-error {
-  @include step-status-icon(error) {
+  @include step-status(error, icon) {
+    color: var(--steps-status-error);
     border-color: var(--steps-status-error);
   }
   @include step-status-content(error) {

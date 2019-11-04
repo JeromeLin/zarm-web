@@ -3,13 +3,13 @@
 exports[`Steps renders normal steps correctly 1`] = `
 <div>
   <div
-    class="zw-steps zw-steps-horizontal"
+    class="zw-steps zw-steps--horizontal"
   >
     <div
       class="zw-steps-item zw-steps-item--finish"
     >
       <div
-        class="zw-steps-item--icon"
+        class="zw-steps-item__icon"
       >
         <i
           class="zw-icon zw-icon--right zw-icon--success zw-icon--sm"
@@ -29,13 +29,13 @@ exports[`Steps renders normal steps correctly 1`] = `
         </i>
       </div>
       <div
-        class="zw-steps-item--tail"
+        class="zw-steps-item__tail"
       />
       <div
-        class="zw-steps-item--content"
+        class="zw-steps-item__content"
       >
         <div
-          class="zw-steps-item--title"
+          class="zw-steps-item__title"
         >
           Finished
         </div>
@@ -45,7 +45,7 @@ exports[`Steps renders normal steps correctly 1`] = `
       class="zw-steps-item zw-steps-item--finish"
     >
       <div
-        class="zw-steps-item--icon"
+        class="zw-steps-item__icon"
       >
         <i
           class="zw-icon zw-icon--right zw-icon--success zw-icon--sm"
@@ -65,13 +65,13 @@ exports[`Steps renders normal steps correctly 1`] = `
         </i>
       </div>
       <div
-        class="zw-steps-item--tail"
+        class="zw-steps-item__tail"
       />
       <div
-        class="zw-steps-item--content"
+        class="zw-steps-item__content"
       >
         <div
-          class="zw-steps-item--title"
+          class="zw-steps-item__title"
         >
           In Progress
         </div>
@@ -81,15 +81,15 @@ exports[`Steps renders normal steps correctly 1`] = `
       class="zw-steps-item zw-steps-item--active zw-steps-item--process"
     >
       <div
-        class="zw-steps-item--icon"
+        class="zw-steps-item__icon"
       >
         3
       </div>
       <div
-        class="zw-steps-item--content"
+        class="zw-steps-item__content"
       >
         <div
-          class="zw-steps-item--title"
+          class="zw-steps-item__title"
         >
           Waiting
         </div>
