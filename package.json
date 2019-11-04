@@ -54,7 +54,7 @@
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
     "react-highlight": "^0.12.0",
-    "zarm": "2.0.0-alpha.55"
+    "zarm": "2.0.0-alpha.59"
   },
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
@@ -66,7 +66,7 @@
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "2.5.0",
     "@typescript-eslint/parser": "2.5.0",
-    "@zarm-design/cli": "^0.0.9",
+    "@zarm-design/cli": "^0.0.11",
     "babel-eslint": "10.0.3",
     "browserslist": "^4.6.6",
     "color": "^3.1.0",
