@@ -33,10 +33,10 @@ exports[`Breadcrumb renders Breadcrumb with customized separator correctly 1`] =
     </span>
   </span>
   <span
-    class="zw-breadcrumb-item"
+    class="zw-breadcrumb-item zw-breadcrumb-item--link"
   >
     <a
-      class="zw-breadcrumb-item__link"
+      class="zw-breadcrumb-item__content"
       href="https://t.zhongan.com"
     >
       三级菜单
@@ -83,10 +83,10 @@ exports[`Breadcrumb renders basic Breadcrumb correctly 1`] = `
     </span>
   </span>
   <span
-    class="zw-breadcrumb-item"
+    class="zw-breadcrumb-item zw-breadcrumb-item--link"
   >
     <a
-      class="zw-breadcrumb-item__link"
+      class="zw-breadcrumb-item__content"
       href="https://t.zhongan.com"
     >
       三级菜单

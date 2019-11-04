@@ -6,15 +6,7 @@
   color: var(--breadcrumb-default-color);
 
   @include b(breadcrumb-item) {
-
-    @include e(link) {
-      color: var(--breadcrumb-default-color);
-      text-decoration: none;
-
-      &:hover {
-        color: var(--breadcrumb-hover-color);
-      }
-    }
+    color: var(--breadcrumb-default-color);
 
     @include e(separator) {
       margin: 0 8px;
@@ -26,14 +18,21 @@
 
       > a {
         color: var(--breadcrumb-color);
-
-        &:hover {
-          color: var(--breadcrumb-hover-color);
-        }
       }
 
       > span:last-child {
         display: none;
+      }
+    }
+
+    @include m(link) {
+      @include e(content) {
+        color: var(--breadcrumb-default-color);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--breadcrumb-hover-color);
+        }
       }
     }
   }

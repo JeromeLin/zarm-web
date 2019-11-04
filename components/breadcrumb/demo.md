@@ -14,14 +14,14 @@ ReactDOM.render(
     <div className="rows">
       <Breadcrumb>
         <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
-        <Breadcrumb.Item>二级菜单</Breadcrumb.Item>
+        <Breadcrumb.Item href="https://zarm.design">二级菜单</Breadcrumb.Item>
         <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
       </Breadcrumb>
     </div>
     <div className="rows">
       <Breadcrumb style={{ background: '#f8f8f8' }}>
         <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
-        <Breadcrumb.Item href="https://t.zhongan.com">二级菜单</Breadcrumb.Item>
+        <Breadcrumb.Item href="https://zarm.design">二级菜单</Breadcrumb.Item>
         <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
       </Breadcrumb>
     </div>
@@ -54,7 +54,7 @@ Breadcrumb
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| separator | React.ReactNode | '/' | 分隔符 |
+| separator | ReactNode | '/' | 分隔符 |
 
 
 
@@ -62,6 +62,6 @@ Breadcrumb.Item
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| separator | React.ReactNode | '/' | 分隔符 |
+| separator | ReactNode | '/' | 分隔符 |
 | href | string | - | 链接地址 |
-| onClick | (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void \|<br />(event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
+| onClick | (event: MouseEvent) => void | - | 点击回调事件 |
