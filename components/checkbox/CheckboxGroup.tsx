@@ -82,11 +82,11 @@ class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupStates> {
     const { children, prefixCls, className, style, disabled } = this.props;
     const cls = classnames(prefixCls, className);
 
-    const childrenNode = React.Children.map(children, checkbox => (
+    const childrenNode = React.Children.map(children, (checkbox) => (
       <Checkbox
         disabled={disabled}
         {...(checkbox as ReactElement<CheckboxProps>).props}
-        onChange={e => this.onCheckboxChange(e, checkbox)}
+        onChange={(e) => this.onCheckboxChange(e, checkbox)}
         checked={
           !!(value.indexOf((checkbox as ReactElement<any>).props.value) > -1)
         }

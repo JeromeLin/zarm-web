@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { Component } from 'react';
 import TreeNode from './TreeNode';
 import PropsType from './PropsType';
 import {
@@ -78,7 +78,7 @@ class Tree extends Component<PropsType, StateType> {
     this.setState(newState);
   };
 
-  onNodeCheck = (node, targetChecked, event: MouseEvent) => {
+  onNodeCheck = (node, targetChecked, event) => {
     const { onCheck } = this.props;
     const { keys } = node.props;
     const { treeData: originalTreeData } = this.state;

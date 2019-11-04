@@ -437,7 +437,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
     };
 
     return (
-      <React.Fragment>
+      <>
         <div
           className={`${prefixCls}-trigger-box`}
           style={triggerBoxStyle}
@@ -463,7 +463,7 @@ export default class Dropdown extends React.Component<propsType, StateType> {
           this.div,
         )
       }
-      </React.Fragment>
+      </>
     );
   }
 }

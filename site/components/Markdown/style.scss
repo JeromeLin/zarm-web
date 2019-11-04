@@ -124,15 +124,20 @@
 
   .source {
     position: relative;
-    padding: 40px 24px;
+    padding: 32px 24px;
     // border-top: 1px solid #eaeefb;
 
-    .multi-rows {
+    .rows {
       overflow: hidden;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
 
       &:last-of-type {
         margin-bottom: 0;
+      }
+
+      &-dark {
+        background: #bec8c8;
+        padding: 12px;
       }
     }
   }
