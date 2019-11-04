@@ -57,7 +57,7 @@ class TreeNode extends Component<TreeNodePropsType, any> {
     return (
       <span className={classnames(`${prefixCls}-checkbox`)}>
         <Checkbox
-          onChange={e => this.onCheck(e)}
+          onChange={(e) => this.onCheck(e)}
           disabled={checkDisabled}
           checked={checked || isHalfChecked}
           indeterminate={isHalfChecked}

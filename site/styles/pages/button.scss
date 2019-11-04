@@ -1,18 +1,5 @@
 .button-page {
-  .zw-button:not(.zw-button--block) + .zw-button:not(.zw-button--block) {
-    margin-left: 12px;
-  }
-
-  .zw-btn-group + .zw-btn-group {
-    margin-left: 12px;
-  }
-
-  .ghost-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 85px;
-    background: #ccc;
+  .zw-button {
+    margin-right: 8px;
   }
 }
