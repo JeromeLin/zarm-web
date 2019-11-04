@@ -1,7 +1,6 @@
 @import './mixin';
 
 @include b(tabs) {
-
   overflow: hidden;
 
   @include m(horizontal) {
@@ -9,6 +8,7 @@
     @include b(tabs-header) {
       @include clearfix;
       @include tabs-header-style();
+
       border-bottom: 1px solid #e8e8e8;
       padding: 0 20px;
       @include b(tabs-scroll) {
@@ -28,9 +28,9 @@
           left: 0;
           bottom: 0;
           width: auto;
-          border-bottom: 2px solid #00BC70;
+          border-bottom: 2px solid #00bc70;
           transition: transform $default-transition;
-        }  
+        }
       }
       @include b(tabs-arrow) {
         @include m(left) {
@@ -48,6 +48,7 @@
 
     @include b(tabs-body) {
       @include tabs-body-style();
+
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -69,46 +70,45 @@
         height: 34px;
       }
     }
-  
+
     @include m(card) {
       @include b(tabs-header-item) {
         padding: 10px 16px 12px;
-        border: 1px solid #E6E6E6;
-        border-radius: 4px 4px 0px 0px;
+        border: 1px solid #e6e6e6;
+        border-radius: 4px 4px 0 0;
         margin-right: 4px;
-        background: #FAFAFA;
-  
+        background: #fafafa;
+
         @include m(active) {
-          border-bottom: 1px solid #FFF;
+          border-bottom: 1px solid #fff;
         }
       }
     }
-  
+
     @include m(noborder-card) {
       @include b(tabs-header-item) {
         padding: 10px 16px 12px;
-        background: #F2F2F2;
-      
+        background: #f2f2f2;
         @include m(active) {
-          background: #FFF;
+          background: #fff;
           border: none;
         }
       }
 
       @include b(tabs-body) {
-        background: #FFF;
+        background: #fff;
         transition: none;
       }
       @include b(tabs-body-item) {
-        background: #FFF;
+        background: #fff;
       }
-
     }
   }
 
   @include m(vertical) {
     @include b(tabs-header) {
       @include tabs-header-style();
+
       overflow: hidden;
       padding: 20px 0;
       float: left;
@@ -138,6 +138,7 @@
 
     @include b(tabs-body) {
       @include tabs-body-style();
+
       padding-left: 10px;
       overflow: hidden;
       position: relative;

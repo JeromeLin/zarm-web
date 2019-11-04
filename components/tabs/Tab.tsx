@@ -6,9 +6,6 @@ import PropsType from './PropsType';
 class Tab extends Component<PropsType, any> {
   static propTypes = {
     prefixCls: PropTypes.string,
-    disabled: PropTypes.bool,
-    closable: PropTypes.bool,
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   };
 
   static defaultProps = {

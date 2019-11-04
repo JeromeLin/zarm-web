@@ -6,6 +6,8 @@ import Icon from '../icon';
 import { GroupProps } from './PropsType';
 
 class Tabs extends Component<GroupProps, any> {
+  static Tab: typeof Tab;
+
   private tabHeader;
 
   private activeTab;
@@ -15,18 +17,16 @@ class Tabs extends Component<GroupProps, any> {
     defaultValue: PropTypes.number,
     type: PropTypes.oneOf(['card', 'line', 'noborder-card']),
     direction: PropTypes.oneOf(['horizontal', 'vertical']),
-    closable: PropTypes.bool,
     animated: PropTypes.bool,
     size: PropTypes.oneOf(['sm', 'md', 'lg']),
-    className: PropTypes.string,
     prefixCls: PropTypes.string,
     onChange: PropTypes.func,
     onTabClose: PropTypes.func,
-    onPrevClick: PropTypes.func,
-    onNextClick: PropTypes.func,
   };
 
   static defaultProps = {
+    value: 0,
+    defaultValue: 0,
     prefixCls: 'zw-tabs',
     type: 'card',
     direction: 'horizontal',
@@ -127,8 +127,6 @@ class Tabs extends Component<GroupProps, any> {
       this.tabHeader.current.scrollTop += headerHeight;
     }
   };
-
-  static Tab: typeof Tab;
 
   render() {
     const {
