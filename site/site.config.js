@@ -134,10 +134,6 @@ module.exports = {
     ],
     notice: [
       {
-        name: 'Alert',
-        module: () => import('@/components/alert/alert.md'),
-      },
-      {
         name: 'loading',
         module: () => import('@/components/loading/loading.md'),
       },
@@ -148,10 +144,6 @@ module.exports = {
       {
         name: 'modal',
         module: () => import('@/components/modal/modal.md'),
-      },
-      {
-        name: 'confirm',
-        module: () => import('@/components/confirm/confirm.md'),
       },
       {
         name: 'notification',

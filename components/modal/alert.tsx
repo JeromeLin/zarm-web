@@ -46,7 +46,7 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
   let iconElem: ReactNode = null;
   if (theme) {
     const themeTitleConfig = themeMapIcon[theme];
-    iconElem = <Icon className={`${prefixCls}__alert-icon`} size="md" type={themeTitleConfig.icon} theme={theme} />
+    iconElem = <Icon className={`${prefixCls}__alert-icon`} size="md" type={themeTitleConfig.icon} theme={theme} />;
   }
 
   const titleAndContent = (
@@ -152,15 +152,15 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
 }
 
 export function Alert(props: ModalProps | ReactNode) {
-  const modalProps: AlertProps = isReactNode(props) ? {
-    content: props,
-  } : props;
+  const modalProps: AlertProps = isReactNode(props)
+    ? { content: props }
+    : props;
   return AlertMethod(modalProps);
 }
 
 export function Confirm(props: ModalProps | ReactNode) {
-  const modalProps: AlertProps = isReactNode(props) ? {
-    content: props,
-  } : props;
+  const modalProps: AlertProps = isReactNode(props)
+    ? { content: props }
+    : props;
   return AlertMethod(modalProps, true);
 }
