@@ -1,36 +1,33 @@
 @import '../../style/core/index';
 @import './mixins';
 
-$steps-icon-size: 28px;
-$steps-content-width: 120px;
-
 @include b(steps) {
   display: flex;
   box-sizing: border-box;
   width: 100%;
   @include m(horizontal) {
     @include b(steps-item) {
-      padding-left: $steps-content-width / 2;
+      padding-left: calc(var(--steps-content-width) / 2);
       @include e(tail) {
-        left: ($steps-icon-size + 12) + ($steps-content-width / 2);
+        left: calc((var(--steps-icon-size) + 12px) + (var(--steps-content-width) / 2));
       }
       @include e(content) {
         margin-top: 8px;
-        width: $steps-content-width;
-        margin-left: -$steps-content-width / 2 + 12;
+        width: var(--steps-content-width);
+        margin-left: calc(var(--steps-content-width) / -2 + var(--steps-icon-size) / 2);
         text-align: center;
       }
     }
   }
   @include m(vertical) {
-    display: block;
+    flex-direction: column;
     @include b(steps-item) {
-      display: block;
+      min-height: 64px;
       @include e(tail) {
         width: 1px;
         height: 100%;
-        left: $steps-icon-size / 2;
-        padding: ($steps-icon-size / 2 + 8) 0;
+        left: calc(var(--steps-icon-size) / 2);
+        padding: calc(var(--steps-icon-size) / 2 + 8px) 0;
         background: transparent;
 
         &::after {
@@ -46,8 +43,11 @@ $steps-content-width: 120px;
       }
       @include e(content) {
         min-height: 60px;
-        margin-left: $steps-icon-size + 12;
+        margin-left: calc(var(--steps-icon-size) + var(--steps-icon-size) / 2);
         padding-bottom: 10px;
+      }
+      @include e(title) {
+        margin-top: calc(var(--steps-icon-size) / 2 - 10px);
       }
     }
   }
@@ -66,8 +66,8 @@ $steps-content-width: 120px;
     border: solid 1px var(--steps-border-color);
     box-sizing: border-box;
     display: flex;
-    width: $steps-icon-size;
-    height: $steps-icon-size;
+    width: var(--steps-icon-size);
+    height: var(--steps-icon-size);
     border-radius: 50%;
     justify-content: center;
     align-items: center;
@@ -76,16 +76,17 @@ $steps-content-width: 120px;
   }
   @include e(tail) {
     position: absolute;
-    top: $steps-icon-size / 2;
-    width: calc(100% - #{$steps-icon-size + 24});
-    padding: 0 $steps-icon-size / 2;
+    top: calc(var(--steps-icon-size) / 2);
+    width: calc(100% - (var(--steps-icon-size) + 24px));
+    padding: 0 calc(var(--steps-icon-size) / 2);
     height: 1px;
     background: var(--steps-border-color);
-    left: $steps-icon-size + 12;
+    left: calc(var(--steps-icon-size) + 12px);
   }
   @include e(title) {
     font-size: var(--steps-title-font-size);
     color: var(--steps-title-color);
+    font-weight: 500;
   }
   @include e(desc) {
     font-size: var(--steps-desc-font-size);
