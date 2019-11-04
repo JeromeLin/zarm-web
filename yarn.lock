@@ -738,9 +738,10 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.6.0"
 
-"@babel/runtime-corejs2@^7.6.0":
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.6.0.tgz#6fcd37c2580070817d62f219db97f67e26f50f9c"
+"@babel/runtime-corejs2@^7.6.3":
+  version "7.6.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.6.3.tgz#de3f446b3fb688b98cbd220474d1a7cad909bcb8"
+  integrity sha512-nuA2o+rgX2+PrNTZ063ehncVcg7sn+tU71BB81SaWRVUbGwCOlb0+yQA1e0QqmzOfRSYOxfvf8cosYqFbJEiwQ==
   dependencies:
     core-js "^2.6.5"
     regenerator-runtime "^0.13.2"
@@ -1465,10 +1466,10 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
 
-"@zarm-design/cli@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.9.tgz#95b8140cf9377d9487bd864a32f20ae4ee3f91c7"
-  integrity sha512-hgy/nwCpcAAbtIXmJc+EAbumUoje4Rrfq9bTwvy81av9f7LFx5UwQkEYnvsymWAiRV1dDMLKUj0h+fiiy1k6ig==
+"@zarm-design/cli@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.11.tgz#ebbd9e5aa9f38ba3435416eb2aa6d75f0d73ce54"
+  integrity sha512-0G6aHRJiaUjR8I/P0rM9pDcstEPKrOhH0mOucgKULbK1fWjAHx6FsWpw7yDecJOnraxSE7PpsawB0R1AI1F3YA==
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
@@ -1481,9 +1482,8 @@
     "@babel/preset-react" "^7.0.0"
     "@babel/preset-typescript" "^7.3.3"
     "@babel/runtime" "^7.5.5"
-    "@babel/runtime-corejs2" "^7.6.0"
+    "@babel/runtime-corejs2" "^7.6.3"
     "@sentry/webpack-plugin" "^1.8.1"
-    babel-eslint "^10.0.2"
     babel-jest "^24.9.0"
     babel-loader "^8.0.6"
     babel-plugin-import "^1.12.1"
@@ -1522,7 +1522,6 @@
     terser-webpack-plugin "^1.4.1"
     through2 "^3.0.1"
     ts-jest "^24.1.0"
-    typescript "^3.6.2"
     url-loader "^2.1.0"
     webpack "^4.39.3"
     webpack-bundle-analyzer "^3.4.1"
@@ -2082,7 +2081,7 @@ babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-eslint@10.0.3, babel-eslint@^10.0.2:
+babel-eslint@10.0.3:
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.0.3.tgz#81a2c669be0f205e19462fed2482d33e4687a88a"
   dependencies:
@@ -2214,8 +2213,7 @@ bcrypt-pbkdf@^1.0.0:
 
 better-scroll@1.15.1:
   version "1.15.1"
-  resolved "https://registry.npm.taobao.org/better-scroll/download/better-scroll-1.15.1.tgz#cd390715704fe2d1654bba0778ddf0fd28015572"
-  integrity sha1-zTkHFXBP4tFlS7oHeN3w/SgBVXI=
+  resolved "https://registry.yarnpkg.com/better-scroll/-/better-scroll-1.15.1.tgz#cd390715704fe2d1654bba0778ddf0fd28015572"
   dependencies:
     babel-runtime "^6.0.0"
 
@@ -3325,8 +3323,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
 
 create-react-context@0.2.3:
   version "0.2.3"
-  resolved "https://registry.npm.taobao.org/create-react-context/download/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
-  integrity sha1-nsFAppFKIu8EuLCbd3HeiVZ8tvM=
+  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
@@ -8781,9 +8778,8 @@ pn@^1.1.0:
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
 popper.js@^1.15.0:
-  version "1.16.0"
-  resolved "https://registry.npm.taobao.org/popper.js/download/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
-  integrity sha1-LhgWvLuqUY6mwuFaRm9Mucbi+7M=
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
 
 portfinder@^1.0.24:
   version "1.0.24"
@@ -9761,8 +9757,7 @@ react-loadable@^5.5.0:
 
 react-native-camera-roll-picker@1.2.3:
   version "1.2.3"
-  resolved "https://registry.npm.taobao.org/react-native-camera-roll-picker/download/react-native-camera-roll-picker-1.2.3.tgz#b117fd3a2b9012dcccee1261a9bc427226b8d6d2"
-  integrity sha1-sRf9OiuQEtzM7hJhqbxCcia41tI=
+  resolved "https://registry.yarnpkg.com/react-native-camera-roll-picker/-/react-native-camera-roll-picker-1.2.3.tgz#b117fd3a2b9012dcccee1261a9bc427226b8d6d2"
 
 react-refresh@^0.4.0:
   version "0.4.2"
@@ -11608,10 +11603,6 @@ typescript@3.6.4:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.4.tgz#b18752bb3792bc1a0281335f7f6ebf1bbfc5b91d"
   integrity sha512-unoCll1+l+YK4i4F8f22TaNVPRHcD9PA3yCuZ8g5e0qGqlVlJ/8FSateOLLSagn+Yg5+ZwuPkL8LFUc0Jcvksg==
 
-typescript@^3.6.2:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.3.tgz#fea942fabb20f7e1ca7164ff626f1a9f3f70b4da"
-
 ua-parser-js@^0.7.18:
   version "0.7.20"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.20.tgz#7527178b82f6a62a0f243d1f94fd30e3e3c21098"
@@ -12358,8 +12349,8 @@ yargs@^7.0.0, yargs@^7.1.0:
 
 zarm@2.0.0-alpha.59:
   version "2.0.0-alpha.59"
-  resolved "https://registry.npm.taobao.org/zarm/download/zarm-2.0.0-alpha.59.tgz#783bf55d8d2897c7ccb19818a7f838406fc09531"
-  integrity sha1-eDv1XY0ol8fMsZgYp/g4QG/AlTE=
+  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.0.0-alpha.59.tgz#783bf55d8d2897c7ccb19818a7f838406fc09531"
+  integrity sha512-cjkXu1Jfz+I8O7JEgBEz+mIkcdb92egh9AbdTHESx2kyBNghls79lHHy0uy6bH32GukPAtgKfYL0QGzvkMRkFQ==
   dependencies:
     better-scroll "1.15.1"
     classnames "2.2.6"
