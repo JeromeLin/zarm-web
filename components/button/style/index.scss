@@ -1,4 +1,5 @@
 @import '../../style/core/index';
+@import 'node_modules/zarm/components/activity-indicator/style/component.scss';
 @import 'mixins';
 
 @include b(button) {
@@ -10,12 +11,6 @@
     var(--button-padding-h-md),
     var(--button-font-size-md),
     var(--button-icon-size-md)
-  );
-  @include button-ghost(
-    var(--button-default-ghost-border),
-    var(--button-default-ghost-color),
-    var(--button-default-ghost-active-border),
-    var(--button-default-ghost-active-color)
   );
 
   /* Button sizes */
@@ -73,6 +68,13 @@
       var(--button-disabled-opacity)
     );
 
+    @include m(link) {
+      @include button-link(
+        var(--button-default-color),
+        var(--color-link)
+      );
+    }
+
     @include button-ghost(
       var(--button-default-ghost-border),
       var(--button-default-ghost-color),
@@ -98,6 +100,13 @@
       var(--button-disabled-opacity)
     );
 
+    @include m(link) {
+      @include button-link(
+        var(--color-link),
+        var(--button-primary-hover-background)
+      );
+    }
+
     @include button-ghost(
       var(--button-primary-ghost-border),
       var(--button-primary-ghost-color),
@@ -122,6 +131,14 @@
       var(--button-danger-color),
       var(--button-disabled-opacity)
     );
+
+    @include m(link) {
+      @include button-link(
+        var(--button-danger-ghost-color),
+        var(--button-danger-hover-background)
+      );
+    }
+
     @include button-ghost(
       var(--button-danger-ghost-border),
       var(--button-danger-ghost-color),
@@ -147,22 +164,27 @@
   }
 }
 
-@include b(btn-group) {
+@include b(button-group) {
   @include clearfix;
 
   display: inline-block;
   vertical-align: middle;
 
   @include b(button) {
-    float: left;
     position: relative;
-
-    & + .zw-button {
-      margin-left: 0 !important;
-    }
 
     @include m(disabled) {
       z-index: 1;
+    }
+
+    @include m (primary) {
+      &:not(:last-child) {
+        border-right-color: #4ed2a6;
+      }
+
+      &:not(:last-child) {
+        margin-right: 0 !important;
+      }
     }
 
     &:first-child {
@@ -177,14 +199,6 @@
 
     &:first-child:last-child {
       border-radius: var(--radius-md);
-
-      &.is-round {
-        border-radius: 20px;
-      }
-
-      &.is-circle {
-        border-radius: 50%;
-      }
     }
 
     &:not(:first-child):not(:last-child) {
@@ -201,20 +215,28 @@
       z-index: 1;
     }
   }
+}
 
-  @each $type in (default, primary, danger) {
-    .zw-button--#{$type} {
-      &:first-child {
-        border-right-color: rgba(var(--color-white), 0.5);
+@include b(button) {
+  @include m(primary) {
+    @include b(activity-indicator) {
+      circle {
+        stroke: #fff;
       }
+    }
+  }
 
-      &:last-child {
-        border-left-color: rgba(var(--color-white), 0.5);
-      }
+  @include m(default) {
+    @include m(loading) {
+      color: var(--theme-primary);
+      border-color: var(--theme-primary);
+    }
+  }
 
-      &:not(:first-child):not(:last-child) {
-        border-left-color: rgba(var(--color-white), 0.5);
-        border-right-color: rgba(var(--color-white), 0.5);
+  @include m(danger) {
+    @include b(activity-indicator) {
+      circle {
+        stroke: #fff;
       }
     }
   }

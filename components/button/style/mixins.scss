@@ -11,7 +11,7 @@
   $disabled-background,
   $disabled-border,
   $disabled-color,
-  $disabled-opacity,
+  $disabled-opacity
 ) {
   background-color: $background;
   border-color: $border;
@@ -45,14 +45,32 @@
     background-color: $disabled-background;
     border-color: $disabled-border;
     color: $disabled-color;
+  }
+}
 
+@mixin button-link(
+  $color,
+  $active-color
+) {
+  background-color: transparent;
+  border-color: transparent;
+  color: $color;
+
+  &:hover,
+  &:active {
+    color: $active-color;
+  }
+
+  @include m(disabled) {
+    &,
     &:active,
-    &:focus,
     &:hover,
+    &:focus,
     &:visited {
-      background-color: $disabled-background;
-      border-color: $disabled-border;
-      color: $disabled-color;
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
     }
   }
 }
@@ -64,13 +82,11 @@
   $active-color
 ) {
   @include m(ghost) {
-    &,
-    &:hover {
-      background-color: transparent;
-      border-color: $border;
-      color: $color;
-    }
+    background-color: transparent;
+    border-color: $border;
+    color: $color;
 
+    &:hover,
     &:active {
       background-color: transparent;
       border-color: $active-border;
@@ -84,8 +100,8 @@
       &:focus,
       &:visited {
         background-color: transparent;
-        border-color: var(--border-disabled);
-        color: var(--color-text-disabled);
+        border-color: var(--button-ghost-disabled-border);
+        color: var(--button-ghost-disabled-color);
         cursor: not-allowed;
       }
     }
@@ -96,15 +112,30 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height;
+
+  @include b(icon) {
+    font-size: $font-size;
+  }
+
+  @include m (link) {
+    line-height: $height;
+  }
 
   @include m(circle) {
     width: $height;
+    min-width: var(--button-height-md);
     padding: 0;
   }
 
-  @include b(icon) {
-    font-size: $icon-size;
+  @include m(icon-only) {
+    width: $height;
+    min-width: var(--button-height-md);
+    padding: 0;
+
+    @include b(icon) {
+      font-size: $icon-size;
+      line-height: 1;
+    }
   }
 
   * + span {
@@ -150,10 +181,6 @@
   @include m(loading) {
     cursor: default;
     opacity: .65;
-
-    @include b(icon) {
-      animation: rotate360 1s linear infinite;
-    }
   }
 }
 

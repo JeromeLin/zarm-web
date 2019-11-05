@@ -30,8 +30,12 @@
   --border-color: #e6e6e6;
   --border-disabled: #bcbcbc;
 
+  // 堆叠顺序
+  --zindex-tooltip: 1500;
+
   // 透明度
-  --opacity-disabled: 0.5;
+  --opacity-disabled: .5;
+  --opacity-tooltip: .8;
 
   // 圆角
   --radius-sm: 2px;
@@ -112,15 +116,15 @@
   --button-font-size-md: 14px;
   --button-font-size-sm: 12px;
   --button-font-size-xs: 12px;
-  --button-icon-size-xl: 22px;
-  --button-icon-size-lg: 20px;
-  --button-icon-size-md: 18px;
-  --button-icon-size-sm: 16px;
+  --button-icon-size-xl: 20px;
+  --button-icon-size-lg: 18px;
+  --button-icon-size-md: 16px;
+  --button-icon-size-sm: 14px;
   --button-icon-size-xs: 14px;
   --button-disabled-opacity: var(--opacity-disabled);
   --button-disabled-color-ghost: var(--border-disabled);
   --button-default-background: var(--color-text-inverse);
-  --button-default-border: var(--theme-default);
+  --button-default-border: #e6e6e6;
   --button-default-color: var(--color-text);
   --button-default-hover-background: var(--color-white);
   --button-default-hover-border: var(--theme-primary);
@@ -130,8 +134,8 @@
   --button-default-active-color: var(--color-text);
   --button-default-ghost-border: var(--color-text-inverse);
   --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: var(--theme-default);
-  --button-default-ghost-active-color: var(--theme-default);
+  --button-default-ghost-active-border: var(--theme-primary);
+  --button-default-ghost-active-color: var(--theme-primary);
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);
   --button-primary-color: var(--color-text-inverse);
@@ -158,6 +162,11 @@
   --button-danger-ghost-color: var(--theme-danger);
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
+
+  // activity-indicator
+  --activity-indicator-size-md: 16px;
+  --activity-indicator-size-lg: 32px;
+  --activity-indicator-path-color: #e6e6e6;
 
   // Checkbox
   --checkbox-size: 14px;
@@ -217,6 +226,15 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  // Tooltip
+  --tooltip-font-size: 12px;
+  --tooltip-color: var(--color-text-inverse);
+  --tooltip-arrow-size: 4px;
+  --tooltip-light-background-color: #f2f2f2;
+  --tooltip-dark-background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+  --tooltip-padding-v: var(--padding-v-xs);
+  --tooltip-padding-h: var(--padding-h-xs);
 
   // Steps
   --steps-title-color: var(--color-text);

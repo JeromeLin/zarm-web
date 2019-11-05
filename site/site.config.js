@@ -195,7 +195,7 @@ module.exports = {
     others: [
       {
         name: 'Tooltip',
-        module: () => import('@/components/tooltip/tooltip.md'),
+        module: () => import('@/components/tooltip/demo.md'),
       },
       {
         name: 'Mask',

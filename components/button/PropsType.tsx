@@ -10,6 +10,7 @@ export default interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElem
   htmlType?: ButtonType;
   theme?: ButtonTheme;
   size?: ButtonSize;
+  icon?: string;
   block?: boolean;
   shape?: ButtonShape;
   active?: boolean;
