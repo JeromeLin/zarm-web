@@ -115,7 +115,6 @@
 
   @include b(icon) {
     font-size: $font-size;
-    vertical-align: middle;
   }
 
   @include m (link) {
@@ -135,8 +134,7 @@
 
     @include b(icon) {
       font-size: $icon-size;
-      vertical-align: middle;
-      line-height: 0 !important;
+      line-height: 1;
     }
   }
 

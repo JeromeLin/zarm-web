@@ -164,14 +164,13 @@
   }
 }
 
-@include b(btn-group) {
+@include b(button-group) {
   @include clearfix;
 
   display: inline-block;
   vertical-align: middle;
 
   @include b(button) {
-    float: left;
     position: relative;
 
     @include m(disabled) {
@@ -218,31 +217,27 @@
   }
 }
 
-@include b (button) {
-  @include m (primary) {
-    @include b (activity-indicator) {
+@include b(button) {
+  @include m(primary) {
+    @include b(activity-indicator) {
       circle {
         stroke: #fff;
       }
     }
   }
 
-  @include m (default) {
-    @include m (loading) {
+  @include m(default) {
+    @include m(loading) {
       color: var(--theme-primary);
       border-color: var(--theme-primary);
     }
   }
 
-  @include m (danger) {
-    @include b (activity-indicator) {
+  @include m(danger) {
+    @include b(activity-indicator) {
       circle {
         stroke: #fff;
       }
     }
-  }
-
-  @include b(icon) {
-    line-height: unset;
   }
 }
