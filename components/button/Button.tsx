@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ActivityIndicator from 'zarm/lib/activity-indicator';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Icon from '../icon';
 import ButtonProps from './PropsType';
 import ButtonGroup from './ButtonGroup';
 
@@ -15,6 +16,7 @@ class Button extends Component<ButtonProps> {
     htmlType: 'button',
     theme: 'default',
     shape: 'radius',
+    icon: '',
     ghost: false,
     size: null,
     loading: false,
@@ -25,8 +27,9 @@ class Button extends Component<ButtonProps> {
     prefixCls: PropTypes.string,
     theme: PropTypes.string,
     shape: PropTypes.oneOf(['circle', 'round', 'rect', 'radius']),
-    size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
+    size: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
     htmlType: PropTypes.oneOf(['submit', 'button', 'reset']),
+    icon: PropTypes.string,
     onClick: PropTypes.func,
     loading: PropTypes.bool,
     ghost: PropTypes.bool,
@@ -35,7 +38,7 @@ class Button extends Component<ButtonProps> {
   render() {
     const {
       prefixCls, htmlType = 'button', type, size, block, shape, active, focus, disabled, ghost,
-      loading, className, onClick, children, style, theme, href, target, ...others
+      loading, className, onClick, children, style, theme, href, target, icon, ...others
     } = this.props;
 
     const classes = classnames(prefixCls, className, {
@@ -48,9 +51,11 @@ class Button extends Component<ButtonProps> {
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--loading`]: loading,
       [`${prefixCls}--ghost`]: ghost,
+      [`${prefixCls}--icon-only`]: !children && children !== 0 && icon,
       [`${prefixCls}--link`]: href && target,
     });
 
+    const child = children ? <span>{children}</span> : null;
     const textContent = loading
       ? (
         <>
@@ -58,7 +63,8 @@ class Button extends Component<ButtonProps> {
           <span>{children}</span>
         </>
       )
-      : children;
+      : child;
+    const iconNode = icon ? <Icon type={icon} /> : null;
 
     return (
       href
@@ -83,6 +89,7 @@ class Button extends Component<ButtonProps> {
             onClick={(e) => (!disabled && !loading) && onClick!(e)}
             {...others}
           >
+            {iconNode}
             {textContent}
           </button>
         )

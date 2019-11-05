@@ -114,18 +114,30 @@
   height: $height;
   line-height: 1.5;
 
+  @include b(icon) {
+    font-size: $font-size;
+    vertical-align: middle;
+  }
+
   @include m (link) {
     line-height: $height;
   }
 
   @include m(circle) {
     width: $height;
+    min-width: var(--button-height-md);
     padding: 0;
   }
 
-  @include b(icon) {
-    font-size: $icon-size;
-    vertical-align: middle;
+  @include m(icon-only) {
+    width: $height;
+    min-width: var(--button-height-md);
+    padding: 0;
+
+    @include b(icon) {
+      font-size: $icon-size;
+      vertical-align: middle;
+    }
   }
 
   * + span {

@@ -84,13 +84,36 @@ import { Button, Icon } from 'zarm-web';
 ReactDOM.render(
   <>
     <div className="rows">
-      <Button><Icon type="search" /> default</Button>
-      <Button theme="primary"><Icon type="time" /> primary</Button>
-      <Button theme="danger"><Icon type="keyboard" /> danger</Button>
+      <Button icon="search" size="xs">default</Button>
+      <Button icon="time" theme="primary" size="xs">primary</Button>
+      <Button icon="keyboard" theme="danger" size="xs">danger</Button>
     </div>
     <div className="rows">
-      <Button shape="circle"><Icon type="search" /></Button>
-      <Button shape="circle" theme="primary"><Icon type="search" /></Button>
+      <Button icon="search" size="sm">default</Button>
+      <Button icon="time" theme="primary" size="sm">primary</Button>
+      <Button icon="keyboard" theme="danger" size="sm">danger</Button>
+    </div>
+    <div className="rows">
+      <Button icon="search" size="md">default</Button>
+      <Button icon="time" theme="primary" size="md">primary</Button>
+      <Button icon="keyboard" theme="danger" size="md">danger</Button>
+    </div>
+    <div className="rows">
+      <Button icon="search" size="lg">default</Button>
+      <Button icon="time" theme="primary" size="lg">primary</Button>
+      <Button icon="keyboard" theme="danger" size="lg">danger</Button>
+    </div>
+    <div className="rows">
+      <Button icon="search" shape="circle" />
+      <Button icon="search" shape="circle" theme="primary" />
+    </div>
+    <div className="rows">
+      <Button size="lg" icon="time" shape="circle" />
+      <Button size="lg" icon="keyboard" shape="circle" theme="primary" />
+    </div>
+    <div className="rows">
+      <Button size="xl" icon="time" shape="circle" />
+      <Button size="xl" icon="keyboard" shape="circle" theme="primary" />
     </div>
   </>
 , mountNode);
@@ -112,9 +135,9 @@ ReactDOM.render(
         <Button>R</Button>
       </Button.Group>
       <Button.Group>
-        <Button><Icon type="arrow-left" /></Button>
-        <Button><Icon type="broadcast" /></Button>
-        <Button><Icon type="arrow-right" /></Button>
+        <Button icon="arrow-left" />
+        <Button icon="broadcast" />
+        <Button icon="arrow-right" />
       </Button.Group>
     </div>
     <div className="rows">
@@ -123,9 +146,9 @@ ReactDOM.render(
         <Button theme="primary">下一页</Button>
       </Button.Group>
       <Button.Group>
-        <Button theme="primary"><Icon type="arrow-left" /></Button>
-        <Button theme="primary"><Icon type="broadcast" /></Button>
-        <Button theme="primary"><Icon type="arrow-right" /></Button>
+        <Button theme="primary" icon="arrow-left" />
+        <Button theme="primary" icon="broadcast" />
+        <Button theme="primary" icon="arrow-right" />
       </Button.Group>
     </div>
   </>
@@ -216,13 +239,13 @@ ReactDOM.render(
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'default' | 设置主题，可选值为 `default`、`primary`、`danger` |
-| size | string | 'md' | 设置大小，可选值为 `lg`、`md`、`sm`、`xs` |
+| size | string | 'md' | 设置大小，可选值为 `xl`、`lg`、`md`、`sm`、`xs` |
 | shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round`、`circle` |
 | block | boolean | false | 是否块级元素 |
 | ghost | boolean | false | 是否幽灵按钮 |
 | disabled | boolean | false | 是否禁用 |
 | loading | boolean | false | 是否加载中状态 |
-| icon | ReactNode | - | 设置图标 |
+| icon | string | '' | 图标类型，设置Icon组件的type |
 | onClick | MouseEventHandler&lt;HTMLAnchorElement&gt; \| MouseEventHandler&lt;HTMLButtonElement&gt; | - | 点击后触发的回调函数 |
 | htmlType | string | 'button' | 设置`button`原生的`type`值，可选值为 `button`、`submit`、`reset` |
 | href | string | - | 点击跳转的地址，指定此属性`button`的行为和`a`链接一致 |

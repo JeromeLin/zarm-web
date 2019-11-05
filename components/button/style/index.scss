@@ -241,4 +241,8 @@
       }
     }
   }
+
+  @include b(icon) {
+    line-height: 1;
+  }
 }
