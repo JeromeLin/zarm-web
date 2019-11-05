@@ -184,6 +184,10 @@ module.exports = {
         module: () => import('@/components/step/step.md'),
       },
       {
+        name: 'Steps',
+        module: () => import('@/components/steps/demo.md'),
+      },
+      {
         name: 'Dropdown',
         module: () => import('@/components/dropdown/dropdown.md'),
       },
