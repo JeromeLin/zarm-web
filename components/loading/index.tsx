@@ -1,6 +1,5 @@
 import React, { Component, ReactElement } from 'react';
-import { ActivityIndicator } from 'zarm';
-import PropTypes from 'prop-types';
+import ActivityIndicator from 'zarm/es/activity-indicator';
 import classnames from 'classnames';
 import debounce from '../utils/debounce';
 import LoadingProps from './PropsType';
@@ -10,21 +9,17 @@ ActivityIndicator.defaultProps.prefixCls = 'zw-activity-indicator';
 function shouldDelay(visible?: boolean, delay?: number): boolean {
   return !!visible && !!delay && !Number.isNaN(Number(delay));
 }
-class Loading extends Component<LoadingProps, any> {
+
+interface LoadingStates {
+  visible: boolean;
+}
+class Loading extends Component<LoadingProps, LoadingStates> {
+  static displayName = 'Loading';
+
   static defaultProps = {
     prefixCls: 'zw-loading',
     visible: false,
     size: 'md',
-  };
-
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    size: PropTypes.oneOf(['lg', 'md', 'xs']),
-    delay: PropTypes.number,
-    visible: PropTypes.bool,
-    className: PropTypes.string,
-    fullscreen: PropTypes.bool,
-    indicator: PropTypes.element,
   };
 
   constructor(props) {
@@ -65,7 +60,7 @@ class Loading extends Component<LoadingProps, any> {
     const { visible } = this.props;
     const { visible: currentVisible } = this.state;
     if (currentVisible !== visible) {
-      this.setState({ visible });
+      this.setState({ visible: !!visible });
     }
   };
 
