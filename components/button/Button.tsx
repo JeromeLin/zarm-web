@@ -59,7 +59,7 @@ class Button extends Component<ButtonProps> {
     const textContent = loading
       ? (
         <>
-          <ActivityIndicator style={{ top: 2 }} />
+          <ActivityIndicator />
           <span>{children}</span>
         </>
       )

@@ -112,7 +112,6 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: 1.5;
 
   @include b(icon) {
     font-size: $font-size;
@@ -137,6 +136,7 @@
     @include b(icon) {
       font-size: $icon-size;
       vertical-align: middle;
+      line-height: 0 !important;
     }
   }
 

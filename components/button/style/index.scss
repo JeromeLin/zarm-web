@@ -243,6 +243,6 @@
   }
 
   @include b(icon) {
-    line-height: 1;
+    line-height: unset;
   }
 }
