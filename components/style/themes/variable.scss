@@ -222,9 +222,9 @@
   --steps-title-color: var(--color-text);
   --steps-desc-color: var(--color-text-caption);
   --steps-title-font-size: var(--font-size-md);
-  --steps-desc-font-size: var(--font-size-sm);
-  --steps-border-color: var(--color-text-disabled);
-  --steps-status-wait: var(--color-text-disabled);
+  --steps-desc-font-size: var(--font-size-md);
+  --steps-border-color: #bcbcbc;
+  --steps-status-wait: #bcbcbc;
   --steps-status-process: var(--theme-primary);
   --steps-status-error: var(--theme-danger);
   --steps-icon-size: 28px;

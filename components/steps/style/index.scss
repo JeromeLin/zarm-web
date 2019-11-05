@@ -71,8 +71,12 @@
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    font-size: var(--steps-title-font-size);
+    font-size: calc(var(--steps-icon-size) / 2);
     color: var(--steps-status-wait);
+
+    @include b(icon) {
+      font-size: calc(var(--steps-icon-size) / 2);
+    }
   }
   @include e(tail) {
     position: absolute;

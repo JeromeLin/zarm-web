@@ -10,7 +10,7 @@ export interface StepsProps {
   current?: number;
   direction?: StepsDirection;
   status?: StepsStatus;
-  onChange?: (current: number) => void;
+  onChange?: (current?: number) => void;
 }
 
 export interface StepsItemProps {
