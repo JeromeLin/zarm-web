@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Steps renders normal steps correctly 1`] = `
+<div>
+  <div
+    class="zw-steps zw-steps--horizontal"
+  >
+    <div
+      class="zw-steps-item zw-steps-item--finish"
+    >
+      <div
+        class="zw-steps-item__icon"
+      >
+        <i
+          class="zw-icon zw-icon--right zw-icon--success zw-icon--sm"
+          theme="success"
+          type="right"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 32 32"
+            width="1em"
+          >
+            <use
+              href="#right"
+            />
+          </svg>
+        </i>
+      </div>
+      <div
+        class="zw-steps-item__tail"
+      />
+      <div
+        class="zw-steps-item__content"
+      >
+        <div
+          class="zw-steps-item__title"
+        >
+          Finished
+        </div>
+      </div>
+    </div>
+    <div
+      class="zw-steps-item zw-steps-item--finish"
+    >
+      <div
+        class="zw-steps-item__icon"
+      >
+        <i
+          class="zw-icon zw-icon--right zw-icon--success zw-icon--sm"
+          theme="success"
+          type="right"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 32 32"
+            width="1em"
+          >
+            <use
+              href="#right"
+            />
+          </svg>
+        </i>
+      </div>
+      <div
+        class="zw-steps-item__tail"
+      />
+      <div
+        class="zw-steps-item__content"
+      >
+        <div
+          class="zw-steps-item__title"
+        >
+          In Progress
+        </div>
+      </div>
+    </div>
+    <div
+      class="zw-steps-item zw-steps-item--active zw-steps-item--process"
+    >
+      <div
+        class="zw-steps-item__icon"
+      >
+        3
+      </div>
+      <div
+        class="zw-steps-item__content"
+      >
+        <div
+          class="zw-steps-item__title"
+        >
+          Waiting
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

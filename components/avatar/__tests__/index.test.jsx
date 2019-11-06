@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Avatar from '../index';
 
@@ -54,5 +54,38 @@ describe('Avatar', () => {
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders Avatars correctly that Automatically adjust the character size', () => {
+    const wrapper = mount(
+      <Avatar size="lg">Zhong</Avatar>,
+    );
+    expect(wrapper.state().childrenScale).toBe(1);
+
+
+    wrapper.setProps({ children: null });
+    expect(wrapper.state().childrenScale).toBe(1);
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+      get() {
+        if (this.className === 'zw-avatar--string') {
+          return 160;
+        }
+        return 48;
+      },
+    });
+    wrapper.setProps({ children: 'Component' });
+    expect(wrapper.state().childrenScale).toBe(0.25);
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+      get() {
+        if (this.className === 'zw-avatar--string') {
+          return 50;
+        }
+        return 108;
+      },
+    });
+    wrapper.setProps({ children: 'ZA' });
+    expect(wrapper.state().childrenScale).toBe(1);
   });
 });
