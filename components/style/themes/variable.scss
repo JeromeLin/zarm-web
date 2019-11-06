@@ -8,7 +8,7 @@
   @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
   // 文字色
-  --color-text: #464646; // 基本
+  --color-text: #343434; // 基本
   --color-text-inverse: #fff; // 反色
   --color-text-placeholder: #a9a9a9; // 文本框提示
   --color-text-disabled: #bcbcbc; // 失效
@@ -90,9 +90,9 @@
 
   // Breadcrumb
   --breadcrumb-default-font-size: 14px;
-  --breadcrumb-default-color: #909090;
-  --breadcrumb-color: #343434;
-  --breadcrumb-hover-color: #00bc70;
+  --breadcrumb-default-color: var(--color-text-caption);
+  --breadcrumb-color: var(--color-text);
+  --breadcrumb-hover-color: var(--theme-primary);
   --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 
   // Button
