@@ -47,10 +47,18 @@ import { Button } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <Button theme="primary" shape="rect">rect</Button>
-    <Button theme="primary" shape="radius">radius</Button>
-    <Button theme="primary" shape="round">round</Button>
-    <Button theme="primary" shape="circle">c</Button>
+    <div className="rows">
+      <Button shape="rect">rect</Button>
+      <Button shape="radius">radius</Button>
+      <Button shape="round">round</Button>
+      <Button shape="circle" icon="search" />
+    </div>
+    <div className="rows">
+      <Button theme="primary" shape="rect">rect</Button>
+      <Button theme="primary" shape="radius">radius</Button>
+      <Button theme="primary" shape="round">round</Button>
+      <Button theme="primary" shape="circle" icon="search" />
+    </div>
   </>
 , mountNode);
 ```
@@ -66,9 +74,9 @@ import { Button } from 'zarm-web';
 ReactDOM.render(
   <>
     <div className="rows">
+      <Button disabled>default</Button>
       <Button disabled theme="primary">primary</Button>
       <Button disabled theme="danger">danger</Button>
-      <Button disabled>default</Button>
     </div>
   </>
 , mountNode);
@@ -84,36 +92,13 @@ import { Button, Icon } from 'zarm-web';
 ReactDOM.render(
   <>
     <div className="rows">
-      <Button icon="search" size="xs">default</Button>
-      <Button icon="time" theme="primary" size="xs">primary</Button>
-      <Button icon="keyboard" theme="danger" size="xs">danger</Button>
-    </div>
-    <div className="rows">
-      <Button icon="search" size="sm">default</Button>
-      <Button icon="time" theme="primary" size="sm">primary</Button>
-      <Button icon="keyboard" theme="danger" size="sm">danger</Button>
-    </div>
-    <div className="rows">
       <Button icon="search" size="md">default</Button>
       <Button icon="time" theme="primary" size="md">primary</Button>
       <Button icon="keyboard" theme="danger" size="md">danger</Button>
     </div>
     <div className="rows">
-      <Button icon="search" size="lg">default</Button>
-      <Button icon="time" theme="primary" size="lg">primary</Button>
-      <Button icon="keyboard" theme="danger" size="lg">danger</Button>
-    </div>
-    <div className="rows">
       <Button icon="search" shape="circle" />
       <Button icon="search" shape="circle" theme="primary" />
-    </div>
-    <div className="rows">
-      <Button size="lg" icon="time" shape="circle" />
-      <Button size="lg" icon="keyboard" shape="circle" theme="primary" />
-    </div>
-    <div className="rows">
-      <Button size="xl" icon="time" shape="circle" />
-      <Button size="xl" icon="keyboard" shape="circle" theme="primary" />
     </div>
   </>
 , mountNode);
@@ -135,6 +120,11 @@ ReactDOM.render(
         <Button>R</Button>
       </Button.Group>
       <Button.Group>
+        <Button disabled>L</Button>
+        <Button disabled>M</Button>
+        <Button disabled>R</Button>
+      </Button.Group>
+      <Button.Group>
         <Button icon="arrow-left" />
         <Button icon="broadcast" />
         <Button icon="arrow-right" />
@@ -144,6 +134,10 @@ ReactDOM.render(
       <Button.Group>
         <Button theme="primary">上一页</Button>
         <Button theme="primary">下一页</Button>
+      </Button.Group>
+      <Button.Group>
+        <Button theme="primary" disabled>上一页</Button>
+        <Button theme="primary" disabled>下一页</Button>
       </Button.Group>
       <Button.Group>
         <Button theme="primary" icon="arrow-left" />

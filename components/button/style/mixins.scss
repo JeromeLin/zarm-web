@@ -112,12 +112,13 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
+  line-height: 1.5;
 
   @include b(icon) {
     font-size: $font-size;
   }
 
-  @include m (link) {
+  @include m(link) {
     line-height: $height;
   }
 
@@ -165,22 +166,22 @@
     text-decoration: none;
   }
 
-  /* disabled Button */
+  /* disabled button */
   @include m(disabled) {
     cursor: not-allowed;
     opacity: var(--opacity-disabled);
   }
 
-  /* block Button */
+  /* block button */
   @include m(block) {
     display: block;
     width: 100%;
   }
 
-  /* loading btn */
+  /* loading button */
   @include m(loading) {
+    line-height: 1.15;
     cursor: default;
-    opacity: .65;
   }
 }
 

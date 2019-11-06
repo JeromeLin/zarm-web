@@ -26,8 +26,8 @@ export default interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElem
 }
 
 export interface ButtonGroupProps {
+  prefixCls?: string;
   size?: ButtonSize;
   style?: CSSProperties;
   className?: string;
-  prefixCls?: string;
 }
