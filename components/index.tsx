@@ -16,7 +16,6 @@ export { default as Popover } from './popover';
 export { default as Progress } from './progress';
 export { default as Radio } from './radio';
 export { default as Slider } from './slider';
-export { default as Step } from './step';
 export { default as Steps } from './steps';
 export { default as Swipe } from './swipe';
 export { default as Switch } from './switch';
