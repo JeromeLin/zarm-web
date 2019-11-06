@@ -1,6 +1,5 @@
 import React, { Component, KeyboardEventHandler } from 'react';
 import Popup from 'zarm/lib/popup';
-import 'zarm/lib/popup/style';
 import cn from 'classnames';
 
 import { ModalProps } from './PropsType';

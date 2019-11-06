@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Modal from '../index';
@@ -64,7 +63,9 @@ describe('Modal', () => {
     const onMaskClick = jest.fn();
     const wrapper = shallow(
       <Modal
+        visible
         title="标题"
+        mask
         onMaskClick={onMaskClick}
       >
         我是一个模态框

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders basic Modal correctly 1`] = `null`;
+
+exports[`Modal renders closable Modal correctly 1`] = `null`;
+
+exports[`Modal renders customized Modal correctly 1`] = `null`;
