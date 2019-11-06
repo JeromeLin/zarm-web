@@ -1,25 +1,13 @@
-import { ReactNode, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
+import PopperProps from 'zarm/lib/popper/PropsType';
 
-export type Direction = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight' | 'bottomScreen' | 'topScreen';
 export type Trigger = 'click' | 'hover' | 'contextMenu';
 
-export interface BasicPropsType {
+export interface PropsType extends PopperProps, HTMLAttributes<HTMLDivElement> {
   prefixCls: string;
-  visible?: boolean;
-  content?: ReactNode;
-  direction: Direction;
-  triggerBoxProps: HTMLAttributes<HTMLDivElement>;
-  trigger: Trigger;
-  disabled?: boolean;
-  zIndex: number;
-  hideOnClick: boolean;
-  notRenderInDisabledMode?: boolean;
-  onVisibleChange(flag: boolean): void;
-  getPopupContainer?(): HTMLElement;
-  width: string | number;
+  disabled: false;
+  onVisibleChange: (visible: boolean) => void;
 }
-
-export type PropsType = React.HTMLAttributes<HTMLDivElement> & BasicPropsType;
 
 export interface StateType {
   visible?: boolean;

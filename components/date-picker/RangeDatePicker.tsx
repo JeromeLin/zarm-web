@@ -494,7 +494,6 @@ class RangeDatePicker extends Component<PropsType, any> {
         onVisibleChange={this.handleDropDownVisibleChange}
         content={rangeDatePicker}
         visible={isShowDropdown}
-        hideOnClick={!showTime}
       >
         {this.renderPlaceholder()}
       </Dropdown>

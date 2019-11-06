@@ -172,7 +172,6 @@ class DatePicker extends Component<PropsType, any> {
         }}
         content={this.renderOverlay()}
         visible={dropdown}
-        hideOnClick={flag}
       >
         <span className={cls} style={style}>
           <span

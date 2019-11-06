@@ -1,6 +1,5 @@
 import React from 'react';
 import Popper from 'zarm/lib/popper';
-import 'zarm/lib/popper/style';
 import classnames from 'classnames';
 import { PropsType } from './PropsType';
 
@@ -9,16 +8,28 @@ const defaultProps = {
   prefixCls: 'zw-dropdown',
   direction: 'bottomLeft',
   trigger: 'click',
+  disabled: false,
 };
 
 export default class Dropdown extends React.Component<PropsType> {
   static defaultProps = defaultProps;
+
+  onVisibleChange = (visible) => {
+    const { disabled, onVisibleChange } = this.props;
+    if (disabled) {
+      return;
+    }
+    if (onVisibleChange) {
+      onVisibleChange(visible);
+    }
+  };
 
   render() {
     const {
       children,
       className,
       prefixCls,
+      onVisibleChange,
       ...others
     } = this.props;
     const cls = classnames({
@@ -27,7 +38,7 @@ export default class Dropdown extends React.Component<PropsType> {
     });
     return (
       <>
-        <Popper className={cls} {...others}>{children}</Popper>
+        <Popper className={cls} onVisibleChange={this.onVisibleChange} {...others}>{children}</Popper>
       </>
     );
   }

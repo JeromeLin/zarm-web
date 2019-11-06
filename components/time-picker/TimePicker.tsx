@@ -5,7 +5,7 @@ import Icon from '../icon';
 import TimeSelect from './TimeSelect';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
-type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
+type placement = 'bottomLeft' | 'bottomRight' | 'topLeft' | 'topRight';
 
 export interface TimePickerProps {
   value?: any;
@@ -24,7 +24,7 @@ export interface TimePickerProps {
 
 class TimePicker extends Component<TimePickerProps, any> {
   static defaultProps = {
-    onChange: () => {},
+    onChange: () => { },
     isRadius: true,
   };
 
