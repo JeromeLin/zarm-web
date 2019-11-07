@@ -4,7 +4,6 @@ import cn from 'classnames';
 
 import { ModalProps } from './PropsType';
 import Button from '../button';
-
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';

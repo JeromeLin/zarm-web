@@ -1,3 +1,3 @@
-import 'zarm/lib/popup/style/index.js';
+import 'zarm/lib/popup/style';
 import '../../style';
 import './index.scss';

@@ -72,7 +72,9 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    wrapper.find('.za-mask').simulate('click');
-    expect(onMaskClick).toHaveBeenCalled();
+    setTimeout(() => {
+      wrapper.find('.za-mask').simulate('click');
+      expect(onMaskClick).toHaveBeenCalled();
+    });
   });
 });
