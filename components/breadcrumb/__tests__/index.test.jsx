@@ -7,10 +7,10 @@ describe('Breadcrumb', () => {
   it('renders basic Breadcrumb correctly', () => {
     const wrapper = render(
       <Breadcrumb>
-        <Breadcrumb.Item>首页</Breadcrumb.Item>
-        <Breadcrumb.Item>模块</Breadcrumb.Item>
-        <Breadcrumb.Item href="https://t.zhongan.com">应用</Breadcrumb.Item>
-      </Breadcrumb>
+        <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
+        <Breadcrumb.Item>二级菜单</Breadcrumb.Item>
+        <Breadcrumb.Item href="https://t.zhongan.com">三级菜单</Breadcrumb.Item>
+      </Breadcrumb>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -18,10 +18,10 @@ describe('Breadcrumb', () => {
   it('renders Breadcrumb with customized separator correctly', () => {
     const wrapper = render(
       <Breadcrumb separator=">">
-        <Breadcrumb.Item>首页</Breadcrumb.Item>
-        <Breadcrumb.Item>模块</Breadcrumb.Item>
-        <Breadcrumb.Item href="https://t.zhongan.com">应用</Breadcrumb.Item>
-      </Breadcrumb>
+        <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
+        <Breadcrumb.Item>二级菜单</Breadcrumb.Item>
+        <Breadcrumb.Item href="https://t.zhongan.com">三级菜单</Breadcrumb.Item>
+      </Breadcrumb>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

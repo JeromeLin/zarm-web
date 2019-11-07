@@ -38,8 +38,11 @@ function NotificationInstance(props?: any, theme?: string) {
   const instances = document.querySelectorAll(className);
   const lastInstance: any = instances[instances.length - 1];
 
-  props.top = (lastInstance ? (parseInt(lastInstance.style.top, 10)
-    + lastInstance.offsetHeight) : 0) + NOTIFICATION_GAP;
+  props.top = (
+    lastInstance
+      ? (parseInt(lastInstance.style.top, 10) + lastInstance.offsetHeight)
+      : 0
+  ) + NOTIFICATION_GAP;
 
   function willUnMount(lastHeight, lastTop) {
     setTimeout(() => {
