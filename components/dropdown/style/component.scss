@@ -9,8 +9,12 @@
   will-change: transform, opacity;
   margin: 5px 0;
 
-  @include e(trigger-box) {
-    display: inline-block;
-    vertical-align: middle;
+  @include m(rect) {
+    border-radius: 0;
+  }
+
+  @include m(radius) {
+    border-radius: 4px;
+    overflow: hidden;
   }
 }

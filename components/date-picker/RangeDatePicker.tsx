@@ -388,7 +388,7 @@ class RangeDatePicker extends Component<PropsType, any> {
   render() {
     const {
       defaultValue,
-      isRadius,
+      // isRadius,
       format,
       min,
       max,
@@ -402,7 +402,7 @@ class RangeDatePicker extends Component<PropsType, any> {
       isShowDropdown,
     } = this.state;
 
-    const radius = 'radius' in this.props || isRadius;
+    // const radius = 'radius' in this.props || isRadius;
 
     const startDate = this.getStartDate();
     const endDate = this.getEndDate();

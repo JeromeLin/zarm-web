@@ -294,7 +294,6 @@ class Select extends Component<PropsType, StateProps> {
       size,
       tagTheme,
       style,
-      zIndex,
       multiple,
       getPopupContainer,
       locale,
@@ -361,12 +360,10 @@ class Select extends Component<PropsType, StateProps> {
 
     return (
       <Dropdown
-        triggerBoxProps={{ style }}
         disabled={disabled}
         visible={dropdown}
         content={menus}
-        zIndex={zIndex}
-        getPopupContainer={getPopupContainer}
+        getContainer={getPopupContainer}
         onVisibleChange={(visible) => {
           if (visible === true) {
             this.setState({ dropdown: visible, searchValue: '' });

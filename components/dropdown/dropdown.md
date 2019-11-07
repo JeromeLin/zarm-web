@@ -1,6 +1,6 @@
 # Dropdown 下拉框
 
-下拉框组件,API与zarm popper组件一直。
+下拉框组件,API与zarm popper组件一致。
 
 ## 基础用法
 
@@ -31,18 +31,21 @@ class Demo1 extends React.Component {
                 <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
                 <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
               </Menu>;
-    
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
+          shape="radius"
           visible={this.state.dropdown}
           content={overlay}
+          visible={this.state.dropdown2}
+          onVisibleChange={(visible)=>{
+            this.setState({
+              dropdown2:visible
+            });
+          }}
           >
-            <Button theme="primary">
-              toggle
-            </Button>
+           <Button>toggle</Button>
         </Dropdown>
-    
     
         <Dropdown
           disabled
@@ -56,6 +59,12 @@ class Demo1 extends React.Component {
         <Dropdown
           trigger="hover"
           content={overlay}
+          visible={this.state.dropdown3}
+          onVisibleChange={(visible)=>{
+            this.setState({
+              dropdown3:visible
+            });
+          }}
           >
             <Button theme="primary">
               hover me
@@ -65,6 +74,12 @@ class Demo1 extends React.Component {
         <Dropdown
           trigger="contextMenu"
           content={overlay}
+          visible={this.state.dropdown4}
+          onVisibleChange={(visible)=>{
+            this.setState({
+              dropdown4:visible
+            });
+          }}
           >
             <Button theme="primary">
               right click me
@@ -163,7 +178,7 @@ class Demo2 extends React.Component {
   }
 
   render() {
-    const { modalVisible } = this.state;
+    const { modalVisible,dropdown } = this.state;
     const overlay = <Menu>
                 <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
                 <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
@@ -180,7 +195,15 @@ class Demo2 extends React.Component {
             onClose={this.toggleModalVisible}
           />
           <Modal.Body>
-            <Dropdown content={overlay}>
+            <Dropdown 
+              content={overlay}
+              visible={dropdown}
+              onVisibleChange={(visible)=>{
+                this.setState({
+                  dropdown:visible
+                });
+              }}
+            >
                 <Button theme="primary">
                   显示dropdown
                 </Button>

@@ -136,7 +136,6 @@ class TimePicker extends Component<TimePickerProps, any> {
           visible={dropdown}
           disabled={disabled}
           style={{ width: 240, ...dropdownStyle }}
-          zIndex={2020}
           onVisibleChange={this.onVisibleChange}
           content={overlay}
           direction={placement}

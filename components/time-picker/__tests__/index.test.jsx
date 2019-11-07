@@ -66,8 +66,11 @@ describe('TimePicker', () => {
 
   it('behaves correctly when clear button click', () => {
     const wrapper = mount(<TimePicker value="12:33:22" />);
-    wrapper.find('.clear-btn').simulate('click');
 
-    expect(wrapper.find('.za-select__text').text()).toBe('00:00:00');
+    setTimeout(() => {
+      wrapper.find('.clear-btn').simulate('click');
+      expect(wrapper.find('.za-select__text').text()).toBe('00:00:00');
+    });
+
   });
 });
