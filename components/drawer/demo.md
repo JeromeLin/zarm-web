@@ -69,8 +69,7 @@ class Demo extends React.Component {
     this.drawerShow = this.drawerShow.bind(this);
   }
 
-  drawerHide() {
-    const { radioValue } = this.state;
+  drawerHide(radioValue) {
     const drawerVisible = `drawerVisible${radioValue}`;
 
     this.setState({
@@ -78,8 +77,7 @@ class Demo extends React.Component {
     });
   }
 
-  drawerShow() {
-    const { radioValue } = this.state;
+  drawerShow(radioValue) {
     const drawerVisible = `drawerVisible${radioValue}`;
 
     this.setState({
@@ -90,27 +88,15 @@ class Demo extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div style={{ padding: 40 }}>
-          <Radio.Group
-            value={this.state.radioValue}
-            onChange={(e) => {
-              this.setState({
-                radioValue: e.target.value
-              });
-            }}
-          >
-            <Radio value="lg">lg </Radio>
-            <Radio value="md">md </Radio>
-            <Radio value="sm">sm </Radio>
-          </Radio.Group>
-        </div>
         <div className="multi-rows">
-          <Button theme="primary" size="xl" onClick={() => this.drawerShow()}>Drawer</Button>
+          <Button theme="primary" size="xl" onClick={() => this.drawerShow('lg')}>Drawer-lg</Button>
+          <Button style={{ margin: '0 10px' }} theme="primary" size="xl" onClick={() => this.drawerShow('md')}>Drawer-md</Button>
+          <Button theme="primary" size="xl" onClick={() => this.drawerShow('sm')}>Drawer-sm</Button>
         </div>
 
         <Drawer
           visible={this.state.drawerVisiblelg}
-          onClose={this.drawerHide}
+          onClose={() => this.drawerHide('lg')}
           size="lg"
           closable
           maskClosable={false}
@@ -125,7 +111,7 @@ class Demo extends React.Component {
 
         <Drawer
           visible={this.state.drawerVisiblemd}
-          onClose={this.drawerHide}
+          onClose={() => this.drawerHide('md')}
           size="md"
           closable
           maskClosable={false}
@@ -134,13 +120,13 @@ class Demo extends React.Component {
           onMaskClick={() => console.log('onMaskClick')}
         >
           <div>
-            Drawer lg
+            Drawer md
           </div>
         </Drawer>
 
         <Drawer
           visible={this.state.drawerVisiblesm}
-          onClose={this.drawerHide}
+          onClose={() => this.drawerHide('sm')}
           size="sm"
           closable
           maskClosable={false}
@@ -149,7 +135,7 @@ class Demo extends React.Component {
           onMaskClick={() => console.log('onMaskClick')}
         >
           <div>
-            Drawer lg
+            Drawer sm
           </div>
         </Drawer>
       </React.Fragment>
