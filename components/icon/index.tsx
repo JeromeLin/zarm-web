@@ -1,6 +1,5 @@
-import Icon, { IconProps } from 'zarm/lib/icon';
+import Icon from 'zarm/es/icon';
 
 Icon.defaultProps.prefixCls = 'zw-icon';
 
-export { IconProps };
 export default Icon;
