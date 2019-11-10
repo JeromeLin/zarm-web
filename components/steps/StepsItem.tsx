@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { StepsItemProps } from './PropsType';
 import Icon from '../icon';
@@ -48,7 +48,7 @@ export default class Step extends PureComponent<StepsItemProps & any> {
       [`${prefixCls}-item--disabled`]: disabled,
     });
 
-    const stepItemProps: any = {};
+    const stepItemProps: HTMLAttributes<HTMLDivElement> = {};
     if (stepClick) {
       stepItemProps.role = 'button';
       if (!disabled) {
