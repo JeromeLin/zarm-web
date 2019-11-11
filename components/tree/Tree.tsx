@@ -134,7 +134,7 @@ class Tree extends Component<PropsType, StateType> {
       const { keys, title, checkDisabled, children } = item;
       return (
         <TreeNode
-          key={index}
+          key={`${index}`}
           keys={keys}
           title={title}
           canCheck={canCheck}

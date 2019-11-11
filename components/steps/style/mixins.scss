@@ -1,0 +1,58 @@
+@mixin step-status($status, $centent) {
+  @include m($status) {
+    @include e($centent) {
+      @content;
+    }
+  }
+}
+
+@mixin step-status-content($status) {
+  @include m($status) {
+    @include e(title) {
+      @content;
+    }
+    @include e(desc) {
+      @content;
+    }
+  }
+}
+
+@mixin step-disabled {
+  @include m(disabled) {
+    cursor: not-allowed !important;
+  }
+}
+
+@mixin step-finish {
+  @include step-status(finish, icon) {
+    border-color: var(--steps-status-process);
+  }
+  @include step-status(finish, tail) {
+    background: var(--steps-status-process);
+
+    &::after {
+      background: var(--steps-status-process) !important;
+    }
+  }
+}
+
+@mixin step-process {
+  @include step-status(process, icon) {
+    border-color: var(--steps-status-process);
+    background: var(--steps-status-process);
+    color: #fff;
+  }
+  @include step-status-content(process) {
+    color: var(--steps-status-process);
+  }
+}
+
+@mixin step-error {
+  @include step-status(error, icon) {
+    color: var(--steps-status-error);
+    border-color: var(--steps-status-error);
+  }
+  @include step-status-content(error) {
+    color: var(--steps-status-error);
+  }
+}

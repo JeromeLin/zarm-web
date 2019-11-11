@@ -5,44 +5,68 @@ exports[`Menu renders Menu with Divider correctly 1`] = `
   class="za-menu za-menu-root za-menu-dark za-menu-inline"
   role="menu"
 >
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
-      style="padding-left:24px"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      投保单复核
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+        style="padding-left:24px"
+      >
+        投保单复核
+      </li>
+    </div>
   </div>
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
-      style="padding-left:24px"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      在线投保单管理
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+        style="padding-left:24px"
+      >
+        在线投保单管理
+      </li>
+    </div>
   </div>
   <li
     class="ui-menu-item-divider"
   />
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
-      style="padding-left:24px"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      投保单录入
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+        style="padding-left:24px"
+      >
+        投保单录入
+      </li>
+    </div>
   </div>
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
-      style="padding-left:24px"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      新增计划
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+        style="padding-left:24px"
+      >
+        新增计划
+      </li>
+    </div>
   </div>
 </ul>
 `;
@@ -53,17 +77,11 @@ exports[`Menu renders collpased Menu correctly 1`] = `
   role="menu"
 >
   <div
-    class="ui-popover ui-tooltip za-menu-item__tooltip"
+    class="zw-tooltip"
   >
     <div
-      class="ui-popover-content ui-popover-content-radius"
+      class="zw-tooltip__inner"
     >
-      投保单复核
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <div>
       <li
         class="za-menu-level-1 za-menu-item"
         role="menuitem"
@@ -73,17 +91,11 @@ exports[`Menu renders collpased Menu correctly 1`] = `
     </div>
   </div>
   <div
-    class="ui-popover ui-tooltip za-menu-item__tooltip"
+    class="zw-tooltip"
   >
     <div
-      class="ui-popover-content ui-popover-content-radius"
+      class="zw-tooltip__inner"
     >
-      在线投保单管理
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <div>
       <li
         class="za-menu-level-1 za-menu-item"
         role="menuitem"
@@ -96,17 +108,11 @@ exports[`Menu renders collpased Menu correctly 1`] = `
     class="ui-menu-item-divider"
   />
   <div
-    class="ui-popover ui-tooltip za-menu-item__tooltip"
+    class="zw-tooltip"
   >
     <div
-      class="ui-popover-content ui-popover-content-radius"
+      class="zw-tooltip__inner"
     >
-      投保单录入
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <div>
       <li
         class="za-menu-level-1 za-menu-item"
         role="menuitem"
@@ -116,17 +122,11 @@ exports[`Menu renders collpased Menu correctly 1`] = `
     </div>
   </div>
   <div
-    class="ui-popover ui-tooltip za-menu-item__tooltip"
+    class="zw-tooltip"
   >
     <div
-      class="ui-popover-content ui-popover-content-radius"
+      class="zw-tooltip__inner"
     >
-      新增计划
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <div>
       <li
         class="za-menu-level-1 za-menu-item"
         role="menuitem"
@@ -159,41 +159,65 @@ exports[`Menu renders dark Menu correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          投保单复核
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            投保单复核
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          在线投保单管理
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            在线投保单管理
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          投保单录入
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            投保单录入
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          新增计划
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            新增计划
+          </li>
+        </div>
       </div>
     </ul>
   </li>
@@ -213,41 +237,65 @@ exports[`Menu renders dark Menu correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          核保权限定义
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            核保权限定义
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          核保权限分配
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            核保权限分配
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          规则配置
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            规则配置
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          人工核保
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            人工核保
+          </li>
+        </div>
       </div>
     </ul>
   </li>
@@ -267,41 +315,65 @@ exports[`Menu renders dark Menu correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改新增
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改新增
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改复核
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改复核
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改回退
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改回退
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改共享池
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改共享池
+          </li>
+        </div>
       </div>
     </ul>
   </li>
@@ -313,53 +385,89 @@ exports[`Menu renders horizontal Menu correctly 1`] = `
   class="za-menu za-menu-root za-menu-light za-menu-horizontal"
   role="menu"
 >
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item active"
-      role="menuitem"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      意健险
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item active"
+        role="menuitem"
+      >
+        意健险
+      </li>
+    </div>
   </div>
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      健康险个险
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+      >
+        健康险个险
+      </li>
+    </div>
   </div>
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      雇主责任险
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+      >
+        雇主责任险
+      </li>
+    </div>
   </div>
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      运营后台管理
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+      >
+        运营后台管理
+      </li>
+    </div>
   </div>
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      公共功能
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+      >
+        公共功能
+      </li>
+    </div>
   </div>
-  <div>
-    <li
-      class="za-menu-level-1 za-menu-item"
-      role="menuitem"
+  <div
+    class="zw-tooltip"
+  >
+    <div
+      class="zw-tooltip__inner"
     >
-      询报价
-    </li>
+      <li
+        class="za-menu-level-1 za-menu-item"
+        role="menuitem"
+      >
+        询报价
+      </li>
+    </div>
   </div>
 </ul>
 `;
@@ -385,41 +493,65 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          投保单复核
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            投保单复核
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          在线投保单管理
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            在线投保单管理
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          投保单录入
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            投保单录入
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          新增计划
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            新增计划
+          </li>
+        </div>
       </div>
     </ul>
   </li>
@@ -439,41 +571,65 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          核保权限定义
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            核保权限定义
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          核保权限分配
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            核保权限分配
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          规则配置
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            规则配置
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          人工核保
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            人工核保
+          </li>
+        </div>
       </div>
     </ul>
   </li>
@@ -493,41 +649,65 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改新增
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改新增
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改复核
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改复核
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改回退
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改回退
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          批改共享池
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            批改共享池
+          </li>
+        </div>
       </div>
     </ul>
   </li>
@@ -555,23 +735,35 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          报案
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            报案
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          任务分配
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            任务分配
+          </li>
+        </div>
       </div>
       <li
         class="za-menu-submenu za-menu-level-2"
@@ -589,23 +781,35 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
           class="za-menu-submenu-sub"
           style="display:block"
         >
-          <div>
-            <li
-              class="za-menu-level-3 za-menu-item"
-              role="menuitem"
-              style="padding-left:72px"
+          <div
+            class="zw-tooltip"
+          >
+            <div
+              class="zw-tooltip__inner"
             >
-              休假维护
-            </li>
+              <li
+                class="za-menu-level-3 za-menu-item"
+                role="menuitem"
+                style="padding-left:72px"
+              >
+                休假维护
+              </li>
+            </div>
           </div>
-          <div>
-            <li
-              class="za-menu-level-3 za-menu-item"
-              role="menuitem"
-              style="padding-left:72px"
+          <div
+            class="zw-tooltip"
+          >
+            <div
+              class="zw-tooltip__inner"
             >
-              时效维护
-            </li>
+              <li
+                class="za-menu-level-3 za-menu-item"
+                role="menuitem"
+                style="padding-left:72px"
+              >
+                时效维护
+              </li>
+            </div>
           </div>
         </ul>
       </li>
@@ -627,41 +831,65 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          投保单复核
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            投保单复核
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          在线投保单管理
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            在线投保单管理
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          投保单录入
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            投保单录入
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          新增计划
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            新增计划
+          </li>
+        </div>
       </div>
     </ul>
   </li>
@@ -681,41 +909,65 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
       class="za-menu-submenu-sub"
       style="display:block"
     >
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          核保权限定义
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            核保权限定义
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          核保权限分配
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            核保权限分配
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          规则配置
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            规则配置
+          </li>
+        </div>
       </div>
-      <div>
-        <li
-          class="za-menu-level-2 za-menu-item"
-          role="menuitem"
-          style="padding-left:48px"
+      <div
+        class="zw-tooltip"
+      >
+        <div
+          class="zw-tooltip__inner"
         >
-          人工核保
-        </li>
+          <li
+            class="za-menu-level-2 za-menu-item"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            人工核保
+          </li>
+        </div>
       </div>
     </ul>
   </li>
