@@ -31,8 +31,8 @@
   "scripts": {
     "clean": "rimraf types lib es dist assets coverage",
     "dev": "zarm dev -p 3001",
-    "build:es": "rimraf es && zarm build --mode es && rimraf types && tsc --outDir es -d --emitDeclarationOnly",
-    "build:lib": "rimraf lib && zarm build --mode lib && rimraf types && tsc --outDir lib -d --emitDeclarationOnly",
+    "build:es": "rimraf es && zarm build --mode es && rimraf types",
+    "build:lib": "rimraf lib && zarm build --mode lib && rimraf types",
     "build:umd": "rimraf dist && zarm build --mode umd",
     "build": "npm run build:lib && npm run build:es && npm run build:umd",
     "deploy:build": "rimraf assets && zarm deploy",
