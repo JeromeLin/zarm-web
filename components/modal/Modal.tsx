@@ -7,7 +7,7 @@ import Button from '../button';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
-import { Alert, Confirm } from './alert';
+import { Alert, Confirm, ModalStatic, ModalConfigProps } from './index';
 
 interface StateIF {
   isShow: boolean;
@@ -15,9 +15,25 @@ interface StateIF {
 }
 
 class Modal extends Component<ModalProps, StateIF> {
-  static Alert = Alert;
+  static displayName = 'Modal';
 
-  static Confirm = Confirm;
+  static confirm: typeof Confirm;
+
+  static success: typeof Alert;
+
+  static info: typeof Alert;
+
+  static error: typeof Alert;
+
+  static warning: typeof Alert;
+
+  static destroy: () => void;
+
+  static open: (props: ModalConfigProps) => ModalStatic;
+
+  static close: (key: string | number) => Promise<void>;
+
+  static staticTriggerInstanceList: ModalStatic[];
 
   static defaultProps = {
     prefixCls: 'zw-modal',
@@ -30,12 +46,11 @@ class Modal extends Component<ModalProps, StateIF> {
     autoFocus: true,
     disableEscapeKeyDown: false,
     disableEnterKeyDown: false,
-    zIndex: 2020,
     hideWhenShowOthers: true,
     destroy: false,
     scrollInModal: false,
     animationType: 'zoom',
-    radius: true,
+    shape: 'radius',
   };
 
   private static visibleList: Modal[] = [];
@@ -68,8 +83,8 @@ class Modal extends Component<ModalProps, StateIF> {
           modal.state.sleep = false;
         }
       }
-      // eslint-disable-next-line no-plusplus
-      while (index--) {
+      while (index) {
+        index -= 1;
         const modal = Modal.visibleList[index];
         const currentVisible = modal.props.visible;
         if (!currentVisible) {
@@ -187,8 +202,6 @@ class Modal extends Component<ModalProps, StateIF> {
       title,
       closable,
       visible,
-      zIndex,
-      style,
       onOk,
       onCancel,
       okText,
@@ -196,11 +209,9 @@ class Modal extends Component<ModalProps, StateIF> {
       className,
       centered,
       footer,
-      scrollInModal,
-      radius,
+      shape,
       ...others
     } = this.props;
-    const styles = { ...style, zIndex };
     const { isShow } = this.state;
     const show = isShow;
     const hasFooter = footer !== null;
@@ -210,8 +221,7 @@ class Modal extends Component<ModalProps, StateIF> {
       [`${className}`]: !!className,
       [`${prefixCls}--popup`]: true,
       [`${prefixCls}--popup--top`]: !centered,
-      [`${prefixCls}--scroll`]: scrollInModal,
-      [`${prefixCls}--radius`]: radius,
+      [`${prefixCls}--${shape}`]: true,
     });
     return (
       <Popup
@@ -226,7 +236,6 @@ class Modal extends Component<ModalProps, StateIF> {
           onKeyDown={this.onKeyDown}
           onKeyPress={this.onKeyPress}
           ref={this.setModalContainer}
-          style={styles}
           data-show={show}
           data-visible={visible}
         >

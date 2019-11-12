@@ -143,7 +143,7 @@ module.exports = {
       },
       {
         name: 'modal',
-        module: () => import('@/components/modal/modal.md'),
+        module: () => import('@/components/modal/demo.md'),
       },
       {
         name: 'notification',

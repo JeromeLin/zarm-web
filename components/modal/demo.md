@@ -26,9 +26,10 @@ class Demo extends React.Component {
   render() {
     const { modalVisible } = this.state;
     return (
-      <div class="modal-page">
+      <div className="modal-page">
         <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
+          style={{height:'100%', maxHeight:'80%'}}
           visible={modalVisible}
           closable
           title="这是一个简单的弹框"
@@ -52,8 +53,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## 不同的动画
 
 支持多种展示动画。
-
-:::demo 可以通过`animationType`属性设置不同的动画方式，默认`zoom`。
+可以通过`animationType`属性设置不同的动画方式，默认`zoom`。
 
 ```jsx
 import { Modal, Button } from 'zarm-web';
@@ -184,6 +184,75 @@ class Demo1 extends React.Component {
 ReactDOM.render(<Demo1 />, mountNode);   
 ```
 
+## 在modal内部滚动
+
+当我们需要做到在Modal的body内部滚动的时候，需要自己受到添加一些css属性。基础如下
+```
+.scroll-in-modal {
+  height: '100%';
+
+  .za-popup {
+    height: 100%;
+    max-height: 80%;
+  }
+}
+```
+
+```jsx
+import { Modal, Button } from 'zarm-web';
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false,
+      modalVisible2: false,
+      modalVisible3: false,
+      modalVisible4: false,
+    };
+  }
+  toggleModal(key) {
+    this.setState({
+      [key]: !this.state[key]
+    });
+  }
+
+  render() {
+    const { modalVisible, modalVisible2, modalVisible3, modalVisible4 } = this.state;
+    return (
+      <div className="modal-page">
+        <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
+        <Modal
+          className="scroll-in-modal"
+          title="我是弹框1"
+          visible={modalVisible} 
+          animationType="slideRight" 
+          onCancel={() => {this.toggleModal('modalVisible')}}
+        >
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+          我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />我是模态框<br />
+        </Modal>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
 
 
 ## 多个Modal的叠加显示
@@ -270,12 +339,13 @@ ReactDOM.render(<Demo />, mountNode);
 可以使用onOk和onCancel去处理。但是也可以使用Promise的方式来处理。
 
 ```jsx
-import { Modal, Button } from 'zarm-web';
+import { Modal, Button, Input } from 'zarm-web';
 class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalVisible: false,
+      val:'',
     };
   }
   toggleModal(key) {
@@ -289,16 +359,57 @@ class Demo extends React.Component {
       <div class="modal-page">
         <Button 
           theme="info" 
-          onClick={() => Modal.Alert({
-            content:"发生了一些事情",
-            title:"提示"
-          })}
+          onClick={() => {
+            let val = ''
+            const instance = Modal.open({
+              content: <div>这是一个正常的弹框</div>,
+              title:"提示",
+              key:'123',
+            });
+            setTimeout(()=>{
+              Modal.close('123');
+            },5000)
+          }}
         >
-          Alert
+          open (五秒钟之后自动关闭)
         </Button>
+
         <Button 
           theme="info" 
-          onClick={() => Modal.Confirm({
+          onClick={() => {
+            let val = ''
+            const instance = Modal.open({
+              content: <div>这是一个正常的Modal</div>,
+              title:"提示",
+              key:'123'
+            });
+          }}
+        >
+          open
+        </Button>
+
+        <Button 
+          theme="info" 
+          onClick={() => {
+            let val = ''
+            Modal.open({
+              content: (update)=> <div><input value={this.state.val} onChange={(e)=>{
+                this.setState({val:e.target.value},  // 这一步不会更新当前的input组件
+                ()=>{  
+                  update();                // 使用该方法更新组件
+                });   
+              }} /></div>,
+              title:"提示",
+              key:'123'
+            });
+          }}
+        >
+          open(函数形式的content)
+        </Button>
+
+        <Button 
+          theme="info" 
+          onClick={() => Modal.confirm({
             content:"删除无法恢复哦",
             title:"确认删除吗",
             theme:"warning"
@@ -310,7 +421,7 @@ class Demo extends React.Component {
         <Button 
           theme="info" 
           onClick={() => {
-            Modal.Confirm({
+            Modal.confirm({
               content:"删除无法恢复哦",
               title:"确认删除吗",
               theme:"warning"
@@ -326,7 +437,7 @@ class Demo extends React.Component {
         <Button
           theme="info" 
           onClick={() => {
-            Modal.Confirm({
+            Modal.confirm({
               content:"删除无法恢复哦",
               title:"确认删除吗",
               theme:"warning",
@@ -340,6 +451,54 @@ class Demo extends React.Component {
         >
           阻止弹框关闭
         </Button>
+
+       <Button
+          theme="default" 
+          onClick={() => {
+            Modal.info({
+              content:"你已删除自己的账号",
+              title:"呵呵"
+            })
+          }}
+        >
+          Modal.info
+        </Button>
+
+         <Button
+          theme="primary" 
+          onClick={() => {
+            Modal.success({
+              content:"你已删除自己的账号",
+              title:"呵呵"
+            })
+          }}
+        >
+          Modal.success
+        </Button>
+
+         <Button
+          theme="warning" 
+          onClick={() => {
+            Modal.warning({
+              content:"你已删除自己的账号",
+              title:"呵呵"
+            })
+          }}
+        >
+          Modal.warning
+        </Button>
+
+         <Button
+          theme="danger" 
+          onClick={() => {
+            Modal.error({
+              content:"你已删除自己的账号",
+              title:"呵呵"
+            })
+          }}
+        >
+          Modal.error
+        </Button>
       </div>
     )
   }
@@ -352,11 +511,11 @@ ReactDOM.render(<Demo />, mountNode);
 ## API
 
 | 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| visible | boolean | false | Modal是否显示 |
-| prefixCls | string | zw-modal | |
-| okText | ReactNode | 确定 |  确定按钮的文字内容  |
-| cancelText | ReactNode | 取消 |  取消按钮的文字内容  |
+| :---            | :--- | :--- | :--- |
+| visible         | boolean | false | Modal是否显示 |
+| prefixCls       | string | zw-modal | |
+| okText          | ReactNode | '确定' |  确定按钮的文字内容  |
+| cancelText      | ReactNode | '取消' |  取消按钮的文字内容  |
 | closable | boolean | true |  是否显示关闭按钮  |
 | title | ReactNode | null |  标题内容  |
 | footer | ReactNode \| ()=> ReactNode  | 取消按钮 确定按钮 |  modal的footer的内容，为null时不显示footer |
