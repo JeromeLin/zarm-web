@@ -5,12 +5,15 @@
   display: flex;
   box-sizing: border-box;
   width: 100%;
+
   @include m(horizontal) {
     @include b(steps-item) {
       padding-left: calc(var(--steps-content-width) / 2);
+
       @include e(tail) {
         left: calc((var(--steps-icon-size) + 12px) + (var(--steps-content-width) / 2));
       }
+
       @include e(content) {
         margin-top: 8px;
         width: var(--steps-content-width);
@@ -19,10 +22,13 @@
       }
     }
   }
+
   @include m(vertical) {
     flex-direction: column;
+
     @include b(steps-item) {
       min-height: 64px;
+
       @include e(tail) {
         width: 1px;
         height: 100%;
@@ -38,14 +44,18 @@
           background: var(--steps-border-color);
         }
       }
+
       @include e(icon) {
         float: left;
       }
+
       @include e(content) {
         min-height: calc(var(--steps-icon-size) * 2);
         margin-left: calc(var(--steps-icon-size) + 12px);
         padding-bottom: 10px;
+        line-height: 1.5;
       }
+
       @include e(title) {
         margin-top: calc(var(--steps-icon-size) / 2 - var(--steps-title-font-size) / 1.5);
       }
@@ -78,6 +88,7 @@
       font-size: calc(var(--steps-icon-size) / 2);
     }
   }
+
   @include e(tail) {
     position: absolute;
     top: calc(var(--steps-icon-size) / 2);
@@ -86,11 +97,13 @@
     background: var(--steps-border-color);
     left: calc(var(--steps-icon-size) + 12px);
   }
+
   @include e(title) {
     font-size: var(--steps-title-font-size);
     color: var(--steps-title-color);
     font-weight: 500;
   }
+
   @include e(desc) {
     font-size: var(--steps-desc-font-size);
     color: var(--steps-desc-color);
