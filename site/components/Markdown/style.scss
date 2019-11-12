@@ -93,13 +93,11 @@
 
 .markdown-demo-wrapper {
   margin-top: 40px;
-  column-count: 2;
-  column-width: 50%;
+  columns: 50% 2;
   column-fill: auto;
 
   @media (max-width: 1366px) {
-    column-count: 1;
-    column-width: 100%;
+    columns: 100% 1;
   }
 }
 
