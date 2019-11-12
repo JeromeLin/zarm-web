@@ -68,7 +68,7 @@ class Demo extends React.Component {
   toggleModal(animationType) {
     this.setState({
       modalVisible: !this.state.modalVisible,
-      animationType
+      animationType: animationType || this.state.animationType,
     });
   }
   render() {
