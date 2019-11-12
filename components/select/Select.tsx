@@ -177,9 +177,10 @@ class Select extends Component<PropsType, StateProps> {
 
     if (this.props.multiple) {
       const selected = this.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
-      const position = selected.indexOf(value);
+      const currentValue = this.mapEmptyValueToEmptyString(value);
+      const position = selected.indexOf(currentValue);
       if (position === -1) {
-        selected.push(value);
+        selected.push(currentValue);
       } else {
         selected.splice(position, 1);
       }
@@ -200,7 +201,7 @@ class Select extends Component<PropsType, StateProps> {
 
     const selected = {
       index: Number(index),
-      value,
+      value: this.mapEmptyValueToEmptyString(value),
       text: Array.isArray(props.children) ? props.children.join() : props.children,
     };
 
@@ -245,12 +246,18 @@ class Select extends Component<PropsType, StateProps> {
   }
 
   mapEmptyValueToEmptyString(selected) {
-    return selected.map((select) => {
-      if (select === EMPTY_STRING_VALUE) {
-        return EMPTY_STRING;
-      }
-      return select;
-    });
+    if (Array.isArray(selected)) {
+      return selected.map((select) => {
+        if (select === EMPTY_STRING_VALUE) {
+          return EMPTY_STRING;
+        }
+        return select;
+      });
+    } else if (selected === EMPTY_STRING_VALUE) {
+      return EMPTY_STRING;
+    }
+
+    return selected;
   }
 
   handleKeyup = (e) => {
@@ -303,6 +310,7 @@ class Select extends Component<PropsType, StateProps> {
       return optionIndex > -1;
     }
   }
+
   renderChildren() {
     const { optionData, value } = this.state;
     const children: Array<ReactNode> = [];
