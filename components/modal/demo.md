@@ -513,7 +513,7 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :---            | :--- | :--- | :--- |
 | visible         | boolean | false | Modal是否显示 |
-| prefixCls       | string | zw-modal | |
+| prefixCls       | string | 'zw-modal' | |
 | okText          | ReactNode | '确定' |  确定按钮的文字内容  |
 | cancelText      | ReactNode | '取消' |  取消按钮的文字内容  |
 | closable | boolean | true |  是否显示关闭按钮  |
@@ -526,15 +526,14 @@ ReactDOM.render(<Demo />, mountNode);
 | disableEscapeKeyDown | boolean  | false |  禁用按esc键关闭当前弹框 |
 | disableEnterKeyDown  | boolean  | false |  禁用按回车键自动触发onOk回调函数 |
 | scrollInModal | boolean | false |  是否开启在modal内部滚动 |
-| zIndex | number | 2018|设置modal弹框的zIndex值 |
 | animationType | AnimationType | zoom | 弹出动画的方式 |
 | mask | boolean | true | 是否显示半透明背景层 |
 | disableBodyScroll | boolean | true | 显示弹框的时候是否关闭body滚动 |
 | destroy | boolean | false | 是否在关闭弹框后删除节点 |
-| afterOpen | ()=>void | undefined |  设置打开之后的回调函数 |
-| afterClose | ()=>void | undefined |  设置完全关闭之后的回调函数 |
-| onMaskClick | ()=>void | undefined |  设置点击背景层时候的回调函数 |
-| getContainer | ()=>Element | undefined | 设置Modal的挂载点 默认为Body |
+| afterOpen | ()=>void | - |  设置打开之后的回调函数 |
+| afterClose | ()=>void | - |  设置完全关闭之后的回调函数 |
+| onMaskClick | ()=>void | - |  设置点击背景层时候的回调函数 |
+| getContainer | ()=>Element | - | 设置Modal的挂载点 默认为Body |
 
 
 
