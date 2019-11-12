@@ -175,10 +175,12 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           animationDuration={300}
           className={drawerBox}
           visible={visible}
-          onMaskClick={maskClosable ? () => {
-            onMaskClick && onMaskClick();
-            onClose && onClose();
-          } : undefined}
+          onMaskClick={
+            maskClosable ? () => {
+              onMaskClick && onMaskClick();
+              onClose && onClose();
+            } : undefined
+          }
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
