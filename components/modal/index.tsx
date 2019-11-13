@@ -23,6 +23,8 @@ const themeMapIcon = {
   },
 };
 
+Modal.staticTriggerInstanceList = [];
+
 type ThemeType = 'success' | 'primary' | 'warning' | 'danger';
 
 type AlertProps = MergeProps<typeof Modal, ModalProps> & { content: ReactNode; theme?: ThemeType };
@@ -133,7 +135,12 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
     resolveFn = resolve as typeof resolveFn;
     render(true);
   });
-
+  Modal.staticTriggerInstanceList.push({
+    close: () => {
+      render(false);
+      resolveFn(false);
+    },
+  });
   return {
     hide() {
       render(false);
@@ -200,8 +207,6 @@ export interface ModalConfigProps extends ModalProps {
   content: ReactNode | ReactNodeFn<() => void>;
   key: any;
 }
-
-Modal.staticTriggerInstanceList = [];
 
 export class ModalStatic {
   props: ModalConfigProps;

@@ -33,7 +33,7 @@ class Modal extends Component<ModalProps, StateIF> {
 
   static close: (key: string | number) => Promise<void>;
 
-  static staticTriggerInstanceList: ModalStatic[];
+  static staticTriggerInstanceList: { close: () => any; key?: string | number }[];
 
   static defaultProps = {
     prefixCls: 'zw-modal',

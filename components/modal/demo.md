@@ -102,9 +102,9 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode); 
 ```
 
-## 圆角模态框
+## 直角模态框
 可以设置圆角模态框。
-Demo 使用`radius`属性设置圆角
+使用shape="rect"属性设置圆角
 
 ```jsx
 import { Modal, Button } from 'zarm-web';
@@ -127,6 +127,7 @@ class Demo1 extends React.Component {
       <div className="modal-page">
         <Button theme="info" onClick={() => this.toggleModal()}>圆角模态框</Button>
         <Modal 
+          shape="rect"
           visible={modalVisible} 
           radius
           title="标题"
@@ -499,6 +500,19 @@ class Demo extends React.Component {
         >
           Modal.error
         </Button>
+
+        <Button
+          theme="danger" 
+          onClick={() => {
+            Modal.open({
+              content: (update)=> <div><Button onClick={()=>{ Modal.destroy(); }}>点我销毁所有的组件</Button></div>,
+              title:"提示",
+              key:'123'
+            });
+          }}
+        >
+          Modal.destroy（销毁所有静态方法创建的组件）
+        </Button>
       </div>
     )
   }
@@ -518,6 +532,7 @@ ReactDOM.render(<Demo />, mountNode);
 | cancelText      | ReactNode | '取消' |  取消按钮的文字内容  |
 | closable | boolean | true |  是否显示关闭按钮  |
 | title | ReactNode | null |  标题内容  |
+| shape | 'rect' \| 'radius' | 'radius' |  设置弹框角形状，'rect'为直角, 'radius'为圆角  |
 | footer | ReactNode \| ()=> ReactNode  | 取消按钮 确定按钮 |  modal的footer的内容，为null时不显示footer |
 | centered | boolean  | true |  是否居中显示 |
 | onOk | ()=> void  | null | 点击确定按钮的回调函数 |
@@ -525,8 +540,7 @@ ReactDOM.render(<Demo />, mountNode);
 | autoFocus | boolean  | true |  弹框显示后自动聚焦到弹框上 |
 | disableEscapeKeyDown | boolean  | false |  禁用按esc键关闭当前弹框 |
 | disableEnterKeyDown  | boolean  | false |  禁用按回车键自动触发onOk回调函数 |
-| scrollInModal | boolean | false |  是否开启在modal内部滚动 |
-| animationType | AnimationType | zoom | 弹出动画的方式 |
+| animationType | AnimationType | zoom | 动画效果，可选值 fade, door, flip, rotate, zoom,moveUp, moveDown, moveLeft, moveRight,slideUp, slideDown, slideLeft, slideRight |
 | mask | boolean | true | 是否显示半透明背景层 |
 | disableBodyScroll | boolean | true | 显示弹框的时候是否关闭body滚动 |
 | destroy | boolean | false | 是否在关闭弹框后删除节点 |
