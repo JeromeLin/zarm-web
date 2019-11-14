@@ -50,16 +50,8 @@ $PI: 3.141592674;
     background: var(--loading-default-mask-color);
   }
 
- 
-
   @include e(svg) {
     animation: za-rotate360 2s linear infinite;
-
-    circle {
-      stroke-linecap: round;
-      stroke: #00bc71;
-      stroke: var(--theme-primary);
-    }
   }
 
   @include e(path) {
