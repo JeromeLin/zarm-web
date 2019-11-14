@@ -163,6 +163,11 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     });
 
     const drawerCell = classnames(`${prefixCls}__cell`);
+    const handleClose = () => {
+      if (!maskClosable) return false;
+      onMaskClick && onMaskClick();
+      onClose && onClose();
+    };
 
     this.parentDrawer = value;
 
@@ -175,12 +180,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           animationDuration={300}
           className={drawerBox}
           visible={visible}
-          onMaskClick={
-            maskClosable ? () => {
-              onMaskClick && onMaskClick();
-              onClose && onClose();
-            } : undefined
-          }
+          onMaskClick={handleClose}
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
