@@ -25,10 +25,23 @@ $PI: 3.141592674;
     z-index: 99999;
   }
 
+  @include m(blur) {
+    clear: both;
+    overflow: hidden;
+    opacity: .4;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @include e (container) {
+    position: relative;
+    transition: opacity .3s;
+  }
+
   @include e(mask) {
     display: block;
     position: absolute;
-    z-index: var(--loading-default-mask-zIndex);
+    z-index: 100;
     margin: 0;
     top: 0;
     right: 0;
@@ -36,6 +49,8 @@ $PI: 3.141592674;
     left: 0;
     background: var(--loading-default-mask-color);
   }
+
+ 
 
   @include e(svg) {
     animation: za-rotate360 2s linear infinite;
