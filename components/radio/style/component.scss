@@ -24,10 +24,8 @@
     height: 14px;
     border: 1px solid var(--button-default-border);
     border-radius: 14px;
-    background-color: var(--color-white);
-    transition:
-      border-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
-      background-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+    background-color: var(--color-text-inverse);
+    transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
     &:after {
       position: absolute;
@@ -107,6 +105,13 @@
 /* 按钮样式 */
 @include b(radio-group) {
   display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid var(--radius-md);
+  border-left: 0;
+  background: var(--color-text-inverse);
+  padding: 0 16 - 1px;
+  position: relative;
 
   @include b(radio-button) {
     @include radio-button-base();
@@ -131,10 +136,10 @@
     }
   }
 
-  @include m(lg) {
-    @include b(radio-button) {
-      @include radio-button-size(var(--radio-height-lg), var(--radio-padding-v-lg), var(--font-size-lg));
-    }
+  &.is-checked {
+    position: relative;
+    color: var(--color-text-inverse);
+    background: var(--theme-primary);
   }
 
   @include m(md) {
