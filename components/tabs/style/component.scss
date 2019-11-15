@@ -6,22 +6,28 @@
   @include m(horizontal) {
 
     @include b(tabs-header) {
-      @include clearfix;
+      // @include clearfix;
       @include tabs-header-style();
 
       border-bottom: 1px solid #e8e8e8;
       padding: 0 20px;
       @include b(tabs-scroll) {
-        display: flex;
-        flex-direction: row;
-        flex: 1 0 auto;
-        overflow-x: scroll;
-        @include b(tabs-header-item) {
-          float: left;
-          text-align: center;
-          flex-shrink: 0;
-          flex-grow: 0;
-          flex-basis: auto;
+        // display: flex;
+        // flex-direction: row;
+        // flex: 1 0 auto;
+        // overflow-x: scroll;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        @include b(tabs-nav) {
+          position: relative;
+          display: inline-block;
+          transition: transform .3s $default-transition;
+          @include b(tabs-header-item) {
+            // float: left;
+            display: inline-block;
+            text-align: center;
+          }
         }
         @include b(tabs-line) {
           position: absolute;
@@ -109,17 +115,22 @@
     @include b(tabs-header) {
       @include tabs-header-style();
 
-      overflow: hidden;
+      // overflow: hidden;
       padding: 20px 0;
       float: left;
       height: 100%;
       @include b(tabs-scroll) {
-        overflow-y: scroll;
         height: 100%;
-        @include b(tabs-header-item) {
-          width: 70px;
-          text-align: left;
-          margin-bottom: 26px;
+        overflow: hidden;
+        white-space: no-wrap;
+        @include b(tabs-nav) {
+          position: relative;
+          transition: transform .3s $default-transition;
+          @include b(tabs-header-item) {
+            width: 70px;
+            text-align: left;
+            margin-bottom: 26px;
+          }
         }
       }
       @include b(tabs-arrow) {

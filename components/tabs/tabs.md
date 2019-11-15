@@ -128,7 +128,7 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       fields: [{
-        closable: true,
+        closable: false,
         title: "Tab1",
         key: "1"
       }, {
@@ -167,6 +167,70 @@ class Demo extends React.Component {
         closable: false,
         title: "Tab10",
         key: "10"
+      }, {
+        closable: false,
+        title: "Tab11",
+        key: "11"
+      }, {
+        closable: false,
+        title: "Tab12",
+        key: "12",
+      }, {
+        closable: false,
+        title: "Tab13",
+        key: "13",
+      }, {
+        closable: false,
+        title: "Tab14",
+        key: "14"
+      }, {
+        closable: false,
+        title: "Tab15",
+        key: "15",
+      }, {
+        closable: false,
+        title: "Tab16",
+        key: "16",
+      }, {
+        closable: false,
+        title: "Tab17",
+        key: "17"
+      }, {
+        closable: false,
+        title: "Tab18",
+        key: "18",
+      }, {
+        closable: false,
+        title: "Tab19",
+        key: "19",
+      }, {
+        closable: false,
+        title: "Tab20",
+        key: "20"
+      }, {
+        closable: false,
+        title: "Tab21",
+        key: "21"
+      }, {
+        closable: false,
+        title: "Tab22",
+        key: "22",
+      }, {
+        closable: false,
+        title: "Tab23",
+        key: "23",
+      }, {
+        closable: false,
+        title: "Tab24",
+        key: "24"
+      }, {
+        closable: false,
+        title: "Tab25",
+        key: "25",
+      }, {
+        closable: false,
+        title: "Tab26",
+        key: "26",
       }]
     };
   }
@@ -184,8 +248,8 @@ class Demo extends React.Component {
         <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose}>
           {
             this.state.fields.map((item, index) => (
-              <Tab key={item.key} title={item.title} disabled={item.disabled} closable={item.closable}>
-                这是选项卡{index}的文字
+              <Tab key={item.key} title={item.title} disabled={item.disabled} closable={item.closable} style={{padding: 10}}>
+                这是选项卡{index + 1}的文字
               </Tab>
             ))
           }
@@ -209,7 +273,7 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       fields: [{
-        closable: true,
+        closable: false,
         title: "Tab1",
         key: "1"
       }, {
@@ -248,6 +312,70 @@ class Demo extends React.Component {
         closable: false,
         title: "Tab10",
         key: "10"
+      }, {
+        closable: false,
+        title: "Tab11",
+        key: "11"
+      }, {
+        closable: false,
+        title: "Tab12",
+        key: "12",
+      }, {
+        closable: false,
+        title: "Tab13",
+        key: "13",
+      }, {
+        closable: false,
+        title: "Tab14",
+        key: "14"
+      }, {
+        closable: false,
+        title: "Tab15",
+        key: "15",
+      }, {
+        closable: false,
+        title: "Tab16",
+        key: "16",
+      }, {
+        closable: false,
+        title: "Tab17",
+        key: "17"
+      }, {
+        closable: false,
+        title: "Tab18",
+        key: "18",
+      }, {
+        closable: false,
+        title: "Tab19",
+        key: "19",
+      }, {
+        closable: false,
+        title: "Tab20",
+        key: "20"
+      }, {
+        closable: false,
+        title: "Tab21",
+        key: "21"
+      }, {
+        closable: false,
+        title: "Tab22",
+        key: "22",
+      }, {
+        closable: false,
+        title: "Tab23",
+        key: "23",
+      }, {
+        closable: false,
+        title: "Tab24",
+        key: "24"
+      }, {
+        closable: false,
+        title: "Tab25",
+        key: "25",
+      }, {
+        closable: false,
+        title: "Tab26",
+        key: "26",
       }]
     };
   }
@@ -266,7 +394,7 @@ class Demo extends React.Component {
           {
             this.state.fields.map((item, index) => (
               <Tab key={item.key} title={item.title} disabled={item.disabled} closable={item.closable}>
-                这是选项卡{index}的文字
+                这是选项卡{index + 1}的文字
               </Tab>
             ))
           }
