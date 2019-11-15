@@ -123,6 +123,9 @@
             width: 70px;
             text-align: left;
             margin-bottom: 26px;
+            &:last-child {
+              margin-bottom: 0;
+            }
           }
         }
       }

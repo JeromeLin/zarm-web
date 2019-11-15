@@ -199,7 +199,7 @@ class Demo extends React.Component {
         <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '300px'}}>
           {
             [...Array(40).keys()].map((item, index) => (
-              <Tab key={index} title={`Tab${index}`} style={{padding: 10}}>
+              <Tab key={index} title={`Tab${index}`}>
                 这是选项卡{index}的文字
               </Tab>
             ))
