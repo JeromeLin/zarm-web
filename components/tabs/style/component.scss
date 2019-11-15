@@ -6,16 +6,11 @@
   @include m(horizontal) {
 
     @include b(tabs-header) {
-      // @include clearfix;
       @include tabs-header-style();
 
       border-bottom: 1px solid #e8e8e8;
       padding: 0 20px;
       @include b(tabs-scroll) {
-        // display: flex;
-        // flex-direction: row;
-        // flex: 1 0 auto;
-        // overflow-x: scroll;
         position: relative;
         overflow: hidden;
         white-space: nowrap;
@@ -24,7 +19,6 @@
           display: inline-block;
           transition: transform .3s $default-transition;
           @include b(tabs-header-item) {
-            // float: left;
             display: inline-block;
             text-align: center;
           }
@@ -115,7 +109,6 @@
     @include b(tabs-header) {
       @include tabs-header-style();
 
-      // overflow: hidden;
       padding: 20px 0;
       float: left;
       height: 100%;
