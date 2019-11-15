@@ -7,11 +7,8 @@
   @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
   @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
-  --color-white: #fff;
-  --color-black: #000;
-
   // 文字色
-  --color-text: #464646; // 基本
+  --color-text: #343434; // 基本
   --color-text-inverse: #fff; // 反色
   --color-text-placeholder: #a9a9a9; // 文本框提示
   --color-text-disabled: #bcbcbc; // 失效
@@ -30,8 +27,12 @@
   --border-color: #e6e6e6;
   --border-disabled: #bcbcbc;
 
+  // 堆叠顺序
+  --zindex-tooltip: 1500;
+
   // 透明度
-  --opacity-disabled: 0.5;
+  --opacity-disabled: .5;
+  --opacity-tooltip: .8;
 
   // 圆角
   --radius-sm: 2px;
@@ -89,9 +90,9 @@
 
   // Breadcrumb
   --breadcrumb-default-font-size: 14px;
-  --breadcrumb-default-color: #909090;
-  --breadcrumb-color: #343434;
-  --breadcrumb-hover-color: #00bc70;
+  --breadcrumb-default-color: var(--color-text-caption);
+  --breadcrumb-color: var(--color-text);
+  --breadcrumb-hover-color: var(--theme-primary);
   --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 
   // Button
@@ -112,17 +113,17 @@
   --button-font-size-md: 14px;
   --button-font-size-sm: 12px;
   --button-font-size-xs: 12px;
-  --button-icon-size-xl: 22px;
-  --button-icon-size-lg: 20px;
-  --button-icon-size-md: 18px;
-  --button-icon-size-sm: 16px;
+  --button-icon-size-xl: 20px;
+  --button-icon-size-lg: 18px;
+  --button-icon-size-md: 16px;
+  --button-icon-size-sm: 14px;
   --button-icon-size-xs: 14px;
   --button-disabled-opacity: var(--opacity-disabled);
   --button-disabled-color-ghost: var(--border-disabled);
   --button-default-background: var(--color-text-inverse);
-  --button-default-border: var(--theme-default);
+  --button-default-border: #e6e6e6;
   --button-default-color: var(--color-text);
-  --button-default-hover-background: var(--color-white);
+  --button-default-hover-background: var(--color-text-inverse);
   --button-default-hover-border: var(--theme-primary);
   --button-default-hover-color: var(--theme-primary);
   --button-default-active-background: var(--theme-default);
@@ -130,14 +131,14 @@
   --button-default-active-color: var(--color-text);
   --button-default-ghost-border: var(--color-text-inverse);
   --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: var(--theme-default);
-  --button-default-ghost-active-color: var(--theme-default);
+  --button-default-ghost-active-border: var(--theme-primary);
+  --button-default-ghost-active-color: var(--theme-primary);
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);
   --button-primary-color: var(--color-text-inverse);
   --button-primary-hover-background: var(--theme-primary-light);
   --button-primary-hover-border: var(--theme-primary-light);
-  --button-primary-hover-color: var(--color-white);
+  --button-primary-hover-color: var(--color-text-inverse);
   --button-primary-active-background: var(--theme-primary-dark);
   --button-primary-active-border: var(--theme-primary-dark);
   --button-primary-active-color: rgba(255, 255, 255, 0.4);
@@ -150,7 +151,7 @@
   --button-danger-color: var(--color-text-inverse);
   --button-danger-hover-background: var(--theme-danger-light);
   --button-danger-hover-border: var(--theme-danger-light);
-  --button-danger-hover-color: var(--color-white);
+  --button-danger-hover-color: var(--color-text-inverse);
   --button-danger-active-background: var(--theme-danger-dark);
   --button-danger-active-border: var(--theme-danger-dark);
   --button-danger-active-color: rgba(255, 255, 255, 0.4);
@@ -158,6 +159,11 @@
   --button-danger-ghost-color: var(--theme-danger);
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
+
+  // activity-indicator
+  --activity-indicator-size-md: 16px;
+  --activity-indicator-size-lg: 32px;
+  --activity-indicator-path-color: #e6e6e6;
 
   // Checkbox
   --checkbox-size: 14px;
@@ -171,12 +177,12 @@
 
   // Menu
   --menu-color: #343434;
-  --menu-default-bg-color: var(--color-white);
+  --menu-default-bg-color: var(--color-text-inverse);
   --menu-dark-bg-color: #001529;
   --menu-collapsed-width: 80px;
   --submenu-dark-bg-color: #000c17;
   --menuitem-dark-color: hsla(0, 0%, 100%, 0.65);
-  --menuitem-dark-active-color: var(--color-white);
+  --menuitem-dark-active-color: var(--color-text-inverse);
   --menuitem-default-color: #343434;
   --menuitem-active-color: var(--theme-primary);
   --menuitem-active-bg-color: rgba(0, 188, 112, 0.0625);
@@ -222,4 +228,24 @@
   --tabs-font-size-sm: 12px;
   --tabs-font-size-md: 14px;
   --tabs-font-size-lg: 16px;
+  // Tooltip
+  --tooltip-font-size: 12px;
+  --tooltip-color: var(--color-text-inverse);
+  --tooltip-arrow-size: 4px;
+  --tooltip-light-background-color: #f2f2f2;
+  --tooltip-dark-background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+  --tooltip-padding-v: var(--padding-v-xs);
+  --tooltip-padding-h: var(--padding-h-xs);
+
+  // Steps
+  --steps-title-color: var(--color-text);
+  --steps-desc-color: var(--color-text-caption);
+  --steps-title-font-size: var(--font-size-md);
+  --steps-desc-font-size: var(--font-size-md);
+  --steps-border-color: #bcbcbc;
+  --steps-status-wait: #bcbcbc;
+  --steps-status-process: var(--theme-primary);
+  --steps-status-error: var(--theme-danger);
+  --steps-icon-size: 28px;
+  --steps-content-width: 140px;
 }
