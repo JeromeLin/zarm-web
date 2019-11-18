@@ -18,10 +18,9 @@ describe('Input', () => {
   it('renders different sizes of Input correctly', () => {
     const wrapper = render(
       <div>
-        <Input size="xl" placeholder="请输入" />
         <Input size="lg" placeholder="请输入" />
+        <Input size="md" placeholder="请输入" />
         <Input size="sm" placeholder="请输入" />
-        <Input size="xs" placeholder="请输入" />
       </div>,
     );
 
@@ -69,5 +68,53 @@ describe('Input', () => {
 
     wrapper.find('input').simulate('change');
     expect(onChange).toHaveBeenCalled();
+  });
+
+  it('behaves correctly when Input disabled', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <div>
+        <Input onChange={onChange} type="text" />
+      </div>,
+    );
+
+    wrapper.find('input').simulate('change');
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('should trigger clear event correctly when click clear icon', () => {
+    let argumentEventObject;
+    let argumentEventObjectValue;
+    const onChange = (e) => {
+      argumentEventObject = e;
+      argumentEventObjectValue = e.target.value;
+    };
+    const wrapper = mount(<Input clearable value="111" onChange={onChange} />);
+    wrapper
+      .find('.zw-input__clear-icon')
+      .at(0)
+      .simulate('click');
+    expect(argumentEventObject.type).toBe('click');
+    expect(argumentEventObjectValue).toBe('');
+    expect(
+      wrapper
+        .find('input')
+        .at(0)
+        .getDOMNode().value,
+    ).toBe('111');
+  });
+
+  it('should focus input after clear', () => {
+    const wrapper = mount(<Input clearable defaultValue="111" />);
+    wrapper
+      .find('.zw-input__clear-icon')
+      .at(0)
+      .simulate('click');
+    expect(document.activeElement).toBe(
+      wrapper
+        .find('input')
+        .at(0)
+        .getDOMNode(),
+    );
   });
 });

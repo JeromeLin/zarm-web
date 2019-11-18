@@ -51,7 +51,7 @@ module.exports = {
       },
       {
         name: 'Input',
-        module: () => import('@/components/input/input.md'),
+        module: () => import('@/components/input/demo.md'),
       },
       {
         name: 'NumberInput',
