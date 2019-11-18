@@ -5,22 +5,21 @@ exports[`Drawer renders correctly 1`] = `
   afterClose={[MockFunction]}
   closable={true}
   direction="bottom"
-  height={200}
   mask={true}
   maskClosable={false}
-  maskover={true}
   onMaskClick={[MockFunction]}
   prefixCls="zw-drawer"
+  size="md"
   visible={false}
-  width={200}
 >
   <Popup
     afterClose={[MockFunction]}
-    animationDuration={100}
+    animationDuration={300}
     className="zw-drawer"
-    direction="bottom"
+    direction="right"
     key="0"
     mask={true}
+    onMaskClick={[Function]}
     visible={false}
   />
 </Drawer>
