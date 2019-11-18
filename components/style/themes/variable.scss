@@ -238,7 +238,7 @@
   --steps-desc-color: var(--color-text-caption);
   --steps-title-font-size: var(--font-size-md);
   --steps-desc-font-size: var(--font-size-md);
-  --steps-border-color: #bcbcbc;
+  --steps-border-color: var(--border-color);
   --steps-status-wait: #bcbcbc;
   --steps-status-process: var(--theme-primary);
   --steps-status-error: var(--theme-danger);
