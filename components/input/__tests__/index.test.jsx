@@ -70,18 +70,6 @@ describe('Input', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('behaves correctly when Input disabled', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(
-      <div>
-        <Input onChange={onChange} type="text" />
-      </div>,
-    );
-
-    wrapper.find('input').simulate('change');
-    expect(onChange).not.toHaveBeenCalled();
-  });
-
   it('should trigger clear event correctly when click clear icon', () => {
     let argumentEventObject;
     let argumentEventObjectValue;
@@ -116,5 +104,10 @@ describe('Input', () => {
         .at(0)
         .getDOMNode(),
     );
+  });
+
+  it('should not support clearable when it is disabled', () => {
+    const wrapper = mount(<Input clearable defaultValue="111" disabled />);
+    expect(wrapper.find('.zw-input__clear-icon').length).toBe(0);
   });
 });
