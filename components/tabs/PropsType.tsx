@@ -1,16 +1,16 @@
 import React from 'react';
 
-export type cardType = 'card' | 'line' | 'noborder-card';
-export type directionType = 'horizontal' | 'vertical';
-export type sizeType = 'sm' | 'md' | 'lg';
+export type TabsType = 'card' | 'line' | 'noborder-card';
+export type TabsDirection = 'horizontal' | 'vertical';
+export type TabsSize = 'sm' | 'md' | 'lg';
 
 export default interface TabsProps {
   value?: number;
   defaultValue?: number;
-  type?: cardType;
-  direction?: directionType;
+  type?: TabsType;
+  direction?: TabsDirection;
   animated?: boolean;
-  size?: sizeType;
+  size?: TabsSize;
   style?: object;
   className?: string;
   prefixCls?: string;
@@ -18,7 +18,7 @@ export default interface TabsProps {
   onTabClose: (index: number) => void;
 }
 
-export interface PropsType {
+export interface TabProps {
   prefixCls?: string;
   className?: string;
   style?: object;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { TabProps } from './PropsType';
 
-class Tab extends Component<PropsType, any> {
+class Tab extends Component<TabProps, any> {
   static propTypes = {
     prefixCls: PropTypes.string,
   };
