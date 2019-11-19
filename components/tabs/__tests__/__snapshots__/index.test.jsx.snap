@@ -1,34 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tab renders Tab correctly with more props 1`] = `
+exports[`Tabs renders card tabs correctly 1`] = `
 <div>
   <div
-    class="ui-tab radius theme-error"
+    class="zw-tabs zw-tabs--horizontal zw-tabs--card"
   >
-    <ul
-      class="ui-tab-header"
-    >
-      <li
-        class="ui-tab-header-item"
-      >
-        选项卡1
-      </li>
-      <li
-        class="ui-tab-header-item active"
-      >
-        选项卡2
-      </li>
-      <li
-        class="ui-tab-header-item"
-      >
-        选项卡3
-      </li>
-    </ul>
     <div
-      class="ui-tab-body"
+      class="zw-tabs__header zw-tabs__header--md"
+      style="padding:0"
     >
       <div
-        class="ui-tab-body-item"
+        class="zw-tabs__scroll"
+      >
+        <div
+          class="zw-tabs__nav zw-tabs__nav--animated"
+        >
+          <div>
+            <div
+              class="zw-tabs__item zw-tabs__item--active"
+            >
+              Tab1
+            </div>
+            <div
+              class="zw-tabs__item zw-tabs__item--disabled"
+            >
+              Tab2
+            </div>
+            <div
+              class="zw-tabs__item"
+            >
+              Tab3
+            </div>
+            <div
+              class="zw-tabs__item"
+            >
+              Tab4
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="zw-tabs__body zw-tabs__body--animated"
+      style="margin-left:-0%"
+    >
+      <div
+        class="zw-tabs__body__item zw-tabs__body__item--active"
       >
         <div
           style="padding:10px"
@@ -37,7 +54,7 @@ exports[`Tab renders Tab correctly with more props 1`] = `
         </div>
       </div>
       <div
-        class="ui-tab-body-item ui-tab-body-item-active"
+        class="zw-tabs__body__item"
       >
         <div
           style="padding:10px"
@@ -46,12 +63,21 @@ exports[`Tab renders Tab correctly with more props 1`] = `
         </div>
       </div>
       <div
-        class="ui-tab-body-item"
+        class="zw-tabs__body__item"
       >
         <div
           style="padding:10px"
         >
           这是选项卡3的文字
+        </div>
+      </div>
+      <div
+        class="zw-tabs__body__item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡4的文字
         </div>
       </div>
     </div>
@@ -59,35 +85,52 @@ exports[`Tab renders Tab correctly with more props 1`] = `
 </div>
 `;
 
-exports[`Tab renders normal Tab correctly 1`] = `
+exports[`Tabs renders line tabs correctly 1`] = `
 <div>
   <div
-    class="ui-tab radius theme-default"
+    class="zw-tabs zw-tabs--horizontal zw-tabs--card"
   >
-    <ul
-      class="ui-tab-header"
-    >
-      <li
-        class="ui-tab-header-item"
-      >
-        选项卡1
-      </li>
-      <li
-        class="ui-tab-header-item active"
-      >
-        选项卡2
-      </li>
-      <li
-        class="ui-tab-header-item"
-      >
-        选项卡3
-      </li>
-    </ul>
     <div
-      class="ui-tab-body"
+      class="zw-tabs__header zw-tabs__header--md"
+      style="padding:0"
     >
       <div
-        class="ui-tab-body-item"
+        class="zw-tabs__scroll"
+      >
+        <div
+          class="zw-tabs__nav zw-tabs__nav--animated"
+        >
+          <div>
+            <div
+              class="zw-tabs__item zw-tabs__item--active"
+            >
+              Tab1
+            </div>
+            <div
+              class="zw-tabs__item zw-tabs__item--disabled"
+            >
+              Tab2
+            </div>
+            <div
+              class="zw-tabs__item"
+            >
+              Tab3
+            </div>
+            <div
+              class="zw-tabs__item"
+            >
+              Tab4
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="zw-tabs__body zw-tabs__body--animated"
+      style="margin-left:-0%"
+    >
+      <div
+        class="zw-tabs__body__item zw-tabs__body__item--active"
       >
         <div
           style="padding:10px"
@@ -96,7 +139,7 @@ exports[`Tab renders normal Tab correctly 1`] = `
         </div>
       </div>
       <div
-        class="ui-tab-body-item ui-tab-body-item-active"
+        class="zw-tabs__body__item"
       >
         <div
           style="padding:10px"
@@ -105,12 +148,106 @@ exports[`Tab renders normal Tab correctly 1`] = `
         </div>
       </div>
       <div
-        class="ui-tab-body-item"
+        class="zw-tabs__body__item"
       >
         <div
           style="padding:10px"
         >
           这是选项卡3的文字
+        </div>
+      </div>
+      <div
+        class="zw-tabs__body__item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡4的文字
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders noborder-card tabs correctly 1`] = `
+<div>
+  <div
+    class="zw-tabs zw-tabs--horizontal zw-tabs--noborder-card"
+  >
+    <div
+      class="zw-tabs__header zw-tabs__header--md"
+      style="padding:0"
+    >
+      <div
+        class="zw-tabs__scroll"
+      >
+        <div
+          class="zw-tabs__nav zw-tabs__nav--animated"
+        >
+          <div>
+            <div
+              class="zw-tabs__item zw-tabs__item--active"
+            >
+              Tab1
+            </div>
+            <div
+              class="zw-tabs__item zw-tabs__item--disabled"
+            >
+              Tab2
+            </div>
+            <div
+              class="zw-tabs__item"
+            >
+              Tab3
+            </div>
+            <div
+              class="zw-tabs__item"
+            >
+              Tab4
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="zw-tabs__body zw-tabs__body--animated"
+      style="margin-left:-0%"
+    >
+      <div
+        class="zw-tabs__body__item zw-tabs__body__item--active"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡1的文字
+        </div>
+      </div>
+      <div
+        class="zw-tabs__body__item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡2的文字
+        </div>
+      </div>
+      <div
+        class="zw-tabs__body__item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡3的文字
+        </div>
+      </div>
+      <div
+        class="zw-tabs__body__item"
+      >
+        <div
+          style="padding:10px"
+        >
+          这是选项卡4的文字
         </div>
       </div>
     </div>

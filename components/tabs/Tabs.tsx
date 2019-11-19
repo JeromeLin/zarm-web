@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tab from './Tab';
 import Icon from '../icon';
-import { GroupProps } from './PropsType';
+import TabsProps from './PropsType';
 
-class Tabs extends Component<GroupProps, any> {
+class Tabs extends Component<TabsProps, any> {
   static Tab: typeof Tab;
 
   private tabHeaderWrap;
@@ -74,6 +74,14 @@ class Tabs extends Component<GroupProps, any> {
     this.setActiveLineStyle();
   }
 
+  componentDidUpdate(prevProps) {
+    const { size: prevSize } = prevProps;
+    const { size: currentSize } = this.props;
+    if (prevSize !== currentSize) {
+      this.setActiveLineStyle();
+    }
+  }
+
   getHeaderStyle() {
     const { width: headerWidth, height: headerHeight } = this.tabHeaderWrap.current.getBoundingClientRect();
     const { width: scrollWidth, height: scrollHeight } = this.tabHeaderNav.current.getBoundingClientRect();
@@ -95,14 +103,6 @@ class Tabs extends Component<GroupProps, any> {
       lineWidth: width,
       lineOffsetLeft: offsetLeft,
     });
-  }
-
-  getContentItemCls(idx) {
-    const { prefixCls } = this.props;
-    const { value } = this.state;
-    return idx === value
-      ? `${prefixCls}-body-item--active`
-      : `${prefixCls}-body-item`;
   }
 
   handleTabClick = (e, index, disabled) => {
@@ -129,7 +129,7 @@ class Tabs extends Component<GroupProps, any> {
   };
 
   handleTabClose = (e, index, disabled) => {
-    e.preventDefault();
+    e.stopPropagation();
     const { onTabClose } = this.props;
     if (!disabled) {
       onTabClose(index);
@@ -175,7 +175,15 @@ class Tabs extends Component<GroupProps, any> {
       [`${prefixCls}--${direction}`]: direction,
       [`${prefixCls}--${type}`]: type,
     });
-    const headerCls = classnames(`${prefixCls}__header`, `${prefixCls}__header--${size}`);
+    const headerCls = classnames(`${prefixCls}__header`, {
+      [`${prefixCls}__header--${size}`]: size,
+    });
+    const navCls = classnames(`${prefixCls}__nav`, {
+      [`${prefixCls}__nav--animated`]: animated,
+    });
+    const lineCls = classnames(`${prefixCls}__line`, {
+      [`${prefixCls}__line--animated`]: animated,
+    });
     const bodyCls = classnames(`${prefixCls}__body`, {
       [`${prefixCls}__body--animated`]: animated,
     });
@@ -218,12 +226,12 @@ class Tabs extends Component<GroupProps, any> {
       <div className={cls} style={style}>
         <div className={headerCls} style={{ padding: isArrowShown ? scrollPadding : 0 }}>
           <div className={`${prefixCls}__scroll`} ref={this.tabHeaderWrap}>
-            <div className={`${prefixCls}__nav`} ref={this.tabHeaderNav} style={isArrowShown ? headerNavStyle : {}}>
+            <div className={navCls} ref={this.tabHeaderNav} style={isArrowShown ? headerNavStyle : {}}>
               <div>{items}</div>
               {
                 type === 'line' && (
                   <div
-                    className={classnames(`${prefixCls}__line`)}
+                    className={lineCls}
                     style={{
                       width: lineWidth,
                       transform: `translate3d(${lineOffsetLeft}px,0,0)`,

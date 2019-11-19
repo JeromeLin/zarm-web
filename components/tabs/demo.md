@@ -4,13 +4,14 @@
 ## line
 
 ```jsx
-import { Tabs } from 'zarm-web';
+import { Tabs, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      size: 'md',
       fields: [{
         closable: false,
         title: "Tab1",
@@ -41,17 +42,29 @@ class Demo extends React.Component {
       fields: fields.filter((item, index) => targetIndex !== index),
     });
   }
+  handleSize = (size) => {
+    this.setState({size});
+  }
   render() {
     return (
-      <Tabs type="line" onChange={(i) => console.log(i)} value={2} onTabClose={this.onTabClose}>
-        {
-            this.state.fields.map((item, index) => (
-              <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
-                这是选项卡{index + 1}的文字
-              </Tab>
-            ))
-          }
-      </Tabs>
+      <>
+        <div className="rows">
+          <Button.Group>
+            <Button onClick={() => this.handleSize('sm')}>sm</Button>
+            <Button onClick={() => this.handleSize('md')}>md</Button>
+            <Button onClick={() => this.handleSize('lg')}>lg</Button>
+          </Button.Group>
+        </div>
+        <Tabs type="line" onChange={(i) => console.log(i)} value={2} onTabClose={this.onTabClose} size={this.state.size}>
+          {
+              this.state.fields.map((item, index) => (
+                <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
+                  这是选项卡{item.key}的文字
+                </Tab>
+              ))
+            }
+        </Tabs>
+      </>
     );
   }
 }
@@ -148,10 +161,10 @@ class Demo extends React.Component {
     super(props);
   }
 
-  onTabClose = (targetIndex) => {
+  onTabClose = (current) => {
     const { fields } = this.state;
     this.setState({
-      fields: fields.filter((item, index) => targetIndex !== index),
+      fields: fields.filter((item, index) => current !== index),
     });
   }
 
@@ -223,12 +236,12 @@ Tabs
 | defaultValue | number | 0 | 默认选中的tab索引值 |
 | type | string | 'line' | tab的类型，包含线型 卡片型 无边框卡片型，可选值为 `line` 、 `card` 、 `noborder-card`  |
 | size | string | 'md' | 大小 可选值为`sm` 、 `md` 、 `lg`  |
-| onChange | function | - | 面板切换时触发的回调函数，参数为当前选中的tab索引值 |
-| onTabClose | function | - | 处理Tab关闭函数 |
-| style | object | -' | 自定义容器样式 |
+| onChange | (index?: number) => void | - | 面板切换时触发的回调函数，参数为当前选中的tab索引值 |
+| onTabClose | (index?: number) => void | - | 处理Tab关闭函数 |
+| style | CSSProperties | - | 自定义容器样式 |
 | className | string | - | 添加自定义容器类名 |
-| prefixCls | string | - | 类名的前缀 |
-| animated | boolean | - | 是否使用切换动画，在direction为horizontal时生效 |
+| prefixCls | string | 'zw-tabs' | 类名的前缀 |
+| animated | boolean | true | 是否使用切换动画，在direction为horizontal时生效 |
 
 Tabs.Tab
 

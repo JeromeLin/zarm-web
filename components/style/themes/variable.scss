@@ -228,6 +228,17 @@
   --tabs-font-size-sm: 12px;
   --tabs-font-size-md: 14px;
   --tabs-font-size-lg: 16px;
+  --tabs-default-color: #616161;
+  --tabs-default-hover-color: var(--theme-primary);
+  --tabs-default-disabled-color: var(--color-text-disabled);
+  --tabs-default-icon-color: #bcbcbc;
+  --tabs-default-active-background: var(--color-text-inverse);
+  --tabs-default-line-color: var(--theme-primary);
+  --tabs-default-active-color: var(--theme-primary);
+  --tabs-default-background-color: var(--color-text-inverse);
+  --tabs-default-card-background: #fafafa;
+  --tabs-default-noborder-background: #f2f2f2;
+
   // Tooltip
   --tooltip-font-size: 12px;
   --tooltip-color: var(--color-text-inverse);

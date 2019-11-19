@@ -8,7 +8,7 @@
     @include e(header) {
       @include tabs-header();
 
-      border-bottom: 1px solid #e8e8e8;
+      border-bottom: 1px solid var(--border-color);
       padding: 0 20px;
       @include e(scroll) {
         position: relative;
@@ -17,7 +17,9 @@
         @include e(nav) {
           position: relative;
           display: inline-block;
-          transition: transform .3s $default-transition;
+          &--animated {
+            transition: transform .3s $default-transition;
+          }
           @include e(item) {
             display: inline-block;
             text-align: center;
@@ -28,8 +30,10 @@
           left: 0;
           bottom: 0;
           width: auto;
-          border-bottom: 2px solid #00bc70;
-          transition: transform $default-transition;
+          border-bottom: 2px solid var(--tabs-default-line-color);
+          &--animated {
+            transition: transform $default-transition;
+          }
         }
       }
       @include b(icon) {
@@ -72,33 +76,36 @@
     @include m(card) {
       @include e(item) {
         padding: 10px 16px 12px;
-        border: 1px solid #e6e6e6;
+        border: 1px solid var(--border-color);
         border-radius: 4px 4px 0 0;
         margin-right: 4px;
-        background: #fafafa;
+        background: var(--tabs-default-card-background);
 
-        @include m(active) {
-          border-bottom: 1px solid #fff;
+        &--active {
+          border-bottom: 1px solid var(--tabs-default-background-color);
         }
       }
     }
 
     @include m(noborder-card) {
-      @include e(item) {
-        padding: 10px 16px 12px;
-        background: #f2f2f2;
-        @include m(active) {
-          background: #fff;
-          border: none;
+      @include e(header) {
+        border-bottom: none;
+        @include e(item) {
+          padding: 10px 16px 12px;
+          background: var(--tabs-default-noborder-background);
+          &--active {
+            background: var(--tabs-default-background-color);
+            border: none;
+          }
         }
       }
 
       @include e(body) {
-        background: #fff;
+        background: var(--tabs-default-background-color);
         transition: none;
-      }
-      @include e(body__item) {
-        background: #fff;
+        @include e(body__item) {
+          background: var(--tabs-default-background-color);
+        }
       }
     }
   }

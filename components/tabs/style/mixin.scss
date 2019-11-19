@@ -16,21 +16,28 @@
   position: relative;
   cursor: pointer;
   line-height: normal;
-  color: #616161;
+  color: var(--tabs-default-color);
+
+  &:hover {
+    color: var(--tabs-default-hover-color);
+  }
 
   &--disabled {
-    color: #bcbcbc;
+    color: var(--tabs-default-disabled-color);
     cursor: not-allowed;
+    &:hover {
+      color: var(--tabs-default-disabled-color);
+    }
   }
 
   &--active {
-    background: #fff;
-    color: #00bc70;
+    background: var(--tabs-default-active-background);
+    color: var(--tabs-default-active-color);
   }
 
   @include b(icon) {
     display: inline-block;
-    color: #bcbcbc;
+    color: var(--tabs-default-icon-color);
     margin-left: 8px;
   }
 }
@@ -69,7 +76,7 @@
   }
   @include e(arrow) {
     @include b(icon) {
-      color: #909090;
+      color: var(--color-text-caption);
       cursor: pointer;
     }
   }
@@ -79,7 +86,6 @@
   @include clearfix;
 
   position: relative;
-  transition: height .3s;
 
   @include e(body__item) {
     line-height: normal;
