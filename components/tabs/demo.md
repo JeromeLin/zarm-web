@@ -224,7 +224,7 @@ Tabs
 | type | string | 'line' | tab的类型，包含线型 卡片型 无边框卡片型，可选值为 `line` 、 `card` 、 `noborder-card`  |
 | size | string | 'md' | 大小 可选值为`sm` 、 `md` 、 `lg`  |
 | onChange | function | - | 面板切换时触发的回调函数，参数为当前选中的tab索引值 |
-| onTabClose | function | 处理Tab关闭函数 |
+| onTabClose | function | - | 处理Tab关闭函数 |
 | style | object | -' | 自定义容器样式 |
 | className | string | - | 添加自定义容器类名 |
 | prefixCls | string | - | 类名的前缀 |

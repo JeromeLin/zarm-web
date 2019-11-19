@@ -175,6 +175,10 @@ class Tabs extends Component<GroupProps, any> {
       [`${prefixCls}--${direction}`]: direction,
       [`${prefixCls}--${type}`]: type,
     });
+    const headerCls = classnames(`${prefixCls}__header`, `${prefixCls}__header--${size}`);
+    const bodyCls = classnames(`${prefixCls}__body`, {
+      [`${prefixCls}__body--animated`]: animated,
+    });
 
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
     const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
@@ -183,23 +187,21 @@ class Tabs extends Component<GroupProps, any> {
     const headerNavStyle = direction === 'horizontal' ? { transform: `translate3d(${-scrollOffset}px,0,0)` } : { transform: `translate3d(0,${-scrollOffset}px,0)` };
 
     const items = React.Children.map(children, (item: React.ReactElement<any>, $index) => {
-      const tabHeaderCls = classnames({
-        [`${prefixCls}-header-item`]: true,
-        [`${prefixCls}-header-item--disabled`]: !!item.props.disabled,
-        [`${prefixCls}-header-item--active`]: $index === value,
-        [`${prefixCls}-header-item--${size}`]: size,
+      const tabItemCls = classnames(`${prefixCls}__item`, {
+        [`${prefixCls}__item--disabled`]: !!item.props.disabled,
+        [`${prefixCls}__item--active`]: $index === value,
       });
       const bindActiveRef = $index === value ? { ref: (node) => { this.activeTab = node; } } : {};
 
       return (
         <div
           key={$index.toString()}
-          className={tabHeaderCls}
+          className={tabItemCls}
           {...bindActiveRef}
           onClick={(e) => { this.handleTabClick(e, $index, item.props.disabled); }}
         >
           {item.props.title}
-          {direction === 'horizontal' && item.props.closable && <Icon className={`${prefixCls}-header-item-icon`} type="wrong" onClick={(e) => { this.handleTabClose(e, $index, item.props.disabled); }} />}
+          {direction === 'horizontal' && item.props.closable && <Icon type="wrong" onClick={(e) => { this.handleTabClose(e, $index, item.props.disabled); }} />}
         </div>
       );
     });
@@ -214,14 +216,14 @@ class Tabs extends Component<GroupProps, any> {
 
     return (
       <div className={cls} style={style}>
-        <div className={`${prefixCls}-header`} style={{ padding: isArrowShown ? scrollPadding : 0 }}>
-          <div className={`${prefixCls}-scroll`} ref={this.tabHeaderWrap}>
-            <div className={`${prefixCls}-nav`} ref={this.tabHeaderNav} style={isArrowShown ? headerNavStyle : {}}>
+        <div className={headerCls} style={{ padding: isArrowShown ? scrollPadding : 0 }}>
+          <div className={`${prefixCls}__scroll`} ref={this.tabHeaderWrap}>
+            <div className={`${prefixCls}__nav`} ref={this.tabHeaderNav} style={isArrowShown ? headerNavStyle : {}}>
               <div>{items}</div>
               {
                 type === 'line' && (
                   <div
-                    className={classnames(`${prefixCls}-line`)}
+                    className={classnames(`${prefixCls}__line`)}
                     style={{
                       width: lineWidth,
                       transform: `translate3d(${lineOffsetLeft}px,0,0)`,
@@ -234,13 +236,17 @@ class Tabs extends Component<GroupProps, any> {
           {
             isArrowShown && (
               <>
-                <Icon type={`arrow-${arrowL}`} className={`${prefixCls}-arrow ${prefixCls}-arrow--${arrowL}`} onClick={() => this.scrollLeftOrTop()} />
-                <Icon type={`arrow-${arrowR}`} className={`${prefixCls}-arrow ${prefixCls}-arrow--${arrowR}`} onClick={() => this.scrollRightOrBottom()} />
+                <span className={`${prefixCls}__arrow`}>
+                  <Icon type={`arrow-${arrowL}`} onClick={() => this.scrollLeftOrTop()} />
+                </span>
+                <span className={`${prefixCls}__arrow`}>
+                  <Icon type={`arrow-${arrowR}`} onClick={() => this.scrollRightOrBottom()} />
+                </span>
               </>
             )
           }
         </div>
-        <div className={`${prefixCls}-body ${prefixCls}-body--${animated ? 'animate' : 'no-animate'}`} style={animateStyle}>{content}</div>
+        <div className={bodyCls} style={animateStyle}>{content}</div>
       </div>
     );
   }

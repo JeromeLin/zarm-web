@@ -33,8 +33,8 @@ class Tab extends Component<PropsType, any> {
     const { className, children, style, prefixCls } = this.props;
     const { selected } = this.state;
 
-    const cls = classnames(`${prefixCls}-body-item`, className, {
-      [`${prefixCls}-body-item--active`]: selected,
+    const cls = classnames(className, `${prefixCls}__body__item`, {
+      [`${prefixCls}__body__item--active`]: selected,
     });
 
     return (

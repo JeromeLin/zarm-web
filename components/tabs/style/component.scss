@@ -5,25 +5,25 @@
 
   @include m(horizontal) {
 
-    @include b(tabs-header) {
-      @include tabs-header-style();
+    @include e(header) {
+      @include tabs-header();
 
       border-bottom: 1px solid #e8e8e8;
       padding: 0 20px;
-      @include b(tabs-scroll) {
+      @include e(scroll) {
         position: relative;
         overflow: hidden;
         white-space: nowrap;
-        @include b(tabs-nav) {
+        @include e(nav) {
           position: relative;
           display: inline-block;
           transition: transform .3s $default-transition;
-          @include b(tabs-header-item) {
+          @include e(item) {
             display: inline-block;
             text-align: center;
           }
         }
-        @include b(tabs-line) {
+        @include e(line) {
           position: absolute;
           left: 0;
           bottom: 0;
@@ -32,13 +32,13 @@
           transition: transform $default-transition;
         }
       }
-      @include b(tabs-arrow) {
-        @include m(left) {
+      @include b(icon) {
+        @include m(arrow-left) {
           position: absolute;
           left: 0;
           top: 5px;
         }
-        @include m(right) {
+        @include m(arrow-right) {
           position: absolute;
           right: 0;
           top: 5px;
@@ -46,33 +46,31 @@
       }
     }
 
-    @include b(tabs-body) {
-      @include tabs-body-style();
+    @include e(body) {
+      @include tabs-body();
 
       display: flex;
       flex-direction: row;
       width: 100%;
-      @include m(animate) {
+      &--animated {
         transition: margin-left $default-transition;
       }
-      @include m(no-animate) {
-        transition: none;
-      }
-      @include b(tabs-body-item) {
+
+      @include e(body__item) {
         width: 100%;
         flex-shrink: 0;
       }
     }
 
     @include m(line) {
-      @include b(tabs-header-item) {
+      @include e(item) {
         padding: 0 16px 12px;
         height: 34px;
       }
     }
 
     @include m(card) {
-      @include b(tabs-header-item) {
+      @include e(item) {
         padding: 10px 16px 12px;
         border: 1px solid #e6e6e6;
         border-radius: 4px 4px 0 0;
@@ -86,7 +84,7 @@
     }
 
     @include m(noborder-card) {
-      @include b(tabs-header-item) {
+      @include e(item) {
         padding: 10px 16px 12px;
         background: #f2f2f2;
         @include m(active) {
@@ -95,31 +93,31 @@
         }
       }
 
-      @include b(tabs-body) {
+      @include e(body) {
         background: #fff;
         transition: none;
       }
-      @include b(tabs-body-item) {
+      @include e(body__item) {
         background: #fff;
       }
     }
   }
 
   @include m(vertical) {
-    @include b(tabs-header) {
-      @include tabs-header-style();
+    @include e(header) {
+      @include tabs-header();
 
       padding: 20px 0;
       float: left;
       height: 100%;
-      @include b(tabs-scroll) {
+      @include e(scroll) {
         height: 100%;
         overflow: hidden;
         white-space: no-wrap;
-        @include b(tabs-nav) {
+        @include e(nav) {
           position: relative;
           transition: transform .3s $default-transition;
-          @include b(tabs-header-item) {
+          @include e(item) {
             width: 70px;
             text-align: left;
             margin-bottom: 26px;
@@ -129,13 +127,13 @@
           }
         }
       }
-      @include b(tabs-arrow) {
-        @include m(top) {
+      @include b(icon) {
+        @include m(arrow-top) {
           position: absolute;
           top: 0;
           left: 10px;
         }
-        @include m(bottom) {
+        @include m(arrow-bottom) {
           position: absolute;
           bottom: 0;
           left: 10px;
@@ -143,15 +141,16 @@
       }
     }
 
-    @include b(tabs-body) {
-      @include tabs-body-style();
+    @include e(body) {
+      @include tabs-body();
 
       padding-left: 10px;
       overflow: hidden;
       position: relative;
-      @include b(tabs-body-item) {
+      @include e(body__item) {
         height: 0;
-        @include m(active) {
+        
+        &--active {
           height: auto;
         }
       }
