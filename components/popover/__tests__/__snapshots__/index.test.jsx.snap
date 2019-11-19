@@ -20,7 +20,9 @@ exports[`Popover behaves correctly when clicking on mask 1`] = `
       class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
-      Delete
+      <span>
+        Delete
+      </span>
     </button>
   </div>
 </div>
@@ -43,7 +45,9 @@ exports[`Popover renders Popover correctly with customized props 1`] = `
       class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
-      Delete
+      <span>
+        Delete
+      </span>
     </button>
   </div>
 </div>
@@ -69,7 +73,9 @@ exports[`Popover renders Popover correctly with mask 1`] = `
       class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
-      Delete
+      <span>
+        Delete
+      </span>
     </button>
   </div>
 </div>
@@ -92,7 +98,9 @@ exports[`Popover renders Popover correctly with render props 1`] = `
       class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
-      Delete
+      <span>
+        Delete
+      </span>
     </button>
   </div>
 </div>
@@ -115,7 +123,9 @@ exports[`Popover renders normal Popover correctly 1`] = `
       class="zw-button zw-button--default zw-button--radius"
       type="button"
     >
-      Delete
+      <span>
+        Delete
+      </span>
     </button>
   </div>
 </div>

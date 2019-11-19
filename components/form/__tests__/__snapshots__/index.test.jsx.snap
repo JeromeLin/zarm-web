@@ -15,15 +15,12 @@ exports[`Form renders inline Form with label correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <div
-        class="ui-input-box shape-radius"
-      >
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </div>
+      <input
+        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        placeholder="请输入..."
+        type="text"
+        value=""
+      />
     </div>
   </div>
   <div
@@ -37,15 +34,12 @@ exports[`Form renders inline Form with label correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <div
-        class="ui-input-box shape-radius"
-      >
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </div>
+      <input
+        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        placeholder="请输入..."
+        type="text"
+        value=""
+      />
     </div>
   </div>
   <div
@@ -61,7 +55,9 @@ exports[`Form renders inline Form with label correctly 1`] = `
         class="zw-button zw-button--success zw-button--radius"
         type="button"
       >
-        查询
+        <span>
+          查询
+        </span>
       </button>
     </div>
   </div>
@@ -83,15 +79,12 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
     <div
       class="za-form-item__control"
     >
-      <div
-        class="ui-input-box shape-radius"
-      >
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </div>
+      <input
+        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        placeholder="请输入..."
+        type="text"
+        value=""
+      />
     </div>
   </div>
   <div
@@ -125,15 +118,12 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
     <div
       class="za-form-item__control"
     >
-      <div
-        class="ui-input-box shape-radius"
-      >
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </div>
+      <input
+        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        placeholder="请输入..."
+        type="text"
+        value=""
+      />
     </div>
   </div>
   <div
@@ -149,7 +139,9 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
         class="zw-button zw-button--success zw-button--radius"
         type="button"
       >
-        查询
+        <span>
+          查询
+        </span>
       </button>
     </div>
   </div>
@@ -171,15 +163,12 @@ exports[`Form renders normal Form correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <div
-        class="ui-input-box shape-radius"
-      >
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </div>
+      <input
+        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        placeholder="请输入..."
+        type="text"
+        value=""
+      />
     </div>
   </div>
   <div
@@ -193,15 +182,12 @@ exports[`Form renders normal Form correctly 1`] = `
     <div
       class="za-form-item__control"
     >
-      <div
-        class="ui-input-box shape-radius"
-      >
-        <input
-          class="ui-input"
-          placeholder="请输入..."
-          type="text"
-        />
-      </div>
+      <input
+        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        placeholder="请输入..."
+        type="text"
+        value=""
+      />
     </div>
   </div>
   <div
@@ -214,7 +200,9 @@ exports[`Form renders normal Form correctly 1`] = `
         class="zw-button zw-button--success zw-button--radius"
         type="button"
       >
-        登录
+        <span>
+          登录
+        </span>
       </button>
     </div>
   </div>
