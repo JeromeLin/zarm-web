@@ -4,26 +4,13 @@
 ## 基本用法
 
 ```jsx
-import { Tooltip, Button } from 'zarm-web';
+import { Tooltip } from 'zarm-web';
 
-class Demo extends React.Component {
-  onVisibleChange(visible) {
-    console.log(visible)
-  }
-
-  render() {
-    return (
-      <div>
-        <Tooltip direction="top" content="我是提示框内容" onVisibleChange={this.onVisibleChange}>
-          <Button>鼠标移入显示提示框</Button>
-        </Tooltip>
-      </div>
-    )
-  }
-}
-
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Tooltip content="我是提示框内容">
+    <span>鼠标移入显示提示框</span>
+  </Tooltip>
+, mountNode);
 ```
 
 ## 触发方式

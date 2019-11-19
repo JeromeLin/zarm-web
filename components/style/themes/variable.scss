@@ -7,11 +7,8 @@
   @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
   @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
-  --color-white: #fff;
-  --color-black: #000;
-
   // 文字色
-  --color-text: #464646; // 基本
+  --color-text: #343434; // 基本
   --color-text-inverse: #fff; // 反色
   --color-text-placeholder: #a9a9a9; // 文本框提示
   --color-text-disabled: #bcbcbc; // 失效
@@ -93,9 +90,9 @@
 
   // Breadcrumb
   --breadcrumb-default-font-size: 14px;
-  --breadcrumb-default-color: #909090;
-  --breadcrumb-color: #343434;
-  --breadcrumb-hover-color: #00bc70;
+  --breadcrumb-default-color: var(--color-text-caption);
+  --breadcrumb-color: var(--color-text);
+  --breadcrumb-hover-color: var(--theme-primary);
   --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 
   // Button
@@ -126,7 +123,7 @@
   --button-default-background: var(--color-text-inverse);
   --button-default-border: #e6e6e6;
   --button-default-color: var(--color-text);
-  --button-default-hover-background: var(--color-white);
+  --button-default-hover-background: var(--color-text-inverse);
   --button-default-hover-border: var(--theme-primary);
   --button-default-hover-color: var(--theme-primary);
   --button-default-active-background: var(--theme-default);
@@ -141,7 +138,7 @@
   --button-primary-color: var(--color-text-inverse);
   --button-primary-hover-background: var(--theme-primary-light);
   --button-primary-hover-border: var(--theme-primary-light);
-  --button-primary-hover-color: var(--color-white);
+  --button-primary-hover-color: var(--color-text-inverse);
   --button-primary-active-background: var(--theme-primary-dark);
   --button-primary-active-border: var(--theme-primary-dark);
   --button-primary-active-color: rgba(255, 255, 255, 0.4);
@@ -154,7 +151,7 @@
   --button-danger-color: var(--color-text-inverse);
   --button-danger-hover-background: var(--theme-danger-light);
   --button-danger-hover-border: var(--theme-danger-light);
-  --button-danger-hover-color: var(--color-white);
+  --button-danger-hover-color: var(--color-text-inverse);
   --button-danger-active-background: var(--theme-danger-dark);
   --button-danger-active-border: var(--theme-danger-dark);
   --button-danger-active-color: rgba(255, 255, 255, 0.4);
@@ -180,12 +177,12 @@
 
   // Menu
   --menu-color: #343434;
-  --menu-default-bg-color: var(--color-white);
+  --menu-default-bg-color: var(--color-text-inverse);
   --menu-dark-bg-color: #001529;
   --menu-collapsed-width: 80px;
   --submenu-dark-bg-color: #000c17;
   --menuitem-dark-color: hsla(0, 0%, 100%, 0.65);
-  --menuitem-dark-active-color: var(--color-white);
+  --menuitem-dark-active-color: var(--color-text-inverse);
   --menuitem-default-color: #343434;
   --menuitem-active-color: var(--theme-primary);
   --menuitem-active-bg-color: rgba(0, 188, 112, 0.0625);
@@ -241,7 +238,7 @@
   --steps-desc-color: var(--color-text-caption);
   --steps-title-font-size: var(--font-size-md);
   --steps-desc-font-size: var(--font-size-md);
-  --steps-border-color: #bcbcbc;
+  --steps-border-color: var(--border-color);
   --steps-status-wait: #bcbcbc;
   --steps-status-process: var(--theme-primary);
   --steps-status-error: var(--theme-danger);
