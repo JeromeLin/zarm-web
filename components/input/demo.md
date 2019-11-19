@@ -30,6 +30,7 @@ ReactDOM.render(<Demo />, mountNode);
 将`type`属性设置为`textarea`，同时可设置`rows`，`cols`属性。
 设置了maxLength之后，会在右下角显示可以输入的字数。
 设置了showLength,会在右下角显示当前输入的字数。
+设置autoHeight，会变为自适应高度的textarea, rows属性会失效
 ```js
 import { Input } from 'zarm-web';
 
@@ -37,9 +38,11 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input maxLength={500} showLength type="textarea" placeholder="请输入" rows={10} style={{ height: 200 }}/>
+        <Input type="textarea" placeholder="请输入" rows={6} />
 
-        <Input maxLength={500} showLength type="textarea" bordered={false} placeholder="请输入" rows={10} style={{ height: 200, marginTop: 24 }}/>
+        <Input maxLength={500} showLength type="textarea" bordered={false} placeholder="请输入" rows={10} style={{ height: 120, marginTop: 24 }}/>
+
+        <Input style={{ margin: '40px 0' }} type="textarea" placeholder="自适应高度" rows={10} autoHeight />
       </div>
     )
   }
@@ -93,6 +96,26 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 只读状态
+
+通过readonly设置。
+只显示文案 不显示输入框样式 用于详情页面的展示
+```js
+import { Input } from 'zarm-web';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Input style={{marginBottom: 16}} defaultValue="我是只读状态" readOnly bordered placeholder="只读状态" />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 
 ## 添加前置和后置标签
 
@@ -109,7 +132,7 @@ class Demo extends React.Component {
       <div>
         <Input size="md" style={{ marginBottom: 16 }} addonBefore="http://" placeholder="请输入" />
         <Input style={{ marginBottom: 16 }} addonAfter=".com" placeholder="请输入" />
-        <Input style={{ marginBottom: 16 }} prefix="¥" suffix="RMB" addonBefore="http://" addonAfter=".com" placeholder="请输入" />
+        <Input style={{ marginBottom: 16 }} prefix="¥" suffix="元" addonBefore="http://" addonAfter=".com" placeholder="请输入" />
         <Input size="md" bordered="underline" style={{ marginBottom: 16 }} prefix="http://" suffix=".com" placeholder="请输入" />
       </div>
     )
@@ -153,7 +176,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input disabled clearable placeholder="请输入" onChange={e => console.log(e.target.value)} />
+        <Input clearable placeholder="请输入" onChange={e => console.log(e.target.value)} />
       </div>
     )
   }
@@ -188,17 +211,23 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| type     | 类型   | string  |   text, textarea, number...           |    text     |
-| size     | 尺寸   | string  |   xl, lg, sm, xs        |    -     |
-| shape    |  圆角形状   | shape rect |   -     |    false   |
-| value     | 值   | string  |   -        |    -     |
-| defautValue     | 默认值  | string  |   -     |    -     |
-| placeholder     | 占位符   | string  |   -      |    -     |
-| disabled  | 禁用    | -   | -  | -   |
-| addonBefore | Input的前置标签 textarea无效 | ReactNode ()=>ReactNode AddonType |-|-|
-| addonAfter | Input的后置标签 textarea无效 | ReactNode ()=>ReactNode AddonType |-|-|
-| maxLength | 输入框的输入字符长度限制 在textarea下，会在右下角显示 | ReactNode ()=>ReactNode AddonType |-|-|
-| showLength | 是否显示当前的textarea已输入的字符长度 在textarea下，会在右下角显示 | ReactNode ()=>ReactNode AddonType |-|-|
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| type | string | 'text' | 类型，可选值 `text`、`textarea`、 |
+| value | string | - | 值 |
+| defaultValue | string | - | 初始值 |
+| size | `lg`、 `md`、`sm` | md | 尺寸 type为text生效 |
+| prefix | ReactNode | - |带有前缀图标的 input |
+| suffix | ReactNode | - | 带有后缀图标的 input |
+| addonBefore | ReactNode | - | 带标签的 input，设置前置标签 |
+| addonAfter | ReactNode | - | 带标签的 input，设置后置标签 |
+| disabled | boolean | false | 是否禁用 |
+| readOnly | boolean | false | 是否只读 |
+| rows | number | string | - | 多行文本时的显示行数 |
+| autoHeight | boolean | false | 是否高度自适应 |
+| maxLength | number | - | 输入字数上限 |
+| showLength | boolean | false | 是否显示输入字数。多行文本时有效。 |
+| clearable | boolean | true | 是否显示清除按钮。多行文本时无效。必须为受控组件（属性包含value、onChange）时方可生效。 |
+| onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
+| text包含原生HTMLInputElement所有属性 / textarea包含原生HTMLTextarea所有属性 |
 

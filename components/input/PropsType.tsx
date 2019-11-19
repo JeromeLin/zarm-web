@@ -36,7 +36,7 @@ export interface TextAreaProps extends
   Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>, InputCommonProps {
   type: 'textarea';
   showLength?: boolean;
-  autoSize?: boolean;
+  autoHeight?: boolean;
   value?: string;
   defaultValue?: string;
   bordered?: boolean;

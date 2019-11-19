@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import calcTextareaHeight from './calcTextareaHeight';
 import { TextAreaProps } from './PropsType';
 
 function fixControlledValue(value: string | number | null | undefined) {
@@ -10,6 +11,10 @@ function fixControlledValue(value: string | number | null | undefined) {
 }
 
 class Textarea extends Component<TextAreaProps, any> {
+  static defaultProps = {
+    autoHeight: false,
+  };
+
   textareaRef = React.createRef<HTMLTextAreaElement>();
 
   constructor(props) {
@@ -17,8 +22,27 @@ class Textarea extends Component<TextAreaProps, any> {
     const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
     this.state = {
       value,
+      textareaStyle: {},
     };
   }
+
+  componentDidMount() {
+    this.resizeTextarea();
+  }
+
+  resizeTextarea = () => {
+    const { autoHeight } = this.props;
+
+    if (!autoHeight || !this.textareaRef.current) {
+      return false;
+    }
+
+    const textareaCalcStyle = calcTextareaHeight(this.textareaRef.current);
+
+    this.setState({
+      textareaStyle: textareaCalcStyle,
+    });
+  };
 
   handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { onChange } = this.props;
@@ -26,6 +50,7 @@ class Textarea extends Component<TextAreaProps, any> {
     if (onChange) {
       onChange(e);
     }
+    this.resizeTextarea();
   };
 
   focus = () => {
@@ -45,14 +70,16 @@ class Textarea extends Component<TextAreaProps, any> {
       prefixCls,
       className,
       shape,
+      style,
       disabled,
       defaultValue,
       showLength,
+      autoHeight,
       bordered,
       maxLength,
       ...others
     } = this.props;
-    const { value } = this.state;
+    const { value, textareaStyle } = this.state;
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--disabled`]: disabled,
@@ -60,10 +87,11 @@ class Textarea extends Component<TextAreaProps, any> {
     });
 
     return (
-      <div className={`${prefixCls}-wrapper`}>
+      <div className={`${prefixCls}-wrapper ${prefixCls}--textarea`}>
         <textarea
           {...others as React.TextareaHTMLAttributes<HTMLTextAreaElement>}
           maxLength={maxLength}
+          style={{ ...style, ...textareaStyle }}
           value={fixControlledValue(value)}
           ref={this.textareaRef}
           onChange={this.handleChange}

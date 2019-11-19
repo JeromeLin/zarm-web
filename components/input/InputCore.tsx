@@ -46,11 +46,12 @@ class Input extends Component<InputCoreProps, InputState> {
   }
 
   getInputCls = () => {
-    const { prefixCls, className, size, shape, disabled, bordered } = this.props;
+    const { prefixCls, className, size, shape, disabled, bordered, readOnly } = this.props;
     return classnames(prefixCls, className, {
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--readOnly`]: readOnly,
       [`${prefixCls}--underline`]: bordered === 'underline',
       [`${prefixCls}--with-bordered`]: bordered === true,
       [`${prefixCls}--without-bordered`]: bordered === false,
@@ -149,6 +150,7 @@ class Input extends Component<InputCoreProps, InputState> {
       className,
       style,
       disabled,
+      readOnly,
       prefix,
       suffix,
       bordered,
@@ -162,7 +164,7 @@ class Input extends Component<InputCoreProps, InputState> {
     const { value } = this.state;
     const cls = this.getInputCls();
 
-    return (
+    return !readOnly ? (
       <input
         {...others as React.HtmlHTMLAttributes<HTMLInputElement>}
         className={cls}
@@ -174,6 +176,10 @@ class Input extends Component<InputCoreProps, InputState> {
         onBlur={this.onBlur}
         value={fixControlledValue(value)}
       />
+    ) : (
+      <div className={`${prefixCls}--readOnly`}>
+        {fixControlledValue(value)}
+      </div>
     );
   };
 
@@ -186,6 +192,7 @@ class Input extends Component<InputCoreProps, InputState> {
       prefix,
       suffix,
       clearable,
+      readOnly,
       bordered,
     } = this.props;
     const { value, focused } = this.state;
@@ -203,7 +210,7 @@ class Input extends Component<InputCoreProps, InputState> {
         {suffix}
       </span>
     ) : null;
-    const underlineNode = (bordered === 'underline') ? (
+    const underlineNode = (bordered === 'underline' && !readOnly) ? (
       <div>
         <div className={`${prefixCls}__line`} />
         <div className={`${prefixCls}__focus-line`} />

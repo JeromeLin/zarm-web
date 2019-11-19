@@ -214,6 +214,17 @@
       outline: 0;
     }
   }
+
+  @include m(textarea) {
+    textarea {
+      max-width: 100%;
+      height: auto;
+      min-height: var(--input-height-md);
+      line-height: 1.5;
+      vertical-align: bottom;
+      transition: all 0.3s, height 0;
+    }
+  }
 }
 
 @include b(input-group) {
