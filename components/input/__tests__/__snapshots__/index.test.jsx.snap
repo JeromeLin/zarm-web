@@ -67,10 +67,10 @@ exports[`Input renders different types of Input correctly 1`] = `
     value=""
   />
   <div
-    class="zw-input-wrapper"
+    class="zw-input__wrapper zw-input--textarea"
   >
     <textarea
-      class="zw-input zw-input--radius"
+      class="zw-input zw-input--radius zw-input--with-bordered"
       placeholder="请输入"
       type="textarea"
     />
