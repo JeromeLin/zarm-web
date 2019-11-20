@@ -20,6 +20,12 @@
     outline: 0;
   }
 
+  &:read-only {
+    &:hover {
+      border-color: var(--input-default-border-color);
+    }
+  }
+
   &:disabled {
     cursor: not-allowed;
     background-color: var(--input-disabled-background-color);
@@ -168,17 +174,33 @@
 
   @include m(lg) {
     @include input-size(var(--input-height-lg), var(--input-padding-lg), var(--input-font-size-lg));
+
+    @include m(readOnly) {
+      font-size: var(--input-font-size-lg);
+    }
   }
 
   @include m(md) {
     @include input-size(var(--input-height-md), var(--input-padding-md), var(--input-font-size-md));
+
+    @include m(readOnly) {
+      font-size: var(--input-font-size-md);
+    }
   }
 
   @include m(sm) {
     @include input-size(var(--input-height-sm), var(--input-padding-sm), var(--input-font-size-sm));
+
+    @include m(readOnly) {
+      font-size: var(--input-font-size-sm);
+    }
   }
 
-  @include m(without-bordered) {
+  @include m(readOnly) {
+    color: var(--input-default-color);
+  }
+
+  @include m(nobordered) {
     border: none;
     background-color: var(--input-disabled-background-color);
 
@@ -211,7 +233,7 @@
     }
   }
 
-  @include m(with-bordered) {
+  @include m(bordered) {
     &:focus {
       border-color: var(--theme-primary);
       box-shadow: var(--input-focus-shadow);
@@ -246,6 +268,7 @@
     right: 16px;
     bottom: 10px;
     color: var(--input-length-count-color);
+    font-size: var(--input-font-size-md);
   }
 
   @include e(length-count) {

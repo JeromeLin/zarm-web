@@ -53,8 +53,8 @@ class Input extends Component<InputCoreProps, InputState> {
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--readOnly`]: readOnly,
       [`${prefixCls}--underline`]: bordered === 'underline',
-      [`${prefixCls}--with-bordered`]: bordered === true,
-      [`${prefixCls}--without-bordered`]: bordered === false,
+      [`${prefixCls}--bordered`]: bordered === true,
+      [`${prefixCls}--nobordered`]: bordered === false,
     });
   };
 
@@ -177,7 +177,7 @@ class Input extends Component<InputCoreProps, InputState> {
         value={fixControlledValue(value)}
       />
     ) : (
-      <div className={`${prefixCls}--readOnly`}>
+      <div className={`${prefixCls}--readOnly ${prefixCls}--${size}`}>
         {fixControlledValue(value)}
       </div>
     );
