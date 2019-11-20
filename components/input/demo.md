@@ -227,7 +227,7 @@ ReactDOM.render(<Demo />, mountNode);
 | autoHeight | boolean | false | 是否高度自适应 |
 | maxLength | number | - | 输入字数上限 |
 | showLength | boolean | false | 是否显示输入字数。多行文本时有效。 |
-| clearable | boolean | true | 是否显示清除按钮。多行文本时无效。必须为受控组件（属性包含value、onChange）时方可生效。 |
+| clearable | boolean | false | 是否显示清除按钮。多行文本时无效。必须为受控组件（属性包含value、onChange）时方可生效。 |
 | onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
 | text包含原生HTMLInputElement所有属性 / textarea包含原生HTMLTextarea所有属性 |
 
