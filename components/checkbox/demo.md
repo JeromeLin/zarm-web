@@ -155,7 +155,7 @@ Checkbox
 | value | string \| number | - | - | 选择框对应的值 |
 | indeterminate | boolean | false | 是否是部分选中状态 |
 | id | string | - | 方便外部带有 for 属性的 label 标签控制当前 checkbox |
-| onChange | ChangeEventHandler&lt;HTMLInputElement&gt; | - | 勾选状态变化触发的事件 |
+| onChange | React.ChangeEventHandler&lt;HTMLInputElement&gt; | - | 勾选状态变化触发的事件 |
 
 Checkbox.Group 
 
