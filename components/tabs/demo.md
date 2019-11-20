@@ -75,31 +75,39 @@ ReactDOM.render(<Demo />, mountNode);
 ## card
 
 ```jsx
-import { Tabs } from 'zarm-web';
+import { Tabs, Icon } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
   render() {
     return (
       <Tabs type="card" onChange={(i) => console.log(i)}>
-        <Tab title="Tab1">
+        <Tab title={<><Icon type="required" />Tab1</>}>
           <div style={{padding: 10}}>
-            这是选项卡1的文字
+            <p>这是选项卡1的文字</p>
+            <p>这是选项卡1的文字</p>
+            <p>这是选项卡1的文字</p>
           </div>
         </Tab>
         <Tab disabled title="Tab2">
           <div style={{padding: 10}}>
-            这是选项卡2的文字
+            <p>这是选项卡2的文字</p>
+            <p>这是选项卡2的文字</p>
+            <p>这是选项卡2的文字</p>
           </div>
         </Tab>
         <Tab title="Tab3">
           <div style={{padding: 10}}>
-            这是选项卡3的文字
+            <p>这是选项卡3的文字</p>
+            <p>这是选项卡3的文字</p>
+            <p>这是选项卡3的文字</p>
           </div>
         </Tab>
         <Tab title="Tab4">
           <div style={{padding: 10}}>
-            这是选项卡4的文字
+            <p>这是选项卡4的文字</p>
+            <p>这是选项卡4的文字</p>
+            <p>这是选项卡4的文字</p>
           </div>
         </Tab>
       </Tabs>
@@ -121,26 +129,34 @@ class Demo extends React.Component {
     return (
       <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
         <Tabs type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
-          <Tab title="Tab1">
-            <div style={{padding: 10}}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{padding: 10}}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{padding: 10}}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{padding: 10}}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
+          <Tab title={<>Tab1</>}>
+          <div style={{padding: 10}}>
+            <p>这是选项卡1的文字</p>
+            <p>这是选项卡1的文字</p>
+            <p>这是选项卡1的文字</p>
+          </div>
+        </Tab>
+        <Tab disabled title="Tab2">
+          <div style={{padding: 10}}>
+            <p>这是选项卡2的文字</p>
+            <p>这是选项卡2的文字</p>
+            <p>这是选项卡2的文字</p>
+          </div>
+        </Tab>
+        <Tab title="Tab3">
+          <div style={{padding: 10}}>
+            <p>这是选项卡3的文字</p>
+            <p>这是选项卡3的文字</p>
+            <p>这是选项卡3的文字</p>
+          </div>
+        </Tab>
+        <Tab title="Tab4">
+          <div style={{padding: 10}}>
+            <p>这是选项卡4的文字</p>
+            <p>这是选项卡4的文字</p>
+            <p>这是选项卡4的文字</p>
+          </div>
+        </Tab>
         </Tabs>
       </div>
     );
@@ -209,7 +225,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '300px'}}>
+        <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '180px'}}>
           {
             [...Array(40).keys()].map((item, index) => (
               <Tab key={index} title={`Tab${index}`}>

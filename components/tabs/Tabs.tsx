@@ -1,5 +1,4 @@
 import React, { Component, ReactElement } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tab from './Tab';
 import Icon from '../icon';
@@ -13,18 +12,6 @@ class Tabs extends Component<TabsProps, any> {
   private tabHeaderNav;
 
   private activeTab;
-
-  static propTypes = {
-    value: PropTypes.number,
-    defaultValue: PropTypes.number,
-    type: PropTypes.oneOf(['card', 'line', 'noborder-card']),
-    direction: PropTypes.oneOf(['horizontal', 'vertical']),
-    animated: PropTypes.bool,
-    size: PropTypes.oneOf(['sm', 'md', 'lg']),
-    prefixCls: PropTypes.string,
-    onChange: PropTypes.func,
-    onTabClose: PropTypes.func,
-  };
 
   static defaultProps = {
     value: 0,
@@ -171,33 +158,40 @@ class Tabs extends Component<TabsProps, any> {
       className, children, style, prefixCls, type, direction, size, animated,
     } = this.props;
     const { value, lineWidth, lineOffsetLeft, isArrowShown, scrollOffset } = this.state;
+
+    const arrowL = direction === 'horizontal' ? 'left' : 'top';
+    const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
+    const animateStyle = direction === 'horizontal' ? { marginLeft: `-${value * 100}%` } : {};
+    const headerNavStyle = direction === 'horizontal' ? { transform: `translate3d(${-scrollOffset}px,0,0)` } : { transform: `translate3d(0,${-scrollOffset}px,0)` };
+
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${direction}`]: direction,
-      [`${prefixCls}--${type}`]: type,
+      [`${prefixCls}--${size}`]: size,
+      [`${prefixCls}--${type}`]: direction === 'horizontal' && type,
     });
     const headerCls = classnames(`${prefixCls}__header`, {
-      [`${prefixCls}__header--${size}`]: size,
+      [`${prefixCls}__header--padding`]: isArrowShown,
     });
-    const navCls = classnames(`${prefixCls}__nav`, {
-      [`${prefixCls}__nav--animated`]: animated,
+    const navCls = classnames(`${prefixCls}__header__nav`, {
+      [`${prefixCls}__header__nav--animated`]: animated,
     });
-    const lineCls = classnames(`${prefixCls}__line`, {
-      [`${prefixCls}__line--animated`]: animated,
+    const lineCls = classnames(`${prefixCls}__header__line`, {
+      [`${prefixCls}__header__line--animated`]: animated,
     });
     const bodyCls = classnames(`${prefixCls}__body`, {
       [`${prefixCls}__body--animated`]: animated,
     });
-
-    const arrowL = direction === 'horizontal' ? 'left' : 'top';
-    const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
-    const scrollPadding = direction === 'horizontal' ? '0 20px' : '20px 0';
-    const animateStyle = direction === 'horizontal' ? { marginLeft: `-${value * 100}%` } : {};
-    const headerNavStyle = direction === 'horizontal' ? { transform: `translate3d(${-scrollOffset}px,0,0)` } : { transform: `translate3d(0,${-scrollOffset}px,0)` };
+    const arrowLCls = classnames(`${prefixCls}__header__arrow`, {
+      [`${prefixCls}__header__arrow--${arrowL}`]: arrowL,
+    });
+    const arrowRCls = classnames(`${prefixCls}__header__arrow`, {
+      [`${prefixCls}__header__arrow--${arrowR}`]: arrowR,
+    });
 
     const items = React.Children.map(children, (item: React.ReactElement<any>, $index) => {
-      const tabItemCls = classnames(`${prefixCls}__item`, {
-        [`${prefixCls}__item--disabled`]: !!item.props.disabled,
-        [`${prefixCls}__item--active`]: $index === value,
+      const tabItemCls = classnames(`${prefixCls}__header__item`, {
+        [`${prefixCls}__header__item--disabled`]: !!item.props.disabled,
+        [`${prefixCls}__header__item--active`]: $index === value,
       });
       const bindActiveRef = $index === value ? { ref: (node) => { this.activeTab = node; } } : {};
 
@@ -224,8 +218,8 @@ class Tabs extends Component<TabsProps, any> {
 
     return (
       <div className={cls} style={style}>
-        <div className={headerCls} style={{ padding: isArrowShown ? scrollPadding : 0 }}>
-          <div className={`${prefixCls}__scroll`} ref={this.tabHeaderWrap}>
+        <div className={headerCls}>
+          <div className={`${prefixCls}__header__scroll`} ref={this.tabHeaderWrap}>
             <div className={navCls} ref={this.tabHeaderNav} style={isArrowShown ? headerNavStyle : {}}>
               <div>{items}</div>
               {
@@ -244,11 +238,11 @@ class Tabs extends Component<TabsProps, any> {
           {
             isArrowShown && (
               <>
-                <span className={`${prefixCls}__arrow`}>
-                  <Icon type={`arrow-${arrowL}`} onClick={() => this.scrollLeftOrTop()} />
+                <span className={arrowLCls} onClick={() => this.scrollLeftOrTop()}>
+                  <Icon type={`arrow-${arrowL}`} />
                 </span>
-                <span className={`${prefixCls}__arrow`}>
-                  <Icon type={`arrow-${arrowR}`} onClick={() => this.scrollRightOrBottom()} />
+                <span className={arrowRCls} onClick={() => this.scrollRightOrBottom()}>
+                  <Icon type={`arrow-${arrowR}`} />
                 </span>
               </>
             )

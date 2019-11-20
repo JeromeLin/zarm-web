@@ -1,101 +1,12 @@
-@mixin tabs-size($font-size) {
+@mixin tabs-size($font-size, $padding, $icon-size) {
   font-size: $font-size;
-  @include e(item) {
+  @include e(header) {
+    font-size: $font-size;
     @include b(icon) {
-      font-size: $font-size;
+      font-size: $icon-size;
     }
-  }
-  @include e(arrow) {
-    @include b(icon) {
-      font-size: $font-size;
-    }
-  }
-}
-
-@mixin tabs-item() {
-  position: relative;
-  cursor: pointer;
-  line-height: normal;
-  color: var(--tabs-default-color);
-
-  &:hover {
-    color: var(--tabs-default-hover-color);
-  }
-
-  &--disabled {
-    color: var(--tabs-default-disabled-color);
-    cursor: not-allowed;
-    &:hover {
-      color: var(--tabs-default-disabled-color);
-    }
-  }
-
-  &--active {
-    background: var(--tabs-default-active-background);
-    color: var(--tabs-default-active-color);
-  }
-
-  @include b(icon) {
-    display: inline-block;
-    color: var(--tabs-default-icon-color);
-    margin-left: 8px;
-  }
-}
-
-@mixin tabs-header() {
-  position: relative;
-  &--sm {
-    @include tabs-size(
-      var(--tabs-font-size-sm),
-    );
-  }
-
-  &--md {
-    @include tabs-size(
-      var(--tabs-font-size-md),
-    );
-  }
-
-  &--lg {
-    @include tabs-size(
-      var(--tabs-font-size-lg),
-    );
-  }
-  @include e(scroll) {
-    position: relative;
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    margin-bottom: -1px;
-    @include e(nav) {
-
-      @include e(item) {
-        @include tabs-item()
-      }
-    }
-  }
-  @include e(arrow) {
-    @include b(icon) {
-      color: var(--color-text-caption);
-      cursor: pointer;
-    }
-  }
-}
-
-@mixin tabs-body() {
-  @include clearfix;
-
-  position: relative;
-
-  @include e(body__item) {
-    line-height: normal;
-    opacity: 0;
-    overflow: hidden;
-    height: 0;
-
-    &--active {
-      opacity: 1;
-      height: auto;
+    &__item {
+      padding: 0 16px $padding;
     }
   }
 }

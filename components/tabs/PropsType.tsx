@@ -1,4 +1,4 @@
-import React from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export type TabsType = 'card' | 'line' | 'noborder-card';
 export type TabsDirection = 'horizontal' | 'vertical';
@@ -11,18 +11,18 @@ export default interface TabsProps {
   direction?: TabsDirection;
   animated?: boolean;
   size?: TabsSize;
-  style?: object;
+  style?: CSSProperties;
   className?: string;
   prefixCls?: string;
-  onChange: (index: number) => void;
-  onTabClose: (index: number) => void;
+  onChange: (index?: number) => void;
+  onTabClose: (index?: number) => void;
 }
 
 export interface TabProps {
   prefixCls?: string;
   className?: string;
-  style?: object;
+  style?: CSSProperties;
   disabled?: boolean;
   closable?: boolean;
-  title?: string | React.ReactNode;
+  title?: ReactNode;
 }

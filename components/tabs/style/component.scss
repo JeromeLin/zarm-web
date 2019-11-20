@@ -3,78 +3,94 @@
 @include b(tabs) {
   overflow: hidden;
 
-  @include m(horizontal) {
-
-    @include e(header) {
-      @include tabs-header();
-
-      border-bottom: 1px solid var(--border-color);
-      padding: 0 20px;
-      @include e(scroll) {
-        position: relative;
-        overflow: hidden;
-        white-space: nowrap;
-        @include e(nav) {
-          position: relative;
-          display: inline-block;
-          &--animated {
-            transition: transform .3s $default-transition;
-          }
-          @include e(item) {
-            display: inline-block;
-            text-align: center;
-          }
+  @include e(header) {
+    position: relative;
+    &__scroll {
+      position: relative;
+      margin: 0;
+      list-style: none;
+      padding: 0;
+      margin-bottom: -1px;
+    }
+    &__arrow {
+      @include b(icon) {
+        color: var(--color-text-caption);
+      }
+    }
+    &__item {
+      position: relative;
+      cursor: pointer;
+      line-height: normal;
+      color: var(--tabs-default-color);
+      &:hover {
+        color: var(--tabs-default-hover-color);
+      }
+      @include m(disabled) {
+        color: var(--tabs-default-disabled-color);
+        cursor: not-allowed;
+        &:hover {
+          color: var(--tabs-default-disabled-color);
         }
-        @include e(line) {
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: auto;
-          border-bottom: 2px solid var(--tabs-default-line-color);
-          &--animated {
-            transition: transform $default-transition;
-          }
-        }
+      }
+      @include m(active) {
+        background: var(--tabs-default-active-background);
+        color: var(--tabs-default-active-color);
       }
       @include b(icon) {
-        @include m(arrow-left) {
-          position: absolute;
-          left: 0;
-          top: 5px;
-        }
-        @include m(arrow-right) {
-          position: absolute;
-          right: 0;
-          top: 5px;
+        margin: 0 8px 0 0;
+        display: inline-block;
+        @include m(wrong) {
+          margin: 0 0 0 8px;
+          color: var(--tabs-default-icon-color);
         }
       }
     }
+  }
 
-    @include e(body) {
-      @include tabs-body();
-
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      &--animated {
-        transition: margin-left $default-transition;
-      }
-
-      @include e(body__item) {
-        width: 100%;
-        flex-shrink: 0;
-      }
-    }
-
-    @include m(line) {
-      @include e(item) {
-        padding: 0 16px 12px;
-        height: 34px;
+  @include e(body) {
+    // @include clearfix;
+    position: relative;
+    &__item {
+      line-height: normal;
+      opacity: 0;
+      overflow: hidden;
+      height: 0;
+      @include m(active) {
+        opacity: 1;
+        height: auto;
       }
     }
+  }
 
-    @include m(card) {
-      @include e(item) {
+  @include m(sm) {
+    @include tabs-size(
+      var(--tabs-font-size-sm),
+      var(--tabs-header-padding-sm),
+      var(--tabs-header-icon-sm)
+    );
+  }
+
+  @include m(md) {
+    @include tabs-size(
+      var(--tabs-font-size-md),
+      var(--tabs-header-padding-md),
+      var(--tabs-header-icon-md)
+    );
+  }
+
+  @include m(lg) {
+    @include tabs-size(
+      var(--tabs-font-size-lg),
+      var(--tabs-header-padding-lg),
+      var(--tabs-header-icon-lg)
+    );
+  }
+
+  @include m(line) {}
+
+  @include m(card) {
+    @include e(header) {
+      &__item {
         padding: 10px 16px 12px;
         border: 1px solid var(--border-color);
         border-radius: 4px 4px 0 0;
@@ -86,75 +102,144 @@
         }
       }
     }
+  }
 
-    @include m(noborder-card) {
-      @include e(header) {
-        border-bottom: none;
-        @include e(item) {
-          padding: 10px 16px 12px;
-          background: var(--tabs-default-noborder-background);
-          &--active {
-            background: var(--tabs-default-background-color);
-            border: none;
-          }
+  @include m(noborder-card) {
+    @include e(header) {
+      border-bottom: none;
+      &__item {
+        padding: 10px 16px 12px;
+        background: var(--tabs-default-noborder-background);
+        &--active {
+          background: var(--tabs-default-background-color);
+          border: none;
         }
       }
+    }
 
-      @include e(body) {
+    @include e(body) {
+      background: var(--tabs-default-background-color);
+      transition: none;
+      &__item {
         background: var(--tabs-default-background-color);
-        transition: none;
-        @include e(body__item) {
-          background: var(--tabs-default-background-color);
+      }
+    }
+  }
+
+  @include m(horizontal) {
+
+    @include e(header) {
+      border-bottom: 1px solid var(--border-color);
+      &--padding {
+        padding: 0 20px;
+      }
+      &__scroll {
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      &__arrow {
+        height: 100%;
+        width: 20px;
+        position: absolute;
+        top: 0;
+        text-align: center;
+        cursor: pointer;
+        &--left {
+          left: 0;
         }
+        &--right {
+          right: 0;
+        }
+      }
+      &__nav {
+        position: relative;
+        display: inline-block;
+        &--animated {
+          transition: transform .3s $default-transition;
+        }
+      }
+      &__item {
+        display: inline-block;
+        text-align: center;
+      }
+      &__line {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: auto;
+        border-bottom: 2px solid var(--tabs-default-line-color);
+        &--animated {
+          transition: transform $default-transition;
+        }
+      }
+    }
+
+    @include e(body) {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      &--animated {
+        transition: margin-left $default-transition;
+      }
+
+      &__item {
+        width: 100%;
+        flex-shrink: 0;
       }
     }
   }
 
   @include m(vertical) {
     @include e(header) {
-      @include tabs-header();
-
-      padding: 20px 0;
+      border-right: 1px solid var(--border-color);
       float: left;
       height: 100%;
-      @include e(scroll) {
+      &--padding {
+        padding: 30px 0;
+      }
+      &__scroll {
         height: 100%;
         overflow: hidden;
         white-space: no-wrap;
-        @include e(nav) {
-          position: relative;
-          transition: transform .3s $default-transition;
-          @include e(item) {
-            width: 70px;
-            text-align: left;
-            margin-bottom: 26px;
-            &:last-child {
-              margin-bottom: 0;
-            }
-          }
+      }
+      &__nav {
+        position: relative;
+        transition: transform .3s $default-transition;
+      }
+      &__item {
+        width: 70px;
+        padding: 0;
+        text-align: center;
+        margin-bottom: 26px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        &:last-child {
+          margin-bottom: 0;
         }
       }
-      @include b(icon) {
-        @include m(arrow-top) {
-          position: absolute;
+      &__arrow {
+        height: 30px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        cursor: pointer;
+        &--top {
           top: 0;
-          left: 10px;
         }
-        @include m(arrow-bottom) {
-          position: absolute;
+        &--bottom {
           bottom: 0;
-          left: 10px;
         }
       }
     }
 
     @include e(body) {
-      @include tabs-body();
-
       padding-left: 10px;
       overflow: hidden;
       position: relative;
-      @include e(body__item) {
+      &__item {
         height: 0;
         
         &--active {

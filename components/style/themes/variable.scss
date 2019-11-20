@@ -228,6 +228,9 @@
   --tabs-font-size-sm: 12px;
   --tabs-font-size-md: 14px;
   --tabs-font-size-lg: 16px;
+  --tabs-header-icon-sm: 12px;
+  --tabs-header-icon-md: 14px;
+  --tabs-header-icon-lg: 16px;
   --tabs-default-color: #616161;
   --tabs-default-hover-color: var(--theme-primary);
   --tabs-default-disabled-color: var(--color-text-disabled);
@@ -238,6 +241,9 @@
   --tabs-default-background-color: var(--color-text-inverse);
   --tabs-default-card-background: #fafafa;
   --tabs-default-noborder-background: #f2f2f2;
+  --tabs-header-padding-sm: 8px;
+  --tabs-header-padding-md: 12px;
+  --tabs-header-padding-lg: 16px;
 
   // Tooltip
   --tooltip-font-size: 12px;

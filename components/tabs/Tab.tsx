@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { TabProps } from './PropsType';
 
 class Tab extends Component<TabProps, any> {
-  static propTypes = {
-    prefixCls: PropTypes.string,
-  };
-
   static defaultProps = {
     prefixCls: 'zw-tabs',
   };
