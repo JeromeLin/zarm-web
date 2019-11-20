@@ -8,7 +8,7 @@ export interface InputState {
   focused: boolean;
 }
 
-function fixControlledValue(value: string | number | null | undefined) {
+export function fixControlledValue(value: string | number | null | undefined) {
   if (typeof value === 'undefined' || value === null) {
     return '';
   }

@@ -8,11 +8,9 @@ export type InputProps = InputCoreProps | TextAreaProps;
 
 export interface InputCommonProps {
   prefixCls?: string;
-  className?: string;
   shape?: InputShape;
   width?: number | string;
   size?: InputSize;
-  style?: React.CSSProperties;
 }
 
 export interface InputCoreProps extends
@@ -26,9 +24,6 @@ export interface InputCoreProps extends
   addonAfter?: React.ReactNode;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  value?: string;
-  defaultValue?: string;
-  inline?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -37,8 +32,6 @@ export interface TextAreaProps extends
   type: 'textarea';
   showLength?: boolean;
   autoHeight?: boolean;
-  value?: string;
-  defaultValue?: string;
   bordered?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }

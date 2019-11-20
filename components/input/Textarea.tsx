@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import calcTextareaHeight from './calcTextareaHeight';
 import { TextAreaProps } from './PropsType';
-
-function fixControlledValue(value: string | number | null | undefined) {
-  if (typeof value === 'undefined' || value === null) {
-    return '';
-  }
-  return String(value);
-}
+import { fixControlledValue } from './InputCore';
 
 class Textarea extends Component<TextAreaProps, any> {
   static defaultProps = {
@@ -87,7 +81,7 @@ class Textarea extends Component<TextAreaProps, any> {
     });
 
     return (
-      <div className={`${prefixCls}-wrapper ${prefixCls}--textarea`}>
+      <div className={`${prefixCls}__wrapper ${prefixCls}--textarea`}>
         <textarea
           {...others as React.TextareaHTMLAttributes<HTMLTextAreaElement>}
           maxLength={maxLength}

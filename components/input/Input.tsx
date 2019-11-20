@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputProps } from './PropsType';
+import { InputProps, InputCoreProps, TextAreaProps } from './PropsType';
 import Textarea from './Textarea';
 import InputCore from './InputCore';
 
@@ -12,11 +12,12 @@ class Input extends Component<InputProps, any> {
   };
 
   render() {
+    const { type } = this.props;
     let children: React.ReactNode;
-    if (this.props.type === 'textarea') { // eslint-disable-line
-      children = <Textarea {...this.props} />;
+    if (type === 'textarea') {
+      children = <Textarea {...this.props as TextAreaProps} />;
     } else {
-      children = <InputCore {...this.props} />;
+      children = <InputCore {...this.props as InputCoreProps} />;
     }
 
     return children;
