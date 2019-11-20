@@ -245,13 +245,12 @@ class Input extends Component<InputCoreProps, InputState> {
 
     const groupCls = classnames(`${prefixCls}-group`, {
       [`${prefixCls}-group--${size}`]: size,
+      [`${prefixCls}-group--prepend`]: addonBefore,
+      [`${prefixCls}-group--append`]: addonAfter,
     });
-    const wrapperCls = classnames(`${prefixCls}-group__wrapper`, {
-      [`${prefixCls}-group__wrapper--prepend`]: addonBefore,
-      [`${prefixCls}-group__wrapper--append`]: addonAfter,
-    });
-    const prependCls = classnames(`${prefixCls}-group__addon`, `${prefixCls}-group__addon--prepend`);
-    const appendCls = classnames(`${prefixCls}-group__addon`, `${prefixCls}-group__addon--append`);
+    const wrapperCls = classnames(`${prefixCls}-group__wrapper`);
+    const prependCls = classnames(`${prefixCls}-group__prepend`);
+    const appendCls = classnames(`${prefixCls}-group__append`);
     const addonBeforeNode = addonBefore ? <span className={prependCls}>{addonBefore}</span> : null;
     const addonAfterNode = addonAfter ? <span className={appendCls}>{addonAfter}</span> : null;
 

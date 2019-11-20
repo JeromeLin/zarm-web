@@ -304,23 +304,23 @@
     @include b(icon) {
       font-size: 14px;
     }
+  }
 
-    @include m(prepend) {
-      @include b(input) {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
-
-    @include m(append) {
-      @include b(input) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
+  @include m(prepend) {
+    @include b(input) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 
-  @include e(addon) {
+  @include m(append) {
+    @include b(input) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  @include e(prepend, append) {
     display: flex;
     position: relative;
     padding: 0 11px;
@@ -332,17 +332,17 @@
     font-size: 14px;
     border: 1px solid var(--input-addon-border-color);
     transition: all .3s;
+  }
 
-    @include m(prepend) {
-      border-right: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+  @include e(prepend) {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
-    @include m(append) {
-      border-left: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
+  @include e(append) {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
