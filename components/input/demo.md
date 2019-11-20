@@ -65,7 +65,11 @@ class Demo extends React.Component {
       <div>
         <Input style={{width: 200, marginRight: 8}} size="lg" placeholder="请输入" />
         <Input style={{width: 200, marginRight: 8}} size="md" placeholder="请输入" />
-        <Input style={{width: 200, marginRight: 8}} size="sm" placeholder="请输入" />
+        <Input style={{width: 200, marginRight: 8, marginBottom: 24}} size="sm" placeholder="请输入" />
+
+        <Input bordered="underline" style={{marginBottom: 12}} size="lg" placeholder="请输入" />
+        <Input bordered="underline" style={{marginBottom: 12}} size="md" placeholder="请输入" />
+        <Input bordered="underline" style={{marginBottom: 12}} size="sm" placeholder="请输入" />
       </div>
     )
   }
