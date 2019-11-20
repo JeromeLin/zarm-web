@@ -20,6 +20,8 @@ export interface InputCoreProps extends
   size?: InputSize;
   clearable?: boolean;
   bordered?: boolean | 'underline';
+  value?: string | number;
+  defaultValue?: string;
   addonBefore?: React.ReactNode;
   addonAfter?: React.ReactNode;
   prefix?: React.ReactNode;
@@ -33,5 +35,7 @@ export interface TextAreaProps extends
   showLength?: boolean;
   autoHeight?: boolean;
   bordered?: boolean;
+  value?: string | number;
+  defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }

@@ -78,6 +78,7 @@ class Textarea extends Component<TextAreaProps, any> {
       [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--without-bordered`]: !bordered,
+      [`${prefixCls}--with-bordered`]: bordered,
     });
 
     return (

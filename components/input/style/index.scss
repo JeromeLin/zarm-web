@@ -30,6 +30,10 @@
     }
   }
 
+  @include placeholder {
+    color: var(--input-placeholder-color);
+  }
+
   @include e(affix-wrapper) {
     position: relative;
     display: inline-block;
@@ -97,27 +101,27 @@
       height: 2px;
       border: none;
       background-color: var(--theme-primary);
-      transition: transform 0.45s;
+      transition: transform 0.25s;
     }
 
     @include m(lg) {
-      font-size: 16px;
+      font-size: var(--input-font-size-lg);
       @include b(icon) {
-        font-size: 16px;
+        font-size: var(--input-font-size-lg);
       }
     }
 
     @include m(md) {
-      font-size: 14px;
+      font-size: var(--input-font-size-md);
       @include b(icon) {
-        font-size: 14px;
+        font-size: var(--input-font-size-md);
       }
     }
 
     @include m(sm) {
-      font-size: 14px;
+      font-size: var(--input-font-size-sm);
       @include b(icon) {
-        font-size: 14px;
+        font-size: var(--input-font-size-sm);
       }
     }
 
@@ -223,6 +227,7 @@
       line-height: 1.5;
       vertical-align: bottom;
       transition: all 0.3s, height 0;
+      font-size: var(--input-font-size-md);
     }
   }
 
