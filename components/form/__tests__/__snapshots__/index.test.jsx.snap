@@ -16,7 +16,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
       class="za-form-item__control"
     >
       <input
-        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
         placeholder="请输入..."
         type="text"
         value=""
@@ -35,7 +35,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
       class="za-form-item__control"
     >
       <input
-        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
         placeholder="请输入..."
         type="text"
         value=""
@@ -80,7 +80,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       class="za-form-item__control"
     >
       <input
-        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
         placeholder="请输入..."
         type="text"
         value=""
@@ -119,7 +119,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       class="za-form-item__control"
     >
       <input
-        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
         placeholder="请输入..."
         type="text"
         value=""
@@ -164,7 +164,7 @@ exports[`Form renders normal Form correctly 1`] = `
       class="za-form-item__control"
     >
       <input
-        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
         placeholder="请输入..."
         type="text"
         value=""
@@ -183,7 +183,7 @@ exports[`Form renders normal Form correctly 1`] = `
       class="za-form-item__control"
     >
       <input
-        class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
         placeholder="请输入..."
         type="text"
         value=""

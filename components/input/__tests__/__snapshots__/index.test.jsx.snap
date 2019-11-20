@@ -3,7 +3,7 @@
 exports[`Input renders Disabled Input correctly 1`] = `
 <div>
   <input
-    class="zw-input zw-input--md zw-input--radius zw-input--disabled zw-input--with-bordered"
+    class="zw-input zw-input--md zw-input--radius zw-input--disabled zw-input--bordered"
     disabled=""
     type="text"
     value="禁用"
@@ -14,7 +14,7 @@ exports[`Input renders Disabled Input correctly 1`] = `
 exports[`Input renders Input with radius correctly 1`] = `
 <div>
   <input
-    class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+    class="zw-input zw-input--md zw-input--radius zw-input--bordered"
     placeholder="请输入"
     type="text"
     value=""
@@ -38,19 +38,19 @@ exports[`Input renders correctly with initial value 1`] = `
 exports[`Input renders different sizes of Input correctly 1`] = `
 <div>
   <input
-    class="zw-input zw-input--lg zw-input--radius zw-input--with-bordered"
+    class="zw-input zw-input--lg zw-input--radius zw-input--bordered"
     placeholder="请输入"
     type="text"
     value=""
   />
   <input
-    class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+    class="zw-input zw-input--md zw-input--radius zw-input--bordered"
     placeholder="请输入"
     type="text"
     value=""
   />
   <input
-    class="zw-input zw-input--sm zw-input--radius zw-input--with-bordered"
+    class="zw-input zw-input--sm zw-input--radius zw-input--bordered"
     placeholder="请输入"
     type="text"
     value=""
@@ -61,7 +61,7 @@ exports[`Input renders different sizes of Input correctly 1`] = `
 exports[`Input renders different types of Input correctly 1`] = `
 <div>
   <input
-    class="zw-input zw-input--md zw-input--radius zw-input--with-bordered"
+    class="zw-input zw-input--md zw-input--radius zw-input--bordered"
     placeholder="请输入"
     type="text"
     value=""
@@ -70,7 +70,7 @@ exports[`Input renders different types of Input correctly 1`] = `
     class="zw-input__wrapper zw-input--textarea"
   >
     <textarea
-      class="zw-input zw-input--radius zw-input--with-bordered"
+      class="zw-input zw-input--radius zw-input--bordered"
       placeholder="请输入"
       type="textarea"
     />

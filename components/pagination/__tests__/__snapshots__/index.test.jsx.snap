@@ -204,7 +204,7 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
       >
         跳至
         <input
-          class="zw-input zw-input--sm zw-input--radius zw-input--with-bordered"
+          class="zw-input zw-input--sm zw-input--radius zw-input--bordered"
           style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
           type="text"
           value=""
