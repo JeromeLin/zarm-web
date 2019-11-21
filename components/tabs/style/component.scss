@@ -86,51 +86,11 @@
     );
   }
 
-  @include m(line) {}
-
-  @include m(card) {
-    @include e(header) {
-      &__item {
-        padding: 10px 16px 12px;
-        border: 1px solid var(--border-color);
-        border-radius: 4px 4px 0 0;
-        margin-right: 4px;
-        background: var(--tabs-default-card-background);
-
-        &--active {
-          border-bottom: 1px solid var(--tabs-default-background-color);
-        }
-      }
-    }
-  }
-
-  @include m(noborder-card) {
-    @include e(header) {
-      border-bottom: none;
-      &__item {
-        padding: 10px 16px 12px;
-        background: var(--tabs-default-noborder-background);
-        &--active {
-          background: var(--tabs-default-background-color);
-          border: none;
-        }
-      }
-    }
-
-    @include e(body) {
-      background: var(--tabs-default-background-color);
-      transition: none;
-      &__item {
-        background: var(--tabs-default-background-color);
-      }
-    }
-  }
-
   @include m(horizontal) {
 
     @include e(header) {
       border-bottom: 1px solid var(--border-color);
-      &--padding {
+      &--arrow-mode {
         padding: 0 20px;
       }
       &__scroll {
@@ -195,7 +155,7 @@
       border-right: 1px solid var(--border-color);
       float: left;
       height: 100%;
-      &--padding {
+      &--arrow-mode {
         padding: 30px 0;
       }
       &__scroll {
@@ -245,6 +205,48 @@
         &--active {
           height: auto;
         }
+      }
+    }
+  }
+
+  @include m(line) {}
+
+  @include m(card) {
+    @include e(header) {
+      &__item {
+        padding: 10px 16px 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px 4px 0 0;
+        margin-right: 4px;
+        background: var(--tabs-default-card-background);
+
+        &--active {
+          border-bottom: 1px solid var(--tabs-default-background-color);
+          background: var(--tabs-default-active-background);
+        }
+      }
+    }
+  }
+
+  @include m(noborder-card) {
+    @include e(header) {
+      border-bottom: none;
+      &__item {
+        padding: 10px 16px 12px;
+        background: var(--tabs-default-noborder-background);
+        &--active {
+          background: var(--tabs-default-background-color);
+          border: none;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    @include e(body) {
+      background: var(--tabs-default-background-color);
+      transition: none;
+      &__item {
+        background: var(--tabs-default-background-color);
       }
     }
   }

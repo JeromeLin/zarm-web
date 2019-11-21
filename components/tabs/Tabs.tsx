@@ -170,7 +170,7 @@ class Tabs extends Component<TabsProps, any> {
       [`${prefixCls}--${type}`]: direction === 'horizontal' && type,
     });
     const headerCls = classnames(`${prefixCls}__header`, {
-      [`${prefixCls}__header--padding`]: isArrowShown,
+      [`${prefixCls}__header--arrow-mode`]: isArrowShown,
     });
     const navCls = classnames(`${prefixCls}__header__nav`, {
       [`${prefixCls}__header__nav--animated`]: animated,
@@ -221,7 +221,7 @@ class Tabs extends Component<TabsProps, any> {
         <div className={headerCls}>
           <div className={`${prefixCls}__header__scroll`} ref={this.tabHeaderWrap}>
             <div className={navCls} ref={this.tabHeaderNav} style={isArrowShown ? headerNavStyle : {}}>
-              <div>{items}</div>
+              {items}
               {
                 type === 'line' && (
                   <div
