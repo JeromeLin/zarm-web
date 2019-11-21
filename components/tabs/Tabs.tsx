@@ -76,7 +76,7 @@ class Tabs extends Component<TabsProps, any> {
     const isArrowShown = (direction === 'horizontal' && scrollWidth > headerWidth) || (direction === 'vertical' && scrollHeight > headerHeight);
     this.setState({
       headerWidth: direction === 'horizontal' && isArrowShown && headerWidth - 40,
-      headerHeight: direction === 'vertical' && isArrowShown && headerHeight - 40,
+      headerHeight: direction === 'vertical' && isArrowShown && headerHeight - 60,
       scrollWidth,
       scrollHeight,
       isArrowShown,
