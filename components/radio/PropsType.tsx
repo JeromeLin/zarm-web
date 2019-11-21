@@ -1,20 +1,28 @@
 import { MouseEvent, CSSProperties } from 'react';
 
-export interface GroupProps {
-  size?: 'lg' | 'sm' | 'md';
-  type?: 'button' | 'normal';
+export type RadioSize = 'lg' | 'sm' | 'md';
+export type RadioShape = 'radius' | 'rect' | 'round';
+export type RadioType = 'button' | 'normal';
+
+export interface RadioGroupProps {
+  size?: RadioSize;
+  type?: RadioType;
+  shape?: RadioShape;
+  style?: CSSProperties;
+  onChange: (e: MouseEvent) => void;
   ghost?: boolean;
   defaultValue?: string | number;
   value?: string | number;
   block?: boolean;
-  shape?: 'radius' | 'rect' | 'round';
   disabled?: boolean;
-  onChange: (e: MouseEvent) => void;
-  style?: CSSProperties;
   className?: string;
   prefixCls?: string;
 }
 export default interface PropsType {
+  shape?: RadioShape;
+  style?: CSSProperties;
+  type?: RadioType;
+  onChange: (e: MouseEvent) => void;
   prefixCls?: string;
   className?: string;
   checked?: boolean;
@@ -22,7 +30,4 @@ export default interface PropsType {
   disabled?: boolean;
   value?: number | string;
   id?: string;
-  shape?: 'radius' | 'rect' | 'round';
-  style?: CSSProperties;
-  onChange: (e: MouseEvent) => void;
 }

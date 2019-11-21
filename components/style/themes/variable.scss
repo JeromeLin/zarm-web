@@ -175,18 +175,24 @@
   --radio-height-sm: 24px;
   --radio-height-md: 32px;
   --radio-height-lg: 40px;
+  --radio-font-size-sm: 14px;
+  --radio-font-size-md: 16px;
+  --radio-font-size-lg: 18px;
   --radio-padding-v-sm: 10px;
   --radio-padding-v-md: 16px;
   --radio-padding-v-lg: 16px;
-  --radio-color: var(--color-text-caption);
-  --radio-default-border: var(--theme-default);
-  --radio-default-background: var(--color-white);
-  --radio-disabled-color: #c2c2c2;
+  --radio-color: var(--color-text);
+  --radio-default-border: #e6e6e6;
+  --radio-default-background: #fff;
+  --radio-disabled-color: #bcbcbc;
   --radio-disabled-border: #e6e6e6;
   --radio-disabled-background: #fafafa;
-  --radio-checked-color: var(--color-white);
+  --radio-checked-color: #fff;
   --radio-checked-border: var(--theme-primary);
   --radio-checked-background: var(--theme-primary);
+  --radio-disabled-checked-color: #fff;
+  --radio-disabled-checked-background: #e6e6e6;
+  --radio-button-color: #909090;
 
   // Menu
   --menu-color: #343434;
@@ -217,6 +223,7 @@
   --loading-default-svg-color: var(--theme-primary);
   --loading-default-text-color: var(--color-text-disabled);
   --loading-default-mask-color: rgba(255, 255, 255, 0.4);
+  --loading-default-mask-zIndex: 1000;
   --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
 
   // Tag

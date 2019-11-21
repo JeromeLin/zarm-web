@@ -30,7 +30,7 @@ class Demo extends React.Component {
         </Radio>
 
          <Radio
-          value="a"
+          checked
           style={{'marginRight':'15px'}}
           onChange={(e) => this.onChange(e)}
         >
@@ -74,23 +74,28 @@ class Demo extends React.Component {
       radioValue: ''
     }
   }
+  
+  onChange = (e) => {
+    console.log(e.target.value)
+  }
+
   render() {
     return (
       <div className="r-con">
-        <Radio.Group ghost shape='rect'>
-          <Radio.Button value="选项一">选项一</Radio.Button>
-          <Radio.Button value="选项二">选项二</Radio.Button>
-          <Radio.Button value="选项三">选项三</Radio.Button>
+        <Radio.Group ghost shape='rect' type="button" onChange={(e) => this.onChange(e)}>
+          <Radio value="选项一">选项一</Radio>
+          <Radio value="选项二">选项二</Radio>
+          <Radio value="选项三">选项三</Radio>
         </Radio.Group>
-        <Radio.Group ghost>
-          <Radio.Button value="选项一">选项一</Radio.Button>
-          <Radio.Button disabled value="选项二">选项二</Radio.Button>
-          <Radio.Button value="选项三">选项三</Radio.Button>
+        <Radio.Group ghost  className="ghost-demo">
+          <Radio value="选项一">选项一</Radio>
+          <Radio disabled value="选项二">选项二</Radio>
+          <Radio value="选项三">选项三</Radio>
         </Radio.Group>
-        <Radio.Group >
-          <Radio.Button value="选项一">选项一</Radio.Button>
-          <Radio.Button disabled value="选项二">选项二</Radio.Button>
-          <Radio.Button value="选项三">选项三</Radio.Button>
+        <Radio.Group disabled value="选项一">
+          <Radio value="选项一">选项一</Radio>
+          <Radio value="选项二">选项二</Radio>
+          <Radio value="选项三">选项三</Radio>
         </Radio.Group>
       </div>
     )
@@ -113,28 +118,33 @@ class Demo extends React.Component {
       radioValue: ''
     }
   }
+
+  onChange = (e) => {
+    console.log(e.target.value)
+  }
+
   render() {
     return (
       <div>
-        <div className="multi-rows">
-          <Radio.Group size="lg" >
-            <Radio.Button value="选项一">选项一</Radio.Button>
-            <Radio.Button value="选项二">选项二</Radio.Button>
-            <Radio.Button value="选项三">选项三</Radio.Button>
+        <div className="multi-rows" style={{'marginBottom':'15px'}}>
+          <Radio.Group size="lg" type="button" onChange={this.onChange}>
+            <Radio value="选项一">选项一</Radio>
+            <Radio value="选项二">选项二</Radio>
+            <Radio value="选项三">选项三</Radio>
           </Radio.Group>
         </div>
-        <div className="multi-rows">
+        <div className="multi-rows" style={{'marginBottom':'15px'}}>
           <Radio.Group size="md" >
-            <Radio.Button value="选项一">选项一</Radio.Button>
-            <Radio.Button value="选项二">选项二</Radio.Button>
-            <Radio.Button value="选项三">选项三</Radio.Button>
+            <Radio value="选项一">选项一</Radio>
+            <Radio value="选项二">选项二</Radio>
+            <Radio value="选项三">选项三</Radio>
           </Radio.Group>
         </div>
-        <div className="multi-rows">
-          <Radio.Group size="sm" >
-            <Radio.Button value="选项一">选项一</Radio.Button>
-            <Radio.Button value="选项二">选项二</Radio.Button>
-            <Radio.Button value="选项三">选项三</Radio.Button>
+        <div className="multi-rows" style={{'marginBottom':'15px'}}>
+          <Radio.Group size="sm">
+            <Radio value="选项一">选项一</Radio>
+            <Radio value="选项二">选项二</Radio>
+            <Radio value="选项三">选项三</Radio>
           </Radio.Group>
         </div>
       </div>
@@ -157,7 +167,7 @@ ReactDOM.render(<Demo />, mountNode);
 | className | string | - | 追加类名 |
 | defaultChecked | boolean | false | 初始选中值|
 
->>>
+# Radio.Group
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -169,6 +179,6 @@ ReactDOM.render(<Demo />, mountNode);
 | style | boolean | React.CSSProperties | 自定义样式 |
 | className | string | - | 追加类名 |
 | defaultValue | number ， string | - | 初始选中值|
-| type | 'button' ， 'normal' | 'normal' | 显示类型|
+| type | 'button', 'normal' | 'button' | 显示类型|
 | ghost | boolean | false | 按钮类型是否为幽灵按钮|
 | shape | 'radius' , 'rect' , 'round' | radius | 形状。 type为button类型时有效|

@@ -1,6 +1,6 @@
 import React, { Component, ReactElement, ReactNode, isValidElement, cloneElement } from 'react';
 import classnames from 'classnames';
-import { GroupProps } from './PropsType';
+import { RadioGroupProps } from './PropsType';
 
 const getCheckedValue = (children: ReactNode) => {
   let val = null;
@@ -29,14 +29,17 @@ const getValue = (props: RadioGroup['props']) => {
   return val;
 };
 
-export interface RadioGroupStates {
+interface RadioGroupStates {
   value: string | number | null;
 }
 
-class RadioGroup extends Component<GroupProps> {
+class RadioGroup extends Component<RadioGroupProps, RadioGroupStates> {
+  static displayName = 'RadioGroup';
+
   static defaultProps = {
     prefixCls: 'zw-radio-group',
     size: 'md',
+    type: 'button',
   };
 
   state: RadioGroupStates = {

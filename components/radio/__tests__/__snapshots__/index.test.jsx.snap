@@ -5,7 +5,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
   class="zw-radio-group zw-radio-group--md"
 >
   <label
-    class="zw-radio zw-radio--checked"
+    class="zw-radio zw-radio--checked zw-radio--button"
   >
     <input
       checked=""
@@ -19,7 +19,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     A
   </label>
   <label
-    class="zw-radio"
+    class="zw-radio zw-radio--button"
   >
     <input
       class="zw-radio__input"
@@ -32,7 +32,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     B
   </label>
   <label
-    class="zw-radio"
+    class="zw-radio zw-radio--button"
   >
     <input
       class="zw-radio__input"
@@ -45,7 +45,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     C
   </label>
   <label
-    class="zw-radio"
+    class="zw-radio zw-radio--button"
   >
     <input
       class="zw-radio__input"

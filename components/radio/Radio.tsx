@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import RadioProps from './PropsType';
 
-class Radio extends Component<RadioProps, any> {
+interface RadioStates {
+  checked: boolean;
+}
+class Radio extends Component<RadioProps, RadioStates> {
+  static displayName = 'Radio';
+
   static defaultProps = {
     prefixCls: 'zw-radio',
     defaultChecked: false,
     disabled: false,
-  };
-
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    defaultChecked: PropTypes.bool,
-    disabled: PropTypes.bool,
   };
 
   static Group;
@@ -47,14 +45,14 @@ class Radio extends Component<RadioProps, any> {
   }
 
   render() {
-    const { prefixCls, value, disabled, className, children, style, id, shape } = this.props;
+    const { prefixCls, value, disabled, className, children, style, id, shape, type } = this.props;
     const { checked } = this.state;
-
-
+    // const prefixCls = type === 'button' ? `${currPerfixCls}-button` : currPerfixCls;
     const cls = classnames(className, prefixCls, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--${type}`]: type === 'button',
     });
 
     const inputCls = classnames({

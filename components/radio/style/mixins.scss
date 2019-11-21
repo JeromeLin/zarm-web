@@ -8,16 +8,16 @@
   user-select: none;
   margin: 0;
   color: var(--color-text-caption);
-  border: 1px solid var(--button-default-border);
+  border: 1px solid var(--radio-default-border);
   background: var(--color-white);
+  padding: 0 15px;
   border-left: 0;
-  padding: 0 16 - 1px;
-  height: var(--button-height-md);
-  line-height: var(--button-height-md);
+
   @include radio-button-shape(var(--radius-md));
+  @include radio-button-size(var(--radio-height-md), var(--radio-font-size-md), var(--radio-font-size-md),);
 
   &:first-child {
-    border-left: 1px solid var(--button-default-border);
+    border-left: 1px solid var(--radio-default-border);
   }
 
   &:hover {
@@ -78,7 +78,9 @@
   $checked-background,
   $disabled-color,
   $disabled-border,
-  $disabled-background
+  $disabled-background,
+  $disabled-checked-color,
+  $disabled-checked-background,
 ) {
   color: $color;
   border-color: $border;
@@ -112,6 +114,17 @@
     background: $disabled-background;
     border-color: $disabled-border;
 
+    @include m(checked) {
+      color: $disabled-checked-color;
+      background: $disabled-checked-background;
+      border-color: $disabled-checked-background;
+      box-shadow: -1px 0 0 0 $disabled-checked-background;
+
+      &:hover {
+        color: $disabled-checked-color;
+      }
+    }
+
     &:hover {
       color: $disabled-color;
     }
@@ -122,7 +135,7 @@
   height: $height;
   line-height: $height;
   font-size: $font-size;
-  padding: 0 $padding;
+  // padding: 0 $padding;
 }
 
 @mixin radio-button-shape($border-radius: 0) {
@@ -152,5 +165,13 @@
 
   &:hover {
     background: transparent;
+  }
+}
+
+@mixin radio-group-button() {
+  @include b(radio) {
+    @include m(button) {
+      @content;
+    }
   }
 }
