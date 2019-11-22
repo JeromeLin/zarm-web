@@ -2,7 +2,8 @@
 
 .input-page {
   .input-search-wrapper {
-    & + .zw-input-group__addon {
+    & + .zw-input-group__prepend,
+    & + .zw-input-group__append {
       padding: 0;
       border: 0;
 
