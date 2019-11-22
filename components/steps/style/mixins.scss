@@ -11,6 +11,7 @@
     @include e(title) {
       @content;
     }
+
     @include e(desc) {
       @content;
     }
@@ -27,6 +28,7 @@
   @include step-status(finish, icon) {
     border-color: var(--steps-status-process);
   }
+
   @include step-status(finish, tail) {
     background: var(--steps-status-process);
 
@@ -42,6 +44,7 @@
     background: var(--steps-status-process);
     color: #fff;
   }
+
   @include step-status-content(process) {
     color: var(--steps-status-process);
   }
@@ -52,6 +55,7 @@
     color: var(--steps-status-error);
     border-color: var(--steps-status-error);
   }
+
   @include step-status-content(error) {
     color: var(--steps-status-error);
   }
