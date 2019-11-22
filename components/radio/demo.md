@@ -82,17 +82,17 @@ class Demo extends React.Component {
   render() {
     return (
       <div className="r-con">
-        <Radio.Group ghost shape='rect' type="button" onChange={(e) => this.onChange(e)}>
+        <Radio.Group ghost shape='rect' type="button" onChange={(e) => this.onChange(e)} style={{'marginBottom':'15px'}}>
           <Radio value="选项一">选项一</Radio>
           <Radio value="选项二">选项二</Radio>
           <Radio value="选项三">选项三</Radio>
         </Radio.Group>
-        <Radio.Group ghost  className="ghost-demo">
+        <Radio.Group ghost  className="ghost-demo" style={{'marginBottom':'15px'}}>
           <Radio value="选项一">选项一</Radio>
           <Radio disabled value="选项二">选项二</Radio>
           <Radio value="选项三">选项三</Radio>
         </Radio.Group>
-        <Radio.Group disabled value="选项一">
+        <Radio.Group disabled value="选项一" style={{'marginBottom':'15px'}}>
           <Radio value="选项一">选项一</Radio>
           <Radio value="选项二">选项二</Radio>
           <Radio value="选项三">选项三</Radio>
