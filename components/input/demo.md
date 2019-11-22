@@ -4,8 +4,8 @@
 
 ## 基础用法
 
-基本用法。
-通过`type`属性输入类型。
+三种不同样式输入框
+通过`type`属性输入类型、`bordered`设置样式类型
 ```js
 import { Input } from 'zarm-web';
 
@@ -120,9 +120,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 前缀和后缀
 
-通过prefix 和 suffix设置。
-
-通过`通过prefix`和`suffix设置`属性设置前缀和后缀。
+通过prefix和suffix属性设置前缀和后缀。
 
 ```js
 import { Input, Icon } from 'zarm-web';

@@ -238,6 +238,7 @@
       border-color: var(--theme-primary);
       box-shadow: var(--input-focus-shadow);
       outline: 0;
+      z-index: 1;
     }
   }
 
@@ -344,5 +345,17 @@
     border-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  @include m(radius) {
+    @include e(prepend) {
+      border-top-left-radius: var(--radius-md);
+      border-bottom-left-radius: var(--radius-md);
+    }
+
+    @include e(append) {
+      border-top-right-radius: var(--radius-md);
+      border-bottom-right-radius: var(--radius-md);
+    }
   }
 }

@@ -238,13 +238,14 @@ class Input extends Component<InputCoreProps, InputState> {
   };
 
   renderLabeledInput = () => {
-    const { addonBefore, addonAfter, prefixCls, style, size } = this.props;
+    const { addonBefore, addonAfter, prefixCls, style, size, shape } = this.props;
     if (!addonBefore && !addonAfter) {
       return this.renderLabeledIconInput();
     }
 
     const groupCls = classnames(`${prefixCls}-group`, {
       [`${prefixCls}-group--${size}`]: size,
+      [`${prefixCls}-group--${shape}`]: shape,
       [`${prefixCls}-group--prepend`]: addonBefore,
       [`${prefixCls}-group--append`]: addonAfter,
     });
