@@ -1,5 +1,5 @@
-@import '../../style/themes/variable';
-@import './mixins';
+@import '../../style/core/index';
+@import 'mixins';
 
 /* 一般状态 */
 @include b(radio) {
