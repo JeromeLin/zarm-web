@@ -46,11 +46,16 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
   };
 
   componentDidMount() {
-    const { width } = this.props;
+    const { width, onClose } = this.props;
     const { totallayers } = this.state;
 
     if (!width) {
       events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
+      events.on(window, 'keyup', (e) => {
+        if (e.keyCode === 27) {
+          onClose && onClose();
+        }
+      });
     }
 
     this.calcDrawerWidth();
@@ -163,13 +168,13 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     });
 
     const drawerCell = classnames(`${prefixCls}__cell`);
+    this.parentDrawer = value;
+
     const handleClose = () => {
       if (!maskClosable) return false;
       onMaskClick && onMaskClick();
       onClose && onClose();
     };
-
-    this.parentDrawer = value;
 
     return (
       <DrawerContext.Provider value={this}>
@@ -180,7 +185,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           animationDuration={300}
           className={drawerBox}
           visible={visible}
-          onMaskClick={handleClose}
+          onMaskClick={() => handleClose()}
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
