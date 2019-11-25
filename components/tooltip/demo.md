@@ -7,9 +7,7 @@
 import { Tooltip } from 'zarm-web';
 
 ReactDOM.render(
-  <Tooltip content="我是提示框内容">
-    <span>鼠标移入显示提示框</span>
-  </Tooltip>
+  <Tooltip content="我是提示框内容">鼠标移入显示提示框</Tooltip>
 , mountNode);
 ```
 
