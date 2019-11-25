@@ -26,7 +26,7 @@ class Demo extends React.Component {
     return (
       <React.Fragment>
         <div className="multi-rows">
-          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
         </div>
         <Drawer
           visible={this.state.drawerVisible}
@@ -38,7 +38,7 @@ class Demo extends React.Component {
           onMaskClick={() => console.log('onMaskClick')}
         >
           <div>
-            sdljfgdlskjgfkldsgflksdgfljgsklfgklsd
+            DRAWER
           </div>
         </Drawer>
       </React.Fragment>
@@ -89,9 +89,9 @@ class Demo extends React.Component {
     return (
       <React.Fragment>
         <div className="multi-rows">
-          <Button theme="primary" size="xl" onClick={() => this.drawerShow('lg')}>Drawer-lg</Button>
-          <Button style={{ margin: '0 10px' }} theme="primary" size="xl" onClick={() => this.drawerShow('md')}>Drawer-md</Button>
-          <Button theme="primary" size="xl" onClick={() => this.drawerShow('sm')}>Drawer-sm</Button>
+          <Button theme="primary" size="md" onClick={() => this.drawerShow('lg')}>Drawer-lg</Button>
+          <Button style={{ margin: '0 10px' }} theme="primary" size="md" onClick={() => this.drawerShow('md')}>Drawer-md</Button>
+          <Button theme="primary" size="md" onClick={() => this.drawerShow('sm')}>Drawer-sm</Button>
         </div>
 
         <Drawer
@@ -171,7 +171,7 @@ class Demo extends React.Component {
     return (
       <React.Fragment>
         <div className="multi-rows">
-          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
         </div>
         <Drawer
           visible={this.state.drawerVisible}
@@ -225,7 +225,7 @@ class Demo extends React.Component {
     return (
       <React.Fragment>
         <div className="multi-rows">
-          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
         </div>
         <Drawer
           visible={this.state.drawerVisible}
@@ -245,9 +245,9 @@ class Demo extends React.Component {
             afterClose={() => console.log('afterClose')}
             onMaskClick={() => console.log('onMaskClick')}
           >
-            It`s Me
+
           </Drawer>
-          <Button theme="primary" size="xl" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
+          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
         </Drawer>
       </React.Fragment>
     )
@@ -264,7 +264,7 @@ ReactDOM.render(<Demo />, mountNode);
 | visible | boolean | false | 是否显示 |
 | size | string | normal | 可选值`lg`, `md`, `sm`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
 | mask | boolean | true | 是否展示遮罩层 |
-| maskClosable | boolean | - | 是否点击遮罩层来关闭抽屉 |
+| maskClosable | boolean | false | 是否点击遮罩层来关闭抽屉 |
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |

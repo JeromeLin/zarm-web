@@ -22,6 +22,7 @@ export interface StateType {
   left?: number;
   totallayers?: number;
   btnstyle?: CSSProperties;
+  esc: boolean;
 }
 
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
@@ -43,6 +44,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     totallayers: 0,
     btnstyle: {},
     width: this.props.width,
+    esc: true,
   };
 
   componentDidMount() {
@@ -51,8 +53,10 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
     if (!width) {
       events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
-      events.on(window, 'keyup', (e) => {
-        if (e.keyCode === 27) {
+      events.on(window, 'keyup', (e: { keyCode: number }) => {
+        const { esc } = this.state;
+        console.log(esc, 'esc');
+        if (e.keyCode === 27 && esc) {
           onClose && onClose();
         }
       });
@@ -135,6 +139,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     const distance = (totallayers - layer) * BUTTONLAYER;
 
     this.setState({
+      esc: false,
       btnstyle: {
         top: distance,
       },
