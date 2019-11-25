@@ -19,7 +19,7 @@ export { default as Slider } from './slider';
 export { default as Steps } from './steps';
 export { default as Swipe } from './swipe';
 export { default as Switch } from './switch';
-export { default as Tab } from './tab';
+export { default as Tabs } from './tabs';
 export { default as Upload } from './upload';
 export { default as Tooltip } from './tooltip';
 export { default as Table } from './table';

@@ -1,0 +1,12 @@
+@mixin tabs-size($font-size, $padding, $icon-size) {
+  font-size: $font-size;
+  @include e(header) {
+    font-size: $font-size;
+    @include b(icon) {
+      font-size: $icon-size;
+    }
+    &__item {
+      padding: 0 16px $padding;
+    }
+  }
+}
