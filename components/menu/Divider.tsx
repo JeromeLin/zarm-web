@@ -4,7 +4,7 @@ import { DividerProps } from './PropsType';
 
 export default class Divider extends Component<DividerProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-menu',
+    prefixCls: 'zw-menu',
     disabled: true,
     style: {},
   };
@@ -12,7 +12,7 @@ export default class Divider extends Component<DividerProps, any> {
   render() {
     const { className, prefixCls, style } = this.props;
     const cls = classnames({
-      [`${prefixCls}-item-divider`]: true,
+      [`${prefixCls}__divider`]: true,
       [className!]: !!className,
     });
     return <li className={cls} style={style} />;

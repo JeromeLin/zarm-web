@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Tooltip from '../tooltip';
+// import Tooltip from '../tooltip';
 import { ItemProps, styleType } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
 
 class MenuItem extends Component<ItemProps, any> {
   static defaultProps = {
-    prefixCls: 'za-menu',
+    prefixCls: 'zw-menu',
     checked: false,
     isDisabled: false,
     level: 1,
@@ -19,7 +19,9 @@ class MenuItem extends Component<ItemProps, any> {
   };
 
   handleClick = (e) => {
-    const { itemKey, inlineCollapsed } = this.props;
+    const { itemKey, inlineCollapsed, disabled } = this.props;
+
+    if (disabled) return;
     this.props.onClick(e, itemKey);
     this.props.toggleSelectedKeys(itemKey);
     if (inlineCollapsed) {
@@ -34,12 +36,12 @@ class MenuItem extends Component<ItemProps, any> {
     } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}-level-${level}`]: level,
-      [`${prefixCls}-item`]: true,
-      active: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
+      [`${prefixCls}__item`]: true,
+      [`${prefixCls}__item--level${level}`]: level,
+      [`${prefixCls}__item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
+      [`${prefixCls}__item--selected`]: !!checked,
+      [`${prefixCls}__item--disabled`]: 'disabled' in this.props || isDisabled,
       [className!]: !!className,
-      selected: !!checked,
-      disabled: 'disabled' in this.props || isDisabled,
     });
     const itemStyle: styleType = {
       ...style,
@@ -48,23 +50,34 @@ class MenuItem extends Component<ItemProps, any> {
       itemStyle.paddingLeft = level * inlineIndent;
     }
     return (
-      <Tooltip
-        hasArrow
-        content={(level === 1 && inlineCollapsed) ? children : ''}
-        direction="right"
-        className="za-menu-item__tooltip"
+      <li
+        className={cls}
+        role="menuitem"
+        style={itemStyle}
+        onClick={this.handleClick}
+        onDoubleClick={onDoubleClick}
       >
-        <li
-          className={cls}
-          role="menuitem"
-          style={itemStyle}
-          onClick={this.handleClick}
-          onDoubleClick={onDoubleClick}
-        >
-          {children}
-        </li>
-      </Tooltip>
+        {children}
+      </li>
     );
+    // return (
+    //   <Tooltip
+    //     hasArrow
+    //     content={(level === 1 && inlineCollapsed) ? children : ''}
+    //     direction="right"
+    //     className="za-menu-item__tooltip"
+    //   >
+    //     <li
+    //       className={cls}
+    //       role="menuitem"
+    //       style={itemStyle}
+    //       onClick={this.handleClick}
+    //       onDoubleClick={onDoubleClick}
+    //     >
+    //       {children}
+    //     </li>
+    //   </Tooltip>
+    // );
   }
 }
 

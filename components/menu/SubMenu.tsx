@@ -7,7 +7,7 @@ import MenuContext from './menu-context';
 
 export class SubMenu extends Component<SubMenuProps, any> {
   static defaultProps = {
-    prefixCls: 'za-menu',
+    prefixCls: 'zw-menu',
     title: '',
     level: 1,
     style: {},
@@ -201,19 +201,19 @@ export class SubMenu extends Component<SubMenuProps, any> {
       subMenuStyle.paddingLeft = level * inlineIndent;
     }
     const isOpen = openKeys.indexOf(subMenuKey) > -1;
-    const cls = classnames(`${prefixCls}-submenu`, {
-      open: isOpen,
-      [`${prefixCls}-level-${level}`]: level,
+    const cls = classnames(`${prefixCls}__submenu`, {
+      [`${prefixCls}__submenu--open`]: isOpen,
+      [`${prefixCls}__submenu--level${level}`]: level,
     });
     let subStyle: React.CSSProperties = {
       display: 'block',
     };
-    let subCls = `${prefixCls}-submenu-sub`;
+    let subCls = `${prefixCls}__sub`;
     if (inlineCollapsed) {
       subStyle = {
         display: collapsedSubVisible ? 'block' : 'none',
       };
-      subCls = classnames(`${prefixCls}`, `${prefixCls}-submenu-sub`, {
+      subCls = classnames(`${prefixCls}`, `${prefixCls}__sub`, {
         [`slide-${collapsedSubAnimation}`]: !!collapsedSubAnimation,
       });
     }
@@ -224,10 +224,10 @@ export class SubMenu extends Component<SubMenuProps, any> {
           ref={(subTitle) => { this.subTitle = subTitle; }}
           onClick={this.toggleSubMenuOpen}
           style={subMenuStyle}
-          className={`${prefixCls}-submenu-title`}
+          className={`${prefixCls}__title`}
         >
           {title}
-          <i className={`${prefixCls}-submenu-arrow`} />
+          <i className={`${prefixCls}__arrow`} />
         </div>
         <ul
           ref={(sub) => { this.sub = sub; }}

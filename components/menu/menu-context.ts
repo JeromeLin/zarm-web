@@ -1,4 +1,4 @@
-import React from 'react';
+import createReactContext, { Context } from 'create-react-context';
 
 export interface KeysType {
   openKeys: string[];
@@ -15,6 +15,6 @@ export const menuKeys: KeysType = {
   toggleOpenKeys: () => {},
 };
 
-const MenuContext = React.createContext(menuKeys);
+const MenuContext: Context<KeysType> = createReactContext(menuKeys);
 
 export default MenuContext;

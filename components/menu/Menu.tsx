@@ -6,10 +6,10 @@ import MenuContext, { menuKeys, KeysType } from './menu-context';
 
 class Menu extends Component<PropsType, any> {
   static defaultProps = {
-    prefixCls: 'za-menu',
+    prefixCls: 'zw-menu',
     mode: 'inline',
     theme: 'light',
-    inlineIndent: 24,
+    inlineIndent: 20,
     inlineCollapsed: false,
     defaultOpenKeys: [],
     defaultSelectedKeys: [],
@@ -125,11 +125,11 @@ class Menu extends Component<PropsType, any> {
     const { openKeys, selectedKeys } = this.state;
     const cls = classnames({
       [prefixCls!]: true,
-      [`${prefixCls}-root`]: true,
-      [`${prefixCls}-${theme}`]: true,
-      [`${prefixCls}-${mode}`]: true,
-      [`${prefixCls}-collapsed`]: !!siderCollapsed || !!inlineCollapsed,
-      [`size-${size}`]: !!size,
+      [`${prefixCls}--root`]: true,
+      [`${prefixCls}--${theme}`]: true,
+      [`${prefixCls}--${mode}`]: true,
+      [`${prefixCls}--collapsed`]: !!siderCollapsed || !!inlineCollapsed,
+      [`${prefixCls}--${size}`]: !!size,
       [className!]: !!className,
     });
 
