@@ -121,7 +121,7 @@
   --button-disabled-opacity: var(--opacity-disabled);
   --button-disabled-color-ghost: var(--border-disabled);
   --button-default-background: var(--color-text-inverse);
-  --button-default-border: #e6e6e6;
+  --button-default-border: var(--border-color);
   --button-default-color: var(--color-text);
   --button-default-hover-background: var(--color-text-inverse);
   --button-default-hover-border: var(--theme-primary);
