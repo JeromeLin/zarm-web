@@ -126,9 +126,9 @@
   --button-default-hover-background: var(--color-text-inverse);
   --button-default-hover-border: var(--theme-primary);
   --button-default-hover-color: var(--theme-primary);
-  --button-default-active-background: var(--theme-default);
-  --button-default-active-border: var(--theme-default);
-  --button-default-active-color: var(--color-text);
+  --button-default-active-background: var(--color-text-inverse);
+  --button-default-active-border: var(--theme-primary-dark);
+  --button-default-active-color: var(--theme-primary-dark);
   --button-default-ghost-border: var(--color-text-inverse);
   --button-default-ghost-color: var(--color-text-inverse);
   --button-default-ghost-active-border: var(--theme-primary);
@@ -141,11 +141,12 @@
   --button-primary-hover-color: var(--color-text-inverse);
   --button-primary-active-background: var(--theme-primary-dark);
   --button-primary-active-border: var(--theme-primary-dark);
-  --button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --button-primary-active-color: var(--color-text-inverse);
   --button-primary-ghost-border: var(--theme-primary);
   --button-primary-ghost-color: var(--theme-primary);
   --button-primary-ghost-active-border: var(--theme-primary-dark);
   --button-primary-ghost-active-color: var(--theme-primary-dark);
+  --button-primary-gap-color: hsla(0, 0%, 100%, 0.3);
   --button-danger-background: var(--theme-danger);
   --button-danger-border: var(--theme-danger);
   --button-danger-color: var(--color-text-inverse);
@@ -154,7 +155,7 @@
   --button-danger-hover-color: var(--color-text-inverse);
   --button-danger-active-background: var(--theme-danger-dark);
   --button-danger-active-border: var(--theme-danger-dark);
-  --button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --button-danger-active-color: var(--color-text-inverse);
   --button-danger-ghost-border: var(--theme-danger);
   --button-danger-ghost-color: var(--theme-danger);
   --button-danger-ghost-active-border: var(--theme-danger-dark);

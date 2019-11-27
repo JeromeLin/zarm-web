@@ -232,7 +232,7 @@
 
     @include m(primary) {
       &:not(:last-child) {
-        border-right-color: #4ed2a6;
+        border-right: 1px solid var(--button-primary-gap-color);
         margin-right: 0 !important;
       }
     }

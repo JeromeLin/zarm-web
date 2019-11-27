@@ -24,6 +24,12 @@
     color: $hover-color;
   }
 
+  &:active {
+    background-color: $active-background;
+    border-color: $active-border;
+    color: $active-color;
+  }
+
   @include m(disabled) {
     background-color: $disabled-background;
     border-color: $disabled-border;
@@ -85,6 +91,8 @@
     background-color: transparent;
     border-color: $border;
     color: $color;
+    border-width: 1px;
+    border-style: solid;
 
     &:hover,
     &:active {
@@ -146,17 +154,16 @@
 
 @mixin button-base() {
   padding: 0;
+  border: none;
   font-weight: normal;
   text-align: center;
   overflow: hidden;
   color: var(--color-text);
-  transition-property: background-color, border-color, color;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
-  cursor: pointer;
+  transition: all 0.2s ease-out;
   outline: 0 none;
-  -webkit-appearance: none;
   user-select: none;
+  cursor: pointer;
+  -webkit-appearance: none;
 
   &,
   &:active,
@@ -164,6 +171,11 @@
   &:focus,
   &:visited {
     text-decoration: none;
+  }
+
+  @include m(default) {
+    border-width: 1px;
+    border-style: solid;
   }
 
   /* disabled button */
@@ -187,7 +199,5 @@
 
 // 形状
 @mixin button-shape($border-radius: 0) {
-  border-width: 1px;
-  border-style: solid;
   border-radius: $border-radius;
 }
