@@ -75,42 +75,60 @@ ReactDOM.render(<Demo />, mountNode);
 ## card
 
 ```jsx
-import { Tabs, Icon } from 'zarm-web';
+import { Tabs, Icon, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      size: 'md',
+    }
+  }
+  handleSize = (size) => {
+    this.setState({size});
+  }
   render() {
     return (
-      <Tabs type="card" onChange={(i) => console.log(i)}>
-        <Tab title={<><Icon type="required" />Tab1</>}>
-          <div style={{padding: 10}}>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-          </div>
-        </Tab>
-        <Tab disabled title="Tab2">
-          <div style={{padding: 10}}>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab3">
-          <div style={{padding: 10}}>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab4">
-          <div style={{padding: 10}}>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-          </div>
-        </Tab>
-      </Tabs>
+      <>
+        <div className="rows">
+          <Button.Group>
+            <Button onClick={() => this.handleSize('sm')}>sm</Button>
+            <Button onClick={() => this.handleSize('md')}>md</Button>
+            <Button onClick={() => this.handleSize('lg')}>lg</Button>
+          </Button.Group>
+        </div>
+        <Tabs type="card" onChange={(i) => console.log(i)} size={this.state.size}>
+          <Tab title={<><Icon type="required" />Tab1</>}>
+            <div style={{padding: 10}}>
+              <p>这是选项卡1的文字</p>
+              <p>这是选项卡1的文字</p>
+              <p>这是选项卡1的文字</p>
+            </div>
+          </Tab>
+          <Tab disabled title="Tab2">
+            <div style={{padding: 10}}>
+              <p>这是选项卡2的文字</p>
+              <p>这是选项卡2的文字</p>
+              <p>这是选项卡2的文字</p>
+            </div>
+          </Tab>
+          <Tab title="Tab3">
+            <div style={{padding: 10}}>
+              <p>这是选项卡3的文字</p>
+              <p>这是选项卡3的文字</p>
+              <p>这是选项卡3的文字</p>
+            </div>
+          </Tab>
+          <Tab title="Tab4">
+            <div style={{padding: 10}}>
+              <p>这是选项卡4的文字</p>
+              <p>这是选项卡4的文字</p>
+              <p>这是选项卡4的文字</p>
+            </div>
+          </Tab>
+        </Tabs>
+      </>
     );
   }
 }
@@ -121,44 +139,62 @@ ReactDOM.render(<Demo />, mountNode);
 ## noborder-card
 
 ```jsx
-import { Tabs } from 'zarm-web';
+import { Tabs, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      size: 'md',
+    }
+  }
+  handleSize = (size) => {
+    this.setState({size});
+  }
   render() {
     return (
-      <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
-        <Tabs type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
-          <Tab title={<>Tab1</>}>
-          <div style={{padding: 10}}>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-          </div>
-        </Tab>
-        <Tab disabled title="Tab2">
-          <div style={{padding: 10}}>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab3">
-          <div style={{padding: 10}}>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab4">
-          <div style={{padding: 10}}>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-          </div>
-        </Tab>
-        </Tabs>
-      </div>
+      <>
+        <div className="rows">
+          <Button.Group>
+            <Button onClick={() => this.handleSize('sm')}>sm</Button>
+            <Button onClick={() => this.handleSize('md')}>md</Button>
+            <Button onClick={() => this.handleSize('lg')}>lg</Button>
+          </Button.Group>
+        </div>
+        <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
+          <Tabs type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} size={this.state.size}>
+            <Tab title={<>Tab1</>}>
+            <div style={{padding: 10}}>
+              <p>这是选项卡1的文字</p>
+              <p>这是选项卡1的文字</p>
+              <p>这是选项卡1的文字</p>
+            </div>
+          </Tab>
+          <Tab disabled title="Tab2">
+            <div style={{padding: 10}}>
+              <p>这是选项卡2的文字</p>
+              <p>这是选项卡2的文字</p>
+              <p>这是选项卡2的文字</p>
+            </div>
+          </Tab>
+          <Tab title="Tab3">
+            <div style={{padding: 10}}>
+              <p>这是选项卡3的文字</p>
+              <p>这是选项卡3的文字</p>
+              <p>这是选项卡3的文字</p>
+            </div>
+          </Tab>
+          <Tab title="Tab4">
+            <div style={{padding: 10}}>
+              <p>这是选项卡4的文字</p>
+              <p>这是选项卡4的文字</p>
+              <p>这是选项卡4的文字</p>
+            </div>
+          </Tab>
+          </Tabs>
+        </div>
+      </>
     );
   }
 }
@@ -169,12 +205,19 @@ ReactDOM.render(<Demo />, mountNode);
 ## line scroll
 
 ```jsx
-import { Tabs } from 'zarm-web';
+import { Tabs, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      size: 'md',
+    }
+  }
+
+  handleSize = (size) => {
+    this.setState({size});
   }
 
   onTabClose = (current) => {
@@ -186,17 +229,26 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div>
-        <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose}>
-          {
-            [...Array(40).keys()].map((item, index) => (
-              <Tab key={index} title={`Tab${index}`} style={{padding: 10}}>
-                这是选项卡{index}的文字
-              </Tab>
-            ))
-          }
-        </Tabs>
-      </div>
+      <>
+        <div className="rows">
+          <Button.Group>
+            <Button onClick={() => this.handleSize('sm')}>sm</Button>
+            <Button onClick={() => this.handleSize('md')}>md</Button>
+            <Button onClick={() => this.handleSize('lg')}>lg</Button>
+          </Button.Group>
+        </div>
+        <div>
+          <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} size={this.state.size}>
+            {
+              [...Array(40).keys()].map((item, index) => (
+                <Tab key={index} title={`Tab${index}`} style={{padding: 10}}>
+                  这是选项卡{index}的文字
+                </Tab>
+              ))
+            }
+          </Tabs>
+        </div>
+      </>
     );
   }
 }
@@ -207,12 +259,19 @@ ReactDOM.render(<Demo />, mountNode);
 ## card scroll
 
 ```jsx
-import { Tabs } from 'zarm-web';
+import { Tabs, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      size: 'md',
+    }
+  }
+
+  handleSize = (size) => {
+    this.setState({size});
   }
 
   onTabClose = (targetIndex) => {
@@ -224,17 +283,19 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div>
-        <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '180px'}}>
-          {
-            [...Array(40).keys()].map((item, index) => (
-              <Tab key={index} title={`Tab${index}`}>
-                这是选项卡{index}的文字
-              </Tab>
-            ))
-          }
-        </Tabs>
-      </div>
+      <>
+        <div>
+          <Tabs type="line" closable direction="vertical" size={this.state.size} defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '171px'}}>
+            {
+              [...Array(40).keys()].map((item, index) => (
+                <Tab key={index} title={`Tab${index}`}>
+                  这是选项卡{index}的文字
+                </Tab>
+              ))
+            }
+          </Tabs>
+        </div>
+      </>
     );
   }
 }
