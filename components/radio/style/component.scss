@@ -28,19 +28,19 @@
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
     &:after {
+      content: ' ';
       position: absolute;
       width: 6px;
       height: 6px;
-      left: 3px;
-      top: 3px;
-      border-radius: 6px;
+      left: 50%;
+      top: 50%;
+      border-radius: 100%;
       display: table;
       border-top: 0;
       border-left: 0;
-      content: ' ';
       background-color: var(--theme-primary);
       opacity: 0;
-      transform: scale(0);
+      transform: translate(-50%, -50%) scale(0);
       transition:
         transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
         opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
@@ -68,7 +68,7 @@
       border-color: var(--theme-primary);
 
       &:after {
-        transform: scale(1);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         transition:
           transform 0.3s cubic-bezier(0.12, 0.4, 0.29, 1.46),
