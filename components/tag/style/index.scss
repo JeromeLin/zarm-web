@@ -107,7 +107,7 @@
 
   @include m(checked) {
     background-color: var(--tag-primary-color);
-    border-color: var(--tag-primary-color);
+    border-color: transparent;
     color: var(--tag-default-background);
 
     &:hover {
@@ -116,6 +116,7 @@
 
     &:active {
       background-color: var(--tag-primary-active-background);
+      border-color: var(--tag-primary-active-background);
     }
   }
 
