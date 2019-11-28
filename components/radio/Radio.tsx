@@ -35,7 +35,6 @@ class Radio extends Component<RadioProps, RadioStates> {
     return null;
   }
 
-
   onClick(e) {
     const { onChange } = this.props;
     this.setState({

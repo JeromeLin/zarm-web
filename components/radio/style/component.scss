@@ -16,22 +16,26 @@
 
   @include e(inner) {
     position: relative;
-    top: 2px;
     margin-right: 4px;
+    vertical-align: middle;
     left: 0;
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: var(--radio-inner-width);
+    height: var(--radio-inner-width);
     border: 1px solid var(--button-default-border);
     border-radius: 14px;
     background-color: var(--color-text-inverse);
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
+    & + * {
+      vertical-align: middle;
+    }
+
     &:after {
       content: ' ';
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: calc((var(--radio-inner-width) - 2px) / 2);
+      height: calc((var(--radio-inner-width) - 2px) / 2);
       left: 50%;
       top: 50%;
       border-radius: 100%;
