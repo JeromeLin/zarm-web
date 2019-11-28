@@ -84,6 +84,8 @@
 @mixin button-ghost(
   $border,
   $color,
+  $hover-border,
+  $hover-color,
   $active-border,
   $active-color
 ) {
@@ -94,9 +96,12 @@
     border-width: 1px;
     border-style: solid;
 
-    &:hover,
+    &:hover {
+      border-color: $hover-border;
+      color: $hover-color;
+    }
+
     &:active {
-      background-color: transparent;
       border-color: $active-border;
       color: $active-color;
     }
