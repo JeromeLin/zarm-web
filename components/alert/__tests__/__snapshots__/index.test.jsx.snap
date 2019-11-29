@@ -93,7 +93,9 @@ exports[`Alert renders basic Alert correctly 1`] = `
                         class="zw-button zw-button--default zw-button--radius"
                         type="button"
                       >
-                        关闭
+                        <span>
+                          关闭
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -203,6 +205,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                     <Button
                       ghost={false}
                       htmlType="button"
+                      icon=""
                       loading={false}
                       onClick={[MockFunction]}
                       prefixCls="zw-button"
@@ -215,7 +218,9 @@ exports[`Alert renders basic Alert correctly 1`] = `
                         onClick={[Function]}
                         type="button"
                       >
-                        关闭
+                        <span>
+                          关闭
+                        </span>
                       </button>
                     </Button>
                   </div>
