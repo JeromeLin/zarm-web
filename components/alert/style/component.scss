@@ -1,20 +1,130 @@
 .ui-alert {
-  padding: 16px 16px 16px 75px;
+  padding: 16px;
   position: relative;
   color: #666;
   line-height: 1.5;
+  border-radius: $base-radius;
+  margin-bottom: 16px;
+  transition: all .3s ease;
+  overflow: hidden;
 
-  .ui-icon {
+  &.ui-alert-sm-icon {
+    padding-left: 36px;
+    .zw-icon {
+      top: 13px;
+      left: 16px;
+      font-size: 14px;
+    }
+  }
+
+  &.ui-alert-lg-icon {
+    padding-left: 76px;
+    .zw-icon {
+      top: 16px;
+      left: 20px;
+      font-size: 44px;
+    }
+  }
+
+  &.ui-alert-closable {
+    padding-right: 30px;
+  }
+
+  &.ui-alert-no-with-description {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    .ui-alert-message {
+      color: #616161;
+      margin-bottom: 0;
+    }
+  }
+
+  .zw-icon {
     position: absolute;
-    top: 50%;
-    left: 15px;
-    margin-top: -30px;
-    font-size: 40px;
+    z-index: 1;
+  }
+
+  .ui-alert-close-btn {
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+    top: 12px;
+    font-size: $base-fontSize-sm;
+    color: #616161;
+    cursor: pointer;
+    transition: color .2s ease;
+
+    &:hover, &:focus {
+      color: #343434;
+    }
+  }
+
+  .ui-alert-custom-close-btn {
+    padding: 0;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #616161;
+    line-height: 22px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: color .2s ease;
+
+    &:hover, &:focus {
+      color: #343434;
+    }
+  }
+
+  .ui-alert-message {
+    display: block;
+    margin-bottom: 4px;
+    font-size: $base-fontSize;
+    color: #343434;
+    font-weight: 400;
+    line-height: $base-line-height;
+  }
+
+  .ui-alert-description {
+    display: block;
+    font-size: $base-fontSize-sm;
+    font-weight: 400;
+    color: #616161;
+    line-height: 22px;
+  }
+}
+
+.ui-alert-success {
+  background: rgba($base-theme-success,0.2);
+  .zw-icon {
+    color: $base-theme-success;
+  }
+}
+
+.ui-alert-info {
+  background: rgba($base-theme-info,0.2);
+  .zw-icon {
+    color: $base-theme-info;
+  }
+}
+
+.ui-alert-warning {
+  background: rgba($base-theme-warning,0.2);
+  .zw-icon {
     color: $base-theme-warning;
   }
+}
 
-  span {
-    font-size: 16px;
-    color: #666;
+.ui-alert-error {
+  background: rgba($base-theme-error,0.2);
+  .zw-icon {
+    color: $base-theme-error;
   }
+}
+
+.ui-alert-close-animation {
+  
 }

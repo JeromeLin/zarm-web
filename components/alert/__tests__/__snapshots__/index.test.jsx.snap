@@ -229,3 +229,283 @@ exports[`Alert renders basic Alert correctly 1`] = `
   </LocaleReceiver>
 </ForwardRef(forwardRef)>
 `;
+
+exports[`Alert renders basic normal Alert correctly 1`] = `
+<ForwardRef(forwardRef)
+  title="测试经典无描述，无icon，无关闭提示框"
+  type="info"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    title="测试经典无描述，无icon，无关闭提示框"
+    type="info"
+  >
+    <Alert
+      afterClose={[Function]}
+      closable={false}
+      closeText={null}
+      description={null}
+      locale={
+        Object {
+          "close": "关闭",
+        }
+      }
+      localeCode="zh-cn"
+      onClick={[Function]}
+      onClose={[Function]}
+      prefixCls="ui-alert"
+      preventHide={false}
+      showIcon={false}
+      title="测试经典无描述，无icon，无关闭提示框"
+      type="info"
+      width={500}
+    >
+      <div
+        className="ui-alert ui-alert-info ui-alert-no-with-description"
+        style={
+          Object {
+            "width": 500,
+          }
+        }
+      >
+        <span
+          className="ui-alert-message"
+        >
+          测试经典无描述，无icon，无关闭提示框
+        </span>
+        <span
+          className="ui-alert-description"
+        />
+      </div>
+    </Alert>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Alert renders basic normal Alert correctly 2`] = `
+<ForwardRef(forwardRef)
+  showIcon={true}
+  title="显示icon-信息提示"
+  type="info"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    showIcon={true}
+    title="显示icon-信息提示"
+    type="info"
+  >
+    <Alert
+      afterClose={[Function]}
+      closable={false}
+      closeText={null}
+      description={null}
+      locale={
+        Object {
+          "close": "关闭",
+        }
+      }
+      localeCode="zh-cn"
+      onClick={[Function]}
+      onClose={[Function]}
+      prefixCls="ui-alert"
+      preventHide={false}
+      showIcon={true}
+      title="显示icon-信息提示"
+      type="info"
+      width={500}
+    >
+      <div
+        className="ui-alert ui-alert-info ui-alert-no-with-description ui-alert-sm-icon"
+        style={
+          Object {
+            "width": 500,
+          }
+        }
+      >
+        <AlertIcon
+          afterClose={[Function]}
+          closable={false}
+          closeText={null}
+          description={null}
+          locale={
+            Object {
+              "close": "关闭",
+            }
+          }
+          localeCode="zh-cn"
+          onClick={[Function]}
+          onClose={[Function]}
+          prefixCls="ui-alert"
+          preventHide={false}
+          showIcon={true}
+          title="显示icon-信息提示"
+          type="info"
+          width={500}
+        >
+          <Icon
+            prefixCls="zw-icon"
+            size="sm"
+            theme="default"
+            type="info-round-fill"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-icon--info-round-fill zw-icon--default zw-icon--sm"
+              size="sm"
+              theme="default"
+              type="info-round-fill"
+            >
+              <Icon
+                className="zw-icon zw-icon--info-round-fill zw-icon--default zw-icon--sm"
+                prefixCls="zw-icon"
+                size="sm"
+                theme="default"
+                type="info-round-fill"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-icon--info-round-fill zw-icon--default zw-icon--sm"
+                  size="sm"
+                  theme="default"
+                  type="info-round-fill"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#info-round-fill"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </AlertIcon>
+        <span
+          className="ui-alert-message"
+        >
+          显示icon-信息提示
+        </span>
+        <span
+          className="ui-alert-description"
+        />
+      </div>
+    </Alert>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Alert renders basic normal Alert correctly 3`] = `
+<ForwardRef(forwardRef)
+  closable={true}
+  description="可关闭提示框"
+  title="基础用法-信息提示"
+  type="info"
+>
+  <LocaleReceiver
+    closable={true}
+    description="可关闭提示框"
+    forwardedRef={null}
+    title="基础用法-信息提示"
+    type="info"
+  >
+    <Alert
+      afterClose={[Function]}
+      closable={true}
+      closeText={null}
+      description="可关闭提示框"
+      locale={
+        Object {
+          "close": "关闭",
+        }
+      }
+      localeCode="zh-cn"
+      onClick={[Function]}
+      onClose={[Function]}
+      prefixCls="ui-alert"
+      preventHide={false}
+      showIcon={false}
+      title="基础用法-信息提示"
+      type="info"
+      width={500}
+    >
+      <div
+        className="ui-alert ui-alert-info ui-alert-closable"
+        style={
+          Object {
+            "width": 500,
+          }
+        }
+      >
+        <CloseIcon
+          closable={true}
+          close={[Function]}
+          closeText={null}
+          handleClose={[Function]}
+          prefixCls="ui-alert"
+        >
+          <Icon
+            className="ui-alert-close-btn"
+            onClick={[Function]}
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="wrong"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon ui-alert-close-btn zw-icon--wrong zw-icon--default zw-icon--md"
+              onClick={[Function]}
+              size="md"
+              theme="default"
+              type="wrong"
+            >
+              <Icon
+                className="zw-icon ui-alert-close-btn zw-icon--wrong zw-icon--default zw-icon--md"
+                onClick={[Function]}
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="wrong"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon ui-alert-close-btn zw-icon--wrong zw-icon--default zw-icon--md"
+                  onClick={[Function]}
+                  size="md"
+                  theme="default"
+                  type="wrong"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#wrong"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </CloseIcon>
+        <span
+          className="ui-alert-message"
+        >
+          基础用法-信息提示
+        </span>
+        <span
+          className="ui-alert-description"
+        >
+          可关闭提示框
+        </span>
+      </div>
+    </Alert>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;

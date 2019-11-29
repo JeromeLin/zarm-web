@@ -1,15 +1,20 @@
-export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
+import { ReactNode } from 'react';
+export type type = 'info' | 'success' | 'warning' | 'error';
 
 export default interface PropsType {
   prefixCls?: string;
-  theme?: themeType;
-  message?: string;
-  width?: number | string;
+  type?: type;
+  title?: string;
+  description?: string;
   className?: string;
-  visible?: boolean;
-  hideIcon?: boolean;
+  style?: object;
+  width?: number;
+  icon?: ReactNode,
+  showIcon?: boolean;
   closable?: boolean;
-  closeText?: string;
-  locale?: { close: string };
+  closeText?: string | ReactNode;
+  preventHide?: boolean;
+  onClick: (object?:object) => void;
   onClose: () => void;
+  afterClose: () => void;
 }
