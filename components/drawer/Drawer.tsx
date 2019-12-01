@@ -55,7 +55,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
       events.on(window, 'keyup', (e: { keyCode: number }) => {
         const { esc } = this.state;
-        console.log(esc, 'esc');
+        // console.log(esc, 'esc');
         if (e.keyCode === 27 && esc) {
           onClose && onClose();
         }
@@ -139,7 +139,6 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     const distance = (totallayers - layer) * BUTTONLAYER;
 
     this.setState({
-      esc: false,
       btnstyle: {
         top: distance,
       },
