@@ -30,6 +30,8 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
   private parentWidth: Number | String;
 
+  private DrawerContextCase!: HTMLDivElement | null;
+
   static defaultProps = {
     closable: true,
     size: 'md',
@@ -55,7 +57,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
       events.on(window, 'keyup', (e: { keyCode: number }) => {
         const { esc } = this.state;
-        console.log(esc, 'esc');
+
         if (e.keyCode === 27 && esc) {
           onClose && onClose();
         }
@@ -64,10 +66,18 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
     this.calcDrawerWidth();
     this.fixDrawer(totallayers, width);
+
+    if (this.DrawerContextCase) {
+      // console.log(this.DrawerContextCase);
+      this.DrawerContextCase.focus();
+    }
   }
 
   componentDidUpdate(preProps: PropsType) {
     const { visible } = this.props;
+
+    // console.log(this.parentDrawer);
+    this.calcDrawer(this.parentDrawer);
     if (preProps.visible !== visible) {
       if (visible) {
         this.calcLayer(this, this.parentWidth);
@@ -78,6 +88,22 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       }
     }
   }
+
+  calcDrawer = (Drawers) => {
+    let totallayer = 0;
+    function layers(drawer: Drawer) {
+      console.log(drawer, totallayer, drawer.parentDrawer ? drawer.parentDrawer : 'null');
+      if (drawer) {
+        if (drawer.parentDrawer) {
+          totallayer += 1;
+          layers(drawer.parentDrawer);
+        }
+      }
+    }
+    layers(Drawers);
+
+    // console.log(totallayer, 'totallayer');
+  };
 
   private calcDrawerWidth = () => {
     let { size = 'md' } = this.props;
@@ -104,7 +130,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     this.parentWidth = +width + 160;
   };
 
-  private calcLayer = (Drawers: Drawer, width) => {
+  private calcLayer = (Drawers: Drawer, width: any) => {
     let totallayer = 0;
     function layers(drawer: Drawer) {
       if (drawer) {
@@ -123,7 +149,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     });
   };
 
-  private noticeBrother = (total, drawer, width) => {
+  private noticeBrother = (total: any, drawer, width: any) => {
     if (!drawer) return false;
 
     if (drawer.parentDrawer) {
@@ -133,7 +159,18 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     drawer.fixDrawer && drawer.fixDrawer(total, width);
   };
 
-  private fixDrawer(totallayers: number, width) {
+  private onKeyDown = (e) => {
+    // console.log(e);
+  };
+
+  private Popupref = (e: HTMLDivElement) => {
+    if (e) {
+      this.DrawerContextCase = e;
+    }
+  };
+
+
+  private fixDrawer(totallayers: number, width: string | number | undefined) {
     if (!totallayers) return false;
     const { layer } = this.state;
     const distance = (totallayers - layer) * BUTTONLAYER;
@@ -194,7 +231,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
-          <div className={`${prefixCls}__cell-box`}>
+          <div className={`${prefixCls}__cell-box`} onKeyDown={visible ? this.onKeyDown : undefined} onFocus={() => console.log(1)} ref={this.Popupref}>
             {closable && (
               <button
                 className={`${prefixCls}__closebtn`}

@@ -203,10 +203,12 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       drawerVisible: false,
-      drawerVisible1: false
+      drawerVisible1: false,
+      drawerVisible2: false
     }
     this.drawerHide = this.drawerHide.bind(this);
     this.drawerHide1 = this.drawerHide1.bind(this);
+    this.drawerHide2 = this.drawerHide2.bind(this);
   }
 
   drawerHide() {
@@ -218,6 +220,12 @@ class Demo extends React.Component {
   drawerHide1() {
     this.setState({
       drawerVisible1: false,
+    });
+  }
+
+  drawerHide2() {
+    this.setState({
+      drawerVisible2: false,
     });
   }
 
@@ -245,7 +253,18 @@ class Demo extends React.Component {
             afterClose={() => console.log('afterClose')}
             onMaskClick={() => console.log('onMaskClick')}
           >
+            <Drawer
+              visible={this.state.drawerVisible2}
+              onClose={this.drawerHide2}
+              size="md"
+              maskClosable={this.drawerHide2}
+              afterOpen={() => console.log('afterOpen1')}
+              afterClose={() => console.log('afterClose')}
+              onMaskClick={() => console.log('onMaskClick')}
+            >
 
+            </Drawer>
+            <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible2: true })}>Drawer</Button>
           </Drawer>
           <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
         </Drawer>
