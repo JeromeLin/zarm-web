@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import { DividerProps } from './PropsType';
 
 export default class Divider extends Component<DividerProps, any> {
+  static isDivider = true;
+
   static defaultProps = {
     prefixCls: 'zw-menu',
     disabled: true,

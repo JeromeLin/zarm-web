@@ -1,11 +1,13 @@
-import React, { Component, Children, cloneElement, ReactElement } from 'react';
+import React, { Component, Children, cloneElement, CSSProperties } from 'react';
 import classnames from 'classnames';
 import dom from '../utils/dom';
 import events from '../utils/events';
-import { SubMenuProps, styleType, childPropsType } from './PropsType';
+import { SubMenuProps, childPropsType } from './PropsType';
 import MenuContext from './menu-context';
 
 export class SubMenu extends Component<SubMenuProps, any> {
+  static isSubMenu = true;
+
   static defaultProps = {
     prefixCls: 'zw-menu',
     title: '',
@@ -179,13 +181,16 @@ export class SubMenu extends Component<SubMenuProps, any> {
       prefixCls,
     };
     return Children.map(children, (child, index) => {
-      const c: ReactElement<any> = child as ReactElement<any>;
-      const { key } = child as ReactElement<any>;
+      const { key } = child;
+      if (Object.keys(child.type).indexOf('isItemGroup') > -1) {
+        childProps.subMenuKey = subMenuKey;
+        childProps.index = index;
+      } else {
+        childProps.itemKey = key || `${subMenuKey}-${level}-${index}`;
+        childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
+      }
 
-      childProps.itemKey = key || `${subMenuKey}-${level}-${index}`;
-      childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
-
-      return cloneElement(c, childProps);
+      return cloneElement(child, childProps);
     });
   }
 
@@ -196,7 +201,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
     } = this.props;
     const { collapsedSubVisible, collapsedSubAnimation } = this.state;
 
-    const subMenuStyle: styleType = {};
+    const subMenuStyle: CSSProperties = {};
     if (mode === 'inline' && !inlineCollapsed) {
       subMenuStyle.paddingLeft = level * inlineIndent;
     }

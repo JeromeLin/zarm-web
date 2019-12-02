@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, CSSProperties } from 'react';
 import classnames from 'classnames';
-// import Tooltip from '../tooltip';
-import { ItemProps, styleType } from './PropsType';
+import Tooltip from '../tooltip';
+import { ItemProps } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
 
 class MenuItem extends Component<ItemProps, any> {
+  static isMenuItem = true;
+
   static defaultProps = {
     prefixCls: 'zw-menu',
     checked: false,
@@ -31,7 +33,7 @@ class MenuItem extends Component<ItemProps, any> {
 
   render() {
     const {
-      checked, isDisabled, children, prefixCls, level, inlineIndent,
+      checked, children, prefixCls, level, inlineIndent, title,
       className, style, onDoubleClick, selectedKeys, itemKey, mode, inlineCollapsed,
     } = this.props;
 
@@ -40,10 +42,10 @@ class MenuItem extends Component<ItemProps, any> {
       [`${prefixCls}__item--level${level}`]: level,
       [`${prefixCls}__item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
       [`${prefixCls}__item--selected`]: !!checked,
-      [`${prefixCls}__item--disabled`]: 'disabled' in this.props || isDisabled,
+      [`${prefixCls}__item--disabled`]: 'disabled' in this.props,
       [className!]: !!className,
     });
-    const itemStyle: styleType = {
+    const itemStyle: CSSProperties = {
       ...style,
     };
     if (mode === 'inline' && !inlineCollapsed) {
@@ -57,27 +59,18 @@ class MenuItem extends Component<ItemProps, any> {
         onClick={this.handleClick}
         onDoubleClick={onDoubleClick}
       >
-        {children}
+        <Tooltip
+          hasArrow
+          content={title}
+          direction="right"
+          className="zw-menu-item__tooltip"
+        >
+          <div>
+            {children}
+          </div>
+        </Tooltip>
       </li>
     );
-    // return (
-    //   <Tooltip
-    //     hasArrow
-    //     content={(level === 1 && inlineCollapsed) ? children : ''}
-    //     direction="right"
-    //     className="za-menu-item__tooltip"
-    //   >
-    //     <li
-    //       className={cls}
-    //       role="menuitem"
-    //       style={itemStyle}
-    //       onClick={this.handleClick}
-    //       onDoubleClick={onDoubleClick}
-    //     >
-    //       {children}
-    //     </li>
-    //   </Tooltip>
-    // );
   }
 }
 

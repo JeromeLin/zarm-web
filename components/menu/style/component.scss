@@ -61,20 +61,21 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     text-overflow: ellipsis;
     overflow: hidden;
     user-select: none;
+    // transition: all 0.3s $ease-in-out;
     transition: color .3s $ease-in-out, border-color .3s $ease-in-out, background .3s $ease-in-out, padding .15s $ease-in-out;
 
     @include b(icon) {
       min-width: 14px;
       margin-right: 12px;
-      font-size: 14px;
+      font-size: 16px;
       pointer-events: none;
       transition: font-size .15s cubic-bezier(.215, .61, .355, 1), margin .3s cubic-bezier(.645, .045, .355, 1);
 
-      // + span {
-      //   pointer-events: none;
-      //   transition: opacity 0.3s $ease-in-out, width 0.3s $ease-in-out;
-      //   opacity: 1;
-      // }
+      + span {
+        pointer-events: none;
+        transition: opacity 0.3s $ease-in-out, width 0.3s $ease-in-out, height 0.3s $ease-in-out;
+        opacity: 1;
+      }
     }
 
     > a {
@@ -110,6 +111,10 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       &:hover {
         color: var(--menuitem-disabled-color);
       }
+    }
+    @include m(level1) {
+      height: 52px;
+      line-height: 52px;
     }
   }
 
@@ -147,8 +152,8 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
       @include b(icon) {
         min-width: 14px;
-        margin-right: 10px;
-        font-size: 14px;
+        margin-right: 12px;
+        font-size: 16px;
         transition: font-size .15s cubic-bezier(.215, .61, .355, 1), margin .3s cubic-bezier(.645, .045, .355, 1);
 
         + span {
@@ -172,6 +177,17 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
         line-height: 52px;
       }
     }
+  }
+
+  @include e(itemgroup__title) {
+    height: 36px;
+    line-height: 36px;
+    font-size: 13px;
+    color: #909090;
+    user-select: none;
+  }
+  @include e(itemgroup__list) {
+    padding: 0;
   }
 
   @include m(xl) {
@@ -218,24 +234,44 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
           animation: slide-down 0.3s both;
         }
       }
+      @include b(icon) {
+        display: block;
+        font-size: 16px;
+        line-height: 52px;
+        margin-right: 0;
+
+        + span {
+          max-width: 0;
+          display: inline-block;
+          opacity: 0;
+        }
+      }
     }
 
     @include e(item--level1) {
       left: 0;
       text-overflow: clip;
       padding: 0 (var(--menu-collapsed-width) - 16) / 2;
-    }
 
-    @include b(icon) {
-      display: block;
-      font-size: 16px;
-      line-height: 40px;
-      margin: 0;
+      @include b(tooltip) {
+        display: block;
 
-      + span {
-        max-width: 0;
-        display: inline-block;
-        opacity: 0;
+        @include e(inner) {
+          height: 52px;
+        }
+      }
+      @include b(icon) {
+        display: block;
+        font-size: 16px;
+        line-height: 52px;
+        margin-right: 0;
+
+        + span {
+          max-width: 0;
+          height: 0;
+          display: inline-block;
+          opacity: 0;
+        }
       }
     }
   }
@@ -270,18 +306,18 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
             vertical-align: baseline;
             background: var(--menuitem-dark-active-color);
             background-image: linear-gradient(to right, #909090, #909090);
-            width: 8px;
+            width: 6px;
             height: 2px;
             border-radius: 2px;
             transition: background .3s $ease-in-out, transform .3s $ease-in-out, top .3s $ease-in-out;
           }
 
           &:before {
-            transform: rotate(-40deg) translateX(3px);
+            transform: rotate(-40deg) translateX(2px);
           }
 
           &:after {
-            transform: rotate(40deg) translateX(-3px);
+            transform: rotate(40deg) translateX(-2px);
           }
         }
       }
@@ -294,11 +330,11 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
           transform: translateY(-2px);
 
           &:before {
-            transform: rotate(40deg) translateX(3px);
+            transform: rotate(40deg) translateX(2px);
           }
 
           &:after {
-            transform: rotate(-40deg) translateX(-3px);
+            transform: rotate(-40deg) translateX(-2px);
           }
         }
       }
@@ -322,11 +358,11 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
           right: 0;
           transform: translateY(0);
           &:before {
-            transform: rotate(-40deg) translateY(3px);
+            transform: rotate(-40deg) translateY(2px);
           }
 
           &:after {
-            transform: rotate(40deg) translateY(-3px);
+            transform: rotate(40deg) translateY(-2px);
           }
         }
 
@@ -363,16 +399,6 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       > a {
         color: var(--menuitem-default-color);
       }
-
-      @include e(item--active) {
-        border-bottom: 2px solid var(--menuitem-active-color);
-        background: var(--menu-default-bg-color);
-        color: var(--menuitem-active-color);
-
-        > a {
-          color: var(--menuitem-active-color);
-        }
-      }
       &:hover {
         border-bottom: 2px solid var(--menuitem-active-color);
         background: var(--menu-default-bg-color);
@@ -381,6 +407,16 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
         > a {
           color: var(--menuitem-active-color);
         }
+      }
+    }
+
+    @include e(item--active) {
+      border-bottom: 2px solid var(--menuitem-active-color);
+      background: var(--menu-default-bg-color);
+      color: var(--menuitem-active-color);
+
+      > a {
+        color: var(--menuitem-active-color);
       }
     }
 
@@ -396,6 +432,9 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   @include m(dark) {
     background: var(--menu-dark-bg-color);
 
+    @include b(icon) {
+      color: #909090;
+    }
     @include e(sub) {
       background: var(--submenu-dark-bg-color);
       box-shadow: 0 2px 8px rgba(0, 0, 0, .45) inset;
@@ -411,6 +450,9 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
         > a {
           color: var(--menuitem-dark-active-color);
         }
+        @include b(icon) {
+          color: var(--menuitem-dark-active-color);
+        }
       }
 
       > a {
@@ -424,6 +466,9 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       > a {
         color: var(--menuitem-dark-active-color);
       }
+      @include b(icon) {
+        color: var(--menuitem-dark-active-color);
+      }
     }
     @include e(item--active) {
       color: var(--menuitem-dark-active-color);
@@ -432,14 +477,17 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       > a {
         color: var(--menuitem-dark-active-color);
       }
+      @include b(icon) {
+        color: var(--menuitem-dark-active-color);
+      }
     }
     @include m(inline) {
       @include e(submenu) {
         color: var(--menuitem-dark-color);
 
         @include e(title) {
-          margin-top: 4px;
-          margin-bottom: 4px;
+          // margin-top: 4px;
+          // margin-bottom: 4px;
           transition: all 0.3s;
 
           &:hover {
@@ -452,6 +500,9 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
               &:before {
                 background: var(--menuitem-dark-active-color);
               }
+            }
+            @include b(icon) {
+              color: var(--menuitem-dark-active-color);
             }
           }
         }
@@ -466,10 +517,10 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
           }
         }
       }
-      @include e(item) {
-        margin-top: 4px;
-        margin-bottom: 8px;
-      }
+      // @include e(item) {
+      //   margin-top: 4px;
+      //   margin-bottom: 8px;
+      // }
     }
   }
 }

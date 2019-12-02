@@ -1,15 +1,19 @@
-import React, { Component, Children, cloneElement, ReactElement } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import PropsType, { childPropsType } from './PropsType';
 import MenuContext, { menuKeys, KeysType } from './menu-context';
+import SubMenu from './SubMenu';
+import MenuItem from './MenuItem';
+import ItemGroup from './ItemGroup';
+import Divider from './Divider';
 
 class Menu extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'zw-menu',
     mode: 'inline',
     theme: 'light',
-    inlineIndent: 20,
+    inlineIndent: 24,
     inlineCollapsed: false,
     defaultOpenKeys: [],
     defaultSelectedKeys: [],
@@ -19,11 +23,13 @@ class Menu extends Component<PropsType, any> {
     siderCollapsed: PropTypes.bool,
   };
 
-  static SubMenu;
+  static SubMenu = SubMenu;
 
-  static Item;
+  static Item = MenuItem;
 
-  static Divider;
+  static Divider = Divider;
+
+  static ItemGroup = ItemGroup;
 
   menuKeys: any;
 
@@ -58,6 +64,11 @@ class Menu extends Component<PropsType, any> {
     ) {
       this.setState({ openKeys: this.inlineOpenKeys });
       this.inlineOpenKeys = [];
+    }
+    if (nextProps.openKeys) {
+      this.setState({
+        openKeys: nextProps.openKeys,
+      });
     }
     if (nextProps.selectedKeys) {
       this.setState({ selectedKeys: nextProps.selectedKeys });
@@ -107,12 +118,16 @@ class Menu extends Component<PropsType, any> {
       inlineCollapsed: inlineCollapsed || siderCollapsed,
     };
     return Children.map(children, (child, index) => {
-      const c: ReactElement<any> = child as ReactElement<any>;
-      const { key } = child as ReactElement<any>;
+      const { key } = child;
 
-      childProps.subMenuKey = key || `0-${index}`;
-      childProps.itemKey = key || `0-${index}`;
-      return cloneElement(c, childProps);
+      if (Object.keys(child.type).indexOf('isItemGroup') > -1) {
+        childProps.index = index;
+      } else {
+        childProps.subMenuKey = key || `0-${index}`;
+        childProps.itemKey = key || `0-${index}`;
+      }
+
+      return cloneElement(child, childProps);
     });
   }
 

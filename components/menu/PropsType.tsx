@@ -1,10 +1,8 @@
+import ItemGroup from './ItemGroup';
+import MenuItem from './MenuItem';
+
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
-// eslint-disable-next-line @typescript-eslint/class-name-casing
-export interface styleType {
-  paddingLeft?: number;
-  [propName: string]: any;
-}
 
 // eslint-disable-next-line @typescript-eslint/class-name-casing
 export interface childPropsType {
@@ -15,13 +13,14 @@ export interface childPropsType {
   level?: number;
   itemKey?: any;
   subMenuKey?: any;
+  index?: number;
 }
 
 export interface ItemProps {
   prefixCls?: string;
   checked?: boolean;
   disabled?: boolean;
-  isDisabled?: boolean;
+  title?: string;
   inlineCollapsed?: boolean;
   className?: string;
   style: object;
@@ -42,12 +41,25 @@ export interface DividerProps {
   style: object;
 }
 
+export interface ItemGroupProps {
+  prefixCls?: string;
+  level: number;
+  inlineIndent: number;
+  children: React.ReactElement<ItemGroup | typeof MenuItem>[];
+  mode: 'inline' | 'horizontal';
+  index: number;
+  title: string;
+  subMenuKey: string;
+  inlineCollapsed?: boolean;
+}
+
 export interface SubMenuProps {
   prefixCls?: string;
   level: number;
   inlineIndent: number;
+  children: React.ReactElement<ItemGroup | typeof MenuItem>[];
   mode: 'inline' | 'horizontal';
-  title: string | React.ReactNode;
+  title: React.ReactNode;
   inlineCollapsed?: boolean;
   className?: string;
   style: object;
@@ -62,6 +74,7 @@ export default interface PropsType {
   size?: size;
   className?: string;
   style?: object;
+  children: React.ReactElement<ItemGroup | typeof MenuItem>[];
   mode?: 'inline' | 'horizontal';
   theme?: 'light' | 'dark';
   defaultOpenKeys?: string[];
