@@ -1,14 +1,17 @@
 @mixin tabs-size(
   $font-size,
   $icon-size,
-  $line-padding,
-  $card-padding,
-  $vertical-padding-top,
-  $vertical-padding-right,
+  $line-height,
+  $card-height,
+  $vertical-height,
+  $vertical-padding
 ) {
   font-size: $font-size;
   @include e(header) {
     font-size: $font-size;
+    &__item {
+      padding: 0 16px;
+    }
     @include b(icon) {
       font-size: $icon-size;
     }
@@ -17,21 +20,24 @@
     @include m(line) {
       @include e(header) {
         &__item {
-          padding: $line-padding 16px;
+          height: $line-height;
+          line-height: $line-height;
         }
       }
     }
     @include m(card) {
       @include e(header) {
         &__item {
-          padding: $card-padding 16px;
+          height: $card-height;
+          line-height: $card-height;
         }
       }
     }
     @include m(noborder-card) {
       @include e(header) {
         &__item {
-          padding: $card-padding 16px;
+          height: $card-height;
+          line-height: $card-height;
         }
       }
     }
@@ -40,7 +46,9 @@
   @include m(vertical) {
     @include e(header) {
       &__item {
-        padding: $vertical-padding-top $vertical-padding-right;
+        padding: 0 $vertical-padding;
+        height: $vertical-height;
+        line-height: $vertical-height;
       }
     }
   }

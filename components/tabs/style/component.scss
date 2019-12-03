@@ -70,10 +70,10 @@
     @include tabs-size(
       var(--tabs-font-size-sm),
       var(--tabs-header-icon-sm),
-      var(--tabs-header-line-padding-sm),
-      var(--tabs-header-card-padding-sm),
-      var(--tabs-header-vertical-padding-top-sm),
-      var(--tabs-header-vertical-padding-right-sm)
+      var(--tabs-header-line-height-sm),
+      var(--tabs-header-card-height-sm),
+      var(--tabs-header-vertical-height-sm),
+      var(--tabs-header-vertical-padding-sm)
     );
   }
 
@@ -81,10 +81,10 @@
     @include tabs-size(
       var(--tabs-font-size-md),
       var(--tabs-header-icon-md),
-      var(--tabs-header-line-padding-md),
-      var(--tabs-header-card-padding-md),
-      var(--tabs-header-vertical-padding-top-md),
-      var(--tabs-header-vertical-padding-right-md)
+      var(--tabs-header-line-height-md),
+      var(--tabs-header-card-height-md),
+      var(--tabs-header-vertical-height-md),
+      var(--tabs-header-vertical-padding-md)
     );
   }
 
@@ -92,10 +92,10 @@
     @include tabs-size(
       var(--tabs-font-size-lg),
       var(--tabs-header-icon-lg),
-      var(--tabs-header-line-padding-lg),
-      var(--tabs-header-card-padding-lg),
-      var(--tabs-header-vertical-padding-top-lg),
-      var(--tabs-header-vertical-padding-right-lg)
+      var(--tabs-header-line-height-lg),
+      var(--tabs-header-card-height-lg),
+      var(--tabs-header-vertical-height-lg),
+      var(--tabs-header-vertical-padding-lg)
     );
   }
 
@@ -188,6 +188,7 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        margin-bottom: 8px;
         &:last-child {
           margin-bottom: 0;
         }
@@ -231,7 +232,16 @@
     }
   }
 
-  @include m(line) {}
+  @include m(line) {
+    @include e(header) {
+      &__item {
+        margin-right: 16px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 
   @include m(card) {
     @include e(header) {

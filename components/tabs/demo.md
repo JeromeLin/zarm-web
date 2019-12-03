@@ -241,8 +241,8 @@ class Demo extends React.Component {
           <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} size={this.state.size}>
             {
               [...Array(40).keys()].map((item, index) => (
-                <Tab key={index} title={`Tab${index}`} style={{padding: 10}}>
-                  这是选项卡{index}的文字
+                <Tab key={index} title={`Tab${index + 1}`} style={{padding: 10}}>
+                  这是选项卡{index + 1}的文字
                 </Tab>
               ))
             }
@@ -285,11 +285,11 @@ class Demo extends React.Component {
     return (
       <>
         <div>
-          <Tabs type="line" closable direction="vertical" size={this.state.size} defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '171px'}}>
+          <Tabs type="line" closable direction="vertical" size={this.state.size} defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '195px'}}>
             {
               [...Array(40).keys()].map((item, index) => (
-                <Tab key={index} title={`Tab${index}`}>
-                  这是选项卡{index}的文字
+                <Tab key={index} title={`Tab${index + 1}`}>
+                  这是选项卡{index + 1}的文字
                 </Tab>
               ))
             }
