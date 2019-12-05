@@ -25,9 +25,9 @@
     display: inline-block;
     width: var(--checkbox-size);
     height: var(--checkbox-size);
-    border: 1px solid #bcbcbc;
+    border: 1px solid var(--checkbox-border-color);
     border-radius: var(--checkbox-radius);
-    background-color: #fff;
+    background-color: var(--checkbox-background);
 
     &:after {
       content: '';
