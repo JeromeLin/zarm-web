@@ -63,11 +63,16 @@ class Tabs extends Component<TabsProps, any> {
     this.setActiveLineStyle();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { size: prevSize } = prevProps;
+    const { headerWidth: preHeaderWidth, headerHeight: preHeaderHeight } = prevState;
     const { size: currentSize } = this.props;
+    const { headerWidth, headerHeight } = this.state;
     if (prevSize !== currentSize) {
       this.setActiveLineStyle();
+    }
+    if (preHeaderWidth !== headerWidth || preHeaderHeight !== headerHeight) {
+      this.getHeaderStyle();
     }
   }
 
@@ -77,8 +82,8 @@ class Tabs extends Component<TabsProps, any> {
     const { direction } = this.props;
     const isArrowShown = (direction === 'horizontal' && scrollWidth > headerWidth) || (direction === 'vertical' && scrollHeight > headerHeight);
     this.setState({
-      headerWidth: direction === 'horizontal' && isArrowShown && headerWidth - 40,
-      headerHeight: direction === 'vertical' && isArrowShown && headerHeight - 60,
+      headerWidth,
+      headerHeight,
       scrollWidth,
       scrollHeight,
       isArrowShown,

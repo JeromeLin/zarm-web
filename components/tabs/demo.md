@@ -12,6 +12,7 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       size: 'md',
+      animate: true,
       fields: [{
         closable: false,
         title: "Tab1",
@@ -54,8 +55,11 @@ class Demo extends React.Component {
             <Button onClick={() => this.handleSize('md')}>md</Button>
             <Button onClick={() => this.handleSize('lg')}>lg</Button>
           </Button.Group>
+          <Button.Group style={{marginLeft: 20}}>
+            <Button onClick={() => this.setState({animate: false})}>no animate</Button>
+          </Button.Group>
         </div>
-        <Tabs type="line" onChange={(i) => console.log(i)} value={2} onTabClose={this.onTabClose} size={this.state.size}>
+        <Tabs type="line" onChange={(i) => console.log(i)} value={2} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
           {
               this.state.fields.map((item, index) => (
                 <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
@@ -285,7 +289,7 @@ class Demo extends React.Component {
     return (
       <>
         <div>
-          <Tabs type="line" closable direction="vertical" size={this.state.size} defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '195px'}}>
+          <Tabs type="line" closable direction="vertical" size={this.state.size} defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '192px'}}>
             {
               [...Array(40).keys()].map((item, index) => (
                 <Tab key={index} title={`Tab${index + 1}`}>
