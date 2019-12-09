@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ActivityIndicator } from 'zarm';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import 'zarm/components/activity-indicator/style/index.tsx';
+import 'zarm/components/activity-indicator/style/index';
 
 export interface SwitchState {
   checked?: boolean;
