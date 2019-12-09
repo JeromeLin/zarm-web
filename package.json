@@ -31,9 +31,9 @@
   "scripts": {
     "clean": "rimraf types lib es dist assets coverage",
     "dev": "zarm dev -p 3001",
-    "build:es": "rimraf es && zarm build --mode es && rimraf types",
-    "build:lib": "rimraf lib && zarm build --mode lib && rimraf types",
-    "build:umd": "rimraf dist && zarm build --mode umd",
+    "build:es": "rimraf es && zarm build --mode es --path components --out-dir es --copy-files --build-css",
+    "build:lib": "rimraf lib && zarm build --mode lib --path components --out-dir lib --copy-files --build-css",
+    "build:umd": "rimraf dist && zarm build --mode umd --path components/style/entry.tsx,components/index.tsx --out-dir dist && zarm build --mode umd-ugly --path components/style/entry.tsx,components/index.tsx --out-dir dist",
     "build": "npm run build:lib && npm run build:es && npm run build:umd",
     "deploy:build": "rimraf assets && zarm deploy",
     "deploy": "npm run deploy:build && gh-pages -d assets",
@@ -54,7 +54,7 @@
     "color": "^3.1.0",
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
-    "zarm": "2.0.0-alpha.63"
+    "zarm": "2.0.0-alpha.66"
   },
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
@@ -66,7 +66,7 @@
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "2.5.0",
     "@typescript-eslint/parser": "2.5.0",
-    "@zarm-design/cli": "^0.0.11",
+    "@zarm-design/cli": "^0.0.17",
     "babel-eslint": "10.0.3",
     "browserslist": "^4.6.6",
     "concurrently": "^3.5.1",

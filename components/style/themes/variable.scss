@@ -11,7 +11,7 @@
   --color-text: #343434; // 基本
   --color-text-inverse: #fff; // 反色
   --color-text-placeholder: #a9a9a9; // 文本框提示
-  --color-text-disabled: #bcbcbc; // 失效
+  --color-text-disabled: #909090; // 失效
   --color-text-caption: #909090; // 辅助描述
   --color-link: var(--theme-primary); // 链接
 
@@ -20,12 +20,12 @@
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // 背景色
-  --background-active: #e6e6e6;
-  --background-disabled: #bcbcbc;
+  // --background-active: #e6e6e6;
+  --background-disabled: #fafafa;
 
   // 边框色
   --border-color: #e6e6e6;
-  --border-disabled: #bcbcbc;
+  --border-disabled: #e6e6e6;
 
   // 堆叠顺序
   --zindex-tooltip: 1500;
@@ -96,8 +96,8 @@
   --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 
   // Button
-  --button-ghost-disabled-border: #e9e9e9;
-  --button-ghost-disabled-color: rgba(0, 0, 0, 0.35);
+  --button-ghost-disabled-border: var(--border-color);
+  --button-ghost-disabled-color: var(--color-text-inverse);
   --button-padding-h-xl: var(--padding-h-xl);
   --button-padding-h-lg: var(--padding-h-lg);
   --button-padding-h-md: var(--padding-h-md);
