@@ -44,7 +44,9 @@ class Tabs extends Component<TabsProps, any> {
         || Tabs.getSelectIndex(props.children)
         || 0,
       lineWidth: 0,
+      lineHeight: 0,
       lineOffsetLeft: 0,
+      lineOffsetTop: 0,
       scrollOffset: 0,
       headerWidth: 0,
       headerHeight: 0,
@@ -61,11 +63,16 @@ class Tabs extends Component<TabsProps, any> {
     this.setActiveLineStyle();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { size: prevSize } = prevProps;
+    const { headerWidth: preHeaderWidth, headerHeight: preHeaderHeight } = prevState;
     const { size: currentSize } = this.props;
+    const { headerWidth, headerHeight } = this.state;
     if (prevSize !== currentSize) {
       this.setActiveLineStyle();
+    }
+    if (preHeaderWidth !== headerWidth || preHeaderHeight !== headerHeight) {
+      this.getHeaderStyle();
     }
   }
 
@@ -75,8 +82,8 @@ class Tabs extends Component<TabsProps, any> {
     const { direction } = this.props;
     const isArrowShown = (direction === 'horizontal' && scrollWidth > headerWidth) || (direction === 'vertical' && scrollHeight > headerHeight);
     this.setState({
-      headerWidth: direction === 'horizontal' && isArrowShown && headerWidth - 40,
-      headerHeight: direction === 'vertical' && isArrowShown && headerHeight - 60,
+      headerWidth,
+      headerHeight,
       scrollWidth,
       scrollHeight,
       isArrowShown,
@@ -84,11 +91,13 @@ class Tabs extends Component<TabsProps, any> {
   }
 
   setActiveLineStyle() {
-    const { offsetLeft = 0 } = this.activeTab || {};
-    const { width = 0 } = this.activeTab && this.activeTab.getBoundingClientRect();
+    const { offsetLeft = 0, offsetTop } = this.activeTab || {};
+    const { width = 0, height = 0 } = this.activeTab && this.activeTab.getBoundingClientRect();
     this.setState({
       lineWidth: width,
+      lineHeight: height,
       lineOffsetLeft: offsetLeft,
+      lineOffsetTop: offsetTop,
     });
   }
 
@@ -157,12 +166,13 @@ class Tabs extends Component<TabsProps, any> {
     const {
       className, children, style, prefixCls, type, direction, size, animated,
     } = this.props;
-    const { value, lineWidth, lineOffsetLeft, isArrowShown, scrollOffset } = this.state;
+    const { value, lineWidth, lineHeight, lineOffsetLeft, lineOffsetTop, isArrowShown, scrollOffset } = this.state;
 
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
     const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
     const animateStyle = direction === 'horizontal' ? { marginLeft: `-${value * 100}%` } : {};
     const headerNavStyle = direction === 'horizontal' ? { transform: `translate3d(${-scrollOffset}px,0,0)` } : { transform: `translate3d(0,${-scrollOffset}px,0)` };
+    const headerLineStyle = direction === 'horizontal' ? { width: lineWidth, height: 0, transform: `translate3d(${lineOffsetLeft}px,0,0)` } : { width: 0, height: lineHeight, transform: `translate3d(0,${lineOffsetTop}px,0)` };
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${direction}`]: direction,
@@ -226,10 +236,7 @@ class Tabs extends Component<TabsProps, any> {
                 type === 'line' && (
                   <div
                     className={lineCls}
-                    style={{
-                      width: lineWidth,
-                      transform: `translate3d(${lineOffsetLeft}px,0,0)`,
-                    }}
+                    style={headerLineStyle}
                   />
                 )
               }

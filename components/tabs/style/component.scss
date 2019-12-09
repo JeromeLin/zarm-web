@@ -8,13 +8,15 @@
     &__scroll {
       position: relative;
       margin: 0;
-      list-style: none;
       padding: 0;
-      margin-bottom: -1px;
     }
     &__arrow {
       @include b(icon) {
         color: var(--color-text-caption);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     }
     &__item {
@@ -55,6 +57,7 @@
       opacity: 0;
       overflow: hidden;
       height: 0;
+      font-size: 14px;
       @include m(active) {
         opacity: 1;
         height: auto;
@@ -65,24 +68,33 @@
   @include m(sm) {
     @include tabs-size(
       var(--tabs-font-size-sm),
-      var(--tabs-header-padding-sm),
-      var(--tabs-header-icon-sm)
+      var(--tabs-header-icon-sm),
+      var(--tabs-header-line-height-sm),
+      var(--tabs-header-card-height-sm),
+      var(--tabs-header-vertical-height-sm),
+      var(--tabs-header-vertical-padding-sm)
     );
   }
 
   @include m(md) {
     @include tabs-size(
       var(--tabs-font-size-md),
-      var(--tabs-header-padding-md),
-      var(--tabs-header-icon-md)
+      var(--tabs-header-icon-md),
+      var(--tabs-header-line-height-md),
+      var(--tabs-header-card-height-md),
+      var(--tabs-header-vertical-height-md),
+      var(--tabs-header-vertical-padding-md)
     );
   }
 
   @include m(lg) {
     @include tabs-size(
       var(--tabs-font-size-lg),
-      var(--tabs-header-padding-lg),
-      var(--tabs-header-icon-lg)
+      var(--tabs-header-icon-lg),
+      var(--tabs-header-line-height-lg),
+      var(--tabs-header-card-height-lg),
+      var(--tabs-header-vertical-height-lg),
+      var(--tabs-header-vertical-padding-lg)
     );
   }
 
@@ -97,6 +109,7 @@
         position: relative;
         overflow: hidden;
         white-space: nowrap;
+        margin-bottom: -1px;
       }
       &__arrow {
         height: 100%;
@@ -162,21 +175,30 @@
         height: 100%;
         overflow: hidden;
         white-space: no-wrap;
+        margin-right: -1px;
       }
       &__nav {
         position: relative;
         transition: transform .3s $default-transition;
       }
       &__item {
-        width: 70px;
-        height: 40px;
         padding: 0;
         text-align: center;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        margin-bottom: 8px;
         &:last-child {
           margin-bottom: 0;
+        }
+      }
+      &__line {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-right: 2px solid var(--tabs-default-line-color);
+        &--animated {
+          transition: transform $default-transition;
         }
       }
       &__arrow {
@@ -209,12 +231,20 @@
     }
   }
 
-  @include m(line) {}
+  @include m(line) {
+    @include e(header) {
+      &__item {
+        margin-right: 16px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 
   @include m(card) {
     @include e(header) {
       &__item {
-        padding: 10px 16px 12px;
         border: 1px solid var(--border-color);
         border-radius: 4px 4px 0 0;
         margin-right: 4px;
@@ -232,7 +262,6 @@
     @include e(header) {
       border-bottom: none;
       &__item {
-        padding: 10px 16px 12px;
         background: var(--tabs-default-noborder-background);
         &--active {
           background: var(--tabs-default-background-color);

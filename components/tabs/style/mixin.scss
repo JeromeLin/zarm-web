@@ -1,12 +1,55 @@
-@mixin tabs-size($font-size, $padding, $icon-size) {
+@mixin tabs-size(
+  $font-size,
+  $icon-size,
+  $line-height,
+  $card-height,
+  $vertical-height,
+  $vertical-padding
+) {
   font-size: $font-size;
   @include e(header) {
     font-size: $font-size;
+    &__item {
+      padding: 0 16px;
+    }
     @include b(icon) {
       font-size: $icon-size;
     }
-    &__item {
-      padding: 0 16px $padding;
+  }
+  @include m(horizontal) {
+    @include m(line) {
+      @include e(header) {
+        &__item {
+          height: $line-height;
+          line-height: $line-height;
+        }
+      }
+    }
+    @include m(card) {
+      @include e(header) {
+        &__item {
+          height: $card-height;
+          line-height: $card-height;
+        }
+      }
+    }
+    @include m(noborder-card) {
+      @include e(header) {
+        &__item {
+          height: $card-height;
+          line-height: $card-height;
+        }
+      }
+    }
+  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+  @include m(vertical) {
+    @include e(header) {
+      &__item {
+        padding: 0 $vertical-padding;
+        height: $vertical-height;
+        line-height: $vertical-height;
+      }
     }
   }
 }
