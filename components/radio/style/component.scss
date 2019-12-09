@@ -114,7 +114,7 @@
     height: 14px;
     border: 1px solid var(--button-default-border);
     border-radius: 14px;
-    background-color: var(--color-white);
+    background-color: var(--color-text-inverse);
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
     &:after {
@@ -159,7 +159,7 @@
   cursor: pointer;
   border: 1px solid var(--radius-md);
   border-left: 0;
-  background: var(--color-white);
+  background: var(--color-text-inverse);
   padding: 0 16 - 1px;
   position: relative;
 
@@ -170,7 +170,7 @@
 
   &.is-checked {
     position: relative;
-    color: var(--color-white);
+    color: var(--color-text-inverse);
     background: var(--theme-primary);
   }
 

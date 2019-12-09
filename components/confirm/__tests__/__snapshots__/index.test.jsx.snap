@@ -121,13 +121,17 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         class="zw-button zw-button--default zw-button--radius"
                         type="button"
                       >
-                        取消
+                        <span>
+                          取消
+                        </span>
                       </button>
                       <button
                         class="zw-button zw-button--primary zw-button--radius"
                         type="button"
                       >
-                        确定
+                        <span>
+                          确定
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -306,6 +310,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                     <Button
                       ghost={false}
                       htmlType="button"
+                      icon=""
                       loading={false}
                       onClick={[Function]}
                       prefixCls="zw-button"
@@ -318,12 +323,15 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         onClick={[Function]}
                         type="button"
                       >
-                        取消
+                        <span>
+                          取消
+                        </span>
                       </button>
                     </Button>
                     <Button
                       ghost={false}
                       htmlType="button"
+                      icon=""
                       loading={false}
                       onClick={[Function]}
                       prefixCls="zw-button"
@@ -336,7 +344,9 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         onClick={[Function]}
                         type="button"
                       >
-                        确定
+                        <span>
+                          确定
+                        </span>
                       </button>
                     </Button>
                   </div>
