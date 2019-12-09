@@ -29,9 +29,9 @@ describe('Switch', () => {
       <Switch defaultChecked={false} />,
     );
 
-    expect(wrapper.find('.ui-switch').hasClass('checked')).toBeFalsy();
-    wrapper.setProps({ checked: true });
-    expect(wrapper.find('.ui-switch').hasClass('checked')).toBeTruthy();
+    expect(wrapper.find('.zw-switch').hasClass('zw-switch--checked')).toBeFalsy();
+    wrapper.find('.zw-switch').simulate('click');
+    expect(wrapper.find('.zw-switch').hasClass('zw-switch--checked')).toBeTruthy();
   });
 
   it('behaves correctly when toggling status', () => {
@@ -40,7 +40,27 @@ describe('Switch', () => {
       <Switch defaultChecked={false} onChange={onChange} />,
     );
 
-    wrapper.find('.ui-switch').simulate('click');
+    const wrapperOpen = mount(
+      <Switch defaultChecked={false} onChange={onChange} />,
+    );
+
+    wrapper.find('.zw-switch').simulate('click');
     expect(onChange).toHaveBeenCalledWith(true);
+
+    wrapperOpen.find('.zw-switch').simulate('click');
+    expect(onChange).toHaveBeenCalledWith(true);
+  });
+
+  it('switch with loading status', () => {
+    const wrapper = mount(
+      <Switch loading defaultChecked={true} />,
+    );
+    expect(wrapper.find('.zw-switch__loading').length > 0).toBeTruthy();
+
+    const wrapperOpen = mount(
+      <Switch defaultChecked={true} loading />,
+    );
+    expect(wrapperOpen.find('.zw-switch__loading').length > 0).toBeTruthy();
+
   });
 });

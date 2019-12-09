@@ -3,7 +3,7 @@
 exports[`Switch renders Switch correctly with more props 1`] = `
 <div>
   <span
-    class="zw-switch--disabled zw-switch--sm"
+    class="zw-switch zw-switch--disabled zw-switch--sm"
   >
     <span
       class="zw-switch__inner"
@@ -20,7 +20,7 @@ exports[`Switch renders normal Switch correctly 1`] = `
     class="zw-switch"
   >
     <span
-      class="za-switch__inner"
+      class="zw-switch__inner"
     >
       <span />
     </span>

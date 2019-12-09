@@ -1,5 +1,6 @@
 @import "../../style/themes/variable";
 @import "../../style/core/index";
+@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
 
 @include b(switch) {
   position: relative;
@@ -37,7 +38,7 @@
       height: calc(var(--switch-height-md) * 0.7);
       left: calc(var(--switch-width-md) * 0.625);
 
-      .za-activity-indicator {
+      .zw-activity-indicator {
         width: calc(var(--switch-height-md) * 0.7 * 0.8);
         height: calc(var(--switch-height-md) * 0.7 * 0.8);
       }
@@ -94,7 +95,7 @@
         height: calc(var(--switch-height-sm) * 0.75);
         left: calc(var(--switch-width-sm) * 0.54);
 
-        .za-activity-indicator {
+        .zw-activity-indicator {
           width: calc(var(--switch-height-sm) * 0.75 * 0.8);
           height: calc(var(--switch-height-sm) * 0.75 * 0.8);
         }
@@ -124,7 +125,7 @@
       top: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
       left: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
 
-      .za-activity-indicator {
+      .zw-activity-indicator {
         width: calc(var(--switch-height-sm) * 0.75 * 0.8);
         height: calc(var(--switch-height-sm) * 0.75 * 0.8);
       }
@@ -153,7 +154,7 @@
     left: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
     top: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
 
-    .za-activity-indicator {
+    .zw-activity-indicator {
       width: calc(var(--switch-height-md) * 0.7 * 0.8);
       height: calc(var(--switch-height-md) * 0.7 * 0.8);
     }

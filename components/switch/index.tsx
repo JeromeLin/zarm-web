@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ActivityIndicator from 'zarm/lib/activity-indicator';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import 'zarm/components/activity-indicator/style/index';
 
 export interface SwitchState {
   checked?: boolean;
@@ -55,7 +54,7 @@ class Switch extends Component<PropsType, SwitchState> {
         <span className={`${prefixCls}__inner`}>
           {loading ? (
             <span className={`${prefixCls}__loading`}>
-              <ActivityIndicator />
+              <ActivityIndicator prefixCls="zw-activity-indicator" />
             </span>
           ) : <span />}
         </span>
