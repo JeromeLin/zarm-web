@@ -1,140 +1,62 @@
-@include b(radio-group) {
-  display: inline-block;
-
-  @include m(lg) {
-    @include b(radio-button) {
-      height: var(--button-height-xl);
-      line-height: var(--button-height-xl);
-      font-size: var(--button-font-size-lg);
-      padding: 0 16;
-    }
-  }
-
-  @include m(sm) {
-    @include b(radio-button) {
-      height: var(--button-height-sm);
-      line-height: var(--button-height-sm) - 2;
-      font-size: var(--button-font-size-sm);
-      padding: 0 8;
-    }
-  }
-
-  @include b(radio) {
-    @include e(wrapper) {
-      margin-right: 16;
-    }
-  }
-
-  @include b(radio-button) {
-    @include e(wrapper) {
-      &:first-child {
-        @include b(radio-button) {
-          border-radius: var(--radius-md) 0 0 var(--radius-md);
-          border-left: var(--radius-md);
-        }
-      }
-
-      &:last-child {
-        @include b(radio-button) {
-          border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
-      }
-
-      &:first-child:last-child {
-        @include b(radio-button) {
-          border-radius: var(--radius-md);
-        }
-      }
-    }
-  }
-}
+@import '../../style/core/index';
+@import 'mixins';
 
 /* 一般状态 */
 @include b(radio) {
   display: inline-block;
   position: relative;
-  padding-right: 4;
+  padding-right: 4px;
   font-size: var(--font-size-md);
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
   outline: none;
   cursor: pointer;
-
-  /* 选中状态 */
-  &.is-checked {
-    @include b(radio) {
-      @include e(inner) {
-        border-color: var(--theme-primary);
-
-        &:after {
-          transform: scale(1);
-          opacity: 1;
-          transition:
-            transform .3s cubic-bezier(.12, .4, .29, 1.46),
-            opacity .3s cubic-bezier(.78, .14, .15, .86),
-            background-color .3s cubic-bezier(.78, .14, .15, .86);
-        }
-      }
-    }
-  }
-
-  /* 禁用状态 */
-  &.is-disabled {
-    @include b(radio) {
-      @include e(inner) {
-        border-color: #d9d9d9;
-        background-color: #f3f3f3;
-        cursor: not-allowed;
-
-        &:after {
-          background-color: #ccc;
-        }
-      }
-    }
-  }
-
-  &:hover {
-    &:not(.is-disabled) {
-      @include b(radio) {
-        @include e(inner) {
-          border-color: var(--theme-primary);
-        }
-      }
-    }
-  }
+  user-select: none;
 
   @include e(inner) {
     position: relative;
-    top: 2px;
-    margin-right: 4;
+    margin-right: 4px;
+    vertical-align: middle;
     left: 0;
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: var(--radio-inner-width);
+    height: var(--radio-inner-width);
     border: 1px solid var(--button-default-border);
     border-radius: 14px;
     background-color: var(--color-text-inverse);
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
+    & + * {
+      vertical-align: middle;
+    }
+
     &:after {
+      content: ' ';
       position: absolute;
-      width: 6px;
-      height: 6px;
-      left: 3px;
-      top: 3px;
-      border-radius: 6px;
+      width: calc((var(--radio-inner-width) - 2px) / 2);
+      height: calc((var(--radio-inner-width) - 2px) / 2);
+      left: 50%;
+      top: 50%;
+      border-radius: 100%;
       display: table;
       border-top: 0;
       border-left: 0;
-      content: ' ';
       background-color: var(--theme-primary);
       opacity: 0;
-      transform: scale(0);
+      transform: translate(-50%, -50%) scale(0);
       transition:
-        transform .3s cubic-bezier(.78, .14, .15, .86),
-        opacity .3s cubic-bezier(.78, .14, .15, .86),
-        background-color .3s cubic-bezier(.78, .14, .15, .86);
+        transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+        opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+        background-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+    }
+  }
+
+  &:hover {
+    @include b(radio) {
+      @include e(inner) {
+        border-color: var(--theme-primary);
+      }
     }
   }
 
@@ -144,49 +66,111 @@
     opacity: 0;
   }
 
-  & + span {
-    margin-left: 5px;
+  /* 选中状态 */
+  @include m(checked) {
+    @include e(inner) {
+      border-color: var(--theme-primary);
+
+      &:after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        transition:
+          transform 0.3s cubic-bezier(0.12, 0.4, 0.29, 1.46),
+          opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+          background-color 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+      }
+    }
   }
+
+  /* 禁用状态 */
+  @include m(disabled) {
+    color: var(--radio-disabled-color);
+
+    @include e(inner) {
+      border-color: var(--radio-disabled-border);
+      background-color: var(--radio-disabled-background);
+      cursor: not-allowed;
+
+      &:after {
+        background-color: #ccc;
+      }
+    }
+
+    &:hover {
+      @include e(inner) {
+        border-color: #d9d9d9;
+      }
+    }
+  }
+
+  // & + span {
+  //   margin-left: 5px;
+  // }
 }
 
-@include b(radio-button) {
-  margin: 0;
-  height: var(--button-height-md);
-  line-height: var(--button-height-md) - 2px;
-  color: var(--color-text-caption);
+/* 按钮样式 */
+@include b(radio-group) {
+  position: relative;
   display: inline-block;
+  border-left: 0;
+  background: #fff;
+  padding: 0 15px;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid var(--radius-md);
-  border-left: 0;
-  background: var(--color-text-inverse);
-  padding: 0 16 - 1px;
-  position: relative;
-
-  &:not(.is-disabled):not(.is-checked):hover {
-    position: relative;
-    color: var(--theme-primary);
-  }
-
-  &.is-checked {
-    position: relative;
-    color: var(--color-text-inverse);
-    background: var(--theme-primary);
-  }
-
-  &.is-disabled {
-    cursor: not-allowed;
-    color: var(--button-radio-btn-disabled-color);
-    background: var(--button-radio-btn-disabled-bg);
-  }
 
   @include b(radio) {
-    @include e(inner) {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      border: none;
-      pointer-events: none;
+    /* 按钮类型 */
+    @include m(button) {
+      @include e(inner) {
+        display: none;
+        opacity: 0;
+      }
+
+      @include radio-button-base();
+      @include radio-button-theme(
+        var(--radio-button-color),
+        var(--radio-default-border),
+        var(--radio-default-background),
+        var(--radio-checked-color),
+        var(--radio-checked-border),
+        var(--radio-checked-background),
+        var(--radio-disabled-color),
+        var(--radio-disabled-border),
+        var(--radio-disabled-background),
+        var(--radio-disabled-checked-color),
+        var(--radio-disabled-checked-background),
+      );
+
+      @include m(rect) {
+        @include radio-button-shape(0);
+      }
+
+      @include m(round) {
+        @include radio-button-shape(var(--radius-md));
+      }
+    }
+  }
+
+  @include m(md) {
+    @include radio-group-button() {
+      @include radio-button-size(var(--radio-height-md), var(--radio-padding-v-md), var(--font-size-md));
+    }
+  }
+
+  @include m(sm) {
+    @include radio-group-button() {
+      @include radio-button-size(var(--radio-height-sm), var(--radio-padding-v-sm), var(--font-size-sm));
+    }
+  }
+
+  @include m(block) {
+    display: block;
+  }
+
+  @include m(ghost) {
+    @include radio-group-button() {
+      @include radio-button-ghost();
     }
   }
 }
+

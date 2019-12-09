@@ -1,2 +1,44 @@
-@import '../../style/themes/default';
-@import './component';
+
+@import '../../style/core/index';
+@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
+@import "./mixins.scss";
+
+@include b(loading) {
+  @include loading-base();
+
+  @include loading-size(
+    var(--loading-height-md),
+    var(--loading-margin-h-md),
+    var(--loading-font-size-md),
+  );
+
+  @include loading-theme(
+    var(--loading-default-svg-color),
+    var(--loading-default-mask-color),
+    var(--loading-default-text-color),
+  );
+
+  @include m(lg) {
+    @include loading-size(
+      var(--loading-height-lg),
+      var(--loading-margin-h-lg),
+      var(--loading-font-size-lg),
+    );
+  }
+
+  @include m(sm) {
+    @include loading-size(
+      var(--loading-height-sm),
+      var(--loading-margin-h-sm),
+      var(--loading-font-size-sm),
+    );
+  }
+
+  @include m(xs) {
+    @include loading-size(
+      var(--loading-height-xs),
+      var(--loading-margin-h-xs),
+      var(--loading-font-size-xs),
+    );
+  }
+}

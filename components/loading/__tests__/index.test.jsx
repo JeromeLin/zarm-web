@@ -6,19 +6,19 @@ import Loading from '../index';
 describe('Loading', () => {
   it('renders hidden Loading correctly', () => {
     const wrapper = render(
-      <Loading visible={false}>
+      <Loading>
         这里是内容
-      </Loading>
+      </Loading>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders visible Loading correctly', () => {
+  it('renders Loading of different size correctly', () => {
     const wrapper = render(
-      <Loading visible>
+      <Loading size='lg' visible>
         这里是内容
-      </Loading>
+      </Loading>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
