@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator } from 'zarm';
+import ActivityIndicator from 'zarm/lib/activity-indicator';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import 'zarm/components/activity-indicator/style/index';

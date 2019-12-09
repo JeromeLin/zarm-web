@@ -3,12 +3,12 @@
 exports[`Switch renders Switch correctly with more props 1`] = `
 <div>
   <span
-    class="ui-switch disabled size-sm"
+    class="zw-switch--disabled zw-switch--sm"
   >
     <span
-      class="ui-switch-inner"
+      class="zw-switch__inner"
     >
-      否
+      <span />
     </span>
   </span>
 </div>
@@ -17,11 +17,13 @@ exports[`Switch renders Switch correctly with more props 1`] = `
 exports[`Switch renders normal Switch correctly 1`] = `
 <div>
   <span
-    class="ui-switch"
+    class="zw-switch"
   >
     <span
-      class="ui-switch-inner"
-    />
+      class="za-switch__inner"
+    >
+      <span />
+    </span>
   </span>
 </div>
 `;
