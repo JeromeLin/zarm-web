@@ -53,14 +53,13 @@ describe('Switch', () => {
 
   it('switch with loading status', () => {
     const wrapper = mount(
-      <Switch loading defaultChecked={true} />,
+      <Switch loading defaultChecked />,
     );
     expect(wrapper.find('.zw-switch__loading').length > 0).toBeTruthy();
 
     const wrapperOpen = mount(
-      <Switch defaultChecked={true} loading />,
+      <Switch defaultChecked loading />,
     );
     expect(wrapperOpen.find('.zw-switch__loading').length > 0).toBeTruthy();
-
   });
 });
