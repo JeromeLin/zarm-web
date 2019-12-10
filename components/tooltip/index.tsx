@@ -1,4 +1,4 @@
-import Tooltip from 'zarm/es/tooltip';
+import Tooltip from 'zarm/lib/tooltip';
 
 Tooltip.defaultProps.prefixCls = 'zw-tooltip';
 
