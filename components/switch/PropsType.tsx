@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react';
 
-export type Size = 'sm' | 'md';
+export type SwitchSize = 'sm' | 'md';
 
 export default interface SwitchProps {
   prefixCls?: string;
-  size?: Size;
+  size?: SwitchSize;
   checked?: boolean;
   disabled?: boolean;
   defaultChecked?: boolean;
