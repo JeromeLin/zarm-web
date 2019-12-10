@@ -24,7 +24,7 @@
   --background-disabled: #fafafa;
 
   // 边框色
-  --border-color: #e6e6e6;
+  --border-color: #dcdcdc;
   --border-disabled: #e6e6e6;
 
   // 堆叠顺序
@@ -177,6 +177,7 @@
   --checkbox-radius: var(--radius-sm);
   --checkbox-border-color: var(--border-color);
   --checkbox-background: var(--color-text-inverse);
+  --checkbox-disabled-background: #f2f2f2;
 
   // Radio
   --button-radio-btn-disabled-color: --color-text-caption;

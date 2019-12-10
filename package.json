@@ -39,7 +39,7 @@
     "deploy": "npm run deploy:build && gh-pages -d assets",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx site",
-    "lint:style": "stylelint **/*.scss --syntax scss",
+    "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "test": "rimraf coverage && cross-env TZ=America/New_York zarm test -s scripts/jest/setup.js -c",
     "coverage": "cat ./coverage/lcov.info | coveralls",
@@ -54,7 +54,7 @@
     "color": "^3.1.0",
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
-    "zarm": "2.0.0-alpha.66"
+    "zarm": "2.0.0-alpha.70"
   },
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
