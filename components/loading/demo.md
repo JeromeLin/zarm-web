@@ -24,7 +24,7 @@
 ## 自定义加载指示器
 
 ```jsx
-  import { Loading, Icon, Alert } from 'zarm-web';
+  import { Loading, Icon } from 'zarm-web';
 
   const icon = <Icon type="minus-round" className="rotate360" />
 
