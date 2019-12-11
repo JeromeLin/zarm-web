@@ -117,6 +117,7 @@ class Loading extends Component<LoadingProps, LoadingStates> {
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--fullscreen`]: !!fullscreen,
+      [`${prefixCls}--active`]: !!visible,
     });
 
     const textCls = size === 'xs' ? { display: 'inline' } : {};
@@ -133,22 +134,18 @@ class Loading extends Component<LoadingProps, LoadingStates> {
     );
 
     if (this.isNestedPattern() || fullscreen) {
-      const containerCls = classnames(`${prefixCls}__container`, {
-        [`${prefixCls}--blur`]: !!visible,
-      });
+      const containerCls = classnames(`${prefixCls}__container`);
       return (
         <div className={cls} style={this.getStyle()}>
           {!!visible && (
-            <div>
-              <div className={`${prefixCls}__mask`}>
-                <div className={`${prefixCls}__spin`} style={style}>
-                  {this.renderIndicator()}
-                  {text && (
-                    <div className={`${prefixCls}__text`} style={textCls}>
-                      {text}
-                    </div>
-                  )}
-                </div>
+            <div className={`${prefixCls}__mask`}>
+              <div className={`${prefixCls}__spin`} style={style}>
+                {this.renderIndicator()}
+                {text && (
+                  <div className={`${prefixCls}__text`} style={textCls}>
+                    {text}
+                  </div>
+                )}
               </div>
             </div>
           )}

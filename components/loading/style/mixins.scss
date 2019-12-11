@@ -25,12 +25,14 @@ $PI: 3.141592674;
     z-index: 99999;
   }
 
-  @include m(blur) {
-    clear: both;
-    overflow: hidden;
-    opacity: .4;
-    user-select: none;
-    pointer-events: none;
+  @include m(active) {
+    @include e (container) {
+      clear: both;
+      overflow: hidden;
+      opacity: .4;
+      user-select: none;
+      pointer-events: none;
+    }
   }
 
   @include e (container) {

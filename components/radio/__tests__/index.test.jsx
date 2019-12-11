@@ -6,9 +6,7 @@ import Radio from '../index';
 describe('Radio', () => {
   it('renders normal Radio correctly', () => {
     const wrapper = render(
-      <div>
-        <Radio value="a">选择</Radio>
-      </div>,
+      <Radio value="a">选择</Radio>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -16,11 +14,9 @@ describe('Radio', () => {
 
   it('renders disabled Radio correctly', () => {
     const wrapper = render(
-      <div>
-        <Radio disabled value="a">
-          选择
-        </Radio>
-      </div>,
+      <Radio disabled value="a">
+        选择
+      </Radio>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -28,22 +24,7 @@ describe('Radio', () => {
 
   it('renders checked Radio correctly', () => {
     const wrapper = render(
-      <div>
-        <Radio checked>选择</Radio>
-      </div>,
-    );
-
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('renders Radio Group correctly', () => {
-    const wrapper = render(
-      <Radio.Group value="a">
-        <Radio value="a">A</Radio>
-        <Radio value="b">B</Radio>
-        <Radio value="c">C</Radio>
-        <Radio value="d">D</Radio>
-      </Radio.Group>,
+      <Radio checked>选择</Radio>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -61,10 +42,62 @@ describe('Radio', () => {
     expect(onChange).toBeCalled();
   });
 
+  it('renders Radio Group correctly', () => {
+    const wrapper = render(
+      <Radio.Group>
+        <Radio value="a">A</Radio>
+        <Radio value="b">B</Radio>
+        <Radio value="c">C</Radio>
+        <Radio value="d">D</Radio>
+      </Radio.Group>,
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders defaultValue Radio Group correctly', () => {
+    const wrapper = render(
+      <Radio.Group defaultValue="a">
+        <Radio value="a">A</Radio>
+        <Radio value="b">B</Radio>
+        <Radio value="c">C</Radio>
+        <Radio value="d">D</Radio>
+      </Radio.Group>,
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders value Radio Group correctly', () => {
+    const wrapper = render(
+      <Radio.Group value="a">
+        <Radio value="a">A</Radio>
+        <Radio value="b">B</Radio>
+        <Radio value="c">C</Radio>
+        <Radio value="d">D</Radio>
+      </Radio.Group>,
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders checked Radio Group correctly', () => {
+    const wrapper = render(
+      <Radio.Group>
+        <Radio value="a">A</Radio>
+        <Radio value="b" checked>B</Radio>
+        <Radio value="c">C</Radio>
+        <Radio value="d">D</Radio>
+      </Radio.Group>,
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('behaves correctly when choosing from Radio Group', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Radio.Group value="a" onChange={onChange}>
+      <Radio.Group onChange={onChange}>
         <Radio value="a">A</Radio>
         <Radio value="b">B</Radio>
         <Radio value="c">C</Radio>

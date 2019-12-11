@@ -2,214 +2,258 @@
 
 exports[`Checkbox renders CheckboxGroup correctly with defaultValue 1`] = `
 <div
-  class="zw-checkbox-group"
+  class="zw-checkbox-group zw-checkbox-group--radius"
 >
-  <label
+  <div
     class="zw-checkbox zw-checkbox--checked"
   >
-    <input
-      checked=""
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="a"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      A
-    </span>
-  </label>
-  <label
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        A
+      </span>
+      <input
+        checked=""
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="a"
+      />
+    </div>
+  </div>
+  <div
     class="zw-checkbox"
   >
-    <input
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="b"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      B
-    </span>
-  </label>
-  <label
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        B
+      </span>
+      <input
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="b"
+      />
+    </div>
+  </div>
+  <div
     class="zw-checkbox"
   >
-    <input
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="c"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      C
-    </span>
-  </label>
-  <label
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        C
+      </span>
+      <input
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="c"
+      />
+    </div>
+  </div>
+  <div
     class="zw-checkbox"
   >
-    <input
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="d"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      D
-    </span>
-  </label>
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        D
+      </span>
+      <input
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="d"
+      />
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Checkbox renders disabled Checkbox correctly 1`] = `
-<label
+<div
   class="zw-checkbox zw-checkbox--checked zw-checkbox--disabled"
 >
-  <input
-    checked=""
-    class="zw-checkbox__input"
-    disabled=""
-    type="checkbox"
-    value="0"
-  />
-  <span
-    class="zw-checkbox__inner"
-  />
-  <span
-    class="zw-checkbox__children"
+  <div
+    class="zw-checkbox__wrapper"
   >
-    选择0
-  </span>
-</label>
+    <span
+      class="zw-checkbox__inner"
+    />
+    <span
+      class="zw-checkbox__text"
+    >
+      选择0
+    </span>
+    <input
+      checked=""
+      class="zw-checkbox__input"
+      disabled=""
+      type="checkbox"
+      value="0"
+    />
+  </div>
+</div>
 `;
 
 exports[`Checkbox renders disabled CheckboxGroup correctly 1`] = `
 <div
-  class="zw-checkbox-group"
+  class="zw-checkbox-group zw-checkbox-group--radius"
 >
-  <label
+  <div
     class="zw-checkbox"
   >
-    <input
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="a"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      A
-    </span>
-  </label>
-  <label
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        A
+      </span>
+      <input
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="a"
+      />
+    </div>
+  </div>
+  <div
     class="zw-checkbox"
   >
-    <input
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="b"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      B
-    </span>
-  </label>
-  <label
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        B
+      </span>
+      <input
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="b"
+      />
+    </div>
+  </div>
+  <div
     class="zw-checkbox"
   >
-    <input
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="c"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      C
-    </span>
-  </label>
-  <label
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        C
+      </span>
+      <input
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="c"
+      />
+    </div>
+  </div>
+  <div
     class="zw-checkbox"
   >
-    <input
-      class="zw-checkbox__input"
-      type="checkbox"
-      value="d"
-    />
-    <span
-      class="zw-checkbox__inner"
-    />
-    <span
-      class="zw-checkbox__children"
+    <div
+      class="zw-checkbox__wrapper"
     >
-      D
-    </span>
-  </label>
+      <span
+        class="zw-checkbox__inner"
+      />
+      <span
+        class="zw-checkbox__text"
+      >
+        D
+      </span>
+      <input
+        class="zw-checkbox__input"
+        type="checkbox"
+        value="d"
+      />
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Checkbox renders indeterminate Checkbox correctly 1`] = `
-<label
-  class="zw-checkbox zw-checkbox--indeterminate"
+<div
+  class="zw-checkbox"
 >
-  <input
-    class="zw-checkbox__input"
-    type="checkbox"
-    value="0"
-  />
-  <span
-    class="zw-checkbox__inner"
-  />
-  <span
-    class="zw-checkbox__children"
+  <div
+    class="zw-checkbox__wrapper"
   >
-    选择0
-  </span>
-</label>
+    <span
+      class="zw-checkbox__inner"
+    />
+    <span
+      class="zw-checkbox__text"
+    >
+      选择0
+    </span>
+    <input
+      class="zw-checkbox__input"
+      type="checkbox"
+      value="0"
+    />
+  </div>
+</div>
 `;
 
 exports[`Checkbox renders normal Checkbox correctly 1`] = `
-<label
+<div
   class="zw-checkbox zw-checkbox--checked"
 >
-  <input
-    checked=""
-    class="zw-checkbox__input"
-    type="checkbox"
-    value="0"
-  />
-  <span
-    class="zw-checkbox__inner"
-  />
-  <span
-    class="zw-checkbox__children"
+  <div
+    class="zw-checkbox__wrapper"
   >
-    选择0
-  </span>
-</label>
+    <span
+      class="zw-checkbox__inner"
+    />
+    <span
+      class="zw-checkbox__text"
+    >
+      选择0
+    </span>
+    <input
+      checked=""
+      class="zw-checkbox__input"
+      type="checkbox"
+      value="0"
+    />
+  </div>
+</div>
 `;
