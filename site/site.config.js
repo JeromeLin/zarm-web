@@ -180,10 +180,6 @@ module.exports = {
         module: () => import('@/components/breadcrumb/demo.md'),
       },
       {
-        name: 'Step',
-        module: () => import('@/components/step/step.md'),
-      },
-      {
         name: 'Steps',
         module: () => import('@/components/steps/demo.md'),
       },
