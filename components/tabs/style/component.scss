@@ -50,7 +50,6 @@
   }
 
   @include e(body) {
-    // @include clearfix;
     position: relative;
     &__item {
       line-height: normal;
@@ -110,7 +109,6 @@
         overflow: hidden;
         white-space: nowrap;
         margin-bottom: -1px;
-        transform: translate3d(0,0,0);
       }
       &__arrow {
         height: 100%;
@@ -130,7 +128,7 @@
         position: relative;
         display: inline-block;
         &--animated {
-          transition: left .3s $default-transition;
+          transition: transform .3s $default-transition;
         }
       }
       &__item {
@@ -144,7 +142,7 @@
         width: auto;
         border-bottom: 2px solid var(--tabs-default-line-color);
         &--animated {
-          transition: left $default-transition;
+          transition: transform $default-transition;
         }
       }
     }
@@ -165,20 +163,11 @@
   }
 
   @include m(vertical) {
-    &::before,
-    &::after {
-      display: table;
-      content: ' ';
-    }
-
-    &::after {
-      clear: both;
-    }
+    @include clearfix;
     @include e(header) {
       border-right: 1px solid var(--border-color);
       float: left;
       height: 100%;
-      overflow: hidden;
       &--arrow-mode {
         padding: 30px 0;
       }
@@ -187,13 +176,11 @@
         overflow: hidden;
         white-space: nowrap;
         margin-right: -1px;
-        transform: translate3d(0,0,0);
       }
       &__nav {
         position: relative;
         &--animated {
-          transform-style: flat;
-          transition: top .3s $default-transition;
+          transition: transform .3s $default-transition;
         }
       }
       &__item {
@@ -213,7 +200,7 @@
         right: 0;
         border-right: 2px solid var(--tabs-default-line-color);
         &--animated {
-          transition: top $default-transition;
+          transition: transform $default-transition;
         }
       }
       &__arrow {

@@ -161,9 +161,8 @@ class Tabs extends Component<TabsProps, any> {
     const arrowL = direction === 'horizontal' ? 'left' : 'top';
     const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
     const animateStyle = direction === 'horizontal' ? { marginLeft: `-${value * 100}%` } : {};
-    const headerNavStyle = direction === 'horizontal' ? { left: `${-scrollOffset}px` } : { top: `${-scrollOffset}px` };
-    const headerLineStyle = direction === 'horizontal' ? { width: lineWidth, height: 0, left: `${lineOffsetLeft}px` } : { width: 0, height: lineHeight, top: `${lineOffsetTop}px` };
-
+    const headerNavStyle = direction === 'horizontal' ? { transform: `translate3d(${-scrollOffset}px,0,0)` } : { transform: `translate3d(0,${-scrollOffset}px,0)` };
+    const headerLineStyle = direction === 'horizontal' ? { width: lineWidth, height: 0, transform: `translate3d(${lineOffsetLeft}px,0,0)` } : { width: 0, height: lineHeight, transform: `translate3d(0,${lineOffsetTop}px,0)` };
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${direction}`]: direction,
       [`${prefixCls}--${size}`]: size,
