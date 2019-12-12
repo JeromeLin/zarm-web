@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import { TabProps } from './PropsType';
 
 class Tab extends Component<TabProps, any> {
+  static displayName = 'Tab';
+
   static defaultProps = {
     prefixCls: 'zw-tabs',
   };

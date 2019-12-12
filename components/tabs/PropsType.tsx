@@ -16,6 +16,8 @@ export default interface TabsProps {
   prefixCls?: string;
   onChange: (index?: number) => void;
   onTabClose: (index?: number) => void;
+  onPrevClick?: (e: MouseEvent) => void;
+  onNextClick?: (e: MouseEvent) => void;
 }
 
 export interface TabProps {
