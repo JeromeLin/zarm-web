@@ -135,31 +135,21 @@ class Tabs extends Component<TabsProps, any> {
   scrollRightOrBottom = () => {
     const { direction } = this.props;
     const { headerWidth, headerHeight, scrollWidth, scrollHeight, scrollOffset } = this.state;
-    if (direction === 'horizontal') {
-      const offset = scrollWidth - scrollOffset - headerWidth;
-      this.setState({
-        scrollOffset: scrollOffset + ((offset > headerWidth) ? headerWidth : offset),
-      });
-    } else {
-      const offset = scrollHeight - scrollOffset - headerHeight;
-      this.setState({
-        scrollOffset: scrollOffset + ((offset > headerHeight) ? headerHeight : offset),
-      });
-    }
+    const scrollDimension = direction === 'horizontal' ? scrollWidth : scrollHeight;
+    const headerDimension = direction === 'horizontal' ? headerWidth : headerHeight;
+    const offset = scrollDimension - scrollOffset - headerDimension;
+    this.setState({
+      scrollOffset: scrollOffset + ((offset > headerDimension) ? headerDimension : offset),
+    });
   };
 
   scrollLeftOrTop = () => {
     const { direction } = this.props;
     const { headerWidth, headerHeight, scrollOffset } = this.state;
-    if (direction === 'horizontal') {
-      this.setState({
-        scrollOffset: scrollOffset - ((scrollOffset > headerWidth) ? headerWidth : scrollOffset),
-      });
-    } else {
-      this.setState({
-        scrollOffset: scrollOffset - ((scrollOffset > headerHeight) ? headerHeight : scrollOffset),
-      });
-    }
+    const headerDimension = direction === 'horizontal' ? headerWidth : headerHeight;
+    this.setState({
+      scrollOffset: scrollOffset - ((scrollOffset > headerDimension) ? headerDimension : scrollOffset),
+    });
   };
 
   render() {
@@ -173,7 +163,6 @@ class Tabs extends Component<TabsProps, any> {
     const animateStyle = direction === 'horizontal' ? { marginLeft: `-${value * 100}%` } : {};
     const headerNavStyle = direction === 'horizontal' ? { transform: `translate3d(${-scrollOffset}px,0,0)` } : { transform: `translate3d(0,${-scrollOffset}px,0)` };
     const headerLineStyle = direction === 'horizontal' ? { width: lineWidth, height: 0, transform: `translate3d(${lineOffsetLeft}px,0,0)` } : { width: 0, height: lineHeight, transform: `translate3d(0,${lineOffsetTop}px,0)` };
-
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${direction}`]: direction,
       [`${prefixCls}--${size}`]: size,

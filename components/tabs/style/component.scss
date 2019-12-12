@@ -5,11 +5,13 @@
 
   @include e(header) {
     position: relative;
+
     &__scroll {
       position: relative;
       margin: 0;
       padding: 0;
     }
+
     &__arrow {
       @include b(icon) {
         color: var(--color-text-caption);
@@ -19,17 +21,20 @@
         transform: translate(-50%, -50%);
       }
     }
+
     &__item {
       position: relative;
       cursor: pointer;
       line-height: normal;
       color: var(--tabs-default-color);
+
       &:hover {
         color: var(--tabs-default-hover-color);
       }
       @include m(disabled) {
         color: var(--tabs-default-disabled-color);
         cursor: not-allowed;
+
         &:hover {
           color: var(--tabs-default-disabled-color);
         }
@@ -50,8 +55,8 @@
   }
 
   @include e(body) {
-    // @include clearfix;
     position: relative;
+
     &__item {
       line-height: normal;
       opacity: 0;
@@ -102,15 +107,18 @@
 
     @include e(header) {
       border-bottom: 1px solid var(--border-color);
+
       &--arrow-mode {
         padding: 0 20px;
       }
+
       &__scroll {
         position: relative;
         overflow: hidden;
         white-space: nowrap;
         margin-bottom: -1px;
       }
+
       &__arrow {
         height: 100%;
         width: 20px;
@@ -118,30 +126,37 @@
         top: 0;
         text-align: center;
         cursor: pointer;
+
         &--left {
           left: 0;
         }
+
         &--right {
           right: 0;
         }
       }
+
       &__nav {
         position: relative;
         display: inline-block;
+
         &--animated {
           transition: transform .3s $default-transition;
         }
       }
+
       &__item {
         display: inline-block;
         text-align: center;
       }
+
       &__line {
         position: absolute;
         left: 0;
         bottom: 0;
         width: auto;
         border-bottom: 2px solid var(--tabs-default-line-color);
+
         &--animated {
           transition: transform $default-transition;
         }
@@ -152,6 +167,7 @@
       display: flex;
       flex-direction: row;
       width: 100%;
+
       &--animated {
         transition: margin-left $default-transition;
       }
@@ -164,23 +180,31 @@
   }
 
   @include m(vertical) {
+    @include clearfix;
     @include e(header) {
       border-right: 1px solid var(--border-color);
       float: left;
       height: 100%;
+
       &--arrow-mode {
         padding: 30px 0;
       }
+
       &__scroll {
         height: 100%;
         overflow: hidden;
-        white-space: no-wrap;
+        white-space: nowrap;
         margin-right: -1px;
       }
+
       &__nav {
         position: relative;
-        transition: transform .3s $default-transition;
+
+        &--animated {
+          transition: transform .3s $default-transition;
+        }
       }
+
       &__item {
         padding: 0;
         text-align: center;
@@ -188,19 +212,23 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         margin-bottom: 8px;
+
         &:last-child {
           margin-bottom: 0;
         }
       }
+
       &__line {
         position: absolute;
         top: 0;
         right: 0;
         border-right: 2px solid var(--tabs-default-line-color);
+
         &--animated {
           transition: transform $default-transition;
         }
       }
+
       &__arrow {
         height: 30px;
         width: 100%;
@@ -208,9 +236,11 @@
         left: 0;
         text-align: center;
         cursor: pointer;
+
         &--top {
           top: 0;
         }
+
         &--bottom {
           bottom: 0;
         }
@@ -221,9 +251,10 @@
       padding-left: 10px;
       overflow: hidden;
       position: relative;
+
       &__item {
         height: 0;
-        
+
         &--active {
           height: auto;
         }
@@ -235,6 +266,7 @@
     @include e(header) {
       &__item {
         margin-right: 16px;
+
         &:last-child {
           margin-right: 0;
         }
@@ -261,8 +293,10 @@
   @include m(noborder-card) {
     @include e(header) {
       border-bottom: none;
+
       &__item {
         background: var(--tabs-default-noborder-background);
+
         &--active {
           background: var(--tabs-default-background-color);
           border: none;
@@ -274,6 +308,7 @@
     @include e(body) {
       background: var(--tabs-default-background-color);
       transition: none;
+
       &__item {
         background: var(--tabs-default-background-color);
       }

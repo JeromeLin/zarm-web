@@ -1,115 +1,21 @@
 @import '../../style/core/index';
-
-@include b(checkbox-group) {
-  display: inline-block;
-
-  label {
-    margin-right: 16px;
-  }
-}
+@import 'node_modules/zarm/lib/checkbox/style/component.scss';
 
 @include b(checkbox) {
-  display: inline-block;
-  position: relative;
-  line-height: 1;
-  vertical-align: middle;
-  white-space: nowrap;
-  outline: none;
-  cursor: pointer;
-
-  /* 一般状态 */
-  @include e(inner) {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    width: var(--checkbox-size);
-    height: var(--checkbox-size);
-    border: 1px solid #bcbcbc;
-    border-radius: var(--checkbox-radius);
-    background-color: #fff;
-
-    &:after {
-      content: '';
-      display: table;
-      position: absolute;
-      left: 4px;
-      top: 1px;
-      width: 5px;
-      height: 8px;
-      border: 2px solid #fff;
-      border-top: 0;
-      border-left: 0;
-      transform: rotate(45deg) scale(0);
-      transition: all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6);
-    }
-  }
-
-  @include e(input) {
-    position: absolute;
-    left: 0;
-    opacity: 0;
-  }
-
-  @include e(children) {
-    padding-right: 8px;
-    padding-left: 8px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    position: relative;
-    top: -2px;
-  }
-
-  /* 未全部选中状态 */
-  @include m(indeterminate) {
-    @include e(inner) {
-      border-color: #bcbcbc;
-      background-color: #fff;
-
-      &:after {
-        transform: rotate(90deg) translate(2px, 1px);
-        width: 6px;
-        height: 6px;
-        border: none;
-        background-color: var(--theme-primary);
-      }
-    }
-  }
-
-  /* hover状态 */
-  &:not(&--disabled):hover {
-    cursor: pointer;
-    @include e(inner) {
-      border-color: var(--theme-primary);
-    }
-  }
-
-  /* 选中状态 */
-  @include m(checked) {
-    @include e(inner) {
-      border-color: var(--theme-primary);
-      background-color: var(--theme-primary);
-
-      &:after {
-        transform: rotate(45deg) scale(1);
-        transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
-      }
-    }
-  }
-
-  /* 禁用状态 */
   @include m(disabled) {
-    color: rgba(0, 0, 0, 0.25);
-    cursor: not-allowed;
-
     @include e(inner) {
-      border-color: #d9d9d9;
-      background-color: #f3f3f3;
-      cursor: not-allowed;
+      opacity: 1;
+      background-color: var(--checkbox-disabled-background);
+    }
 
-      &:after {
-        border-color: #ccc;
+    @include m(checked) {
+      @include e(inner) {
+        border-color: var(--checkbox-border-color);
+        background-color: var(--checkbox-disabled-background);
+
+        &:before {
+          border-color: var(--checkbox-border-color);
+        }
       }
     }
   }
