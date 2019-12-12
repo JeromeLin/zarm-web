@@ -43,7 +43,7 @@ module.exports = {
     form: [
       {
         name: 'Radio',
-        module: () => import('@/components/radio/radio.md'),
+        module: () => import('@/components/radio/demo.md'),
       },
       {
         name: 'Checkbox',
@@ -138,8 +138,8 @@ module.exports = {
         module: () => import('@/components/alert/alert.md'),
       },
       {
-        name: 'loading',
-        module: () => import('@/components/loading/loading.md'),
+        name: 'Loading',
+        module: () => import('@/components/loading/demo.md'),
       },
       {
         name: 'message',
