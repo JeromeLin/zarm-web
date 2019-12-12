@@ -242,7 +242,7 @@ class Demo extends React.Component {
           </Button.Group>
         </div>
         <div>
-          <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} size={this.state.size}>
+          <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} size={this.state.size} onPrevClick={(e) => console.log('prev click: ', e)} onNextClick={() => console.log('next click')}>
             {
               [...Array(40).keys()].map((item, index) => (
                 <Tab key={index} title={`Tab${index + 1}`} style={{padding: 10}}>
@@ -289,7 +289,7 @@ class Demo extends React.Component {
     return (
       <>
         <div>
-          <Tabs type="line" closable direction="vertical" size={this.state.size} defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '192px'}}>
+          <Tabs type="line" closable direction="vertical" size={this.state.size} defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '192px'}} onPrevClick={() => console.log('prev click')} onNextClick={() => console.log('next click')}>
             {
               [...Array(40).keys()].map((item, index) => (
                 <Tab key={index} title={`Tab${index + 1}`}>
