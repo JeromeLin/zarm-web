@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 export type type = 'info' | 'success' | 'warning' | 'error';
 
 export default interface PropsType {
@@ -9,12 +10,12 @@ export default interface PropsType {
   className?: string;
   style?: object;
   width?: number;
-  icon?: ReactNode,
+  icon?: ReactNode;
   showIcon?: boolean;
   closable?: boolean;
   closeText?: string | ReactNode;
   preventHide?: boolean;
-  onClick: (object?:object) => void;
+  onClick: (object?: object) => void;
   onClose: () => void;
   afterClose: () => void;
 }
