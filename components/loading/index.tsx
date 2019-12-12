@@ -13,6 +13,7 @@ function shouldDelay(visible?: boolean, delay?: number): boolean {
 interface LoadingStates {
   visible: boolean;
 }
+
 class Loading extends Component<LoadingProps, LoadingStates> {
   static displayName = 'Loading';
 
@@ -114,6 +115,7 @@ class Loading extends Component<LoadingProps, LoadingStates> {
   renderLoading = () => {
     const { children, style, prefixCls, text, className, size, fullscreen } = this.props;
     const { visible } = this.state;
+
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--fullscreen`]: fullscreen,
@@ -125,11 +127,7 @@ class Loading extends Component<LoadingProps, LoadingStates> {
     const loadingElement = visible && (
       <div className={cls}>
         {this.renderIndicator()}
-        {text && (
-          <div className={`${prefixCls}__text`} style={textCls}>
-            {text}
-          </div>
-        )}
+        {text && <div className={`${prefixCls}__text`} style={textCls}>{text}</div>}
       </div>
     );
 

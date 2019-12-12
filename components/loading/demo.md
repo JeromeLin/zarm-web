@@ -122,8 +122,8 @@ ReactDOM.render(
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | size | string | 'md' | 设置大小，可选值为 `lg`、`md`、`xs`|
-| delay | number | - | 延迟显示加载效果的时间（防止闪烁） |
 | visible | boolean | false | 是否显示 |
-| text | string | - | 自定义文案 |
 | fullscreen | boolean | false | 是否显示全屏 |
+| delay | number | - | 延迟显示加载效果的时间（防止闪烁） |
+| text | ReactNode | - | 自定义文案 |
 | indicator | ReactNode | - | 自定义活动指示器 |
