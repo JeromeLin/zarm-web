@@ -138,7 +138,7 @@ module.exports = {
         module: () => import('@/components/alert/alert.md'),
       },
       {
-        name: 'loading',
+        name: 'Loading',
         module: () => import('@/components/loading/demo.md'),
       },
       {
