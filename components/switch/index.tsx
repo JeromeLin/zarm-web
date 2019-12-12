@@ -14,7 +14,6 @@ class Switch extends Component<PropsType, SwitchState> {
     prefixCls: 'zw-switch',
     loading: false,
     size: 'md',
-    checked: false,
     defaultChecked: false,
   };
 
@@ -25,13 +24,25 @@ class Switch extends Component<PropsType, SwitchState> {
     };
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (('checked' in nextProps) && nextProps.checked !== prevState.checked) {
+      return {
+        checked: nextProps.checked,
+      };
+    }
+    return null;
+  }
+
   _onClick() {
     const { onChange } = this.props;
     const { checked } = this.state;
-    this.setState({
-      checked: !checked,
-    });
-    onChange && onChange(!checked);
+    if (!('onChange' in this.props) && !('checked' in this.props)) {
+      this.setState({
+        checked: !checked,
+      });
+    } else {
+      onChange && onChange(!checked);
+    }
   }
 
   render() {

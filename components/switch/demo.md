@@ -12,7 +12,7 @@ class Demo extends React.Component {
   constructor(){
     super();
     this.state = {
-      value:false
+      value:true
     }
   }
   render() {
@@ -21,8 +21,13 @@ class Demo extends React.Component {
         <div className="multi-rows">
           <Switch 
           onChange={(value)=>{
-           console.log("current value ",value)
+            this.setState({
+              value:value
+            },()=>{
+              console.log(this.state.value)
+            })
           }}
+          checked={this.state.value}
           defaultChecked={true}
           />
         </div>
@@ -50,12 +55,12 @@ class Demo extends React.Component {
         <div className="multi-rows">
           <Switch 
           disabled
-          checked={false} />
+          defaultChecked={false} />
         </div>
         <div className="multi-rows">
           <Switch 
           disabled
-          checked={true} />
+          defaultChecked={true} />
         </div>
       </div>
     )
@@ -78,24 +83,24 @@ class Demo extends React.Component {
         <div className="multi-rows">
           <Switch 
           loading
-          checked={false} />
+          defaultChecked={false} />
         </div>
         <div className="multi-rows">
           <Switch 
           loading
-          checked={true} />
-        </div>
-        <div className="multi-rows">
-          <Switch 
-          loading
-          size={'sm'}
-          checked={false} />
+          defaultChecked={true} />
         </div>
         <div className="multi-rows">
           <Switch 
           loading
           size={'sm'}
-          checked={true} />
+          defaultChecked={false} />
+        </div>
+        <div className="multi-rows">
+          <Switch 
+          loading
+          size={'sm'}
+          defaultChecked={true} />
         </div>
       </div>
     )
@@ -116,10 +121,10 @@ class Demo extends React.Component {
     return (
       <React.Fragment>
         <div className="multi-rows">
-          <Switch checked={false} >默认尺寸</Switch>
+          <Switch defaultChecked={false} >默认尺寸</Switch>
         </div>
         <div className="multi-rows">
-          <Switch checked={false} size="sm" >sm尺寸</Switch>
+          <Switch defaultChecked={true} size="sm" >sm尺寸</Switch>
         </div>
 
         
