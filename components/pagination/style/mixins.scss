@@ -32,7 +32,7 @@
     background-color: transparent;
 
     &:after {
-      content: '\2022\2022\2022';
+      content: "\2022\2022\2022";
       display: block;
       letter-spacing: 2px;
       color: #ccc;
@@ -65,13 +65,12 @@
 
   @include m(jumper) {
     display: inline-block;
-    vertical-align: top;
 
     > input {
       position: relative;
       display: inline-block;
       width: 48px;
-      height: 32px;
+      height: 24px;
       margin: 0 8px;
       text-align: center;
       border-radius: $radius;
@@ -93,6 +92,8 @@
     height: $height;
     line-height: $height;
     margin: 0;
+    display: inline-flex;
+    align-items: center;
   }
 
   @include e(item--icon) {
@@ -131,14 +132,14 @@
   }
 
   @include e(pager) {
-    display: inline-block;
-    height: 24px;
+    &:hover {
+      color: inherit;
+      cursor: inherit;
+    }
 
     > input {
-      box-sizing: border-box;
-      height: 100%;
       margin-right: 8px;
-      padding: 0 6px;
+      padding: 4px 6px;
       border-radius: 4px;
       outline: none;
       transition: border-color 0.3s;
