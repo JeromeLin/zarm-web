@@ -1,14 +1,15 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
-export type LoadingSize = 'lg' | 'sm' | 'xs';
+export type LoadingSize = 'md' | 'lg' | 'sm' | 'xs';
+
 export default interface PropsType {
   prefixCls?: string;
-  visible?: boolean;
-  style?: CSSProperties;
-  text?: React.ReactNode;
   size?: LoadingSize;
+  style?: CSSProperties;
   className?: string;
+  visible?: boolean;
+  text?: ReactNode;
   fullscreen?: boolean;
-  indicator?: React.ReactElement;
+  indicator?: ReactNode;
   delay?: number;
 }

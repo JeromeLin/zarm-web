@@ -13,6 +13,7 @@ function shouldDelay(visible?: boolean, delay?: number): boolean {
 interface LoadingStates {
   visible: boolean;
 }
+
 class Loading extends Component<LoadingProps, LoadingStates> {
   static displayName = 'Loading';
 
@@ -114,22 +115,19 @@ class Loading extends Component<LoadingProps, LoadingStates> {
   renderLoading = () => {
     const { children, style, prefixCls, text, className, size, fullscreen } = this.props;
     const { visible } = this.state;
+
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${size}`]: size,
-      [`${prefixCls}--fullscreen`]: !!fullscreen,
-      [`${prefixCls}--active`]: !!visible,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--fullscreen`]: fullscreen,
+      [`${prefixCls}--active`]: visible,
     });
 
     const textCls = size === 'xs' ? { display: 'inline' } : {};
 
-    const loadingElement = !!visible && (
+    const loadingElement = visible && (
       <div className={cls}>
         {this.renderIndicator()}
-        {text && (
-          <div className={`${prefixCls}__text`} style={textCls}>
-            {text}
-          </div>
-        )}
+        {text && <div className={`${prefixCls}__text`} style={textCls}>{text}</div>}
       </div>
     );
 
@@ -137,21 +135,17 @@ class Loading extends Component<LoadingProps, LoadingStates> {
       const containerCls = classnames(`${prefixCls}__container`);
       return (
         <div className={cls} style={this.getStyle()}>
-          {!!visible && (
-            <div className={`${prefixCls}__mask`}>
-              <div className={`${prefixCls}__spin`} style={style}>
-                {this.renderIndicator()}
-                {text && (
-                  <div className={`${prefixCls}__text`} style={textCls}>
-                    {text}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
           <div className={containerCls}>
             {children}
           </div>
+          {visible && (
+            <div className={`${prefixCls}__mask`}>
+              <div className={`${prefixCls}__spin`} style={style}>
+                {this.renderIndicator()}
+                {text && <div className={`${prefixCls}__text`} style={textCls}>{text}</div>}
+              </div>
+            </div>
+          )}
         </div>
       );
     }
@@ -159,7 +153,7 @@ class Loading extends Component<LoadingProps, LoadingStates> {
   };
 
   render() {
-    return <>{this.renderLoading()}</>;
+    return this.renderLoading();
   }
 }
 

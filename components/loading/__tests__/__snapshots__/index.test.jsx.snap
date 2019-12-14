@@ -86,6 +86,11 @@ Array [
     class="zw-loading zw-loading--lg zw-loading--active"
   >
     <div
+      class="zw-loading__container"
+    >
+      lg尺寸
+    </div>
+    <div
       class="zw-loading__mask"
     >
       <div
@@ -109,15 +114,15 @@ Array [
         </span>
       </div>
     </div>
-    <div
-      class="zw-loading__container"
-    >
-      lg尺寸
-    </div>
   </div>,
   <div
     class="zw-loading zw-loading--md zw-loading--active"
   >
+    <div
+      class="zw-loading__container"
+    >
+      md尺寸
+    </div>
     <div
       class="zw-loading__mask"
     >
@@ -142,15 +147,15 @@ Array [
         </span>
       </div>
     </div>
-    <div
-      class="zw-loading__container"
-    >
-      md尺寸
-    </div>
   </div>,
   <div
     class="zw-loading zw-loading--sm zw-loading--active"
   >
+    <div
+      class="zw-loading__container"
+    >
+      sm尺寸
+    </div>
     <div
       class="zw-loading__mask"
     >
@@ -174,17 +179,17 @@ Array [
           </svg>
         </span>
       </div>
-    </div>
-    <div
-      class="zw-loading__container"
-    >
-      sm尺寸
     </div>
   </div>,
   <div
     class="zw-loading zw-loading--xs zw-loading--active"
   >
     <div
+      class="zw-loading__container"
+    >
+      xs尺寸
+    </div>
+    <div
       class="zw-loading__mask"
     >
       <div
@@ -207,11 +212,6 @@ Array [
           </svg>
         </span>
       </div>
-    </div>
-    <div
-      class="zw-loading__container"
-    >
-      xs尺寸
     </div>
   </div>,
 ]

@@ -1,21 +1,68 @@
-
 @import '../../style/core/index';
 @import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
 @import "./mixins.scss";
 
 @include b(loading) {
-  @include loading-base();
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  text-align: center;
+  vertical-align: middle;
+
+  @include m(fullscreen) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+  }
+
+  @include m(active) {
+    @include e(container) {
+      opacity: .4;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  @include e (container) {
+    position: relative;
+    transition: opacity .3s;
+  }
+
+  @include e(mask) {
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--loading-mask-color);
+  }
+
+  @include e(spin) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    user-select: none;
+  }
+
+  @include e(text) {
+    font-size: 14px;
+    margin: 3px 0;
+    color: var(--color-text-disabled);
+  }
 
   @include loading-size(
     var(--loading-height-md),
     var(--loading-margin-h-md),
     var(--loading-font-size-md),
-  );
-
-  @include loading-theme(
-    var(--loading-default-svg-color),
-    var(--loading-default-mask-color),
-    var(--loading-default-text-color),
   );
 
   @include m(lg) {
