@@ -72,6 +72,8 @@ class RadioGroup extends Component<RadioGroupProps, RadioGroupStates> {
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--block`]: !!block,
       [`${prefixCls}--ghost`]: !!ghost,
+      [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${shape}`]: shape,
     });
 
     const childrenNode = React.Children.map(children, (element: ReactElement, index) => {

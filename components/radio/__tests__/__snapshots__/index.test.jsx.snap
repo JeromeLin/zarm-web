@@ -2,10 +2,10 @@
 
 exports[`Radio renders Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--button"
 >
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -18,7 +18,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     A
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -31,7 +31,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     B
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -44,7 +44,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
     C
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -61,10 +61,10 @@ exports[`Radio renders Radio Group correctly 1`] = `
 
 exports[`Radio renders checked Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--button"
 >
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -77,7 +77,7 @@ exports[`Radio renders checked Radio Group correctly 1`] = `
     A
   </label>
   <label
-    class="zw-radio zw-radio--checked zw-radio--button"
+    class="zw-radio zw-radio--checked"
   >
     <input
       checked=""
@@ -91,7 +91,7 @@ exports[`Radio renders checked Radio Group correctly 1`] = `
     B
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -104,7 +104,7 @@ exports[`Radio renders checked Radio Group correctly 1`] = `
     C
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -137,10 +137,10 @@ exports[`Radio renders checked Radio correctly 1`] = `
 
 exports[`Radio renders defaultValue Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--button"
 >
   <label
-    class="zw-radio zw-radio--checked zw-radio--button"
+    class="zw-radio zw-radio--checked"
   >
     <input
       checked=""
@@ -154,7 +154,7 @@ exports[`Radio renders defaultValue Radio Group correctly 1`] = `
     A
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -167,7 +167,7 @@ exports[`Radio renders defaultValue Radio Group correctly 1`] = `
     B
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -180,7 +180,7 @@ exports[`Radio renders defaultValue Radio Group correctly 1`] = `
     C
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -230,10 +230,10 @@ exports[`Radio renders normal Radio correctly 1`] = `
 
 exports[`Radio renders value Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--button"
 >
   <label
-    class="zw-radio zw-radio--checked zw-radio--button"
+    class="zw-radio zw-radio--checked"
   >
     <input
       checked=""
@@ -247,7 +247,7 @@ exports[`Radio renders value Radio Group correctly 1`] = `
     A
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -260,7 +260,7 @@ exports[`Radio renders value Radio Group correctly 1`] = `
     B
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
@@ -273,7 +273,7 @@ exports[`Radio renders value Radio Group correctly 1`] = `
     C
   </label>
   <label
-    class="zw-radio zw-radio--button"
+    class="zw-radio"
   >
     <input
       class="zw-radio__input"
