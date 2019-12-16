@@ -63,7 +63,7 @@ module.exports = {
       },
       {
         name: 'Switch',
-        module: () => import('@/components/switch/switch.md'),
+        module: () => import('@/components/switch/demo.md'),
       },
       {
         name: 'Slider',

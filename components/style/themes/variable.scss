@@ -31,8 +31,8 @@
   --zindex-tooltip: 1500;
 
   // 透明度
-  --opacity-disabled: .5;
-  --opacity-tooltip: .8;
+  --opacity-disabled: 0.5;
+  --opacity-tooltip: 0.8;
 
   // 圆角
   --radius-sm: 2px;
@@ -269,6 +269,13 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  //Switch
+  --switch-width-md: 48px;
+  --switch-width-sm: 32px;
+  --switch-height-md: 20px;
+  --switch-height-sm: 16px;
+  --switch-background: #bcbcbc;
 
   // Tooltip
   --tooltip-font-size: 12px;
