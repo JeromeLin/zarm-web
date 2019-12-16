@@ -296,4 +296,26 @@
   --steps-status-error: var(--theme-danger);
   --steps-icon-size: 28px;
   --steps-content-width: 140px;
+
+  // Input
+  --input-focus-shadow: 0 0 0 2px rgba(0, 188, 113, 0.2);
+  --input-default-border: 1px solid var(--input-default-border-color);
+  --input-default-border-color: #e6e6e6;
+  --input-default-color: #343434;
+  --input-height-lg: 40px;
+  --input-height-md: 32px;
+  --input-height-sm: 24px;
+  --input-padding-lg: 6px 11px;
+  --input-padding-md: 4px 11px;
+  --input-padding-sm: 1px 7px;
+  --input-font-size-lg: 16px;
+  --input-font-size-md: 14px;
+  --input-font-size-sm: 12px;
+  --input-disabled-background-color: rgb(250, 250, 250);
+  --input-disabled-color: rgb(144, 144, 144);
+  --input-length-count-color: #bcbcbc;
+  --input-length-max-count-color: #616161;
+  --input-addon-background-color: #f2f2f2;
+  --input-addon-border-color: #d9d9d9;
+  --input-placeholder-color: #bcbcbc;
 }

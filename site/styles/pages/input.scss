@@ -1,0 +1,16 @@
+@import "@site/styles/index";
+
+.input-page {
+  .input-search-wrapper {
+    & + .zw-input-group__prepend,
+    & + .zw-input-group__append {
+      padding: 0;
+      border: 0;
+
+      button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
