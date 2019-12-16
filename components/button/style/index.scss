@@ -1,5 +1,5 @@
 @import '../../style/core/index';
-@import 'node_modules/zarm/components/activity-indicator/style/component.scss';
+@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
 @import 'mixins';
 
 @include b(button) {
@@ -82,6 +82,8 @@
     @include button-ghost(
       var(--button-default-ghost-border),
       var(--button-default-ghost-color),
+      var(--button-default-ghost-hover-border),
+      var(--button-default-ghost-hover-color),
       var(--button-default-ghost-active-border),
       var(--button-default-ghost-active-color)
     );
@@ -114,6 +116,8 @@
     @include button-ghost(
       var(--button-primary-ghost-border),
       var(--button-primary-ghost-color),
+      var(--button-primary-ghost-hover-border),
+      var(--button-primary-ghost-hover-color),
       var(--button-primary-ghost-active-border),
       var(--button-primary-ghost-active-color)
     );
@@ -152,6 +156,8 @@
     @include button-ghost(
       var(--button-danger-ghost-border),
       var(--button-danger-ghost-color),
+      var(--button-danger-ghost-hover-border),
+      var(--button-danger-ghost-hover-color),
       var(--button-danger-ghost-active-border),
       var(--button-danger-ghost-active-color)
     );
@@ -232,7 +238,7 @@
 
     @include m(primary) {
       &:not(:last-child) {
-        border-right-color: #4ed2a6;
+        border-right: 1px solid var(--button-primary-gap-color);
         margin-right: 0 !important;
       }
     }
