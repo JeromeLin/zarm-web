@@ -1,53 +1,231 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading renders hidden Loading correctly 1`] = `
-<div
-  class="ui-loading"
->
+exports[`Loading renders Loading of different size correctly 1`] = `
+Array [
   <div
-    class="ui-loading-spins"
-    style="display:none"
+    class="zw-loading zw-loading--lg zw-loading--active"
   >
     <span
-      class="ui-loading-spin ui-loading-spin-first"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-second"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-third"
-    />
-  </div>
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator--circular"
+    >
+      <svg
+        viewBox="31 31 62 62"
+      >
+        <circle
+          cx="62"
+          cy="62"
+          fill="none"
+          r="28.5"
+          style="stroke-width:5"
+        />
+      </svg>
+    </span>
+  </div>,
   <div
-    class=""
+    class="zw-loading zw-loading--md zw-loading--active"
   >
-    这里是内容
-  </div>
-</div>
+    <span
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator--circular"
+    >
+      <svg
+        viewBox="31 31 62 62"
+      >
+        <circle
+          cx="62"
+          cy="62"
+          fill="none"
+          r="28.5"
+          style="stroke-width:5"
+        />
+      </svg>
+    </span>
+  </div>,
+  <div
+    class="zw-loading zw-loading--sm zw-loading--active"
+  >
+    <span
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+    >
+      <svg
+        viewBox="31 31 62 62"
+      >
+        <circle
+          cx="62"
+          cy="62"
+          fill="none"
+          r="28.5"
+          style="stroke-width:5"
+        />
+      </svg>
+    </span>
+  </div>,
+  <div
+    class="zw-loading zw-loading--xs zw-loading--active"
+  >
+    <span
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+    >
+      <svg
+        viewBox="31 31 62 62"
+      >
+        <circle
+          cx="62"
+          cy="62"
+          fill="none"
+          r="28.5"
+          style="stroke-width:5"
+        />
+      </svg>
+    </span>
+  </div>,
+  <div
+    class="zw-loading zw-loading--lg zw-loading--active"
+  >
+    <div
+      class="zw-loading__container"
+    >
+      lg尺寸
+    </div>
+    <div
+      class="zw-loading__mask"
+    >
+      <div
+        class="zw-loading__spin"
+      >
+        <span
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator--circular"
+        >
+          <svg
+            viewBox="31 31 62 62"
+          >
+            <circle
+              cx="62"
+              cy="62"
+              fill="none"
+              r="28.5"
+              style="stroke-width:5"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div
+    class="zw-loading zw-loading--md zw-loading--active"
+  >
+    <div
+      class="zw-loading__container"
+    >
+      md尺寸
+    </div>
+    <div
+      class="zw-loading__mask"
+    >
+      <div
+        class="zw-loading__spin"
+      >
+        <span
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator--circular"
+        >
+          <svg
+            viewBox="31 31 62 62"
+          >
+            <circle
+              cx="62"
+              cy="62"
+              fill="none"
+              r="28.5"
+              style="stroke-width:5"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div
+    class="zw-loading zw-loading--sm zw-loading--active"
+  >
+    <div
+      class="zw-loading__container"
+    >
+      sm尺寸
+    </div>
+    <div
+      class="zw-loading__mask"
+    >
+      <div
+        class="zw-loading__spin"
+      >
+        <span
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+        >
+          <svg
+            viewBox="31 31 62 62"
+          >
+            <circle
+              cx="62"
+              cy="62"
+              fill="none"
+              r="28.5"
+              style="stroke-width:5"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div
+    class="zw-loading zw-loading--xs zw-loading--active"
+  >
+    <div
+      class="zw-loading__container"
+    >
+      xs尺寸
+    </div>
+    <div
+      class="zw-loading__mask"
+    >
+      <div
+        class="zw-loading__spin"
+      >
+        <span
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+        >
+          <svg
+            viewBox="31 31 62 62"
+          >
+            <circle
+              cx="62"
+              cy="62"
+              fill="none"
+              r="28.5"
+              style="stroke-width:5"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>,
+]
 `;
 
-exports[`Loading renders visible Loading correctly 1`] = `
-<div
-  class="ui-loading"
+exports[`Loading renders Loading useing custom indicator 1`] = `
+<Loading
+  indicator={
+    <div
+      className="custom-indicator"
+    />
+  }
+  prefixCls="zw-loading"
+  size="md"
+  visible={true}
 >
   <div
-    class="ui-loading-spins"
-    style="display:block"
+    className="zw-loading zw-loading--md zw-loading--active"
   >
-    <span
-      class="ui-loading-spin ui-loading-spin-first"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-second"
-    />
-    <span
-      class="ui-loading-spin ui-loading-spin-third"
+    <div
+      className="custom-indicator"
     />
   </div>
-  <div
-    class="ui-loading-inner"
-  >
-    这里是内容
-  </div>
-</div>
+</Loading>
 `;

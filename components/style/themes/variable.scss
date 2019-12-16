@@ -1,4 +1,4 @@
-@import "../core/index";
+@import '../core/index';
 
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
@@ -11,7 +11,7 @@
   --color-text: #343434; // 基本
   --color-text-inverse: #fff; // 反色
   --color-text-placeholder: #a9a9a9; // 文本框提示
-  --color-text-disabled: #909090; // 失效
+  --color-text-disabled: #bcbcbc; // 失效
   --color-text-caption: #909090; // 辅助描述
   --color-link: var(--theme-primary); // 链接
 
@@ -31,8 +31,8 @@
   --zindex-tooltip: 1500;
 
   // 透明度
-  --opacity-disabled: .5;
-  --opacity-tooltip: .8;
+  --opacity-disabled: 0.5;
+  --opacity-tooltip: 0.8;
 
   // 圆角
   --radius-sm: 2px;
@@ -61,6 +61,11 @@
   --font-size-md: 14px;
   --font-size-lg: 16px;
   --font-size-xl: 18px;
+
+  // activity-indicator
+  --activity-indicator-size-md: 16px;
+  --activity-indicator-size-lg: 32px;
+  --activity-indicator-path-color: #e6e6e6;
 
   // Avatar
   --avatar-border-radius: 50%;
@@ -167,11 +172,6 @@
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
 
-  // activity-indicator
-  --activity-indicator-size-md: 16px;
-  --activity-indicator-size-lg: 32px;
-  --activity-indicator-path-color: #e6e6e6;
-
   // Checkbox
   --checkbox-size: 14px;
   --checkbox-radius: var(--radius-sm);
@@ -179,9 +179,52 @@
   --checkbox-background: var(--color-text-inverse);
   --checkbox-disabled-background: #f2f2f2;
 
+  // Loading
+  --loading-height-xs: 12px;
+  --loading-height-md: 24px;
+  --loading-height-lg: 36px;
+  --loading-margin-h-xs: var(--padding-h-xs);
+  --loading-margin-h-md: var(--padding-h-md);
+  --loading-margin-h-lg: var(--padding-h-lg);
+  --loading-font-size-xs: var(--font-size-xs);
+  --loading-font-size-md: var(--font-size-md);
+  --loading-font-size-lg: var(--font-size-lg);
+  --loading-default-svg-color: var(--theme-primary);
+  --loading-default-text-color: var(--color-text-disabled);
+  --loading-default-mask-color: rgba(255, 255, 255, 0.4);
+  --loading-default-mask-zIndex: 1000;
+  --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
+
   // Radio
-  --button-radio-btn-disabled-color: --color-text-caption;
-  --button-radio-btn-disabled-bg: rgba(250, 250, 250, 1);
+  --radio-inner-width: 14px;
+  --radio-inner-height: 14px;
+  --radio-height-sm: 24px;
+  --radio-height-md: 32px;
+  --radio-height-lg: 40px;
+  --radio-font-size-sm: 14px;
+  --radio-font-size-md: 16px;
+  --radio-font-size-lg: 18px;
+  --radio-padding-v-sm: 10px;
+  --radio-padding-v-md: 16px;
+  --radio-padding-v-lg: 16px;
+  --radio-color: var(--color-text);
+  --radio-default-border: #e6e6e6;
+  --radio-default-background: #fff;
+  --radio-disabled-color: #bcbcbc;
+  --radio-disabled-border: #e6e6e6;
+  --radio-disabled-background: #fafafa;
+  --radio-checked-color: #fff;
+  --radio-checked-border: var(--theme-primary);
+  --radio-checked-background: var(--theme-primary);
+  --radio-disabled-checked-color: #fff;
+  --radio-disabled-checked-background: #e6e6e6;
+  --radio-button-color: #909090;
 
   // Menu
   --menu-color: #343434;
@@ -199,38 +242,24 @@
   --menuitem-horizontal-padding: 20px;
   --menuitem-horizontal-height: 56px;
 
-  // Tag
-  --tag-height-lg: 32px;
-  --tag-height-md: 28px;
-  --tag-height-sm: 24px;
-  --tag-height-xs: 20px;
-  --tag-padding-h-lg: 16px;
-  --tag-padding-h: 12px;
-  --tag-font-size: 12px;
-  --tag-icon-size-lg: 14px;
-  --tag-icon-size: 12px;
-  --tag-icon-size-xs: 10px;
-  --tag-color-disabled: var(--color-text-disabled);
-  --tag-disabled-opacity: var(--opacity-disabled);
-  --tag-default-background: #f9f9f9;
-  --tag-default-color: #616161;
-  --tag-default-border: var(--border-color);
-  --tag-primary-color: var(--theme-primary);
-  --tag-success-color: var(--theme-success);
-  --tag-warning-color: var(--theme-warning);
-  --tag-danger-color: var(--theme-danger);
-  --tag-primary-hover-background: var(--theme-primary-light);
-  --tag-primary-active-background: var(--theme-primary-dark);
-  --tag-color-green: 0, 188, 112;
-  --tag-color-blue: 84, 192, 232;
-  --tag-color-orange: 236, 145, 49;
-  --tag-color-red: 255, 80, 80;
+  // Steps
+  --steps-title-color: var(--color-text);
+  --steps-desc-color: var(--color-text-caption);
+  --steps-title-font-size: var(--font-size-md);
+  --steps-desc-font-size: var(--font-size-md);
+  --steps-border-color: var(--border-color);
+  --steps-status-wait: #bcbcbc;
+  --steps-status-process: var(--theme-primary);
+  --steps-status-error: var(--theme-danger);
+  --steps-icon-size: 28px;
+  --steps-content-width: 140px;
 
-  // Icon
-  --icon-font-size-sm: 16px;
-  --icon-font-size-md: 24px;
-  --icon-font-size-lg: 32px;
-  --icon-theme-default: var(--color-text);
+  // Switch
+  --switch-width-md: 48px;
+  --switch-width-sm: 32px;
+  --switch-height-md: 20px;
+  --switch-height-sm: 16px;
+  --switch-background: #bcbcbc;
 
   // Tabs
   --tabs-font-size-sm: 14px;
@@ -261,12 +290,41 @@
   --tabs-default-hover-color: #33c98d;
   --tabs-default-disabled-color: var(--color-text-disabled);
   --tabs-default-icon-color: #bcbcbc;
+  --tabs-default-icon-disabled-color: var(--border-disabled);
+  --tabs-default-icon-hover-color: var(--color-text);
   --tabs-default-active-background: var(--color-text-inverse);
   --tabs-default-line-color: #00bc70;
   --tabs-default-active-color: #00bc70;
   --tabs-default-background-color: var(--color-text-inverse);
   --tabs-default-card-background: #fafafa;
   --tabs-default-noborder-background: #f2f2f2;
+
+  // Tag
+  --tag-height-lg: 32px;
+  --tag-height-md: 28px;
+  --tag-height-sm: 24px;
+  --tag-height-xs: 20px;
+  --tag-padding-h-lg: 16px;
+  --tag-padding-h: 12px;
+  --tag-font-size: 12px;
+  --tag-icon-size-lg: 14px;
+  --tag-icon-size: 12px;
+  --tag-icon-size-xs: 10px;
+  --tag-color-disabled: var(--color-text-disabled);
+  --tag-disabled-opacity: var(--opacity-disabled);
+  --tag-default-background: #f9f9f9;
+  --tag-default-color: #616161;
+  --tag-default-border: var(--border-color);
+  --tag-primary-color: var(--theme-primary);
+  --tag-success-color: var(--theme-success);
+  --tag-warning-color: var(--theme-warning);
+  --tag-danger-color: var(--theme-danger);
+  --tag-primary-hover-background: var(--theme-primary-light);
+  --tag-primary-active-background: var(--theme-primary-dark);
+  --tag-color-green: 0, 188, 112;
+  --tag-color-blue: 84, 192, 232;
+  --tag-color-orange: 236, 145, 49;
+  --tag-color-red: 255, 80, 80;
 
   // Tooltip
   --tooltip-font-size: 12px;
@@ -276,16 +334,4 @@
   --tooltip-dark-background-color: rgba(0, 0, 0, var(--opacity-tooltip));
   --tooltip-padding-v: var(--padding-v-xs);
   --tooltip-padding-h: var(--padding-h-xs);
-
-  // Steps
-  --steps-title-color: var(--color-text);
-  --steps-desc-color: var(--color-text-caption);
-  --steps-title-font-size: var(--font-size-md);
-  --steps-desc-font-size: var(--font-size-md);
-  --steps-border-color: var(--border-color);
-  --steps-status-wait: #bcbcbc;
-  --steps-status-process: var(--theme-primary);
-  --steps-status-error: var(--theme-danger);
-  --steps-icon-size: 28px;
-  --steps-content-width: 140px;
 }

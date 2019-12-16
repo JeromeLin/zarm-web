@@ -24,9 +24,24 @@
         transform: translate(-50%, -50%);
       }
 
+      &:hover {
+        @include b(icon) {
+          color: var(--tabs-default-icon-hover-color);
+        }
+      }
+
       &--disabled {
         cursor: not-allowed;
         pointer-events: auto;
+        @include b(icon) {
+          color: var(--tabs-default-icon-disabled-color);
+        }
+
+        &:hover {
+          @include b(icon) {
+            color: var(--tabs-default-icon-disabled-color);
+          }
+        }
       }
     }
 
@@ -57,6 +72,10 @@
         @include m(wrong) {
           margin: 0 0 0 8px;
           color: var(--tabs-default-icon-color);
+
+          &:hover {
+            color: var(--tabs-default-icon-hover-color);
+          }
         }
       }
     }
