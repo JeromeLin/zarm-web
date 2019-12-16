@@ -44,14 +44,12 @@ class Radio extends Component<RadioProps, RadioStates> {
   }
 
   render() {
-    const { prefixCls, value, disabled, className, children, style, id, shape, type } = this.props;
+    const { prefixCls, value, disabled, className, children, style, id } = this.props;
     const { checked } = this.state;
     // const prefixCls = type === 'button' ? `${currPerfixCls}-button` : currPerfixCls;
     const cls = classnames(className, prefixCls, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--${shape}`]: shape,
-      [`${prefixCls}--${type}`]: type === 'button',
     });
 
     const inputCls = classnames({

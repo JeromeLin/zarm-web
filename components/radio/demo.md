@@ -92,7 +92,7 @@ class Demo extends React.Component {
           <Radio disabled value="选项二">选项二</Radio>
           <Radio value="选项三">选项三</Radio>
         </Radio.Group>
-        <Radio.Group disabled value="选项一" style={{'marginBottom':'15px'}}>
+        <Radio.Group disabled value="选项一" shape='round' style={{'marginBottom':'15px'}}>
           <Radio value="选项一">选项一</Radio>
           <Radio value="选项二">选项二</Radio>
           <Radio value="选项三">选项三</Radio>
@@ -127,21 +127,21 @@ class Demo extends React.Component {
     return (
       <div>
         <div className="multi-rows" style={{'marginBottom':'15px'}}>
-          <Radio.Group size="lg" type="button" onChange={this.onChange}>
+          <Radio.Group size="lg" type="button" onChange={this.onChange} shape='round'>
             <Radio value="选项一">选项一</Radio>
             <Radio value="选项二">选项二</Radio>
             <Radio value="选项三">选项三</Radio>
           </Radio.Group>
         </div>
         <div className="multi-rows" style={{'marginBottom':'15px'}}>
-          <Radio.Group size="md" >
+          <Radio.Group size="md" shape='round'>
             <Radio value="选项一">选项一</Radio>
             <Radio value="选项二">选项二</Radio>
             <Radio value="选项三">选项三</Radio>
           </Radio.Group>
         </div>
-        <div className="multi-rows" style={{'marginBottom':'15px'}}>
-          <Radio.Group size="sm">
+        <div className="multi-rows" style={{'marginBottom':'15px'}} shape='round'>
+          <Radio.Group size="sm" shape='round'>
             <Radio value="选项一">选项一</Radio>
             <Radio value="选项二">选项二</Radio>
             <Radio value="选项三">选项三</Radio>

@@ -1,5 +1,4 @@
-@import '../../style/core/index';
-@import 'mixins';
+@import '../../button/style/mixins.scss';
 
 /* 一般状态 */
 @include b(radio) {
@@ -108,7 +107,7 @@
   // }
 }
 
-/* 按钮样式 */
+/* 组合状态 */
 @include b(radio-group) {
   position: relative;
   display: inline-block;
@@ -117,59 +116,149 @@
   padding: 0 15px;
   transition: all 0.3s ease;
   cursor: pointer;
+  user-select: none;
 
-  @include b(radio) {
-    /* 按钮类型 */
-    @include m(button) {
+  /* 按钮类型 */
+  @include m(button) {
+    @include b(radio) {
+      &:first-child {
+        border-left: 1px solid var(--radio-default-border);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        box-shadow: none !important;
+      }
+
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
       @include e(inner) {
         display: none;
         opacity: 0;
       }
 
-      @include radio-button-base();
-      @include radio-button-theme(
-        var(--radio-button-color),
-        var(--radio-default-border),
-        var(--radio-default-background),
-        var(--radio-checked-color),
-        var(--radio-checked-border),
-        var(--radio-checked-background),
-        var(--radio-disabled-color),
-        var(--radio-disabled-border),
-        var(--radio-disabled-background),
-        var(--radio-disabled-checked-color),
-        var(--radio-disabled-checked-background),
+      @include button-base();
+      @include button-size(
+        var(--button-height-xs),
+        var(--button-padding-h-xs),
+        var(--button-font-size-xs),
+        var(--button-icon-size-xs),
       );
 
-      @include m(rect) {
-        @include radio-button-shape(0);
+      @include button-theme(
+        var(--radio-default-background),
+        var(--radio-default-border),
+        var(--radio-button-color),
+        var(--radio-default-background),
+        var(--radio-default-border),
+        var(--radio-hover-color),
+        var(--radio-default-background),
+        var(--radio-default-border),
+        var(--radio-button-color),
+        var(--radio-disabled-background),
+        var(--radio-disabled-border),
+        var(--radio-disabled-color),
+        var(--button-disabled-opacity),
+      );
+
+      @include m(checked) {
+        color: var(--radio-checked-color);
+        background: var(--radio-checked-background);
+        border-color: var(--radio-checked-border);
+        box-shadow: -1px 0 0 0 var(--radio-checked-border);
+
+        &:first-child {
+          border-color: var(--radio-checked-background);
+        }
+
+        &:hover {
+          color: var(--radio-checked-color);
+        }
       }
 
-      @include m(round) {
-        @include radio-button-shape(var(--radius-md));
+      @include m(disabled) {
+        opacity: 1;
+        @include m(checked) {
+          color: var(--radio-disabled-checked-color);
+          background: var(--radio-disabled-checked-background);
+          border-color: var(--radio-disabled-checked-background);
+          box-shadow: -1px 0 0 0 var(--radio-disabled-checked-background);
+
+          &:hover {
+            color: var(--radio-disabled-checked-color);
+          }
+        }
       }
+
+      // 重写button的行高
+      line-height: calc(var(--button-height-xs) - 2px);
+      border: 1px solid var(--radio-default-border);
+      border-left: 0;
+    }
+  }
+
+  @include m(rect) {
+    @include b(radio) {
+      @include button-shape(0);
+    }
+  }
+
+  @include m(round) {
+    @include b(radio) {
+      @include button-shape(var(--radius-md));
+
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+      }
+    }
+  }
+
+  @include m(lg) {
+    @include b(radio) {
+      @include button-size(
+        var(--button-height-xl),
+        var(--button-padding-h-xl),
+        var(--button-font-size-xl),
+        var(--button-font-size-xl)
+      );
+
+      line-height: calc(var(--button-height-xl) - 2px);
     }
   }
 
   @include m(md) {
-    @include radio-group-button() {
-      @include radio-button-size(var(--radio-height-md), var(--radio-padding-v-md), var(--font-size-md));
-    }
-  }
+    @include b(radio) {
+      @include button-size(
+        var(--button-height-md),
+        var(--button-padding-h-md),
+        var(--button-font-size-md),
+        var(--button-font-size-md)
+      );
 
-  @include m(sm) {
-    @include radio-group-button() {
-      @include radio-button-size(var(--radio-height-sm), var(--radio-padding-v-sm), var(--font-size-sm));
+      line-height: calc(var(--button-height-md) - 2px);
     }
-  }
-
-  @include m(block) {
-    display: block;
   }
 
   @include m(ghost) {
-    @include radio-group-button() {
-      @include radio-button-ghost();
+    @include b(radio) {
+      @include button-ghost (
+        var(--radio-default-border),
+        var(--radio-button-color),
+        var(--radio-default-border),
+        var(--radio-button-color),
+        var(--radio-default-border),
+        var(--radio-button-color),
+      );
+
+      @include m(checked) {
+        background: transparent;
+        color: var(--radio-checked-border);
+
+        &:hover {
+          color: var(--radio-checked-border);
+        }
+      }
     }
   }
 }
