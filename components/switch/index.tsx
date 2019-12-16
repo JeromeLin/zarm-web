@@ -1,67 +1,72 @@
 import React, { Component } from 'react';
+import ActivityIndicator from 'zarm/lib/activity-indicator';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
-class Switch extends Component<PropsType, any> {
+export interface SwitchState {
+  checked?: boolean;
+}
+
+class Switch extends Component<PropsType, SwitchState> {
+  static displayName = 'Switch';
+
   static defaultProps = {
-    prefixCls: 'ui-switch',
-    size: null,
-    value: false,
-    defaultValue: false,
-    isCheckedText: '',
-    unCheckedText: '',
-    onChange: () => {},
+    prefixCls: 'zw-switch',
+    loading: false,
+    size: 'md',
+    defaultChecked: false,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue,
+      checked: props.checked || props.defaultChecked,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
-      this.setState({
-        value: !!nextProps.value,
-      });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (('checked' in nextProps) && nextProps.checked !== prevState.checked) {
+      return {
+        checked: nextProps.checked,
+      };
     }
+    return null;
   }
 
   _onClick() {
-    const { value: stateValue } = this.state;
     const { onChange } = this.props;
-    const value = !stateValue.value;
-    this.setState({
-      value,
-    });
-    onChange(value);
+    const { checked } = this.state;
+
+    const newChecked = !checked;
+    if (!('checked' in this.props)) {
+      this.setState({ checked: newChecked });
+    }
+
+    typeof onChange === 'function' && onChange(newChecked);
   }
 
   render() {
-    const {
-      size, isCheckedText, unCheckedText, isDisabled, style, prefixCls,
-    } = this.props;
-    const { value } = this.state;
-    const disabled = 'disabled' in this.props || isDisabled;
+    const { size, disabled, className, prefixCls, loading, style } = this.props;
+    const { checked } = this.state;
 
-    const cls = classnames({
-      [prefixCls!]: true,
-      checked: value,
-      disabled,
-      [`size-${size}`]: !!size,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--checked`]: checked,
+      [`${prefixCls}--disabled`]: disabled || loading,
+      [`${prefixCls}--loading`]: loading,
+      [`${prefixCls}--${size}`]: size === 'sm',
     });
 
     return (
-      <span
+      <button
+        type="button"
+        role="switch"
+        aria-checked={checked}
         className={cls}
-        onClick={() => !disabled && this._onClick()}
         style={style}
+        onClick={() => !disabled && !loading && this._onClick()}
       >
-        <span className={`${prefixCls}-inner`}>
-          {value ? isCheckedText : unCheckedText}
-        </span>
-      </span>
+        {loading && <ActivityIndicator prefixCls="zw-activity-indicator" />}
+      </button>
     );
   }
 }
