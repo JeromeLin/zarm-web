@@ -52,6 +52,7 @@ class Switch extends Component<PropsType, SwitchState> {
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled || loading,
+      [`${prefixCls}--loading`]: loading,
       [`${prefixCls}--${size}`]: size === 'sm',
     });
 

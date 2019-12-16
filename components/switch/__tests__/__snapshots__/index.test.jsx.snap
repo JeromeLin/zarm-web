@@ -2,28 +2,22 @@
 
 exports[`Switch renders Switch correctly with more props 1`] = `
 <div>
-  <span
+  <button
+    aria-checked="false"
     class="zw-switch zw-switch--disabled zw-switch--sm"
-  >
-    <span
-      class="zw-switch__inner"
-    >
-      <span />
-    </span>
-  </span>
+    role="switch"
+    type="button"
+  />
 </div>
 `;
 
 exports[`Switch renders normal Switch correctly 1`] = `
 <div>
-  <span
+  <button
+    aria-checked="false"
     class="zw-switch"
-  >
-    <span
-      class="zw-switch__inner"
-    >
-      <span />
-    </span>
-  </span>
+    role="switch"
+    type="button"
+  />
 </div>
 `;
