@@ -36,40 +36,36 @@ class Switch extends Component<PropsType, SwitchState> {
   _onClick() {
     const { onChange } = this.props;
     const { checked } = this.state;
-    if (!('onChange' in this.props) && !('checked' in this.props)) {
-      this.setState({
-        checked: !checked,
-      });
-    } else {
-      onChange && onChange(!checked);
+
+    const newChecked = !checked;
+    if (!('checked' in this.props)) {
+      this.setState({ checked: newChecked });
     }
+
+    typeof onChange === 'function' && onChange(newChecked);
   }
 
   render() {
-    const {
-      size, disabled, className, prefixCls, loading, style,
-    } = this.props;
+    const { size, disabled, className, prefixCls, loading, style } = this.props;
     const { checked } = this.state;
+
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled || loading,
-      [`${prefixCls}--${'sm'}`]: size === 'sm',
+      [`${prefixCls}--${size}`]: size === 'sm',
     });
 
     return (
-      <span
+      <button
+        type="button"
+        role="switch"
+        aria-checked={checked}
         className={cls}
-        style={{ ...style }}
+        style={style}
         onClick={() => !disabled && !loading && this._onClick()}
       >
-        <span className={`${prefixCls}__inner`}>
-          {loading ? (
-            <span className={`${prefixCls}__loading`}>
-              <ActivityIndicator prefixCls="zw-activity-indicator" />
-            </span>
-          ) : <span />}
-        </span>
-      </span>
+        {loading && <ActivityIndicator prefixCls="zw-activity-indicator" />}
+      </button>
     );
   }
 }

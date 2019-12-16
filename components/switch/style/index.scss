@@ -1,49 +1,45 @@
-@import "../../style/themes/variable";
-@import "../../style/core/index";
-@import "node_modules/zarm/lib/activity-indicator/style/component.scss";
+@import '../../style/core/index';
+@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
+@import 'mixins';
 
 @include b(switch) {
   position: relative;
   display: inline-block;
-  width: var(--switch-width-md);
-  height: var(--switch-height-md);
+  border: none;
+  border-radius: var(--radius-round);
+  background-color: var(--switch-background);
+  transition: all 0.3s;
   vertical-align: middle;
-  border-radius: var(--switch-height-md);
-  background-color: var(--switch-disabled-background);
-  cursor: pointer;
-  transition: left 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
   user-select: none;
+  cursor: pointer;
 
-  &:after {
+  @include switch-size(
+    var(--switch-width-md),
+    var(--switch-height-md),
+    3,
+  );
+
+  &::after {
+    content: ' ';
     position: absolute;
-    width: calc(var(--switch-height-md) * 0.7);
-    height: calc(var(--switch-height-md) * 0.7);
-    left: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
-    top: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
-    border-radius: 100%;
-    background-color: white;
-    content: " ";
-    cursor: pointer;
-    transition: left 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+    border-radius: var(--radius-round);
+    background-color: var(--color-text-inverse);
+    transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+
+  @include b(activity-indicator) {
+    position: absolute;
+    z-index: 1;
+
+    circle {
+      stroke: var(--switch-background);
+    }
   }
 
   @include m(checked) {
     background-color: var(--theme-primary);
 
-    &:after {
-      left: calc(var(--switch-width-md) * 0.625);
-    }
-    @include e(loading) {
-      width: calc(var(--switch-height-md) * 0.7);
-      height: calc(var(--switch-height-md) * 0.7);
-      left: calc(var(--switch-width-md) * 0.625);
-      transform: scale(0.8);
-
-      @include b(activity-indicator) {
-        width: calc(var(--switch-height-md) * 0.7);
-        height: calc(var(--switch-height-md) * 0.7);
-      }
-
+    @include b(activity-indicator) {
       circle {
         stroke: var(--theme-primary);
       }
@@ -52,117 +48,14 @@
 
   @include m(disabled) {
     cursor: not-allowed;
-    background-color: var(--switch-disabled-background);
-
-    &:after {
-      cursor: not-allowed;
-    }
-
-    @include m(checked) {
-      background-color: var(--theme-primary);
-      border: 1px solid var(--background-primary-disabled);
-      opacity: var(--opacity-disabled);
-    }
+    opacity: var(--opacity-disabled);
   }
 
   @include m(sm) {
-    height: var(--switch-height-sm);
-    width: var(--switch-width-sm);
-    border-radius: var(--switch-height-sm);
-
-    &:after {
-      width: calc(var(--switch-height-sm) * 0.75);
-      height: calc(var(--switch-height-sm) * 0.75);
-      top: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
-      left: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
-    }
-
-    @include m(checked) {
-      &:after {
-        left: calc(var(--switch-width-sm) * 0.54);
-      }
-
-      @include e(inner) {
-        height: var(--switch-height-sm);
-        width: var(--switch-width-sm);
-        display: flex;
-        align-items: center;
-        position: relative;
-      }
-
-      @include e(loading) {
-        width: calc(var(--switch-height-sm) * 0.75);
-        height: calc(var(--switch-height-sm) * 0.75);
-        left: calc(var(--switch-width-sm) * 0.54);
-        transform: scale(0.8);
-
-        @include b(activity-indicator) {
-          width: calc(var(--switch-height-sm) * 0.75);
-          height: calc(var(--switch-height-sm) * 0.75);
-        }
-
-        circle {
-          stroke: var(--theme-primary);
-        }
-      }
-    }
-
-    @include e(inner) {
-      height: var(--switch-height-sm);
-      width: var(--switch-width-sm);
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    @include e(loading) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      width: calc(var(--switch-height-sm) * 0.75);
-      height: calc(var(--switch-height-sm) * 0.75);
-      top: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
-      left: calc((var(--switch-height-sm) - var(--switch-height-sm) * 0.75) / 2);
-      transform: scale(0.8);
-
-      @include b(activity-indicator) {
-        width: calc(var(--switch-height-sm) * 0.75);
-        height: calc(var(--switch-height-sm) * 0.75);
-      }
-
-      circle {
-        stroke: var(--switch-disabled-background);
-      }
-    }
-  }
-
-  @include e(inner) {
-    color: #fff;
-    font-size: 12px;
-    width: var(--switch-width-md);
-    height: var(--switch-height-md);
-  }
-
-  @include e(loading) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    position: relative;
-    width: calc(var(--switch-height-md) * 0.7);
-    height: calc(var(--switch-height-md) * 0.7);
-    left: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
-    top: calc((var(--switch-height-md) - var(--switch-height-md) * 0.7) / 2);
-    transform: scale(0.8);
-
-    @include b(activity-indicator) {
-      width: calc(var(--switch-height-md) * 0.7);
-      height: calc(var(--switch-height-md) * 0.7);
-    }
-
-    circle {
-      stroke: #dedede;
-    }
+    @include switch-size(
+      var(--switch-width-sm),
+      var(--switch-height-sm),
+      2,
+    );
   }
 }
