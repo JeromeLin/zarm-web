@@ -1,0 +1,36 @@
+@mixin switch-size($width, $height, $radix) {
+  width: $width;
+  height: $height;
+
+  &:after {
+    width: calc(#{$height} - #{$radix} * 2px);
+    height: calc(#{$height} - #{$radix} * 2px);
+    left: #{$radix}px;
+    top: #{$radix}px;
+  }
+
+  &:not(&--disabled):active::after {
+    width: calc((#{$height} - #{$radix} * 2px) * 1.33);
+  }
+
+  @include b(activity-indicator) {
+    width: calc(#{$height} - (#{$radix} + 2) * 2px);
+    height: calc(#{$height} - (#{$radix} + 2) * 2px);
+    left: calc(#{$radix}px + 2px);
+    top: calc(#{$radix}px + 2px);
+  }
+
+  @include m(checked) {
+    &:after {
+      left: 100%;
+      transform: translateX(-100%);
+      margin-left: - #{$radix}px;
+    }
+
+    @include b(activity-indicator) {
+      left: 100%;
+      transform: translateX(-100%);
+      margin-left: calc(-1 * (#{$radix}px + 2px));
+    }
+  }
+}
