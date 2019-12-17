@@ -6,6 +6,7 @@ import Icon from '../icon';
 export interface InputState {
   value: any;
   focused: boolean;
+  inputStyle: React.CSSProperties | null;
 }
 
 export function fixControlledValue(value: string | number | null | undefined) {
@@ -36,13 +37,41 @@ class Input extends Component<InputCoreProps, InputState> {
 
   inputRef = React.createRef<HTMLInputElement>();
 
+  prefixNodeRef = React.createRef<HTMLSpanElement>();
+
+  suffixNodeRef = React.createRef<HTMLSpanElement>();
+
   constructor(props) {
     super(props);
     const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
     this.state = {
       value,
       focused: false,
+      inputStyle: null,
     };
+  }
+
+  componentDidMount() {
+    this.setInputStyleWithPrefixOrSuffix();
+  }
+
+  setInputStyleWithPrefixOrSuffix() {
+    const { size, clearable, bordered } = this.props;
+    const inputStyle: React.CSSProperties = {};
+    const clearIconWidth = 14 + 2;
+    const sizeMap = {
+      lg: 40,
+      md: 32,
+      sm: 24,
+    };
+    if (this.prefixNodeRef.current) {
+      inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] / 2;
+    }
+    if (this.suffixNodeRef.current) {
+      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] / 2
+        + (clearable ? clearIconWidth : 0);
+    }
+    this.setState({ inputStyle: bordered === 'underline' ? null : inputStyle });
   }
 
   getInputCls = () => {
@@ -119,7 +148,7 @@ class Input extends Component<InputCoreProps, InputState> {
       <Icon
         type="wrong-round-fill"
         theme="default"
-        className={`${prefixCls}__clear-icon`}
+        className={`${prefixCls}-group__clear-icon`}
         role="button"
         onClick={this.handleReset}
       />
@@ -195,44 +224,47 @@ class Input extends Component<InputCoreProps, InputState> {
       readOnly,
       bordered,
     } = this.props;
-    const { value, focused } = this.state;
+    const { value, focused, inputStyle } = this.state;
 
     if (!prefix && !suffix && !clearable && bordered !== 'underline') {
       return this.renderBaseInput();
     }
 
     const prefixNode = prefix ? (
-      <span className={`${prefixCls}__prefix`}>{prefix}</span>
+      <span className={`${prefixCls}-group__prefix`} ref={this.prefixNodeRef}>{prefix}</span>
     ) : null;
     const suffixNode = (suffix || clearable) ? (
-      <span className={`${prefixCls}__suffix`}>
+      <span className={`${prefixCls}-group__suffix`} ref={this.suffixNodeRef}>
         {this.renderClearIcon()}
         {suffix}
       </span>
     ) : null;
     const underlineNode = (bordered === 'underline' && !readOnly) ? (
       <div>
-        <div className={`${prefixCls}__line`} />
-        <div className={`${prefixCls}__focus-line`} />
+        <div className={`${prefixCls}-group__line`} />
+        <div className={`${prefixCls}-group__focus-line`} />
       </div>
     ) : null;
-    const affixWrapperCls = classnames(className, `${prefixCls}__affix-wrapper`, {
-      [`${prefixCls}__affix-wrapper--${size}`]: size,
-      [`${prefixCls}__affix-wrapper--underline`]: bordered === 'underline',
-      [`${prefixCls}__affix-wrapper--clearable`]: suffix && clearable && value,
-      [`${prefixCls}--focused`]: focused,
+    const groupCls = classnames(className, `${prefixCls}-group`, {
+      [`${prefixCls}-group--${size}`]: size,
+      [`${prefixCls}-group--underline`]: bordered === 'underline',
+      [`${prefixCls}-group--clearable`]: suffix && clearable && value,
+      [`${prefixCls}-group--focused`]: focused,
     });
+    const wrapperCls = classnames(`${prefixCls}-group__wrapper`);
     const inputCls = this.getInputCls();
 
     return (
-      <div className={affixWrapperCls} style={style}>
-        {prefixNode}
-        {React.cloneElement(this.renderBaseInput(), {
-          style: null,
-          className: classnames(inputCls),
-        })}
-        {suffixNode}
-        {underlineNode}
+      <div className={groupCls} style={style}>
+        <div className={wrapperCls}>
+          {prefixNode}
+          {React.cloneElement(this.renderBaseInput(), {
+            style: inputStyle,
+            className: classnames(inputCls),
+          })}
+          {suffixNode}
+          {underlineNode}
+        </div>
       </div>
     );
   };
