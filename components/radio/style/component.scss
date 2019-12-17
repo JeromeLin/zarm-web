@@ -182,6 +182,10 @@
         color: var(--radio-disabled-color);
         border-color: var(--radio-disabled-border);
 
+        @include m(checked) {
+          background-color: var(--radio-disabled-checked-background);
+        }
+
         &:first-child {
           border-color: var(--radio-disabled-border);
         }
