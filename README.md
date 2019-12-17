@@ -11,6 +11,7 @@
 ## Version 版本
 
 - 历史版本：[![npm package](https://img.shields.io/npm/v/dragon-ui.svg)](https://www.npmjs.org/package/dragon-ui)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJeromeLin%2Fzarm-web.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FJeromeLin%2Fzarm-web?ref=badge_shield)
 - 开发版：暂未发布
 
 
@@ -83,3 +84,6 @@ document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ## License
 
 MIT
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJeromeLin%2Fzarm-web.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FJeromeLin%2Fzarm-web?ref=badge_large)
