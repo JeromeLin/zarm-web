@@ -212,9 +212,10 @@ exports[`Button renders loading Button correctly 1`] = `
     type="button"
   >
     <span
-      class="zw-activity-indicator zw-activity-indicator--circular"
+      class="zw-activity-indicator zw-activity-indicator__circular--loading"
     >
       <svg
+        class="zw-activity-indicator__circular"
         viewBox="31 31 62 62"
       >
         <circle

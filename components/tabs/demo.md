@@ -48,7 +48,7 @@ class Demo extends React.Component {
             <Button onClick={() => this.handleSize('lg')}>lg</Button>
           </Button.Group>
         </div>
-        <Tabs type="line" onChange={(i) => console.log(i)} value={0} size={this.state.size}>
+        <Tabs type="line" onChange={(i) => console.log(i)} size={this.state.size}>
           {
               this.state.fields.map((item, index) => (
                 <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
@@ -75,6 +75,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      value: 2,
       fields: [{
         closable: false,
         title: "Tab1",
@@ -107,7 +108,7 @@ class Demo extends React.Component {
   }
   render() {
     return (
-      <Tabs type="line" onChange={(i) => console.log(i)} value={2} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
+      <Tabs type="line" value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
         {
             this.state.fields.map((item, index) => (
               <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
