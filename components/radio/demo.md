@@ -23,6 +23,7 @@ class Demo extends React.Component {
 
         <Radio
           value="a"
+          checked={false}
           onChange={(e) => this.onChange(e)}
           style={{'marginRight':'15px'}}
         >
@@ -62,7 +63,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 无底色按钮样式/有底色按钮样式
+## 按钮样式
 ```jsx
 
 import { Radio } from 'zarm-web';
@@ -180,5 +181,4 @@ ReactDOM.render(<Demo />, mountNode);
 | className | string | - | 追加类名 |
 | defaultValue | number ， string | - | 初始选中值|
 | type | 'button', 'normal' | 'button' | 显示类型|
-| ghost | boolean | false | 按钮类型是否为幽灵按钮|
 | shape | 'radius' , 'rect' , 'round' | radius | 形状。 type为button类型时有效|
