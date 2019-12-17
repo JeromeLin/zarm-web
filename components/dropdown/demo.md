@@ -14,7 +14,7 @@ class Demo1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropdown: false,
+      dropdown: true,
       dropdown2:false,
       dropdown3:false,
       dropdown4:false
@@ -37,10 +37,9 @@ class Demo1 extends React.Component {
           shape="radius"
           visible={this.state.dropdown}
           content={overlay}
-          visible={this.state.dropdown2}
           onVisibleChange={(visible)=>{
             this.setState({
-              dropdown2:visible
+              dropdown:visible
             });
           }}
           >
@@ -59,10 +58,10 @@ class Demo1 extends React.Component {
         <Dropdown
           trigger="hover"
           content={overlay}
-          visible={this.state.dropdown3}
+          visible={this.state.dropdown2}
           onVisibleChange={(visible)=>{
             this.setState({
-              dropdown3:visible
+              dropdown2:visible
             });
           }}
           >
@@ -74,15 +73,119 @@ class Demo1 extends React.Component {
         <Dropdown
           trigger="contextMenu"
           content={overlay}
-          visible={this.state.dropdown4}
+          visible={this.state.dropdown3}
           onVisibleChange={(visible)=>{
             this.setState({
-              dropdown4:visible
+              dropdown3:visible
             });
           }}
           >
             <Button theme="primary">
               right click me
+            </Button>
+        </Dropdown>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo1 />, mountNode);
+```
+
+## 显示圆角
+
+通过`shape=radius`设置圆角。
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: false,
+    }
+  }
+
+  change = (visible) => {
+    this.setState({
+      dropdown: visible
+    });
+  }
+  render() {
+    const overlay = <Menu>
+                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
+                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
+              </Menu>;
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        <Dropdown
+          trigger="click"
+          content={overlay}
+          shape="radius"
+          visible={this.state.dropdown}
+          onVisibleChange={(visible)=>{
+            this.setState({
+              dropdown:visible
+            });
+          }}
+          >
+            <Button theme="primary">
+              click me
+            </Button>
+        </Dropdown>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo1 />, mountNode);
+```
+
+## 禁用状态
+
+通过`disable`设置禁用状态。
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: false,
+    }
+  }
+
+  change = (visible) => {
+    this.setState({
+      dropdown: visible
+    });
+  }
+  render() {
+    const overlay = <Menu>
+                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
+                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
+              </Menu>;
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        <Dropdown
+          disabled
+          trigger="click"
+          content={overlay}
+          shape="radius"
+          visible={this.state.dropdown}
+          triggerProps={{
+            className: 'spa',
+          }}
+          onVisibleChange={(visible)=>{
+            this.setState({
+              dropdown:visible
+            });
+          }}
+          >
+            <Button disabled theme="primary">
+              click me
             </Button>
         </Dropdown>
       </div>

@@ -10,12 +10,3 @@ export interface PropsType extends PopperProps, HTMLAttributes<HTMLDivElement> {
   triggerProps?: HTMLAttributes<HTMLSpanElement>;
   onVisibleChange: (visible: boolean) => void;
 }
-
-export interface StateType {
-  visible?: boolean;
-  positionInfo: {
-    left: number;
-    top: number;
-  };
-  animationState: string | null;
-}

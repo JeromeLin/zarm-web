@@ -48,21 +48,19 @@ export default class Dropdown extends React.Component<PropsType> {
     if (disabled) {
       return;
     }
-    if (onVisibleChange) {
-      onVisibleChange(visible);
-    }
+    onVisibleChange(visible);
   };
 
   onClick = () => {
-    const { trigger, onVisibleChange, visible } = this.props;
+    const { trigger, visible } = this.props;
     if (trigger !== 'click') {
       return;
     }
-    onVisibleChange(!visible);
+    this.onVisibleChange(!visible);
   };
 
   onMouseEnter = () => {
-    const { trigger, onVisibleChange, visible } = this.props;
+    const { trigger, visible } = this.props;
     if (trigger !== 'hover') {
       return;
     }
@@ -70,27 +68,27 @@ export default class Dropdown extends React.Component<PropsType> {
       clearTimeout(this.hoverTimer);
     }
     if (!visible) {
-      onVisibleChange(true);
+      this.onVisibleChange(true);
     }
   };
 
   onMouseLeave = () => {
-    const { trigger, onVisibleChange, visible } = this.props;
+    const { trigger, visible } = this.props;
     if (trigger !== 'hover' || !visible) {
       return;
     }
     this.hoverTimer = setTimeout(() => {
-      onVisibleChange(false);
+      this.onVisibleChange(false);
     }, 300);
   };
 
   onContextMenu = (e: React.MouseEvent<HTMLSpanElement>) => {
-    const { trigger, onVisibleChange, visible } = this.props;
+    const { trigger, visible } = this.props;
     if (trigger !== 'contextMenu') {
       return;
     }
     e.preventDefault();
-    onVisibleChange(!visible);
+    this.onVisibleChange(!visible);
   };
 
   render() {

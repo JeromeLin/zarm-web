@@ -29,6 +29,7 @@
 
   // 堆叠顺序
   --zindex-tooltip: 1500;
+  --zindex-dropdown: 1500;
 
   // 透明度
   --opacity-disabled: 0.5;
@@ -296,4 +297,7 @@
   --steps-status-error: var(--theme-danger);
   --steps-icon-size: 28px;
   --steps-content-width: 140px;
+
+  // dropdown
+  --dropdown-popup-index: var(--zindex-dropdown);
 }

@@ -8,6 +8,7 @@
   text-align: left;
   will-change: transform, opacity;
   margin: 5px 0;
+  z-index: var(--dropdown-popup-index);
 
   @include m(rect) {
     border-radius: 0;
