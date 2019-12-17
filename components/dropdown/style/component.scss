@@ -1,25 +1,21 @@
-@mixin dropdown-size($border-radius) {
-  &.radius {
-    border-radius: $border-radius;
-  }
-}
+@import '../../style/themes/variable';
 
-.ui-dropdown-trigger-box {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.ui-dropdown {
-  @include dropdown-size($base-radius);
-
-  min-width: 100%;
+@include b(dropdown) {
+  width: auto;
   background-color: #fff;
   border: 1px solid #d9d9d9;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 0, 0, 0.17);
   text-align: left;
   will-change: transform, opacity;
+  margin: 5px 0;
+  z-index: var(--dropdown-popup-index);
 
-  &.ui-dropdown-hidden {
-    display: none;
+  @include m(rect) {
+    border-radius: 0;
+  }
+
+  @include m(radius) {
+    border-radius: 4px;
+    overflow: hidden;
   }
 }

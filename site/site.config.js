@@ -185,7 +185,7 @@ module.exports = {
       },
       {
         name: 'Dropdown',
-        module: () => import('@/components/dropdown/dropdown.md'),
+        module: () => import('@/components/dropdown/demo.md'),
       },
     ],
     others: [

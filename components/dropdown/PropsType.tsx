@@ -1,31 +1,12 @@
-type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
-export type trigger = 'click' | 'hover' | 'contextMenu';
+import { HTMLAttributes } from 'react';
+import PopperProps from 'zarm/lib/popper/PropsType';
 
-interface BasicPropsType {
-  prefixCls?: string;
-  visible?: boolean;
-  overlay?: React.ReactElement<any>;
-  placement?: placement;
-  className?: string;
-  radius?: boolean;
-  isRadius?: boolean;
-  triggerBoxStyle?: React.CSSProperties;
-  trigger?: trigger;
-  disabled?: boolean;
-  zIndex?: number;
-  hideOnClick?: boolean;
-  notRenderInDisabledMode?: boolean;
-  onVisibleChange(flag: boolean): void;
-  getPopupContainer?(): HTMLElement;
-}
+export type Trigger = 'click' | 'hover' | 'contextMenu';
 
-export type propsType = React.HTMLAttributes<any> & BasicPropsType;
-
-export interface StateType {
-  visible?: boolean;
-  positionInfo: {
-    left: number;
-    top: number;
-  };
-  animationState: string | null;
+export interface PropsType extends PopperProps, HTMLAttributes<HTMLDivElement> {
+  prefixCls: string;
+  disabled: boolean;
+  shape: 'radius' | 'rect';
+  triggerProps?: HTMLAttributes<HTMLSpanElement>;
+  onVisibleChange: (visible: boolean) => void;
 }
