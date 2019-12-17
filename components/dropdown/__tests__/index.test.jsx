@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { render, mount, shallow } from 'enzyme';
+import React from 'react';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Dropdown from '../index';
 import Button from '../../button';
@@ -74,7 +74,6 @@ describe('Dropdown', () => {
   it('trigger onVisibleChange correctly when props trigger is hover', async () => {
     let visible = false;
     const doneChange = jest.fn();
-    const onEnter = jest.fn();
     const wrapper = mount(
       <Dropdown
         visible={visible}
