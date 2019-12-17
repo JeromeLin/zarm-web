@@ -8,7 +8,7 @@ describe('Switch', () => {
     const wrapper = render(
       <div>
         <Switch />
-      </div>
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -17,8 +17,8 @@ describe('Switch', () => {
   it('renders Switch correctly with more props', () => {
     const wrapper = render(
       <div>
-        <Switch disabled size="sm" isCheckedText="是" unCheckedText="否" />
-      </div>
+        <Switch disabled size="sm" />
+      </div>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -26,22 +26,37 @@ describe('Switch', () => {
 
   it('behaves correctly when receving new value', () => {
     const wrapper = mount(
-      <Switch defaultValue={false} />
+      <Switch defaultChecked={false} />,
     );
 
-    expect(wrapper.find('.ui-switch').hasClass('checked')).toBeFalsy();
-    wrapper.setProps({ value: true });
-    expect(wrapper.find('.ui-switch').hasClass('checked')).toBeTruthy();
+    expect(wrapper.find('.zw-switch').hasClass('zw-switch--checked')).toBeFalsy();
+    wrapper.find('.zw-switch').simulate('click');
+    expect(wrapper.find('.zw-switch').hasClass('zw-switch--checked')).toBeTruthy();
   });
 
   it('behaves correctly when toggling status', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Switch defaultValue={false} onChange={onChange} />
+      <Switch defaultChecked={false} onChange={onChange} />,
     );
 
-    wrapper.find('.ui-switch').simulate('click');
+    const wrapperOpen = mount(
+      <Switch defaultChecked={false} onChange={onChange} />,
+    );
+
+    wrapper.find('.zw-switch').simulate('click');
+    expect(onChange).toHaveBeenCalledWith(true);
+
+    wrapperOpen.find('.zw-switch').simulate('click');
     expect(onChange).toHaveBeenCalledWith(true);
   });
-});
 
+  it('switch with loading status', () => {
+    const wrapper = mount(
+      <Switch defaultChecked />,
+    );
+    expect(wrapper.exists('.zw-switch--loading')).toEqual(false);
+    wrapper.setProps({ loading: true });
+    expect(wrapper.exists('.zw-switch--loading')).toEqual(true);
+  });
+});
