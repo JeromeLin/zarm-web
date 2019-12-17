@@ -61,7 +61,7 @@
       }
 
       &:not(:first-child) {
-        padding-left: 30px;
+        //padding-left: 30px;
       }
     }
 
@@ -90,7 +90,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -1px;
+      bottom: 0;
       margin: 0;
       height: 1px;
       border: none;
@@ -101,7 +101,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -1px;
+      bottom: 0;
       transform: scaleX(0);
       margin: 0;
       height: 2px;
@@ -154,10 +154,16 @@
         line-height: 0;
         flex-shrink: 0;
         white-space: nowrap;
+
+        @include e(clear-icon) {
+          margin-right: 12px;
+          transform: translate(-50%, 50%);
+        }
       }
     }
 
     @include e(clear-icon) {
+      margin-right: 4px;
       cursor: pointer;
       transition: all 0.3s;
       color: rgba(0, 0, 0, 0.25);

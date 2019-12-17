@@ -9,7 +9,6 @@ export type InputProps = InputCoreProps | TextAreaProps;
 export interface InputCommonProps {
   prefixCls?: string;
   shape?: InputShape;
-  width?: number | string;
   size?: InputSize;
 }
 

@@ -129,7 +129,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input style={{ marginBottom: 16 }} prefix="¥" suffix="元" placeholder="请输入" />
+        <Input style={{ marginBottom: 16 }} clearable prefix="¥" suffix="元" placeholder="请输入" />
         <Input size="md" style={{ marginBottom: 16 }} prefix={<Icon type="keyboard" />} suffix={<Icon type="date" />} placeholder="请输入" />
       </div>
     )
@@ -217,7 +217,6 @@ ReactDOM.render(<Demo />, mountNode);
 | type | string | 'text' | 类型，可选值 `text`、`textarea`、 |
 | value | string | - | 值 |
 | defaultValue | string | - | 初始值 |
-| width | string/number | - | 宽度 |
 | size | string | md | 尺寸 type为text生效 可选值为 `lg`、 `md`、`sm` |
 | prefix | ReactNode | - |带有前缀图标的 input |
 | suffix | ReactNode | - | 带有后缀图标的 input |

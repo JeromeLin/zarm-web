@@ -6,6 +6,7 @@ import Icon from '../icon';
 export interface InputState {
   value: any;
   focused: boolean;
+  inputStyle: any;
 }
 
 export function fixControlledValue(value: string | number | null | undefined) {
@@ -36,13 +37,41 @@ class Input extends Component<InputCoreProps, InputState> {
 
   inputRef = React.createRef<HTMLInputElement>();
 
+  prefixNodeRef = React.createRef<HTMLSpanElement>();
+
+  suffixNodeRef = React.createRef<HTMLSpanElement>();
+
   constructor(props) {
     super(props);
     const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
     this.state = {
       value,
       focused: false,
+      inputStyle: null,
     };
+  }
+
+  componentDidMount() {
+    this.setInputStyleWithPrefixOrSuffix();
+  }
+
+  setInputStyleWithPrefixOrSuffix() {
+    const { size, clearable, bordered } = this.props;
+    const inputStyle: React.CSSProperties = {};
+    const clearIconWidth = 14 + 2;
+    const sizeMap = {
+      lg: 40,
+      md: 32,
+      sm: 24,
+    };
+    if (this.prefixNodeRef.current) {
+      inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] / 2;
+    }
+    if (this.suffixNodeRef.current) {
+      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] / 2
+        + (clearable ? clearIconWidth : 0);
+    }
+    this.setState({ inputStyle: bordered === 'underline' ? null : inputStyle });
   }
 
   getInputCls = () => {
@@ -195,17 +224,17 @@ class Input extends Component<InputCoreProps, InputState> {
       readOnly,
       bordered,
     } = this.props;
-    const { value, focused } = this.state;
+    const { value, focused, inputStyle } = this.state;
 
     if (!prefix && !suffix && !clearable && bordered !== 'underline') {
       return this.renderBaseInput();
     }
 
     const prefixNode = prefix ? (
-      <span className={`${prefixCls}__prefix`}>{prefix}</span>
+      <span className={`${prefixCls}__prefix`} ref={this.prefixNodeRef}>{prefix}</span>
     ) : null;
     const suffixNode = (suffix || clearable) ? (
-      <span className={`${prefixCls}__suffix`}>
+      <span className={`${prefixCls}__suffix`} ref={this.suffixNodeRef}>
         {this.renderClearIcon()}
         {suffix}
       </span>
@@ -228,7 +257,7 @@ class Input extends Component<InputCoreProps, InputState> {
       <div className={affixWrapperCls} style={style}>
         {prefixNode}
         {React.cloneElement(this.renderBaseInput(), {
-          style: null,
+          style: inputStyle,
           className: classnames(inputCls),
         })}
         {suffixNode}
