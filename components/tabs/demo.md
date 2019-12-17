@@ -108,7 +108,7 @@ class Demo extends React.Component {
   }
   render() {
     return (
-      <Tabs type="line" onChange={(i) => console.log(i)} value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
+      <Tabs type="line" value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
         {
             this.state.fields.map((item, index) => (
               <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
