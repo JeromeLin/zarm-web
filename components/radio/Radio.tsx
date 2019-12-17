@@ -37,16 +37,18 @@ class Radio extends Component<RadioProps, RadioStates> {
 
   onClick(e) {
     const { onChange } = this.props;
-    this.setState({
-      checked: true,
-    });
-    onChange && onChange(e);
+
+    if (!('checked' in this.props)) {
+      this.setState({ checked: e.target.checked });
+    }
+
+    typeof onChange === 'function' && onChange(e);
   }
 
   render() {
     const { prefixCls, value, disabled, className, children, style, id } = this.props;
     const { checked } = this.state;
-    // const prefixCls = type === 'button' ? `${currPerfixCls}-button` : currPerfixCls;
+
     const cls = classnames(className, prefixCls, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,

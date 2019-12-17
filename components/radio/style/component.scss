@@ -12,6 +12,7 @@
   outline: none;
   cursor: pointer;
   user-select: none;
+  background: #fff;
 
   @include e(inner) {
     position: relative;
@@ -164,12 +165,11 @@
 
       @include m(checked) {
         color: var(--radio-checked-color);
-        background: var(--radio-checked-background);
         border-color: var(--radio-checked-border);
         box-shadow: -1px 0 0 0 var(--radio-checked-border);
 
         &:first-child {
-          border-color: var(--radio-checked-background);
+          border-color: var(--radio-checked-border);
         }
 
         &:hover {
@@ -179,15 +179,15 @@
 
       @include m(disabled) {
         opacity: 1;
-        @include m(checked) {
-          color: var(--radio-disabled-checked-color);
-          background: var(--radio-disabled-checked-background);
-          border-color: var(--radio-disabled-checked-background);
-          box-shadow: -1px 0 0 0 var(--radio-disabled-checked-background);
+        color: var(--radio-disabled-color);
+        border-color: var(--radio-disabled-border);
 
-          &:hover {
-            color: var(--radio-disabled-checked-color);
-          }
+        &:first-child {
+          border-color: var(--radio-disabled-border);
+        }
+
+        &:hover {
+          color: var(--radio-disabled-color);
         }
       }
 
@@ -237,28 +237,6 @@
       );
 
       line-height: calc(var(--button-height-md) - 2px);
-    }
-  }
-
-  @include m(ghost) {
-    @include b(radio) {
-      @include button-ghost (
-        var(--radio-default-border),
-        var(--radio-button-color),
-        var(--radio-default-border),
-        var(--radio-button-color),
-        var(--radio-default-border),
-        var(--radio-button-color),
-      );
-
-      @include m(checked) {
-        background: transparent;
-        color: var(--radio-checked-border);
-
-        &:hover {
-          color: var(--radio-checked-border);
-        }
-      }
     }
   }
 }

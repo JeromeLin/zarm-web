@@ -198,11 +198,8 @@
   --radio-disabled-color: #bcbcbc;
   --radio-disabled-border: #e6e6e6;
   --radio-disabled-background: #fafafa;
-  --radio-checked-color: #fff;
+  --radio-checked-color: var(--theme-primary);
   --radio-checked-border: var(--theme-primary);
-  --radio-checked-background: var(--theme-primary);
-  --radio-disabled-checked-color: #fff;
-  --radio-disabled-checked-background: #e6e6e6;
   --radio-button-color: #909090;
 
   // Menu
