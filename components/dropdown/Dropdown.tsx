@@ -93,15 +93,16 @@ export default class Dropdown extends React.Component<PropsType> {
 
   render() {
     const {
+      visible,
       children,
       className,
       prefixCls,
       onVisibleChange,
-      visible,
       disabled,
       content,
       trigger,
       triggerProps,
+      popperProps,
       shape,
       ...others
     } = this.props;
@@ -112,6 +113,7 @@ export default class Dropdown extends React.Component<PropsType> {
     });
     const dropdownContent = (
       <div
+        {...popperProps}
         ref={this.popperContenRef}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}

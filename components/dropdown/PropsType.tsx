@@ -8,5 +8,6 @@ export interface PropsType extends PopperProps, HTMLAttributes<HTMLDivElement> {
   disabled: boolean;
   shape: 'radius' | 'rect';
   triggerProps?: HTMLAttributes<HTMLSpanElement>;
+  popperProps?: HTMLAttributes<HTMLDivElement>;
   onVisibleChange: (visible: boolean) => void;
 }
