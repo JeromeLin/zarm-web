@@ -125,6 +125,7 @@ class Tabs extends Component<TabsProps, any> {
     e.stopPropagation();
     const { onTabClose } = this.props;
     if (!disabled) {
+      this.setActiveLineStyle();
       onTabClose(index);
     }
   };
@@ -151,6 +152,15 @@ class Tabs extends Component<TabsProps, any> {
     onPrevClick && onPrevClick(e);
   };
 
+  getActiveNode = (node) => {
+    if (node) {
+      if (this.activeTab !== node) {
+        this.activeTab = node;
+        this.setActiveLineStyle();
+      }
+    }
+  };
+
   updateTabBar(target) {
     const { direction } = this.props;
     const { scrollOffset, headerWidth, headerHeight, isArrowShown } = this.state;
@@ -166,8 +176,6 @@ class Tabs extends Component<TabsProps, any> {
     };
     this.setState({
       scrollOffset: isArrowShown ? getScrollOffset() : scrollOffset,
-    }, () => {
-      this.setActiveLineStyle();
     });
   }
 
@@ -220,7 +228,7 @@ class Tabs extends Component<TabsProps, any> {
         [`${prefixCls}__header__item--disabled`]: !!item.props.disabled,
         [`${prefixCls}__header__item--active`]: $index === value,
       });
-      const bindActiveRef = $index === value ? { ref: (node) => { this.activeTab = node; } } : {};
+      const bindActiveRef = $index === value ? { ref: this.getActiveNode } : {};
 
       return (
         <div
