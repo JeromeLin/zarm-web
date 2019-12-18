@@ -100,15 +100,10 @@ class Demo extends React.Component {
       }]
     };
   }
-  onTabClose = (targetIndex) => {
-    const { fields } = this.state;
-    this.setState({
-      fields: fields.filter((item, index) => targetIndex !== index),
-    });
-  }
+
   render() {
     return (
-      <Tabs type="line" value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
+      <Tabs type="line" value={this.state.value} onChange={(i) => this.setState({value: i})} size={this.state.size} animated={this.state.animate}>
         {
             this.state.fields.map((item, index) => (
               <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
@@ -301,6 +296,77 @@ class Demo extends React.Component {
           </Tabs>
         </div>
       </>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## close tab
+
+```jsx
+import { Tabs, Button } from 'zarm-web';
+const { Tab } = Tabs;
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 2,
+      fields: [{
+        closable: true,
+        title: "Tab1",
+        key: "1"
+      }, {
+        closable: true,
+        title: "Tab2",
+        key: "2",
+      }, {
+        closable: true,
+        title: "Tab3",
+        key: "3",
+      }, {
+        closable: true,
+        title: "Tab4",
+        key: "4"
+      }, {
+        closable: true,
+        title: "Tab5",
+        key: "5",
+      }]
+    };
+  }
+  
+  onTabClose = (targetIndex) => {
+    const { fields, value } = this.state;
+    const filterFields = fields.filter((item, index) => targetIndex !== index);
+    let currentValue;
+    if (targetIndex !== 0) {
+      if (targetIndex > value) {
+        currentValue = value;
+      } else {
+        currentValue = value - 1
+      }
+    } else {
+      currentValue = 0;
+    }
+    this.setState({
+      fields: filterFields,
+      value: currentValue,
+    });
+  }
+  render() {
+    return (
+      <Tabs type="line" value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
+        {
+            this.state.fields.map((item, index) => (
+              <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
+                这是选项卡{item.key}的文字
+              </Tab>
+            ))
+          }
+      </Tabs>
     );
   }
 }
