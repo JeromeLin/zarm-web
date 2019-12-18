@@ -13,13 +13,13 @@
   cursor: pointer;
   user-select: none;
   background: #fff;
+  margin-right: 24px;
 
   @include e(inner) {
     position: relative;
-    margin-right: 4px;
-    vertical-align: middle;
     left: 0;
     display: inline-block;
+    vertical-align: sub;
     width: var(--radio-inner-width);
     height: var(--radio-inner-width);
     border: 1px solid var(--button-default-border);
@@ -28,7 +28,7 @@
     transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
 
     & + * {
-      vertical-align: middle;
+      margin: 0 r(8);
     }
 
     &:after {
@@ -122,6 +122,7 @@
   /* 按钮类型 */
   @include m(button) {
     @include b(radio) {
+      margin: 0;
       &:first-child {
         border-left: 1px solid var(--radio-default-border);
         border-top-right-radius: 0;
@@ -137,6 +138,10 @@
       @include e(inner) {
         display: none;
         opacity: 0;
+
+        & + span {
+          margin: 0;
+        }
       }
 
       @include button-base();
@@ -222,12 +227,12 @@
     @include b(radio) {
       @include button-size(
         var(--button-height-xl),
-        var(--button-padding-h-xl),
-        var(--button-font-size-xl),
-        var(--button-font-size-xl)
+        var(--button-padding-h-lg),
+        var(--button-font-size-lg),
+        var(--button-font-size-lg)
       );
 
-      line-height: calc(var(--button-height-xl) - 2px);
+      line-height: calc(var(--button-height-lg) - 2px);
     }
   }
 

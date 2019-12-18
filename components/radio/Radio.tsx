@@ -74,7 +74,7 @@ class Radio extends Component<RadioProps, RadioStates> {
           onChange={(e) => !disabled && this.onClick(e)}
         />
         <span className={innerCls} />
-        {children}
+        {children && <span>{children}</span>}
       </label>
     );
   }
