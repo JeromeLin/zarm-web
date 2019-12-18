@@ -123,6 +123,7 @@
   @include m(button) {
     @include b(radio) {
       margin: 0;
+
       &:first-child {
         border-left: 1px solid var(--radio-default-border);
         border-top-right-radius: 0;
