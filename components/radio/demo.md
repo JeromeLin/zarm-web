@@ -15,36 +15,32 @@ class Demo extends React.Component {
       <div className="za-row">
         <Radio
           value="a"
-          style={{'marginRight':'15px'}}
           onChange={(e) => this.onChange(e)}
         >
-          <span className="content">未选中</span>
+          未选中
         </Radio>
 
         <Radio
           value="a"
           checked={false}
           onChange={(e) => this.onChange(e)}
-          style={{'marginRight':'15px'}}
         >
-          <span className="content">hover</span>
+          hover
         </Radio>
 
-         <Radio
+        <Radio
           checked
-          style={{'marginRight':'15px'}}
           onChange={(e) => this.onChange(e)}
         >
-          <span className="content">已选中</span>
+          已选中
         </Radio>
 
-         <Radio
+        <Radio
           value="a"
           disabled= {true}
-          style={{'marginRight':'15px'}}
           onChange={(e) => this.onChange(e)}
         >
-          <span className="content" >禁用</span>
+          禁用
         </Radio>
 
          <Radio
@@ -53,7 +49,7 @@ class Demo extends React.Component {
           disabled={true}
           onChange={(e) => this.onChange(e)}
         >
-          <span className="content" >禁用</span>
+          选中禁用
         </Radio>
       </div>
     )
