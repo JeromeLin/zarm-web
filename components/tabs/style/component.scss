@@ -1,6 +1,7 @@
 @import './mixin';
 
 @include b(tabs) {
+  position: relative;
   overflow: hidden;
 
   @include e(header) {
@@ -294,6 +295,10 @@
         &--active {
           border-bottom: 1px solid var(--tabs-default-background-color);
           background: var(--tabs-default-active-background);
+        }
+
+        &:last-child {
+          margin-right: 0;
         }
       }
     }
