@@ -79,7 +79,7 @@ describe('Input', () => {
     };
     const wrapper = mount(<Input clearable value="111" onChange={onChange} />);
     wrapper
-      .find('.zw-input__clear-icon')
+      .find('.zw-input-group__clear-icon')
       .at(0)
       .simulate('click');
     expect(argumentEventObject.type).toBe('click');
@@ -95,7 +95,7 @@ describe('Input', () => {
   it('should focus input after clear', () => {
     const wrapper = mount(<Input clearable defaultValue="111" />);
     wrapper
-      .find('.zw-input__clear-icon')
+      .find('.zw-input-group__clear-icon')
       .at(0)
       .simulate('click');
     expect(document.activeElement).toBe(
