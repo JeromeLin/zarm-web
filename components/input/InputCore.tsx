@@ -74,8 +74,9 @@ class Input extends Component<InputCoreProps, InputState> {
     this.setState({ inputStyle: bordered === 'underline' ? null : inputStyle });
   }
 
-  getInputCls = () => {
+  get inputCls() {
     const { prefixCls, className, size, shape, disabled, bordered, readOnly } = this.props;
+
     return classnames(prefixCls, className, {
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
@@ -85,7 +86,7 @@ class Input extends Component<InputCoreProps, InputState> {
       [`${prefixCls}--bordered`]: bordered === true,
       [`${prefixCls}--nobordered`]: bordered === false,
     });
-  };
+  }
 
   handleReset = (e) => {
     const { onChange } = this.props;
@@ -214,7 +215,7 @@ class Input extends Component<InputCoreProps, InputState> {
       readOnly,
     } = this.props;
     const { value } = this.state;
-    const cls = this.getInputCls();
+    const cls = this.inputCls;
 
     return !readOnly ? (
       <div className={cls} style={style}>
@@ -231,8 +232,6 @@ class Input extends Component<InputCoreProps, InputState> {
     const {
       prefixCls,
       style,
-      size,
-      className,
       prefix,
       suffix,
       clearable,
@@ -260,9 +259,7 @@ class Input extends Component<InputCoreProps, InputState> {
         <div className={`${prefixCls}__focus-line`} />
       </div>
     ) : null;
-    const cls = classnames(className, prefixCls, {
-      [`${prefixCls}--${size}`]: size,
-      [`${prefixCls}--underline`]: bordered === 'underline',
+    const cls = classnames(this.inputCls, {
       [`${prefixCls}--clearable`]: suffix && clearable && value,
       [`${prefixCls}--focused`]: focused,
     });
@@ -280,14 +277,12 @@ class Input extends Component<InputCoreProps, InputState> {
   };
 
   renderLabeledInput = () => {
-    const { addonBefore, addonAfter, prefixCls, style, size, shape } = this.props;
+    const { addonBefore, addonAfter, prefixCls, style } = this.props;
     if (!addonBefore && !addonAfter) {
       return this.renderLabeledIconInput();
     }
 
-    const cls = classnames(prefixCls, {
-      [`${prefixCls}--${size}`]: size,
-      [`${prefixCls}--${shape}`]: shape,
+    const cls = classnames(this.inputCls, {
       [`${prefixCls}--prepend`]: addonBefore,
       [`${prefixCls}--append`]: addonAfter,
     });
