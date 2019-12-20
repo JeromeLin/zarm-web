@@ -75,6 +75,7 @@ class Textarea extends Component<TextAreaProps, any> {
     } = this.props;
     const { value, textareaStyle } = this.state;
     const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--textarea`]: true,
       [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--bordered`]: bordered,
@@ -82,7 +83,7 @@ class Textarea extends Component<TextAreaProps, any> {
     });
 
     return (
-      <div className={`${prefixCls}__wrapper ${prefixCls}--textarea`}>
+      <div className={cls}>
         <textarea
           {...others as React.TextareaHTMLAttributes<HTMLTextAreaElement>}
           maxLength={maxLength}
@@ -90,7 +91,7 @@ class Textarea extends Component<TextAreaProps, any> {
           value={fixControlledValue(value)}
           ref={this.textareaRef}
           onChange={this.handleChange}
-          className={cls}
+          className={`${prefixCls}__inner`}
         >
           {defaultValue}
         </textarea>

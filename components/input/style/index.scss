@@ -3,36 +3,41 @@
 
 @include b(input) {
   position: relative;
-  display: inline-block;
+  display: flex;
   width: 100%;
-  height: var(--input-height-md);
-  appearance: none;
-  background-color: #fff;
-  background-image: none;
-  color: var(--input-default-color);
-  border: var(--input-default-border);
-  line-height: 1.5;
-  outline: none;
-  transition: all .3s;
 
-  &:hover {
-    border-color: var(--theme-primary);
-    outline: 0;
-  }
+  @include e(inner) {
+    width: 100%;
+    height: var(--input-height-md);
+    padding: var(--input-padding-md);
+    appearance: none;
+    background-color: #fff;
+    background-image: none;
+    color: var(--input-default-color);
+    border: var(--input-default-border);
+    line-height: 1.5;
+    outline: none;
+    transition: all .3s;
 
-  &:read-only {
     &:hover {
-      border-color: var(--input-default-border-color);
+      border-color: var(--theme-primary);
+      outline: 0;
     }
-  }
 
-  &:disabled {
-    cursor: not-allowed;
-    background-color: var(--input-disabled-background-color);
-    color: var(--input-disabled-color);
+    &:read-only {
+      &:hover {
+        border-color: var(--input-default-border-color);
+      }
+    }
 
-    &:hover {
-      border-color: var(--input-default-border-color);
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--input-disabled-background-color);
+      color: var(--input-disabled-color);
+
+      &:hover {
+        border-color: var(--input-default-border-color);
+      }
     }
   }
 
@@ -41,11 +46,17 @@
   }
 
   @include m(radius) {
-    border-radius: var(--radius-md);
+    @include e(inner) {
+      border-radius: var(--radius-md);
+    }
   }
 
   @include m(lg) {
-    @include input-size(var(--input-height-lg), var(--input-padding-lg), var(--input-font-size-lg));
+    @include e(inner) {
+      height: var(--input-height-lg);
+      padding: var(--input-padding-lg);
+      font-size: var(--input-font-size-lg);
+    }
 
     @include m(readOnly) {
       font-size: var(--input-font-size-lg);
@@ -53,7 +64,11 @@
   }
 
   @include m(md) {
-    @include input-size(var(--input-height-md), var(--input-padding-md), var(--input-font-size-md));
+    @include e(inner) {
+      height: var(--input-height-md);
+      padding: var(--input-padding-md);
+      font-size: var(--input-font-size-md);
+    }
 
     @include m(readOnly) {
       font-size: var(--input-font-size-md);
@@ -61,7 +76,11 @@
   }
 
   @include m(sm) {
-    @include input-size(var(--input-height-sm), var(--input-padding-sm), var(--input-font-size-sm));
+    @include e(inner) {
+      height: var(--input-height-sm);
+      padding: var(--input-padding-sm);
+      font-size: var(--input-font-size-sm);
+    }
 
     @include m(readOnly) {
       font-size: var(--input-font-size-sm);
@@ -69,46 +88,58 @@
   }
 
   @include m(readOnly) {
-    color: var(--input-default-color);
+    @include e(inner) {
+      color: var(--input-default-color);
+    }
   }
 
   @include m(nobordered) {
-    border: none;
-    background-color: var(--input-disabled-background-color);
-
-    &:disabled {
+    @include e(inner) {
+      border: none;
       background-color: var(--input-disabled-background-color);
-      color: var(--input-disabled-color);
 
-      &:hover {
-        border-color: none;
+      &:disabled {
+        background-color: var(--input-disabled-background-color);
+        color: var(--input-disabled-color);
+
+        &:hover {
+          border-color: none;
+        }
       }
     }
   }
 
   @include m(underline) {
-    border: none;
+    @include e(inner) {
+      border: none;
 
-    &:disabled {
-      background-color: #fff;
-      color: var(--input-disabled-color);
+      &:disabled {
+        background-color: #fff;
+        color: var(--input-disabled-color);
 
-      &:hover {
-        border-color: none;
+        &:hover {
+          border-color: none;
+        }
       }
     }
   }
 
   @include m(bordered) {
-    &:focus {
-      border-color: var(--theme-primary);
-      box-shadow: var(--input-focus-shadow);
-      outline: 0;
-      z-index: 1;
+    @include e(inner) {
+      &:focus {
+        border-color: var(--theme-primary);
+        box-shadow: var(--input-focus-shadow);
+        outline: 0;
+        z-index: 1;
+      }
     }
   }
 
   @include m(textarea) {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
     textarea {
       max-width: 100%;
       height: auto;
@@ -118,43 +149,33 @@
       transition: all 0.3s, height 0;
       font-size: var(--input-font-size-md);
     }
-  }
 
-  @include e(wrapper) {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-
-    @include b(input) {
-      padding: 6px 11px;
+    @include e(length-wrapper) {
+      position: absolute;
+      right: 16px;
+      bottom: 10px;
+      color: var(--input-length-count-color);
+      font-size: var(--input-font-size-md);
     }
-  }
 
-  @include e(length-wrapper) {
-    position: absolute;
-    right: 16px;
-    bottom: 10px;
-    color: var(--input-length-count-color);
-    font-size: var(--input-font-size-md);
-  }
+    @include e(length-count) {
+      color: var(--input-length-max-count-color);
+    }
 
-  @include e(length-count) {
-    color: var(--input-length-max-count-color);
-  }
-
-  @include e(length-max-count) {
-    color: var(--input-length-count-color);
+    @include e(length-max-count) {
+      color: var(--input-length-count-color);
+    }
   }
 }
 
-@include b(input-group) {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  text-align: start;
-  vertical-align: top;
-  line-height: 1.5;
-  font-size: 14px;
+@include b(input) {
+  //position: relative;
+  //display: inline-block;
+  //width: 100%;
+  //text-align: start;
+  //vertical-align: top;
+  //line-height: 1.5;
+  //font-size: 14px;
 
   @include e(wrapper) {
     display: flex;
@@ -173,14 +194,14 @@
   }
 
   @include m(prepend) {
-    @include b(input) {
+    @include e(inner) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
   }
 
   @include m(append) {
-    @include b(input) {
+    @include e(inner) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }

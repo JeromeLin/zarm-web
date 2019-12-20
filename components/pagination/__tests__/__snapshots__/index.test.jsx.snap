@@ -203,12 +203,16 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
         class="ui-pagination-jumper"
       >
         跳至
-        <input
+        <div
           class="zw-input zw-input--sm zw-input--radius zw-input--bordered"
           style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
-          type="text"
-          value=""
-        />
+        >
+          <input
+            class="zw-input__inner"
+            type="text"
+            value=""
+          />
+        </div>
         页
       </div>
     </div>

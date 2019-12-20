@@ -14,7 +14,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Input type="text" style={{ marginBottom: 20 }} width="200px" placeholder="请输入" />
-        <Input type="text" bordered="underline" clearable style={{ marginBottom: 20 }} placeholder="请输入" />
+        <Input type="text" bordered="underline" style={{ marginBottom: 20 }} placeholder="请输入" />
         <Input type="text" bordered={false} style={{ marginBottom: 20 }} placeholder="请输入" />
       </div>
     )
@@ -150,7 +150,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input clearable placeholder="请输入" onChange={e => console.log(e.target.value)} />
+        <Input clearable maxLength={10} placeholder="请输入" onChange={e => console.log(e.target.value)} />
       </div>
     )
   }

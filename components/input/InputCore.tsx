@@ -148,7 +148,7 @@ class Input extends Component<InputCoreProps, InputState> {
       <Icon
         type="wrong-round-fill"
         theme="default"
-        className={`${prefixCls}-group__clear-icon`}
+        className={`${prefixCls}__clear-icon`}
         role="button"
         onClick={this.handleReset}
       />
@@ -170,7 +170,7 @@ class Input extends Component<InputCoreProps, InputState> {
     return null;
   };
 
-  renderBaseInput = () => {
+  renderOriginalInput = () => {
     const {
       prefixCls,
       defaultValue,
@@ -191,20 +191,35 @@ class Input extends Component<InputCoreProps, InputState> {
       ...others
     } = this.props;
     const { value } = this.state;
-    const cls = this.getInputCls();
 
-    return !readOnly ? (
+    return (
       <input
         {...others as React.HtmlHTMLAttributes<HTMLInputElement>}
-        className={cls}
-        style={style}
-        disabled={disabled}
         ref={this.inputRef}
+        className={`${prefixCls}__inner`}
+        disabled={disabled}
         onChange={this.handleChange}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         value={fixControlledValue(value)}
       />
+    );
+  };
+
+  renderBaseInput = () => {
+    const {
+      prefixCls,
+      size,
+      style,
+      readOnly,
+    } = this.props;
+    const { value } = this.state;
+    const cls = this.getInputCls();
+
+    return !readOnly ? (
+      <div className={cls} style={style}>
+        {this.renderOriginalInput()}
+      </div>
     ) : (
       <div className={`${prefixCls}--readOnly ${prefixCls}--${size}`}>
         {fixControlledValue(value)}
@@ -231,40 +246,35 @@ class Input extends Component<InputCoreProps, InputState> {
     }
 
     const prefixNode = prefix ? (
-      <span className={`${prefixCls}-group__prefix`} ref={this.prefixNodeRef}>{prefix}</span>
+      <span className={`${prefixCls}__prefix`} ref={this.prefixNodeRef}>{prefix}</span>
     ) : null;
     const suffixNode = (suffix || clearable) ? (
-      <span className={`${prefixCls}-group__suffix`} ref={this.suffixNodeRef}>
+      <span className={`${prefixCls}__suffix`} ref={this.suffixNodeRef}>
         {this.renderClearIcon()}
         {suffix}
       </span>
     ) : null;
     const underlineNode = (bordered === 'underline' && !readOnly) ? (
       <div>
-        <div className={`${prefixCls}-group__line`} />
-        <div className={`${prefixCls}-group__focus-line`} />
+        <div className={`${prefixCls}__line`} />
+        <div className={`${prefixCls}__focus-line`} />
       </div>
     ) : null;
-    const groupCls = classnames(className, `${prefixCls}-group`, {
-      [`${prefixCls}-group--${size}`]: size,
-      [`${prefixCls}-group--underline`]: bordered === 'underline',
-      [`${prefixCls}-group--clearable`]: suffix && clearable && value,
-      [`${prefixCls}-group--focused`]: focused,
+    const cls = classnames(className, prefixCls, {
+      [`${prefixCls}--${size}`]: size,
+      [`${prefixCls}--underline`]: bordered === 'underline',
+      [`${prefixCls}--clearable`]: suffix && clearable && value,
+      [`${prefixCls}--focused`]: focused,
     });
-    const wrapperCls = classnames(`${prefixCls}-group__wrapper`);
-    const inputCls = this.getInputCls();
 
     return (
-      <div className={groupCls} style={style}>
-        <div className={wrapperCls}>
-          {prefixNode}
-          {React.cloneElement(this.renderBaseInput(), {
-            style: inputStyle,
-            className: classnames(inputCls),
-          })}
-          {suffixNode}
-          {underlineNode}
-        </div>
+      <div className={cls} style={style}>
+        {prefixNode}
+        {React.cloneElement(this.renderOriginalInput(), {
+          style: inputStyle,
+        })}
+        {suffixNode}
+        {underlineNode}
       </div>
     );
   };
@@ -275,25 +285,22 @@ class Input extends Component<InputCoreProps, InputState> {
       return this.renderLabeledIconInput();
     }
 
-    const groupCls = classnames(`${prefixCls}-group`, {
-      [`${prefixCls}-group--${size}`]: size,
-      [`${prefixCls}-group--${shape}`]: shape,
-      [`${prefixCls}-group--prepend`]: addonBefore,
-      [`${prefixCls}-group--append`]: addonAfter,
+    const cls = classnames(prefixCls, {
+      [`${prefixCls}--${size}`]: size,
+      [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--prepend`]: addonBefore,
+      [`${prefixCls}--append`]: addonAfter,
     });
-    const wrapperCls = classnames(`${prefixCls}-group__wrapper`);
-    const prependCls = classnames(`${prefixCls}-group__prepend`);
-    const appendCls = classnames(`${prefixCls}-group__append`);
+    const prependCls = classnames(`${prefixCls}__prepend`);
+    const appendCls = classnames(`${prefixCls}__append`);
     const addonBeforeNode = addonBefore ? <span className={prependCls}>{addonBefore}</span> : null;
     const addonAfterNode = addonAfter ? <span className={appendCls}>{addonAfter}</span> : null;
 
     return (
-      <div className={groupCls} style={style}>
-        <div className={wrapperCls}>
-          {addonBeforeNode}
-          {React.cloneElement(this.renderLabeledIconInput(), { style: null })}
-          {addonAfterNode}
-        </div>
+      <div className={cls} style={style}>
+        {addonBeforeNode}
+        {React.cloneElement(this.renderOriginalInput(), { style: null })}
+        {addonAfterNode}
       </div>
     );
   };
