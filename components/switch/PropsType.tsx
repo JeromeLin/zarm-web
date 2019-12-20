@@ -1,11 +1,15 @@
-export default interface PropsType {
+import { CSSProperties } from 'react';
+
+export type SwitchSize = 'sm' | 'md';
+
+export default interface SwitchProps {
   prefixCls?: string;
-  size?: 'sm' | null;
-  value?: boolean;
-  isDisabled?: boolean;
-  defaultValue?: boolean;
-  isCheckedText?: string;
-  unCheckedText?: string;
-  style?: object;
-  onChange: (value: any) => void;
+  size?: SwitchSize;
+  checked?: boolean;
+  disabled?: boolean;
+  defaultChecked?: boolean;
+  className?: string;
+  style?: CSSProperties;
+  loading?: boolean;
+  onChange?: (value: boolean) => void;
 }

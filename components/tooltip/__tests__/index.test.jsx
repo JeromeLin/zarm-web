@@ -3,6 +3,17 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Tooltip from '../index';
 
+if (global.document) {
+  document.createRange = () => ({
+    setStart: () => {},
+    setEnd: () => {},
+    commonAncestorContainer: {
+      nodeName: 'BODY',
+      ownerDocument: document,
+    },
+  });
+}
+
 describe('Tooltip', () => {
   it('renders normal Tooltip correctly', () => {
     const wrapper = render(
@@ -23,10 +34,14 @@ describe('Tooltip', () => {
     );
     const div = wrapper.find('#hello');
     div.simulate('click');
-    expect(onVisibleChange).toHaveBeenLastCalledWith(true);
+    setTimeout(() => {
+      expect(onVisibleChange).toHaveBeenLastCalledWith(true);
+    });
 
     div.simulate('click');
-    expect(onVisibleChange).toHaveBeenLastCalledWith(false);
+    setTimeout(() => {
+      expect(onVisibleChange).toHaveBeenLastCalledWith(false);
+    });
   });
 
   it('check `visible` prop', () => {
@@ -37,6 +52,8 @@ describe('Tooltip', () => {
       </Tooltip>,
     );
     wrapper.setProps({ visible: true });
-    expect(onVisibleChange).toHaveBeenLastCalledWith(true);
+    setTimeout(() => {
+      expect(onVisibleChange).toHaveBeenLastCalledWith(true);
+    });
   });
 });

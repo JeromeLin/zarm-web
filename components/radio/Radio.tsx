@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import RadioProps from './PropsType';
 
-class Radio extends Component<PropsType, any> {
+interface RadioStates {
+  checked: boolean;
+}
+class Radio extends Component<RadioProps, RadioStates> {
+  static displayName = 'Radio';
+
   static defaultProps = {
-    prefixCls: 'za-radio',
+    prefixCls: 'zw-radio',
     defaultChecked: false,
     disabled: false,
-    onChange: () => {},
   };
 
   static Group;
@@ -21,12 +25,14 @@ class Radio extends Component<PropsType, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
+  static getDerivedStateFromProps(props, state) {
+    if ('checked' in props) {
+      return {
+        ...state,
+        checked: props.checked,
+      };
     }
+    return null;
   }
 
   onClick(e) {
@@ -34,36 +40,41 @@ class Radio extends Component<PropsType, any> {
     this.setState({
       checked: true,
     });
-    onChange(e);
+    onChange && onChange(e);
   }
 
   render() {
+    const { prefixCls, value, disabled, className, children, style, id, shape, type } = this.props;
     const { checked } = this.state;
-    const {
-      prefixCls, value, disabled, className, children,
-    } = this.props;
+    // const prefixCls = type === 'button' ? `${currPerfixCls}-button` : currPerfixCls;
+    const cls = classnames(className, prefixCls, {
+      [`${prefixCls}--checked`]: checked,
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--${type}`]: type === 'button',
+    });
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      'is-checked': checked,
-      'is-disabled': disabled,
-      [className!]: !!className,
+    const inputCls = classnames({
+      [`${prefixCls}__input`]: true,
+    });
+
+    const innerCls = classnames({
+      [`${prefixCls}__inner`]: true,
     });
 
     return (
-      <label className={`${prefixCls}__wrapper`}>
-        <span className={cls}>
-          <input
-            className="za-radio__input"
-            type="radio"
-            value={value}
-            checked={checked}
-            disabled={disabled}
-            onChange={(e) => this.onClick(e)}
-          />
-          <span className="za-radio__inner" />
-          {children}
-        </span>
+      <label className={cls} style={style}>
+        <input
+          className={inputCls}
+          type="radio"
+          value={value}
+          checked={checked}
+          disabled={disabled}
+          id={id}
+          onChange={(e) => !disabled && this.onClick(e)}
+        />
+        <span className={innerCls} />
+        {children}
       </label>
     );
   }
