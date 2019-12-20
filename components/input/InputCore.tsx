@@ -277,7 +277,8 @@ class Input extends Component<InputCoreProps, InputState> {
   };
 
   renderLabeledInput = () => {
-    const { addonBefore, addonAfter, prefixCls, style } = this.props;
+    const { addonBefore, addonAfter, prefixCls, style, clearable } = this.props;
+    const { value } = this.state;
     if (!addonBefore && !addonAfter) {
       return this.renderLabeledIconInput();
     }
@@ -285,6 +286,7 @@ class Input extends Component<InputCoreProps, InputState> {
     const cls = classnames(this.inputCls, {
       [`${prefixCls}--prepend`]: addonBefore,
       [`${prefixCls}--append`]: addonAfter,
+      [`${prefixCls}--clearable`]: clearable && value,
     });
     const prependCls = classnames(`${prefixCls}__prepend`);
     const appendCls = classnames(`${prefixCls}__append`);
@@ -294,7 +296,10 @@ class Input extends Component<InputCoreProps, InputState> {
     return (
       <div className={cls} style={style}>
         {addonBeforeNode}
-        {React.cloneElement(this.renderOriginalInput(), { style: null })}
+        {React.cloneElement(this.renderLabeledIconInput(), {
+          style: null,
+          className: `${prefixCls}__wrapper`, // 覆盖继承的样式 以免出现多个同名类名 同时支持所有模式的clearable
+        })}
         {addonAfterNode}
       </div>
     );

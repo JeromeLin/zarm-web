@@ -108,7 +108,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Input size="md" style={{ marginBottom: 16 }} addonBefore="http://" placeholder="请输入" />
-        <Input style={{ marginBottom: 16 }} addonAfter=".com" placeholder="请输入" />
+        <Input style={{ marginBottom: 16 }} clearable addonAfter=".com" placeholder="请输入" />
         <Input size="md" bordered="underline" style={{ marginBottom: 16 }} clearable prefix="http://" suffix=".com" placeholder="请输入" />
       </div>
     )

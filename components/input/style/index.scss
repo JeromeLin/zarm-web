@@ -47,6 +47,12 @@
     }
   }
 
+  @include e(wrapper) {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+
   @include e(prepend, append) {
     display: flex;
     position: relative;
@@ -147,11 +153,6 @@
       flex-shrink: 0;
       white-space: nowrap;
       transform: translateY(0);
-
-      @include e(clear-icon) {
-        margin-right: 12px;
-        transform: translate(-50%, 0);
-      }
     }
 
     @include b(input) {
