@@ -93,7 +93,7 @@ class Tabs extends Component<TabsProps, any> {
   }
 
   setActiveLineStyle() {
-    const { width = 0, height = 0 } = this.activeTab && this.activeTab.getBoundingClientRect();
+    const { width = 0, height = 0 } = (this.activeTab && this.activeTab.getBoundingClientRect()) || {};
     this.setState({
       lineWidth: width,
       lineHeight: height,
