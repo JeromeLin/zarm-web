@@ -1,2 +1,69 @@
-@import '../../style/themes/default';
-@import './component';
+@import '../../style/core/index';
+@import 'mixins';
+
+@include b(pagination) {
+  margin: 0;
+  padding: 0;
+  @include clearfix();
+
+  @include e(item) {
+    @include pagination-item(
+      var(--pagination-color),
+      var(--pagination-default-bg-color),
+      var(--pagination-default-hover-color),
+      var(--pagination-default-active-background),
+      var(--pagination-font-size-md),
+      var(--pagination-opacity),
+      var(--pagination-height-md),
+      var(--radius-md)
+    );
+  }
+
+  @include e(total) {
+    @include pagination-total(var(--pagination-font-size-md));
+  }
+
+  @include e(options) {
+    @include pagination-options(
+      var(--pagination-default-bg-color),
+      var(--pagination-font-size-sm),
+      var(--radius-md)
+    );
+  }
+
+  @include m(sm) {
+    @include pagination-size(
+      var(--pagination-default-active-background),
+      var(--pagination-font-size-sm),
+      var(--pagination-height-sm)
+    );
+  }
+
+  @include m(simple) {
+    @include pagination-simple(
+      var(--pagination-default-bg-color),
+      var(--pagination-height-md),
+      var(--pagination-font-size-md)
+    );
+  }
+
+  @include m(disabled) {
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:visited {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  @include m(active) {
+    background-color: var(--pagination-default-active-background);
+
+    &,
+    &:hover {
+      color: #fff;
+    }
+  }
+}

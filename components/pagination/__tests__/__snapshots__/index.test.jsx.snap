@@ -1,420 +1,466 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination renders Pagination with customized props correctly 1`] = `
-<div>
-  <div
-    class="ui-pagination bordered"
+<ul
+  class="zw-pagination"
+>
+  <li
+    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
+    title="上一页"
   >
-    <div
-      class="ui-pagination-pagers"
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-left"
     >
-      <ul>
-        <div
-          class="ui-pagination-addon-before"
-        >
-          addonBefore
-        </div>
-        <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
-          title="上一页"
-        >
-          <i
-            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-left"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-left"
-              />
-            </svg>
-          </i>
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-active"
-          title="1"
-        >
-          1
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="2"
-        >
-          2
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="3"
-        >
-          3
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="4"
-        >
-          4
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="5"
-        >
-          5
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
-          title="向后 5 页"
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-left"
         />
-        <li
-          class="ui-pagination-item"
-          title="最后一页"
-        >
-          10
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-next"
-          title="下一页"
-        >
-          <i
-            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-right"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-right"
-              />
-            </svg>
-          </i>
-        </li>
-        <div
-          class="ui-pagination-addon-after"
-        >
-          addonAfter
-        </div>
-      </ul>
-    </div>
-  </div>
-</div>
+      </svg>
+    </i>
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination--active"
+    title="1"
+  >
+    1
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="2"
+  >
+    2
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="3"
+  >
+    3
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="4"
+  >
+    4
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="5"
+  >
+    5
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__item--ellipsis"
+    title="向后 5 页"
+  />
+  <li
+    class="zw-pagination__item"
+    title="最后一页"
+  >
+    10
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__next"
+    title="下一页"
+  >
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-right"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-right"
+        />
+      </svg>
+    </i>
+  </li>
+</ul>
 `;
 
 exports[`Pagination renders Pagination with jumper correctly 1`] = `
-<div>
-  <div
-    class="ui-pagination"
+<ul
+  class="zw-pagination"
+>
+  <li
+    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
+    title="上一页"
+  >
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-left"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-left"
+        />
+      </svg>
+    </i>
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination--active"
+    title="1"
+  >
+    1
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="2"
+  >
+    2
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="3"
+  >
+    3
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="4"
+  >
+    4
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="5"
+  >
+    5
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__item--ellipsis"
+    title="向后 5 页"
+  />
+  <li
+    class="zw-pagination__item"
+    title="最后一页"
+  >
+    10
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__next"
+    title="下一页"
+  >
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-right"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-right"
+        />
+      </svg>
+    </i>
+  </li>
+  <li
+    class="zw-pagination__options"
   >
     <div
-      class="ui-pagination-pagers"
+      class="zw-pagination__options--jumper"
     >
-      <ul>
-        <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
-          title="上一页"
-        >
-          <i
-            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-left"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-left"
-              />
-            </svg>
-          </i>
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-active"
-          title="1"
-        >
-          1
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="2"
-        >
-          2
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="3"
-        >
-          3
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="4"
-        >
-          4
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="5"
-        >
-          5
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
-          title="向后 5 页"
-        />
-        <li
-          class="ui-pagination-item"
-          title="最后一页"
-        >
-          10
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-next"
-          title="下一页"
-        >
-          <i
-            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-right"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-right"
-              />
-            </svg>
-          </i>
-        </li>
-      </ul>
-      <div
-        class="ui-pagination-jumper"
-      >
-        跳至
-        <div
-          class="ui-input-box shape-radius size-sm"
-        >
-          <input
-            class="ui-input"
-            style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
-            type="text"
-            value=""
-          />
-        </div>
-        页
-      </div>
+      跳至
+      <input
+        type="text"
+      />
+      页
     </div>
-  </div>
-</div>
+  </li>
+</ul>
 `;
 
 exports[`Pagination renders Pagination with total info correctly 1`] = `
-<div>
-  <div
-    class="ui-pagination"
+<ul
+  class="zw-pagination"
+>
+  <li
+    class="zw-pagination__total"
   >
-    <div
-      class="ui-pagination-total"
+    共有 100 条记录 第 1 / 10 页
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
+    title="上一页"
+  >
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-left"
     >
-      共有 100 条记录 第 1 / 10 页
-    </div>
-    <div
-      class="ui-pagination-pagers"
-    >
-      <ul>
-        <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
-          title="上一页"
-        >
-          <i
-            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-left"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-left"
-              />
-            </svg>
-          </i>
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-active"
-          title="1"
-        >
-          1
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="2"
-        >
-          2
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="3"
-        >
-          3
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="4"
-        >
-          4
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="5"
-        >
-          5
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
-          title="向后 5 页"
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-left"
         />
-        <li
-          class="ui-pagination-item"
-          title="最后一页"
-        >
-          10
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-next"
-          title="下一页"
-        >
-          <i
-            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-right"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-right"
-              />
-            </svg>
-          </i>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+      </svg>
+    </i>
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination--active"
+    title="1"
+  >
+    1
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="2"
+  >
+    2
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="3"
+  >
+    3
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="4"
+  >
+    4
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="5"
+  >
+    5
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__item--ellipsis"
+    title="向后 5 页"
+  />
+  <li
+    class="zw-pagination__item"
+    title="最后一页"
+  >
+    10
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__next"
+    title="下一页"
+  >
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-right"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-right"
+        />
+      </svg>
+    </i>
+  </li>
+</ul>
 `;
 
 exports[`Pagination renders normal Pagination correctly 1`] = `
-<div>
-  <div
-    class="ui-pagination"
+<ul
+  class="zw-pagination"
+>
+  <li
+    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
+    title="上一页"
   >
-    <div
-      class="ui-pagination-pagers"
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-left"
     >
-      <ul>
-        <li
-          class="ui-pagination-item ui-pagination-item-prev ui-pagination-item-disabled"
-          title="上一页"
-        >
-          <i
-            class="zw-icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-left"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-left"
-              />
-            </svg>
-          </i>
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-active"
-          title="1"
-        >
-          1
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="2"
-        >
-          2
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="3"
-        >
-          3
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="4"
-        >
-          4
-        </li>
-        <li
-          class="ui-pagination-item"
-          title="5"
-        >
-          5
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-jump-next"
-          title="向后 5 页"
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-left"
         />
-        <li
-          class="ui-pagination-item"
-          title="最后一页"
+      </svg>
+    </i>
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination--active"
+    title="1"
+  >
+    1
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="2"
+  >
+    2
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="3"
+  >
+    3
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="4"
+  >
+    4
+  </li>
+  <li
+    class="zw-pagination__item"
+    title="5"
+  >
+    5
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__item--ellipsis"
+    title="向后 5 页"
+  />
+  <li
+    class="zw-pagination__item"
+    title="最后一页"
+  >
+    10
+  </li>
+  <li
+    class="zw-pagination__item zw-pagination__next"
+    title="下一页"
+  >
+    <i
+      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+      theme="default"
+      type="arrow-right"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-right"
+        />
+      </svg>
+    </i>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders size correctly 1`] = `
+<div>
+  <ul
+    class="zw-pagination zw-pagination--sm"
+  >
+    <li
+      class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
+      title="上一页"
+    >
+      <i
+        class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+        theme="default"
+        type="arrow-left"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
         >
-          10
-        </li>
-        <li
-          class="ui-pagination-item ui-pagination-item-next"
-          title="下一页"
+          <use
+            href="#arrow-left"
+          />
+        </svg>
+      </i>
+    </li>
+    <li
+      class="zw-pagination__item zw-pagination--active"
+      title="1"
+    >
+      1
+    </li>
+    <li
+      class="zw-pagination__item"
+      title="2"
+    >
+      2
+    </li>
+    <li
+      class="zw-pagination__item"
+      title="3"
+    >
+      3
+    </li>
+    <li
+      class="zw-pagination__item"
+      title="4"
+    >
+      4
+    </li>
+    <li
+      class="zw-pagination__item"
+      title="5"
+    >
+      5
+    </li>
+    <li
+      class="zw-pagination__item zw-pagination__item--ellipsis"
+      title="向后 5 页"
+    />
+    <li
+      class="zw-pagination__item"
+      title="最后一页"
+    >
+      10
+    </li>
+    <li
+      class="zw-pagination__item zw-pagination__next"
+      title="下一页"
+    >
+      <i
+        class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+        theme="default"
+        type="arrow-right"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
         >
-          <i
-            class="zw-icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-            theme="default"
-            type="arrow-right"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
-            >
-              <use
-                href="#arrow-right"
-              />
-            </svg>
-          </i>
-        </li>
-      </ul>
-    </div>
-  </div>
+          <use
+            href="#arrow-right"
+          />
+        </svg>
+      </i>
+    </li>
+  </ul>
 </div>
 `;

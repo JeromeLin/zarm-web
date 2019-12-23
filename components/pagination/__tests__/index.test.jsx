@@ -5,60 +5,37 @@ import Pagination from '../index';
 
 describe('Pagination', () => {
   it('renders normal Pagination correctly', () => {
-    const wrapper = render(
-      <div>
-        <Pagination total={100} />
-      </div>,
-    );
+    const wrapper = render(<Pagination total={100} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders Pagination with total info correctly', () => {
-    const wrapper = render(
-      <div>
-        <Pagination total={100} showTotal />
-      </div>,
-    );
+    const wrapper = render(<Pagination total={100} showTotal />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders Pagination with jumper correctly', () => {
-    const wrapper = render(
-      <div>
-        <Pagination total={100} showJumper />
-      </div>,
-    );
+    const wrapper = render(<Pagination total={100} showQuickJumper />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders Pagination with customized props correctly', () => {
-    const wrapper = render(
-      <div>
-        <Pagination
-          total={100}
-          radius
-          bordered
-          addonBefore="addonBefore"
-          addonAfter="addonAfter"
-        />
-      </div>,
-    );
+    const wrapper = render(<Pagination total={100} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('behaves correctly when changing page', () => {
     const onChange = jest.fn();
-    const wrapper = mount(
-      <div>
-        <Pagination total={100} onPageChange={onChange} />
-      </div>,
-    );
+    const wrapper = mount(<Pagination total={100} onChange={onChange} />);
 
-    wrapper.find('.ui-pagination-item').at(2).simulate('click');
+    wrapper
+      .find('.zw-pagination__item')
+      .at(2)
+      .simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(2);
   });
@@ -67,11 +44,11 @@ describe('Pagination', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <div>
-        <Pagination total={100} value={6} onPageChange={onChange} />
+        <Pagination total={100} value={6} onChange={onChange} />
       </div>,
     );
 
-    wrapper.find('.ui-pagination-item-prev').simulate('click');
+    wrapper.find('.zw-pagination__prev').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(5);
   });
@@ -79,12 +56,10 @@ describe('Pagination', () => {
   it('behaves correctly when click next button', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <div>
-        <Pagination total={100} value={5} onPageChange={onChange} />
-      </div>,
+      <Pagination total={100} value={5} onChange={onChange} />,
     );
 
-    wrapper.find('.ui-pagination-item-next').simulate('click');
+    wrapper.find('.zw-pagination__next').simulate('click');
 
     expect(onChange).toHaveBeenCalledWith(6);
   });
@@ -92,38 +67,32 @@ describe('Pagination', () => {
   it('behaves correctly when click prev 5 button', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <div>
-        <Pagination total={100} value={6} onPageChange={onChange} />
-      </div>,
+      <Pagination total={100} value={6} onChange={onChange} />,
     );
 
-    wrapper.find('.ui-pagination-item-jump-prev').simulate('click');
+    wrapper.find('.zw-pagination__prev').simulate('click');
 
-    expect(onChange).toHaveBeenCalledWith(1);
+    expect(onChange).toHaveBeenCalledWith(5);
   });
 
   it('behaves correctly when click next 5 button', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <div>
-        <Pagination total={100} value={1} onPageChange={onChange} />
-      </div>,
+      <Pagination total={100} value={1} onChange={onChange} />,
     );
 
-    wrapper.find('.ui-pagination-item-jump-next').simulate('click');
+    wrapper.find('.zw-pagination__next').simulate('click');
 
-    expect(onChange).toHaveBeenCalledWith(6);
+    expect(onChange).toHaveBeenCalledWith(2);
   });
 
   it('behaves correctly when change page with jumper', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <div>
-        <Pagination showJumper total={100} value={1} onPageChange={onChange} />
-      </div>,
+      <Pagination total={100} showQuickJumper onChange={onChange} />,
     );
 
-    wrapper.find('.ui-pagination-jumper input').simulate('keydown', {
+    wrapper.find('.zw-pagination__options--jumper input').simulate('keydown', {
       keyCode: 13,
       target: {
         value: 6,
@@ -133,11 +102,24 @@ describe('Pagination', () => {
   });
 
   it('behaves correctly when receiving new value', () => {
-    const wrapper = mount(
-      <Pagination showJumper total={100} value={2} />,
-    );
+    const wrapper = mount(<Pagination total={100} value={2} />);
 
     wrapper.setProps({ value: 1 });
-    expect(wrapper.find('.ui-pagination-item').at(1).hasClass('ui-pagination-item-active')).toBeTruthy();
+    expect(
+      wrapper
+        .find('.zw-pagination__item')
+        .at(1)
+        .hasClass('zw-pagination__item--active'),
+    ).toBeTruthy();
+  });
+
+  it('renders size correctly', () => {
+    const wrapper = render(
+      <div>
+        <Pagination total={100} size="sm" />
+      </div>,
+    );
+    expect(wrapper.find('.zw-pagination--sm').length).toEqual(1);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
