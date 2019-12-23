@@ -1,207 +1,76 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Tabs from '../index';
 
 const { Tab } = Tabs;
 
+const data = [{
+  closable: false,
+  title: 'Tab1',
+}, {
+  closable: true,
+  title: 'Tab2',
+}, {
+  closable: false,
+  title: 'Tab3',
+}, {
+  closable: false,
+  title: 'Tab4',
+}, {
+  closable: false,
+  title: 'Tab5',
+}];
+
+const setup = (obj = {}) => {
+  const props = {
+    direction: 'horizontal',
+    defaultValue: 0,
+    prefixCls: 'zw-tabs',
+    type: 'line',
+    size: 'md',
+    onChange: jest.fn(),
+    onTabClose: jest.fn(),
+    animated: true,
+    onPrevClick: jest.fn(),
+    onNextClick: jest.fn(),
+  };
+  const newProps = { ...props, ...obj };
+  const wrapper = mount(
+    <Tabs {...newProps} style={{ width: 200 }}>
+      {
+        data.map((item, index) => (
+          <Tab key={index.toString()} title={item.title} style={{ padding: 10 }} disabled={item.disabled} closable={item.closable}>
+            这是选项卡{index}的文字
+          </Tab>
+        ))
+      }
+    </Tabs>,
+  );
+  return {
+    props,
+    wrapper,
+  };
+};
+
 describe('Tabs', () => {
-  it('renders line tabs correctly', () => {
-    const wrapper = render(
-      <div>
-        <Tabs type="line">
-          <Tab title="Tab1">
-            <div style={{ padding: 10 }}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{ padding: 10 }}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{ padding: 10 }}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{ padding: 10 }}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
-        </Tabs>
-      </div>,
-    );
-
-    expect(toJson(wrapper)).toMatchSnapshot();
+  const { wrapper, props } = setup();
+  const { wrapper: controlledWrapper, props: controlledProps } = setup({
+    value: 3,
   });
-  it('renders card tabs correctly', () => {
-    const wrapper = render(
-      <div>
-        <Tabs type="card">
-          <Tab title="Tab1">
-            <div style={{ padding: 10 }}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{ padding: 10 }}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{ padding: 10 }}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{ padding: 10 }}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
-        </Tabs>
-      </div>,
-    );
-
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('tabs renders correctly', () => {
+    expect(wrapper.find('.zw-tabs').exists());
   });
-  it('renders noborder-card tabs correctly', () => {
-    const wrapper = render(
-      <div>
-        <Tabs type="noborder-card">
-          <Tab title="Tab1">
-            <div style={{ padding: 10 }}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{ padding: 10 }}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{ padding: 10 }}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{ padding: 10 }}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
-        </Tabs>
-      </div>,
-    );
-
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('tabs change correctly', () => {
+    wrapper.find('.zw-tabs__header__item').last().simulate('click');
+    expect(props.onChange).toBeCalled();
   });
-  it('renders tabs size correctly', () => {
-    const wrapper = render(
-      <div>
-        <Tabs type="line" size="sm">
-          <Tab title="Tab1">
-            <div style={{ padding: 10 }}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{ padding: 10 }}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{ padding: 10 }}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{ padding: 10 }}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
-        </Tabs>
-        <Tabs type="line" size="md">
-          <Tab title="Tab1">
-            <div style={{ padding: 10 }}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{ padding: 10 }}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{ padding: 10 }}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{ padding: 10 }}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
-        </Tabs>
-        <Tabs type="line" size="lg">
-          <Tab title="Tab1">
-            <div style={{ padding: 10 }}>
-              这是选项卡1的文字
-            </div>
-          </Tab>
-          <Tab disabled title="Tab2">
-            <div style={{ padding: 10 }}>
-              这是选项卡2的文字
-            </div>
-          </Tab>
-          <Tab title="Tab3">
-            <div style={{ padding: 10 }}>
-              这是选项卡3的文字
-            </div>
-          </Tab>
-          <Tab title="Tab4">
-            <div style={{ padding: 10 }}>
-              这是选项卡4的文字
-            </div>
-          </Tab>
-        </Tabs>
-      </div>,
-    );
-
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('tabs arrow renders correctly', () => {
+    expect(wrapper.find('.zw-tabs__header__arrow').exists());
   });
-  it('renders line horizontal scroll tabs correctly', () => {
-    const wrapper = render(
-      <div>
-        <Tabs type="line" direction="horizontal" defaultValue={0}>
-          {
-            [...Array(40).keys()].map((item, index) => (
-              <Tab key={index.toString()} title={`Tab${index + 1}`} style={{ padding: 10 }}>
-                这是选项卡{index + 1}的文字
-              </Tab>
-            ))
-          }
-        </Tabs>
-      </div>,
-    );
-
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-  it('renders line vertical scroll tabs correctly', () => {
-    const wrapper = render(
-      <div>
-        <Tabs type="line" closable direction="vertical" defaultValue={0} style={{ height: '192px' }}>
-          {
-            [...Array(40).keys()].map((item, index) => (
-              <Tab key={index.toString()} title={`Tab${index + 1}`}>
-                这是选项卡{index + 1}的文字
-              </Tab>
-            ))
-          }
-        </Tabs>
-      </div>,
-    );
-
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('controlled tabs render correctly', () => {
+    controlledWrapper.setProps({ value: 4 });
+    wrapper.update();
+    expect(controlledWrapper.find('.zw-tabs__header__item').last().hasClass('zw-tabs__header__item--active'));
   });
 });

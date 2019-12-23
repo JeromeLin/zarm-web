@@ -77,24 +77,19 @@ class Demo extends React.Component {
     this.state = {
       value: 2,
       fields: [{
-        closable: false,
         title: "Tab1",
         key: "1"
       }, {
-        closable: false,
         disabled: true,
         title: "Tab2",
         key: "2",
       }, {
-        closable: false,
         title: "Tab3",
         key: "3",
       }, {
-        closable: true,
         title: "Tab4",
         key: "4"
       }, {
-        closable: false,
         title: "Tab5",
         key: "5",
       }]
@@ -236,17 +231,10 @@ class Demo extends React.Component {
     };
   }
 
-  onTabClose = (current) => {
-    const { fields } = this.state;
-    this.setState({
-      fields: fields.filter((item, index) => current !== index),
-    });
-  }
-
   render() {
     return (
       <div>
-        <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} onPrevClick={(e) => console.log('prev click: ', e)} onNextClick={() => console.log('next click')}>
+        <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onPrevClick={(e) => console.log('prev click: ', e)} onNextClick={() => console.log('next click')}>
           {
             [...Array(40).keys()].map((item, index) => (
               <Tab key={index} title={`Tab${index + 1}`} style={{padding: 10}}>
@@ -274,18 +262,11 @@ class Demo extends React.Component {
     super(props);
   }
 
-  onTabClose = (targetIndex) => {
-    const { fields } = this.state;
-    this.setState({
-      fields: fields.filter((item, index) => targetIndex !== index),
-    });
-  }
-
   render() {
     return (
       <>
         <div>
-          <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} onTabClose={this.onTabClose} style={{height: '192px'}} onPrevClick={() => console.log('prev click')} onNextClick={() => console.log('next click')}>
+          <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} style={{height: '192px'}} onPrevClick={() => console.log('prev click')} onNextClick={() => console.log('next click')}>
             {
               [...Array(40).keys()].map((item, index) => (
                 <Tab key={index} title={`Tab${index + 1}`}>
@@ -303,7 +284,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## close tab
+## edit tab
 
 ```jsx
 import { Tabs, Button } from 'zarm-web';
@@ -326,14 +307,6 @@ class Demo extends React.Component {
         closable: true,
         title: "Tab3",
         key: "3",
-      }, {
-        closable: true,
-        title: "Tab4",
-        key: "4"
-      }, {
-        closable: true,
-        title: "Tab5",
-        key: "5",
       }]
     };
   }
@@ -356,17 +329,33 @@ class Demo extends React.Component {
       value: currentValue,
     });
   }
+  onTabAdd = () => {
+    const { fields, value } = this.state;
+    fields.push({title: 'New Tap', closable: true, key: Math.random().toString(36).substring(2) + Date.now().toString(36)});
+    this.setState({fields, value: fields.length - 1});
+  }
   render() {
+    const addStyle = {
+      position: 'absolute',
+      right: 0,
+      top: 2,
+      fontSize: 20,
+      color: '#616161',
+      cursor: 'pointer',
+    };
     return (
-      <Tabs type="line" value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
-        {
-            this.state.fields.map((item, index) => (
-              <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
-                这是选项卡{item.key}的文字
-              </Tab>
-            ))
-          }
-      </Tabs>
+      <div style={{position: 'relative'}} className="edit-tabs">
+        <Tabs type="card" value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
+          {
+              this.state.fields.map((item, index) => (
+                <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
+                  这是选项卡{index+1}的文字
+                </Tab>
+              ))
+            }
+        </Tabs>
+        <div style={addStyle} onClick={this.onTabAdd}>+</div>
+      </div>
     );
   }
 }
