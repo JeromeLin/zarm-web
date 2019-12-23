@@ -6,9 +6,10 @@ Array [
     class="zw-loading zw-loading--lg zw-loading--active"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator--circular"
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator__circular--loading"
     >
       <svg
+        class="zw-activity-indicator__circular--lg"
         viewBox="31 31 62 62"
       >
         <circle
@@ -25,9 +26,10 @@ Array [
     class="zw-loading zw-loading--md zw-loading--active"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator--circular"
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator__circular--loading"
     >
       <svg
+        class="zw-activity-indicator__circular--md"
         viewBox="31 31 62 62"
       >
         <circle
@@ -44,9 +46,10 @@ Array [
     class="zw-loading zw-loading--sm zw-loading--active"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator__circular--loading"
     >
       <svg
+        class="zw-activity-indicator__circular"
         viewBox="31 31 62 62"
       >
         <circle
@@ -63,9 +66,10 @@ Array [
     class="zw-loading zw-loading--xs zw-loading--active"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+      class="zw-loading__svg zw-activity-indicator zw-activity-indicator__circular--loading"
     >
       <svg
+        class="zw-activity-indicator__circular"
         viewBox="31 31 62 62"
       >
         <circle
@@ -93,9 +97,10 @@ Array [
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator--circular"
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator__circular--loading"
         >
           <svg
+            class="zw-activity-indicator__circular--lg"
             viewBox="31 31 62 62"
           >
             <circle
@@ -125,9 +130,10 @@ Array [
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator--circular"
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator__circular--loading"
         >
           <svg
+            class="zw-activity-indicator__circular--md"
             viewBox="31 31 62 62"
           >
             <circle
@@ -157,9 +163,10 @@ Array [
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator__circular--loading"
         >
           <svg
+            class="zw-activity-indicator__circular"
             viewBox="31 31 62 62"
           >
             <circle
@@ -189,9 +196,10 @@ Array [
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+          class="zw-loading__svg zw-activity-indicator zw-activity-indicator__circular--loading"
         >
           <svg
+            class="zw-activity-indicator__circular"
             viewBox="31 31 62 62"
           >
             <circle

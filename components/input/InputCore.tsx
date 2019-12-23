@@ -6,6 +6,7 @@ import Icon from '../icon';
 export interface InputState {
   value: any;
   focused: boolean;
+  inputStyle: React.CSSProperties | null;
 }
 
 export function fixControlledValue(value: string | number | null | undefined) {
@@ -36,17 +37,46 @@ class Input extends Component<InputCoreProps, InputState> {
 
   inputRef = React.createRef<HTMLInputElement>();
 
+  prefixNodeRef = React.createRef<HTMLSpanElement>();
+
+  suffixNodeRef = React.createRef<HTMLSpanElement>();
+
   constructor(props) {
     super(props);
     const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
     this.state = {
       value,
       focused: false,
+      inputStyle: null,
     };
   }
 
-  getInputCls = () => {
+  componentDidMount() {
+    this.setInputStyleWithPrefixOrSuffix();
+  }
+
+  setInputStyleWithPrefixOrSuffix() {
+    const { size, clearable, bordered } = this.props;
+    const inputStyle: React.CSSProperties = {};
+    const clearIconWidth = 14 + 2;
+    const sizeMap = {
+      lg: 40,
+      md: 32,
+      sm: 24,
+    };
+    if (this.prefixNodeRef.current) {
+      inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] / 2;
+    }
+    if (this.suffixNodeRef.current) {
+      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] / 2
+        + (clearable ? clearIconWidth : 0);
+    }
+    this.setState({ inputStyle: bordered === 'underline' ? null : inputStyle });
+  }
+
+  get inputCls() {
     const { prefixCls, className, size, shape, disabled, bordered, readOnly } = this.props;
+
     return classnames(prefixCls, className, {
       [`${prefixCls}--${size}`]: size,
       [`${prefixCls}--${shape}`]: shape,
@@ -56,7 +86,7 @@ class Input extends Component<InputCoreProps, InputState> {
       [`${prefixCls}--bordered`]: bordered === true,
       [`${prefixCls}--nobordered`]: bordered === false,
     });
-  };
+  }
 
   handleReset = (e) => {
     const { onChange } = this.props;
@@ -141,7 +171,7 @@ class Input extends Component<InputCoreProps, InputState> {
     return null;
   };
 
-  renderBaseInput = () => {
+  renderOriginalInput = () => {
     const {
       prefixCls,
       defaultValue,
@@ -162,20 +192,35 @@ class Input extends Component<InputCoreProps, InputState> {
       ...others
     } = this.props;
     const { value } = this.state;
-    const cls = this.getInputCls();
 
-    return !readOnly ? (
+    return (
       <input
         {...others as React.HtmlHTMLAttributes<HTMLInputElement>}
-        className={cls}
-        style={style}
-        disabled={disabled}
         ref={this.inputRef}
+        className={`${prefixCls}__inner`}
+        disabled={disabled}
         onChange={this.handleChange}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         value={fixControlledValue(value)}
       />
+    );
+  };
+
+  renderBaseInput = () => {
+    const {
+      prefixCls,
+      size,
+      style,
+      readOnly,
+    } = this.props;
+    const { value } = this.state;
+    const cls = this.inputCls;
+
+    return !readOnly ? (
+      <div className={cls} style={style}>
+        {this.renderOriginalInput()}
+      </div>
     ) : (
       <div className={`${prefixCls}--readOnly ${prefixCls}--${size}`}>
         {fixControlledValue(value)}
@@ -187,25 +232,23 @@ class Input extends Component<InputCoreProps, InputState> {
     const {
       prefixCls,
       style,
-      size,
-      className,
       prefix,
       suffix,
       clearable,
       readOnly,
       bordered,
     } = this.props;
-    const { value, focused } = this.state;
+    const { value, focused, inputStyle } = this.state;
 
     if (!prefix && !suffix && !clearable && bordered !== 'underline') {
       return this.renderBaseInput();
     }
 
     const prefixNode = prefix ? (
-      <span className={`${prefixCls}__prefix`}>{prefix}</span>
+      <span className={`${prefixCls}__prefix`} ref={this.prefixNodeRef}>{prefix}</span>
     ) : null;
     const suffixNode = (suffix || clearable) ? (
-      <span className={`${prefixCls}__suffix`}>
+      <span className={`${prefixCls}__suffix`} ref={this.suffixNodeRef}>
         {this.renderClearIcon()}
         {suffix}
       </span>
@@ -216,20 +259,16 @@ class Input extends Component<InputCoreProps, InputState> {
         <div className={`${prefixCls}__focus-line`} />
       </div>
     ) : null;
-    const affixWrapperCls = classnames(className, `${prefixCls}__affix-wrapper`, {
-      [`${prefixCls}__affix-wrapper--${size}`]: size,
-      [`${prefixCls}__affix-wrapper--underline`]: bordered === 'underline',
-      [`${prefixCls}__affix-wrapper--clearable`]: suffix && clearable && value,
+    const cls = classnames(this.inputCls, {
+      [`${prefixCls}--clearable`]: suffix && clearable && value,
       [`${prefixCls}--focused`]: focused,
     });
-    const inputCls = this.getInputCls();
 
     return (
-      <div className={affixWrapperCls} style={style}>
+      <div className={cls} style={style}>
         {prefixNode}
-        {React.cloneElement(this.renderBaseInput(), {
-          style: null,
-          className: classnames(inputCls),
+        {React.cloneElement(this.renderOriginalInput(), {
+          style: inputStyle,
         })}
         {suffixNode}
         {underlineNode}
@@ -238,30 +277,30 @@ class Input extends Component<InputCoreProps, InputState> {
   };
 
   renderLabeledInput = () => {
-    const { addonBefore, addonAfter, prefixCls, style, size, shape } = this.props;
+    const { addonBefore, addonAfter, prefixCls, style, clearable } = this.props;
+    const { value } = this.state;
     if (!addonBefore && !addonAfter) {
       return this.renderLabeledIconInput();
     }
 
-    const groupCls = classnames(`${prefixCls}-group`, {
-      [`${prefixCls}-group--${size}`]: size,
-      [`${prefixCls}-group--${shape}`]: shape,
-      [`${prefixCls}-group--prepend`]: addonBefore,
-      [`${prefixCls}-group--append`]: addonAfter,
+    const cls = classnames(this.inputCls, {
+      [`${prefixCls}--prepend`]: addonBefore,
+      [`${prefixCls}--append`]: addonAfter,
+      [`${prefixCls}--clearable`]: clearable && value,
     });
-    const wrapperCls = classnames(`${prefixCls}-group__wrapper`);
-    const prependCls = classnames(`${prefixCls}-group__prepend`);
-    const appendCls = classnames(`${prefixCls}-group__append`);
+    const prependCls = classnames(`${prefixCls}__prepend`);
+    const appendCls = classnames(`${prefixCls}__append`);
     const addonBeforeNode = addonBefore ? <span className={prependCls}>{addonBefore}</span> : null;
     const addonAfterNode = addonAfter ? <span className={appendCls}>{addonAfter}</span> : null;
 
     return (
-      <div className={groupCls} style={style}>
-        <div className={wrapperCls}>
-          {addonBeforeNode}
-          {React.cloneElement(this.renderLabeledIconInput(), { style: null })}
-          {addonAfterNode}
-        </div>
+      <div className={cls} style={style}>
+        {addonBeforeNode}
+        {React.cloneElement(this.renderLabeledIconInput(), {
+          style: null,
+          className: `${prefixCls}__wrapper`, // 覆盖继承的样式 以免出现多个同名类名 同时支持所有模式的clearable
+        })}
+        {addonAfterNode}
       </div>
     );
   };

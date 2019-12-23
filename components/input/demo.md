@@ -108,8 +108,8 @@ class Demo extends React.Component {
     return (
       <div>
         <Input size="md" style={{ marginBottom: 16 }} addonBefore="http://" placeholder="请输入" />
-        <Input style={{ marginBottom: 16 }} addonAfter=".com" placeholder="请输入" />
-        <Input size="md" bordered="underline" style={{ marginBottom: 16 }} prefix="http://" suffix=".com" placeholder="请输入" />
+        <Input style={{ marginBottom: 16 }} clearable addonAfter=".com" placeholder="请输入" />
+        <Input size="md" bordered="underline" style={{ marginBottom: 16 }} clearable prefix="http://" suffix=".com" placeholder="请输入" />
       </div>
     )
   }
@@ -129,7 +129,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input style={{ marginBottom: 16 }} prefix="¥" suffix="元" placeholder="请输入" />
+        <Input style={{ marginBottom: 16 }} clearable prefix="¥" suffix="元" placeholder="请输入" />
         <Input size="md" style={{ marginBottom: 16 }} prefix={<Icon type="keyboard" />} suffix={<Icon type="date" />} placeholder="请输入" />
       </div>
     )
@@ -150,7 +150,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input clearable placeholder="请输入" onChange={e => console.log(e.target.value)} />
+        <Input clearable maxLength={10} placeholder="请输入" onChange={e => console.log(e.target.value)} />
       </div>
     )
   }
@@ -217,7 +217,6 @@ ReactDOM.render(<Demo />, mountNode);
 | type | string | 'text' | 类型，可选值 `text`、`textarea`、 |
 | value | string | - | 值 |
 | defaultValue | string | - | 初始值 |
-| width | string/number | - | 宽度 |
 | size | string | md | 尺寸 type为text生效 可选值为 `lg`、 `md`、`sm` |
 | prefix | ReactNode | - |带有前缀图标的 input |
 | suffix | ReactNode | - | 带有后缀图标的 input |
