@@ -74,11 +74,11 @@ class Tabs extends Component<TabsProps, any> {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { size: prevSize, children: prevChildren } = prevProps;
+    const { size: prevSize, children: prevChildren, direction: prevDirection } = prevProps;
     const { headerWidth: prevHeaderWidth, headerHeight: prevHeaderHeight, scrollWidth: prevScrollWidth } = prevState;
-    const { size: currentSize, children = [] } = this.props || {};
+    const { size: currentSize, children = [], direction } = this.props || {};
     const { headerWidth, headerHeight, scrollWidth, scrollOffset } = this.state;
-    if (prevSize !== currentSize) {
+    if (prevSize !== currentSize || prevDirection !== direction) {
       this.setActiveLineStyle();
     }
     if (prevHeaderWidth !== headerWidth || prevHeaderHeight !== headerHeight || prevChildren !== children) {
