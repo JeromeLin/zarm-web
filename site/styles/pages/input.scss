@@ -13,4 +13,14 @@
       }
     }
   }
+
+  .rows {
+    & + .rows {
+      margin-bottom: 30px;
+    }
+
+    .zw-input {
+      margin-bottom: 16px;
+    }
+  }
 }

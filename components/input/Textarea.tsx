@@ -83,11 +83,11 @@ class Textarea extends Component<TextAreaProps, any> {
     });
 
     return (
-      <div className={cls}>
+      <div className={cls} style={style}>
         <textarea
           {...others as React.TextareaHTMLAttributes<HTMLTextAreaElement>}
+          style={textareaStyle}
           maxLength={maxLength}
-          style={{ ...style, ...textareaStyle }}
           disabled={disabled}
           value={fixControlledValue(value)}
           ref={this.textareaRef}
