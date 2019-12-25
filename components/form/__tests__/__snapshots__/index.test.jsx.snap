@@ -16,7 +16,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
       class="za-form-item__control"
     >
       <div
-        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--underline"
       >
         <input
           class="zw-input__inner"
@@ -24,6 +24,14 @@ exports[`Form renders inline Form with label correctly 1`] = `
           type="text"
           value=""
         />
+        <div>
+          <div
+            class="zw-input__line"
+          />
+          <div
+            class="zw-input__focus-line"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -39,7 +47,7 @@ exports[`Form renders inline Form with label correctly 1`] = `
       class="za-form-item__control"
     >
       <div
-        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--underline"
       >
         <input
           class="zw-input__inner"
@@ -47,6 +55,14 @@ exports[`Form renders inline Form with label correctly 1`] = `
           type="text"
           value=""
         />
+        <div>
+          <div
+            class="zw-input__line"
+          />
+          <div
+            class="zw-input__focus-line"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -88,7 +104,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       class="za-form-item__control"
     >
       <div
-        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--underline"
       >
         <input
           class="zw-input__inner"
@@ -96,6 +112,14 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
           type="text"
           value=""
         />
+        <div>
+          <div
+            class="zw-input__line"
+          />
+          <div
+            class="zw-input__focus-line"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -131,7 +155,7 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
       class="za-form-item__control"
     >
       <div
-        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--underline"
       >
         <input
           class="zw-input__inner"
@@ -139,6 +163,14 @@ exports[`Form renders inline Form with required fields and help correctly 1`] = 
           type="text"
           value=""
         />
+        <div>
+          <div
+            class="zw-input__line"
+          />
+          <div
+            class="zw-input__focus-line"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -180,7 +212,7 @@ exports[`Form renders normal Form correctly 1`] = `
       class="za-form-item__control"
     >
       <div
-        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--underline"
       >
         <input
           class="zw-input__inner"
@@ -188,6 +220,14 @@ exports[`Form renders normal Form correctly 1`] = `
           type="text"
           value=""
         />
+        <div>
+          <div
+            class="zw-input__line"
+          />
+          <div
+            class="zw-input__focus-line"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -203,7 +243,7 @@ exports[`Form renders normal Form correctly 1`] = `
       class="za-form-item__control"
     >
       <div
-        class="zw-input zw-input--md zw-input--radius zw-input--bordered"
+        class="zw-input zw-input--md zw-input--radius zw-input--underline"
       >
         <input
           class="zw-input__inner"
@@ -211,6 +251,14 @@ exports[`Form renders normal Form correctly 1`] = `
           type="text"
           value=""
         />
+        <div>
+          <div
+            class="zw-input__line"
+          />
+          <div
+            class="zw-input__focus-line"
+          />
+        </div>
       </div>
     </div>
   </div>

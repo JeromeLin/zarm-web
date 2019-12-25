@@ -8,7 +8,7 @@ class Input extends Component<InputProps, any> {
     prefixCls: 'zw-input',
     type: 'text',
     shape: 'radius',
-    bordered: true,
+    bordered: 'underline',
   };
 
   render() {

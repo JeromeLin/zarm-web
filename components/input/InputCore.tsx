@@ -21,8 +21,6 @@ class Input extends Component<InputCoreProps, InputState> {
     prefixCls: 'zw-input',
     type: 'text',
     size: 'md',
-    shape: 'radius',
-    bordered: true,
     clearable: false,
   };
 
@@ -244,21 +242,24 @@ class Input extends Component<InputCoreProps, InputState> {
       return this.renderBaseInput();
     }
 
-    const prefixNode = prefix ? (
+    const prefixNode = prefix && (
       <span className={`${prefixCls}__prefix`} ref={this.prefixNodeRef}>{prefix}</span>
-    ) : null;
-    const suffixNode = (suffix || clearable) ? (
+    );
+
+    const suffixNode = (suffix || clearable) && (
       <span className={`${prefixCls}__suffix`} ref={this.suffixNodeRef}>
         {this.renderClearIcon()}
         {suffix}
       </span>
-    ) : null;
-    const underlineNode = (bordered === 'underline' && !readOnly) ? (
+    );
+
+    const underlineNode = (bordered === 'underline' && !readOnly) && (
       <div>
         <div className={`${prefixCls}__line`} />
         <div className={`${prefixCls}__focus-line`} />
       </div>
-    ) : null;
+    );
+
     const cls = classnames(this.inputCls, {
       [`${prefixCls}--clearable`]: suffix && clearable && value,
       [`${prefixCls}--focused`]: focused,
@@ -290,8 +291,8 @@ class Input extends Component<InputCoreProps, InputState> {
     });
     const prependCls = classnames(`${prefixCls}__prepend`);
     const appendCls = classnames(`${prefixCls}__append`);
-    const addonBeforeNode = addonBefore ? <span className={prependCls}>{addonBefore}</span> : null;
-    const addonAfterNode = addonAfter ? <span className={appendCls}>{addonAfter}</span> : null;
+    const addonBeforeNode = addonBefore && <span className={prependCls}>{addonBefore}</span>;
+    const addonAfterNode = addonAfter && <span className={appendCls}>{addonAfter}</span>;
 
     return (
       <div className={cls} style={style}>
