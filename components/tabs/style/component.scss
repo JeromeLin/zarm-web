@@ -1,11 +1,15 @@
 @import './mixin';
 
+$default-transition: .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
 @include b(tabs) {
   position: relative;
   overflow: hidden;
 
   @include e(header) {
     position: relative;
+    margin-bottom: 16px;
+    transition: padding $default-transition;
 
     &__scroll {
       position: relative;
@@ -14,9 +18,11 @@
     }
 
     &__arrow {
-      text-align: center;
-      cursor: pointer;
       position: absolute;
+      text-align: center;
+      transition: width $default-transition;
+      cursor: pointer;
+
       @include b(icon) {
         color: var(--color-text-caption);
         position: absolute;
@@ -34,6 +40,7 @@
       &--disabled {
         cursor: not-allowed;
         pointer-events: auto;
+
         @include b(icon) {
           color: var(--tabs-default-icon-disabled-color);
         }
@@ -46,6 +53,11 @@
       }
     }
 
+    &__nav {
+      position: relative;
+      transition: transform $default-transition;
+    }
+
     &__item {
       position: relative;
       cursor: pointer;
@@ -55,6 +67,7 @@
       &:hover {
         color: var(--tabs-default-hover-color);
       }
+
       @include m(disabled) {
         color: var(--tabs-default-disabled-color);
         cursor: not-allowed;
@@ -63,13 +76,16 @@
           color: var(--tabs-default-disabled-color);
         }
       }
+
       @include m(active) {
         background: var(--tabs-default-active-background);
         color: var(--tabs-default-active-color);
       }
+
       @include b(icon) {
         margin: 0 8px 0 0;
         display: inline-block;
+
         @include m(wrong) {
           margin: 0 0 0 8px;
           color: var(--tabs-default-icon-color);
@@ -79,6 +95,10 @@
           }
         }
       }
+    }
+
+    &__line {
+      transition: transform $default-transition;
     }
   }
 
@@ -91,6 +111,7 @@
       overflow: hidden;
       height: 0;
       font-size: 14px;
+
       @include m(active) {
         opacity: 1;
         height: auto;
@@ -132,7 +153,6 @@
   }
 
   @include m(horizontal) {
-
     @include e(header) {
       border-bottom: 1px solid var(--border-color);
 
@@ -162,9 +182,7 @@
       }
 
       &__nav {
-        position: relative;
         display: inline-block;
-        transition: transform .3s $default-transition;
       }
 
       &__item {
@@ -178,7 +196,6 @@
         bottom: 0;
         width: auto;
         border-bottom: 2px solid var(--tabs-default-line-color);
-        transition: transform $default-transition;
       }
     }
 
@@ -203,7 +220,6 @@
     @include e(header) {
       border-right: 1px solid var(--border-color);
       float: left;
-      height: 100%;
 
       &--arrow-mode {
         padding: 30px 0;
@@ -214,11 +230,6 @@
         overflow: hidden;
         white-space: nowrap;
         margin-right: -1px;
-      }
-
-      &__nav {
-        position: relative;
-        transition: transform .3s $default-transition;
       }
 
       &__item {
@@ -239,7 +250,6 @@
         top: 0;
         right: 0;
         border-right: 2px solid var(--tabs-default-line-color);
-        transition: transform $default-transition;
       }
 
       &__arrow {
@@ -306,6 +316,7 @@
 
   @include m(noborder-card) {
     @include e(header) {
+      margin-bottom: 0;
       border-bottom: none;
 
       &__item {
@@ -314,7 +325,8 @@
         &--active {
           background: var(--tabs-default-background-color);
           border: none;
-          border-radius: 4px;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
         }
       }
     }

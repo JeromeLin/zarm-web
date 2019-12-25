@@ -18,7 +18,7 @@ class Tabs extends Component<TabsProps, any> {
   static defaultProps = {
     defaultValue: 0,
     prefixCls: 'zw-tabs',
-    type: 'card',
+    type: 'line',
     direction: 'horizontal',
     size: 'md',
     onChange: () => {},
@@ -134,7 +134,7 @@ class Tabs extends Component<TabsProps, any> {
           value: index,
         });
       }
-      onChange(index);
+      typeof onChange === 'function' && onChange(index);
     }
   };
 
@@ -142,7 +142,7 @@ class Tabs extends Component<TabsProps, any> {
     e.stopPropagation();
     const { onTabClose } = this.props;
     if (!disabled) {
-      onTabClose(index);
+      typeof onTabClose === 'function' && onTabClose(index);
     }
   };
 
@@ -277,9 +277,7 @@ class Tabs extends Component<TabsProps, any> {
           <div className={`${prefixCls}__header__scroll`} ref={this.tabHeaderWrap}>
             <div className={`${prefixCls}__header__nav`} ref={this.tabHeaderNav} style={isArrowShown ? headerNavStyle : {}}>
               {items}
-              {
-                type === 'line' && this.renderHeaderLine()
-              }
+              {type === 'line' && this.renderHeaderLine()}
             </div>
           </div>
           {

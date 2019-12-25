@@ -7,16 +7,20 @@
   $vertical-padding
 ) {
   font-size: $font-size;
+
   @include e(header) {
+    height: $line-height;
     font-size: $font-size;
 
     &__item {
       padding: 0 16px;
     }
+
     @include b(icon) {
       font-size: $icon-size;
     }
   }
+
   @include m(horizontal) {
     @include m(line) {
       @include e(header) {
@@ -26,16 +30,22 @@
         }
       }
     }
+
     @include m(card) {
       @include e(header) {
+        height: $card-height;
+
         &__item {
           height: $card-height;
           line-height: $card-height;
         }
       }
     }
+
     @include m(noborder-card) {
       @include e(header) {
+        height: $card-height;
+
         &__item {
           height: $card-height;
           line-height: $card-height;
@@ -46,6 +56,8 @@
 
   @include m(vertical) {
     @include e(header) {
+      height: 100%;
+
       &__item {
         padding: 0 $vertical-padding;
         height: $vertical-height;

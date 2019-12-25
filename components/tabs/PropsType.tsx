@@ -14,10 +14,10 @@ export default interface TabsProps {
   style?: CSSProperties;
   className?: string;
   prefixCls?: string;
-  onChange: (index?: number) => void;
-  onTabClose: (index?: number) => void;
-  onPrevClick?: (e: MouseEvent) => void;
-  onNextClick?: (e: MouseEvent) => void;
+  onChange?: (index?: number) => void;
+  onTabClose?: (index?: number) => void;
+  onPrevClick?: (e?: MouseEvent) => void;
+  onNextClick?: (e?: MouseEvent) => void;
 }
 
 export interface TabProps {

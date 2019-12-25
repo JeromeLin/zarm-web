@@ -1,62 +1,62 @@
-# Tabs 标签页
+# Tabs 选项卡
 选项卡切换组件。
 
-## size
+
+
+## 基本用法
 
 ```jsx
-import { Tabs, Button } from 'zarm-web';
+import { Tabs } from 'zarm-web';
+const { Tab } = Tabs;
+
+ReactDOM.render(
+  <Tabs>
+    <Tab title="Tab1">Content of Tab1</Tab>
+    <Tab title="Tab2">Content of Tab2</Tab>
+    <Tab title="Tab3">Content of Tab3</Tab>
+    <Tab title="Tab4">Content of Tab4</Tab>
+  </Tabs>,
+  mountNode,
+);
+```
+
+
+
+## 多种大小
+
+```jsx
+import { Tabs, Radio } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      size: 'md',
-      fields: [{
-        closable: false,
-        title: "Tab1",
-        key: "1"
-      }, {
-        closable: false,
-        title: "Tab2",
-        key: "2",
-      }, {
-        closable: false,
-        title: "Tab3",
-        key: "3",
-      }, {
-        closable: false,
-        title: "Tab4",
-        key: "4"
-      }, {
-        closable: false,
-        title: "Tab5",
-        key: "5",
-      }]
-    };
+  state = {
+    size: 'md',
   }
+
   handleSize = (size) => {
-    this.setState({size});
+    this.setState({ size });
   }
+
   render() {
+    const { size } = this.state;
+
     return (
       <>
         <div className="rows">
-          <Button.Group>
-            <Button onClick={() => this.handleSize('sm')}>sm</Button>
-            <Button onClick={() => this.handleSize('md')}>md</Button>
-            <Button onClick={() => this.handleSize('lg')}>lg</Button>
-          </Button.Group>
+          <Radio.Group type="button" value={size} onChange={(value) => this.handleSize(value)}>
+            <Radio value="sm">sm</Radio>
+            <Radio value="md">md</Radio>
+            <Radio value="lg">lg</Radio>
+          </Radio.Group>
         </div>
-        <Tabs type="line" onChange={(i) => console.log(i)} size={this.state.size}>
-          {
-              this.state.fields.map((item, index) => (
-                <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
-                  这是选项卡{item.key}的文字
-                </Tab>
-              ))
-            }
-        </Tabs>
+        <div className="rows">
+          <Tabs size={size}>
+            <Tab title="Tab1">Content of Tab1</Tab>
+            <Tab title="Tab2">Content of Tab2</Tab>
+            <Tab title="Tab3">Content of Tab3</Tab>
+            <Tab title="Tab4">Content of Tab4</Tab>
+          </Tabs>
+        </div>
       </>
     );
   }
@@ -65,212 +65,89 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## line
 
-```jsx
-import { Tabs, Button } from 'zarm-web';
-const { Tab } = Tabs;
 
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 2,
-      fields: [{
-        title: "Tab1",
-        key: "1"
-      }, {
-        disabled: true,
-        title: "Tab2",
-        key: "2",
-      }, {
-        title: "Tab3",
-        key: "3",
-      }, {
-        title: "Tab4",
-        key: "4"
-      }, {
-        title: "Tab5",
-        key: "5",
-      }]
-    };
-  }
-
-  render() {
-    return (
-      <Tabs type="line" value={this.state.value} onChange={(i) => this.setState({value: i})} size={this.state.size} animated={this.state.animate}>
-        {
-            this.state.fields.map((item, index) => (
-              <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
-                这是选项卡{item.key}的文字
-              </Tab>
-            ))
-          }
-      </Tabs>
-    );
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## card
+## 卡片式
 
 ```jsx
 import { Tabs, Icon, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <Tabs type="card" onChange={(i) => console.log(i)}>
-        <Tab title={<><Icon type="required" />Tab1</>}>
-          <div style={{padding: 10}}>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-          </div>
-        </Tab>
-        <Tab disabled title="Tab2">
-          <div style={{padding: 10}}>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab3">
-          <div style={{padding: 10}}>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab4">
-          <div style={{padding: 10}}>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-          </div>
-        </Tab>
-      </Tabs>
-    );
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Tabs type="card">
+    <Tab title="Tab1">Content of Tab1</Tab>
+    <Tab title="Tab2">Content of Tab2</Tab>
+    <Tab title="Tab3">Content of Tab3</Tab>
+    <Tab title="Tab4">Content of Tab4</Tab>
+  </Tabs>,
+  mountNode,
+);
 ```
 
-## noborder-card
+
+
+## 无边框卡片式
 
 ```jsx
 import { Tabs, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  handleSize = (size) => {
-    this.setState({size});
-  }
-  render() {
-    return (
-      <div className="box" style={{background: '#F2F2F2', padding: '32px'}}>
-        <Tabs type="noborder-card" direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)}>
-          <Tab title={<>Tab1</>}>
-          <div style={{padding: 10}}>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-            <p>这是选项卡1的文字</p>
-          </div>
-        </Tab>
-        <Tab disabled title="Tab2">
-          <div style={{padding: 10}}>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-            <p>这是选项卡2的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab3">
-          <div style={{padding: 10}}>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-            <p>这是选项卡3的文字</p>
-          </div>
-        </Tab>
-        <Tab title="Tab4">
-          <div style={{padding: 10}}>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-            <p>这是选项卡4的文字</p>
-          </div>
-        </Tab>
-        </Tabs>
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <div className="box" style={{ background: '#f2f2f2', padding: 32 }}>
+    <Tabs type="noborder-card">
+      <Tab title="Tab1" style={{ height: 100, padding: 15 }}>Content of Tab1</Tab>
+      <Tab title="Tab2" style={{ height: 100, padding: 15 }}>Content of Tab2</Tab>
+      <Tab title="Tab3" style={{ height: 100, padding: 15 }}>Content of Tab3</Tab>
+      <Tab title="Tab4" style={{ height: 100, padding: 15 }}>Content of Tab4</Tab>
+    </Tabs>
+  </div>,
+  mountNode,
+);
 ```
 
-## line scroll
+
+
+## 可滚动
 
 ```jsx
-import { Tabs, Button } from 'zarm-web';
+import { Tabs, Radio } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      direction: 'horizontal',
-    };
+  state = {
+    direction: 'horizontal',
+  };
+
+  handleDirection = (direction) => {
+    this.setState({ direction });
   }
 
   render() {
-    return (
-      <div>
-        <Tabs type="line" closable direction="horizontal" defaultValue={0} onChange={(i) => console.log(i)} onPrevClick={(e) => console.log('prev click: ', e)} onNextClick={() => console.log('next click')}>
-          {
-            [...Array(40).keys()].map((item, index) => (
-              <Tab key={index} title={`Tab${index + 1}`} style={{padding: 10}}>
-                这是选项卡{index + 1}的文字
-              </Tab>
-            ))
-          }
-        </Tabs>
-      </div>
-    );
-  }
-}
+    const { direction } = this.state;
 
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## card scroll
-
-```jsx
-import { Tabs, Button } from 'zarm-web';
-const { Tab } = Tabs;
-
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
     return (
       <>
-        <div>
-          <Tabs type="line" closable direction="vertical" defaultValue={0} onChange={(i) => console.log(i)} style={{height: '192px'}} onPrevClick={() => console.log('prev click')} onNextClick={() => console.log('next click')}>
+        <div className="rows">
+          <Radio.Group
+            type="button"
+            value={direction}
+            onChange={(value) => this.handleDirection(value)}
+          >
+            <Radio value="horizontal">Horizontal</Radio>
+            <Radio value="vertical">Vertical</Radio>
+          </Radio.Group>
+        </div>
+        <div className="rows">
+          <Tabs
+            style={{ height: 200 }}
+            direction={direction}
+            onPrevClick={(e) => console.log('prev click: ', e)}
+            onNextClick={(e) => console.log('next click', e)}
+          >
             {
-              [...Array(40).keys()].map((item, index) => (
-                <Tab key={index} title={`Tab${index + 1}`}>
-                  这是选项卡{index + 1}的文字
+              [...Array(20).keys()].map((item, index) => (
+                <Tab key={+index} title={`Tab${index + 1}`}>
+                  Content of Tab{index + 1}
                 </Tab>
               ))
             }
@@ -284,77 +161,81 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## edit tab
+
+
+## 新增和关闭
 
 ```jsx
 import { Tabs, Button } from 'zarm-web';
 const { Tab } = Tabs;
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 2,
-      fields: [{
+  state = {
+    value: 2,
+    tabs: [
+      {
         closable: true,
-        title: "Tab1",
-        key: "1"
+        title: 'Tab1',
       }, {
         closable: true,
-        title: "Tab2",
-        key: "2",
+        title: 'Tab2',
       }, {
         closable: true,
-        title: "Tab3",
-        key: "3",
-      }]
-    };
-  }
+        title: 'Tab3',
+      },
+    ]
+  };
   
   onTabClose = (targetIndex) => {
-    const { fields, value } = this.state;
-    const filterFields = fields.filter((item, index) => targetIndex !== index);
+    const { tabs, value } = this.state;
+    const filterTabs = tabs.filter((item, index) => targetIndex !== index);
     let currentValue;
     if (targetIndex !== 0) {
       if (targetIndex > value) {
         currentValue = value;
       } else {
-        currentValue = value - 1
+        currentValue = value - 1;
       }
     } else {
       currentValue = 0;
     }
     this.setState({
-      fields: filterFields,
+      tabs: filterTabs,
       value: currentValue,
     });
   }
+
   onTabAdd = () => {
-    const { fields, value } = this.state;
-    fields.push({title: 'New Tap', closable: true, key: Math.random().toString(36).substring(2) + Date.now().toString(36)});
-    this.setState({fields, value: fields.length - 1});
+    const { tabs, value } = this.state;
+    tabs.push({
+      title: 'New Tap',
+      closable: true,
+      key: Math.random().toString(36).substring(2) + Date.now().toString(36),
+    });
+    this.setState({
+      tabs,
+      value: tabs.length - 1,
+    });
   }
+
   render() {
-    const addStyle = {
-      position: 'absolute',
-      right: 0,
-      top: 2,
-      fontSize: 20,
-      color: '#616161',
-      cursor: 'pointer',
-    };
     return (
-      <div style={{position: 'relative'}} className="edit-tabs">
-        <Tabs type="card" value={this.state.value} onChange={(i) => this.setState({value: i})} onTabClose={this.onTabClose} size={this.state.size} animated={this.state.animate}>
+      <div className="edit-tabs">
+        <Tabs
+          type="card"
+          value={this.state.value}
+          onChange={(index) => this.setState({ value: index })}
+          onTabClose={this.onTabClose}
+        >
           {
-              this.state.fields.map((item, index) => (
-                <Tab key={item.key} title={item.title} style={{padding: 10}} disabled={item.disabled} closable={item.closable}>
-                  这是选项卡{index+1}的文字
-                </Tab>
-              ))
-            }
+            this.state.tabs.map((item, index) => (
+              <Tab key={+index} title={item.title} closable={item.closable}>
+                Content of {item.title}
+              </Tab>
+            ))
+          }
         </Tabs>
-        <div style={addStyle} onClick={this.onTabAdd}>+</div>
+        <div class="add-button" onClick={this.onTabAdd}>+</div>
       </div>
     );
   }
@@ -363,29 +244,29 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+
+
 ## API
 
 Tabs
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | number | 0 | 当前选中的tab索引值 |
-| defaultValue | number | 0 | 默认选中的tab索引值 |
-| type | string | 'line' | tab的类型，包含线型 卡片型 无边框卡片型，可选值为 `line` 、 `card` 、 `noborder-card`  |
-| size | string | 'md' | 大小 可选值为`sm` 、 `md` 、 `lg`  |
-| onChange | (index?: number) => void | - | 面板切换时触发的回调函数，参数为当前选中的tab索引值 |
-| onTabClose | (index?: number) => void | - | 处理Tab关闭函数 |
-| style | CSSProperties | - | 自定义容器样式 |
-| className | string | - | 添加自定义容器类名 |
-| prefixCls | string | 'zw-tabs' | 类名的前缀 |
-| animated | boolean | true | 是否使用切换动画，在direction为horizontal时生效 |
+| value | number | 0 | 当前选中的选项卡索引值 |
+| defaultValue | number | 0 | 默认选中的选项卡索引值 |
+| type | string | 'line' | 选项卡类型，可选值为 `line` 、 `card` 、 `noborder-card`，分别表示线型、卡片型、无边框卡片型 |
+| direction | string | 'horizontal' | 选项卡方向 可选值为`horizontal` 、 `vertical`，分别表示横向和纵向 |
+| size | string | 'md' | 选项卡大小 可选值为`sm` 、 `md` 、 `lg`  |
+| animated | boolean | true | 是否使用切换动画，在direction为`horizontal`时生效 |
+| onChange | (index?: number) => void | - | 选项卡切换时触发的回调函数，参数为当前选中的选项卡索引值 |
+| onTabClose | (index?: number) => void | - | 点击选项卡关闭按钮时触发的回调函数，参数为当前删除的选项卡索引值 |
+| onPrevClick | (e?: number) => void | - | 点击上一页的箭头触发的回调函数 |
+| onNextClick | (e?: number) => void | - | 点击下一页的箭头触发的回调函数 |
 
 Tabs.Tab
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| title | string | - | 自定义tab名称 |
-| disabled | boolean | false | 禁用 |
-| closable | boolean | false | 是否关闭 |
-
-
+| title | string | - | 选项卡名称 |
+| disabled | boolean | false | 是否禁用 |
+| closable | boolean | false | 是否可关闭 |

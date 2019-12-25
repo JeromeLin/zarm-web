@@ -1,11 +1,22 @@
 .tabs-page {
   .edit-tabs {
+    position: relative;
+
     .zw-tabs__header {
       padding-right: 40px;
     }
 
     .zw-tabs__header__arrow--right {
       right: 20px;
+    }
+
+    .add-button {
+      position: absolute;
+      right: 0;
+      top: 2px;
+      font-size: 20px;
+      color: #616161;
+      cursor: pointer;
     }
   }
 }
