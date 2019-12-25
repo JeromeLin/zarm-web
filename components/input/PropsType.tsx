@@ -1,42 +1,40 @@
-import { ReactNode } from 'react';
+export type InputSize = 'lg' | 'md' | 'sm';
 
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
+export type InputShape = 'rect' | 'radius';
 
-export interface OtherProps {
-  value?: string;
+export type InputType = 'text' | 'number' | 'password' | 'textarea';
+
+export type InputProps = InputCoreProps | TextAreaProps;
+
+export interface InputCommonProps {
+  prefixCls?: string;
+  shape?: InputShape;
+  size?: InputSize;
+}
+
+export interface InputCoreProps extends
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'prefix' | 'onChange'>, InputCommonProps {
+  type?: 'text' | 'number' | 'password';
+  icon?: string;
+  size?: InputSize;
+  clearable?: boolean;
+  bordered?: boolean | 'underline';
+  value?: string | number;
   defaultValue?: string;
-  [propName: string]: any;
+  addonBefore?: React.ReactNode;
+  addonAfter?: React.ReactNode;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
+  onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export type ReactNodeFn = () => ReactNode;
-
-export interface AddonIF {
-  fillType?: 'fill' | 'default' | string;
-  addon: ReactNodeFn | ReactNode;
-}
-
-export function isAddon(addon: ReactNode | AddonIF): addon is AddonIF {
-  // eslint-disable-next-line
-  return !!addon && addon.hasOwnProperty('addon');
-}
-
-export interface AddonPropsIF {
-  size?: size;
-  addon: ReactNode | ReactNodeFn | AddonIF;
-  shape: 'rect' | 'radius';
-  position: 'before' | 'after';
-  param?: any;
-  composePosition?: 'before' | 'after' | 'middle';
-}
-
-export interface PropsIF {
-  prefixCls: 'string';
-  type: string;                                 // default is text  若为 textarea 则转为 TextareaElement
-  shape: 'rect' | 'radius';
-  size?: 'xl' | 'lg' | 'sm' | 'xs';                          // 控制Input的大小
-  value?: string | number;                                   // 组件的值
-  addonPrefix?: AddonIF | ReactNode | ReactNodeFn;
-  addonBefore?: AddonIF | ReactNode | ReactNodeFn;
-  addonAfter?: AddonIF | ReactNode | ReactNodeFn;
+export interface TextAreaProps extends
+  Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>, InputCommonProps {
+  type?: 'textarea';
   showLength?: boolean;
+  autoHeight?: boolean;
+  bordered?: boolean;
+  value?: string | number;
+  defaultValue?: string;
+  onChange?: (e?: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
