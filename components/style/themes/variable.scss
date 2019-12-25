@@ -62,6 +62,11 @@
   --font-size-lg: 16px;
   --font-size-xl: 18px;
 
+  // activity-indicator
+  --activity-indicator-size-md: 16px;
+  --activity-indicator-size-lg: 32px;
+  --activity-indicator-path-color: #e6e6e6;
+
   // Avatar
   --avatar-border-radius: 50%;
   --avatar-fontSize: 14px;
@@ -167,15 +172,32 @@
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
 
-  // activity-indicator
-  --activity-indicator-size-md: 16px;
-  --activity-indicator-size-lg: 32px;
-  --activity-indicator-path-color: #e6e6e6;
-
   // Checkbox
   --checkbox-size: 14px;
   --checkbox-radius: var(--radius-sm);
   --checkbox-border-color: var(--border-color);
+
+  // Loading
+  --loading-height-xs: 12px;
+  --loading-height-md: 24px;
+  --loading-height-lg: 36px;
+  --loading-margin-h-xs: var(--padding-h-xs);
+  --loading-margin-h-md: var(--padding-h-md);
+  --loading-margin-h-lg: var(--padding-h-lg);
+  --loading-font-size-xs: var(--font-size-xs);
+  --loading-font-size-md: var(--font-size-md);
+  --loading-font-size-lg: var(--font-size-lg);
+  --loading-default-svg-color: var(--theme-primary);
+  --loading-default-text-color: var(--color-text-disabled);
+  --loading-default-mask-color: rgba(255, 255, 255, 0.4);
+  --loading-default-mask-zIndex: 1000;
+  --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
 
   // Radio
   --radio-size: 14px;
@@ -199,21 +221,62 @@
   --menuitem-horizontal-padding: 20px;
   --menuitem-horizontal-height: 56px;
 
-  // loading
-  --loading-height-xs: 12px;
-  --loading-height-md: 24px;
-  --loading-height-lg: 36px;
-  --loading-margin-h-xs: var(--padding-h-xs);
-  --loading-margin-h-md: var(--padding-h-md);
-  --loading-margin-h-lg: var(--padding-h-lg);
-  --loading-font-size-xs: var(--font-size-xs);
-  --loading-font-size-md: var(--font-size-md);
-  --loading-font-size-lg: var(--font-size-lg);
-  --loading-default-svg-color: var(--theme-primary);
-  --loading-default-text-color: var(--color-text-disabled);
-  --loading-default-mask-color: rgba(255, 255, 255, 0.4);
-  --loading-default-mask-zIndex: 1000;
-  --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
+  // Steps
+  --steps-title-color: var(--color-text);
+  --steps-desc-color: var(--color-text-caption);
+  --steps-title-font-size: var(--font-size-md);
+  --steps-desc-font-size: var(--font-size-md);
+  --steps-border-color: var(--border-color);
+  --steps-status-wait: #bcbcbc;
+  --steps-status-process: var(--theme-primary);
+  --steps-status-error: var(--theme-danger);
+  --steps-icon-size: 28px;
+  --steps-content-width: 140px;
+
+  // Switch
+  --switch-width-md: 48px;
+  --switch-width-sm: 32px;
+  --switch-height-md: 20px;
+  --switch-height-sm: 16px;
+  --switch-background: #bcbcbc;
+
+  // Tabs
+  --tabs-font-size-sm: 14px;
+  --tabs-font-size-md: 16px;
+  --tabs-font-size-lg: 18px;
+  --tabs-header-icon-sm: 12px;
+  --tabs-header-icon-md: 14px;
+  --tabs-header-icon-lg: 16px;
+  --tabs-header-card-height-sm: 34px;
+  --tabs-header-card-height-md: 40px;
+  --tabs-header-card-height-lg: 46px;
+  --tabs-header-line-height-sm: 38px;
+  --tabs-header-line-height-md: 48px;
+  --tabs-header-line-height-lg: 58px;
+  --tabs-header-vertical-height-sm: 30px;
+  --tabs-header-vertical-height-md: 36px;
+  --tabs-header-vertical-height-lg: 42px;
+  --tabs-header-line-padding-sm: 12px;
+  --tabs-header-line-padding-md: 16px;
+  --tabs-header-line-padding-lg: 20px;
+  --tabs-header-card-padding-sm: 10px;
+  --tabs-header-card-padding-md: 12px;
+  --tabs-header-card-padding-lg: 14px;
+  --tabs-header-vertical-padding-sm: 16px;
+  --tabs-header-vertical-padding-md: 20px;
+  --tabs-header-vertical-padding-lg: 24px;
+  --tabs-default-color: #616161;
+  --tabs-default-hover-color: #33c98d;
+  --tabs-default-disabled-color: var(--color-text-disabled);
+  --tabs-default-icon-color: #bcbcbc;
+  --tabs-default-icon-disabled-color: var(--border-disabled);
+  --tabs-default-icon-hover-color: var(--color-text);
+  --tabs-default-active-background: var(--color-text-inverse);
+  --tabs-default-line-color: #00bc70;
+  --tabs-default-active-color: #00bc70;
+  --tabs-default-background-color: var(--color-text-inverse);
+  --tabs-default-card-background: #fafafa;
+  --tabs-default-noborder-background: #f2f2f2;
 
   // Tag
   --tag-height-lg: 32px;
@@ -242,19 +305,6 @@
   --tag-color-orange: 236, 145, 49;
   --tag-color-red: 255, 80, 80;
 
-  // Icon
-  --icon-font-size-sm: 16px;
-  --icon-font-size-md: 24px;
-  --icon-font-size-lg: 32px;
-  --icon-theme-default: var(--color-text);
-
-  //Switch
-  --switch-width-md: 48px;
-  --switch-width-sm: 32px;
-  --switch-height-md: 20px;
-  --switch-height-sm: 16px;
-  --switch-background: #bcbcbc;
-
   // Tooltip
   --tooltip-font-size: 12px;
   --tooltip-color: var(--color-text-inverse);
@@ -263,18 +313,6 @@
   --tooltip-dark-background-color: rgba(0, 0, 0, var(--opacity-tooltip));
   --tooltip-padding-v: var(--padding-v-xs);
   --tooltip-padding-h: var(--padding-h-xs);
-
-  // Steps
-  --steps-title-color: var(--color-text);
-  --steps-desc-color: var(--color-text-caption);
-  --steps-title-font-size: var(--font-size-md);
-  --steps-desc-font-size: var(--font-size-md);
-  --steps-border-color: var(--border-color);
-  --steps-status-wait: #bcbcbc;
-  --steps-status-process: var(--theme-primary);
-  --steps-status-error: var(--theme-danger);
-  --steps-icon-size: 28px;
-  --steps-content-width: 140px;
 
   // Input
   --input-focus-shadow: 0 0 0 2px rgba(0, 188, 113, 0.2);

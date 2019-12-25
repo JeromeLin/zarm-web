@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { TabProps } from './PropsType';
 
-class Tab extends Component<PropsType, any> {
-  static Group;
+class Tab extends Component<TabProps, any> {
+  static displayName = 'Tab';
 
   static defaultProps = {
-    prefixCls: 'ui-tab',
+    prefixCls: 'zw-tabs',
   };
+
+
+  static getDerivedStateFromProps(props) {
+    if ('selected' in props) {
+      return {
+        selected: !!props.selected,
+      };
+    }
+    return null;
+  }
 
   constructor(props) {
     super(props);
@@ -16,22 +26,12 @@ class Tab extends Component<PropsType, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('selected' in nextProps) {
-      this.setState({
-        selected: !!nextProps.selected,
-      });
-    }
-  }
-
   render() {
     const { className, children, style, prefixCls } = this.props;
     const { selected } = this.state;
 
-    const cls = classnames({
-      [`${prefixCls}-body-item`]: true,
-      [`${prefixCls}-body-item-active`]: selected,
-      [className!]: !!className,
+    const cls = classnames(className, `${prefixCls}__body__item`, {
+      [`${prefixCls}__body__item--active`]: selected,
     });
 
     return (
