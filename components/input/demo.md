@@ -12,10 +12,10 @@ import { Input } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
-        <Input type="text" style={{ marginBottom: 20 }} width="200px" placeholder="请输入" />
-        <Input type="text" bordered="underline" style={{ marginBottom: 20 }} placeholder="请输入" />
-        <Input type="text" bordered={false} style={{ marginBottom: 20 }} placeholder="请输入" />
+      <div className="rows">
+        <Input type="text" placeholder="请输入" />
+        <Input type="text" bordered="underline" placeholder="请输入" />
+        <Input type="text" bordered={false} placeholder="请输入" />
       </div>
     )
   }
@@ -36,13 +36,16 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Input style={{marginBottom: 12}} size="lg" placeholder="请输入" />
-        <Input style={{marginBottom: 12}} size="md" placeholder="请输入" />
-        <Input style={{marginBottom: 40}} size="sm" placeholder="请输入" />
-
-        <Input bordered="underline" style={{marginBottom: 12}} size="lg" placeholder="请输入" />
-        <Input bordered="underline" style={{marginBottom: 12}} size="md" placeholder="请输入" />
-        <Input bordered="underline" style={{marginBottom: 12}} size="sm" placeholder="请输入" />
+          <div className="rows">
+            <Input size="lg" placeholder="请输入" />
+            <Input size="md" placeholder="请输入" />
+            <Input size="sm" placeholder="请输入" />
+          </div>
+          <div className="rows">
+            <Input bordered="underline" size="lg" placeholder="请输入" />
+            <Input bordered="underline" size="md" placeholder="请输入" />
+            <Input bordered="underline" size="sm" placeholder="请输入" />
+          </div>
       </div>
     )
   }
@@ -61,10 +64,10 @@ import { Input } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
-        <Input style={{marginBottom: 16}} disabled bordered placeholder="禁用状态" />
-        <Input style={{marginBottom: 16}} disabled bordered={false} placeholder="禁用状态" />
-        <Input style={{marginBottom: 16}} disabled bordered="underline" placeholder="禁用状态" />
+      <div className="rows">
+        <Input disabled bordered placeholder="禁用状态" />
+        <Input disabled bordered={false} placeholder="禁用状态" />
+        <Input disabled bordered="underline" placeholder="禁用状态" />
       </div>
     )
   }
@@ -83,8 +86,8 @@ import { Input } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
-        <Input style={{marginBottom: 16}} defaultValue="我是只读状态" readOnly bordered placeholder="只读状态" />
+      <div className="rows">
+        <Input defaultValue="我是只读状态" readOnly bordered placeholder="只读状态" />
       </div>
     )
   }
@@ -106,10 +109,10 @@ import { Input } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
-        <Input size="md" style={{ marginBottom: 16 }} addonBefore="http://" placeholder="请输入" />
-        <Input style={{ marginBottom: 16 }} clearable addonAfter=".com" placeholder="请输入" />
-        <Input size="md" bordered="underline" style={{ marginBottom: 16 }} clearable prefix="http://" suffix=".com" placeholder="请输入" />
+      <div className="rows">
+        <Input size="md" addonBefore="http://" placeholder="请输入" />
+        <Input clearable addonAfter=".com" placeholder="请输入" />
+        <Input size="md" bordered="underline" clearable prefix="http://" suffix=".com" placeholder="请输入" />
       </div>
     )
   }
@@ -128,9 +131,9 @@ import { Input, Icon } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
-        <Input style={{ marginBottom: 16 }} clearable prefix="¥" suffix="元" placeholder="请输入" />
-        <Input size="md" style={{ marginBottom: 16 }} prefix={<Icon type="keyboard" />} suffix={<Icon type="date" />} placeholder="请输入" />
+      <div className="rows">
+        <Input clearable prefix="¥" suffix="元" placeholder="请输入" />
+        <Input size="md" prefix={<Icon type="keyboard" />} suffix={<Icon type="date" />} placeholder="请输入" />
       </div>
     )
   }
@@ -170,10 +173,10 @@ import { Input, Button, Icon } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
-        <Input style={{ marginBottom: 16 }} placeholder="please input gender" prefix={<Icon type="search" />} />
-        <Input style={{ marginBottom: 16 }} className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary" icon="search" />} />
-        <Input style={{ marginBottom: 16 }} className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary">Search</Button>} />
+      <div className="rows">
+        <Input placeholder="please input gender" prefix={<Icon type="search" />} />
+        <Input className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary" icon="search" />} />
+        <Input className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary">Search</Button>} />
       </div>
     )
   }
@@ -196,12 +199,10 @@ import { Input } from 'zarm-web';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
+      <div className="rows">
         <Input type="textarea" placeholder="请输入" rows={6} />
-
-        <Input maxLength={500} showLength type="textarea" bordered={false} placeholder="请输入" rows={10} style={{ height: 120, marginTop: 24 }}/>
-
-        <Input style={{ margin: '40px 0' }} type="textarea" placeholder="自适应高度" rows={10} autoHeight />
+        <Input type="textarea" maxLength={500} showLength bordered={false} placeholder="请输入" rows={10} />
+        <Input type="textarea" placeholder="自适应高度" autoHeight />
       </div>
     )
   }
@@ -212,21 +213,37 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
+<h2>Input Common</h2>
+
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| type | string | 'text' | 类型，可选值 `text`、`textarea`、 |
+| type | string | 'text' | 类型，可选值 `text`、`textarea`、以及原生input type属性 |
+| shape | rect/radius | 'text' | 类型，可选值 同原生input |
 | value | string | - | 值 |
 | defaultValue | string | - | 初始值 |
+| disabled | boolean | false | 是否禁用 |
+| readOnly | boolean | false | 是否只读 |
+| maxLength | number | - | 输入字数上限 |
+| onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
+
+<h2>Input</h2>
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| bordered | boolean/'underline'  | true | input的风格样式 |
 | size | string | md | 尺寸 type为text生效 可选值为 `lg`、 `md`、`sm` |
 | prefix | ReactNode | - |带有前缀图标的 input |
 | suffix | ReactNode | - | 带有后缀图标的 input |
 | addonBefore | ReactNode | - | 带标签的 input，设置前置标签 |
 | addonAfter | ReactNode | - | 带标签的 input，设置后置标签 |
-| disabled | boolean | false | 是否禁用 |
-| readOnly | boolean | false | 是否只读 |
-| rows | number | string | - | 多行文本时的显示行数 |
-| autoHeight | boolean | false | 是否高度自适应 |
-| maxLength | number | - | 输入字数上限 |
-| showLength | boolean | false | 是否显示输入字数。多行文本时有效。 |
 | clearable | boolean | false | 是否显示清除按钮。多行文本时无效。必须为受控组件（属性包含value、onChange）时方可生效。 |
-| onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
+
+<h2>Textarea</h2>
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| bordered | boolean  | true | textarea的风格样式 |
+| rows | number | string | - | 多行文本时的显示行数 |
+| cols | number | string | - | 多行文本时的显示列数 |
+| autoHeight | boolean | false | 是否高度自适应 |
+| showLength | boolean | false | 是否显示输入字数。多行文本时有效。 |

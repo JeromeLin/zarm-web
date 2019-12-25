@@ -108,7 +108,7 @@
   --button-height-md: 32px;
   --button-height-sm: 28px;
   --button-height-xs: 24px;
-  --button-font-size-xl: 18px;
+  --button-font-size-xl: 16px;
   --button-font-size-lg: 16px;
   --button-font-size-md: 14px;
   --button-font-size-sm: 12px;
@@ -176,33 +176,12 @@
   --checkbox-size: 14px;
   --checkbox-radius: var(--radius-sm);
   --checkbox-border-color: var(--border-color);
-  --checkbox-background: var(--color-text-inverse);
-  --checkbox-disabled-background: #f2f2f2;
 
   // Radio
-  --radio-inner-width: 14px;
-  --radio-inner-height: 14px;
-  --radio-height-sm: 24px;
-  --radio-height-md: 32px;
-  --radio-height-lg: 40px;
-  --radio-font-size-sm: 14px;
-  --radio-font-size-md: 16px;
-  --radio-font-size-lg: 18px;
-  --radio-padding-v-sm: 10px;
-  --radio-padding-v-md: 16px;
-  --radio-padding-v-lg: 16px;
-  --radio-color: var(--color-text);
-  --radio-default-border: #e6e6e6;
-  --radio-default-background: #fff;
-  --radio-disabled-color: #bcbcbc;
-  --radio-disabled-border: #e6e6e6;
-  --radio-disabled-background: #fafafa;
-  --radio-checked-color: #fff;
-  --radio-checked-border: var(--theme-primary);
-  --radio-checked-background: var(--theme-primary);
-  --radio-disabled-checked-color: #fff;
-  --radio-disabled-checked-background: #e6e6e6;
-  --radio-button-color: #909090;
+  --radio-size: 14px;
+  --radio-radius: var(--radius-circle);
+  --radio-border-color: var(--border-color);
+  --radio-color: #616161;
 
   // Menu
   --menu-color: #343434;

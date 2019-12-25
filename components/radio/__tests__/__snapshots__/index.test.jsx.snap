@@ -2,288 +2,456 @@
 
 exports[`Radio renders Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
 >
-  <label
-    class="zw-radio zw-radio--button"
+  <div
+    class="zw-radio-group__inner"
   >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="a"
-    />
     <span
-      class="zw-radio__inner"
-    />
-    A
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="b"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        A
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="a"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    B
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="c"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        B
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="b"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    C
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="d"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        C
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="c"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    D
-  </label>
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        D
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="d"
+      />
+    </span>
+  </div>
 </div>
 `;
 
 exports[`Radio renders checked Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
 >
-  <label
-    class="zw-radio zw-radio--button"
+  <div
+    class="zw-radio-group__inner"
   >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="a"
-    />
     <span
-      class="zw-radio__inner"
-    />
-    A
-  </label>
-  <label
-    class="zw-radio zw-radio--checked zw-radio--button"
-  >
-    <input
-      checked=""
-      class="zw-radio__input"
-      type="radio"
-      value="b"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        A
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="a"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    B
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="c"
-    />
+      class="zw-radio zw-radio--checked"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        B
+      </span>
+      <input
+        checked=""
+        class="zw-radio__input"
+        type="radio"
+        value="b"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    C
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="d"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        C
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="c"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    D
-  </label>
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        D
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="d"
+      />
+    </span>
+  </div>
 </div>
 `;
 
 exports[`Radio renders checked Radio correctly 1`] = `
-<label
+<span
   class="zw-radio zw-radio--checked"
 >
+  <span
+    class="zw-radio__widget"
+  >
+    <span
+      class="zw-radio__inner"
+    />
+  </span>
+  <span
+    class="zw-radio__text"
+  >
+    选择
+  </span>
   <input
     checked=""
     class="zw-radio__input"
     type="radio"
   />
-  <span
-    class="zw-radio__inner"
-  />
-  选择
-</label>
+</span>
 `;
 
 exports[`Radio renders defaultValue Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
 >
-  <label
-    class="zw-radio zw-radio--checked zw-radio--button"
+  <div
+    class="zw-radio-group__inner"
   >
-    <input
-      checked=""
-      class="zw-radio__input"
-      type="radio"
-      value="a"
-    />
     <span
-      class="zw-radio__inner"
-    />
-    A
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="b"
-    />
+      class="zw-radio zw-radio--checked"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        A
+      </span>
+      <input
+        checked=""
+        class="zw-radio__input"
+        type="radio"
+        value="a"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    B
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="c"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        B
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="b"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    C
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="d"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        C
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="c"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    D
-  </label>
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        D
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="d"
+      />
+    </span>
+  </div>
 </div>
 `;
 
 exports[`Radio renders disabled Radio correctly 1`] = `
-<label
+<span
   class="zw-radio zw-radio--disabled"
 >
+  <span
+    class="zw-radio__widget"
+  >
+    <span
+      class="zw-radio__inner"
+    />
+  </span>
+  <span
+    class="zw-radio__text"
+  >
+    选择
+  </span>
   <input
     class="zw-radio__input"
     disabled=""
     type="radio"
     value="a"
   />
-  <span
-    class="zw-radio__inner"
-  />
-  选择
-</label>
+</span>
 `;
 
 exports[`Radio renders normal Radio correctly 1`] = `
-<label
+<span
   class="zw-radio"
 >
+  <span
+    class="zw-radio__widget"
+  >
+    <span
+      class="zw-radio__inner"
+    />
+  </span>
+  <span
+    class="zw-radio__text"
+  >
+    选择
+  </span>
   <input
     class="zw-radio__input"
     type="radio"
     value="a"
   />
-  <span
-    class="zw-radio__inner"
-  />
-  选择
-</label>
+</span>
 `;
 
 exports[`Radio renders value Radio Group correctly 1`] = `
 <div
-  class="zw-radio-group zw-radio-group--md"
+  class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
 >
-  <label
-    class="zw-radio zw-radio--checked zw-radio--button"
+  <div
+    class="zw-radio-group__inner"
   >
-    <input
-      checked=""
-      class="zw-radio__input"
-      type="radio"
-      value="a"
-    />
     <span
-      class="zw-radio__inner"
-    />
-    A
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="a"
-    />
+      class="zw-radio zw-radio--checked"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        A
+      </span>
+      <input
+        checked=""
+        class="zw-radio__input"
+        type="radio"
+        value="a"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    B
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="a"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        B
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="b"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    C
-  </label>
-  <label
-    class="zw-radio zw-radio--button"
-  >
-    <input
-      class="zw-radio__input"
-      type="radio"
-      value="a"
-    />
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        C
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="c"
+      />
+    </span>
     <span
-      class="zw-radio__inner"
-    />
-    D
-  </label>
+      class="zw-radio"
+    >
+      <span
+        class="zw-radio__widget"
+      >
+        <span
+          class="zw-radio__inner"
+        />
+      </span>
+      <span
+        class="zw-radio__text"
+      >
+        D
+      </span>
+      <input
+        class="zw-radio__input"
+        type="radio"
+        value="d"
+      />
+    </span>
+  </div>
 </div>
 `;
