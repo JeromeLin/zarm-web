@@ -213,6 +213,54 @@ class Demo1 extends React.Component {
 ReactDOM.render(<Demo1 />, mountNode);
 ```
 
+
+## 组件通过onVisibleChange通知弹框的显示信息。
+点击触发元素后，组件需要通过onVisibleChange来告知弹框的显示状态
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: false,
+      dropdown2:false,
+    }
+  }
+  render() {
+    const overlay = "this is content";
+    
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        <Dropdown
+          visible={this.state.dropdown}
+          onVisibleChange={(visible) => {
+            this.setState({
+              dropdown: visible
+            });
+          }}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
+          content={overlay}
+          >
+            <Button theme="primary">
+              click me
+            </Button>
+        </Dropdown>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo2 />, mountNode);
+```
+
 ## 弹窗的定位
 
 定位信息有6种 `bottomLeft, bottomCenter, bottomRight, topLeft, topCenter, topRight` 。通过 `direction` 控制显示位置
@@ -347,6 +395,7 @@ class Demo2 extends React.Component {
 
 ReactDOM.render(<Demo2 />, mountNode);
 ```
+
 
 ## 位于Modal中的Dropdown
 
