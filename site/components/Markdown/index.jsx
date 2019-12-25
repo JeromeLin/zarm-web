@@ -43,7 +43,7 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const { document, name } = this.props;
+    const { document, name, className } = this.props;
     const renderer = new marked.Renderer();
 
     if (typeof document === 'string') {
@@ -72,13 +72,13 @@ export default class Markdown extends React.Component {
 
         html = html.replace('##', '').replace('API', '<h2 id="api-node" style="margin-top: 50px">API</h2>');
         // eslint-disable-next-line react/no-danger
-        return <div dangerouslySetInnerHTML={{ __html: html }} className="markdown" ref={(el) => { this.markdownCon = el; }} />;
+        return <div dangerouslySetInnerHTML={{ __html: html }} className={`markdown ${className}`} ref={(el) => { this.markdownCon = el; }} />;
       }
 
       const html = marked(document, { renderer });
 
       // eslint-disable-next-line react/no-danger
-      return <div dangerouslySetInnerHTML={{ __html: html }} className="markdown" ref={(el) => { this.markdownCon = el; }} />;
+      return <div dangerouslySetInnerHTML={{ __html: html }} className={`markdown ${className}`} ref={(el) => { this.markdownCon = el; }} />;
     }
 
     return <span />;
