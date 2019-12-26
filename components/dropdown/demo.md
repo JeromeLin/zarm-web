@@ -14,7 +14,7 @@ class Demo1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropdown: true,
+      dropdown: false,
       dropdown2:false,
       dropdown3:false,
       dropdown4:false
@@ -27,62 +27,71 @@ class Demo1 extends React.Component {
     });
   }
   render() {
-    const overlay = <Menu>
-                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
-              </Menu>;
+    const overlay = ("this is content");
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
           shape="radius"
           visible={this.state.dropdown}
           content={overlay}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
           onVisibleChange={(visible)=>{
             this.setState({
               dropdown:visible
             });
           }}
-          >
+        >
            <Button>toggle</Button>
-        </Dropdown>
-    
-        <Dropdown
-          disabled
-          content={overlay}
-          >
-            <Button disabled theme="primary">
-              disabled
-            </Button>
         </Dropdown>
     
         <Dropdown
           trigger="hover"
           content={overlay}
           visible={this.state.dropdown2}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
           onVisibleChange={(visible)=>{
             this.setState({
               dropdown2:visible
             });
           }}
-          >
-            <Button theme="primary">
-              hover me
-            </Button>
+        >
+          <Button theme="primary">
+            hover me
+          </Button>
         </Dropdown>
     
         <Dropdown
           trigger="contextMenu"
           content={overlay}
           visible={this.state.dropdown3}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
           onVisibleChange={(visible)=>{
             this.setState({
               dropdown3:visible
             });
           }}
-          >
-            <Button theme="primary">
-              right click me
-            </Button>
+        >
+          <Button theme="primary">
+            right click me
+          </Button>
         </Dropdown>
       </div>
     )
@@ -113,10 +122,7 @@ class Demo1 extends React.Component {
     });
   }
   render() {
-    const overlay = <Menu>
-                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
-              </Menu>;
+    const overlay = "this is content";
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
@@ -124,6 +130,13 @@ class Demo1 extends React.Component {
           content={overlay}
           shape="radius"
           visible={this.state.dropdown}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
           onVisibleChange={(visible)=>{
             this.setState({
               dropdown:visible
@@ -163,10 +176,7 @@ class Demo1 extends React.Component {
     });
   }
   render() {
-    const overlay = <Menu>
-                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
-              </Menu>;
+    const overlay = "this is content";
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
@@ -177,6 +187,13 @@ class Demo1 extends React.Component {
           visible={this.state.dropdown}
           triggerProps={{
             className: 'spa',
+          }}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
           }}
           onVisibleChange={(visible)=>{
             this.setState({
@@ -196,6 +213,54 @@ class Demo1 extends React.Component {
 ReactDOM.render(<Demo1 />, mountNode);
 ```
 
+
+## 组件通过onVisibleChange通知弹框的显示信息。
+点击触发元素后，组件需要通过onVisibleChange来告知弹框的显示状态
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: false,
+      dropdown2:false,
+    }
+  }
+  render() {
+    const overlay = "this is content";
+    
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        <Dropdown
+          visible={this.state.dropdown}
+          onVisibleChange={(visible) => {
+            this.setState({
+              dropdown: visible
+            });
+          }}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
+          content={overlay}
+          >
+            <Button theme="primary">
+              click me
+            </Button>
+        </Dropdown>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo2 />, mountNode);
+```
+
 ## 弹窗的定位
 
 定位信息有6种 `bottomLeft, bottomCenter, bottomRight, topLeft, topCenter, topRight` 。通过 `direction` 控制显示位置
@@ -213,10 +278,7 @@ class Demo2 extends React.Component {
     }
   }
   render() {
-    const overlay = <Menu>
-                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
-              </Menu>;
+    const overlay = "this is content";
     
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
@@ -242,6 +304,13 @@ class Demo2 extends React.Component {
               dropdown2: visible
             });
           }}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
           content={overlay}
           >
             <Button theme="primary">
@@ -255,6 +324,78 @@ class Demo2 extends React.Component {
 
 ReactDOM.render(<Demo2 />, mountNode);
 ```
+
+## 通过triggerProps和popperProps控制触发元素的和弹框元素的属性。
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: false,
+      dropdown2:false,
+    }
+  }
+  render() {
+    const overlay = "this is content";
+    
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        <Dropdown
+          visible={this.state.dropdown}
+          onVisibleChange={(visible) => {
+            this.setState({
+              dropdown: visible
+            });
+          }}
+          triggerProps={{
+            style: { padding:10, display:'block',backgroundColor:'#ccc'},
+          }}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+            }
+          }}
+          content={overlay}
+          >
+            <Button theme="primary">
+              triggerProps
+            </Button>
+        </Dropdown>
+    
+        <Dropdown
+          visible={this.state.dropdown2}
+          onVisibleChange={visible => {
+            this.setState({
+              dropdown2: visible
+            });
+          }}
+          popperProps={{
+            style: {
+              width:150,
+              height:150,
+              padding:10,
+              background:'#eee'
+            }
+          }}
+          content={overlay}
+          >
+            <Button theme="primary">
+              backgroundColor is gray
+            </Button>
+        </Dropdown>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo2 />, mountNode);
+```
+
 
 ## 位于Modal中的Dropdown
 
@@ -282,14 +423,7 @@ class Demo2 extends React.Component {
 
   render() {
     const { modalVisible,dropdown } = this.state;
-    const overlay = <Menu>
-                <Menu.Item><Checkbox value="name">姓名</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="age">年龄</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="12">性别</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="12">属性</Checkbox></Menu.Item>
-                <Menu.Item><Checkbox value="12">其他</Checkbox></Menu.Item>
-              </Menu>;
-    
+    const overlay = "content here";
     return (
       <div style={{position: 'relative'}}>
         <Button onClick={this.toggleModalVisible}>显示弹框</Button>
@@ -301,6 +435,13 @@ class Demo2 extends React.Component {
             <Dropdown 
               content={overlay}
               visible={dropdown}
+              popperProps={{
+                style: {
+                  width:150,
+                  height:150,
+                  padding:10,
+                }
+              }}
               onVisibleChange={(visible)=>{
                 this.setState({
                   dropdown:visible
@@ -329,16 +470,13 @@ ReactDOM.render(<Demo2 />, mountNode);
 | content | ReactNode | - | 显示内容 |
 | disabled | boolean | - | 禁用触发效果 |
 | shape | rect,radius  | rect | 形状为直角或圆角 |
-| hasArrow | boolean | false | 是否显示箭头节点<font color="red">（注：需要自行定义箭头样式）</font> |
 | destroy | boolean | true | 气泡层关闭后是否移除节点 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popper 挂载的 HTML 节点 |
 | animationType | string | 'zoom-fade' | 可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
-| arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
 | trigger | click,hover contextMenu | click | 设置触发方式 |
 | visible | boolean | false | 是否显示 |
 | onVisibleChange | (visible?: boolean) => void | noop | 显示/隐藏 气泡层触发的事件 |
 | triggerProps | HTMLAttributes |  | 设置触发节点的属性 |
-
-
+| popperProps | HTMLAttributes |  | 设置弹出节点的属性 |
