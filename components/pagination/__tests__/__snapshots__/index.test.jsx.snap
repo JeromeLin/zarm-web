@@ -204,7 +204,7 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
       >
         跳至
         <div
-          class="zw-input zw-input--sm zw-input--radius zw-input--bordered"
+          class="zw-input zw-input--sm zw-input--radius zw-input--underline"
           style="width:50px;text-align:center;margin-left:5px;margin-right:5px"
         >
           <input
@@ -212,6 +212,14 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
             type="text"
             value=""
           />
+          <div>
+            <div
+              class="zw-input__line"
+            />
+            <div
+              class="zw-input__focus-line"
+            />
+          </div>
         </div>
         页
       </div>

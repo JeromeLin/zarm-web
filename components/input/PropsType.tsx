@@ -14,7 +14,7 @@ export interface InputCommonProps {
 
 export interface InputCoreProps extends
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'prefix' | 'onChange'>, InputCommonProps {
-  type: 'text' | 'number' | 'password';
+  type?: 'text' | 'number' | 'password';
   icon?: string;
   size?: InputSize;
   clearable?: boolean;
@@ -25,16 +25,16 @@ export interface InputCoreProps extends
   addonAfter?: React.ReactNode;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface TextAreaProps extends
   Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>, InputCommonProps {
-  type: 'textarea';
+  type?: 'textarea';
   showLength?: boolean;
   autoHeight?: boolean;
   bordered?: boolean;
   value?: string | number;
   defaultValue?: string;
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange?: (e?: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
