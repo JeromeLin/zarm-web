@@ -36,7 +36,7 @@
     "build:umd": "rimraf dist && zarm build --mode umd --path components/style/entry.tsx,components/index.tsx --out-dir dist && zarm build --mode umd-ugly --path components/style/entry.tsx,components/index.tsx --out-dir dist",
     "build": "npm run build:lib && npm run build:es && npm run build:umd",
     "deploy:build": "rimraf assets && zarm deploy",
-    "deploy": "npm run deploy:build && gh-pages -d assets",
+    "deploy": "npm run deploy:build -- -p && gh-pages -d assets",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx site",
     "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
