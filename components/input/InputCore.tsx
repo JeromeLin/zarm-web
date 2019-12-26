@@ -191,7 +191,7 @@ class Input extends Component<InputCoreProps, InputState> {
     } = this.props;
     const { value } = this.state;
 
-    return (
+    return !readOnly ? (
       <input
         {...others as React.HtmlHTMLAttributes<HTMLInputElement>}
         ref={this.inputRef}
@@ -202,26 +202,20 @@ class Input extends Component<InputCoreProps, InputState> {
         onBlur={this.onBlur}
         value={fixControlledValue(value)}
       />
+    ) : (
+      <span>
+        {fixControlledValue(value)}
+      </span>
     );
   };
 
   renderBaseInput = () => {
-    const {
-      prefixCls,
-      size,
-      style,
-      readOnly,
-    } = this.props;
-    const { value } = this.state;
+    const { style } = this.props;
     const cls = this.inputCls;
 
-    return !readOnly ? (
+    return (
       <div className={cls} style={style}>
         {this.renderOriginalInput()}
-      </div>
-    ) : (
-      <div className={`${prefixCls}--readOnly ${prefixCls}--${size}`}>
-        {fixControlledValue(value)}
       </div>
     );
   };

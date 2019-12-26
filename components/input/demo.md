@@ -183,7 +183,10 @@ ReactDOM.render(
 import { Input } from 'zarm-web';
 
 ReactDOM.render(
-  <Input type="textarea" autoHeight rows={2} placeholder="自适应高度" />,
+  <>
+    <Input type="textarea" autoHeight placeholder="自适应高度" />
+    <Input type="textarea" autoHeight={{ minRows: 3, maxRows: 6 }} placeholder="自适应高度, 并且限制最小行数和最大行数" />
+  </>,
   mountNode,
 );
 ```
@@ -223,6 +226,6 @@ ReactDOM.render(
 | :--- | :--- | :--- | :--- |
 | bordered | boolean  | true | 边框样式 |
 | rows | number | - | 显示行数 |
-| autoHeight | boolean | false | 是否高度自适应 |
+| autoHeight | boolean/object | false | 是否高度自适应, 可设置成true/false/{ minRows: 2, maxRows: 5 } |
 | showLength | boolean | false | 是否显示输入字数 |
 | onChange | (e?: React.ChangeEvent&lt;HTMLTextAreaElement&gt;) => void | - | 值变化时触发的回调函数 |

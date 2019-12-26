@@ -6,6 +6,11 @@ export type InputType = 'text' | 'number' | 'password' | 'textarea';
 
 export type InputProps = InputCoreProps | TextAreaProps;
 
+export interface AutoHeightType {
+  minRows?: number;
+  maxRows?: number;
+}
+
 export interface InputCommonProps {
   prefixCls?: string;
   shape?: InputShape;
@@ -32,7 +37,7 @@ export interface TextAreaProps extends
   Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>, InputCommonProps {
   type?: 'textarea';
   showLength?: boolean;
-  autoHeight?: boolean;
+  autoHeight?: boolean | AutoHeightType;
   bordered?: boolean;
   value?: string | number;
   defaultValue?: string;
