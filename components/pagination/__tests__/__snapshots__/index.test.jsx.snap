@@ -1,466 +1,2189 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pagination renders Pagination with customized props correctly 1`] = `
-<ul
-  class="zw-pagination"
->
-  <li
-    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
-    title="上一页"
-  >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-left"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#arrow-left"
-        />
-      </svg>
-    </i>
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination--active"
-    title="1"
-  >
-    1
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="2"
-  >
-    2
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="3"
-  >
-    3
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="4"
-  >
-    4
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="5"
-  >
-    5
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__item--ellipsis"
-    title="向后 5 页"
-  />
-  <li
-    class="zw-pagination__item"
-    title="最后一页"
-  >
-    10
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__next"
-    title="下一页"
-  >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-right"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#arrow-right"
-        />
-      </svg>
-    </i>
-  </li>
-</ul>
-`;
-
 exports[`Pagination renders Pagination with jumper correctly 1`] = `
-<ul
-  class="zw-pagination"
+<ForwardRef(forwardRef)
+  showQuickJumper={true}
+  total={100}
 >
-  <li
-    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
-    title="上一页"
+  <LocaleReceiver
+    forwardedRef={null}
+    showQuickJumper={true}
+    total={100}
   >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-left"
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={true}
+      showTotal={false}
+      total={100}
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
+      <ul
+        className="zw-pagination"
       >
-        <use
-          href="#arrow-left"
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--active"
+          key="1"
+          onClick={[Function]}
+          title="1"
+        >
+          1
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="2"
+          onClick={[Function]}
+          title="2"
+        >
+          2
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="3"
+          onClick={[Function]}
+          title="3"
+        >
+          3
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="4"
+          onClick={[Function]}
+          title="4"
+        >
+          4
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="5"
+          onClick={[Function]}
+          title="5"
+        >
+          5
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--ellipsis"
+          key="jump-next"
+          onClick={[Function]}
+          title="向后 5 页"
         />
-      </svg>
-    </i>
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination--active"
-    title="1"
-  >
-    1
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="2"
-  >
-    2
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="3"
-  >
-    3
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="4"
-  >
-    4
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="5"
-  >
-    5
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__item--ellipsis"
-    title="向后 5 页"
-  />
-  <li
-    class="zw-pagination__item"
-    title="最后一页"
-  >
-    10
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__next"
-    title="下一页"
-  >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-right"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#arrow-right"
-        />
-      </svg>
-    </i>
-  </li>
-  <li
-    class="zw-pagination__options"
-  >
-    <div
-      class="zw-pagination__options--jumper"
-    >
-      跳至
-      <input
-        type="text"
-      />
-      页
-    </div>
-  </li>
-</ul>
+        <li
+          className="zw-pagination__item"
+          key="lastPager"
+          onClick={[Function]}
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__options"
+        >
+          <div
+            className="zw-pagination__options--jumper"
+          >
+            跳至
+            <input
+              onKeyDown={[Function]}
+              type="text"
+            />
+            页
+          </div>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
 `;
 
-exports[`Pagination renders Pagination with total info correctly 1`] = `
-<ul
-  class="zw-pagination"
+exports[`Pagination renders Pagination with onPageSizeChange info correctly 1`] = `
+<ForwardRef(forwardRef)
+  onPageSizeChange={[MockFunction]}
+  total={100}
 >
-  <li
-    class="zw-pagination__total"
+  <LocaleReceiver
+    forwardedRef={null}
+    onPageSizeChange={[MockFunction]}
+    total={100}
   >
-    共有 100 条记录 第 1 / 10 页
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
-    title="上一页"
-  >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-left"
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[MockFunction]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={false}
+      showTotal={false}
+      total={100}
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
+      <ul
+        className="zw-pagination"
       >
-        <use
-          href="#arrow-left"
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--active"
+          key="1"
+          onClick={[Function]}
+          title="1"
+        >
+          1
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="2"
+          onClick={[Function]}
+          title="2"
+        >
+          2
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="3"
+          onClick={[Function]}
+          title="3"
+        >
+          3
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="4"
+          onClick={[Function]}
+          title="4"
+        >
+          4
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="5"
+          onClick={[Function]}
+          title="5"
+        >
+          5
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--ellipsis"
+          key="jump-next"
+          onClick={[Function]}
+          title="向后 5 页"
         />
-      </svg>
-    </i>
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination--active"
-    title="1"
-  >
-    1
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="2"
-  >
-    2
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="3"
-  >
-    3
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="4"
-  >
-    4
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="5"
-  >
-    5
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__item--ellipsis"
-    title="向后 5 页"
-  />
-  <li
-    class="zw-pagination__item"
-    title="最后一页"
-  >
-    10
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__next"
-    title="下一页"
-  >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-right"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
-      >
-        <use
-          href="#arrow-right"
-        />
-      </svg>
-    </i>
-  </li>
-</ul>
+        <li
+          className="zw-pagination__item"
+          key="lastPager"
+          onClick={[Function]}
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
 `;
 
-exports[`Pagination renders normal Pagination correctly 1`] = `
-<ul
-  class="zw-pagination"
+exports[`Pagination renders Pagination with pageSize info correctly 1`] = `
+<ForwardRef(forwardRef)
+  pageSize={10}
+  total={100}
 >
-  <li
-    class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
-    title="上一页"
+  <LocaleReceiver
+    forwardedRef={null}
+    pageSize={10}
+    total={100}
   >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-left"
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={false}
+      showTotal={false}
+      total={100}
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
+      <ul
+        className="zw-pagination"
       >
-        <use
-          href="#arrow-left"
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--active"
+          key="1"
+          onClick={[Function]}
+          title="1"
+        >
+          1
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="2"
+          onClick={[Function]}
+          title="2"
+        >
+          2
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="3"
+          onClick={[Function]}
+          title="3"
+        >
+          3
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="4"
+          onClick={[Function]}
+          title="4"
+        >
+          4
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="5"
+          onClick={[Function]}
+          title="5"
+        >
+          5
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--ellipsis"
+          key="jump-next"
+          onClick={[Function]}
+          title="向后 5 页"
         />
-      </svg>
-    </i>
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination--active"
-    title="1"
+        <li
+          className="zw-pagination__item"
+          key="lastPager"
+          onClick={[Function]}
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Pagination renders Pagination with pageSizeOptions info correctly 1`] = `
+<ForwardRef(forwardRef)
+  pageSizeOptions={
+    Array [
+      10,
+      20,
+      30,
+      40,
+      50,
+    ]
+  }
+  total={100}
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    pageSizeOptions={
+      Array [
+        10,
+        20,
+        30,
+        40,
+        50,
+      ]
+    }
+    total={100}
   >
-    1
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="2"
-  >
-    2
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="3"
-  >
-    3
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="4"
-  >
-    4
-  </li>
-  <li
-    class="zw-pagination__item"
-    title="5"
-  >
-    5
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__item--ellipsis"
-    title="向后 5 页"
-  />
-  <li
-    class="zw-pagination__item"
-    title="最后一页"
-  >
-    10
-  </li>
-  <li
-    class="zw-pagination__item zw-pagination__next"
-    title="下一页"
-  >
-    <i
-      class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-      theme="default"
-      type="arrow-right"
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={false}
+      showTotal={false}
+      total={100}
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
+      <ul
+        className="zw-pagination"
       >
-        <use
-          href="#arrow-right"
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--active"
+          key="1"
+          onClick={[Function]}
+          title="1"
+        >
+          1
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="2"
+          onClick={[Function]}
+          title="2"
+        >
+          2
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="3"
+          onClick={[Function]}
+          title="3"
+        >
+          3
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="4"
+          onClick={[Function]}
+          title="4"
+        >
+          4
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="5"
+          onClick={[Function]}
+          title="5"
+        >
+          5
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--ellipsis"
+          key="jump-next"
+          onClick={[Function]}
+          title="向后 5 页"
         />
-      </svg>
-    </i>
-  </li>
-</ul>
+        <li
+          className="zw-pagination__item"
+          key="lastPager"
+          onClick={[Function]}
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Pagination renders Pagination with showPageSizeChanger info correctly 1`] = `
+<ForwardRef(forwardRef)
+  showPageSizeChanger={true}
+  total={100}
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    showPageSizeChanger={true}
+    total={100}
+  >
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={true}
+      showQuickJumper={false}
+      showTotal={false}
+      total={100}
+    >
+      <ul
+        className="zw-pagination"
+      >
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--active"
+          key="1"
+          onClick={[Function]}
+          title="1"
+        >
+          1
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="2"
+          onClick={[Function]}
+          title="2"
+        >
+          2
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="3"
+          onClick={[Function]}
+          title="3"
+        >
+          3
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="4"
+          onClick={[Function]}
+          title="4"
+        >
+          4
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="5"
+          onClick={[Function]}
+          title="5"
+        >
+          5
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--ellipsis"
+          key="jump-next"
+          onClick={[Function]}
+          title="向后 5 页"
+        />
+        <li
+          className="zw-pagination__item"
+          key="lastPager"
+          onClick={[Function]}
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__options"
+        >
+          <ForwardRef(forwardRef)
+            className="zw-pagination__options--changer"
+            defaultValue={10}
+            onChange={[Function]}
+            value={10}
+          >
+            <LocaleReceiver
+              className="zw-pagination__options--changer"
+              defaultValue={10}
+              forwardedRef={null}
+              onChange={[Function]}
+              value={10}
+            >
+              <Select
+                className="zw-pagination__options--changer"
+                defaultValue={10}
+                locale={
+                  Object {
+                    "noMatch": "没有找到数据",
+                    "placeholder": "请选择",
+                    "searchPlaceholder": "输入关键字",
+                  }
+                }
+                localeCode="zh-cn"
+                onChange={[Function]}
+                onSearchChange={[Function]}
+                prefixCls="za-select"
+                radius={true}
+                value={10}
+              >
+                <Dropdown
+                  disabled={true}
+                  hideOnClick={true}
+                  isRadius={true}
+                  onVisibleChange={[Function]}
+                  overlay={
+                    <Menu
+                      defaultOpenKeys={Array []}
+                      defaultSelectedKeys={Array []}
+                      inlineCollapsed={false}
+                      inlineIndent={24}
+                      mode="inline"
+                      prefixCls="za-menu"
+                      style={
+                        Object {
+                          "maxHeight": 250,
+                          "overflow": "auto",
+                        }
+                      }
+                      theme="light"
+                    >
+                      <Option
+                        checked={true}
+                        isDisabled={false}
+                        onChange={[Function]}
+                        showCheckIcon={true}
+                        value={10}
+                      >
+                        每页 10 条
+                      </Option>
+                      <Option
+                        checked={false}
+                        isDisabled={false}
+                        onChange={[Function]}
+                        showCheckIcon={false}
+                        value={20}
+                      >
+                        每页 20 条
+                      </Option>
+                      <Option
+                        checked={false}
+                        isDisabled={false}
+                        onChange={[Function]}
+                        showCheckIcon={false}
+                        value={30}
+                      >
+                        每页 30 条
+                      </Option>
+                      <Option
+                        checked={false}
+                        isDisabled={false}
+                        onChange={[Function]}
+                        showCheckIcon={false}
+                        value={40}
+                      >
+                        每页 40 条
+                      </Option>
+                      <Option
+                        checked={false}
+                        isDisabled={false}
+                        onChange={[Function]}
+                        showCheckIcon={false}
+                        value={50}
+                      >
+                        每页 50 条
+                      </Option>
+                    </Menu>
+                  }
+                  placement="bottomLeft"
+                  prefixCls="ui-dropdown"
+                  trigger="click"
+                  visible={false}
+                  zIndex={2018}
+                >
+                  <div
+                    className="ui-dropdown-trigger-box"
+                    onClick={[Function]}
+                  >
+                    <InputWithTags
+                      active={false}
+                      disabled={true}
+                      onDeleteTag={[Function]}
+                      onSearchChange={[Function]}
+                      placeholder="请选择"
+                      radius={true}
+                      search={false}
+                      searchValue=""
+                      value="每页 10 条"
+                    >
+                      <div
+                        className="za-tag-input-box is-radius is-disabled"
+                        onClick={[Function]}
+                      >
+                        <div
+                          className="value-text"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                            }
+                          }
+                        >
+                          每页 10 条
+                        </div>
+                        <Icon
+                          className="arrow-bottom"
+                          prefixCls="zw-icon"
+                          size="md"
+                          style={
+                            Object {
+                              "fontSize": "initial",
+                            }
+                          }
+                          theme="default"
+                          type="arrow-bottom"
+                          viewBox="0 0 32 32"
+                        >
+                          <Iconfont
+                            className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                            size="md"
+                            style={
+                              Object {
+                                "fontSize": "initial",
+                              }
+                            }
+                            theme="default"
+                            type="arrow-bottom"
+                          >
+                            <Icon
+                              className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                              prefixCls="zw-icon"
+                              size="md"
+                              style={
+                                Object {
+                                  "fontSize": "initial",
+                                }
+                              }
+                              theme="default"
+                              type="arrow-bottom"
+                              viewBox="0 0 32 32"
+                            >
+                              <i
+                                className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                                size="md"
+                                style={
+                                  Object {
+                                    "fontSize": "initial",
+                                  }
+                                }
+                                theme="default"
+                                type="arrow-bottom"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  viewBox="0 0 32 32"
+                                  width="1em"
+                                >
+                                  <use
+                                    xlinkHref="#arrow-bottom"
+                                  />
+                                </svg>
+                              </i>
+                            </Icon>
+                          </Iconfont>
+                        </Icon>
+                      </div>
+                    </InputWithTags>
+                  </div>
+                  <Portal
+                    containerInfo={
+                      <div
+                        style="position: absolute; left: 0px; top: 0px; width: auto;"
+                      >
+                        <div
+                          class="ui-dropdown radius"
+                          style="min-width: 0; left: 0px; top: 0px; position: absolute; animation-duration: 300ms; display: none; overflow: hidden; z-index: 2018;"
+                        >
+                          <ul
+                            class="za-menu za-menu-root za-menu-light za-menu-inline"
+                            role="menu"
+                            style="max-height: 250px; overflow: auto;"
+                          >
+                            <li
+                              class="za-option__list is-checked"
+                              style="padding-right: 25px;"
+                            >
+                              每页 10 条
+                              <i
+                                class="zw-icon checked-icon zw-icon--right zw-icon--primary zw-icon--md"
+                                theme="primary"
+                                type="right"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  viewBox="0 0 32 32"
+                                  width="1em"
+                                >
+                                  <use
+                                    xlink:href="#right"
+                                  />
+                                </svg>
+                              </i>
+                            </li>
+                            <li
+                              class="za-option__list"
+                              style="padding-right: 10px;"
+                            >
+                              每页 20 条
+                            </li>
+                            <li
+                              class="za-option__list"
+                              style="padding-right: 10px;"
+                            >
+                              每页 30 条
+                            </li>
+                            <li
+                              class="za-option__list"
+                              style="padding-right: 10px;"
+                            >
+                              每页 40 条
+                            </li>
+                            <li
+                              class="za-option__list"
+                              style="padding-right: 10px;"
+                            >
+                              每页 50 条
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    }
+                  >
+                    <div
+                      className="ui-dropdown radius"
+                      onAnimationEnd={[Function]}
+                      style={
+                        Object {
+                          "animationDuration": "300ms",
+                          "display": "none",
+                          "left": 0,
+                          "minWidth": 0,
+                          "overflow": "hidden",
+                          "position": "absolute",
+                          "top": 0,
+                          "zIndex": 2018,
+                        }
+                      }
+                    >
+                      <Menu
+                        defaultOpenKeys={Array []}
+                        defaultSelectedKeys={Array []}
+                        inlineCollapsed={false}
+                        inlineIndent={24}
+                        mode="inline"
+                        prefixCls="za-menu"
+                        style={
+                          Object {
+                            "maxHeight": 250,
+                            "overflow": "auto",
+                          }
+                        }
+                        theme="light"
+                      >
+                        <ul
+                          className="za-menu za-menu-root za-menu-light za-menu-inline"
+                          role="menu"
+                          style={
+                            Object {
+                              "maxHeight": 250,
+                              "overflow": "auto",
+                            }
+                          }
+                        >
+                          <Option
+                            checked={true}
+                            inlineIndent={24}
+                            isDisabled={false}
+                            itemKey="10"
+                            key=".$10"
+                            mode="inline"
+                            onChange={[Function]}
+                            showCheckIcon={true}
+                            subMenuKey="10"
+                            value={10}
+                          >
+                            <li
+                              className="za-option__list is-checked"
+                              onClick={[Function]}
+                              style={
+                                Object {
+                                  "paddingRight": 25,
+                                }
+                              }
+                            >
+                              每页 10 条
+                              <Icon
+                                className="checked-icon"
+                                prefixCls="zw-icon"
+                                size="md"
+                                theme="primary"
+                                type="right"
+                                viewBox="0 0 32 32"
+                              >
+                                <Iconfont
+                                  className="zw-icon checked-icon zw-icon--right zw-icon--primary zw-icon--md"
+                                  size="md"
+                                  theme="primary"
+                                  type="right"
+                                >
+                                  <Icon
+                                    className="zw-icon checked-icon zw-icon--right zw-icon--primary zw-icon--md"
+                                    prefixCls="zw-icon"
+                                    size="md"
+                                    theme="primary"
+                                    type="right"
+                                    viewBox="0 0 32 32"
+                                  >
+                                    <i
+                                      className="zw-icon checked-icon zw-icon--right zw-icon--primary zw-icon--md"
+                                      size="md"
+                                      theme="primary"
+                                      type="right"
+                                    >
+                                      <svg
+                                        fill="currentColor"
+                                        height="1em"
+                                        viewBox="0 0 32 32"
+                                        width="1em"
+                                      >
+                                        <use
+                                          xlinkHref="#right"
+                                        />
+                                      </svg>
+                                    </i>
+                                  </Icon>
+                                </Iconfont>
+                              </Icon>
+                            </li>
+                          </Option>
+                          <Option
+                            checked={false}
+                            inlineIndent={24}
+                            isDisabled={false}
+                            itemKey="20"
+                            key=".$20"
+                            mode="inline"
+                            onChange={[Function]}
+                            showCheckIcon={false}
+                            subMenuKey="20"
+                            value={20}
+                          >
+                            <li
+                              className="za-option__list"
+                              onClick={[Function]}
+                              style={
+                                Object {
+                                  "paddingRight": 10,
+                                }
+                              }
+                            >
+                              每页 20 条
+                            </li>
+                          </Option>
+                          <Option
+                            checked={false}
+                            inlineIndent={24}
+                            isDisabled={false}
+                            itemKey="30"
+                            key=".$30"
+                            mode="inline"
+                            onChange={[Function]}
+                            showCheckIcon={false}
+                            subMenuKey="30"
+                            value={30}
+                          >
+                            <li
+                              className="za-option__list"
+                              onClick={[Function]}
+                              style={
+                                Object {
+                                  "paddingRight": 10,
+                                }
+                              }
+                            >
+                              每页 30 条
+                            </li>
+                          </Option>
+                          <Option
+                            checked={false}
+                            inlineIndent={24}
+                            isDisabled={false}
+                            itemKey="40"
+                            key=".$40"
+                            mode="inline"
+                            onChange={[Function]}
+                            showCheckIcon={false}
+                            subMenuKey="40"
+                            value={40}
+                          >
+                            <li
+                              className="za-option__list"
+                              onClick={[Function]}
+                              style={
+                                Object {
+                                  "paddingRight": 10,
+                                }
+                              }
+                            >
+                              每页 40 条
+                            </li>
+                          </Option>
+                          <Option
+                            checked={false}
+                            inlineIndent={24}
+                            isDisabled={false}
+                            itemKey="50"
+                            key=".$50"
+                            mode="inline"
+                            onChange={[Function]}
+                            showCheckIcon={false}
+                            subMenuKey="50"
+                            value={50}
+                          >
+                            <li
+                              className="za-option__list"
+                              onClick={[Function]}
+                              style={
+                                Object {
+                                  "paddingRight": 10,
+                                }
+                              }
+                            >
+                              每页 50 条
+                            </li>
+                          </Option>
+                        </ul>
+                      </Menu>
+                    </div>
+                  </Portal>
+                </Dropdown>
+              </Select>
+            </LocaleReceiver>
+          </ForwardRef(forwardRef)>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Pagination renders Pagination with showTotal info correctly 1`] = `
+<ForwardRef(forwardRef)
+  showTotal={true}
+  total={100}
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    showTotal={true}
+    total={100}
+  >
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={false}
+      showTotal={true}
+      total={100}
+    >
+      <ul
+        className="zw-pagination"
+      >
+        <li
+          className="zw-pagination__total"
+          key="total"
+        >
+          共有 100 条记录 
+          第 1 / 10 页
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--active"
+          key="1"
+          onClick={[Function]}
+          title="1"
+        >
+          1
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="2"
+          onClick={[Function]}
+          title="2"
+        >
+          2
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="3"
+          onClick={[Function]}
+          title="3"
+        >
+          3
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="4"
+          onClick={[Function]}
+          title="4"
+        >
+          4
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="5"
+          onClick={[Function]}
+          title="5"
+        >
+          5
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--ellipsis"
+          key="jump-next"
+          onClick={[Function]}
+          title="向后 5 页"
+        />
+        <li
+          className="zw-pagination__item"
+          key="lastPager"
+          onClick={[Function]}
+          title="最后一页"
+        >
+          10
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Pagination renders Pagination with simple info correctly 1`] = `
+<ForwardRef(forwardRef)
+  simple={true}
+  total={100}
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    simple={true}
+    total={100}
+  >
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={false}
+      showTotal={false}
+      simple={true}
+      total={100}
+    >
+      <ul
+        className="zw-pagination zw-pagination--simple"
+      >
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__pager"
+          key="10"
+          title="1/10"
+        >
+          <input
+            onChange={[Function]}
+            onKeyDown={[Function]}
+            size={3}
+            type="text"
+            value={1}
+          />
+          <span
+            className="zw-pagination__options--slash"
+          >
+            ／
+          </span>
+          10
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Pagination renders size correctly 1`] = `
-<div>
-  <ul
-    class="zw-pagination zw-pagination--sm"
+<ForwardRef(forwardRef)
+  size="sm"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    size="sm"
   >
-    <li
-      class="zw-pagination__item zw-pagination__prev zw-pagination--disabled"
-      title="上一页"
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={false}
+      showTotal={false}
+      size="sm"
+      total={0}
     >
-      <i
-        class="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
-        theme="default"
-        type="arrow-left"
+      <ul
+        className="zw-pagination zw-pagination--sm"
+      />
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Pagination should render page total number 1`] = `
+<ForwardRef(forwardRef)
+  total={500}
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    total={500}
+  >
+    <Pagination
+      defaultValue={1}
+      locale={
+        Object {
+          "current": "第 {current} 页",
+          "first_page": "第一页",
+          "goto": "跳至",
+          "last_page": "最后一页",
+          "next_5_page": "向后 5 页",
+          "next_page": "下一页",
+          "pageClassifier": "页",
+          "pagesize": "每页 {value} 条",
+          "prev_5_page": "向前 5 页",
+          "prev_page": "上一页",
+          "total": "共有 {total} 条记录 ",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onPageSizeChange={[Function]}
+      pageSize={10}
+      pageSizeOptions={
+        Array [
+          10,
+          20,
+          30,
+          40,
+          50,
+        ]
+      }
+      prefixCls="zw-pagination"
+      showPageSizeChanger={false}
+      showQuickJumper={false}
+      showTotal={false}
+      total={500}
+    >
+      <ul
+        className="zw-pagination"
       >
-        <svg
-          fill="currentColor"
-          height="1em"
-          viewBox="0 0 32 32"
-          width="1em"
+        <li
+          className="zw-pagination__item zw-pagination__item--prev zw-pagination__item--disabled"
+          key="prev"
+          onClick={[Function]}
+          title="上一页"
         >
-          <use
-            href="#arrow-left"
-          />
-        </svg>
-      </i>
-    </li>
-    <li
-      class="zw-pagination__item zw-pagination--active"
-      title="1"
-    >
-      1
-    </li>
-    <li
-      class="zw-pagination__item"
-      title="2"
-    >
-      2
-    </li>
-    <li
-      class="zw-pagination__item"
-      title="3"
-    >
-      3
-    </li>
-    <li
-      class="zw-pagination__item"
-      title="4"
-    >
-      4
-    </li>
-    <li
-      class="zw-pagination__item"
-      title="5"
-    >
-      5
-    </li>
-    <li
-      class="zw-pagination__item zw-pagination__item--ellipsis"
-      title="向后 5 页"
-    />
-    <li
-      class="zw-pagination__item"
-      title="最后一页"
-    >
-      10
-    </li>
-    <li
-      class="zw-pagination__item zw-pagination__next"
-      title="下一页"
-    >
-      <i
-        class="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
-        theme="default"
-        type="arrow-right"
-      >
-        <svg
-          fill="currentColor"
-          height="1em"
-          viewBox="0 0 32 32"
-          width="1em"
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-left"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-left"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-left"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-left zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-left"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-left"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--active"
+          key="1"
+          onClick={[Function]}
+          title="1"
         >
-          <use
-            href="#arrow-right"
-          />
-        </svg>
-      </i>
-    </li>
-  </ul>
-</div>
+          1
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="2"
+          onClick={[Function]}
+          title="2"
+        >
+          2
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="3"
+          onClick={[Function]}
+          title="3"
+        >
+          3
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="4"
+          onClick={[Function]}
+          title="4"
+        >
+          4
+        </li>
+        <li
+          className="zw-pagination__item"
+          key="5"
+          onClick={[Function]}
+          title="5"
+        >
+          5
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--ellipsis"
+          key="jump-next"
+          onClick={[Function]}
+          title="向后 5 页"
+        />
+        <li
+          className="zw-pagination__item"
+          key="lastPager"
+          onClick={[Function]}
+          title="最后一页"
+        >
+          50
+        </li>
+        <li
+          className="zw-pagination__item zw-pagination__item--next"
+          key="next"
+          onClick={[Function]}
+          title="下一页"
+        >
+          <Icon
+            className="zw-pagination__item--icon"
+            prefixCls="zw-icon"
+            size="md"
+            theme="default"
+            type="arrow-right"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+              size="md"
+              theme="default"
+              type="arrow-right"
+            >
+              <Icon
+                className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                prefixCls="zw-icon"
+                size="md"
+                theme="default"
+                type="arrow-right"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="zw-icon zw-pagination__item--icon zw-icon--arrow-right zw-icon--default zw-icon--md"
+                  size="md"
+                  theme="default"
+                  type="arrow-right"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-right"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </li>
+      </ul>
+    </Pagination>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
 `;

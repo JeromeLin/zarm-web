@@ -1,5 +1,5 @@
-@import '../../style/core/index';
-@import 'mixins';
+@import "../../style/core/index";
+@import "mixins";
 
 @include b(pagination) {
   margin: 0;
@@ -48,22 +48,24 @@
   }
 
   @include m(disabled) {
-    &,
+    background-color: var(--opacity-disabled);
+    color: var(--color-text);
+    opacity: var(--opacity-disabled);
+    cursor: not-allowed;
+
     &:active,
-    &:hover,
     &:focus,
+    &:hover,
     &:visited {
-      color: var(--color-text-disabled);
-      cursor: not-allowed;
+      background-color: var(--opacity-disabled);
+      color: var(--color-text);
     }
-  }
 
-  @include m(active) {
-    background-color: var(--pagination-default-active-background);
-
-    &,
-    &:hover {
-      color: #fff;
+    @include e(item) {
+      cursor: not-allowed;
+      &:hover {
+        color: inherit;
+      }
     }
   }
 }

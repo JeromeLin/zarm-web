@@ -28,6 +28,26 @@
     color: $hover-color;
   }
 
+  @include m(disabled) {
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:visited {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  @include m(active) {
+    background-color: var(--pagination-default-active-background);
+
+    &,
+    &:hover {
+      color: #fff;
+    }
+  }
+
   @include m(ellipsis) {
     background-color: transparent;
 
@@ -100,7 +120,7 @@
     font-size: $font-size;
   }
 
-  @include b(pagination--active) {
+  @include e(item--active) {
     background-color: var(--pagination-default-active-background);
 
     &,

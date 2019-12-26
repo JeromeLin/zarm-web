@@ -10,15 +10,25 @@ const noop = () => {};
 
 class Pagination extends Component<PropsType, any> {
   static defaultProps = {
+    // 样式前缀
     prefixCls: 'zw-pagination',
+    // 默认页
     defaultValue: 1,
+    // 数据总数
     total: 0,
+    // 每页条数
     pageSize: 10,
+    // 每页条数下拉框的选项
     pageSizeOptions: [10, 20, 30, 40, 50],
+    // 是否展示总数
     showTotal: false,
+    // 是否展示跳转
     showQuickJumper: false,
+    // 是否展示每页条数选择器
     showPageSizeChanger: false,
+    // 每页展示条数变更触发的事件
     onPageSizeChange: noop,
+    // 页面切换和跳转时触发的事件
     onChange: noop,
   };
 
@@ -39,6 +49,10 @@ class Pagination extends Component<PropsType, any> {
     return null;
   }
 
+  /**
+   * 根据总数计算分页数
+   * @return {number} 返回分页数
+   */
   getPageSize = () => {
     const { total, pageSize } = this.props;
     return Math.ceil(total / pageSize);
@@ -88,7 +102,7 @@ class Pagination extends Component<PropsType, any> {
   };
 
   renderSimple = () => {
-    const { prefixCls } = this.props;
+    const { prefixCls, disabled } = this.props;
     const pagerList: JSX.Element[] = [];
     const pageCount = this.getPageSize();
     const { currentInputValue } = this.state;
@@ -107,6 +121,7 @@ class Pagination extends Component<PropsType, any> {
           value={currentInputValue}
           onChange={this.handleJumpChange}
           onKeyDown={this.handleJumpKeyDown}
+          disabled={disabled}
         />
         <span className={`${prefixCls}__options--slash`}>／</span>
         {pageCount}
@@ -150,8 +165,8 @@ class Pagination extends Component<PropsType, any> {
     const { prefixCls, locale } = this.props;
     const cls = classnames({
       [`${prefixCls}__item`]: true,
-      [`${prefixCls}__prev`]: true,
-      [`${prefixCls}--disabled`]: Number(page) === 1,
+      [`${prefixCls}__item--prev`]: true,
+      [`${prefixCls}__item--disabled`]: Number(page) === 1,
     });
 
     return (
@@ -170,8 +185,8 @@ class Pagination extends Component<PropsType, any> {
     const { prefixCls, locale } = this.props;
     const cls = classnames({
       [`${prefixCls}__item`]: true,
-      [`${prefixCls}__next`]: true,
-      [`${prefixCls}--disabled`]: Number(page) === pageSize,
+      [`${prefixCls}__item--next`]: true,
+      [`${prefixCls}__item--disabled`]: Number(page) === pageSize,
     });
 
     return (
@@ -220,6 +235,9 @@ class Pagination extends Component<PropsType, any> {
     );
   };
 
+  /**
+   * 指定跳转页码
+   */
   handleJumpChange = ({ target: { value } }) => {
     const sValue = parseInt(value, 10);
     if (typeof sValue !== 'number') {
@@ -254,7 +272,10 @@ class Pagination extends Component<PropsType, any> {
   };
 
   _onPagerClick(value: number) {
-    const { onChange } = this.props;
+    const { onChange, disabled } = this.props;
+    if (disabled) {
+      return false;
+    }
 
     this.setState({
       value,
@@ -268,7 +289,7 @@ class Pagination extends Component<PropsType, any> {
     const { prefixCls } = this.props;
     const cls = classnames({
       [`${prefixCls}__item`]: true,
-      [`${prefixCls}--active`]: page === i,
+      [`${prefixCls}__item--active`]: page === i,
     });
 
     return (
@@ -309,6 +330,7 @@ class Pagination extends Component<PropsType, any> {
       onChange,
       locale,
       pageSize,
+      disabled,
     } = this.props;
     let { pageSizeOptions } = this.props;
     let defaultPageSize = pageSizeOptions && pageSizeOptions.length > 0 && pageSizeOptions[0];
@@ -323,6 +345,7 @@ class Pagination extends Component<PropsType, any> {
           className={`${prefixCls}__options--changer`}
           defaultValue={defaultPageSize}
           value={pageSize === 10 ? defaultPageSize : pageSize}
+          disabled={disabled}
           onChange={({ value }: any) => {
             if (value === pageSize) {
               return;
@@ -369,11 +392,13 @@ class Pagination extends Component<PropsType, any> {
       showPageSizeChanger,
       simple,
       size,
+      disabled,
       style,
     } = this.props;
 
     const cls = classnames({
       [prefixCls!]: true,
+      [`${prefixCls}--disabled`]: !!disabled,
       [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--simple`]: simple,
       [className!]: !!className,
