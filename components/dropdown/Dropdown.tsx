@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEventHandler } from 'react';
 import Popper from 'zarm/lib/popper';
 import classnames from 'classnames';
 import { PropsType } from './PropsType';
@@ -22,11 +22,30 @@ export default class Dropdown extends React.Component<PropsType> {
   private hoverTimer?: number;
 
   componentDidMount() {
-    document.addEventListener('click', this.onDocClick);
+    document.addEventListener('mousedown', this.onDocClick);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { visible } = this.props;
+    if (prevProps.visible && !visible) {
+      const prevActiveElem = document.activeElement;
+      if (this.popperContenRef.current && this.popperContenRef.current.contains(prevActiveElem)) {
+        setTimeout(() => {
+          if (this.triggerPointRef.current) {
+            console.log(11);
+            this.triggerPointRef.current.focus();
+          }
+        });
+      } else if (prevActiveElem && prevActiveElem instanceof HTMLElement && prevActiveElem.parentNode) {
+        setTimeout(() => {
+          prevActiveElem.focus();
+        });
+      }
+    }
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.onDocClick);
+    document.removeEventListener('mousedown', this.onDocClick);
   }
 
   onDocClick = (e: MouseEvent) => {
@@ -91,6 +110,14 @@ export default class Dropdown extends React.Component<PropsType> {
     this.onVisibleChange(!visible);
   };
 
+  onKeydown: KeyboardEventHandler = (e) => {
+    const { visible } = this.props;
+    if (visible && e.keyCode === 27) {
+      e.stopPropagation();
+      this.onVisibleChange(false);
+    }
+  };
+
   render() {
     const {
       visible,
@@ -101,8 +128,6 @@ export default class Dropdown extends React.Component<PropsType> {
       disabled,
       content,
       trigger,
-      triggerProps,
-      popperProps,
       shape,
       ...others
     } = this.props;
@@ -113,10 +138,11 @@ export default class Dropdown extends React.Component<PropsType> {
     });
     const dropdownContent = (
       <div
-        {...popperProps}
+        tabIndex="-1"
         ref={this.popperContenRef}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        onKeyDown={this.onKeydown}
       >
         {content}
       </div>
@@ -131,12 +157,12 @@ export default class Dropdown extends React.Component<PropsType> {
         content={dropdownContent}
       >
         <span
-          {...triggerProps}
           ref={this.triggerPointRef}
           onClick={this.onClick}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
           onContextMenu={this.onContextMenu}
+          onKeyDown={this.onKeydown}
         >
           {children}
         </span>
