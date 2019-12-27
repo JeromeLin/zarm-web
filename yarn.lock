@@ -12600,13 +12600,14 @@ yargs@^7.0.0, yargs@^7.1.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-zarm@2.0.0-alpha.73:
-  version "2.0.0-alpha.73"
-  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.0.0-alpha.73.tgz#0be81329696f49f6ee00f673ad204f10fd1474c0"
-  integrity sha512-r5j1zT1BxNKbqn/hiTx2RFInDuljmzkqPCqBT4LPNXh0ULgDtI8t1cKnMFI7bFr1F6qe7iZ8y1ejXcW4yNbBZQ==
+zarm@2.0.0-alpha.74:
+  version "2.0.0-alpha.74"
+  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.0.0-alpha.74.tgz#21f004d9785f0a41b656610c9482c2cfcb99ef45"
+  integrity sha512-ccmL/8FXpYKmeF0k68A6TxwW8SlI3dx2Jc66syVnExZ+tteV/VPYqR6H8CiiKmI1KorofOkh0BrQBz58voP/ZQ==
   dependencies:
     better-scroll "1.15.1"
     classnames "2.2.6"
+    color "^3.1.0"
     create-react-context "0.2.3"
     hoist-non-react-statics "^3.3.0"
     lodash "^4.17.15"
