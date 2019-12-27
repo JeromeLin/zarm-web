@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import { DividerProps } from './PropsType';
 
 export default class Divider extends Component<DividerProps, any> {
@@ -7,8 +8,12 @@ export default class Divider extends Component<DividerProps, any> {
 
   static defaultProps = {
     prefixCls: 'zw-menu',
-    disabled: true,
     style: {},
+  };
+
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    style: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])),
   };
 
   render() {

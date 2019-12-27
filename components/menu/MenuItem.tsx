@@ -1,7 +1,8 @@
 import React, { Component, CSSProperties } from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import Tooltip from '../tooltip';
-import { ItemProps } from './PropsType';
+import { ItemProps, Mode } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
 
@@ -11,7 +12,6 @@ class MenuItem extends Component<ItemProps, any> {
   static defaultProps = {
     prefixCls: 'zw-menu',
     checked: false,
-    isDisabled: false,
     level: 1,
     style: {},
     mode: 'inline',
@@ -20,13 +20,24 @@ class MenuItem extends Component<ItemProps, any> {
     onDoubleClick: noop,
   };
 
-  handleClick = (e) => {
-    const { itemKey, inlineCollapsed, disabled } = this.props;
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    checked: PropTypes.bool,
+    level: PropTypes.number,
+    style: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])),
+    mode: PropTypes.oneOf(['inline', 'horizontal', 'vertical']),
+    inlineIndent: PropTypes.number,
+    onClick: PropTypes.func,
+    onDoubleClick: PropTypes.func,
+  };
+
+  handleClick = (e: React.MouseEvent) => {
+    const { itemKey, inlineCollapsed, disabled, mode } = this.props;
 
     if (disabled) return;
     this.props.onClick(e, itemKey);
     this.props.toggleSelectedKeys(itemKey);
-    if (inlineCollapsed) {
+    if (inlineCollapsed || mode === 'vertical') {
       this.props.toggleSubMenuOpen('');
     }
   };
@@ -39,7 +50,7 @@ class MenuItem extends Component<ItemProps, any> {
 
     const cls = classnames({
       [`${prefixCls}__item`]: true,
-      [`${prefixCls}__item--level${level}`]: level,
+      [`${prefixCls}__item--level-${level}`]: level,
       [`${prefixCls}__item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
       [`${prefixCls}__item--selected`]: !!checked,
       [`${prefixCls}__item--disabled`]: 'disabled' in this.props,
@@ -48,8 +59,25 @@ class MenuItem extends Component<ItemProps, any> {
     const itemStyle: CSSProperties = {
       ...style,
     };
-    if (mode === 'inline' && !inlineCollapsed) {
+    if (mode === Mode.inline && !inlineCollapsed) {
       itemStyle.paddingLeft = level * inlineIndent;
+    }
+    if (mode === Mode.vertical || (inlineCollapsed && level !== 1)) {
+      itemStyle.paddingLeft = inlineIndent;
+    }
+
+    if (!inlineCollapsed) {
+      return (
+        <li
+          className={cls}
+          role="menuitem"
+          style={itemStyle}
+          onClick={this.handleClick}
+          onDoubleClick={onDoubleClick}
+        >
+          {children}
+        </li>
+      );
     }
     return (
       <li
@@ -63,7 +91,6 @@ class MenuItem extends Component<ItemProps, any> {
           hasArrow
           content={title}
           direction="right"
-          className="zw-menu-item__tooltip"
         >
           <div>
             {children}
@@ -74,17 +101,22 @@ class MenuItem extends Component<ItemProps, any> {
   }
 }
 
-export default function MenuItemConsumer(props) {
+export default function MenuItemConsumer(props: ItemProps) {
   return (
     <MenuContext.Consumer>
       {
-        (menuKeys) => (
+        ({
+          mode, inlineCollapsed, inlineIndent,
+          selectedKeys, toggleOpenKeys, toggleSelectedKeys,
+        }) => (
           <MenuItem
             {...props}
-            inlineCollapsed={menuKeys.inlineCollapsed}
-            selectedKeys={menuKeys.selectedKeys}
-            toggleSubMenuOpen={menuKeys.toggleOpenKeys}
-            toggleSelectedKeys={menuKeys.toggleSelectedKeys}
+            mode={mode}
+            inlineIndent={inlineIndent}
+            inlineCollapsed={inlineCollapsed}
+            selectedKeys={selectedKeys}
+            toggleSubMenuOpen={toggleOpenKeys}
+            toggleSelectedKeys={toggleSelectedKeys}
           />
         )
       }

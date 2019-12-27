@@ -1,11 +1,18 @@
-import React, { Component, Children, cloneElement, CSSProperties } from 'react';
+import React, { Component, Children, cloneElement, CSSProperties, ReactElement } from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import dom from '../utils/dom';
 import events from '../utils/events';
-import { SubMenuProps, childPropsType } from './PropsType';
+import { SubMenuProps, ChildProps, Mode } from './PropsType';
 import MenuContext from './menu-context';
 
-export class SubMenu extends Component<SubMenuProps, any> {
+interface SubMenuState {
+  collapsedSubVisible: boolean;
+  collapsedSubAnimation: 'up' | 'down' | '';
+  openKeys: string[];
+}
+
+export class SubMenu extends Component<SubMenuProps, SubMenuState> {
   static isSubMenu = true;
 
   static defaultProps = {
@@ -16,6 +23,14 @@ export class SubMenu extends Component<SubMenuProps, any> {
     openKeys: [],
   };
 
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    level: PropTypes.number,
+    style: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])),
+    title: PropTypes.node,
+    openKeys: PropTypes.arrayOf(PropTypes.string),
+  };
+
   subTitle: any;
 
   sub: any;
@@ -24,10 +39,36 @@ export class SubMenu extends Component<SubMenuProps, any> {
 
   constructor(props) {
     super(props);
+    const { openKeys } = props;
     this.state = {
       collapsedSubVisible: false,
       collapsedSubAnimation: '',
+      openKeys,
     };
+  }
+
+  static getDerivedStateFromProps(props: SubMenuProps, state: SubMenuState) {
+    const { openKeys, subMenuKey } = props;
+
+    const isOpenNext = openKeys.indexOf(subMenuKey) > -1;
+    const isOpenNow = state.openKeys.indexOf(subMenuKey) > -1;
+
+    if (!isOpenNow && isOpenNext) {
+      return {
+        collapsedSubVisible: true,
+        collapsedSubAnimation: 'down',
+        openKeys,
+      };
+    }
+    if (isOpenNow && !isOpenNext) {
+      return {
+        collapsedSubVisible: false,
+        collapsedSubAnimation: 'up',
+        openKeys,
+      };
+    }
+
+    return null;
   }
 
   componentDidMount() {
@@ -37,36 +78,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
         this.setSubHeight({ openKeys: [] });
       }
     }
-    if (inlineCollapsed) {
-      events.on(document, 'click', this.onClickOutSide);
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { inlineCollapsed } = nextProps;
-
-    if (!inlineCollapsed) {
-      // eslint-disable-next-line react/destructuring-assignment
-      if (this.props.inlineCollapsed) {
-        events.off(document, 'click', this.onClickOutSide);
-      }
-      return;
-    }
-    // eslint-disable-next-line react/destructuring-assignment
-    if (!this.props.inlineCollapsed) {
-      events.on(document, 'click', this.onClickOutSide);
-    }
-    const { subMenuKey, openKeys } = this.props;
-    const isOpenNow = openKeys.indexOf(subMenuKey) > -1;
-    const isOpenNext = nextProps.openKeys.indexOf(subMenuKey) > -1;
-
-    if (!isOpenNow && isOpenNext) {
-      // 展开菜单
-      this.slideDown();
-    } else if (isOpenNow && !isOpenNext) {
-      // 收起菜单
-      this.slideUp();
-    }
+    events.on(document, 'click', this.onClickOutSide);
   }
 
   componentDidUpdate(prevProps) {
@@ -77,8 +89,8 @@ export class SubMenu extends Component<SubMenuProps, any> {
   }
 
   componentWillUnmount() {
-    const { inlineCollapsed } = this.props;
-    if (inlineCollapsed) {
+    const { inlineCollapsed, mode } = this.props;
+    if (inlineCollapsed || mode === Mode.vertical) {
       events.off(document, 'click', this.onClickOutSide);
     }
   }
@@ -130,6 +142,17 @@ export class SubMenu extends Component<SubMenuProps, any> {
     }
   }
 
+  checkIfActive = (childs: React.ReactElement[]): boolean => {
+    const { selectedKeys, subMenuKey } = this.props;
+    if (!selectedKeys || !selectedKeys.length) return false;
+    return childs.some(() => {
+      if (selectedKeys[0].startsWith(subMenuKey)) {
+        return true;
+      }
+      return false;
+    });
+  };
+
   toggleSubMenuOpen = (e) => {
     e.stopPropagation();
     const { subMenuKey } = this.props;
@@ -145,9 +168,11 @@ export class SubMenu extends Component<SubMenuProps, any> {
     });
   };
 
-  onClickOutSide = (e) => {
+  onClickOutSide = (e: MouseEvent) => {
     const { target } = e;
-    const { subMenuKey, openKeys } = this.props;
+    const { subMenuKey, openKeys, inlineCollapsed, mode } = this.props;
+
+    if (!inlineCollapsed && mode !== Mode.vertical) return;
     if (this.subTitle.contains(target)) {
       return;
     }
@@ -156,33 +181,18 @@ export class SubMenu extends Component<SubMenuProps, any> {
     }
   };
 
-  slideUp() {
-    this.setState({
-      collapsedSubVisible: false,
-      collapsedSubAnimation: 'up',
-    });
-  }
-
-  slideDown() {
-    this.setState({
-      collapsedSubVisible: true,
-      collapsedSubAnimation: 'down',
-    });
-  }
-
   renderChildren() {
     const {
-      children, level, inlineIndent, mode, prefixCls, subMenuKey,
+      children, level, prefixCls, subMenuKey,
     } = this.props;
-    const childProps: childPropsType = {
-      mode,
+    const childProps: ChildProps = {
       level: level + 1,
-      inlineIndent,
       prefixCls,
     };
     return Children.map(children, (child, index) => {
-      const { key } = child;
-      if (Object.keys(child.type).indexOf('isItemGroup') > -1) {
+      const c = child as ReactElement;
+      const { key } = c;
+      if (Object.keys(c.type).indexOf('isItemGroup') > -1) {
         childProps.subMenuKey = subMenuKey;
         childProps.index = index;
       } else {
@@ -190,7 +200,7 @@ export class SubMenu extends Component<SubMenuProps, any> {
         childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
       }
 
-      return cloneElement(child, childProps);
+      return cloneElement(c, childProps);
     });
   }
 
@@ -202,19 +212,25 @@ export class SubMenu extends Component<SubMenuProps, any> {
     const { collapsedSubVisible, collapsedSubAnimation } = this.state;
 
     const subMenuStyle: CSSProperties = {};
-    if (mode === 'inline' && !inlineCollapsed) {
-      subMenuStyle.paddingLeft = level * inlineIndent;
+    const childs = this.renderChildren();
+
+    if (mode === Mode.inline && !inlineCollapsed) {
+      subMenuStyle.paddingLeft = level * inlineIndent!;
+    }
+    if (mode === Mode.vertical || (inlineCollapsed && level !== 1)) {
+      subMenuStyle.paddingLeft = inlineIndent;
     }
     const isOpen = openKeys.indexOf(subMenuKey) > -1;
     const cls = classnames(`${prefixCls}__submenu`, {
       [`${prefixCls}__submenu--open`]: isOpen,
-      [`${prefixCls}__submenu--level${level}`]: level,
+      [`${prefixCls}__submenu--active`]: this.checkIfActive(childs),
+      [`${prefixCls}__submenu--level-${level}`]: level,
     });
     let subStyle: React.CSSProperties = {
       display: 'block',
     };
     let subCls = `${prefixCls}__sub`;
-    if (inlineCollapsed) {
+    if (inlineCollapsed || mode === Mode.vertical) {
       subStyle = {
         display: collapsedSubVisible ? 'block' : 'none',
       };
@@ -240,23 +256,29 @@ export class SubMenu extends Component<SubMenuProps, any> {
           style={subStyle}
           onAnimationEnd={this.onSubAnimationEnd}
         >
-          {this.renderChildren()}
+          {childs}
         </ul>
       </li>
     );
   }
 }
 
-export default function SubMenuConsumer(props) {
+export default function SubMenuConsumer(props: SubMenuProps) {
   return (
     <MenuContext.Consumer>
       {
-        (menuKeys) => (
+        ({
+          mode, inlineCollapsed, inlineIndent,
+          selectedKeys, openKeys, toggleOpenKeys,
+        }) => (
           <SubMenu
             {...props}
-            inlineCollapsed={menuKeys.inlineCollapsed}
-            openKeys={menuKeys.openKeys}
-            toggleOpenKeys={menuKeys.toggleOpenKeys}
+            mode={mode}
+            inlineIndent={inlineIndent}
+            inlineCollapsed={inlineCollapsed}
+            selectedKeys={selectedKeys}
+            openKeys={openKeys}
+            toggleOpenKeys={toggleOpenKeys}
           />
         )
       }

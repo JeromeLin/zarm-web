@@ -1,5 +1,7 @@
-import React, { Component, cloneElement, Children, CSSProperties } from 'react';
-import { ItemGroupProps, childPropsType } from './PropsType';
+import React, { Component, ReactElement, cloneElement, Children, CSSProperties } from 'react';
+import PropTypes from 'prop-types';
+import { ItemGroupProps, ChildProps, Mode } from './PropsType';
+import MenuContext from './menu-context';
 
 class ItemGroup extends Component<ItemGroupProps> {
   static isItemGroup = true;
@@ -9,20 +11,28 @@ class ItemGroup extends Component<ItemGroupProps> {
     mode: 'inline',
     level: 1,
     index: 0,
+    inlineIndent: 24,
+  };
+
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    level: PropTypes.number,
+    mode: PropTypes.oneOf(['inline', 'horizontal', 'vertical']),
+    inlineIndent: PropTypes.number,
+    index: PropTypes.number,
   };
 
   renderChildren() {
     const {
-      children, level, inlineIndent, mode, prefixCls, subMenuKey, index,
+      children, level, prefixCls, subMenuKey, index,
     } = this.props;
-    const childProps: childPropsType = {
-      mode,
+    const childProps: ChildProps = {
       level,
-      inlineIndent,
       prefixCls,
     };
     return Children.map(children, (child, idx) => {
-      const { key } = child;
+      const c = child as ReactElement;
+      const { key } = c;
 
       if (level === 1) {
         childProps.subMenuKey = key || `0-group${index}-${idx}`;
@@ -32,7 +42,7 @@ class ItemGroup extends Component<ItemGroupProps> {
         childProps.subMenuKey = key || `${subMenuKey}-${level}-group${index}-${idx}`;
       }
 
-      return cloneElement(child, childProps);
+      return cloneElement(c, childProps);
     });
   }
 
@@ -40,8 +50,11 @@ class ItemGroup extends Component<ItemGroupProps> {
     const { prefixCls, title, inlineIndent, level, mode, inlineCollapsed } = this.props;
 
     const groupTitleStyle: CSSProperties = {};
-    if (mode === 'inline' && !inlineCollapsed) {
+    if (mode === Mode.inline && !inlineCollapsed) {
       groupTitleStyle.paddingLeft = (level - 1) * inlineIndent + inlineIndent / 2;
+    }
+    if (mode === Mode.vertical || inlineCollapsed) {
+      groupTitleStyle.paddingLeft = inlineIndent / 2;
     }
 
     const cls = `${prefixCls}__itemgroup`;
@@ -61,4 +74,21 @@ class ItemGroup extends Component<ItemGroupProps> {
   }
 }
 
-export default ItemGroup;
+export default function ItemGroupConsumer(props: ItemGroupProps) {
+  return (
+    <MenuContext.Consumer>
+      {
+        ({
+          mode, inlineCollapsed, inlineIndent,
+        }) => (
+          <ItemGroup
+            {...props}
+            mode={mode}
+            inlineIndent={inlineIndent}
+            inlineCollapsed={inlineCollapsed}
+          />
+        )
+      }
+    </MenuContext.Consumer>
+  );
+}

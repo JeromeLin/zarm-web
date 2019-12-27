@@ -1,10 +1,4 @@
-@mixin menu-size($height, $font-size) {
-  @include e(item) {
-    height: $height;
-    line-height: $height;
-    font-size: $font-size;
-  }
-}
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
 @keyframes slide-down {
   from {
@@ -30,26 +24,143 @@
   }
 }
 
-$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+@mixin overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin icon-base {
+  min-width: var(--menuitem-icon-min-width);
+  margin-right: var(--menuitem-icon-margin-right);
+  font-size: var(--menuitem-icon-font-size);
+  pointer-events: none;
+
+  + span {
+    pointer-events: none;
+    transition: opacity 0.3s, width 0.3s;
+    opacity: 1;
+  }
+}
+
+@mixin icon-collapsed {
+  display: block;
+  font-size: var(--menuitem-icon-font-size);
+  line-height: var(--menuitem-first-level-height);
+  margin-right: 0;
+
+  + span {
+    max-width: 0;
+    height: 0;
+    display: inline-block;
+    opacity: 0;
+  }
+}
+
+@mixin item-base($height, $font-size) {
+  height: $height;
+  line-height: $height;
+  font-size: $font-size;
+  user-select: none;
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.3s $ease-in-out;
+  @include overflow-ellipsis();
+}
+
+@mixin item-active {
+  color: var(--menuitem-active-color);
+  background: var(--menuitem-active-bg-color);
+}
+
+@mixin item-collapsed {
+  left: 0;
+  text-overflow: clip;
+  padding: 0 (var(--menu-collapsed-width) - 16) / 2;
+}
+
+@mixin item-first-level {
+  height: var(--menuitem-first-level-height);
+  line-height: var(--menuitem-first-level-height);
+}
+
+@mixin arrow-base($bgColor) {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 10px;
+  transition: transform 0.3s $ease-in-out;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    vertical-align: baseline;
+    background: linear-gradient(to right, $bgColor, $bgColor);
+    width: 6px;
+    height: 2px;
+    border-radius: 2px;
+    transition: all 0.3s $ease-in-out;
+  }
+  &:before {
+    transform: rotate(-40deg) translateX(2px);
+  }
+  &:after {
+    transform: rotate(40deg) translateX(-2px);
+  }
+}
+
+@mixin arrow-vertical {
+  &:before {
+    transform: rotate(-50deg) translateY(2px);
+  }
+  &:after {
+    transform: rotate(50deg) translateY(-2px);
+  }
+}
+
+@mixin arrow-active {
+  &:after,
+  &:before {
+    background: linear-gradient(to right, var(--menuitem-active-color), var(--menuitem-active-color));
+  }
+}
+
+@mixin sub-collapsed($bgColor) {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 4px);
+  z-index: 2;
+  overflow: visible;
+  min-width: var(--submenu-min-width);
+  height: auto !important;
+  padding: 4px 0;
+  opacity: 0;
+  background-color: $bgColor;
+  border-radius: 2px;
+  transform-origin: 0 0;
+  // box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-light);
+
+  &.slide-up {
+    animation: slide-up 0.3s both;
+  }
+  &.slide-down {
+    animation: slide-down 0.3s both;
+  }
+}
 
 @include b(menu) {
-  list-style: none;
   margin: 0;
   padding: 0;
   height: 100%;
   background: var(--menu-default-bg-color);
+  list-style: none;
   outline: none;
-  // border-right: 1px solid #e8e8e8;
-  // box-shadow: var(--box-shadow-light);
-  transition: background .3s, width .2s;
+  transition: background 0.3s, width 0.2s;
   zoom: 1;
   font-feature-settings: 'tnum';
-  color: var(--menu-color);
-  @include menu-size(44px, var(--font-size-md));
-
-  @include m(root) {
-    box-shadow: none;
-  }
+  color: var(--color-text);
 
   @include e(item) {
     position: relative;
@@ -57,25 +168,12 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     font-weight: normal;
     color: var(--menuitem-default-color);
     cursor: pointer;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     user-select: none;
-    // transition: all 0.3s $ease-in-out;
-    transition: color .3s $ease-in-out, border-color .3s $ease-in-out, background .3s $ease-in-out, padding .15s $ease-in-out;
+    transition: all 0.3s $ease-in-out;
+    @include item-base(var(--menuitem-height), var(--font-size-md));
 
     @include b(icon) {
-      min-width: 14px;
-      margin-right: 12px;
-      font-size: 16px;
-      pointer-events: none;
-      transition: font-size .15s cubic-bezier(.215, .61, .355, 1), margin .3s cubic-bezier(.645, .045, .355, 1);
-
-      + span {
-        pointer-events: none;
-        transition: opacity 0.3s $ease-in-out, width 0.3s $ease-in-out, height 0.3s $ease-in-out;
-        opacity: 1;
-      }
+      @include icon-base();
     }
 
     > a {
@@ -97,12 +195,10 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
     @include m(selected) {
-      color: var(--menuitem-active-color);
-      background: var(--menuitem-active-bg-color);
+      @include item-active();
     }
     @include m(active) {
-      color: var(--menuitem-active-color);
-      background: var(--menuitem-active-bg-color);
+      @include item-active();
     }
     @include m(disabled) {
       color: var(--menuitem-disabled-color);
@@ -112,9 +208,56 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
         color: var(--menuitem-disabled-color);
       }
     }
-    @include m(level1) {
-      height: 52px;
-      line-height: 52px;
+    @include m(level-1) {
+      @include item-first-level();
+    }
+  }
+
+  @include e(submenu) {
+    min-width: var(--submenu-min-width);
+    height: auto;
+
+    @include e(title) {
+      @include item-base(var(--menuitem-height), var(--font-size-md));
+
+      &:hover {
+        color: var(--menuitem-active-color);
+      }
+
+      @include b(icon) {
+        @include icon-base();
+      }
+
+      @include e(arrow) {
+        @include arrow-base(var(--color-text-caption));
+      }
+    }
+
+    @include e(sub) {
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      transition: all .2s $ease-in-out;
+    }
+
+    @include m(active) {
+      > .zw-menu__title {
+        color: var(--menuitem-active-color);
+
+        @include e(arrow) {
+          @include arrow-base(var(--menuitem-active-color));
+        }
+        @include b(icon) {
+          color: var(--menuitem-active-color);
+        }
+      }
+    }
+    @include m(level-1) {
+      min-width: auto;
+
+      @include e(title) {
+        @include item-first-level();
+      }
     }
   }
 
@@ -127,156 +270,57 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     background-color: var(--menuitem-divider-bg-color);
   }
 
-  @include e(submenu) {
-    min-width: 160px;
-    height: auto;
-
-    // &:not(.zw-menu--level1) {
-    //   min-width: 160px;
-    // }
-
-    @include e(title) {
-      height: 44px;
-      line-height: 44px;
-      user-select: none;
-      cursor: pointer;
-      font-weight: normal;
-      font-size: 14px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      transition: all 0.3s;
-
-      &:hover {
-        color: var(--menuitem-active-color);
-      }
-
-      @include b(icon) {
-        min-width: 14px;
-        margin-right: 12px;
-        font-size: 16px;
-        transition: font-size .15s cubic-bezier(.215, .61, .355, 1), margin .3s cubic-bezier(.645, .045, .355, 1);
-
-        + span {
-          transition: opacity 0.3s $ease-in-out, width 0.3s $ease-in-out;
-          opacity: 1;
-        }
-      }
-    }
-
-    @include e(sub) {
-      height: 0;
-      padding: 0;
-      overflow: hidden;
-      transition: all .2s $ease-in-out;
-    }
-
-    @include m(level1) {
-      min-width: auto;
-      @include e(title) {
-        height: 52px;
-        line-height: 52px;
-      }
-    }
-  }
-
   @include e(itemgroup__title) {
-    height: 36px;
-    line-height: 36px;
-    font-size: 13px;
-    color: #909090;
+    height: var(--menuitem-group-title-height);
+    line-height: var(--menuitem-group-title-height);
+    font-size: var(--menuitem-group-font-size);
+    color: var(--color-text-caption);
     user-select: none;
   }
+
   @include e(itemgroup__list) {
     padding: 0;
   }
 
-  @include m(xl) {
-    @include menu-size(44px, var(--font-size-xl));
+  @include m(root) {
+    box-shadow: none;
   }
 
-  @include m(lg) {
-    @include menu-size(36px, var(--font-size-lg));
-  }
-
-  @include m(sm) {
-    @include menu-size(28px, var(--font-size-sm));
-  }
-
-  @include m(xs) {
-    @include menu-size(24px, var(--font-size-sm));
-  }
-
-  // collapsed 样式
+  // collapsed
   @include m(collapsed) {
+    width: var(--menu-collapsed-width);
 
-    @include e(submenu--level1) {
-      // TODO
+    @include e(submenu--level-1) {
       > .zw-menu__title {
-        left: 0;
-        text-overflow: clip;
-        padding: 0 (var(--menu-collapsed-width) - 16) / 2;
+        @include item-collapsed();
 
         @include e(arrow) {
           display: none;
         }
       }
-      @include e(sub) {
-        min-width: 160px;
-        height: auto !important;
-        opacity: 0;
-        transform-origin: 0 0;
-
-        &.slide-up {
-          animation: slide-up 0.3s both;
-        }
-
-        &.slide-down {
-          animation: slide-down 0.3s both;
-        }
-      }
       @include b(icon) {
-        display: block;
-        font-size: 16px;
-        line-height: 52px;
-        margin-right: 0;
-
-        + span {
-          max-width: 0;
-          display: inline-block;
-          opacity: 0;
-        }
+        @include icon-collapsed();
       }
     }
 
-    @include e(item--level1) {
-      left: 0;
-      text-overflow: clip;
-      padding: 0 (var(--menu-collapsed-width) - 16) / 2;
+    @include e(item--level-1) {
+      @include item-collapsed();
 
       @include b(tooltip) {
         display: block;
 
         @include e(inner) {
-          height: 52px;
+          overflow: hidden;
+          height: var(--menuitem-first-level-height);
         }
       }
       @include b(icon) {
-        display: block;
-        font-size: 16px;
-        line-height: 52px;
-        margin-right: 0;
-
-        + span {
-          max-width: 0;
-          height: 0;
-          display: inline-block;
-          opacity: 0;
-        }
+        @include icon-collapsed();
       }
     }
   }
 
-  // inline模式
+  // inline mode
   @include m(inline) {
     width: 100%;
 
@@ -285,46 +329,13 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
         position: relative;
         &:hover {
           @include e(arrow) {
-            &:after,
-            &:before {
-              background: linear-gradient(to right, var(--menuitem-active-color), var(--menuitem-active-color));
-            }
-          }
-        }
-
-        @include e(arrow) {
-          transition: transform .3s $ease-in-out;
-          position: absolute;
-          top: 50%;
-          right: 20px;
-          width: 10px;
-
-          &:before,
-          &:after {
-            content: '';
-            position: absolute;
-            vertical-align: baseline;
-            background: var(--menuitem-dark-active-color);
-            background-image: linear-gradient(to right, #909090, #909090);
-            width: 6px;
-            height: 2px;
-            border-radius: 2px;
-            transition: background .3s $ease-in-out, transform .3s $ease-in-out, top .3s $ease-in-out;
-          }
-
-          &:before {
-            transform: rotate(-40deg) translateX(2px);
-          }
-
-          &:after {
-            transform: rotate(40deg) translateX(-2px);
+            @include arrow-active();
           }
         }
       }
     }
 
     @include e(submenu--open) {
-      // TODO
       > .zw-menu__title {
         @include e(arrow) {
           transform: translateY(-2px);
@@ -332,7 +343,6 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
           &:before {
             transform: rotate(40deg) translateX(2px);
           }
-
           &:after {
             transform: rotate(-40deg) translateX(-2px);
           }
@@ -346,7 +356,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       @include m(light) {
         @include e(submenu) {
           @include e(sub) {
-            background: #fff;
+            background: var(--submenu-light-bg-color);
           }
         }
       }
@@ -355,45 +365,24 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
         position: relative;
 
         @include e(arrow) {
-          right: 0;
           transform: translateY(0);
-          &:before {
-            transform: rotate(-40deg) translateY(2px);
-          }
-
-          &:after {
-            transform: rotate(40deg) translateY(-2px);
-          }
+          @include arrow-vertical();
         }
 
         @include e(sub) {
-          position: absolute;
-          top: 0;
-          left: calc(100% + 4px);
-          height: auto;
-          overflow: visible;
-          z-index: 2;
-          background-color: var(--menu-dark-bg-color);
-          border-radius: 2px;
-
-          @include e(item) {
-            padding: 0 20px !important;
-          }
-          @include e(submenu) {
-            padding: 0 20px !important;
-          }
+          @include sub-collapsed(var(--menu-dark-bg-color));
         }
       }
     }
   }
 
-  // horizontal模式
+  // horizontal mode
   @include m(horizontal) {
     @include e(item) {
       float: left;
       padding: 0 var(--menuitem-horizontal-padding);
-      height: var(--menuitem-horizontal-height);
-      line-height: var(--menuitem-horizontal-height) - 2;
+      height: var(--menuitem-height);
+      line-height: calc(var(--menuitem-horizontal-height) - 2px);
       border-bottom: 2px solid transparent;
 
       > a {
@@ -428,30 +417,52 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     }
   }
 
-  // dark主题
+  // vertical mode
+  @include m(vertical) {
+    width: 100%;
+
+    @include e(submenu) {
+      position: relative;
+      @include e(title) {
+        position: relative;
+        &:hover {
+          @include e(arrow) {
+            @include arrow-active();
+          }
+        }
+
+        @include e(arrow) {
+          @include arrow-vertical();
+        }
+      }
+      @include e(sub) {
+        @include sub-collapsed(var(--submenu-light-bg-color));
+      }
+    }
+  }
+
+  // dark theme
   @include m(dark) {
     background: var(--menu-dark-bg-color);
 
     @include b(icon) {
-      color: #909090;
+      color: var(--color-text-caption);
     }
     @include e(sub) {
-      background: var(--submenu-dark-bg-color);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .45) inset;
+      background: var(--submenu-dark-bg-color);;
     }
 
     @include e(item) {
       color: var(--menuitem-dark-color);
 
       &:hover {
-        color: var(--menuitem-dark-active-color);
-        // background: inherit;
+        color: var(--menuitem-active-color);
 
         > a {
-          color: var(--menuitem-dark-active-color);
+          color: var(--menuitem-active-color);
         }
         @include b(icon) {
-          color: var(--menuitem-dark-active-color);
+          color: var(--menuitem-active-color);
         }
       }
 
@@ -469,6 +480,18 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       @include b(icon) {
         color: var(--menuitem-dark-active-color);
       }
+
+      &:hover {
+        color: var(--menuitem-dark-active-color);
+
+        > a {
+          color: var(--menuitem-dark-active-color);
+        }
+
+        @include b(icon) {
+          color: var(--menuitem-dark-active-color);
+        }
+      }
     }
     @include e(item--active) {
       color: var(--menuitem-dark-active-color);
@@ -480,47 +503,92 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
       @include b(icon) {
         color: var(--menuitem-dark-active-color);
       }
-    }
-    @include m(inline) {
-      @include e(submenu) {
-        color: var(--menuitem-dark-color);
 
-        @include e(title) {
-          // margin-top: 4px;
-          // margin-bottom: 4px;
-          transition: all 0.3s;
+      &:hover {
+        color: var(--menuitem-dark-active-color);
 
-          &:hover {
-            color: var(--menuitem-dark-active-color);
-
-            @include e(arrow) {
-              opacity: 1;
-
-              &:after,
-              &:before {
-                background: var(--menuitem-dark-active-color);
-              }
-            }
-            @include b(icon) {
-              color: var(--menuitem-dark-active-color);
-            }
-          }
+        > a {
+          color: var(--menuitem-dark-active-color);
         }
 
-        @include e(arrow) {
-          opacity: .45;
-          transition: all .3s;
+        @include b(icon) {
+          color: var(--menuitem-dark-active-color);
+        }
+      }
+    }
 
-          &:after,
-          &:before {
-            background: var(--menuitem-dark-active-color);
+    @include e(submenu) {
+      color: var(--menuitem-dark-color);
+
+      @include e(title) {
+        transition: all 0.3s;
+
+        &:hover {
+          color: var(--menuitem-active-color);
+
+          @include e(arrow) {
+            opacity: 1;
+
+            &:after,
+            &:before {
+              background: var(--menuitem-active-color);
+            }
+          }
+          @include b(icon) {
+            color: var(--menuitem-active-color);
           }
         }
       }
-      // @include e(item) {
-      //   margin-top: 4px;
-      //   margin-bottom: 8px;
-      // }
+
+      @include e(arrow) {
+        opacity: .45;
+        transition: all .3s;
+
+        &:after,
+        &:before {
+          background: var(--menuitem-dark-active-color);
+        }
+      }
+    }
+
+    @include e(submenu--active) {
+      > .zw-menu__title {
+        @include e(arrow) {
+          opacity: 1;
+
+          &:after,
+          &:before {
+            background: var(--menuitem-active-color);
+          }
+        }
+      }
+    }
+
+    @include m(collapsed) {
+      @include e(submenu--active) {
+        > .zw-menu__title {
+          color: var(--menuitem-dark-active-color);
+          background: var(--menuitem-active-color);
+
+          @include e(arrow) {
+            &:after,
+            &:before {
+              background: var(--menuitem-dark-active-color);
+            }
+          }
+          @include b(icon) {
+            color: var(--menuitem-dark-active-color);
+          }
+        }
+      }
+    }
+
+    @include m(vertical) {
+      @include e(submenu) {
+        @include e(sub) {
+          background: var(--menu-dark-bg-color);
+        }
+      }
     }
   }
 }

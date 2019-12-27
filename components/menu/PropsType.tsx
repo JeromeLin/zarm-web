@@ -1,15 +1,18 @@
-import ItemGroup from './ItemGroup';
-import MenuItem from './MenuItem';
+import { CSSProperties } from 'react';
 
 export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
+export enum Mode {
+  inline = 'inline',
+  horizontal = 'horizontal',
+  vertical = 'vertical'
+}
 
-// eslint-disable-next-line @typescript-eslint/class-name-casing
-export interface childPropsType {
+export interface ChildProps {
   prefixCls?: string;
-  mode?: 'inline' | 'horizontal';
-  inlineIndent?: number;
-  inlineCollapsed?: boolean;
+  // mode?: Mode;
+  // inlineIndent?: number;
+  // inlineCollapsed?: boolean;
   level?: number;
   itemKey?: any;
   subMenuKey?: any;
@@ -26,7 +29,7 @@ export interface ItemProps {
   style: object;
   selectedKeys: string[];
   level: number;
-  mode: 'inline' | 'horizontal';
+  mode: Mode;
   inlineIndent: number;
   itemKey: string;
   onClick: (e: React.MouseEvent, itemKey: string) => void;
@@ -45,8 +48,7 @@ export interface ItemGroupProps {
   prefixCls?: string;
   level: number;
   inlineIndent: number;
-  children: React.ReactElement<ItemGroup | typeof MenuItem>[];
-  mode: 'inline' | 'horizontal';
+  mode: Mode;
   index: number;
   title: string;
   subMenuKey: string;
@@ -56,26 +58,25 @@ export interface ItemGroupProps {
 export interface SubMenuProps {
   prefixCls?: string;
   level: number;
-  inlineIndent: number;
-  children: React.ReactElement<ItemGroup | typeof MenuItem>[];
-  mode: 'inline' | 'horizontal';
+  inlineIndent?: number;
+  mode?: Mode;
   title: React.ReactNode;
   inlineCollapsed?: boolean;
   className?: string;
   style: object;
   itemKey?: any;
   subMenuKey: string;
+  selectedKeys: string[];
   openKeys: string[];
   toggleOpenKeys: (subMenyKey: string) => void;
 }
 
-export default interface PropsType {
+export default interface MenuProps {
   prefixCls?: string;
   size?: size;
   className?: string;
-  style?: object;
-  children: React.ReactElement<ItemGroup | typeof MenuItem>[];
-  mode?: 'inline' | 'horizontal';
+  style?: CSSProperties;
+  mode?: Mode;
   theme?: 'light' | 'dark';
   defaultOpenKeys?: string[];
   defaultSelectedKeys?: string[];
@@ -83,6 +84,6 @@ export default interface PropsType {
   inlineCollapsed?: boolean;
   openKeys?: string[];
   selectedKeys?: string[];
-  onClick?: () => {};
-  onOpenChange?: (openKeys: string[]) => {};
+  onSelect?: (selectedKeys: string[]) => void;
+  onOpenChange?: (openKeys: string[]) => void;
 }
