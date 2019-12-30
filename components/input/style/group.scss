@@ -1,3 +1,5 @@
+$inner-input-class: '.#{$--namespace}-input__inner';
+
 @include b(input-group) {
   display: flex;
   flex-wrap: nowrap;
@@ -32,7 +34,7 @@
       &:not(:last-child) {
         margin-right: -1px;
 
-        .zw-input__inner {
+        #{$inner-input-class} {
           border-right-width: 1px;
         }
       }
@@ -41,14 +43,14 @@
     @include m(lg) {
       @include b(input) {
         &:first-child {
-          .zw-input__inner {
+          #{$inner-input-class} {
             border-top-left-radius: var(--radius-lg);
             border-bottom-left-radius: var(--radius-lg);
           }
         }
 
         &:last-child {
-          .zw-input__inner {
+          #{$inner-input-class} {
             border-top-right-radius: var(--radius-lg);
             border-bottom-right-radius: var(--radius-lg);
           }
@@ -59,14 +61,14 @@
     @include m(md) {
       @include b(input) {
         &:first-child {
-          .zw-input__inner {
+          #{$inner-input-class} {
             border-top-left-radius: var(--radius-md);
             border-bottom-left-radius: var(--radius-md);
           }
         }
 
         &:last-child {
-          .zw-input__inner {
+          #{$inner-input-class} {
             border-top-right-radius: var(--radius-md);
             border-bottom-right-radius: var(--radius-md);
           }
@@ -77,14 +79,14 @@
     @include m(sm) {
       @include b(input) {
         &:first-child {
-          .zw-input__inner {
+          #{$inner-input-class} {
             border-top-left-radius: var(--radius-sm);
             border-bottom-left-radius: var(--radius-sm);
           }
         }
 
         &:last-child {
-          .zw-input__inner {
+          #{$inner-input-class} {
             border-top-right-radius: var(--radius-sm);
             border-bottom-right-radius: var(--radius-sm);
           }
