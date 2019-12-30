@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { InputProps, InputCoreProps, TextAreaProps } from './PropsType';
 import Textarea from './Textarea';
 import InputCore from './InputCore';
+import Group from './Group';
 
 class Input extends Component<InputProps, any> {
   static defaultProps = {
@@ -10,6 +11,8 @@ class Input extends Component<InputProps, any> {
     shape: 'radius',
     bordered: 'underline',
   };
+
+  static Group: typeof Group;
 
   render() {
     const { type } = this.props;

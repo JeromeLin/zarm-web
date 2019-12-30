@@ -273,7 +273,7 @@ class Input extends Component<InputCoreProps, InputState> {
 
   renderLabeledInput = () => {
     const { addonBefore, addonAfter, prefixCls, style, clearable } = this.props;
-    const { value } = this.state;
+    const { value, focused } = this.state;
     if (!addonBefore && !addonAfter) {
       return this.renderLabeledIconInput();
     }
@@ -281,6 +281,7 @@ class Input extends Component<InputCoreProps, InputState> {
     const cls = classnames(this.inputCls, {
       [`${prefixCls}--prepend`]: addonBefore,
       [`${prefixCls}--append`]: addonAfter,
+      [`${prefixCls}--focused`]: focused,
       [`${prefixCls}--clearable`]: clearable && value,
     });
     const prependCls = classnames(`${prefixCls}__prepend`);

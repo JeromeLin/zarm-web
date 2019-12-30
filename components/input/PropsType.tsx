@@ -6,6 +6,15 @@ export type InputType = 'text' | 'number' | 'password' | 'textarea';
 
 export type InputProps = InputCoreProps | TextAreaProps;
 
+export interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  size?: InputSize;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  prefixCls?: string;
+  compact?: boolean;
+}
+
 export interface AutoHeightType {
   minRows?: number;
   maxRows?: number;

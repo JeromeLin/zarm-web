@@ -136,6 +136,33 @@ ReactDOM.render(<Input clearable placeholder="请输入" />, mountNode);
 
 
 
+## 输入框组合
+输入框的组合展现, 默认为compact模式。
+```jsx
+import { Input, Select } from 'zarm-web';
+
+ReactDOM.render(
+  <>
+    <Input.Group>
+      <Input style={{ width: '10%' }} defaultValue="021" />
+      <Input style={{ width: '90%' }} defaultValue="10109955" />
+    </Input.Group>
+    <Input.Group>
+      <Input style={{ width: '10%' }} bordered defaultValue="021" />
+      <Input style={{ width: '90%' }} bordered defaultValue="10109955" />
+    </Input.Group>
+    <Input.Group compact={false}>
+      <Input style={{ width: '30%', marginRight: 20 }} bordered defaultValue="021" />
+      <Input style={{ width: '30%', marginRight: 20 }} bordered defaultValue="10109955" />
+      <Input style={{ width: '40%' }} bordered defaultValue="10109955" />
+    </Input.Group>
+  </>,
+  mountNode
+);
+```
+
+
+
 ## 搜索场景的组合
 通过设置前缀图标和后置标签来组合成搜索框
 
