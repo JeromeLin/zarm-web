@@ -45,10 +45,10 @@ module.exports = {
         name: 'Checkbox',
         module: () => import('@/components/checkbox/demo.md'),
       },
-      // {
-      //   name: 'Input',
-      //   module: () => import('@/components/input/demo.md'),
-      // },
+      {
+        name: 'Input',
+        module: () => import('@/components/input/demo.md'),
+      },
       // {
       //   name: 'NumberInput',
       //   module: () => import('@/components/number-input/numberinput.md'),
