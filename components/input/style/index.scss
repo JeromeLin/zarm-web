@@ -1,5 +1,5 @@
 @import '../../style/core/index';
-@import "./group";
+@import 'group';
 @import 'mixins';
 
 @include b(input) {
