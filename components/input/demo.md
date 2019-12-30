@@ -195,7 +195,6 @@ ReactDOM.render(
   <>
     <Input type="textarea" rows={3} placeholder="请输入" />
     <Input type="textarea" showLength bordered={false} rows={3} maxLength={120} placeholder="请输入" />
-    <Input type="textarea" autoHeight placeholder="自适应高度" />
   </>,
   mountNode,
 );
@@ -222,7 +221,7 @@ ReactDOM.render(
 
 ## API
 
-<h3>Input Common</h3>
+<h2>Input Common</h2>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -234,7 +233,7 @@ ReactDOM.render(
 | readOnly | boolean | false | 是否只读 |
 | maxLength | number | - | 输入字数上限 |
 
-<h3>Input</h3>
+<h2>Input</h2>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -247,7 +246,7 @@ ReactDOM.render(
 | addonAfter | ReactNode | - | 设置后置标签 |
 | onChange | (e?: React.ChangeEvent&lt;HTMLInputElement&gt;) => void | - | 值变化时触发的回调函数 |
 
-<h3>Textarea</h3>
+<h2>Textarea</h2>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
