@@ -166,10 +166,10 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { isShow } = this.state;
     if (this.modalContent) {
-      if (isShow) {
+      if (isShow && prevState.isShow === false) {
         this.modalContent.focus();
       } else {
         this.modalContent.blur();
@@ -338,7 +338,7 @@ class Modal extends Component<ModalProps, StateIF> {
 // eslint-disable-next-line no-redeclare
 declare namespace Modal {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface Props extends ModalProps {}
+  export interface Props extends ModalProps { }
   export interface BodyProps extends ModalBodyProps { }
   export interface HeaderProps extends ModalHeaderProps { }
   export interface FooterProps extends ModalFooterProps { }

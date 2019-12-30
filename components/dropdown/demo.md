@@ -213,7 +213,6 @@ class Demo1 extends React.Component {
 ReactDOM.render(<Demo1 />, mountNode);
 ```
 
-
 ## 组件通过onVisibleChange通知弹框的显示信息。
 点击触发元素后，组件需要通过onVisibleChange来告知弹框的显示状态
 
@@ -423,7 +422,14 @@ class Demo2 extends React.Component {
 
   render() {
     const { modalVisible,dropdown } = this.state;
-    const overlay = "content here";
+    const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
     return (
       <div style={{position: 'relative'}}>
         <Button onClick={this.toggleModalVisible}>显示弹框</Button>
@@ -435,13 +441,6 @@ class Demo2 extends React.Component {
             <Dropdown 
               content={overlay}
               visible={dropdown}
-              popperProps={{
-                style: {
-                  width:150,
-                  height:150,
-                  padding:10,
-                }
-              }}
               onVisibleChange={(visible)=>{
                 this.setState({
                   dropdown:visible
