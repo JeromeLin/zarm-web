@@ -9,8 +9,8 @@
       padding-right: $height;
     }
 
-    .za-select__icon,
-    .za-select__arrow {
+    .zw-select__icon,
+    .zw-select__arrow {
       right: ($height - $font-size) / 2;
       margin-top: - $font-size / 2;
     }
@@ -27,7 +27,7 @@
   }
 
   &.radius {
-    .za-select__selection {
+    .zw-select__selection {
       border-radius: $border-radius;
     }
   }
@@ -74,8 +74,8 @@
       }
     }
 
-    .za-select__icon,
-    .za-select__arrow {
+    .zw-select__icon,
+    .zw-select__arrow {
       position: absolute;
       top: 50%;
       color: #d9d9d9;
@@ -84,8 +84,8 @@
     }
   }
 
-  &.za-select--open {
-    .za-select-selection {
+  &.zw-select--open {
+    .zw-select-selection {
       border-color: $base-select-active-color;
       outline: 0;
 
@@ -96,7 +96,7 @@
   }
 
   &.disabled {
-    .za-select__selection {
+    .zw-select__selection {
       cursor: not-allowed;
       background-color: #f3f5f7;
 
@@ -128,7 +128,7 @@
 }
 
 .ui-dropdown {
-  .za-select--notfound {
+  .zw-select--notfound {
     display: block;
     padding: 8px;
     color: #ccc;
