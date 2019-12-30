@@ -78,9 +78,6 @@ describe('Dropdown', () => {
       <Dropdown
         visible={visible}
         trigger="hover"
-        triggerProps={{
-          className: 'span',
-        }}
         onVisibleChange={(e) => {
           visible = e;
           doneChange(e);
@@ -89,7 +86,7 @@ describe('Dropdown', () => {
         <Button className="btn">hover</Button>
       </Dropdown>,
     );
-    wrapper.find('.span').simulate('mouseEnter');
+    wrapper.find('span').first().simulate('mouseEnter');
     expect(doneChange).toHaveBeenCalled();
     expect(visible).toEqual(true);
   });
@@ -102,9 +99,6 @@ describe('Dropdown', () => {
       <Dropdown
         visible={visible}
         trigger="click"
-        triggerProps={{
-          className: 'span',
-        }}
         onVisibleChange={(e) => {
           visible = e;
           doneChange(e);
@@ -113,7 +107,7 @@ describe('Dropdown', () => {
         <Button className="btn">hover</Button>
       </Dropdown>,
     );
-    wrapper.find('.span').simulate('mouseEnter');
+    wrapper.find('span').first().simulate('mouseEnter');
     expect(doneChange).not.toHaveBeenCalled();
     expect(visible).toEqual(false);
   });
@@ -126,9 +120,6 @@ describe('Dropdown', () => {
       <Dropdown
         visible={visible}
         trigger="hover"
-        triggerProps={{
-          className: 'span',
-        }}
         onVisibleChange={(e) => {
           visible = e;
           doneChange(e);
@@ -137,7 +128,7 @@ describe('Dropdown', () => {
         <Button className="btn">hover</Button>
       </Dropdown>,
     );
-    const span = wrapper.find('.span');
+    const span = wrapper.find('span').first();
     span.simulate('mouseLeave');
     await timer(310);   // 实际实现中会有300ms的延迟才消失
     expect(doneChange).toHaveBeenCalled();
@@ -152,9 +143,6 @@ describe('Dropdown', () => {
       <Dropdown
         visible={visible}
         trigger="hover"
-        triggerProps={{
-          className: 'span',
-        }}
         onVisibleChange={(e) => {
           visible = e;
           doneChange(e);
@@ -163,7 +151,7 @@ describe('Dropdown', () => {
         <Button className="btn">hover</Button>
       </Dropdown>,
     );
-    const span = wrapper.find('.span');
+    const span = wrapper.find('span').first();
     span.simulate('mouseLeave');
     await timer(310);   // 实际实现中会有300ms的延迟才消失
     expect(doneChange).not.toHaveBeenCalled();
@@ -178,9 +166,6 @@ describe('Dropdown', () => {
       <Dropdown
         visible={visible}
         trigger="hover"
-        triggerProps={{
-          className: 'span',
-        }}
         onVisibleChange={(e) => {
           visible = e;
           doneChange(e);
@@ -189,7 +174,7 @@ describe('Dropdown', () => {
         <Button className="btn">hover</Button>
       </Dropdown>,
     );
-    const span = wrapper.find('.span');
+    const span = wrapper.find('span').first();
     span.simulate('mouseLeave');
     await timer(100);   // 实际实现中会有300ms的延迟才消失
     expect(doneChange).not.toHaveBeenCalled();

@@ -15,33 +15,22 @@ const defaultProps = {
 export default class Dropdown extends React.Component<PropsType> {
   static defaultProps = defaultProps;
 
+  static visibleList = new Set();
+
   triggerPointRef = React.createRef<HTMLSpanElement>();
 
   popperContenRef = React.createRef<HTMLDivElement>();
 
   private hoverTimer?: number;
 
+  private prevActiveElem?: Element;
+
   componentDidMount() {
     document.addEventListener('mousedown', this.onDocClick);
   }
 
-  componentDidUpdate(prevProps) {
-    const { visible } = this.props;
-    if (prevProps.visible && !visible) {
-      const prevActiveElem = document.activeElement;
-      if (this.popperContenRef.current && this.popperContenRef.current.contains(prevActiveElem)) {
-        setTimeout(() => {
-          if (this.triggerPointRef.current) {
-            console.log(11);
-            this.triggerPointRef.current.focus();
-          }
-        });
-      } else if (prevActiveElem && prevActiveElem instanceof HTMLElement && prevActiveElem.parentNode) {
-        setTimeout(() => {
-          prevActiveElem.focus();
-        });
-      }
-    }
+  componentDidUpdate() {
+    this.prevActiveElem = document.activeElement || document.body;
   }
 
   componentWillUnmount() {
@@ -66,6 +55,11 @@ export default class Dropdown extends React.Component<PropsType> {
     const { disabled, onVisibleChange } = this.props;
     if (disabled) {
       return;
+    }
+    if (visible) {
+      Dropdown.visibleList.add(this);
+    } else {
+      Dropdown.visibleList.delete(this);
     }
     onVisibleChange(visible);
   };
@@ -114,6 +108,14 @@ export default class Dropdown extends React.Component<PropsType> {
     const { visible } = this.props;
     if (visible && e.keyCode === 27) {
       e.stopPropagation();
+      if (this.popperContenRef.current && this.popperContenRef.current.contains(e.currentTarget)) {
+        const { prevActiveElem } = this;
+        if (prevActiveElem && prevActiveElem instanceof HTMLElement) {
+          setTimeout(() => {
+            prevActiveElem.focus();
+          });
+        }
+      }
       this.onVisibleChange(false);
     }
   };
@@ -138,7 +140,7 @@ export default class Dropdown extends React.Component<PropsType> {
     });
     const dropdownContent = (
       <div
-        tabIndex="-1"
+        tabIndex={-1}
         ref={this.popperContenRef}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
