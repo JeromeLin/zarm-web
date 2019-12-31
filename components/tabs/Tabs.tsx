@@ -1,13 +1,13 @@
 import React, { Component, ReactElement } from 'react';
 import classnames from 'classnames';
-import Tab from './Tab';
+import TabPanel from './TabPanel';
 import Icon from '../icon';
 import TabsProps from './PropsType';
 
 class Tabs extends Component<TabsProps, any> {
   static displayName = 'Tabs';
 
-  static Tab: typeof Tab;
+  static Panel: typeof TabPanel;
 
   private tabHeaderWrap;
 
@@ -265,9 +265,9 @@ class Tabs extends Component<TabsProps, any> {
 
     const content = React.Children.map(children, (item, $index) => {
       return (
-        <Tab {...(item as ReactElement<any>).props} selected={value === $index}>
+        <TabPanel {...(item as ReactElement<any>).props} selected={value === $index}>
           {(item as ReactElement<any>).props.children}
-        </Tab>
+        </TabPanel>
       );
     });
 

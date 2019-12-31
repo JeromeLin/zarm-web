@@ -20,7 +20,7 @@ export default interface TabsProps {
   onNextClick?: (e?: MouseEvent) => void;
 }
 
-export interface TabProps {
+export interface TabPanelProps {
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;

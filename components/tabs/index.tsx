@@ -1,9 +1,9 @@
 
-import Tab from './Tab';
+import TabPanel from './TabPanel';
 import Tabs from './Tabs';
-import TabsProps, { TabProps, TabsType, TabsDirection, TabsSize } from './PropsType';
+import TabsProps, { TabPanelProps, TabsType, TabsDirection, TabsSize } from './PropsType';
 
-Tabs.Tab = Tab;
+Tabs.Panel = TabPanel;
 
 export default Tabs;
-export { TabsProps, TabProps, TabsType, TabsDirection, TabsSize };
+export { TabsProps, TabPanelProps, TabsType, TabsDirection, TabsSize };
