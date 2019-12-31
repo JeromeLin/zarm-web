@@ -24,7 +24,7 @@
     border: var(--input-default-border);
     line-height: 1.5;
     outline: none;
-    transition: all .3s;
+    transition: color .3s, box-shadow .3s, border .3s;
 
     &:hover {
       border-color: var(--theme-primary);
