@@ -145,7 +145,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-Checkbox 
+<h3>Checkbox</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -157,7 +157,7 @@ Checkbox
 | id | string | - | 方便外部带有 for 属性的 label 标签控制当前 checkbox |
 | onChange | React.ChangeEventHandler&lt;HTMLInputElement&gt; | - | 勾选状态变化触发的事件 |
 
-Checkbox.Group 
+<h3>Checkbox.Group</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

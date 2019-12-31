@@ -10,7 +10,6 @@
   }
 
   pre {
-    margin: 0;
     padding: 16px;
     overflow: auto;
     font-size: 14px;
@@ -32,10 +31,12 @@
 
   h2 {
     font-size: 20px;
+    margin-top: 50px;
   }
 
   h3 {
     font-size: 16px;
+    margin-top: 50px;
   }
 
   h4,
@@ -62,7 +63,6 @@
     width: 100%;
     min-width: 600px;
     font-size: 14px;
-    margin-bottom: 45px;
     border-collapse: collapse;
     border-spacing: 0;
 

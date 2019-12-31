@@ -50,8 +50,9 @@ export default class Markdown extends React.Component {
       if (!withOutConvertPage.includes(name)) {
         this.components.clear();
 
+        // 表格
         renderer.table = (header, body) => {
-          return `<table class="grid" id="grid"><thead>${header}</thead><tbody>${body}</tbody></table>`;
+          return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
         };
 
         let html = marked(

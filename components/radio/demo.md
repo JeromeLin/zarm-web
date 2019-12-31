@@ -163,6 +163,8 @@ ReactDOM.render(
 
 ## API
 
+<h3>Radio</h3>
+
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | value | string \| number | - | 值 |
@@ -171,7 +173,7 @@ ReactDOM.render(
 | disabled | boolean | false | 是否禁用 |
 | onChange | (e: ChangeEvent<HTMLInputElement>) => void | - | 值变化时触发的回调函数 |
 
-Radio.Group
+<h3>Radio.Group</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

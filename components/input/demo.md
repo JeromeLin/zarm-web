@@ -221,8 +221,6 @@ ReactDOM.render(
 
 ## API
 
-<h2>Input Common</h2>
-
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | type | string | 'text' | 类型，可选值 `text`、`number`、`password`、`textarea` |
@@ -233,7 +231,7 @@ ReactDOM.render(
 | readOnly | boolean | false | 是否只读 |
 | maxLength | number | - | 输入字数上限 |
 
-<h2>Input</h2>
+<h3>Input 单行文本</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -246,7 +244,7 @@ ReactDOM.render(
 | addonAfter | ReactNode | - | 设置后置标签 |
 | onChange | (e?: React.ChangeEvent&lt;HTMLInputElement&gt;) => void | - | 值变化时触发的回调函数 |
 
-<h2>Textarea</h2>
+<h3>Textarea 多行文本</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
