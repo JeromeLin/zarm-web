@@ -89,8 +89,6 @@ ReactDOM.render(
 ```jsx
 import { Badge, Button, Icon, Switch } from 'zarm-web';
 
-const ButtonGroup = Button.Group;
-
 class Demo extends React.Component {
   constructor(props) {
     super(props)
@@ -126,14 +124,10 @@ class Demo extends React.Component {
         <Badge text={count} shape="round">
           <div className="box-item" />
         </Badge>
-        <ButtonGroup>
-          <Button theme="primary" onClick={this.minus}>
-            <Icon type="minus" />
-          </Button>
-          <Button theme="primary" onClick={this.add}>
-            <Icon type="add" />
-          </Button>
-        </ButtonGroup>
+        <Button.Group>
+          <Button onClick={this.minus}><Icon type="minus" /></Button>
+          <Button onClick={this.add}><Icon type="add" /></Button>
+        </Button.Group>
         <br />
         <br />
         {
