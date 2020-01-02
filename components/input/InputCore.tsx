@@ -58,15 +58,16 @@ class Input extends Component<InputCoreProps, InputState> {
     const inputStyle: React.CSSProperties = {};
     const clearIconWidth = 14 + 2;
     const sizeMap = {
-      lg: 40,
-      md: 32,
-      sm: 24,
+      lg: 12,
+      md: 12,
+      sm: 8,
     };
+    // sizeMap为左右边距，计算留给prefix的空间大小为：prefix元素宽 + padding-left + padding-right / 2 = prefix元素宽 + sizeMap[size] * 1.5
     if (this.prefixNodeRef.current) {
-      inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] / 2;
+      inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] * 1.5;
     }
     if (this.suffixNodeRef.current) {
-      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] / 2
+      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] * 1.5
         + (clearable ? clearIconWidth : 0);
     }
     this.setState({ inputStyle: bordered === 'underline' ? null : inputStyle });
