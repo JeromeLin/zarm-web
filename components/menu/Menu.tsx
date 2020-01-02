@@ -1,6 +1,6 @@
 import React, { Component, Children, cloneElement, ReactElement } from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import MenuProps, { ChildProps, Mode } from './PropsType';
 import MenuContext, { initialContext, ContextType } from './menu-context';
 import SubMenu from './SubMenu';
@@ -9,8 +9,8 @@ import ItemGroup from './ItemGroup';
 import Divider from './Divider';
 import { noop } from '../utils';
 
-interface MenuState {
-  inlineCollapsed: boolean;
+export interface MenuState {
+  inlineCollapsed?: boolean;
   openKeys: string[];
   inlineOpenKeys: string[];
   selectedKeys: string[];
@@ -19,7 +19,7 @@ interface MenuState {
 class Menu extends Component<MenuProps, MenuState> {
   static defaultProps = {
     prefixCls: 'zw-menu',
-    mode: 'inline',
+    mode: Mode.inline,
     theme: 'light',
     inlineIndent: 24,
     inlineCollapsed: false,
@@ -57,8 +57,8 @@ class Menu extends Component<MenuProps, MenuState> {
     this.state = {
       inlineCollapsed,
       inlineOpenKeys: [],
-      openKeys: defaultOpenKeys,
-      selectedKeys: defaultSelectedKeys,
+      openKeys: defaultOpenKeys!,
+      selectedKeys: defaultSelectedKeys!,
     };
   }
 
@@ -86,7 +86,7 @@ class Menu extends Component<MenuProps, MenuState> {
     return derivedState;
   }
 
-  toggleSelectedKeys = (itemKey) => {
+  toggleSelectedKeys = (itemKey: string) => {
     const { onSelect } = this.props;
     if (!('selectedKeys' in this.props)) {
       this.setState({

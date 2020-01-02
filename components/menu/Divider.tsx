@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { DividerProps } from './PropsType';
 
 export default class Divider extends Component<DividerProps, any> {

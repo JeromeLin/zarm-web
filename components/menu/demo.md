@@ -405,14 +405,13 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| className | string | - | 自定义子菜单类名 |
-| style | CSSProperties | - | 自定义子菜单样式 |
-| title | string | - | 子菜单名称  |
-| key | string | - | 子菜单的唯一性key值 |
+| className | string | - | 自定义菜单组类名 |
+| style | CSSProperties | - | 自定义菜单组样式 |
+| title | string | - | 菜单组名称  |
 
 # Menu.Divider
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| className | string | - | 自定义子菜单类名 |
-| style | CSSProperties | - | 自定义子菜单样式 |
+| className | string | - | 自定义分割线类名 |
+| style | CSSProperties | - | 自定义分割线样式 |

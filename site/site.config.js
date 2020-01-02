@@ -163,10 +163,10 @@ module.exports = {
       // },
     ],
     navigation: [
-      // {
-      //   name: 'Menu',
-      //   module: () => import('@/components/menu/menu.md'),
-      // },
+      {
+        name: 'Menu',
+        module: () => import('@/components/menu/demo.md'),
+      },
       {
         name: 'Tabs',
         module: () => import('@/components/tabs/demo.md'),

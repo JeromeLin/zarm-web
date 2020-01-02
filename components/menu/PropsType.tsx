@@ -42,6 +42,8 @@ export interface DividerProps {
 
 export interface ItemGroupProps {
   prefixCls?: string;
+  className?: string;
+  style?: CSSProperties;
   level?: number;
   inlineIndent?: number;
   mode?: Mode;

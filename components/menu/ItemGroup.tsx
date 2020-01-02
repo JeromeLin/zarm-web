@@ -1,5 +1,6 @@
 import React, { Component, ReactElement, cloneElement, Children, CSSProperties } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { ItemGroupProps, ChildProps, Mode } from './PropsType';
 import MenuContext from './menu-context';
 
@@ -47,7 +48,7 @@ class ItemGroup extends Component<ItemGroupProps> {
   }
 
   render() {
-    const { prefixCls, title, inlineIndent, level, mode, inlineCollapsed } = this.props;
+    const { prefixCls, title, inlineIndent, level, mode, inlineCollapsed, className, style } = this.props;
 
     const groupTitleStyle: CSSProperties = {};
     if (mode === Mode.inline && !inlineCollapsed) {
@@ -57,9 +58,12 @@ class ItemGroup extends Component<ItemGroupProps> {
       groupTitleStyle.paddingLeft = inlineIndent! / 2;
     }
 
-    const cls = `${prefixCls}__itemgroup`;
+    const cls = classnames({
+      [`${prefixCls}__itemgroup`]: true,
+      [className!]: !!className,
+    });
     return (
-      <li className={cls}>
+      <li className={cls} style={style}>
         <div
           style={groupTitleStyle}
           className={`${cls}__title`}
