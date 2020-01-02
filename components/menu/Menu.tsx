@@ -51,7 +51,7 @@ class Menu extends Component<MenuProps, MenuState> {
 
   menuKeys: any;
 
-  constructor(props) {
+  constructor(props: MenuProps) {
     super(props);
     const { defaultOpenKeys, defaultSelectedKeys, inlineCollapsed } = props;
     this.state = {

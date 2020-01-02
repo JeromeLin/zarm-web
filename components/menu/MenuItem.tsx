@@ -11,18 +11,16 @@ class MenuItem extends Component<ItemProps, any> {
 
   static defaultProps = {
     prefixCls: 'zw-menu',
-    checked: false,
     level: 1,
     style: {},
     mode: 'inline',
-    inlineIndent: 10,
+    inlineIndent: 24,
     onClick: noop,
     onDoubleClick: noop,
   };
 
   static propTypes = {
     prefixCls: PropTypes.string,
-    checked: PropTypes.bool,
     level: PropTypes.number,
     style: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])),
     mode: PropTypes.oneOf(['inline', 'horizontal', 'vertical']),
@@ -35,16 +33,16 @@ class MenuItem extends Component<ItemProps, any> {
     const { itemKey, inlineCollapsed, disabled, mode } = this.props;
 
     if (disabled) return;
-    this.props.onClick(e, itemKey);
-    this.props.toggleSelectedKeys(itemKey);
+    this.props.onClick!(e, itemKey!);
+    this.props.toggleSelectedKeys!(itemKey!);
     if (inlineCollapsed || mode === 'vertical') {
-      this.props.toggleSubMenuOpen('');
+      this.props.toggleSubMenuOpen!('');
     }
   };
 
   render() {
     const {
-      checked, children, prefixCls, level, inlineIndent, title,
+      children, prefixCls, level, inlineIndent, title,
       className, style, onDoubleClick, selectedKeys, itemKey, mode, inlineCollapsed,
     } = this.props;
 
@@ -52,7 +50,7 @@ class MenuItem extends Component<ItemProps, any> {
       [`${prefixCls}__item`]: true,
       [`${prefixCls}__item--level-${level}`]: level,
       [`${prefixCls}__item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
-      [`${prefixCls}__item--selected`]: !!checked,
+      // [`${prefixCls}__item--selected`]: !!checked,
       [`${prefixCls}__item--disabled`]: 'disabled' in this.props,
       [className!]: !!className,
     });
@@ -60,7 +58,7 @@ class MenuItem extends Component<ItemProps, any> {
       ...style,
     };
     if (mode === Mode.inline && !inlineCollapsed) {
-      itemStyle.paddingLeft = level * inlineIndent;
+      itemStyle.paddingLeft = level! * inlineIndent!;
     }
     if (mode === Mode.vertical || (inlineCollapsed && level !== 1)) {
       itemStyle.paddingLeft = inlineIndent;

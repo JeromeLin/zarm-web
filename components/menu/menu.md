@@ -1,25 +1,6 @@
 # Menu 导航菜单
 为侧边栏或下拉框等组件提供导航菜单列表。
 
-## 水平导航
-mode horizontol
-
-```jsx
-import { Menu } from 'zarm-web';
-
-ReactDOM.render(
-  <Menu mode="horizontal" defaultSelectedKeys={['a']}>
-    <Menu.Item key="a">意健险</Menu.Item>
-    <Menu.Item key="b">健康险个险</Menu.Item>
-    <Menu.Item key="c">雇主责任险</Menu.Item>
-    <Menu.Item key="d">运营后台管理</Menu.Item>
-    <Menu.Item key="e">公共功能</Menu.Item>
-    <Menu.Item key="f">询报价</Menu.Item>
-  </Menu>,
-  mountNode
-);
-```
-
 
 ## 内联模式
 mode inline & light theme
@@ -377,4 +358,61 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## API
-// TODO
+
+# Menu
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| prefixCls | string | 'zw-menu' | 组件样式前缀 |
+| className | string | - | 自定义组件根元素类名 |
+| style | CSSProperties | - | 自定义组件根元素样式 |
+| mode | string | 'inline' | 设置菜单模式，可选值`inline`、`vertical` |
+| theme | string | 'light' | 设置主题，可选值`light`、`dark` |
+| defaultOpenKeys | string[] | - | 默认展开的子菜单key |
+| defaultSelectedKeys | string[] | - | 默认选中的菜单key |
+| openKeys | string[] | - | 需要展开的子菜单key |
+| selectedKeys | string[] | - | 需要选中的菜单项key |
+| inlineIndent | number | 24 | `inline`模式时每一层菜单的缩进 |
+| inlineCollapsed | boolean | false | `inline`模式时菜单是否收起 |
+| onSelect | (selectedKeys: string[]) => void | noop | 菜单选中时的回调函数 |
+| onOpenChange | (openKeys: string[]) => void | noop | 子菜单收起展开时候的回调函数 |
+
+
+# Menu.Item
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| className | string | - | 自定义菜单项类名 |
+| style | CSSProperties | - | 自定义菜单项样式 |
+| title | string | - | `inline`模式菜单收起，鼠标移入的提示文案 |
+| key | string | - | 菜单的唯一性key值 |
+| disabled | boolean | false | 是否置灰不可点击 |
+| onClick | (e: React.MouseEvent, itemKey: string) => void | noop | 点击菜单后的回调函数 |
+| onDoubleClick | (e: React.MouseEvent, itemKey: string) => void | noop | 双击菜单后的回调函数 |
+
+
+# Menu.SubMenu
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| className | string | - | 自定义子菜单类名 |
+| style | CSSProperties | - | 自定义子菜单样式 |
+| title | string | - | 子菜单名称  |
+| key | string | - | 子菜单的唯一性key值 |
+
+
+# Menu.ItemGroup
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| className | string | - | 自定义子菜单类名 |
+| style | CSSProperties | - | 自定义子菜单样式 |
+| title | string | - | 子菜单名称  |
+| key | string | - | 子菜单的唯一性key值 |
+
+# Menu.Divider
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| className | string | - | 自定义子菜单类名 |
+| style | CSSProperties | - | 自定义子菜单样式 |

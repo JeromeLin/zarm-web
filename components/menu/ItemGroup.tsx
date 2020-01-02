@@ -51,10 +51,10 @@ class ItemGroup extends Component<ItemGroupProps> {
 
     const groupTitleStyle: CSSProperties = {};
     if (mode === Mode.inline && !inlineCollapsed) {
-      groupTitleStyle.paddingLeft = (level - 1) * inlineIndent + inlineIndent / 2;
+      groupTitleStyle.paddingLeft = (level! - 1) * inlineIndent! + inlineIndent! / 2;
     }
     if (mode === Mode.vertical || inlineCollapsed) {
-      groupTitleStyle.paddingLeft = inlineIndent / 2;
+      groupTitleStyle.paddingLeft = inlineIndent! / 2;
     }
 
     const cls = `${prefixCls}__itemgroup`;

@@ -50,8 +50,8 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
   static getDerivedStateFromProps(props: SubMenuProps, state: SubMenuState) {
     const { openKeys, subMenuKey } = props;
 
-    const isOpenNext = openKeys.indexOf(subMenuKey) > -1;
-    const isOpenNow = state.openKeys.indexOf(subMenuKey) > -1;
+    const isOpenNext = openKeys!.indexOf(subMenuKey!) > -1;
+    const isOpenNow = state.openKeys.indexOf(subMenuKey!) > -1;
 
     if (!isOpenNow && isOpenNext) {
       return {
@@ -73,7 +73,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   componentDidMount() {
     const { openKeys, inlineCollapsed } = this.props;
-    if (openKeys.length > 0) {
+    if (openKeys!.length > 0) {
       if (!inlineCollapsed) {
         this.setSubHeight({ openKeys: [] });
       }
@@ -121,8 +121,8 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const { openKeys: lastOpenKeys } = prevProps;
     const { openKeys, subMenuKey } = this.props;
 
-    const keyIndex = openKeys.indexOf(subMenuKey);
-    const keysLength = openKeys.length;
+    const keyIndex = openKeys!.indexOf(subMenuKey!);
+    const keysLength = openKeys!.length;
     if (keyIndex > -1) {
       if ((keysLength > 1 && keyIndex < keysLength - 1) || keysLength < lastOpenKeys.length) {
         // 如果不是最后一级子菜单，或者嵌套的子菜单被收起，当前子菜单高度自适应
@@ -146,7 +146,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const { selectedKeys, subMenuKey } = this.props;
     if (!selectedKeys || !selectedKeys.length) return false;
     return childs.some(() => {
-      if (selectedKeys[0].startsWith(subMenuKey)) {
+      if (selectedKeys[0].startsWith(subMenuKey!)) {
         return true;
       }
       return false;
@@ -157,12 +157,12 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     e.stopPropagation();
     const { subMenuKey } = this.props;
 
-    this.props.toggleOpenKeys(subMenuKey);
+    this.props.toggleOpenKeys!(subMenuKey!);
   };
 
   onSubAnimationEnd = () => {
     const { subMenuKey, openKeys } = this.props;
-    const isOpen = openKeys.indexOf(subMenuKey) > -1;
+    const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
     this.setState({
       collapsedSubVisible: isOpen,
     });
@@ -176,8 +176,8 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     if (this.subTitle.contains(target)) {
       return;
     }
-    if (!this.sub.contains(target) && openKeys.indexOf(subMenuKey) > -1) {
-      this.props.toggleOpenKeys(subMenuKey);
+    if (!this.sub.contains(target) && openKeys!.indexOf(subMenuKey!) > -1) {
+      this.props.toggleOpenKeys!(subMenuKey!);
     }
   };
 
@@ -186,7 +186,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
       children, level, prefixCls, subMenuKey,
     } = this.props;
     const childProps: ChildProps = {
-      level: level + 1,
+      level: level! + 1,
       prefixCls,
     };
     return Children.map(children, (child, index) => {
@@ -215,12 +215,12 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const childs = this.renderChildren();
 
     if (mode === Mode.inline && !inlineCollapsed) {
-      subMenuStyle.paddingLeft = level * inlineIndent!;
+      subMenuStyle.paddingLeft = level! * inlineIndent!;
     }
     if (mode === Mode.vertical || (inlineCollapsed && level !== 1)) {
       subMenuStyle.paddingLeft = inlineIndent;
     }
-    const isOpen = openKeys.indexOf(subMenuKey) > -1;
+    const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
     const cls = classnames(`${prefixCls}__submenu`, {
       [`${prefixCls}__submenu--open`]: isOpen,
       [`${prefixCls}__submenu--active`]: this.checkIfActive(childs),
