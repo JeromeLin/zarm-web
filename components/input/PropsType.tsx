@@ -1,21 +1,24 @@
+import { ReactNode, CSSProperties, HTMLAttributes, InputHTMLAttributes, TextareaHTMLAttributes, ChangeEvent } from 'react';
+
 export type InputSize = 'lg' | 'md' | 'sm';
 
-export type InputShape = 'rect' | 'radius';
+export type InputShape = 'rect' | 'radius' | 'round';
 
 export type InputType = 'text' | 'number' | 'password' | 'textarea';
 
 export type InputProps = InputCoreProps | TextAreaProps;
 
-export interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface InputGroupProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   size?: InputSize;
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
+  shape?: InputShape;
+  style?: CSSProperties;
   prefixCls?: string;
   compact?: boolean;
+  children?: ReactNode;
 }
 
-export interface AutoHeightType {
+export interface InputAutoHeightType {
   minRows?: number;
   maxRows?: number;
 }
@@ -27,7 +30,7 @@ export interface InputCommonProps {
 }
 
 export interface InputCoreProps extends
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'prefix' | 'onChange'>, InputCommonProps {
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'prefix' | 'onChange'>, InputCommonProps {
   type?: 'text' | 'number' | 'password';
   icon?: string;
   size?: InputSize;
@@ -35,20 +38,20 @@ export interface InputCoreProps extends
   bordered?: boolean | 'underline';
   value?: string | number;
   defaultValue?: string;
-  addonBefore?: React.ReactNode;
-  addonAfter?: React.ReactNode;
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
-  onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
+  addonBefore?: ReactNode;
+  addonAfter?: ReactNode;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
+  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface TextAreaProps extends
-  Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>, InputCommonProps {
+  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>, InputCommonProps {
   type?: 'textarea';
   showLength?: boolean;
-  autoHeight?: boolean | AutoHeightType;
+  autoHeight?: boolean | InputAutoHeightType;
   bordered?: boolean;
   value?: string | number;
   defaultValue?: string;
-  onChange?: (e?: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange?: (e?: ChangeEvent<HTMLTextAreaElement>) => void;
 }

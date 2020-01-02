@@ -5,7 +5,43 @@ $inner-input-class: '.#{$--namespace}-input__inner';
   flex-wrap: nowrap;
 
   @include m(compact) {
+    @include b(button) {
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+      }
+    }
+
     @include b(input) {
+      &:first-child {
+        #{$inner-input-class} {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &:last-child {
+        #{$inner-input-class} {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      &:not(:first-child):not(:last-child) {
+        #{$inner-input-class} {
+          border-radius: 0;
+        }
+      }
+
       @include m(underline) {
         &:not(:last-child) {
           position: relative;
@@ -23,70 +59,8 @@ $inner-input-class: '.#{$--namespace}-input__inner';
         }
       }
 
-      @include e(inner) {
-        border-radius: 0;
-      }
-
       &:not(:last-child) {
         margin-right: -1px;
-
-        #{$inner-input-class} {
-          border-right-width: 1px;
-        }
-      }
-    }
-
-    @include m(lg) {
-      @include b(input) {
-        &:first-child {
-          #{$inner-input-class} {
-            border-top-left-radius: var(--radius-lg);
-            border-bottom-left-radius: var(--radius-lg);
-          }
-        }
-
-        &:last-child {
-          #{$inner-input-class} {
-            border-top-right-radius: var(--radius-lg);
-            border-bottom-right-radius: var(--radius-lg);
-          }
-        }
-      }
-    }
-
-    @include m(md) {
-      @include b(input) {
-        &:first-child {
-          #{$inner-input-class} {
-            border-top-left-radius: var(--radius-md);
-            border-bottom-left-radius: var(--radius-md);
-          }
-        }
-
-        &:last-child {
-          #{$inner-input-class} {
-            border-top-right-radius: var(--radius-md);
-            border-bottom-right-radius: var(--radius-md);
-          }
-        }
-      }
-    }
-
-    @include m(sm) {
-      @include b(input) {
-        &:first-child {
-          #{$inner-input-class} {
-            border-top-left-radius: var(--radius-sm);
-            border-bottom-left-radius: var(--radius-sm);
-          }
-        }
-
-        &:last-child {
-          #{$inner-input-class} {
-            border-top-right-radius: var(--radius-sm);
-            border-bottom-right-radius: var(--radius-sm);
-          }
-        }
       }
     }
   }
