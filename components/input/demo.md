@@ -144,17 +144,17 @@ import { Input, Select } from 'zarm-web';
 ReactDOM.render(
   <>
     <Input.Group>
-      <Input style={{ width: '10%' }} defaultValue="021" />
-      <Input style={{ width: '90%' }} defaultValue="10109955" />
+      <Input style={{ width: 60 }} defaultValue="021" />
+      <Input style={{ flex: 1 }} defaultValue="10109955" />
     </Input.Group>
     <Input.Group>
-      <Input style={{ width: '10%' }} bordered defaultValue="021" />
-      <Input style={{ width: '90%' }} bordered defaultValue="10109955" />
+      <Input style={{ width: 60 }} bordered defaultValue="021" />
+      <Input style={{ flex: 1 }} bordered defaultValue="10109955" />
     </Input.Group>
     <Input.Group compact={false}>
-      <Input style={{ width: '30%', marginRight: 20 }} bordered defaultValue="021" />
-      <Input style={{ width: '30%', marginRight: 20 }} bordered defaultValue="10109955" />
-      <Input style={{ width: '40%' }} bordered defaultValue="10109955" />
+      <Input style={{ width: 60, marginRight: 10 }} bordered defaultValue="021" />
+      <Input style={{ flex: 1, marginRight: 10 }} bordered defaultValue="10109955" />
+      <Input style={{ flex: 1 }} bordered defaultValue="10109955" />
     </Input.Group>
   </>,
   mountNode
@@ -174,8 +174,14 @@ ReactDOM.render(
     <Input placeholder="please input gender" prefix={<Icon type="search" />} />
     <Input bordered={false} placeholder="please input gender" prefix={<Icon type="search" />} />
     <Input bordered placeholder="please input gender" prefix={<Icon type="search" />} />
-    <Input bordered className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary" icon="search" />} />
-    <Input bordered className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary">Search</Button>} />
+    <Input.Group className="search-input">
+      <Input bordered placeholder="please input gender" />
+      <Button theme="primary" icon="search" />
+    </Input.Group>
+    <Input.Group className="search-input">
+      <Input bordered placeholder="please input gender" />
+      <Button theme="primary">Search</Button>
+    </Input.Group>
   </>,
   mountNode,
 );

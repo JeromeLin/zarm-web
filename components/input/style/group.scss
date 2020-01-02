@@ -5,10 +5,6 @@ $inner-input-class: '.#{$--namespace}-input__inner';
   flex-wrap: nowrap;
 
   @include m(compact) {
-    & > * {
-      border-radius: 0;
-    }
-
     @include b(input) {
       @include m(underline) {
         &:not(:last-child) {

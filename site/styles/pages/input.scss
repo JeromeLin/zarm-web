@@ -5,16 +5,10 @@
     margin-bottom: 16px;
   }
 
-  .input-search-wrapper {
-    .zw-input__prepend,
-    .zw-input__append {
-      padding: 0;
-      border: 0;
-
-      button {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
+  .search-input {
+    button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 }
