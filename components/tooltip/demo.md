@@ -7,9 +7,7 @@
 import { Tooltip } from 'zarm-web';
 
 ReactDOM.render(
-  <Tooltip content="我是提示框内容">
-    <span>鼠标移入显示提示框</span>
-  </Tooltip>
+  <Tooltip content="我是提示框内容">鼠标移入显示提示框</Tooltip>
 , mountNode);
 ```
 
@@ -89,7 +87,7 @@ const Demo = () => (
           </Tooltip>
         </div>
 
-        <div style={{ width: 70, marginLeft: 70 * 4 }}>
+        <div style={{ width: 70, marginLeft: 70 * 4 + 20 }}>
           <Tooltip direction="rightTop" content="rightTop text">
             <Button>RT</Button>
           </Tooltip>

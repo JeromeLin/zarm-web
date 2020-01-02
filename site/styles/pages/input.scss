@@ -1,0 +1,14 @@
+@import "@site/styles/index";
+
+.input-page {
+  .zw-input {
+    margin-bottom: 16px;
+  }
+
+  .search-input {
+    button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

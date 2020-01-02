@@ -10,7 +10,6 @@
   }
 
   pre {
-    margin: 0;
     padding: 16px;
     overflow: auto;
     font-size: 14px;
@@ -36,6 +35,7 @@
 
   h3 {
     font-size: 16px;
+    margin-top: 50px;
   }
 
   h4,
@@ -62,7 +62,8 @@
     width: 100%;
     min-width: 600px;
     font-size: 14px;
-    margin-bottom: 45px;
+    border-collapse: collapse;
+    border-spacing: 0;
 
     strong {
       font-weight: normal;
@@ -93,11 +94,17 @@
 
 .markdown-demo-wrapper {
   margin-top: 40px;
-  columns: 50% 2;
+  // stylelint-disable-next-line
+  column-width: 50%;
+  // stylelint-disable-next-line
+  column-count: 2;
   column-fill: auto;
 
   @media (max-width: 1366px) {
-    columns: 100% 1;
+    // stylelint-disable-next-line
+    column-width: 100%;
+    // stylelint-disable-next-line
+    column-count: 1;
   }
 }
 

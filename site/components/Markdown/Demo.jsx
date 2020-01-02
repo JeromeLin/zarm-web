@@ -59,11 +59,10 @@ export default class Demo extends React.PureComponent {
   }
 
   render() {
-    const { className } = this.props;
     const { showBlock } = this.state;
 
     return (
-      <div className={`demo-block demo-box ${className}`}>
+      <div className="demo-block demo-box">
         {this.title.split(('\n')).map((item, index) => {
           if (index === 0) return <h2 key={item}>{item}</h2>;
           if (item) return <p key={item}>{item}</p>;

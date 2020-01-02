@@ -1,5 +1,365 @@
-@import '../../style/themes/default';
-@import './component';
-@import '../cps/Addon';
-@import '../input-group/InputGroup';
-@import '../input-search/InputSearch';
+@import '../../style/core/index';
+@import 'group';
+@import 'mixins';
+
+@include b(input) {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  @include placeholder {
+    color: var(--input-placeholder-color);
+  }
+
+  @include e(inner) {
+    width: 100%;
+    height: var(--input-height-md);
+    flex-grow: 1;
+    margin-bottom: 0;
+    padding: var(--input-padding-md);
+    appearance: none;
+    background-color: #fff;
+    background-image: none;
+    color: var(--input-default-color);
+    border: var(--input-default-border);
+    line-height: 1.5;
+    outline: none;
+    transition: all .3s;
+
+    &:hover {
+      border-color: var(--theme-primary);
+      outline: 0;
+      z-index: 1;
+    }
+
+    &:read-only {
+      &:hover {
+        border-color: var(--input-default-border-color);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--input-disabled-background-color);
+      color: var(--input-disabled-color);
+
+      &:hover {
+        border-color: var(--input-default-border-color);
+      }
+    }
+  }
+
+  @include e(wrapper) {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+
+  @include e(prepend, append) {
+    display: flex;
+    position: relative;
+    padding: 0 11px;
+    color: rgba(0, 0, 0, .65);
+    text-align: center;
+    white-space: nowrap;
+    align-items: center;
+    background-color: var(--input-addon-background-color);
+    font-size: 14px;
+    border: 1px solid var(--input-addon-border-color);
+    transition: all .3s;
+  }
+
+  @include e(prepend) {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  @include e(append) {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  @include e(prefix, suffix) {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 0;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transform: translateY(-50%);
+  }
+
+  @include e(prefix) {
+    left: 12px;
+  }
+
+  @include e(suffix) {
+    right: 12px;
+  }
+
+  @include e(clear-icon) {
+    margin-right: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  @include m(radius) {
+    @include e(prepend) {
+      border-top-left-radius: var(--radius-md);
+      border-bottom-left-radius: var(--radius-md);
+    }
+
+    @include e(append) {
+      border-top-right-radius: var(--radius-md);
+      border-bottom-right-radius: var(--radius-md);
+    }
+
+    @include m(prepend) {
+      @include e(inner) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    @include m(append) {
+      @include e(inner) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  @include m(focused) {
+    @include e(focus-line) {
+      transform: scaleX(1) !important;
+    }
+  }
+
+  @include m(underline) {
+    @include e(prefix, suffix) {
+      position: static;
+      display: flex;
+      align-items: center;
+      color: rgba(0, 0, 0, 0.65);
+      line-height: 0;
+      flex-shrink: 0;
+      white-space: nowrap;
+      transform: translateY(0);
+    }
+
+    @include e(prepend, append) {
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      border-color: var(--input-default-border-color);
+      border-radius: unset;
+
+      @include b(input) {
+        @include m(underline) {
+          margin-bottom: 0;
+        }
+      }
+
+      @include e(line) {
+        display: none;
+      }
+    }
+
+    @include b(input) {
+      &:not(:last-child) {
+        padding-right: 12px;
+      }
+
+      &:not(:first-child) {
+        padding-left: 12px;
+      }
+    }
+
+    @include b(input) {
+      position: relative;
+      width: 100%;
+      display: block;
+      text-align: inherit;
+      flex: 1;
+    }
+
+    @include e(line) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      height: 1px;
+      border: none;
+      background-color: var(--input-default-border-color);
+      z-index: 2;
+    }
+
+    @include e(focus-line) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: scaleX(0);
+      margin: 0;
+      height: 2px;
+      border: none;
+      background-color: var(--theme-primary);
+      transition: transform 0.25s;
+      z-index: 2;
+    }
+  }
+
+  @include m(radius) {
+    @include e(inner) {
+      border-radius: var(--radius-md);
+    }
+  }
+
+  @include m(lg) {
+    @include b(icon) {
+      font-size: var(--input-font-size-lg);
+    }
+
+    @include e(inner) {
+      height: var(--input-height-lg);
+      padding: var(--input-padding-lg);
+      font-size: var(--input-font-size-lg);
+    }
+
+    @include m(readOnly) {
+      font-size: var(--input-font-size-lg);
+    }
+  }
+
+  @include m(md) {
+    @include b(icon) {
+      font-size: var(--input-font-size-md);
+    }
+
+    @include e(inner) {
+      height: var(--input-height-md);
+      padding: var(--input-padding-md);
+      font-size: var(--input-font-size-md);
+    }
+
+    @include m(readOnly) {
+      font-size: var(--input-font-size-md);
+    }
+  }
+
+  @include m(sm) {
+    @include b(icon) {
+      font-size: var(--input-font-size-sm);
+    }
+
+    @include e(prefix) {
+      left: 8px;
+    }
+
+    @include e(suffix) {
+      right: 8px;
+    }
+
+    @include e(inner) {
+      height: var(--input-height-sm);
+      padding: var(--input-padding-sm);
+      font-size: var(--input-font-size-sm);
+    }
+
+    @include m(readOnly) {
+      font-size: var(--input-font-size-sm);
+    }
+  }
+
+  @include m(readOnly) {
+    @include e(inner) {
+      color: var(--input-default-color);
+    }
+  }
+
+  @include m(nobordered) {
+    @include e(inner) {
+      border: none;
+      background-color: var(--input-disabled-background-color);
+
+      &:disabled {
+        background-color: var(--input-disabled-background-color);
+        color: var(--input-disabled-color);
+
+        &:hover {
+          border-color: none;
+        }
+      }
+    }
+  }
+
+  @include m(underline) {
+    @include e(inner) {
+      border: none;
+
+      &:disabled {
+        background-color: #fff;
+        color: var(--input-disabled-color);
+
+        &:hover {
+          border-color: none;
+        }
+      }
+    }
+  }
+
+  @include m(bordered) {
+    @include e(inner) {
+      &:focus {
+        border-color: var(--theme-primary);
+        box-shadow: var(--input-focus-shadow);
+        outline: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  @include m(textarea) {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    textarea {
+      max-width: 100%;
+      height: 100%;
+      min-height: var(--input-height-md);
+      line-height: 1.5;
+      vertical-align: bottom;
+      transition: all 0.3s, height 0;
+      font-size: var(--input-font-size-md);
+    }
+
+    @include e(length-wrapper) {
+      position: absolute;
+      right: 16px;
+      bottom: 10px;
+      color: var(--input-length-count-color);
+      font-size: var(--input-font-size-md);
+    }
+
+    @include e(length-count) {
+      color: var(--input-length-max-count-color);
+    }
+
+    @include e(length-max-count) {
+      color: var(--input-length-count-color);
+    }
+  }
+}

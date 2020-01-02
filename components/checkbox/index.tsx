@@ -1,7 +1,6 @@
-import Checkbox from './Checkbox';
-import CheckboxGroup from './CheckboxGroup';
+import Checkbox from 'zarm/lib/checkbox';
 
-Checkbox.Group = CheckboxGroup;
+Checkbox.defaultProps.prefixCls = 'zw-checkbox';
+Checkbox.Group.defaultProps.prefixCls = 'zw-checkbox-group';
 
-export { CheckboxGroupProps, CheckboxProps } from './PropsType';
 export default Checkbox;

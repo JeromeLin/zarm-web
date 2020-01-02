@@ -1,0 +1,93 @@
+$inner-input-class: '.#{$--namespace}-input__inner';
+
+@include b(input-group) {
+  display: flex;
+  flex-wrap: nowrap;
+
+  @include m(compact) {
+    @include b(input) {
+      @include m(underline) {
+        &:not(:last-child) {
+          position: relative;
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 22%;
+            right: 1px;
+            width: 1px;
+            height: 60%;
+            background: var(--input-default-border-color);
+            z-index: 2;
+          }
+        }
+      }
+
+      @include e(inner) {
+        border-radius: 0;
+      }
+
+      &:not(:last-child) {
+        margin-right: -1px;
+
+        #{$inner-input-class} {
+          border-right-width: 1px;
+        }
+      }
+    }
+
+    @include m(lg) {
+      @include b(input) {
+        &:first-child {
+          #{$inner-input-class} {
+            border-top-left-radius: var(--radius-lg);
+            border-bottom-left-radius: var(--radius-lg);
+          }
+        }
+
+        &:last-child {
+          #{$inner-input-class} {
+            border-top-right-radius: var(--radius-lg);
+            border-bottom-right-radius: var(--radius-lg);
+          }
+        }
+      }
+    }
+
+    @include m(md) {
+      @include b(input) {
+        &:first-child {
+          #{$inner-input-class} {
+            border-top-left-radius: var(--radius-md);
+            border-bottom-left-radius: var(--radius-md);
+          }
+        }
+
+        &:last-child {
+          #{$inner-input-class} {
+            border-top-right-radius: var(--radius-md);
+            border-bottom-right-radius: var(--radius-md);
+          }
+        }
+      }
+    }
+
+    @include m(sm) {
+      @include b(input) {
+        &:first-child {
+          #{$inner-input-class} {
+            border-top-left-radius: var(--radius-sm);
+            border-bottom-left-radius: var(--radius-sm);
+          }
+        }
+
+        &:last-child {
+          #{$inner-input-class} {
+            border-top-right-radius: var(--radius-sm);
+            border-bottom-right-radius: var(--radius-sm);
+          }
+        }
+      }
+    }
+  }
+}

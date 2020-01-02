@@ -3,10 +3,8 @@ import ActivityIndicator from 'zarm/lib/activity-indicator';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../icon';
-import ButtonProps from './PropsType';
+import { ButtonProps } from './PropsType';
 import ButtonGroup from './ButtonGroup';
-
-ActivityIndicator.defaultProps.prefixCls = 'zw-activity-indicator';
 
 class Button extends Component<ButtonProps> {
   static Group: typeof ButtonGroup;
@@ -59,7 +57,7 @@ class Button extends Component<ButtonProps> {
     const textContent = loading
       ? (
         <>
-          <ActivityIndicator />
+          <ActivityIndicator prefixCls="zw-activity-indicator" />
           <span>{children}</span>
         </>
       )

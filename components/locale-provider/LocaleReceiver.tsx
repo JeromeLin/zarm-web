@@ -1,4 +1,4 @@
-import LocaleReceiver from 'zarm/es/locale-receiver';
+import LocaleReceiver from 'zarm/lib/locale-receiver';
 import defaultLocale from './lang/zh-cn';
 
 const LocaleReceiverWrapper = (componentName: any) => {

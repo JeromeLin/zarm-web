@@ -5,14 +5,10 @@ module.exports = {
       description: '快速上手',
       module: () => import('@/README.md'),
     },
-    {
-      name: 'ChangeLog',
-      description: '更新日志',
-      module: () => import('@/CHANGELOG.md'),
-    },
-    // QuickStart: {
-    //   name: 'quickstart',
-    //   module: () => import('@/README.md'),
+    // {
+    //   name: 'ChangeLog',
+    //   description: '更新日志',
+    //   module: () => import('@/CHANGELOG.md'),
     // },
     // I18n: {
     //   name: 'i18n',
@@ -22,28 +18,28 @@ module.exports = {
   components: {
     basic: [
       {
-        name: 'Icon',
-        module: () => import('@/components/icon/demo.md'),
-      },
-      {
         name: 'Button',
         module: () => import('@/components/button/demo.md'),
       },
+      {
+        name: 'Icon',
+        module: () => import('@/components/icon/demo.md'),
+      },
     ],
     layout: [
-      {
-        name: 'Layout',
-        module: () => import('@/components/layout/layout.md'),
-      },
-      {
-        name: 'Grid',
-        module: () => import('@/components/grid/grid.md'),
-      },
+      // {
+      //   name: 'Layout',
+      //   module: () => import('@/components/layout/layout.md'),
+      // },
+      // {
+      //   name: 'Grid',
+      //   module: () => import('@/components/grid/grid.md'),
+      // },
     ],
     form: [
       {
         name: 'Radio',
-        module: () => import('@/components/radio/radio.md'),
+        module: () => import('@/components/radio/demo.md'),
       },
       {
         name: 'Checkbox',
@@ -51,129 +47,129 @@ module.exports = {
       },
       {
         name: 'Input',
-        module: () => import('@/components/input/input.md'),
+        module: () => import('@/components/input/demo.md'),
       },
-      {
-        name: 'NumberInput',
-        module: () => import('@/components/number-input/numberinput.md'),
-      },
-      {
-        name: 'Select',
-        module: () => import('@/components/select/select.md'),
-      },
+      // {
+      //   name: 'NumberInput',
+      //   module: () => import('@/components/number-input/numberinput.md'),
+      // },
+      // {
+      //   name: 'Select',
+      //   module: () => import('@/components/select/select.md'),
+      // },
       {
         name: 'Switch',
-        module: () => import('@/components/switch/switch.md'),
+        module: () => import('@/components/switch/demo.md'),
       },
-      {
-        name: 'Slider',
-        module: () => import('@/components/slider/slider.md'),
-      },
-      {
-        name: 'Calendar',
-        module: () => import('@/components/calendar/calendar.md'),
-      },
-      {
-        name: 'DatePicker',
-        module: () => import('@/components/date-picker/datepicker.md'),
-      },
-      {
-        name: 'TimePicker',
-        module: () => import('@/components/time-picker/timepicker.md'),
-      },
-      {
-        name: 'Upload',
-        module: () => import('@/components/upload/upload.md'),
-      },
-      {
-        name: 'Form',
-        module: () => import('@/components/form/form.md'),
-      },
-      {
-        name: 'Transfer',
-        module: () => import('@/components/transfer/transfer.md'),
-      },
+      // {
+      //   name: 'Slider',
+      //   module: () => import('@/components/slider/slider.md'),
+      // },
+      // {
+      //   name: 'Calendar',
+      //   module: () => import('@/components/calendar/calendar.md'),
+      // },
+      // {
+      //   name: 'DatePicker',
+      //   module: () => import('@/components/date-picker/datepicker.md'),
+      // },
+      // {
+      //   name: 'TimePicker',
+      //   module: () => import('@/components/time-picker/timepicker.md'),
+      // },
+      // {
+      //   name: 'Upload',
+      //   module: () => import('@/components/upload/upload.md'),
+      // },
+      // {
+      //   name: 'Form',
+      //   module: () => import('@/components/form/form.md'),
+      // },
+      // {
+      //   name: 'Transfer',
+      //   module: () => import('@/components/transfer/transfer.md'),
+      // },
     ],
     data: [
       {
         name: 'Badge',
         module: () => import('@/components/badge/demo.md'),
       },
-      {
-        name: 'Table',
-        module: () => import('@/components/table/table.md'),
-      },
+      // {
+      //   name: 'Table',
+      //   module: () => import('@/components/table/table.md'),
+      // },
       {
         name: 'Tag',
         module: () => import('@/components/tag/demo.md'),
       },
-      {
-        name: 'Progress',
-        module: () => import('@/components/progress/progress.md'),
-      },
-      {
-        name: 'Panel',
-        module: () => import('@/components/panel/panel.md'),
-      },
-      {
-        name: 'Pagination',
-        module: () => import('@/components/pagination/pagination.md'),
-      },
-      {
-        name: 'Tree',
-        module: () => import('@/components/tree/tree.md'),
-      },
+      // {
+      //   name: 'Progress',
+      //   module: () => import('@/components/progress/progress.md'),
+      // },
+      // {
+      //   name: 'Panel',
+      //   module: () => import('@/components/panel/panel.md'),
+      // },
+      // {
+      //   name: 'Pagination',
+      //   module: () => import('@/components/pagination/pagination.md'),
+      // },
+      // {
+      //   name: 'Tree',
+      //   module: () => import('@/components/tree/tree.md'),
+      // },
       {
         name: 'Avatar',
         module: () => import('@/components/avatar/demo.md'),
       },
-      {
-        name: 'Swipe',
-        module: () => import('@/components/swipe/swipe.md'),
-      },
+      // {
+      //   name: 'Swipe',
+      //   module: () => import('@/components/swipe/swipe.md'),
+      // },
     ],
     notice: [
+      // {
+      //   name: 'Alert',
+      //   module: () => import('@/components/alert/alert.md'),
+      // },
       {
-        name: 'Alert',
-        module: () => import('@/components/alert/alert.md'),
+        name: 'Loading',
+        module: () => import('@/components/loading/demo.md'),
       },
-      {
-        name: 'loading',
-        module: () => import('@/components/loading/loading.md'),
-      },
-      {
-        name: 'message',
-        module: () => import('@/components/message/demo.md'),
-      },
-      {
-        name: 'modal',
-        module: () => import('@/components/modal/modal.md'),
-      },
-      {
-        name: 'confirm',
-        module: () => import('@/components/confirm/confirm.md'),
-      },
-      {
-        name: 'notification',
-        module: () => import('@/components/notification/notification.md'),
-      },
-      {
-        name: 'Popover',
-        module: () => import('@/components/popover/popover.md'),
-      },
-      {
-        name: 'Popconfirm',
-        module: () => import('@/components/popconfirm/popconfirm.md'),
-      },
+      // {
+      //   name: 'message',
+      //   module: () => import('@/components/message/demo.md'),
+      // },
+      // {
+      //   name: 'modal',
+      //   module: () => import('@/components/modal/modal.md'),
+      // },
+      // {
+      //   name: 'confirm',
+      //   module: () => import('@/components/confirm/confirm.md'),
+      // },
+      // {
+      //   name: 'notification',
+      //   module: () => import('@/components/notification/notification.md'),
+      // },
+      // {
+      //   name: 'Popover',
+      //   module: () => import('@/components/popover/popover.md'),
+      // },
+      // {
+      //   name: 'Popconfirm',
+      //   module: () => import('@/components/popconfirm/popconfirm.md'),
+      // },
     ],
     navigation: [
-      {
-        name: 'Menu',
-        module: () => import('@/components/menu/menu.md'),
-      },
+      // {
+      //   name: 'Menu',
+      //   module: () => import('@/components/menu/menu.md'),
+      // },
       {
         name: 'Tabs',
-        module: () => import('@/components/tab/tab.md'),
+        module: () => import('@/components/tabs/demo.md'),
       },
       {
         name: 'Breadcrumb',
@@ -183,24 +179,24 @@ module.exports = {
         name: 'Steps',
         module: () => import('@/components/steps/demo.md'),
       },
-      {
-        name: 'Dropdown',
-        module: () => import('@/components/dropdown/dropdown.md'),
-      },
+      // {
+      //   name: 'Dropdown',
+      //   module: () => import('@/components/dropdown/dropdown.md'),
+      // },
     ],
     others: [
       {
         name: 'Tooltip',
         module: () => import('@/components/tooltip/demo.md'),
       },
-      {
-        name: 'Mask',
-        module: () => import('@/components/mask/mask.md'),
-      },
-      {
-        name: 'Transition',
-        module: () => import('@/components/transition/transition.md'),
-      },
+      // {
+      //   name: 'Mask',
+      //   module: () => import('@/components/mask/mask.md'),
+      // },
+      // {
+      //   name: 'Transition',
+      //   module: () => import('@/components/transition/transition.md'),
+      // },
       {
         name: 'LocaleProvider',
         module: () => import('@/components/locale-provider/demo.md'),

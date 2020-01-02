@@ -216,7 +216,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Tag } from 'zarm-web';
 
-const CheckableTag = Tag.CheckableTag;
+const { CheckableTag } = Tag;
 
 class Demo extends React.Component {
   constructor(props) {
@@ -295,7 +295,7 @@ ReactDOM.render(<Demo />, mountNode);
 | closable | boolean | false | 是否可关闭 |
 | onClose | (e) => void | - | 关闭回调事件，closable 为 `true` 时生效 |
 
-# Tag.CheckableTag
+<h3>Tag.CheckableTag</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

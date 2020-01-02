@@ -10,11 +10,11 @@
     }
   }
 
-  .grid {
+  .icon-grid {
     display: flex;
     flex-wrap: wrap;
 
-    &-column {
+    .grid-column {
       display: flex;
       align-items: center;
       justify-content: center;

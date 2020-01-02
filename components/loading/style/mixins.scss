@@ -1,0 +1,11 @@
+@mixin loading-size($height, $margin, $font-size,) {
+  @include e(svg) {
+    height: $height;
+    width: $height;
+  }
+
+  @include e(text) {
+    font-size: $font-size;
+    margin: calc(#{$margin} / 2);
+  }
+}
