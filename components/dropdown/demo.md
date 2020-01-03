@@ -310,7 +310,14 @@ class Demo2 extends React.Component {
     }
   }
   render() {
-    const overlay = "this is content";
+    const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
     
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
