@@ -235,9 +235,14 @@
       bottom: 0;
       margin: 0;
       height: 1px;
-      border: none;
-      background-color: var(--input-default-border-color);
+      border-bottom: 1px solid var(--input-default-border-color);
       z-index: 2;
+    }
+
+    @include m(disabled) {
+      @include e(line) {
+        border-bottom-style: dashed;
+      }
     }
 
     @include e(focus-line) {
