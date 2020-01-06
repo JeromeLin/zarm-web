@@ -89,6 +89,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   top: 50%;
   right: 20px;
   width: 10px;
+  height: 10px;
   transition: transform 0.3s $ease-in-out;
 
   &:before,
