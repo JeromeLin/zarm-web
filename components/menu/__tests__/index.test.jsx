@@ -14,7 +14,7 @@ describe('Menu', () => {
         <Menu.Item key="d">运营后台管理</Menu.Item>
         <Menu.Item key="e">公共功能</Menu.Item>
         <Menu.Item key="f">询报价</Menu.Item>
-      </Menu>
+      </Menu>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -41,7 +41,7 @@ describe('Menu', () => {
           <Menu.Item>批改回退</Menu.Item>
           <Menu.Item>批改共享池</Menu.Item>
         </Menu.SubMenu>
-      </Menu>
+      </Menu>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -70,7 +70,7 @@ describe('Menu', () => {
           <Menu.Item>规则配置</Menu.Item>
           <Menu.Item>人工核保</Menu.Item>
         </Menu.SubMenu>
-      </Menu>
+      </Menu>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -97,7 +97,7 @@ describe('Menu', () => {
           <Menu.Item>批改回退</Menu.Item>
           <Menu.Item>批改共享池</Menu.Item>
         </Menu.SubMenu>
-      </Menu>
+      </Menu>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -111,7 +111,7 @@ describe('Menu', () => {
         <Menu.Divider />
         <Menu.Item>投保单录入</Menu.Item>
         <Menu.Item>新增计划</Menu.Item>
-      </Menu>
+      </Menu>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -125,7 +125,7 @@ describe('Menu', () => {
         <Menu.Divider />
         <Menu.Item>投保单录入</Menu.Item>
         <Menu.Item>新增计划</Menu.Item>
-      </Menu>
+      </Menu>,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -138,7 +138,7 @@ describe('Menu', () => {
         <Menu.Item>在线投保单管理</Menu.Item>
         <Menu.Item>投保单录入</Menu.Item>
         <Menu.Item>新增计划</Menu.Item>
-      </Menu>
+      </Menu>,
     );
 
     wrapper.setProps({ inlineCollapsed: true });
@@ -154,7 +154,7 @@ describe('Menu', () => {
         <Menu.Item>在线投保单管理</Menu.Item>
         <Menu.Item>投保单录入</Menu.Item>
         <Menu.Item>新增计划</Menu.Item>
-      </SubMenu>
+      </SubMenu>,
     );
 
     wrapper.setProps({ openKeys: [subMenuKey] });
