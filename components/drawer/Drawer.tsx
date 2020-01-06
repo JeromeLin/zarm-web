@@ -22,7 +22,6 @@ export interface StateType {
   left?: number;
   totallayers?: number;
   btnstyle?: CSSProperties;
-  esc: boolean;
 }
 
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
@@ -46,23 +45,14 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     totallayers: 0,
     btnstyle: {},
     width: this.props.width,
-    esc: true,
   };
 
   componentDidMount() {
-    const { width, onClose } = this.props;
+    const { width } = this.props;
     const { totallayers } = this.state;
 
     if (!width) {
       events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
-      events.on(window, 'keyup', (e: { keyCode: number }) => {
-        const { esc } = this.state;
-
-        console.log('esc', esc);
-        if (e.keyCode === 27 && esc) {
-          onClose && onClose();
-        }
-      });
     }
 
     this.calcDrawerWidth();
@@ -79,39 +69,13 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     if (preProps.visible !== visible) {
       if (visible) {
         this.calcLayer(this, this.parentWidth);
-        if (this && this.parentDrawer && this.parentDrawer.push) {
-          this.parentDrawer.push();
-        }
       }
 
       if (!visible && this.parentDrawer) {
         this.calcLayer(this.parentDrawer, this.parentDrawer.parentWidth);
-
-        // if (this && this.parentDrawer && this.parentDrawer.pull) {
-        //   this.parentDrawer.pull();
-        // }
       }
     }
   }
-
-  componentWillUnmount() {
-    console.log(123);
-    if (this && this.parentDrawer && this.parentDrawer.parentDrawer && this.parentDrawer.parentDrawer.pull) {
-      this.parentDrawer.parentDrawer.pull();
-    }
-  }
-
-  push = () => {
-    this.setState({
-      esc: false,
-    });
-  };
-
-  pull = () => {
-    this.setState({
-      esc: true,
-    });
-  };
 
   private calcDrawerWidth = () => {
     let { size = 'md' } = this.props;
@@ -214,10 +178,6 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       onClose && onClose();
     };
 
-    if (this && this.parentDrawer && this.parentDrawer.parentDrawer && this.parentDrawer.parentDrawer.parentDrawer) {
-      console.log(this.parentDrawer, this.parentDrawer.parentDrawer, this.parentDrawer.parentDrawer.parentDrawer);
-    }
-
     return (
       <DrawerContext.Provider value={this}>
         <Popup
@@ -231,7 +191,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
-          <div className={`${prefixCls}__cell-box`}>
+          <div className={`${prefixCls}__cell`}>
             {closable && (
               <button
                 className={`${prefixCls}__closebtn`}
