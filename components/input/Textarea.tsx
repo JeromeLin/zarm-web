@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import calcTextareaHeight from './calcTextareaHeight';
-import { AutoHeightType, TextAreaProps } from './PropsType';
+import { InputAutoHeightType, TextAreaProps } from './PropsType';
 import { fixControlledValue } from './InputCore';
 
 class Textarea extends Component<TextAreaProps, any> {
@@ -30,7 +30,7 @@ class Textarea extends Component<TextAreaProps, any> {
     if (!autoHeight || !this.textareaRef.current) {
       return false;
     }
-    const { minRows, maxRows } = autoHeight as AutoHeightType;
+    const { minRows, maxRows } = autoHeight as InputAutoHeightType;
     const textareaCalcStyle = calcTextareaHeight(this.textareaRef.current, false, minRows, maxRows);
 
     this.setState({

@@ -118,7 +118,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                       class="ui-modal-footer"
                     >
                       <button
-                        class="zw-button zw-button--default zw-button--radius"
+                        class="zw-button zw-button--default zw-button--md zw-button--radius"
                         type="button"
                       >
                         <span>
@@ -126,7 +126,7 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                         </span>
                       </button>
                       <button
-                        class="zw-button zw-button--primary zw-button--radius"
+                        class="zw-button zw-button--primary zw-button--md zw-button--radius"
                         type="button"
                       >
                         <span>
@@ -310,16 +310,15 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                     <Button
                       ghost={false}
                       htmlType="button"
-                      icon=""
                       loading={false}
                       onClick={[Function]}
                       prefixCls="zw-button"
                       shape="radius"
-                      size={null}
+                      size="md"
                       theme="default"
                     >
                       <button
-                        className="zw-button zw-button--default zw-button--radius"
+                        className="zw-button zw-button--default zw-button--md zw-button--radius"
                         onClick={[Function]}
                         type="button"
                       >
@@ -331,16 +330,15 @@ exports[`Confirm renders basic Confirm correctly 1`] = `
                     <Button
                       ghost={false}
                       htmlType="button"
-                      icon=""
                       loading={false}
                       onClick={[Function]}
                       prefixCls="zw-button"
                       shape="radius"
-                      size={null}
+                      size="md"
                       theme="primary"
                     >
                       <button
-                        className="zw-button zw-button--primary zw-button--radius"
+                        className="zw-button zw-button--primary zw-button--md zw-button--radius"
                         onClick={[Function]}
                         type="button"
                       >

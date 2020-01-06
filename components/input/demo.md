@@ -174,11 +174,11 @@ ReactDOM.render(
     <Input placeholder="please input gender" prefix={<Icon type="search" />} />
     <Input bordered={false} placeholder="please input gender" prefix={<Icon type="search" />} />
     <Input bordered placeholder="please input gender" prefix={<Icon type="search" />} />
-    <Input.Group className="search-input">
+    <Input.Group>
       <Input bordered placeholder="please input gender" />
       <Button theme="primary" icon="search" />
     </Input.Group>
-    <Input.Group className="search-input">
+    <Input.Group size="lg" shape="round">
       <Input bordered placeholder="please input gender" />
       <Button theme="primary">Search</Button>
     </Input.Group>
@@ -230,7 +230,7 @@ ReactDOM.render(
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | type | string | 'text' | 类型，可选值 `text`、`number`、`password`、`textarea` |
-| shape | string | 'radius' | 类型，可选值 `rect`、`radius` |
+| shape | string | 'radius' | 类型，可选值 `rect`、`radius`、`round` |
 | value | string | - | 值 |
 | defaultValue | string | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |

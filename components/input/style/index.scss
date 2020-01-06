@@ -114,6 +114,10 @@
   }
 
   @include m(radius) {
+    @include e(inner) {
+      border-radius: var(--radius-md);
+    }
+
     @include e(prepend) {
       border-top-left-radius: var(--radius-md);
       border-bottom-left-radius: var(--radius-md);
@@ -122,6 +126,36 @@
     @include e(append) {
       border-top-right-radius: var(--radius-md);
       border-bottom-right-radius: var(--radius-md);
+    }
+
+    @include m(prepend) {
+      @include e(inner) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    @include m(append) {
+      @include e(inner) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  @include m(round) {
+    @include e(inner) {
+      border-radius: var(--radius-round);
+    }
+
+    @include e(prepend) {
+      border-top-left-radius: var(--radius-round);
+      border-bottom-left-radius: var(--radius-round);
+    }
+
+    @include e(append) {
+      border-top-right-radius: var(--radius-round);
+      border-bottom-right-radius: var(--radius-round);
     }
 
     @include m(prepend) {
@@ -201,9 +235,14 @@
       bottom: 0;
       margin: 0;
       height: 1px;
-      border: none;
-      background-color: var(--input-default-border-color);
+      border-bottom: 1px solid var(--input-default-border-color);
       z-index: 2;
+    }
+
+    @include m(disabled) {
+      @include e(line) {
+        border-bottom-style: dashed;
+      }
     }
 
     @include e(focus-line) {
@@ -218,12 +257,6 @@
       background-color: var(--theme-primary);
       transition: transform 0.25s;
       z-index: 2;
-    }
-  }
-
-  @include m(radius) {
-    @include e(inner) {
-      border-radius: var(--radius-md);
     }
   }
 
