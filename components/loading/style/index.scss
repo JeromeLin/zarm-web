@@ -4,10 +4,6 @@
 
 @include b(loading) {
   position: relative;
-  display: inline-block;
-  user-select: none;
-  text-align: center;
-  vertical-align: middle;
 
   @include m(fullscreen) {
     position: fixed;
@@ -16,6 +12,10 @@
     bottom: 0;
     left: 0;
     z-index: 9999;
+
+    @include e(mask) {
+      background: rgba(255, 255, 255, var(--opacity-mask));
+    }
   }
 
   @include m(active) {
@@ -39,7 +39,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: var(--loading-mask-color);
+    background: transparent;
   }
 
   @include e(spin) {

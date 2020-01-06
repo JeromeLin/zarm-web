@@ -31,8 +31,10 @@
   --zindex-tooltip: 1500;
 
   // 透明度
-  --opacity-disabled: 0.5;
-  --opacity-tooltip: 0.8;
+  --opacity-disabled: .5;
+  --opacity-mask: .5;
+  --opacity-toast: .8;
+  --opacity-tooltip: .8;
 
   // 圆角
   --radius-sm: 2px;
