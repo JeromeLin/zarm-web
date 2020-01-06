@@ -6,15 +6,19 @@ import events from '../utils/events';
 import { SubMenuProps, ChildProps, Mode } from './PropsType';
 import MenuContext from './menu-context';
 
+enum SubAnimation {
+  UP = 'up',
+  DOWN = 'down',
+  None = ''
+}
+
 interface SubMenuState {
   collapsedSubVisible: boolean;
-  collapsedSubAnimation: 'up' | 'down' | '';
+  collapsedSubAnimation: SubAnimation;
   openKeys: string[];
 }
 
 export class SubMenu extends Component<SubMenuProps, SubMenuState> {
-  static isSubMenu = true;
-
   static defaultProps = {
     prefixCls: 'zw-menu',
     title: '',
@@ -25,25 +29,23 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   static propTypes = {
     prefixCls: PropTypes.string,
+    title: PropTypes.node,
     level: PropTypes.number,
     style: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])),
-    title: PropTypes.node,
     openKeys: PropTypes.arrayOf(PropTypes.string),
   };
 
-  subTitle: any;
+  subTitle: HTMLDivElement;
 
-  sub: any;
+  sub: HTMLUListElement;
 
-  timeout: any;
-
-  constructor(props) {
+  constructor(props: SubMenuProps) {
     super(props);
     const { openKeys } = props;
     this.state = {
       collapsedSubVisible: false,
-      collapsedSubAnimation: '',
-      openKeys,
+      collapsedSubAnimation: SubAnimation.None,
+      openKeys: openKeys!,
     };
   }
 
@@ -56,14 +58,14 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     if (!isOpenNow && isOpenNext) {
       return {
         collapsedSubVisible: true,
-        collapsedSubAnimation: 'down',
+        collapsedSubAnimation: SubAnimation.DOWN,
         openKeys,
       };
     }
     if (isOpenNow && !isOpenNext) {
       return {
         collapsedSubVisible: false,
-        collapsedSubAnimation: 'up',
+        collapsedSubAnimation: SubAnimation.UP,
         openKeys,
       };
     }
@@ -81,7 +83,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     events.on(document, 'click', this.onClickOutSide);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: SubMenuProps) {
     const { inlineCollapsed } = this.props;
     if (!inlineCollapsed) {
       this.setSubHeight(prevProps);
@@ -106,7 +108,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
       marginBottom = parseFloat(dom.getStyleComputedProperty(childs[0], 'marginBottom'));
     }
 
-    const height = childs.reduce((res, next) => {
+    const height = childs.reduce((res, next: HTMLLIElement) => {
       res += (next.offsetHeight + marginBottom);
       return res;
     }, marginBottom / 2);
@@ -114,7 +116,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     return height;
   }
 
-  setSubHeight(prevProps) {
+  setSubHeight(prevProps: { openKeys?: string[] }) {
     if (!this.sub) {
       return;
     }
@@ -124,7 +126,8 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const keyIndex = openKeys!.indexOf(subMenuKey!);
     const keysLength = openKeys!.length;
     if (keyIndex > -1) {
-      if ((keysLength > 1 && keyIndex < keysLength - 1) || keysLength < lastOpenKeys.length) {
+      if ((keysLength > 1 && keyIndex < keysLength - 1)
+        || keysLength < lastOpenKeys!.length) {
         // 如果不是最后一级子菜单，或者嵌套的子菜单被收起，当前子菜单高度自适应
         this.sub.style.height = 'auto';
       } else {
@@ -137,7 +140,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
       this.sub.style.height = `${height}px`;
 
       setTimeout(() => {
-        this.sub.style.height = 0;
+        this.sub.style.height = '0';
       }, 0);
     }
   }
@@ -153,7 +156,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     });
   };
 
-  toggleSubMenuOpen = (e) => {
+  toggleSubMenuOpen = (e: React.MouseEvent) => {
     e.stopPropagation();
     const { subMenuKey } = this.props;
 
@@ -162,9 +165,8 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   onSubAnimationEnd = () => {
     const { subMenuKey, openKeys } = this.props;
-    const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
     this.setState({
-      collapsedSubVisible: isOpen,
+      collapsedSubVisible: openKeys!.indexOf(subMenuKey!) > -1,
     });
   };
 
@@ -173,10 +175,10 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const { subMenuKey, openKeys, inlineCollapsed, mode } = this.props;
 
     if (!inlineCollapsed && mode !== Mode.vertical) return;
-    if (this.subTitle.contains(target)) {
+    if (this.subTitle.contains(target as Node)) {
       return;
     }
-    if (!this.sub.contains(target) && openKeys!.indexOf(subMenuKey!) > -1) {
+    if (!this.sub.contains(target as Node) && openKeys!.indexOf(subMenuKey!) > -1) {
       this.props.toggleOpenKeys!(subMenuKey!);
     }
   };
@@ -194,10 +196,10 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
       const { key } = c;
       if (Object.keys(c.type).indexOf('isItemGroup') > -1) {
         childProps.subMenuKey = subMenuKey;
-        childProps.index = index;
+        childProps.groupIndex = index;
       } else {
-        childProps.itemKey = key || `${subMenuKey}-${level}-${index}`;
-        childProps.subMenuKey = key || `${subMenuKey}-${level}-${index}`;
+        const childKey = key || `${subMenuKey}-${level}-${index}`;
+        childProps.itemKey = childProps.subMenuKey = childKey;
       }
 
       return cloneElement(c, childProps);
@@ -220,13 +222,12 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     if (mode === Mode.vertical || (inlineCollapsed && level !== 1)) {
       subMenuStyle.paddingLeft = inlineIndent;
     }
-    const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
     const cls = classnames(`${prefixCls}__submenu`, {
-      [`${prefixCls}__submenu--open`]: isOpen,
+      [`${prefixCls}__submenu--open`]: openKeys!.indexOf(subMenuKey!) > -1,
       [`${prefixCls}__submenu--active`]: this.checkIfActive(childs),
       [`${prefixCls}__submenu--level-${level}`]: level,
     });
-    let subStyle: React.CSSProperties = {
+    let subStyle: CSSProperties = {
       display: 'block',
     };
     let subCls = `${prefixCls}__sub`;
@@ -242,7 +243,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     return (
       <li className={cls} style={style}>
         <div
-          ref={(subTitle) => { this.subTitle = subTitle; }}
+          ref={(subTitle) => { this.subTitle = subTitle!; }}
           onClick={this.toggleSubMenuOpen}
           style={subMenuStyle}
           className={`${prefixCls}__title`}
@@ -251,7 +252,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
           <i className={`${prefixCls}__arrow`} />
         </div>
         <ul
-          ref={(sub) => { this.sub = sub; }}
+          ref={(sub) => { this.sub = sub!; }}
           className={subCls}
           style={subStyle}
           onAnimationEnd={this.onSubAnimationEnd}
@@ -276,8 +277,8 @@ export default function SubMenuConsumer(props: SubMenuProps) {
             mode={mode}
             inlineIndent={inlineIndent}
             inlineCollapsed={inlineCollapsed}
-            selectedKeys={selectedKeys}
             openKeys={openKeys}
+            selectedKeys={selectedKeys}
             toggleOpenKeys={toggleOpenKeys}
           />
         )

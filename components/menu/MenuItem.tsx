@@ -1,19 +1,17 @@
 import React, { Component, CSSProperties } from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Tooltip from '../tooltip';
 import { ItemProps, Mode } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
 
-class MenuItem extends Component<ItemProps, any> {
-  static isMenuItem = true;
-
+export class MenuItem extends Component<ItemProps, any> {
   static defaultProps = {
     prefixCls: 'zw-menu',
     level: 1,
     style: {},
-    mode: 'inline',
+    mode: Mode.inline,
     inlineIndent: 24,
     onClick: noop,
     onDoubleClick: noop,
@@ -35,22 +33,21 @@ class MenuItem extends Component<ItemProps, any> {
     if (disabled) return;
     this.props.onClick!(e, itemKey!);
     this.props.toggleSelectedKeys!(itemKey!);
-    if (inlineCollapsed || mode === 'vertical') {
+    if (inlineCollapsed || mode === Mode.vertical) {
       this.props.toggleSubMenuOpen!('');
     }
   };
 
   render() {
     const {
-      children, prefixCls, level, inlineIndent, title,
-      className, style, onDoubleClick, selectedKeys, itemKey, mode, inlineCollapsed,
+      children, prefixCls, level, inlineIndent, title, mode,
+      className, style, onDoubleClick, selectedKeys, itemKey, inlineCollapsed,
     } = this.props;
 
     const cls = classnames({
       [`${prefixCls}__item`]: true,
       [`${prefixCls}__item--level-${level}`]: level,
       [`${prefixCls}__item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
-      // [`${prefixCls}__item--selected`]: !!checked,
       [`${prefixCls}__item--disabled`]: 'disabled' in this.props,
       [className!]: !!className,
     });

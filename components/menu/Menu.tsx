@@ -49,8 +49,6 @@ class Menu extends Component<MenuProps, MenuState> {
 
   static ItemGroup = ItemGroup;
 
-  menuKeys: any;
-
   constructor(props: MenuProps) {
     super(props);
     const { defaultOpenKeys, defaultSelectedKeys, inlineCollapsed } = props;
@@ -98,7 +96,7 @@ class Menu extends Component<MenuProps, MenuState> {
     }
   };
 
-  toggleOpenKeys = (subMenuKey) => {
+  toggleOpenKeys = (subMenuKey: string) => {
     const { openKeys } = this.state;
     const { onOpenChange, inlineCollapsed, mode } = this.props;
     const newOpenKeys = [...openKeys];
@@ -135,10 +133,10 @@ class Menu extends Component<MenuProps, MenuState> {
       const { key } = c;
 
       if (Object.keys(c.type).indexOf('isItemGroup') > -1) {
-        childProps.index = index;
+        childProps.groupIndex = index;
       } else {
-        childProps.subMenuKey = key || `0-${index}`;
-        childProps.itemKey = key || `0-${index}`;
+        const childKey = key || `0-${index}`;
+        childProps.itemKey = childProps.subMenuKey = childKey;
       }
 
       return cloneElement(c, childProps);
@@ -147,17 +145,15 @@ class Menu extends Component<MenuProps, MenuState> {
 
   render() {
     const {
-      size, theme, mode, className, style, prefixCls, inlineIndent, inlineCollapsed,
+      theme, mode, className, style, prefixCls, inlineIndent, inlineCollapsed,
     } = this.props;
 
     const { openKeys, selectedKeys } = this.state;
     const cls = classnames({
       [prefixCls!]: true,
-      [`${prefixCls}--root`]: true,
       [`${prefixCls}--${theme}`]: true,
       [`${prefixCls}--${mode}`]: true,
       [`${prefixCls}--collapsed`]: !!inlineCollapsed,
-      [`${prefixCls}--${size}`]: !!size,
       [className!]: !!className,
     });
 

@@ -133,10 +133,6 @@
     padding: 0;
   }
 
-  @include m(root) {
-    box-shadow: none;
-  }
-
   // collapsed
   @include m(collapsed) {
     width: var(--menu-collapsed-width);

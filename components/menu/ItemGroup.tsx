@@ -9,38 +9,37 @@ class ItemGroup extends Component<ItemGroupProps> {
 
   static defaultProps = {
     prefixCls: 'zw-menu',
-    mode: 'inline',
+    mode: Mode.inline,
     level: 1,
-    index: 0,
+    groupIndex: 0,
     inlineIndent: 24,
   };
 
   static propTypes = {
     prefixCls: PropTypes.string,
     level: PropTypes.number,
-    mode: PropTypes.oneOf(['inline', 'horizontal', 'vertical']),
+    mode: PropTypes.oneOf(['inline', 'vertical']),
     inlineIndent: PropTypes.number,
-    index: PropTypes.number,
+    groupIndex: PropTypes.number,
   };
 
   renderChildren() {
-    const {
-      children, level, prefixCls, subMenuKey, index,
-    } = this.props;
+    const { children, level, prefixCls, subMenuKey, groupIndex } = this.props;
     const childProps: ChildProps = {
       level,
       prefixCls,
     };
-    return Children.map(children, (child, idx) => {
+    return Children.map(children, (child, index) => {
       const c = child as ReactElement;
       const { key } = c;
 
+      const suffix = `group-${groupIndex}-${index}`;
       if (level === 1) {
-        childProps.subMenuKey = key || `0-group${index}-${idx}`;
-        childProps.itemKey = key || `0-group${index}-${idx}`;
+        const childKey = key || `0-${suffix}`;
+        childProps.itemKey = childProps.subMenuKey = childKey;
       } else {
-        childProps.itemKey = key || `${subMenuKey}-${level}-group${index}-${idx}`;
-        childProps.subMenuKey = key || `${subMenuKey}-${level}-group${index}-${idx}`;
+        const childKey = key || `${subMenuKey}-${level}-${suffix}`;
+        childProps.itemKey = childProps.subMenuKey = childKey;
       }
 
       return cloneElement(c, childProps);
@@ -48,7 +47,9 @@ class ItemGroup extends Component<ItemGroupProps> {
   }
 
   render() {
-    const { prefixCls, title, inlineIndent, level, mode, inlineCollapsed, className, style } = this.props;
+    const {
+      prefixCls, title, inlineIndent, level, mode, inlineCollapsed, className, style,
+    } = this.props;
 
     const groupTitleStyle: CSSProperties = {};
     if (mode === Mode.inline && !inlineCollapsed) {

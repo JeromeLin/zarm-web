@@ -4,7 +4,6 @@ export type size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export enum Mode {
   inline = 'inline',
-  horizontal = 'horizontal',
   vertical = 'vertical'
 }
 
@@ -13,7 +12,7 @@ export interface ChildProps {
   level?: number;
   itemKey?: any;
   subMenuKey?: any;
-  index?: number;
+  groupIndex?: number;
 }
 
 export interface ItemProps {
@@ -47,7 +46,7 @@ export interface ItemGroupProps {
   level?: number;
   inlineIndent?: number;
   mode?: Mode;
-  index?: number;
+  groupIndex?: number;
   title: string;
   subMenuKey?: string;
   inlineCollapsed?: boolean;
@@ -71,7 +70,6 @@ export interface SubMenuProps {
 
 export default interface MenuProps {
   prefixCls?: string;
-  size?: size;
   className?: string;
   style?: CSSProperties;
   mode?: Mode;
