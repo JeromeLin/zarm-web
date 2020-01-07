@@ -103,9 +103,11 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     border-radius: 2px;
     transition: all 0.3s $ease-in-out;
   }
+
   &:before {
     transform: rotate(-40deg) translateX(2px);
   }
+
   &:after {
     transform: rotate(40deg) translateX(-2px);
   }
@@ -115,6 +117,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   &:before {
     transform: rotate(-50deg) translateY(2px);
   }
+
   &:after {
     transform: rotate(50deg) translateY(-2px);
   }
@@ -146,6 +149,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   &.slide-up {
     animation: slide-up 0.3s both;
   }
+
   &.slide-down {
     animation: slide-down 0.3s both;
   }
