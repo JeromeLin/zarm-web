@@ -22,6 +22,7 @@ export interface StateType {
   left?: number;
   totallayers?: number;
   btnstyle?: CSSProperties;
+  push?: boolean;
 }
 
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
@@ -45,15 +46,22 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     totallayers: 0,
     btnstyle: {},
     width: this.props.width,
+    push: true,
   };
 
   componentDidMount() {
-    const { width } = this.props;
-    const { totallayers } = this.state;
+    const { width, onClose } = this.props;
+    const { totallayers, push } = this.state;
 
     if (!width) {
       events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
     }
+
+    events.on(window, 'keyup', (e: { keyCode: number }) => {
+      if (e.keyCode === 27 && push) {
+        onClose && onClose();
+      }
+    });
 
     this.calcDrawerWidth();
     this.fixDrawer(totallayers, width);
