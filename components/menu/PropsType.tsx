@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
+export type Size = 'xl' | 'lg' | 'sm' | 'xs';
 
 export enum Mode {
   inline = 'inline',
@@ -72,6 +72,7 @@ export default interface MenuProps {
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;
+  size?: Size;
   mode?: Mode;
   theme?: 'light' | 'dark';
   defaultOpenKeys?: string[];
