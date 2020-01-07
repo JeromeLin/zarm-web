@@ -23,6 +23,7 @@ export interface StateType {
   totallayers?: number;
   btnstyle?: CSSProperties;
   push?: boolean;
+  visible?: boolean;
 }
 
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
@@ -51,15 +52,19 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
   componentDidMount() {
     const { width, onClose } = this.props;
-    const { totallayers, push } = this.state;
+    const { totallayers } = this.state;
 
     if (!width) {
       events.on(window, 'resize', throttle(this.calcDrawerWidth, 300));
     }
 
     events.on(window, 'keyup', (e: { keyCode: number }) => {
-      if (e.keyCode === 27 && push) {
-        onClose && onClose();
+      const { push } = this.state;
+
+      if (e.keyCode === 27 && !push) {
+        setTimeout(() => {
+          onClose && onClose();
+        });
       }
     });
 
@@ -76,14 +81,36 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
 
     if (preProps.visible !== visible) {
       if (visible) {
-        this.calcLayer(this, this.parentWidth);
+        this.pull();
+        return this.calcLayer(this, this.parentWidth);
       }
 
       if (!visible && this.parentDrawer) {
+        this.push();
+        this.parentDrawer.pull && this.parentDrawer.pull();
         this.calcLayer(this.parentDrawer, this.parentDrawer.parentWidth);
       }
     }
   }
+
+  push = () => {
+    this.setState({
+      push: true,
+    });
+    if (this && this.parentDrawer && this.parentDrawer.push) {
+      this.parentDrawer.push();
+    }
+  };
+
+  pull = () => {
+    this.setState({
+      push: false,
+    });
+    if (this && this.parentDrawer && this.parentDrawer.push) {
+      this.parentDrawer.push();
+    }
+  };
+
 
   private calcDrawerWidth = () => {
     let { size = 'md' } = this.props;

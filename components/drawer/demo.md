@@ -288,5 +288,3 @@ ReactDOM.render(<Demo />, mountNode);
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 
-
-
