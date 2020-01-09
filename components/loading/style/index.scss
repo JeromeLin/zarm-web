@@ -5,6 +5,13 @@
 @include b(loading) {
   position: relative;
 
+  @include m(inline) {
+    display: inline-block;	
+    text-align: center;	
+    vertical-align: middle;
+    line-height: 1;
+  }
+
   @include m(fullscreen) {
     position: fixed;
     top: 0;
@@ -12,6 +19,7 @@
     bottom: 0;
     left: 0;
     z-index: 9999;
+    background: rgba(255, 255, 255, var(--opacity-mask));
 
     @include e(mask) {
       background: rgba(255, 255, 255, var(--opacity-mask));
@@ -20,26 +28,34 @@
 
   @include m(active) {
     @include e(container) {
-      opacity: .4;
+      opacity: .5;
       user-select: none;
       pointer-events: none;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        opacity: 0.4;
+      }
     }
   }
 
-  @include e (container) {
+  @include e(container) {
     position: relative;
     transition: opacity .3s;
   }
 
-  @include e(mask) {
-    display: block;
+  @include e(spin__wrapper) {
     position: absolute;
-    margin: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    background: transparent;
+    width: 100%;
+    height: 100%;
   }
 
   @include e(spin) {
@@ -54,21 +70,19 @@
   }
 
   @include e(text) {
-    font-size: 14px;
-    margin: 3px 0;
-    color: var(--color-text-disabled);
+    color: var(--theme-primary);
   }
 
   @include loading-size(
     var(--loading-height-md),
-    var(--loading-margin-h-md),
+    var(--loading-spacing-md),
     var(--loading-font-size-md),
   );
 
   @include m(lg) {
     @include loading-size(
       var(--loading-height-lg),
-      var(--loading-margin-h-lg),
+      var(--loading-spacing-lg),
       var(--loading-font-size-lg),
     );
   }
@@ -76,16 +90,8 @@
   @include m(sm) {
     @include loading-size(
       var(--loading-height-sm),
-      var(--loading-margin-h-sm),
+      var(--loading-spacing-sm),
       var(--loading-font-size-sm),
-    );
-  }
-
-  @include m(xs) {
-    @include loading-size(
-      var(--loading-height-xs),
-      var(--loading-margin-h-xs),
-      var(--loading-font-size-xs),
     );
   }
 }

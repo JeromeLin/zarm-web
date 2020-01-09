@@ -172,20 +172,15 @@
   --checkbox-border-color: var(--border-color);
 
   // Loading
-  --loading-height-xs: 12px;
+  --loading-height-sm: 12px;
   --loading-height-md: 24px;
   --loading-height-lg: 36px;
-  --loading-margin-h-xs: var(--padding-h-xs);
-  --loading-margin-h-md: var(--padding-h-md);
-  --loading-margin-h-lg: var(--padding-h-lg);
-  --loading-font-size-xs: var(--font-size-xs);
+  --loading-spacing-sm: var(--padding-v-sm);
+  --loading-spacing-md: var(--padding-v-md);
+  --loading-spacing-lg: var(--padding-v-lg);
+  --loading-font-size-sm: var(--font-size-sm);
   --loading-font-size-md: var(--font-size-md);
   --loading-font-size-lg: var(--font-size-lg);
-  --loading-default-svg-color: var(--theme-primary);
-  --loading-default-text-color: var(--color-text-disabled);
-  --loading-default-mask-color: rgba(255, 255, 255, 0.4);
-  --loading-default-mask-zIndex: 1000;
-  --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
 
   // Icon
   --icon-font-size-sm: 16px;

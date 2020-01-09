@@ -3,15 +3,13 @@
     padding: 42px 24px;
   }
 
-  .zw-loading {
-    margin-right: 16px;
+  .zw-loading + .zw-loading {
+    margin-left: 16px;
   }
 
   .loading-container {
-    text-align: center;
     background: rgba(0, 0, 0, 0.05);
     border-radius: 4px;
-    // margin-bottom: 20px;
     padding: 30px 50px;
     color: #000;
   }
