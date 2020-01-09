@@ -74,7 +74,7 @@ ReactDOM.render(
 
 
 ## 设置文本和图标
-开关处于不可用状态的情况。
+可以设置开关显示的文本和图标。
 
 ```jsx
 import { Switch, Icon } from 'zarm-web';
