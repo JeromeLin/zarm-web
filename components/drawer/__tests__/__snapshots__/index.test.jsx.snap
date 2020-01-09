@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer renders correctly 1`] = `
+<Drawer
+  afterClose={[MockFunction]}
+  closable={true}
+  direction="bottom"
+  mask={true}
+  maskClosable={false}
+  onMaskClick={[MockFunction]}
+  prefixCls="zw-drawer"
+  size="md"
+  visible={false}
+>
+  <Popup
+    afterClose={[MockFunction]}
+    animationDuration={300}
+    className="zw-drawer"
+    direction="right"
+    key="0"
+    mask={true}
+    onMaskClick={[Function]}
+    visible={false}
+  />
+</Drawer>
+`;

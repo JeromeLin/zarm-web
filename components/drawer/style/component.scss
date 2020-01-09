@@ -1,0 +1,71 @@
+@import '../../style/core/index';
+
+@include b(drawer) {
+  z-index: 1100;
+  position: relative;
+
+  @include e(cell) {
+    padding: 24px 24px 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+    @include e(cell) {
+      transition: all 300ms ease-in-out;
+
+      @include m(title) {
+        width: 100%;
+        position: relative;
+        padding: 16px 24px;
+        background: #fff;
+        border-bottom: 1px solid #e8e8e8;
+        border-radius: 4px 4px 0 0;
+        font-size: 22px;
+        color: rgba(52, 52, 52, 1);
+        line-height: 30px;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      @include m(body) {
+        font-size: 14px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
+    }
+
+    @include e(closebtn) {
+      width: 33px;
+      height: 52px;
+      position: absolute;
+      background-image: url('../../components//drawer/style/tab-first@2x.png');
+      background-size: 33px 52px;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      color: #bcbcbc;
+      transition: all 300ms ease-in-out;
+      left: -33px;
+      top: 0;
+      padding: 0;
+
+      i {
+        position: absolute;
+        top: 18px;
+        left: 14px;
+      }
+
+      &:hover {
+        color: #343434;
+      }
+    }
+  }
+
+  @include e(mask__hidden) {
+    @include b(mask) {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+}
