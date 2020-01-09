@@ -225,19 +225,16 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           <div className={cls}>
             {closable && (
               <button
-                className={`${prefixCls}__closebtn`}
+                className={`${prefixCls}__close`}
                 style={{ ...btnstyle }}
                 onClick={() => onClose && onClose()}
               >
-                <Icon
-                  size="sm"
-                  type="wrong"
-                />
+                <Icon size="sm" type="wrong" />
               </button>
             )}
             <div className={`${prefixCls}__container`} style={{ width }}>
-              {title && (<div className={`${prefixCls}__cell--title`}>{title}</div>)}
-              <div className={`${prefixCls}__cell--body`}>{children}</div>
+              {title && (<div className={`${prefixCls}__title`}>{title}</div>)}
+              <div className={`${prefixCls}__body`}>{children}</div>
             </div>
           </div>
         </Popup>
