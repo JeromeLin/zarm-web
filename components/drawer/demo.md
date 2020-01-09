@@ -8,15 +8,11 @@
 import { Drawer, Button } from 'zarm-web';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerVisible: false
-    }
-    this.drawerHide = this.drawerHide.bind(this);
-  }
+  state = {
+    drawerVisible: false
+  };
 
-  drawerHide() {
+  drawerHide = () => {
     this.setState({
       drawerVisible: false,
     });
@@ -24,10 +20,8 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <div className="multi-rows">
-          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
-        </div>
+      <>
+        <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
         <Drawer
           visible={this.state.drawerVisible}
           onClose={this.drawerHide}
@@ -37,11 +31,9 @@ class Demo extends React.Component {
           afterClose={() => console.log('afterClose')}
           onMaskClick={() => console.log('onMaskClick')}
         >
-          <div>
-            DRAWER
-          </div>
+          DRAWER
         </Drawer>
-      </React.Fragment>
+      </>
     )
   }
 }
@@ -199,31 +191,25 @@ ReactDOM.render(<Demo />, mountNode);
 import { Drawer, Button } from 'zarm-web';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerVisible: false,
-      drawerVisible1: false,
-      drawerVisible2: false
-    }
-    this.drawerHide = this.drawerHide.bind(this);
-    this.drawerHide1 = this.drawerHide1.bind(this);
-    this.drawerHide2 = this.drawerHide2.bind(this);
-  }
+  state = {
+    drawerVisible: false,
+    drawerVisible1: false,
+    drawerVisible2: false
+  };
 
-  drawerHide() {
+  drawerHide = () => {
     this.setState({
       drawerVisible: false,
     });
   }
 
-  drawerHide1() {
+  drawerHide1 = () => {
     this.setState({
       drawerVisible1: false,
     });
   }
 
-  drawerHide2() {
+  drawerHide2 = () => {
     this.setState({
       drawerVisible2: false,
     });
@@ -231,44 +217,42 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <div className="multi-rows">
-          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
-        </div>
+      <>
+        <Button theme="primary" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
         <Drawer
           visible={this.state.drawerVisible}
           onClose={this.drawerHide}
           size="lg"
           maskClosable={this.drawerHide}
           afterOpen={() => console.log('afterOpen1')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
+          afterClose={() => console.log('afterClose1')}
+          onMaskClick={() => console.log('onMaskClick1')}
         >
           <Drawer
             visible={this.state.drawerVisible1}
             onClose={this.drawerHide1}
             size="sm"
             maskClosable={this.drawerHide1}
-            afterOpen={() => console.log('afterOpen1')}
-            afterClose={() => console.log('afterClose')}
-            onMaskClick={() => console.log('onMaskClick')}
+            afterOpen={() => console.log('afterOpen2')}
+            afterClose={() => console.log('afterClose2')}
+            onMaskClick={() => console.log('onMaskClick2')}
           >
             <Drawer
               visible={this.state.drawerVisible2}
               onClose={this.drawerHide2}
               size="md"
               maskClosable={this.drawerHide2}
-              afterOpen={() => console.log('afterOpen1')}
-              afterClose={() => console.log('afterClose')}
-              onMaskClick={() => console.log('onMaskClick')}
+              afterOpen={() => console.log('afterOpen3')}
+              afterClose={() => console.log('afterClose3')}
+              onMaskClick={() => console.log('onMaskClick3')}
             >
-
+              1111
             </Drawer>
-            <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible2: true })}>Drawer</Button>
+            <Button theme="primary" onClick={() => this.setState({ drawerVisible2: true })}>Drawer</Button>
           </Drawer>
-          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
+          <Button theme="primary" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
         </Drawer>
-      </React.Fragment>
+      </>
     )
   }
 }

@@ -21,9 +21,9 @@ export interface StateType {
   top?: number;
   left?: number;
   totallayers?: number;
-  btnstyle?: CSSProperties;
   push?: boolean;
   visible?: boolean;
+  btnstyle?: CSSProperties;
 }
 
 class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
@@ -192,19 +192,16 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       onMaskClick,
       children,
       visible,
+      className,
     } = this.props;
     const {
-      layer,
       totallayers,
       width,
       btnstyle,
     } = this.state;
 
-    const drawerBox = classnames(`${prefixCls}`, {
-      [`${prefixCls}__mask__hidden`]: layer > 1,
-    });
+    const cls = classnames(prefixCls, className);
 
-    const drawerCell = classnames(`${prefixCls}__cell`);
     this.parentDrawer = value;
 
     const handleClose = () => {
@@ -220,13 +217,12 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           mask={mask}
           direction="right"
           animationDuration={300}
-          className={drawerBox}
           visible={visible}
           onMaskClick={() => handleClose()}
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
-          <div className={`${prefixCls}__cell`}>
+          <div className={cls}>
             {closable && (
               <button
                 className={`${prefixCls}__closebtn`}
@@ -239,7 +235,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
                 />
               </button>
             )}
-            <div className={drawerCell} style={{ width }}>
+            <div className={`${prefixCls}__container`} style={{ width }}>
               {title && (<div className={`${prefixCls}__cell--title`}>{title}</div>)}
               <div className={`${prefixCls}__cell--body`}>{children}</div>
             </div>
