@@ -4,8 +4,7 @@
 
 ## 基础用法
 
-目前支持三种触发方式 `click hover contextMenus` , 默认值为 `click` 。
-通过 `visible` 属性控制显隐。
+最简单的下拉菜单。
 
 ```jsx
 import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
@@ -15,9 +14,6 @@ class Demo1 extends React.Component {
     super(props);
     this.state = {
       dropdown: false,
-      dropdown2:false,
-      dropdown3:false,
-      dropdown4:false
     }
   }
 
@@ -27,20 +23,21 @@ class Demo1 extends React.Component {
     });
   }
   render() {
-    const overlay = ("this is content");
+    const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
           shape="radius"
           visible={this.state.dropdown}
           content={overlay}
-          popperProps={{
-            style: {
-              width:150,
-              height:150,
-              padding:10,
-            }
-          }}
+          trigger="click"
           onVisibleChange={(visible)=>{
             this.setState({
               dropdown:visible
@@ -48,50 +45,6 @@ class Demo1 extends React.Component {
           }}
         >
            <Button>toggle</Button>
-        </Dropdown>
-    
-        <Dropdown
-          trigger="hover"
-          content={overlay}
-          visible={this.state.dropdown2}
-          popperProps={{
-            style: {
-              width:150,
-              height:150,
-              padding:10,
-            }
-          }}
-          onVisibleChange={(visible)=>{
-            this.setState({
-              dropdown2:visible
-            });
-          }}
-        >
-          <Button theme="primary">
-            hover me
-          </Button>
-        </Dropdown>
-    
-        <Dropdown
-          trigger="contextMenu"
-          content={overlay}
-          visible={this.state.dropdown3}
-          popperProps={{
-            style: {
-              width:150,
-              height:150,
-              padding:10,
-            }
-          }}
-          onVisibleChange={(visible)=>{
-            this.setState({
-              dropdown3:visible
-            });
-          }}
-        >
-          <Button theme="primary">
-            right click me
-          </Button>
         </Dropdown>
       </div>
     )
@@ -101,9 +54,135 @@ class Demo1 extends React.Component {
 ReactDOM.render(<Demo1 />, mountNode);
 ```
 
+
+## 弹窗的定位
+
+定位信息有 topLeft、top、topRight、rightTop、right、rightBottom、bottomLeft、bottom、bottomRight、leftTop、left、leftBottom 
+使用 direction 属性控制弹窗的位置。
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown0: false,
+      dropdown1:false,
+      dropdown2:false,
+      dropdown3:false,
+      dropdown4:false,
+      dropdown5:false,
+      dropdown6:false,
+    }
+  }
+  render() {
+     const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
+    const c = [
+      'topLeft','top','topRight','rightTop','right','rightBottom','bottomLeft','bottom','bottomRight','leftTop','left','leftBottom'
+    ];
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        {
+          c.map((item, index)=>{
+            return (
+              <Dropdown
+                key={item}
+                direction={item}
+                visible={this.state[`dropdown${index}`]}
+                onVisibleChange={(visible) => {
+                  this.setState({
+                    [`dropdown${index}`]: visible
+                  });
+                }}
+                content={overlay}
+              >
+                <Button theme="primary">
+                  {item}
+                </Button>
+              </Dropdown>
+            );
+          })
+        }
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo2 />, mountNode);
+```
+
+## 三种触发方式
+
+通过 trigger设置触发方式。
+有三种可选方式 click, hover, contextMenu
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown0: false,
+      dropdown1: false,
+      dropdown2: false,
+    }
+  }
+
+  render() {
+     const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
+    const triggerList = ['click','hover','contextMenu'];
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        {
+          triggerList.map((item,index)=>{
+            return (
+              <Dropdown
+                key={item}
+                trigger={item}
+                content={overlay}
+                shape="radius"
+                visible={this.state[`dropdown${index}`]}
+                onVisibleChange={(visible)=>{
+                  this.setState({
+                    [`dropdown${index}`]: visible,
+                  });                
+                }}
+              >
+                <Button theme="primary">
+                  {item}
+                </Button>
+              </Dropdown>
+            )
+          })
+        }
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo1 />, mountNode);
+```
+
+
 ## 显示圆角
 
-通过`shape=radius`设置圆角。
+通过 shape=radius 设置圆角。
 
 ```jsx
 import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
@@ -116,13 +195,20 @@ class Demo1 extends React.Component {
     }
   }
 
-  change = (visible) => {
+  onChange = (visible) => {
     this.setState({
       dropdown: visible
     });
   }
   render() {
-    const overlay = "this is content";
+     const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         <Dropdown
@@ -137,11 +223,7 @@ class Demo1 extends React.Component {
               padding:10,
             }
           }}
-          onVisibleChange={(visible)=>{
-            this.setState({
-              dropdown:visible
-            });
-          }}
+          onVisibleChange={this.onChange}
           >
             <Button theme="primary">
               click me
@@ -228,7 +310,14 @@ class Demo2 extends React.Component {
     }
   }
   render() {
-    const overlay = "this is content";
+    const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
     
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
@@ -260,142 +349,6 @@ class Demo2 extends React.Component {
 ReactDOM.render(<Demo2 />, mountNode);
 ```
 
-## 弹窗的定位
-
-定位信息有6种 `bottomLeft, bottomCenter, bottomRight, topLeft, topCenter, topRight` 。通过 `direction` 控制显示位置
-demo 通过 `direction` 属性控制弹窗的位置。
-
-```jsx
-import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
-
-class Demo2 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dropdown: false,
-      dropdown2:false,
-    }
-  }
-  render() {
-    const overlay = "this is content";
-    
-    return (
-      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
-        <Dropdown
-          visible={this.state.dropdown}
-          onVisibleChange={(visible) => {
-            this.setState({
-              dropdown: visible
-            });
-          }}
-          content={overlay}
-          >
-            <Button theme="primary">
-              点我从下面弹出
-            </Button>
-        </Dropdown>
-    
-        <Dropdown
-          direction="topLeft"
-          visible={this.state.dropdown2}
-          onVisibleChange={visible => {
-            this.setState({
-              dropdown2: visible
-            });
-          }}
-          popperProps={{
-            style: {
-              width:150,
-              height:150,
-              padding:10,
-            }
-          }}
-          content={overlay}
-          >
-            <Button theme="primary">
-              点我从上面弹出
-            </Button>
-        </Dropdown>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo2 />, mountNode);
-```
-
-## 通过triggerProps和popperProps控制触发元素的和弹框元素的属性。
-
-```jsx
-import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
-
-class Demo2 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dropdown: false,
-      dropdown2:false,
-    }
-  }
-  render() {
-    const overlay = "this is content";
-    
-    return (
-      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
-        <Dropdown
-          visible={this.state.dropdown}
-          onVisibleChange={(visible) => {
-            this.setState({
-              dropdown: visible
-            });
-          }}
-          triggerProps={{
-            style: { padding:10, display:'block',backgroundColor:'#ccc'},
-          }}
-          popperProps={{
-            style: {
-              width:150,
-              height:150,
-              padding:10,
-            }
-          }}
-          content={overlay}
-          >
-            <Button theme="primary">
-              triggerProps
-            </Button>
-        </Dropdown>
-    
-        <Dropdown
-          visible={this.state.dropdown2}
-          onVisibleChange={visible => {
-            this.setState({
-              dropdown2: visible
-            });
-          }}
-          popperProps={{
-            style: {
-              width:150,
-              height:150,
-              padding:10,
-              background:'#eee'
-            }
-          }}
-          content={overlay}
-          >
-            <Button theme="primary">
-              backgroundColor is gray
-            </Button>
-        </Dropdown>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo2 />, mountNode);
-```
-
-
 ## 位于Modal中的Dropdown
 
 Modal中的弹框会根据Modal本身来定位。
@@ -419,9 +372,9 @@ class Demo2 extends React.Component {
       }
     })
   }
-
+  
   render() {
-    const { modalVisible,dropdown } = this.state;
+    const { modalVisible, dropdown, dropdown2 } = this.state;
     const overlay = (
       <ul class="dropdown-ul-list">
         <li>小明</li>
@@ -437,8 +390,9 @@ class Demo2 extends React.Component {
           <Modal.Header 
             onClose={this.toggleModalVisible}
           />
-          <Modal.Body>
-            <Dropdown 
+          <Modal.Body className="dropdown-trigger-box">
+            <Dropdown
+              name="zujianA"
               content={overlay}
               visible={dropdown}
               onVisibleChange={(visible)=>{
@@ -447,8 +401,23 @@ class Demo2 extends React.Component {
                 });
               }}
             >
-                <Button theme="primary">
+                <Button className="modal-inner-btn" theme="primary">
                   显示dropdown
+                </Button>
+            </Dropdown>
+
+            <Dropdown
+              name="zujianB"
+              content={overlay}
+              visible={dropdown2}
+              onVisibleChange={(visible)=>{
+                this.setState({
+                  dropdown2:visible
+                });
+              }}
+            >
+                <Button className="modal-inner-btn" theme="primary">
+                  显示dropdown2
                 </Button>
             </Dropdown>
           </Modal.Body>

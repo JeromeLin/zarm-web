@@ -9,6 +9,15 @@
   margin: 5px 0;
   z-index: var(--dropdown-popup-index);
 
+  &.za-popper--rightTop,
+  &.za-popper--right,
+  &.za-popper--rightBottom,
+  &.za-popper--leftTop,
+  &.za-popper--left,
+  &.za-popper--leftBottom {
+    margin: 0 5px;
+  }
+
   @include m(rect) {
     border-radius: 0;
   }

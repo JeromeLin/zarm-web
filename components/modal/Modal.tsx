@@ -166,13 +166,11 @@ class Modal extends Component<ModalProps, StateIF> {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps: this['props'], prevState: this['state']) {
     const { isShow } = this.state;
     if (this.modalContent) {
       if (isShow && prevState.isShow === false) {
         this.modalContent.focus();
-      } else {
-        this.modalContent.blur();
       }
     }
   }
