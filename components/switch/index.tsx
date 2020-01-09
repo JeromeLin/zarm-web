@@ -46,7 +46,7 @@ class Switch extends Component<PropsType, SwitchState> {
   }
 
   render() {
-    const { size, disabled, className, prefixCls, loading, style } = this.props;
+    const { size, disabled, className, prefixCls, loading, onChange, checkedText, unCheckedText, ...rest } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -61,11 +61,12 @@ class Switch extends Component<PropsType, SwitchState> {
         type="button"
         role="switch"
         aria-checked={checked}
-        className={cls}
-        style={style}
         onClick={() => !disabled && !loading && this._onClick()}
+        className={cls}
+        {...rest}
       >
         {loading && <ActivityIndicator prefixCls="zw-activity-indicator" />}
+        {(checkedText || unCheckedText) && <span className={`${prefixCls}__text`}>{checked ? checkedText : unCheckedText}</span>}
       </button>
     );
   }
