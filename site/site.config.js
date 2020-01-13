@@ -127,6 +127,10 @@ module.exports = {
       //   name: 'Swipe',
       //   module: () => import('@/components/swipe/swipe.md'),
       // },
+      {
+        name: 'Tooltip',
+        module: () => import('@/components/tooltip/demo.md'),
+      },
     ],
     notice: [
       // {
@@ -189,10 +193,6 @@ module.exports = {
       },
     ],
     others: [
-      {
-        name: 'Tooltip',
-        module: () => import('@/components/tooltip/demo.md'),
-      },
       // {
       //   name: 'Mask',
       //   module: () => import('@/components/mask/mask.md'),
