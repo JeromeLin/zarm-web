@@ -25,6 +25,7 @@ export interface DrawerStates {
   push?: boolean;
   visible?: boolean;
   btnstyle?: CSSProperties;
+  size?: 'lg' | 'md' | 'sm';
 }
 
 class Drawer extends PureComponent<DrawerProps, DrawerStates> {
@@ -33,6 +34,19 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
   private parentWidth: Number | String;
 
   private DrawerContextCase!: HTMLDivElement | null;
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { size } = nextProps;
+
+    if (size !== prevState.size) {
+      return {
+        size,
+        width: '',
+      };
+    }
+
+    return prevState;
+  }
 
   static defaultProps = {
     closable: true,
@@ -49,6 +63,7 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
     btnstyle: {},
     width: this.props.width,
     push: true,
+    size: this.props.size || 'md',
   };
 
   componentDidMount() {
@@ -77,8 +92,14 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
     }
   }
 
-  componentDidUpdate(preProps: DrawerProps) {
+  componentDidUpdate(preProps: DrawerProps, prevState: DrawerStates) {
     const { visible } = this.props;
+    const { size } = this.state;
+
+    if (size !== prevState.size) {
+      this.calcDrawerWidth();
+      this.calcLayer(this, this.parentWidth);
+    }
 
     if (preProps.visible !== visible) {
       if (visible) {
@@ -114,12 +135,7 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
 
 
   private calcDrawerWidth = () => {
-    let { size = 'md' } = this.props;
-    const { width } = this.state;
-
-    if (['lg', 'md', 'sm'].indexOf(size) === -1) {
-      size = 'md';
-    }
+    const { width, size } = this.state;
 
     if (!width) {
       const windowWidth = window.innerWidth;
@@ -128,10 +144,10 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
         md: DRAWERSIZE.NORMAL * windowWidth,
         sm: DRAWERSIZE.SMALL * windowWidth,
       };
-      this.parentWidth = sizeWidth[size];
+      this.parentWidth = sizeWidth[size!];
 
       return this.setState({
-        width: sizeWidth[size],
+        width: sizeWidth[size!],
       });
     }
 

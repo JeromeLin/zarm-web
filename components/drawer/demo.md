@@ -195,6 +195,57 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 可变更的size
+基础抽屉，可通过修改size,变更当前抽屉宽度。
+
+```jsx
+import { Drawer, Button } from 'zarm-web';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      drawerVisible: false,
+      size: 'md',
+      _i: 0,
+    }
+    this.drawerHide = this.drawerHide.bind(this);
+  }
+
+  sizeList = ['lg', 'md', 'sm'];
+
+  drawerHide() {
+    this.setState({
+      drawerVisible: false,
+    });
+  }
+
+  render() {
+    const { size } = this.state;
+    return (
+      <React.Fragment>
+        <div className="multi-rows">
+          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+        </div>
+        <Drawer
+          visible={this.state.drawerVisible}
+          onClose={this.drawerHide}
+          maskClosable={this.drawerHide}
+          size={size}
+          afterOpen={() => console.log('afterOpen1')}
+          afterClose={() => console.log('afterClose')}
+          onMaskClick={() => console.log('onMaskClick')}
+        >
+          <Button onClick={() => this.setState({ size: this.sizeList[this.state._i % 3], _i: this.state._i + 1})}>click</Button>
+        </Drawer>
+      </React.Fragment>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## API
 
 | 属性 | 类型 | 默认值 | 说明 |
