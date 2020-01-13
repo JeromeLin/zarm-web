@@ -7,10 +7,6 @@
   display: flex;
   width: 100%;
 
-  @include placeholder {
-    color: var(--input-placeholder-color);
-  }
-
   @include e(inner) {
     width: 100%;
     height: var(--input-height-md);
@@ -25,6 +21,10 @@
     line-height: 1.5;
     outline: none;
     transition: all 0.3s, height 0s;
+
+    @include placeholder {
+      color: var(--input-placeholder-color);
+    }
 
     &:hover {
       border-color: var(--theme-primary);
