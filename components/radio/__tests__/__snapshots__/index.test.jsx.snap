@@ -3,6 +3,7 @@
 exports[`Radio renders Radio Group correctly 1`] = `
 <div
   class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
+  theme="primary"
 >
   <div
     class="zw-radio-group__inner"
@@ -98,6 +99,7 @@ exports[`Radio renders Radio Group correctly 1`] = `
 exports[`Radio renders checked Radio Group correctly 1`] = `
 <div
   class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
+  theme="primary"
 >
   <div
     class="zw-radio-group__inner"
@@ -218,6 +220,7 @@ exports[`Radio renders checked Radio correctly 1`] = `
 exports[`Radio renders defaultValue Radio Group correctly 1`] = `
 <div
   class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
+  theme="primary"
 >
   <div
     class="zw-radio-group__inner"
@@ -363,6 +366,7 @@ exports[`Radio renders normal Radio correctly 1`] = `
 exports[`Radio renders value Radio Group correctly 1`] = `
 <div
   class="zw-radio-group zw-radio-group--md zw-radio-group--radius zw-radio-group--compact zw-radio-group--ghost"
+  theme="primary"
 >
   <div
     class="zw-radio-group__inner"
