@@ -55,7 +55,7 @@
     "css-animation": "^1.2.5",
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
-    "zarm": "2.0.0-beta.2"
+    "zarm": "2.0.0-beta.3"
   },
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
