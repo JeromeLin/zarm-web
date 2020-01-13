@@ -195,56 +195,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 可变更的size
-基础抽屉，可通过修改size,变更当前抽屉宽度。
 
-```jsx
-import { Drawer, Button } from 'zarm-web';
-
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerVisible: false,
-      size: 'md',
-      _i: 0,
-    }
-    this.drawerHide = this.drawerHide.bind(this);
-  }
-
-  sizeList = ['lg', 'md', 'sm'];
-
-  drawerHide() {
-    this.setState({
-      drawerVisible: false,
-    });
-  }
-
-  render() {
-    const { size } = this.state;
-    return (
-      <React.Fragment>
-        <div className="multi-rows">
-          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
-        </div>
-        <Drawer
-          visible={this.state.drawerVisible}
-          onClose={this.drawerHide}
-          maskClosable={this.drawerHide}
-          size={size}
-          afterOpen={() => console.log('afterOpen1')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-          <Button onClick={() => this.setState({ size: this.sizeList[this.state._i % 3], _i: this.state._i + 1})}>click</Button>
-        </Drawer>
-      </React.Fragment>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
 
 ## API
 
@@ -252,8 +203,9 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
 | size | string | 'md' | 可选值`lg`, `md`, `sm`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
+| title | ReactNode | - | 抽屉标题 |
 | mask | boolean | true | 是否展示遮罩层 |
-| maskClosable | boolean | false | 是否点击遮罩层来关闭抽屉 |
+| maskClosable | boolean | false | 是否允许点击遮罩层来关闭抽屉 |
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onClose | () => void | - | 关闭抽屉时触发的回调函数 |
