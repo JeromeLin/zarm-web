@@ -4,6 +4,8 @@
 
 @include b(button) {
   display: inline-block;
+  vertical-align: middle;
+
   @include button-base();
   @include button-size(
     var(--button-height-md),
