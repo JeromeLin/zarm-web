@@ -1,21 +1,22 @@
-import React, { PureComponent, HTMLAttributes, CSSProperties } from 'react';
+import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
 import { Popup } from 'zarm';
 import throttle from '../utils/throttle';
 import DrawerContext from './createDrawerContext';
 import Icon from '../icon';
 import events from '../utils/events';
-import PropsType from './PropsType';
+import DrawerProps from './PropsType';
 
 const BUTTONLAYER = 40;
-const PADDING = 24;
 const DRAWERSIZE = {
   LARGE: 0.8,
   NORMAL: 0.62,
   SMALL: 0.38,
 };
 
-export interface StateType {
+const noop = () => {};
+
+export interface DrawerStates {
   width?: number | string;
   layer?: number;
   top?: number;
@@ -26,7 +27,7 @@ export interface StateType {
   btnstyle?: CSSProperties;
 }
 
-class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, StateType> {
+class Drawer extends PureComponent<DrawerProps, DrawerStates> {
   private parentDrawer: Drawer | null;
 
   private parentWidth: Number | String;
@@ -42,7 +43,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     prefixCls: 'zw-drawer',
   };
 
-  readonly state = {
+  readonly state: DrawerStates = {
     layer: 0,
     totallayers: 0,
     btnstyle: {},
@@ -69,14 +70,14 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     });
 
     this.calcDrawerWidth();
-    this.fixDrawer(totallayers, width);
+    this.fixDrawer(totallayers!, width);
 
     if (this.DrawerContextCase) {
       this.DrawerContextCase.focus();
     }
   }
 
-  componentDidUpdate(preProps: PropsType) {
+  componentDidUpdate(preProps: DrawerProps) {
     const { visible } = this.props;
 
     if (preProps.visible !== visible) {
@@ -123,9 +124,9 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     if (!width) {
       const windowWidth = window.innerWidth;
       const sizeWidth = {
-        lg: DRAWERSIZE.LARGE * windowWidth - PADDING,
-        md: DRAWERSIZE.NORMAL * windowWidth - PADDING,
-        sm: DRAWERSIZE.SMALL * windowWidth - PADDING,
+        lg: DRAWERSIZE.LARGE * windowWidth,
+        md: DRAWERSIZE.NORMAL * windowWidth,
+        sm: DRAWERSIZE.SMALL * windowWidth,
       };
       this.parentWidth = sizeWidth[size];
 
@@ -169,7 +170,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
   private fixDrawer(totallayers: number, width: string | number | undefined) {
     if (!totallayers) return false;
     const { layer } = this.state;
-    const distance = (totallayers - layer) * BUTTONLAYER;
+    const distance = (totallayers - layer!) * BUTTONLAYER;
 
     this.setState({
       btnstyle: {
@@ -189,10 +190,9 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
       title,
       afterOpen,
       afterClose,
-      onMaskClick,
-      children,
       visible,
       className,
+      children,
     } = this.props;
     const {
       totallayers,
@@ -201,14 +201,7 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
     } = this.state;
 
     const cls = classnames(prefixCls, className);
-
     this.parentDrawer = value;
-
-    const handleClose = () => {
-      if (!maskClosable) return false;
-      onMaskClick && onMaskClick();
-      onClose && onClose();
-    };
 
     return (
       <DrawerContext.Provider value={this}>
@@ -216,24 +209,23 @@ class Drawer extends PureComponent<PropsType & HTMLAttributes<HTMLDivElement>, S
           key={totallayers}
           mask={mask}
           direction="right"
-          animationDuration={300}
           visible={visible}
-          onMaskClick={() => handleClose()}
+          onMaskClick={maskClosable ? onClose : noop}
           afterOpen={afterOpen}
           afterClose={afterClose}
         >
-          <div className={cls}>
+          <div className={cls} style={{ width }}>
             {closable && (
               <button
                 className={`${prefixCls}__close`}
                 style={{ ...btnstyle }}
-                onClick={() => onClose && onClose()}
+                onClick={onClose}
               >
                 <Icon size="sm" type="wrong" />
               </button>
             )}
-            <div className={`${prefixCls}__container`} style={{ width }}>
-              {title && (<div className={`${prefixCls}__title`}>{title}</div>)}
+            <div className={`${prefixCls}__container`}>
+              {title && <div className={`${prefixCls}__title`}>{title}</div>}
               <div className={`${prefixCls}__body`}>{children}</div>
             </div>
           </div>

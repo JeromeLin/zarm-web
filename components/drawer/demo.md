@@ -1,5 +1,7 @@
-# Drawer抽屉
+# Drawer 抽屉
 屏幕边缘滑出的浮层面板。
+
+
 
 ## 基本用法
 抽屉从父窗体边缘滑入，覆盖住部分父窗体内容。用户在抽屉内操作时不必离开当前任务，操作完成后，可以平滑地回到到原任务。
@@ -9,29 +11,27 @@ import { Drawer, Button } from 'zarm-web';
 
 class Demo extends React.Component {
   state = {
-    drawerVisible: false
+    visible: false
   };
 
-  drawerHide = () => {
+  toggle = () => {
     this.setState({
-      drawerVisible: false,
+      visible: !this.state.visible,
     });
   }
 
   render() {
     return (
       <>
-        <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+        <Button theme="primary" onClick={this.toggle}>Open</Button>
         <Drawer
-          visible={this.state.drawerVisible}
-          onClose={this.drawerHide}
-          closable
-          maskClosable={false}
-          afterOpen={() => console.log('afterOpen1')}
+          title="Drawer Title"
+          visible={this.state.visible}
+          onClose={this.toggle}
+          afterOpen={() => console.log('afterOpen')}
           afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
         >
-          DRAWER
+          Content of Drawer
         </Drawer>
       </>
     )
@@ -41,141 +41,50 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 抽屉尺寸
-抽屉尺寸分为 ‘lg’, 'md', 'sm'。 分别占窗口宽度的80%， 62%， 38%。 默认大小为 ‘md’
+
+
+## 尺寸
+抽屉尺寸分为 'lg'， 'md'， 'sm'；分别占窗口宽度的80%， 62%， 38%。
 
 ```jsx
-import { Drawer, Button, Radio } from 'zarm-web';
+import { Drawer, Radio, Button } from 'zarm-web';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerVisible: false,
-      radioValue: 'md',
-      drawerVisiblelg: false,
-      drawerVisiblemd: false,
-      drawerVisiblesm: false,
-    }
-    this.drawerHide = this.drawerHide.bind(this);
-    this.drawerShow = this.drawerShow.bind(this);
-  }
+  state = {
+    visible: false,
+    size: 'md',
+  };
 
-  drawerHide(radioValue) {
-    const drawerVisible = `drawerVisible${radioValue}`;
+  handleSize = (size) => {
+    this.setState({ size });
+  };
 
+  toggle = () => {
     this.setState({
-      [drawerVisible]: false,
+      visible: !this.state.visible,
     });
-  }
-
-  drawerShow(radioValue) {
-    const drawerVisible = `drawerVisible${radioValue}`;
-
-    this.setState({
-      [drawerVisible]: true,
-    });
-  }
+  };
 
   render() {
+    const { visible, size } = this.state;
     return (
-      <React.Fragment>
-        <div className="multi-rows">
-          <Button theme="primary" size="md" onClick={() => this.drawerShow('lg')}>Drawer-lg</Button>
-          <Button style={{ margin: '0 10px' }} theme="primary" size="md" onClick={() => this.drawerShow('md')}>Drawer-md</Button>
-          <Button theme="primary" size="md" onClick={() => this.drawerShow('sm')}>Drawer-sm</Button>
-        </div>
-
+      <>
+        <Radio.Group type="button" value={size} onChange={this.handleSize} style={{ marginRight: 10 }}>
+          <Radio value="sm">sm</Radio>
+          <Radio value="md">md</Radio>
+          <Radio value="lg">lg</Radio>
+        </Radio.Group>
+        <Button theme="primary" onClick={this.toggle}>Open</Button>
         <Drawer
-          visible={this.state.drawerVisiblelg}
-          onClose={() => this.drawerHide('lg')}
-          size="lg"
-          closable
-          maskClosable={false}
-          afterOpen={() => console.log('afterOpen1')}
+          visible={visible}
+          size={size}
+          onClose={this.toggle}
+          afterOpen={() => console.log('afterOpen')}
           afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
         >
-          <div>
-            Drawer lg
-          </div>
+          Content of Drawer
         </Drawer>
-
-        <Drawer
-          visible={this.state.drawerVisiblemd}
-          onClose={() => this.drawerHide('md')}
-          size="md"
-          closable
-          maskClosable={false}
-          afterOpen={() => console.log('afterOpen1')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-          <div>
-            Drawer md
-          </div>
-        </Drawer>
-
-        <Drawer
-          visible={this.state.drawerVisiblesm}
-          onClose={() => this.drawerHide('sm')}
-          size="sm"
-          closable
-          maskClosable={false}
-          afterOpen={() => console.log('afterOpen1')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-          <div>
-            Drawer sm
-          </div>
-        </Drawer>
-      </React.Fragment>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## 点击遮罩区关闭
-基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭
-
-```jsx
-import { Drawer, Button } from 'zarm-web';
-
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerVisible: false
-    }
-    this.drawerHide = this.drawerHide.bind(this);
-  }
-
-  drawerHide() {
-    this.setState({
-      drawerVisible: false,
-    });
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <div className="multi-rows">
-          <Button theme="primary" size="md" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
-        </div>
-        <Drawer
-          visible={this.state.drawerVisible}
-          onClose={this.drawerHide}
-          maskClosable={this.drawerHide}
-          afterOpen={() => console.log('afterOpen1')}
-          afterClose={() => console.log('afterClose')}
-          onMaskClick={() => console.log('onMaskClick')}
-        >
-          点击遮罩区关闭
-        </Drawer>
-      </React.Fragment>
+      </>
     )
   }
 }
@@ -184,73 +93,99 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-## 嵌套
-多个Drawer嵌套
+
+## 遮罩层可关闭
+点击遮罩层区域可以关闭，可以隐藏关闭按钮。
 
 ```jsx
 import { Drawer, Button } from 'zarm-web';
 
 class Demo extends React.Component {
   state = {
-    drawerVisible: false,
-    drawerVisible1: false,
-    drawerVisible2: false
+    visible: false
   };
 
-  drawerHide = () => {
+  toggle = () => {
     this.setState({
-      drawerVisible: false,
-    });
-  }
-
-  drawerHide1 = () => {
-    this.setState({
-      drawerVisible1: false,
-    });
-  }
-
-  drawerHide2 = () => {
-    this.setState({
-      drawerVisible2: false,
+      visible: !this.state.visible,
     });
   }
 
   render() {
     return (
       <>
-        <Button theme="primary" onClick={() => this.setState({ drawerVisible: true })}>Drawer</Button>
+        <Button theme="primary" onClick={this.toggle}>Open</Button>
         <Drawer
-          visible={this.state.drawerVisible}
-          onClose={this.drawerHide}
+          maskClosable
+          closable={false}
+          visible={this.state.visible}
+          onClose={this.toggle}
+          afterOpen={() => console.log('afterOpen')}
+          afterClose={() => console.log('afterClose')}
+        >
+          Click mask layer to close the Drawer!
+        </Drawer>
+      </>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
+## 多层抽屉
+在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。
+
+```jsx
+import { Drawer, Button } from 'zarm-web';
+
+class Demo extends React.Component {
+  state = {
+    visible_first: false,
+    visible_second: false,
+    visible_three: false,
+  };
+
+  toggle = (key) => {
+    this.setState({
+      [`visible_${key}`]: !this.state[`visible_${key}`],
+    });
+  }
+
+  render() {
+    const { visible_first, visible_second, visible_three } = this.state;
+
+    return (
+      <>
+        <Button theme="primary" onClick={() => this.toggle('first')}>Open the first drawer</Button>
+        <Drawer
           size="lg"
-          maskClosable={this.drawerHide}
+          visible={visible_first}
+          onClose={() => this.toggle('first')}
           afterOpen={() => console.log('afterOpen1')}
           afterClose={() => console.log('afterClose1')}
-          onMaskClick={() => console.log('onMaskClick1')}
         >
+          <Button theme="primary" onClick={() => this.toggle('second')}>Open the second drawer</Button>
           <Drawer
-            visible={this.state.drawerVisible1}
-            onClose={this.drawerHide1}
             size="sm"
-            maskClosable={this.drawerHide1}
+            visible={visible_second}
+            onClose={() => this.toggle('second')}
             afterOpen={() => console.log('afterOpen2')}
             afterClose={() => console.log('afterClose2')}
-            onMaskClick={() => console.log('onMaskClick2')}
           >
+            <Button theme="primary" onClick={() => this.toggle('three')}>Open the three drawer</Button>
             <Drawer
-              visible={this.state.drawerVisible2}
-              onClose={this.drawerHide2}
               size="md"
-              maskClosable={this.drawerHide2}
+              visible={visible_three}
+              onClose={() => this.toggle('three')}
               afterOpen={() => console.log('afterOpen3')}
               afterClose={() => console.log('afterClose3')}
-              onMaskClick={() => console.log('onMaskClick3')}
             >
-              1111
+              Content of Drawer
             </Drawer>
-            <Button theme="primary" onClick={() => this.setState({ drawerVisible2: true })}>Drawer</Button>
           </Drawer>
-          <Button theme="primary" onClick={() => this.setState({ drawerVisible1: true })}>Drawer</Button>
         </Drawer>
       </>
     )
@@ -265,10 +200,10 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
-| size | string | normal | 可选值`lg`, `md`, `sm`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
+| size | string | 'md' | 可选值`lg`, `md`, `sm`, 分别为窗口的80%， 62%， 38%，当属性width存在时以width宽度为主 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskClosable | boolean | false | 是否点击遮罩层来关闭抽屉 |
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
-| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+| onClose | () => void | - | 关闭抽屉时触发的回调函数 |
 

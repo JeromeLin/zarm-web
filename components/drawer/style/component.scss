@@ -2,24 +2,21 @@
 
 @include b(drawer) {
   position: relative;
-  padding: 24px;
   width: 100%;
   height: 100%;
   background-color: #fff;
+  transition: all 200ms ease-in-out;
 
   @include e(container) {
-    transition: all 300ms ease-in-out;
+    padding: 60px 80px 100px;
   }
 
   @include e(title) {
     width: 100%;
-    position: relative;
-    padding: 16px 24px;
-    background: #fff;
-    border-bottom: 1px solid #e8e8e8;
-    border-radius: 4px 4px 0 0;
+    margin-bottom: 40px;
+    color: var(--color-text);
     font-size: 22px;
-    color: rgba(52, 52, 52, 1);
+    height: 30px;
     line-height: 30px;
     font-weight: 500;
     overflow: hidden;

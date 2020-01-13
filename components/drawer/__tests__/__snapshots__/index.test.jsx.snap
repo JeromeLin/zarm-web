@@ -14,8 +14,6 @@ exports[`Drawer renders correctly 1`] = `
 >
   <Popup
     afterClose={[MockFunction]}
-    animationDuration={300}
-    className="zw-drawer"
     destroy={true}
     direction="right"
     key="0"
