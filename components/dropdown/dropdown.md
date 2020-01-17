@@ -1,7 +1,7 @@
 ## Dropdown 下拉框
 下拉框组件。
 
-### 基础用法
+### 基本用法
 目前支持三种触发方式 `click hover contextMenus`,默认值为`click`。
 :::demo 通过`visible`属性控制显隐。
 ```js

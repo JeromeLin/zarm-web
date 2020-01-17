@@ -1,8 +1,8 @@
-# 加载 Loading 
+# Loading 加载
 
 
 
-## 基础加载
+## 基本用法
 
 ```jsx
 import { Loading } from 'zarm-web';
