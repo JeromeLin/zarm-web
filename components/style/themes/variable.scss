@@ -29,10 +29,13 @@
 
   // 堆叠顺序
   --zindex-tooltip: 1500;
+  --zindex-popup: 1500;
 
   // 透明度
-  --opacity-disabled: 0.5;
-  --opacity-tooltip: 0.8;
+  --opacity-disabled: .5;
+  --opacity-mask: .5;
+  --opacity-toast: .8;
+  --opacity-tooltip: .8;
 
   // 圆角
   --radius-sm: 2px;
@@ -69,7 +72,7 @@
 
   // Avatar
   --avatar-border-radius: 50%;
-  --avatar-fontSize: 14px;
+  --avatar-font-size: 14px;
   --avatar-width-md: 40px;
   --avatar-height-md: 40px;
   --avatar-width-xl: 72px;
@@ -170,20 +173,15 @@
   --checkbox-border-color: var(--border-color);
 
   // Loading
-  --loading-height-xs: 12px;
+  --loading-height-sm: 12px;
   --loading-height-md: 24px;
   --loading-height-lg: 36px;
-  --loading-margin-h-xs: var(--padding-h-xs);
-  --loading-margin-h-md: var(--padding-h-md);
-  --loading-margin-h-lg: var(--padding-h-lg);
-  --loading-font-size-xs: var(--font-size-xs);
+  --loading-spacing-sm: var(--padding-v-sm);
+  --loading-spacing-md: var(--padding-v-md);
+  --loading-spacing-lg: var(--padding-v-lg);
+  --loading-font-size-sm: var(--font-size-sm);
   --loading-font-size-md: var(--font-size-md);
   --loading-font-size-lg: var(--font-size-lg);
-  --loading-default-svg-color: var(--theme-primary);
-  --loading-default-text-color: var(--color-text-disabled);
-  --loading-default-mask-color: rgba(255, 255, 255, 0.4);
-  --loading-default-mask-zIndex: 1000;
-  --loading-inverse-mask-color: rgba(0, 0, 0, 0.4);
 
   // Icon
   --icon-font-size-sm: 16px;
@@ -238,6 +236,8 @@
   --switch-width-sm: 32px;
   --switch-height-md: 20px;
   --switch-height-sm: 16px;
+  --switch-font-size-md: var(--font-size-sm);
+  --switch-font-size-sm: var(--font-size-xs);
   --switch-background: #bcbcbc;
 
   // Tabs

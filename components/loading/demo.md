@@ -1,8 +1,8 @@
-# 加载 Loading 
+# Loading 加载
 
 
 
-## 基础加载
+## 基本用法
 
 ```jsx
 import { Loading } from 'zarm-web';
@@ -51,8 +51,9 @@ import { Loading, Icon, Alert } from 'zarm-web';
 ReactDOM.render( 
   <Loading visible>
     <div className="loading-container">
+      <p>这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，</p>
+      <p>这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，</p>
       <p>这里是一个容器</p>
-      <p>这里是内容</p>
     </div>
   </Loading>,
   mountNode,
@@ -81,10 +82,11 @@ class Demo extends React.Component {
     const { loadingState } = this.state;
     return (
       <div> 
-        <Loading visible={loadingState} delay={500}>
+        <Loading visible={loadingState} delay={500} text="加载中">
           <div className="loading-container exp">
+            <p>这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，</p>
+            <p>这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，</p>
             <p>这里是一个容器</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
         </Loading>
         <p>
@@ -107,7 +109,7 @@ import { Loading } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <Loading visible size="xs"/>
+    <Loading visible size="sm" />
     <Loading visible size="md" />
     <Loading visible size="lg" />
   </>,

@@ -73,6 +73,26 @@ ReactDOM.render(
 ```
 
 
+## 设置文本和图标
+可以设置开关显示的文本和图标。
+
+```jsx
+import { Switch, Icon } from 'zarm-web';
+
+ReactDOM.render(
+  <>
+    <div className="rows">
+      <Switch checkedText="开" unCheckedText="关" />
+    </div>
+    <div className="rows">
+      <Switch checkedText={<Icon type="right" />} unCheckedText={<Icon type="wrong" />} />
+    </div>
+  </>
+, mountNode);
+```
+
+
+
 ## 加载中
 点击开关后进行数据加载操作，在按钮上显示加载状态。
 
@@ -121,6 +141,8 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | checked | boolean | false | 值 |
 | defaultChecked | boolean | false | 初始值 |
+| checkedText | ReactNode | - | 选中时的文本 |
+| unCheckedText | ReactNode | - | 非选中时的文本 |
 | size | string | 'md' | 开关大小，可选值为`md`，`sm`|
 | disabled | boolean | false | 是否禁用 |
 | loading | boolean | false | 是否是加载中的开关 |

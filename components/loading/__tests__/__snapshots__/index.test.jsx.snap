@@ -3,10 +3,10 @@
 exports[`Loading renders Loading of different size correctly 1`] = `
 Array [
   <div
-    class="zw-loading zw-loading--lg zw-loading--active"
+    class="zw-loading zw-loading--lg zw-loading--active zw-loading--inline"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator--circular"
+      class="zw-activity-indicator zw-activity-indicator--circular"
     >
       <svg
         viewBox="31 31 62 62"
@@ -22,10 +22,10 @@ Array [
     </span>
   </div>,
   <div
-    class="zw-loading zw-loading--md zw-loading--active"
+    class="zw-loading zw-loading--md zw-loading--active zw-loading--inline"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator--circular"
+      class="zw-activity-indicator zw-activity-indicator--circular"
     >
       <svg
         viewBox="31 31 62 62"
@@ -41,10 +41,10 @@ Array [
     </span>
   </div>,
   <div
-    class="zw-loading zw-loading--sm zw-loading--active"
+    class="zw-loading zw-loading--sm zw-loading--active zw-loading--inline"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+      class="zw-activity-indicator zw-activity-indicator--circular"
     >
       <svg
         viewBox="31 31 62 62"
@@ -60,10 +60,10 @@ Array [
     </span>
   </div>,
   <div
-    class="zw-loading zw-loading--xs zw-loading--active"
+    class="zw-loading zw-loading--xs zw-loading--active zw-loading--inline"
   >
     <span
-      class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+      class="zw-activity-indicator zw-activity-indicator--circular"
     >
       <svg
         viewBox="31 31 62 62"
@@ -87,13 +87,13 @@ Array [
       lg尺寸
     </div>
     <div
-      class="zw-loading__mask"
+      class="zw-loading__spin__wrapper"
     >
       <div
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--lg zw-activity-indicator--circular"
+          class="zw-activity-indicator zw-activity-indicator--circular"
         >
           <svg
             viewBox="31 31 62 62"
@@ -119,13 +119,13 @@ Array [
       md尺寸
     </div>
     <div
-      class="zw-loading__mask"
+      class="zw-loading__spin__wrapper"
     >
       <div
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--md zw-activity-indicator--circular"
+          class="zw-activity-indicator zw-activity-indicator--circular"
         >
           <svg
             viewBox="31 31 62 62"
@@ -151,13 +151,13 @@ Array [
       sm尺寸
     </div>
     <div
-      class="zw-loading__mask"
+      class="zw-loading__spin__wrapper"
     >
       <div
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+          class="zw-activity-indicator zw-activity-indicator--circular"
         >
           <svg
             viewBox="31 31 62 62"
@@ -183,13 +183,13 @@ Array [
       xs尺寸
     </div>
     <div
-      class="zw-loading__mask"
+      class="zw-loading__spin__wrapper"
     >
       <div
         class="zw-loading__spin"
       >
         <span
-          class="zw-loading__svg zw-activity-indicator zw-activity-indicator--circular"
+          class="zw-activity-indicator zw-activity-indicator--circular"
         >
           <svg
             viewBox="31 31 62 62"
@@ -221,7 +221,7 @@ exports[`Loading renders Loading useing custom indicator 1`] = `
   visible={true}
 >
   <div
-    className="zw-loading zw-loading--md zw-loading--active"
+    className="zw-loading zw-loading--md zw-loading--active zw-loading--inline"
   >
     <div
       className="custom-indicator"

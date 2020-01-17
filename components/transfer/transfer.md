@@ -1,7 +1,7 @@
 ## Transfer 
 多选框。
 
-### 基础用法
+### 基本用法
 
 :::demo 指定`initialPanelTitle`、`selectedPanelTitle`、`initialValue`、`keyOfItem` 、 `displayNameOfItem` 和 `width` 属性。
 

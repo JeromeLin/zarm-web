@@ -3,7 +3,7 @@
 
 
 
-## 基础用法
+## 基本用法
 
 ```jsx
 import { Input } from 'zarm-web';

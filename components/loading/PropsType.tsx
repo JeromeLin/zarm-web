@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 
-export type LoadingSize = 'md' | 'lg' | 'sm' | 'xs';
+export type LoadingSize = 'md' | 'lg' | 'sm';
 
 export default interface PropsType {
   prefixCls?: string;

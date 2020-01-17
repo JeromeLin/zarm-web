@@ -79,6 +79,8 @@ ReactDOM.render(
 , mountNode)
 ```
 
+
+
 ## 自定义 Iconfont 图标
 
 我们提供了一个 createFromIconfont 方法，方便开发者调用在 [iconfont.cn](iconfont.cn) 上自行管理的图标。
@@ -105,6 +107,8 @@ ReactDOM.render(
   </div>
 , mountNode);
 ```
+
+
 
 ## 自定义 SVG 图标
 
@@ -134,7 +138,7 @@ ReactDOM.render(
 },
 ```
 
-```jsx
+```js
 import { Icon } from 'zarm-web';
 import { ReactComponent as YourSvg } from 'path/to/yourSvg.svg'; // path to your '*.svg' file.
 
