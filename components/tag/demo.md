@@ -91,7 +91,7 @@ ReactDOM.render(
 用数组生成一组标签，可以动态添加和删除
 
 ```jsx
-import { Tag, Icon } from 'zarm-web';
+import { Tag, Icon, Input } from 'zarm-web';
 
 class Demo extends React.Component {
   constructor(props) {
@@ -170,25 +170,18 @@ class Demo extends React.Component {
         }
         {
           inputVisible
-            ? <input // Input组件尚未提交，暂用原生input
-              ref={input => this.input = input }
-              size="sm"
-              value={inputValue}
-              onChange={this.changeValue}
-              onBlur={this.saveInputVal}
-              onKeyDown={this.handleKeydown}
-              style={{
-                width: '80px',
-                height: '26px',
-                display: 'inline-block',
-                verticalAlign: 'middle',
-                borderRadius: '4px',
-                lineHeight: '26px',
-                fontSize: '12px',
-                border: '1px solid #CECECE',
-                padding: '4px 8px',
-              }}
-            />
+            ? <Input
+                ref={input => this.input = input }
+                bordered
+                size="sm"
+                value={inputValue}
+                onChange={this.changeValue}
+                onBlur={this.saveInputVal}
+                onKeyDown={this.handleKeydown}
+                style={{
+                  width: 80,
+                }}
+              />
             : <Tag
                 style={{ borderStyle: 'dashed', background: '#fff' }}
                 onClick={this.showInput}
