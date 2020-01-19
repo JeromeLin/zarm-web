@@ -181,7 +181,7 @@ class Demo extends React.Component {
                 width: '80px',
                 height: '26px',
                 display: 'inline-block',
-                verticalAlign: 'text-bottom',
+                verticalAlign: 'middle',
                 borderRadius: '4px',
                 lineHeight: '26px',
                 fontSize: '12px',

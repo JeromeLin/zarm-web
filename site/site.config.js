@@ -286,7 +286,7 @@ module.exports = {
       //   style: false,
       // },
       {
-        key: 'lcale-provider',
+        key: 'locale-provider',
         name: '国际化',
         module: () => import('@/components/locale-provider/demo.md'),
         style: false,
