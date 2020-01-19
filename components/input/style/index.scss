@@ -274,6 +274,12 @@
     @include m(readOnly) {
       font-size: var(--input-font-size-lg);
     }
+
+    @include m(round) {
+      @include e(inner) {
+        padding-left: calc(var(--input-height-lg) / 2);
+      }
+    }
   }
 
   @include m(md) {
