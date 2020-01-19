@@ -5,7 +5,7 @@ import marked from 'marked';
 import Demo from './Demo';
 import './style.scss';
 
-const withOutConvertPage = ['ChangeLog', 'QuickStart'];
+const withOutConvertPage = ['change-log', 'quick-start'];
 
 export default class Markdown extends React.Component {
   constructor(props) {
