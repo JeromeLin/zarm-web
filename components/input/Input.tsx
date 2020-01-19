@@ -14,13 +14,27 @@ class Input extends Component<InputProps, any> {
 
   static Group: typeof Group;
 
+  private input;
+
+  focus() {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  blur() {
+    if (this.input) {
+      this.input.blur();
+    }
+  }
+
   render() {
     const { type } = this.props;
     let children: React.ReactNode;
     if (type === 'textarea') {
-      children = <Textarea {...this.props as TextAreaProps} />;
+      children = <Textarea ref={(el) => { this.input = el; }} {...this.props as TextAreaProps} />;
     } else {
-      children = <InputCore {...this.props as InputCoreProps} />;
+      children = <InputCore ref={(el) => { this.input = el; }} {...this.props as InputCoreProps} />;
     }
 
     return children;
