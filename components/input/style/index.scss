@@ -6,6 +6,7 @@
   position: relative;
   display: inline-flex;
   width: 100%;
+  vertical-align: middle;
 
   @include e(inner) {
     width: 100%;
