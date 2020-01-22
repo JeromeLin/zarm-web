@@ -1,5 +1,5 @@
 import React, { Component, ReactElement } from 'react';
-import ActivityIndicator from 'zarm/es/activity-indicator';
+import ActivityIndicator from 'zarm/lib/activity-indicator';
 import classnames from 'classnames';
 import debounce from '../utils/debounce';
 import LoadingProps from './PropsType';
