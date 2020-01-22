@@ -4,6 +4,7 @@
       opacity: 0;
       transform: translateX($x);
     }
+
     100% {
       opacity: 1;
     }
@@ -13,9 +14,11 @@
       opacity: 1;
       max-height: 200px;
     }
+
     50% {
       opacity: 0;
     }
+
     100% {
       opacity: 0;
       padding-top: 0;
@@ -33,6 +36,7 @@
   &.notification--#{$position}-in {
     animation-name: notification-#{$position}-in;
   }
+
   &.notification--#{$position}-out {
     animation-name: notification-#{$position}-out;
   }

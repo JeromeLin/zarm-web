@@ -22,7 +22,7 @@
   padding: 12px 16px;
   border-radius: var(--radius-md);
   background-color: var(--color-text-inverse);
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   line-height: var(--message-line-height);
   margin-bottom: 20px;
   transform: translate3d(-50%, 0, 0);
@@ -34,6 +34,7 @@
 
   @include e(content) {
     position: relative;
+
     &.has-icon {
       padding-left: 20px;
     }
