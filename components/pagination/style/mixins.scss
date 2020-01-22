@@ -66,42 +66,27 @@
   }
 }
 
-@mixin pagination-total($font-size) {
+@mixin pagination-total() {
   display: inline-block;
   vertical-align: middle;
   padding-right: 8px;
-  color: #999;
-  font-size: $font-size;
 }
 
-@mixin pagination-options($background, $font-size, $radius) {
+@mixin pagination-options($background, $radius, $height) {
   display: inline-block;
   margin-left: 8px;
   vertical-align: middle;
 
-  @include m(changer) {
-    font-size: $font-size;
-  }
+  // select
+  // @include m(changer) {
+  // }
 
   @include m(jumper) {
     display: inline-block;
-
-    > input {
-      position: relative;
-      display: inline-block;
-      width: 48px;
-      height: 24px;
-      margin: 0 8px;
-      text-align: center;
-      border-radius: $radius;
-      font-size: $font-size;
-      border: 1px solid $background;
-      background-color: $background;
-    }
   }
 
   @include m(slash) {
-    margin: 0 10px 0 5px;
+    margin: 0 16px 0 16px;
   }
 }
 
@@ -111,7 +96,7 @@
     min-width: $height;
     height: $height;
     line-height: $height;
-    margin: 0;
+    margin-right: 6px;
     display: inline-flex;
     align-items: center;
   }
@@ -132,23 +117,17 @@
   @include e(total) {
     height: $height;
     line-height: $height;
-    font-size: $font-size;
+  }
+
+  @include e(input) {
+    height: $height;
   }
 }
 
-@mixin pagination-simple($background, $height, $font-size) {
+@mixin pagination-simple($height) {
   @include e(item) {
-    background-color: transparent;
-    min-width: $height;
-    height: $height;
-    line-height: $height;
     margin: 0;
-    font-size: $font-size;
-    vertical-align: top;
-  }
-
-  @include e(item--icon) {
-    font-size: $font-size;
+    background-color: transparent;
   }
 
   @include e(pager) {
@@ -156,16 +135,22 @@
       color: inherit;
       cursor: inherit;
     }
-
-    > input {
-      margin-right: 8px;
-      padding: 4px 6px;
-      border-radius: 4px;
-      outline: none;
-      transition: border-color 0.3s;
-      text-align: center;
-      border: 1px solid $background;
-      background-color: $background;
-    }
   }
+
+  @include e(input) {
+    height: $height;
+    margin: 0;
+  }
+}
+
+@mixin pagination-input($width, $height, $radius, $background) {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: $height;
+  margin: 0 8px;
+  text-align: center;
+  border-radius: $radius;
+  border: 1px solid $background;
+  background-color: $background;
 }

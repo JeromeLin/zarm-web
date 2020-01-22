@@ -19,15 +19,24 @@
     );
   }
 
+  @include e(input) {
+    @include pagination-input(
+      var(--pagination-height-md),
+      var(--pagination-height-md),
+      var(--radius-md),
+      var(--pagination-default-bg-color)
+    );
+  }
+
   @include e(total) {
-    @include pagination-total(var(--pagination-font-size-md));
+    @include pagination-total();
   }
 
   @include e(options) {
     @include pagination-options(
       var(--pagination-default-bg-color),
-      var(--pagination-font-size-sm),
-      var(--radius-md)
+      var(--radius-md),
+      var(--pagination-height-md)
     );
   }
 
@@ -40,11 +49,7 @@
   }
 
   @include m(simple) {
-    @include pagination-simple(
-      var(--pagination-default-bg-color),
-      var(--pagination-height-md),
-      var(--pagination-font-size-md)
-    );
+    @include pagination-simple(var(--pagination-height-sm));
   }
 
   @include m(disabled) {

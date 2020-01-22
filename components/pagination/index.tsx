@@ -116,6 +116,7 @@ class Pagination extends Component<PropsType, any> {
         className={`${prefixCls}__item ${prefixCls}__pager`}
       >
         <input
+          className={`${prefixCls}__input`}
           type="text"
           size={3}
           value={currentInputValue}
@@ -286,10 +287,10 @@ class Pagination extends Component<PropsType, any> {
   }
 
   renderPager = (i: number, page: number) => {
-    const { prefixCls } = this.props;
+    const { prefixCls, disabled } = this.props;
     const cls = classnames({
       [`${prefixCls}__item`]: true,
-      [`${prefixCls}__item--active`]: page === i,
+      [`${prefixCls}__item--active`]: page === i && !disabled,
     });
 
     return (
@@ -376,7 +377,7 @@ class Pagination extends Component<PropsType, any> {
       <li className={`${prefixCls}__options`}>
         <div className={`${prefixCls}__options--jumper`}>
           {locale!.goto}
-          <input type="text" onKeyDown={this.handleJumpKeyDown} />
+          <input className={`${prefixCls}__input`} type="text" onKeyDown={this.handleJumpKeyDown} />
           {locale!.pageClassifier}
         </div>
       </li>
