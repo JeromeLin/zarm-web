@@ -27,8 +27,8 @@ export interface ItemPropsType {
   onMouseLeave?: () => void;
 
   key?: string;
-  top?: number,
-  bottom?: number,
+  top?: number;
+  bottom?: number;
   getContainer?: () => HTMLElement | HTMLElement;
 }
 
@@ -39,7 +39,7 @@ export interface PropsType extends ItemPropsType {
 }
 
 export interface APIReturn {
-  close(): void
+  close(): void;
 }
 
 export interface NotificationAPI {

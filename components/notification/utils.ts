@@ -21,11 +21,11 @@ export function mapToIconTheme(type: IconType) {
     case 'error':
       return 'danger';
     case 'info':
-      return 'primary'
+      return 'primary';
     case 'loading':
-      return 'default'
+      return 'default';
     default:
-      return type
+      return type;
   }
 }
 
@@ -35,9 +35,9 @@ export function handleOptions(options: APIPropsType): ItemPropsType {
     && Object.prototype.toString.call(options) === '[object Object]'
     && !React.isValidElement(options)
   ) {
-    return { ...options as {} }
+    return { ...options as {} };
   }
-  return { message: options as Exclude<APIPropsType, ItemPropsType> }
+  return { message: options as Exclude<APIPropsType, ItemPropsType> };
 }
 
 export function getStyle(initStyle, top, bottom) {

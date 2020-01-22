@@ -10,7 +10,7 @@ function showNotification(options: APIPropsType, icon?: IconType) {
   if (icon) {
     newOptions.icon = icon;
   }
-  return managerInstance.open(newOptions)
+  return managerInstance.open(newOptions);
 }
 
 const notificationApi: Partial<NotificationAPI> = {
@@ -18,17 +18,17 @@ const notificationApi: Partial<NotificationAPI> = {
     return showNotification(props);
   },
   close(key) {
-    managerInstance.close(key)
+    managerInstance.close(key);
   },
   closeAll() {
-    managerInstance.closeAll()
+    managerInstance.closeAll();
   },
   destroy() {
-    managerInstance.destroy()
-  }
+    managerInstance.destroy();
+  },
 };
 
-['success', 'warning', 'info', 'error'].forEach(iconType => {
+['success', 'warning', 'info', 'error'].forEach((iconType) => {
   notificationApi[iconType] = (options: APIPropsType) => {
     return showNotification(options, iconType as IconType);
   };

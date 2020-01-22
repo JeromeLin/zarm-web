@@ -21,7 +21,7 @@ function showMessage(options: APIPropsType, icon?: IconType) {
     newOptions.stayTime = newOptions.icon === 'loading' ? 0 : 3000;
   }
   newOptions.position = Positions.topCenter;
-  return managerInstance.open(newOptions)
+  return managerInstance.open(newOptions);
 }
 
 const messageApi: Partial<MessageAPI> = {
@@ -29,17 +29,17 @@ const messageApi: Partial<MessageAPI> = {
     return showMessage(options);
   },
   close(key) {
-    managerInstance.close(key)
+    managerInstance.close(key);
   },
   closeAll() {
-    managerInstance.closeAll()
+    managerInstance.closeAll();
   },
   destroy() {
-    managerInstance.destroy()
-  }
+    managerInstance.destroy();
+  },
 };
 
-['success', 'warning', 'info', 'error', 'loading'].forEach(iconType => {
+['success', 'warning', 'info', 'error', 'loading'].forEach((iconType) => {
   messageApi[iconType] = (options: APIPropsType) => {
     return showMessage(options, iconType as IconType);
   };

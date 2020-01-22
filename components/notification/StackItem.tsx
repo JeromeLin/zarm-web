@@ -3,9 +3,9 @@ import Transition from '../transition';
 import { PropsType } from './PropsType';
 
 export default class StackItem extends React.Component<PropsType, {}> {
-
   private timeout: number;
-  public static defaultProps = {
+
+  static defaultProps = {
     stayTime: 5000,
   };
 
@@ -30,22 +30,25 @@ export default class StackItem extends React.Component<PropsType, {}> {
     if (stayTime) {
       this.timeout = setTimeout(this.close, stayTime);
     }
-  }
+  };
 
   stopTimer = () => {
     clearInterval(this.timeout);
-  }
+  };
 
   render() {
     const { Component, name, willUnmount, stayTime, onClose, ...rest } = this.props;
+    const { visible } = this.state;
     return (
-      <Transition visible={this.state.visible}
+      <Transition
+        visible={visible}
         name={name}
         duration={300}
         unmountOnHide
         onHide={willUnmount}
       >
-        <Component {...rest}
+        <Component
+          {...rest}
           onMouseEnter={this.stopTimer}
           onMouseLeave={this.startTimer}
           onClose={this.close}
