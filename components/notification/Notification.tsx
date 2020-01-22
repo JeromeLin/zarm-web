@@ -2,7 +2,7 @@ import React from "react";
 import classnames from 'classnames';
 import Icon from '../icon';
 import { ItemPropsType, IconType } from './PropsType';
-import { mapToIconType, mapToIconTheme } from './utils';
+import { mapToIconType, mapToIconTheme, getStyle } from './utils';
 
 export default class Notification extends React.Component<ItemPropsType, {}> {
   static defaultProps: ItemPropsType = {
@@ -10,17 +10,19 @@ export default class Notification extends React.Component<ItemPropsType, {}> {
   }
   render() {
     const {
-      className, prefixCls, title, icon, message, footer,
+      style, className, prefixCls, title, icon, message, footer,
       top, bottom,
       onMouseEnter, onMouseLeave, onClose, onClick
     } = this.props;
     let iconToRender = icon ? getIcon(icon, `${prefixCls}__icon`) : null;
     let cls = classnames(`${prefixCls}__content`, { "has-icon": iconToRender });
     return (
-      <div className={classnames(prefixCls, className)}
+      <div className={classnames(prefixCls, className, {
+        [`${prefixCls}--fixed`]: top || bottom
+      })}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        style={{ top, bottom }}
+        style={getStyle(style, top, bottom)}
       >
         <div className={cls} onClick={onClick}>
           {iconToRender}

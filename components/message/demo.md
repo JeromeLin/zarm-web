@@ -23,7 +23,7 @@ class Demo extends React.Component {
     Message.warning("这是一条警告的消息提示，出现在网站顶部3s后消失");
   }
   showLoading() {
-    Message.loading("这是一条Loading的消息提示，不会自动消失这是一条Loading的消息提示，不会自动消失");
+    Message.loading("这是一条Loading的消息提示，不会自动消失");
   }
   noIcon() {
     Message.open({
@@ -137,6 +137,38 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 弹出位置
+
+{ position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' }
+{ top: string, bottom: string }
+
+```js
+import { Message, Button } from 'zarm-web';
+class Demo extends React.Component {
+  showNotify(option) {
+    Message.loading({
+      ...option,
+      stayTime: 2000,
+      message: "这是一条通知"
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Button onClick={() => this.showNotify({ top: "400px" })}>
+          自定义top
+        </Button>
+        <Button onClick={() => this.showNotify({ bottom: "100px" })}>
+          自定义bottom
+        </Button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## 自定义 key
 
 通常用在需要通过编程方式精确控制隐藏时用到
@@ -197,5 +229,7 @@ ReactDOM.render(<Demo />, mountNode);
 | stayTime | 停留时长(ms)。设置 0 则不自动隐藏 | number                     | -                                      | 3000       |
 | icon     | 图标                              | string\|React.ReactElement | success\|info\|warning\|error\|loading | -          |
 | key      | 唯一标识，可通过 close 方法关闭   | string                     | -                                      | (自动生成) |
+| top      | 脱离堆叠栈，距屏幕顶端位置        | string                     | -                                      | -          |
+| bottom   | 脱离堆叠栈，距屏幕底端位置        | string                     | -                                      | -          |
 | onClick  | 点击时触发                        | function                   | -                                      | -          |
 | onClose  | 关闭时触发                        | function                   | -                                      | -          |

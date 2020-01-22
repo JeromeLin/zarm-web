@@ -3,6 +3,7 @@
 exports[`Message renders basic Message correctly 1`] = `
 <div
   className="zw-message"
+  style={Object {}}
 >
   <div
     className="zw-message__content"

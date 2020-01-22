@@ -8,7 +8,6 @@
   left: 50%;
   overflow: visible !important;
   z-index: var(--zindex-message);
-  transform: translate3d(0, 0, 0);
 }
 
 @include b(message) {
@@ -28,6 +27,10 @@
   margin-bottom: 20px;
   transform: translate3d(-50%, 0, 0);
   overflow: hidden;
+
+  @include m(fixed) {
+    position: fixed;
+  }
 
   @include e(content) {
     position: relative;

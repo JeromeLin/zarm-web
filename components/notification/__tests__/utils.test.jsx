@@ -1,5 +1,10 @@
 import React from "react";
-import { mapToIconType, mapToIconTheme, handleOptions } from "../utils";
+import {
+  mapToIconType,
+  mapToIconTheme,
+  handleOptions,
+  getStyle
+} from "../utils";
 
 describe("NotificationUtils", () => {
   it("map to icon type correctly", () => {
@@ -28,5 +33,14 @@ describe("NotificationUtils", () => {
     expect(JSON.stringify(handleOptions(options))).toBe(
       JSON.stringify(options)
     );
+  });
+
+  it("get style correctly", () => {
+    expect(getStyle({ fontSize: "12px" }, "20px")).toEqual({
+      fontSize: "12px",
+      top: "20px"
+    });
+    expect(getStyle({}, "20px", "100px")).toEqual({ top: "20px" });
+    expect(getStyle({}, null, "100px")).toMatchSnapshot();
   });
 });

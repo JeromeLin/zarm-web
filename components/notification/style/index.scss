@@ -55,6 +55,10 @@
   margin-bottom: 20px;
   overflow: hidden;
 
+  @include m(fixed) {
+    position: fixed;
+  }
+
   @include e(close) {
     position: absolute;
     width: 10px;

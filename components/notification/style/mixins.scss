@@ -13,6 +13,9 @@
       opacity: 1;
       max-height: 200px;
     }
+    50% {
+      opacity: 0;
+    }
     100% {
       opacity: 0;
       padding-top: 0;

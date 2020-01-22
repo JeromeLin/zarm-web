@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
 import { ItemPropsType, IconType } from '../notification/PropsType';
-import { mapToIconType, mapToIconTheme } from '../notification/utils';
+import { mapToIconType, mapToIconTheme, getStyle } from '../notification/utils';
 
 export default class Message extends React.Component<ItemPropsType, {}> {
   public static defaultProps: ItemPropsType = {
@@ -12,15 +12,18 @@ export default class Message extends React.Component<ItemPropsType, {}> {
   render() {
     const {
       style, className, prefixCls, icon, message,
+      top, bottom,
       onMouseEnter, onMouseLeave, onClick
     } = this.props;
     let iconToRender = icon ? getIcon(icon, `${prefixCls}__icon`) : null;
     let cls = classnames(`${prefixCls}__content`, { "has-icon": iconToRender });
     return (
-      <div className={classnames(prefixCls, className)}
+      <div className={classnames(prefixCls, className, {
+        [`${prefixCls}--fixed`]: top || bottom
+      })}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        style={style}
+        style={getStyle(style, top, bottom)}
       >
         <div className={cls} onClick={onClick}>
           {iconToRender}

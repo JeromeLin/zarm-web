@@ -3,12 +3,7 @@
 exports[`Notification renders basic Notification correctly 1`] = `
 <div
   className="zw-notification"
-  style={
-    Object {
-      "bottom": undefined,
-      "top": undefined,
-    }
-  }
+  style={Object {}}
 >
   <div
     className="zw-notification__content"

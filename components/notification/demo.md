@@ -194,28 +194,41 @@ ReactDOM.render(<Demo />, mountNode);
 ## 弹出位置
 
 { position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' }
+{ top: string, bottom: string }
 
 ```js
 import { Notification, Button } from 'zarm-web';
 class Demo extends React.Component {
-  showNotification(position) {
+  showNotify(option) {
     Notification.open({
-      position,
+      ...option,
       message: "这是一条通知"
     });
   }
   render() {
     return (
-      <div>
-        <Button onClick={() => this.showNotification('topRight')}>右上角</Button>
-        <Button onClick={() => this.showNotification("topLeft")}>左上角</Button>
-        <Button onClick={() => this.showNotification("bottomLeft")}>
-          左下角
+      <>
+        <div className="btn-box">
+          <Button onClick={() => this.showNotify({ position: "topRight" })}>
+            右上角
+          </Button>
+          <Button onClick={() => this.showNotify({ position: "topLeft" })}>
+            左上角
+          </Button>
+          <Button onClick={() => this.showNotify({ position: "bottomLeft" })}>
+            左下角
+          </Button>
+          <Button onClick={() => this.showNotify({ position: "bottomRight" })}>
+            右下角
+          </Button>
+        </div>
+        <Button onClick={() => this.showNotify({ top: "400px" })}>
+          自定义top
         </Button>
-        <Button onClick={() => this.showNotification("bottomRight")}>
-          右下角
+        <Button onClick={() => this.showNotify({ bottom: "100px" })}>
+          自定义bottom
         </Button>
-      </div>
+      </>
     );
   }
 }
@@ -287,6 +300,8 @@ ReactDOM.render(<Demo />, mountNode);
 | message  | 展示内容                          | string\|React.ReactElement | -                                          | -          |
 | stayTime | 停留时长(ms)。设置 0 则不自动隐藏 | number                     | -                                          | 5000       |
 | position | 弹出位置                          | string                     | topLeft\|topRight\|bottomLeft\|bottomRight | topRight   |
+| top      | 脱离堆叠栈，距屏幕顶端位置        | string                     | -                                          | -          |
+| bottom   | 脱离堆叠栈，距屏幕底端位置        | string                     | -                                          | -          |
 | icon     | 图标                              | string\|React.ReactElement | success\|info\|warning\|error              | -          |
 | key      | 唯一标识，可通过 close 方法关闭   | string                     | -                                          | (自动生成) |
 | footer   | 自定义底部显示                    | React.ReactElement         | -                                          | -          |
