@@ -1,3 +1,119 @@
-@import '../../style/themes/variable';
-@import "../../style/core/mixins/index";
-@import './component';
+@import "./mixins";
+
+@include b(notification-container) {
+  position: fixed;
+  width: 0;
+  height: 0;
+  top: 20px;
+  right: calc(var(--notification-width) + 20px);
+  overflow: visible !important;
+  z-index: var(--zindex-notification);
+
+  @include m(topLeft) {
+    right: auto;
+    left: 20px;
+  }
+
+  @include m(bottomLeft) {
+    height: auto;
+    right: auto;
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+    margin-bottom: 0;
+    margin-top: 20px;
+
+    @include b(notification) {
+      margin-bottom: 0;
+      margin-top: 20px;
+    }
+  }
+
+  @include m(bottomRight) {
+    height: auto;
+    top: auto;
+    bottom: 20px;
+    margin-bottom: 0;
+    margin-top: 20px;
+
+    @include b(notification) {
+      margin-bottom: 0;
+      margin-top: 20px;
+    }
+  }
+}
+
+@include b(notification) {
+  position: relative;
+  top: 0;
+  width: var(--notification-width);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-text-inverse);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  z-index: var(--zindex-notification);
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  @include e(close) {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 11px;
+    right: 16px;
+    color: #909090;
+    &:hover {
+      color: #000;
+    }
+  }
+
+  @include e(content) {
+    position: relative;
+
+    &.has-icon {
+      padding-left: 28px;
+    }
+
+    @include e(head) {
+      font-size: var(--notification-title-font-size);
+      color: var(--notification-title-color);
+      line-height: var(--notification-title-line-height);
+      font-weight: var(--notification-title-font-weight);
+    }
+
+    @include e(body) {
+      color: var(--notification-color);
+      font-size: var(--notification-font-size);
+      line-height: var(--notification-line-height);
+      font-weight: 400;
+      padding: var(--notification-body-padding);
+    }
+
+    @include e(icon) {
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 1.28572em;
+      line-height: 0;
+      vertical-align: top;
+    }
+
+    @include e(foot) {
+      padding: var(--notification-footer-padding);
+      text-align: right;
+      button + button {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  @include notification-animation(topRight);
+  @include notification-animation(topLeft);
+  @include notification-animation(bottomRight);
+  @include notification-animation(bottomLeft);
+}
+
+@include notification-keyframes(topRight, 100%, -40px);
+@include notification-keyframes(topLeft, -100%, -40px);
+@include notification-keyframes(bottomRight, 100%, 40px);
+@include notification-keyframes(bottomLeft, -100%, 40px);

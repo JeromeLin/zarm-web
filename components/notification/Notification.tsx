@@ -1,134 +1,66 @@
-import React, { Component } from 'react';
+import React from "react";
 import classnames from 'classnames';
-import Transition from '../transition';
-import NotificationProps from './PropsType';
 import Icon from '../icon';
+import { ItemPropsType, IconType } from './PropsType';
+import { mapToIconType, mapToIconTheme } from './utils';
 
-export default class Notification extends Component<NotificationProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-notification',
-    message: '',
-    top: 20,
-    stayTime: 4500,
-    onClick: () => {},
-    onClose: () => {},
-  };
-
-  state = {
-    visible: false,
-  };
-
-  private timeout: number | undefined;
-
-  private offsetHeight;
-
-  private notification: any;
-
-  componentDidMount() {
-    this.enter();
-    this.startTimer();
+export default class Notification extends React.Component<ItemPropsType, {}> {
+  static defaultProps: ItemPropsType = {
+    prefixCls: 'zw-notification'
   }
-
-  componentWillUnmount() {
-    clearInterval(this.timeout);
-  }
-
-  get type() {
-    const { theme } = this.props;
-    switch (theme) {
-      case 'success':
-        return 'right-round-fill';
-      case 'danger':
-        return 'wrong-round-fill';
-      case 'primary':
-        return 'info-round-fill';
-      case 'warning':
-        return 'warning-round-fill';
-      // case 'loading':
-      //   return 'loading';
-      default:
-        return '';
-    }
-  }
-
-  onClick = (event: React.SyntheticEvent<any>) => {
-    if (this.props.onClick) {
-      this.props.onClick(event);
-    }
-  };
-
-  onClose = (event?: React.SyntheticEvent<any>) => {
-    const { onClose } = this.props;
-
-    this.stopTimer();
-    this.leave();
-
-    if (typeof onClose === 'function') {
-      onClose(event);
-    }
-  };
-
-  onMouseEnter = () => {
-    this.stopTimer();
-  };
-
-  onMouseLeave = () => {
-    this.startTimer();
-  };
-
-  startTimer() {
-    const { stayTime } = this.props;
-    if (stayTime) {
-      this.timeout = setTimeout(() => {
-        this.onClose();
-      }, stayTime);
-    }
-  }
-
-  stopTimer() {
-    clearInterval(this.timeout);
-  }
-
-  enter() {
-    this.setState({ visible: true });
-  }
-
-  leave() {
-    this.setState({ visible: false });
-  }
-
   render() {
-    const { prefixCls, className, top, style, title, message, theme, isMessage, willUnMount, btn } = this.props;
-    const { visible } = this.state;
-    const componentName = isMessage ? 'message' : 'notification';
-
+    const {
+      className, prefixCls, title, icon, message, footer,
+      top, bottom,
+      onMouseEnter, onMouseLeave, onClose, onClick
+    } = this.props;
+    let iconToRender = icon ? getIcon(icon, `${prefixCls}__icon`) : null;
+    let cls = classnames(`${prefixCls}__content`, { "has-icon": iconToRender });
     return (
-      <Transition
-        visible={visible}
-        name={componentName}
-        duration={200}
-        unmountOnHide
-        onStart={() => { this.offsetHeight = this.notification.offsetHeight; }}
-        onBeforeHide={() => willUnMount(this.offsetHeight, parseInt(this.notification.style.top, 10))}
+      <div className={classnames(prefixCls, className)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        style={{ top, bottom }}
       >
-        <div
-          ref={(el) => { this.notification = el; }}
-          className={classnames(prefixCls, className)}
-          onClick={this.onClick}
-          style={{ ...style, top }}
-        >
-          <div className={classnames(`za-${componentName}__content`, { 'has-icon': theme })}>
-            {!isMessage && <div className={`za-${componentName}__close`} onClick={this.onClose}><Icon type="wrong" /></div>}
-            {!isMessage && theme && <Icon type={this.type} className={`za-${componentName}__icon`} theme={theme} />}
-            {title && <div className={`za-${componentName}__title`}>{title}</div>}
-            <div className={`za-${componentName}__custom-content`} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-              {isMessage && <Icon type={this.type} className={`za-${componentName}__icon`} theme={theme} />}
-              {message}
-              {!isMessage && <span className={`za-${componentName}__action-area`}>{btn}</span>}
-            </div>
-          </div>
+        <div className={cls} onClick={onClick}>
+          {iconToRender}
+          <div className={`${prefixCls}__head`}>{title || getDefaultTitle(icon)}</div>
+          {message && <div className={`${prefixCls}__body`}>{message}</div>}
+          {footer && <div className={`${prefixCls}__foot`}>{footer}</div>}
         </div>
-      </Transition>
-    );
+        <Icon className={`${prefixCls}__close`}
+          type="wrong"
+          size="sm"
+          onClick={onClose}
+        />
+      </div>
+    )
   }
+}
+
+function getDefaultTitle(icon?: IconType | React.ReactElement) {
+  let title;
+  if (icon === 'success') {
+    title = '成功'
+  } else if (icon === 'warning') {
+    title = '警告'
+  } else if (icon === 'error') {
+    title = '错误'
+  }
+  return title || '通知';
+}
+
+function getIcon(icon: IconType | React.ReactElement, className: string) {
+  if (React.isValidElement(icon)) {
+    return (
+      <div className={className}>{icon}</div>
+    )
+  }
+  const iconType = mapToIconType(icon);
+  return iconType ?
+    <Icon type={mapToIconType(icon)}
+      className={className}
+      size="sm"
+      theme={mapToIconTheme(icon)} />
+    : null
 }

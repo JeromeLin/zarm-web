@@ -1,0 +1,36 @@
+@mixin message-keyframes($position, $x, $top) {
+  @keyframes message-#{$position}-in {
+    0% {
+      opacity: 0;
+      transform: translate3d(-50%, $x, 0);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes message-#{$position}-out {
+    0% {
+      opacity: 1;
+      max-height: 100px;
+    }
+    100% {
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      max-height: 0;
+      min-height: 0;
+      top:  $top
+    }
+  }
+}
+
+@mixin message-animation($position) {
+  &.message--#{$position}-in {
+    animation-name: message-#{$position}-in;
+  }
+  &.message--#{$position}-out {
+    animation-name: message-#{$position}-out;
+  }
+}

@@ -1,0 +1,36 @@
+@mixin notification-keyframes($position, $x, $top) {
+  @keyframes notification-#{$position}-in {
+    0% {
+      opacity: 0;
+      transform: translateX($x);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes notification-#{$position}-out {
+    0% {
+      opacity: 1;
+      max-height: 200px;
+    }
+    100% {
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      max-height: 0;
+      min-height: 0;
+      top: $top;
+    }
+  }
+}
+
+@mixin notification-animation($position) {
+  &.notification--#{$position}-in {
+    animation-name: notification-#{$position}-in;
+  }
+  &.notification--#{$position}-out {
+    animation-name: notification-#{$position}-out;
+  }
+}
