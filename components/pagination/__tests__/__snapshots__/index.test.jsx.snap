@@ -209,6 +209,7 @@ exports[`Pagination renders Pagination with jumper correctly 1`] = `
           >
             跳至
             <input
+              className="zw-pagination__input"
               onKeyDown={[Function]}
               type="text"
             />
@@ -1862,6 +1863,7 @@ exports[`Pagination renders Pagination with simple info correctly 1`] = `
           title="1/10"
         >
           <input
+            className="zw-pagination__input"
             onChange={[Function]}
             onKeyDown={[Function]}
             size={3}
