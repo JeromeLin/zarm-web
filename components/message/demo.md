@@ -139,7 +139,6 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 弹出位置
 
-{ position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' }
 { top: string, bottom: string }
 
 ```js
