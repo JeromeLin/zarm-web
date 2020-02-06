@@ -1,10 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
-import { ItemPropsType, IconType } from './PropsType';
+import { NotificationItemProps, NotificationIcon } from './PropsType';
 import { mapToIconType, mapToIconTheme, getStyle } from './utils';
 
-function getDefaultTitle(icon?: IconType | React.ReactElement) {
+function getDefaultTitle(icon?: NotificationIcon | React.ReactElement) {
   let title;
   if (icon === 'success') {
     title = '成功';
@@ -16,7 +16,7 @@ function getDefaultTitle(icon?: IconType | React.ReactElement) {
   return title || '通知';
 }
 
-function getIcon(icon: IconType | React.ReactElement, className: string) {
+function getIcon(icon: NotificationIcon | React.ReactElement, className: string) {
   if (React.isValidElement(icon)) {
     return (
       <div className={className}>{icon}</div>
@@ -35,8 +35,8 @@ function getIcon(icon: IconType | React.ReactElement, className: string) {
     : null;
 }
 
-export default class Notification extends React.Component<ItemPropsType, {}> {
-  static defaultProps: ItemPropsType = {
+export default class Notification extends React.Component<NotificationItemProps, {}> {
+  static defaultProps: NotificationItemProps = {
     prefixCls: 'zw-notification',
   };
 

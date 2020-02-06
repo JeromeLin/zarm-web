@@ -1,7 +1,8 @@
 import React, { ComponentClass, ComponentElement, RefObject } from 'react';
 import ReactDOM from 'react-dom';
 import StackItem from './StackItem';
-import { ItemPropsType, APIReturn, Positions } from './PropsType';
+import { NotificationItemProps, NotificationAPIReturn } from './PropsType';
+import { Positions } from './enums';
 
 function isAtBottom(position: Positions) {
   return position.indexOf('bottom') === 0;
@@ -12,9 +13,9 @@ function getPosition(position?: Positions): Positions {
 }
 
 export default class StackManager {
-  private notifyList: ComponentElement<ItemPropsType, StackItem>[] = [];
+  private notifyList: ComponentElement<NotificationItemProps, StackItem>[] = [];
 
-  private component: ComponentClass<ItemPropsType, {}>;
+  private component: ComponentClass<NotificationItemProps, {}>;
 
   private containerCls: string;
 
@@ -22,8 +23,8 @@ export default class StackManager {
 
   private componentName: string;
 
-  constructor(component: ComponentClass<ItemPropsType, {}>, componentName: string) {
-    this.containerCls = `${(component.defaultProps as ItemPropsType).prefixCls}-container`;
+  constructor(component: ComponentClass<NotificationItemProps, {}>, componentName: string) {
+    this.containerCls = `${(component.defaultProps as NotificationItemProps).prefixCls}-container`;
     this.component = component;
     this.componentName = componentName;
   }
@@ -53,7 +54,7 @@ export default class StackManager {
   }
 
   // To display a new StackItem
-  open(props: ItemPropsType): APIReturn {
+  open(props: NotificationItemProps): NotificationAPIReturn {
     this.keySeed += 1;
     const newKey = props.key || String(this.keySeed);
     const position = getPosition(props.position);

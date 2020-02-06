@@ -1,12 +1,12 @@
 import StackManager from './StackManager';
 import Notification from './Notification';
-import { ItemPropsType, IconType, NotificationAPI, APIPropsType } from './PropsType';
+import { NotificationItemProps, NotificationIcon, NotificationAPI, NotificationAPIProps } from './PropsType';
 import { handleOptions } from './utils';
 
 const managerInstance = new StackManager(Notification, 'notification');
 
-function showNotification(options: APIPropsType, icon?: IconType) {
-  const newOptions: ItemPropsType = handleOptions(options);
+function showNotification(options: NotificationAPIProps, icon?: NotificationIcon) {
+  const newOptions: NotificationItemProps = handleOptions(options);
   if (icon) {
     newOptions.icon = icon;
   }
@@ -14,7 +14,7 @@ function showNotification(options: APIPropsType, icon?: IconType) {
 }
 
 const notificationApi: Partial<NotificationAPI> = {
-  open(props: ItemPropsType) {
+  open(props: NotificationItemProps) {
     return showNotification(props);
   },
   close(key) {
@@ -29,8 +29,8 @@ const notificationApi: Partial<NotificationAPI> = {
 };
 
 ['success', 'warning', 'info', 'error'].forEach((iconType) => {
-  notificationApi[iconType] = (options: APIPropsType) => {
-    return showNotification(options, iconType as IconType);
+  notificationApi[iconType] = (options: NotificationAPIProps) => {
+    return showNotification(options, iconType as NotificationIcon);
   };
 });
 

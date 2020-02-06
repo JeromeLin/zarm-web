@@ -1,8 +1,8 @@
 import React from 'react';
 import Transition from '../transition';
-import { PropsType } from './PropsType';
+import { NotificationProps } from './PropsType';
 
-export default class StackItem extends React.Component<PropsType, {}> {
+export default class StackItem extends React.Component<NotificationProps, {}> {
   private timeout: number;
 
   static defaultProps = {

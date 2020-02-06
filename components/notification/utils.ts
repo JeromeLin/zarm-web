@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
-import { IconType, ItemPropsType, APIPropsType } from './PropsType';
+import { NotificationIcon, NotificationItemProps, NotificationAPIProps } from './PropsType';
 
-export function mapToIconType(type: IconType) {
+export function mapToIconType(type: NotificationIcon) {
   switch (type) {
     case 'success':
       return 'right-round-fill';
@@ -16,7 +16,7 @@ export function mapToIconType(type: IconType) {
   }
 }
 
-export function mapToIconTheme(type: IconType) {
+export function mapToIconTheme(type: NotificationIcon) {
   switch (type) {
     case 'error':
       return 'danger';
@@ -29,7 +29,7 @@ export function mapToIconTheme(type: IconType) {
   }
 }
 
-export function handleOptions(options: APIPropsType): ItemPropsType {
+export function handleOptions(options: NotificationAPIProps): NotificationItemProps {
   if (
     options
     && Object.prototype.toString.call(options) === '[object Object]'
@@ -37,7 +37,7 @@ export function handleOptions(options: APIPropsType): ItemPropsType {
   ) {
     return { ...options as {} };
   }
-  return { message: options as Exclude<APIPropsType, ItemPropsType> };
+  return { message: options as Exclude<NotificationAPIProps, NotificationItemProps> };
 }
 
 export function getStyle(initStyle, top, bottom) {
