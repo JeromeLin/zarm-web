@@ -16,4 +16,3 @@ export type MessageAPIReturn = NotificationAPIReturn;
 export interface MessageAPI extends NotificationAPI {
   loading(props: MessageAPIProps): MessageAPIReturn;
 }
-
