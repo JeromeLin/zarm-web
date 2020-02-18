@@ -70,4 +70,12 @@ export default {
     confirm: 'Ok',
     clear: 'Clear',
   },
+  Notification: {
+    defaultTitles: {
+      error: 'Error',
+      success: 'Success',
+      warning: 'Warning',
+      default: 'Notification',
+    },
+  },
 };

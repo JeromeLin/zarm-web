@@ -2,7 +2,7 @@ import React from 'react';
 import { Positions } from './enums';
 
 export type NotificationIcon = 'default' | 'error' | 'success' | 'warning' | 'info' | 'loading';
-export type NotificationAPIProps = NotificationItemProps | string | React.ReactElement;
+export type NotificationAPIProps = NotificationItemProps | React.ReactNode;
 
 export interface NotificationItemProps {
   prefixCls?: string;
@@ -12,10 +12,19 @@ export interface NotificationItemProps {
   position?: Positions;
   stayTime?: number;
 
-  title?: string;
   icon?: React.ReactElement | NotificationIcon;
-  message?: string | React.ReactElement;
-  footer?: React.ReactElement;
+  title?: React.ReactNode;
+  content?: React.ReactNode;
+  footer?: React.ReactNode;
+
+  locale?: {
+    defaultTitles: {
+      'error': string;
+      'success': string;
+      'warning': string;
+      'default': string;
+    };
+  };
 
   onClick?: (e?: React.SyntheticEvent<any>) => void;
   onClose?: (e?: React.SyntheticEvent<any>) => void;
@@ -25,7 +34,7 @@ export interface NotificationItemProps {
   key?: string;
   top?: number;
   bottom?: number;
-  getContainer?: () => HTMLElement | HTMLElement;
+  // getContainer?: () => HTMLElement | HTMLElement;
 }
 
 export interface NotificationProps extends NotificationItemProps {

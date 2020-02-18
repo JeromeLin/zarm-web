@@ -23,13 +23,13 @@ describe("NotificationUtils", () => {
   });
 
   it("handle options correctly", () => {
-    const message = "test message";
+    const content = "test content";
     const reactNode = <p>sss</p>;
-    const options = { message };
+    const options = { content };
     expect(handleOptions()).not.toBe(undefined);
-    expect(handleOptions().message).toBe(undefined);
-    expect(handleOptions(message).message).toBe(message);
-    expect(handleOptions(reactNode).message).toBe(reactNode);
+    expect(handleOptions().content).toBe(undefined);
+    expect(handleOptions(content).content).toBe(content);
+    expect(handleOptions(reactNode).content).toBe(reactNode);
     expect(JSON.stringify(handleOptions(options))).toBe(
       JSON.stringify(options)
     );

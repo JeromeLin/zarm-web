@@ -37,7 +37,7 @@ export function handleOptions(options: NotificationAPIProps): NotificationItemPr
   ) {
     return { ...options as {} };
   }
-  return { message: options as Exclude<NotificationAPIProps, NotificationItemProps> };
+  return { content: options as Exclude<NotificationAPIProps, NotificationItemProps> };
 }
 
 export function getStyle(initStyle, top, bottom) {

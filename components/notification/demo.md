@@ -25,14 +25,14 @@ class Demo extends React.Component {
   noIcon() {
     Notification.open({
       title: "我没有ICON",
-      message: "这是一条不带ICON的通知，出现在网站顶部5s后消失"
+      content: "这是一条不带ICON的通知，出现在网站顶部5s后消失"
     });
   }
   customIcon() {
     Notification.open({
       title: "自定义ICON",
       icon: <Icon type="question-round-fill" size="sm" />,
-      message: "这是一条自定义ICON的通知，出现在网站顶部5s后消失"
+      content: "这是一条自定义ICON的通知，出现在网站顶部5s后消失"
     });
   }
   useReactNode() {
@@ -74,7 +74,7 @@ class Demo extends React.Component {
   showMessage = () => {
     let msgInstance = Notification.info({
       stayTime: 0,
-      message: "这是一条Loading的通知",
+      content: "这是一条Loading的通知",
       // 非必须，演示目的
       onClose: () => {
         this.setState({ msgInstance: null });
@@ -114,7 +114,7 @@ class Demo extends React.Component {
   showMessage = () => {
     Notification.success({
       stayTime: 1500,
-      message: "这是一条带点击&关闭回调的通知",
+      content: "这是一条带点击&关闭回调的通知",
       onClick() {
         alert("你点击了该通知");
       },
@@ -154,7 +154,7 @@ class Demo extends React.Component {
   open() {
     let instance = Notification.open({
       title: "这是一段标题",
-      message:
+      content:
         "我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容我是描述内容",
       type: "success",
       stayTime: 0,
@@ -177,7 +177,7 @@ class Demo extends React.Component {
   open2() {
     let instance = Notification.open({
       title: "自定义底部",
-      message: "这是一条不会自动关闭的通知",
+      content: "这是一条不会自动关闭的通知",
       stayTime: 0,
       footer: (
         <Button size="sm" onClick={() => instance.close()}>
@@ -202,7 +202,7 @@ class Demo extends React.Component {
   showNotify(option) {
     Notification.open({
       ...option,
-      message: "这是一条通知"
+      content: "这是一条通知"
     });
   }
   render() {
@@ -252,7 +252,7 @@ class Demo extends React.Component {
     Notification.warning({
       key: "key1",
       stayTime: 0,
-      message: "这是一条自定义key的通知",
+      content: "这是一条自定义key的通知",
       // 非必须，演示目的
       onClose: () => {
         this.setState({ disabled: false });
@@ -286,7 +286,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 `Message.open(options): { close(): void };`
 
-`Message.[success|warning|info|error](options|string|React.ReactElement): { close(): void };`
+`Message.[success|warning|info|error](options|React.ReactNode): { close(): void };`
 
 `Message.close(key: string): void;`
 
@@ -296,14 +296,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 参数     | 说明                              | 类型                       | 可选值                                     | 默认值     |
 | -------- | --------------------------------- | -------------------------- | ------------------------------------------ | ---------- |
-| title    | 通知标题                          | string                     | React.ReactElement                         | -          | - |
-| message  | 展示内容                          | string\|React.ReactElement | -                                          | -          |
-| stayTime | 停留时长(ms)。设置 0 则不自动隐藏 | number                     | -                                          | 5000       |
-| position | 弹出位置                          | string                     | topLeft\|topRight\|bottomLeft\|bottomRight | topRight   |
-| top      | 脱离堆叠栈，距屏幕顶端位置        | string                     | -                                          | -          |
-| bottom   | 脱离堆叠栈，距屏幕底端位置        | string                     | -                                          | -          |
-| icon     | 图标                              | string\|React.ReactElement | success\|info\|warning\|error              | -          |
-| key      | 唯一标识，可通过 close 方法关闭   | string                     | -                                          | (自动生成) |
-| footer   | 自定义底部显示                    | React.ReactElement         | -                                          | -          |
+| title    | 通知标题                          | React.ReactNode            | -                                           | -          |
+| content  | 展示内容                          | React.ReactNode            | -                                           | -          |
+| stayTime | 停留时长(ms)。设置 0 则不自动隐藏    | number                     | -                                          | 5000       |
+| position | 弹出位置                          | string                     | topLeft\|topRight\|bottomLeft\|bottomRight |topRight   |
+| top      | 脱离堆叠栈，距屏幕顶端位置           | string                     | -                                          | -          |
+| bottom   | 脱离堆叠栈，距屏幕底端位置           | string                     | -                                          | -          |
+| icon     | 图标                             | string\|React.ReactElement | success\|info\|warning\|error              | -          |
+| key      | 唯一标识，可通过close方法关闭        | string                     | -                                          | (自动生成) |
+| footer   | 自定义底部显示                     | React.ReactNode            | -                                          | -          |
 | onClick  | 点击时触发                        | function                   | -                                          | -          |
 | onClose  | 关闭时触发                        | function                   | -                                          | -          |

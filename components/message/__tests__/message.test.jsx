@@ -6,13 +6,13 @@ import Message from "../Message";
 import Loading from "../../loading";
 
 describe("Message", () => {
-  const message = "This is a test messgae";
+  const content = "This is a test messgae";
   const prefixCls = Message.defaultProps.prefixCls;
 
   it("renders basic Message correctly", () => {
-    const wrapper = shallow(<Message message={message}></Message>);
+    const wrapper = shallow(<Message content={content}></Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.text().indexOf(message)).not.toBe(-1);
+    expect(wrapper.text().indexOf(content)).not.toBe(-1);
   });
 
   it("trigger event correctly", () => {
@@ -21,7 +21,7 @@ describe("Message", () => {
     const click = jest.fn();
     const wrapper = mount(
       <Message
-        message={message}
+        content={content}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
         onClick={click}
@@ -40,7 +40,7 @@ describe("Message", () => {
 
   it("render custom icon correctly", () => {
     const wrapper = mount(
-      <Message message={message} icon={<i>?</i>}></Message>
+      <Message content={content} icon={<i>?</i>}></Message>
     );
     expect(
       wrapper
@@ -51,13 +51,13 @@ describe("Message", () => {
   });
 
   it("render loading correctly", () => {
-    const wrapper = mount(<Message message={message} icon="loading"></Message>);
+    const wrapper = mount(<Message content={content} icon="loading"></Message>);
     expect(wrapper.find("." + Loading.defaultProps.prefixCls)).toHaveLength(1);
   });
 
   it("render unknow icon correctly", () => {
     const wrapper = mount(
-      <Message message={message} icon="unknown-icon"></Message>
+      <Message content={content} icon="unknown-icon"></Message>
     );
     expect(wrapper.find("." + prefixCls + "__icon")).toHaveLength(0);
   });

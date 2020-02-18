@@ -2,17 +2,17 @@ import Message from "../index";
 import toJson from "enzyme-to-json";
 
 describe("MessageIndex", () => {
-  const message = "This is a test messgae";
+  const content = "This is a test messgae";
   const containCls = "zw-message-container";
   const customKey = "mykey";
 
   it("call api correctly", () => {
-    Message.open({ message, key: customKey, stayTime: 1000 });
-    Message.success(message);
-    Message.warning(message);
-    Message.info(message);
-    Message.error(message);
-    Message.loading(message);
+    Message.open({ content, key: customKey, stayTime: 1000 });
+    Message.success(content);
+    Message.warning(content);
+    Message.info(content);
+    Message.error(content);
+    Message.loading(content);
 
     let dom = document.body.querySelector("." + containCls);
     expect(dom).not.toBe(null);

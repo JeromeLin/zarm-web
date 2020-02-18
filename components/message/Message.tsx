@@ -35,7 +35,7 @@ export default class Message extends React.Component<MessageItemProps, {}> {
 
   render() {
     const {
-      style, className, prefixCls, icon, message,
+      style, className, prefixCls, icon, content,
       top, bottom,
       onMouseEnter, onMouseLeave, onClick,
     } = this.props;
@@ -52,7 +52,7 @@ export default class Message extends React.Component<MessageItemProps, {}> {
       >
         <div className={cls} onClick={onClick}>
           {iconToRender}
-          <div>{message}</div>
+          <div>{content}</div>
         </div>
       </div>
     );

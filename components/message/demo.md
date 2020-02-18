@@ -27,13 +27,13 @@ class Demo extends React.Component {
   }
   noIcon() {
     Message.open({
-      message: "这是一条不带ICON的消息提示，出现在网站顶部3s后消失"
+      content: "这是一条不带ICON的消息提示，出现在网站顶部3s后消失"
     });
   }
   customIcon() {
     Message.open({
       icon: <Icon type="question-round-fill" size="sm" />,
-      message: "这是一条自定义ICON的消息提示，出现在网站顶部3s后消失"
+      content: "这是一条自定义ICON的消息提示，出现在网站顶部3s后消失"
     });
   }
   useReactNode() {
@@ -76,7 +76,7 @@ class Demo extends React.Component {
   showMessage = () => {
     let msgInstance = Message.loading({
       stayTime: 0,
-      message: "这是一条Loading的消息提示",
+      content: "这是一条Loading的消息提示",
       // 非必须，演示需要
       onClose: () => {
         this.setState({ msgInstance: null });
@@ -116,7 +116,7 @@ class Demo extends React.Component {
   showMessage = () => {
     Message.success({
       stayTime: 1500,
-      message: "这是一条带点击&关闭回调的消息提示",
+      content: "这是一条带点击&关闭回调的消息提示",
       onClick() {
         alert("你点击了该message");
       },
@@ -148,7 +148,7 @@ class Demo extends React.Component {
     Message.loading({
       ...option,
       stayTime: 2000,
-      message: "这是一条通知"
+      content: "这是一条通知"
     });
   }
   render() {
@@ -184,7 +184,7 @@ class Demo extends React.Component {
     Message.warning({
       key: "key1",
       stayTime: 0,
-      message: "这是一条自定义key的消息提示"
+      content: "这是一条自定义key的消息提示"
     });
     this.setState({ disabled: true });
   }
@@ -214,7 +214,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 `Message.open(options): { close(): void };`
 
-`Message.[success|warning|info|error|loading](options|string|React.ReactElement): { close(): void };`
+`Message.[success|warning|info|error|loading](options|React.ReactNode): { close(): void };`
 
 `Message.close(key: string): void;`
 
@@ -224,7 +224,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 参数     | 说明                              | 类型                       | 可选值                                 | 默认值     |
 | -------- | --------------------------------- | -------------------------- | -------------------------------------- | ---------- |
-| message  | 展示内容                          | string\|React.ReactElement | -                                      | -          |
+| content  | 展示内容                          | React.ReactNode | -                                      | -          |
 | stayTime | 停留时长(ms)。设置 0 则不自动隐藏 | number                     | -                                      | 3000       |
 | icon     | 图标                              | string\|React.ReactElement | success\|info\|warning\|error\|loading | -          |
 | key      | 唯一标识，可通过 close 方法关闭   | string                     | -                                      | (自动生成) |

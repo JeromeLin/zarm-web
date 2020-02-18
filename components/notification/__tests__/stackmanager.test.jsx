@@ -9,7 +9,7 @@ describe("StackManager", () => {
   const instance = new StackManager(Notification, "notification");
   const containCls = Notification.defaultProps.prefixCls + "-container";
   const title = "TestTitle";
-  const message = "this is a test message!";
+  const content = "this is a test notification!";
 
   it("instantiation correctly", () => {
     expect(instance.containerCls).toBe(containCls);
@@ -18,17 +18,17 @@ describe("StackManager", () => {
   });
 
   it("open correctly", () => {
-    const open1 = instance.open({ title, message });
+    const open1 = instance.open({ title, content });
     expect(typeof open1.close).toBe("function");
     expect(instance.notifyList.length).toBe(1);
     expect(document.body.querySelector("." + containCls)).not.toBe(null);
     const item = instance.notifyList[0];
     expect(item.props.title).toBe(title);
-    expect(item.props.message).toBe(message);
+    expect(item.props.content).toBe(content);
   });
 
   it("position correctly", () => {
-    instance.open({ title, message, position: "bottomLeft" });
+    instance.open({ title, content, position: "bottomLeft" });
     const item = instance.notifyList[0];
     expect(item.props.position).toBe("bottomLeft");
   });
@@ -40,7 +40,7 @@ describe("StackManager", () => {
 
   it("close correctly", () => {
     const instance = new StackManager(Notification, "notification");
-    const open1 = instance.open({ title, message });
+    const open1 = instance.open({ title, content });
     expect(instance.notifyList.length).toBe(1);
     open1.close();
     const item = instance.notifyList[0];
@@ -50,8 +50,8 @@ describe("StackManager", () => {
 
   it("close all correctly", () => {
     const instance = new StackManager(Notification, "notification");
-    instance.open({ title, message });
-    instance.open({ title, message });
+    instance.open({ title, content });
+    instance.open({ title, content });
 
     expect(instance.notifyList.length).toBe(2);
     instance.closeAll();
@@ -71,7 +71,7 @@ describe("StackManager", () => {
 
     jest.useFakeTimers();
     const instance = new StackManager(Notification, "notification");
-    const open1 = instance.open({ title, message });
+    const open1 = instance.open({ title, content });
 
     expect(instance.notifyList.length).toBe(1);
     jest.advanceTimersByTime(10000);
@@ -86,7 +86,7 @@ describe("StackManager", () => {
     jest.useFakeTimers();
     const instance = new StackManager(Notification, "notification");
     const key = "uniquekey";
-    instance.open({ title, message, key });
+    instance.open({ title, content, key });
     expect(instance.notifyList.length).toBe(1);
     instance.close(key);
     jest.advanceTimersByTime(10000);

@@ -3,18 +3,8 @@ import classnames from 'classnames';
 import Icon from '../icon';
 import { NotificationItemProps, NotificationIcon } from './PropsType';
 import { mapToIconType, mapToIconTheme, getStyle } from './utils';
-
-function getDefaultTitle(icon?: NotificationIcon | React.ReactElement) {
-  let title;
-  if (icon === 'success') {
-    title = '成功';
-  } else if (icon === 'warning') {
-    title = '警告';
-  } else if (icon === 'error') {
-    title = '错误';
-  }
-  return title || '通知';
-}
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
+import Lang from '../locale-provider/lang/zh-cn';
 
 function getIcon(icon: NotificationIcon | React.ReactElement, className: string) {
   if (React.isValidElement(icon)) {
@@ -26,7 +16,7 @@ function getIcon(icon: NotificationIcon | React.ReactElement, className: string)
   return iconType
     ? (
       <Icon
-        type={mapToIconType(icon)}
+        type={iconType}
         className={className}
         size="sm"
         theme={mapToIconTheme(icon)}
@@ -35,16 +25,18 @@ function getIcon(icon: NotificationIcon | React.ReactElement, className: string)
     : null;
 }
 
-export default class Notification extends React.Component<NotificationItemProps, {}> {
+export class Notification extends React.Component<NotificationItemProps, {}> {
   static defaultProps: NotificationItemProps = {
     prefixCls: 'zw-notification',
+    locale: Lang.Notification,
   };
 
   render() {
     const {
-      style, className, prefixCls, title, icon, message, footer,
+      style, className, prefixCls, title, icon, content, footer,
       top, bottom,
       onMouseEnter, onMouseLeave, onClose, onClick,
+      locale,
     } = this.props;
     const iconToRender = icon ? getIcon(icon, `${prefixCls}__icon`) : null;
     const cls = classnames(`${prefixCls}__content`, { 'has-icon': iconToRender });
@@ -59,8 +51,10 @@ export default class Notification extends React.Component<NotificationItemProps,
       >
         <div className={cls} onClick={onClick}>
           {iconToRender}
-          <div className={`${prefixCls}__head`}>{title || getDefaultTitle(icon)}</div>
-          {message && <div className={`${prefixCls}__body`}>{message}</div>}
+          <div className={`${prefixCls}__head`}>
+            {title || locale!.defaultTitles[icon as string] || locale!.defaultTitles.default}
+          </div>
+          {content && <div className={`${prefixCls}__body`}>{content}</div>}
           {footer && <div className={`${prefixCls}__foot`}>{footer}</div>}
         </div>
         <Icon
@@ -73,3 +67,9 @@ export default class Notification extends React.Component<NotificationItemProps,
     );
   }
 }
+
+const NotificationLocalized = LocaleReceiver('Notification')(Notification);
+// eslint-disable-next-line
+NotificationLocalized.defaultProps = Notification.defaultProps;
+
+export default NotificationLocalized;
