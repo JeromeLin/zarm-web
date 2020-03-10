@@ -63,7 +63,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
         class="button-wrapper"
       >
         <button
-          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
+          class="zw-button zw-button--default zw-button--md zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >
@@ -87,7 +87,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           </span>
         </button>
         <button
-          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
+          class="zw-button zw-button--default zw-button--md zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >

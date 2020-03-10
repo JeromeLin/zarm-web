@@ -2,7 +2,7 @@
 
 exports[`Checkbox renders CheckboxGroup correctly with defaultValue 1`] = `
 <div
-  class="zw-checkbox-group zw-checkbox-group--radius"
+  class="zw-checkbox-group zw-checkbox-group--xs zw-checkbox-group--radius"
 >
   <div
     class="zw-checkbox-group__inner"
@@ -124,7 +124,7 @@ exports[`Checkbox renders disabled Checkbox correctly 1`] = `
 
 exports[`Checkbox renders disabled CheckboxGroup correctly 1`] = `
 <div
-  class="zw-checkbox-group zw-checkbox-group--radius"
+  class="zw-checkbox-group zw-checkbox-group--xs zw-checkbox-group--radius"
 >
   <div
     class="zw-checkbox-group__inner"

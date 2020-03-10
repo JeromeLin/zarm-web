@@ -87,7 +87,7 @@ const Demo = () => (
           </Tooltip>
         </div>
 
-        <div style={{ width: 70, marginLeft: 70 * 4 }}>
+        <div style={{ width: 70, marginLeft: 70 * 4 + 20 }}>
           <Tooltip direction="rightTop" content="rightTop text">
             <Button>RT</Button>
           </Tooltip>

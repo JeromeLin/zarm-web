@@ -8,14 +8,17 @@
   border: none;
   border-radius: var(--radius-round);
   background-color: var(--switch-background);
-  transition: all 0.3s;
   vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s;
   user-select: none;
   cursor: pointer;
 
   @include switch-size(
     var(--switch-width-md),
     var(--switch-height-md),
+    var(--switch-font-size-md),
     3,
   );
 
@@ -24,6 +27,12 @@
     position: absolute;
     border-radius: var(--radius-round);
     background-color: var(--color-text-inverse);
+    transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+
+  @include e(text) {
+    display: block;
+    color: var(--color-text-inverse);
     transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
   }
 
@@ -55,6 +64,7 @@
     @include switch-size(
       var(--switch-width-sm),
       var(--switch-height-sm),
+      var(--switch-font-size-sm),
       2,
     );
   }

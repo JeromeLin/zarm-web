@@ -1,9 +1,9 @@
 # Checkbox 多选框
-拥有开/关状态的基础组件，常用于条目多选场景。
+拥有开/关状态的组件，常用于条目多选场景。
 
 
 
-## 基础用法
+## 基本用法
 单独使用，表示在两种状态之间切换。
 
 ```jsx
@@ -145,25 +145,23 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-Checkbox 
+<h3>Checkbox</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | checked | boolean | false | 是否选中 |
 | defaultChecked | boolean | false | 默认选中 |
 | disabled | boolean | false | 是否禁用 |
-| value | string \| number | - | - | 选择框对应的值 |
+| value | string \| number | - | 选项值 |
 | indeterminate | boolean | false | 是否是部分选中状态 |
 | id | string | - | 方便外部带有 for 属性的 label 标签控制当前 checkbox |
-| onChange | React.ChangeEventHandler&lt;HTMLInputElement&gt; | - | 勾选状态变化触发的事件 |
+| onChange | (event?: ChangeEvent&lt;HTMLInputElement&gt;) => void | - | 值变化时触发的回调函数 |
 
-Checkbox.Group 
+<h3>Checkbox.Group</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | value | string[] \| number[] | [] | 选中的值 | 
 | defaultValue | string[] \| number[] | [] | 默认选中的值 |    
 | disabled | boolean | false | 整组禁用 | 
-| onChange | (values: string[] \| number[]) => void | - | 勾选状态变化触发的事件 | 
-
-
+| onChange | (values?: number[] \| string[]) => void | - | 值变化时触发的回调函数 |

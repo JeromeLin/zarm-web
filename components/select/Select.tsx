@@ -36,7 +36,7 @@ class Select extends Component<PropsType, StateProps> {
   static contextType = FormItemContext;
 
   static defaultProps = {
-    prefixCls: 'za-select',
+    prefixCls: 'zw-select',
     radius: true,
     onSearchChange: () => { },
     onChange: () => { },

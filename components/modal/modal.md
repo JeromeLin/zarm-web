@@ -1,9 +1,9 @@
 ## Modal 模态框
 在当前页面打开一个模态对话框。
 
-### 基础用法
+### 基本用法
 
-Modal组件的基础用法。
+Modal组件的基本用法。
 
 :::demo 可以通过`Modal.Header`,`Modal.Body`,`Modal.Footer`子组件定义模态框的不同部分。
 

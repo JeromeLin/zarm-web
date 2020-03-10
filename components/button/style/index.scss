@@ -4,6 +4,8 @@
 
 @include b(button) {
   display: inline-block;
+  vertical-align: middle;
+
   @include button-base();
   @include button-size(
     var(--button-height-md),
@@ -13,15 +15,6 @@
   );
 
   /* Button sizes */
-  @include m(xl) {
-    @include button-size(
-      var(--button-height-xl),
-      var(--button-padding-h-xl),
-      var(--button-font-size-xl),
-      var(--button-icon-size-xl)
-    );
-  }
-
   @include m(lg) {
     @include button-size(
       var(--button-height-lg),
@@ -37,15 +30,6 @@
       var(--button-padding-h-sm),
       var(--button-font-size-sm),
       var(--button-icon-size-sm)
-    );
-  }
-
-  @include m(xs) {
-    @include button-size(
-      var(--button-height-xs),
-      var(--button-padding-h-xs),
-      var(--button-font-size-xs),
-      var(--button-icon-size-xs)
     );
   }
 
@@ -200,15 +184,6 @@
     );
 
     /* Button sizes */
-    @include m(xl) {
-      @include button-size(
-        var(--button-height-xl),
-        var(--button-padding-h-xl),
-        var(--button-font-size-xl),
-        var(--button-font-size-xl)
-      );
-    }
-
     @include m(lg) {
       @include button-size(
         var(--button-height-lg),
@@ -224,15 +199,6 @@
         var(--button-padding-h-sm),
         var(--button-font-size-sm),
         var(--button-font-size-sm)
-      );
-    }
-
-    @include m(xs) {
-      @include button-size(
-        var(--button-height-xs),
-        var(--button-padding-h-xs),
-        var(--button-font-size-xs),
-        var(--button-font-size-xs)
       );
     }
 
