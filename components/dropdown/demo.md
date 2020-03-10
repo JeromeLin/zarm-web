@@ -55,6 +55,68 @@ ReactDOM.render(<Demo1 />, mountNode);
 ```
 
 
+## 非受控形式的用法
+
+无需传入visible。
+
+```jsx
+import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+
+class Demo1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: false,
+    }
+  }
+
+  change = (visible) => {
+    this.setState({
+      dropdown: visible
+    });
+  }
+  render() {
+    const overlay = (
+      <ul class="dropdown-ul-list">
+        <li>小明</li>
+        <li>小红</li>
+        <li>小白</li>
+        <li>小黄</li>
+      </ul>
+    );
+    return (
+      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
+        <Dropdown
+          shape="radius"
+          content={overlay}
+          trigger="click"
+        >
+           <Button>toggle</Button>
+        </Dropdown>
+
+        <Dropdown
+          shape="radius"
+          content={overlay}
+          trigger="hover"
+        >
+           <Button>hover</Button>
+        </Dropdown>
+
+        <Dropdown
+          shape="radius"
+          content={overlay}
+          trigger="contextMenu"
+        >
+           <Button>contextMenu</Button>
+        </Dropdown>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo1 />, mountNode);
+```
+
 ## 弹窗的定位
 
 定位信息有 topLeft、top、topRight、rightTop、right、rightBottom、bottomLeft、bottom、bottomRight、leftTop、left、leftBottom 

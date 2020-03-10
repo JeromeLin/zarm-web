@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { PropsType } from './PropsType';
 
 const defaultProps = {
-  visible: false,
   prefixCls: 'zw-dropdown',
   direction: 'bottomLeft',
   trigger: 'click',
@@ -12,7 +11,17 @@ const defaultProps = {
   shape: 'rect',
 };
 
-export default class Dropdown extends React.Component<PropsType> {
+interface StateTypes {
+  visible: boolean;
+}
+
+function getVisible(props, state) {
+  const { visible: propsState } = props;
+  const { visible: stateProps } = state;
+  return propsState === undefined ? stateProps : propsState;
+}
+
+export default class Dropdown extends React.Component<PropsType, StateTypes> {
   static defaultProps = defaultProps;
 
   static visibleList = new Set();
@@ -24,6 +33,10 @@ export default class Dropdown extends React.Component<PropsType> {
   private hoverTimer?: number;
 
   private prevActiveElem?: Element;
+
+  state: StateTypes = {
+    visible: false,
+  };
 
   componentDidMount() {
     document.addEventListener('mousedown', this.onDocClick);
@@ -38,7 +51,7 @@ export default class Dropdown extends React.Component<PropsType> {
   }
 
   onDocClick = (e: MouseEvent) => {
-    const { visible } = this.props;
+    const visible = getVisible(this.props, this.state);
     const { current } = this.triggerPointRef;
     const { current: popperContentCurrent } = this.popperContenRef;
     if (visible) {
@@ -52,7 +65,7 @@ export default class Dropdown extends React.Component<PropsType> {
   };
 
   onVisibleChange = (visible: boolean) => {
-    const { disabled, onVisibleChange } = this.props;
+    const { disabled, onVisibleChange, visible: propsVisible } = this.props;
     if (disabled) {
       return;
     }
@@ -61,11 +74,17 @@ export default class Dropdown extends React.Component<PropsType> {
     } else {
       Dropdown.visibleList.delete(this);
     }
+    if (propsVisible === undefined) {
+      return this.setState({
+        visible,
+      });
+    }
     onVisibleChange(visible);
   };
 
   onClick = () => {
-    const { trigger, visible } = this.props;
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
     if (trigger !== 'click') {
       return;
     }
@@ -86,7 +105,8 @@ export default class Dropdown extends React.Component<PropsType> {
   };
 
   onMouseLeave = () => {
-    const { trigger, visible } = this.props;
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
     if (trigger !== 'hover' || !visible) {
       return;
     }
@@ -96,7 +116,8 @@ export default class Dropdown extends React.Component<PropsType> {
   };
 
   onContextMenu = (e: React.MouseEvent<HTMLSpanElement>) => {
-    const { trigger, visible } = this.props;
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
     if (trigger !== 'contextMenu') {
       return;
     }
@@ -122,7 +143,6 @@ export default class Dropdown extends React.Component<PropsType> {
 
   render() {
     const {
-      visible,
       children,
       className,
       prefixCls,
@@ -133,6 +153,9 @@ export default class Dropdown extends React.Component<PropsType> {
       shape,
       ...others
     } = this.props;
+
+    const visible = getVisible(this.props, this.state);
+
     const cls = classnames({
       [prefixCls]: true,
       [`${className}`]: !!className,
@@ -149,6 +172,7 @@ export default class Dropdown extends React.Component<PropsType> {
         {content}
       </div>
     );
+
     return (
       <Popper
         {...others}
