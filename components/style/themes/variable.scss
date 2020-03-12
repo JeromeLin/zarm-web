@@ -78,6 +78,23 @@
   --avatar-default-color: #fff;
   --avatar-default-bg-color: #ccc;
 
+  // Alert
+  --alert-margin-h-xs: var(--padding-h-xs);
+  --alert-margin-h-md: var(--padding-h-md);
+  --alert-margin-h-lg: var(--padding-h-lg);
+  --alert-padding-md: 30px;
+  --alert-icon-padding-h-md: 36px;
+  --alert-icon-padding-h-lg: 72px;
+  --alert-title-font-size-xs: 14px;
+  --alert-title-font-size-lg: 44px;
+  --alert-abs-h-md: 12px;
+  --alert-abs-h-lg: 16px;
+  --alert-abs-v-xs: 8px;
+  --alert-abs-v-md: 16px;
+  --alert-abs-v-lg: 20px;
+  --alert-message-color: #616161;
+  --alert-description-line-height: 22px;
+
   // Badge
   --badge-height: 14px;
   --badge-font-size: var(--font-size-xs);

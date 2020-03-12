@@ -5,7 +5,7 @@ import AlertProps from './PropsType';
 
 class Alert extends Component<AlertProps, any> {
   static defaultProps = {
-    prefixCls: 'ui-alert',
+    prefixCls: 'zw-alert',
     type: 'info',
     title: '',
     description: null,
@@ -83,12 +83,12 @@ class Alert extends Component<AlertProps, any> {
           ref={(domRef) => { this.domRef = domRef; }}
           style={{ width, ...style }}
           className={classnames(prefixCls, className, {
-            [`${prefixCls}-${type}`]: Boolean(type),
-            [`${prefixCls}-closable`]: closable,
-            [`${prefixCls}-no-with-description`]: !description,
-            [`${prefixCls}-sm-icon`]: showIcon && !description,
-            [`${prefixCls}-lg-icon`]: showIcon && Boolean(description),
-            [`${prefixCls}-close-animation`]: closeStart,
+            [`${prefixCls}--${type}`]: Boolean(type),
+            [`${prefixCls}--closable`]: closable,
+            [`${prefixCls}--nodescription`]: !description,
+            [`${prefixCls}--sm`]: showIcon && !description,
+            [`${prefixCls}--lg`]: showIcon && Boolean(description),
+            [`${prefixCls}--close-animation`]: closeStart,
           })}
         >
           {showIcon && <AlertIcon {...this.props} />}

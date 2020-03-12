@@ -1,77 +1,93 @@
-.ui-alert {
-  padding: 16px;
+
+@include b(alert) {
   position: relative;
-  color: #666;
-  line-height: 1.5;
+  padding: var(--padding-h-lg);
+  color: var(--color-text);
+  line-height: $base-line-height;
   border-radius: $base-radius;
-  margin-bottom: 16px;
+  margin-bottom: var(--alert-margin-h-lg);
   transition: all .3s ease;
   overflow: hidden;
 
-  &.ui-alert-sm-icon {
-    padding-left: 36px;
+  @include b(icon) {
+    position: absolute;
+    z-index: $base-zindex-message;
+  }
 
-    .zw-icon {
-      top: 13px;
-      left: 16px;
-      font-size: 14px;
+  @include m(sm) {
+    padding-left: var(--alert-icon-padding-h-md);
+    @include b(icon) {
+      top: var(--alert-abs-h-md);
+      left: var(--alert-abs-v-md);
+      font-size: var(--alert-title-font-size-xs);
     }
   }
 
-  &.ui-alert-lg-icon {
-    padding-left: 76px;
-
-    .zw-icon {
-      top: 16px;
-      left: 20px;
-      font-size: 44px;
+  @include m(lg) {
+    padding-left: var(--alert-icon-padding-h-lg);
+    @include b(icon) {
+      top: var(--alert-abs-h-lg);
+      left: var(--alert-abs-v-lg);
+      font-size: var(--alert-title-font-size-lg);
     }
   }
 
-  &.ui-alert-closable {
-    padding-right: 30px;
+  @include m(closable) {
+    padding-right: var(--alert-padding-md);
   }
 
-  &.ui-alert-no-with-description {
-    padding-top: 9px;
-    padding-bottom: 9px;
+  @include b(alert-message) {
+    display: block;
+    margin-bottom: var(--padding-v-xs);
+    font-size: $base-fontSize;
+    color: var(--color-text);
+    font-weight: 400;
+    line-height: $base-line-height;
+  }
 
-    .ui-alert-message {
-      color: #616161;
+  @include b(lert-description) {
+    display: block;
+    font-size: $base-fontSize-sm;
+    font-weight: 400;
+    color: var(--alert-message-color);
+    line-height: var(--alert-description-line-height);
+  }
+
+  @include m(nodescription) {
+    padding-top: var(--padding-v-sm);
+    padding-bottom: var(--padding-v-sm);
+
+    @include b(alert-message) {
+      color: var(--alert-message-color);
       margin-bottom: 0;
     }
   }
 
-  .zw-icon {
+  @include b(alert-close-btn) {
     position: absolute;
-    z-index: 1;
-  }
-
-  .ui-alert-close-btn {
-    position: absolute;
-    z-index: 1;
-    right: 15px;
-    top: 12px;
+    z-index: $base-zindex-message;
+    right: var(--alert-abs-h-lg);
+    top: var(--alert-abs-h-md);
     font-size: $base-fontSize-sm;
-    color: #616161;
+    color: var(--color-text);
     cursor: pointer;
     transition: color .2s ease;
 
     &:hover,
     &:focus {
-      color: #343434;
+      color: var(--color-text-caption);
     }
   }
 
-  .ui-alert-custom-close-btn {
+  @include b(alert-custom-close-btn) {
     padding: 0;
     position: absolute;
-    top: 8px;
-    right: 16px;
+    top: var(--alert-abs-v-xs);
+    right: var(--alert-abs-h-lg);
     overflow: hidden;
-    font-size: 12px;
-    color: #616161;
-    line-height: 22px;
+    font-size: var(--font-size-sm);
+    color: var(--alert-message-color);
+    line-height: var(--alert-description-line-height);
     background-color: transparent;
     border: none;
     outline: none;
@@ -80,56 +96,39 @@
 
     &:hover,
     &:focus {
-      color: #343434;
+      color: var(--color-text);
     }
   }
 
-  .ui-alert-message {
-    display: block;
-    margin-bottom: 4px;
-    font-size: $base-fontSize;
-    color: #343434;
-    font-weight: 400;
-    line-height: $base-line-height;
+  @include m(success) {
+    background: rgba($base-theme-success, 0.2);
+
+    @include b(icon) {
+      color: $base-theme-success;
+    }
   }
 
-  .ui-alert-description {
-    display: block;
-    font-size: $base-fontSize-sm;
-    font-weight: 400;
-    color: #616161;
-    line-height: 22px;
+  @include m(info) {
+    background: rgba($base-theme-info, 0.2);
+  
+    @include b(icon) {
+      color: $base-theme-info;
+    }
   }
-}
-
-.ui-alert-success {
-  background: rgba($base-theme-success, 0.2);
-
-  .zw-icon {
-    color: $base-theme-success;
+  
+  @include m(warning) {
+    background: rgba($base-theme-warning, 0.2);
+  
+    @include b(icon) {
+      color: $base-theme-warning;
+    }
   }
-}
-
-.ui-alert-info {
-  background: rgba($base-theme-info, 0.2);
-
-  .zw-icon {
-    color: $base-theme-info;
-  }
-}
-
-.ui-alert-warning {
-  background: rgba($base-theme-warning, 0.2);
-
-  .zw-icon {
-    color: $base-theme-warning;
-  }
-}
-
-.ui-alert-error {
-  background: rgba($base-theme-error, 0.2);
-
-  .zw-icon {
-    color: $base-theme-error;
+  
+  @include m(error) {
+    background: rgba($base-theme-error, 0.2);
+  
+    @include b(icon) {
+      color: $base-theme-error;
+    }
   }
 }

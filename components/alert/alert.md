@@ -126,7 +126,7 @@ class Demo extends React.Component {
         <Alert closable title="基础用法-信息提示" type="info" closeText="查看详情"/>
         <Alert
           closable
-          title="阻止了折叠隐藏行为"
+          title="阻止折叠隐藏行为"
           preventHide
           type="info"
           onClick={({close}) => {
@@ -139,16 +139,15 @@ class Demo extends React.Component {
         <Alert
           closable
           closeText={<CustomText onClick={() => {window.confirm('您点击了我')}}/>}
-          title="基础用法-警告"
+          title="点击关闭按钮不隐藏警示框"
           type="warning"
-          description="警告描述，警告描述，警告描述，警告描述，警告描述，警告描述，警告描述，警告描述，警告描述"
+          description="点击关闭按钮不隐藏警示框"
         />
         <Alert
           closable
-          closeText={({close}) => <Icon className="ui-alert-custom-close-btn" type="wrong-round-fill" onClick={close}/>}
-          title="基础用法-错误"
+          closeText={({close}) => <Icon className="zw-alert-custom-close-btn" type="wrong-round-fill" onClick={close}/>}
+          title="自定义icon"
           type="error"
-          description="错误描述，错误描述，错误描述，错误描述，错误描述，错误描述，错误描述，错误描述，错误描述"
         />
       </>
     );
