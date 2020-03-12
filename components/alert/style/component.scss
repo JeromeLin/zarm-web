@@ -11,7 +11,7 @@
 
   @include b(icon) {
     position: absolute;
-    z-index: $base-zindex-message;
+    // z-index: $base-zindex-message;
   }
 
   @include m(sm) {
@@ -65,7 +65,7 @@
 
   @include b(alert-close-btn) {
     position: absolute;
-    z-index: $base-zindex-message;
+    // z-index: $base-zindex-message;
     right: var(--alert-abs-h-lg);
     top: var(--alert-abs-h-md);
     font-size: $base-fontSize-sm;
