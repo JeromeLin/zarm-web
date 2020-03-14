@@ -2,20 +2,25 @@
 
 @include b(dropdown) {
   width: auto;
-  border: 1px solid #d9d9d9;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 0, 0, 0.17);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   text-align: left;
   will-change: transform, opacity;
-  margin: 5px 0;
-  z-index: var(--dropdown-popup-index);
+  background: #fff;
 
-  &.za-popper--rightTop,
-  &.za-popper--right,
-  &.za-popper--rightBottom,
-  &.za-popper--leftTop,
-  &.za-popper--left,
-  &.za-popper--leftBottom {
-    margin: 0 5px;
+  &[x-placement^=right] {
+    margin-left: 4px;
+  }
+
+  &[x-placement^=top] {
+    margin-bottom: 4px;
+  }
+
+  &[x-placement^=bottom] {
+    margin-top: 4px;
+  }
+
+  &[x-placement^=left] {
+    margin-right: 4px;
   }
 
   @include m(rect) {

@@ -1,131 +1,81 @@
 # Dropdown 下拉框
+向下弹出的容器。
 
-下拉框组件,API与zarm popper组件一致。
+
 
 ## 基础用法
-
-最简单的下拉菜单。
+下拉菜单最基本的使用方式。
 
 ```jsx
-import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
+import { Dropdown, Button } from 'zarm-web';
 
-class Demo1 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dropdown: false,
-    }
+const overlay = <div style={{ padding: '8px 12px' }}>Dropdown Content</div>;
+
+ReactDOM.render(
+  <Dropdown content={overlay}>
+    <Button>Click me</Button>
+  </Dropdown>,
+  mountNode
+);
+```
+
+
+
+## 受控的下拉框
+外部控制下拉框的显示与隐藏。
+
+```jsx
+import { Dropdown, Button } from 'zarm-web';
+
+class Demo extends React.Component {
+  state = {
+    visible: false,
   }
 
-  change = (visible) => {
-    this.setState({
-      dropdown: visible
-    });
-  }
+  onClose = () => {
+    this.setState({ visible: !this.state.visible });
+  };
+
+  onVisibleChange = (visible) => {
+    this.setState({ visible });
+  };
+
   render() {
+    const { visible } = this.state;
+
     const overlay = (
-      <ul class="dropdown-ul-list">
-        <li>小明</li>
-        <li>小红</li>
-        <li>小白</li>
-        <li>小黄</li>
-      </ul>
-    );
-    return (
-      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
-        <Dropdown
-          shape="radius"
-          visible={this.state.dropdown}
-          content={overlay}
-          trigger="click"
-          onVisibleChange={(visible)=>{
-            this.setState({
-              dropdown:visible
-            });
-          }}
-        >
-           <Button>toggle</Button>
-        </Dropdown>
+      <div style={{ padding: '8px 12px' }} onClick={this.onClose}>
+        Click me will close the dropdown
       </div>
+    );
+
+    return (
+      <>
+        <Dropdown
+          visible={visible}
+          onVisibleChange={this.onVisibleChange}
+          content={overlay}
+        >
+          <Button>Click me</Button>
+        </Dropdown>
+      </>
     )
   }
 }
 
-ReactDOM.render(<Demo1 />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-## 非受控形式的用法
-
-无需传入visible。
-
-```jsx
-import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
-
-class Demo1 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dropdown: false,
-    }
-  }
-
-  change = (visible) => {
-    this.setState({
-      dropdown: visible
-    });
-  }
-  render() {
-    const overlay = (
-      <ul class="dropdown-ul-list">
-        <li>小明</li>
-        <li>小红</li>
-        <li>小白</li>
-        <li>小黄</li>
-      </ul>
-    );
-    return (
-      <div className="dropdown-trigger-box" style={{position: 'relative'}}>
-        <Dropdown
-          shape="radius"
-          content={overlay}
-          trigger="click"
-        >
-           <Button>toggle</Button>
-        </Dropdown>
-
-        <Dropdown
-          shape="radius"
-          content={overlay}
-          trigger="hover"
-        >
-           <Button>hover</Button>
-        </Dropdown>
-
-        <Dropdown
-          shape="radius"
-          content={overlay}
-          trigger="contextMenu"
-        >
-           <Button>contextMenu</Button>
-        </Dropdown>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo1 />, mountNode);
-```
 
 ## 弹窗的定位
 
-定位信息有 topLeft、top、topRight、rightTop、right、rightBottom、bottomLeft、bottom、bottomRight、leftTop、left、leftBottom 
-使用 direction 属性控制弹窗的位置。
+使用 direction 属性设置弹窗的位置，支持 6 个弹出位置。
 
 ```jsx
 import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
 
-class Demo2 extends React.Component {
+class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -147,16 +97,14 @@ class Demo2 extends React.Component {
         <li>小黄</li>
       </ul>
     );
-    const c = [
-      'topLeft','top','topRight','rightTop','right','rightBottom','bottomLeft','bottom','bottomRight','leftTop','left','leftBottom'
-    ];
+    const directionMap = ['topLeft', 'top', 'topRight', 'bottomLeft', 'bottom', 'bottomRight'];
     return (
       <div className="dropdown-trigger-box" style={{position: 'relative'}}>
         {
-          c.map((item, index)=>{
+          directionMap.map((item, index)=>{
             return (
               <Dropdown
-                key={item}
+                key={+index}
                 direction={item}
                 visible={this.state[`dropdown${index}`]}
                 onVisibleChange={(visible) => {
@@ -166,9 +114,7 @@ class Demo2 extends React.Component {
                 }}
                 content={overlay}
               >
-                <Button theme="primary">
-                  {item}
-                </Button>
+                <Button>{item}</Button>
               </Dropdown>
             );
           })
@@ -178,7 +124,7 @@ class Demo2 extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo2 />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## 三种触发方式
