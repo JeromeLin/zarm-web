@@ -1,18 +1,18 @@
 import {
   NotificationIcon,
-  NotificationAPIProps,
+  NotificationOptions,
   NotificationProps,
   NotificationItemProps,
-  NotificationAPI,
-  NotificationAPIReturn,
+  NotificationInstance,
+  NotificationReturnInstance,
 } from '../notification/PropsType';
 
 export type MessageIcon = NotificationIcon;
-export type MessageAPIProps = NotificationAPIProps;
+export type MessageOptions = NotificationOptions;
 export type MessageItemProps = NotificationItemProps;
 export type MessageProps = NotificationProps;
-export type MessageAPIReturn = NotificationAPIReturn;
+export type MessageReturnInstance = NotificationReturnInstance;
 
-export interface MessageAPI extends NotificationAPI {
-  loading(props: MessageAPIProps): MessageAPIReturn;
+export interface MessageInstance extends NotificationInstance {
+  loading(props: MessageOptions): MessageReturnInstance;
 }

@@ -1,15 +1,14 @@
 import React, { ComponentClass, ComponentElement, RefObject } from 'react';
 import ReactDOM from 'react-dom';
 import StackItem from './StackItem';
-import { NotificationItemProps, NotificationAPIReturn } from './PropsType';
-import { Positions } from './enums';
+import { NotificationItemProps, NotificationReturnInstance, NotificationPositions } from './PropsType';
 
-function isAtBottom(position: Positions) {
+function isAtBottom(position: NotificationPositions) {
   return position.indexOf('bottom') === 0;
 }
 
-function getPosition(position?: Positions): Positions {
-  return (position && Positions[position]) || Positions.topRight;
+function getPosition(position?: NotificationPositions): NotificationPositions {
+  return (position && NotificationPositions[position]) || NotificationPositions.topRight;
 }
 
 export default class StackManager {
@@ -29,12 +28,12 @@ export default class StackManager {
     this.componentName = componentName;
   }
 
-  private render(position: Positions) {
+  private render(position: NotificationPositions) {
     const list = this.notifyList.filter((item) => item.props.position === position);
     ReactDOM.render(<>{list}</>, this.getContainerDom(position, true));
   }
 
-  private getContainerDom(position: Positions, create?: boolean) {
+  private getContainerDom(position: NotificationPositions, create?: boolean) {
     const positionCls = `${this.containerCls}--${position}`;
     let div = document.querySelector(`.${positionCls}`);
     if (!div && create) {
@@ -45,7 +44,7 @@ export default class StackManager {
     return div as HTMLDivElement;
   }
 
-  private remove(key: string, position: Positions) {
+  private remove(key: string, position: NotificationPositions) {
     const index = this.notifyList.findIndex((item) => item.key === key);
     if (index > -1) {
       this.notifyList.splice(index, 1);
@@ -54,7 +53,7 @@ export default class StackManager {
   }
 
   // To display a new StackItem
-  open(props: NotificationItemProps): NotificationAPIReturn {
+  open(props: NotificationItemProps): NotificationReturnInstance {
     this.keySeed += 1;
     const newKey = props.key || String(this.keySeed);
     const position = getPosition(props.position);
@@ -99,7 +98,7 @@ export default class StackManager {
   // To unmount & reomve container dom
   destroy() {
     this.notifyList.length = 0;
-    Object.keys(Positions).forEach((position: Positions) => {
+    Object.keys(NotificationPositions).forEach((position: NotificationPositions) => {
       const div = this.getContainerDom(position);
       if (div) {
         ReactDOM.unmountComponentAtNode(div);

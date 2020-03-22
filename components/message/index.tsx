@@ -1,13 +1,12 @@
 import StackManager from '../notification/StackManager';
-import { MessageItemProps, MessageIcon, MessageAPI, MessageAPIProps } from './PropsType';
+import { MessageItemProps, MessageIcon, MessageInstance, MessageOptions } from './PropsType';
 import { handleOptions } from '../notification/utils';
-import { Positions } from '../notification/enums';
-
+import { NotificationPositions } from '../notification/PropsType';
 import Message from './Message';
 
 const managerInstance = new StackManager(Message, 'message');
 
-function showMessage(options: MessageAPIProps, icon?: MessageIcon) {
+function showMessage(options: MessageOptions, icon?: MessageIcon) {
   const newOptions: MessageItemProps = handleOptions(options);
   if (icon) {
     newOptions.icon = icon;
@@ -18,11 +17,11 @@ function showMessage(options: MessageAPIProps, icon?: MessageIcon) {
   ) {
     newOptions.stayTime = newOptions.icon === 'loading' ? 0 : 3000;
   }
-  newOptions.position = Positions.topCenter;
+  newOptions.position = NotificationPositions.topCenter;
   return managerInstance.open(newOptions);
 }
 
-const messageApi: Partial<MessageAPI> = {
+const messageInstance: Partial<MessageInstance> = {
   open(options: MessageItemProps) {
     return showMessage(options);
   },
@@ -38,9 +37,9 @@ const messageApi: Partial<MessageAPI> = {
 };
 
 ['success', 'warning', 'info', 'error', 'loading'].forEach((iconType) => {
-  messageApi[iconType] = (options: MessageAPIProps) => {
+  messageInstance[iconType] = (options: MessageOptions) => {
     return showMessage(options, iconType as MessageIcon);
   };
 });
 
-export default messageApi as MessageAPI;
+export default messageInstance as MessageInstance;

@@ -1,8 +1,9 @@
 # Message 全局提示
 
 全局展示操作反馈信息。浮于顶部居中，3s 后自动消失，不会打断用户操作。
-
 当鼠标移入移出时会重新计算停留时间。
+
+
 
 ## 基本用法
 
@@ -10,53 +11,67 @@
 import { Message, Button, Icon } from 'zarm-web';
 
 class Demo extends React.Component {
-  showSuccess() {
-    Message.success("这是一条成功的消息提示，出现在网站顶部3s后消失");
-  }
-  showInfo() {
-    Message.info("这是一条普通消息提示，出现在网站顶部3s后消失");
-  }
-  showError() {
-    Message.error("这是一条错误的消息提示，出现在网站顶部3s后消失");
-  }
-  showWarning() {
-    Message.warning("这是一条警告的消息提示，出现在网站顶部3s后消失");
-  }
-  showLoading() {
-    Message.loading("这是一条Loading的消息提示，不会自动消失");
-  }
-  noIcon() {
+  showSuccess = () => {
+    Message.success('这是一条成功的消息提示，出现在网站顶部3s后消失');
+  };
+
+  showInfo = () => {
+    Message.info('这是一条普通消息提示，出现在网站顶部3s后消失');
+  };
+
+  showError = () => {
+    Message.error('这是一条错误的消息提示，出现在网站顶部3s后消失');
+  };
+
+  showWarning = () => {
+    Message.warning('这是一条警告的消息提示，出现在网站顶部3s后消失');
+  };
+
+  showLoading = () => {
+    Message.loading('这是一条Loading的消息提示，不会自动消失');
+  };
+
+  noIcon = () => {
     Message.open({
-      content: "这是一条不带ICON的消息提示，出现在网站顶部3s后消失"
+      content: '这是一条不带Icon的消息提示，出现在网站顶部3s后消失',
     });
-  }
-  customIcon() {
+  };
+
+  customIcon = () => {
     Message.open({
       icon: <Icon type="question-round-fill" size="sm" />,
-      content: "这是一条自定义ICON的消息提示，出现在网站顶部3s后消失"
+      content: '这是一条自定义Icon的消息提示，出现在网站顶部3s后消失',
     });
   }
-  useReactNode() {
+
+  customContent = () => {
     Message.error(
-      <div style={{ color: "red" }}>
+      <div style={{ color: 'red' }}>
         这是一条错误的消息提示，出现在网站顶部3s后消失
       </div>
     );
   }
+
+  closeAll = () => Message.closeAll();
+
   render() {
     return (
       <>
-        <div className="btn-box">
-          <Button onClick={() => this.showSuccess()}>成功</Button>
-          <Button onClick={() => this.showInfo()}>信息</Button>
-          <Button onClick={() => this.showWarning()}>警告</Button>
-          <Button onClick={() => this.showError()}>错误</Button>
-          <Button onClick={() => this.showLoading()}>加载</Button>
-          <Button onClick={() => this.noIcon()}>不带ICON</Button>
-          <Button onClick={() => this.customIcon()}>自定义ICON</Button>
-          <Button onClick={() => this.useReactNode()}>使用ReactNode</Button>
+        <div className="rows">
+          <Button onClick={this.showSuccess}>成功</Button>
+          <Button onClick={this.showInfo}>信息</Button>
+          <Button onClick={this.showWarning}>警告</Button>
+          <Button onClick={this.showError}>错误</Button>
+          <Button onClick={this.showLoading}>加载中</Button>
         </div>
-        <Button onClick={() => Message.closeAll()}>关闭所有</Button>
+        <div className="rows">
+          <Button onClick={this.noIcon}>不带Icon</Button>
+          <Button onClick={this.customIcon}>自定义Icon</Button>
+          <Button onClick={this.customContent}>自定义内容</Button>
+        </div>
+        <div className="rows">
+          <Button theme="primary" onClick={this.closeAll}>关闭所有</Button>
+        </div>
       </>
     );
   }
@@ -65,8 +80,9 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 手动关闭
 
+
+## 手动关闭
 调用 instance.close()
 
 ```js

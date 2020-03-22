@@ -1,15 +1,22 @@
 import React from 'react';
-import { Positions } from './enums';
 
 export type NotificationIcon = 'default' | 'error' | 'success' | 'warning' | 'info' | 'loading';
-export type NotificationAPIProps = NotificationItemProps | React.ReactNode;
+export type NotificationOptions = NotificationItemProps | React.ReactNode;
+
+export enum NotificationPositions {
+  topLeft = 'topLeft',
+  topRight = 'topRight',
+  topCenter = 'topCenter',
+  bottomLeft = 'bottomLeft',
+  bottomRight = 'bottomRight'
+}
 
 export interface NotificationItemProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   className?: string;
 
-  position?: Positions;
+  position?: NotificationPositions;
   stayTime?: number;
 
   icon?: React.ReactElement | NotificationIcon;
@@ -32,8 +39,8 @@ export interface NotificationItemProps {
   onMouseLeave?: () => void;
 
   key?: string;
-  top?: number;
-  bottom?: number;
+  top?: number | string;
+  bottom?: number | string;
   // getContainer?: () => HTMLElement | HTMLElement;
 }
 
@@ -43,16 +50,16 @@ export interface NotificationProps extends NotificationItemProps {
   willUnmount?: () => void;
 }
 
-export interface NotificationAPIReturn {
+export interface NotificationReturnInstance {
   close(): void;
 }
 
-export interface NotificationAPI {
-  open(props: NotificationItemProps): NotificationAPIReturn;
-  success(props: NotificationAPIProps): NotificationAPIReturn;
-  warning(props: NotificationAPIProps): NotificationAPIReturn;
-  info(props: NotificationAPIProps): NotificationAPIReturn;
-  error(props: NotificationAPIProps): NotificationAPIReturn;
+export interface NotificationInstance {
+  open(props: NotificationItemProps): NotificationReturnInstance;
+  success(options: NotificationOptions): NotificationReturnInstance;
+  warning(options: NotificationOptions): NotificationReturnInstance;
+  info(options: NotificationOptions): NotificationReturnInstance;
+  error(options: NotificationOptions): NotificationReturnInstance;
   close(key: string): void;
   closeAll(): void;
   destroy(): void;

@@ -6,7 +6,7 @@
   height: 0;
   top: 20px;
   right: calc(var(--notification-width) + 20px);
-  overflow: visible !important;
+  overflow: visible;
   z-index: var(--zindex-notification);
 
   @include m(topLeft) {
@@ -66,6 +66,7 @@
     top: 11px;
     right: 16px;
     color: #909090;
+    cursor: pointer;
 
     &:hover {
       color: #000;
