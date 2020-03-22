@@ -30,6 +30,7 @@
   // 堆叠顺序
   --zindex-tooltip: 1500;
   --zindex-popup: 1500;
+  --zindex-dropdown: 1101;
 
   // 透明度
   --opacity-disabled: .5;
@@ -327,7 +328,4 @@
   --input-addon-background-color: #f2f2f2;
   --input-addon-border-color: #d9d9d9;
   --input-placeholder-color: #bcbcbc;
-
-  // dropdown
-  --dropdown-popup-index: 1101;
 }

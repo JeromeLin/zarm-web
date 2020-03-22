@@ -6,6 +6,7 @@
   text-align: left;
   will-change: transform, opacity;
   background: #fff;
+  z-index: var(--zindex-dropdown);
 
   &[x-placement^=right] {
     margin-left: 4px;
