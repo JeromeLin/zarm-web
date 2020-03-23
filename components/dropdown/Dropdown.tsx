@@ -1,18 +1,27 @@
 import React, { KeyboardEventHandler } from 'react';
 import Popper from 'zarm/lib/popper';
 import classnames from 'classnames';
-import { PropsType } from './PropsType';
+import { DropdownProps } from './PropsType';
 
 const defaultProps = {
-  visible: false,
   prefixCls: 'zw-dropdown',
   direction: 'bottomLeft',
   trigger: 'click',
   disabled: false,
-  shape: 'rect',
+  shape: 'radius',
 };
 
-export default class Dropdown extends React.Component<PropsType> {
+interface DropdownStates {
+  visible: boolean;
+}
+
+function getVisible(props, state) {
+  const { visible: propsState } = props;
+  const { visible: stateProps } = state;
+  return propsState === undefined ? stateProps : propsState;
+}
+
+export default class Dropdown extends React.Component<DropdownProps, DropdownStates> {
   static defaultProps = defaultProps;
 
   static visibleList = new Set();
@@ -24,6 +33,10 @@ export default class Dropdown extends React.Component<PropsType> {
   private hoverTimer?: number;
 
   private prevActiveElem?: Element;
+
+  state: DropdownStates = {
+    visible: false,
+  };
 
   componentDidMount() {
     document.addEventListener('mousedown', this.onDocClick);
@@ -38,7 +51,7 @@ export default class Dropdown extends React.Component<PropsType> {
   }
 
   onDocClick = (e: MouseEvent) => {
-    const { visible } = this.props;
+    const visible = getVisible(this.props, this.state);
     const { current } = this.triggerPointRef;
     const { current: popperContentCurrent } = this.popperContenRef;
     if (visible) {
@@ -52,7 +65,7 @@ export default class Dropdown extends React.Component<PropsType> {
   };
 
   onVisibleChange = (visible: boolean) => {
-    const { disabled, onVisibleChange } = this.props;
+    const { disabled, onVisibleChange, visible: propsVisible } = this.props;
     if (disabled) {
       return;
     }
@@ -61,11 +74,19 @@ export default class Dropdown extends React.Component<PropsType> {
     } else {
       Dropdown.visibleList.delete(this);
     }
-    onVisibleChange(visible);
+    if (propsVisible === undefined) {
+      return this.setState({
+        visible,
+      });
+    }
+    if (typeof onVisibleChange === 'function') {
+      onVisibleChange(visible);
+    }
   };
 
   onClick = () => {
-    const { trigger, visible } = this.props;
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
     if (trigger !== 'click') {
       return;
     }
@@ -86,7 +107,8 @@ export default class Dropdown extends React.Component<PropsType> {
   };
 
   onMouseLeave = () => {
-    const { trigger, visible } = this.props;
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
     if (trigger !== 'hover' || !visible) {
       return;
     }
@@ -96,7 +118,8 @@ export default class Dropdown extends React.Component<PropsType> {
   };
 
   onContextMenu = (e: React.MouseEvent<HTMLSpanElement>) => {
-    const { trigger, visible } = this.props;
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
     if (trigger !== 'contextMenu') {
       return;
     }
@@ -122,7 +145,6 @@ export default class Dropdown extends React.Component<PropsType> {
 
   render() {
     const {
-      visible,
       children,
       className,
       prefixCls,
@@ -133,11 +155,8 @@ export default class Dropdown extends React.Component<PropsType> {
       shape,
       ...others
     } = this.props;
-    const cls = classnames({
-      [prefixCls]: true,
-      [`${className}`]: !!className,
-      [`${prefixCls}--${shape}`]: true,
-    });
+    const visible = getVisible(this.props, this.state);
+    const cls = classnames(prefixCls, className, `${prefixCls}--${shape}`);
     const dropdownContent = (
       <div
         tabIndex={-1}
@@ -149,13 +168,14 @@ export default class Dropdown extends React.Component<PropsType> {
         {content}
       </div>
     );
+
     return (
       <Popper
         {...others}
         visible={disabled ? false : visible}
         className={cls}
-        onVisibleChange={this.onVisibleChange}
         trigger="manual"
+        onVisibleChange={this.onVisibleChange}
         content={dropdownContent}
       >
         <span

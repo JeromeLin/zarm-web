@@ -1,6 +1,6 @@
-# 国际化
+# LocaleProvider 国际化
 
-LocaleProvider组件提供了国际化功能，可以通过locale属性设置语言包。
+提供了国际化功能，可以通过locale属性设置语言包。
 
 ## 基本用法
 

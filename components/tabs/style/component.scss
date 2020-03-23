@@ -1,0 +1,343 @@
+@import './mixin';
+
+$default-transition: .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+@include b(tabs) {
+  position: relative;
+  overflow: hidden;
+
+  @include e(header) {
+    position: relative;
+    margin-bottom: 16px;
+    transition: padding $default-transition;
+
+    &__scroll {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__arrow {
+      position: absolute;
+      text-align: center;
+      transition: width $default-transition;
+      cursor: pointer;
+
+      @include b(icon) {
+        color: var(--color-text-caption);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &:hover {
+        @include b(icon) {
+          color: var(--tabs-default-icon-hover-color);
+        }
+      }
+
+      &--disabled {
+        cursor: not-allowed;
+        pointer-events: auto;
+
+        @include b(icon) {
+          color: var(--tabs-default-icon-disabled-color);
+        }
+
+        &:hover {
+          @include b(icon) {
+            color: var(--tabs-default-icon-disabled-color);
+          }
+        }
+      }
+    }
+
+    &__nav {
+      position: relative;
+      transition: transform $default-transition;
+    }
+
+    &__item {
+      position: relative;
+      cursor: pointer;
+      line-height: normal;
+      color: var(--tabs-default-color);
+
+      &:hover {
+        color: var(--tabs-default-hover-color);
+      }
+
+      @include m(disabled) {
+        color: var(--tabs-default-disabled-color);
+        cursor: not-allowed;
+
+        &:hover {
+          color: var(--tabs-default-disabled-color);
+        }
+      }
+
+      @include m(active) {
+        background: var(--tabs-default-active-background);
+        color: var(--tabs-default-active-color);
+      }
+
+      @include b(icon) {
+        margin: 0 8px 0 0;
+        display: inline-block;
+
+        @include m(wrong) {
+          margin: 0 0 0 8px;
+          color: var(--tabs-default-icon-color);
+
+          &:hover {
+            color: var(--tabs-default-icon-hover-color);
+          }
+        }
+      }
+    }
+
+    &__line {
+      transition: transform $default-transition;
+    }
+  }
+
+  @include e(body) {
+    position: relative;
+
+    &__item {
+      line-height: normal;
+      opacity: 0;
+      overflow: hidden;
+      height: 0;
+      font-size: 14px;
+
+      @include m(active) {
+        opacity: 1;
+        height: auto;
+      }
+    }
+  }
+
+  @include m(sm) {
+    @include tabs-size(
+      var(--tabs-font-size-sm),
+      var(--tabs-header-icon-sm),
+      var(--tabs-header-line-height-sm),
+      var(--tabs-header-card-height-sm),
+      var(--tabs-header-vertical-height-sm),
+      var(--tabs-header-vertical-padding-sm)
+    );
+  }
+
+  @include m(md) {
+    @include tabs-size(
+      var(--tabs-font-size-md),
+      var(--tabs-header-icon-md),
+      var(--tabs-header-line-height-md),
+      var(--tabs-header-card-height-md),
+      var(--tabs-header-vertical-height-md),
+      var(--tabs-header-vertical-padding-md)
+    );
+  }
+
+  @include m(lg) {
+    @include tabs-size(
+      var(--tabs-font-size-lg),
+      var(--tabs-header-icon-lg),
+      var(--tabs-header-line-height-lg),
+      var(--tabs-header-card-height-lg),
+      var(--tabs-header-vertical-height-lg),
+      var(--tabs-header-vertical-padding-lg)
+    );
+  }
+
+  @include m(horizontal) {
+    @include e(header) {
+      border-bottom: 1px solid var(--border-color);
+
+      &--arrow-mode {
+        padding: 0 20px;
+      }
+
+      &__scroll {
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-bottom: -1px;
+      }
+
+      &__arrow {
+        height: 100%;
+        width: 20px;
+        top: 0;
+
+        &--left {
+          left: 0;
+        }
+
+        &--right {
+          right: 0;
+        }
+      }
+
+      &__nav {
+        display: inline-block;
+      }
+
+      &__item {
+        display: inline-block;
+        text-align: center;
+      }
+
+      &__line {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: auto;
+        border-bottom: 2px solid var(--tabs-default-line-color);
+      }
+    }
+
+    @include e(body) {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+
+      &--animated {
+        transition: margin-left $default-transition;
+      }
+
+      &__item {
+        width: 100%;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  @include m(vertical) {
+    @include clearfix;
+    @include e(header) {
+      border-right: 1px solid var(--border-color);
+      float: left;
+
+      &--arrow-mode {
+        padding: 30px 0;
+      }
+
+      &__scroll {
+        height: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-right: -1px;
+      }
+
+      &__item {
+        padding: 0;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &__line {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-right: 2px solid var(--tabs-default-line-color);
+      }
+
+      &__arrow {
+        height: 30px;
+        width: 100%;
+        left: 0;
+
+        &--top {
+          top: 0;
+        }
+
+        &--bottom {
+          bottom: 0;
+        }
+      }
+    }
+
+    @include e(body) {
+      padding-left: 10px;
+      overflow: hidden;
+      position: relative;
+
+      &__item {
+        height: 0;
+
+        &--active {
+          height: auto;
+        }
+      }
+    }
+  }
+
+  @include m(line) {
+    @include e(header) {
+      &__item {
+        margin-right: 16px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  @include m(card) {
+    @include e(header) {
+      &__item {
+        border: 1px solid var(--border-color);
+        border-radius: 4px 4px 0 0;
+        margin-right: 4px;
+        background: var(--tabs-default-card-background);
+
+        &--active {
+          border-bottom: 1px solid var(--tabs-default-background-color);
+          background: var(--tabs-default-active-background);
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  @include m(noborder-card) {
+    @include e(header) {
+      margin-bottom: 0;
+      border-bottom: none;
+
+      &__item {
+        background: var(--tabs-default-noborder-background);
+
+        &--active {
+          background: var(--tabs-default-background-color);
+          border: none;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+        }
+      }
+    }
+
+    @include e(body) {
+      background: var(--tabs-default-background-color);
+      transition: none;
+
+      &__item {
+        background: var(--tabs-default-background-color);
+      }
+    }
+  }
+}

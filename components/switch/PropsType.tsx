@@ -1,15 +1,15 @@
-import { CSSProperties } from 'react';
+import { ReactNode, ButtonHTMLAttributes } from 'react';
 
 export type SwitchSize = 'sm' | 'md';
 
-export default interface SwitchProps {
+export default interface SwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'>{
   prefixCls?: string;
   size?: SwitchSize;
   checked?: boolean;
-  disabled?: boolean;
   defaultChecked?: boolean;
-  className?: string;
-  style?: CSSProperties;
+  checkedText?: ReactNode;
+  unCheckedText?: ReactNode;
+  disabled?: boolean;
   loading?: boolean;
-  onChange?: (value: boolean) => void;
+  onChange?: (checked: boolean) => void;
 }

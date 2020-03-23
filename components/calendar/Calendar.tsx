@@ -269,7 +269,7 @@ class Calendar extends Component<PropsType, any> {
               showTime && (
                 <Button
                   theme="primary"
-                  size="xs"
+                  size="sm"
                   style={{ float: 'right' }}
                   onClick={() => this.onConfirmClick(value)}
                   className={`${prefixCls}-footer-btn`}

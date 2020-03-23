@@ -127,7 +127,7 @@ export default class NumberInput extends PureComponent<NumberInputProps, any> {
           value={value}
           onChange={this.onChange}
           onBlur={this.onBlur}
-          isDisabled={isDisabled}
+          disabled={isDisabled}
           placeholder={placeholder}
         />
         {showStepper && <span className={reduceCountClass} onClick={this.decrease}><Icon type="minus" /></span>}

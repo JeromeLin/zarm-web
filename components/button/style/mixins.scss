@@ -162,7 +162,7 @@
   border: none;
   font-weight: normal;
   text-align: center;
-  overflow: hidden;
+  white-space: nowrap;
   color: var(--color-text);
   transition: all 0.2s ease-out;
   outline: 0 none;
