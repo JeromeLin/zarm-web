@@ -4,8 +4,9 @@
 
 @include b(input) {
   position: relative;
-  display: flex;
+  display: inline-flex;
   width: 100%;
+  vertical-align: middle;
 
   @include e(inner) {
     width: 100%;
@@ -273,6 +274,12 @@
 
     @include m(readOnly) {
       font-size: var(--input-font-size-lg);
+    }
+
+    @include m(round) {
+      @include e(inner) {
+        padding-left: calc(var(--input-height-lg) / 2);
+      }
     }
   }
 

@@ -73,6 +73,7 @@ ReactDOM.render(
 ```
 
 
+
 ## 设置文本和图标
 可以设置开关显示的文本和图标。
 
@@ -103,27 +104,17 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <div className="multi-rows">
-          <Switch 
-          loading
-          defaultChecked={false} />
+        <div className="rows">
+          <Switch loading />
         </div>
-        <div className="multi-rows">
-          <Switch 
-          loading
-          defaultChecked={true} />
+        <div className="rows">
+          <Switch loading defaultChecked />
         </div>
-        <div className="multi-rows">
-          <Switch 
-          loading
-          size={'sm'}
-          defaultChecked={false} />
+        <div className="rows">
+          <Switch loading size="sm" />
         </div>
-        <div className="multi-rows">
-          <Switch 
-          loading
-          size={'sm'}
-          defaultChecked={true} />
+        <div className="rows">
+          <Switch loading defaultChecked size="sm"  />
         </div>
       </div>
     )

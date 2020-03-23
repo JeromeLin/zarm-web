@@ -38,14 +38,14 @@ ReactDOM.render(
 import { Badge } from 'zarm-web';
 
 ReactDOM.render(
-  <>
+  <div className="badge-themes">
     <Badge><div className="box-item" /></Badge>
     <Badge shape="rect" text="免费"><div className="box-item" /></Badge>
     <Badge shape="radius" text="new"><div className="box-item" /></Badge>
     <Badge shape="round" text="999+"><div className="box-item" /></Badge>
     <Badge shape="circle" text="3"><div className="box-item" /></Badge>
     <Badge shape="leaf" text="新品"><div className="box-item" /></Badge>
-  </>
+  </div>
 , mountNode);
 ```
 

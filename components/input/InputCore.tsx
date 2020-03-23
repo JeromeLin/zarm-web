@@ -138,6 +138,18 @@ class Input extends Component<InputCoreProps, InputState> {
     });
   };
 
+  focus() {
+    if (this.inputRef.current) {
+      this.inputRef.current.focus();
+    }
+  }
+
+  blur() {
+    if (this.inputRef.current) {
+      this.inputRef.current.blur();
+    }
+  }
+
   renderClearIcon = () => {
     const { prefixCls, clearable, disabled } = this.props;
     const { value } = this.state;
