@@ -128,7 +128,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
   };
 
   onKeydown: KeyboardEventHandler = (e) => {
-    const { visible } = this.props;
+    const visible = getVisible(this.props, this.state);
     if (visible && e.keyCode === 27) {
       e.stopPropagation();
       if (this.popperContenRef.current && this.popperContenRef.current.contains(e.currentTarget)) {
