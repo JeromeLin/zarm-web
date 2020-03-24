@@ -259,12 +259,12 @@ module.exports = {
         module: () => import('@/components/steps/demo.md'),
         style: false,
       },
-      // {
-      //   key: 'dropdown',
-      //   name: '下拉',
-      //   module: () => import('@/components/dropdown/dropdown.md'),
-      //   style: false,
-      // },
+      {
+        key: 'dropdown',
+        name: '下拉框',
+        module: () => import('@/components/dropdown/demo.md'),
+        style: true,
+      },
       {
         key: 'drawer',
         name: '抽屉',
