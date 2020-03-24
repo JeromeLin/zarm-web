@@ -104,6 +104,10 @@ ReactDOM.render(
       Notification.open({
         title: 'Notification Title',
         content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+        className: 'custom-style',
+        style: {
+          width: 400,
+        }
       });
     }}
   >
