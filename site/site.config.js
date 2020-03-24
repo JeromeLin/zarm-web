@@ -261,7 +261,7 @@ module.exports = {
       },
       {
         key: 'dropdown',
-        name: '下拉',
+        name: '下拉框',
         module: () => import('@/components/dropdown/demo.md'),
         style: true,
       },
