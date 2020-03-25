@@ -10,7 +10,7 @@ exports[`Dropdown renders normal Dropdown correctly 1`] = `
     >
       <span>
         <button
-          class="zw-button zw-button--default zw-button--radius"
+          class="zw-button zw-button--default zw-button--md zw-button--radius"
           type="button"
         >
           <span>

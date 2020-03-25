@@ -238,7 +238,7 @@ describe('Menu', () => {
       </Menu>,
     );
 
-    wrapper.find('.zw-menu__title').first().simulate('click');
+    wrapper.find('.zw-menu-submenu__title').first().simulate('click');
     expect(onOpenChange).toHaveBeenCalled();
   });
 
@@ -255,7 +255,7 @@ describe('Menu', () => {
 
     wrapper.setProps({ openKeys: [subMenuKey] });
 
-    expect(wrapper.find('li').hasClass('zw-menu__submenu--open')).toBeTruthy();
+    expect(wrapper.find('li').hasClass('zw-menu-submenu--open')).toBeTruthy();
   });
 
   it('behaves correctly when hide SubMenu', () => {
@@ -271,6 +271,6 @@ describe('Menu', () => {
 
     wrapper.setProps({ openKeys: [] });
 
-    expect(wrapper.find('li').hasClass('zw-menu__submenu--open')).toBeFalsy();
+    expect(wrapper.find('li').hasClass('zw-menu-submenu--open')).toBeFalsy();
   });
 });
