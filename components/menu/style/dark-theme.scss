@@ -1,0 +1,156 @@
+@include b(menu) {
+  // dark theme
+  @include m(dark) {
+    background: var(--menu-dark-bg-color);
+
+    @include b(icon) {
+      color: var(--color-text-caption);
+    }
+
+    @include b(menu-submenu) {
+      color: var(--menuitem-dark-color);
+
+      @include e(sub) {
+        background: var(--menu-dark-bg-color);
+      }
+
+      @include e(title) {
+        transition: all 0.3s;
+        background: var(--menu-dark-bg-color);
+
+        &:hover {
+          color: var(--menuitem-active-color);
+
+          @include e(arrow) {
+            opacity: 1;
+
+            &:after,
+            &:before {
+              background: var(--menuitem-active-color);
+            }
+          }
+          @include b(icon) {
+            color: var(--menuitem-active-color);
+          }
+        }
+      }
+
+      @include e(arrow) {
+        opacity: .45;
+        transition: opacity .3s $ease-in-out;
+
+        &:after,
+        &:before {
+          background: var(--menuitem-dark-active-color);
+        }
+      }
+
+      @include m(active) {
+        @include e(title-first) {
+          @include e(arrow) {
+            opacity: 1;
+
+            &:after,
+            &:before {
+              background: var(--menuitem-active-color);
+            }
+          }
+        }
+      }
+    }
+
+    @include b(menu-item) {
+      color: var(--menuitem-dark-color);
+
+      &:hover {
+        color: var(--menuitem-active-color);
+
+        > a {
+          color: var(--menuitem-active-color);
+        }
+        @include b(icon) {
+          color: var(--menuitem-active-color);
+        }
+      }
+
+      > a {
+        color: var(--menuitem-dark-color);
+      }
+
+      @include m(selected) {
+        color: var(--menuitem-dark-active-color);
+        background: var(--menuitem-active-color);
+
+        > a {
+          color: var(--menuitem-dark-active-color);
+        }
+        @include b(icon) {
+          color: var(--menuitem-dark-active-color);
+        }
+        &:hover {
+          color: var(--menuitem-dark-active-color);
+
+          > a {
+            color: var(--menuitem-dark-active-color);
+          }
+
+          @include b(icon) {
+            color: var(--menuitem-dark-active-color);
+          }
+        }
+      }
+
+      @include m(active) {
+        color: var(--menuitem-dark-active-color);
+        background: var(--menuitem-active-color);
+
+        > a {
+          color: var(--menuitem-dark-active-color);
+        }
+        @include b(icon) {
+          color: var(--menuitem-dark-active-color);
+        }
+        &:hover {
+          color: var(--menuitem-dark-active-color);
+
+          > a {
+            color: var(--menuitem-dark-active-color);
+          }
+
+          @include b(icon) {
+            color: var(--menuitem-dark-active-color);
+          }
+        }
+      }
+    }
+
+    @include m(collapsed) {
+      @include b(menu-submenu) {
+        @include m(active) {
+          @include e(title-first) {
+            color: var(--menuitem-dark-active-color);
+            background: var(--menuitem-active-color);
+
+            @include e(arrow) {
+              &:after,
+              &:before {
+                background: var(--menuitem-dark-active-color);
+              }
+            }
+            @include b(icon) {
+              color: var(--menuitem-dark-active-color);
+            }
+          }
+        }
+      }
+    }
+
+    @include m(vertical) {
+      @include b(menu-submenu) {
+        @include e(sub) {
+          background: var(--menu-dark-bg-color);
+        }
+      }
+    }
+  }
+}

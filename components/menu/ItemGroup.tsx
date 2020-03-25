@@ -1,7 +1,7 @@
 import React, { Component, ReactElement, cloneElement, Children, CSSProperties } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { ItemGroupProps, ChildProps, Mode } from './PropsType';
+import { ItemGroupProps, ChildProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
 
 class ItemGroup extends Component<ItemGroupProps> {
@@ -9,7 +9,7 @@ class ItemGroup extends Component<ItemGroupProps> {
 
   static defaultProps = {
     prefixCls: 'zw-menu',
-    mode: Mode.inline,
+    mode: MenuMode.inline,
     level: 1,
     groupIndex: 0,
     inlineIndent: 24,
@@ -24,7 +24,7 @@ class ItemGroup extends Component<ItemGroupProps> {
   };
 
   renderChildren() {
-    const { children, level, prefixCls, subMenuKey, groupIndex } = this.props;
+    const { children, level, subMenuKey, groupIndex, prefixCls } = this.props;
     const childProps: ChildProps = {
       level,
       prefixCls,
@@ -52,17 +52,17 @@ class ItemGroup extends Component<ItemGroupProps> {
     } = this.props;
 
     const groupTitleStyle: CSSProperties = {};
-    if (mode === Mode.inline && !inlineCollapsed) {
+    if (mode === MenuMode.inline && !inlineCollapsed) {
       groupTitleStyle.paddingLeft = (level! - 1) * inlineIndent! + inlineIndent! / 2;
     }
-    if (mode === Mode.vertical || inlineCollapsed) {
+    if (mode === MenuMode.vertical || inlineCollapsed) {
       groupTitleStyle.paddingLeft = inlineIndent! / 2;
     }
 
-    const cls = classnames({
-      [`${prefixCls}__itemgroup`]: true,
-      [className!]: !!className,
-    });
+    const cls = classnames(
+      `${prefixCls}-item-group`,
+      { [className!]: !!className },
+    );
     return (
       <li className={cls} style={style}>
         <div

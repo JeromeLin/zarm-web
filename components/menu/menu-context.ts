@@ -1,9 +1,9 @@
 import createReactContext, { Context } from 'create-react-context';
-import { Mode } from './PropsType';
+import { MenuMode } from './PropsType';
 import { noop } from '../utils';
 
 export interface ContextType {
-  mode?: Mode;
+  mode?: MenuMode;
   inlineIndent?: number;
   openKeys: string[];
   selectedKeys: string[];
@@ -13,7 +13,7 @@ export interface ContextType {
 }
 
 export const initialContext: ContextType = {
-  mode: Mode.inline,
+  mode: MenuMode.inline,
   inlineIndent: 24,
   inlineCollapsed: false,
   openKeys: [],

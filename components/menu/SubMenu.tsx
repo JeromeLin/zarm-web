@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import dom from '../utils/dom';
 import events from '../utils/events';
-import { SubMenuProps, ChildProps, Mode } from './PropsType';
+import { SubMenuProps, ChildProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
 
 enum SubAnimation {
@@ -92,7 +92,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   componentWillUnmount() {
     const { inlineCollapsed, mode } = this.props;
-    if (inlineCollapsed || mode === Mode.vertical) {
+    if (inlineCollapsed || mode === MenuMode.vertical) {
       events.off(document, 'click', this.onClickOutSide);
     }
   }
@@ -174,7 +174,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const { target } = e;
     const { subMenuKey, openKeys, inlineCollapsed, mode } = this.props;
 
-    if (!inlineCollapsed && mode !== Mode.vertical) return;
+    if (!inlineCollapsed && mode !== MenuMode.vertical) return;
     if (this.subTitle.contains(target as Node)) {
       return;
     }
@@ -185,7 +185,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   renderChildren() {
     const {
-      children, level, prefixCls, subMenuKey,
+      children, level, subMenuKey, prefixCls,
     } = this.props;
     const childProps: ChildProps = {
       level: level! + 1,
@@ -216,26 +216,32 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const subMenuStyle: CSSProperties = {};
     const childs = this.renderChildren();
 
-    if (mode === Mode.inline && !inlineCollapsed) {
+    if (mode === MenuMode.inline && !inlineCollapsed) {
       subMenuStyle.paddingLeft = level! * inlineIndent!;
     }
-    if (mode === Mode.vertical || (inlineCollapsed && level !== 1)) {
+    if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
       subMenuStyle.paddingLeft = inlineIndent;
     }
-    const cls = classnames(`${prefixCls}__submenu`, {
-      [`${prefixCls}__submenu--open`]: openKeys!.indexOf(subMenuKey!) > -1,
-      [`${prefixCls}__submenu--active`]: this.checkIfActive(childs),
-      [`${prefixCls}__submenu--level-${level}`]: level,
+    const isActive = this.checkIfActive(childs);
+    const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
+    const cls = classnames(`${prefixCls}-submenu`, {
+      [`${prefixCls}-submenu--open`]: isOpen,
+      [`${prefixCls}-submenu--active`]: isActive,
+      [`${prefixCls}-submenu--level-${level}`]: level,
+    });
+    const titleCls = classnames(`${prefixCls}-submenu__title`, {
+      [`${prefixCls}-submenu__title-first`]: isActive || isOpen,
+      [`${prefixCls}-submenu__title-level-1`]: level === 1,
     });
     let subStyle: CSSProperties = {
       display: 'block',
     };
-    let subCls = `${prefixCls}__sub`;
-    if (inlineCollapsed || mode === Mode.vertical) {
+    let subCls = `${prefixCls}-submenu__sub`;
+    if (inlineCollapsed || mode === MenuMode.vertical) {
       subStyle = {
         display: collapsedSubVisible ? 'block' : 'none',
       };
-      subCls = classnames(`${prefixCls}`, `${prefixCls}__sub`, {
+      subCls = classnames(`${prefixCls}`, `${prefixCls}-submenu__sub`, {
         [`slide-${collapsedSubAnimation}`]: !!collapsedSubAnimation,
       });
     }
@@ -246,10 +252,10 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
           ref={(subTitle) => { this.subTitle = subTitle!; }}
           onClick={this.toggleSubMenuOpen}
           style={subMenuStyle}
-          className={`${prefixCls}__title`}
+          className={titleCls}
         >
           {title}
-          <i className={`${prefixCls}__arrow`} />
+          <i className={`${prefixCls}-submenu__arrow`} />
         </div>
         <ul
           ref={(sub) => { this.sub = sub!; }}

@@ -1,7 +1,7 @@
 import React, { Component, Children, cloneElement, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import MenuProps, { ChildProps, Mode } from './PropsType';
+import MenuProps, { ChildProps, MenuMode } from './PropsType';
 import MenuContext, { initialContext, ContextType } from './menu-context';
 import SubMenu from './SubMenu';
 import MenuItem from './MenuItem';
@@ -9,7 +9,7 @@ import ItemGroup from './ItemGroup';
 import Divider from './Divider';
 import { noop } from '../utils';
 
-export interface MenuState {
+interface MenuState {
   inlineCollapsed?: boolean;
   openKeys: string[];
   inlineOpenKeys: string[];
@@ -19,7 +19,7 @@ export interface MenuState {
 class Menu extends Component<MenuProps, MenuState> {
   static defaultProps = {
     prefixCls: 'zw-menu',
-    mode: Mode.inline,
+    mode: MenuMode.inline,
     theme: 'light',
     inlineIndent: 24,
     inlineCollapsed: false,
@@ -31,7 +31,7 @@ class Menu extends Component<MenuProps, MenuState> {
 
   static propTypes = {
     prefixCls: PropTypes.string,
-    mode: PropTypes.oneOf(['inline', 'horizontal', 'vertical']),
+    mode: PropTypes.oneOf(['inline', 'vertical']),
     theme: PropTypes.oneOf(['light', 'dark']),
     defaultOpenKeys: PropTypes.arrayOf(PropTypes.string),
     defaultSelectedKeys: PropTypes.arrayOf(PropTypes.string),
@@ -107,7 +107,7 @@ class Menu extends Component<MenuProps, MenuState> {
     } else {
       newOpenKeys.push(subMenuKey);
     }
-    if ((inlineCollapsed || mode === Mode.vertical) && subMenuKey === '') {
+    if ((inlineCollapsed || mode === MenuMode.vertical) && subMenuKey === '') {
       // inlineCollapsed状态点击item关闭所有的submenu
       newOpenKeys.length = 0;
     }
@@ -149,13 +149,13 @@ class Menu extends Component<MenuProps, MenuState> {
     } = this.props;
 
     const { openKeys, selectedKeys } = this.state;
-    const cls = classnames({
-      [prefixCls!]: true,
-      [`${prefixCls}--${theme}`]: true,
-      [`${prefixCls}--${mode}`]: true,
-      [`${prefixCls}--collapsed`]: !!inlineCollapsed,
-      [className!]: !!className,
-    });
+    const cls = classnames(
+      [prefixCls, `${prefixCls}--${theme}`, `${prefixCls}--${mode}`],
+      {
+        [`${prefixCls}--collapsed`]: !!inlineCollapsed,
+        [className!]: !!className,
+      },
+    );
 
     const newMenuKeys: ContextType = {
       ...initialContext,

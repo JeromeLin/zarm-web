@@ -355,7 +355,7 @@ class Select extends Component<PropsType, StateProps> {
     };
 
     const menus = children && children.length > 0
-      ? <Menu size={size} style={menuStyle}>{children}</Menu>
+      ? <Menu style={menuStyle}>{children}</Menu>
       : <span className={`${prefixCls}--notfound`}>{locale!.noMatch}</span>;
 
     return (

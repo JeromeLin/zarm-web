@@ -1,8 +1,6 @@
 import { CSSProperties } from 'react';
 
-export type Size = 'xl' | 'lg' | 'sm' | 'xs';
-
-export enum Mode {
+export enum MenuMode {
   inline = 'inline',
   vertical = 'vertical'
 }
@@ -25,7 +23,7 @@ export interface ItemProps {
   style?: CSSProperties;
   selectedKeys: string[];
   level?: number;
-  mode?: Mode;
+  mode?: MenuMode;
   itemKey?: string;
   onClick?: (e: React.MouseEvent, itemKey: string) => void;
   toggleSelectedKeys?: (itemKey: string) => void;
@@ -45,7 +43,7 @@ export interface ItemGroupProps {
   style?: CSSProperties;
   level?: number;
   inlineIndent?: number;
-  mode?: Mode;
+  mode?: MenuMode;
   groupIndex?: number;
   title: string;
   subMenuKey?: string;
@@ -56,7 +54,7 @@ export interface SubMenuProps {
   prefixCls?: string;
   level?: number;
   inlineIndent?: number;
-  mode?: Mode;
+  mode?: MenuMode;
   title: React.ReactNode;
   inlineCollapsed?: boolean;
   className?: string;
@@ -72,8 +70,7 @@ export default interface MenuProps {
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;
-  size?: Size;
-  mode?: Mode;
+  mode?: MenuMode;
   theme?: 'light' | 'dark';
   defaultOpenKeys?: string[];
   defaultSelectedKeys?: string[];

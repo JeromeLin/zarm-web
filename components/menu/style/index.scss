@@ -1,5 +1,11 @@
 @import '../../style/core/index';
 @import 'mixins';
+@import './submenu';
+@import './menu-item';
+@import './item-group';
+@import './dark-theme';
+@import './inline-mode';
+@import './vertical-mode';
 
 @include b(menu) {
   margin: 0;
@@ -13,105 +19,7 @@
   font-feature-settings: 'tnum';
   color: var(--color-text);
 
-  @include e(item) {
-    position: relative;
-    display: block;
-    font-weight: normal;
-    color: var(--menuitem-default-color);
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.3s $ease-in-out;
-    @include item-base(var(--menuitem-height), var(--font-size-md));
-
-    @include b(icon) {
-      @include icon-base();
-    }
-
-    > a {
-      display: block;
-
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: transparent;
-      }
-    }
-
-    &:hover {
-      color: var(--menuitem-active-color);
-    }
-
-    @include m(selected) {
-      @include item-active();
-    }
-    @include m(active) {
-      @include item-active();
-    }
-    @include m(disabled) {
-      color: var(--menuitem-disabled-color);
-      cursor: not-allowed;
-
-      &:hover {
-        color: var(--menuitem-disabled-color);
-      }
-    }
-    @include m(level-1) {
-      @include item-first-level();
-    }
-  }
-
-  @include e(submenu) {
-    min-width: var(--submenu-min-width);
-    height: auto;
-
-    @include e(title) {
-      @include item-base(var(--menuitem-height), var(--font-size-md));
-
-      &:hover {
-        color: var(--menuitem-active-color);
-      }
-
-      @include b(icon) {
-        @include icon-base();
-      }
-
-      @include e(arrow) {
-        @include arrow-base(var(--color-text-caption));
-      }
-    }
-
-    @include e(sub) {
-      height: 0;
-      padding: 0;
-      overflow: hidden;
-      transition: all .2s $ease-in-out;
-    }
-
-    @include m(active) {
-      > .zw-menu__title {
-        color: var(--menuitem-active-color);
-
-        @include e(arrow) {
-          @include arrow-base(var(--menuitem-active-color));
-        }
-        @include b(icon) {
-          color: var(--menuitem-active-color);
-        }
-      }
-    }
-    @include m(level-1) {
-      min-width: auto;
-
-      @include e(title) {
-        @include item-first-level();
-      }
-    }
-  }
-
+  // divider
   @include e(divider) {
     height: 1px;
     margin: 1px 0;
@@ -121,324 +29,39 @@
     background-color: var(--menuitem-divider-bg-color);
   }
 
-  @include e(itemgroup__title) {
-    height: var(--menuitem-group-title-height);
-    line-height: var(--menuitem-group-title-height);
-    font-size: var(--menuitem-group-font-size);
-    color: var(--color-text-caption);
-    user-select: none;
-  }
-
-  @include e(itemgroup__list) {
-    padding: 0;
-  }
-
   // collapsed
   @include m(collapsed) {
     width: var(--menu-collapsed-width);
 
-    @include e(submenu--level-1) {
-      > .zw-menu__title {
+    @include b(menu-submenu) {
+      @include m(level-1) {
+        @include e(title-level-1) {
+          @include item-collapsed();
+
+          @include e(arrow) {
+            display: none;
+          }
+        }
+        @include b(icon) {
+          @include icon-collapsed();
+        }
+      }
+    }
+
+    @include b(menu-item) {
+      @include m(level-1) {
         @include item-collapsed();
 
-        @include e(arrow) {
-          display: none;
-        }
-      }
-      @include b(icon) {
-        @include icon-collapsed();
-      }
-    }
+        @include b(tooltip) {
+          display: block;
 
-    @include e(item--level-1) {
-      @include item-collapsed();
-
-      @include b(tooltip) {
-        display: block;
-
-        @include e(inner) {
-          overflow: hidden;
-          height: var(--menuitem-first-level-height);
-        }
-      }
-      @include b(icon) {
-        @include icon-collapsed();
-      }
-    }
-  }
-
-  // inline mode
-  @include m(inline) {
-    width: 100%;
-
-    @include e(submenu) {
-      @include e(title) {
-        position: relative;
-
-        &:hover {
-          @include e(arrow) {
-            @include arrow-active();
+          @include e(inner) {
+            overflow: hidden;
+            height: var(--menuitem-first-level-height);
           }
-        }
-      }
-    }
-
-    @include e(submenu--open) {
-      > .zw-menu__title {
-        @include e(arrow) {
-          transform: translateY(-2px);
-
-          &:before {
-            transform: rotate(40deg) translateX(2px);
-          }
-
-          &:after {
-            transform: rotate(-40deg) translateX(-2px);
-          }
-        }
-      }
-    }
-
-    @include m(collapsed) {
-      width: var(--menu-collapsed-width);
-
-      @include m(light) {
-        @include e(submenu) {
-          @include e(sub) {
-            background: var(--submenu-light-bg-color);
-          }
-        }
-      }
-
-      @include e(submenu) {
-        position: relative;
-
-        @include e(arrow) {
-          transform: translateY(0);
-          @include arrow-vertical();
-        }
-
-        @include e(sub) {
-          @include sub-collapsed(var(--menu-dark-bg-color));
-        }
-      }
-    }
-  }
-
-  // horizontal mode
-  @include m(horizontal) {
-    @include e(item) {
-      float: left;
-      padding: 0 var(--menuitem-horizontal-padding);
-      height: var(--menuitem-height);
-      line-height: calc(var(--menuitem-horizontal-height) - 2px);
-      border-bottom: 2px solid transparent;
-
-      > a {
-        color: var(--menuitem-default-color);
-      }
-
-      &:hover {
-        border-bottom: 2px solid var(--menuitem-active-color);
-        background: var(--menu-default-bg-color);
-        color: var(--menuitem-active-color);
-
-        > a {
-          color: var(--menuitem-active-color);
-        }
-      }
-    }
-
-    @include e(item--active) {
-      border-bottom: 2px solid var(--menuitem-active-color);
-      background: var(--menu-default-bg-color);
-      color: var(--menuitem-active-color);
-
-      > a {
-        color: var(--menuitem-active-color);
-      }
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      height: 0;
-      clear: both;
-    }
-  }
-
-  // vertical mode
-  @include m(vertical) {
-    width: 100%;
-
-    @include e(submenu) {
-      position: relative;
-      @include e(title) {
-        position: relative;
-
-        &:hover {
-          @include e(arrow) {
-            @include arrow-active();
-          }
-        }
-
-        @include e(arrow) {
-          @include arrow-vertical();
-        }
-      }
-      @include e(sub) {
-        @include sub-collapsed(var(--submenu-light-bg-color));
-      }
-    }
-  }
-
-  // dark theme
-  @include m(dark) {
-    background: var(--menu-dark-bg-color);
-
-    @include b(icon) {
-      color: var(--color-text-caption);
-    }
-
-    @include e(sub) {
-      background: var(--menu-dark-bg-color);
-    }
-
-    @include e(item) {
-      color: var(--menuitem-dark-color);
-
-      &:hover {
-        color: var(--menuitem-active-color);
-
-        > a {
-          color: var(--menuitem-active-color);
         }
         @include b(icon) {
-          color: var(--menuitem-active-color);
-        }
-      }
-
-      > a {
-        color: var(--menuitem-dark-color);
-      }
-    }
-    @include e(item--selected) {
-      color: var(--menuitem-dark-active-color);
-      background: var(--menuitem-active-color);
-
-      > a {
-        color: var(--menuitem-dark-active-color);
-      }
-      @include b(icon) {
-        color: var(--menuitem-dark-active-color);
-      }
-
-      &:hover {
-        color: var(--menuitem-dark-active-color);
-
-        > a {
-          color: var(--menuitem-dark-active-color);
-        }
-
-        @include b(icon) {
-          color: var(--menuitem-dark-active-color);
-        }
-      }
-    }
-    @include e(item--active) {
-      color: var(--menuitem-dark-active-color);
-      background: var(--menuitem-active-color);
-
-      > a {
-        color: var(--menuitem-dark-active-color);
-      }
-      @include b(icon) {
-        color: var(--menuitem-dark-active-color);
-      }
-
-      &:hover {
-        color: var(--menuitem-dark-active-color);
-
-        > a {
-          color: var(--menuitem-dark-active-color);
-        }
-
-        @include b(icon) {
-          color: var(--menuitem-dark-active-color);
-        }
-      }
-    }
-
-    @include e(submenu) {
-      color: var(--menuitem-dark-color);
-
-      @include e(title) {
-        transition: all 0.3s;
-
-        &:hover {
-          color: var(--menuitem-active-color);
-
-          @include e(arrow) {
-            opacity: 1;
-
-            &:after,
-            &:before {
-              background: var(--menuitem-active-color);
-            }
-          }
-          @include b(icon) {
-            color: var(--menuitem-active-color);
-          }
-        }
-      }
-
-      @include e(arrow) {
-        opacity: .45;
-        transition: all .3s;
-
-        &:after,
-        &:before {
-          background: var(--menuitem-dark-active-color);
-        }
-      }
-    }
-
-    @include e(submenu--active) {
-      > .zw-menu__title {
-        @include e(arrow) {
-          opacity: 1;
-
-          &:after,
-          &:before {
-            background: var(--menuitem-active-color);
-          }
-        }
-      }
-    }
-
-    @include m(collapsed) {
-      @include e(submenu--active) {
-        > .zw-menu__title {
-          color: var(--menuitem-dark-active-color);
-          background: var(--menuitem-active-color);
-
-          @include e(arrow) {
-            &:after,
-            &:before {
-              background: var(--menuitem-dark-active-color);
-            }
-          }
-          @include b(icon) {
-            color: var(--menuitem-dark-active-color);
-          }
-        }
-      }
-    }
-
-    @include m(vertical) {
-      @include e(submenu) {
-        @include e(sub) {
-          background: var(--menu-dark-bg-color);
+          @include icon-collapsed();
         }
       }
     }

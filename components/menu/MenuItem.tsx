@@ -2,7 +2,7 @@ import React, { Component, CSSProperties } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tooltip from '../tooltip';
-import { ItemProps, Mode } from './PropsType';
+import { ItemProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
 
@@ -11,7 +11,7 @@ export class MenuItem extends Component<ItemProps, any> {
     prefixCls: 'zw-menu',
     level: 1,
     style: {},
-    mode: Mode.inline,
+    mode: MenuMode.inline,
     inlineIndent: 24,
     onClick: noop,
     onDoubleClick: noop,
@@ -21,7 +21,7 @@ export class MenuItem extends Component<ItemProps, any> {
     prefixCls: PropTypes.string,
     level: PropTypes.number,
     style: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])),
-    mode: PropTypes.oneOf(['inline', 'horizontal', 'vertical']),
+    mode: PropTypes.oneOf(['inline', 'vertical']),
     inlineIndent: PropTypes.number,
     onClick: PropTypes.func,
     onDoubleClick: PropTypes.func,
@@ -33,7 +33,7 @@ export class MenuItem extends Component<ItemProps, any> {
     if (disabled) return;
     this.props.onClick!(e, itemKey!);
     this.props.toggleSelectedKeys!(itemKey!);
-    if (inlineCollapsed || mode === Mode.vertical) {
+    if (inlineCollapsed || mode === MenuMode.vertical) {
       this.props.toggleSubMenuOpen!('');
     }
   };
@@ -44,20 +44,22 @@ export class MenuItem extends Component<ItemProps, any> {
       className, style, onDoubleClick, selectedKeys, itemKey, inlineCollapsed,
     } = this.props;
 
-    const cls = classnames({
-      [`${prefixCls}__item`]: true,
-      [`${prefixCls}__item--level-${level}`]: level,
-      [`${prefixCls}__item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
-      [`${prefixCls}__item--disabled`]: 'disabled' in this.props,
-      [className!]: !!className,
-    });
+    const cls = classnames(
+      `${prefixCls}-item`,
+      {
+        [`${prefixCls}-item--level-${level}`]: level,
+        [`${prefixCls}-item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
+        [`${prefixCls}-item--disabled`]: 'disabled' in this.props,
+        [className!]: !!className,
+      },
+    );
     const itemStyle: CSSProperties = {
       ...style,
     };
-    if (mode === Mode.inline && !inlineCollapsed) {
+    if (mode === MenuMode.inline && !inlineCollapsed) {
       itemStyle.paddingLeft = level! * inlineIndent!;
     }
-    if (mode === Mode.vertical || (inlineCollapsed && level !== 1)) {
+    if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
       itemStyle.paddingLeft = inlineIndent;
     }
 

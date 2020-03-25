@@ -18,10 +18,10 @@ export default class Divider extends Component<DividerProps, any> {
 
   render() {
     const { className, prefixCls, style } = this.props;
-    const cls = classnames({
-      [`${prefixCls}__divider`]: true,
-      [className!]: !!className,
-    });
+    const cls = classnames(
+      `${prefixCls}__divider`,
+      { [className!]: !!className },
+    );
     return <li className={cls} style={style} />;
   }
 }
