@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown renders normal Dropdown correctly 1`] = `
+<div>
+  <div
+    class="za-popper"
+  >
+    <div
+      class="za-popper__inner"
+    >
+      <span>
+        <button
+          class="zw-button zw-button--default zw-button--radius"
+          type="button"
+        >
+          <span>
+            click
+          </span>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>
+`;

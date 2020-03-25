@@ -1,0 +1,13 @@
+.dropdown-trigger-box {
+  & > div {
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.modal-inner-btn {
+  & > div {
+    display: inline-block;
+  }
+}

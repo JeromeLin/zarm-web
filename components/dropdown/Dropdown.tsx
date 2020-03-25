@@ -1,469 +1,194 @@
-/* eslint-disable no-bitwise */
-import React, { ReactNode } from 'react';
-import { createPortal } from 'react-dom';
+import React, { KeyboardEventHandler } from 'react';
+import Popper from 'zarm/lib/popper';
 import classnames from 'classnames';
-import events from '../utils/events';
-import throttle from '../utils/throttle';
-import domUtil from '../utils/dom';
-import { propsType, StateType } from './PropsType';
-
-type ReactMouseEvent = (e: React.MouseEvent) => void;
-
-function getOffsetElem(elem: HTMLElement) {
-  let parentElem = elem.parentNode;
-  while (parentElem) {
-    if (parentElem instanceof HTMLElement) {
-      if (parentElem.style.position === 'fixed'
-        || window.getComputedStyle(parentElem).position === 'fixed'
-        || parentElem === document.body) {
-        return parentElem;
-      }
-      parentElem = parentElem.parentNode;
-    } else {
-      break;
-    }
-  }
-  return document.body;
-}
-
-// 获取元素坐标
-function getElemPosition(elem: HTMLElement, relativeElem: HTMLElement = document.body) {
-  let parentElem = elem.offsetParent;
-  const position: { top: number; left: number } = {
-    top: elem.offsetTop,
-    left: elem.offsetLeft,
-  };
-  while (relativeElem.contains(parentElem)) {
-    if (parentElem instanceof HTMLElement) {
-      if (relativeElem === parentElem) {
-        return position;
-      }
-      position.top += parentElem.offsetTop;
-      position.left += parentElem.offsetLeft;
-      parentElem = parentElem.offsetParent;
-    }
-  }
-  return position;
-}
-
-// todo [首次不创建]
-
-const placementMap = {
-  bottomLeft: 5,
-  bottomCenter: 9,
-  bottomRight: 17,
-  topLeft: 6,
-  topCenter: 10,
-  topRight: 18,
-};
+import { DropdownProps } from './PropsType';
 
 const defaultProps = {
-  visible: false,
-  isRadius: false,
-  hideOnClick: true,
-  prefixCls: 'ui-dropdown',
-  placement: 'bottomLeft',
+  prefixCls: 'zw-dropdown',
+  direction: 'bottomLeft',
   trigger: 'click',
   disabled: false,
-  zIndex: 2018,
+  shape: 'radius',
 };
 
-const mountedInstance = new Set<Dropdown>();
+interface DropdownStates {
+  visible: boolean;
+}
 
-export default class Dropdown extends React.Component<propsType, StateType> {
+function getVisible(props, state) {
+  const { visible: propsState } = props;
+  const { visible: stateProps } = state;
+  return propsState === undefined ? stateProps : propsState;
+}
+
+export default class Dropdown extends React.Component<DropdownProps, DropdownStates> {
   static defaultProps = defaultProps;
 
-  // 隐藏全部的Dropdown
-  static hide(): void {
-    mountedInstance.forEach((instance) => {
-      instance.props.onVisibleChange(false);
-    });
-  }
+  static visibleList = new Set();
 
-  // 显示全部的Dropdown 除了disable
-  static show(): void {
-    mountedInstance.forEach((instance) => {
-      instance.props.onVisibleChange(true);
-    });
-  }
+  triggerPointRef = React.createRef<HTMLSpanElement>();
 
-  // 重新计算Dropdown定位
-  static reposition() {
-    mountedInstance.forEach((instance) => {
-      instance.reposition();
-    });
-  }
+  popperContenRef = React.createRef<HTMLDivElement>();
 
-  // 用于存储已生成的全部实例的Set
-  // private static mountedInstance: Set<Dropdown> = new Set();
-  // 根据定位点计算定位信息
-  private static calcPosition(
-    placement: propsType['placement'] = 'bottomLeft',
-    width: number,
-    height: number,
-    dropWidth: number,
-    dropHeight: number,
-  ): { top: number; left: number } {
-    let top = 0;
-    let left = 0;
-    const placementCode = placementMap[placement];
-    if (placementCode & 1) {
-      top = height;
-    } else if (placementCode & 2) {
-      top = -dropHeight;
-    }
-    if (placementCode & 8) {
-      left = (width - dropWidth) / 2;
-    } else if (placementCode & 16) {
-      left = width - dropWidth;
-    }
-    return {
-      top, left,
-    };
-  }
+  private hoverTimer?: number;
 
-  private static createDivBox(): HTMLDivElement {
-    const div = document.createElement('div');
-    div.style.setProperty('position', 'absolute');
-    div.style.setProperty('left', '0');
-    div.style.setProperty('top', '0');
-    div.style.setProperty('width', 'auto');
-    return div;
-  }
+  private prevActiveElem?: Element;
 
-  state = {
-    visible: this.props.visible,
-    positionInfo: {
-      left: 0,
-      top: 0,
-    },
-    animationState: null,
-    // eslint-disable-next-line react/no-unused-state
-    animationProps: null,
+  state: DropdownStates = {
+    visible: false,
   };
 
-  DropdownContentEvent: {
-    onMouseLeave?: () => void;
-    onMouseEnter?: () => void;
-  } = {};
-
-  triggerEvent: {
-    onClick?: ReactMouseEvent;
-    onMouseEnter?: ReactMouseEvent;
-    onMouseLeave?: ReactMouseEvent;
-    onContextMenu?: ReactMouseEvent;
-  } = {};
-
-  // 窗口大小变化的时候实时调整定位
-  onWindowResize: () => void;
-
-  // 可滚动父容器滚动的时候调整定位
-  onParentScroll: () => void;
-
-  private div: HTMLDivElement = Dropdown.createDivBox();
-
-  private triggerBox!: HTMLDivElement;
-
-  private DropdownContent!: HTMLDivElement;
-
-  private popContainer!: HTMLElement;
-
-  private scrollParent!: HTMLElement;
-
-  private isHoverOnDropContent = false;
-
-  private hiddenTimer: number | undefined;
-
-  private triggerBoxOffsetHeight!: number;
-
-  constructor(props: Readonly<{ children?: ReactNode }> & Readonly<propsType>) {
-    super(props);
-    this.setEventObject(props.trigger);
-    this.onWindowResize = throttle(this.reposition, 300);
-    this.onParentScroll = this.reposition;
-  }
-
   componentDidMount() {
-    const { getPopupContainer, visible, placement } = this.props;
-    if (typeof getPopupContainer === 'function') {
-      this.popContainer = getPopupContainer();
-      this.popContainer.style.position = 'relative';
-    } else {
-      this.popContainer = getOffsetElem(this.triggerBox);
-    }
-    this.popContainer.appendChild(this.div);
-    if (visible) {
-      const { left, top } = this.getDropdownPosition(placement);
-      this.setState({
-        positionInfo: {
-          left,
-          top,
-        },
-      });
-    }
-    this.scrollParent = domUtil.getScrollParent(this.triggerBox);
-    events.on(document, 'click', this.onDocumentClick);
-    events.on(window, 'resize', this.onWindowResize);
-    events.on(this.scrollParent, 'scroll', this.onParentScroll);
-
-    // 存储当前实例，方便静态方法统一处理
-    mountedInstance.add(this);
-    this.triggerBoxOffsetHeight = this.triggerBox.offsetHeight;
-  }
-
-  componentWillReceiveProps(nextProps: Readonly<{ children?: ReactNode }> & Readonly<propsType>) {
-    const { visible, trigger } = this.props;
-    if (nextProps.visible === visible) {
-      return;
-    }
-    if (nextProps.trigger !== trigger) {
-      this.setEventObject(nextProps.trigger);
-    }
-    if (nextProps.visible) {
-      this.enter(() => {
-        if (nextProps.visible) {
-          this.setState({
-            positionInfo: this.getDropdownPosition(nextProps.placement),
-          });
-        }
-      });
-    } else {
-      this.leave();
-    }
+    document.addEventListener('mousedown', this.onDocClick);
   }
 
   componentDidUpdate() {
-    const height = this.triggerBox.offsetHeight;
-    if (height !== this.triggerBoxOffsetHeight) {
-      this.reposition();
-      this.triggerBoxOffsetHeight = height;
-    }
+    this.prevActiveElem = document.activeElement || document.body;
   }
 
   componentWillUnmount() {
-    events.off(document, 'click', this.onDocumentClick);
-    events.off(window, 'click', this.onWindowResize);
-    events.off(this.scrollParent, 'scroll', this.onParentScroll);
-    mountedInstance.delete(this);
-    setTimeout(() => {
-      this.popContainer.removeChild(this.div);
-    });
+    document.removeEventListener('mousedown', this.onDocClick);
   }
 
-  // 根据trigger方式不同绑定事件
-  setEventObject = (triggerType: propsType['trigger']) => {
-    if (triggerType === 'hover') {
-      this.DropdownContentEvent.onMouseLeave = this.onDropdownContentMouseLeave;
-      this.DropdownContentEvent.onMouseEnter = this.onDropdownContentMouseEnter;
-      this.triggerEvent.onMouseEnter = this.onTrigger;
-      this.triggerEvent.onMouseLeave = this.onTrigger;
-    } else if (triggerType === 'click') {
-      this.triggerEvent.onClick = this.onTrigger;
-    } else if (triggerType === 'contextMenu') {
-      this.triggerEvent.onContextMenu = this.onTrigger;
+  onDocClick = (e: MouseEvent) => {
+    const visible = getVisible(this.props, this.state);
+    const { current } = this.triggerPointRef;
+    const { current: popperContentCurrent } = this.popperContenRef;
+    if (visible) {
+      if (current && popperContentCurrent) {
+        if (popperContentCurrent.contains(e.target as Node) || current.contains(e.target as Node)) {
+          return;
+        }
+      }
+      this.onVisibleChange(false);
     }
   };
 
-  // 显示与否的回调函数
-  onTrigger = (e: React.MouseEvent): void => {
-    // 禁用状态不做任何处理
-    if (this.props.disabled === true) {
+  onVisibleChange = (visible: boolean) => {
+    const { disabled, onVisibleChange, visible: propsVisible } = this.props;
+    if (disabled) {
       return;
     }
-    const { type } = e;
-    if (type === 'click') {
-      this.props.onVisibleChange(!this.props.visible);
-    } else if (type === 'contextmenu') {
-      e.preventDefault();
-      this.props.onVisibleChange(!this.props.visible);
-    } else if (type === 'mouseenter') {
-      if (this.props.visible === false) {
-        this.props.onVisibleChange(true);
-      } else if (this.hiddenTimer) {
-        clearTimeout(this.hiddenTimer);
-      }
-    } else if (type === 'mouseleave') {
-      // 缓冲一点一时间给间隙
-      this.hiddenTimer = setTimeout(() => {
-        // 若当前鼠标在弹出层上 则不消失
-        if (this.isHoverOnDropContent === false) {
-          this.props.onVisibleChange(false);
-        }
-      }, 300);
+    if (visible) {
+      Dropdown.visibleList.add(this);
+    } else {
+      Dropdown.visibleList.delete(this);
+    }
+    if (propsVisible === undefined) {
+      return this.setState({
+        visible,
+      });
+    }
+    if (typeof onVisibleChange === 'function') {
+      onVisibleChange(visible);
     }
   };
 
-  // 鼠标放到弹框上的时候，设置变量
-  onDropdownContentMouseEnter = (): void => {
-    // 重新放置时候取消隐藏
-    if (this.hiddenTimer) {
-      clearTimeout(this.hiddenTimer);
+  onClick = () => {
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
+    if (trigger !== 'click') {
+      return;
     }
-    if (this.isHoverOnDropContent === false) {
-      this.isHoverOnDropContent = true;
+    this.onVisibleChange(!visible);
+  };
+
+  onMouseEnter = () => {
+    const { trigger, visible } = this.props;
+    if (trigger !== 'hover') {
+      return;
+    }
+    if (this.hoverTimer) {
+      clearTimeout(this.hoverTimer);
+    }
+    if (!visible) {
+      this.onVisibleChange(true);
     }
   };
 
-  onDropdownContentMouseLeave = (): void => {
-    this.isHoverOnDropContent = false;
-    // 给消失一点缓冲时间
-    this.hiddenTimer = setTimeout(() => {
-      this.props.onVisibleChange(false);
+  onMouseLeave = () => {
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
+    if (trigger !== 'hover' || !visible) {
+      return;
+    }
+    this.hoverTimer = setTimeout(() => {
+      this.onVisibleChange(false);
     }, 300);
   };
 
-  // 点击外部的时候
-  onDocumentClick = (e: MouseEvent): void => {
-    const { hideOnClick, onVisibleChange } = this.props;
-    if (this.props.disabled === true || this.state.visible === false) {
+  onContextMenu = (e: React.MouseEvent<HTMLSpanElement>) => {
+    const { trigger } = this.props;
+    const visible = getVisible(this.props, this.state);
+    if (trigger !== 'contextMenu') {
       return;
     }
-    const target = e.target as Node;
-    // eslint-disable-next-line no-empty
-    if (this.div.contains(target) || this.triggerBox.contains(target)) {
+    e.preventDefault();
+    this.onVisibleChange(!visible);
+  };
 
-    } else {
-      // eslint-disable-next-line no-lonely-if
-      if (hideOnClick) {
-        onVisibleChange(false);
+  onKeydown: KeyboardEventHandler = (e) => {
+    const visible = getVisible(this.props, this.state);
+    if (visible && e.keyCode === 27) {
+      e.stopPropagation();
+      if (this.popperContenRef.current && this.popperContenRef.current.contains(e.currentTarget)) {
+        const { prevActiveElem } = this;
+        if (prevActiveElem && prevActiveElem instanceof HTMLElement) {
+          setTimeout(() => {
+            prevActiveElem.focus();
+          });
+        }
       }
+      this.onVisibleChange(false);
     }
   };
-
-  // 获取元素的定位信息
-  getDropdownPosition(placement: propsType['placement'] = 'bottomLeft') {
-    const rectInfo = getElemPosition(this.triggerBox, this.popContainer);
-    const { offsetWidth, offsetHeight } = this.DropdownContent;
-    const computerStyle = window.getComputedStyle(this.DropdownContent);
-    const marginTop = parseFloat(this.DropdownContent.style.marginTop || computerStyle.marginTop || '0');
-    const marginLeft = parseFloat(this.DropdownContent.style.marginLeft || computerStyle.marginLeft || '0');
-    const { top, left } = Dropdown.calcPosition(
-      placement,
-      this.triggerBox.offsetWidth,
-      this.triggerBox.offsetHeight,
-      offsetWidth,
-      offsetHeight,
-    );
-    const offset = placement.startsWith('bottom') ? 5 : -5;
-    let scrollLeft = 0;
-    let scrollTop = 0;
-    if (this.scrollParent !== this.popContainer && this.popContainer.contains(this.scrollParent)) {
-      scrollLeft = domUtil.getScrollLeftValue(this.scrollParent);
-      scrollTop = domUtil.getScrollTopValue(this.scrollParent);
-    }
-    return {
-      left: rectInfo.left + left - marginLeft - scrollLeft,
-      top: rectInfo.top + top - marginTop + offset - scrollTop,
-    };
-  }
-
-  reposition = () => {
-    if (!this.state.visible || this.props.disabled) {
-      return;
-    }
-    const { left, top } = this.getDropdownPosition(this.props.placement);
-    if (left === this.state.positionInfo.left && top === this.state.positionInfo.top) {
-      return;
-    }
-    this.setState({
-      positionInfo: { left, top },
-    });
-  };
-
-  onAniEnd = (e: React.AnimationEvent) => {
-    if (e.type.toLowerCase().endsWith('animationend')) {
-      this.setState({
-        visible: this.props.visible,
-        animationState: null,
-      });
-    }
-  };
-
-  enter(callback: () => void): void {
-    this.setState({
-      visible: true,
-      animationState: 'enter',
-    }, callback);
-  }
-
-  leave(): void {
-    this.setState({
-      visible: true,
-      animationState: 'leave',
-    });
-  }
 
   render() {
     const {
-      disabled,
       children,
-      overlay,
       className,
-      trigger,
       prefixCls,
-      style,
-      isRadius,
-      placement = 'bottomLeft',
-      zIndex,
-      notRenderInDisabledMode,
-      visible,
-      hideOnClick,
       onVisibleChange,
-      getPopupContainer,
-      triggerBoxStyle,
+      disabled,
+      content,
+      trigger,
+      shape,
       ...others
     } = this.props;
-
-    const { positionInfo, animationState, visible: stateVisible } = this.state;
-    // 根据placement判断向上动画还是向下动画
-    const animationProps = (placementMap[placement] & 1) ? 'scaleDown' : 'scaleUp';
-    const cls = classnames({
-      [prefixCls!]: true,
-      radius: 'radius' in this.props || isRadius,
-      [className!]: !!className,
-      [`${animationProps}-${animationState}`]: !!animationState,
-    });
-
-    const dropdownBoxStyle: React.CSSProperties = {
-      minWidth: (this.triggerBox && this.triggerBox.offsetWidth) || 0,
-      ...style,
-      ...positionInfo,
-      position: 'absolute',
-      animationDuration: '300ms',
-      // eslint-disable-next-line no-nested-ternary
-      display: disabled ? 'none' : (stateVisible ? 'block' : 'none'),
-      overflow: 'hidden',
-      zIndex,
-    };
+    const visible = getVisible(this.props, this.state);
+    const cls = classnames(prefixCls, className, `${prefixCls}--${shape}`);
+    const dropdownContent = (
+      <div
+        tabIndex={-1}
+        ref={this.popperContenRef}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
+        onKeyDown={this.onKeydown}
+      >
+        {content}
+      </div>
+    );
 
     return (
-      <>
-        <div
-          className={`${prefixCls}-trigger-box`}
-          style={triggerBoxStyle}
-          ref={(e) => { this.triggerBox = e as HTMLDivElement; }}
-          {...this.triggerEvent}
+      <Popper
+        {...others}
+        visible={disabled ? false : visible}
+        className={cls}
+        trigger="manual"
+        onVisibleChange={this.onVisibleChange}
+        content={dropdownContent}
+      >
+        <span
+          ref={this.triggerPointRef}
+          onClick={this.onClick}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          onContextMenu={this.onContextMenu}
+          onKeyDown={this.onKeydown}
         >
           {children}
-        </div>
-        {
-        createPortal(
-          <div
-            onAnimationEnd={this.onAniEnd}
-            className={cls}
-            ref={(e) => {
-              this.DropdownContent = e as HTMLDivElement;
-            }}
-            style={dropdownBoxStyle}
-            {...others}
-            {...this.DropdownContentEvent}
-          >
-            {(notRenderInDisabledMode && disabled) ? null : overlay}
-          </div>,
-          this.div,
-        )
-      }
-      </>
+        </span>
+      </Popper>
     );
   }
 }
