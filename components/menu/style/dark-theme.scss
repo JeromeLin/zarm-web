@@ -87,6 +87,7 @@
         @include b(icon) {
           color: var(--menuitem-dark-active-color);
         }
+
         &:hover {
           color: var(--menuitem-dark-active-color);
 
@@ -110,6 +111,7 @@
         @include b(icon) {
           color: var(--menuitem-dark-active-color);
         }
+
         &:hover {
           color: var(--menuitem-dark-active-color);
 
