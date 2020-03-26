@@ -25,7 +25,7 @@ ReactDOM.render(
           <Menu.Item>核保权限定义</Menu.Item>
           <Menu.Item>核保权限分配</Menu.Item>
         </Menu.ItemGroup>
-
+        <Menu.Divider />
         <Menu.ItemGroup title="分组2">
           <Menu.Item>规则配置</Menu.Item>
           <Menu.Item>人工核保</Menu.Item>
