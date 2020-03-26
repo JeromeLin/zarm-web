@@ -22,10 +22,9 @@
           color: var(--menuitem-active-color);
 
           @include e(arrow) {
-            opacity: 1;
-
             &:after,
             &:before {
+              opacity: 1;
               background: var(--menuitem-active-color);
             }
           }
@@ -36,11 +35,9 @@
       }
 
       @include e(arrow) {
-        opacity: .45;
-        transition: opacity .3s $ease-in-out;
-
         &:after,
         &:before {
+          opacity: 0.45;
           background: var(--menuitem-dark-active-color);
         }
       }
@@ -48,10 +45,9 @@
       @include m(active) {
         @include e(title-first) {
           @include e(arrow) {
-            opacity: 1;
-
             &:after,
             &:before {
+              opacity: 1;
               background: var(--menuitem-active-color);
             }
           }

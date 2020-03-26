@@ -101,7 +101,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
     width: 6px;
     height: 2px;
     border-radius: 2px;
-    transition: all 0.3s $ease-in-out;
+    transition: transform 0.3s $ease-in-out;
   }
 
   &:before {
@@ -143,7 +143,6 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   background-color: $bgColor;
   border-radius: var(--radius-sm);
   transform-origin: 0 0;
-  // box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
   box-shadow: var(--box-shadow-light);
 
   &.slide-up {

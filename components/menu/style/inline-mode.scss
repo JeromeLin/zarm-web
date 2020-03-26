@@ -14,7 +14,7 @@
         }
       }
       @include m(open) {
-        @include e(title-first) {
+        @include e(title-open) {
           @include e(arrow) {
             transform: translateY(-2px);
 

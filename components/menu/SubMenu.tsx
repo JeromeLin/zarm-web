@@ -230,7 +230,8 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
       [`${prefixCls}-submenu--level-${level}`]: level,
     });
     const titleCls = classnames(`${prefixCls}-submenu__title`, {
-      [`${prefixCls}-submenu__title-first`]: isActive || isOpen,
+      [`${prefixCls}-submenu__title-first`]: isActive,
+      [`${prefixCls}-submenu__title-open`]: isOpen,
       [`${prefixCls}-submenu__title-level-1`]: level === 1,
     });
     let subStyle: CSSProperties = {
