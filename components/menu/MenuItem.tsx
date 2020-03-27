@@ -2,11 +2,11 @@ import React, { Component, CSSProperties } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tooltip from '../tooltip';
-import { ItemProps, MenuMode } from './PropsType';
+import { MenuItemProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
 
-export class MenuItem extends Component<ItemProps, any> {
+export class MenuItem extends Component<MenuItemProps, any> {
   static defaultProps = {
     prefixCls: 'zw-menu',
     level: 1,
@@ -40,7 +40,7 @@ export class MenuItem extends Component<ItemProps, any> {
 
   render() {
     const {
-      children, prefixCls, level, inlineIndent, title, mode,
+      children, prefixCls, level, inlineIndent, title, mode, icon,
       className, style, onDoubleClick, selectedKeys, itemKey, inlineCollapsed,
     } = this.props;
 
@@ -68,10 +68,12 @@ export class MenuItem extends Component<ItemProps, any> {
           onClick={this.handleClick}
           onDoubleClick={onDoubleClick}
         >
+          {icon}
           {children}
         </li>
       );
     }
+
     return (
       <li
         className={cls}
@@ -86,15 +88,17 @@ export class MenuItem extends Component<ItemProps, any> {
           direction="right"
         >
           <div>
+            {icon}
             {children}
           </div>
         </Tooltip>
+      )
       </li>
     );
   }
 }
 
-export default function MenuItemConsumer(props: ItemProps) {
+export default function MenuItemConsumer(props: MenuItemProps) {
   return (
     <MenuContext.Consumer>
       {

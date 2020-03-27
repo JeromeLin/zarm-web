@@ -1,10 +1,10 @@
 import React, { Component, ReactElement, cloneElement, Children, CSSProperties } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { ItemGroupProps, ChildProps, MenuMode } from './PropsType';
+import { MenuItemGroupProps, ChildProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
 
-class ItemGroup extends Component<ItemGroupProps> {
+class ItemGroup extends Component<MenuItemGroupProps> {
   static isItemGroup = true;
 
   static defaultProps = {
@@ -79,7 +79,7 @@ class ItemGroup extends Component<ItemGroupProps> {
   }
 }
 
-export default function ItemGroupConsumer(props: ItemGroupProps) {
+export default function ItemGroupConsumer(props: MenuItemGroupProps) {
   return (
     <MenuContext.Consumer>
       {

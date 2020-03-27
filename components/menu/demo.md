@@ -16,22 +16,30 @@ const wrapperStyle = {
 
 ReactDOM.render(
   <Menu style={wrapperStyle}>
-    <Menu.SubMenu title={<span><Icon type="keyboard" size="lg" />SubMenu 1</span>}>
+    <Menu.SubMenu icon={<Icon type="keyboard" size="lg" />} title="SubMenu 1">
       <Menu.Item>Item 1</Menu.Item>
       <Menu.Item>Item 2</Menu.Item>
       <Menu.Item>Item 3</Menu.Item>
+      <Menu.Item>Item 4</Menu.Item>
     </Menu.SubMenu>
-    <Menu.SubMenu title={<span><Icon type="date" size="lg" />SubMenu 2</span>}>
+    <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 2">
       <Menu.ItemGroup title="ItemGroup 1">
         <Menu.Item>Item 1</Menu.Item>
         <Menu.Item>Item 2</Menu.Item>
       </Menu.ItemGroup>
+      <Menu.Divider />
       <Menu.ItemGroup title="ItemGroup 2">
-        <Menu.Item>Item 3</Menu.Item>
-        <Menu.Item>Item 4</Menu.Item>
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
       </Menu.ItemGroup>
     </Menu.SubMenu>
-    <Menu.SubMenu title={<span><Icon type="time" size="lg" />SubMenu 3</span>}>
+    <Menu.SubMenu icon={<Icon type="time" size="lg" />} title="SubMenu 3">
+      <Menu.Item>Item 1</Menu.Item>
+      <Menu.Item>Item 2</Menu.Item>
+      <Menu.Item>Item 3</Menu.Item>
+      <Menu.Item>Item 4</Menu.Item>
+    </Menu.SubMenu>
+    <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 4">
       <Menu.Item>Item 1</Menu.Item>
       <Menu.Item>Item 2</Menu.Item>
       <Menu.Item>Item 3</Menu.Item>
@@ -56,12 +64,13 @@ const wrapperStyle = {
 
 ReactDOM.render(
   <Menu theme="dark" style={wrapperStyle}>
-    <Menu.SubMenu title={<span><Icon type="keyboard" size="lg" />SubMenu 1</span>}>
+    <Menu.SubMenu icon={<Icon type="keyboard" size="lg" />} title="SubMenu 1">
       <Menu.Item>Item 1</Menu.Item>
       <Menu.Item>Item 2</Menu.Item>
       <Menu.Item>Item 3</Menu.Item>
+      <Menu.Item>Item 4</Menu.Item>
     </Menu.SubMenu>
-    <Menu.SubMenu title={<span><Icon type="date" size="lg" />SubMenu 2</span>}>
+    <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 2">
       <Menu.ItemGroup title="ItemGroup 1">
         <Menu.Item>Item 1</Menu.Item>
         <Menu.Item>Item 2</Menu.Item>
@@ -71,7 +80,13 @@ ReactDOM.render(
         <Menu.Item>Item 2</Menu.Item>
       </Menu.ItemGroup>
     </Menu.SubMenu>
-    <Menu.SubMenu title={<span><Icon type="time" size="lg" />SubMenu 3</span>}>
+    <Menu.SubMenu icon={<Icon type="time" size="lg" />} title="SubMenu 3">
+      <Menu.Item>Item 1</Menu.Item>
+      <Menu.Item>Item 2</Menu.Item>
+      <Menu.Item>Item 3</Menu.Item>
+      <Menu.Item>Item 4</Menu.Item>
+    </Menu.SubMenu>
+    <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 4">
       <Menu.Item>Item 1</Menu.Item>
       <Menu.Item>Item 2</Menu.Item>
       <Menu.Item>Item 3</Menu.Item>
@@ -104,27 +119,29 @@ class Demo extends React.Component {
       <div style={{ width: 238 }}>
         <Button theme="primary" onClick={this.toggleCollapse} style={{ marginBottom: 16 }}>Toggle</Button>
         <Menu inlineCollapsed={this.state.collapse} style={{ border: '1px solid #efefef' }}>
-          <Menu.SubMenu title={<span><Icon type="broadcast" size="lg" />SubMenu 1</span>}>
+          <Menu.SubMenu icon={<Icon type="broadcast" size="lg" />} title="SubMenu 1">
             <Menu.Item>Item 1</Menu.Item>
             <Menu.Item>Item 2</Menu.Item>
             <Menu.SubMenu title="Item 3">
               <Menu.Item>Item 31</Menu.Item>
               <Menu.Item>Item 32</Menu.Item>
+              <Menu.Item>Item 33</Menu.Item>
+              <Menu.Item>Item 34</Menu.Item>
             </Menu.SubMenu>
           </Menu.SubMenu>
-          <Menu.SubMenu title={<span><Icon type="keyboard" size="lg" />SubMenu 2</span>}>
+          <Menu.SubMenu icon={<Icon type="keyboard" size="lg" />} title="SubMenu 2">
             <Menu.Item>Item 1</Menu.Item>
             <Menu.Item>Item 2</Menu.Item>
             <Menu.Item>Item 3</Menu.Item>
             <Menu.Item>Item 4</Menu.Item>
           </Menu.SubMenu>
-          <Menu.SubMenu title={<span><Icon type="date" size="lg" />SubMenu 3</span>}>
+          <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 3">
             <Menu.Item>Item 1</Menu.Item>
             <Menu.Item>Item 2</Menu.Item>
             <Menu.Item>Item 3</Menu.Item>
             <Menu.Item>Item 4</Menu.Item>
           </Menu.SubMenu>
-          <Menu.Item title="SubMenu 4"><Icon type="time" size="lg" />SubMenu 4</Menu.Item>
+          <Menu.Item icon={<Icon type="time" size="lg" />} title="SubMenu 4">SubMenu 4</Menu.Item>
         </Menu>
       </div>
     );
@@ -150,30 +167,27 @@ const wrapperStyle = {
 ReactDOM.render(
   <div style={wrapperStyle}>
     <Menu mode="vertical">
-      <Menu.SubMenu title={<span><Icon type="keyboard" size="lg" />新契约</span>}>
-        <Menu.Item>在线投保单管理</Menu.Item>
-        <Menu.Item>投保单录入</Menu.Item>
-        <Menu.Item>新增计划</Menu.Item>
-      </Menu.SubMenu>
-      <Menu.SubMenu title={<span><Icon type="date" size="lg" />核保</span>}>
-        <Menu.ItemGroup title="分组1">
-          <Menu.Item>核保权限定义</Menu.Item>
-          <Menu.Item>核保权限分配</Menu.Item>
-        </Menu.ItemGroup>
-        <Menu.Divider />
-        <Menu.ItemGroup title="分组2">
-          <Menu.Item>规则配置</Menu.Item>
-          <Menu.Item>人工核保</Menu.Item>
-        </Menu.ItemGroup>
-      </Menu.SubMenu>
-      <Menu.SubMenu title={<span><Icon type="time" size="lg" />批改</span>}>
-        <Menu.Item>批改新增</Menu.Item>
-        <Menu.SubMenu title="批改管理">
-          <Menu.Item>批改复核</Menu.Item>
-          <Menu.Item>批改回退</Menu.Item>
-          <Menu.Item>批改共享池</Menu.Item>
+      <Menu.SubMenu icon={<Icon type="broadcast" size="lg" />} title="SubMenu 1">
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.SubMenu title="Item 3">
+          <Menu.Item>Item 31</Menu.Item>
+          <Menu.Item>Item 32</Menu.Item>
         </Menu.SubMenu>
       </Menu.SubMenu>
+      <Menu.SubMenu icon={<Icon type="keyboard" size="lg" />} title="SubMenu 2">
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.Item>Item 3</Menu.Item>
+        <Menu.Item>Item 4</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 3">
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.Item>Item 3</Menu.Item>
+        <Menu.Item>Item 4</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Item icon={<Icon type="time" size="lg" />} title="SubMenu 4">SubMenu 4</Menu.Item>
     </Menu>
   </div>,
   mountNode,
@@ -194,30 +208,25 @@ const wrapperStyle = {
 ReactDOM.render(
   <div style={wrapperStyle}>
     <Menu mode="vertical" theme="dark">
-      <Menu.SubMenu title={<span><Icon type="keyboard" size="lg" />新契约</span>}>
-        <Menu.Item>在线投保单管理</Menu.Item>
-        <Menu.Item>投保单录入</Menu.Item>
-        <Menu.Item>新增计划</Menu.Item>
-      </Menu.SubMenu>
-      <Menu.SubMenu title={<span><Icon type="date" size="lg" />核保</span>}>
-        <Menu.ItemGroup title="分组1">
-          <Menu.Item>核保权限定义</Menu.Item>
-          <Menu.Item>核保权限分配</Menu.Item>
-        </Menu.ItemGroup>
-
-        <Menu.ItemGroup title="分组2">
-          <Menu.Item>规则配置</Menu.Item>
-          <Menu.Item>人工核保</Menu.Item>
-        </Menu.ItemGroup>
-      </Menu.SubMenu>
-      <Menu.SubMenu title={<span><Icon type="time" size="lg" />批改</span>}>
-        <Menu.Item>批改新增</Menu.Item>
-        <Menu.SubMenu title="批改管理">
-          <Menu.Item>批改复核</Menu.Item>
-          <Menu.Item>批改回退</Menu.Item>
-          <Menu.Item>批改共享池</Menu.Item>
+      <Menu.SubMenu icon={<Icon type="broadcast" size="lg" />} title="SubMenu 1">
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.SubMenu title="Item 3">
+          <Menu.Item>Item 31</Menu.Item>
+          <Menu.Item>Item 32</Menu.Item>
         </Menu.SubMenu>
       </Menu.SubMenu>
+      <Menu.SubMenu icon={<Icon type="keyboard" size="lg" />} title="SubMenu 2">
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.Item>Item 3</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 3">
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.Item>Item 3</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Item icon={<Icon type="time" size="lg" />} title="SubMenu 4">SubMenu 4</Menu.Item>
     </Menu>
   </div>,
   mountNode
@@ -230,7 +239,7 @@ ReactDOM.render(
 通过 openKeys 属性控制展开的子菜单
 
 ```jsx
-import { Menu } from 'zarm-web';
+import { Menu, Icon } from 'zarm-web';
 
 class Demo extends React.Component {
   constructor(props) {
@@ -261,23 +270,17 @@ class Demo extends React.Component {
           defaultOpenKeys={['a']}
           onOpenChange={(keys) => this.onOpenChange(keys)}
         >
-          <Menu.SubMenu title="新契约" key="a">
-            <Menu.Item>投保单复核</Menu.Item>
-            <Menu.Item>在线投保单管理</Menu.Item>
-            <Menu.Item>投保单录入</Menu.Item>
-            <Menu.Item>新增计划</Menu.Item>
+          <Menu.SubMenu icon={<Icon type="keyboard" size="lg" />} title="SubMenu 1" key="a">
+            <Menu.Item>Item 1</Menu.Item>
+            <Menu.Item>Item 2</Menu.Item>
           </Menu.SubMenu>
-          <Menu.SubMenu title="核保" key="b">
-            <Menu.Item>核保权限定义</Menu.Item>
-            <Menu.Item>核保权限分配</Menu.Item>
-            <Menu.Item>规则配置</Menu.Item>
-            <Menu.Item>人工核保</Menu.Item>
+          <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 2" key="b">
+            <Menu.Item>Item 1</Menu.Item>
+            <Menu.Item>Item 2</Menu.Item>
           </Menu.SubMenu>
-          <Menu.SubMenu title="批改" key="c">
-            <Menu.Item>批改新增</Menu.Item>
-            <Menu.Item>批改复核</Menu.Item>
-            <Menu.Item>批改回退</Menu.Item>
-            <Menu.Item>批改共享池</Menu.Item>
+          <Menu.SubMenu icon={<Icon type="time" size="lg" />} title="SubMenu 3" key="c">
+            <Menu.Item>Item 1</Menu.Item>
+            <Menu.Item>Item 2</Menu.Item>
           </Menu.SubMenu>
         </Menu>
       </div>

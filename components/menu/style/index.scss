@@ -42,6 +42,14 @@
             display: none;
           }
         }
+        @include b(tooltip) {
+          display: block;
+
+          @include e(inner) {
+            overflow: hidden;
+            height: var(--menuitem-first-level-height);
+          }
+        }
         @include b(icon) {
           @include icon-collapsed();
         }

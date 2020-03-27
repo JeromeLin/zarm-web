@@ -13,9 +13,10 @@ export interface ChildProps {
   groupIndex?: number;
 }
 
-export interface ItemProps {
+export interface MenuItemProps {
   prefixCls?: string;
   disabled?: boolean;
+  icon?: React.ReactNode;
   title?: string;
   inlineIndent?: number;
   inlineCollapsed?: boolean;
@@ -31,13 +32,13 @@ export interface ItemProps {
   onDoubleClick?: (e: React.MouseEvent) => void;
 }
 
-export interface DividerProps {
+export interface MenuDividerProps {
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;
 }
 
-export interface ItemGroupProps {
+export interface MenuItemGroupProps {
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;
@@ -55,6 +56,7 @@ export interface SubMenuProps {
   level?: number;
   inlineIndent?: number;
   mode?: MenuMode;
+  icon?: React.ReactNode;
   title: React.ReactNode;
   inlineCollapsed?: boolean;
   className?: string;

@@ -1,6 +1,7 @@
 import React, { Component, Children, cloneElement, CSSProperties, ReactElement } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import Tooltip from '../tooltip';
 import dom from '../utils/dom';
 import events from '../utils/events';
 import { SubMenuProps, ChildProps, MenuMode } from './PropsType';
@@ -208,7 +209,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   render() {
     const {
-      title, level, mode, style, inlineIndent,
+      title, level, mode, style, inlineIndent, icon,
       prefixCls, openKeys, subMenuKey, inlineCollapsed,
     } = this.props;
     const { collapsedSubVisible, collapsedSubAnimation } = this.state;
@@ -255,7 +256,27 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
           style={subMenuStyle}
           className={titleCls}
         >
-          {title}
+          {
+            !inlineCollapsed || level! > 1
+              ? (
+                <span>
+                  {icon}
+                  {title}
+                </span>
+              )
+              : (
+                <Tooltip
+                  hasArrow
+                  content={title}
+                  direction="right"
+                >
+                  <span>
+                    {icon}
+                    {title}
+                  </span>
+                </Tooltip>
+              )
+          }
           <i className={`${prefixCls}-submenu__arrow`} />
         </div>
         <ul

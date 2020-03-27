@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { DividerProps } from './PropsType';
+import { MenuDividerProps } from './PropsType';
 
-export default class Divider extends Component<DividerProps, any> {
+export default class Divider extends Component<MenuDividerProps, any> {
   static isDivider = true;
 
   static defaultProps = {
