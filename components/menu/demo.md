@@ -139,7 +139,6 @@ class Demo extends React.Component {
             <Menu.Item>Item 1</Menu.Item>
             <Menu.Item>Item 2</Menu.Item>
             <Menu.Item>Item 3</Menu.Item>
-            <Menu.Item>Item 4</Menu.Item>
           </Menu.SubMenu>
           <Menu.Item icon={<Icon type="time" size="lg" />} title="SubMenu 4">SubMenu 4</Menu.Item>
         </Menu>
@@ -320,7 +319,8 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | className | string | - | 自定义菜单项类名 |
 | style | CSSProperties | - | 自定义菜单项样式 |
-| title | string | - | `inline`模式菜单收起，鼠标移入的提示文案 |
+| icon | React.ReactNode | - | 菜单左侧Icon |
+| title | React.ReactNode | - | `inline`模式菜单收起，鼠标移入的提示文案 |
 | key | string | - | 菜单的唯一性key值 |
 | disabled | boolean | false | 是否置灰不可点击 |
 | onClick | (e: React.MouseEvent, itemKey: string) => void | noop | 点击菜单后的回调函数 |
@@ -333,7 +333,8 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | className | string | - | 自定义子菜单类名 |
 | style | CSSProperties | - | 自定义子菜单样式 |
-| title | string | - | 子菜单名称  |
+| icon | React.ReactNode | - | 菜单左侧Icon |
+| title | React.ReactNode | - | 子菜单名称  |
 | key | string | - | 子菜单的唯一性key值 |
 
 
