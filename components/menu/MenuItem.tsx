@@ -44,15 +44,11 @@ export class MenuItem extends Component<ItemProps, any> {
       className, style, onDoubleClick, selectedKeys, itemKey, inlineCollapsed,
     } = this.props;
 
-    const cls = classnames(
-      `${prefixCls}-item`,
-      {
-        [`${prefixCls}-item--level-${level}`]: level,
-        [`${prefixCls}-item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
-        [`${prefixCls}-item--disabled`]: 'disabled' in this.props,
-        [className!]: !!className,
-      },
-    );
+    const cls = classnames(`${prefixCls}-item`, className, {
+      [`${prefixCls}-item--level-${level}`]: level,
+      [`${prefixCls}-item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
+      [`${prefixCls}-item--disabled`]: 'disabled' in this.props,
+    });
     const itemStyle: CSSProperties = {
       ...style,
     };
