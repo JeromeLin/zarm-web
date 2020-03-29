@@ -49,9 +49,7 @@ export class Notification extends React.Component<NotificationProps, {}> {
       >
         <div className={cls} onClick={onClick}>
           {iconToRender}
-          {title && <div className={`${prefixCls}__head`}>
-            {title}
-          </div>}
+          {title && <div className={`${prefixCls}__head`}>{title}</div>}
           {content && <div className={`${prefixCls}__body`}>{content}</div>}
           {footer && <div className={`${prefixCls}__foot`}>{footer}</div>}
         </div>
