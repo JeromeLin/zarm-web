@@ -6,11 +6,9 @@ import Message from './Message';
 
 const managerInstance = new StackManager(Message, 'message');
 
-function showMessage(options: MessageOptions, icon?: MessageIcon) {
+function showMessage(options: MessageOptions, icon: MessageIcon) {
   const newOptions = handleOptions(options);
-  if (icon) {
-    newOptions.icon = icon;
-  }
+  newOptions.icon = icon;
   if (
     !newOptions.stayTime
     && newOptions.stayTime !== 0
