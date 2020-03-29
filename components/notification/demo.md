@@ -76,7 +76,7 @@ class Demo extends React.Component {
           <Button onClick={this.showError}>Error</Button>
         </div>
         <div className="rows">
-          <Button onClick={this.customIcon}>Open a notification of custom icon</Button>
+          <Button onClick={this.customIcon}>Open a notification with custom icon</Button>
         </div>
         <div className="rows">
           <Button theme="danger" onClick={this.closeAll}>Close all notification</Button>
@@ -91,7 +91,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 自定义样式（未实现）
+## 自定义样式
 自定义通知提醒框的样式
 
 ```jsx

@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { NotificationIcon, NotificationItemProps, NotificationOptions } from './PropsType';
+import { NotificationIcon, NotificationPropsBase } from './PropsType';
 
 export function mapToIconType(type: NotificationIcon) {
   switch (type) {
@@ -29,15 +29,15 @@ export function mapToIconTheme(type: NotificationIcon) {
   }
 }
 
-export function handleOptions(options: NotificationOptions): NotificationItemProps {
+export function handleOptions(options: NotificationPropsBase | React.ReactNode): NotificationPropsBase {
   if (
     options
     && Object.prototype.toString.call(options) === '[object Object]'
     && !React.isValidElement(options)
   ) {
-    return { ...options as {} };
+    return { ...options as NotificationPropsBase };
   }
-  return { content: options as Exclude<NotificationOptions, NotificationItemProps> };
+  return { content: options as React.ReactNode };
 }
 
 export function getStyle(initStyle, top, bottom) {

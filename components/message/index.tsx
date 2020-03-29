@@ -1,5 +1,5 @@
 import StackManager from '../notification/StackManager';
-import { MessageItemProps, MessageIcon, MessageInstance, MessageOptions } from './PropsType';
+import { MessageIcon, MessageInstance, MessageOptions } from './PropsType';
 import { handleOptions } from '../notification/utils';
 import { NotificationPositions } from '../notification/PropsType';
 import Message from './Message';
@@ -7,7 +7,7 @@ import Message from './Message';
 const managerInstance = new StackManager(Message, 'message');
 
 function showMessage(options: MessageOptions, icon?: MessageIcon) {
-  const newOptions: MessageItemProps = handleOptions(options);
+  const newOptions = handleOptions(options);
   if (icon) {
     newOptions.icon = icon;
   }
@@ -22,9 +22,6 @@ function showMessage(options: MessageOptions, icon?: MessageIcon) {
 }
 
 const messageInstance: Partial<MessageInstance> = {
-  open(options: MessageItemProps) {
-    return showMessage(options);
-  },
   close(key) {
     managerInstance.close(key);
   },

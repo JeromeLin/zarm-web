@@ -1,53 +1,40 @@
 import React from 'react';
 
 export type NotificationIcon = 'default' | 'error' | 'success' | 'warning' | 'info' | 'loading';
-export type NotificationOptions = NotificationItemProps | React.ReactNode;
 
 export enum NotificationPositions {
   topLeft = 'topLeft',
   topRight = 'topRight',
   topCenter = 'topCenter',
   bottomLeft = 'bottomLeft',
-  bottomRight = 'bottomRight'
+  bottomRight = 'bottomRight',
 }
 
-export interface NotificationItemProps {
+export interface NotificationPropsBase {
   prefixCls?: string;
+
   style?: React.CSSProperties;
   className?: string;
 
-  position?: NotificationPositions;
   stayTime?: number;
+  position?: NotificationPositions;
 
   icon?: React.ReactElement | NotificationIcon;
-  title?: React.ReactNode;
-  content?: React.ReactNode;
-  footer?: React.ReactNode;
+  content: React.ReactNode;
 
-  locale?: {
-    defaultTitles: {
-      'error': string;
-      'success': string;
-      'warning': string;
-      'default': string;
-    };
-  };
-
-  onClick?: (e?: React.SyntheticEvent<any>) => void;
-  onClose?: (e?: React.SyntheticEvent<any>) => void;
+  onClick?: (e?: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  onClose?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 
   key?: string;
   top?: number | string;
   bottom?: number | string;
-  // getContainer?: () => HTMLElement | HTMLElement;
 }
 
-export interface NotificationProps extends NotificationItemProps {
-  Component: React.ComponentClass<NotificationItemProps>;
-  name?: string;
-  willUnmount?: () => void;
+export interface NotificationProps extends NotificationPropsBase {
+  title: React.ReactNode;
+  footer?: React.ReactNode;
 }
 
 export interface NotificationReturnInstance {
@@ -55,7 +42,7 @@ export interface NotificationReturnInstance {
 }
 
 export interface NotificationInstance {
-  open(props: NotificationItemProps): NotificationReturnInstance;
+  open(props: NotificationProps): NotificationReturnInstance;
   success(options: NotificationOptions): NotificationReturnInstance;
   warning(options: NotificationOptions): NotificationReturnInstance;
   info(options: NotificationOptions): NotificationReturnInstance;
@@ -63,4 +50,10 @@ export interface NotificationInstance {
   close(key: string): void;
   closeAll(): void;
   destroy(): void;
+}
+
+export interface NotificationStackItemProps extends NotificationPropsBase {
+  Component: React.ComponentClass<NotificationPropsBase>;
+  name?: string;
+  willUnmount?: () => void;
 }

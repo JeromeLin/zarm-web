@@ -2,15 +2,11 @@ import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
-import { MessageItemProps, MessageIcon } from './PropsType';
+import { MessageProps, MessageIcon } from './PropsType';
 import { mapToIconType, mapToIconTheme, getStyle } from '../notification/utils';
 
-function getIcon(icon: MessageIcon | React.ReactElement, className: string) {
-  if (React.isValidElement(icon)) {
-    return (
-      <div className={className}>{icon}</div>
-    );
-  } if (icon === 'loading') {
+function getIcon(icon: MessageIcon, className: string) {
+  if (icon === 'loading') {
     return (
       <Loading className={className} visible size="sm" />
     );
@@ -28,9 +24,10 @@ function getIcon(icon: MessageIcon | React.ReactElement, className: string) {
     : null;
 }
 
-export default class Message extends React.Component<MessageItemProps, {}> {
-  static defaultProps: MessageItemProps = {
+export default class Message extends React.Component<MessageProps, {}> {
+  static defaultProps: MessageProps = {
     prefixCls: 'zw-message',
+    content: '',
   };
 
   render() {

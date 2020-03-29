@@ -1,7 +1,7 @@
 import React, { ComponentClass, ComponentElement, RefObject } from 'react';
 import ReactDOM from 'react-dom';
 import StackItem from './StackItem';
-import { NotificationItemProps, NotificationReturnInstance, NotificationPositions } from './PropsType';
+import { NotificationPropsBase, NotificationReturnInstance, NotificationPositions } from './PropsType';
 
 function isAtBottom(position: NotificationPositions) {
   return position.indexOf('bottom') === 0;
@@ -12,9 +12,9 @@ function getPosition(position?: NotificationPositions): NotificationPositions {
 }
 
 export default class StackManager {
-  private notifyList: ComponentElement<NotificationItemProps, StackItem>[] = [];
+  private notifyList: ComponentElement<NotificationPropsBase, StackItem>[] = [];
 
-  private component: ComponentClass<NotificationItemProps, {}>;
+  private component: ComponentClass<NotificationPropsBase, {}>;
 
   private containerCls: string;
 
@@ -22,8 +22,8 @@ export default class StackManager {
 
   private componentName: string;
 
-  constructor(component: ComponentClass<NotificationItemProps, {}>, componentName: string) {
-    this.containerCls = `${(component.defaultProps as NotificationItemProps).prefixCls}-container`;
+  constructor(component: ComponentClass<NotificationPropsBase, {}>, componentName: string) {
+    this.containerCls = `${(component.defaultProps as NotificationPropsBase).prefixCls}-container`;
     this.component = component;
     this.componentName = componentName;
   }
@@ -53,9 +53,8 @@ export default class StackManager {
   }
 
   // To display a new StackItem
-  open(props: NotificationItemProps): NotificationReturnInstance {
-    this.keySeed += 1;
-    const newKey = props.key || String(this.keySeed);
+  open(props: NotificationPropsBase): NotificationReturnInstance {
+    const newKey = props.key || String(this.keySeed += 1);
     const position = getPosition(props.position);
     const newRef = React.createRef<StackItem>();
     const stackItem = (
@@ -69,7 +68,10 @@ export default class StackManager {
         willUnmount={() => this.remove(newKey, position)}
       />
     );
-    if (isAtBottom(position)) {
+    const existingIndex = this.notifyList.findIndex((item) => item.key === newKey);
+    if (existingIndex !== -1) {
+      this.notifyList[existingIndex] = stackItem;
+    } else if (isAtBottom(position)) {
       this.notifyList.unshift(stackItem);
     } else {
       this.notifyList.push(stackItem);

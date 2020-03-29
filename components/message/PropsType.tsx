@@ -1,18 +1,18 @@
 import {
-  NotificationIcon,
-  NotificationOptions,
-  NotificationProps,
-  NotificationItemProps,
-  NotificationInstance,
   NotificationReturnInstance,
+  NotificationPropsBase,
+  NotificationInstance,
+  NotificationIcon,
 } from '../notification/PropsType';
 
-export type MessageIcon = NotificationIcon;
-export type MessageOptions = NotificationOptions;
-export type MessageItemProps = NotificationItemProps;
-export type MessageProps = NotificationProps;
 export type MessageReturnInstance = NotificationReturnInstance;
+export type MessageOptions = MessageProps | React.ReactNode;
+export type MessageIcon = NotificationIcon;
 
-export interface MessageInstance extends NotificationInstance {
+export interface MessageProps extends NotificationPropsBase {
+  icon?: MessageIcon;
+}
+
+export interface MessageInstance extends Omit<NotificationInstance, 'open'> {
   loading(props: MessageOptions): MessageReturnInstance;
 }

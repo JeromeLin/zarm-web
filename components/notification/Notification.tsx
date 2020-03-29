@@ -1,10 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
-import { NotificationItemProps, NotificationIcon } from './PropsType';
+import { NotificationProps, NotificationIcon } from './PropsType';
 import { mapToIconType, mapToIconTheme, getStyle } from './utils';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
-import Lang from '../locale-provider/lang/zh-cn';
 
 function getIcon(icon: NotificationIcon | React.ReactElement, className: string) {
   if (React.isValidElement(icon)) {
@@ -25,10 +23,11 @@ function getIcon(icon: NotificationIcon | React.ReactElement, className: string)
     : null;
 }
 
-export class Notification extends React.Component<NotificationItemProps, {}> {
-  static defaultProps: NotificationItemProps = {
+export class Notification extends React.Component<NotificationProps, {}> {
+  static defaultProps: NotificationProps = {
     prefixCls: 'zw-notification',
-    locale: Lang.Notification,
+    content: '',
+    title: '',
   };
 
   render() {
@@ -36,7 +35,6 @@ export class Notification extends React.Component<NotificationItemProps, {}> {
       style, className, prefixCls, title, icon, content, footer,
       top, bottom,
       onMouseEnter, onMouseLeave, onClose, onClick,
-      locale,
     } = this.props;
     const iconToRender = icon ? getIcon(icon, `${prefixCls}__icon`) : null;
     const cls = classnames(`${prefixCls}__content`, { 'has-icon': iconToRender });
@@ -52,7 +50,7 @@ export class Notification extends React.Component<NotificationItemProps, {}> {
         <div className={cls} onClick={onClick}>
           {iconToRender}
           <div className={`${prefixCls}__head`}>
-            {title || locale!.defaultTitles[icon as string] || locale!.defaultTitles.default}
+            {title}
           </div>
           {content && <div className={`${prefixCls}__body`}>{content}</div>}
           {footer && <div className={`${prefixCls}__foot`}>{footer}</div>}
@@ -68,8 +66,4 @@ export class Notification extends React.Component<NotificationItemProps, {}> {
   }
 }
 
-const NotificationLocalized = LocaleReceiver('Notification')(Notification);
-// eslint-disable-next-line
-NotificationLocalized.defaultProps = Notification.defaultProps;
-
-export default NotificationLocalized;
+export default Notification;

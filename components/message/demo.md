@@ -136,7 +136,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 更新指定消息内容（未实现）
+## 更新指定消息内容
 可以通过唯一的 key 来更新内容。
 
 ```jsx
