@@ -5,7 +5,7 @@ import Tooltip from '../tooltip';
 import { MenuItemProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
-import { FIRST_LEVEL_PADDING } from './SubMenu';
+import { getMenuPadding } from './SubMenu';
 
 export class MenuItem extends Component<MenuItemProps, any> {
   static defaultProps = {
@@ -54,14 +54,10 @@ export class MenuItem extends Component<MenuItemProps, any> {
       ...style,
     };
     if (mode === MenuMode.inline && !inlineCollapsed) {
-      if (level === 1) {
-        itemStyle.paddingLeft = FIRST_LEVEL_PADDING;
-      } else {
-        itemStyle.paddingLeft = FIRST_LEVEL_PADDING + level! * inlineIndent! + 4;
-      }
+      itemStyle.paddingLeft = getMenuPadding(level, inlineIndent);
     }
     if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
-      itemStyle.paddingLeft = FIRST_LEVEL_PADDING;
+      itemStyle.paddingLeft = getMenuPadding();
     }
 
     if (!inlineCollapsed) {

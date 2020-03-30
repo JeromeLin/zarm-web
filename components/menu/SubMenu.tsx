@@ -13,6 +13,12 @@ enum SubAnimation {
   None = ''
 }
 export const FIRST_LEVEL_PADDING = 20;
+export const getMenuPadding = (level = 1, inlineIndent?: number) => {
+  if (level === 1) {
+    return FIRST_LEVEL_PADDING;
+  }
+  return FIRST_LEVEL_PADDING + level * inlineIndent! + 4;
+};
 
 interface SubMenuState {
   collapsedSubVisible: boolean;
@@ -219,14 +225,14 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const childs = this.renderChildren();
 
     if (mode === MenuMode.inline && !inlineCollapsed) {
-      if (level === 1) {
-        subMenuStyle.paddingLeft = FIRST_LEVEL_PADDING;
+      if (level === 1 && !icon) {
+        subMenuStyle.paddingLeft = getMenuPadding(level + 1, inlineIndent);
       } else {
-        subMenuStyle.paddingLeft = FIRST_LEVEL_PADDING + level! * inlineIndent! + 4;
+        subMenuStyle.paddingLeft = getMenuPadding(level, inlineIndent);
       }
     }
     if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
-      subMenuStyle.paddingLeft = FIRST_LEVEL_PADDING;
+      subMenuStyle.paddingLeft = getMenuPadding();
     }
     const isActive = this.checkIfActive(childs);
     const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
