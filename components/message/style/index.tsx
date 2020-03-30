@@ -1,3 +1,4 @@
-import '../../style/themes/variable';
-import '../../style/core/mixins/index';
-import './index';
+import '../../style';
+import '../../icon/style';
+import '../../loading/style';
+import './index.scss';

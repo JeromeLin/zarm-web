@@ -1,4 +1,5 @@
-@import "./mixins";
+@import '../../style/core/index';
+@import './mixins';
 
 @include b(message-container) {
   position: fixed;
