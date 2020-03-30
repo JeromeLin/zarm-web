@@ -126,7 +126,7 @@
     @include m(collapsed) {
       @include b(menu-submenu) {
         @include m(active) {
-          @include e(title-first) {
+          @include e(title-level-1) {
             color: var(--menuitem-dark-active-color);
             background: var(--menuitem-active-color);
 

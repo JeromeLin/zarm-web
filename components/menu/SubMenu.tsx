@@ -110,16 +110,18 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
       return;
     }
     const childs = [...this.sub.children];
-    let marginBottom = 0;
-
-    if (childs[0]) {
-      marginBottom = parseFloat(dom.getStyleComputedProperty(childs[0], 'marginBottom'));
-    }
 
     const height = childs.reduce((res, next: HTMLLIElement) => {
-      res += (next.offsetHeight + marginBottom);
+      let marginTop = 0;
+      let marginBottom = 0;
+      if (next.className.indexOf('divider') > -1) {
+        marginTop = parseFloat(dom.getStyleComputedProperty(next, 'marginTop'));
+        marginBottom = parseFloat(dom.getStyleComputedProperty(next, 'marginBottom'));
+      }
+
+      res += (next.offsetHeight + marginTop + marginBottom);
       return res;
-    }, marginBottom / 2);
+    }, 0);
 
     return height;
   }
