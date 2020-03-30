@@ -21,7 +21,7 @@ class Button extends Component<ButtonProps> {
 
   render() {
     const {
-      prefixCls, htmlType = 'button', type, size, block, shape, active, focus, disabled, ghost,
+      prefixCls, htmlType, type, size, block, shape, active, focus, disabled, ghost,
       loading, className, onClick, children, style, theme, href, target, icon, ...others
     } = this.props;
 

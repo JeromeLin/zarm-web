@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button renders Button.Group correctly 1`] = `
+<div
+  className="zw-button-group"
+  href="https://www.baidu.com"
+>
+  <Button
+    ghost={false}
+    href="https://www.baidu.com"
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    prefixCls="zw-button"
+    shape="radius"
+    size="md"
+    theme="default"
+  >
+    百度一下
+  </Button>
+  ,
+</div>
+`;
+
 exports[`Button renders Buttons of different size correctly 1`] = `
 <div>
   <button
@@ -203,6 +225,25 @@ exports[`Button renders disaled Button correctly 1`] = `
     </span>
   </button>
 </div>
+`;
+
+exports[`Button renders icon Button correctly 1`] = `
+<button
+  className="zw-button zw-button--default zw-button--md zw-button--radius"
+  onClick={[Function]}
+  type="button"
+>
+  <Icon
+    prefixCls="zw-icon"
+    size="md"
+    theme="default"
+    type="add"
+    viewBox="0 0 32 32"
+  />
+  <span>
+    加载中
+  </span>
+</button>
 `;
 
 exports[`Button renders loading Button correctly 1`] = `

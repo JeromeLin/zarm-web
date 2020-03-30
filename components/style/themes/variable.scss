@@ -1,4 +1,4 @@
-@import '../core/index';
+@import "../core/index";
 
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
@@ -31,12 +31,14 @@
   --zindex-tooltip: 1500;
   --zindex-popup: 1500;
   --zindex-dropdown: 1101;
+  --zindex-notification: 1400;
+  --zindex-message: 1400;
 
   // 透明度
-  --opacity-disabled: .5;
-  --opacity-mask: .5;
-  --opacity-toast: .8;
-  --opacity-tooltip: .8;
+  --opacity-disabled: 0.5;
+  --opacity-mask: 0.5;
+  --opacity-toast: 0.8;
+  --opacity-tooltip: 0.8;
 
   // 圆角
   --radius-sm: 2px;
@@ -328,4 +330,22 @@
   --input-addon-background-color: #f2f2f2;
   --input-addon-border-color: #d9d9d9;
   --input-placeholder-color: #bcbcbc;
+
+  // message
+  --message-color: #616161;
+  --message-font-size: 14px;
+  --message-line-height: 18px;
+
+  // notification
+  --notification-width: 336px;
+  --notification-title-color: #343434;
+  --notification-title-font-size: 14px;
+  --notification-title-line-height: 22px;
+  --notification-title-font-weight: 400;
+  --notification-title-padding: 0 0 2px;
+  --notification-color: #616161;
+  --notification-font-size: 12px;
+  --notification-line-height: 18px;
+  --notification-body-padding: 2px 0 0;
+  --notification-footer-padding: 20px 0 0;
 }

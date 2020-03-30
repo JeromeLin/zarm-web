@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotificationUtils get style correctly 1`] = `
+Object {
+  "bottom": "100px",
+  "marginBottom": 0,
+  "top": "auto",
+}
+`;
