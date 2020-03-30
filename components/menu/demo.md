@@ -118,7 +118,7 @@ class Demo extends React.Component {
     return (
       <div style={{ width: 238 }}>
         <Button theme="primary" onClick={this.toggleCollapse} style={{ marginBottom: 16 }}>Toggle</Button>
-        <Menu inlineCollapsed={this.state.collapse} style={{ border: '1px solid #efefef' }}>
+        <Menu theme="dark" inlineCollapsed={this.state.collapse} style={{ border: '1px solid #efefef' }}>
           <Menu.SubMenu icon={<Icon type="broadcast" size="lg" />} title="SubMenu 1">
             <Menu.Item>Item 1</Menu.Item>
             <Menu.Item>Item 2</Menu.Item>
