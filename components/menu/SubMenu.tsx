@@ -268,6 +268,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
                 <Tooltip
                   hasArrow
                   content={title}
+                  visible={!isOpen}
                   direction="right"
                 >
                   <span>
