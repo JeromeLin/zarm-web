@@ -61,7 +61,7 @@ class Demo extends React.Component {
           <Button onClick={this.showLoading}>Loading</Button>
         </div>
         <div className="rows">
-          <Button theme="danger" onClick={this.closeAll}>Close all message</Button>
+          <Button theme="danger" onClick={this.closeAll}>Close all messages</Button>
         </div>
       </>
     );
@@ -147,14 +147,14 @@ class Demo extends React.Component {
   showMessage = () => {
     Message.loading({
       key,
-      content: 'This is the content of the message.',
+      content: 'loading...',
     });
     setTimeout(() => {
       Message.success({
         key,
-        content: 'This is the content of the message.',
+        content: 'success!',
       });
-    }, 2500);
+    }, 3000);
   };
 
   render() {

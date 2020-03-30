@@ -79,7 +79,7 @@ class Demo extends React.Component {
           <Button onClick={this.customIcon}>Open a notification with custom icon</Button>
         </div>
         <div className="rows">
-          <Button theme="danger" onClick={this.closeAll}>Close all notification</Button>
+          <Button theme="danger" onClick={this.closeAll}>Close all notifications</Button>
         </div>
       </>
     );
