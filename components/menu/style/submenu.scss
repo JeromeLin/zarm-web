@@ -40,7 +40,7 @@
   @include m(level-1) {
     min-width: auto;
 
-    @include e(title) {
+    @include e(title-level-1) {
       @include item-first-level();
     }
   }

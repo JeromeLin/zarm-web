@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { MenuItemGroupProps, ChildProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
+import { FIRST_LEVEL_PADDING } from './SubMenu';
 
 class ItemGroup extends Component<MenuItemGroupProps> {
   static isItemGroup = true;
@@ -12,7 +13,7 @@ class ItemGroup extends Component<MenuItemGroupProps> {
     mode: MenuMode.inline,
     level: 1,
     groupIndex: 0,
-    inlineIndent: 24,
+    inlineIndent: 12,
   };
 
   static propTypes = {
@@ -53,10 +54,10 @@ class ItemGroup extends Component<MenuItemGroupProps> {
 
     const groupTitleStyle: CSSProperties = {};
     if (mode === MenuMode.inline && !inlineCollapsed) {
-      groupTitleStyle.paddingLeft = (level! - 1) * inlineIndent! + inlineIndent! / 2;
+      groupTitleStyle.paddingLeft = FIRST_LEVEL_PADDING + level! * inlineIndent! - 8;
     }
     if (mode === MenuMode.vertical || inlineCollapsed) {
-      groupTitleStyle.paddingLeft = inlineIndent! / 2;
+      groupTitleStyle.paddingLeft = FIRST_LEVEL_PADDING - inlineIndent!;
     }
 
     const cls = classnames(
