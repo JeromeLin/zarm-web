@@ -147,14 +147,14 @@ class Demo extends React.Component {
   showMessage = () => {
     Message.loading({
       key,
-      content: 'loading...',
+      content: 'Loading...',
     });
     setTimeout(() => {
       Message.success({
         key,
-        content: 'success!',
+        content: 'Success!',
       });
-    }, 3000);
+    }, 2000);
   };
 
   render() {
