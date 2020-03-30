@@ -307,7 +307,7 @@ ReactDOM.render(<Demo />, mountNode);
 | defaultSelectedKeys | string[] | - | 默认选中的菜单key |
 | openKeys | string[] | - | 需要展开的子菜单key |
 | selectedKeys | string[] | - | 需要选中的菜单项key |
-| inlineIndent | number | 24 | `inline`模式时每一层菜单的缩进 |
+| inlineIndent | number | 12 | `inline`模式时每一层菜单的缩进 |
 | inlineCollapsed | boolean | false | `inline`模式时菜单是否收起 |
 | onSelect | (selectedKeys: string[]) => void | noop | 菜单选中时的回调函数 |
 | onOpenChange | (openKeys: string[]) => void | noop | 子菜单收起展开时候的回调函数 |

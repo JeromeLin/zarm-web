@@ -21,7 +21,7 @@ class Menu extends Component<MenuProps, MenuState> {
     prefixCls: 'zw-menu',
     mode: MenuMode.inline,
     theme: 'light',
-    inlineIndent: 24,
+    inlineIndent: 12,
     inlineCollapsed: false,
     defaultOpenKeys: [],
     defaultSelectedKeys: [],

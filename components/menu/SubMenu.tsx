@@ -12,6 +12,7 @@ enum SubAnimation {
   DOWN = 'down',
   None = ''
 }
+export const FIRST_LEVEL_PADDING = 20;
 
 interface SubMenuState {
   collapsedSubVisible: boolean;
@@ -218,10 +219,14 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const childs = this.renderChildren();
 
     if (mode === MenuMode.inline && !inlineCollapsed) {
-      subMenuStyle.paddingLeft = level! * inlineIndent!;
+      if (level === 1) {
+        subMenuStyle.paddingLeft = FIRST_LEVEL_PADDING;
+      } else {
+        subMenuStyle.paddingLeft = FIRST_LEVEL_PADDING + level! * inlineIndent! + 4;
+      }
     }
     if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
-      subMenuStyle.paddingLeft = inlineIndent;
+      subMenuStyle.paddingLeft = FIRST_LEVEL_PADDING;
     }
     const isActive = this.checkIfActive(childs);
     const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
