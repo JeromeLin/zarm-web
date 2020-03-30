@@ -110,7 +110,7 @@ ReactDOM.render(
 import { Message, Button } from 'zarm-web';
 
 class Demo extends React.Component {
-  showNotify(option) {
+  show(option) {
     Message.info({
       ...option,
       content: 'This is the content of the message.',
@@ -121,10 +121,10 @@ class Demo extends React.Component {
     return (
       <>
         <div className="rows">
-          <Button onClick={() => this.showNotify({ top: 400 })}>Open the message 400px from the top</Button>
+          <Button onClick={() => this.show({ top: 400 })}>Open the message 400px from the top</Button>
         </div>
         <div className="rows">
-          <Button onClick={() => this.showNotify({ bottom: 100 })}>Open the message 100px from the bottom</Button>
+          <Button onClick={() => this.show({ bottom: 100 })}>Open the message 100px from the bottom</Button>
         </div>
       </>
     );
@@ -144,7 +144,7 @@ import { Message, Button } from 'zarm-web';
 const key = 'updatable';
 
 class Demo extends React.Component {
-  showMessage = () => {
+  show = () => {
     Message.loading({
       key,
       content: 'Loading...',
@@ -157,8 +157,17 @@ class Demo extends React.Component {
     }, 2000);
   };
 
+  close = () => {
+    Message.close(key);
+  };
+
   render() {
-    return <Button onClick={this.showMessage}>Open</Button>;
+    return (
+      <>
+        <Button onClick={this.show}>Open</Button>
+        <Button onClick={this.close}>Close</Button>
+      </>
+    );
   }
 }
 
@@ -179,7 +188,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onClick | (e?: SyntheticEvent<any>) => void | - | 点击时触发的回调函数 |
 | onClose | (e?: SyntheticEvent<any>) => void | - | 关闭时触发的回调函数 |
 
-静态方法
+# 静态方法
 
 ```jsx
 // 打开全局提示

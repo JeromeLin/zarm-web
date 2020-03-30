@@ -128,7 +128,7 @@ import { Notification, Button } from 'zarm-web';
 class Demo extends React.Component {
   state = {};
 
-  showMessage = () => {
+  show = () => {
     let msgInstance = Notification.info({
       title: 'Notification Title',
       content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
@@ -147,7 +147,7 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <Button theme="primary" onClick={this.showMessage} disabled={this.state.msgInstance}>
+        <Button theme="primary" onClick={this.show} disabled={this.state.msgInstance}>
           Open
         </Button>
         <Button onClick={this.close} disabled={!this.state.msgInstance}>
@@ -211,11 +211,7 @@ class Demo extends React.Component {
           <Button size="sm" onClick={() => instance.close()}>
             Close
           </Button>
-          <Button
-            theme="primary"
-            size="sm"
-            onClick={() => alert('You clicked OK button.')}
-          >
+          <Button theme="primary" size="sm" onClick={() => alert('You clicked OK button.')}>
             Ok
           </Button>
         </>
@@ -240,7 +236,7 @@ ReactDOM.render(<Demo />, mountNode);
 import { Notification, Button } from 'zarm-web';
 
 class Demo extends React.Component {
-  showNotify(option) {
+  show(option) {
     Notification.open({
       ...option,
       title: 'Notification Title',
@@ -252,16 +248,16 @@ class Demo extends React.Component {
     return (
       <>
         <div className="rows">
-          <Button onClick={() => this.showNotify({ position: 'topRight' })}>topRight</Button>
-          <Button onClick={() => this.showNotify({ position: 'topLeft' })}>topLeft</Button>
-          <Button onClick={() => this.showNotify({ position: 'bottomLeft' })}>bottomLeft</Button>
-          <Button onClick={() => this.showNotify({ position: 'bottomRight' })}>bottomRight</Button>
+          <Button onClick={() => this.show({ position: 'topRight' })}>topRight</Button>
+          <Button onClick={() => this.show({ position: 'topLeft' })}>topLeft</Button>
+          <Button onClick={() => this.show({ position: 'bottomLeft' })}>bottomLeft</Button>
+          <Button onClick={() => this.show({ position: 'bottomRight' })}>bottomRight</Button>
         </div>
         <div className="rows">
-          <Button onClick={() => this.showNotify({ top: 400 })}>Open the notification 400px from the top</Button>
+          <Button onClick={() => this.show({ top: 400 })}>Open the notification 400px from the top</Button>
         </div>
         <div className="rows">
-          <Button onClick={() => this.showNotify({ bottom: 100 })}>Open the notification 100px from the bottom</Button>
+          <Button onClick={() => this.show({ bottom: 100 })}>Open the notification 100px from the bottom</Button>
         </div>
       </>
     );
@@ -273,39 +269,38 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 自定义 key
-通常用在需要通过编程方式精确控制隐藏时用到
+## 更新指定通知提醒框的状态和内容
+可以通过唯一的 key 来控制指定的通知提醒框。
 
 ```jsx
 import { Notification, Button } from 'zarm-web';
+const key = 'updatable';
 
 class Demo extends React.Component {
-  state = {
-    disabled: false,
-  };
-
-  showMessage = () => {
+  show = () => {
     Notification.open({
-      key: 'key1',
+      key,
       stayTime: 0,
       title: 'Notification Title',
       content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
-      onClose: () => {
-        this.setState({ disabled: false });
-      }
     });
-    this.setState({ disabled: true });
+    setTimeout(() => {
+      Notification.open({
+        key,
+        title: 'New Title',
+        content: 'This is new content of the notification. ',
+      });
+    }, 1000);
   };
 
   close = () => {
-    Notification.close('key1');
-    this.setState({ disabled: false });
+    Notification.close(key);
   };
 
   render() {
     return (
       <>
-        <Button onClick={this.showMessage} disabled={this.state.disabled}>Open</Button>
+        <Button onClick={this.show}>Open</Button>
         <Button onClick={this.close}>Close</Button>
       </>
     );
@@ -333,7 +328,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onClick | (e?: SyntheticEvent<any>) => void | - | 点击时触发的回调函数 |
 | onClose | (e?: SyntheticEvent<any>) => void | - | 关闭时触发的回调函数 |
 
-静态方法
+# 静态方法
 
 ```jsx
 // 打开通知
