@@ -16,6 +16,15 @@ export default class StackItem extends React.Component<NotificationStackItemProp
     this.startTimer();
   }
 
+  componentDidUpdate(prevProps) {
+    const { stayTime } = prevProps;
+    const { stayTime: newTime } = this.props;
+    if (stayTime !== newTime) {
+      this.stopTimer();
+      this.startTimer();
+    }
+  }
+
   componentWillUnmount() {
     clearInterval(this.timeout);
   }
