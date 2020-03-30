@@ -141,7 +141,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   padding: var(--submenu-collapsed-padding-vertical) 0;
   opacity: 0;
   background-color: $bgColor;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   transform-origin: 0 0;
   box-shadow: var(--box-shadow-light);
 
