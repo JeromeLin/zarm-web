@@ -78,6 +78,29 @@ describe('StackItem', () => {
     expect(onClose).toBeCalled();
   });
 
+  it('update timer correctly', () => {
+    jest.useFakeTimers();
+    const onClose = jest.fn();
+    const props = {
+      Component: TempComponent,
+      name: "testname",
+      stayTime: 0,
+      onClose: onClose,
+    }
+    const wrapper = mount(
+      <StackItem {...props}/>,
+    );
+    expect(onClose).toHaveBeenCalledTimes(0);
+    setTimeout(()=>{
+      wrapper.setProps({
+        ...props,
+        stayTime: 1500
+      })
+    }, 1000);
+    jest.runAllTimers();
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
   it('unount Component correctly', () => {
     jest.useFakeTimers();
     const wrapper = mount(
