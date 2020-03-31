@@ -123,6 +123,10 @@
       }
     }
 
+    @include e(divider) {
+      background-color: var(--color-text-caption);
+    }
+
     @include m(collapsed) {
       @include b(menu-submenu) {
         @include m(active) {
