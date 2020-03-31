@@ -236,7 +236,7 @@ module.exports = {
     ],
     navigation: [
       {
-        key: 'Menu',
+        key: 'menu',
         name: '导航菜单',
         module: () => import('@/components/menu/demo.md'),
       },

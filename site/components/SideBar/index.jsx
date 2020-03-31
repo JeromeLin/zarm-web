@@ -29,7 +29,7 @@ class SideBar extends PureComponent {
               return a.key.localeCompare(b.key);
             })
             .map((component) => (
-              <Menu.Item key={component.key}>
+              <Menu.Item key={`components/${component.key}`}>
                 <a href={`#/components/${component.key}`}>
                   <span>{ChangeCase.pascalCase(component.key)}</span>
                   <span className="chinese">{component.name}</span>
@@ -48,7 +48,7 @@ class SideBar extends PureComponent {
         <div className="menu">
           <Menu
             defaultOpenKeys={['components']}
-            defaultSelectedKeys={[match.params.component]}
+            defaultSelectedKeys={[`components/${match.params.component}`]}
           >
             {this.getDocs()}
             <Menu.SubMenu title="组件" key="components">
