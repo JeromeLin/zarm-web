@@ -157,13 +157,37 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   checkIfActive = (childs: React.ReactElement[]): boolean => {
     const { selectedKeys, subMenuKey } = this.props;
+
     if (!selectedKeys || !selectedKeys.length) return false;
-    return childs.some(() => {
-      if (selectedKeys[0].startsWith(subMenuKey!)) {
-        return true;
+    let hasSelectedChild = false;
+    let hasKey = false;
+
+    React.Children.forEach(childs, (c) => {
+      if (hasSelectedChild) return;
+      if (c.key) { hasKey = true; }
+      if (selectedKeys.indexOf(c.key as string) > -1) {
+        hasSelectedChild = true;
+      } else if (c.props) {
+        const { children, itemKey } = c.props;
+        if (selectedKeys.indexOf(itemKey) > -1) {
+          hasSelectedChild = true;
+        }
+        if (children && Array.isArray(children)) {
+          hasSelectedChild = this.checkIfActive(children);
+        }
       }
-      return false;
     });
+
+    if (!hasSelectedChild && !hasKey) {
+      return childs.some(() => {
+        if (selectedKeys[0].startsWith(subMenuKey!)) {
+          return true;
+        }
+        return false;
+      });
+    }
+
+    return hasSelectedChild;
   };
 
   toggleSubMenuOpen = (e: React.MouseEvent) => {
