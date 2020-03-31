@@ -22,7 +22,7 @@ class SideBar extends PureComponent {
     const list = components[key] || [];
 
     return (
-      <Menu.SubMenu title={groupName} key={key}>
+      <Menu.ItemGroup title={groupName} key={key}>
         {
           list
             .sort((a, b) => {
@@ -37,7 +37,7 @@ class SideBar extends PureComponent {
               </Menu.Item>
             ))
         }
-      </Menu.SubMenu>
+      </Menu.ItemGroup>
     );
   };
 
@@ -47,8 +47,8 @@ class SideBar extends PureComponent {
       <div className="side-bar">
         <div className="menu">
           <Menu
-            defaultOpenKeys={['components', 'general', 'layout', 'form', 'view', 'feedback', 'navigation', 'other']}
-            selectedKeys={[match.params.component]}
+            defaultOpenKeys={['components']}
+            defaultSelectedKeys={[match.params.component]}
           >
             {this.getDocs()}
             <Menu.SubMenu title="组件" key="components">
