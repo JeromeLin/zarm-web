@@ -27,7 +27,6 @@ ReactDOM.render(
         <Menu.Item>Item 1</Menu.Item>
         <Menu.Item>Item 2</Menu.Item>
       </Menu.ItemGroup>
-      <Menu.Divider />
       <Menu.ItemGroup title="ItemGroup 2">
         <Menu.Item>Item 1</Menu.Item>
         <Menu.Item>Item 2</Menu.Item>
@@ -75,7 +74,6 @@ ReactDOM.render(
         <Menu.Item>Item 1</Menu.Item>
         <Menu.Item>Item 2</Menu.Item>
       </Menu.ItemGroup>
-      <Menu.Divider />
       <Menu.ItemGroup title="ItemGroup 2">
         <Menu.Item>Item 1</Menu.Item>
         <Menu.Item>Item 2</Menu.Item>
@@ -175,10 +173,15 @@ ReactDOM.render(
         </Menu.SubMenu>
       </Menu.SubMenu>
       <Menu.SubMenu icon={<Icon type="keyboard" size="lg" />} title="SubMenu 2">
-        <Menu.Item>Item 1</Menu.Item>
-        <Menu.Item>Item 2</Menu.Item>
-        <Menu.Item>Item 3</Menu.Item>
-        <Menu.Item>Item 4</Menu.Item>
+        <Menu.ItemGroup title="ItemGroup 1">
+          <Menu.Item>Item 1</Menu.Item>
+          <Menu.Item>Item 2</Menu.Item>
+        </Menu.ItemGroup>
+        <Menu.Divider />
+        <Menu.ItemGroup title="ItemGroup 2">
+          <Menu.Item>Item 1</Menu.Item>
+          <Menu.Item>Item 2</Menu.Item>
+        </Menu.ItemGroup>
       </Menu.SubMenu>
       <Menu.SubMenu icon={<Icon type="date" size="lg" />} title="SubMenu 3">
         <Menu.Item>Item 1</Menu.Item>
