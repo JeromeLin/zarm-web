@@ -1,3 +1,77 @@
-@import '../../style/themes/variable';
-@import "../../style/core/mixins/index";
-@import './component';
+@import '../../style/core/index';
+@import 'mixins';
+@import './submenu';
+@import './menu-item';
+@import './item-group';
+@import './dark-theme';
+@import './inline-mode';
+@import './vertical-mode';
+
+@include b(menu) {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--menu-default-bg-color);
+  list-style: none;
+  outline: none;
+  transition: background 0.3s, width 0.2s;
+  zoom: 1;
+  font-feature-settings: 'tnum';
+  color: var(--color-text);
+
+  // divider
+  @include e(divider) {
+    height: 1px;
+    margin: 4px 0;
+    overflow: hidden;
+    padding: 0;
+    line-height: 0;
+    background-color: var(--menuitem-divider-bg-color);
+  }
+
+  // collapsed
+  @include m(collapsed) {
+    width: var(--menu-collapsed-width);
+
+    @include b(menu-submenu) {
+      @include m(level-1) {
+        @include e(title-level-1) {
+          @include item-collapsed();
+
+          @include e(arrow) {
+            display: none;
+          }
+        }
+        @include b(tooltip) {
+          display: block;
+
+          @include e(inner) {
+            overflow: hidden;
+            height: var(--menuitem-first-level-height);
+          }
+        }
+        @include b(icon) {
+          @include icon-collapsed();
+        }
+      }
+    }
+
+    @include b(menu-item) {
+      @include m(level-1) {
+        @include item-collapsed();
+
+        @include b(tooltip) {
+          display: block;
+
+          @include e(inner) {
+            overflow: hidden;
+            height: var(--menuitem-first-level-height);
+          }
+        }
+        @include b(icon) {
+          @include icon-collapsed();
+        }
+      }
+    }
+  }
+}

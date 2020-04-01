@@ -2,154 +2,142 @@
 
 exports[`Menu renders Menu with Divider correctly 1`] = `
 <ul
-  class="za-menu za-menu-root za-menu-dark za-menu-inline"
+  class="zw-menu zw-menu--dark zw-menu--inline"
   role="menu"
 >
   <li
-    class="za-menu-level-1 za-menu-item"
+    class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
-    style="padding-left:24px"
+    style="padding-left:20px"
   >
     投保单复核
   </li>
   <li
-    class="za-menu-level-1 za-menu-item"
+    class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
-    style="padding-left:24px"
+    style="padding-left:20px"
   >
     在线投保单管理
   </li>
   <li
-    class="ui-menu-item-divider"
+    class="zw-menu__divider"
   />
   <li
-    class="za-menu-level-1 za-menu-item"
+    class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
-    style="padding-left:24px"
+    style="padding-left:20px"
   >
     投保单录入
   </li>
   <li
-    class="za-menu-level-1 za-menu-item"
+    class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
-    style="padding-left:24px"
+    style="padding-left:20px"
   >
     新增计划
   </li>
 </ul>
 `;
 
-exports[`Menu renders collpased Menu correctly 1`] = `
+exports[`Menu renders Menu with ItemGroup correctly 1`] = `
 <ul
-  class="za-menu za-menu-root za-menu-light za-menu-inline za-menu-collapsed"
+  class="zw-menu zw-menu--light zw-menu--vertical"
   role="menu"
 >
-  <div
-    class="zw-tooltip"
+  <li
+    class="zw-menu-item-group"
   >
     <div
-      class="zw-tooltip__inner"
+      class="zw-menu-item-group__title"
+      style="padding-left:8px"
+    >
+      投保
+    </div>
+    <ul
+      class="zw-menu-item-group__list"
     >
       <li
-        class="za-menu-level-1 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-1"
         role="menuitem"
+        style="padding-left:20px"
       >
         投保单复核
       </li>
-    </div>
-  </div>
-  <div
-    class="zw-tooltip"
-  >
-    <div
-      class="zw-tooltip__inner"
-    >
       <li
-        class="za-menu-level-1 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-1"
         role="menuitem"
+        style="padding-left:20px"
       >
         在线投保单管理
       </li>
-    </div>
-  </div>
+    </ul>
+  </li>
   <li
-    class="ui-menu-item-divider"
+    class="zw-menu__divider"
   />
-  <div
-    class="zw-tooltip"
+  <li
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+    style="padding-left:20px"
   >
-    <div
-      class="zw-tooltip__inner"
-    >
-      <li
-        class="za-menu-level-1 za-menu-item"
-        role="menuitem"
-      >
-        投保单录入
-      </li>
-    </div>
-  </div>
-  <div
-    class="zw-tooltip"
+    投保单录入
+  </li>
+  <li
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+    style="padding-left:20px"
   >
-    <div
-      class="zw-tooltip__inner"
-    >
-      <li
-        class="za-menu-level-1 za-menu-item"
-        role="menuitem"
-      >
-        新增计划
-      </li>
-    </div>
-  </div>
+    新增计划
+  </li>
 </ul>
 `;
 
-exports[`Menu renders dark Menu correctly 1`] = `
+exports[`Menu renders Menu with dark theme correctly 1`] = `
 <ul
-  class="za-menu za-menu-root za-menu-dark za-menu-inline"
+  class="zw-menu zw-menu--dark zw-menu--inline"
   role="menu"
 >
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      新契约
+      <span>
+        新契约
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         投保单复核
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         在线投保单管理
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         投保单录入
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
@@ -158,44 +146,46 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </ul>
   </li>
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      核保
+      <span>
+        核保
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         核保权限定义
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         核保权限分配
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         规则配置
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
@@ -204,44 +194,46 @@ exports[`Menu renders dark Menu correctly 1`] = `
     </ul>
   </li>
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      批改
+      <span>
+        批改
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         批改新增
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         批改复核
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         批改回退
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
@@ -252,94 +244,66 @@ exports[`Menu renders dark Menu correctly 1`] = `
 </ul>
 `;
 
-exports[`Menu renders horizontal Menu correctly 1`] = `
+exports[`Menu renders SubMenu with ItemGroup correctly 1`] = `
 <ul
-  class="za-menu za-menu-root za-menu-light za-menu-horizontal"
+  class="zw-menu zw-menu--light zw-menu--inline"
   role="menu"
 >
   <li
-    class="za-menu-level-1 za-menu-item active"
-    role="menuitem"
-  >
-    意健险
-  </li>
-  <li
-    class="za-menu-level-1 za-menu-item"
-    role="menuitem"
-  >
-    健康险个险
-  </li>
-  <li
-    class="za-menu-level-1 za-menu-item"
-    role="menuitem"
-  >
-    雇主责任险
-  </li>
-  <li
-    class="za-menu-level-1 za-menu-item"
-    role="menuitem"
-  >
-    运营后台管理
-  </li>
-  <li
-    class="za-menu-level-1 za-menu-item"
-    role="menuitem"
-  >
-    公共功能
-  </li>
-  <li
-    class="za-menu-level-1 za-menu-item"
-    role="menuitem"
-  >
-    询报价
-  </li>
-</ul>
-`;
-
-exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
-<ul
-  class="za-menu za-menu-root za-menu-light za-menu-inline"
-  role="menu"
->
-  <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      新契约
+      <span>
+        新契约
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
-        role="menuitem"
-        style="padding-left:48px"
+        class="zw-menu-item-group"
       >
-        投保单复核
+        <div
+          class="zw-menu-item-group__title"
+          style="padding-left:36px"
+        >
+          投保
+        </div>
+        <ul
+          class="zw-menu-item-group__list"
+        >
+          <li
+            class="zw-menu-item zw-menu-item--level-2"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            投保单复核
+          </li>
+          <li
+            class="zw-menu-item zw-menu-item--level-2"
+            role="menuitem"
+            style="padding-left:48px"
+          >
+            在线投保单管理
+          </li>
+        </ul>
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
-        role="menuitem"
-        style="padding-left:48px"
-      >
-        在线投保单管理
-      </li>
-      <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         投保单录入
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
@@ -348,44 +312,163 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </ul>
   </li>
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+    style="padding-left:20px"
+  >
+    投保单录入
+  </li>
+  <li
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+    style="padding-left:20px"
+  >
+    新增计划
+  </li>
+</ul>
+`;
+
+exports[`Menu renders collpased Menu correctly 1`] = `
+<ul
+  class="zw-menu zw-menu--light zw-menu--inline zw-menu--collapsed"
+  role="menu"
+>
+  <li
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+  >
+    <div>
+      投保单复核
+    </div>
+    )
+  </li>
+  <li
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+  >
+    <div>
+      在线投保单管理
+    </div>
+    )
+  </li>
+  <li
+    class="zw-menu__divider"
+  />
+  <li
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+  >
+    <div>
+      投保单录入
+    </div>
+    )
+  </li>
+  <li
+    class="zw-menu-item zw-menu-item--level-1"
+    role="menuitem"
+  >
+    <div>
+      新增计划
+    </div>
+    )
+  </li>
+</ul>
+`;
+
+exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
+<ul
+  class="zw-menu zw-menu--light zw-menu--inline"
+  role="menu"
+>
+  <li
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      核保
+      <span>
+        新契约
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:48px"
+      >
+        投保单复核
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:48px"
+      >
+        在线投保单管理
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:48px"
+      >
+        投保单录入
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:48px"
+      >
+        新增计划
+      </li>
+    </ul>
+  </li>
+  <li
+    class="zw-menu-submenu zw-menu-submenu--level-1"
+  >
+    <div
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
+    >
+      <span>
+        核保
+      </span>
+      <i
+        class="zw-menu-submenu__arrow"
+      />
+    </div>
+    <ul
+      class="zw-menu-submenu__sub"
+      style="display:block"
+    >
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         核保权限定义
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         核保权限分配
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         规则配置
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
@@ -394,44 +477,46 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
     </ul>
   </li>
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      批改
+      <span>
+        批改
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         批改新增
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         批改复核
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         批改回退
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
@@ -444,66 +529,70 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
 
 exports[`Menu renders nested SubMenus correctly 1`] = `
 <ul
-  class="za-menu za-menu-root za-menu-light za-menu-inline"
+  class="zw-menu zw-menu--light zw-menu--inline"
   role="menu"
 >
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      理赔
+      <span>
+        理赔
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         报案
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         任务分配
       </li>
       <li
-        class="za-menu-submenu za-menu-level-2"
+        class="zw-menu-submenu zw-menu-submenu--level-2"
       >
         <div
-          class="za-menu-submenu-title"
+          class="zw-menu-submenu__title"
           style="padding-left:48px"
         >
-          理赔工作流
+          <span>
+            理赔工作流
+          </span>
           <i
-            class="za-menu-submenu-arrow"
+            class="zw-menu-submenu__arrow"
           />
         </div>
         <ul
-          class="za-menu-submenu-sub"
+          class="zw-menu-submenu__sub"
           style="display:block"
         >
           <li
-            class="za-menu-level-3 za-menu-item"
+            class="zw-menu-item zw-menu-item--level-3"
             role="menuitem"
-            style="padding-left:72px"
+            style="padding-left:60px"
           >
             休假维护
           </li>
           <li
-            class="za-menu-level-3 za-menu-item"
+            class="zw-menu-item zw-menu-item--level-3"
             role="menuitem"
-            style="padding-left:72px"
+            style="padding-left:60px"
           >
             时效维护
           </li>
@@ -512,44 +601,46 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </ul>
   </li>
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      新契约
+      <span>
+        新契约
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         投保单复核
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         在线投保单管理
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         投保单录入
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
@@ -558,48 +649,202 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
     </ul>
   </li>
   <li
-    class="za-menu-submenu za-menu-level-1"
+    class="zw-menu-submenu zw-menu-submenu--level-1"
   >
     <div
-      class="za-menu-submenu-title"
-      style="padding-left:24px"
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:48px"
     >
-      核保
+      <span>
+        核保
+      </span>
       <i
-        class="za-menu-submenu-arrow"
+        class="zw-menu-submenu__arrow"
       />
     </div>
     <ul
-      class="za-menu-submenu-sub"
+      class="zw-menu-submenu__sub"
       style="display:block"
     >
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         核保权限定义
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         核保权限分配
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         规则配置
       </li>
       <li
-        class="za-menu-level-2 za-menu-item"
+        class="zw-menu-item zw-menu-item--level-2"
         role="menuitem"
         style="padding-left:48px"
       >
         人工核保
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
+
+exports[`Menu renders vertical Menu with SubMenu correctly 1`] = `
+<ul
+  class="zw-menu zw-menu--light zw-menu--vertical"
+  role="menu"
+>
+  <li
+    class="zw-menu-submenu zw-menu-submenu--level-1"
+  >
+    <div
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:20px"
+    >
+      <span>
+        新契约
+      </span>
+      <i
+        class="zw-menu-submenu__arrow"
+      />
+    </div>
+    <ul
+      class="zw-menu zw-menu-submenu__sub"
+      style="display:none"
+    >
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        投保单复核
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        在线投保单管理
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        投保单录入
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        新增计划
+      </li>
+    </ul>
+  </li>
+  <li
+    class="zw-menu-submenu zw-menu-submenu--level-1"
+  >
+    <div
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:20px"
+    >
+      <span>
+        核保
+      </span>
+      <i
+        class="zw-menu-submenu__arrow"
+      />
+    </div>
+    <ul
+      class="zw-menu zw-menu-submenu__sub"
+      style="display:none"
+    >
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        核保权限定义
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        核保权限分配
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        规则配置
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        人工核保
+      </li>
+    </ul>
+  </li>
+  <li
+    class="zw-menu-submenu zw-menu-submenu--level-1"
+  >
+    <div
+      class="zw-menu-submenu__title zw-menu-submenu__title-level-1"
+      style="padding-left:20px"
+    >
+      <span>
+        批改
+      </span>
+      <i
+        class="zw-menu-submenu__arrow"
+      />
+    </div>
+    <ul
+      class="zw-menu zw-menu-submenu__sub"
+      style="display:none"
+    >
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        批改新增
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        批改复核
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        批改回退
+      </li>
+      <li
+        class="zw-menu-item zw-menu-item--level-2"
+        role="menuitem"
+        style="padding-left:20px"
+      >
+        批改共享池
       </li>
     </ul>
   </li>

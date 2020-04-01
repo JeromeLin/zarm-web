@@ -112,7 +112,7 @@ class SelectMultiple extends Component<MultipleProps, any> {
           aria-expanded="false"
           onClick={(e) => !disabled && this.onSelectClick(e)}
         >
-          <Menu size={size}>{childrenNode}</Menu>
+          <Menu>{childrenNode}</Menu>
         </span>
       </span>
     );

@@ -1,75 +1,90 @@
-export type size = 'xl' | 'lg' | 'sm' | 'xs';
+import { CSSProperties } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/class-name-casing
-export interface styleType {
-  paddingLeft?: number;
-  [propName: string]: any;
+export enum MenuMode {
+  inline = 'inline',
+  vertical = 'vertical'
 }
 
-// eslint-disable-next-line @typescript-eslint/class-name-casing
-export interface childPropsType {
+export enum MenuTheme {
+  light = 'light',
+  dark = 'dark'
+}
+
+export interface ChildProps {
   prefixCls?: string;
-  mode?: 'inline' | 'horizontal';
-  inlineIndent?: number;
-  inlineCollapsed?: boolean;
   level?: number;
   itemKey?: any;
   subMenuKey?: any;
+  groupIndex?: number;
 }
 
-export interface ItemProps {
+export interface MenuItemProps {
   prefixCls?: string;
-  checked?: boolean;
   disabled?: boolean;
-  isDisabled?: boolean;
+  icon?: React.ReactNode;
+  title?: string;
+  inlineIndent?: number;
   inlineCollapsed?: boolean;
   className?: string;
-  style: object;
+  style?: CSSProperties;
   selectedKeys: string[];
-  level: number;
-  mode: 'inline' | 'horizontal';
-  inlineIndent: number;
-  itemKey: string;
-  onClick: (e: React.MouseEvent, itemKey: string) => void;
-  toggleSelectedKeys: (itemKey: string) => void;
-  toggleSubMenuOpen: (itemKey: string) => void;
-  onDoubleClick?: () => void;
+  level?: number;
+  mode?: MenuMode;
+  itemKey?: string;
+  onClick?: (e: React.MouseEvent, itemKey: string) => void;
+  toggleSelectedKeys?: (itemKey: string) => void;
+  toggleSubMenuOpen?: (itemKey: string) => void;
+  onDoubleClick?: (e: React.MouseEvent) => void;
 }
 
-export interface DividerProps {
+export interface MenuDividerProps {
   prefixCls?: string;
   className?: string;
-  style: object;
+  style?: CSSProperties;
+}
+
+export interface MenuItemGroupProps {
+  prefixCls?: string;
+  className?: string;
+  style?: CSSProperties;
+  level?: number;
+  inlineIndent?: number;
+  mode?: MenuMode;
+  groupIndex?: number;
+  title: string;
+  subMenuKey?: string;
+  inlineCollapsed?: boolean;
 }
 
 export interface SubMenuProps {
   prefixCls?: string;
-  level: number;
-  inlineIndent: number;
-  mode: 'inline' | 'horizontal';
-  title: string | React.ReactNode;
+  level?: number;
+  inlineIndent?: number;
+  mode?: MenuMode;
+  icon?: React.ReactNode;
+  title: React.ReactNode;
   inlineCollapsed?: boolean;
   className?: string;
-  style: object;
+  style?: CSSProperties;
   itemKey?: any;
-  subMenuKey: string;
-  openKeys: string[];
-  toggleOpenKeys: (subMenyKey: string) => void;
+  subMenuKey?: string;
+  selectedKeys?: string[];
+  openKeys?: string[];
+  toggleOpenKeys?: (subMenyKey: string) => void;
 }
 
-export default interface PropsType {
+export default interface MenuProps {
   prefixCls?: string;
-  size?: size;
   className?: string;
-  style?: object;
-  mode?: 'inline' | 'horizontal';
-  theme?: 'light' | 'dark';
+  style?: CSSProperties;
+  mode?: MenuMode;
+  theme?: MenuTheme;
   defaultOpenKeys?: string[];
   defaultSelectedKeys?: string[];
   inlineIndent?: number;
   inlineCollapsed?: boolean;
   openKeys?: string[];
   selectedKeys?: string[];
-  onClick?: () => {};
-  onOpenChange?: (openKeys: string[]) => {};
+  onSelect?: (selectedKeys: string[]) => void;
+  onOpenChange?: (openKeys: string[]) => void;
 }

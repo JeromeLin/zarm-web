@@ -1,80 +1,104 @@
 import React, { Component, Children, cloneElement, ReactElement } from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import PropsType, { childPropsType } from './PropsType';
-import MenuContext, { menuKeys, KeysType } from './menu-context';
+import classnames from 'classnames';
+import MenuProps, { ChildProps, MenuMode } from './PropsType';
+import MenuContext, { initialContext, ContextType } from './menu-context';
+import SubMenu from './SubMenu';
+import MenuItem from './MenuItem';
+import ItemGroup from './ItemGroup';
+import Divider from './Divider';
+import { noop } from '../utils';
 
-class Menu extends Component<PropsType, any> {
+interface MenuState {
+  inlineCollapsed?: boolean;
+  openKeys: string[];
+  inlineOpenKeys: string[];
+  selectedKeys: string[];
+}
+
+class Menu extends Component<MenuProps, MenuState> {
   static defaultProps = {
-    prefixCls: 'za-menu',
-    mode: 'inline',
+    prefixCls: 'zw-menu',
+    mode: MenuMode.inline,
     theme: 'light',
-    inlineIndent: 24,
+    inlineIndent: 12,
     inlineCollapsed: false,
     defaultOpenKeys: [],
     defaultSelectedKeys: [],
+    onSelect: noop,
+    onOpenChange: noop,
   };
 
-  static contextTypes = {
-    siderCollapsed: PropTypes.bool,
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    mode: PropTypes.oneOf(['inline', 'vertical']),
+    theme: PropTypes.oneOf(['light', 'dark']),
+    defaultOpenKeys: PropTypes.arrayOf(PropTypes.string),
+    defaultSelectedKeys: PropTypes.arrayOf(PropTypes.string),
+    inlineIndent: PropTypes.number,
+    inlineCollapsed: PropTypes.bool,
+    onSelect: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 
-  static SubMenu;
+  static SubMenu = SubMenu;
 
-  static Item;
+  static Item = MenuItem;
 
-  static Divider;
+  static Divider = Divider;
 
-  menuKeys: any;
+  static ItemGroup = ItemGroup;
 
-  inlineOpenKeys: string[] = [];
-
-  constructor(props) {
+  constructor(props: MenuProps) {
     super(props);
-    const { defaultOpenKeys, defaultSelectedKeys } = props;
+    const { defaultOpenKeys, defaultSelectedKeys, inlineCollapsed } = props;
     this.state = {
-      openKeys: defaultOpenKeys,
-      selectedKeys: defaultSelectedKeys,
+      inlineCollapsed,
+      inlineOpenKeys: [],
+      openKeys: defaultOpenKeys!,
+      selectedKeys: defaultSelectedKeys!,
     };
-    // 每个实例都有自己的menuKeys，如果都指向一个menuKeys引用会有问题
-    this.menuKeys = { ...menuKeys };
-    this.menuKeys.toggleSelectedKeys = this.toggleSelectedKeys;
-    this.menuKeys.toggleOpenKeys = this.toggleOpenKeys;
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { inlineCollapsed } = this.props;
-    const { openKeys } = this.state;
-    if (
-      (nextProps.inlineCollapsed && !inlineCollapsed)
-    ) {
-      // this.switchingModeFromInline = true;
-      this.inlineOpenKeys = openKeys;
-      this.setState({ openKeys: [] });
-    }
+  static getDerivedStateFromProps(props: MenuProps, state: MenuState) {
+    const derivedState: MenuState = {} as any;
 
-    if (
-      (!nextProps.inlineCollapsed && inlineCollapsed)
-    ) {
-      this.setState({ openKeys: this.inlineOpenKeys });
-      this.inlineOpenKeys = [];
+    const { openKeys, selectedKeys, inlineCollapsed } = props;
+
+    if (inlineCollapsed && !state.inlineCollapsed) {
+      derivedState.inlineCollapsed = true;
+      derivedState.inlineOpenKeys = state.openKeys;
+      derivedState.openKeys = [];
     }
-    if (nextProps.selectedKeys) {
-      this.setState({ selectedKeys: nextProps.selectedKeys });
+    if (!inlineCollapsed && state.inlineCollapsed) {
+      derivedState.inlineCollapsed = false;
+      derivedState.openKeys = state.inlineOpenKeys;
+      derivedState.inlineOpenKeys = [];
     }
+    if (openKeys) {
+      derivedState.openKeys = openKeys;
+    }
+    if (selectedKeys) {
+      derivedState.selectedKeys = selectedKeys;
+    }
+    return derivedState;
   }
 
-  toggleSelectedKeys = (itemKey) => {
+  toggleSelectedKeys = (itemKey: string) => {
+    const { onSelect } = this.props;
     if (!('selectedKeys' in this.props)) {
       this.setState({
         selectedKeys: [itemKey],
       });
     }
+    if (onSelect) {
+      onSelect([itemKey]);
+    }
   };
 
-  toggleOpenKeys = (subMenuKey) => {
+  toggleOpenKeys = (subMenuKey: string) => {
     const { openKeys } = this.state;
-    const { onOpenChange, inlineCollapsed } = this.props;
+    const { onOpenChange, inlineCollapsed, mode } = this.props;
     const newOpenKeys = [...openKeys];
 
     const keyIndex = openKeys.indexOf(subMenuKey);
@@ -83,7 +107,8 @@ class Menu extends Component<PropsType, any> {
     } else {
       newOpenKeys.push(subMenuKey);
     }
-    if (inlineCollapsed && subMenuKey === '') { // inlineCollapsed状态点击item关闭所有的submenu
+    if ((inlineCollapsed || mode === MenuMode.vertical) && subMenuKey === '') {
+      // inlineCollapsed状态点击item关闭所有的submenu
       newOpenKeys.length = 0;
     }
 
@@ -98,46 +123,45 @@ class Menu extends Component<PropsType, any> {
   };
 
   renderChildren() {
-    const { children, inlineIndent, inlineCollapsed, mode } = this.props;
-    const { siderCollapsed } = this.context;
+    const { children, prefixCls } = this.props;
 
-    const childProps: childPropsType = {
-      mode,
-      inlineIndent,
-      inlineCollapsed: inlineCollapsed || siderCollapsed,
+    const childProps: ChildProps = {
+      prefixCls,
     };
     return Children.map(children, (child, index) => {
-      const c: ReactElement<any> = child as ReactElement<any>;
-      const { key } = child as ReactElement<any>;
+      const c = child as ReactElement;
+      const { key } = c;
 
-      childProps.subMenuKey = key || `0-${index}`;
-      childProps.itemKey = key || `0-${index}`;
+      if (Object.keys(c.type).indexOf('isItemGroup') > -1) {
+        childProps.groupIndex = index;
+      } else {
+        const childKey = key || `0-${index}`;
+        childProps.itemKey = childProps.subMenuKey = childKey;
+      }
+
       return cloneElement(c, childProps);
     });
   }
 
   render() {
     const {
-      size, theme, mode, className, style, prefixCls, inlineCollapsed,
+      theme, mode, className, style, prefixCls, inlineIndent, inlineCollapsed,
     } = this.props;
-    const { siderCollapsed } = this.context;
 
     const { openKeys, selectedKeys } = this.state;
-    const cls = classnames({
-      [prefixCls!]: true,
-      [`${prefixCls}-root`]: true,
-      [`${prefixCls}-${theme}`]: true,
-      [`${prefixCls}-${mode}`]: true,
-      [`${prefixCls}-collapsed`]: !!siderCollapsed || !!inlineCollapsed,
-      [`size-${size}`]: !!size,
-      [className!]: !!className,
+    const cls = classnames(prefixCls, `${prefixCls}--${theme}`, `${prefixCls}--${mode}`, className, {
+      [`${prefixCls}--collapsed`]: !!inlineCollapsed,
     });
 
-    const newMenuKeys: KeysType = {
-      ...this.menuKeys,
+    const newMenuKeys: ContextType = {
+      ...initialContext,
+      mode,
+      inlineIndent,
       openKeys,
       selectedKeys,
       inlineCollapsed,
+      toggleOpenKeys: this.toggleOpenKeys,
+      toggleSelectedKeys: this.toggleSelectedKeys,
     };
 
     return (

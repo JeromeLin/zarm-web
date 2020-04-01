@@ -5,7 +5,7 @@ import TimePicker from '../index';
 import TimeSelect from '../TimeSelect';
 
 jest.mock('react-dom', () => ({
-  createPortal: node => node,
+  createPortal: (node) => node,
 }));
 
 describe('TimePicker', () => {
@@ -71,6 +71,5 @@ describe('TimePicker', () => {
       wrapper.find('.clear-btn').simulate('click');
       expect(wrapper.find('.za-select__text').text()).toBe('00:00:00');
     });
-
   });
 });

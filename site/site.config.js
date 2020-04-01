@@ -235,12 +235,11 @@ module.exports = {
       // },
     ],
     navigation: [
-      // {
-      //   key: 'menu',
-      //   name: '导航菜单',
-      //   module: () => import('@/components/menu/menu.md'),
-      //   style: false,
-      // },
+      {
+        key: 'menu',
+        name: '导航菜单',
+        module: () => import('@/components/menu/demo.md'),
+      },
       {
         key: 'tabs',
         name: '标签页',

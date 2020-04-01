@@ -16,7 +16,7 @@
   --color-link: var(--theme-primary); // 链接
 
   //阴影
-  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // 背景色
@@ -199,20 +199,28 @@
   --radio-color: #616161;
 
   // Menu
-  --menu-color: #343434;
   --menu-default-bg-color: var(--color-text-inverse);
-  --menu-dark-bg-color: #001529;
-  --menu-collapsed-width: 80px;
-  --submenu-dark-bg-color: #000c17;
+  --menu-dark-bg-color: #363642;
+  --menu-collapsed-width: 56px;
+  --submenu-light-bg-color: #fff;
+  --submenu-collapsed-padding-vertical: 4px;
+  --submenu-min-width: 150px;
   --menuitem-dark-color: hsla(0, 0%, 100%, 0.65);
   --menuitem-dark-active-color: var(--color-text-inverse);
-  --menuitem-default-color: #343434;
+  --menuitem-default-color: #616161;
   --menuitem-active-color: var(--theme-primary);
   --menuitem-active-bg-color: rgba(0, 188, 112, 0.0625);
   --menuitem-disabled-color: rgba(0, 0, 0, 0.25);
-  --menuitem-divider-bg-color: #e5e5e5;
+  --menuitem-divider-bg-color: #e6e6e6;
   --menuitem-horizontal-padding: 20px;
-  --menuitem-horizontal-height: 56px;
+  --menuitem-height: 44px;
+  --menuitem-first-level-height: 52px;
+  --menuitem-group-color: var(--color-text-caption);
+  --menuitem-group-title-height: 36px;
+  --menuitem-group-font-size: 13px;
+  --menuitem-icon-margin-right: 12px;
+  --menuitem-icon-min-width: 14px;
+  --menuitem-icon-font-size: 16px;
 
   // Steps
   --steps-title-color: var(--color-text);

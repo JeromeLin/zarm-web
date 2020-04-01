@@ -1,0 +1,155 @@
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@mixin overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin icon-base {
+  min-width: var(--menuitem-icon-min-width);
+  margin-right: var(--menuitem-icon-margin-right);
+  font-size: var(--menuitem-icon-font-size);
+  pointer-events: none;
+
+  + span {
+    pointer-events: none;
+    transition: opacity 0.3s, width 0.3s;
+    opacity: 1;
+  }
+}
+
+@mixin icon-collapsed {
+  display: block;
+  font-size: var(--menuitem-icon-font-size);
+  line-height: var(--menuitem-first-level-height);
+  margin-right: 0;
+
+  + span {
+    max-width: 0;
+    height: 0;
+    display: inline-block;
+    opacity: 0;
+  }
+}
+
+@mixin item-base($height, $font-size) {
+  height: $height;
+  line-height: $height;
+  font-size: $font-size;
+  user-select: none;
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.3s $ease-in-out;
+  @include overflow-ellipsis();
+}
+
+@mixin item-active {
+  color: var(--menuitem-active-color);
+  background: var(--menuitem-active-bg-color);
+}
+
+@mixin item-collapsed {
+  left: 0;
+  text-overflow: clip;
+  padding: 0 (var(--menu-collapsed-width) - 16) / 2;
+}
+
+@mixin item-first-level {
+  height: var(--menuitem-first-level-height);
+  line-height: var(--menuitem-first-level-height);
+}
+
+@mixin arrow-base($bgColor) {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  transition: transform 0.3s $ease-in-out;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    vertical-align: baseline;
+    background: linear-gradient(to right, $bgColor, $bgColor);
+    width: 6px;
+    height: 2px;
+    border-radius: 2px;
+    transition: transform 0.3s $ease-in-out;
+  }
+
+  &:before {
+    transform: rotate(-40deg) translateX(2px);
+  }
+
+  &:after {
+    transform: rotate(40deg) translateX(-2px);
+  }
+}
+
+@mixin arrow-vertical {
+  &:before {
+    transform: rotate(-50deg) translateY(2px);
+  }
+
+  &:after {
+    transform: rotate(50deg) translateY(-2px);
+  }
+}
+
+@mixin arrow-active {
+  &:after,
+  &:before {
+    background: linear-gradient(to right, var(--menuitem-active-color), var(--menuitem-active-color));
+  }
+}
+
+@mixin sub-collapsed($bgColor) {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 4px);
+  z-index: 2;
+  overflow: visible;
+  min-width: var(--submenu-min-width);
+  height: auto !important;
+  padding: var(--submenu-collapsed-padding-vertical) 0;
+  opacity: 0;
+  background-color: $bgColor;
+  border-radius: var(--radius-md);
+  transform-origin: 0 0;
+  box-shadow: var(--box-shadow-light);
+
+  &.slide-up {
+    animation: slide-up 0.3s both;
+  }
+
+  &.slide-down {
+    animation: slide-down 0.3s both;
+  }
+}
