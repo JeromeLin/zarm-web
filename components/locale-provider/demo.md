@@ -10,13 +10,13 @@ import { Alert, Button, LocaleProvider } from 'zarm-web';
 const localeCN = {
   locale: 'zh-cn',
   Alert: {
-    close: '关闭',
+    cancelText: '关闭',
   },
 }
 const localeEN = {
   locale: 'en',
   Alert: {
-    close: 'Close'
+    cancelText: 'Close'
   }
 }
 

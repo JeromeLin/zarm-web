@@ -20,7 +20,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
       hideIcon={false}
       locale={
         Object {
-          "close": "关闭",
+          "cancelText": "关闭",
         }
       }
       localeCode="zh-cn"

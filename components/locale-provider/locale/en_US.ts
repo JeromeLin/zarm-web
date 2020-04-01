@@ -1,8 +1,8 @@
+import Alert from '../../alert/locale/en_US';
+
 export default {
   locale: 'en',
-  Alert: {
-    close: 'Close',
-  },
+  Alert,
   Calendar: {
     today: 'Today',
     now: 'Now',
@@ -69,13 +69,5 @@ export default {
   TimePicker: {
     confirm: 'Ok',
     clear: 'Clear',
-  },
-  Notification: {
-    defaultTitles: {
-      error: 'Error',
-      success: 'Success',
-      warning: 'Warning',
-      default: 'Notification',
-    },
   },
 };

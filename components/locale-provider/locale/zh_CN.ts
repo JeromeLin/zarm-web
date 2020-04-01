@@ -1,8 +1,8 @@
+import Alert from '../../alert/locale/zh_CN';
+
 export default {
   locale: 'zh-cn',
-  Alert: {
-    close: '关闭',
-  },
+  Alert,
   Calendar: {
     today: '今天',
     now: '此刻',
@@ -69,13 +69,5 @@ export default {
   TimePicker: {
     clear: '清除',
     confirm: '确认',
-  },
-  Notification: {
-    defaultTitles: {
-      error: '错误',
-      success: '成功',
-      warning: '警告',
-      default: '通知',
-    },
   },
 };

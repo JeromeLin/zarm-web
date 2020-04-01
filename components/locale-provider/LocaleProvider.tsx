@@ -1,6 +1,6 @@
 import React from 'react';
 import LocaleProvider from 'zarm/lib/locale-provider';
-import defaultLocale from './lang/zh-cn';
+import defaultLocale from './locale/zh_CN';
 
 const LocaleProviderWrapper = ({ locale = defaultLocale, children }) => {
   return (
