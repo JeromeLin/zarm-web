@@ -5,6 +5,11 @@ export enum MenuMode {
   vertical = 'vertical'
 }
 
+export enum MenuTheme {
+  light = 'light',
+  dark = 'dark'
+}
+
 export interface ChildProps {
   prefixCls?: string;
   level?: number;
@@ -73,7 +78,7 @@ export default interface MenuProps {
   className?: string;
   style?: CSSProperties;
   mode?: MenuMode;
-  theme?: 'light' | 'dark';
+  theme?: MenuTheme;
   defaultOpenKeys?: string[];
   defaultSelectedKeys?: string[];
   inlineIndent?: number;

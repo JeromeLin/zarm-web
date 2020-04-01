@@ -149,13 +149,9 @@ class Menu extends Component<MenuProps, MenuState> {
     } = this.props;
 
     const { openKeys, selectedKeys } = this.state;
-    const cls = classnames(
-      [prefixCls, `${prefixCls}--${theme}`, `${prefixCls}--${mode}`],
-      {
-        [`${prefixCls}--collapsed`]: !!inlineCollapsed,
-        [className!]: !!className,
-      },
-    );
+    const cls = classnames(prefixCls, `${prefixCls}--${theme}`, `${prefixCls}--${mode}`, className, {
+      [`${prefixCls}--collapsed`]: !!inlineCollapsed,
+    });
 
     const newMenuKeys: ContextType = {
       ...initialContext,
