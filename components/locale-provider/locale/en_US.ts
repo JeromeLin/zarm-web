@@ -1,8 +1,8 @@
+import Alert from '../../alert/locale/en_US';
+
 export default {
   locale: 'en',
-  Alert: {
-    close: 'Close',
-  },
+  Alert,
   Calendar: {
     today: 'Today',
     now: 'Now',

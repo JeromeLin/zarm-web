@@ -1,8 +1,8 @@
+import Alert from '../../alert/locale/zh_CN';
+
 export default {
   locale: 'zh-cn',
-  Alert: {
-    close: '关闭',
-  },
+  Alert,
   Calendar: {
     today: '今天',
     now: '此刻',

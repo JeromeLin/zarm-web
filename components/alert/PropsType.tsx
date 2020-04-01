@@ -1,3 +1,5 @@
+import { Locale } from '../locale-provider/PropsType';
+
 export type themeType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 
 export default interface PropsType {
@@ -9,7 +11,7 @@ export default interface PropsType {
   visible?: boolean;
   hideIcon?: boolean;
   closable?: boolean;
-  closeText?: string;
-  locale?: { close: string };
+  cancelText?: string;
+  locale?: Locale['Alert'];
   onClose: () => void;
 }
