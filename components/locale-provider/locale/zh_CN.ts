@@ -70,12 +70,4 @@ export default {
     clear: '清除',
     confirm: '确认',
   },
-  Notification: {
-    defaultTitles: {
-      error: '错误',
-      success: '成功',
-      warning: '警告',
-      default: '通知',
-    },
-  },
 };
