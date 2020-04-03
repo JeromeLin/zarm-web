@@ -70,4 +70,8 @@ export default {
     clear: '清除',
     confirm: '确认',
   },
+  Popconfirm: {
+    confirm: '确定',
+    cancel: '取消',
+  },
 };

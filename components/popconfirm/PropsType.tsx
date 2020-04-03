@@ -13,4 +13,5 @@ export default interface PropsType {
   cancelText?: string;
   locale?: { [propName: string]: any };
   content: React.ReactNode;
+  icon: React.ReactNode;
 }

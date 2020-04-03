@@ -70,4 +70,8 @@ export default {
     confirm: 'Ok',
     clear: 'Clear',
   },
+  Popconfirm: {
+    confirm: 'Ok',
+    cancel: 'Cancel',
+  },
 };
