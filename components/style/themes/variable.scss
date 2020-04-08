@@ -16,23 +16,29 @@
   --color-link: var(--theme-primary); // 链接
 
   //阴影
-  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // 背景色
-  --background-active: #e6e6e6;
-  --background-disabled: #bcbcbc;
+  // --background-active: #e6e6e6;
+  --background-disabled: #fafafa;
 
   // 边框色
-  --border-color: #e6e6e6;
-  --border-disabled: #bcbcbc;
+  --border-color: #dcdcdc;
+  --border-disabled: #e6e6e6;
 
   // 堆叠顺序
   --zindex-tooltip: 1500;
+  --zindex-popup: 1500;
+  --zindex-dropdown: 1101;
+  --zindex-notification: 1400;
+  --zindex-message: 1400;
 
   // 透明度
-  --opacity-disabled: .5;
-  --opacity-tooltip: .8;
+  --opacity-disabled: 0.5;
+  --opacity-mask: 0.5;
+  --opacity-toast: 0.8;
+  --opacity-tooltip: 0.8;
 
   // 圆角
   --radius-sm: 2px;
@@ -62,9 +68,14 @@
   --font-size-lg: 16px;
   --font-size-xl: 18px;
 
+  // activity-indicator
+  --activity-indicator-size-md: 16px;
+  --activity-indicator-size-lg: 32px;
+  --activity-indicator-path-color: #e6e6e6;
+
   // Avatar
   --avatar-border-radius: 50%;
-  --avatar-fontSize: 14px;
+  --avatar-font-size: 14px;
   --avatar-width-md: 40px;
   --avatar-height-md: 40px;
   --avatar-width-xl: 72px;
@@ -96,43 +107,37 @@
   --breadcrumb-separator-color: rgba(0, 0, 0, 0.45);
 
   // Button
-  --button-ghost-disabled-border: #e9e9e9;
-  --button-ghost-disabled-color: rgba(0, 0, 0, 0.35);
-  --button-padding-h-xl: var(--padding-h-xl);
+  --button-ghost-disabled-border: var(--border-color);
+  --button-ghost-disabled-color: var(--color-text-inverse);
   --button-padding-h-lg: var(--padding-h-lg);
   --button-padding-h-md: var(--padding-h-md);
   --button-padding-h-sm: var(--padding-h-sm);
-  --button-padding-h-xs: var(--padding-h-xs);
-  --button-height-xl: 40px;
-  --button-height-lg: 36px;
+  --button-height-lg: 40px;
   --button-height-md: 32px;
-  --button-height-sm: 28px;
-  --button-height-xs: 24px;
-  --button-font-size-xl: 18px;
+  --button-height-sm: 24px;
   --button-font-size-lg: 16px;
   --button-font-size-md: 14px;
   --button-font-size-sm: 12px;
-  --button-font-size-xs: 12px;
-  --button-icon-size-xl: 20px;
-  --button-icon-size-lg: 18px;
+  --button-icon-size-lg: 20px;
   --button-icon-size-md: 16px;
   --button-icon-size-sm: 14px;
-  --button-icon-size-xs: 14px;
   --button-disabled-opacity: var(--opacity-disabled);
   --button-disabled-color-ghost: var(--border-disabled);
   --button-default-background: var(--color-text-inverse);
-  --button-default-border: #e6e6e6;
+  --button-default-border: var(--border-color);
   --button-default-color: var(--color-text);
   --button-default-hover-background: var(--color-text-inverse);
   --button-default-hover-border: var(--theme-primary);
   --button-default-hover-color: var(--theme-primary);
-  --button-default-active-background: var(--theme-default);
-  --button-default-active-border: var(--theme-default);
-  --button-default-active-color: var(--color-text);
+  --button-default-active-background: var(--color-text-inverse);
+  --button-default-active-border: var(--theme-primary-dark);
+  --button-default-active-color: var(--theme-primary-dark);
   --button-default-ghost-border: var(--color-text-inverse);
   --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: var(--theme-primary);
-  --button-default-ghost-active-color: var(--theme-primary);
+  --button-default-ghost-hover-border: var(--theme-primary-light);
+  --button-default-ghost-hover-color: var(--theme-primary-light);
+  --button-default-ghost-active-border: var(--theme-primary-dark);
+  --button-default-ghost-active-color: var(--theme-primary-dark);
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);
   --button-primary-color: var(--color-text-inverse);
@@ -141,11 +146,14 @@
   --button-primary-hover-color: var(--color-text-inverse);
   --button-primary-active-background: var(--theme-primary-dark);
   --button-primary-active-border: var(--theme-primary-dark);
-  --button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --button-primary-active-color: var(--color-text-inverse);
   --button-primary-ghost-border: var(--theme-primary);
   --button-primary-ghost-color: var(--theme-primary);
+  --button-primary-ghost-hover-border: var(--theme-primary-light);
+  --button-primary-ghost-hover-color: var(--theme-primary-light);
   --button-primary-ghost-active-border: var(--theme-primary-dark);
   --button-primary-ghost-active-color: var(--theme-primary-dark);
+  --button-primary-gap-color: hsla(0, 0%, 100%, 0.3);
   --button-danger-background: var(--theme-danger);
   --button-danger-border: var(--theme-danger);
   --button-danger-color: var(--color-text-inverse);
@@ -154,9 +162,11 @@
   --button-danger-hover-color: var(--color-text-inverse);
   --button-danger-active-background: var(--theme-danger-dark);
   --button-danger-active-border: var(--theme-danger-dark);
-  --button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --button-danger-active-color: var(--color-text-inverse);
   --button-danger-ghost-border: var(--theme-danger);
   --button-danger-ghost-color: var(--theme-danger);
+  --button-danger-ghost-hover-border: var(--theme-danger-light);
+  --button-danger-ghost-hover-color: var(--theme-danger-light);
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
   --button-warning-background: var(--theme-warning);
@@ -173,36 +183,116 @@
   --button-warning-ghost-active-border: var(--theme-warning-dark);
   --button-warning-ghost-active-color: var(--theme-warning-dark);
 
-  // activity-indicator
-  --activity-indicator-size-md: 16px;
-  --activity-indicator-size-lg: 32px;
-  --activity-indicator-path-color: #e6e6e6;
-
   // Checkbox
   --checkbox-size: 14px;
   --checkbox-radius: var(--radius-sm);
   --checkbox-border-color: var(--border-color);
-  --checkbox-background: var(--color-text-inverse);
+
+  // Loading
+  --loading-height-sm: 12px;
+  --loading-height-md: 24px;
+  --loading-height-lg: 36px;
+  --loading-spacing-sm: var(--padding-v-sm);
+  --loading-spacing-md: var(--padding-v-md);
+  --loading-spacing-lg: var(--padding-v-lg);
+  --loading-font-size-sm: var(--font-size-sm);
+  --loading-font-size-md: var(--font-size-md);
+  --loading-font-size-lg: var(--font-size-lg);
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
 
   // Radio
-  --button-radio-btn-disabled-color: --color-text-caption;
-  --button-radio-btn-disabled-bg: rgba(250, 250, 250, 1);
+  --radio-size: 14px;
+  --radio-radius: var(--radius-circle);
+  --radio-border-color: var(--border-color);
+  --radio-color: #616161;
 
   // Menu
-  --menu-color: #343434;
   --menu-default-bg-color: var(--color-text-inverse);
-  --menu-dark-bg-color: #001529;
-  --menu-collapsed-width: 80px;
-  --submenu-dark-bg-color: #000c17;
+  --menu-dark-bg-color: #363642;
+  --menu-collapsed-width: 56px;
+  --submenu-light-bg-color: #fff;
+  --submenu-collapsed-padding-vertical: 4px;
+  --submenu-min-width: 150px;
   --menuitem-dark-color: hsla(0, 0%, 100%, 0.65);
   --menuitem-dark-active-color: var(--color-text-inverse);
-  --menuitem-default-color: #343434;
+  --menuitem-default-color: #616161;
   --menuitem-active-color: var(--theme-primary);
   --menuitem-active-bg-color: rgba(0, 188, 112, 0.0625);
   --menuitem-disabled-color: rgba(0, 0, 0, 0.25);
-  --menuitem-divider-bg-color: #e5e5e5;
+  --menuitem-divider-bg-color: #e6e6e6;
   --menuitem-horizontal-padding: 20px;
-  --menuitem-horizontal-height: 56px;
+  --menuitem-height: 44px;
+  --menuitem-first-level-height: 52px;
+  --menuitem-group-color: var(--color-text-caption);
+  --menuitem-group-title-height: 36px;
+  --menuitem-group-font-size: 13px;
+  --menuitem-icon-margin-right: 12px;
+  --menuitem-icon-min-width: 14px;
+  --menuitem-icon-font-size: 16px;
+
+  // Steps
+  --steps-title-color: var(--color-text);
+  --steps-desc-color: var(--color-text-caption);
+  --steps-title-font-size: var(--font-size-md);
+  --steps-desc-font-size: var(--font-size-md);
+  --steps-border-color: var(--border-color);
+  --steps-status-wait: #bcbcbc;
+  --steps-status-process: var(--theme-primary);
+  --steps-status-error: var(--theme-danger);
+  --steps-icon-size: 28px;
+  --steps-content-width: 140px;
+
+  // Switch
+  --switch-width-md: 48px;
+  --switch-width-sm: 32px;
+  --switch-height-md: 20px;
+  --switch-height-sm: 16px;
+  --switch-font-size-md: var(--font-size-sm);
+  --switch-font-size-sm: var(--font-size-xs);
+  --switch-background: #bcbcbc;
+
+  // Tabs
+  --tabs-font-size-sm: 14px;
+  --tabs-font-size-md: 16px;
+  --tabs-font-size-lg: 18px;
+  --tabs-header-icon-sm: 12px;
+  --tabs-header-icon-md: 14px;
+  --tabs-header-icon-lg: 16px;
+  --tabs-header-card-height-sm: 34px;
+  --tabs-header-card-height-md: 40px;
+  --tabs-header-card-height-lg: 46px;
+  --tabs-header-line-height-sm: 38px;
+  --tabs-header-line-height-md: 48px;
+  --tabs-header-line-height-lg: 58px;
+  --tabs-header-vertical-height-sm: 30px;
+  --tabs-header-vertical-height-md: 36px;
+  --tabs-header-vertical-height-lg: 42px;
+  --tabs-header-line-padding-sm: 12px;
+  --tabs-header-line-padding-md: 16px;
+  --tabs-header-line-padding-lg: 20px;
+  --tabs-header-card-padding-sm: 10px;
+  --tabs-header-card-padding-md: 12px;
+  --tabs-header-card-padding-lg: 14px;
+  --tabs-header-vertical-padding-sm: 16px;
+  --tabs-header-vertical-padding-md: 20px;
+  --tabs-header-vertical-padding-lg: 24px;
+  --tabs-default-color: #616161;
+  --tabs-default-hover-color: #33c98d;
+  --tabs-default-disabled-color: var(--color-text-disabled);
+  --tabs-default-icon-color: #bcbcbc;
+  --tabs-default-icon-disabled-color: var(--border-disabled);
+  --tabs-default-icon-hover-color: var(--color-text);
+  --tabs-default-active-background: var(--color-text-inverse);
+  --tabs-default-line-color: #00bc70;
+  --tabs-default-active-color: #00bc70;
+  --tabs-default-background-color: var(--color-text-inverse);
+  --tabs-default-card-background: #fafafa;
+  --tabs-default-noborder-background: #f2f2f2;
 
   // Tag
   --tag-height-lg: 32px;
@@ -231,12 +321,6 @@
   --tag-color-orange: 236, 145, 49;
   --tag-color-red: 255, 80, 80;
 
-  // Icon
-  --icon-font-size-sm: 16px;
-  --icon-font-size-md: 24px;
-  --icon-font-size-lg: 32px;
-  --icon-theme-default: var(--color-text);
-
   // Tooltip
   --tooltip-font-size: 12px;
   --tooltip-color: var(--color-text-inverse);
@@ -246,15 +330,43 @@
   --tooltip-padding-v: var(--padding-v-xs);
   --tooltip-padding-h: var(--padding-h-xs);
 
-  // Steps
-  --steps-title-color: var(--color-text);
-  --steps-desc-color: var(--color-text-caption);
-  --steps-title-font-size: var(--font-size-md);
-  --steps-desc-font-size: var(--font-size-md);
-  --steps-border-color: #bcbcbc;
-  --steps-status-wait: #bcbcbc;
-  --steps-status-process: var(--theme-primary);
-  --steps-status-error: var(--theme-danger);
-  --steps-icon-size: 28px;
-  --steps-content-width: 140px;
+  // Input
+  --input-focus-shadow: 0 0 0 2px rgba(0, 188, 113, 0.2);
+  --input-default-border: 1px solid var(--input-default-border-color);
+  --input-default-border-color: #dcdcdc;
+  --input-default-color: #343434;
+  --input-height-lg: 40px;
+  --input-height-md: 32px;
+  --input-height-sm: 24px;
+  --input-padding-lg: 6px 12px;
+  --input-padding-md: 4px 12px;
+  --input-padding-sm: 1px 8px;
+  --input-font-size-lg: 16px;
+  --input-font-size-md: 14px;
+  --input-font-size-sm: 12px;
+  --input-disabled-background-color: rgb(250, 250, 250);
+  --input-disabled-color: rgb(144, 144, 144);
+  --input-length-count-color: #bcbcbc;
+  --input-length-max-count-color: #616161;
+  --input-addon-background-color: #f2f2f2;
+  --input-addon-border-color: #d9d9d9;
+  --input-placeholder-color: #bcbcbc;
+
+  // message
+  --message-color: #616161;
+  --message-font-size: 14px;
+  --message-line-height: 18px;
+
+  // notification
+  --notification-width: 336px;
+  --notification-title-color: #343434;
+  --notification-title-font-size: 14px;
+  --notification-title-line-height: 22px;
+  --notification-title-font-weight: 400;
+  --notification-title-padding: 0 0 2px;
+  --notification-color: #616161;
+  --notification-font-size: 12px;
+  --notification-line-height: 18px;
+  --notification-body-padding: 2px 0 0;
+  --notification-footer-padding: 20px 0 0;
 }

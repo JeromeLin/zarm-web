@@ -1,0 +1,52 @@
+@mixin switch-size($width, $height, $font-size, $radix) {
+  min-width: $width;
+  height: $height;
+
+  &:after {
+    width: calc(#{$height} - #{$radix} * 2px);
+    height: calc(#{$height} - #{$radix} * 2px);
+    left: #{$radix}px;
+    top: #{$radix}px;
+  }
+
+  &:not(&--disabled):active::after {
+    width: calc((#{$height} - #{$radix} * 2px) * 1.33);
+  }
+
+  @include e(text) {
+    line-height: $height;
+    margin-left: calc(#{$height} * 1.33 - #{$radix} * 2px);
+    margin-right: calc(#{$radix} * 3px);
+    font-size: $font-size;
+
+    @include b(icon) {
+      font-size: $font-size;
+    }
+  }
+
+  @include b(activity-indicator) {
+    width: calc(#{$height} - (#{$radix} + 2) * 2px);
+    height: calc(#{$height} - (#{$radix} + 2) * 2px);
+    left: calc(#{$radix}px + 2px);
+    top: calc(#{$radix}px + 2px);
+  }
+
+  @include m(checked) {
+    &:after {
+      left: 100%;
+      transform: translateX(-100%);
+      margin-left: - #{$radix}px;
+    }
+
+    @include e(text) {
+      margin-left: calc(#{$radix} * 3px);
+      margin-right: calc(#{$height} * 1.33 - #{$radix} * 2px);
+    }
+
+    @include b(activity-indicator) {
+      left: 100%;
+      transform: translateX(-100%);
+      margin-left: calc(-1 * (#{$radix}px + 2px));
+    }
+  }
+}

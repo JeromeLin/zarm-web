@@ -6,11 +6,11 @@
     border-radius: $border-radius;
   }
 
-  .za-tag-input__div {
+  .zw-tag-input__div {
     font-size: $font-size;
   }
 
-  .za-tag-input__div-placeholder,
+  .zw-tag-input__div-placeholder,
   .value-text {
     font-size: $font-size;
   }
@@ -61,7 +61,7 @@
     @include tag-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs);
   }
 
-  .za-tag-input__div {
+  .zw-tag-input__div {
     display: inline-block;
     vertical-align: middle;
     min-width: 5px;
@@ -73,7 +73,7 @@
     max-width: 100%;
   }
 
-  .za-tag-input__div-placeholder,
+  .zw-tag-input__div-placeholder,
   .value-text {
     position: absolute;
     left: 0;
@@ -85,11 +85,11 @@
     max-width: calc(100% - 35px);
   }
 
-  .za-tag-input__div-placeholder {
+  .zw-tag-input__div-placeholder {
     color: #999;
   }
 
-  .za-tag-list-box {
+  .zw-tag-list-box {
     padding: 4px 0;
     line-height: 0;
     display: inline-block;
@@ -107,7 +107,7 @@
   }
 }
 
-.za-tag-input-box--active {
+.zw-tag-input-box--active {
   border-color: $base-theme-info;
 
   .value-text {

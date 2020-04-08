@@ -17,7 +17,7 @@
   overflow: hidden;
   vertical-align: middle;
   border-radius: var(--avatar-border-radius);
-  font-size: var(--avatar-fontSize);
+  font-size: var(--avatar-font-size);
 
   > img {
     width: 100%;
@@ -26,23 +26,23 @@
   }
 
   @include m(md) {
-    @include avatar-size(var(--avatar-width-md), var(--avatar-height-md), var(--avatar-fontSize-icon-md));
+    @include avatar-size(var(--avatar-width-md), var(--avatar-height-md), var(--avatar-font-size-icon-md));
   }
   /* Avatar sizes */
   @include m(xl) {
-    @include avatar-size(var(--avatar-width-xl), var(--avatar-height-xl), var(--avatar-fontSize-icon-xl));
+    @include avatar-size(var(--avatar-width-xl), var(--avatar-height-xl), var(--avatar-font-size-icon-xl));
   }
 
   @include m(lg) {
-    @include avatar-size(var(--avatar-width-lg), var(--avatar-height-lg), var(--avatar-fontSize-icon-lg));
+    @include avatar-size(var(--avatar-width-lg), var(--avatar-height-lg), var(--avatar-font-size-icon-lg));
   }
 
   @include m(sm) {
-    @include avatar-size(var(--avatar-width-sm), var(--avatar-height-sm), var(--avatar-fontSize-icon-sm));
+    @include avatar-size(var(--avatar-width-sm), var(--avatar-height-sm), var(--avatar-font-size-icon-sm));
   }
 
   @include m(xs) {
-    @include avatar-size(var(--avatar-width-xs), var(--avatar-height-xs), var(--avatar-fontSize-icon-xs));
+    @include avatar-size(var(--avatar-width-xs), var(--avatar-height-xs), var(--avatar-font-size-icon-xs));
   }
 
   /* Avatar shape */
@@ -63,4 +63,3 @@
     transform: translateX(-50%);
   }
 }
-

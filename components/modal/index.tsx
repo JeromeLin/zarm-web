@@ -25,7 +25,7 @@ const themeMapIcon = {
 
 Modal.staticTriggerInstanceList = [];
 
-type ThemeType = 'success' | 'primary' | 'warning' | 'danger';
+type ThemeType = 'success' | 'primary' | 'danger' | 'warning';
 
 type AlertProps = MergeProps<typeof Modal, ModalProps> & { content: ReactNode; theme?: ThemeType };
 
@@ -121,7 +121,7 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
         footer={(
           <>
             {isConfirm && <Button onClick={() => handleOnOk(render, false)}>取消</Button>}
-            <Button theme={theme === 'success' ? 'primary' : theme || 'primary'} onClick={() => handleOnOk(render, true)}>确定</Button>
+            <Button theme={theme === 'danger' ? 'danger' : 'primary'} onClick={() => handleOnOk(render, true)}>确定</Button>
           </>
         )}
       >

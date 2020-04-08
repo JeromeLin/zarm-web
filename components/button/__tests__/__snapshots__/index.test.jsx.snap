@@ -1,36 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button renders Button.Group correctly 1`] = `
+<div
+  className="zw-button-group"
+  href="https://www.baidu.com"
+>
+  <Button
+    ghost={false}
+    href="https://www.baidu.com"
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    prefixCls="zw-button"
+    shape="radius"
+    size="md"
+    theme="default"
+  >
+    百度一下
+  </Button>
+  ,
+</div>
+`;
+
 exports[`Button renders Buttons of different size correctly 1`] = `
 <div>
   <button
     class="zw-button zw-button--primary zw-button--xl zw-button--radius"
     type="button"
   >
-    xl尺寸
+    <span>
+      xl尺寸
+    </span>
   </button>
   <button
     class="zw-button zw-button--primary zw-button--lg zw-button--radius"
     type="button"
   >
-    lg尺寸
+    <span>
+      lg尺寸
+    </span>
   </button>
   <button
-    class="zw-button zw-button--primary zw-button--radius"
+    class="zw-button zw-button--primary zw-button--md zw-button--radius"
     type="button"
   >
-    默认尺寸
+    <span>
+      默认尺寸
+    </span>
   </button>
   <button
     class="zw-button zw-button--primary zw-button--sm zw-button--radius"
     type="button"
   >
-    sm尺寸
+    <span>
+      sm尺寸
+    </span>
   </button>
   <button
     class="zw-button zw-button--primary zw-button--xs zw-button--radius"
     type="button"
   >
-    xs尺寸
+    <span>
+      xs尺寸
+    </span>
   </button>
 </div>
 `;
@@ -38,34 +70,44 @@ exports[`Button renders Buttons of different size correctly 1`] = `
 exports[`Button renders Buttons of different theme correctly 1`] = `
 <div>
   <button
-    class="zw-button zw-button--default zw-button--radius"
+    class="zw-button zw-button--default zw-button--md zw-button--radius"
     type="button"
   >
-    default
+    <span>
+      default
+    </span>
   </button>
   <button
-    class="zw-button zw-button--primary zw-button--radius"
+    class="zw-button zw-button--primary zw-button--md zw-button--radius"
     type="button"
   >
-    info
+    <span>
+      info
+    </span>
   </button>
   <button
-    class="zw-button zw-button--success zw-button--radius"
+    class="zw-button zw-button--success zw-button--md zw-button--radius"
     type="button"
   >
-    success
+    <span>
+      success
+    </span>
   </button>
   <button
-    class="zw-button zw-button--warning zw-button--radius"
+    class="zw-button zw-button--warning zw-button--md zw-button--radius"
     type="button"
   >
-    warning
+    <span>
+      warning
+    </span>
   </button>
   <button
-    class="zw-button zw-button--error zw-button--radius"
+    class="zw-button zw-button--error zw-button--md zw-button--radius"
     type="button"
   >
-    error
+    <span>
+      error
+    </span>
   </button>
 </div>
 `;
@@ -74,66 +116,86 @@ exports[`Button renders Buttons with radius or round props correctly 1`] = `
 <div>
   <div>
     <button
-      class="zw-button zw-button--default zw-button--radius"
+      class="zw-button zw-button--default zw-button--md zw-button--radius"
       type="button"
     >
-      default
+      <span>
+        default
+      </span>
     </button>
     <button
-      class="zw-button zw-button--primary zw-button--radius"
+      class="zw-button zw-button--primary zw-button--md zw-button--radius"
       type="button"
     >
-      info
+      <span>
+        info
+      </span>
     </button>
     <button
-      class="zw-button zw-button--success zw-button--radius"
+      class="zw-button zw-button--success zw-button--md zw-button--radius"
       type="button"
     >
-      success
+      <span>
+        success
+      </span>
     </button>
     <button
-      class="zw-button zw-button--warning zw-button--radius"
+      class="zw-button zw-button--warning zw-button--md zw-button--radius"
       type="button"
     >
-      warning
+      <span>
+        warning
+      </span>
     </button>
     <button
-      class="zw-button zw-button--danger zw-button--radius"
+      class="zw-button zw-button--danger zw-button--md zw-button--radius"
       type="button"
     >
-      error
+      <span>
+        error
+      </span>
     </button>
   </div>
   <div>
     <button
-      class="zw-button zw-button--default zw-button--round"
+      class="zw-button zw-button--default zw-button--md zw-button--round"
       type="button"
     >
-      default
+      <span>
+        default
+      </span>
     </button>
     <button
-      class="zw-button zw-button--primary zw-button--round"
+      class="zw-button zw-button--primary zw-button--md zw-button--round"
       type="button"
     >
-      info
+      <span>
+        info
+      </span>
     </button>
     <button
-      class="zw-button zw-button--success zw-button--round"
+      class="zw-button zw-button--success zw-button--md zw-button--round"
       type="button"
     >
-      success
+      <span>
+        success
+      </span>
     </button>
     <button
-      class="zw-button zw-button--warning zw-button--round"
+      class="zw-button zw-button--warning zw-button--md zw-button--round"
       type="button"
     >
-      warning
+      <span>
+        warning
+      </span>
     </button>
     <button
-      class="zw-button zw-button--danger zw-button--round"
+      class="zw-button zw-button--danger zw-button--md zw-button--round"
       type="button"
     >
-      error
+      <span>
+        error
+      </span>
     </button>
   </div>
 </div>
@@ -141,49 +203,73 @@ exports[`Button renders Buttons with radius or round props correctly 1`] = `
 
 exports[`Button renders anchor Button correctly 1`] = `
 <a
-  class="zw-button zw-button--primary zw-button--radius"
+  class="zw-button zw-button--primary zw-button--md zw-button--radius zw-button--link"
   href="https://www.baidu.com"
   target="_blank"
 >
-  百度一下
+  <span>
+    百度一下
+  </span>
 </a>
 `;
 
 exports[`Button renders disaled Button correctly 1`] = `
 <div>
   <button
-    class="zw-button zw-button--default zw-button--radius zw-button--disabled"
+    class="zw-button zw-button--default zw-button--md zw-button--radius zw-button--disabled"
     disabled=""
     type="button"
   >
-    default
+    <span>
+      default
+    </span>
   </button>
 </div>
+`;
+
+exports[`Button renders icon Button correctly 1`] = `
+<button
+  className="zw-button zw-button--default zw-button--md zw-button--radius"
+  onClick={[Function]}
+  type="button"
+>
+  <Icon
+    prefixCls="zw-icon"
+    size="md"
+    theme="default"
+    type="add"
+    viewBox="0 0 32 32"
+  />
+  <span>
+    加载中
+  </span>
+</button>
 `;
 
 exports[`Button renders loading Button correctly 1`] = `
 <div>
   <button
-    class="zw-button zw-button--info zw-button--radius zw-button--loading"
+    class="zw-button zw-button--info zw-button--md zw-button--radius zw-button--loading"
     type="button"
   >
-    <i
-      class="zw-icon rotate360 zw-icon--loading zw-icon--default zw-icon--md"
-      theme="default"
-      type="loading"
+    <span
+      class="zw-activity-indicator zw-activity-indicator--circular"
     >
       <svg
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 32 32"
-        width="1em"
+        viewBox="31 31 62 62"
       >
-        <use
-          href="#loading"
+        <circle
+          cx="62"
+          cy="62"
+          fill="none"
+          r="28.5"
+          style="stroke-width:5"
         />
       </svg>
-    </i>
-      加载中
+    </span>
+    <span>
+      加载中
+    </span>
   </button>
 </div>
 `;

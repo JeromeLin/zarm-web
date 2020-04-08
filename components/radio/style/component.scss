@@ -1,192 +1,119 @@
-@include b(radio-group) {
-  display: inline-block;
+@import '../../style/core/index';
+@import 'node_modules/zarm/lib/radio/style/component.scss';
 
-  @include m(lg) {
-    @include b(radio-button) {
-      height: var(--button-height-xl);
-      line-height: var(--button-height-xl);
-      font-size: var(--button-font-size-lg);
-      padding: 0 16;
-    }
-  }
-
-  @include m(sm) {
-    @include b(radio-button) {
-      height: var(--button-height-sm);
-      line-height: var(--button-height-sm) - 2;
-      font-size: var(--button-font-size-sm);
-      padding: 0 8;
-    }
-  }
-
-  @include b(radio) {
-    @include e(wrapper) {
-      margin-right: 16;
-    }
-  }
-
-  @include b(radio-button) {
-    @include e(wrapper) {
-      &:first-child {
-        @include b(radio-button) {
-          border-radius: var(--radius-md) 0 0 var(--radius-md);
-          border-left: var(--radius-md);
-        }
-      }
-
-      &:last-child {
-        @include b(radio-button) {
-          border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
-      }
-
-      &:first-child:last-child {
-        @include b(radio-button) {
-          border-radius: var(--radius-md);
-        }
-      }
-    }
-  }
-}
-
-/* 一般状态 */
 @include b(radio) {
-  display: inline-block;
-  position: relative;
-  padding-right: 4;
-  font-size: var(--font-size-md);
-  line-height: 1;
-  vertical-align: middle;
-  white-space: nowrap;
-  outline: none;
-  cursor: pointer;
-
-  /* 选中状态 */
-  &.is-checked {
-    @include b(radio) {
-      @include e(inner) {
-        border-color: var(--theme-primary);
-
-        &:after {
-          transform: scale(1);
-          opacity: 1;
-          transition:
-            transform .3s cubic-bezier(.12, .4, .29, 1.46),
-            opacity .3s cubic-bezier(.78, .14, .15, .86),
-            background-color .3s cubic-bezier(.78, .14, .15, .86);
-        }
-      }
-    }
-  }
-
-  /* 禁用状态 */
-  &.is-disabled {
-    @include b(radio) {
-      @include e(inner) {
-        border-color: #d9d9d9;
-        background-color: #f3f3f3;
-        cursor: not-allowed;
-
-        &:after {
-          background-color: #ccc;
-        }
-      }
-    }
-  }
-
-  &:hover {
-    &:not(.is-disabled) {
-      @include b(radio) {
-        @include e(inner) {
-          border-color: var(--theme-primary);
-        }
-      }
-    }
-  }
-
   @include e(inner) {
-    position: relative;
-    top: 2px;
-    margin-right: 4;
-    left: 0;
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border: 1px solid var(--button-default-border);
-    border-radius: 14px;
-    background-color: var(--color-text-inverse);
-    transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
-
-    &:after {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      left: 3px;
-      top: 3px;
-      border-radius: 6px;
-      display: table;
-      border-top: 0;
-      border-left: 0;
-      content: ' ';
+    &:before {
+      content: '';
+      width: calc(var(--radio-size) / 2.33);
+      height: calc(var(--radio-size) / 2.33);
+      border: none;
+      border-radius: var(--radius-circle);
       background-color: var(--theme-primary);
-      opacity: 0;
+      margin: 0;
       transform: scale(0);
-      transition:
-        transform .3s cubic-bezier(.78, .14, .15, .86),
-        opacity .3s cubic-bezier(.78, .14, .15, .86),
-        background-color .3s cubic-bezier(.78, .14, .15, .86);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
 
-  @include e(input) {
-    position: absolute;
-    left: 0;
-    opacity: 0;
+  // 选中状态
+  @include m(checked) {
+    @include e(inner) {
+      background-color: var(--color-text-inverse);
+
+      &:before {
+        transform: scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
   }
 
-  & + span {
-    margin-left: 5px;
+  @include m(disabled) {
+    @include e(inner) {
+      opacity: 1;
+      background-color: var(--background-disabled);
+    }
+
+    @include m(checked) {
+      @include e(inner) {
+        background-color: var(--background-disabled);
+
+        &:before {
+          background-color: var(--radio-border-color);
+        }
+      }
+    }
   }
 }
 
-@include b(radio-button) {
-  margin: 0;
-  height: var(--button-height-md);
-  line-height: var(--button-height-md) - 2px;
-  color: var(--color-text-caption);
-  display: inline-block;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 1px solid var(--radius-md);
-  border-left: 0;
-  background: var(--color-text-inverse);
-  padding: 0 16 - 1px;
-  position: relative;
+@include b(radio-group) {
+  @include m(button) {
+    @include b(radio) {
+      color: var(--radio-color);
 
-  &:not(.is-disabled):not(.is-checked):hover {
-    position: relative;
-    color: var(--theme-primary);
-  }
+      &:hover {
+        color: var(--theme-primary);
+      }
 
-  &.is-checked {
-    position: relative;
-    color: var(--color-text-inverse);
-    background: var(--theme-primary);
-  }
+      @include m(disabled) {
+        opacity: 1;
+        background-color: var(--background-disabled);
+        color: var(--color-text-disabled);
 
-  &.is-disabled {
-    cursor: not-allowed;
-    color: var(--button-radio-btn-disabled-color);
-    background: var(--button-radio-btn-disabled-bg);
-  }
+        &:hover {
+          color: var(--color-text-disabled);
+        }
+      }
+    }
 
-  @include b(radio) {
-    @include e(inner) {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      border: none;
-      pointer-events: none;
+    @include m(ghost) {
+      @include b(radio) {
+        @include m(disabled) {
+          @include m(checked) {
+            &,
+            &:hover {
+              opacity: 1;
+              border-color: var(--button-default-border);
+              background-color: #f2f2f2;
+              color: var(--color-text-disabled);
+            }
+          }
+        }
+      }
+    }
+
+    // sizes
+    @include m(lg) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-lg),
+          var(--button-padding-h-lg),
+          var(--button-font-size-lg),
+          var(--button-icon-size-lg),
+        );
+      }
+    }
+
+    @include m(md) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-md),
+          var(--button-padding-h-md),
+          var(--button-font-size-md),
+          var(--button-icon-size-md),
+        );
+      }
+    }
+
+    @include m(sm) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-sm),
+          var(--button-padding-h-sm),
+          var(--button-font-size-sm),
+          var(--button-icon-size-sm),
+        );
+      }
     }
   }
 }

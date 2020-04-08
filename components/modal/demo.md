@@ -27,7 +27,7 @@ class Demo extends React.Component {
     const { modalVisible } = this.state;
     return (
       <div className="modal-page">
-        <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
+        <Button theme="primary" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
           style={{height:'100%', maxHeight:'80%'}}
           visible={modalVisible}
@@ -125,7 +125,7 @@ class Demo1 extends React.Component {
     const { modalVisible } = this.state;
     return (
       <div className="modal-page">
-        <Button theme="info" onClick={() => this.toggleModal()}>圆角模态框</Button>
+        <Button theme="primary" onClick={() => this.toggleModal()}>圆角模态框</Button>
         <Modal 
           shape="rect"
           visible={modalVisible} 
@@ -167,7 +167,7 @@ class Demo1 extends React.Component {
     const { modalVisible } = this.state;
     return (
       <div className="modal-page">
-        <Button theme="info" onClick={() => this.toggleModal()}>显示弹框</Button>
+        <Button theme="primary" onClick={() => this.toggleModal()}>显示弹框</Button>
         <Modal 
           visible={modalVisible} 
           radius
@@ -221,7 +221,7 @@ class Demo extends React.Component {
     const { modalVisible, modalVisible2, modalVisible3, modalVisible4 } = this.state;
     return (
       <div className="modal-page">
-        <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
+        <Button theme="primary" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
           className="scroll-in-modal"
           title="我是弹框1"
@@ -286,7 +286,7 @@ class Demo extends React.Component {
     const { modalVisible, modalVisible2, modalVisible3, modalVisible4 } = this.state;
     return (
       <div className="modal-page">
-        <Button theme="info" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
+        <Button theme="primary" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal 
           title="我是弹框1"
           visible={modalVisible} 
@@ -359,7 +359,7 @@ class Demo extends React.Component {
     return (
       <div class="modal-page">
         <Button 
-          theme="info" 
+          theme="primary" 
           onClick={() => {
             let val = ''
             const instance = Modal.open({
@@ -376,7 +376,7 @@ class Demo extends React.Component {
         </Button>
 
         <Button 
-          theme="info" 
+          theme="primary" 
           onClick={() => {
             let val = ''
             const instance = Modal.open({
@@ -390,7 +390,7 @@ class Demo extends React.Component {
         </Button>
 
         <Button 
-          theme="info" 
+          theme="primary" 
           onClick={() => {
             let val = ''
             Modal.open({
@@ -409,7 +409,7 @@ class Demo extends React.Component {
         </Button>
 
         <Button 
-          theme="info" 
+          theme="primary" 
           onClick={() => Modal.confirm({
             content:"删除无法恢复哦",
             title:"确认删除吗",
@@ -420,7 +420,7 @@ class Demo extends React.Component {
         </Button>
 
         <Button 
-          theme="info" 
+          theme="primary" 
           onClick={() => {
             Modal.confirm({
               content:"删除无法恢复哦",
@@ -436,7 +436,7 @@ class Demo extends React.Component {
         </Button>
 
         <Button
-          theme="info" 
+          theme="primary" 
           onClick={() => {
             Modal.confirm({
               content:"删除无法恢复哦",
@@ -478,7 +478,6 @@ class Demo extends React.Component {
         </Button>
 
          <Button
-          theme="warning" 
           onClick={() => {
             Modal.warning({
               content:"你已删除自己的账号",

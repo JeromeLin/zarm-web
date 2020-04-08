@@ -25,7 +25,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul
-            class="za-menu za-menu-root za-menu-light za-menu-inline"
+            class="zw-menu zw-menu--light zw-menu--inline"
             role="menu"
           >
             <li
@@ -63,48 +63,52 @@ exports[`Transfer renders Transfer correctly 1`] = `
         class="button-wrapper"
       >
         <button
-          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
+          class="zw-button zw-button--default zw-button--md zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >
-          <i
-            class="zw-icon zw-icon--add zw-icon--default zw-icon--md"
-            theme="default"
-            type="add"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
+          <span>
+            <i
+              class="zw-icon zw-icon--add zw-icon--default zw-icon--md"
+              theme="default"
+              type="add"
             >
-              <use
-                href="#add"
-              />
-            </svg>
-          </i>
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 32 32"
+                width="1em"
+              >
+                <use
+                  href="#add"
+                />
+              </svg>
+            </i>
+          </span>
         </button>
         <button
-          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
+          class="zw-button zw-button--default zw-button--md zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >
-          <i
-            class="zw-icon zw-icon--minus zw-icon--default zw-icon--md"
-            theme="default"
-            type="minus"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              viewBox="0 0 32 32"
-              width="1em"
+          <span>
+            <i
+              class="zw-icon zw-icon--minus zw-icon--default zw-icon--md"
+              theme="default"
+              type="minus"
             >
-              <use
-                href="#minus"
-              />
-            </svg>
-          </i>
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 32 32"
+                width="1em"
+              >
+                <use
+                  href="#minus"
+                />
+              </svg>
+            </i>
+          </span>
         </button>
       </div>
     </div>
@@ -127,7 +131,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul
-            class="za-menu za-menu-root za-menu-light za-menu-inline"
+            class="zw-menu zw-menu--light zw-menu--inline"
             role="menu"
           />
         </span>

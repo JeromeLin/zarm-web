@@ -16,8 +16,8 @@ class DatePicker extends Component<PropsType, any> {
     max: '',
     showTime: false,
     allowInput: false,
-    onChange: () => {},
-    onInputInvalidDate: () => {},
+    onChange: () => { },
+    onInputInvalidDate: () => { },
   };
 
   private unmounted;
@@ -28,7 +28,7 @@ class DatePicker extends Component<PropsType, any> {
     this.state = {
       value: Format.date(props.value || props.defaultValue, props.format),
       dropdown: false,
-      flag: true,
+      // flag: true,
     };
   }
 
@@ -163,6 +163,9 @@ class DatePicker extends Component<PropsType, any> {
     return (
       <Dropdown
         onVisibleChange={(visible) => {
+          if (flag) {
+            return;
+          }
           if (disabled) {
             return;
           }
@@ -170,10 +173,8 @@ class DatePicker extends Component<PropsType, any> {
             dropdown: visible,
           });
         }}
-        overlay={this.renderOverlay()}
-        isRadius={radius}
+        content={this.renderOverlay()}
         visible={dropdown}
-        hideOnClick={flag}
       >
         <span className={cls} style={style}>
           <span

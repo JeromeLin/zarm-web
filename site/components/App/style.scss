@@ -8,18 +8,19 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   line-height: 1.5;
-  color: #383838;
+  color: #343434;
   font-size: 14px;
   -webkit-font-smoothing: subpixel-antialiased;
   font-feature-settings: 'tnum';
 }
 
 a {
-  color: #00bc70;
+  color: inherit;
   text-decoration: none;
 }
 
 a:focus {
+  color: #00bc70;
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;

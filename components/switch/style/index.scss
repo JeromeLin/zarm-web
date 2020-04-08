@@ -1,2 +1,71 @@
-@import '../../style/themes/default';
-@import './component';
+@import '../../style/core/index';
+@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
+@import 'mixins';
+
+@include b(switch) {
+  position: relative;
+  display: inline-block;
+  border: none;
+  border-radius: var(--radius-round);
+  background-color: var(--switch-background);
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s;
+  user-select: none;
+  cursor: pointer;
+
+  @include switch-size(
+    var(--switch-width-md),
+    var(--switch-height-md),
+    var(--switch-font-size-md),
+    3,
+  );
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    border-radius: var(--radius-round);
+    background-color: var(--color-text-inverse);
+    transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+
+  @include e(text) {
+    display: block;
+    color: var(--color-text-inverse);
+    transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+
+  @include b(activity-indicator) {
+    position: absolute;
+    z-index: 1;
+
+    circle {
+      stroke: var(--switch-background);
+    }
+  }
+
+  @include m(checked) {
+    background-color: var(--theme-primary);
+
+    @include b(activity-indicator) {
+      circle {
+        stroke: var(--theme-primary);
+      }
+    }
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+  }
+
+  @include m(sm) {
+    @include switch-size(
+      var(--switch-width-sm),
+      var(--switch-height-sm),
+      var(--switch-font-size-sm),
+      2,
+    );
+  }
+}

@@ -1,0 +1,17 @@
+.loading-page {
+  .zw-loading + .zw-loading {
+    margin-left: 16px;
+  }
+
+  .loading-container {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 15px;
+    color: #000;
+  }
+
+  .exp {
+    background-color: rgba(0, 188, 112, .0625);
+    border: 1px solid #00bc70;
+  }
+}

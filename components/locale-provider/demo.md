@@ -1,6 +1,6 @@
-# 国际化
+# LocaleProvider 国际化
 
-LocaleProvider组件提供了国际化功能，可以通过locale属性设置语言包。
+提供了国际化功能，可以通过locale属性设置语言包。
 
 ## 基本用法
 
@@ -10,13 +10,13 @@ import { Alert, Button, LocaleProvider } from 'zarm-web';
 const localeCN = {
   locale: 'zh-cn',
   Alert: {
-    close: '关闭',
+    cancelText: '关闭',
   },
 }
 const localeEN = {
   locale: 'en',
   Alert: {
-    close: 'Close'
+    cancelText: 'Close'
   }
 }
 

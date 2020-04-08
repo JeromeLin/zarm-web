@@ -37,7 +37,7 @@
   background-color: var(--tag-default-background);
   border-color: var(--tag-default-border);
   color: var(--tag-default-color);
-  margin: 0 8px 8px 0;
+  margin-right: 8px;
   border-radius: var(--radius-md);
   cursor: default;
 
@@ -107,7 +107,7 @@
 
   @include m(checked) {
     background-color: var(--tag-primary-color);
-    border-color: var(--tag-primary-color);
+    border-color: transparent;
     color: var(--tag-default-background);
 
     &:hover {
@@ -116,6 +116,7 @@
 
     &:active {
       background-color: var(--tag-primary-active-background);
+      border-color: var(--tag-primary-active-background);
     }
   }
 

@@ -4,52 +4,20 @@
   bottom: 0;
   width: 280px;
   border-right: 1px solid #ebedf0;
+  background-color: #fff;
   margin-right: -1px;
   padding: 30px 0 50px;
   overflow-y: scroll;
-  z-index: 1;
+  z-index: 100;
 
-  .za-menu {
-    border-right-width: 0;
-  }
-
-  .za-menu-submenu-title {
-    &:hover {
-      color: #00bc70;
-
-      .za-menu-submenu-arrow {
-        &:before,
-        &:after {
-          background: linear-gradient(to right, #00bc70, #00bc70);
-        }
-      }
-    }
-  }
-
-  .za-menu-item {
-    a {
-      color: #666;
-      outline: none;
-    }
-
+  .zw-menu-item {
     .chinese {
       margin-left: 6px;
       opacity: .6;
     }
+  }
 
-    &:hover,
-    &.selected,
-    &.active {
-      color: #00bc70;
-
-      a {
-        color: #00bc70;
-      }
-    }
-
-    &.selected,
-    &.active {
-      background: rgba(18, 194, 135, .1);
-    }
+  .zw-menu-submenu__title {
+    padding-left: 20px !important;
   }
 }

@@ -70,6 +70,14 @@ describe('Button', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders icon Button correctly', () => {
+    const wrapper = shallow(
+      <Button icon="add">加载中</Button>,
+    );
+    wrapper.find('button').simulate('click');
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('renders anchor Button correctly', () => {
     const wrapper = render(
       <Button href="https://www.baidu.com" theme="primary" target="_blank">百度一下</Button>,
@@ -84,6 +92,15 @@ describe('Button', () => {
     expect(wrapper.exists('a')).toEqual(true);
   });
 
+  it('renders Button.Group correctly', () => {
+    const wrapper = shallow(
+      <Button.Group href="https://www.baidu.com">
+        <Button href="https://www.baidu.com">百度一下</Button>,
+      </Button.Group>,
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('triggers onClick callback correctly on nomarl Button', () => {
     const onClick = jest.fn();
     const wrapper = shallow(
@@ -93,12 +110,26 @@ describe('Button', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
+  it('triggers onClick callback correctly on anchor Button', () => {
+    const onClick = jest.fn();
+    const wrapper = shallow(
+      <Button href="https://www.baidu.com" onClick={onClick} />,
+    );
+    wrapper.find('a').simulate('click');
+    expect(onClick).toHaveBeenCalled();
+  });
+
   it('should not trigger onClick callback on disabled Button', () => {
     const onClick = jest.fn();
     const wrapper = shallow(
       <Button disabled onClick={onClick}>加载中</Button>,
     );
+    const wrapper2 = shallow(
+      <Button disabled href="https://www.baidu.com" onClick={onClick}>加载中</Button>,
+    );
     wrapper.find('button').simulate('click');
+    expect(onClick).not.toHaveBeenCalled();
+    wrapper2.find('a').simulate('click');
     expect(onClick).not.toHaveBeenCalled();
   });
 });

@@ -1,201 +1,300 @@
 module.exports = {
   documents: [
     {
-      name: 'QuickStart',
-      description: '快速上手',
+      key: 'quick-start',
+      name: '快速上手',
       module: () => import('@/README.md'),
+      style: false,
     },
-    {
-      name: 'ChangeLog',
-      description: '更新日志',
-      module: () => import('@/CHANGELOG.md'),
-    },
-    // QuickStart: {
-    //   name: 'quickstart',
-    //   module: () => import('@/README.md'),
-    // },
-    // I18n: {
-    //   name: 'i18n',
-    //   module: () => import('@/components/locale/demo.md'),
+    // {
+    //   key: 'change-log',
+    //   name: '更新日',
+    //   module: () => import('@/CHANGELOG.md'),
+    //   style: false,
     // },
   ],
   components: {
-    basic: [
+    general: [
       {
-        name: 'Icon',
-        module: () => import('@/components/icon/demo.md'),
+        key: 'button',
+        name: '按钮',
+        module: () => import('@/components/button/demo.md'),
+        style: true,
       },
       {
-        name: 'Button',
-        module: () => import('@/components/button/demo.md'),
+        key: 'icon',
+        name: '图标',
+        module: () => import('@/components/icon/demo.md'),
+        style: true,
       },
     ],
     layout: [
-      {
-        name: 'Layout',
-        module: () => import('@/components/layout/layout.md'),
-      },
-      {
-        name: 'Grid',
-        module: () => import('@/components/grid/grid.md'),
-      },
+      // {
+      //   key: 'layout',
+      //   name: '布局',
+      //   module: () => import('@/components/layout/layout.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'grid',
+      //   name: '栅格',
+      //   module: () => import('@/components/grid/grid.md'),
+      //   style: true,
+      // },
     ],
     form: [
       {
-        name: 'Radio',
-        module: () => import('@/components/radio/radio.md'),
+        key: 'radio',
+        name: '单选框',
+        module: () => import('@/components/radio/demo.md'),
+        style: false,
       },
       {
-        name: 'Checkbox',
+        key: 'checkbox',
+        name: '复选框',
         module: () => import('@/components/checkbox/demo.md'),
+        style: false,
       },
       {
-        name: 'Input',
-        module: () => import('@/components/input/input.md'),
+        key: 'input',
+        name: '输入框',
+        module: () => import('@/components/input/demo.md'),
+        style: true,
       },
+      // {
+      //   key: 'number-input',
+      //   name: 'NumberInput',
+      //   module: () => import('@/components/number-input/numberinput.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'select',
+      //   name: 'Select',
+      //   module: () => import('@/components/select/select.md'),
+      //   style: false,
+      // },
       {
-        name: 'NumberInput',
-        module: () => import('@/components/number-input/numberinput.md'),
+        key: 'switch',
+        name: '开关',
+        module: () => import('@/components/switch/demo.md'),
+        style: false,
       },
-      {
-        name: 'Select',
-        module: () => import('@/components/select/select.md'),
-      },
-      {
-        name: 'Switch',
-        module: () => import('@/components/switch/switch.md'),
-      },
-      {
-        name: 'Slider',
-        module: () => import('@/components/slider/slider.md'),
-      },
-      {
-        name: 'Calendar',
-        module: () => import('@/components/calendar/calendar.md'),
-      },
-      {
-        name: 'DatePicker',
-        module: () => import('@/components/date-picker/datepicker.md'),
-      },
-      {
-        name: 'TimePicker',
-        module: () => import('@/components/time-picker/timepicker.md'),
-      },
-      {
-        name: 'Upload',
-        module: () => import('@/components/upload/upload.md'),
-      },
-      {
-        name: 'Form',
-        module: () => import('@/components/form/form.md'),
-      },
-      {
-        name: 'Transfer',
-        module: () => import('@/components/transfer/transfer.md'),
-      },
+      // {
+      //   key: 'slider',
+      //   name: '滑动输入条',
+      //   module: () => import('@/components/slider/slider.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'calendar',
+      //   name: '日历',
+      //   module: () => import('@/components/calendar/calendar.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'date-picker',
+      //   name: '日期选择器',
+      //   module: () => import('@/components/date-picker/datepicker.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'time-picker',
+      //   name: '时间选择器',
+      //   module: () => import('@/components/time-picker/timepicker.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'upload',
+      //   name: '上传',
+      //   module: () => import('@/components/upload/upload.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'form',
+      //   name: '表单',
+      //   module: () => import('@/components/form/form.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'transfer',
+      //   name: '穿梭框',
+      //   module: () => import('@/components/transfer/transfer.md'),
+      //   style: false,
+      // },
     ],
-    data: [
+    view: [
       {
-        name: 'Badge',
+        key: 'badge',
+        name: '徽标',
         module: () => import('@/components/badge/demo.md'),
+        style: true,
       },
+      // {
+      //   key: 'table',
+      //   name: '表格',
+      //   module: () => import('@/components/table/table.md'),
+      //   style: false,
+      // },
       {
-        name: 'Table',
-        module: () => import('@/components/table/table.md'),
-      },
-      {
-        name: 'Tag',
+        key: 'tag',
+        name: '标签',
         module: () => import('@/components/tag/demo.md'),
+        style: false,
       },
+      // {
+      //   key: 'progress',
+      //   name: '进度条',
+      //   module: () => import('@/components/progress/progress.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'panel',
+      //   name: '面板',
+      //   module: () => import('@/components/panel/panel.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'pagination',
+      //   name: '分页器',
+      //   module: () => import('@/components/pagination/pagination.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'tree',
+      //   name: '树形控件',
+      //   module: () => import('@/components/tree/tree.md'),
+      //   style: false,
+      // },
       {
-        name: 'Progress',
-        module: () => import('@/components/progress/progress.md'),
-      },
-      {
-        name: 'Panel',
-        module: () => import('@/components/panel/panel.md'),
-      },
-      {
-        name: 'Pagination',
-        module: () => import('@/components/pagination/pagination.md'),
-      },
-      {
-        name: 'Tree',
-        module: () => import('@/components/tree/tree.md'),
-      },
-      {
-        name: 'Avatar',
+        key: 'avatar',
+        name: '头像',
         module: () => import('@/components/avatar/demo.md'),
+        style: true,
       },
+      // {
+      //   key: 'swipe',
+      //   name: '走马灯',
+      //   module: () => import('@/components/swipe/swipe.md'),
+      //   style: false,
+      // },
       {
-        name: 'Swipe',
-        module: () => import('@/components/swipe/swipe.md'),
+        key: 'tooltip',
+        name: '文字提示',
+        module: () => import('@/components/tooltip/demo.md'),
+        style: true,
       },
     ],
-    notice: [
+    feedback: [
+      // {
+      //   key: 'alert',
+      //   name: '警告提示',
+      //   module: () => import('@/components/alert/alert.md'),
+      //   style: false,
+      // },
       {
-        name: 'loading',
-        module: () => import('@/components/loading/loading.md'),
+        key: 'loading',
+        name: '加载',
+        module: () => import('@/components/loading/demo.md'),
+        style: true,
       },
       {
-        name: 'message',
+        key: 'message',
+        name: '消息提示',
         module: () => import('@/components/message/demo.md'),
+        style: true,
       },
+      // {
+      //   key: 'modal',
+      //   name: '对话框',
+      //   module: () => import('@/components/modal/modal.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'confirm',
+      //   name: '确认框',
+      //   module: () => import('@/components/confirm/confirm.md'),
+      //   style: false,
+      // },
       {
-        name: 'modal',
-        module: () => import('@/components/modal/demo.md'),
+        key: 'notification',
+        name: '通知提醒框',
+        module: () => import('@/components/notification/demo.md'),
+        style: true,
       },
-      {
-        name: 'notification',
-        module: () => import('@/components/notification/notification.md'),
-      },
-      {
-        name: 'Popover',
-        module: () => import('@/components/popover/popover.md'),
-      },
-      {
-        name: 'Popconfirm',
-        module: () => import('@/components/popconfirm/popconfirm.md'),
-      },
+      // {
+      //   key: 'popover',
+      //   name: '气泡卡片',
+      //   module: () => import('@/components/popover/popover.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'popconfirm',
+      //   name: '气泡确认框',
+      //   module: () => import('@/components/popconfirm/popconfirm.md'),
+      //   style: false,
+      // },
     ],
     navigation: [
       {
-        name: 'Menu',
-        module: () => import('@/components/menu/menu.md'),
+        key: 'menu',
+        name: '导航菜单',
+        module: () => import('@/components/menu/demo.md'),
       },
       {
-        name: 'Tabs',
-        module: () => import('@/components/tab/tab.md'),
+        key: 'tabs',
+        name: '标签页',
+        module: () => import('@/components/tabs/demo.md'),
+        style: true,
       },
       {
-        name: 'Breadcrumb',
+        key: 'breadcrumb',
+        name: '面包屑',
         module: () => import('@/components/breadcrumb/demo.md'),
+        style: false,
       },
       {
-        name: 'Steps',
+        key: 'steps',
+        name: '步骤条',
         module: () => import('@/components/steps/demo.md'),
+        style: false,
       },
       {
-        name: 'Dropdown',
-        module: () => import('@/components/dropdown/dropdown.md'),
+        key: 'dropdown',
+        name: '下拉框',
+        module: () => import('@/components/dropdown/demo.md'),
+        style: true,
+      },
+      {
+        key: 'drawer',
+        name: '抽屉',
+        module: () => import('@/components/drawer/demo.md'),
+        style: false,
+      },
+      {
+        key: 'modal',
+        name: '下拉框',
+        module: () => import('@/components/modal/demo.md'),
+        style: true,
       },
     ],
-    others: [
+    other: [
+      // {
+      //   key: 'mask',
+      //   name: '遮罩',
+      //   module: () => import('@/components/mask/mask.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'transition',
+      //   name: '动画',
+      //   module: () => import('@/components/transition/transition.md'),
+      //   style: false,
+      // },
       {
-        name: 'Tooltip',
-        module: () => import('@/components/tooltip/demo.md'),
-      },
-      {
-        name: 'Mask',
-        module: () => import('@/components/mask/mask.md'),
-      },
-      {
-        name: 'Transition',
-        module: () => import('@/components/transition/transition.md'),
-      },
-      {
-        name: 'LocaleProvider',
+        key: 'locale-provider',
+        name: '国际化',
         module: () => import('@/components/locale-provider/demo.md'),
+        style: false,
       },
     ],
   },

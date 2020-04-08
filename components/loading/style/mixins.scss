@@ -1,0 +1,11 @@
+@mixin loading-size($height, $padding-v, $font-size) {
+  @include b(activity-indicator) {
+    height: $height;
+    width: $height;
+  }
+
+  @include e(text) {
+    font-size: $font-size;
+    padding-top: $padding-v;
+  }
+}

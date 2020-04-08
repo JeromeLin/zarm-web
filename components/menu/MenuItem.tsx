@@ -1,59 +1,67 @@
-import React, { Component } from 'react';
+import React, { Component, CSSProperties } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tooltip from '../tooltip';
-import { ItemProps, styleType } from './PropsType';
+import { MenuItemProps, MenuMode } from './PropsType';
 import MenuContext from './menu-context';
 import { noop } from '../utils';
+import { getMenuPadding } from './SubMenu';
 
-class MenuItem extends Component<ItemProps, any> {
+export class MenuItem extends Component<MenuItemProps, any> {
   static defaultProps = {
-    prefixCls: 'za-menu',
-    checked: false,
-    isDisabled: false,
+    prefixCls: 'zw-menu',
     level: 1,
     style: {},
-    mode: 'inline',
-    inlineIndent: 10,
+    mode: MenuMode.inline,
+    inlineIndent: 12,
     onClick: noop,
     onDoubleClick: noop,
   };
 
-  handleClick = (e) => {
-    const { itemKey, inlineCollapsed } = this.props;
-    this.props.onClick(e, itemKey);
-    this.props.toggleSelectedKeys(itemKey);
-    if (inlineCollapsed) {
-      this.props.toggleSubMenuOpen('');
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    level: PropTypes.number,
+    style: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])),
+    mode: PropTypes.oneOf(['inline', 'vertical']),
+    inlineIndent: PropTypes.number,
+    onClick: PropTypes.func,
+    onDoubleClick: PropTypes.func,
+  };
+
+  handleClick = (e: React.MouseEvent) => {
+    const { itemKey, inlineCollapsed, disabled, mode } = this.props;
+
+    if (disabled) return;
+    this.props.onClick!(e, itemKey!);
+    this.props.toggleSelectedKeys!(itemKey!);
+    if (inlineCollapsed || mode === MenuMode.vertical) {
+      this.props.toggleSubMenuOpen!('');
     }
   };
 
   render() {
     const {
-      checked, isDisabled, children, prefixCls, level, inlineIndent,
-      className, style, onDoubleClick, selectedKeys, itemKey, mode, inlineCollapsed,
+      children, prefixCls, level, inlineIndent, title, mode, icon,
+      className, style, onDoubleClick, selectedKeys, itemKey, inlineCollapsed,
     } = this.props;
 
-    const cls = classnames({
-      [`${prefixCls}-level-${level}`]: level,
-      [`${prefixCls}-item`]: true,
-      active: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
-      [className!]: !!className,
-      selected: !!checked,
-      disabled: 'disabled' in this.props || isDisabled,
+    const cls = classnames(`${prefixCls}-item`, className, {
+      [`${prefixCls}-item--level-${level}`]: level,
+      [`${prefixCls}-item--active`]: !!itemKey && selectedKeys.indexOf(itemKey) > -1,
+      [`${prefixCls}-item--disabled`]: 'disabled' in this.props,
     });
-    const itemStyle: styleType = {
+    const itemStyle: CSSProperties = {
       ...style,
     };
-    if (mode === 'inline' && !inlineCollapsed) {
-      itemStyle.paddingLeft = level * inlineIndent;
+    if (mode === MenuMode.inline && !inlineCollapsed) {
+      itemStyle.paddingLeft = getMenuPadding(level, inlineIndent);
     }
-    return (
-      <Tooltip
-        hasArrow
-        content={(level === 1 && inlineCollapsed) ? children : ''}
-        direction="right"
-        className="za-menu-item__tooltip"
-      >
+    if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
+      itemStyle.paddingLeft = getMenuPadding();
+    }
+
+    if (!inlineCollapsed) {
+      return (
         <li
           className={cls}
           role="menuitem"
@@ -61,24 +69,52 @@ class MenuItem extends Component<ItemProps, any> {
           onClick={this.handleClick}
           onDoubleClick={onDoubleClick}
         >
+          {icon}
           {children}
         </li>
-      </Tooltip>
+      );
+    }
+
+    return (
+      <li
+        className={cls}
+        role="menuitem"
+        style={itemStyle}
+        onClick={this.handleClick}
+        onDoubleClick={onDoubleClick}
+      >
+        <Tooltip
+          hasArrow
+          content={title}
+          direction="right"
+        >
+          <div>
+            {icon}
+            {children}
+          </div>
+        </Tooltip>
+      )
+      </li>
     );
   }
 }
 
-export default function MenuItemConsumer(props) {
+export default function MenuItemConsumer(props: MenuItemProps) {
   return (
     <MenuContext.Consumer>
       {
-        (menuKeys) => (
+        ({
+          mode, inlineCollapsed, inlineIndent,
+          selectedKeys, toggleOpenKeys, toggleSelectedKeys,
+        }) => (
           <MenuItem
             {...props}
-            inlineCollapsed={menuKeys.inlineCollapsed}
-            selectedKeys={menuKeys.selectedKeys}
-            toggleSubMenuOpen={menuKeys.toggleOpenKeys}
-            toggleSelectedKeys={menuKeys.toggleSelectedKeys}
+            mode={mode}
+            inlineIndent={inlineIndent}
+            inlineCollapsed={inlineCollapsed}
+            selectedKeys={selectedKeys}
+            toggleSubMenuOpen={toggleOpenKeys}
+            toggleSelectedKeys={toggleSelectedKeys}
           />
         )
       }

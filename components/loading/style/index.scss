@@ -1,2 +1,93 @@
-@import '../../style/themes/default';
-@import './component';
+@import '../../style/core/index';
+@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
+@import "./mixins.scss";
+
+@include b(loading) {
+  position: relative;
+
+  @include m(inline) {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  @include m(fullscreen) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, var(--opacity-mask));
+  }
+
+  @include m(active) {
+    @include e(container) {
+      opacity: .5;
+      user-select: none;
+      pointer-events: none;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        opacity: 0.4;
+      }
+    }
+  }
+
+  @include e(container) {
+    position: relative;
+    transition: opacity .3s;
+  }
+
+  @include e(spin__wrapper) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(spin) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    user-select: none;
+  }
+
+  @include e(text) {
+    color: var(--theme-primary);
+  }
+
+  @include loading-size(
+    var(--loading-height-md),
+    var(--loading-spacing-md),
+    var(--loading-font-size-md),
+  );
+
+  @include m(lg) {
+    @include loading-size(
+      var(--loading-height-lg),
+      var(--loading-spacing-lg),
+      var(--loading-font-size-lg),
+    );
+  }
+
+  @include m(sm) {
+    @include loading-size(
+      var(--loading-height-sm),
+      var(--loading-spacing-sm),
+      var(--loading-font-size-sm),
+    );
+  }
+}

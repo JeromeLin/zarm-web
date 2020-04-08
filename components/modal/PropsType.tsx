@@ -14,8 +14,8 @@ export interface ModalBasicProps extends PopupTypes {
   shape: 'radius' | 'rect';              // 是否显示圆角
   footer?: (ReactNode | FnReactNode);    // modal底部的内容，为null时不显示底部
   centered: boolean;                     // 是否居中显示
-  onOk?: () => any;                     // 点击了确定按钮的回调函数
-  onCancel?: () => any;                 // 点击了取消按钮的回调函数
+  onOk?: () => any;                      // 点击了确定按钮的回调函数
+  onCancel?: () => any;                  // 点击了取消按钮的回调函数
   autoFocus: boolean;                    // 打开弹框时自动获取焦点
   disableEscapeKeyDown: boolean;         // 禁用按esc按键的时候，执行onCancel的行为
   disableEnterKeyDown: boolean;          // 禁用按enter按键的时候，执行onOk的行为
