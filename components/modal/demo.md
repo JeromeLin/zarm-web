@@ -29,6 +29,7 @@ class Demo extends React.Component {
       <div className="modal-page">
         <Button theme="primary" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
+          destroy={false}
           style={{height:'100%', maxHeight:'80%'}}
           visible={modalVisible}
           closable
@@ -413,7 +414,8 @@ class Demo extends React.Component {
           onClick={() => Modal.confirm({
             content:"删除无法恢复哦",
             title:"确认删除吗",
-            theme:"warning"
+            theme:"warning",
+            id:'haha',
           })}
         >
           Confirm

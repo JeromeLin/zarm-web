@@ -1,10 +1,20 @@
 import React from 'react';
 import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import ReactTestUtils from 'react-dom/test-utils'; // ES6
 import Modal from '../index';
+
+const timer = function (t) {
+  return new Promise((resovle) => {
+    setTimeout(() => {
+      resovle(true);
+    }, t);
+  });
+};
 
 jest.mock('react-dom', () => ({
   createPortal: (node) => node,
+  render: (node) => node,
 }));
 
 describe('Modal', () => {
@@ -20,10 +30,10 @@ describe('Modal', () => {
   it('renders customized Modal correctly', () => {
     const wrapper = render(
       <Modal
-        width={400}
         radius
         visible
         animationType="fade"
+        shape="rect"
         animationDuration={500}
       >
         我是一个模态框
@@ -59,22 +69,105 @@ describe('Modal', () => {
     expect(onClose).toHaveBeenCalled();
   });
 
-  it('triggers onMaskClick callback correctly', () => {
-    const onMaskClick = jest.fn();
+  it('show modal correctly when visible change', async () => {
     const wrapper = shallow(
       <Modal
-        visible
-        title="标题"
-        mask
-        onMaskClick={onMaskClick}
+        visible={false}
+        title="你好"
       >
         我是一个模态框
       </Modal>,
     );
+    wrapper.setProps({ visible: true });
+    await timer(100);
+    wrapper.setProps({ visible: false });
+    await timer(100);
+    wrapper.setProps({ visible: true });
+    expect(wrapper.find('.zw-modal')).toHaveLength(1);
+    await timer(100);
+    expect(wrapper.find('.zw-modal')).toHaveLength(1);
+  });
 
-    setTimeout(() => {
-      wrapper.find('.za-mask').simulate('click');
-      expect(onMaskClick).toHaveBeenCalled();
+  it('triggers onCancel callback correctly when press esc button', async () => {
+    const onCancel = jest.fn();
+    const wrapper = mount(
+      <Modal
+        visible
+        title="标题"
+        mask
+        onCancel={onCancel}
+      >
+        我是一个模态框
+      </Modal>,
+    );
+    wrapper.find('.zw-modal__content').simulate('keydown', { keyCode: 27 });
+    expect(onCancel).toHaveBeenCalled();
+  });
+
+
+  it('trigger onKeyPress correctly', async () => {
+    const onKeyPress = jest.fn();
+    const wrapper = mount(
+      <Modal
+        visible
+        title="标题"
+        onKeyPress={onKeyPress}
+      >
+        我是一个模态框
+      </Modal>,
+    );
+    const f = wrapper.find('.zw-modal__content');
+    f.simulate('keypress', { keyCode: 13 });
+    expect(onKeyPress).toHaveBeenCalled();
+  });
+
+  it('trigger onKeyDown correctly', async () => {
+    const onKeyDown = jest.fn();
+    const wrapper = mount(
+      <Modal
+        visible
+        title="标题"
+        onKeyDown={onKeyDown}
+      >
+        我是一个模态框
+      </Modal>,
+    );
+    const f = wrapper.find('.zw-modal__content');
+    f.simulate('keydown', { keyCode: 13 });
+    expect(onKeyDown).toHaveBeenCalled();
+  });
+
+  it('trigger onOk correctly', async () => {
+    const onOk = jest.fn();
+    const onKeyPress = jest.fn();
+    const wrapper = mount(
+      <Modal
+        visible
+        title="标题"
+        onOk={onOk}
+        onKeyPress={onKeyPress}
+      >
+        我是一个模态框
+      </Modal>,
+    );
+    const f = wrapper.find('.zw-modal__content');
+    f.simulate('focus');
+    await timer(100);
+    f.simulate('keypress', { keyCode: 13 });
+    expect(onKeyPress).toHaveBeenCalled();
+    expect(onOk).toHaveBeenCalled();
+  });
+});
+
+describe('Modal static method', () => {
+  it('trigger Modal.confirm correctly', () => {
+    const { hide, then, catch: catchFn } = Modal.confirm({
+      content: '删除无法恢复哦',
+      title: '确认删除吗',
+      theme: 'warning',
     });
+    expect(typeof hide).toEqual('function');
+    expect(typeof catchFn).toEqual('function');
+    expect(typeof then).toEqual('function');
   });
 });

@@ -11,7 +11,7 @@ Array [
     style="-webkit-animation-duration:500ms;animation-duration:500ms"
   />,
   <div
-    class="za-popup__wrapper zw-modal zw-modal--popup zw-modal--radius"
+    class="za-popup__wrapper zw-modal zw-modal--popup zw-modal--rect"
     role="dialog"
     style="-webkit-animation-duration:500ms;animation-duration:500ms"
   >

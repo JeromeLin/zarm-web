@@ -180,7 +180,7 @@ class Modal extends Component<ModalProps, StateIF> {
   onKeyPress: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { visible, onOk, onKeyPress, disableEnterKeyDown } = this.props;
     if (visible && disableEnterKeyDown === false) {
-      if (this.modalContent === document.activeElement && visible && e.nativeEvent.keyCode === 13) {
+      if (this.modalContent === document.activeElement && e.keyCode === 13) {
         if (onOk) {
           onOk();
         }
