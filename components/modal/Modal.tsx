@@ -210,6 +210,7 @@ class Modal extends Component<ModalProps, StateIF> {
       centered,
       footer,
       shape,
+      style,
       ...others
     } = this.props;
     const { isShow } = this.state;
@@ -238,6 +239,7 @@ class Modal extends Component<ModalProps, StateIF> {
           ref={this.setModalContainer}
           data-show={show}
           data-visible={visible}
+          style={style}
         >
           {showHeader && <ModalHeader closable={closable} onCancel={onCancel}>{title}</ModalHeader>}
           <ModalBody>{children}</ModalBody>

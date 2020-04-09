@@ -5,8 +5,6 @@
 
 Modal组件的基础用法。
 
-demo 可以通过`Modal.Header`,`Modal.Body`,`Modal.Footer`子组件定义模态框的不同部分。
-
 ```jsx
 import { Modal, Button } from 'zarm-web';
 
@@ -29,8 +27,8 @@ class Demo extends React.Component {
       <div className="modal-page">
         <Button theme="primary" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
-          destroy={false}
-          style={{height:'100%', maxHeight:'80%'}}
+          disableBodyScroll
+          style={{height:'100%', maxHeight:'80%', width:300}}
           visible={modalVisible}
           closable
           title="这是一个简单的弹框"
@@ -104,8 +102,8 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## 直角模态框
-可以设置圆角模态框。
-使用shape="rect"属性设置圆角
+可以设置直角模态框。
+使用shape="rect"属性设置直角
 
 ```jsx
 import { Modal, Button } from 'zarm-web';
