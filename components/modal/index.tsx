@@ -175,6 +175,8 @@ export function Confirm(props: ModalProps | ReactNode) {
 
 Modal.confirm = Confirm;
 
+Modal.alert = Alert;
+
 Modal.success = (props: AlertProps | ReactNode) => {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props, theme: 'success' }
@@ -222,7 +224,18 @@ export class ModalStatic {
   }
 
   render(visible: boolean) {
-    const { content, key, onCancel, ...others } = this.props;
+    const {
+      content,
+      prefixCls = Modal.defaultProps.prefixCls,
+      key,
+      onCancel,
+      className,
+      ...others
+    } = this.props;
+    const cls = cn({
+      [`${className}`]: !!className,
+      [`${prefixCls}-open`]: true,
+    });
     return new Promise((resolve) => {
       const contentNode = typeof content === 'function'
         ? content(() => {
@@ -232,6 +245,7 @@ export class ModalStatic {
       ReactDOM.render((
         <Modal
           {...others}
+          className={cls}
           visible={visible}
           afterClose={() => {
             resolve();

@@ -1,6 +1,7 @@
 @import '../../style/core/index';
 
 $zarmPrefixCls: za-popup;
+$zarmWebPrefixCls: zw-modal;
 
 @include b(modal) {
   @include e(content) {
@@ -42,19 +43,21 @@ $zarmPrefixCls: za-popup;
 
   // 仅适用于 Alert和Confirm
   @include e(alert-icon) {
-    margin-right: 16px;
+    margin-right: 12px;
+    font-size: 18px;
+    vertical-align: middle;
   }
 
   @include e(alert-body) {
     display: inline-block;
     vertical-align: top;
-    max-width: calc(100% - 60px);
+    max-width: calc(100% - 30px);
 
     @include e(alert-title) {
       font-size: 16px;
       font-weight: bold;
       vertical-align: 0.2em;
-      padding-bottom: 10px;
+      padding-bottom: 6px;
     }
   }
 
@@ -62,6 +65,7 @@ $zarmPrefixCls: za-popup;
     flex-grow: 1;
     height: auto;
     overflow: auto;
+    padding: 16px 24px;
   }
 
   @include e(header) {
@@ -74,7 +78,7 @@ $zarmPrefixCls: za-popup;
     @include e(title) {
       color: #343434;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 500;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -102,19 +106,30 @@ $zarmPrefixCls: za-popup;
     overflow: hidden;
   }
 
-  @include e(body) {
-    padding: 16px 24px;
-  }
-
   @include e(footer) {
-    padding: 10px 18px;
+    padding: 4px 24px;
   }
 
   @include e(button-warpper) {
     text-align: right;
+    padding: 4px 0 20px;
 
     button {
-      margin-left: 10px;
+      margin-left: 12px;
+    }
+  }
+
+  &-alert,
+  &-confirm {
+    .#{$zarmWebPrefixCls}__body {
+      padding-top: 20px;
+    }
+  }
+
+  &-open {
+    .#{$zarmWebPrefixCls}__button-warpper {
+      height: 56px;
+      line-height: 56px;
     }
   }
 }

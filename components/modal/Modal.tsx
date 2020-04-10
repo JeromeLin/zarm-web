@@ -19,6 +19,8 @@ class Modal extends Component<ModalProps, StateIF> {
 
   static confirm: typeof Confirm;
 
+  static alert: typeof Alert;
+
   static success: typeof Alert;
 
   static info: typeof Alert;
@@ -244,16 +246,18 @@ class Modal extends Component<ModalProps, StateIF> {
           {showHeader && <ModalHeader closable={closable} onCancel={onCancel}>{title}</ModalHeader>}
           <ModalBody>{children}</ModalBody>
           <ModalFooter>
-            <div className={`${prefixCls}__button-warpper`}>
-              {
-                hasFooter && (footer || (
-                  <>
-                    <Button onClick={onCancel}>{cancelText}</Button>
-                    <Button theme="primary" onClick={onOk}>{okText}</Button>
-                  </>
-                ))
-              }
-            </div>
+            {
+              hasFooter && (
+                <div className={`${prefixCls}__button-warpper`}>
+                  {footer || (
+                    <>
+                      <Button onClick={onCancel}>{cancelText}</Button>
+                      <Button theme="primary" onClick={onOk}>{okText}</Button>
+                    </>
+                  )}
+                </div>
+              )
+            }
           </ModalFooter>
         </div>
         <div className={`${prefixCls}__hidden-elem`}>

@@ -28,17 +28,12 @@ class Demo extends React.Component {
         <Button theme="primary" onClick={() => this.toggleModal('modalVisible')}>展示模态框</Button>
         <Modal
           disableBodyScroll
-          style={{height:'100%', maxHeight:'80%', width:300}}
           visible={modalVisible}
           closable
           title="这是一个简单的弹框"
           onCancel={() => {this.toggleModal('modalVisible')}}
-          onOk={()=> alert("您点击了确定按钮")}
         >
-            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
-            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
-            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
-            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框
         </Modal>
       </div>
     )
@@ -145,7 +140,7 @@ ReactDOM.render(<Demo1 />, mountNode);
 ## 自定义Footer
 
 Modal默认的设置了一个footer。就是在右边的<Button>确定</Button>和取消两个按钮。
-注意：自定义的Button将不会自动调用onOk和onCancel
+注意：自定义的Button将不会自动调用onOk和onCancel, 需要自己绑定在Button上
 
 ```jsx
 import { Modal, Button } from 'zarm-web';
@@ -171,10 +166,10 @@ class Demo1 extends React.Component {
           visible={modalVisible} 
           radius
           title="标题"
-          footer={<Button>我才是真正的footer</Button>}
+          footer={<Button>我是自定义的footer</Button>}
           onCancel={() => this.toggleModal()} 
         >
-          不 你不是
+          一系列的描述，告诉用户操作可能会发生什么事情，描述信息字号14px
         </Modal>
       </div>
     )
@@ -183,6 +178,48 @@ class Demo1 extends React.Component {
 
 ReactDOM.render(<Demo1 />, mountNode);   
 ```
+
+## 无footer的模态框
+footer属性为null的时候，不显示footer。
+```jsx
+import { Modal, Button } from 'zarm-web';
+
+class Demo1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false
+    };
+  }
+  toggleModal() {
+    this.setState({
+      modalVisible: !this.state.modalVisible
+    });
+  }
+  render() {
+    const { modalVisible } = this.state;
+    return (
+      <div className="modal-page">
+        <Button theme="primary" onClick={() => this.toggleModal()}>显示弹框</Button>
+        <Modal
+          className="title-background"
+          visible={modalVisible} 
+          radius
+          title="激活"
+          footer={null}
+          onCancel={() => this.toggleModal()} 
+        >
+          该账号已激活
+        </Modal>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo1 />, mountNode);   
+```
+
+
 
 ## 在modal内部滚动
 
@@ -334,186 +371,174 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 静态方法调用
 
-可以使用Alert和Confirm静态方法。它可以直接传一个ReactNode，或者Modal的Props作为属性。我们新增了一个content属性作为Modal的内容。
-静态方法的调用可以使用很多方式去承接，比如我们想执行点击之后的回调可以使用以下方法
-可以使用onOk和onCancel去处理。但是也可以使用Promise的方式来处理。
+可以使用 success info  warning error 静态方法。它可以直接传一个ReactNode，或者Modal的Props作为属性。
+我们新增了一个content属性作为Modal的内容。
 
 ```jsx
 import { Modal, Button, Input } from 'zarm-web';
+
+const options = {
+  title: 'Modal Title',
+  content: 'This is the content of the modal. This is the content of the modal. This is the content of the modal. ',
+};
+
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalVisible: false,
-      val:'',
-    };
+  showSuccess = ()=> {
+    Modal.success(options);
   }
-  toggleModal(key) {
-    this.setState({
-      [key]: !this.state[key]
+
+  showInfo = ()=> {
+    Modal.info(options);
+  }
+
+  showWarning = ()=> {
+    Modal.warning(options);
+  }
+
+  showError = ()=>{
+    Modal.error(options);
+  }
+
+  render() {
+    return (
+      <div className="modal-page">
+        <Button theme="primary" onClick={this.showSuccess}>
+          success
+        </Button>
+
+        <Button theme="primary" onClick={this.showInfo}>
+          info
+        </Button>
+
+        <Button onClick={this.showWarning}>
+          warning
+        </Button>
+
+        <Button theme="danger" onClick={this.showError}>
+          error
+        </Button>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+
+```
+
+## confirm 和 alert 静态方法
+
+可以使用 Modal.confirm Modal.alert  静态方法。
+它可以直接传一个ReactNode，或者Modal的Props作为属性。
+我们新增了一个content属性作为Modal的内容。
+
+confirm 的模态框内置了两个按钮，取消 和 确定。
+alert 的模态框内置了一个按钮，确定。
+
+```jsx
+import { Modal, Button, Input } from 'zarm-web';
+
+const options = {
+  title: 'Modal Title',
+  content: 'This is the content of the modal. This is the content of the modal. This is the content of the modal. ',
+};
+
+class Demo extends React.Component {
+  showConfirm = ()=> {
+    Modal.confirm(options).then((result)=>{
+      // result为true 表示点击了确定，为false表示点击了取消
+      console.log(result);
+    });
+  }
+
+  showAlert = ()=> {
+    Modal.alert(options).then(()=>{
+      // 点击确定之后做的事情
     });
   }
 
   render() {
     return (
-      <div class="modal-page">
-        <Button 
-          theme="primary" 
-          onClick={() => {
-            let val = ''
-            const instance = Modal.open({
-              content: <div>这是一个正常的弹框</div>,
-              title:"提示",
-              key:'123',
-            });
-            setTimeout(()=>{
-              Modal.close('123');
-            },5000)
-          }}
-        >
-          open (五秒钟之后自动关闭)
-        </Button>
-
-        <Button 
-          theme="primary" 
-          onClick={() => {
-            let val = ''
-            const instance = Modal.open({
-              content: <div>这是一个正常的Modal</div>,
-              title:"提示",
-              key:'123'
-            });
-          }}
-        >
-          open
-        </Button>
-
-        <Button 
-          theme="primary" 
-          onClick={() => {
-            let val = ''
-            Modal.open({
-              content: (update)=> <div><input value={this.state.val} onChange={(e)=>{
-                this.setState({val:e.target.value},  // 这一步不会更新当前的input组件
-                ()=>{  
-                  update();                // 使用该方法更新组件
-                });   
-              }} /></div>,
-              title:"提示",
-              key:'123'
-            });
-          }}
-        >
-          open(函数形式的content)
-        </Button>
-
-        <Button 
-          theme="primary" 
-          onClick={() => Modal.confirm({
-            content:"删除无法恢复哦",
-            title:"确认删除吗",
-            theme:"warning",
-            id:'haha',
-          })}
-        >
+      <div className="modal-page">
+        <Button theme="primary" onClick={this.showConfirm}>
           Confirm
         </Button>
 
-        <Button 
-          theme="primary" 
-          onClick={() => {
-            Modal.confirm({
-              content:"删除无法恢复哦",
-              title:"确认删除吗",
-              theme:"warning"
-            }).then((result)=>{
-              console.log(result);
-              alert(`您点击了${result?'确定':'取消'}`);
-            })
-          }}
-        >
-          Confirm with Promise
-        </Button>
-
-        <Button
-          theme="primary" 
-          onClick={() => {
-            Modal.confirm({
-              content:"删除无法恢复哦",
-              title:"确认删除吗",
-              theme:"warning",
-              onOk:()=> {
-                alert('因为您在onOk里返回了false,所以无法关闭该弹框');
-                // 可以return Promise。弹框会在Promise resolve之后关闭。如果Promise是reject的状态 或者是resolve(false),将不会关闭弹框。
-                return false;
-              }
-            })
-          }}
-        >
-          阻止弹框关闭
-        </Button>
-
-       <Button
-          theme="default" 
-          onClick={() => {
-            Modal.info({
-              content:"你已删除自己的账号",
-              title:"呵呵"
-            })
-          }}
-        >
-          Modal.info
-        </Button>
-
-         <Button
-          theme="primary" 
-          onClick={() => {
-            Modal.success({
-              content:"你已删除自己的账号",
-              title:"呵呵"
-            })
-          }}
-        >
-          Modal.success
-        </Button>
-
-         <Button
-          onClick={() => {
-            Modal.warning({
-              content:"你已删除自己的账号",
-              title:"呵呵"
-            })
-          }}
-        >
-          Modal.warning
-        </Button>
-
-         <Button
-          theme="danger" 
-          onClick={() => {
-            Modal.error({
-              content:"你已删除自己的账号",
-              title:"呵呵"
-            })
-          }}
-        >
-          Modal.error
-        </Button>
-
-        <Button
-          theme="danger" 
-          onClick={() => {
-            Modal.open({
-              content: (update)=> <div><Button onClick={()=>{ Modal.destroy(); }}>点我销毁所有的组件</Button></div>,
-              title:"提示",
-              key:'123'
-            });
-          }}
-        >
-          Modal.destroy（销毁所有静态方法创建的组件）
+        <Button theme="primary" onClick={this.showAlert}>
+          Alert
         </Button>
       </div>
     )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+
+```
+
+## open, close 和 destroy 静态方法
+
+Modal.open 表示开打一个弹框。内容可以自定义。参数以Props作为属性。我们新增了一个content属性作为Modal的内容。
+新增了一个key字段作为关闭的对应key。
+
+Modal.destroy 会关闭并销毁当前显示的所有组件。
+
+```jsx
+import { Modal, Button, Input } from 'zarm-web';
+
+class Demo extends React.Component {
+  options = {
+    title: 'Modal Title',
+    content: <div>
+        <Button onClick={()=> this.close()}>click to close</Button>
+    </div>,
+    key: 'open_key',
+  }
+
+  open = ()=> {
+    Modal.open(this.options);
+  }
+
+  close = ()=> {
+    Modal.close('open_key');
+  }
+
+  destroy = ()=> {
+    Modal.open({
+      content: '待销毁1',
+    });
+    
+    setTimeout(()=>{
+      Modal.open({
+        content: '待销毁2',
+      });
+
+      setTimeout(()=>{
+        Modal.open({
+          content: (
+            <div>
+              <Button onClick={()=>Modal.destroy()}>
+                点我销毁全部的弹框
+              </Button>
+            </div>
+          ),
+        });
+      }, 500);
+    },500);
+  }
+
+  render() {
+    return (
+      <div className="modal-page">
+        <Button theme="primary" onClick={this.open}>
+          open
+        </Button>
+
+        <Button theme="primary" onClick={this.destroy}>
+          open destroy
+        </Button>
+      </div>
+    );
   }
 }
 

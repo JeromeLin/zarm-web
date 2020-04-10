@@ -272,7 +272,7 @@ module.exports = {
       },
       {
         key: 'modal',
-        name: '下拉框',
+        name: '模态框',
         module: () => import('@/components/modal/demo.md'),
         style: true,
       },
