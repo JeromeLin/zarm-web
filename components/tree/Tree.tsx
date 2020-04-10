@@ -10,10 +10,10 @@ import {
 } from './utils';
 
 interface StateType {
-  checkedKeys?: Array<string>;
-  selectedKeys?: Array<string>;
+  checkedKeys: Array<string>;
+  selectedKeys: Array<string>;
   halfCheckedKeys?: Array<string>;
-  expandedKeys?: Array<string>;
+  expandedKeys: Array<string>;
   treeData: Array<object>;
   prevProps?: PropsType;
 }
@@ -24,6 +24,7 @@ class Tree extends Component<PropsType, StateType> {
     checkedKeys: [],
     selectedKeys: [],
     expandedKeys: [],
+    treeData: [],
     disabled: false,
     checkable: false,
     defaultExpandAll: false,
@@ -44,7 +45,7 @@ class Tree extends Component<PropsType, StateType> {
     selectedKeys: [],
   };
 
-  static getDerivedStateFromProps(nextProps: PropsType, prevState: StateType) {
+  static getDerivedStateFromProps(nextProps: Tree['props'], prevState: StateType) {
     const { prevProps } = prevState;
     const newState: Partial<StateType> = {
       prevProps: nextProps,
@@ -52,7 +53,7 @@ class Tree extends Component<PropsType, StateType> {
     function needUpdate(key: string) {
       return (!prevProps && key in nextProps) || (prevProps && prevProps[key] !== nextProps[key]);
     }
-    let treeData: TreeNode[];
+    let treeData: TreeNode[] = [];
     let TreeDataInformationSet = { allExpandDataMap: {}, treeData: [] };
     if (needUpdate('treeData')) {
       ({ treeData } = nextProps);
@@ -65,7 +66,7 @@ class Tree extends Component<PropsType, StateType> {
       }
       treeData = TreeDataInformationSet.treeData;
     }
-    if (treeData) {
+    if (treeData && treeData.length) {
       newState.treeData = treeData;
       // newState.treeData = deepCopy(treeData);
     }
@@ -103,7 +104,7 @@ class Tree extends Component<PropsType, StateType> {
     const { onCheck } = this.props;
     const { keys } = node;
     const { treeData: originalTreeData } = this.state;
-    const { checkedKeys: originalCheckedKeys, halfCheckedKeys: originHalfCheckedKeys } = this.state;
+    const { checkedKeys: originalCheckedKeys = [], halfCheckedKeys: originHalfCheckedKeys = [] } = this.state;
 
     const { checkedKeys, halfCheckedKeys, treeData } = conductCheck([keys], targetChecked, originalTreeData, {
       checkedKeys: originalCheckedKeys, halfCheckedKeys: originHalfCheckedKeys,

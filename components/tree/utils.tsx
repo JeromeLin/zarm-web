@@ -2,18 +2,6 @@ import React, { ReactElement, ReactNode } from 'react';
 import TreeNode from './TreeNode';
 import { TreeNodePropsType, EventDataNode, PropsType } from './PropsType';
 
-// 判断当前对象是否是object类型
-function isPlainObject(obj) {
-  if (Object.prototype.toString.call(obj).toLowerCase() !== '[object object]') {
-    return false;
-  }
-  const proto = Object.getPrototypeOf(obj);
-  if (!proto) {
-    return true;
-  }
-  return proto.constructor && proto.constructor === Object;
-}
-
 /**
  * 对数组删除一个指定的值
  * @param list {Array} 要处理的数组

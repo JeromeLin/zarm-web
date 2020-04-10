@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode, createContext, Context } from 'react';
+import { MouseEvent, ReactNode, createContext } from 'react';
 import TreeNode from './TreeNode';
 
 type TreeCheckEventHandler = (
@@ -34,7 +34,7 @@ type TreeNodeClickEventHandler = (event: MouseEvent) => void;
 
 export interface PropsType {
   prefixCls?: string;
-  treeData?: object[];
+  treeData: TreeNode[];
   checkable?: boolean;
   checkedKeys?: string[];
   expandedKeys?: string[];
@@ -92,4 +92,4 @@ export interface TreeContextProps {
   onNodeClick: TreeNodeClickEventHandler;
 }
 
-export const TreeContext: Context<TreeContextProps | null> = createContext(null);
+export const TreeContext = createContext<TreeContextProps | null>(null);
