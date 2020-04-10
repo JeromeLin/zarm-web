@@ -1,7 +1,7 @@
 # Tree
 树形组件
 
-## 基本用法1
+## 基本用法
 展示可勾选，可选中节点或多选节点，禁用单个节点或其checkbox，默认展开等功能。
 
 ```jsx
@@ -185,6 +185,7 @@ const MyIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1733827_4scbzsuv5
 class Demo3 extends React.Component {
   state = {
     showLine: false,
+    showSwitcherIcon: false,
     treeData: [
       {
         keys: '0',
@@ -229,19 +230,31 @@ class Demo3 extends React.Component {
       showLine,
     });
   };
-  
+
+  setSwitcherIcon = (showSwitcherIcon) => {
+    this.setState({
+      showSwitcherIcon,
+    });
+  };
+
   render() {
-    const { treeData, showLine } = this.state;
+    const { treeData, showLine, showSwitcherIcon } = this.state;
+    const otherProps = showSwitcherIcon ? { switcherIcon: <MyIcon type="iconsmile" size="sm" style={{ color: 'orange' }} />} : {};
     return (
       <div className="tree-wrapper">
         <div style={{ padding: 16 }}>
-          showLine && change switcherIcon: <Switch checked={showLine} onChange={this.setShowLine} />
+          showLine:  <Switch checked={showLine} onChange={this.setShowLine} />
         </div>
+        <div style={{ padding: 16 }}>
+          change switcherIcon to icon smile: 
+          <Switch checked={showSwitcherIcon} onChange={this.setSwitcherIcon} />
+        </div>
+        
         <Tree
           showLine={showLine}
-          expandedKeys={['0-1']}
           treeData={treeData}
-          switcherIcon={<MyIcon type="iconsmile" size="sm" />}
+          {...otherProps}
+          defaultExpandAll
         />
       </div>
     );
@@ -249,6 +262,76 @@ class Demo3 extends React.Component {
 }
 
 ReactDOM.render(<Demo3 />, mountNode);
+
+```
+
+## 自定义图标
+可以通过icon设置树的节点图标，也可以针对单个不同的节点定制图标。
+
+```jsx
+
+import { Tree, Icon } from 'zarm-web';
+
+const MyIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1733827_4scbzsuv5v2.js');
+
+class Demo5 extends React.Component {
+  state = {
+    treeData: [
+      {
+        keys: '0',
+        title: '根结点1',
+        children:
+          [
+            {
+              keys: '0-0',
+              title: '父结点 0-0',
+              disabled: true,
+              children:
+                [
+                  {
+                    keys: '0-0-0',
+                    title: '父结点 0-0-0',
+                    checkDisabled: true,
+                    children:
+                      [
+                        { keys: '0-0-0-0', title: '子结点 0-0-0-0', icon: <MyIcon type="iconshortcut-fill" theme="danger" size="sm" /> },
+                        { keys: '0-0-0-1', title: '子结点 0-0-0-1' },
+                      ],
+                  },
+                ],
+            },
+            {
+              keys: '0-1',
+              title: '父结点 0-1',
+              children:
+                [
+                  { keys: '0-1-0', title: '子结点 0-1-0' },
+                  { keys: '0-1-1', title: '子结点 0-1-1' },
+                  { keys: '0-1-2', title: '子结点 0-1-2' },
+                ],
+            },
+          ],
+      },
+    ],
+  };
+
+  render() {
+    const { treeData } = this.state;
+    return (
+      <div className="tree-wrapper">
+        <Tree 
+          showIcon
+          icon={<MyIcon type="iconsmile" size="sm" theme="primary" />}
+          treeData={treeData}
+          defaultExpandAll
+          checkable
+        />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo5 />, mountNode);
 
 ```
 
@@ -387,111 +470,40 @@ ReactDOM.render(<SearchTree />, mountNode);
 ```
 
 
-## 自定义图标
-可以通过icon设置树的节点图标，也可以针对单个不同的节点定制图标。
 
-```jsx
+## API
 
-import { Tree, Icon } from 'zarm-web';
+<h3>Tree</h3>
 
-const MyIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1733827_4scbzsuv5v2.js');
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| treeData      | array |   []  | 树节点结构数组|
+| checkable    |  true, false  |   false  | 节点前添加Checkbox 复选框 |
+| checkedKeys    | array |  []  | 选中复选框的树节点数组 |
+| expandedKeys    | array | []  | 展开指定的树节点 |
+| selectedKeys    | array |  []  | 设置选中的树节点 |
+| defaultExpandAll    | boolean |   false  | 默认展开所有树节点 |
+| autoExpandParent    | boolean |   true  | 是否自动展开父节点 |
+| showLine    | boolean |   false  |   是否展示连接线 |
+| showIcon    | boolean |   false  |   是否节点title前的图标，如设置为true，需要icon属性自行定义图标相关样式 |
+| icon    | ReactNode |  -  | 自定义节点title前面的图标 |
+| switcherIcon    | ReactNode |  -  |   自定义树节点的展开/折叠图标 |
+| disabled    | boolean |   false  |   是否禁掉树 |
+| multiple    | boolean |   false  |   支持选择多个节点 |
+| selectable    | boolean  |   true  |   是否可选中 |
+| onCheck    | (checkedMap，checkedObj）=> void  |   -  |   点击复选框触发 |
+| onExpand    | (expandedKeys，expandedObj）=> void  |   -  |   展开/收起节点时触发 |
+| onSelect    | (selectedKeys，selectedObj）=> void  |   -  |   点击节点触发 |
 
-class Demo5 extends React.Component {
-  state = {
-    treeData: [
-      {
-        keys: '0',
-        title: '根结点1',
-        children:
-          [
-            {
-              keys: '0-0',
-              title: '父结点 0-0',
-              disabled: true,
-              children:
-                [
-                  {
-                    keys: '0-0-0',
-                    title: '父结点 0-0-0',
-                    checkDisabled: true,
-                    children:
-                      [
-                        { keys: '0-0-0-0', title: '子结点 0-0-0-0', icon: <MyIcon type="iconshortcut-fill" theme="danger" size="sm" /> },
-                        { keys: '0-0-0-1', title: '子结点 0-0-0-1' },
-                      ],
-                  },
-                ],
-            },
-            {
-              keys: '0-1',
-              title: '父结点 0-1',
-              children:
-                [
-                  { keys: '0-1-0', title: '子结点 0-1-0' },
-                  { keys: '0-1-1', title: '子结点 0-1-1' },
-                  { keys: '0-1-2', title: '子结点 0-1-2' },
-                ],
-            },
-          ],
-      },
-    ],
-  };
+<h3>TreeNode </h3>
 
-  render() {
-    const { treeData } = this.state;
-    return (
-      <div className="tree-wrapper">
-        <Tree 
-          showIcon
-          icon={<MyIcon type="iconsmile" size="sm" theme="primary" />}
-          treeData={treeData}
-          defaultExpandAll
-          checkable
-        />
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(<Demo5 />, mountNode);
-
-```
-
-## Tree Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| treeData    | 树节点结构数组  | array |   -  |   []  |
-| checkable    | 节点前添加Checkbox 复选框 | boolean |   true, false  |   false  |
-| checkedKeys    | 选中复选框的树节点数组 | array |  -  |   []  |
-| expandedKeys    | 展开指定的树节点 | array |  -  |   []  |
-| selectedKeys    | 设置选中的树节点 | array |  -  |   []  |
-| defaultExpandAll    | 默认展开所有树节点 | boolean |   true, false  |   false  |
-| autoExpandParent    | 是否自动展开父节点 | boolean |   true, false  |   true  |
-| showLine    | 	是否展示连接线 | boolean |   true, false  |   false  |
-| showIcon    | 	是否节点title前的图标，如设置为true，需要icon属性自行定义图标相关样式 | boolean |   true, false  |   false  |
-| icon    | 自定义节点title前面的图标 | ReactNode |  -  |   -  |
-| switcherIcon    | 	自定义树节点的展开/折叠图标 | ReactNode |  -  |   -  |
-| disabled    | 	是否禁掉树 | boolean |   true, false  |   false  |
-| multiple    | 	支持选择多个节点 | boolean |   true, false  |   false  |
-| selectable    | 	是否可选中 | boolean |   true, false  |   true  |
-
-## TreeNode Attributes
-建议使用 treeData 来代替 TreeNode，免去手工构造麻烦
-
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| title    |  标题  | string/ReactNode |   -  |   -  |
-| keys    | 被树的 expandedKeys /checkedKeys属性所用。注意：整个树范围内的所有节点的keys值不能重复！（根节点keys为"0"） | string |   -  |   -  |
-| checkDisabled    | 禁掉checkbox | boolean |   true,false  |   false  |
-| selectDisabled    | 禁掉节点选中 | boolean |   true,false  |   false  |
-| disabled    | 禁掉响应 | boolean |   true,false  |   false  |
-| checkable    | 当树为checkable时，当前节点前是否添加Checkbox | boolean |   true, false  |   -  |
-| isLeaf    | 设置为叶子节点 | boolean |   true,false  |   false  |
-| icon    | 自定义节点title前面的图标 | ReactNode |  -  |   -  |
-
-## Tree Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onCheck | 点击复选框触发 |  (checkedMap，checkedObj）|
-| onExpand | 展开/收起节点时触发 |  (expandedKeys，expandedObj）  |
-| onSelect | 点击节点触发 |  (selectedKeys，selectedObj）  |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| title    | string/ReactNode |   -  |  标题  |
+| keys    | string |   -  | 被树的 expandedKeys /checkedKeys属性所用。注意：整个树范围内的所有节点的keys值不能重复！（根节点keys为"0"） |
+| checkDisabled    | boolean |   false  | 禁掉checkbox |
+| selectDisabled    | boolean |   false  | 禁掉节点选中 |
+| disabled    | boolean |   false  | 禁掉响应 |
+| checkable    | boolean |   -  | 当树为checkable时，当前节点前是否添加Checkbox |
+| isLeaf    | boolean |   false  | 设置为叶子节点 |
+| icon    | ReactNode |   -  | 自定义节点title前面的图标 |
