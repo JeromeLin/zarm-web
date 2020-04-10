@@ -159,12 +159,12 @@ module.exports = {
       //   module: () => import('@/components/pagination/pagination.md'),
       //   style: false,
       // },
-      // {
-      //   key: 'tree',
-      //   name: '树形控件',
-      //   module: () => import('@/components/tree/tree.md'),
-      //   style: false,
-      // },
+      {
+        key: 'tree',
+        name: '树形控件',
+        module: () => import('@/components/tree/tree.md'),
+        style: false,
+      },
       {
         key: 'avatar',
         name: '头像',

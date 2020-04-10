@@ -1,5 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 import TreeNode from './TreeNode';
+import { TreeNodePropsType, EventDataNode, PropsType } from './PropsType';
 
 // 判断当前对象是否是object类型
 function isPlainObject(obj) {
@@ -11,23 +12,6 @@ function isPlainObject(obj) {
     return true;
   }
   return proto.constructor && proto.constructor === Object;
-}
-
-// 深拷贝对象
-export function deepCopy(data) {
-  if (Array.isArray(data)) {
-    return data.map((elem) => {
-      return deepCopy(elem);
-    });
-  }
-  if (!isPlainObject(data)) {
-    return data;
-  }
-  return Object.keys(data).reduce((prev, key) => {
-    const value = data[key];
-    prev[key] = deepCopy(value);
-    return prev;
-  }, {});
 }
 
 /**
@@ -98,8 +82,8 @@ export function convertTreeToData(treeNode): Array<object> {
 
 // 判断当前节点是否是禁用状态
 export function isCheckDisabled(node) {
-  const { checkDisabled = false } = node;
-  return checkDisabled;
+  const { checkDisabled = false, disabled = false } = node;
+  return checkDisabled || disabled;
 }
 
 /**
@@ -128,6 +112,18 @@ function resetNodeCheckedState(node, isChecked, conductDirection) {
     const nodeLength = (node.children || []).filter((child) => !isCheckDisabled(child)).length;
     isChecked ? (node.checkedCount = nodeLength) : (node.checkedCount = 0);
   }
+}
+
+
+export function calcSelectedKeys(selectedKeys: string[] = [], props: PropsType) {
+  const { multiple } = props;
+  if (multiple) {
+    return selectedKeys.slice();
+  }
+  if (selectedKeys.length) {
+    return [selectedKeys[0]];
+  }
+  return selectedKeys;
 }
 
 /**
@@ -332,4 +328,21 @@ export function initialTreeData(treeData) {
     allExpandDataMap,
     treeData: finalTreeData,
   };
+}
+
+export function convertNodePropsToEventData(props: TreeNodePropsType): EventDataNode {
+  const eventData = {
+    ...props,
+  };
+  delete eventData.children;
+
+  if (!('props' in eventData)) {
+    Object.defineProperty(eventData, 'props', {
+      get() {
+        return props;
+      },
+    });
+  }
+
+  return eventData;
 }
