@@ -6,105 +6,41 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
     class="za-select za-time__select-wrapper disabled radius"
   >
     <div
-      class="ui-dropdown-trigger-box"
+      class="za-popper"
+      style="width:240px"
     >
       <div
-        aria-autocomplete="list"
-        aria-expanded="false"
-        aria-haspopup="true"
-        class="za-select__selection"
+        class="za-popper__inner"
       >
-        <span
-          class="za-select__text za-select__text-placeholder"
-        >
-          00:00:00
-        </span>
-        <i
-          class="zw-icon za-time__select-icon zw-icon--time-circle zw-icon--default zw-icon--md"
-          theme="default"
-          type="time-circle"
-        >
-          <svg
-            fill="currentColor"
-            height="1em"
-            viewBox="0 0 32 32"
-            width="1em"
-          >
-            <use
-              href="#time-circle"
-            />
-          </svg>
-        </i>
-      </div>
-    </div>
-    <div
-      class="ui-dropdown"
-      style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
-    >
-      <div
-        class="za-time__select"
-      >
-        <span
-          class="za-select"
-        >
-          <span
+        <span>
+          <div
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
           >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-        <span
-          class="za-select"
-        >
-          <span
-            aria-autocomplete="list"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
-          >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-        <span
-          class="za-select"
-        >
-          <span
-            aria-autocomplete="list"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
-          >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-      </div>
-      <div
-        class="za-select__bottom"
-      >
-        <span
-          class="clear-btn"
-        >
-          清除
-        </span>
-        <span
-          class="confirm-btn"
-        >
-          确认
+            <span
+              class="za-select__text za-select__text-placeholder"
+            >
+              00:00:00
+            </span>
+            <i
+              class="zw-icon za-time__select-icon zw-icon--time-circle zw-icon--default zw-icon--md"
+              theme="default"
+              type="time-circle"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 32 32"
+                width="1em"
+              >
+                <use
+                  href="#time-circle"
+                />
+              </svg>
+            </i>
+          </div>
         </span>
       </div>
     </div>
@@ -127,7 +63,7 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
-        class="za-menu za-menu-root za-menu-light za-menu-inline"
+        class="zw-menu zw-menu--light zw-menu--inline"
         role="menu"
       />
     </span>
@@ -143,7 +79,7 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
-        class="za-menu za-menu-root za-menu-light za-menu-inline"
+        class="zw-menu zw-menu--light zw-menu--inline"
         role="menu"
       />
     </span>
@@ -159,7 +95,7 @@ exports[`TimePicker renders disabled time-select correctly 1`] = `
       style="height:100%;max-height:250px;overflow:auto"
     >
       <ul
-        class="za-menu za-menu-root za-menu-light za-menu-inline"
+        class="zw-menu zw-menu--light zw-menu--inline"
         role="menu"
       />
     </span>
@@ -174,105 +110,41 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
     style="width:160px"
   >
     <div
-      class="ui-dropdown-trigger-box"
+      class="za-popper"
+      style="width:240px"
     >
       <div
-        aria-autocomplete="list"
-        aria-expanded="false"
-        aria-haspopup="true"
-        class="za-select__selection"
+        class="za-popper__inner"
       >
-        <span
-          class="za-select__text za-select__text-placeholder"
-        >
-          00:00:00
-        </span>
-        <i
-          class="zw-icon za-time__select-icon zw-icon--time-circle zw-icon--default zw-icon--md"
-          theme="default"
-          type="time-circle"
-        >
-          <svg
-            fill="currentColor"
-            height="1em"
-            viewBox="0 0 32 32"
-            width="1em"
-          >
-            <use
-              href="#time-circle"
-            />
-          </svg>
-        </i>
-      </div>
-    </div>
-    <div
-      class="ui-dropdown"
-      style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
-    >
-      <div
-        class="za-time__select"
-      >
-        <span
-          class="za-select"
-        >
-          <span
+        <span>
+          <div
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
           >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-        <span
-          class="za-select"
-        >
-          <span
-            aria-autocomplete="list"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
-          >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-        <span
-          class="za-select"
-        >
-          <span
-            aria-autocomplete="list"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
-          >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-      </div>
-      <div
-        class="za-select__bottom"
-      >
-        <span
-          class="clear-btn"
-        >
-          清除
-        </span>
-        <span
-          class="confirm-btn"
-        >
-          确认
+            <span
+              class="za-select__text za-select__text-placeholder"
+            >
+              00:00:00
+            </span>
+            <i
+              class="zw-icon za-time__select-icon zw-icon--time-circle zw-icon--default zw-icon--md"
+              theme="default"
+              type="time-circle"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 32 32"
+                width="1em"
+              >
+                <use
+                  href="#time-circle"
+                />
+              </svg>
+            </i>
+          </div>
         </span>
       </div>
     </div>
@@ -286,105 +158,41 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
     class="za-select za-time__select-wrapper radius"
   >
     <div
-      class="ui-dropdown-trigger-box"
+      class="za-popper"
+      style="width:240px"
     >
       <div
-        aria-autocomplete="list"
-        aria-expanded="false"
-        aria-haspopup="true"
-        class="za-select__selection"
+        class="za-popper__inner"
       >
-        <span
-          class="za-select__text za-select__text-placeholder"
-        >
-          00:00:00
-        </span>
-        <i
-          class="zw-icon za-time__select-icon zw-icon--time-circle zw-icon--default zw-icon--md"
-          theme="default"
-          type="time-circle"
-        >
-          <svg
-            fill="currentColor"
-            height="1em"
-            viewBox="0 0 32 32"
-            width="1em"
-          >
-            <use
-              href="#time-circle"
-            />
-          </svg>
-        </i>
-      </div>
-    </div>
-    <div
-      class="ui-dropdown"
-      style="min-width:0;width:240px;left:0;top:0;position:absolute;animation-duration:300ms;display:none;overflow:hidden;z-index:2020"
-    >
-      <div
-        class="za-time__select"
-      >
-        <span
-          class="za-select"
-        >
-          <span
+        <span>
+          <div
             aria-autocomplete="list"
             aria-expanded="false"
             aria-haspopup="true"
             class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
           >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-        <span
-          class="za-select"
-        >
-          <span
-            aria-autocomplete="list"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
-          >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-        <span
-          class="za-select"
-        >
-          <span
-            aria-autocomplete="list"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="za-select__selection"
-            style="height:100%;max-height:250px;overflow:auto"
-          >
-            <ul
-              class="za-menu za-menu-root za-menu-light za-menu-inline"
-              role="menu"
-            />
-          </span>
-        </span>
-      </div>
-      <div
-        class="za-select__bottom"
-      >
-        <span
-          class="clear-btn"
-        >
-          清除
-        </span>
-        <span
-          class="confirm-btn"
-        >
-          确认
+            <span
+              class="za-select__text za-select__text-placeholder"
+            >
+              00:00:00
+            </span>
+            <i
+              class="zw-icon za-time__select-icon zw-icon--time-circle zw-icon--default zw-icon--md"
+              theme="default"
+              type="time-circle"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 32 32"
+                width="1em"
+              >
+                <use
+                  href="#time-circle"
+                />
+              </svg>
+            </i>
+          </div>
         </span>
       </div>
     </div>

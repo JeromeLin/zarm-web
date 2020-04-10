@@ -197,12 +197,12 @@ module.exports = {
         module: () => import('@/components/loading/demo.md'),
         style: true,
       },
-      // {
-      //   key: 'message',
-      //   name: '消息提示',
-      //   module: () => import('@/components/message/demo.md'),
-      //   style: false,
-      // },
+      {
+        key: 'message',
+        name: '消息提示',
+        module: () => import('@/components/message/demo.md'),
+        style: true,
+      },
       // {
       //   key: 'modal',
       //   name: '对话框',
@@ -215,12 +215,12 @@ module.exports = {
       //   module: () => import('@/components/confirm/confirm.md'),
       //   style: false,
       // },
-      // {
-      //   key: 'notification',
-      //   name: '通知提醒框',
-      //   module: () => import('@/components/notification/notification.md'),
-      //   style: false,
-      // },
+      {
+        key: 'notification',
+        name: '通知提醒框',
+        module: () => import('@/components/notification/demo.md'),
+        style: true,
+      },
       // {
       //   key: 'popover',
       //   name: '气泡卡片',
@@ -235,12 +235,11 @@ module.exports = {
       // },
     ],
     navigation: [
-      // {
-      //   key: 'menu',
-      //   name: '导航菜单',
-      //   module: () => import('@/components/menu/menu.md'),
-      //   style: false,
-      // },
+      {
+        key: 'menu',
+        name: '导航菜单',
+        module: () => import('@/components/menu/demo.md'),
+      },
       {
         key: 'tabs',
         name: '标签页',
@@ -259,12 +258,12 @@ module.exports = {
         module: () => import('@/components/steps/demo.md'),
         style: false,
       },
-      // {
-      //   key: 'dropdown',
-      //   name: '下拉',
-      //   module: () => import('@/components/dropdown/dropdown.md'),
-      //   style: false,
-      // },
+      {
+        key: 'dropdown',
+        name: '下拉框',
+        module: () => import('@/components/dropdown/demo.md'),
+        style: true,
+      },
       {
         key: 'drawer',
         name: '抽屉',

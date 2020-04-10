@@ -1,0 +1,50 @@
+@include b(menu-item) {
+  position: relative;
+  display: block;
+  font-weight: normal;
+  color: var(--menuitem-default-color);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s $ease-in-out;
+  @include item-base(var(--menuitem-height), var(--font-size-md));
+
+  @include b(icon) {
+    @include icon-base();
+  }
+
+  > a {
+    display: block;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: transparent;
+    }
+  }
+
+  &:hover {
+    color: var(--menuitem-active-color);
+  }
+
+  @include m(selected) {
+    @include item-active();
+  }
+  @include m(active) {
+    @include item-active();
+  }
+  @include m(disabled) {
+    color: var(--menuitem-disabled-color);
+    cursor: not-allowed;
+
+    &:hover {
+      color: var(--menuitem-disabled-color);
+    }
+  }
+  @include m(level-1) {
+    @include item-first-level();
+  }
+}

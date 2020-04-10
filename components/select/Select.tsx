@@ -15,7 +15,7 @@ interface StateProps {
   dropdown: boolean;
   searchValue: string | null;
   showPlacehoder: boolean;
-  optionMap: { [x: string]: any; [y: number]: any };
+  optionMap: { [x: string]: any;[y: number]: any };
   optionData: Array<OptionDataProps>;
 }
 
@@ -294,7 +294,6 @@ class Select extends Component<PropsType, StateProps> {
       size,
       tagTheme,
       style,
-      zIndex,
       multiple,
       getPopupContainer,
       locale,
@@ -356,18 +355,15 @@ class Select extends Component<PropsType, StateProps> {
     };
 
     const menus = children && children.length > 0
-      ? <Menu size={size} style={menuStyle}>{children}</Menu>
+      ? <Menu style={menuStyle}>{children}</Menu>
       : <span className={`${prefixCls}--notfound`}>{locale!.noMatch}</span>;
 
     return (
       <Dropdown
-        triggerBoxStyle={style}
         disabled={disabled}
         visible={dropdown}
-        isRadius={radius}
-        overlay={menus}
-        zIndex={zIndex}
-        getPopupContainer={getPopupContainer}
+        content={menus}
+        getContainer={getPopupContainer}
         onVisibleChange={(visible) => {
           if (visible === true) {
             this.setState({ dropdown: visible, searchValue: '' });
