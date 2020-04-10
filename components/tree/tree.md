@@ -477,7 +477,7 @@ ReactDOM.render(<SearchTree />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| treeData      | array |   []  | 树节点结构数组|
+| treeData      | array / <{keys, title, children, [disabled, selectDisabled, checkDisabled, checkable, isLeaf, icon]}> |   []  | treeNodes数据，如设置则不需要手动构造TreeNode节点（keys 在整个树内唯一）|
 | checkable    |  true, false  |   false  | 节点前添加Checkbox 复选框 |
 | checkedKeys    | array |  []  | 选中复选框的树节点数组 |
 | expandedKeys    | array | []  | 展开指定的树节点 |
