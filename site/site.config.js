@@ -103,10 +103,10 @@ module.exports = {
         name: 'Tag',
         module: () => import('@/components/tag/demo.md'),
       },
-      // {
-      //   name: 'Progress',
-      //   module: () => import('@/components/progress/progress.md'),
-      // },
+      {
+        name: 'Progress',
+        module: () => import('@/components/progress/demo.md'),
+      },
       // {
       //   name: 'Panel',
       //   module: () => import('@/components/panel/panel.md'),
