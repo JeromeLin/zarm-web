@@ -16,12 +16,7 @@ class ModalHeader extends Component<ModalHeaderProps, any> {
         <Icon size="sm" type="wrong" />
       </div>
     ) : null;
-
-    const cls = classnames({
-      [`${prefixCls}__header`]: true,
-      [className!]: !!className,
-    });
-
+    const cls = classnames(`${prefixCls}__header`, className);
     return (
       <div className={cls} style={style}>
         <div className={`${prefixCls}__title`}>{children}</div>

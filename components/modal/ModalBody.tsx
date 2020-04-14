@@ -9,15 +9,8 @@ class ModalBody extends Component<ModalBodyProps, any> {
 
   render() {
     const { children, prefixCls, className, style } = this.props;
-    const bodyStyle = {
-      ...style,
-    };
-
-    const cls = classnames({
-      [`${prefixCls}__body`]: true,
-      [className!]: !!className,
-    });
-
+    const bodyStyle = { ...style };
+    const cls = classnames(`${prefixCls}__body`, className);
     return (
       <div className={cls} style={bodyStyle}>
         {children}

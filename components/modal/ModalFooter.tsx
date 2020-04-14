@@ -9,11 +9,7 @@ class ModalFooter extends Component<ModalFooterProps, any> {
 
   render() {
     const { children, prefixCls, className, ...otherProps } = this.props;
-    const cls = classnames({
-      [`${prefixCls}__footer`]: true,
-      [className!]: !!className,
-    });
-
+    const cls = classnames(`${prefixCls}__footer`, className);
     return (
       <div className={cls} {...otherProps}>
         {children}
