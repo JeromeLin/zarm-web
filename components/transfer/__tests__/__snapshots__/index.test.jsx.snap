@@ -25,7 +25,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul
-            class="za-menu za-menu-root za-menu-light za-menu-inline"
+            class="zw-menu zw-menu--light zw-menu--inline"
             role="menu"
           >
             <li
@@ -63,7 +63,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
         class="button-wrapper"
       >
         <button
-          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
+          class="zw-button zw-button--default zw-button--md zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >
@@ -87,7 +87,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           </span>
         </button>
         <button
-          class="zw-button zw-button--default zw-button--radius zw-button--disabled"
+          class="zw-button zw-button--default zw-button--md zw-button--radius zw-button--disabled"
           disabled=""
           type="button"
         >
@@ -131,7 +131,7 @@ exports[`Transfer renders Transfer correctly 1`] = `
           style="height:100%;max-height:250px;overflow:auto"
         >
           <ul
-            class="za-menu za-menu-root za-menu-light za-menu-inline"
+            class="zw-menu zw-menu--light zw-menu--inline"
             role="menu"
           />
         </span>

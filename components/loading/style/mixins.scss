@@ -1,11 +1,11 @@
-@mixin loading-size($height, $margin, $font-size,) {
-  @include e(svg) {
+@mixin loading-size($height, $padding-v, $font-size) {
+  @include b(activity-indicator) {
     height: $height;
     width: $height;
   }
 
   @include e(text) {
     font-size: $font-size;
-    margin: calc(#{$margin} / 2);
+    padding-top: $padding-v;
   }
 }

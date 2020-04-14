@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import classnames from 'classnames';
 import marked from 'marked';
 import Demo from './Demo';
 import './style.scss';
 
-const withOutConvertPage = ['ChangeLog', 'QuickStart'];
+const withOutConvertPage = ['change-log', 'quick-start'];
 
 export default class Markdown extends React.Component {
   constructor(props) {
@@ -43,15 +44,17 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const { document, name, className } = this.props;
+    const { document, component } = this.props;
     const renderer = new marked.Renderer();
+    const cls = classnames(`${component.key}-page`, 'markdown');
 
     if (typeof document === 'string') {
-      if (!withOutConvertPage.includes(name)) {
+      if (!withOutConvertPage.includes(component.key)) {
         this.components.clear();
 
+        // 表格
         renderer.table = (header, body) => {
-          return `<table class="grid" id="grid"><thead>${header}</thead><tbody>${body}</tbody></table>`;
+          return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
         };
 
         let html = marked(
@@ -72,13 +75,13 @@ export default class Markdown extends React.Component {
 
         html = html.replace('##', '').replace('API', '<h2 id="api-node" style="margin-top: 50px">API</h2>');
         // eslint-disable-next-line react/no-danger
-        return <div dangerouslySetInnerHTML={{ __html: html }} className={`markdown ${className}`} ref={(el) => { this.markdownCon = el; }} />;
+        return <div dangerouslySetInnerHTML={{ __html: html }} className={cls} ref={(el) => { this.markdownCon = el; }} />;
       }
 
       const html = marked(document, { renderer });
 
       // eslint-disable-next-line react/no-danger
-      return <div dangerouslySetInnerHTML={{ __html: html }} className={`markdown ${className}`} ref={(el) => { this.markdownCon = el; }} />;
+      return <div dangerouslySetInnerHTML={{ __html: html }} className={cls} ref={(el) => { this.markdownCon = el; }} />;
     }
 
     return <span />;

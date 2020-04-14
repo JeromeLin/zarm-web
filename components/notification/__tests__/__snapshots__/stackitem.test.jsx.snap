@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StackItem renders basic StackItem correctly 1`] = `
+<StackItem
+  Component={[Function]}
+  name="testname"
+  stayTime={4500}
+  test="1"
+>
+  <Transition
+    directional={true}
+    duration={300}
+    mountOnShow={true}
+    name="testname"
+    onBeforeHide={[Function]}
+    onBeforeShow={[Function]}
+    onComplete={[Function]}
+    onHide={[Function]}
+    onShow={[Function]}
+    onStart={[Function]}
+    transitionOnMount={false}
+    unmountOnHide={true}
+    visible={true}
+  >
+    <TempComponent
+      className="animating testname testname-in visible transition"
+      onClose={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={
+        Object {
+          "animationDuration": "300ms",
+        }
+      }
+      test="1"
+    >
+      <div
+        onClick={[Function]}
+      >
+        1
+      </div>
+    </TempComponent>
+  </Transition>
+</StackItem>
+`;

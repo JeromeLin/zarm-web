@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, MouseEvent, CSSProperties } from 'react';
 
 export type ButtonTheme = 'default' | 'primary' | 'danger';
-export type ButtonSize = 'xl' | 'lg' | 'sm' | 'xs';
+export type ButtonSize = 'lg' | 'sm' | 'md';
 export type ButtonShape = 'circle' | 'round' | 'rect' | 'radius';
 export type ButtonType = 'button' | 'submit' | 'reset';
 

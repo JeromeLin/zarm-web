@@ -1,0 +1,26 @@
+@include b(menu) {
+  // vertical mode
+  @include m(vertical) {
+    width: 100%;
+
+    @include b(menu-submenu) {
+      position: relative;
+      @include e(title) {
+        position: relative;
+
+        &:hover {
+          @include e(arrow) {
+            @include arrow-active();
+          }
+        }
+
+        @include e(arrow) {
+          @include arrow-vertical();
+        }
+      }
+      @include e(sub) {
+        @include sub-collapsed(var(--submenu-light-bg-color));
+      }
+    }
+  }
+}

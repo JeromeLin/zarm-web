@@ -58,15 +58,16 @@ class Input extends Component<InputCoreProps, InputState> {
     const inputStyle: React.CSSProperties = {};
     const clearIconWidth = 14 + 2;
     const sizeMap = {
-      lg: 40,
-      md: 32,
-      sm: 24,
+      lg: 12,
+      md: 12,
+      sm: 8,
     };
+    // sizeMap为左右边距，计算留给prefix的空间大小为：prefix元素宽 + padding-left + padding-right / 2 = prefix元素宽 + sizeMap[size] * 1.5
     if (this.prefixNodeRef.current) {
-      inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] / 2;
+      inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] * 1.5;
     }
     if (this.suffixNodeRef.current) {
-      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] / 2
+      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] * 1.5
         + (clearable ? clearIconWidth : 0);
     }
     this.setState({ inputStyle: bordered === 'underline' ? null : inputStyle });
@@ -137,6 +138,18 @@ class Input extends Component<InputCoreProps, InputState> {
     });
   };
 
+  focus() {
+    if (this.inputRef.current) {
+      this.inputRef.current.focus();
+    }
+  }
+
+  blur() {
+    if (this.inputRef.current) {
+      this.inputRef.current.blur();
+    }
+  }
+
   renderClearIcon = () => {
     const { prefixCls, clearable, disabled } = this.props;
     const { value } = this.state;
@@ -191,7 +204,7 @@ class Input extends Component<InputCoreProps, InputState> {
     } = this.props;
     const { value } = this.state;
 
-    return (
+    return !readOnly ? (
       <input
         {...others as React.HtmlHTMLAttributes<HTMLInputElement>}
         ref={this.inputRef}
@@ -202,26 +215,20 @@ class Input extends Component<InputCoreProps, InputState> {
         onBlur={this.onBlur}
         value={fixControlledValue(value)}
       />
+    ) : (
+      <span>
+        {fixControlledValue(value)}
+      </span>
     );
   };
 
   renderBaseInput = () => {
-    const {
-      prefixCls,
-      size,
-      style,
-      readOnly,
-    } = this.props;
-    const { value } = this.state;
+    const { style } = this.props;
     const cls = this.inputCls;
 
-    return !readOnly ? (
+    return (
       <div className={cls} style={style}>
         {this.renderOriginalInput()}
-      </div>
-    ) : (
-      <div className={`${prefixCls}--readOnly ${prefixCls}--${size}`}>
-        {fixControlledValue(value)}
       </div>
     );
   };
@@ -279,7 +286,7 @@ class Input extends Component<InputCoreProps, InputState> {
 
   renderLabeledInput = () => {
     const { addonBefore, addonAfter, prefixCls, style, clearable } = this.props;
-    const { value } = this.state;
+    const { value, focused } = this.state;
     if (!addonBefore && !addonAfter) {
       return this.renderLabeledIconInput();
     }
@@ -287,6 +294,7 @@ class Input extends Component<InputCoreProps, InputState> {
     const cls = classnames(this.inputCls, {
       [`${prefixCls}--prepend`]: addonBefore,
       [`${prefixCls}--append`]: addonAfter,
+      [`${prefixCls}--focused`]: focused,
       [`${prefixCls}--clearable`]: clearable && value,
     });
     const prependCls = classnames(`${prefixCls}__prepend`);

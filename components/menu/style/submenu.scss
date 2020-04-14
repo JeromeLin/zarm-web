@@ -1,0 +1,47 @@
+@include b(menu-submenu) {
+  min-width: var(--submenu-min-width);
+  height: auto;
+
+  @include e(title) {
+    @include item-base(var(--menuitem-height), var(--font-size-md));
+
+    &:hover {
+      color: var(--menuitem-active-color);
+    }
+
+    @include b(icon) {
+      @include icon-base();
+    }
+
+    @include e(arrow) {
+      @include arrow-base(var(--color-text-caption));
+    }
+  }
+
+  @include e(sub) {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: all .2s $ease-in-out;
+  }
+
+  @include m(active) {
+    @include e(title-first) {
+      color: var(--menuitem-active-color);
+
+      @include e(arrow) {
+        @include arrow-base(var(--menuitem-active-color));
+      }
+      @include b(icon) {
+        color: var(--menuitem-active-color);
+      }
+    }
+  }
+  @include m(level-1) {
+    min-width: auto;
+
+    @include e(title-level-1) {
+      @include item-first-level();
+    }
+  }
+}

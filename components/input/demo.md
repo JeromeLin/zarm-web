@@ -3,7 +3,7 @@
 
 
 
-## 基础用法
+## 基本用法
 
 ```jsx
 import { Input } from 'zarm-web';
@@ -136,6 +136,33 @@ ReactDOM.render(<Input clearable placeholder="请输入" />, mountNode);
 
 
 
+## 输入框组合
+输入框的组合展现, 默认为compact模式。
+```jsx
+import { Input, Select } from 'zarm-web';
+
+ReactDOM.render(
+  <>
+    <Input.Group>
+      <Input style={{ width: 60 }} defaultValue="021" />
+      <Input style={{ flex: 1 }} defaultValue="10109955" />
+    </Input.Group>
+    <Input.Group>
+      <Input style={{ width: 60 }} bordered defaultValue="021" />
+      <Input style={{ flex: 1 }} bordered defaultValue="10109955" />
+    </Input.Group>
+    <Input.Group compact={false}>
+      <Input style={{ width: 60, marginRight: 10 }} bordered defaultValue="021" />
+      <Input style={{ flex: 1, marginRight: 10 }} bordered defaultValue="10109955" />
+      <Input style={{ flex: 1 }} bordered defaultValue="10109955" />
+    </Input.Group>
+  </>,
+  mountNode
+);
+```
+
+
+
 ## 搜索场景的组合
 通过设置前缀图标和后置标签来组合成搜索框
 
@@ -147,8 +174,14 @@ ReactDOM.render(
     <Input placeholder="please input gender" prefix={<Icon type="search" />} />
     <Input bordered={false} placeholder="please input gender" prefix={<Icon type="search" />} />
     <Input bordered placeholder="please input gender" prefix={<Icon type="search" />} />
-    <Input bordered className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary" icon="search" />} />
-    <Input bordered className="input-search-wrapper" placeholder="please input gender" addonAfter={<Button style={{ padding: '0 15px', width: 'auto' }} theme="primary">Search</Button>} />
+    <Input.Group>
+      <Input bordered placeholder="please input gender" />
+      <Button theme="primary" icon="search" />
+    </Input.Group>
+    <Input.Group size="lg" shape="round">
+      <Input bordered placeholder="please input gender" />
+      <Button theme="primary">Search</Button>
+    </Input.Group>
   </>,
   mountNode,
 );
@@ -168,7 +201,6 @@ ReactDOM.render(
   <>
     <Input type="textarea" rows={3} placeholder="请输入" />
     <Input type="textarea" showLength bordered={false} rows={3} maxLength={120} placeholder="请输入" />
-    <Input type="textarea" autoHeight placeholder="自适应高度" />
   </>,
   mountNode,
 );
@@ -183,7 +215,10 @@ ReactDOM.render(
 import { Input } from 'zarm-web';
 
 ReactDOM.render(
-  <Input type="textarea" autoHeight rows={2} placeholder="自适应高度" />,
+  <>
+    <Input type="textarea" autoHeight placeholder="自适应高度" />
+    <Input type="textarea" autoHeight={{ minRows: 3, maxRows: 6 }} placeholder="自适应高度, 并且限制最小行数和最大行数" />
+  </>,
   mountNode,
 );
 ```
@@ -192,19 +227,17 @@ ReactDOM.render(
 
 ## API
 
-<h3>Input Common</h3>
-
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | type | string | 'text' | 类型，可选值 `text`、`number`、`password`、`textarea` |
-| shape | string | 'radius' | 类型，可选值 `rect`、`radius` |
+| shape | string | 'radius' | 类型，可选值 `rect`、`radius`、`round` |
 | value | string | - | 值 |
 | defaultValue | string | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
 | readOnly | boolean | false | 是否只读 |
 | maxLength | number | - | 输入字数上限 |
 
-<h3>Input</h3>
+<h3>Input 单行文本</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -217,12 +250,12 @@ ReactDOM.render(
 | addonAfter | ReactNode | - | 设置后置标签 |
 | onChange | (e?: React.ChangeEvent&lt;HTMLInputElement&gt;) => void | - | 值变化时触发的回调函数 |
 
-<h3>Textarea</h3>
+<h3>Textarea 多行文本</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | bordered | boolean  | true | 边框样式 |
 | rows | number | - | 显示行数 |
-| autoHeight | boolean | false | 是否高度自适应 |
+| autoHeight | boolean/object | false | 是否高度自适应, 可设置成true/false/{ minRows: 2, maxRows: 5 } |
 | showLength | boolean | false | 是否显示输入字数 |
 | onChange | (e?: React.ChangeEvent&lt;HTMLTextAreaElement&gt;) => void | - | 值变化时触发的回调函数 |

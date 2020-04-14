@@ -1,6 +1,6 @@
 {
   "name": "zarm-web",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.7",
   "description": "基于 React 的桌面端UI库",
   "tags": [
     "zarm-web",
@@ -45,16 +45,18 @@
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -w -r 0",
-    "release": "bash scripts/release.sh"
+    "release": "bash scripts/release.sh",
+    "commit": "git-cz"
   },
   "dependencies": {
     "async-validator": "^1.10.1",
     "classnames": "2.2.6",
+    "create-react-context": "^0.3.0",
     "color": "^3.1.0",
     "css-animation": "^1.2.5",
     "normalize.css": "8.0.1",
     "rc-animate": "^3.0.0-rc.5",
-    "zarm": "2.0.0-alpha.74"
+    "zarm": "2.0.0-beta.3"
   },
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
@@ -66,14 +68,14 @@
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "2.5.0",
     "@typescript-eslint/parser": "2.5.0",
-    "@zarm-design/cli": "^0.0.17",
+    "@zarm-design/cli": "^0.0.18",
     "babel-eslint": "10.0.3",
     "babel-plugin-import": "^1.13.0",
     "browserslist": "^4.6.6",
     "concurrently": "^3.5.1",
     "conventional-changelog-cli": "^1.3.22",
     "core-js": "^3.0.1",
-    "coveralls": "^2.13.1",
+    "coveralls": "^3.0.9",
     "cross-env": "^5.2.0",
     "docsearch.js": "^2.6.1",
     "dragon-ui": "1.0.0-alpha.18",
@@ -89,6 +91,7 @@
     "eslint-plugin-react-hooks": "2.2.0",
     "eslint-plugin-vue": "5.2.3",
     "gh-pages": "^1.0.0",
+    "git-cz": "^3.2.1",
     "highlight.js": "^9.12.0",
     "history": "^4.7.2",
     "husky": "^2.3.0",

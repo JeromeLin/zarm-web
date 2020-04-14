@@ -1,0 +1,13 @@
+@include b(menu-item-group) {
+  @include e(title) {
+    height: var(--menuitem-group-title-height);
+    line-height: var(--menuitem-group-title-height);
+    font-size: var(--menuitem-group-font-size);
+    color: var(--color-text-caption);
+    user-select: none;
+  }
+
+  @include e(list) {
+    padding: 0;
+  }
+}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ActivityIndicator from 'zarm/lib/activity-indicator';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../icon';
 import { ButtonProps } from './PropsType';
@@ -14,36 +13,23 @@ class Button extends Component<ButtonProps> {
     htmlType: 'button',
     theme: 'default',
     shape: 'radius',
-    icon: '',
+    size: 'md',
     ghost: false,
-    size: null,
     loading: false,
     onClick: () => {},
   };
 
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    theme: PropTypes.string,
-    shape: PropTypes.oneOf(['circle', 'round', 'rect', 'radius']),
-    size: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
-    htmlType: PropTypes.oneOf(['submit', 'button', 'reset']),
-    icon: PropTypes.string,
-    onClick: PropTypes.func,
-    loading: PropTypes.bool,
-    ghost: PropTypes.bool,
-  };
-
   render() {
     const {
-      prefixCls, htmlType = 'button', type, size, block, shape, active, focus, disabled, ghost,
+      prefixCls, htmlType, type, size, block, shape, active, focus, disabled, ghost,
       loading, className, onClick, children, style, theme, href, target, icon, ...others
     } = this.props;
 
     const classes = classnames(prefixCls, className, {
-      [`${prefixCls}--${theme}`]: theme,
-      [`${prefixCls}--${size}`]: size,
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--${shape}`]: !!shape,
       [`${prefixCls}--block`]: block,
-      [`${prefixCls}--${shape}`]: shape,
       [`${prefixCls}--active`]: active,
       [`${prefixCls}--focus`]: focus,
       [`${prefixCls}--disabled`]: disabled,

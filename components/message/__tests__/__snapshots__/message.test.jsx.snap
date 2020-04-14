@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message renders basic Message correctly 1`] = `
+<div
+  className="zw-message"
+  style={Object {}}
+>
+  <div
+    className="zw-message__content"
+  >
+    <div>
+      This is a test messgae
+    </div>
+  </div>
+</div>
+`;

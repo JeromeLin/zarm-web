@@ -2,7 +2,7 @@
 
 
 
-## 基础用法
+## 基本用法
 
 ```jsx
 import { Row, Col } from 'zarm-web';

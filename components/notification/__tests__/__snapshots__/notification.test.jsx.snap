@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification renders basic Notification correctly 1`] = `
+<div
+  className="zw-notification"
+  style={Object {}}
+>
+  <div
+    className="zw-notification__content"
+  >
+    <div
+      className="zw-notification__head"
+    >
+      Test Title
+    </div>
+    <div
+      className="zw-notification__body"
+    >
+      This is a test messgae
+    </div>
+  </div>
+  <Icon
+    className="zw-notification__close"
+    prefixCls="zw-icon"
+    size="sm"
+    theme="default"
+    type="wrong"
+    viewBox="0 0 32 32"
+  />
+</div>
+`;

@@ -94,7 +94,7 @@ describe('Transfer', () => {
         keyOfItem="id"
         displayNameOfItem="name"
         width={500}
-        onAdd={value => selectedValue.push(value)}
+        onAdd={(value) => selectedValue.push(value)}
       />
     );
     const wrapper = mount(component);
@@ -113,7 +113,7 @@ describe('Transfer', () => {
         keyOfItem="id"
         displayNameOfItem="name"
         width={500}
-        onAdd={value => selectedValue.push(value)}
+        onAdd={(value) => selectedValue.push(value)}
       />
     );
     const wrapper = mount(component);
@@ -133,7 +133,7 @@ describe('Transfer', () => {
         keyOfItem="id"
         displayNameOfItem="name"
         width={500}
-        onAdd={value => selectedValue.push(value)}
+        onAdd={(value) => selectedValue.push(value)}
       />
     );
     const wrapper = mount(component);
@@ -169,7 +169,7 @@ describe('Transfer', () => {
         keyOfItem="id"
         displayNameOfItem="name"
         width={500}
-        onAdd={value => selectedValue.push(value)}
+        onAdd={(value) => selectedValue.push(value)}
       />
     );
     const wrapper = mount(component);
@@ -189,7 +189,7 @@ describe('Transfer', () => {
         keyOfItem="id"
         displayNameOfItem="name"
         width={500}
-        onAdd={value => selectedValue.push(value)}
+        onAdd={(value) => selectedValue.push(value)}
       />
     );
     const wrapper = mount(component);
@@ -212,7 +212,7 @@ describe('Transfer', () => {
         },
       ],
     });
-    wrapper.find('.za-menu').at(1).find('.za-option__list').at(0)
+    wrapper.find('.zw-menu').at(1).find('.za-option__list').at(0)
       .simulate('doubleclick');
     expect((wrapper.state().selectedValue).length).toBe(0);
   });

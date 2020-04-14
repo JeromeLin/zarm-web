@@ -1,7 +1,7 @@
 ## Table 表格
 用于展示大量数据。
 
-### 基础用法
+### 基本用法
 
 :::demo 指定`columns`和`dataSource`属性。
 
