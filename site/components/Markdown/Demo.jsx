@@ -4,6 +4,7 @@ import { transform } from '@babel/standalone';
 import { Icon } from 'zarm-web';
 import Highlight from 'react-highlight';
 import '@/components/style/entry';
+import './style-demo';
 
 export default class Demo extends React.PureComponent {
   constructor(props) {
