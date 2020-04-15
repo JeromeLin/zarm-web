@@ -9,7 +9,7 @@ $tree-node-checkbox-width: 20px;
   margin: 0;
   padding: 0;
 
-  li {  
+  li {
     position: relative;
     padding: 5px 0;
     margin: 0;
@@ -19,14 +19,17 @@ $tree-node-checkbox-width: 20px;
 
     & > div {
       display: inline-flex;
+
       &:focus {
-        box-shadow:0px 0px 2px 2px rgba(18,194,135,0.1);
-        border-radius:2px;
+        box-shadow: 0 0 2px 2px rgba(18, 194, 135, 0.1);
+        border-radius: 2px;
       }
+
       &.#{$treePrefixCls}-treenode-disabled {
         span.#{$treePrefixCls}-node-content-wrapper {
           color: #bcbcbc;
           cursor: not-allowed;
+
           &:hover {
             background-color: transparent;
             color: #bcbcbc;
@@ -70,7 +73,7 @@ $tree-node-checkbox-width: 20px;
         cursor: pointer;
         text-align: center;
         vertical-align: middle;
-        
+
         &.#{$treePrefixCls}-switcher-open,
         &.#{$treePrefixCls}-switcher-close {
           .#{$treePrefixCls}-switcher-icon {
@@ -122,23 +125,25 @@ $tree-node-checkbox-width: 20px;
         transition: all .3s;
         border-radius: 1px;
         vertical-align: middle;
-        
+
         &.#{$treePrefixCls}-node-selected {
           background-color: var(--theme-primary);
           color: #fff;
-          
+
           .#{$treePrefixCls}-node-content-icon {
             i {
-              color:#fff;
+              color: #fff;
             }
           }
         }
+
         &:not(.#{$treePrefixCls}-node-selected):hover {
-          background-color:rgba(18,194,135,0.1);
-          color: #12C287;
+          background-color: rgba(18, 194, 135, 0.1);
+          color: #12c287;
           border-radius: 1px;
         }
-        .#{$treePrefixCls}-node-content-icon  {
+
+        .#{$treePrefixCls}-node-content-icon {
           margin-right: 2px;
 
           i {
@@ -149,10 +154,10 @@ $tree-node-checkbox-width: 20px;
 
       &:not(.#{$treePrefixCls}-node-content-icon) {
         > i.#{$prefixCls}-icon {
-          color: rgba(0,0,0,.7);
+          color: rgba(0, 0, 0, .7);
         }
       }
-      
+
       i.#{$prefixCls}-icon {
         svg {
           vertical-align: middle;
@@ -178,11 +183,13 @@ $tree-node-checkbox-width: 20px;
           width: $tree-node-switcher-width;
           height: $tree-node-height;
         }
+
         .#{$treePrefixCls}-switcher-icon {
           width: $tree-node-switcher-width;
           height: $tree-node-height;
         }
       }
+
       &:not(:last-child) {
         &:before {
           position: absolute;
@@ -192,7 +199,7 @@ $tree-node-checkbox-width: 20px;
           border-right: 1px solid #ccc;
           content: "";
         }
-        
+
         &:first-child:before {
           top: 29px;
         }

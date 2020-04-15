@@ -10,8 +10,6 @@ import SideBar from '@site/components/SideBar';
 import ScrollToTop from '@site/components/ScrollToTop';
 import Markdown from '@site/components/Markdown';
 import './style.scss';
-import Test from '../../../examples/pages/test/test';
-import TestSearch from '../../../examples/pages/test/testSearch';
 
 const LoadableComponent = (component) => {
   const loader = { page: component.module };
@@ -55,8 +53,6 @@ class Page extends PureComponent {
                   <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
                 ))
               }
-              <Route path="/components/test" component={Test} />
-              <Route path="/components/testS" component={TestSearch} />
               <Route path="*" component={LoadableComponent(documents[0])} />
               <Redirect to="/" />
             </Switch>
