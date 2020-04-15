@@ -142,8 +142,10 @@ module.exports = {
         style: false,
       },
       {
-        name: 'Progress',
+        key: 'progress',
+        name: '进度条',
         module: () => import('@/components/progress/demo.md'),
+        style: true,
       },
       // {
       //   key: 'panel',
