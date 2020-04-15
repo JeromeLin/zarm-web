@@ -28,11 +28,9 @@ import { Button, Icon } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <Button theme="primary" size="xl">xl</Button>
     <Button theme="primary" size="lg">lg</Button>
     <Button theme="primary">md</Button>
     <Button theme="primary" size="sm">sm</Button>
-    <Button theme="primary" size="xs">xs</Button>
   </>
 , mountNode);
 ```
@@ -233,7 +231,7 @@ ReactDOM.render(
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'default' | 设置主题，可选值为 `default`、`primary`、`danger` |
-| size | string | 'md' | 设置大小，可选值为 `xl`、`lg`、`md`、`sm`、`xs` |
+| size | string | 'md' | 设置大小，可选值为 `lg`、`md`、`sm` |
 | shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round`、`circle` |
 | block | boolean | false | 是否块级元素 |
 | ghost | boolean | false | 是否幽灵按钮 |

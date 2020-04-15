@@ -9,6 +9,7 @@ export { default as Pagination } from './pagination';
 export { default as Select } from './select';
 export { default as Menu } from './menu';
 export { default as Dropdown } from './dropdown';
+export { default as Drawer } from './drawer';
 export { default as Message } from './message';
 export { default as Checkbox } from './checkbox';
 export { default as Confirm } from './confirm';

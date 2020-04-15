@@ -20,7 +20,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
       hideIcon={false}
       locale={
         Object {
-          "close": "关闭",
+          "cancelText": "关闭",
         }
       }
       localeCode="zh-cn"
@@ -90,7 +90,7 @@ exports[`Alert renders basic Alert correctly 1`] = `
                       class="ui-modal-footer"
                     >
                       <button
-                        class="zw-button zw-button--default zw-button--radius"
+                        class="zw-button zw-button--default zw-button--md zw-button--radius"
                         type="button"
                       >
                         <span>
@@ -205,16 +205,15 @@ exports[`Alert renders basic Alert correctly 1`] = `
                     <Button
                       ghost={false}
                       htmlType="button"
-                      icon=""
                       loading={false}
                       onClick={[MockFunction]}
                       prefixCls="zw-button"
                       shape="radius"
-                      size={null}
+                      size="md"
                       theme="default"
                     >
                       <button
-                        className="zw-button zw-button--default zw-button--radius"
+                        className="zw-button zw-button--default zw-button--md zw-button--radius"
                         onClick={[Function]}
                         type="button"
                       >

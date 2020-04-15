@@ -38,14 +38,14 @@ ReactDOM.render(
 import { Badge } from 'zarm-web';
 
 ReactDOM.render(
-  <>
+  <div className="badge-themes">
     <Badge><div className="box-item" /></Badge>
     <Badge shape="rect" text="免费"><div className="box-item" /></Badge>
     <Badge shape="radius" text="new"><div className="box-item" /></Badge>
     <Badge shape="round" text="999+"><div className="box-item" /></Badge>
     <Badge shape="circle" text="3"><div className="box-item" /></Badge>
     <Badge shape="leaf" text="新品"><div className="box-item" /></Badge>
-  </>
+  </div>
 , mountNode);
 ```
 
@@ -89,8 +89,6 @@ ReactDOM.render(
 ```jsx
 import { Badge, Button, Icon, Switch } from 'zarm-web';
 
-const ButtonGroup = Button.Group;
-
 class Demo extends React.Component {
   constructor(props) {
     super(props)
@@ -126,14 +124,10 @@ class Demo extends React.Component {
         <Badge text={count} shape="round">
           <div className="box-item" />
         </Badge>
-        <ButtonGroup>
-          <Button theme="primary" onClick={this.minus}>
-            <Icon type="minus" />
-          </Button>
-          <Button theme="primary" onClick={this.add}>
-            <Icon type="add" />
-          </Button>
-        </ButtonGroup>
+        <Button.Group>
+          <Button onClick={this.minus}><Icon type="minus" /></Button>
+          <Button onClick={this.add}><Icon type="add" /></Button>
+        </Button.Group>
         <br />
         <br />
         {

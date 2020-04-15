@@ -13,13 +13,12 @@ class Alert extends Component<AlertProps, any> {
     className: '',
     hideIcon: false,
     closable: true,
-    // closeText: '关闭',
     onClose: () => {},
   };
 
   render() {
     const {
-      theme, message, closable, closeText, onClose, width,
+      theme, message, closable, cancelText, onClose, width,
       className, visible, prefixCls, hideIcon, locale,
     } = this.props;
 
@@ -52,7 +51,7 @@ class Alert extends Component<AlertProps, any> {
         {
           closable && (
             <Modal.Footer>
-              <Button onClick={onClose}>{closeText || locale!.close}</Button>
+              <Button onClick={onClose}>{cancelText || locale!.cancelText}</Button>
             </Modal.Footer>
           )
         }

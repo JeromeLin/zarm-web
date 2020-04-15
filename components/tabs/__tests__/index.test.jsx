@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { mount } from 'enzyme';
 import Tabs from '../index';
 
-const { Tab } = Tabs;
+const { Panel } = Tabs;
 
 const data = [{
   closable: false,
@@ -24,14 +23,10 @@ const data = [{
 
 const setup = (obj = {}) => {
   const props = {
-    direction: 'horizontal',
     defaultValue: 0,
-    prefixCls: 'zw-tabs',
-    type: 'line',
-    size: 'md',
+    animated: true,
     onChange: jest.fn(),
     onTabClose: jest.fn(),
-    animated: true,
     onPrevClick: jest.fn(),
     onNextClick: jest.fn(),
   };
@@ -40,9 +35,9 @@ const setup = (obj = {}) => {
     <Tabs {...newProps} style={{ width: 200 }}>
       {
         data.map((item, index) => (
-          <Tab key={index.toString()} title={item.title} style={{ padding: 10 }} disabled={item.disabled} closable={item.closable}>
+          <Panel key={index.toString()} title={item.title} style={{ padding: 10 }} disabled={item.disabled} closable={item.closable}>
             这是选项卡{index}的文字
-          </Tab>
+          </Panel>
         ))
       }
     </Tabs>,

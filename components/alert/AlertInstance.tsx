@@ -11,7 +11,7 @@ class AlertExtension extends Alert {
     const defalutValue = {
       width: 270,
       message: 'hello world',
-      closeText: '关闭',
+      cancelText: '关闭',
       hideIcon: false,
       theme: 'info',
       closable: true,
@@ -28,7 +28,7 @@ class AlertExtension extends Alert {
         width={object.width}
         visible={visible}
         message={object.message}
-        closeText={object.closeText}
+        cancelText={object.cancelText}
         hideIcon={object.hideIcon}
         onClose={() => {
           object.onClose();
@@ -37,7 +37,7 @@ class AlertExtension extends Alert {
         closable={object.closable}
         theme={object.theme}
         locale={{
-          close: 'close',
+          cancelText: 'Close',
         }}
       />,
       div,

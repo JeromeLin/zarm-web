@@ -7,14 +7,14 @@
 
 ```jsx
 import { Tabs } from 'zarm-web';
-const { Tab } = Tabs;
+const { Panel } = Tabs;
 
 ReactDOM.render(
   <Tabs>
-    <Tab title="Tab1">Content of Tab1</Tab>
-    <Tab title="Tab2">Content of Tab2</Tab>
-    <Tab title="Tab3">Content of Tab3</Tab>
-    <Tab title="Tab4">Content of Tab4</Tab>
+    <Panel title="Tab1">Content of Tab1</Panel>
+    <Panel title="Tab2">Content of Tab2</Panel>
+    <Panel title="Tab3">Content of Tab3</Panel>
+    <Panel title="Tab4">Content of Tab4</Panel>
   </Tabs>,
   mountNode,
 );
@@ -26,7 +26,7 @@ ReactDOM.render(
 
 ```jsx
 import { Tabs, Radio } from 'zarm-web';
-const { Tab } = Tabs;
+const { Panel } = Tabs;
 
 class Demo extends React.Component {
   state = {
@@ -51,10 +51,10 @@ class Demo extends React.Component {
         </div>
         <div className="rows">
           <Tabs size={size}>
-            <Tab title="Tab1">Content of Tab1</Tab>
-            <Tab title="Tab2">Content of Tab2</Tab>
-            <Tab title="Tab3">Content of Tab3</Tab>
-            <Tab title="Tab4">Content of Tab4</Tab>
+            <Panel title="Tab1">Content of Tab1</Panel>
+            <Panel title="Tab2">Content of Tab2</Panel>
+            <Panel title="Tab3">Content of Tab3</Panel>
+            <Panel title="Tab4">Content of Tab4</Panel>
           </Tabs>
         </div>
       </>
@@ -71,14 +71,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { Tabs, Icon, Button } from 'zarm-web';
-const { Tab } = Tabs;
+const { Panel } = Tabs;
 
 ReactDOM.render(
   <Tabs type="card">
-    <Tab title="Tab1">Content of Tab1</Tab>
-    <Tab title="Tab2">Content of Tab2</Tab>
-    <Tab title="Tab3">Content of Tab3</Tab>
-    <Tab title="Tab4">Content of Tab4</Tab>
+    <Panel title="Tab1">Content of Tab1</Panel>
+    <Panel title="Tab2">Content of Tab2</Panel>
+    <Panel title="Tab3">Content of Tab3</Panel>
+    <Panel title="Tab4">Content of Tab4</Panel>
   </Tabs>,
   mountNode,
 );
@@ -90,15 +90,15 @@ ReactDOM.render(
 
 ```jsx
 import { Tabs, Button } from 'zarm-web';
-const { Tab } = Tabs;
+const { Panel } = Tabs;
 
 ReactDOM.render(
   <div className="box" style={{ background: '#f2f2f2', padding: 32 }}>
     <Tabs type="noborder-card">
-      <Tab title="Tab1" style={{ height: 100, padding: 15 }}>Content of Tab1</Tab>
-      <Tab title="Tab2" style={{ height: 100, padding: 15 }}>Content of Tab2</Tab>
-      <Tab title="Tab3" style={{ height: 100, padding: 15 }}>Content of Tab3</Tab>
-      <Tab title="Tab4" style={{ height: 100, padding: 15 }}>Content of Tab4</Tab>
+      <Panel title="Tab1" style={{ height: 100, padding: 15 }}>Content of Tab1</Panel>
+      <Panel title="Tab2" style={{ height: 100, padding: 15 }}>Content of Tab2</Panel>
+      <Panel title="Tab3" style={{ height: 100, padding: 15 }}>Content of Tab3</Panel>
+      <Panel title="Tab4" style={{ height: 100, padding: 15 }}>Content of Tab4</Panel>
     </Tabs>
   </div>,
   mountNode,
@@ -111,7 +111,7 @@ ReactDOM.render(
 
 ```jsx
 import { Tabs, Radio } from 'zarm-web';
-const { Tab } = Tabs;
+const { Panel } = Tabs;
 
 class Demo extends React.Component {
   state = {
@@ -146,9 +146,9 @@ class Demo extends React.Component {
           >
             {
               [...Array(20).keys()].map((item, index) => (
-                <Tab key={+index} title={`Tab${index + 1}`}>
+                <Panel key={+index} title={`Tab${index + 1}`}>
                   Content of Tab{index + 1}
-                </Tab>
+                </Panel>
               ))
             }
           </Tabs>
@@ -167,7 +167,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { Tabs, Button } from 'zarm-web';
-const { Tab } = Tabs;
+const { Panel } = Tabs;
 
 class Demo extends React.Component {
   state = {
@@ -229,13 +229,13 @@ class Demo extends React.Component {
         >
           {
             this.state.tabs.map((item, index) => (
-              <Tab key={+index} title={item.title} closable={item.closable}>
+              <Panel key={+index} title={item.title} closable={item.closable}>
                 Content of {item.title}
-              </Tab>
+              </Panel>
             ))
           }
         </Tabs>
-        <div class="add-button" onClick={this.onTabAdd}>+</div>
+        <div className="add-button" onClick={this.onTabAdd}>+</div>
       </div>
     );
   }
@@ -248,7 +248,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-Tabs
+<h3>Tabs</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -263,7 +263,7 @@ Tabs
 | onPrevClick | (e?: number) => void | - | 点击上一页的箭头触发的回调函数 |
 | onNextClick | (e?: number) => void | - | 点击下一页的箭头触发的回调函数 |
 
-Tabs.Tab
+<h3>Tabs.Panel</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

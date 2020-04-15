@@ -1,0 +1,58 @@
+@import '../../style/core/index';
+
+@include b(drawer) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transition: all 200ms ease-in-out;
+
+  @include e(container) {
+    padding: 60px 80px 100px;
+  }
+
+  @include e(title) {
+    width: 100%;
+    margin-bottom: 40px;
+    color: var(--color-text);
+    font-size: 22px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include e(body) {
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  @include e(close) {
+    position: absolute;
+    left: -33px;
+    top: 0;
+    width: 33px;
+    height: 52px;
+    padding: 0;
+    background-image: url('../style/images/tab-first@2x.png');
+    background-size: 33px 52px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    color: #bcbcbc;
+    transition: all 300ms ease-in-out;
+
+    i {
+      position: absolute;
+      top: 18px;
+      left: 13px;
+    }
+
+    &:hover {
+      color: #343434;
+    }
+  }
+}

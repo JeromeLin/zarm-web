@@ -91,41 +91,35 @@ ReactDOM.render(
 用数组生成一组标签，可以动态添加和删除
 
 ```jsx
-import { Tag, Icon } from 'zarm-web';
+import { Tag, Icon, Input, Button } from 'zarm-web';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tags: ['Tag1', 'Tag2'],
-      inputValue: '',
-      inputVisible: false
-    };
-  }
+  state = {
+    tags: ['Tag1', 'Tag2'],
+    inputValue: '',
+    inputVisible: false,
+  };
 
-  closeTag = (index) => {
-    const tags = this.state.tags
-    tags.splice(index, 1)
-    this.setState({
-      tags
-    })
-  }
+  onCloseTag = (index) => {
+    const { tags } = this.state;
+    tags.splice(index, 1);
+    this.setState({ tags });
+  };
 
-  showInput = () => {
+  onShowInput = () => {
     this.setState({
       inputVisible: true,
     }, () => {
       this.input.focus();
     });
-  }
+  };
 
-  saveInputVal = () => {
+  onBlur = () => {
     const { inputValue, tags } = this.state;
 
     if (inputValue.trim()) {
-      const temp = [...tags, inputValue];
       this.setState({
-        tags: temp,
+        tags: [...tags, inputValue],
         inputVisible: false,
         inputValue: '',
       });
@@ -135,71 +129,57 @@ class Demo extends React.Component {
         inputValue: ''
       });
     }
-  }
+  };
 
-  changeValue = (e) => {
+  onValueChange = (e) => {
     this.setState({ inputValue: e.target.value });
-  }
+  };
 
-  handleKeydown = (e) => {
+  onKeydown = (e) => {
     if (e.keyCode === 13) {
-      this.saveInputVal();
+      this.onBlur();
     }
-  }
+  };
 
-  clearTags = () => {
+  onRemoveAll = () => {
     this.setState({
       tags: [],
     });
-  }
+  };
 
   render() {
     const { tags, inputValue, inputVisible } = this.state;
-
     return (
       <>
+        <div className="rows">
         {
-          tags.map((t, index) => {
-            const overlong = t.length > 16
+          tags.map((tag, index) => {
             return (
-              <Tag closable key={t + index} onClose={e => this.closeTag(index)}>
-                {overlong ? t.slice(0, 16) + '...' : t}
+              <Tag closable key={+index} onClose={() => this.onCloseTag(index)}>
+                {tag.length > 16 ? tag.slice(0, 16) + '...' : tag}
               </Tag>
             );
           })
         }
-        {
-          inputVisible
-            ? <input // Input组件尚未提交，暂用原生input
-              ref={input => this.input = input }
-              size="sm"
-              value={inputValue}
-              onChange={this.changeValue}
-              onBlur={this.saveInputVal}
-              onKeyDown={this.handleKeydown}
-              style={{
-                width: '80px',
-                height: '26px',
-                display: 'inline-block',
-                verticalAlign: 'text-bottom',
-                borderRadius: '4px',
-                lineHeight: '26px',
-                fontSize: '12px',
-                border: '1px solid #CECECE',
-                padding: '4px 8px',
-              }}
-            />
-            : <Tag
-                style={{ borderStyle: 'dashed', background: '#fff' }}
-                onClick={this.showInput}
-              >+ new tag</Tag>
-        }
-        <Icon
-          type="empty"
-          theme="success"
-          style={{ marginLeft: '40px', fontSize: '24px', cursor: 'pointer' }}
-          onClick={this.clearTags}
-        />
+        </div>
+        <div className="rows">
+          {
+            inputVisible
+              ? <Input
+                  ref={(ele) => this.input = ele }
+                  bordered
+                  value={inputValue}
+                  onChange={this.onValueChange}
+                  onBlur={this.onBlur}
+                  onKeyDown={this.onKeydown}
+                  style={{
+                    width: 80,
+                  }}
+                />
+              : <Button ref={(ele) => this.button = ele } onClick={this.onShowInput}>+ New Tag</Button>
+          }
+          <Button theme="danger" style={{ marginLeft: 10 }} onClick={this.onRemoveAll}>Remove All</Button>
+        </div>
       </>
     );
   }
@@ -216,7 +196,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Tag } from 'zarm-web';
 
-const CheckableTag = Tag.CheckableTag;
+const { CheckableTag } = Tag;
 
 class Demo extends React.Component {
   constructor(props) {
@@ -295,7 +275,7 @@ ReactDOM.render(<Demo />, mountNode);
 | closable | boolean | false | 是否可关闭 |
 | onClose | (e) => void | - | 关闭回调事件，closable 为 `true` 时生效 |
 
-# Tag.CheckableTag
+<h3>Tag.CheckableTag</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

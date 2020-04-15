@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { TabProps } from './PropsType';
+import { TabPanelProps } from './PropsType';
 
-class Tab extends Component<TabProps, any> {
+class Tab extends Component<TabPanelProps, any> {
   static displayName = 'Tab';
 
   static defaultProps = {
