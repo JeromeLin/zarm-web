@@ -104,7 +104,7 @@ ReactDOM.render(
 
 当尺寸选择了值`lg`，`md`，`sm`之一时，线条的粗细会跟着变动，除非明确设定了线条粗细。
 
-尺寸`lg`、`md`、`sm`对应的值可通过css主题修改变量，详见下面**修改样式主题**一节。
+尺寸`lg`、`md`、`sm`对应的值可通过css主题修改变量。
 
 尺寸的默认值是 `md`，即标准尺寸。
 
@@ -150,39 +150,6 @@ ReactDOM.render(
     <Progress percent={70} strokeShape={'round'} shape={'circle'} />
   </>
 , mountNode);
-```
-
-## 修改样式主题
-
-在使用`Progress`组件时可通过js指定值，也可通过修改样式主题修改值(如果样式相对统一，推荐后者)。
-
-在js中，以`document.documentElement.style.setProperty('--progress-background', '#f7f7f7');`这样的方式修改样式主题值。
-
-`Progress`组件相关主题列表请点开下面代码。
-
-```css
-:root {
-  // 进度条背景色
-  --progress-background: #f2f2f2;
-  // 进度条宽度
-  // --progress-width-#{size} 仅针对shape: 'line'
-  --progress-width-lg: 100%;
-  --progress-width-md: 100%;
-  --progress-width-sm: 140px;
-  // 进度条大小
-  // --progress-size-#{size} 同时针对shape: 'semi-circle' | 'circle'
-  --progress-size-lg: 200px;
-  --progress-size-md: 150px;
-  --progress-size-sm: 80px;
-  // --progress-weight-#{weight} 已调整为通过js设置(跟随size自动变化)
-  //--progress-weight-lg: 10px;
-  //--progress-weight-md: 8px;
-  //--progress-weight-sm: 4px;
-  // 环状进度文本字体同时针对shape: 'circle' 和 'semi-circle'
-  --progress-font-size-circle-lg: 30px;
-  --progress-font-size-circle-md: 24px;
-  --progress-font-size-circle-sm: 18px;
-}
 ```
 
 ## API
