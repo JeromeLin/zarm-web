@@ -9,6 +9,15 @@ class Textarea extends Component<TextAreaProps, any> {
     autoHeight: false,
   };
 
+  static getDerivedStateFromProps(nextProps: TextAreaProps) {
+    if ('value' in nextProps) {
+      return {
+        value: nextProps.value,
+      };
+    }
+    return null;
+  }
+
   textareaRef = React.createRef<HTMLTextAreaElement>();
 
   constructor(props) {
