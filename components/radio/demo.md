@@ -100,7 +100,7 @@ ReactDOM.render(
   <>
     <div className="rows">
       <Radio.Group type="button">
-        <Radio value="选项一">选项一</Radio>
+        <Radio checked value="选项一">选项一</Radio>
         <Radio value="选项二">选项二</Radio>
         <Radio value="选项三">选项三</Radio>
       </Radio.Group>
@@ -114,6 +114,41 @@ ReactDOM.render(
     </div>
     <div className="rows">
       <Radio.Group type="button" disabled>
+        <Radio value="选项一">选项一</Radio>
+        <Radio value="选项二">选项二</Radio>
+        <Radio value="选项三" checked>选项三</Radio>
+      </Radio.Group>
+    </div>
+  </>,
+  mountNode,
+);
+```
+
+
+
+## 幽灵按钮
+```jsx
+
+import { Radio } from 'zarm-web';
+
+ReactDOM.render(
+  <>
+    <div className="rows">
+      <Radio.Group ghost type="button">
+        <Radio checked value="选项一">选项一</Radio>
+        <Radio value="选项二">选项二</Radio>
+        <Radio value="选项三">选项三</Radio>
+      </Radio.Group>
+    </div>
+    <div className="rows">
+      <Radio.Group ghost type="button">
+        <Radio value="选项一">选项一</Radio>
+        <Radio disabled value="选项二">选项二</Radio>
+        <Radio value="选项三">选项三</Radio>
+      </Radio.Group>
+    </div>
+    <div className="rows">
+      <Radio.Group ghost disabled type="button">
         <Radio value="选项一">选项一</Radio>
         <Radio value="选项二">选项二</Radio>
         <Radio value="选项三" checked>选项三</Radio>
