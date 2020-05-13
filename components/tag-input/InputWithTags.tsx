@@ -106,7 +106,7 @@ class InputWithTags extends React.Component<BasicProps> {
   render() {
     const {
       search, remoteSearch, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size,
-      radius, disabled, ...others
+      radius, disabled, tagTheme, ...others
     } = this.props;
     const { compositionData, isFocus } = this.state;
     let showPlaceHolder = false;
