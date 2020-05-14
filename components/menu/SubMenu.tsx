@@ -297,8 +297,8 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
             !inlineCollapsed || level! > 1
               ? (
                 <span>
-                  {icon}
-                  {title}
+                  <span>{icon}</span>
+                  <span>{title}</span>
                 </span>
               )
               : (
@@ -308,9 +308,9 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
                   visible={!isOpen}
                   direction="right"
                 >
-                  <span>
-                    {icon}
-                    {title}
+                  <span className={`${prefixCls}-submenu__inline-wrapper`}>
+                    <span className={`${prefixCls}-submenu__inline-wrapper-icon`}>{icon}</span>
+                    <span className={`${prefixCls}-submenu__inline-wrapper-title`}>{title}</span>
                   </span>
                 </Tooltip>
               )
