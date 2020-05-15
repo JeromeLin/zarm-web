@@ -65,7 +65,7 @@ $zarmWebPrefixCls: zw-modal;
     flex-grow: 1;
     height: auto;
     overflow: auto;
-    padding: 16px 24px;
+    padding: 16px 24px 0;
   }
 
   @include e(header) {
@@ -107,12 +107,12 @@ $zarmWebPrefixCls: zw-modal;
   }
 
   @include e(footer) {
-    padding: 4px 24px;
+    padding: 0 24px;
   }
 
   @include e(button-warpper) {
     text-align: right;
-    padding: 4px 0 20px;
+    padding: 20px 0 24px;
 
     button {
       margin-left: 12px;
@@ -127,7 +127,12 @@ $zarmWebPrefixCls: zw-modal;
   }
 
   &-open {
+    .#{$zarmWebPrefixCls}__body {
+      padding: 16px 24px;
+    }
+
     .#{$zarmWebPrefixCls}__button-warpper {
+      padding: 0;
       height: 56px;
       line-height: 56px;
     }
