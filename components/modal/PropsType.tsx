@@ -1,4 +1,4 @@
-import { MouseEventHandler, HTMLAttributes, ReactNode } from 'react';
+import { MouseEventHandler, HTMLAttributes, ReactNode, CSSProperties } from 'react';
 import PopupTypes from 'zarm/lib/popup/PropsType';
 
 type FnReactNode = () => ReactNode;
@@ -9,6 +9,7 @@ export interface ModalBasicProps extends PopupTypes {
   cancelText: ReactNode;                 // 取消按钮的事件
   closable: boolean;                     // 是显示关闭按钮
   title?: ReactNode;                     // modal的标题
+  bodyStyle?: CSSProperties;             // body的style样式
   maskClosable: boolean;                 // 点击空白区域是否关闭
   mask: boolean;                         // 是否显示遮罩层
   shape: 'radius' | 'rect';              // 是否显示圆角

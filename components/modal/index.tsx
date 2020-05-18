@@ -162,14 +162,14 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
 export function Alert(props: ModalProps | ReactNode) {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props }
-    : props;
+    : { ...props, animationType: 'zoom' };
   return AlertMethod(modalProps);
 }
 
 export function Confirm(props: ModalProps | ReactNode) {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props }
-    : props;
+    : { ...props, animationType: 'zoom' };
   return AlertMethod(modalProps, true);
 }
 

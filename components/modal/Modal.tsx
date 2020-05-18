@@ -51,7 +51,7 @@ class Modal extends Component<ModalProps, StateIF> {
     hideWhenShowOthers: true,
     destroy: false,
     scrollInModal: false,
-    animationType: 'zoom',
+    animationType: 'fade',
     shape: 'radius',
   };
 
@@ -213,6 +213,7 @@ class Modal extends Component<ModalProps, StateIF> {
       footer,
       shape,
       style,
+      bodyStyle,
       ...others
     } = this.props;
     const { isShow } = this.state;
@@ -244,7 +245,7 @@ class Modal extends Component<ModalProps, StateIF> {
           style={style}
         >
           {showHeader && <ModalHeader closable={closable} onCancel={onCancel}>{title}</ModalHeader>}
-          <ModalBody>{children}</ModalBody>
+          <ModalBody style={bodyStyle}>{children}</ModalBody>
           <ModalFooter>
             {
               hasFooter && (
