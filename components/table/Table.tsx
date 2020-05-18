@@ -261,7 +261,7 @@ class Table extends Component<PropsType, any> {
         <Checkbox
           checked={dataSource.length > 0 && (this.state.selectedRows.length === dataSource.length)}
           onChange={(e) => {
-            const selected = e.target.checked;
+            const selected = e!.target.checked;
             const selectedRows = selected ? dataSource.map((data) => data) : [];
 
             this.setState({ selectedRows });
@@ -282,7 +282,7 @@ class Table extends Component<PropsType, any> {
           value={row}
           checked={this.state.selectedRows.indexOf(row) > -1}
           onChange={(e) => {
-            const selected = e.target.checked;
+            const selected = e!.target.checked;
             const { selectedRows } = this.state;
 
             if (selectedRows.indexOf(row) === -1) {

@@ -33,4 +33,10 @@ module.exports = {
   // setBabelOptions: (options) => {
   //   options.plugins.push(['import', { libraryName: 'dragon-ui', style: true }, 'dragon-ui']);
   // },
+  setRules: (rules) => {
+    rules.push({
+      test: /\.md$/,
+      use: ['raw-loader'],
+    });
+  },
 };

@@ -63,6 +63,13 @@
         &:hover {
           color: var(--color-text-disabled);
         }
+
+        @include m(checked) {
+          opacity: 1;
+          border-color: var(--button-default-border);
+          background-color: #f2f2f2;
+          color: var(--color-text-disabled);
+        }
       }
     }
 

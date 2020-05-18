@@ -352,6 +352,27 @@
   --input-addon-border-color: #d9d9d9;
   --input-placeholder-color: #bcbcbc;
 
+  // Progress 进度条
+  --progress-background: #f2f2f2;
+  // 进度条宽度
+  // --progress-width-#{size} 仅针对shape: 'line'
+  --progress-width-lg: 100%;
+  --progress-width-md: 100%;
+  --progress-width-sm: 140px;
+  // 进度条大小
+  // --progress-size-#{size} 同时针对shape: 'semi-circle' | 'circle'
+  --progress-size-lg: 200px;
+  --progress-size-md: 150px;
+  --progress-size-sm: 80px;
+  // --progress-weight-#{weight} 已调整为通过js设置
+  //--progress-weight-lg: 10px;
+  //--progress-weight-md: 8px;
+  //--progress-weight-sm: 4px;
+  // 同时针对shape: 'circle' 和 'semi-circle'
+  --progress-font-size-circle-lg: 30px;
+  --progress-font-size-circle-md: 24px;
+  --progress-font-size-circle-sm: 18px;
+
   // message
   --message-color: #616161;
   --message-font-size: 14px;

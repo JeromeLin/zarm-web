@@ -40,7 +40,7 @@ class UploadList extends Component<ListProps, any> {
                 <Progress
                   className={`${prefixCls}-list-item-progress`}
                   percent={item.percent}
-                  theme="info"
+                  theme="primary"
                   size="sm"
                 />
               ) : null;
