@@ -40,9 +40,13 @@
       width: 33px;
       height: 52px;
       position: absolute;
-      background-image: url('../../components//drawer/style/tab-first@2x.png');
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      background-color: #fff;
+      box-shadow: -6px 5px 4px 1px #1f1f1f30;
+      transform: perspective(4px) rotateY(-4deg);
+      transform-origin: right center;
       background-size: 33px 52px;
-      background-color: transparent;
       cursor: pointer;
       border: none;
       color: #bcbcbc;
