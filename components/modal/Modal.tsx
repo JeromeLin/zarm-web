@@ -44,7 +44,7 @@ class Modal extends Component<ModalProps, StateIF> {
     closable: true,
     maskClosable: false,
     mask: true,
-    centered: true,
+    centered: false,
     autoFocus: true,
     disableEscapeKeyDown: false,
     disableEnterKeyDown: false,
@@ -224,7 +224,7 @@ class Modal extends Component<ModalProps, StateIF> {
       [prefixCls]: true,
       [`${className}`]: !!className,
       [`${prefixCls}--popup`]: true,
-      [`${prefixCls}--popup--top`]: !centered,
+      [`${prefixCls}--top`]: !centered,
       [`${prefixCls}--${shape}`]: true,
     });
     return (

@@ -31,9 +31,10 @@ $zarmWebPrefixCls: zw-modal;
     max-width: 95%;
   }
 
-  @include e(popup) {
+  @include m(popup) {
     @include m(top) {
       align-items: baseline;
+      padding: 100px 0;
 
       .#{$zarmPrefixCls}--center {
         margin: unset;

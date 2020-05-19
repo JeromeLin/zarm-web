@@ -19,8 +19,9 @@ function Demo(){
           visible={visible}
           closable
           title="这是一个简单的弹框"
-          onCancel={() => {setVisible(false)}}
+          onCancel={() => {setVisible(false)}}          
         >
+          一系列的描述，告诉用户操作可能会发生什么事情，描述信息字号14px
         </Modal>
       </div>
   )
