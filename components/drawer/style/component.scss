@@ -53,6 +53,8 @@
       position: absolute;
       top: 18px;
       left: 13px;
+      transform: perspective(6px) rotateY(4deg);
+      transform-origin: center center;
     }
 
     &:hover {
