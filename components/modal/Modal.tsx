@@ -42,7 +42,7 @@ class Modal extends Component<ModalProps, StateIF> {
     okText: '确定',
     cancelText: '取消',
     closable: true,
-    maskClosable: false,
+    maskClosable: true,
     mask: true,
     centered: false,
     autoFocus: true,
@@ -50,7 +50,6 @@ class Modal extends Component<ModalProps, StateIF> {
     disableEnterKeyDown: false,
     hideWhenShowOthers: true,
     destroy: false,
-    scrollInModal: false,
     animationType: 'fade',
     shape: 'radius',
   };
@@ -64,12 +63,10 @@ class Modal extends Component<ModalProps, StateIF> {
       const lastIndex = Modal.visibleList.length - 1;
       if (lastIndex >= 0) {
         const theLastInstance = Modal.visibleList[lastIndex];
-        if (theLastInstance.props.hideWhenShowOthers === true) {
-          theLastInstance.state.sleep = true;
-          theLastInstance.setState({
-            isShow: false,
-          });
-        }
+        theLastInstance.state.sleep = true;
+        theLastInstance.setState({
+          isShow: false,
+        });
       }
       Modal.visibleList.push(instance);
     } else {
@@ -168,7 +165,7 @@ class Modal extends Component<ModalProps, StateIF> {
   onKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { visible, onCancel, onKeyDown, disableEscapeKeyDown } = this.props;
     if (visible && !disableEscapeKeyDown) {
-      if (e.keyCode === 27) {
+      if (e.nativeEvent.keyCode === 27) {
         if (onCancel) {
           onCancel();
         }
@@ -182,7 +179,7 @@ class Modal extends Component<ModalProps, StateIF> {
   onKeyPress: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { visible, onOk, onKeyPress, disableEnterKeyDown } = this.props;
     if (visible && disableEnterKeyDown === false) {
-      if (this.modalContent === document.activeElement && e.keyCode === 13) {
+      if (this.modalContent === document.activeElement && e.nativeEvent.keyCode === 13) {
         if (onOk) {
           onOk();
         }
@@ -195,6 +192,17 @@ class Modal extends Component<ModalProps, StateIF> {
 
   onBlur = () => {
     this.modalContent.focus();
+  };
+
+
+  onMaskClick = () => {
+    const { onCancel, maskClosable, onMaskClick } = this.props;
+    if (maskClosable && onCancel) {
+      onCancel();
+    }
+    if (onMaskClick) {
+      onMaskClick();
+    }
   };
 
   render() {
@@ -232,6 +240,7 @@ class Modal extends Component<ModalProps, StateIF> {
         visible={show}
         direction="center"
         {...others}
+        onMaskClick={this.onMaskClick}
         className={rewriteClassName}
       >
         <div

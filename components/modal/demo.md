@@ -15,7 +15,7 @@ function Demo(){
      <div className="modal-page">
         <Button theme="primary" onClick={() => setVisible(true)}>展示模态框</Button>
         <Modal
-          disableBodyScroll
+          destroy
           visible={visible}
           closable
           title="这是一个简单的弹框"

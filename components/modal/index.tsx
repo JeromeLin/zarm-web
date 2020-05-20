@@ -121,7 +121,7 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
         footer={(
           <>
             {isConfirm && <Button onClick={() => handleOnOk(render, false)}>取消</Button>}
-            <Button theme={theme === 'danger' ? 'danger' : 'primary'} onClick={() => handleOnOk(render, true)}>确定</Button>
+            <Button theme="primary" onClick={() => handleOnOk(render, true)}>确定</Button>
           </>
         )}
       >
@@ -162,14 +162,14 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
 export function Alert(props: ModalProps | ReactNode) {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props }
-    : { ...props as AlertProps, animationType: 'zoom' };
+    : { maskClosable: false, ...props as AlertProps, animationType: 'zoom' };
   return AlertMethod(modalProps);
 }
 
 export function Confirm(props: ModalProps | ReactNode) {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props }
-    : { ...props as AlertProps, animationType: 'zoom' };
+    : { maskClosable: false, ...props as AlertProps, animationType: 'zoom' };
   return AlertMethod(modalProps, true);
 }
 
@@ -180,28 +180,28 @@ Modal.alert = Alert;
 Modal.success = (props: AlertProps | ReactNode) => {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props, theme: 'success' }
-    : { ...props as AlertProps, theme: 'success' };
+    : { maskClosable: false, ...props as AlertProps, theme: 'success' };
   return AlertMethod(modalProps);
 };
 
 Modal.info = (props: AlertProps | ReactNode) => {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props, theme: 'primary' }
-    : { ...props as AlertProps, theme: 'primary' };
+    : { maskClosable: false, ...props as AlertProps, theme: 'primary' };
   return AlertMethod(modalProps);
 };
 
 Modal.error = (props: AlertProps | ReactNode) => {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props, theme: 'danger' }
-    : { ...props as AlertProps, theme: 'danger' };
+    : { maskClosable: false, ...props as AlertProps, theme: 'danger' };
   return AlertMethod(modalProps);
 };
 
 Modal.warning = (props: ModalProps | ReactNode) => {
   const modalProps: AlertProps = isReactNode(props)
     ? { content: props, theme: 'warning' }
-    : { ...props as AlertProps, theme: 'warning' };
+    : { maskClosable: false, ...props as AlertProps, theme: 'warning' };
   return AlertMethod(modalProps);
 };
 
