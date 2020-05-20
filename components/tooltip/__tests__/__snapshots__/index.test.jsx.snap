@@ -2,16 +2,8 @@
 
 exports[`Tooltip renders normal Tooltip correctly 1`] = `
 <div
-  class="zw-tooltip"
+  id="hello"
 >
-  <div
-    class="zw-tooltip__inner"
-  >
-    <div
-      id="hello"
-    >
-      Hello world!
-    </div>
-  </div>
+  Hello world!
 </div>
 `;
