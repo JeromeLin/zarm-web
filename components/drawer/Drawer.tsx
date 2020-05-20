@@ -232,13 +232,12 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
         >
           <div className={cls} style={{ width }}>
             {closable && (
-              <button
-                className={`${prefixCls}__close`}
+            <span className={`${prefixCls}__close`} onClick={onClose}>
+              <span
                 style={{ ...btnstyle }}
-                onClick={onClose}
-              >
-                <Icon size="sm" type="wrong" />
-              </button>
+              />
+              <Icon size="sm" type="wrong" />
+            </span>
             )}
             <div className={`${prefixCls}__container`}>
               {title && <div className={`${prefixCls}__title`}>{title}</div>}
