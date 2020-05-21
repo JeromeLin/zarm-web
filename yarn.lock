@@ -15040,10 +15040,10 @@ yargs@^7.0.0, yargs@^7.1.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-zarm@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.2.0.tgz#283cf6805c14bc90c462c9f5851e9988d612047f"
-  integrity sha512-AmCt9Hbk8oF5H821iZMVU3F1FnKReropGucfceDWUEOV7OoZKZzlWj7lQtwlIo2u24YShzCPfUxgaxDDmghwDg==
+zarm@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.3.0.tgz#b184231f80337b6194d2ac5e030a9a4f6e86ab1c"
+  integrity sha512-VhKIEmcT9g75BwycB2ajOKg07ScWDgcQolyg+nRnpLM6cmQBSimG0qd3poYg819Fhv1a65PTKDglE2X22HfzSg==
   dependencies:
     better-scroll "1.15.1"
     classnames "2.2.6"
