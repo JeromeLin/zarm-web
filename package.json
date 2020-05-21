@@ -68,7 +68,7 @@
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "2.5.0",
     "@typescript-eslint/parser": "2.5.0",
-    "@zarm-design/cli": "^0.0.20",
+    "@zarm-design/cli": "^0.0.21",
     "babel-eslint": "10.0.3",
     "babel-plugin-import": "^1.13.0",
     "browserslist": "^4.6.6",
