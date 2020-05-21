@@ -66,13 +66,13 @@ $zarmWebPrefixCls: zw-modal;
     flex-grow: 1;
     height: auto;
     overflow: auto;
-    padding: 16px 24px 0;
+    padding: 16px 16px 20px;
   }
 
   @include e(header) {
     height: 48px;
     line-height: 46px;
-    padding: 0 24px;
+    padding: 0 16px;
     position: relative;
     background-color: #fafafa;
 
@@ -89,7 +89,9 @@ $zarmWebPrefixCls: zw-modal;
     @include e(close) {
       position: absolute;
       top: 0;
-      right: 15px;
+      right: 8px;
+      width: 28px;
+      text-align: center;
       font-size: 20px;
       line-height: 48px;
       color: #909090;
@@ -108,12 +110,12 @@ $zarmWebPrefixCls: zw-modal;
   }
 
   @include e(footer) {
-    padding: 0 24px;
+    padding: 0 16px;
   }
 
   @include e(button-warpper) {
     text-align: right;
-    padding: 20px 0 24px;
+    padding: 20px 0 16px;
 
     button {
       margin-left: 12px;
@@ -122,20 +124,22 @@ $zarmWebPrefixCls: zw-modal;
 
   &-alert,
   &-confirm {
-    .#{$zarmWebPrefixCls}__body {
-      padding-top: 20px;
+    .#{$zarmWebPrefixCls}__header {
+      .#{$zarmWebPrefixCls}__close {
+        right: 14px;
+      }
     }
-  }
 
-  &-open {
     .#{$zarmWebPrefixCls}__body {
-      padding: 16px 24px;
+      padding: 20px 24px 0;
+    }
+
+    .#{$zarmWebPrefixCls}__footer {
+      padding: 0 24px;
     }
 
     .#{$zarmWebPrefixCls}__button-warpper {
-      padding: 0;
-      height: 56px;
-      line-height: 56px;
+      padding: 20px 0 24px;
     }
   }
 }
