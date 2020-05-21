@@ -35,7 +35,7 @@ class Demo extends React.Component {
   };
 
   onClose = () => {
-    this.setState({ visible: !this.state.visible });
+    this.setState({ visible: false });
   };
 
   onVisibleChange = (visible) => {

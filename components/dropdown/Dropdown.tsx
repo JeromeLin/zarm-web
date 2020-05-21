@@ -28,7 +28,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
 
   triggerPointRef = React.createRef<HTMLSpanElement>();
 
-  popperContenRef = React.createRef<HTMLDivElement>();
+  popperContentRef = React.createRef<HTMLDivElement>();
 
   private hoverTimer?: number;
 
@@ -53,7 +53,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
   onDocClick = (e: MouseEvent) => {
     const visible = getVisible(this.props, this.state);
     const { current } = this.triggerPointRef;
-    const { current: popperContentCurrent } = this.popperContenRef;
+    const { current: popperContentCurrent } = this.popperContentRef;
     if (visible) {
       if (current && popperContentCurrent) {
         if (popperContentCurrent.contains(e.target as Node) || current.contains(e.target as Node)) {
@@ -131,7 +131,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
     const visible = getVisible(this.props, this.state);
     if (visible && e.keyCode === 27) {
       e.stopPropagation();
-      if (this.popperContenRef.current && this.popperContenRef.current.contains(e.currentTarget)) {
+      if (this.popperContentRef.current && this.popperContentRef.current.contains(e.currentTarget)) {
         const { prevActiveElem } = this;
         if (prevActiveElem && prevActiveElem instanceof HTMLElement) {
           setTimeout(() => {
@@ -160,7 +160,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
     const dropdownContent = (
       <div
         tabIndex={-1}
-        ref={this.popperContenRef}
+        ref={this.popperContentRef}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         onKeyDown={this.onKeydown}
@@ -180,6 +180,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
       >
         <span
           ref={this.triggerPointRef}
+          style={{ display: 'inline-block' }}
           onClick={this.onClick}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}

@@ -58,6 +58,21 @@
         @include e(sub) {
           @include sub-collapsed(var(--menu-dark-bg-color));
         }
+
+        @include e(inline-wrapper) {
+          display: block;
+
+          @include e(inline-wrapper-icon) {
+            display: block;
+          }
+
+          @include e(inline-wrapper-title) {
+            display: none;
+            max-width: 0;
+            height: 0;
+            opacity: 0;
+          }
+        }
       }
     }
   }
