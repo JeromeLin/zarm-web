@@ -8,16 +8,14 @@
   transition: all 200ms ease-in-out;
 
   @include e(container) {
-    padding: 60px 80px 100px;
+    padding: 32px 80px 100px;
   }
 
   @include e(title) {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     color: var(--color-text);
     font-size: 22px;
-    height: 30px;
-    line-height: 30px;
     font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
