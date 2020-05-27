@@ -136,9 +136,9 @@ class Upload extends Component<PropsType, any> {
 
     xhr.open('post', url);
 
-    for (const key in headers) {
-      xhr.setRequestHeader(key, headers[key]);
-    }
+    Object.keys(headers!).forEach((key) => {
+      xhr.setRequestHeader(key, headers![key]);
+    });
 
     xhr.send(fd);
     return true;
