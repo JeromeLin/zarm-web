@@ -26,6 +26,7 @@ export default interface PropsType {
   fileExt?: string;
   className?: string;
   style?: object;
+  headers?: Record<string, string>;
   onSelect: (files: any) => boolean;
   onProgress: () => void;
   onComplete: (file: any, res?) => void;
