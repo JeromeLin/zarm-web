@@ -1,5 +1,5 @@
 import React, { KeyboardEventHandler } from 'react';
-import Popper from 'zarm/lib/popper';
+import { Popper } from 'zarm';
 import classnames from 'classnames';
 import { DropdownProps } from './PropsType';
 

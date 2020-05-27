@@ -1,5 +1,5 @@
 @import '../../style/core/index';
-@import 'node_modules/zarm/lib/radio/style/component.scss';
+@import 'zarm/es/radio/style/component.scss';
 
 @include b(radio) {
   @include e(inner) {

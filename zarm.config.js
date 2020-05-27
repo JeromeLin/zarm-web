@@ -31,7 +31,7 @@ module.exports = {
     LICENSE file in the root directory of this source tree.
   `,
   // setBabelOptions: (options) => {
-  //   options.plugins.push(['import', { libraryName: 'dragon-ui', style: true }, 'dragon-ui']);
+  //   options.plugins.push(['import', { libraryName: 'zarm', style: true }, 'zarm']);
   // },
   setRules: (rules) => {
     rules.push({

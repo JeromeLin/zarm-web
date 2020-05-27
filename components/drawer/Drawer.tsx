@@ -6,6 +6,7 @@ import DrawerContext from './createDrawerContext';
 import Icon from '../icon';
 import events from '../utils/events';
 import DrawerProps from './PropsType';
+import 'zarm/es/popup/style/index';
 
 const BUTTONLAYER = 40;
 const DRAWERSIZE = {
