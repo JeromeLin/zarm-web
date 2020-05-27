@@ -88,6 +88,7 @@
 | url   | 上传接口url | string |   -  |    -  |
 | fileName   | 上传文件字段名 |string |   -  |    files  |
 | data   | 需要额外上传的参数 | object |   -  |    {}  |
+| headers | 设置上传的请求头部 | object | - | {} |
 | startUpload   | 开始上传 | boolean |   -  |    false  |
 | autoUpload   | 是否自动上传 | boolean |   -  |    true  |
 
