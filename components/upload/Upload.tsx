@@ -9,6 +9,7 @@ class Upload extends Component<PropsType, any> {
     startUpload: false,
     autoUpload: true,
     isRadius: false,
+    headers: {},
     data: {},
     url: '',
     onSelect: () => {},
@@ -79,7 +80,7 @@ class Upload extends Component<PropsType, any> {
   // 上传附件
   onUpload(file) {
     const {
-      url, fileName, data, onComplete, onError,
+      url, fileName, headers, data, onComplete, onError,
     } = this.props;
     const URL = /^(http:\/\/|https:\/\/|\/\/)/;
     const { origin } = window.location;
@@ -131,6 +132,11 @@ class Upload extends Component<PropsType, any> {
     // };
 
     xhr.open('post', url);
+
+    for (const key in headers) {
+      xhr.setRequestHeader(key, headers[key]);
+    }
+
     xhr.send(fd);
     return true;
   }
