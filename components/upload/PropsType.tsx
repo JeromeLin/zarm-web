@@ -20,6 +20,7 @@ export default interface PropsType {
   fileName: string;
   startUpload?: boolean;
   autoUpload?: boolean;
+  headers: Record<string, string>;
   data: object;
   url: string;
   multiple?: boolean;
