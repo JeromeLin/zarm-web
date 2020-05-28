@@ -2,7 +2,9 @@
 
 exports[`Dropdown renders normal Dropdown correctly 1`] = `
 <div>
-  <span>
+  <span
+    style="display:inline-block"
+  >
     <button
       class="zw-button zw-button--default zw-button--md zw-button--radius"
       type="button"
