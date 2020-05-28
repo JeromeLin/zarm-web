@@ -5,7 +5,9 @@ exports[`TimePicker renders disabled time-picker correctly 1`] = `
   <div
     class="za-select za-time__select-wrapper disabled radius"
   >
-    <span>
+    <span
+      style="display:inline-block"
+    >
       <div
         aria-autocomplete="list"
         aria-expanded="false"
@@ -100,7 +102,9 @@ exports[`TimePicker renders isRadius time-picker correctly 1`] = `
     class="za-select za-time__select-wrapper radius"
     style="width:160px"
   >
-    <span>
+    <span
+      style="display:inline-block"
+    >
       <div
         aria-autocomplete="list"
         aria-expanded="false"
@@ -139,7 +143,9 @@ exports[`TimePicker renders normal time-picker correctly 1`] = `
   <div
     class="za-select za-time__select-wrapper radius"
   >
-    <span>
+    <span
+      style="display:inline-block"
+    >
       <div
         aria-autocomplete="list"
         aria-expanded="false"
