@@ -19,6 +19,7 @@ exports[`Drawer renders correctly 1`] = `
     key="0"
     mask={true}
     onMaskClick={[Function]}
+    prefixCls="zw-popup"
     visible={false}
   />
 </Drawer>

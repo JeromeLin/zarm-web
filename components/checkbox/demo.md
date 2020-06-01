@@ -55,28 +55,31 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 ## 禁用状态
-不可勾选状态。
+不可修改的状态。
 
 ```jsx
-import { Checkbox } from 'zarm-web';
+import { useState } from 'react';
+import { Checkbox, Button } from 'zarm-web';
 
-ReactDOM.render(
-  <>
-    <Checkbox
-      disabled
-      onChange={(e) => console.log(e)}
-    >
-      选择
-    </Checkbox>
-    <Checkbox
-      disabled
-      checked
-      onChange={(e) => console.log(e)}
-    >
-      选择
-    </Checkbox>
-  </>
-, mountNode);
+const Demo = () => {
+  const [disabled, setDisabled] = useState(true);
+
+  return (
+    <>
+      <div className="rows">
+        <Checkbox disabled={disabled}>禁用的状态</Checkbox>
+      </div>
+      <div className="rows">
+        <Checkbox checked disabled={disabled}>选中并禁用的状态</Checkbox>
+      </div>
+      <div className="rows">
+        <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
+      </div>
+    </>
+  );
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 

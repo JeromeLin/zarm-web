@@ -1,315 +1,2079 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Progress renders Progress with radius & round props correctly 1`] = `
-<div>
+exports[`Progress renders children correctly 1`] = `
+<div
+  class="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+>
   <div
-    class="ui-progress theme-info size-lg"
+    class="zw-progress__outer"
   >
     <div
-      class="ui-progress-line-outer"
+      class="zw-progress__track"
+      style="height:8;border-radius:8px"
     >
       <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
+        class="zw-progress__thumb"
+        style="width:10%;height:8px;border-radius:8px"
+      />
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-  <div
-    class="ui-progress radius theme-info size-lg"
-  >
     <div
-      class="ui-progress-line-outer"
+      class="zw-progress__text"
     >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
+      children
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-  <div
-    class="ui-progress round theme-info size-lg"
-  >
-    <div
-      class="ui-progress-line-outer"
-    >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
-    </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
   </div>
 </div>
 `;
 
-exports[`Progress renders different sizes of Progress correctly 1`] = `
-<div>
+exports[`Progress renders percent and children correctly 1`] = `
+<Progress
+  percent={50}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
   <div
-    class="ui-progress theme-info size-xl"
+    className="zw-progress zw-progress--circle zw-progress--primary zw-progress--md"
+    style={Object {}}
   >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={50.26548245743669}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
     <div
-      class="ui-progress-line-outer"
+      className="zw-progress__text"
     >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
+      children
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
   </div>
+</Progress>
+`;
+
+exports[`Progress renders percent by "text" prop correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
   <div
-    class="ui-progress theme-info size-lg"
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+    style={Object {}}
   >
     <div
-      class="ui-progress-line-outer"
+      className="zw-progress__outer"
     >
       <div
-        class="ui-progress-line-inner"
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
       >
         <div
-          class="ui-progress-bg"
-          style="width:30%"
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
         />
       </div>
+      <div
+        className="zw-progress__text"
+      >
+        <span>
+          dsfjasf
+          1000
+          wjrmc
+        </span>
+      </div>
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
   </div>
+</Progress>
+`;
+
+exports[`Progress renders percent correctly 1`] = `
+<div
+  class="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+>
   <div
-    class="ui-progress theme-info"
+    class="zw-progress__outer"
   >
     <div
-      class="ui-progress-line-outer"
+      class="zw-progress__track"
+      style="height:8;border-radius:8px"
     >
       <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
+        class="zw-progress__thumb"
+        style="width:10%;height:8px;border-radius:8px"
+      />
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-  <div
-    class="ui-progress theme-info size-sm"
-  >
     <div
-      class="ui-progress-line-outer"
+      class="zw-progress__text"
     >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
+      10%
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-  <div
-    class="ui-progress theme-info size-xs"
-  >
-    <div
-      class="ui-progress-line-outer"
-    >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
-    </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
   </div>
 </div>
 `;
 
-exports[`Progress renders different themes of Progress correctly 1`] = `
-<div>
+exports[`Progress renders shape of "circle" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
   <div
-    class="ui-progress theme-default"
+    className="zw-progress zw-progress--circle zw-progress--primary zw-progress--md"
+    style={Object {}}
   >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
     <div
-      class="ui-progress-line-outer"
+      className="zw-progress__text"
     >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
+      10%
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
   </div>
-  <div
-    class="ui-progress theme-info"
-  >
-    <div
-      class="ui-progress-line-outer"
-    >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
-    </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-  <div
-    class="ui-progress theme-success"
-  >
-    <div
-      class="ui-progress-line-outer"
-    >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
-    </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-  <div
-    class="ui-progress theme-warning"
-  >
-    <div
-      class="ui-progress-line-outer"
-    >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
-    </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-  <div
-    class="ui-progress theme-error"
-  >
-    <div
-      class="ui-progress-line-outer"
-    >
-      <div
-        class="ui-progress-line-inner"
-      >
-        <div
-          class="ui-progress-bg"
-          style="width:30%"
-        />
-      </div>
-    </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
-  </div>
-</div>
+</Progress>
 `;
 
-exports[`Progress renders normal Progress correctly 1`] = `
-<div>
+exports[`Progress renders shape of "line" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
   <div
-    class="ui-progress theme-default"
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+    style={Object {}}
   >
     <div
-      class="ui-progress-line-outer"
+      className="zw-progress__outer"
     >
       <div
-        class="ui-progress-line-inner"
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
       >
         <div
-          class="ui-progress-bg"
-          style="width:30%"
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
         />
       </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
     </div>
-    <span
-      class="ui-progress-line-text"
-    >
-      30%
-    </span>
   </div>
-</div>
+</Progress>
+`;
+
+exports[`Progress renders shape of "semi-circle" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1em" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="1em"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary"
+    style={
+      Object {
+        "width": "1em",
+      }
+    }
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1em" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="1em"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary"
+    style={
+      Object {
+        "height": "1em",
+        "width": "1em",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1em" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="1em"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary"
+    style={
+      Object {
+        "height": "0.5em",
+        "width": "1em",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1pt" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="1pt"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary"
+    style={
+      Object {
+        "width": "1pt",
+      }
+    }
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1pt" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="1pt"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary"
+    style={
+      Object {
+        "height": "1pt",
+        "width": "1pt",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1pt" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="1pt"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary"
+    style={
+      Object {
+        "height": "0.5pt",
+        "width": "1pt",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1rem" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="1rem"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary"
+    style={
+      Object {
+        "width": "1rem",
+      }
+    }
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1rem" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="1rem"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary"
+    style={
+      Object {
+        "height": "1rem",
+        "width": "1rem",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "1rem" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="1rem"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary"
+    style={
+      Object {
+        "height": "0.5rem",
+        "width": "1rem",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "10" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size={10}
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary"
+    style={
+      Object {
+        "width": 10,
+      }
+    }
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "10" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size={10}
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary"
+    style={
+      Object {
+        "height": 10,
+        "width": 10,
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "10" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size={10}
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary"
+    style={
+      Object {
+        "height": "5px",
+        "width": 10,
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "10px" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="10px"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary"
+    style={
+      Object {
+        "width": "10px",
+      }
+    }
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "10px" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="10px"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary"
+    style={
+      Object {
+        "height": "10px",
+        "width": "10px",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "10px" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="10px"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary"
+    style={
+      Object {
+        "height": "5px",
+        "width": "10px",
+      }
+    }
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "lg" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="lg"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--lg"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "10px",
+            "height": "10",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "10px",
+              "height": "10px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "lg" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="lg"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary zw-progress--lg"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "lg" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="lg"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary zw-progress--lg"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "md" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "md" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "md" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "sm" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="sm"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--sm"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "4px",
+            "height": "4",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "4px",
+              "height": "4px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "sm" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="sm"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary zw-progress--sm"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders size of "sm" correctly 3`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="sm"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary zw-progress--sm"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders strokeShape of "rect" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="rect"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "0",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "0",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders strokeShape of "round" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders strokeWidth correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  strokeWidth={2}
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "2px",
+            "height": "2",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "2px",
+              "height": "2px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "danger" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="danger"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--danger zw-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "danger" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="danger"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--danger zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "danger"correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="danger"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--danger zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "primary" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "primary" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "primary"correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--primary zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "warning" correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="warning"
+>
+  <div
+    className="zw-progress zw-progress--line zw-progress--warning zw-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="zw-progress__outer"
+    >
+      <div
+        className="zw-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="zw-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="zw-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "warning" correctly 2`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="semi-circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="warning"
+>
+  <div
+    className="zw-progress zw-progress--semi-circle zw-progress--warning zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m-16 0
+        a16 16 0 0 1 32 0"
+        strokeDasharray={50.26548245743669}
+        strokeDashoffset={45.23893421169302}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders theme of "warning"correctly 1`] = `
+<Progress
+  percent={10}
+  prefixCls="zw-progress"
+  shape="circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="warning"
+>
+  <div
+    className="zw-progress zw-progress--circle zw-progress--warning zw-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="zw-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="zw-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={90.47786842338604}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="zw-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</Progress>
 `;

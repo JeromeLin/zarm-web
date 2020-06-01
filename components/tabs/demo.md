@@ -43,7 +43,7 @@ class Demo extends React.Component {
     return (
       <>
         <div className="rows">
-          <Radio.Group type="button" value={size} onChange={(value) => this.handleSize(value)}>
+          <Radio.Group ghost type="button" value={size} onChange={(value) => this.handleSize(value)}>
             <Radio value="sm">sm</Radio>
             <Radio value="md">md</Radio>
             <Radio value="lg">lg</Radio>
@@ -129,6 +129,7 @@ class Demo extends React.Component {
       <>
         <div className="rows">
           <Radio.Group
+            ghost
             type="button"
             value={direction}
             onChange={(value) => this.handleDirection(value)}

@@ -105,7 +105,10 @@ exports[`Menu renders Menu with dark theme correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        新契约
+        <span />
+        <span>
+          新契约
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -153,7 +156,10 @@ exports[`Menu renders Menu with dark theme correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        核保
+        <span />
+        <span>
+          核保
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -201,7 +207,10 @@ exports[`Menu renders Menu with dark theme correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        批改
+        <span />
+        <span>
+          批改
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -257,7 +266,10 @@ exports[`Menu renders SubMenu with ItemGroup correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        新契约
+        <span />
+        <span>
+          新契约
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -337,7 +349,9 @@ exports[`Menu renders collpased Menu correctly 1`] = `
     class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
   >
-    <div>
+    <div
+      style="height:100%"
+    >
       投保单复核
     </div>
     )
@@ -346,7 +360,9 @@ exports[`Menu renders collpased Menu correctly 1`] = `
     class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
   >
-    <div>
+    <div
+      style="height:100%"
+    >
       在线投保单管理
     </div>
     )
@@ -358,7 +374,9 @@ exports[`Menu renders collpased Menu correctly 1`] = `
     class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
   >
-    <div>
+    <div
+      style="height:100%"
+    >
       投保单录入
     </div>
     )
@@ -367,7 +385,9 @@ exports[`Menu renders collpased Menu correctly 1`] = `
     class="zw-menu-item zw-menu-item--level-1"
     role="menuitem"
   >
-    <div>
+    <div
+      style="height:100%"
+    >
       新增计划
     </div>
     )
@@ -388,7 +408,10 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        新契约
+        <span />
+        <span>
+          新契约
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -436,7 +459,10 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        核保
+        <span />
+        <span>
+          核保
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -484,7 +510,10 @@ exports[`Menu renders inline Menu with SubMenu correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        批改
+        <span />
+        <span>
+          批改
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -540,7 +569,10 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        理赔
+        <span />
+        <span>
+          理赔
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -572,7 +604,10 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
           style="padding-left:48px"
         >
           <span>
-            理赔工作流
+            <span />
+            <span>
+              理赔工作流
+            </span>
           </span>
           <i
             class="zw-menu-submenu__arrow"
@@ -608,7 +643,10 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        新契约
+        <span />
+        <span>
+          新契约
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -656,7 +694,10 @@ exports[`Menu renders nested SubMenus correctly 1`] = `
       style="padding-left:48px"
     >
       <span>
-        核保
+        <span />
+        <span>
+          核保
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -712,7 +753,10 @@ exports[`Menu renders vertical Menu with SubMenu correctly 1`] = `
       style="padding-left:20px"
     >
       <span>
-        新契约
+        <span />
+        <span>
+          新契约
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -760,7 +804,10 @@ exports[`Menu renders vertical Menu with SubMenu correctly 1`] = `
       style="padding-left:20px"
     >
       <span>
-        核保
+        <span />
+        <span>
+          核保
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"
@@ -808,7 +855,10 @@ exports[`Menu renders vertical Menu with SubMenu correctly 1`] = `
       style="padding-left:20px"
     >
       <span>
-        批改
+        <span />
+        <span>
+          批改
+        </span>
       </span>
       <i
         class="zw-menu-submenu__arrow"

@@ -1,2 +1,8 @@
-@import '../../style/themes/default';
-@import './component';
+@import '../../style/core/index';
+@import 'zarm/es/progress/style/component.scss';
+
+@include b(progress) {
+  @include e(text) {
+    color: var(--progress-color-text);
+  }
+}

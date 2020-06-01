@@ -1,6 +1,6 @@
 @import '../../style/core/index';
-@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
-@import "./mixins.scss";
+@import 'zarm/es/activity-indicator/style/component.scss';
+@import './mixins.scss';
 
 @include b(loading) {
   position: relative;

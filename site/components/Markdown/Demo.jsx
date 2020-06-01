@@ -40,6 +40,7 @@ export default class Demo extends React.PureComponent {
       return { args, argv };
     }).then(({ args, argv }) => {
       value = value
+        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
         .replace(/import\s+{\s+(.*)\s+}\s+from\s+'zarm-web';/, 'const { $1 } = ZarmWeb;')
         .replace('mountNode', `document.getElementById('${this.containerId}')`);
 

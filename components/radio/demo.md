@@ -12,35 +12,25 @@ ReactDOM.render(<Radio>Radio</Radio>, mountNode);
 
 ## 禁用状态
 ```jsx
+import { useState } from 'react';
 import { Radio, Button } from 'zarm-web';
 
-class Demo extends React.Component {
-  state = {
-    disabled: true,
-  };
+const Demo = () => {
+  const [disabled, setDisabled] = useState(true);
 
-  toggleDisabled = () => {
-    this.setState({
-      disabled: !this.state.disabled,
-    });
-  };
-
-  render() {
-    const { disabled } = this.state;
-    return (
-      <>
-        <div className="rows">
-          <Radio disabled={disabled}>Radio</Radio>
-        </div>
-        <div className="rows">
-          <Radio checked disabled={disabled}>Checked Radio</Radio>
-        </div>
-        <div className="rows">
-          <Button theme="primary" onClick={this.toggleDisabled}>toggleDisabled</Button>
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="rows">
+        <Radio disabled={disabled}>禁用的状态</Radio>
+      </div>
+      <div className="rows">
+        <Radio checked disabled={disabled}>选中并禁用的状态</Radio>
+      </div>
+      <div className="rows">
+        <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
+      </div>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -100,7 +90,7 @@ ReactDOM.render(
   <>
     <div className="rows">
       <Radio.Group type="button">
-        <Radio value="选项一">选项一</Radio>
+        <Radio checked value="选项一">选项一</Radio>
         <Radio value="选项二">选项二</Radio>
         <Radio value="选项三">选项三</Radio>
       </Radio.Group>
@@ -114,6 +104,41 @@ ReactDOM.render(
     </div>
     <div className="rows">
       <Radio.Group type="button" disabled>
+        <Radio value="选项一">选项一</Radio>
+        <Radio value="选项二">选项二</Radio>
+        <Radio value="选项三" checked>选项三</Radio>
+      </Radio.Group>
+    </div>
+  </>,
+  mountNode,
+);
+```
+
+
+
+## 幽灵按钮
+```jsx
+
+import { Radio } from 'zarm-web';
+
+ReactDOM.render(
+  <>
+    <div className="rows">
+      <Radio.Group ghost type="button">
+        <Radio checked value="选项一">选项一</Radio>
+        <Radio value="选项二">选项二</Radio>
+        <Radio value="选项三">选项三</Radio>
+      </Radio.Group>
+    </div>
+    <div className="rows">
+      <Radio.Group ghost type="button">
+        <Radio value="选项一">选项一</Radio>
+        <Radio disabled value="选项二">选项二</Radio>
+        <Radio value="选项三">选项三</Radio>
+      </Radio.Group>
+    </div>
+    <div className="rows">
+      <Radio.Group ghost disabled type="button">
         <Radio value="选项一">选项一</Radio>
         <Radio value="选项二">选项二</Radio>
         <Radio value="选项三" checked>选项三</Radio>

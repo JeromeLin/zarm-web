@@ -141,12 +141,12 @@ module.exports = {
         module: () => import('@/components/tag/demo.md'),
         style: false,
       },
-      // {
-      //   key: 'progress',
-      //   name: '进度条',
-      //   module: () => import('@/components/progress/progress.md'),
-      //   style: false,
-      // },
+      {
+        key: 'progress',
+        name: '进度条',
+        module: () => import('@/components/progress/demo.md'),
+        style: true,
+      },
       // {
       //   key: 'panel',
       //   name: '面板',

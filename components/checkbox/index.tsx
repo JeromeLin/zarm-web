@@ -1,4 +1,4 @@
-import Checkbox from 'zarm/lib/checkbox';
+import { Checkbox } from 'zarm';
 
 Checkbox.defaultProps.prefixCls = 'zw-checkbox';
 Checkbox.Group.defaultProps.prefixCls = 'zw-checkbox-group';

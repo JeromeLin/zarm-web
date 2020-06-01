@@ -88,7 +88,7 @@ export class MenuItem extends Component<MenuItemProps, any> {
           content={title}
           direction="right"
         >
-          <div>
+          <div style={{ height: '100%' }}>
             {icon}
             {children}
           </div>
