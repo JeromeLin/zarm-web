@@ -1,5 +1,5 @@
 @import '../../style/core/index';
-@import 'node_modules/zarm/lib/radio/style/component.scss';
+@import 'zarm/es/radio/style/component.scss';
 
 @include b(radio) {
   @include e(inner) {
@@ -9,37 +9,27 @@
       height: calc(var(--radio-size) / 2.33);
       border: none;
       border-radius: var(--radius-circle);
-      background-color: var(--theme-primary);
+      background-color: var(--radio-disabled-color);
       margin: 0;
       transform: scale(0);
-      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
 
-  // 选中状态
   @include m(checked) {
     @include e(inner) {
       background-color: var(--color-text-inverse);
 
       &:before {
-        transform: scale(1);
-        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+        background-color: var(--theme-primary);
       }
     }
   }
 
   @include m(disabled) {
-    @include e(inner) {
-      opacity: 1;
-      background-color: var(--background-disabled);
-    }
-
     @include m(checked) {
       @include e(inner) {
-        background-color: var(--background-disabled);
-
         &:before {
-          background-color: var(--radio-border-color);
+          background-color: var(--radio-disabled-color);
         }
       }
     }
@@ -57,17 +47,13 @@
 
       @include m(disabled) {
         opacity: 1;
-        background-color: var(--background-disabled);
+        background-color: #fafafa;
         color: var(--color-text-disabled);
-
-        &:hover {
-          color: var(--color-text-disabled);
-        }
 
         @include m(checked) {
           opacity: 1;
           border-color: var(--button-default-border);
-          background-color: #f2f2f2;
+          background-color: var(--background-disabled);
           color: var(--color-text-disabled);
         }
       }
@@ -81,45 +67,11 @@
             &:hover {
               opacity: 1;
               border-color: var(--button-default-border);
-              background-color: #f2f2f2;
+              background-color: var(--background-disabled);
               color: var(--color-text-disabled);
             }
           }
         }
-      }
-    }
-
-    // sizes
-    @include m(lg) {
-      @include b(radio) {
-        @include button-size(
-          var(--button-height-lg),
-          var(--button-padding-h-lg),
-          var(--button-font-size-lg),
-          var(--button-icon-size-lg),
-        );
-      }
-    }
-
-    @include m(md) {
-      @include b(radio) {
-        @include button-size(
-          var(--button-height-md),
-          var(--button-padding-h-md),
-          var(--button-font-size-md),
-          var(--button-icon-size-md),
-        );
-      }
-    }
-
-    @include m(sm) {
-      @include b(radio) {
-        @include button-size(
-          var(--button-height-sm),
-          var(--button-padding-h-sm),
-          var(--button-font-size-sm),
-          var(--button-icon-size-sm),
-        );
       }
     }
   }

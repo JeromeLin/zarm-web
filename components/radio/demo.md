@@ -12,35 +12,25 @@ ReactDOM.render(<Radio>Radio</Radio>, mountNode);
 
 ## 禁用状态
 ```jsx
+import { useState } from 'react';
 import { Radio, Button } from 'zarm-web';
 
-class Demo extends React.Component {
-  state = {
-    disabled: true,
-  };
+const Demo = () => {
+  const [disabled, setDisabled] = useState(true);
 
-  toggleDisabled = () => {
-    this.setState({
-      disabled: !this.state.disabled,
-    });
-  };
-
-  render() {
-    const { disabled } = this.state;
-    return (
-      <>
-        <div className="rows">
-          <Radio disabled={disabled}>Radio</Radio>
-        </div>
-        <div className="rows">
-          <Radio checked disabled={disabled}>Checked Radio</Radio>
-        </div>
-        <div className="rows">
-          <Button theme="primary" onClick={this.toggleDisabled}>toggleDisabled</Button>
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="rows">
+        <Radio disabled={disabled}>禁用的状态</Radio>
+      </div>
+      <div className="rows">
+        <Radio checked disabled={disabled}>选中并禁用的状态</Radio>
+      </div>
+      <div className="rows">
+        <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
+      </div>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

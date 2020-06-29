@@ -1,5 +1,5 @@
 @import '../../style/core/index';
-@import 'node_modules/zarm/lib/activity-indicator/style/component.scss';
+@import 'zarm/es/activity-indicator/style/component.scss';
 @import 'mixins';
 
 @include b(switch) {

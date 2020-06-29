@@ -1,39 +1,23 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Mask from '../index';
 
 describe('Mask', () => {
-  it('renders different types of Mask correctly', () => {
-    const wrapper = render(
-      <div>
-        <Mask type="transparent" visible />
-        <Mask type="light" visible />
-        <Mask type="dark" visible />
-      </div>
-    );
-
+  it('renders correctly', () => {
+    const wrapper = render(<Mask visible />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders hidden Mask correctly', () => {
-    const wrapper = render(
-      <div>
-        <Mask />
-      </div>
-    );
-
+  it('type is transparent', () => {
+    const wrapper = render(<Mask visible type="transparent" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('behaves correctly when closing', () => {
-    const onClose = jest.fn();
-    const wrapper = mount(
-      <Mask visible onClose={onClose} />
-    );
-
-    wrapper.find('.ui-mask').simulate('click');
-
-    expect(onClose).toHaveBeenCalled();
+  it('onClick', () => {
+    const onClick = jest.fn();
+    const wrapper = shallow(<Mask visible onClick={onClick} />);
+    wrapper.simulate('click');
+    expect(onClick).toBeCalled();
   });
 });

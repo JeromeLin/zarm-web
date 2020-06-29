@@ -1,4 +1,4 @@
-import Progress from 'zarm/lib/progress';
+import { Progress } from 'zarm';
 
 Progress.defaultProps.prefixCls = 'zw-progress';
 
