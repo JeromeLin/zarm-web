@@ -67,12 +67,12 @@ module.exports = {
       //   module: () => import('@/components/number-input/numberinput.md'),
       //   style: false,
       // },
-      // {
-      //   key: 'select',
-      //   name: 'Select',
-      //   module: () => import('@/components/select/select.md'),
-      //   style: false,
-      // },
+      {
+        key: 'select',
+        name: '选择器',
+        module: () => import('@/components/select/demo.md'),
+        style: false,
+      },
       {
         key: 'switch',
         name: '开关',

@@ -15,7 +15,7 @@ class Option extends Component<OptionProps, any> {
     } = this.props;
 
     const cls = cn({
-      'za-option__list': true,
+      'zw-option__list': true,
       'is-checked': checked,
       'is-disabled': disabled,
     });

@@ -116,7 +116,6 @@ class Select extends Component<PropsType, StateProps> {
       optionData: [],
     };
     const { children } = this.props;
-
     if (props.multiple) {
       if (!Array.isArray(value)) {
         state.value = [String(value)];
@@ -278,7 +277,6 @@ class Select extends Component<PropsType, StateProps> {
     Events.off(document, 'keyup', (e) => this.handleKeyup(e));
   }
 
-
   handleKeyup(e) {
     const { dropdown } = this.state;
     if (dropdown === true && e.keyCode === 27) {
@@ -363,6 +361,7 @@ class Select extends Component<PropsType, StateProps> {
         disabled={disabled}
         visible={dropdown}
         content={menus}
+        style={style}
         getContainer={getPopupContainer}
         onVisibleChange={(visible) => {
           if (visible === true) {

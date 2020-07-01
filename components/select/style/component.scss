@@ -141,6 +141,7 @@
 }
 
 @include b(option) {
+  color: red;
   @include e(list) {
     position: relative;
     white-space: nowrap;
