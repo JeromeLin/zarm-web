@@ -241,6 +241,7 @@ class Select extends Component<PropsType, StateProps> {
   };
 
   onDeleteTag = (_e, _key, _value, index) => {
+    const { onChange } = this.props;
     const selected = Select.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
     selected.splice(index, 1);
     const selectedData = selected.map((select, selectIndex) => {
@@ -252,7 +253,12 @@ class Select extends Component<PropsType, StateProps> {
         index: selectIndex,
       };
     });
-    this.props.onChange(selected, selectedData);
+    // this.props.onChange(selected, selectedData);
+    this.setState({
+      value: Select.mapEmptyStringToEmptyValue(selected),
+    }, () => {
+      onChange(selected, selectedData);
+    });
   };
 
   onSearchValueChange = (value) => {
@@ -303,7 +309,6 @@ class Select extends Component<PropsType, StateProps> {
     const search = 'search' in this.props;
 
     const placeholderText = placeholder || locale!.placeholder;
-
     let valueText;
     if (multiple && Array.isArray(value)) {
       valueText = value.reduce((prev: any, item) => {

@@ -4,18 +4,128 @@
 
 ## 基本用法
 
-最简单的选择器。通过`value`设置值，通过`onChange`来监听值的变化。
+最简单的选择器。通过`value`设置值，通过`onChange`来监听值的变化。添加`disabled`属性即可禁用。
+
 
 ```jsx
 import { Select } from 'zarm-web';
 const { Option } = Select;
 
 ReactDOM.render(
-  <Select style={{ width: 120 }}>
+  <>
+  <Select style={{ width: 120, marginRight: 10}}>
     <Option value="jack">Jack</Option>
     <Option value="lucy">Lucy</Option>
   </Select>
+  <Select disabled style={{ width: 120, marginRight: 10}}>
+    <Option value="jack">Jack</Option>
+    <Option value="lucy">Lucy</Option>
+  </Select>
+  <Select style={{ width: 120 }} radius={true} defaultValue="lily">
+    <Option value="jack">Jack</Option>
+    <Option value="lucy">Lucy</Option>
+    <Option value="lily">Lily</Option>
+  </Select>
+  </>
 , mountNode);
+```
+
+## 多选
+
+支持输入框多选。添加`multiple`属性，可支持多选。
+
+```jsx
+import { Select } from 'zarm-web';
+const { Option } = Select;
+
+ReactDOM.render(
+  <>
+  <Select multiple style={{ width: 280 }}>
+    <Option value="jack">Jack</Option>
+    <Option value="lucy">Lucy</Option>
+    <Option value="lily">Lily</Option>
+    <Option value="john">John</Option>
+    <Option value="honey">Honey</Option>
+  </Select>
+  </>
+, mountNode);
+
+
+```
+
+## 支持本地搜索
+
+支持输入框搜索选项。
+
+添加`search`属性，通过`onSearchChange`监听输入框值的变化。
+
+```jsx
+import { Select } from 'zarm-web';
+const { Option } = Select;
+
+// constructor(props) {
+//   super(props)
+//   this.state = {
+//     selectValue: ''
+//   }
+// }
+
+ReactDOM.render(
+  <>
+  <Select
+    style={{ width: 280 }}
+    search
+    placeholder="输入关键字"
+    onSearchChange={(value) => {
+      console.log(value)
+    }}
+    onChange={(data) => {
+      console.log(data);
+      // this.setState({
+      //   selectValue: data.value
+      // });
+    }}>>
+    <Option value="a">我是A</Option>
+    <Option value="b">我是B</Option>
+    <Option value="c">我是C</Option>
+    <Option value="d">我是D</Option>
+  </Select>
+  </>
+, mountNode);
+
+
+
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     selectValue: ''
+  //   }
+  // }
+  // render() {
+  //   return (
+  //     <div>
+  //       <Select
+  //         search
+  //         value={this.state.selectValue}
+  //         style={{ width: 200 }}
+  //         // searchPlaceholder="输入关键字"
+  //         onSearchChange={(value) => {
+  //           console.log(value)
+  //         }}
+  //         onChange={(data) => {
+  //           console.log(data);
+  //           this.setState({
+  //             selectValue: data.value
+  //           });
+  //         }}>
+  //         <Select.Option value="a">我是A</Select.Option>
+  //         <Select.Option value="b">我是B</Select.Option>
+  //         <Select.Option value="c">我是C</Select.Option>
+  //         <Select.Option value="d">我是D</Select.Option>
+  //       </Select>
+  //     </div>
+  //   )
+  // }
 ```
 
 

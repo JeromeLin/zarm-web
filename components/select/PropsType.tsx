@@ -42,7 +42,6 @@ export default interface PropsType {
   search?: boolean;
   remoteSearch?: boolean;
   placeholder?: string;
-  searchPlaceholder?: string;
   onChange: (value: ChangeValue | Array<string>, valueData?: Array<any>) => void;
   onSearchChange?: (e: any) => void;
   tagTheme?: themeType;

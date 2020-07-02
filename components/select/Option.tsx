@@ -22,12 +22,18 @@ class Option extends Component<OptionProps, any> {
     return (
       <li
         className={cls}
-        style={{ paddingRight: showCheckIcon ? 25 : 10 }}
         onClick={(e) => onChange && onChange(e)}
         onDoubleClick={onDoubleClick}
       >
         {children}
-        {showCheckIcon && checked && <Icon className="checked-icon" theme="primary" type="right" />}
+        {showCheckIcon && checked && (
+          <Icon
+            className="checked-icon"
+            theme="primary"
+            type="right"
+            size="sm"
+          />
+        )}
       </li>
     );
   }
