@@ -50,7 +50,6 @@ ReactDOM.render(
   </>
 , mountNode);
 
-
 ```
 
 ## 支持本地搜索
@@ -63,12 +62,6 @@ ReactDOM.render(
 import { Select } from 'zarm-web';
 const { Option } = Select;
 
-// constructor(props) {
-//   super(props)
-//   this.state = {
-//     selectValue: ''
-//   }
-// }
 
 ReactDOM.render(
   <>
@@ -93,40 +86,196 @@ ReactDOM.render(
   </>
 , mountNode);
 
+```
+
+## 支持远程搜索
+
+支持输入框搜索选项。
+
+ 添加`search`属性，通过`onSearchChange`监听输入框值的变化。
+
+```jsx
+
+import { Select } from 'zarm-web';
+const { Option } = Select;
+
+class SelectSearchDemo extends React.Component {
+  state = {
+    selectValue: '',
+    options: []
+  };
+  render() {
+    const { selectValue, options} = this.state;
+      return (
+        <>
+          <Select
+            style={{ width: 280 }}
+            search
+            placeholder="输入关键字"
+            onSearchChange={(value) => {
+              console.log(value)
+              setTimeout(() => {
+                 this.setState({ options: [`${value}1`,`${value}2`,`${value}3`,`${value}4`,`${value}5`] })
+              }, 1000)
+            }}
+            onChange={(data) => {
+              console.log(data);
+              this.setState({
+                selectValue: data.value
+              }, () => {
+                console.log(this.state.selectValue);
+              });
+            }}>>
+            {this.state.options.map(elem => <Option key={elem} value={elem}>{elem}</Option>)}
+          </Select>
+        </>
+    );
+  }
+}
+
+ReactDOM.render(<SelectSearchDemo />, mountNode);
+
+```
+
+## 多选
+
+支持输入框多选。
+
+添加`multiple`属性，可支持多选。
+
+```jsx
+
+import { Select } from 'zarm-web';
+const { Option } = Select;
+
+class SelectSearchDemo extends React.Component {
+  state = {
+    selectValue: ['a'],
+    b:'123',
+    c:'456'
+  };
+  render() {
+    const { selectValue, options} = this.state;
+      return (
+        <>
+          <Select
+            multiple
+            value={this.state.selectValue}
+            style={{ width: 200 }}
+            onChange={(selectedArr,selectedData) => {
+              console.log(selectedArr, selectedData);
+              this.setState({
+                selectValue: selectedArr
+              });
+            }}>
+            <Select.Option value="a">{[this.state.c,this.state.b]}</Select.Option>
+            <Select.Option value="b">我是B</Select.Option>
+            <Select.Option value="c">我是C</Select.Option>
+            <Select.Option value="d">我是D</Select.Option>
+             <Select.Option value="e">我是E</Select.Option>
+            <Select.Option value="f">我是F</Select.Option>
+            <Select.Option value="g">我是G</Select.Option>
+            <Select.Option value="h">我是H</Select.Option>
+            <Select.Option value="">我的value是空字符串</Select.Option>
+          </Select>
+        </>
+    );
+  }
+}
+
+ReactDOM.render(<SelectSearchDemo />, mountNode);
+
+```
 
 
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     selectValue: ''
-  //   }
+
+## 多选并支持查找
+
+支持输入框搜索选项。
+
+添加`multiple` 和`search`属性，可支持多选和查找。
+
+```jsx
+import { Select } from 'zarm-web';
+const { Option } = Select;
+
+class SelectSearchDemo extends React.Component {
+  state = {
+    selectValue: ['a'],
+  };
+  render() {
+    const { selectValue, options} = this.state;
+      return (
+        <>
+          <Select
+            tagTheme="info"
+            search
+            multiple
+            value={this.state.selectValue}
+            style={{ width: 200 }}
+            onChange={(selectedArr) => {
+              console.log(selectedArr);
+              this.setState({
+                selectValue: selectedArr
+              });
+            }}>
+            <Select.Option value="a">我是A</Select.Option>
+            <Select.Option value="b">我是B</Select.Option>
+            <Select.Option value="c">我是C</Select.Option>
+            <Select.Option value="d">我是D</Select.Option>
+            <Select.Option value="e">我是E</Select.Option>
+            <Select.Option value="f">我是F</Select.Option>
+            <Select.Option value="g">我是G</Select.Option>
+            <Select.Option value="h">我是H</Select.Option>
+          </Select>
+        </>
+    );
+  }
+}
+
+ReactDOM.render(<SelectSearchDemo />, mountNode);
+
+```
+
+## 注意事项
+
++ 当`multiple`属性为`true`时, `value`需要为`Array<string>`类型
++ 当`multiple`属性为`true`时, `onChange`的回调参数为`(selectedValueArr,selectedValueData)`,数据类型如下：
+
+```jsx
+
+type selectedValueArr = Array<string>;
+type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
+
+```
+
++ onChange回调的参数中的`value`值类型始终为`string`;
++ 当`multiple`属性为`true`时,若参数`value`中存在目前`option`列表中不存在的元素：则不会显示该元素，但也不会删除该元素。例如：
+
+
+```jsx
+  // this.state = {
+  //     selectValue: ['i am not the one']
   // }
   // render() {
   //   return (
-  //     <div>
   //       <Select
-  //         search
+  //         multiple
   //         value={this.state.selectValue}
-  //         style={{ width: 200 }}
-  //         // searchPlaceholder="输入关键字"
-  //         onSearchChange={(value) => {
-  //           console.log(value)
-  //         }}
-  //         onChange={(data) => {
-  //           console.log(data);
+  //         onChange={(selectedArr) => {
+  //           console.log(selectedArr);
   //           this.setState({
-  //             selectValue: data.value
+  //             selectValue: selectedArr
   //           });
   //         }}>
   //         <Select.Option value="a">我是A</Select.Option>
   //         <Select.Option value="b">我是B</Select.Option>
-  //         <Select.Option value="c">我是C</Select.Option>
-  //         <Select.Option value="d">我是D</Select.Option>
   //       </Select>
-  //     </div>
   //   )
   // }
 ```
+
+以上代码中`'i am not the one'`并不存在于Select.Option中，当你执行`onChange`操作的时候`selectedArr`中依然会保留改字段,但并不会显示在输入框内。
 
 
 
