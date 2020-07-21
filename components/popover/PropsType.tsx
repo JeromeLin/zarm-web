@@ -1,15 +1,52 @@
-// tslint:disable-next-line:max-line-length
-export type direction = 'topLeft' | 'top' | 'topRight' | 'rightTop' | 'right' | 'rightBottom' | 'bottomLeft' | 'bottom' | 'bottomRight' | 'leftTop' | 'left' | 'leftBottom';
-export type content = (() => React.ReactNode) | string | React.ReactNode;
+import { ContainerType } from '../utils/dom';
 
-export default interface PropsType {
-  prefixCls?: string;
-  className?: string;
-  trigger?: 'click' | 'hover';
-  mask?: boolean;
+export type PopperPlacement =
+  | 'top'
+  | 'left'
+  | 'right'
+  | 'bottom'
+  | 'topLeft'
+  | 'topRight'
+  | 'bottomLeft'
+  | 'bottomRight'
+  | 'leftTop'
+  | 'leftBottom'
+  | 'rightTop'
+  | 'rightBottom';
+
+export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
+
+export default interface BasePopperProps {
   visible?: boolean;
-  radius?: boolean;
-  direction: direction;
+  hasArrow?: boolean;
+  arrowPointAtCenter?: boolean;
+  direction?: PopperPlacement;
+  trigger?: PopperTrigger;
+  animationType?: string;
+  animationDuration?: number;
+  // popperOptions?: PopperJS.PopperOptions;
+  // modifiers?: PopperJS.Modifiers;
+  content?: React.ReactNode;
+  destroy?: boolean;
+  mask?: boolean;
+  mountContainer?: ContainerType;
+  mouseEnterDelay?: number;
+  mouseLeaveDelay?: number;
+  onVisibleChange?: (visible: boolean) => void;
   onMaskClick?: () => void;
-  content?: content;
 }
+
+export const directionMap = {
+  top: 'top' as const,
+  topLeft: 'top-start' as const,
+  topRight: 'top-end' as const,
+  right: 'right' as const,
+  rightTop: 'right-start' as const,
+  rightBottom: 'right-end' as const,
+  bottom: 'bottom' as const,
+  bottomLeft: 'bottom-start' as const,
+  bottomRight: 'bottom-end' as const,
+  left: 'left' as const,
+  leftTop: 'left-start' as const,
+  leftBottom: 'left-end' as const,
+};
