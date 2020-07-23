@@ -1,17 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Mask renders different types of Mask correctly 1`] = `
-<div>
-  <div
-    class="ui-mask transparent"
-  />
-  <div
-    class="ui-mask light"
-  />
-  <div
-    class="ui-mask dark"
-  />
-</div>
+exports[`Mask renders correctly 1`] = `
+<div
+  class="zw-mask zw-mask--normal"
+/>
 `;
 
-exports[`Mask renders hidden Mask correctly 1`] = `<div />`;
+exports[`Mask type is transparent 1`] = `
+<div
+  class="zw-mask zw-mask--transparent"
+/>
+`;

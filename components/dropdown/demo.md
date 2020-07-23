@@ -35,7 +35,7 @@ class Demo extends React.Component {
   };
 
   onClose = () => {
-    this.setState({ visible: !this.state.visible });
+    this.setState({ visible: false });
   };
 
   onVisibleChange = (visible) => {
@@ -78,7 +78,7 @@ const directionMap = ['topLeft', 'top', 'topRight', 'bottomLeft', 'bottom', 'bot
 const overlay = <div style={{ width: 200, height: 100, padding: '8px 12px' }}>Dropdown Content</div>;
 
 ReactDOM.render(
-  <div className="dropdown-trigger-box" style={{ position: 'relative' }}>
+  <>
     {
       directionMap.map((item, index) => (
         <Dropdown
@@ -90,7 +90,7 @@ ReactDOM.render(
         </Dropdown>
       ))
     }
-  </div>,
+  </>,
   mountNode,
 );
 ```
@@ -108,7 +108,7 @@ const triggerMap = ['click','hover','contextMenu'];
 const overlay = <div style={{ width: 200, height: 100, padding: '8px 12px' }}>Dropdown Content</div>;
 
 ReactDOM.render(
-  <div className="dropdown-trigger-box" style={{ position: 'relative' }}>
+  <>
     {
       triggerMap.map((item, index) => (
         <Dropdown
@@ -120,7 +120,7 @@ ReactDOM.render(
         </Dropdown>
       ))
     }
-  </div>,
+  </>,
   mountNode,
 );
 ```
@@ -134,18 +134,16 @@ ReactDOM.render(
 import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="dropdown-trigger-box" style={{ position: 'relative' }}>
-    <Dropdown
-      shape="rect"
-      content={
-        <div style={{ width: 200, height: 100, padding: '8px 12px' }}>
-          Dropdown Content
-        </div>
-      }
-    >
-      <Button theme="primary">Click me</Button>
-    </Dropdown>
-  </div>,
+  <Dropdown
+    shape="rect"
+    content={
+      <div style={{ width: 200, height: 100, padding: '8px 12px' }}>
+        Dropdown Content
+      </div>
+    }
+  >
+    <Button theme="primary">Click me</Button>
+  </Dropdown>,
   mountNode,
 );
 ```
@@ -159,18 +157,16 @@ ReactDOM.render(
 import { Dropdown, Menu, Checkbox, Button } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="dropdown-trigger-box" style={{ position: 'relative' }}>
-    <Dropdown
-      disabled
-      content={
-        <div style={{ width: 200, height: 100, padding: '8px 12px' }}>
-          Dropdown Content
-        </div>
-      }
-    >
-      <Button disabled theme="primary">Click me</Button>
-    </Dropdown>
-  </div>,
+  <Dropdown
+    disabled
+    content={
+      <div style={{ width: 200, height: 100, padding: '8px 12px' }}>
+        Dropdown Content
+      </div>
+    }
+  >
+    <Button disabled theme="primary">Click me</Button>
+  </Dropdown>,
   mountNode,
 );
 ```
@@ -208,8 +204,10 @@ class Demo extends React.Component {
     return (
       <>
         <Button theme="primary" onClick={this.toggleModalVisible}>Open</Button>
-        <Modal visible={modalVisible} onCancel={this.toggleModalVisible}>
-           <Dropdown
+        <Modal visible={modalVisible}>
+          <Modal.Header onClose={this.toggleModalVisible} />
+          <Modal.Body>
+            <Dropdown
               content={
                 <div style={{ width: 300, height: 100, padding: '8px 12px' }}>
                   Dropdown Content1
@@ -227,6 +225,7 @@ class Demo extends React.Component {
             >
               <Button>Button2</Button>
             </Dropdown>
+          </Modal.Body>
         </Modal>
       </>
     )

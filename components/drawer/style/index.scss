@@ -1,5 +1,3 @@
-@import '../../style/themes/default';
-@import './component';
-@import 'node_modules/zarm/lib/popup/style/index.scss';
-@import 'node_modules/zarm/lib/mask/style/index.scss';
-@import 'node_modules/zarm/lib/style/index.scss';
+@import '../../style/core/index';
+@import 'component';
+@import 'zarm/es/popup/style/component.scss';
