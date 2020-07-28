@@ -201,31 +201,26 @@ class Demo extends React.Component {
   render() {
     const { modalVisible } = this.state;
 
+    const content = (
+       <div style={{ width: 300, height: 100, padding: '8px 12px' }}>
+                  Dropdown Content1
+       </div>
+    )
+
     return (
       <>
         <Button theme="primary" onClick={this.toggleModalVisible}>Open</Button>
-        <Modal visible={modalVisible}>
-          <Modal.Header onClose={this.toggleModalVisible} />
-          <Modal.Body>
-            <Dropdown
-              content={
-                <div style={{ width: 300, height: 100, padding: '8px 12px' }}>
-                  Dropdown Content1
-                </div>
-              }
+        <Modal maskClosable={false} visible={modalVisible} onCancel={this.toggleModalVisible}>
+          <Dropdown
+              content={content}
             >
               <Button>Button1</Button>
             </Dropdown>
             <Dropdown
-              content={
-                <div style={{ width: 300, height: 100, padding: '8px 12px' }}>
-                  Dropdown Content2
-                </div>
-              }
+              content={content}
             >
               <Button>Button2</Button>
             </Dropdown>
-          </Modal.Body>
         </Modal>
       </>
     )

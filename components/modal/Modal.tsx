@@ -194,7 +194,6 @@ class Modal extends Component<ModalProps, StateIF> {
     this.modalContent.focus();
   };
 
-
   onMaskClick = () => {
     const { onCancel, maskClosable, onMaskClick } = this.props;
     if (maskClosable && onCancel) {
