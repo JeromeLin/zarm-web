@@ -35,12 +35,12 @@ module.exports = {
       //   module: () => import('@/components/layout/layout.md'),
       //   style: false,
       // },
-      // {
-      //   key: 'grid',
-      //   name: '栅格',
-      //   module: () => import('@/components/grid/grid.md'),
-      //   style: true,
-      // },
+      {
+        key: 'grid',
+        name: '栅格',
+        module: () => import('@/components/grid/demo.md'),
+        style: true,
+      },
     ],
     form: [
       {
