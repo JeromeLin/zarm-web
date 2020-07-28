@@ -1,0 +1,37 @@
+.zarm-col {
+  flex: 0 0 100%;
+  position: relative;
+
+  &-0 {
+    display: none;
+  }
+  @for $span from 1 to 24 {
+    &-#{$span} {
+      flex: 0 0 percentage($number: $span/24);
+    }
+  }
+
+  @for $offset from 1 to 24 {
+    &-offset-#{$offset} {
+      margin-left: percentage($number: $offset/24);
+    }
+  }
+
+  @for $push from 1 to 24 {
+    &-push-#{$push} {
+      left: percentage($number: $push/24);
+    }
+  }
+
+  @for $pull from 1 to 24 {
+    &-pull-#{$pull} {
+      right: percentage($number: $pull/24);
+    }
+  }
+
+  @for $order from 1 to 24 {
+    &-order-#{$order} {
+      order: $order;
+    }
+  }
+}

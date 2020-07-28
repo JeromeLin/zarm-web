@@ -1,71 +1,68 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
+import React, { useContext } from 'react';
+import cls from 'classnames';
+import { GutterContext } from './row';
+import './style/col.scss';
 
-export interface ColSize {
+type FlexType = number | 'none' | 'auto' | string;
+
+interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   span?: number;
-  order?: number;
   offset?: number;
   push?: number;
   pull?: number;
-}
-
-export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
-  gutter?: string | number;
-  span?: number;
   order?: number;
-  offset?: number;
-  push?: number;
-  pull?: number;
-  xs?: number | ColSize;
-  sm?: number | ColSize;
-  md?: number | ColSize;
-  lg?: number | ColSize;
-  prefixCls?: string;
+  flex?: FlexType;
 }
 
-export default class Col extends Component<ColProps, {}> {
-  render() {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const { props } = this;
-    const { span, order, offset, push, pull, className, children, prefixCls = 'col', gutter, style, ...others } = props;
-    let sizeClassObj = {};
-    ['xs', 'sm', 'md', 'lg'].forEach((size) => {
-      let sizeProps: ColSize = {};
-      if (typeof props[size] === 'number') {
-        sizeProps.span = props[size];
-      } else if (typeof props[size] === 'object') {
-        sizeProps = props[size] || {};
-      }
-
-      delete others[size];
-
-      sizeClassObj = {
-        ...sizeClassObj,
-        [`${prefixCls}-${size}-${sizeProps.span}`]: sizeProps.span !== undefined,
-        [`${prefixCls}-${size}-order-${sizeProps.order}`]: sizeProps.order || sizeProps.order === 0,
-        [`${prefixCls}-${size}-offset-${sizeProps.offset}`]:
-        sizeProps.offset || sizeProps.offset === 0,
-        [`${prefixCls}-${size}-push-${sizeProps.push}`]: sizeProps.push || sizeProps.push === 0,
-        [`${prefixCls}-${size}-pull-${sizeProps.pull}`]: sizeProps.pull || sizeProps.pull === 0,
-      };
-    });
-    const cls = classnames(prefixCls, className, sizeClassObj, {
-      'gutter-row': gutter,
-      [`${prefixCls}-${span}`]: span !== undefined,
-      [`${prefixCls}-order-${order}`]: order,
-      [`${prefixCls}-offset-${offset}`]: offset,
-      [`${prefixCls}-push-${push}`]: push,
-      [`${prefixCls}-pull-${pull}`]: pull,
-    });
-    const colStyle = gutter ? { paddingLeft: Number(gutter) / 2, paddingRight: Number(gutter) / 2 } : {};
-
-    return (
-      <div
-        className={cls}
-        style={{ ...style, ...colStyle }}
-      >
-        {children}
-      </div>
-    );
+function parseFlex(flex: FlexType): string {
+  if (typeof flex === 'number') {
+    return `${flex} ${flex} auto`;
   }
+
+  if (/^\d+(\.\d+)?(px|em|rem|%)$/.test(flex)) {
+    return `0 0 ${flex}`;
+  }
+
+  return flex;
+}
+
+export default function Col(props: ColProps) {
+  const {
+    children,
+    span,
+    offset,
+    push,
+    pull,
+    order,
+    flex,
+    className,
+    style,
+  } = props;
+  const { gutter } = useContext(GutterContext);
+
+  const x = gutter[0] / 2;
+  const y = gutter[1] / 2;
+
+  const clsName = cls([
+    className,
+    'zarm-col',
+    { [`zarm-col-${span}`]: span !== undefined },
+    { [`zarm-col-offset-${offset}`]: offset !== undefined },
+    { [`zarm-col-push-${push}`]: push !== undefined },
+    { [`zarm-col-pull-${pull}`]: pull !== undefined },
+    { [`zarm-col-order-${order}`]: order !== undefined },
+  ]);
+
+  const innerStyle = {
+    ...(x > 0 ? { paddingLeft: x, paddingRight: x } : {}),
+    ...(y > 0 ? { paddingTop: y, paddingBottom: y } : {}),
+    ...(flex ? { flex: parseFlex(flex) } : {}),
+    ...style,
+  };
+
+  return (
+    <div style={innerStyle} className={clsName}>
+      {children}
+    </div>
+  );
 }
