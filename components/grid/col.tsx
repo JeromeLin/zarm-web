@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import cls from 'classnames';
 import { GutterContext } from './row';
-import './style/col.scss';
 
 type FlexType = number | 'none' | 'auto' | string;
 

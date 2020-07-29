@@ -1,6 +1,5 @@
 import React from 'react';
 import cls from 'classnames';
-import './style/row.scss';
 
 type Align = 'top' | 'middle' | 'bottom' | 'stretch';
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
