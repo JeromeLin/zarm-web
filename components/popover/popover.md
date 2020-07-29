@@ -11,7 +11,7 @@ import { Button, Popover, Select } from 'zarm-web';
 class Demo extends React.Component {
   state = {
    visible: false,
-   direction: 'top',
+   direction: 'right',
    trigger: 'click',
    animationType: 'zoomFade',
   }

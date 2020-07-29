@@ -2,6 +2,7 @@
 .custom-arrow-content {
   padding: 6px 12px;
   background: #fff;
+  transform: translateX(-50%) rotate(45deg);
   font-size: 12px;
   border-radius: 3px;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
@@ -9,12 +10,11 @@
 }
 @at-root
 .custom-arrow-content {
-  &[x-placement^=left] {
-    margin-right: 10px;
+  &[x-placement^=top] {
+    margin-bottom: 10px;
 
     .za-popper__arrow {
-      right: -4px;
-      text-align: center;
+      bottom: -4px;
     }
   }
 
@@ -22,15 +22,7 @@
     margin-left: 10px;
 
     .za-popper__arrow {
-      left: -4px;
-    }
-  }
-
-  &[x-placement^=top] {
-    margin-bottom: 10px;
-
-    .za-popper__arrow {
-      bottom: -4px;
+      left: 0;
     }
   }
 
@@ -41,6 +33,15 @@
       top: -4px;
     }
   }
+
+  &[x-placement^=left] {
+    margin-right: 10px;
+
+    .za-popper__arrow {
+      right: -8px;
+    }
+  }
+
 
   &-show {
     display: block;
@@ -53,11 +54,12 @@
 
 .za-popper__arrow {
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 8px;
+  height: 8px;
   border-color: transparent;
   border-style: solid;
   background: #fff;
+  transform: translateX(-50%) rotate(45deg);
 }
 // 显示方向
 .direction-demo {
