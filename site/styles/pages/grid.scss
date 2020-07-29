@@ -1,4 +1,4 @@
-@import "../themes/default.scss";
+@import '../themes/default.scss';
 
 .grid-page {
   .marginB-20 {
@@ -14,8 +14,8 @@
     background-color: rgba(128, 128, 128, 0.08);
   }
 
-  .zarm-row {
-    .zarm-col {
+  .zw-row {
+    .zw-col {
       > div {
         background: $theme-primary;
         color: #fff;
@@ -40,11 +40,13 @@
     }
   }
 
-  .zarm-row.row-stretch {
+  .zw-row.row-stretch {
     height: 100px;
 
-    > div {
-      height: 100%;
+    .zw-col {
+      > div {
+        height: 100% !important;
+      }
     }
   }
 }

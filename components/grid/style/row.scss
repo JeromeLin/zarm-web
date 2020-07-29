@@ -1,4 +1,6 @@
-.zarm-row {
+@import '../../style/core/index';
+
+@include b(row) {
   display: flex;
   flex-wrap: wrap;
 
@@ -16,13 +18,13 @@
   );
 
   @each $align, $val in $align-list {
-    &-#{$align} {
+    &--#{$align} {
       align-items: $val;
     }
   }
 
   @each $justify, $val in $justify-list {
-    &-#{$justify} {
+    &--#{$justify} {
       justify-content: $val;
     }
   }

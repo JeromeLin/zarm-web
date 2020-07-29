@@ -9,12 +9,20 @@ interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | [number, number];
   align?: Align;
   justify?: Justify;
+  prefixCls?: string;
 }
 
 export const GutterContext = React.createContext({ gutter: [0, 0] });
 
 export default function Row(props: RowProps) {
-  const { align, justify, className, style, children } = props;
+  const {
+    align,
+    justify,
+    className,
+    style,
+    children,
+    prefixCls = 'zw-row',
+  } = props;
   let { gutter = 0 } = props;
 
   if (!Array.isArray(gutter)) {
@@ -31,10 +39,10 @@ export default function Row(props: RowProps) {
   };
 
   const clsName = cls(
+    prefixCls,
     className,
-    'zarm-row',
-    { [`zarm-row-${align}`]: align },
-    { [`zarm-row-${justify}`]: justify },
+    { [`${prefixCls}--${align}`]: align },
+    { [`${prefixCls}--${justify}`]: justify },
   );
 
   return (

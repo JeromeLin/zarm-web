@@ -12,6 +12,7 @@ interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   pull?: number;
   order?: number;
   flex?: FlexType;
+  prefixCls?: string;
 }
 
 function parseFlex(flex: FlexType): string {
@@ -37,6 +38,7 @@ export default function Col(props: ColProps) {
     flex,
     className,
     style,
+    prefixCls = 'zw-col',
   } = props;
   const { gutter } = useContext(GutterContext);
 
@@ -44,13 +46,13 @@ export default function Col(props: ColProps) {
   const y = gutter[1] / 2;
 
   const clsName = cls([
+    prefixCls,
     className,
-    'zarm-col',
-    { [`zarm-col-${span}`]: span !== undefined },
-    { [`zarm-col-offset-${offset}`]: offset !== undefined },
-    { [`zarm-col-push-${push}`]: push !== undefined },
-    { [`zarm-col-pull-${pull}`]: pull !== undefined },
-    { [`zarm-col-order-${order}`]: order !== undefined },
+    { [`${prefixCls}-span-${span}`]: span !== undefined },
+    { [`${prefixCls}-offset-${offset}`]: offset !== undefined },
+    { [`${prefixCls}-push-${push}`]: push !== undefined },
+    { [`${prefixCls}-pull-${pull}`]: pull !== undefined },
+    { [`${prefixCls}-order-${order}`]: order !== undefined },
   ]);
 
   const innerStyle = {

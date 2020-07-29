@@ -1,35 +1,39 @@
-.zarm-col {
+@import '../../style/core/index';
+
+@include b(col) {
+  $grid-cols: 24;
+
   flex: 0 0 100%;
   position: relative;
 
-  &-0 {
+  &-span-0 {
     display: none;
   }
-  @for $span from 1 to 24 {
-    &-#{$span} {
-      flex: 0 0 percentage($number: $span/24);
+  @for $span from 1 to $grid-cols {
+    &-span-#{$span} {
+      flex: 0 0 percentage($number: $span/$grid-cols);
     }
   }
 
-  @for $offset from 1 to 24 {
+  @for $offset from 1 to $grid-cols {
     &-offset-#{$offset} {
-      margin-left: percentage($number: $offset/24);
+      margin-left: percentage($number: $offset/$grid-cols);
     }
   }
 
-  @for $push from 1 to 24 {
+  @for $push from 1 to $grid-cols {
     &-push-#{$push} {
-      left: percentage($number: $push/24);
+      left: percentage($number: $push/$grid-cols);
     }
   }
 
-  @for $pull from 1 to 24 {
+  @for $pull from 1 to $grid-cols {
     &-pull-#{$pull} {
-      right: percentage($number: $pull/24);
+      right: percentage($number: $pull/$grid-cols);
     }
   }
 
-  @for $order from 1 to 24 {
+  @for $order from 1 to $grid-cols {
     &-order-#{$order} {
       order: $order;
     }
