@@ -4,7 +4,7 @@ import { GutterContext } from './row';
 
 type FlexType = number | 'none' | 'auto' | string;
 
-interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   span?: number;
   offset?: number;
   push?: number;

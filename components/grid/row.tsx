@@ -4,7 +4,7 @@ import cls from 'classnames';
 type Align = 'top' | 'middle' | 'bottom' | 'stretch';
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
 
-interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | [number, number];
   align?: Align;
   justify?: Justify;
