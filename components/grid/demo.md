@@ -368,25 +368,25 @@ ReactDOM.render(
 
 ## API
 
-<h3>Row Attributes</h3>
+<h3>Row</h3>
 
-| 参数      | 说明       | 类型                      | 可选值                                      | 默认值  |
-| --------- | ---------- | ------------------------- | ------------------------------------------- | ------- |
-| gutter    | 水平间隔   | number or [number,number] | -                                           | 0       |
-| align     | 垂直对齐   | 枚举                      | top middle bottom stretch                   | stretch |
-| justify   | 布局方式   | 枚举                      | start end center space-around space-between | start   |
-| className | 样式类名   | string                    | -                                           | -       |
-| style     | 自定义样式 | object                    | -                                           | -       |
+| 属性      | 类型                       | 默认值  | 说明                                                                             |
+| --------- | -------------------------- | ------- | -------------------------------------------------------------------------------- |
+| gutter    | number \| [number, number] | 0       | 设置栅格水平间隔，使用数组可同时设置[水平间隔,垂直间隔]                          |
+| align     | string                     | stretch | 垂直对齐方式，可选值为 `top`、 `middle`、 `bottom`、 `stretch`                   |
+| justify   | string                     | start   | 水平排列方式，可选值为 `start`、`end`、`center`、`space-around`、`space-between` |
+| className | string                     | -       | 样式类名                                                                         |
+| style     | object                     | -       | 自定义样式                                                                       |
 
-<h3>Col Attributes</h3>
+<h3>Col</h3>
 
-| 参数      | 说明                                      | 类型             | 可选值 | 默认值 |
-| --------- | ----------------------------------------- | ---------------- | ------ | ------ |
-| flex      | flex 布局属性                             | string or number | -      | -      |
-| offset    | 栅格左侧的间隔格数，间隔内不可以有栅格    | number           | 1-24   | -      |
-| order     | 栅格顺序                                  | number           | 1-24   | -      |
-| pull      | 栅格向左移动格数                          | number           | 1-24   | -      |
-| push      | 栅格向右移动格数                          | number           | 1-24   | -      |
-| span      | 栅格占位格数，为 0 时相当于 display: none | number           | 0-24   | -      |
-| className | 样式类名                                  | string           | -      | -      |
-| style     | 自定义样式                                | object           | -      | -      |
+| 参数      | 类型             | 默认值 | 说明                                      |
+| --------- | ---------------- | ------ | ----------------------------------------- |
+| flex      | string \| number | -      | flex 布局属性                             |
+| offset    | number           | -      | 栅格左侧的间隔格数                        |
+| order     | number           | -      | 栅格顺序                                  |
+| pull      | number           | -      | 栅格向左移动格数                          |
+| push      | number           | -      | 栅格向右移动格数                          |
+| span      | number           | -      | 栅格占位格数，为 0 时相当于 display: none |
+| className | string           | -      | 样式类名                                  |
+| style     | object           | -      | 自定义样式                                |
