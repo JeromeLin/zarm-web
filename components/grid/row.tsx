@@ -1,26 +1,26 @@
 import React from 'react';
 import cls from 'classnames';
 
-type Align = 'top' | 'middle' | 'bottom' | 'stretch';
-type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
+export type RowAlign = 'top' | 'middle' | 'bottom' | 'stretch';
+export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
 
 export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
-  gutter?: number | [number, number];
-  align?: Align;
-  justify?: Justify;
   prefixCls?: string;
+  gutter?: number | [number, number];
+  align?: RowAlign;
+  justify?: RowJustify;
 }
 
 export const GutterContext = React.createContext({ gutter: [0, 0] });
 
 export default function Row(props: RowProps) {
   const {
+    prefixCls = 'zw-row',
     align,
     justify,
     className,
     style,
     children,
-    prefixCls = 'zw-row',
   } = props;
   let { gutter = 0 } = props;
 
@@ -37,12 +37,10 @@ export default function Row(props: RowProps) {
     ...style,
   };
 
-  const clsName = cls(
-    prefixCls,
-    className,
-    { [`${prefixCls}--${align}`]: align },
-    { [`${prefixCls}--${justify}`]: justify },
-  );
+  const clsName = cls(prefixCls, className, {
+    [`${prefixCls}--${align}`]: align,
+    [`${prefixCls}--${justify}`]: justify,
+  });
 
   return (
     <div className={clsName} style={innerStyle}>

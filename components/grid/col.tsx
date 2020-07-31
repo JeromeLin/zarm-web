@@ -2,19 +2,19 @@ import React, { useContext } from 'react';
 import cls from 'classnames';
 import { GutterContext } from './row';
 
-type FlexType = number | 'none' | 'auto' | string;
+export type ColFlex = number | 'none' | 'auto' | string;
 
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
+  prefixCls?: string;
   span?: number;
   offset?: number;
   push?: number;
   pull?: number;
   order?: number;
-  flex?: FlexType;
-  prefixCls?: string;
+  flex?: ColFlex;
 }
 
-function parseFlex(flex: FlexType): string {
+function parseFlex(flex: ColFlex): string {
   if (typeof flex === 'number') {
     return `${flex} ${flex} auto`;
   }
@@ -28,6 +28,7 @@ function parseFlex(flex: FlexType): string {
 
 export default function Col(props: ColProps) {
   const {
+    prefixCls = 'zw-col',
     children,
     span,
     offset,
@@ -37,22 +38,19 @@ export default function Col(props: ColProps) {
     flex,
     className,
     style,
-    prefixCls = 'zw-col',
   } = props;
   const { gutter } = useContext(GutterContext);
 
   const x = gutter[0] / 2;
   const y = gutter[1] / 2;
 
-  const clsName = cls([
-    prefixCls,
-    className,
-    { [`${prefixCls}-span-${span}`]: span !== undefined },
-    { [`${prefixCls}-offset-${offset}`]: offset !== undefined },
-    { [`${prefixCls}-push-${push}`]: push !== undefined },
-    { [`${prefixCls}-pull-${pull}`]: pull !== undefined },
-    { [`${prefixCls}-order-${order}`]: order !== undefined },
-  ]);
+  const clsName = cls(prefixCls, className, {
+    [`${prefixCls}-span-${span}`]: span !== undefined,
+    [`${prefixCls}-offset-${offset}`]: offset !== undefined,
+    [`${prefixCls}-push-${push}`]: push !== undefined,
+    [`${prefixCls}-pull-${pull}`]: pull !== undefined,
+    [`${prefixCls}-order-${order}`]: order !== undefined,
+  });
 
   const innerStyle = {
     ...(x > 0 ? { paddingLeft: x, paddingRight: x } : {}),
