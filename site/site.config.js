@@ -230,13 +230,9 @@ module.exports = {
       {
         key: 'popconfirm',
         name: '气泡确认框',
-        module: () => import('@/components/popconfirm/popconfirm.md'),
+        module: () => import('@/components/popconfirm/demo.md'),
         style: true,
       },
-      // {
-      //   name: 'Popconfirm',
-      //   module: () => import('@/components/popconfirm/popconfirm.md'),
-      // },
     ],
     navigation: [
       {
