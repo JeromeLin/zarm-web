@@ -1,10 +1,5 @@
 @import '../../style/core/index';
 
-:root{
-    --popconfirm-arrow-size: 4px;
-    --opacity-popconfirm: 0.8;
-}
-
 @mixin arrow() {
   @include b(popconfirm__arrow) {
     @content;
@@ -12,69 +7,74 @@
 }
 @include b(popconfirm) {
   display: inline-block;
-  @include e(wrapper) {
-    border-radius: r(4);
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    padding:16px 12px 12px 16px;
+  border-radius: r(4);
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 16px 12px 12px 16px;
 
-    &[x-placement^=right] {
-      margin-left: r(10);
+  &[x-placement^=right] {
+    margin-left: r(10);
 
-      @include arrow () {
-        left: r(-4);
-        border-width: var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) 0;
-        border-right-color: rgba(255, 255, 255, var(--opacity-popconfirm));
-      }
-    }
-
-    &[x-placement^=top] {
-      margin-bottom: r(10);
-
-      @include arrow () {
-        bottom: r(-4);
-        border-width: var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) 0;
-        border-top-color: rgba(255, 255, 255, var(--opacity-popconfirm));
-      }
-    }
-
-    &[x-placement^=bottom] {
-      margin-top: r(10);
-
-      @include arrow () {
-        top: r(-4);
-        border-width: 0 var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) var(--popconfirm-arrow-size);
-        border-bottom-color: rgba(255, 255, 255, var(--opacity-popconfirm));
-      }
-    }
-
-    &[x-placement^=left] {
-      margin-right: r(10);
-
-      @include arrow () {
-        right: r(-4);
-        border-width: var(--popconfirm-arrow-size) 0 var(--popconfirm-arrow-size) var(--popconfirm-arrow-size);
-        border-left-color: rgba(255, 255, 255, var(--opacity-popconfirm));
-      }
+    @include arrow () {
+      left: r(-4);
+      border-width: var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) 0;
+      border-right-color: rgba(255, 255, 255, var(--opacity-popconfirm));
     }
   }
+
+  &[x-placement^=top] {
+    margin-bottom: r(10);
+
+    @include arrow () {
+      bottom: r(-4);
+      border-width: var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) 0;
+      border-top-color: rgba(255, 255, 255, var(--opacity-popconfirm));
+    }
+  }
+
+  &[x-placement^=bottom] {
+    margin-top: r(10);
+
+    @include arrow () {
+      top: r(-4);
+      border-width: 0 var(--popconfirm-arrow-size) var(--popconfirm-arrow-size) var(--popconfirm-arrow-size);
+      border-bottom-color: rgba(255, 255, 255, var(--opacity-popconfirm));
+    }
+  }
+
+  &[x-placement^=left] {
+    margin-right: r(10);
+
+    @include arrow () {
+      right: r(-4);
+      border-width: var(--popconfirm-arrow-size) 0 var(--popconfirm-arrow-size) var(--popconfirm-arrow-size);
+      border-left-color: rgba(255, 255, 255, var(--opacity-popconfirm));
+    }
+  }
+
   @include e(message) {
-    color:#333;
+    color: #333;
     margin-bottom: 20px;
     position: relative;
-    &>.zw-icon{
-      position: absolute;
-      top: 4px;
-      font-size:14px;
-    }
-    @include m(title) {
-      padding-left: 20px;
+
+    > {
+      @include b (icon) {
+        position: absolute;
+        top: 4px;
+        font-size: 14px;
+      }
     }
   }
+  @include e(title) {
+    padding-left: 20px;
+  }
   @include e(buttons) {
-    text-align:right;
-    & > .zw-button {
-      margin-left:8px;
+    text-align: right;
+
+    > {
+      @include b (button) {
+        margin-left: 8px;
+      }
     }
   }
 

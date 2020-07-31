@@ -53,13 +53,10 @@ class Popconfirm extends Component<PropsType, any> {
       <>
         <div className={`${prefixCls}__message`}>
           {icon}
-          <div className={`${prefixCls}__message--title`}>{content}</div>
+          <div className={`${prefixCls}__title`}>{content}</div>
         </div>
         <div className={`${prefixCls}__buttons`}>
-          <Button
-            size="sm"
-            onClick={this.handleCancel}
-          >
+          <Button size="sm" onClick={this.handleCancel}>
             {cancelText || locale!.cancel}
           </Button>
           <Button size="sm" theme="primary" onClick={this.handleConfirm}>
