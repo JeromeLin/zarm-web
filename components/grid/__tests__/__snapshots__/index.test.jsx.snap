@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gird renders Row when typeof gutter is array 1`] = `
+<div
+  class="zw-row"
+  style="margin-left:-4px;margin-right:-4px;margin-top:-5px;margin-bottom:5px"
+>
+  <div
+    class="zw-col zw-col-span-12"
+    style="padding-left:4px;padding-right:4px;padding-top:5px;padding-bottom:5px"
+  >
+    col-12
+  </div>
+  <div
+    class="zw-col zw-col-span-12"
+    style="padding-left:4px;padding-right:4px;padding-top:5px;padding-bottom:5px"
+  >
+    col-12
+  </div>
+</div>
+`;
+
+exports[`Gird renders Row when typeof gutter is number 1`] = `
+<div
+  class="zw-row"
+  style="margin-left:-4px;margin-right:-4px"
+>
+  <div
+    class="zw-col zw-col-span-12"
+    style="padding-left:4px;padding-right:4px"
+  >
+    col-12
+  </div>
+  <div
+    class="zw-col zw-col-span-12"
+    style="padding-left:4px;padding-right:4px"
+  >
+    col-12
+  </div>
+</div>
+`;
+
+exports[`Gird renders Row,Col correctly 1`] = `
+<div
+  class="zw-row"
+>
+  <div
+    class="zw-col"
+  >
+    col
+  </div>
+</div>
+`;
