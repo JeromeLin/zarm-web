@@ -1,0 +1,39 @@
+@include b(col) {
+  $grid-cols: 24;
+
+  flex: 0 0 100%;
+  position: relative;
+
+  &-span-0 {
+    display: none;
+  }
+  @for $span from 1 to $grid-cols {
+    &-span-#{$span} {
+      flex: 0 0 percentage($number: $span/$grid-cols);
+    }
+  }
+
+  @for $offset from 1 to $grid-cols {
+    &-offset-#{$offset} {
+      margin-left: percentage($number: $offset/$grid-cols);
+    }
+  }
+
+  @for $push from 1 to $grid-cols {
+    &-push-#{$push} {
+      left: percentage($number: $push/$grid-cols);
+    }
+  }
+
+  @for $pull from 1 to $grid-cols {
+    &-pull-#{$pull} {
+      right: percentage($number: $pull/$grid-cols);
+    }
+  }
+
+  @for $order from 1 to $grid-cols {
+    &-order-#{$order} {
+      order: $order;
+    }
+  }
+}

@@ -40,7 +40,7 @@ export { default as Tree } from './tree';
 export { default as Transfer } from './transfer';
 export { default as Avatar } from './avatar';
 export { default as Transition } from './transition';
-export { Col, Row } from './grid';
+export { Row, Col } from './grid';
 export { default as CollapseTransition } from './utils/collapseTransition';
 export { default as Portal } from './portal';
 export { default as Badge } from './badge';

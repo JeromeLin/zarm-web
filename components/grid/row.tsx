@@ -1,43 +1,52 @@
-import React, { PureComponent, cloneElement } from 'react';
-import classnames from 'classnames';
+import React from 'react';
+import cls from 'classnames';
 
-type Align = 'top' | 'middle' | 'top';
-type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
+export type RowAlign = 'top' | 'middle' | 'bottom' | 'stretch';
+export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
 
-export interface IProps {
-  gutter?: string | number;
+export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
-  style?: object;
-  className?: string;
-  justify?: Justify;
-  align?: Align;
-  type?: 'flex' | undefined;
+  gutter?: number | [number, number];
+  align?: RowAlign;
+  justify?: RowJustify;
 }
 
-export default class Row extends PureComponent<IProps> {
-  static defaultProps = {
-    prefixCls: 'za-row',
-    gutter: 0,
+export const GutterContext = React.createContext({ gutter: [0, 0] });
+
+export default function Row(props: RowProps) {
+  const {
+    prefixCls = 'zw-row',
+    align,
+    justify,
+    className,
+    style,
+    children,
+  } = props;
+  let { gutter = 0 } = props;
+
+  if (!Array.isArray(gutter)) {
+    gutter = [gutter, 0];
+  }
+
+  const x = gutter[0] / 2;
+  const y = gutter[1] / 2;
+
+  const innerStyle = {
+    ...(x > 0 ? { marginLeft: -x, marginRight: -x } : {}),
+    ...(y > 0 ? { marginTop: -y, marginBottom: y } : {}),
+    ...style,
   };
 
-  render() {
-    const { gutter, prefixCls, style, className, children, justify, align, type } = this.props;
-    const rowStyle = gutter ? { marginLeft: -gutter / 2, marginRight: -gutter / 2 } : {};
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--flex`]: type === 'flex',
-      [`${prefixCls}--flex-${justify}`]: justify,
-      [`${prefixCls}--flex-${align}`]: align,
-    });
+  const clsName = cls(prefixCls, className, {
+    [`${prefixCls}--${align}`]: align,
+    [`${prefixCls}--${justify}`]: justify,
+  });
 
-    return (
-      <div className={cls} style={{ ...style, ...rowStyle }}>
-        {
-          React.Children.map(children, (element: React.ReactElement<any>, index) => cloneElement(element, {
-            gutter,
-            key: index,
-          }))
-        }
-      </div>
-    );
-  }
+  return (
+    <div className={clsName} style={innerStyle}>
+      <GutterContext.Provider value={{ gutter }}>
+        {children}
+      </GutterContext.Provider>
+    </div>
+  );
 }
