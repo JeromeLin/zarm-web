@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import Popper from 'zarm/lib/popper';
+import { Popper } from 'zarm';
 import Button from '../button';
-import PropsType from './PropsType';
-import Icon from '../Icon';
+import PopconfirmProps from './PropsType';
+import Icon from '../icon';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const noop = () => { };
 
-class Popconfirm extends Component<PropsType, any> {
+interface PopconfirmStates {
+  visible: boolean;
+}
+
+class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
   static defaultProps = {
     prefixCls: 'zw-popconfirm',
     className: null,
@@ -20,17 +24,32 @@ class Popconfirm extends Component<PropsType, any> {
     hasArrow: true,
   };
 
-  private popperRef: React.RefObject<any> = React.createRef();
+  state = {
+    visible: false,
+  };
 
-
-  constructor(props) {
-    super(props);
-    this.state = {};
+  static getDerivedStateFromProps(props: PopconfirmProps, state: PopconfirmStates) {
+    if ('show' in props && props.trigger === 'manual') {
+      return {
+        ...state,
+        visible: props.show,
+      };
+    }
+    return null;
   }
 
+  private isManual = (): boolean => {
+    const { trigger } = this.props;
+    return trigger === 'manual';
+  };
+
+  private onVisibleChange = (visible: boolean): void | boolean => {
+    if (visible === this.state.visible) return false;
+    this.setState({ visible });
+  };
 
   private handleClose = (): void => {
-    this.popperRef.current.handleClose();
+    !this.isManual() && this.setState({ visible: false });
   };
 
   private handleCancel = (): void => {
@@ -48,6 +67,7 @@ class Popconfirm extends Component<PropsType, any> {
   render() {
     const { children, content, cancelText, okText, locale, icon, ...others } = this.props;
     const { prefixCls } = this.props;
+    const { visible } = this.state;
 
     const popContent: React.ReactNode = (
       <>
@@ -68,9 +88,10 @@ class Popconfirm extends Component<PropsType, any> {
 
     return (
       <Popper
-        ref={this.popperRef}
         content={popContent}
         {...others}
+        visible={visible}
+        onVisibleChange={this.onVisibleChange}
       >
         {children}
       </Popper>
