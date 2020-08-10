@@ -1,6 +1,3 @@
-import { Popper } from 'zarm';
+import Popover from './Popover';
 
-Popper.defaultProps.prefixCls = 'zw-popover';
-Popper.defaultProps.hasArrow = true;
-
-export default Popper;
+export default Popover;

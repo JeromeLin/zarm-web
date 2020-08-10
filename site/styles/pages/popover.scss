@@ -1,7 +1,22 @@
-.markdown {
-  .popover-block {
-    margin: 3px;
-    width: 60px;
-    padding: 0;
+.popover-page {
+  .zw-button {
+    margin-right: 8px;
+  }
+
+  // 显示方向
+  .direction-demo {
+    .zw-button {
+      width: 80px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+  }
+
+  @at-root {
+    .zw-popover__content {
+      p {
+        margin: 0;
+      }
+    }
   }
 }

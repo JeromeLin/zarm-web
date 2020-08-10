@@ -1,56 +1,67 @@
 @include b(popover) {
-  padding: 6px 12px;
+  padding: 10px 12px;
   background: #fff;
   transform: translateX(-50%) rotate(45deg);
-  font-size: 12px;
-  border-radius: 3px;
-  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
-  z-index: 103;
-  @include b(popover__arrow) {
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 3px 6px -4px rgba(0, 0, 0, .12),
+    0 6px 16px 0 rgba(0, 0, 0, .08),
+    0 9px 28px 8px rgba(0, 0, 0, .05);
+  z-index: var(--zindex-popover);
+
+  @include e(arrow) {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    transform: translateX(-50%) rotate(45deg);
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
   }
 
   &[x-placement^=top] {
     margin-bottom: 10px;
 
-    @include b(popover__arrow) {
-      bottom: -4px;
+    @include b(popover) {
+      @include e(arrow) {
+        bottom: -4px;
+        border-width: 4px 4px 0;
+        border-top-color: #fff;
+      }
     }
   }
 
   &[x-placement^=right] {
     margin-left: 10px;
 
-    @include b(popover__arrow) {
-      left: 0;
+    @include b(popover) {
+      @include e(arrow) {
+        left: -4px;
+        border-width: 4px 4px 4px 0;
+        border-right-color: #fff;
+      }
     }
   }
 
   &[x-placement^=bottom] {
     margin-top: 10px;
 
-    @include b(popover__arrow) {
-      top: -4px;
+    @include b(popover) {
+      @include e(arrow) {
+        top: -4px;
+        border-width: 0 4px 4px;
+        border-bottom-color: #fff;
+      }
     }
   }
 
   &[x-placement^=left] {
     margin-right: 10px;
 
-    @include b(popover__arrow) {
-      right: -8px;
+    @include b(popover) {
+      @include e(arrow) {
+        right: -4px;
+        border-width: 4px 0 4px 4px;
+        border-left-color: #fff;
+      }
     }
-  }
-
-  &-show {
-    display: block;
-  }
-
-  &-radius {
-    border-radius: 2px;
   }
 }

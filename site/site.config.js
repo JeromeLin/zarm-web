@@ -224,7 +224,7 @@ module.exports = {
       {
         key: 'popover',
         name: '气泡卡片',
-        module: () => import('@/components/popover/popover.md'),
+        module: () => import('@/components/popover/demo.md'),
         style: true,
       },
       // {
