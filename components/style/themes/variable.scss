@@ -34,7 +34,7 @@
   --radius-circle: 50%;
 
   // 水平间距
-  --padding-h-xs: 8px;
+  --padding-h-xs: 4px;
   --padding-h-sm: 12px;
   --padding-h-md: 16px;
   --padding-h-lg: 20px;
@@ -56,11 +56,12 @@
 
   // 堆叠顺序
   --zindex-mask: 1000;
-  --zindex-popup: 1500;
-  --zindex-tooltip: 1500;
-  --zindex-dropdown: 1101;
-  --zindex-notification: 1400;
-  --zindex-message: 1400;
+  --zindex-popup: 1000;
+  --zindex-message: 1100;
+  --zindex-notification: 1100;
+  --zindex-dropdown: 1500;
+  --zindex-popover: 1500;
+  --zindex-tooltip: 1700;
 
   // 透明度
   --opacity-disabled: 0.5;
