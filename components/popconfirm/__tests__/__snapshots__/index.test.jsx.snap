@@ -2,47 +2,13 @@
 
 exports[`PopConfirm renders PopConfirm correctly 1`] = `
 <div>
-  <div
-    class="ui-popover"
+  <button
+    class="zw-button zw-button--default zw-button--md zw-button--radius"
+    type="button"
   >
-    <div
-      class="ui-popover-content ui-popover-content-radius"
-    >
-      <div>
-        确认删除吗
-        <div
-          class="ui-popover-actions"
-        >
-          <button
-            class="zw-button zw-button--default zw-button--md zw-button--radius"
-            type="button"
-          >
-            <span>
-              取消
-            </span>
-          </button>
-          <button
-            class="zw-button zw-button--primary zw-button--md zw-button--radius"
-            type="button"
-          >
-            <span>
-              确定
-            </span>
-          </button>
-        </div>
-      </div>
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <button
-      class="zw-button zw-button--default zw-button--md zw-button--radius"
-      type="button"
-    >
-      <span>
-        Delete
-      </span>
-    </button>
-  </div>
+    <span>
+      Delete
+    </span>
+  </button>
 </div>
 `;

@@ -227,12 +227,12 @@ module.exports = {
         module: () => import('@/components/popover/demo.md'),
         style: true,
       },
-      // {
-      //   key: 'popconfirm',
-      //   name: '气泡确认框',
-      //   module: () => import('@/components/popconfirm/popconfirm.md'),
-      //   style: false,
-      // },
+      {
+        key: 'popconfirm',
+        name: '气泡确认框',
+        module: () => import('@/components/popconfirm/demo.md'),
+        style: true,
+      },
     ],
     navigation: [
       {
