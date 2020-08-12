@@ -10,7 +10,7 @@ import { Button, Popover } from 'zarm-web';
 
 ReactDOM.render(
   <Popover content="This is the content of the popover.">
-    <Button theme="primary" size="xs">Hover me</Button>
+    <Button theme="primary">Hover me</Button>
   </Popover>
 , mountNode);
 ```
@@ -49,10 +49,10 @@ import { Button, Popover } from 'zarm-web';
 ReactDOM.render(
   <>
     <Popover direction="topLeft" content="This is the content of the popover.">
-      <Button size="xs">跟随方向边缘对齐</Button>
+      <Button>跟随方向边缘对齐</Button>
     </Popover>
-    <Popover trigger="click" direction="topLeft" arrowPointAtCenter={true} content="This is the content of the popover.">
-      <Button size="xs">箭头指向中心</Button>
+    <Popover arrowPointAtCenter direction="topLeft" content="This is the content of the popover.">
+      <Button>箭头指向中心</Button>
     </Popover>
   </>
 , mountNode);
@@ -71,57 +71,57 @@ ReactDOM.render(
   <div className="direction-demo">
     <div style={{ marginLeft: 80 }}>
       <Popover direction="topLeft" content="topLeft text">
-        <Button size="xs">TL</Button>
+        <Button>TL</Button>
       </Popover>
 
       <Popover direction="top" content="top text">
-        <Button size="xs">Top</Button>
+        <Button>Top</Button>
       </Popover>
 
       <Popover direction="topRight" content="topRight text">
-        <Button size="xs">TR</Button>
+        <Button>TR</Button>
       </Popover>
     </div>
 
     <div style={{ width: 80, float: 'left', clear: 'both' }}>
       <Popover direction="leftTop" content="leftTop text">
-        <Button size="xs">LT</Button>
+        <Button>LT</Button>
       </Popover>
 
       <Popover direction="left" content="left text">
-        <Button size="xs">Left</Button>
+        <Button>Left</Button>
       </Popover>
 
       <Popover direction="leftBottom" content="leftBottom text">
-        <Button size="xs">LB</Button>
+        <Button>LB</Button>
       </Popover>
     </div>
 
     <div style={{ width: 80, marginLeft: 80 * 4 + 20 }}>
       <Popover direction="rightTop" content="rightTop text">
-        <Button size="xs">RT</Button>
+        <Button>RT</Button>
       </Popover>
 
       <Popover direction="right" content="right text">
-        <Button size="xs">Right</Button>
+        <Button>Right</Button>
       </Popover>
 
       <Popover direction="rightBottom" content="rightBottom text">
-        <Button size="xs">RB</Button>
+        <Button>RB</Button>
       </Popover>
     </div>
 
     <div style={{ marginLeft: 80, clear: 'both' }}>
       <Popover direction="bottomLeft" content="bottomLeft text">
-        <Button size="xs">BL</Button>
+        <Button>BL</Button>
       </Popover>
 
       <Popover direction="bottom" content="bottom text">
-        <Button size="xs">Bottom</Button>
+        <Button>Bottom</Button>
       </Popover>
 
       <Popover direction="bottomRight" content="bottomRight text">
-        <Button size="xs">BR</Button>
+        <Button>BR</Button>
       </Popover>
     </div>
   </div>
@@ -142,15 +142,15 @@ const Demo = () => {
 
   return (
     <Popover
-      visible={visible}
       trigger="click"
+      visible={visible}
+      onVisibleChange={setVisible}
       content={
         <>
           <p>This is the content of the popover. </p>
           <p>You can click <Button size="sm" onClick={() => setVisible(false)}>here</Button> to close this popover.</p>
         </>
       }
-      onVisibleChange={setVisible}
     >
       <Button theme="primary">Click me</Button>
     </Popover>
@@ -169,3 +169,6 @@ ReactDOM.render(<Demo />, mountNode);
 | content | ReactNode | - | 显示内容 |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
 | trigger | string | 'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` 鼠标经过触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发 |
+| arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
+| visible | boolean | false | 是否显示 |
+| onVisibleChange | (visible?: boolean) => void | () => {} | 显示/隐藏 气泡卡片触发的事件 |
