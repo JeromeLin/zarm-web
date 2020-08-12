@@ -41,8 +41,8 @@
   --padding-h-xl: 24px;
 
   // 垂直间距
-  --padding-v-xs: 6px;
-  --padding-v-sm: 8px;
+  --padding-v-xs: 4px;
+  --padding-v-sm: 6px;
   --padding-v-md: 12px;
   --padding-v-lg: 16px;
   --padding-v-xl: 18px;
@@ -320,8 +320,8 @@
   --tooltip-font-size: 12px;
   --tooltip-color: var(--color-text-inverse);
   --tooltip-arrow-size: 4px;
-  --tooltip-padding-v: var(--padding-v-xs);
-  --tooltip-padding-h: var(--padding-h-xs);
+  --tooltip-padding-v: var(--padding-v-sm);
+  --tooltip-padding-h: var(--padding-h-sm);
 
   // Input
   --input-focus-shadow: 0 0 0 2px rgba(0, 188, 113, 0.2);
