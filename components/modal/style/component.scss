@@ -6,7 +6,7 @@ $zarmWebPrefixCls: zw-modal;
 @include b(modal) {
   @include e(content) {
     background-color: #fff;
-    min-width: 380px;
+    min-width: 540px;
     overflow: hidden;
     box-shadow: 0 3px 10px 7px rgba(0, 0, 0, 0.15);
     max-height: 100%;
@@ -115,7 +115,7 @@ $zarmWebPrefixCls: zw-modal;
 
   @include e(button-warpper) {
     text-align: right;
-    padding: 20px 0 16px;
+    padding: 16px 0 16px;
 
     button {
       margin-left: 12px;
@@ -139,7 +139,7 @@ $zarmWebPrefixCls: zw-modal;
     }
 
     .#{$zarmWebPrefixCls}__button-warpper {
-      padding: 20px 0 24px;
+      padding: 16px 0 24px;
     }
   }
 }

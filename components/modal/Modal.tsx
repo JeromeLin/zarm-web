@@ -44,7 +44,7 @@ class Modal extends Component<ModalProps, StateIF> {
     closable: true,
     maskClosable: true,
     mask: true,
-    centered: false,
+    centered: true,
     autoFocus: true,
     disableEscapeKeyDown: false,
     disableEnterKeyDown: false,
