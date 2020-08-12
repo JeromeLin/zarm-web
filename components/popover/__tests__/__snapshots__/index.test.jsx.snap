@@ -1,132 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Popover behaves correctly when clicking on mask 1`] = `
-<div>
-  <div
-    class="ui-popover"
-  >
-    <div
-      class="ui-popover-mask"
-    />
-    <div
-      class="ui-popover-content ui-popover-content-radius"
-    >
-      确认删除吗?
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <button
-      class="zw-button zw-button--default zw-button--md zw-button--radius"
-      type="button"
-    >
-      <span>
-        Delete
-      </span>
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Popover renders Popover correctly with customized props 1`] = `
-<div>
-  <div
-    class="ui-popover customized"
-  >
-    <div
-      class="ui-popover-content ui-popover-content-radius"
-    >
-      确认删除吗
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <button
-      class="zw-button zw-button--default zw-button--md zw-button--radius"
-      type="button"
-    >
-      <span>
-        Delete
-      </span>
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Popover renders Popover correctly with mask 1`] = `
-<div>
-  <div
-    class="ui-popover"
-  >
-    <div
-      class="ui-popover-mask"
-    />
-    <div
-      class="ui-popover-content ui-popover-content-radius"
-    >
-      确认删除吗?
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <button
-      class="zw-button zw-button--default zw-button--md zw-button--radius"
-      type="button"
-    >
-      <span>
-        Delete
-      </span>
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Popover renders Popover correctly with render props 1`] = `
-<div>
-  <div
-    class="ui-popover"
-  >
-    <div
-      class="ui-popover-content ui-popover-content-radius"
-    >
-      确认删除吗?
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <button
-      class="zw-button zw-button--default zw-button--md zw-button--radius"
-      type="button"
-    >
-      <span>
-        Delete
-      </span>
-    </button>
-  </div>
-</div>
-`;
-
 exports[`Popover renders normal Popover correctly 1`] = `
-<div>
-  <div
-    class="ui-popover"
+<Popover
+  content="确认删除吗"
+  direction="top"
+  hasArrow={true}
+  prefixCls="zw-popover"
+  shape="radius"
+  trigger="hover"
+>
+  <Popper
+    animationDuration={300}
+    animationType="zoomFade"
+    arrowPointAtCenter={false}
+    content="确认删除吗"
+    destroy={true}
+    direction="top"
+    hasArrow={true}
+    mouseEnterDelay={150}
+    mouseLeaveDelay={100}
+    onVisibleChange={[Function]}
+    prefixCls="zw-popover"
+    shape="radius"
+    trigger="hover"
+    visible={false}
   >
-    <div
-      class="ui-popover-content ui-popover-content-radius"
+    <Button
+      ghost={false}
+      htmlType="button"
+      loading={false}
+      onClick={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      prefixCls="zw-button"
+      shape="radius"
+      size="md"
+      theme="default"
     >
-      确认删除吗
-      <span
-        class="ui-popover-arrow"
-      />
-    </div>
-    <button
-      class="zw-button zw-button--default zw-button--md zw-button--radius"
-      type="button"
-    >
-      <span>
-        Delete
-      </span>
-    </button>
-  </div>
-</div>
+      <button
+        className="zw-button zw-button--default zw-button--md zw-button--radius"
+        onClick={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        type="button"
+      >
+        <span>
+          Delete
+        </span>
+      </button>
+    </Button>
+  </Popper>
+</Popover>
 `;
