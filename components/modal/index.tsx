@@ -98,7 +98,6 @@ function AlertMethod(props: AlertProps, isConfirm = false) {
       <Modal
         closable={false}
         visible={visible}
-        style={{ maxWidth: 340 }}
         afterClose={() => {
           if (props.afterClose) {
             props.afterClose();

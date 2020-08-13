@@ -293,10 +293,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```
 // 显示确认框
-Modal.Confirm(ReactNode|options): Promise<boolean>;
+Modal.confirm(ReactNode|options): Promise<boolean>;
 
 // 显示警示框
-Modal.Confirm(ReactNode|options): Promise<void>;
+Modal.confirm(ReactNode|options): Promise<void>;
 
 // 打开通知
 Modal.open(options): { close(): void };

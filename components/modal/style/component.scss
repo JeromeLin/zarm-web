@@ -124,6 +124,11 @@ $zarmWebPrefixCls: zw-modal;
 
   &-alert,
   &-confirm {
+    .#{$zarmWebPrefixCls}__content {
+      min-width: 380px;
+      width: 380px;
+    }
+
     .#{$zarmWebPrefixCls}__header {
       .#{$zarmWebPrefixCls}__close {
         right: 14px;
