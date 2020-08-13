@@ -11,7 +11,7 @@ Array [
     style="-webkit-animation-duration:500ms;animation-duration:500ms"
   />,
   <div
-    class="za-popup__wrapper zw-modal zw-modal--popup zw-modal--rect"
+    class="za-popup__wrapper"
     role="dialog"
     style="-webkit-animation-duration:500ms;animation-duration:500ms"
   >
@@ -36,7 +36,7 @@ Array [
             class="zw-modal__close"
           >
             <i
-              class="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+              class="zw-icon zw-icon--wrong zw-icon--default zw-icon--sm"
               theme="default"
               type="wrong"
             >

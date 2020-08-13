@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, shallow, mount } from 'enzyme';
+import { render, shallow, mount, unmount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ReactTestUtils from 'react-dom/test-utils'; // ES6
+
 import Modal from '../index';
 
 const timer = function (t) {
@@ -88,23 +88,6 @@ describe('Modal', () => {
     expect(wrapper.find('.zw-modal')).toHaveLength(1);
   });
 
-  it('triggers onCancel callback correctly when press esc button', async () => {
-    const onCancel = jest.fn();
-    const wrapper = mount(
-      <Modal
-        visible
-        title="标题"
-        mask
-        onCancel={onCancel}
-      >
-        我是一个模态框
-      </Modal>,
-    );
-    wrapper.find('.zw-modal__content').simulate('keydown', { keyCode: 27 });
-    expect(onCancel).toHaveBeenCalled();
-  });
-
-
   it('trigger onKeyPress correctly', async () => {
     const onKeyPress = jest.fn();
     const wrapper = mount(
@@ -117,7 +100,7 @@ describe('Modal', () => {
       </Modal>,
     );
     const f = wrapper.find('.zw-modal__content');
-    f.simulate('keypress', { keyCode: 13 });
+    f.simulate('keypress', { key: 'Enter', keyCode: 13, which: 13 });
     expect(onKeyPress).toHaveBeenCalled();
   });
 
@@ -133,7 +116,7 @@ describe('Modal', () => {
       </Modal>,
     );
     const f = wrapper.find('.zw-modal__content');
-    f.simulate('keydown', { keyCode: 13 });
+    f.simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
     expect(onKeyDown).toHaveBeenCalled();
   });
 
@@ -142,20 +125,39 @@ describe('Modal', () => {
     const onKeyPress = jest.fn();
     const wrapper = mount(
       <Modal
-        visible
+        visible={false}
         title="标题"
         onOk={onOk}
+        disableEnterKeyDown={false}
         onKeyPress={onKeyPress}
       >
         我是一个模态框
       </Modal>,
     );
-    const f = wrapper.find('.zw-modal__content');
-    f.simulate('focus');
+    wrapper.setProps({ visible: true });
     await timer(100);
-    f.simulate('keypress', { keyCode: 13 });
+    const f = wrapper.find('.zw-modal__content');
+    f.simulate('keypress', { nativeEvent: { keyCode: 13 } });
     expect(onKeyPress).toHaveBeenCalled();
     expect(onOk).toHaveBeenCalled();
+  });
+
+  it('triggers onCancel callback correctly when press esc button', async () => {
+    const onCancel = jest.fn();
+    const wrapper = mount(
+      <Modal
+        visible={false}
+        title="标题"
+        mask
+        onCancel={onCancel}
+      >
+        我是一个模态框
+      </Modal>,
+    );
+    wrapper.setProps({ visible: true });
+    await timer(100);
+    wrapper.find('.zw-modal__content').simulate('keydown', { nativeEvent: { keyCode: 27 } });
+    expect(onCancel).toHaveBeenCalled();
   });
 });
 

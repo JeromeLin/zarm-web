@@ -115,7 +115,7 @@ $zarmWebPrefixCls: zw-modal;
 
   @include e(button-warpper) {
     text-align: right;
-    padding: 16px 0 16px;
+    padding: 16px 0;
 
     button {
       margin-left: 12px;
