@@ -9,8 +9,10 @@
     top: #{$radix}px;
   }
 
-  &:not(&--disabled):active::after {
-    width: calc((#{$height} - #{$radix} * 2px) * 1.33);
+  &:active {
+    &:after {
+      width: calc((#{$height} - #{$radix} * 2px) * 1.33);
+    }
   }
 
   @include e(text) {
@@ -47,6 +49,14 @@
       left: 100%;
       transform: translateX(-100%);
       margin-left: calc(-1 * (#{$radix}px + 2px));
+    }
+  }
+
+  @include m(disabled) {
+    &:active {
+      &:after {
+        width: calc(#{$height} - #{$radix} * 2px);
+      }
     }
   }
 }

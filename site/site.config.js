@@ -221,12 +221,12 @@ module.exports = {
         module: () => import('@/components/notification/demo.md'),
         style: true,
       },
-      // {
-      //   key: 'popover',
-      //   name: '气泡卡片',
-      //   module: () => import('@/components/popover/popover.md'),
-      //   style: false,
-      // },
+      {
+        key: 'popover',
+        name: '气泡卡片',
+        module: () => import('@/components/popover/demo.md'),
+        style: true,
+      },
       {
         key: 'popconfirm',
         name: '气泡确认框',

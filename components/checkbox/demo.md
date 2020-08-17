@@ -70,7 +70,7 @@ const Demo = () => {
         <Checkbox disabled={disabled}>禁用的状态</Checkbox>
       </div>
       <div className="rows">
-        <Checkbox checked disabled={disabled}>选中并禁用的状态</Checkbox>
+        <Checkbox defaultChecked disabled={disabled}>选中并禁用的状态</Checkbox>
       </div>
       <div className="rows">
         <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>

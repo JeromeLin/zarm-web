@@ -34,15 +34,15 @@
   --radius-circle: 50%;
 
   // 水平间距
-  --padding-h-xs: 8px;
-  --padding-h-sm: 12px;
+  --padding-h-xs: 4px;
+  --padding-h-sm: 8px;
   --padding-h-md: 16px;
   --padding-h-lg: 20px;
   --padding-h-xl: 24px;
 
   // 垂直间距
-  --padding-v-xs: 6px;
-  --padding-v-sm: 8px;
+  --padding-v-xs: 4px;
+  --padding-v-sm: 6px;
   --padding-v-md: 12px;
   --padding-v-lg: 16px;
   --padding-v-xl: 18px;
@@ -56,11 +56,12 @@
 
   // 堆叠顺序
   --zindex-mask: 1000;
-  --zindex-popup: 1500;
-  --zindex-tooltip: 1500;
-  --zindex-dropdown: 1101;
-  --zindex-notification: 1400;
-  --zindex-message: 1400;
+  --zindex-popup: 1100;
+  --zindex-dropdown: 1200;
+  --zindex-popover: 1200;
+  --zindex-message: 1600;
+  --zindex-notification: 1600;
+  --zindex-tooltip: 1700;
 
   // 透明度
   --opacity-disabled: 0.5;
@@ -319,8 +320,8 @@
   --tooltip-font-size: 12px;
   --tooltip-color: var(--color-text-inverse);
   --tooltip-arrow-size: 4px;
-  --tooltip-padding-v: var(--padding-v-xs);
-  --tooltip-padding-h: var(--padding-h-xs);
+  --tooltip-padding-v: var(--padding-v-sm);
+  --tooltip-padding-h: var(--padding-h-sm);
 
   // Input
   --input-focus-shadow: 0 0 0 2px rgba(0, 188, 113, 0.2);
