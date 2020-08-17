@@ -1,4 +1,5 @@
 {
   "root": true,
-  "extends": "stylelint-config-za"
+  "extends": "stylelint-config-za",
+  "ignoreFiles": ["*.md","*.js","*.jsx","*.ts","*.tsx","*.html"]
 }

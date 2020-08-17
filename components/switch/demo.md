@@ -7,26 +7,21 @@
 这是一个最基本的开关
 
 ```jsx
+import { useState } from 'react';
 import { Switch } from 'zarm-web';
 
-class Demo extends React.Component {
-  state = {
-    checked: false,
-  };
+const Demo = () => {
+  const [checked, setChecked] = useState(false);
 
-  render() {
-    return (
-      <>
-        <Switch
-          checked={this.state.checked}
-          onChange={(checked) => {
-            this.setState({ checked });
-            console.log(checked);
-          }}
-        />
-      </>
-    )
-  }
+  return (
+    <Switch
+      checked={checked}
+      onChange={(checked) => {
+        setChecked(checked);
+        console.log(checked);
+      }}
+    />
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -100,28 +95,22 @@ ReactDOM.render(
 ```jsx
 import { Switch } from 'zarm-web';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="rows">
-          <Switch loading />
-        </div>
-        <div className="rows">
-          <Switch loading defaultChecked />
-        </div>
-        <div className="rows">
-          <Switch loading size="sm" />
-        </div>
-        <div className="rows">
-          <Switch loading defaultChecked size="sm"  />
-        </div>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <div className="rows">
+      <Switch loading />
+    </div>
+    <div className="rows">
+      <Switch loading defaultChecked />
+    </div>
+    <div className="rows">
+      <Switch loading size="sm" />
+    </div>
+    <div className="rows">
+      <Switch loading defaultChecked size="sm"  />
+    </div>
+  </>
+, mountNode);
 ```
 
 

@@ -1,0 +1,29 @@
+@include b(row) {
+  display: flex;
+  flex-wrap: wrap;
+
+  $align-list: (
+    top: flex-start,
+    middle: center,
+    bottom: flex-end,
+  );
+
+  $justify-list: (
+    end: flex-end,
+    center: center,
+    space-between: space-between,
+    space-around: space-around,
+  );
+
+  @each $align, $val in $align-list {
+    &--#{$align} {
+      align-items: $val;
+    }
+  }
+
+  @each $justify, $val in $justify-list {
+    &--#{$justify} {
+      justify-content: $val;
+    }
+  }
+}
