@@ -70,13 +70,9 @@ ReactDOM.render(
     search
     placeholder="输入关键字"
     onSearchChange={(value) => {
-      console.log(value)
     }}
     onChange={(data) => {
       console.log(data);
-      // this.setState({
-      //   selectValue: data.value
-      // });
     }}>>
     <Option value="a">我是A</Option>
     <Option value="b">我是B</Option>
@@ -123,7 +119,7 @@ class SelectSearchDemo extends React.Component {
               this.setState({
                 selectValue: data.value
               }, () => {
-                console.log(this.state.selectValue);
+                console.log('ahh',this.state.selectValue);
               });
             }}>>
             {this.state.options.map(elem => <Option key={elem} value={elem}>{elem}</Option>)}
@@ -136,58 +132,6 @@ class SelectSearchDemo extends React.Component {
 ReactDOM.render(<SelectSearchDemo />, mountNode);
 
 ```
-
-## 多选
-
-支持输入框多选。
-
-添加`multiple`属性，可支持多选。
-
-```jsx
-
-import { Select } from 'zarm-web';
-const { Option } = Select;
-
-class SelectSearchDemo extends React.Component {
-  state = {
-    selectValue: ['a'],
-    b:'123',
-    c:'456'
-  };
-  render() {
-    const { selectValue, options} = this.state;
-      return (
-        <>
-          <Select
-            multiple
-            value={this.state.selectValue}
-            style={{ width: 200 }}
-            onChange={(selectedArr,selectedData) => {
-              console.log(selectedArr, selectedData);
-              this.setState({
-                selectValue: selectedArr
-              });
-            }}>
-            <Select.Option value="a">{[this.state.c,this.state.b]}</Select.Option>
-            <Select.Option value="b">我是B</Select.Option>
-            <Select.Option value="c">我是C</Select.Option>
-            <Select.Option value="d">我是D</Select.Option>
-             <Select.Option value="e">我是E</Select.Option>
-            <Select.Option value="f">我是F</Select.Option>
-            <Select.Option value="g">我是G</Select.Option>
-            <Select.Option value="h">我是H</Select.Option>
-            <Select.Option value="">我的value是空字符串</Select.Option>
-          </Select>
-        </>
-    );
-  }
-}
-
-ReactDOM.render(<SelectSearchDemo />, mountNode);
-
-```
-
-
 
 ## 多选并支持查找
 
@@ -227,6 +171,47 @@ class SelectSearchDemo extends React.Component {
             <Select.Option value="f">我是F</Select.Option>
             <Select.Option value="g">我是G</Select.Option>
             <Select.Option value="h">我是H</Select.Option>
+            <Select.Option value="">我的value是空字符串</Select.Option>
+          </Select>
+        </>
+    );
+  }
+}
+
+ReactDOM.render(<SelectSearchDemo />, mountNode);
+
+```
+
+## 多选并支持查找
+
+支持输入框搜索选项。
+
+添加`multiple` 和`search`属性，可支持多选和查找。
+
+```jsx
+import { Select } from 'zarm-web';
+const { Option } = Select;
+
+class SelectSearchDemo extends React.Component {
+  state = {
+    selectValue: ['a'],
+  };
+  render() {
+    const { selectValue, options} = this.state;
+      return (
+        <>
+          <Select
+            tagTheme="info"
+            search
+            multiple
+            value={this.state.selectValue}
+            style={{ width: 280 }}
+            onChange={(selectedArr) => {
+              console.log(selectedArr);
+              this.setState({
+                selectValue: selectedArr
+              });
+            }}>
           </Select>
         </>
     );
