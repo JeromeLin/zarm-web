@@ -109,7 +109,8 @@ const Demo = () => (
       <Button>hover</Button>
     </Popconfirm>
   </div>
-)
+);
+
 ReactDOM.render(<Demo />, mountNode);
 
 ```
