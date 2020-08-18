@@ -26,7 +26,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
 
   static visibleList = new Set();
 
-  triggerPointRef = React.createRef<HTMLSpanElement>();
+  triggerPointRef = React.createRef<HTMLDivElement>();
 
   popperContentRef = React.createRef<HTMLDivElement>();
 
@@ -55,10 +55,11 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
     const { current } = this.triggerPointRef;
     const { current: popperContentCurrent } = this.popperContentRef;
     if (visible) {
-      if (current && popperContentCurrent) {
-        if (popperContentCurrent.contains(e.target as Node) || current.contains(e.target as Node)) {
-          return;
-        }
+      if (current && current.contains(e.target as Node)) {
+        return;
+      }
+      if (popperContentCurrent && popperContentCurrent.contains(e.target as Node)) {
+        return;
       }
       this.onVisibleChange(false);
     }
@@ -179,15 +180,18 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
         content={dropdownContent}
       >
         <span
-          ref={this.triggerPointRef}
           style={{ display: 'inline-block' }}
-          onClick={this.onClick}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          onContextMenu={this.onContextMenu}
-          onKeyDown={this.onKeydown}
         >
-          {children}
+          <div
+            ref={this.triggerPointRef}
+            onClick={this.onClick}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onContextMenu={this.onContextMenu}
+            onKeyDown={this.onKeydown}
+          >
+            {children}
+          </div>
         </span>
       </Popper>
     );
