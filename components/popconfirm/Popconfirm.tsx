@@ -29,10 +29,10 @@ class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
   };
 
   static getDerivedStateFromProps(props: PopconfirmProps, state: PopconfirmStates) {
-    if ('show' in props && props.trigger === 'manual') {
+    if ('visible' in props && props.trigger === 'manual') {
       return {
         ...state,
-        visible: props.show,
+        visible: props.visible,
       };
     }
     return null;
