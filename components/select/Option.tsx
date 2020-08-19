@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
+import { Checkbox } from 'zarm-web';
 import Icon from '../icon';
 import { OptionProps } from './PropsType';
 
@@ -25,15 +26,8 @@ class Option extends Component<OptionProps, any> {
         onClick={(e) => onChange && onChange(e)}
         onDoubleClick={onDoubleClick}
       >
-        {children}
-        {showCheckIcon && checked && (
-          <Icon
-            className="checked-icon"
-            theme="primary"
-            type="right"
-            size="sm"
-          />
-        )}
+        {showCheckIcon && <Checkbox checked={checked}>{children}</Checkbox>}
+        {!showCheckIcon && children}
       </li>
     );
   }

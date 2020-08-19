@@ -327,7 +327,6 @@ class Select extends Component<PropsType, StateProps> {
         Array.isArray(optionChildren) ? valueText = optionChildren.join() : valueText = optionChildren;
       }
     }
-
     const children: Array<ReactNode> = [];
     const filterCondition = (option, optionIndex: number) => {
       if (search && searchValue) {
@@ -340,7 +339,7 @@ class Select extends Component<PropsType, StateProps> {
       children.push(
         <Option
           key={elem.key || elem.value}
-          showCheckIcon={checked}
+          showCheckIcon={multiple}
           {...elem.props}
           checked={checked}
           onChange={(e) => {
