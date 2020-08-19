@@ -21,7 +21,7 @@ ReactDOM.render(
     <Option value="jack">Jack</Option>
     <Option value="lucy">Lucy</Option>
   </Select>
-  <Select style={{ width: 120 }} radius={true} defaultValue="lily">
+  <Select style={{ width: 120 }} size="lg" defaultValue="lily">
     <Option value="jack">Jack</Option>
     <Option value="lucy">Lucy</Option>
     <Option value="lily">Lily</Option>
@@ -141,14 +141,13 @@ ReactDOM.render(<SelectSearchDemo />, mountNode);
 
 ```jsx
 import { Select } from 'zarm-web';
-const { Option } = Select;
 
 class SelectSearchDemo extends React.Component {
   state = {
     selectValue: ['a'],
   };
   render() {
-    const { selectValue, options} = this.state;
+    const { selectValue} = this.state;
       return (
         <>
           <Select
@@ -156,7 +155,7 @@ class SelectSearchDemo extends React.Component {
             search
             multiple
             value={this.state.selectValue}
-            style={{ width: 200 }}
+            style={{ width: 280 }}
             onChange={(selectedArr) => {
               console.log(selectedArr);
               this.setState({
@@ -182,27 +181,32 @@ ReactDOM.render(<SelectSearchDemo />, mountNode);
 
 ```
 
-## 多选并支持查找
+## 注意事项
 
-支持输入框搜索选项。
+当`multiple`属性为`true`时, `value`需要为`Array<string>`类型
+当`multiple`属性为`true`时, `onChange`的回调参数为`(selectedValueArr,selectedValueData)`,数据类型如下：
 
-添加`multiple` 和`search`属性，可支持多选和查找。
+`type selectedValueArr = Array<string>;`
+`type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;`
+
+onChange回调的参数中的`value`值类型始终为`string`;
+当`multiple`属性为`true`时,若参数`value`中存在目前`option`列表中不存在的元素：则不会显示该元素，但也不会删除该元素。例如：
+
+以上代码中`'i am not the one'`并不存在于Select.Option中，当你执行`onChange`操作的时候`selectedArr`中依然会保留改字段,但并不会显示在输入框内。
 
 ```jsx
 import { Select } from 'zarm-web';
-const { Option } = Select;
 
 class SelectSearchDemo extends React.Component {
   state = {
-    selectValue: ['a'],
+    selectValue: ['i am not the one'],
   };
   render() {
-    const { selectValue, options} = this.state;
+    const { selectValue} = this.state;
       return (
         <>
           <Select
             tagTheme="info"
-            search
             multiple
             value={this.state.selectValue}
             style={{ width: 280 }}
@@ -212,6 +216,15 @@ class SelectSearchDemo extends React.Component {
                 selectValue: selectedArr
               });
             }}>
+            <Select.Option value="a">我是A</Select.Option>
+            <Select.Option value="b">我是B</Select.Option>
+            <Select.Option value="c">我是C</Select.Option>
+            <Select.Option value="d">我是D</Select.Option>
+            <Select.Option value="e">我是E</Select.Option>
+            <Select.Option value="f">我是F</Select.Option>
+            <Select.Option value="g">我是G</Select.Option>
+            <Select.Option value="h">我是H</Select.Option>
+            <Select.Option value="">我的value是空字符串</Select.Option>
           </Select>
         </>
     );
@@ -221,47 +234,6 @@ class SelectSearchDemo extends React.Component {
 ReactDOM.render(<SelectSearchDemo />, mountNode);
 
 ```
-
-## 注意事项
-
-+ 当`multiple`属性为`true`时, `value`需要为`Array<string>`类型
-+ 当`multiple`属性为`true`时, `onChange`的回调参数为`(selectedValueArr,selectedValueData)`,数据类型如下：
-
-```jsx
-
-type selectedValueArr = Array<string>;
-type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
-
-```
-
-+ onChange回调的参数中的`value`值类型始终为`string`;
-+ 当`multiple`属性为`true`时,若参数`value`中存在目前`option`列表中不存在的元素：则不会显示该元素，但也不会删除该元素。例如：
-
-
-```jsx
-  // this.state = {
-  //     selectValue: ['i am not the one']
-  // }
-  // render() {
-  //   return (
-  //       <Select
-  //         multiple
-  //         value={this.state.selectValue}
-  //         onChange={(selectedArr) => {
-  //           console.log(selectedArr);
-  //           this.setState({
-  //             selectValue: selectedArr
-  //           });
-  //         }}>
-  //         <Select.Option value="a">我是A</Select.Option>
-  //         <Select.Option value="b">我是B</Select.Option>
-  //       </Select>
-  //   )
-  // }
-```
-
-以上代码中`'i am not the one'`并不存在于Select.Option中，当你执行`onChange`操作的时候`selectedArr`中依然会保留改字段,但并不会显示在输入框内。
-
 
 
 ## API
@@ -273,10 +245,8 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 |---------- |-------- |---------- |-------------  |-------- |
 | value     | 选中值   | string, string[] |   -            |    -   |
 | defaultValue     | 默认选中值   | string  |   - |     1  |
-| radius     | 是否圆角   | boolean   | — | false  |
 | search     | 是否支持搜索   | boolean    | — | false   |
 | disabled  | 禁用    | -   | -  | -   |
-| isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 | tagTheme     | 多选状态下的tag标签主题   | string   | — | default  |
 | size | Select组件的大小 | string | xs,sm,lg,xl | - |
 
@@ -293,7 +263,6 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 |---------- |-------- |---------- |-------------  |-------- |
 | value     | 选中值   | string |   -            |    -   |
 | defaultValue     | 默认选中值   | string  |   - |     1  |
-| radius     | 是否圆角   | boolean   | — | false  |
 | disabled  | 禁用    | -   | -  | -   |
 | isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 
