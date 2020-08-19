@@ -32,9 +32,13 @@ class InputWithTags extends React.Component<BasicProps> {
     compositionData: null,
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.debouncedOnInputChange = debounce(this.onInput, 300, false);
+    this.debouncedOnInputChange = () => {
+      if (!this.isComposition) {
+        debounce(this.onInput, 300, false);
+      }
+    }
   }
 
   onInput = (value) => {
@@ -97,7 +101,10 @@ class InputWithTags extends React.Component<BasicProps> {
     this.setState({
       compositionData: null,
     });
-    this.onInput(value);
+    const isChrome = navigator.userAgent.indexOf('Chrome') > -1;
+    if (!this.isComposition && isChrome) {
+      this.onInput(value);
+    }
   }
 
   render() {
@@ -107,7 +114,7 @@ class InputWithTags extends React.Component<BasicProps> {
     let showPlaceHolder = false;
     if (
       (((search || remoteSearch) && !isFocus && value === null) ||
-      (typeof value === 'string' && value.length === 0)) ||
+        (typeof value === 'string' && value.length === 0)) ||
       !value
       && !compositionData
     ) {
