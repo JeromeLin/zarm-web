@@ -303,7 +303,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-# Menu
+<h3>Menu</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -322,7 +322,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onOpenChange | (openKeys: string[]) => void | noop | 子菜单收起展开时候的回调函数 |
 
 
-# Menu.Item
+<h3>Menu.Item</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -336,7 +336,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onDoubleClick | (e: React.MouseEvent, itemKey: string) => void | noop | 双击菜单后的回调函数 |
 
 
-# Menu.SubMenu
+<h3>Menu.SubMenu</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -347,7 +347,7 @@ ReactDOM.render(<Demo />, mountNode);
 | key | string | - | 子菜单的唯一性key值 |
 
 
-# Menu.ItemGroup
+<h3>Menu.ItemGroup</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -355,7 +355,7 @@ ReactDOM.render(<Demo />, mountNode);
 | style | CSSProperties | - | 自定义菜单组样式 |
 | title | string | - | 菜单组名称  |
 
-# Menu.Divider
+<h3>Menu.Divider</h3>
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

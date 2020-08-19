@@ -328,7 +328,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onClick | (e?: SyntheticEvent<any>) => void | - | 点击时触发的回调函数 |
 | onClose | (e?: SyntheticEvent<any>) => void | - | 关闭时触发的回调函数 |
 
-# 静态方法
+<h3>静态方法</h3>
 
 ```jsx
 // 打开通知
