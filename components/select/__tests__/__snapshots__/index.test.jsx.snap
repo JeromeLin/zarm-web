@@ -1,0 +1,1455 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Select 1`] = `
+<ForwardRef(forwardRef)>
+  <LocaleReceiver
+    forwardedRef={null}
+  >
+    <Select
+      locale={
+        Object {
+          "noMatch": "没有找到数据",
+          "placeholder": "请选择",
+          "searchPlaceholder": "输入关键字",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onSearchChange={[Function]}
+      prefixCls="zw-select"
+      radius={true}
+    >
+      <Dropdown
+        content={
+          <Menu
+            defaultOpenKeys={Array []}
+            defaultSelectedKeys={Array []}
+            inlineCollapsed={false}
+            inlineIndent={12}
+            mode="inline"
+            onOpenChange={[Function]}
+            onSelect={[Function]}
+            prefixCls="zw-menu"
+            style={
+              Object {
+                "maxHeight": 250,
+                "overflow": "auto",
+              }
+            }
+            theme="light"
+          >
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="a"
+            >
+              我是A
+            </Option>
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="b"
+            >
+              我是B
+            </Option>
+          </Menu>
+        }
+        direction="bottomLeft"
+        disabled={false}
+        onVisibleChange={[Function]}
+        prefixCls="zw-dropdown"
+        shape="radius"
+        trigger="click"
+        visible={false}
+      >
+        <Popper
+          animationDuration={300}
+          animationType="zoomFade"
+          arrowPointAtCenter={false}
+          className="zw-dropdown zw-dropdown--radius"
+          content={
+            <div
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              tabIndex={-1}
+            >
+              <Menu
+                defaultOpenKeys={Array []}
+                defaultSelectedKeys={Array []}
+                inlineCollapsed={false}
+                inlineIndent={12}
+                mode="inline"
+                onOpenChange={[Function]}
+                onSelect={[Function]}
+                prefixCls="zw-menu"
+                style={
+                  Object {
+                    "maxHeight": 250,
+                    "overflow": "auto",
+                  }
+                }
+                theme="light"
+              >
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="a"
+                >
+                  我是A
+                </Option>
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="b"
+                >
+                  我是B
+                </Option>
+              </Menu>
+            </div>
+          }
+          destroy={true}
+          direction="bottomLeft"
+          hasArrow={false}
+          mouseEnterDelay={150}
+          mouseLeaveDelay={100}
+          onVisibleChange={[Function]}
+          prefixCls="za-popper"
+          trigger="manual"
+          visible={false}
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <span
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <InputWithTags
+                active={false}
+                disabled={false}
+                onDeleteTag={[Function]}
+                onSearchChange={[Function]}
+                placeholder="请选择"
+                radius={true}
+                search={false}
+                searchValue=""
+              >
+                <div
+                  className="zw-tag-input-box is-radius"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="value-text"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  />
+                  <span
+                    className="zw-tag-input__div-placeholder"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    请选择
+                  </span>
+                  <Icon
+                    className="arrow-bottom"
+                    prefixCls="zw-icon"
+                    size="md"
+                    style={
+                      Object {
+                        "fontSize": "initial",
+                      }
+                    }
+                    theme="default"
+                    type="arrow-bottom"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                      size="md"
+                      style={
+                        Object {
+                          "fontSize": "initial",
+                        }
+                      }
+                      theme="default"
+                      type="arrow-bottom"
+                    >
+                      <Icon
+                        className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                        prefixCls="zw-icon"
+                        size="md"
+                        style={
+                          Object {
+                            "fontSize": "initial",
+                          }
+                        }
+                        theme="default"
+                        type="arrow-bottom"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                          size="md"
+                          style={
+                            Object {
+                              "fontSize": "initial",
+                            }
+                          }
+                          theme="default"
+                          type="arrow-bottom"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#arrow-bottom"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputWithTags>
+            </span>
+          </div>
+        </Popper>
+      </Dropdown>
+    </Select>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Select Select disabled 1`] = `
+<ForwardRef(forwardRef)
+  disabled={true}
+>
+  <LocaleReceiver
+    disabled={true}
+    forwardedRef={null}
+  >
+    <Select
+      disabled={true}
+      locale={
+        Object {
+          "noMatch": "没有找到数据",
+          "placeholder": "请选择",
+          "searchPlaceholder": "输入关键字",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onSearchChange={[Function]}
+      prefixCls="zw-select"
+      radius={true}
+    >
+      <Dropdown
+        content={
+          <Menu
+            defaultOpenKeys={Array []}
+            defaultSelectedKeys={Array []}
+            inlineCollapsed={false}
+            inlineIndent={12}
+            mode="inline"
+            onOpenChange={[Function]}
+            onSelect={[Function]}
+            prefixCls="zw-menu"
+            style={
+              Object {
+                "maxHeight": 250,
+                "overflow": "auto",
+              }
+            }
+            theme="light"
+          >
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="a"
+            >
+              我是A
+            </Option>
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="b"
+            >
+              我是B
+            </Option>
+          </Menu>
+        }
+        direction="bottomLeft"
+        disabled={true}
+        onVisibleChange={[Function]}
+        prefixCls="zw-dropdown"
+        shape="radius"
+        trigger="click"
+        visible={false}
+      >
+        <Popper
+          animationDuration={300}
+          animationType="zoomFade"
+          arrowPointAtCenter={false}
+          className="zw-dropdown zw-dropdown--radius"
+          content={
+            <div
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              tabIndex={-1}
+            >
+              <Menu
+                defaultOpenKeys={Array []}
+                defaultSelectedKeys={Array []}
+                inlineCollapsed={false}
+                inlineIndent={12}
+                mode="inline"
+                onOpenChange={[Function]}
+                onSelect={[Function]}
+                prefixCls="zw-menu"
+                style={
+                  Object {
+                    "maxHeight": 250,
+                    "overflow": "auto",
+                  }
+                }
+                theme="light"
+              >
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="a"
+                >
+                  我是A
+                </Option>
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="b"
+                >
+                  我是B
+                </Option>
+              </Menu>
+            </div>
+          }
+          destroy={true}
+          direction="bottomLeft"
+          hasArrow={false}
+          mouseEnterDelay={150}
+          mouseLeaveDelay={100}
+          onVisibleChange={[Function]}
+          prefixCls="za-popper"
+          trigger="manual"
+          visible={false}
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <span
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <InputWithTags
+                active={false}
+                disabled={true}
+                onDeleteTag={[Function]}
+                onSearchChange={[Function]}
+                placeholder="请选择"
+                radius={true}
+                search={false}
+                searchValue=""
+              >
+                <div
+                  className="zw-tag-input-box is-radius is-disabled"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="value-text"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  />
+                  <span
+                    className="zw-tag-input__div-placeholder"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    请选择
+                  </span>
+                  <Icon
+                    className="arrow-bottom"
+                    prefixCls="zw-icon"
+                    size="md"
+                    style={
+                      Object {
+                        "fontSize": "initial",
+                      }
+                    }
+                    theme="default"
+                    type="arrow-bottom"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                      size="md"
+                      style={
+                        Object {
+                          "fontSize": "initial",
+                        }
+                      }
+                      theme="default"
+                      type="arrow-bottom"
+                    >
+                      <Icon
+                        className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                        prefixCls="zw-icon"
+                        size="md"
+                        style={
+                          Object {
+                            "fontSize": "initial",
+                          }
+                        }
+                        theme="default"
+                        type="arrow-bottom"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                          size="md"
+                          style={
+                            Object {
+                              "fontSize": "initial",
+                            }
+                          }
+                          theme="default"
+                          type="arrow-bottom"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#arrow-bottom"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputWithTags>
+            </span>
+          </div>
+        </Popper>
+      </Dropdown>
+    </Select>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Select multiple Select init value 1`] = `
+<ForwardRef(forwardRef)
+  defaultValue={
+    Array [
+      "jack",
+      "lucy",
+    ]
+  }
+  multiple={true}
+>
+  <LocaleReceiver
+    defaultValue={
+      Array [
+        "jack",
+        "lucy",
+      ]
+    }
+    forwardedRef={null}
+    multiple={true}
+  >
+    <Select
+      defaultValue={
+        Array [
+          "jack",
+          "lucy",
+        ]
+      }
+      locale={
+        Object {
+          "noMatch": "没有找到数据",
+          "placeholder": "请选择",
+          "searchPlaceholder": "输入关键字",
+        }
+      }
+      localeCode="zh-cn"
+      multiple={true}
+      onChange={[Function]}
+      onSearchChange={[Function]}
+      prefixCls="zw-select"
+      radius={true}
+    >
+      <Dropdown
+        content={
+          <Menu
+            defaultOpenKeys={Array []}
+            defaultSelectedKeys={Array []}
+            inlineCollapsed={false}
+            inlineIndent={12}
+            mode="inline"
+            onOpenChange={[Function]}
+            onSelect={[Function]}
+            prefixCls="zw-menu"
+            style={
+              Object {
+                "maxHeight": 250,
+                "overflow": "auto",
+              }
+            }
+            theme="light"
+          >
+            <Option
+              checked={true}
+              isDisabled={false}
+              onChange={[Function]}
+              showCheckIcon={true}
+              value="jack"
+            >
+              Jack
+            </Option>
+            <Option
+              checked={true}
+              isDisabled={false}
+              onChange={[Function]}
+              showCheckIcon={true}
+              value="lucy"
+            >
+              Lucy
+            </Option>
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              showCheckIcon={true}
+              value="lily"
+            >
+              Lily
+            </Option>
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              showCheckIcon={true}
+              value="john"
+            >
+              John
+            </Option>
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              showCheckIcon={true}
+              value="honey"
+            >
+              Honey
+            </Option>
+          </Menu>
+        }
+        direction="bottomLeft"
+        disabled={false}
+        onVisibleChange={[Function]}
+        prefixCls="zw-dropdown"
+        shape="radius"
+        trigger="click"
+        visible={false}
+      >
+        <Popper
+          animationDuration={300}
+          animationType="zoomFade"
+          arrowPointAtCenter={false}
+          className="zw-dropdown zw-dropdown--radius"
+          content={
+            <div
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              tabIndex={-1}
+            >
+              <Menu
+                defaultOpenKeys={Array []}
+                defaultSelectedKeys={Array []}
+                inlineCollapsed={false}
+                inlineIndent={12}
+                mode="inline"
+                onOpenChange={[Function]}
+                onSelect={[Function]}
+                prefixCls="zw-menu"
+                style={
+                  Object {
+                    "maxHeight": 250,
+                    "overflow": "auto",
+                  }
+                }
+                theme="light"
+              >
+                <Option
+                  checked={true}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  showCheckIcon={true}
+                  value="jack"
+                >
+                  Jack
+                </Option>
+                <Option
+                  checked={true}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  showCheckIcon={true}
+                  value="lucy"
+                >
+                  Lucy
+                </Option>
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  showCheckIcon={true}
+                  value="lily"
+                >
+                  Lily
+                </Option>
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  showCheckIcon={true}
+                  value="john"
+                >
+                  John
+                </Option>
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  showCheckIcon={true}
+                  value="honey"
+                >
+                  Honey
+                </Option>
+              </Menu>
+            </div>
+          }
+          destroy={true}
+          direction="bottomLeft"
+          hasArrow={false}
+          mouseEnterDelay={150}
+          mouseLeaveDelay={100}
+          onVisibleChange={[Function]}
+          prefixCls="za-popper"
+          trigger="manual"
+          visible={false}
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <span
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <InputWithTags
+                active={false}
+                disabled={false}
+                onDeleteTag={[Function]}
+                onSearchChange={[Function]}
+                placeholder="请选择"
+                radius={true}
+                search={false}
+                searchValue=""
+                value={
+                  Array [
+                    Object {
+                      "key": "jack",
+                      "value": "Jack",
+                    },
+                    Object {
+                      "key": "lucy",
+                      "value": "Lucy",
+                    },
+                  ]
+                }
+              >
+                <div
+                  className="zw-tag-input-box is-radius"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="zw-tag-list-box"
+                    key="jack"
+                  >
+                    <Tag
+                      bordered={true}
+                      closable={true}
+                      key="jack"
+                      onClick={[Function]}
+                      onClose={[Function]}
+                      prefixCls="zw-tag"
+                      style={
+                        Object {
+                          "height": 22,
+                          "lineHeight": "22px",
+                          "maxWidth": 100,
+                        }
+                      }
+                    >
+                      <div
+                        className="zw-tag"
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "height": 22,
+                            "lineHeight": "22px",
+                            "maxWidth": 100,
+                          }
+                        }
+                      >
+                        Jack
+                        <Icon
+                          onClick={[Function]}
+                          prefixCls="zw-icon"
+                          size="md"
+                          theme="default"
+                          type="wrong"
+                          viewBox="0 0 32 32"
+                        >
+                          <Iconfont
+                            className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                            onClick={[Function]}
+                            size="md"
+                            theme="default"
+                            type="wrong"
+                          >
+                            <Icon
+                              className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                              onClick={[Function]}
+                              prefixCls="zw-icon"
+                              size="md"
+                              theme="default"
+                              type="wrong"
+                              viewBox="0 0 32 32"
+                            >
+                              <i
+                                className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                                onClick={[Function]}
+                                size="md"
+                                theme="default"
+                                type="wrong"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  viewBox="0 0 32 32"
+                                  width="1em"
+                                >
+                                  <use
+                                    xlinkHref="#wrong"
+                                  />
+                                </svg>
+                              </i>
+                            </Icon>
+                          </Iconfont>
+                        </Icon>
+                      </div>
+                    </Tag>
+                  </div>
+                  <div
+                    className="zw-tag-list-box"
+                    key="lucy"
+                  >
+                    <Tag
+                      bordered={true}
+                      closable={true}
+                      key="lucy"
+                      onClick={[Function]}
+                      onClose={[Function]}
+                      prefixCls="zw-tag"
+                      style={
+                        Object {
+                          "height": 22,
+                          "lineHeight": "22px",
+                          "maxWidth": 100,
+                        }
+                      }
+                    >
+                      <div
+                        className="zw-tag"
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "height": 22,
+                            "lineHeight": "22px",
+                            "maxWidth": 100,
+                          }
+                        }
+                      >
+                        Lucy
+                        <Icon
+                          onClick={[Function]}
+                          prefixCls="zw-icon"
+                          size="md"
+                          theme="default"
+                          type="wrong"
+                          viewBox="0 0 32 32"
+                        >
+                          <Iconfont
+                            className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                            onClick={[Function]}
+                            size="md"
+                            theme="default"
+                            type="wrong"
+                          >
+                            <Icon
+                              className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                              onClick={[Function]}
+                              prefixCls="zw-icon"
+                              size="md"
+                              theme="default"
+                              type="wrong"
+                              viewBox="0 0 32 32"
+                            >
+                              <i
+                                className="zw-icon zw-icon--wrong zw-icon--default zw-icon--md"
+                                onClick={[Function]}
+                                size="md"
+                                theme="default"
+                                type="wrong"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  viewBox="0 0 32 32"
+                                  width="1em"
+                                >
+                                  <use
+                                    xlinkHref="#wrong"
+                                  />
+                                </svg>
+                              </i>
+                            </Icon>
+                          </Iconfont>
+                        </Icon>
+                      </div>
+                    </Tag>
+                  </div>
+                  <Icon
+                    className="arrow-bottom"
+                    prefixCls="zw-icon"
+                    size="md"
+                    style={
+                      Object {
+                        "fontSize": "initial",
+                      }
+                    }
+                    theme="default"
+                    type="arrow-bottom"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                      size="md"
+                      style={
+                        Object {
+                          "fontSize": "initial",
+                        }
+                      }
+                      theme="default"
+                      type="arrow-bottom"
+                    >
+                      <Icon
+                        className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                        prefixCls="zw-icon"
+                        size="md"
+                        style={
+                          Object {
+                            "fontSize": "initial",
+                          }
+                        }
+                        theme="default"
+                        type="arrow-bottom"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                          size="md"
+                          style={
+                            Object {
+                              "fontSize": "initial",
+                            }
+                          }
+                          theme="default"
+                          type="arrow-bottom"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#arrow-bottom"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputWithTags>
+            </span>
+          </div>
+        </Popper>
+      </Dropdown>
+    </Select>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Select render defaultValue correctly  1`] = `
+<ForwardRef(forwardRef)
+  defaultValue="lily"
+>
+  <LocaleReceiver
+    defaultValue="lily"
+    forwardedRef={null}
+  >
+    <Select
+      defaultValue="lily"
+      locale={
+        Object {
+          "noMatch": "没有找到数据",
+          "placeholder": "请选择",
+          "searchPlaceholder": "输入关键字",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onSearchChange={[Function]}
+      prefixCls="zw-select"
+      radius={true}
+    >
+      <Dropdown
+        content={
+          <Menu
+            defaultOpenKeys={Array []}
+            defaultSelectedKeys={Array []}
+            inlineCollapsed={false}
+            inlineIndent={12}
+            mode="inline"
+            onOpenChange={[Function]}
+            onSelect={[Function]}
+            prefixCls="zw-menu"
+            style={
+              Object {
+                "maxHeight": 250,
+                "overflow": "auto",
+              }
+            }
+            theme="light"
+          >
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="jack"
+            >
+              Jack
+            </Option>
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="lucy"
+            >
+              Lucy
+            </Option>
+            <Option
+              checked={true}
+              isDisabled={false}
+              onChange={[Function]}
+              value="lily"
+            >
+              Lily
+            </Option>
+          </Menu>
+        }
+        direction="bottomLeft"
+        disabled={false}
+        onVisibleChange={[Function]}
+        prefixCls="zw-dropdown"
+        shape="radius"
+        trigger="click"
+        visible={false}
+      >
+        <Popper
+          animationDuration={300}
+          animationType="zoomFade"
+          arrowPointAtCenter={false}
+          className="zw-dropdown zw-dropdown--radius"
+          content={
+            <div
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              tabIndex={-1}
+            >
+              <Menu
+                defaultOpenKeys={Array []}
+                defaultSelectedKeys={Array []}
+                inlineCollapsed={false}
+                inlineIndent={12}
+                mode="inline"
+                onOpenChange={[Function]}
+                onSelect={[Function]}
+                prefixCls="zw-menu"
+                style={
+                  Object {
+                    "maxHeight": 250,
+                    "overflow": "auto",
+                  }
+                }
+                theme="light"
+              >
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="jack"
+                >
+                  Jack
+                </Option>
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="lucy"
+                >
+                  Lucy
+                </Option>
+                <Option
+                  checked={true}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="lily"
+                >
+                  Lily
+                </Option>
+              </Menu>
+            </div>
+          }
+          destroy={true}
+          direction="bottomLeft"
+          hasArrow={false}
+          mouseEnterDelay={150}
+          mouseLeaveDelay={100}
+          onVisibleChange={[Function]}
+          prefixCls="za-popper"
+          trigger="manual"
+          visible={false}
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <span
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <InputWithTags
+                active={false}
+                disabled={false}
+                onDeleteTag={[Function]}
+                onSearchChange={[Function]}
+                placeholder="请选择"
+                radius={true}
+                search={false}
+                searchValue=""
+                value="Lily"
+              >
+                <div
+                  className="zw-tag-input-box is-radius"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="value-text"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    Lily
+                  </div>
+                  <Icon
+                    className="arrow-bottom"
+                    prefixCls="zw-icon"
+                    size="md"
+                    style={
+                      Object {
+                        "fontSize": "initial",
+                      }
+                    }
+                    theme="default"
+                    type="arrow-bottom"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                      size="md"
+                      style={
+                        Object {
+                          "fontSize": "initial",
+                        }
+                      }
+                      theme="default"
+                      type="arrow-bottom"
+                    >
+                      <Icon
+                        className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                        prefixCls="zw-icon"
+                        size="md"
+                        style={
+                          Object {
+                            "fontSize": "initial",
+                          }
+                        }
+                        theme="default"
+                        type="arrow-bottom"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                          size="md"
+                          style={
+                            Object {
+                              "fontSize": "initial",
+                            }
+                          }
+                          theme="default"
+                          type="arrow-bottom"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#arrow-bottom"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputWithTags>
+            </span>
+          </div>
+        </Popper>
+      </Dropdown>
+    </Select>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`Select toggleOpen Select 1`] = `
+<ForwardRef(forwardRef)>
+  <LocaleReceiver
+    forwardedRef={null}
+  >
+    <Select
+      locale={
+        Object {
+          "noMatch": "没有找到数据",
+          "placeholder": "请选择",
+          "searchPlaceholder": "输入关键字",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={[Function]}
+      onSearchChange={[Function]}
+      prefixCls="zw-select"
+      radius={true}
+    >
+      <Dropdown
+        content={
+          <Menu
+            defaultOpenKeys={Array []}
+            defaultSelectedKeys={Array []}
+            inlineCollapsed={false}
+            inlineIndent={12}
+            mode="inline"
+            onOpenChange={[Function]}
+            onSelect={[Function]}
+            prefixCls="zw-menu"
+            style={
+              Object {
+                "maxHeight": 250,
+                "overflow": "auto",
+              }
+            }
+            theme="light"
+          >
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="a"
+            >
+              我是A
+            </Option>
+            <Option
+              checked={false}
+              isDisabled={false}
+              onChange={[Function]}
+              value="b"
+            >
+              我是B
+            </Option>
+          </Menu>
+        }
+        direction="bottomLeft"
+        disabled={false}
+        onVisibleChange={[Function]}
+        prefixCls="zw-dropdown"
+        shape="radius"
+        trigger="click"
+        visible={false}
+      >
+        <Popper
+          animationDuration={300}
+          animationType="zoomFade"
+          arrowPointAtCenter={false}
+          className="zw-dropdown zw-dropdown--radius"
+          content={
+            <div
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              tabIndex={-1}
+            >
+              <Menu
+                defaultOpenKeys={Array []}
+                defaultSelectedKeys={Array []}
+                inlineCollapsed={false}
+                inlineIndent={12}
+                mode="inline"
+                onOpenChange={[Function]}
+                onSelect={[Function]}
+                prefixCls="zw-menu"
+                style={
+                  Object {
+                    "maxHeight": 250,
+                    "overflow": "auto",
+                  }
+                }
+                theme="light"
+              >
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="a"
+                >
+                  我是A
+                </Option>
+                <Option
+                  checked={false}
+                  isDisabled={false}
+                  onChange={[Function]}
+                  value="b"
+                >
+                  我是B
+                </Option>
+              </Menu>
+            </div>
+          }
+          destroy={true}
+          direction="bottomLeft"
+          hasArrow={false}
+          mouseEnterDelay={150}
+          mouseLeaveDelay={100}
+          onVisibleChange={[Function]}
+          prefixCls="za-popper"
+          trigger="manual"
+          visible={false}
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <span
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <InputWithTags
+                active={false}
+                disabled={false}
+                onDeleteTag={[Function]}
+                onSearchChange={[Function]}
+                placeholder="请选择"
+                radius={true}
+                search={false}
+                searchValue=""
+              >
+                <div
+                  className="zw-tag-input-box is-radius"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="value-text"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  />
+                  <span
+                    className="zw-tag-input__div-placeholder"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    请选择
+                  </span>
+                  <Icon
+                    className="arrow-bottom"
+                    prefixCls="zw-icon"
+                    size="md"
+                    style={
+                      Object {
+                        "fontSize": "initial",
+                      }
+                    }
+                    theme="default"
+                    type="arrow-bottom"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                      size="md"
+                      style={
+                        Object {
+                          "fontSize": "initial",
+                        }
+                      }
+                      theme="default"
+                      type="arrow-bottom"
+                    >
+                      <Icon
+                        className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                        prefixCls="zw-icon"
+                        size="md"
+                        style={
+                          Object {
+                            "fontSize": "initial",
+                          }
+                        }
+                        theme="default"
+                        type="arrow-bottom"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="zw-icon arrow-bottom zw-icon--arrow-bottom zw-icon--default zw-icon--md"
+                          size="md"
+                          style={
+                            Object {
+                              "fontSize": "initial",
+                            }
+                          }
+                          theme="default"
+                          type="arrow-bottom"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#arrow-bottom"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputWithTags>
+            </span>
+          </div>
+        </Popper>
+      </Dropdown>
+    </Select>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;

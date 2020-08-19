@@ -179,10 +179,10 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
         onVisibleChange={this.onVisibleChange}
         content={dropdownContent}
       >
-        <span
+        <div
           style={{ display: 'inline-block' }}
         >
-          <div
+          <span
             ref={this.triggerPointRef}
             onClick={this.onClick}
             onMouseEnter={this.onMouseEnter}
@@ -191,8 +191,8 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
             onKeyDown={this.onKeydown}
           >
             {children}
-          </div>
-        </span>
+          </span>
+        </div>
       </Popper>
     );
   }

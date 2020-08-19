@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
-import { Checkbox } from 'zarm-web';
-import Icon from '../icon';
+import Checkbox from '../checkbox';
 import { OptionProps } from './PropsType';
 
 class Option extends Component<OptionProps, any> {
