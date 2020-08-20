@@ -26,7 +26,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
 
   static visibleList = new Set();
 
-  triggerPointRef = React.createRef<HTMLDivElement>();
+  triggerPointRef = React.createRef<HTMLSpanElement>();
 
   popperContentRef = React.createRef<HTMLDivElement>();
 
