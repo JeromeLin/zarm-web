@@ -350,6 +350,7 @@ type selectedValueData = Array<{value:string; text:ReactNode; index:number}>;
 | isDisabled  | 是否禁用    | boolean   | true, false   | false   |
 | tagTheme     | 多选状态下的tag标签主题   | string   | — | default  |
 | size | Select组件的大小 | string | xs,sm,lg,xl | - |
+| debounceTime | 键入搜索值的防抖延迟时间(毫秒) | number | - | 300 |
 
 ### Select Events
 | 事件名称 | 说明 | 回调参数 |

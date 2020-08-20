@@ -58,5 +58,6 @@ export default interface PropsType {
   locale?: {
     [propName: string]: any,
   };
+  debounceTime?: number;
   getPopupContainer?(): HTMLElement;
 }
