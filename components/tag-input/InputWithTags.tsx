@@ -92,7 +92,7 @@ class InputWithTags extends React.Component<BasicProps> {
     });
   }
 
-  onCompositionEnd = (value) => {
+  onCompositionEnd = () => {
     this.isComposition = false;
     this.setState({
       compositionData: null,
@@ -189,7 +189,7 @@ class InputWithTags extends React.Component<BasicProps> {
           onBlur={this.onBlur}
           onCompositionStart={this.onCompositionStart}
           onCompositionUpdate={this.onCompositionUpdate}
-          onCompositionEnd={(e) => { this.onCompositionEnd((e.target as HTMLDivElement).textContent); }}
+          onCompositionEnd={this.onCompositionEnd}
           ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
         />
       }
