@@ -19,7 +19,6 @@ export default interface Props {
   value?: React.ReactNode | Array<ValueArray>;
   tagTheme?: themeType;
   size?: 'sm' | 'xs' | 'xl' | 'lg';
-  debounceTime?: number;
   onDeleteTag?(e: MouseEvent, key: any, value: React.ReactNode, index: number): void;
   onSearchChange(e: React.UIEvent<HTMLDivElement>): void;
 }

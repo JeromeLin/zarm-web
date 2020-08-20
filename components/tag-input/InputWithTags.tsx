@@ -34,8 +34,7 @@ class InputWithTags extends React.Component<BasicProps> {
 
   constructor(props) {
     super(props);
-    const { debounceTime } = this.props;
-    this.debouncedOnInputChange = debounce(this.onInput, debounceTime || 300, false);
+    this.debouncedOnInputChange = debounce(this.onInput, 300, false);
   }
 
   onInput = (value) => {
@@ -102,7 +101,7 @@ class InputWithTags extends React.Component<BasicProps> {
 
   render() {
     const { search, remoteSearch, value, searchValue, placeholder, active, onDeleteTag, onSearchChange, size, tagTheme,
-      radius, disabled, debounceTime, ...others } = this.props;
+      radius, disabled, ...others } = this.props;
     const { compositionData, isFocus } = this.state;
     let showPlaceHolder = false;
     if (

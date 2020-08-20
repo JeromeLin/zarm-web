@@ -375,7 +375,6 @@ class Select extends Component<PropsType, StateProps> {
       clearable,
       triggerProps,
       className,
-      debounceTime,
     } = props;
 
     const triggerBoxStyle: React.CSSProperties = { ...style, position: 'relative' };
@@ -465,7 +464,6 @@ class Select extends Component<PropsType, StateProps> {
           placeholder={placeholderText}
           onDeleteTag={this.onDeleteTag}
           onSearchChange={this.onSearchValueChange}
-          debounceTime={debounceTime}
         />
         {
           clearable && !disabled && !multiple && <Icon
