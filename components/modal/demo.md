@@ -16,6 +16,7 @@ function Demo(){
         <Button theme="primary" onClick={() => setVisible(true)}>展示模态框</Button>
         <Modal
           style={{width:400}}
+          centered={false}
           destroy
           visible={visible}
           closable

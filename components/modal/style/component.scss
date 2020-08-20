@@ -1,6 +1,6 @@
 @import '../../style/core/index';
 
-$zarmPrefixCls: za-popup;
+$zarmPrefixCls: zw-popup;
 $zarmWebPrefixCls: zw-modal;
 
 @include b(modal) {
@@ -33,8 +33,10 @@ $zarmWebPrefixCls: zw-modal;
 
   @include m(popup) {
     @include m(top) {
-      align-items: baseline;
-      padding: 100px 0;
+      .#{$zarmPrefixCls}__wrapper {
+        align-items: baseline;
+        padding: 100px 0;
+      }
 
       .#{$zarmPrefixCls}--center {
         margin: unset;

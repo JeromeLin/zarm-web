@@ -22,8 +22,6 @@ Array [
     >
       <div
         class="zw-modal__content"
-        data-show="true"
-        data-visible="true"
         tabindex="-1"
       >
         <div

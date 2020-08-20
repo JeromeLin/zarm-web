@@ -246,8 +246,6 @@ class Modal extends Component<ModalProps, StateIF> {
           onKeyDown={this.onKeyDown}
           onKeyPress={this.onKeyPress}
           ref={this.setModalContainer}
-          data-show={show}
-          data-visible={visible}
           style={style}
         >
           {showHeader && <ModalHeader closable={closable} onCancel={onCancel}>{title}</ModalHeader>}
