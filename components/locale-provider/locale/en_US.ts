@@ -70,4 +70,8 @@ export default {
     confirm: 'Ok',
     clear: 'Clear',
   },
+  Modal: {
+    okText: 'Ok',
+    cancelText: 'Cancel',
+  },
 };

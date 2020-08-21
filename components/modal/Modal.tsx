@@ -8,6 +8,7 @@ import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import { Alert, Confirm, ModalStatic, ModalConfigProps } from './index';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 interface StateIF {
   isShow: boolean;
@@ -38,9 +39,8 @@ class Modal extends Component<ModalProps, StateIF> {
   static staticTriggerInstanceList: { close: () => any; key?: string | number }[];
 
   static defaultProps = {
+    locale: {},
     prefixCls: 'zw-modal',
-    okText: '确定',
-    cancelText: '取消',
     closable: true,
     maskClosable: true,
     mask: true,
@@ -204,6 +204,7 @@ class Modal extends Component<ModalProps, StateIF> {
 
   render() {
     const {
+      locale,
       prefixCls,
       children,
       title,
@@ -221,6 +222,9 @@ class Modal extends Component<ModalProps, StateIF> {
       bodyStyle,
       ...others
     } = this.props;
+    const localOkText = okText || locale.okText;
+    const localeCancelText = cancelText || locale.cancelText;
+
     const { isShow } = this.state;
     const show = isShow;
     const hasFooter = footer !== null;
@@ -256,8 +260,8 @@ class Modal extends Component<ModalProps, StateIF> {
                 <div className={`${prefixCls}__button-warpper`}>
                   {footer || (
                     <>
-                      <Button onClick={onCancel}>{cancelText}</Button>
-                      <Button theme="primary" onClick={onOk}>{okText}</Button>
+                      <Button onClick={onCancel}>{localeCancelText}</Button>
+                      <Button theme="primary" onClick={onOk}>{localOkText}</Button>
                     </>
                   )}
                 </div>
@@ -273,4 +277,4 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 }
 
-export default Modal;
+export default LocaleReceiver('Modal')(Modal);

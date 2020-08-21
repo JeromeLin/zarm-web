@@ -7,11 +7,28 @@ Modal组件的基础用法。
 
 ```jsx
 import { useState } from 'react';
-import { Modal, Button } from 'zarm-web';
+import { Modal, Button, LocaleProvider } from 'zarm-web';
+
+const localeEN = {
+  locale: 'en',
+  Modal: {
+    okText: 'Ok',
+    cancelText: 'Cancel',
+  }
+}
+
+const localeCN = {
+  locale: 'en',
+  Modal: {
+    okText: '确定',
+    cancelText: '取消',
+  }
+}
 
 function Demo(){
   const [visible, setVisible] = React.useState(false);
   return (
+    <LocaleProvider locale={localeCN}>
      <div className="modal-page">
         <Button theme="primary" onClick={() => setVisible(true)}>展示模态框</Button>
         <Modal
@@ -21,12 +38,13 @@ function Demo(){
           visible={visible}
           closable
           title="这是一个简单的弹框"
-          onOk={()=> alert(1)}
+          onOk={()=> {console.log('you click ok')}}
           onCancel={() => {setVisible(false)}}          
         >
           一系列的描述，告诉用户操作可能会发生什么事情，描述信息字号14px
         </Modal>
       </div>
+    </LocaleProvider>
   )
 }
 

@@ -1,7 +1,9 @@
 import { MouseEventHandler, HTMLAttributes, ReactNode, CSSProperties } from 'react';
 import PopupTypes from 'zarm/lib/popup/PropsType';
+import { Locale } from '../locale-provider/PropsType';
 
 export interface ModalBasicProps extends PopupTypes {
+  locale: Locale['Modal'];
   prefixCls: string;
   okText: ReactNode;                     // 确认按钮的事件
   cancelText: ReactNode;                 // 取消按钮的事件

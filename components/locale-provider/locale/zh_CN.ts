@@ -70,4 +70,8 @@ export default {
     clear: '清除',
     confirm: '确认',
   },
+  Modal: {
+    okText: '确定',
+    cancelText: '取消',
+  },
 };
