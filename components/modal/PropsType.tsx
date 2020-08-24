@@ -5,8 +5,8 @@ import { Locale } from '../locale-provider/PropsType';
 export interface ModalBasicProps extends PopupTypes {
   locale: Locale['Modal'];
   prefixCls: string;
-  okText: ReactNode;                     // 确认按钮的事件
-  cancelText: ReactNode;                 // 取消按钮的事件
+  okText?: ReactNode;                    // 确认按钮的事件
+  cancelText?: ReactNode;                // 取消按钮的事件
   closable: boolean;                     // 是显示关闭按钮
   title?: ReactNode;                     // modal的标题
   bodyStyle?: CSSProperties;             // body的style样式

@@ -8,7 +8,6 @@ import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import { Alert, Confirm, ModalStatic, ModalConfigProps } from './index';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 interface StateIF {
   isShow: boolean;
@@ -277,4 +276,4 @@ class Modal extends Component<ModalProps, StateIF> {
   }
 }
 
-export default LocaleReceiver('Modal')(Modal);
+export default Modal;

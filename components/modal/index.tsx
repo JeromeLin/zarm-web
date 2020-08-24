@@ -1,13 +1,15 @@
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import cn from 'classnames';
-import Modal from './Modal';
+import defaultModal from './Modal';
 import { ModalProps } from './PropsType';
 import Button from '../button';
 import Icon from '../icon';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
+
+const Modal = LocaleReceiver('Modal')(defaultModal);
 
 type ReactNodeFn<T> = (param: T) => ReactNode;
-
 const themeMapIcon = {
   success: {
     icon: 'right-round-fill',
@@ -24,9 +26,7 @@ const themeMapIcon = {
 };
 
 Modal.staticTriggerInstanceList = [];
-
 type ThemeType = 'success' | 'primary' | 'danger' | 'warning';
-
 type AlertProps = MergeProps<typeof Modal, ModalProps> & { content: ReactNode; theme?: ThemeType };
 
 function isObject(obj: any) {
@@ -40,7 +40,7 @@ function isReactNode(props: AlertProps | ReactNode): props is ReactNode {
 function AlertMethod(props: AlertProps, isConfirm = false) {
   const {
     theme,
-    prefixCls = Modal.defaultProps.prefixCls,
+    prefixCls = defaultModal.defaultProps.prefixCls,
     title,
     className,
     content,
@@ -225,7 +225,7 @@ export class ModalStatic {
   render(visible: boolean) {
     const {
       content,
-      prefixCls = Modal.defaultProps.prefixCls,
+      prefixCls = defaultModal.defaultProps.prefixCls,
       key,
       onCancel,
       className,
