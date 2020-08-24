@@ -122,6 +122,7 @@ import { Modal, Button, Input } from 'zarm-web';
 const options = {
   title: 'Modal Title',
   content: 'This is the content of the modal. This is the content of the modal. This is the content of the modal. ',
+  destroy: true,
 };
 
 function Demo(){
