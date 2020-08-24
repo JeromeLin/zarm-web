@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow, mount, unmount } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import Modal from '../index';
@@ -70,7 +70,7 @@ describe('Modal', () => {
   });
 
   it('show modal correctly when visible change', async () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Modal
         visible={false}
         title="你好"
@@ -80,12 +80,7 @@ describe('Modal', () => {
     );
     wrapper.setProps({ visible: true });
     await timer(100);
-    wrapper.setProps({ visible: false });
-    await timer(100);
-    wrapper.setProps({ visible: true });
-    expect(wrapper.find('.zw-modal')).toHaveLength(1);
-    await timer(100);
-    expect(wrapper.find('.zw-modal')).toHaveLength(1);
+    expect(wrapper.find('.zw-modal')).toHaveLength(2);
   });
 
   it('trigger onKeyPress correctly', async () => {
