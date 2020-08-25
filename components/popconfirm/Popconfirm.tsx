@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Popper } from 'zarm';
+import classnames from 'classnames';
+import Popover from '../popover';
 import Button from '../button';
 import PopconfirmProps from './PropsType';
 import Icon from '../icon';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
-
-const noop = () => { };
 
 interface PopconfirmStates {
   visible: boolean;
@@ -14,17 +13,13 @@ interface PopconfirmStates {
 class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
   static defaultProps = {
     prefixCls: 'zw-popconfirm',
-    className: null,
     trigger: 'click',
-    direction: 'bottomLeft',
-    onCancel: noop,
-    icon: <Icon size="sm" type="warning-round" theme="warning" />,
-    onOk: noop,
-    content: null,
+    direction: 'top',
+    icon: <Icon type="warning-round-fill" theme="warning" />,
     hasArrow: true,
   };
 
-  state = {
+  state: PopconfirmStates = {
     visible: false,
   };
 
@@ -54,20 +49,20 @@ class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
 
   private handleCancel = (): void => {
     const { onCancel } = this.props;
-    onCancel();
+    typeof onCancel === 'function' && onCancel();
     this.handleClose();
   };
 
   private handleConfirm = (): void => {
     const { onOk } = this.props;
-    onOk();
+    typeof onOk === 'function' && onOk();
     this.handleClose();
   };
 
   render() {
-    const { children, content, cancelText, okText, locale, icon, ...others } = this.props;
-    const { prefixCls } = this.props;
+    const { prefixCls, className, children, content, cancelText, okText, locale, icon, ...others } = this.props;
     const { visible } = this.state;
+    const cls = classnames(prefixCls, className);
 
     const popContent: React.ReactNode = (
       <>
@@ -87,14 +82,15 @@ class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
     );
 
     return (
-      <Popper
+      <Popover
+        className={cls}
         content={popContent}
         {...others}
         visible={visible}
         onVisibleChange={this.onVisibleChange}
       >
         {children}
-      </Popper>
+      </Popover>
     );
   }
 }

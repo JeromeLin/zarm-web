@@ -1,16 +1,18 @@
-export type direction = 'topLeft' | 'top' | 'topRight' | 'rightTop' | 'right' | 'rightBottom' | 'bottomLeft' | 'bottom' | 'bottomRight' | 'leftTop' | 'left' | 'leftBottom';
+import { Locale } from '../locale-provider/PropsType';
 
-export default interface PropsType {
+export type PopconfirmDirection = 'topLeft' | 'top' | 'topRight' | 'rightTop' | 'right' | 'rightBottom' | 'bottomLeft' | 'bottom' | 'bottomRight' | 'leftTop' | 'left' | 'leftBottom';
+
+export default interface PopconfirmProps {
   prefixCls?: string;
   className?: string;
   visible?: boolean;
   trigger: 'click' | 'hover' | 'focus' | 'manual' | 'contextMenu';
-  direction: direction;
+  direction: PopconfirmDirection;
   onCancel: () => void;
   onOk: () => void;
   okText?: string;
   cancelText?: string;
-  locale?: { [propName: string]: any };
+  locale?: Locale['Popconfirm'];
   content: React.ReactNode;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 }

@@ -1,92 +1,27 @@
 @include b(popconfirm) {
-  padding: 10px 12px;
-  background: #fff;
-  transform: translateX(-50%) rotate(45deg);
-  border-radius: var(--radius-md);
-  box-shadow:
-    0 3px 6px -4px rgba(0, 0, 0, .12),
-    0 6px 16px 0 rgba(0, 0, 0, .08),
-    0 9px 28px 8px rgba(0, 0, 0, .05);
-  z-index: var(--zindex-popover);
+  padding: 16px;
 
-  @include e(arrow) {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-  }
-
-  &[x-placement^=top] {
-    margin-bottom: 10px;
-
-    @include b(popconfirm) {
-      @include e(arrow) {
-        bottom: -4px;
-        border-width: 4px 4px 0;
-        border-top-color: #fff;
-      }
-    }
-  }
-
-  &[x-placement^=right] {
-    margin-left: 10px;
-
-    @include b(popconfirm) {
-      @include e(arrow) {
-        left: -4px;
-        border-width: 4px 4px 4px 0;
-        border-right-color: #fff;
-      }
-    }
-  }
-
-  &[x-placement^=bottom] {
-    margin-top: 10px;
-
-    @include b(popconfirm) {
-      @include e(arrow) {
-        top: -4px;
-        border-width: 0 4px 4px;
-        border-bottom-color: #fff;
-      }
-    }
-  }
-
-  &[x-placement^=left] {
-    margin-right: 10px;
-
-    @include b(popconfirm) {
-      @include e(arrow) {
-        right: -4px;
-        border-width: 4px 0 4px 4px;
-        border-left-color: #fff;
-      }
-    }
-  }
   @include e(message) {
     color: #333;
     margin-bottom: 12px;
     position: relative;
 
-    > {
-      @include b (icon) {
-        position: absolute;
-        top: 4px;
-        font-size: 14px;
-      }
+    @include b(icon) {
+      position: absolute;
+      top: 4px;
+      font-size: 14px;
     }
   }
+
   @include e(title) {
     padding-left: 20px;
   }
+
   @include e(buttons) {
     text-align: right;
 
-    > {
-      @include b (button) {
-        margin-left: 8px;
-      }
+    @include b(button) {
+      margin-left: 8px;
     }
   }
 }

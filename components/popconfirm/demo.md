@@ -1,14 +1,16 @@
-# Popconfirm 文字提示
+# Popconfirm 气泡确认框
+点击元素，弹出气泡式的确认框。
+
+
 
 ## 基本用法
-
-最简单的用法
+最简单的用法。
 
 ```jsx
 import { Popconfirm } from 'zarm-web';
 
 const Demo = () => (
-  <Popconfirm  direction="topLeft"  content="Are you sure delete this task?">
+  <Popconfirm content="Are you sure delete this task?">
     <a href="javacrtip:;">Delete</a>
   </Popconfirm>
 );
@@ -16,65 +18,17 @@ const Demo = () => (
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 受控方式
 
-trigger=manual 通过设置 visible 属性来控制显示隐藏
 
-```jsx
-import { useState } from 'react';
-import { Popconfirm, Button } from 'zarm-web';
-
-const Demo = () => {
-  const [visible, setVisible] = useState(false);
-  const toggle = () => setVisible(!visible);
-  return (
-    <Popconfirm
-      direction="topLeft"
-      content="Are you sure delete this task?"
-      trigger="manual"
-      onOk={toggle}
-      visible={visible}
-    >
-      <Button onClick={toggle}>click</Button>
-    </Popconfirm>
-  );
-};
-
-ReactDOM.render(<Demo />, mountNode);
-
-```
-
-## 自定义按钮文字
-
-使用 okText 和 cancelText 自定义按钮文字。
-
-```jsx
-import { Popconfirm } from 'zarm-web';
-
-const Demo = () => (
-  <Popconfirm
-    direction="topLeft"
-    content="Are you sure delete this task?"
-    okText="确定"
-    cancelText="取消"
-  >
-    <a href="javacrtip:;">Delete</a>
-  </Popconfirm>
-);
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## 自定义icon
-
-使用 icon 自定义提示 icon。
+## 自定义图标
+使用 `icon` 属性指定自定义的图标。
 
 ```jsx
 import { Popconfirm, Icon } from 'zarm-web';
 
 const Demo = () => (
   <Popconfirm
-    icon={<Icon type="wrong-round" theme="danger" />}
+    icon={<Icon type="wrong-round-fill" theme="danger" />}
     direction="topLeft"
     content="Are you sure delete this task?"
   >
@@ -85,39 +39,30 @@ const Demo = () => (
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 触发方式
 
-使用 trigger 来修改触发方式
+
+## 箭头指向
+设置了 `arrowPointAtCenter` 后，箭头将指向目标元素的中心。
 
 ```jsx
-import { Popconfirm, Button } from 'zarm-web';
+import { Button, Popconfirm } from 'zarm-web';
 
-const Demo = () => (
-  <div>
-    <Popconfirm
-      trigger="click"
-      direction="topLeft"
-      content="Are you sure delete this task?"
-    >
-      <Button>click</Button>
+ReactDOM.render(
+  <>
+    <Popconfirm direction="topLeft" content="This is the content of the popconfirm.">
+      <Button>跟随方向边缘对齐</Button>
     </Popconfirm>
-    <Popconfirm
-      trigger="hover"
-      direction="topLeft"
-      content="Are you sure delete this task?"
-    >
-      <Button>hover</Button>
+    <Popconfirm arrowPointAtCenter direction="topLeft" content="This is the content of the popconfirm.">
+      <Button>箭头指向中心</Button>
     </Popconfirm>
-  </div>
-);
-
-ReactDOM.render(<Demo />, mountNode);
-
+  </>
+, mountNode);
 ```
 
-## 位置
 
-支持各种方位, 使用 direction 来设置显示方向
+
+## 方向
+共有十二个方向可供设置。
 
 ```jsx
 import { Popconfirm, Button } from 'zarm-web';
@@ -185,16 +130,17 @@ const Demo = () => (
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+
+
 ## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | content | ReactNode | - | 显示内容 |
-| icon | ReactNode | - | 显示icon |
-| direction | string | top | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
-| trigger | hover/click/focus/manual/contextMenu | click | 触发方式 |
-| visible | boolean | false | 是否显示，`trigger='manual'` 时有效 |
-| okText | string | 确认 | 确认文案 |
-| cancelText | string | 取消 | 取消文案 |
-| onOk | func | click | 点击确认时候触发的事件 |
-| onCancel | func | click | 点击取消时候触发的事件 |
+| icon | ReactNode | &lt;Icon type="warning-round-fill" theme="warning" /&gt; | 图标 |
+| direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
+| arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
+| okText | string | '确认' | 确认按钮文字 |
+| cancelText | string | '取消' | 取消按钮文字 |
+| onOk | () => void | - | 点击确认触发的事件 |
+| onCancel | () => void | - | 点击取消触发的事件 |
