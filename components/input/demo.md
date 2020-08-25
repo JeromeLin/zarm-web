@@ -6,9 +6,21 @@
 ## 基本用法
 
 ```jsx
+import { useState } from 'react';
 import { Input } from 'zarm-web';
 
-ReactDOM.render(<Input placeholder="请输入" />, mountNode);
+const Demo = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <>
+      <Input value={value} onChange={(e) => setValue(e.target.value)} placeholder="请输入" />
+      输入的值为：{value}
+    </>
+  );
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
