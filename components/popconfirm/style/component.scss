@@ -1,0 +1,27 @@
+@include b(popconfirm) {
+  padding: 16px;
+
+  @include e(message) {
+    color: #333;
+    margin-bottom: 12px;
+    position: relative;
+
+    @include b(icon) {
+      position: absolute;
+      top: 4px;
+      font-size: 14px;
+    }
+  }
+
+  @include e(title) {
+    padding-left: 20px;
+  }
+
+  @include e(buttons) {
+    text-align: right;
+
+    @include b(button) {
+      margin-left: 8px;
+    }
+  }
+}

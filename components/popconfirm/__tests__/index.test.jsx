@@ -4,6 +4,17 @@ import toJson from 'enzyme-to-json';
 import Popconfirm from '../index';
 import Button from '../../button';
 
+if (global.document) {
+  document.createRange = () => ({
+    setStart: () => {},
+    setEnd: () => {},
+    commonAncestorContainer: {
+      nodeName: 'BODY',
+      ownerDocument: document,
+    },
+  });
+}
+
 describe('PopConfirm', () => {
   it('renders PopConfirm correctly', () => {
     const wrapper = render(
@@ -13,49 +24,64 @@ describe('PopConfirm', () => {
         </Popconfirm>
       </div>,
     );
-
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('behaves correctly when clicking onOk', () => {
-  //   const onOk = jest.fn();
-  //   const wrapper = mount(
-  //     <div>
-  //       <Popconfirm content="确认删除吗" direction="top" onOk={onOk}>
-  //         Delete
-  //       </Popconfirm>
-  //     </div>,
-  //   );
+  it('check `onVisibleChange` prop', () => {
+    const onVisibleChange = jest.fn();
 
-  //   wrapper.find('.zw-button').at(1).simulate('click');
+    const wrapper = mount(
+      <Popconfirm content="hello" trigger="click" onVisibleChange={onVisibleChange}>
+        <div id="hello">Hello world!</div>
+      </Popconfirm>,
+    );
+    const div = wrapper.find('#hello');
+    div.simulate('click');
+    setTimeout(() => {
+      expect(onVisibleChange).toHaveBeenLastCalledWith(true);
+    });
 
-  //   expect(onOk).toHaveBeenCalled();
-  // });
+    div.simulate('click');
+    setTimeout(() => {
+      expect(onVisibleChange).toHaveBeenLastCalledWith(false);
+    });
+  });
 
-  // it('behaves correctly when clicking onCancel', () => {
-  //   const onCancel = jest.fn();
-  //   const wrapper = mount(
-  //     <div>
-  //       <Popconfirm content="确认删除吗" direction="top" onCancel={onCancel}>
-  //         Delete
-  //       </Popconfirm>
-  //     </div>,
-  //   );
+  it('check onOk function is call', () => {
+    const ok = jest.fn();
+    const wrapper = mount(
+      <Popconfirm
+        content="hello"
+        trigger="click"
+        onOk={ok}
+      >
+        <div id="hello">Hello world!</div>
+      </Popconfirm>,
+    );
+    const hello = wrapper.find('#hello');
+    hello.simulate('click');
+    const div = wrapper.find('.zw-button--primary');
+    div.simulate('click');
 
-  //   wrapper.find('.zw-button').at(0).simulate('click');
+    expect(ok.mock.calls.length).toBe(1);
+  });
 
-  //   expect(onCancel).toHaveBeenCalled();
-  // });
+  it('check onCancel function is call', () => {
+    const onCancel = jest.fn();
+    const wrapper = mount(
+      <Popconfirm
+        content="hello"
+        trigger="click"
+        onCancel={onCancel}
+      >
+        <div id="hello">Hello world!</div>
+      </Popconfirm>,
+    );
+    const hello = wrapper.find('#hello');
+    hello.simulate('click');
+    const div = wrapper.find('.zw-button--default');
+    div.simulate('click');
 
-  // it('behaves correctly when toggling from hidden to visible', () => {
-  //   const wrapper = mount(
-  //     <Popconfirm content="确认删除吗" direction="top">
-  //       Delete
-  //     </Popconfirm>,
-  //   );
-
-  //   expect(wrapper.find('.ui-popover-content').hasClass('ui-popover-content-show')).toBeFalsy();
-  //   wrapper.setProps({ visible: true });
-  //   expect(wrapper.find('.ui-popover-content').hasClass('ui-popover-content-show')).toBeTruthy();
-  // });
+    expect(onCancel.mock.calls.length).toBe(1);
+  });
 });

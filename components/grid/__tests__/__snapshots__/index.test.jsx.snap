@@ -1,5 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Gird check Col flex attribute 1`] = `
+Array [
+  <div
+    class="zw-row"
+    style="margin-top:-5px;margin-bottom:5px"
+  >
+    <div
+      class="zw-col"
+      style="padding-top:5px;padding-bottom:5px;flex:2 2 auto"
+    >
+      <div>
+        2 / 5
+      </div>
+    </div>
+    <div
+      class="zw-col"
+      style="padding-top:5px;padding-bottom:5px;flex:3 3 auto"
+    >
+      <div>
+        3 / 5
+      </div>
+    </div>
+  </div>,
+  <div
+    class="zw-row"
+    style="margin-top:-5px;margin-bottom:5px"
+  >
+    <div
+      class="zw-col"
+      style="padding-top:5px;padding-bottom:5px;flex:0 0 100px"
+    >
+      <div>
+        100px
+      </div>
+    </div>
+    <div
+      class="zw-col"
+      style="padding-top:5px;padding-bottom:5px;flex:auto"
+    >
+      <div>
+        Fill Rest
+      </div>
+    </div>
+  </div>,
+  <div
+    class="zw-row"
+    style="margin-top:-5px;margin-bottom:5px"
+  >
+    <div
+      class="zw-col"
+      style="padding-top:5px;padding-bottom:5px;flex:1 1 200px"
+    >
+      <div>
+        1 1 200px
+      </div>
+    </div>
+    <div
+      class="zw-col"
+      style="padding-top:5px;padding-bottom:5px;flex:0 1 300px"
+    >
+      <div>
+        0 1 300px
+      </div>
+    </div>
+  </div>,
+]
+`;
+
 exports[`Gird renders Row when typeof gutter is array 1`] = `
 <div
   class="zw-row"
