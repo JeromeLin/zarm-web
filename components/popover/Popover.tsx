@@ -13,7 +13,6 @@ export default class Popover extends PureComponent<PopoverProps, {}> {
   };
 
   render() {
-    const { className, ...others } = this.props;
-    return <Popper {...others} hasArrow />;
+    return <Popper {...this.props} />;
   }
 }

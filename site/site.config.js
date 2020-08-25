@@ -147,6 +147,12 @@ module.exports = {
         module: () => import('@/components/progress/demo.md'),
         style: true,
       },
+      {
+        key: 'popover',
+        name: '气泡卡片',
+        module: () => import('@/components/popover/demo.md'),
+        style: true,
+      },
       // {
       //   key: 'panel',
       //   name: '面板',
@@ -219,12 +225,6 @@ module.exports = {
         key: 'notification',
         name: '通知提醒框',
         module: () => import('@/components/notification/demo.md'),
-        style: true,
-      },
-      {
-        key: 'popover',
-        name: '气泡卡片',
-        module: () => import('@/components/popover/demo.md'),
         style: true,
       },
       {
