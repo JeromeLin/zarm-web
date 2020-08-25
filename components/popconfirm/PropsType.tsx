@@ -3,7 +3,7 @@ export type direction = 'topLeft' | 'top' | 'topRight' | 'rightTop' | 'right' | 
 export default interface PropsType {
   prefixCls?: string;
   className?: string;
-  show?: boolean;
+  visible?: boolean;
   trigger: 'click' | 'hover' | 'focus' | 'manual' | 'contextMenu';
   direction: direction;
   onCancel: () => void;
