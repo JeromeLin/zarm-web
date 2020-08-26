@@ -16,9 +16,8 @@ ReactDOM.render(
     }
   >
     <Button theme="primary">Click me</Button>
-  </Dropdown>,
-  mountNode
-);
+  </Dropdown>
+, mountNode);
 ```
 
 

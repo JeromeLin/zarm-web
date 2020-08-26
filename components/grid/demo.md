@@ -138,9 +138,8 @@ ReactDOM.render(
     <Col span={18} pull={6}>
       <div>col-18 pull-6</div>
     </Col>
-  </Row>,
-  mountNode
-);
+  </Row>
+, mountNode);
 ```
 
 
@@ -358,9 +357,8 @@ ReactDOM.render(
         <div>0 1 300px</div>
       </Col>
     </Row>
-  </>,
-  mountNode
-);
+  </>
+, mountNode);
 ```
 
 

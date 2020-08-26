@@ -76,7 +76,6 @@ class Demo extends React.Component {
 
   render() {
     const { showIndex } = this.state;
-    console.log(showIndex)
 
     return (
       <>

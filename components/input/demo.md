@@ -163,9 +163,8 @@ ReactDOM.render(
       <Input style={{ flex: 1, marginRight: 10 }} bordered defaultValue="10109955" />
       <Input style={{ flex: 1 }} bordered defaultValue="10109955" />
     </Input.Group>
-  </>,
-  mountNode
-);
+  </>
+, mountNode);
 ```
 
 
