@@ -1,5 +1,6 @@
 @include b(popover) {
   padding: 12px 16px;
+  font-size: 14px;
   background: #fff;
   transform: translateX(-50%) rotate(45deg);
   border-radius: var(--radius-md);
