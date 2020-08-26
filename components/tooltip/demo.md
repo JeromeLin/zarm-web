@@ -140,9 +140,8 @@ ReactDOM.render(
     <Tooltip direction="topLeft" content="Prompt Text" arrowPointAtCenter>
       <Button>元素中心</Button>
     </Tooltip>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 

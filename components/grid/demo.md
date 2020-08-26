@@ -25,9 +25,8 @@ ReactDOM.render(
         <div>col-12</div>
       </Col>
     </Row>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -92,9 +91,8 @@ ReactDOM.render(
         <div>col-8</div>
       </Col>
     </Row>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -120,9 +118,8 @@ ReactDOM.render(
     <Col span={6} offset={6}>
       <div>col-6 offset-6</div>
     </Col>
-  </Row>,
-  mountNode,
-);
+  </Row>
+, mountNode);
 ```
 
 
@@ -235,9 +232,8 @@ ReactDOM.render(
         <div>col-4</div>
       </Col>
     </Row>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -301,9 +297,8 @@ ReactDOM.render(
         <div className="col col-height-10">col-8</div>
       </Col>
     </Row>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -325,9 +320,8 @@ ReactDOM.render(
     <Col span={8} order={0}>
       <div>col-8 第3个</div>
     </Col>
-  </Row>,
-  mountNode,
-);
+  </Row>
+, mountNode);
 ```
 
 

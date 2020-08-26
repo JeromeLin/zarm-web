@@ -109,9 +109,8 @@ ReactDOM.render(
         <Radio value="选项三" checked>选项三</Radio>
       </Radio.Group>
     </div>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -144,9 +143,8 @@ ReactDOM.render(
         <Radio value="选项三" checked>选项三</Radio>
       </Radio.Group>
     </div>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -179,9 +177,8 @@ ReactDOM.render(
         <Radio value="选项三">选项三</Radio>
       </Radio.Group>
     </div>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 

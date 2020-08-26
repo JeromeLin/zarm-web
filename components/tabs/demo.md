@@ -15,9 +15,8 @@ ReactDOM.render(
     <Panel title="Tab2">Content of Tab2</Panel>
     <Panel title="Tab3">Content of Tab3</Panel>
     <Panel title="Tab4">Content of Tab4</Panel>
-  </Tabs>,
-  mountNode,
-);
+  </Tabs>
+, mountNode);
 ```
 
 
@@ -79,9 +78,8 @@ ReactDOM.render(
     <Panel title="Tab2">Content of Tab2</Panel>
     <Panel title="Tab3">Content of Tab3</Panel>
     <Panel title="Tab4">Content of Tab4</Panel>
-  </Tabs>,
-  mountNode,
-);
+  </Tabs>
+, mountNode);
 ```
 
 
@@ -100,9 +98,8 @@ ReactDOM.render(
       <Panel title="Tab3" style={{ height: 100, padding: 15 }}>Content of Tab3</Panel>
       <Panel title="Tab4" style={{ height: 100, padding: 15 }}>Content of Tab4</Panel>
     </Tabs>
-  </div>,
-  mountNode,
-);
+  </div>
+, mountNode);
 ```
 
 

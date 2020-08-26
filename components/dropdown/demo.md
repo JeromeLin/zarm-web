@@ -90,9 +90,8 @@ ReactDOM.render(
         </Dropdown>
       ))
     }
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -120,9 +119,8 @@ ReactDOM.render(
         </Dropdown>
       ))
     }
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -143,9 +141,8 @@ ReactDOM.render(
     }
   >
     <Button theme="primary">Click me</Button>
-  </Dropdown>,
-  mountNode,
-);
+  </Dropdown>
+, mountNode);
 ```
 
 
@@ -166,9 +163,8 @@ ReactDOM.render(
     }
   >
     <Button disabled theme="primary">Click me</Button>
-  </Dropdown>,
-  mountNode,
-);
+  </Dropdown>
+, mountNode);
 ```
 
 

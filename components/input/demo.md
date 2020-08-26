@@ -35,9 +35,8 @@ ReactDOM.render(
   <>
     <Input bordered placeholder="请输入" />
     <Input bordered={false} placeholder="请输入" />
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -65,9 +64,8 @@ ReactDOM.render(
       <Input bordered={false} size="md" placeholder="请输入" />
       <Input bordered={false} size="sm" placeholder="请输入" />
     </div>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -83,9 +81,8 @@ ReactDOM.render(
     <Input disabled placeholder="禁用状态" />
     <Input disabled bordered placeholder="禁用状态" />
     <Input disabled bordered={false} placeholder="禁用状态" />
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -112,9 +109,8 @@ ReactDOM.render(
   <>
     <Input bordered addonBefore="http://" placeholder="请输入" />
     <Input bordered addonAfter=".com" placeholder="请输入" />
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -130,9 +126,8 @@ ReactDOM.render(
     <Input prefix="http://" suffix=".com" placeholder="请输入" />
     <Input bordered prefix="¥" suffix="元" placeholder="请输入" />
     <Input bordered={false} prefix={<Icon type="keyboard" />} suffix={<Icon type="date" />} placeholder="请输入" />
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -194,9 +189,8 @@ ReactDOM.render(
       <Input bordered placeholder="please input gender" />
       <Button theme="primary">Search</Button>
     </Input.Group>
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -213,9 +207,8 @@ ReactDOM.render(
   <>
     <Input type="textarea" rows={3} placeholder="请输入" />
     <Input type="textarea" showLength bordered={false} rows={3} maxLength={120} placeholder="请输入" />
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 
@@ -230,9 +223,8 @@ ReactDOM.render(
   <>
     <Input type="textarea" autoHeight placeholder="自适应高度" />
     <Input type="textarea" autoHeight={{ minRows: 3, maxRows: 6 }} placeholder="自适应高度, 并且限制最小行数和最大行数" />
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 

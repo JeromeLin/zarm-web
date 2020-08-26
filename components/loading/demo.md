@@ -8,9 +8,8 @@
 import { Loading } from 'zarm-web';
 
 ReactDOM.render(
-  <Loading visible />,
-  mountNode,
-);
+  <Loading visible />
+, mountNode);
 ```
 
 
@@ -21,9 +20,8 @@ ReactDOM.render(
 import { Loading } from 'zarm-web';
 
 ReactDOM.render( 
-  <Loading visible text="加载中" />,
-  mountNode,
-);
+  <Loading visible text="加载中" />
+, mountNode);
 ```
 
 
@@ -36,9 +34,8 @@ import { Loading, Icon } from 'zarm-web';
 const icon = <Icon type="minus-round" className="rotate360" />
 
 ReactDOM.render( 
-  <Loading visible indicator={icon} />,
-  mountNode,
-);
+  <Loading visible indicator={icon} />
+, mountNode);
 ```
 
 
@@ -53,9 +50,8 @@ ReactDOM.render(
     <div className="loading-container">
       这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器。这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器。
     </div>
-  </Loading>,
-  mountNode,
-);
+  </Loading>
+, mountNode);
 ```
 
 
@@ -63,35 +59,25 @@ ReactDOM.render(
 ## 延时加载
 
 ```jsx
+import { useState } from 'react';
 import { Loading, Switch } from 'zarm-web';
 
-class Demo extends React.Component {
-  state = {
-    loadingState: false,
-  };
+const Demo = () => {
+  const [loading, setLoading] = useState(false);
 
-  toggle = (value) => {
-    this.setState(state=> ({
-      loadingState: !state.loadingState,
-    }));
-  };
-
-  render() {
-    const { loadingState } = this.state;
-    return (
-      <div> 
-        <Loading visible={loadingState} delay={500} text="加载中">
-          <div className="loading-container exp">
-            这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器。这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器。
-          </div>
-        </Loading>
-        <p>
-          <Switch value={loadingState} onChange={this.toggle} />
-        </p>
-      </div>
-    );
-  }
-}
+  return (
+    <> 
+      <Loading visible={loading} delay={500} text="加载中">
+        <div className="loading-container exp">
+          这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器。这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器，这里是一个容器。
+        </div>
+      </Loading>
+      <p>
+        <Switch value={loading} onChange={setLoading} />
+      </p>
+    </>
+  );
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
@@ -108,9 +94,8 @@ ReactDOM.render(
     <Loading visible size="sm" />
     <Loading visible size="md" />
     <Loading visible size="lg" />
-  </>,
-  mountNode,
-);
+  </>
+, mountNode);
 ```
 
 

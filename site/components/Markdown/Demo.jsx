@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Icon } from 'zarm-web';
@@ -6,35 +6,21 @@ import Highlight from 'react-highlight';
 import 'highlight.js/styles/github-gist.css';
 import '@/components/style/entry';
 
-export default class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
-    this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
-    this.title = String(this.document[1]);
-    this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
-    this.state = {
-      showBlock: false,
-    };
-    this.containerElem = null;
-  }
+export default ({ lang, children }) => {
+  const containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
+  const document = children.match(/([^]*)\n?(```[^]+```)/);
+  const title = String(document[1]);
+  const source = document[2].match(/```(.*)\n?([^]+)```/);
+  const containerRef = useRef();
+  const [showBlock, setShowBlock] = useState(false);
 
-  componentDidMount() {
-    this.renderSource(this.source[2]);
-  }
+  const blockControl = () => setShowBlock(!showBlock);
 
-  componentWillUnmount() {
-    if (this.containerElem) {
-      ReactDOM.unmountComponentAtNode(this.containerElem);
-    }
-  }
+  const locale = lang === 'enUS'
+    ? require('zarm-web/locale-provider/locale/en_US')
+    : require('zarm-web/locale-provider/locale/zh_CN');
 
-  blockControl() {
-    const { showBlock } = this.state;
-    this.setState({ showBlock: !showBlock });
-  }
-
-  renderSource(value) {
+  const renderSource = useCallback((value) => {
     import('@/components').then((Element) => {
       const args = ['context', 'React', 'ReactDOM', 'ZarmWeb'];
       const argv = [this, React, ReactDOM, Element];
@@ -43,7 +29,14 @@ export default class Demo extends React.PureComponent {
       value = value
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
         .replace(/import\s+{\s+(.*)\s+}\s+from\s+'zarm-web';/, 'const { $1 } = ZarmWeb;')
-        .replace('mountNode', `document.getElementById('${this.containerId}')`);
+        .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
+          ReactDOM.render(
+            <ZarmWeb.LocaleProvider locale={${JSON.stringify(locale.default)}}>
+              $1
+            </ZarmWeb.LocaleProvider>,
+            document.getElementById('${containerId}'),
+          )
+        `);
 
       const { code } = transform(value, {
         presets: ['es2015', 'react'],
@@ -58,40 +51,44 @@ export default class Demo extends React.PureComponent {
         throw err;
       }
     });
-  }
+  }, [containerId, locale.default]);
 
-  render() {
-    const { showBlock } = this.state;
 
-    return (
-      <div className="demo-block demo-box">
-        {this.title.split(('\n')).map((item, index) => {
-          if (index === 0) return <h2 key={item}>{item}</h2>;
-          if (item) return <p key={item}>{item}</p>;
-          return null;
-        })}
-        <div
-          className="source"
-          id={this.containerId}
-          ref={(elem) => { this.containerElem = elem; }}
-        />
-        <div style={{ display: showBlock ? 'block' : 'none' }}>
-          <Highlight>{this.source[2]}</Highlight>
-        </div>
-        <div className="demo-block-control" onClick={() => this.blockControl()}>
-          {
-            showBlock ? (
-              <span>
-                <Icon type="arrow-top-fill" />隐藏代码
-              </span>
-            ) : (
-              <span>
-                <Icon type="arrow-bottom-fill" />显示代码
-              </span>
-            )
-          }
-        </div>
+  useEffect(() => {
+    const ele = () => containerRef.current;
+    renderSource(source[2]);
+
+    return () => {
+      if (ele) {
+        ReactDOM.unmountComponentAtNode(ele);
+      }
+    };
+  }, [renderSource, source]);
+
+  return (
+    <div className="demo-block">
+      {title.split(('\n')).map((item, index) => {
+        if (index === 0) return <h2 key={item}>{item}</h2>;
+        if (item) return <p key={item}>{item}</p>;
+        return null;
+      })}
+      <div
+        ref={containerRef}
+        id={containerId}
+        className="source"
+      />
+      <div style={{ display: showBlock ? 'block' : 'none' }}>
+        <Highlight>{source[2]}</Highlight>
       </div>
-    );
-  }
-}
+      <div className="demo-block-control" onClick={blockControl}>
+        <span>
+          {
+            showBlock
+              ? <><Icon type="arrow-top-fill" />隐藏代码</>
+              : <><Icon type="arrow-bottom-fill" />显示代码</>
+          }
+        </span>
+      </div>
+    </div>
+  );
+};

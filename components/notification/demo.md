@@ -21,9 +21,8 @@ ReactDOM.render(
     }}
   >
     Open
-  </Button>,
-  mountNode,
-);
+  </Button>
+, mountNode);
 ```
 
 
@@ -112,9 +111,8 @@ ReactDOM.render(
     }}
   >
     Open
-  </Button>,
-  mountNode,
-);
+  </Button>
+, mountNode);
 ```
 
 
@@ -187,9 +185,8 @@ ReactDOM.render(
     }}
   >
     Open
-  </Button>,
-  mountNode,
-);
+  </Button>
+, mountNode);
 ```
 
 

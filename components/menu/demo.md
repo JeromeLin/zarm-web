@@ -44,9 +44,8 @@ ReactDOM.render(
       <Menu.Item>Item 3</Menu.Item>
       <Menu.Item>Item 4</Menu.Item>
     </Menu.SubMenu>
-  </Menu>,
-  mountNode,
-);
+  </Menu>
+, mountNode);
 ```
 
 
@@ -91,9 +90,8 @@ ReactDOM.render(
       <Menu.Item>Item 3</Menu.Item>
       <Menu.Item>Item 4</Menu.Item>
     </Menu.SubMenu>
-  </Menu>,
-  mountNode,
-);
+  </Menu>
+, mountNode);
 ```
 
 
@@ -191,9 +189,8 @@ ReactDOM.render(
       </Menu.SubMenu>
       <Menu.Item icon={<Icon type="time" size="lg" />} title="SubMenu 4">SubMenu 4</Menu.Item>
     </Menu>
-  </div>,
-  mountNode,
-);
+  </div>
+, mountNode);
 ```
 
 ## 深色主题的垂直模式
@@ -236,9 +233,8 @@ ReactDOM.render(
       </Menu.SubMenu>
       <Menu.Item icon={<Icon type="time" size="lg" />} title="SubMenu 4">SubMenu 4</Menu.Item>
     </Menu>
-  </div>,
-  mountNode
-);
+  </div>
+, mountNode);
 ```
 
 

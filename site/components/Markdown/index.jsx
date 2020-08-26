@@ -1,19 +1,22 @@
-import React, { useEffect, useCallback, createRef } from 'react';
+import React, { useEffect, useCallback, useRef, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import marked from 'marked';
+import { useLocation } from 'react-router-dom';
+import Context from '@site/utils/context';
 import Demo from './Demo';
 import './style.scss';
 
 const withOutConvertPage = ['introduce', 'change-log', 'quick-start'];
 
 export default (props) => {
+  const { lang } = useContext(Context);
   const { content, component } = props;
   const renderer = new marked.Renderer();
   const cls = classnames(`${component.key}-page`, 'markdown');
   const components = new Map();
   const nodeList = [];
-  const markdownCon = createRef();
+  const markdownCon = useRef();
 
   const renderDOM = useCallback(() => {
     const divNode = document.createElement('div');
@@ -56,12 +59,11 @@ export default (props) => {
       let html = marked(
         content
         // .replace(/## API\s?([^]+)/g, '')
-        //   .replace(/##\s*API\s?([^]+)/g, '$1')
+        // .replace(/##\s*API\s?([^]+)/g, '$1')
         // .replace(/(```\s?jsx([^]+?)```)/g, (match, p1) => {
           .replace(/##\s?([^]+?)((?=##))/g, (match, p1) => {
             const id = parseInt(Math.random() * 1e9, 10).toString(36);
-            // console.log(p1)
-            components.set(id, React.createElement(Demo, { ...props }, p1));
+            components.set(id, React.createElement(Demo, { ...props, lang, location: useLocation() }, p1));
             return `<div id=${id} class="markdown-demo-item"></div>`;
           }),
         {
