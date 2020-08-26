@@ -1,4 +1,6 @@
 .markdown {
+  line-height: 2;
+  font-size: 14px;
   color: #1f2d3d;
 
   .hljs {
@@ -7,6 +9,17 @@
 
   .grid-container {
     overflow-x: auto;
+  }
+
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+
+    > li {
+      margin-left: 20px;
+      padding-left: 4px;
+      list-style-type: circle;
+    }
   }
 
   pre {
@@ -31,17 +44,14 @@
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 1.6em 0 0.6em;
   }
 
   h3 {
-    font-size: 16px;
-    margin-top: 50px;
-  }
-
-  h4,
-  p {
-    font-size: 14px;
+    font-size: 18px;
+    margin: 1.6em 0 0.6em;
   }
 
   blockquote {
@@ -58,7 +68,7 @@
     border-radius: 3px;
   }
 
-  table.grid {
+  table {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     width: 100%;
     min-width: 600px;

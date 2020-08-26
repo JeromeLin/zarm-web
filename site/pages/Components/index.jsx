@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import { Icon, Loading } from 'zarm-web';
+import { Loading } from 'zarm-web';
 import 'highlight.js/styles/github-gist.css';
 import { documents, components } from '@site/site.config';
 import Container from '@site/components/Container';
 import Header from '@site/components/Header';
 import SideBar from '@site/components/SideBar';
-import ScrollToTop from '@site/components/ScrollToTop';
+import Footer from '@site/components/Footer';
 import Markdown from '@site/components/Markdown';
 import './style.scss';
 
@@ -57,13 +57,8 @@ class Page extends PureComponent {
               <Redirect to="/" />
             </Switch>
           </div>
-          <ScrollToTop>
-            <div className="scroll-to-top">
-              <Icon type="arrow-top" />
-            </div>
-          </ScrollToTop>
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </Container>
     );
   }

@@ -1,17 +1,23 @@
 module.exports = {
   documents: [
     {
-      key: 'quick-start',
-      name: '快速上手',
-      module: () => import('@/README.md'),
+      key: 'introduce',
+      name: '关于Zarm',
+      module: () => import('@site/docs/introduce.md'),
       style: false,
     },
-    // {
-    //   key: 'change-log',
-    //   name: '更新日',
-    //   module: () => import('@/CHANGELOG.md'),
-    //   style: false,
-    // },
+    {
+      key: 'quick-start',
+      name: '快速上手',
+      module: () => import('@site/docs/quick-start.md'),
+      style: false,
+    },
+    {
+      key: 'change-log',
+      name: '更新日志',
+      module: () => import('@/CHANGELOG.md'),
+      style: false,
+    },
   ],
   components: {
     general: [
