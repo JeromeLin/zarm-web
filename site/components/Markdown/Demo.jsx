@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Icon } from 'zarm-web';
 import Highlight from 'react-highlight';
+import 'highlight.js/styles/github-gist.css';
 import '@/components/style/entry';
 
 export default class Demo extends React.PureComponent {

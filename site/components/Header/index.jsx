@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import { Icon, Popup } from 'zarm';
-import { Dropdown, Menu } from 'zarm-web';
+import { Dropdown, Menu, Radio } from 'zarm-web';
 import classnames from 'classnames';
 import MenuComponent from '@site/components/Menu';
 import Events from '@site/utils/events';
@@ -135,7 +135,7 @@ const Header = ({ children }) => {
               <ul>
                 {NAV_ITEMS.map((item) => <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>)}
               </ul>
-              {/* <div className="lang">
+              <div className="lang">
                 <Radio.Group
                   compact
                   type="button"
@@ -148,7 +148,7 @@ const Header = ({ children }) => {
                   <Radio value="zhCN">中文</Radio>
                   <Radio value="enUS">EN</Radio>
                 </Radio.Group>
-              </div> */}
+              </div>
               <a className="github" href="https://github.com/JeromeLin/zarm-web" target="_blank" rel="noopener noreferrer">
                 <Icons type="github" />
               </a>

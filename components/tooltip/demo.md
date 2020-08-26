@@ -1,6 +1,8 @@
 # Tooltip 文字提示
 文字提示。
 
+
+
 ## 基本用法
 
 ```jsx
@@ -10,6 +12,8 @@ ReactDOM.render(
   <Tooltip content="我是提示框内容">鼠标移入显示提示框</Tooltip>
 , mountNode);
 ```
+
+
 
 ## 触发方式
 通过trigger属性设置不同的tooltip触发方式
@@ -26,30 +30,31 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <Tooltip trigger="click" content="我是click触发方式">
-          <Button theme="primary">click me</Button>
+          <Button>click me</Button>
         </Tooltip>
         <Tooltip trigger="hover" content="我是鼠标移入触发方式">
-          <Button theme="primary">hover me</Button>
+          <Button>hover me</Button>
         </Tooltip>
         <Tooltip trigger="manual" visible={this.state.visible} content="我是manual触发方式，通过传入的visible props控制">
-          <Button onClick={() => this.setState({ visible: !this.state.visible })} theme="primary">manual</Button>
+          <Button onClick={() => this.setState({ visible: !this.state.visible })}>manual</Button>
         </Tooltip>
         <Tooltip trigger="focus" content="我是focus触发方式">
-          <Button theme="primary">focus</Button>
+          <Button>focus</Button>
         </Tooltip>
         <Tooltip trigger="contextMenu" content="我是右键点击触发方式">
-          <Button theme="primary">contextmenu</Button>
+          <Button>contextmenu</Button>
         </Tooltip>
-      </div>
+      </>
     )
   }
 }
 
-
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+
 
 ## 位置
 支持各种方位。
@@ -59,66 +64,68 @@ import { Tooltip, Button } from 'zarm-web';
 
 const Demo = () => (
   <div className="direction-demo">
-        <div style={{ marginLeft: 70 }}>
-          <Tooltip direction="topLeft" content="topLeft text">
-            <Button>TL</Button>
-          </Tooltip>
+    <div style={{ marginLeft: 70 }}>
+      <Tooltip direction="topLeft" content="topLeft text">
+        <Button>TL</Button>
+      </Tooltip>
 
-          <Tooltip direction="top" content="top text">
-            <Button>Top</Button>
-          </Tooltip>
+      <Tooltip direction="top" content="top text">
+        <Button>Top</Button>
+      </Tooltip>
 
-          <Tooltip direction="topRight" content="topRight text">
-            <Button>TR</Button>
-          </Tooltip>
-        </div>
+      <Tooltip direction="topRight" content="topRight text">
+        <Button>TR</Button>
+      </Tooltip>
+    </div>
 
-        <div style={{ width: 70, float: "left",  clear: 'both' }}>
-          <Tooltip direction="leftTop" content="leftTop text">
-            <Button>LT</Button>
-          </Tooltip>
+    <div style={{ width: 70, float: "left",  clear: 'both' }}>
+      <Tooltip direction="leftTop" content="leftTop text">
+        <Button>LT</Button>
+      </Tooltip>
 
-          <Tooltip direction="left" content="left text">
-            <Button>Left</Button>
-          </Tooltip>
+      <Tooltip direction="left" content="left text">
+        <Button>Left</Button>
+      </Tooltip>
 
-          <Tooltip direction="leftBottom" content="leftBottom text">
-            <Button>LB</Button>
-          </Tooltip>
-        </div>
+      <Tooltip direction="leftBottom" content="leftBottom text">
+        <Button>LB</Button>
+      </Tooltip>
+    </div>
 
-        <div style={{ width: 70, marginLeft: 70 * 4 + 20 }}>
-          <Tooltip direction="rightTop" content="rightTop text">
-            <Button>RT</Button>
-          </Tooltip>
+    <div style={{ width: 70, marginLeft: 70 * 4 + 20 }}>
+      <Tooltip direction="rightTop" content="rightTop text">
+        <Button>RT</Button>
+      </Tooltip>
 
-          <Tooltip direction="right" content="right text">
-            <Button>Right</Button>
-          </Tooltip>
+      <Tooltip direction="right" content="right text">
+        <Button>Right</Button>
+      </Tooltip>
 
-          <Tooltip direction="rightBottom" content="rightBottom text">
-            <Button>RB</Button>
-          </Tooltip>
-        </div>
+      <Tooltip direction="rightBottom" content="rightBottom text">
+        <Button>RB</Button>
+      </Tooltip>
+    </div>
 
-        <div style={{ marginLeft: 70, clear: 'both' }}>
-          <Tooltip direction="bottomLeft" content="bottomLeft text">
-            <Button>BL</Button>
-          </Tooltip>
+    <div style={{ marginLeft: 70, clear: 'both' }}>
+      <Tooltip direction="bottomLeft" content="bottomLeft text">
+        <Button>BL</Button>
+      </Tooltip>
 
-          <Tooltip direction="bottom" content="bottom text">
-            <Button>Bottom</Button>
-          </Tooltip>
+      <Tooltip direction="bottom" content="bottom text">
+        <Button>Bottom</Button>
+      </Tooltip>
 
-          <Tooltip direction="bottomRight" content="bottomRight text">
-            <Button>BR</Button>
-          </Tooltip>
-        </div>
-      </div>
+      <Tooltip direction="bottomRight" content="bottomRight text">
+        <Button>BR</Button>
+      </Tooltip>
+    </div>
+  </div>
 );
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+
 
 ## 箭头指向
 
@@ -126,17 +133,19 @@ ReactDOM.render(<Demo />, mountNode);
 import { Tooltip, Button } from 'zarm-web';
 
 ReactDOM.render(
-  <div>
+  <>
     <Tooltip direction="topLeft" content="Prompt Text">
       <Button>跟随方向</Button>
     </Tooltip>
     <Tooltip direction="topLeft" content="Prompt Text" arrowPointAtCenter>
       <Button>元素中心</Button>
     </Tooltip>
-  </div>,
+  </>,
   mountNode,
 );
 ```
+
+
 
 ## API
 

@@ -1,11 +1,10 @@
-import React, { PureComponent } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import classnames from 'classnames';
 import Loadable from 'react-loadable';
 import { Loading } from 'zarm-web';
-import 'highlight.js/styles/github-gist.css';
 import { documents, components } from '@site/site.config';
 import Container from '@site/components/Container';
-import Header from '@site/components/Header';
 import SideBar from '@site/components/SideBar';
 import Footer from '@site/components/Footer';
 import Markdown from '@site/components/Markdown';
@@ -23,7 +22,7 @@ const LoadableComponent = (component) => {
     render: (loaded, props) => {
       return (
         <Markdown
-          document={loaded.page.default}
+          content={loaded.page.default}
           component={component}
           {...props}
         />
@@ -33,35 +32,33 @@ const LoadableComponent = (component) => {
   });
 };
 
-class Page extends PureComponent {
-  render() {
-    const { general, layout, form, feedback, view, navigation, other } = components;
-    return (
-      <Container className="components-page">
-        <Header />
-        <main>
-          <SideBar />
-          <div className="main-container">
-            <Switch>
-              {
-                documents.map((doc, i) => (
-                  <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
-                ))
-              }
-              {
-                [...general, ...layout, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
-                  <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
-                ))
-              }
-              <Route path="*" component={LoadableComponent(documents[0])} />
-              <Redirect to="/" />
-            </Switch>
-          </div>
-        </main>
-        <Footer />
-      </Container>
-    );
-  }
-}
+const Page = () => {
+  const { general, form, feedback, view, navigation, other } = components;
+  const containerCls = classnames('main-container', 'markdown');
 
-export default withRouter(Page);
+  return (
+    <Container className="components-page">
+      <main>
+        <SideBar />
+        <div className={containerCls}>
+          <Switch>
+            {
+              documents.map((doc, i) => (
+                <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
+              ))
+            }
+            {
+              [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
+                <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
+              ))
+            }
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </main>
+      <Footer />
+    </Container>
+  );
+};
+
+export default Page;
