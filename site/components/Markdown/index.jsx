@@ -38,9 +38,6 @@ export default (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
-    hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
-    hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
     renderDOM();
 
     return () => {
@@ -55,6 +52,10 @@ export default (props) => {
   if (typeof content !== 'string') {
     return <span />;
   }
+
+  hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
+  hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
+  hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
 
   // 表格
   renderer.table = (header, body) => {
