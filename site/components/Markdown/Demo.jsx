@@ -14,19 +14,17 @@ export default ({ lang, children }) => {
   const containerRef = useRef();
   const [showBlock, setShowBlock] = useState(false);
 
-  const blockControl = () => setShowBlock(!showBlock);
+  const renderSource = useCallback(() => {
+    const locale = lang === 'enUS'
+      ? require('zarm-web/locale-provider/locale/en_US')
+      : require('zarm-web/locale-provider/locale/zh_CN');
 
-  const locale = lang === 'enUS'
-    ? require('zarm-web/locale-provider/locale/en_US')
-    : require('zarm-web/locale-provider/locale/zh_CN');
-
-  const renderSource = useCallback((value) => {
     import('@/components').then((Element) => {
       const args = ['context', 'React', 'ReactDOM', 'ZarmWeb'];
       const argv = [this, React, ReactDOM, Element];
       return { args, argv };
     }).then(({ args, argv }) => {
-      value = value
+      const value = source[2]
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
         .replace(/import\s+{\s+(.*)\s+}\s+from\s+'zarm-web';/, 'const { $1 } = ZarmWeb;')
         .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
@@ -51,19 +49,17 @@ export default ({ lang, children }) => {
         throw err;
       }
     });
-  }, [containerId, locale.default]);
+  }, [containerId, lang, source]);
 
 
   useEffect(() => {
-    const ele = () => containerRef.current;
-    renderSource(source[2]);
+    const container = containerRef.current;
+    renderSource();
 
-    return () => {
-      if (ele) {
-        ReactDOM.unmountComponentAtNode(ele);
-      }
+    return function cleanup() {
+      container && ReactDOM.unmountComponentAtNode(container);
     };
-  }, [renderSource, source]);
+  }, [renderSource]);
 
   return (
     <div className="demo-block">
@@ -80,7 +76,7 @@ export default ({ lang, children }) => {
       <div style={{ display: showBlock ? 'block' : 'none' }}>
         <Highlight>{source[2]}</Highlight>
       </div>
-      <div className="demo-block-control" onClick={blockControl}>
+      <div className="demo-block-control" onClick={() => setShowBlock(!showBlock)}>
         <span>
           {
             showBlock

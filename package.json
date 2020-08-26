@@ -92,7 +92,7 @@
     "eslint-plugin-vue": "5.2.3",
     "gh-pages": "^1.0.0",
     "git-cz": "^3.2.1",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "^10.1.2",
     "history": "^4.7.2",
     "husky": "^2.3.0",
     "is-wsl": "^2.1.0",

@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import marked from 'marked';
 import { useLocation } from 'react-router-dom';
+import hljs from 'highlight.js/lib/core';
 import Context from '@site/utils/context';
 import Demo from './Demo';
+import 'highlight.js/styles/github-gist.css';
 import './style.scss';
 
 const withOutConvertPage = ['introduce', 'change-log', 'quick-start'];
@@ -16,7 +18,7 @@ export default (props) => {
   const cls = classnames(`${component.key}-page`, 'markdown');
   const components = new Map();
   const nodeList = [];
-  const markdownCon = useRef();
+  const containerRef = useRef();
 
   const renderDOM = useCallback(() => {
     const divNode = document.createElement('div');
@@ -31,12 +33,15 @@ export default (props) => {
         ReactDOM.render(component, div);
       }
     }
-    markdownCon.current.insertBefore(divNode, h2Node);
-  }, [components, markdownCon, nodeList]);
+    containerRef.current.insertBefore(divNode, h2Node);
+  }, [components, containerRef, nodeList]);
 
   useEffect(() => {
-    renderDOM();
     window.scrollTo(0, 0);
+    hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
+    hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
+    hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
+    renderDOM();
 
     return () => {
       nodeList.forEach((element) => {
@@ -47,40 +52,40 @@ export default (props) => {
     };
   }, [nodeList, renderDOM]);
 
-  if (typeof content === 'string') {
-    if (!withOutConvertPage.includes(component.key)) {
-      components.clear();
-
-      // 表格
-      renderer.table = (header, body) => {
-        return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
-      };
-
-      let html = marked(
-        content
-        // .replace(/## API\s?([^]+)/g, '')
-        // .replace(/##\s*API\s?([^]+)/g, '$1')
-        // .replace(/(```\s?jsx([^]+?)```)/g, (match, p1) => {
-          .replace(/##\s?([^]+?)((?=##))/g, (match, p1) => {
-            const id = parseInt(Math.random() * 1e9, 10).toString(36);
-            components.set(id, React.createElement(Demo, { ...props, lang, location: useLocation() }, p1));
-            return `<div id=${id} class="markdown-demo-item"></div>`;
-          }),
-        {
-          renderer,
-        },
-      );
-
-      html = html.replace('##', '').replace('API', '<h2 id="api-node" style="margin-top: 50px">API</h2>');
-      // eslint-disable-next-line react/no-danger
-      return <div dangerouslySetInnerHTML={{ __html: html }} className={cls} ref={markdownCon} />;
-    }
-
-    const html = marked(content, { renderer });
-
-    // eslint-disable-next-line react/no-danger
-    return <div dangerouslySetInnerHTML={{ __html: html }} className={cls} ref={markdownCon} />;
+  if (typeof content !== 'string') {
+    return <span />;
   }
 
-  return <span />;
+  // 表格
+  renderer.table = (header, body) => {
+    return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
+  };
+
+  // 代码
+  // highlightjs对jsx解析还不完善，自闭合标签会破坏高亮显示，暂未解决。
+  // https://github.com/highlightjs/highlight.js/issues/1646
+  renderer.code = (code, language) => {
+    // Check whether the given language is valid for highlight.js.
+    const validLang = !!(language && hljs.getLanguage(language));
+    // Highlight only if the language is valid.
+    const highlighted = validLang ? hljs.highlight(language, code).value : code;
+    // Render the highlighted code with `hljs` class.
+    return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
+  };
+
+  let html = marked(content, { renderer });
+  if (!withOutConvertPage.includes(component.key)) {
+    components.clear();
+    html = marked(
+      content
+        .replace(/##\s?([^]+?)((?=##))/g, (match, p1) => {
+          const id = parseInt(Math.random() * 1e9, 10).toString(36);
+          components.set(id, React.createElement(Demo, { ...props, lang, location: useLocation() }, p1));
+          return `<div id=${id} class="markdown-demo-item"></div>`;
+        }), { renderer },
+    ).replace('##', '').replace('API', '<h2 id="api-node" style="margin-top: 50px">API</h2>');
+  }
+
+  // eslint-disable-next-line react/no-danger
+  return <div ref={containerRef} className={cls} dangerouslySetInnerHTML={{ __html: html }} />;
 };
