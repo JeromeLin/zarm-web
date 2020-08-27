@@ -45,18 +45,15 @@ import { Button } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Button shape="rect">rect</Button>
-      <Button shape="radius">radius</Button>
-      <Button shape="round">round</Button>
-      <Button shape="circle" icon="search" />
-    </div>
-    <div className="rows">
-      <Button theme="primary" shape="rect">rect</Button>
-      <Button theme="primary" shape="radius">radius</Button>
-      <Button theme="primary" shape="round">round</Button>
-      <Button theme="primary" shape="circle" icon="search" />
-    </div>
+    <Button shape="rect">rect</Button>
+    <Button shape="radius">radius</Button>
+    <Button shape="round">round</Button>
+    <Button shape="circle" icon="search" />
+    <br />
+    <Button theme="primary" shape="rect">rect</Button>
+    <Button theme="primary" shape="radius">radius</Button>
+    <Button theme="primary" shape="round">round</Button>
+    <Button theme="primary" shape="circle" icon="search" />
   </>
 , mountNode);
 ```
@@ -71,11 +68,9 @@ import { Button } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Button disabled>default</Button>
-      <Button disabled theme="primary">primary</Button>
-      <Button disabled theme="danger">danger</Button>
-    </div>
+    <Button disabled>default</Button>
+    <Button disabled theme="primary">primary</Button>
+    <Button disabled theme="danger">danger</Button>
   </>
 , mountNode);
 ```
@@ -89,15 +84,12 @@ import { Button, Icon } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Button icon="search" size="md">default</Button>
-      <Button icon="time" theme="primary" size="md">primary</Button>
-      <Button icon="keyboard" theme="danger" size="md">danger</Button>
-    </div>
-    <div className="rows">
-      <Button icon="search" shape="circle" />
-      <Button icon="search" shape="circle" theme="primary" />
-    </div>
+    <Button icon="search" size="md">default</Button>
+    <Button icon="time" theme="primary" size="md">primary</Button>
+    <Button icon="keyboard" theme="danger" size="md">danger</Button>
+    <br />
+    <Button icon="search" shape="circle" />
+    <Button icon="search" shape="circle" theme="primary" />
   </>
 , mountNode);
 ```
@@ -111,38 +103,35 @@ import { Button, Icon } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Button.Group>
-        <Button>L</Button>
-        <Button>M</Button>
-        <Button>R</Button>
-      </Button.Group>
-      <Button.Group>
-        <Button disabled>L</Button>
-        <Button disabled>M</Button>
-        <Button disabled>R</Button>
-      </Button.Group>
-      <Button.Group>
-        <Button icon="arrow-left" />
-        <Button icon="broadcast" />
-        <Button icon="arrow-right" />
-      </Button.Group>
-    </div>
-    <div className="rows">
-      <Button.Group>
-        <Button theme="primary">上一页</Button>
-        <Button theme="primary">下一页</Button>
-      </Button.Group>
-      <Button.Group>
-        <Button theme="primary" disabled>上一页</Button>
-        <Button theme="primary" disabled>下一页</Button>
-      </Button.Group>
-      <Button.Group>
-        <Button theme="primary" icon="arrow-left" />
-        <Button theme="primary" icon="broadcast" />
-        <Button theme="primary" icon="arrow-right" />
-      </Button.Group>
-    </div>
+    <Button.Group>
+      <Button>L</Button>
+      <Button>M</Button>
+      <Button>R</Button>
+    </Button.Group>
+    <Button.Group>
+      <Button disabled>L</Button>
+      <Button disabled>M</Button>
+      <Button disabled>R</Button>
+    </Button.Group>
+    <Button.Group>
+      <Button icon="arrow-left" />
+      <Button icon="broadcast" />
+      <Button icon="arrow-right" />
+    </Button.Group>
+    <br />
+    <Button.Group>
+      <Button theme="primary">上一页</Button>
+      <Button theme="primary">下一页</Button>
+    </Button.Group>
+    <Button.Group>
+      <Button theme="primary" disabled>上一页</Button>
+      <Button theme="primary" disabled>下一页</Button>
+    </Button.Group>
+    <Button.Group>
+      <Button theme="primary" icon="arrow-left" />
+      <Button theme="primary" icon="broadcast" />
+      <Button theme="primary" icon="arrow-right" />
+    </Button.Group>
   </>
 , mountNode);
 ```
@@ -179,7 +168,7 @@ ReactDOM.render(
 import { Button } from 'zarm-web';
 
 ReactDOM.render(
-  <div className="rows-dark">
+  <div className="rows-dark" style={{ paddingBottom: 0 }}>
     <Button ghost theme="primary">Ghost</Button>
     <Button ghost disabled theme="primary">禁用状态</Button>
     <Button ghost>Ghost</Button>

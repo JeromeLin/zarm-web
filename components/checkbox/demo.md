@@ -29,7 +29,8 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <div style={{marginBottom: 8}}>选择了：{this.state.checkboxValue.join(',')}</div>
+        选择了：{this.state.checkboxValue.join(',')}
+        <br />
         <Checkbox.Group
           value={this.state.checkboxValue}
           onChange={(values) => {
@@ -66,15 +67,12 @@ const Demo = () => {
 
   return (
     <>
-      <div className="rows">
-        <Checkbox disabled={disabled}>禁用的状态</Checkbox>
-      </div>
-      <div className="rows">
-        <Checkbox defaultChecked disabled={disabled}>选中并禁用的状态</Checkbox>
-      </div>
-      <div className="rows">
-        <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
-      </div>
+      <Checkbox disabled={disabled}>禁用的状态</Checkbox>
+      <br />
+      <Checkbox defaultChecked disabled={disabled}>选中并禁用的状态</Checkbox>
+      <br />
+      <br />
+      <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
     </>
   );
 }
@@ -119,16 +117,14 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <div style={{marginBottom: 8}}>
-          <Checkbox
-            indeterminate={this.state.indeterminate}
-            onChange={this.onCheckAllChange}
-            checked={this.state.checkAll}
-          >
-            全选
-          </Checkbox>
-        </div>
-
+        <Checkbox
+          indeterminate={this.state.indeterminate}
+          onChange={this.onCheckAllChange}
+          checked={this.state.checkAll}
+        >
+          全选
+        </Checkbox>
+        <br />
         <Checkbox.Group
           value={this.state.checkboxValue}
           onChange={this.onChange}
@@ -145,6 +141,8 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+
 
 ## API
 

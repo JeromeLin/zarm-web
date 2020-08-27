@@ -151,7 +151,6 @@ class Demo extends React.Component {
     const { tags, inputValue, inputVisible } = this.state;
     return (
       <>
-        <div className="rows">
         {
           tags.map((tag, index) => {
             return (
@@ -161,25 +160,23 @@ class Demo extends React.Component {
             );
           })
         }
-        </div>
-        <div className="rows">
-          {
-            inputVisible
-              ? <Input
-                  ref={(ele) => this.input = ele }
-                  bordered
-                  value={inputValue}
-                  onChange={this.onValueChange}
-                  onBlur={this.onBlur}
-                  onKeyDown={this.onKeydown}
-                  style={{
-                    width: 80,
-                  }}
-                />
-              : <Button ref={(ele) => this.button = ele } onClick={this.onShowInput}>+ New Tag</Button>
-          }
-          <Button theme="danger" style={{ marginLeft: 10 }} onClick={this.onRemoveAll}>Remove All</Button>
-        </div>
+        <br />
+        {
+          inputVisible
+            ? <Input
+                ref={(ele) => this.input = ele }
+                bordered
+                value={inputValue}
+                onChange={this.onValueChange}
+                onBlur={this.onBlur}
+                onKeyDown={this.onKeydown}
+                style={{
+                  width: 80,
+                }}
+              />
+            : <Button ref={(ele) => this.button = ele } onClick={this.onShowInput}>+ New Tag</Button>
+        }
+        <Button theme="danger" style={{ marginLeft: 10 }} onClick={this.onRemoveAll}>Remove All</Button>
       </>
     );
   }

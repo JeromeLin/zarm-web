@@ -69,7 +69,7 @@ import { Button, Popover } from 'zarm-web';
 
 ReactDOM.render(
   <div className="direction-demo">
-    <div style={{ marginLeft: 80 }}>
+    <div style={{ marginLeft: 80, whiteSpace: 'nowrap' }}>
       <Popover direction="topLeft" content="topLeft text">
         <Button>TL</Button>
       </Popover>
@@ -111,7 +111,7 @@ ReactDOM.render(
       </Popover>
     </div>
 
-    <div style={{ marginLeft: 80, clear: 'both' }}>
+    <div style={{ marginLeft: 80, clear: 'both', whiteSpace: 'nowrap' }}>
       <Popover direction="bottomLeft" content="bottomLeft text">
         <Button>BL</Button>
       </Popover>
@@ -147,8 +147,9 @@ const Demo = () => {
       onVisibleChange={setVisible}
       content={
         <>
-          <p>This is the content of the popover. </p>
-          <p>You can click <Button size="sm" onClick={() => setVisible(false)}>here</Button> to close this popover.</p>
+          This is the content of the popover. 
+          <br />
+          You can click <Button size="sm" onClick={() => setVisible(false)}>here</Button> to close this popover.
         </>
       }
     >

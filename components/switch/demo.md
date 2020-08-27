@@ -37,12 +37,9 @@ import { Switch } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Switch disabled />
-    </div>
-    <div className="rows">
-      <Switch disabled defaultChecked />
-    </div>
+    <Switch disabled />
+    <br />
+    <Switch disabled defaultChecked />
   </>
 , mountNode);
 ```
@@ -57,12 +54,9 @@ import { Switch } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Switch />
-    </div>
-    <div className="rows">
-      <Switch size="sm" />
-    </div>  
+    <Switch />
+    <br />
+    <Switch size="sm" />
   </>
 , mountNode);
 ```
@@ -77,12 +71,9 @@ import { Switch, Icon } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Switch checkedText="开" unCheckedText="关" />
-    </div>
-    <div className="rows">
-      <Switch checkedText={<Icon type="right" />} unCheckedText={<Icon type="wrong" />} />
-    </div>
+    <Switch checkedText="开" unCheckedText="关" />
+    <br />
+    <Switch checkedText={<Icon type="right" />} unCheckedText={<Icon type="wrong" />} />
   </>
 , mountNode);
 ```
@@ -97,18 +88,13 @@ import { Switch } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Switch loading />
-    </div>
-    <div className="rows">
-      <Switch loading defaultChecked />
-    </div>
-    <div className="rows">
-      <Switch loading size="sm" />
-    </div>
-    <div className="rows">
-      <Switch loading defaultChecked size="sm"  />
-    </div>
+    <Switch loading />
+    <br />
+    <Switch loading defaultChecked />
+    <br />
+    <Switch loading size="sm" />
+    <br />
+    <Switch loading defaultChecked size="sm"  />
   </>
 , mountNode);
 ```

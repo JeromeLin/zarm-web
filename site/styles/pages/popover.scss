@@ -1,22 +1,14 @@
 .popover-page {
   .zw-button {
     margin-right: 8px;
+    margin-bottom: 12px;
   }
 
-  // 显示方向
   .direction-demo {
+    display: inline-block;
+
     .zw-button {
       width: 80px;
-      margin-right: 8px;
-      margin-bottom: 8px;
-    }
-  }
-
-  @at-root {
-    .zw-popover__content {
-      p {
-        margin: 0;
-      }
     }
   }
 }

@@ -68,18 +68,14 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <div className="rows">
-          <Button onClick={this.showSuccess}>Success</Button>
-          <Button onClick={this.showInfo}>Info</Button>
-          <Button onClick={this.showWarning}>Warning</Button>
-          <Button onClick={this.showError}>Error</Button>
-        </div>
-        <div className="rows">
-          <Button onClick={this.customIcon}>Open a notification with custom icon</Button>
-        </div>
-        <div className="rows">
-          <Button theme="danger" onClick={this.closeAll}>Close all notifications</Button>
-        </div>
+        <Button onClick={this.showSuccess}>Success</Button>
+        <Button onClick={this.showInfo}>Info</Button>
+        <Button onClick={this.showWarning}>Warning</Button>
+        <Button onClick={this.showError}>Error</Button>
+        <br />
+        <Button onClick={this.customIcon}>Open a notification with custom icon</Button>
+        <br />
+        <Button theme="danger" onClick={this.closeAll}>Close all notifications</Button>
       </>
     );
   }
@@ -244,18 +240,14 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <div className="rows">
-          <Button onClick={() => this.show({ position: 'topRight' })}>topRight</Button>
-          <Button onClick={() => this.show({ position: 'topLeft' })}>topLeft</Button>
-          <Button onClick={() => this.show({ position: 'bottomLeft' })}>bottomLeft</Button>
-          <Button onClick={() => this.show({ position: 'bottomRight' })}>bottomRight</Button>
-        </div>
-        <div className="rows">
-          <Button onClick={() => this.show({ top: 400 })}>Open the notification 400px from the top</Button>
-        </div>
-        <div className="rows">
-          <Button onClick={() => this.show({ bottom: 100 })}>Open the notification 100px from the bottom</Button>
-        </div>
+        <Button onClick={() => this.show({ position: 'topRight' })}>topRight</Button>
+        <Button onClick={() => this.show({ position: 'topLeft' })}>topLeft</Button>
+        <Button onClick={() => this.show({ position: 'bottomLeft' })}>bottomLeft</Button>
+        <Button onClick={() => this.show({ position: 'bottomRight' })}>bottomRight</Button>
+        <br />
+        <Button onClick={() => this.show({ top: 400 })}>Open the notification 400px from the top</Button>
+        <br />
+        <Button onClick={() => this.show({ bottom: 100 })}>Open the notification 100px from the bottom</Button>
       </>
     );
   }
@@ -297,7 +289,7 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <Button onClick={this.show}>Open</Button>
+        <Button theme="primary" onClick={this.show}>Open</Button>
         <Button onClick={this.close}>Close</Button>
       </>
     );

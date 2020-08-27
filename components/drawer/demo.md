@@ -69,12 +69,16 @@ class Demo extends React.Component {
     const { visible, size } = this.state;
     return (
       <>
-        <Radio.Group ghost type="button" value={size} onChange={this.handleSize} style={{ marginRight: 10 }}>
-          <Radio value="sm">sm</Radio>
-          <Radio value="md">md</Radio>
-          <Radio value="lg">lg</Radio>
-        </Radio.Group>
-        <Button theme="primary" onClick={this.toggle}>Open</Button>
+        <div className="rows">
+          <Radio.Group ghost type="button" value={size} onChange={this.handleSize} style={{ marginRight: 10 }}>
+            <Radio value="sm">sm</Radio>
+            <Radio value="md">md</Radio>
+            <Radio value="lg">lg</Radio>
+          </Radio.Group>
+        </div>
+        <div className="rows">
+          <Button theme="primary" onClick={this.toggle}>Open</Button>
+        </div>
         <Drawer
           visible={visible}
           size={size}

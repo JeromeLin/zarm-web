@@ -53,7 +53,7 @@ module.exports = {
         key: 'radio',
         name: '单选框',
         module: () => import('@/components/radio/demo.md'),
-        style: false,
+        style: true,
       },
       {
         key: 'checkbox',
@@ -145,7 +145,7 @@ module.exports = {
         key: 'tag',
         name: '标签',
         module: () => import('@/components/tag/demo.md'),
-        style: false,
+        style: true,
       },
       {
         key: 'progress',

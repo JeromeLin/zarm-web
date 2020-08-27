@@ -53,15 +53,12 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <div className="rows">
-          <Button onClick={this.showSuccess}>Success</Button>
-          <Button onClick={this.showWarning}>Warning</Button>
-          <Button onClick={this.showError}>Error</Button>
-          <Button onClick={this.showLoading}>Loading</Button>
-        </div>
-        <div className="rows">
-          <Button theme="danger" onClick={this.closeAll}>Close all messages</Button>
-        </div>
+        <Button onClick={this.showSuccess}>Success</Button>
+        <Button onClick={this.showWarning}>Warning</Button>
+        <Button onClick={this.showError}>Error</Button>
+        <Button onClick={this.showLoading}>Loading</Button>
+        <br />
+        <Button theme="danger" onClick={this.closeAll}>Close all messages</Button>
       </>
     );
   }
@@ -118,12 +115,9 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <div className="rows">
-          <Button onClick={() => this.show({ top: 400 })}>Open the message 400px from the top</Button>
-        </div>
-        <div className="rows">
-          <Button onClick={() => this.show({ bottom: 100 })}>Open the message 100px from the bottom</Button>
-        </div>
+        <Button onClick={() => this.show({ top: 400 })}>Open the message 400px from the top</Button>
+        <br />
+        <Button onClick={() => this.show({ bottom: 100 })}>Open the message 100px from the bottom</Button>
       </>
     );
   }

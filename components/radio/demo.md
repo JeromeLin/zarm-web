@@ -20,15 +20,12 @@ const Demo = () => {
 
   return (
     <>
-      <div className="rows">
-        <Radio disabled={disabled}>禁用的状态</Radio>
-      </div>
-      <div className="rows">
-        <Radio checked disabled={disabled}>选中并禁用的状态</Radio>
-      </div>
-      <div className="rows">
-        <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
-      </div>
+      <Radio disabled={disabled}>禁用的状态</Radio>
+      <br />
+      <Radio checked disabled={disabled}>选中并禁用的状态</Radio>
+      <br />
+      <br />
+      <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
     </>
   );
 }
@@ -55,22 +52,19 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <div className="rows">
-          <Radio.Group value={this.state.value} onChange={this.onChange}>
-            <Radio value={1}>A</Radio>
-            <Radio value={2}>B</Radio>
-            <Radio value={3}>C</Radio>
-            <Radio value={4}>D</Radio>
-          </Radio.Group>
-        </div>
-        <div className="rows">
-          <Radio.Group disabled defaultValue={2}>
-            <Radio value={1}>A</Radio>
-            <Radio value={2}>B</Radio>
-            <Radio value={3}>C</Radio>
-            <Radio value={4}>D</Radio>
-          </Radio.Group>
-        </div>
+        <Radio.Group value={this.state.value} onChange={this.onChange}>
+          <Radio value={1}>A</Radio>
+          <Radio value={2}>B</Radio>
+          <Radio value={3}>C</Radio>
+          <Radio value={4}>D</Radio>
+        </Radio.Group>
+        <br />
+        <Radio.Group disabled defaultValue={2}>
+          <Radio value={1}>A</Radio>
+          <Radio value={2}>B</Radio>
+          <Radio value={3}>C</Radio>
+          <Radio value={4}>D</Radio>
+        </Radio.Group>
       </>
     );
   }
@@ -88,27 +82,23 @@ import { Radio } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Radio.Group type="button">
-        <Radio checked value="选项一">选项一</Radio>
-        <Radio value="选项二">选项二</Radio>
-        <Radio value="选项三">选项三</Radio>
-      </Radio.Group>
-    </div>
-    <div className="rows">
-      <Radio.Group type="button">
-        <Radio value="选项一">选项一</Radio>
-        <Radio disabled value="选项二">选项二</Radio>
-        <Radio value="选项三">选项三</Radio>
-      </Radio.Group>
-    </div>
-    <div className="rows">
-      <Radio.Group type="button" disabled>
-        <Radio value="选项一">选项一</Radio>
-        <Radio value="选项二">选项二</Radio>
-        <Radio value="选项三" checked>选项三</Radio>
-      </Radio.Group>
-    </div>
+    <Radio.Group type="button">
+      <Radio checked value="选项一">选项一</Radio>
+      <Radio value="选项二">选项二</Radio>
+      <Radio value="选项三">选项三</Radio>
+    </Radio.Group>
+    <br />
+    <Radio.Group type="button">
+      <Radio value="选项一">选项一</Radio>
+      <Radio disabled value="选项二">选项二</Radio>
+      <Radio value="选项三">选项三</Radio>
+    </Radio.Group>
+    <br />
+    <Radio.Group type="button" disabled>
+      <Radio value="选项一">选项一</Radio>
+      <Radio value="选项二">选项二</Radio>
+      <Radio value="选项三" checked>选项三</Radio>
+    </Radio.Group>
   </>
 , mountNode);
 ```
@@ -122,27 +112,23 @@ import { Radio } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Radio.Group ghost type="button">
-        <Radio checked value="选项一">选项一</Radio>
-        <Radio value="选项二">选项二</Radio>
-        <Radio value="选项三">选项三</Radio>
-      </Radio.Group>
-    </div>
-    <div className="rows">
-      <Radio.Group ghost type="button">
-        <Radio value="选项一">选项一</Radio>
-        <Radio disabled value="选项二">选项二</Radio>
-        <Radio value="选项三">选项三</Radio>
-      </Radio.Group>
-    </div>
-    <div className="rows">
-      <Radio.Group ghost disabled type="button">
-        <Radio value="选项一">选项一</Radio>
-        <Radio value="选项二">选项二</Radio>
-        <Radio value="选项三" checked>选项三</Radio>
-      </Radio.Group>
-    </div>
+    <Radio.Group ghost type="button">
+      <Radio checked value="选项一">选项一</Radio>
+      <Radio value="选项二">选项二</Radio>
+      <Radio value="选项三">选项三</Radio>
+    </Radio.Group>
+    <br />
+    <Radio.Group ghost type="button">
+      <Radio value="选项一">选项一</Radio>
+      <Radio disabled value="选项二">选项二</Radio>
+      <Radio value="选项三">选项三</Radio>
+    </Radio.Group>
+    <br />
+    <Radio.Group ghost disabled type="button">
+      <Radio value="选项一">选项一</Radio>
+      <Radio value="选项二">选项二</Radio>
+      <Radio value="选项三" checked>选项三</Radio>
+    </Radio.Group>
   </>
 , mountNode);
 ```
@@ -156,27 +142,23 @@ import { Radio } from 'zarm-web';
 
 ReactDOM.render(
   <>
-    <div className="rows">
-      <Radio.Group type="button" size="lg">
-        <Radio value="选项一">选项一</Radio>
-        <Radio value="选项二">选项二</Radio>
-        <Radio value="选项三">选项三</Radio>
-      </Radio.Group>
-    </div>
-    <div className="rows">
-      <Radio.Group type="button" size="md">
-        <Radio value="选项一">选项一</Radio>
-        <Radio value="选项二">选项二</Radio>
-        <Radio value="选项三">选项三</Radio>
-      </Radio.Group>
-    </div>
-    <div className="rows">
-      <Radio.Group type="button" size="sm">
-        <Radio value="选项一">选项一</Radio>
-        <Radio value="选项二">选项二</Radio>
-        <Radio value="选项三">选项三</Radio>
-      </Radio.Group>
-    </div>
+    <Radio.Group type="button" size="lg">
+      <Radio value="选项一">选项一</Radio>
+      <Radio value="选项二">选项二</Radio>
+      <Radio value="选项三">选项三</Radio>
+    </Radio.Group>
+    <br />
+    <Radio.Group type="button" size="md">
+      <Radio value="选项一">选项一</Radio>
+      <Radio value="选项二">选项二</Radio>
+      <Radio value="选项三">选项三</Radio>
+    </Radio.Group>
+    <br />
+    <Radio.Group type="button" size="sm">
+      <Radio value="选项一">选项一</Radio>
+      <Radio value="选项二">选项二</Radio>
+      <Radio value="选项三">选项三</Radio>
+    </Radio.Group>
   </>
 , mountNode);
 ```

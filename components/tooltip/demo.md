@@ -64,7 +64,7 @@ import { Tooltip, Button } from 'zarm-web';
 
 const Demo = () => (
   <div className="direction-demo">
-    <div style={{ marginLeft: 70 }}>
+    <div style={{ marginLeft: 80, whiteSpace: 'nowrap' }}>
       <Tooltip direction="topLeft" content="topLeft text">
         <Button>TL</Button>
       </Tooltip>
@@ -78,7 +78,7 @@ const Demo = () => (
       </Tooltip>
     </div>
 
-    <div style={{ width: 70, float: "left",  clear: 'both' }}>
+    <div style={{ width: 80, float: 'left',  clear: 'both', }}>
       <Tooltip direction="leftTop" content="leftTop text">
         <Button>LT</Button>
       </Tooltip>
@@ -92,7 +92,7 @@ const Demo = () => (
       </Tooltip>
     </div>
 
-    <div style={{ width: 70, marginLeft: 70 * 4 + 20 }}>
+    <div style={{ width: 80, marginLeft: 80 * 4 + 20 }}>
       <Tooltip direction="rightTop" content="rightTop text">
         <Button>RT</Button>
       </Tooltip>
@@ -106,7 +106,7 @@ const Demo = () => (
       </Tooltip>
     </div>
 
-    <div style={{ marginLeft: 70, clear: 'both' }}>
+    <div style={{ marginLeft: 80, clear: 'both', whiteSpace: 'nowrap' }}>
       <Tooltip direction="bottomLeft" content="bottomLeft text">
         <Button>BL</Button>
       </Tooltip>
