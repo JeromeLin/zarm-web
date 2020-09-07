@@ -98,7 +98,7 @@
     "is-wsl": "^2.1.0",
     "istanbul-api": "^2.1.6",
     "lint-staged": "^4.3.0",
-    "marked": "^0.4.0",
+    "marked": "^0.7.0",
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
     "react": "^16.9.0",
