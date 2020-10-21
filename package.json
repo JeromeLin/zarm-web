@@ -55,7 +55,7 @@
     "create-react-context": "^0.3.0",
     "css-animation": "^1.2.5",
     "normalize.css": "8.0.1",
-    "rc-animate": "^3.0.0-rc.5",
+    "rc-animate": "^3.0.0",
     "zarm": "2.3.3"
   },
   "devDependencies": {
@@ -98,7 +98,7 @@
     "is-wsl": "^2.1.0",
     "istanbul-api": "^2.1.6",
     "lint-staged": "^4.3.0",
-    "marked": "^0.4.0",
+    "marked": "^0.7.0",
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
     "react": "^16.9.0",
