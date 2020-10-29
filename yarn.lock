@@ -5129,14 +5129,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-context@0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
-  integrity sha512-CQBmD0+QGgTaxDL3OX1IDXYqjkp2It4RIbcb99jS6AEg27Ga+a9G3JtK6SIu0HBwPLZlmwt9F7UwWA4Bn92Rag==
-  dependencies:
-    fbjs "^0.8.0"
-    gud "^1.0.0"
-
 create-react-context@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.3.0.tgz#546dede9dc422def0d3fc2fe03afe0bc0f4f7d8c"
@@ -6825,7 +6817,7 @@ fbjs-scripts@^1.1.0:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@^0.8.0, fbjs@^0.8.16:
+fbjs@^0.8.16:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -13094,7 +13086,7 @@ quick-lru@^1.0.0:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
 
-raf@^3.4.0:
+raf@^3.4.0, raf@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
   integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
@@ -16741,19 +16733,19 @@ yargs@^7.1.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-zarm@2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.3.3.tgz#af8e2683ab95d20fc13768796510cc30199ec387"
-  integrity sha512-pqISTMjBGFGMByD9Jz/QI0PUdxhpd9F3LuBURBBeFILgjYpWsnbfTcqfTtsu5eS7J1UwRECMSPuQjczHHdnH+A==
+zarm@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.6.0.tgz#de23178931079c08cda92be86c7da276c94f2d94"
+  integrity sha512-Xnjt6faXfP+mjN2dGrJ+8Z5TJbMQf+2wlmfwp+tk1GwMOYAH00TycBYMaCGDEyIJypn5yCuwp8WcnbvraTWVeQ==
   dependencies:
     better-scroll "1.15.1"
     classnames "2.2.6"
     color "^3.1.0"
-    create-react-context "0.2.3"
     hoist-non-react-statics "^3.3.0"
     lodash "^4.17.15"
     normalize.css "8.0.1"
     popper.js "^1.15.0"
+    raf "^3.4.1"
     react-native-camera-roll-picker "1.2.3"
 
 zepto@^1.2.0:
