@@ -53,7 +53,8 @@ class Popover extends Component<PropsType, any> {
   }
 
   onDocumentClick = (e: MouseEvent) => {
-    if (!this.instance || !this.pop) {
+    const { visible } = this.state;
+    if (!this.instance || !this.pop || !visible) {
       return;
     }
     if (e.target) {
