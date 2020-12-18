@@ -38,7 +38,6 @@ $treePrefixCls: ui-tree;
         height: 24px;
         line-height: 24px;
         display: inline-block;
-        vertical-align: top;
         cursor: pointer;
 
         &.#{$treePrefixCls}-switcher-open,
@@ -55,11 +54,11 @@ $treePrefixCls: ui-tree;
         }
 
         &.#{$treePrefixCls}-switcher-open:after {
-          transform: translate(8px, 0) rotate(0deg);
+          transform: translate(4px, 2px) rotate(0deg);
         }
 
         &.#{$treePrefixCls}-switcher-close:after {
-          transform: translate(10px, -2px) rotate(-90deg);
+          transform: translate(6px, 0) rotate(-90deg);
         }
 
         &.#{$treePrefixCls}-switcher-noop {

@@ -1,15 +1,54 @@
-$treePrefixCls: ui-tree;
+$prefixCls: zw;
+$treePrefixCls: zw-tree;
+$tree-node-switcher-width: 20px;
+$tree-node-height: 20px;
+$tree-node-line-height: 20px;
+$tree-node-checkbox-width: 20px;
 
 .#{$treePrefixCls} {
   margin: 0;
-  padding: 5px;
+  padding: 0;
 
   li {
-    padding: 3px 0;
+    position: relative;
+    padding: 5px 0;
     margin: 0;
     list-style: none;
     white-space: nowrap;
     outline: 0;
+
+    & > div {
+      display: inline-flex;
+
+      &:focus {
+        box-shadow: 0 0 2px 2px rgba(18, 194, 135, 0.1);
+        border-radius: 2px;
+      }
+
+      &.#{$treePrefixCls}-treenode-disabled {
+        span.#{$treePrefixCls}-node-content-wrapper {
+          color: #bcbcbc;
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: transparent;
+            color: #bcbcbc;
+          }
+
+          .#{$prefixCls}-icon {
+            color: #bcbcbc;
+          }
+        }
+      }
+    }
+
+    &:first-child {
+      padding-top: 10px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
 
     .collapse {
       overflow: hidden;
@@ -25,81 +64,145 @@ $treePrefixCls: ui-tree;
       padding: 0 0 0 18px;
     }
 
-    .#{$treePrefixCls}-node-content-wrapper {
-      display: inline-block;
-      cursor: pointer;
-      text-decoration: none;
-      vertical-align: top;
-    }
-
     span {
       &.#{$treePrefixCls}-switcher {
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
+        width: $tree-node-switcher-width;
+        height: $tree-node-height;
+        line-height: $tree-node-line-height;
         display: inline-block;
-        vertical-align: top;
         cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
 
         &.#{$treePrefixCls}-switcher-open,
         &.#{$treePrefixCls}-switcher-close {
-          &:after {
-            width: 0;
-            height: 0;
-            content: '';
-            display: inline-block;
-            border: 4px solid #000;
-            border-color: rgba(0, 0, 0, 0.65) transparent transparent;
-            transition: transform .3s;
+          .#{$treePrefixCls}-switcher-icon {
+            i {
+              font-size: 12px;
+              transition: transform .3s;
+            }
           }
         }
 
-        &.#{$treePrefixCls}-switcher-open:after {
-          transform: translate(8px, 0) rotate(0deg);
-        }
-
-        &.#{$treePrefixCls}-switcher-close:after {
-          transform: translate(10px, -2px) rotate(-90deg);
+        &.#{$treePrefixCls}-switcher-open .#{$treePrefixCls}-switcher-icon i {
+          transform: rotate(90deg);
         }
 
         &.#{$treePrefixCls}-switcher-noop {
           cursor: default;
         }
+
+        .#{$treePrefixCls}-switcher-line-icon i {
+          vertical-align: 1px;
+        }
+
+        .#{$treePrefixCls}-switcher-icon i {
+          vertical-align: 2px;
+        }
       }
 
       &.#{$treePrefixCls}-checkbox {
-        width: 20px;
-        height: 24px;
-        line-height: 24px;
+        width: $tree-node-checkbox-width;
+        line-height: $tree-node-line-height;
         display: inline-block;
-        vertical-align: top;
         cursor: pointer;
         text-align: center;
+        vertical-align: middle;
+
+        & > span {
+          vertical-align: 1px;
+        }
       }
 
       &.#{$treePrefixCls}-node-content-wrapper {
-        line-height: 24px;
-        height: 24px;
+        padding: 0 4px;
         display: inline-block;
-        color: rgba(0, 0, 0, 0.65);
+        line-height: $tree-node-line-height;
         font-size: 12px;
+        color: rgba(0, 0, 0, 0.65);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all .3s;
+        border-radius: 1px;
+        vertical-align: middle;
+
+        &.#{$treePrefixCls}-node-selected {
+          background-color: var(--theme-primary);
+          color: #fff;
+
+          .#{$treePrefixCls}-node-content-icon {
+            i {
+              color: #fff;
+            }
+          }
+        }
+
+        &:not(.#{$treePrefixCls}-node-selected):hover {
+          background-color: rgba(18, 194, 135, 0.1);
+          color: #12c287;
+          border-radius: 1px;
+        }
+
+        .#{$treePrefixCls}-node-content-icon {
+          margin-right: 2px;
+
+          i {
+            vertical-align: baseline;
+          }
+        }
+      }
+
+      &:not(.#{$treePrefixCls}-node-content-icon) {
+        > i.#{$prefixCls}-icon {
+          color: rgba(0, 0, 0, .7);
+        }
+      }
+
+      i.#{$prefixCls}-icon {
+        svg {
+          vertical-align: middle;
+        }
       }
     }
 
-    &-child-tree {
-      display: none;
-
-      &-open {
-        display: block;
-      }
-    }
-
-    &-treenode-disabled {
+    .#{$treePrefixCls}-node-disabled {
       > span:not(.#{$treePrefixCls}-switcher),
       > a,
-      > a span {
-        color: #767676;
+      > span {
+        color: #bcbcbc;
         cursor: not-allowed;
+        background: none;
+      }
+    }
+  }
+
+  &.#{$treePrefixCls}-show-line {
+    li {
+      .#{$treePrefixCls}-switcher-open {
+        .#{$treePrefixCls}-switcher-line-icon {
+          width: $tree-node-switcher-width;
+          height: $tree-node-height;
+        }
+
+        .#{$treePrefixCls}-switcher-icon {
+          width: $tree-node-switcher-width;
+          height: $tree-node-height;
+        }
+      }
+
+      &:not(:last-child) {
+        &:before {
+          position: absolute;
+          top: 23px;
+          left: 9px;
+          bottom: -8px;
+          border-right: 1px solid #ccc;
+          content: "";
+        }
+
+        &:first-child:before {
+          top: 29px;
+        }
       }
     }
   }
