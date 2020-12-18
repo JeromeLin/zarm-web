@@ -260,7 +260,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
       subMenuStyle.paddingLeft = getMenuPadding();
     }
-    const isActive = this.checkIfActive(childs);
+    const isActive = this.checkIfActive(childs || []);
     const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
     const cls = classnames(`${prefixCls}-submenu`, {
       [`${prefixCls}-submenu--open`]: isOpen,

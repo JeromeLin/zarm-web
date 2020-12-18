@@ -36,7 +36,7 @@ class InputWithTags extends React.Component<BasicProps> {
 
   constructor(props) {
     super(props);
-    this.debouncedOnInputChange = debounce(this.onInput, 300, false);
+    this.debouncedOnInputChange = debounce(this.onInput, 0, false);
   }
 
   componentWillReceiveProps(nextProps: BasicProps) {
@@ -63,6 +63,7 @@ class InputWithTags extends React.Component<BasicProps> {
   };
 
   onFocus = () => {
+    console.log(111);
     this.setState({
       isFocus: true,
     });
@@ -111,10 +112,11 @@ class InputWithTags extends React.Component<BasicProps> {
     const { compositionData, isFocus } = this.state;
     let showPlaceHolder = false;
     if (
-      (((search || remoteSearch) && !isFocus && value === null)
+      ((((search || remoteSearch) && !isFocus && value === null)
       || (typeof value === 'string' && value.length === 0))
       // eslint-disable-next-line no-mixed-operators
-      || !value
+      || ((Array.isArray(value) && value.length === 0))
+      || !value)
       // eslint-disable-next-line no-mixed-operators
       && !compositionData
     ) {
@@ -172,29 +174,42 @@ class InputWithTags extends React.Component<BasicProps> {
     });
 
     return (
-      <div
-        className={boxCls}
-        onClick={this.onTagBoxClick}
-        {...others}
-      >
+      <div className={boxCls} onClick={this.onTagBoxClick} {...others}>
         {tagList}
-        {
-        (search || remoteSearch) && (
-        <div
-          className="zw-tag-input__div"
-          contentEditable={!disabled && (search || remoteSearch)}
-          onInput={(e) => { this.debouncedOnInputChange((e.target as HTMLDivElement).textContent); }}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onCompositionStart={this.onCompositionStart}
-          onCompositionUpdate={this.onCompositionUpdate}
-          onCompositionEnd={(e) => { this.onCompositionEnd((e.target as HTMLDivElement).textContent); }}
-          ref={(e) => { this.inputDiv = e as HTMLDivElement; }}
+        {(search || remoteSearch) && (
+          <div
+            className="zw-tag-input__div"
+            contentEditable={!disabled && (search || remoteSearch)}
+            onInput={(e) => {
+              this.debouncedOnInputChange(
+                (e.target as HTMLDivElement).textContent,
+              );
+            }}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onCompositionStart={this.onCompositionStart}
+            onCompositionUpdate={this.onCompositionUpdate}
+            onCompositionEnd={(e) => {
+              this.onCompositionEnd((e.target as HTMLDivElement).textContent);
+            }}
+            ref={(e) => {
+              this.inputDiv = e as HTMLDivElement;
+            }}
+          />
+        )}
+        {showPlaceHolder && (
+          <span
+            style={searchValueStyle}
+            className="zw-tag-input__div-placeholder"
+          >
+            {placeholder}
+          </span>
+        )}
+        <Icon
+          style={Style.iconStyle}
+          className="arrow-bottom"
+          type="arrow-bottom"
         />
-        )
-      }
-        {showPlaceHolder && <span style={searchValueStyle} className="zw-tag-input__div-placeholder">{placeholder}</span>}
-        <Icon style={Style.iconStyle} className="arrow-bottom" type="arrow-bottom" />
       </div>
     );
   }

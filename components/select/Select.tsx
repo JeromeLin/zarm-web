@@ -116,7 +116,6 @@ class Select extends Component<PropsType, StateProps> {
       optionData: [],
     };
     const { children } = this.props;
-
     if (props.multiple) {
       if (!Array.isArray(value)) {
         state.value = [String(value)];
@@ -242,6 +241,7 @@ class Select extends Component<PropsType, StateProps> {
   };
 
   onDeleteTag = (_e, _key, _value, index) => {
+    const { onChange } = this.props;
     const selected = Select.mapEmptyValueToEmptyString((this.state.value as Array<string>).slice());
     selected.splice(index, 1);
     const selectedData = selected.map((select, selectIndex) => {
@@ -253,7 +253,12 @@ class Select extends Component<PropsType, StateProps> {
         index: selectIndex,
       };
     });
-    this.props.onChange(selected, selectedData);
+    // this.props.onChange(selected, selectedData);
+    this.setState({
+      value: Select.mapEmptyStringToEmptyValue(selected),
+    }, () => {
+      onChange(selected, selectedData);
+    });
   };
 
   onSearchValueChange = (value) => {
@@ -277,7 +282,6 @@ class Select extends Component<PropsType, StateProps> {
   unbindOuterHandlers() {
     Events.off(document, 'keyup', (e) => this.handleKeyup(e));
   }
-
 
   handleKeyup(e) {
     const { dropdown } = this.state;
@@ -305,7 +309,6 @@ class Select extends Component<PropsType, StateProps> {
     const search = 'search' in this.props;
 
     const placeholderText = placeholder || locale!.placeholder;
-
     let valueText;
     if (multiple && Array.isArray(value)) {
       valueText = value.reduce((prev: any, item) => {
@@ -324,7 +327,6 @@ class Select extends Component<PropsType, StateProps> {
         Array.isArray(optionChildren) ? valueText = optionChildren.join() : valueText = optionChildren;
       }
     }
-
     const children: Array<ReactNode> = [];
     const filterCondition = (option, optionIndex: number) => {
       if (search && searchValue) {
@@ -337,7 +339,7 @@ class Select extends Component<PropsType, StateProps> {
       children.push(
         <Option
           key={elem.key || elem.value}
-          showCheckIcon={checked}
+          showCheckIcon={multiple}
           {...elem.props}
           checked={checked}
           onChange={(e) => {
@@ -363,6 +365,7 @@ class Select extends Component<PropsType, StateProps> {
         disabled={disabled}
         visible={dropdown}
         content={menus}
+        style={style}
         getContainer={getPopupContainer}
         onVisibleChange={(visible) => {
           if (visible === true) {

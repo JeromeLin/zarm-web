@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
-import Icon from '../icon';
+import Checkbox from '../checkbox';
 import { OptionProps } from './PropsType';
 
 class Option extends Component<OptionProps, any> {
@@ -15,19 +15,18 @@ class Option extends Component<OptionProps, any> {
     } = this.props;
 
     const cls = cn({
-      'za-option__list': true,
+      'zw-option__list': true,
       'is-checked': checked,
       'is-disabled': disabled,
     });
     return (
       <li
         className={cls}
-        style={{ paddingRight: showCheckIcon ? 25 : 10 }}
         onClick={(e) => onChange && onChange(e)}
         onDoubleClick={onDoubleClick}
       >
-        {children}
-        {showCheckIcon && checked && <Icon className="checked-icon" theme="primary" type="right" />}
+        {showCheckIcon && <Checkbox checked={checked}>{children}</Checkbox>}
+        {!showCheckIcon && children}
       </li>
     );
   }

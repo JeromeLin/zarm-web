@@ -55,10 +55,11 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
     const { current } = this.triggerPointRef;
     const { current: popperContentCurrent } = this.popperContentRef;
     if (visible) {
-      if (current && popperContentCurrent) {
-        if (popperContentCurrent.contains(e.target as Node) || current.contains(e.target as Node)) {
-          return;
-        }
+      if (current && current.contains(e.target as Node)) {
+        return;
+      }
+      if (popperContentCurrent && popperContentCurrent.contains(e.target as Node)) {
+        return;
       }
       this.onVisibleChange(false);
     }
@@ -178,17 +179,20 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
         onVisibleChange={this.onVisibleChange}
         content={dropdownContent}
       >
-        <span
-          ref={this.triggerPointRef}
+        <div
           style={{ display: 'inline-block' }}
-          onClick={this.onClick}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          onContextMenu={this.onContextMenu}
-          onKeyDown={this.onKeydown}
         >
-          {children}
-        </span>
+          <span
+            ref={this.triggerPointRef}
+            onClick={this.onClick}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onContextMenu={this.onContextMenu}
+            onKeyDown={this.onKeydown}
+          >
+            {children}
+          </span>
+        </div>
       </Popper>
     );
   }

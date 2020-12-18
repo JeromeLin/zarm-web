@@ -1,14 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PopConfirm renders PopConfirm correctly 1`] = `
-<div>
-  <button
-    class="zw-button zw-button--default zw-button--md zw-button--radius"
-    type="button"
-  >
-    <span>
-      Delete
-    </span>
-  </button>
-</div>
-`;
+exports[`PopConfirm renders PopConfirm correctly 1`] = `<div />`;

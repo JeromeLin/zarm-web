@@ -29,26 +29,22 @@ exports[`Transfer renders Transfer correctly 1`] = `
             role="menu"
           >
             <li
-              class="za-option__list"
-              style="padding-right:10px"
+              class="zw-option__list"
             >
               张三
             </li>
             <li
-              class="za-option__list"
-              style="padding-right:10px"
+              class="zw-option__list"
             >
               李四
             </li>
             <li
-              class="za-option__list"
-              style="padding-right:10px"
+              class="zw-option__list"
             >
               王五
             </li>
             <li
-              class="za-option__list"
-              style="padding-right:10px"
+              class="zw-option__list"
             >
               奥巴马
             </li>
