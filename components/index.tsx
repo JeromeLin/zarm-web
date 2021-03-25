@@ -24,4 +24,3 @@ export { default as Transition } from './transition';
 export { Row, Col } from './grid';
 export { default as Badge } from './badge';
 export { default as ConfigProvider } from './config-provider';
-export { default as Modal } from './modal';

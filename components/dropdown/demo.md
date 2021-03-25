@@ -146,69 +146,6 @@ ReactDOM.render(
 );
 ```
 
-## 位于模态框中的下拉框
-
-模态框中的下拉框层级会置于模态框之上。
-
-```jsx
-import { Dropdown, Menu, Checkbox, Button, Modal } from 'zarm-web';
-
-const overlay = (
-  <div style={{ width: 300, height: 100, padding: '8px 12px' }}>Dropdown Content</div>
-);
-
-class Demo extends React.Component {
-  state = {
-    modalVisible: false,
-  };
-
-  toggleModalVisible = () => {
-    this.setState((state) => {
-      return {
-        modalVisible: !state.modalVisible,
-      };
-    });
-  };
-
-  render() {
-    const { modalVisible } = this.state;
-
-    return (
-      <>
-        <Button theme="primary" onClick={this.toggleModalVisible}>
-          Open
-        </Button>
-        <Modal visible={modalVisible}>
-          <Modal.Header onClose={this.toggleModalVisible} />
-          <Modal.Body>
-            <Dropdown
-              content={
-                <div style={{ width: 300, height: 100, padding: '8px 12px' }}>
-                  Dropdown Content1
-                </div>
-              }
-            >
-              <Button>Button1</Button>
-            </Dropdown>
-            <Dropdown
-              content={
-                <div style={{ width: 300, height: 100, padding: '8px 12px' }}>
-                  Dropdown Content2
-                </div>
-              }
-            >
-              <Button>Button2</Button>
-            </Dropdown>
-          </Modal.Body>
-        </Modal>
-      </>
-    );
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
 ## API
 
 | 属性              | 类型                                 | 默认值        | 说明                                                                                                                                            |
