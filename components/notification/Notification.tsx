@@ -6,21 +6,12 @@ import { mapToIconType, mapToIconTheme, getStyle } from './utils';
 
 function getIcon(icon: NotificationIcon | React.ReactElement, className: string) {
   if (React.isValidElement(icon)) {
-    return (
-      <div className={className}>{icon}</div>
-    );
+    return <div className={className}>{icon}</div>;
   }
   const iconType = mapToIconType(icon);
-  return iconType
-    ? (
-      <Icon
-        type={iconType}
-        className={className}
-        size="sm"
-        theme={mapToIconTheme(icon)}
-      />
-    )
-    : null;
+  return iconType ? (
+    <Icon type={iconType} className={className} size="sm" theme={mapToIconTheme(icon)} />
+  ) : null;
 }
 
 export class Notification extends React.Component<NotificationProps, {}> {
@@ -32,9 +23,19 @@ export class Notification extends React.Component<NotificationProps, {}> {
 
   render() {
     const {
-      style, className, prefixCls, title, icon, content, footer,
-      top, bottom,
-      onMouseEnter, onMouseLeave, onClose, onClick,
+      style,
+      className,
+      prefixCls,
+      title,
+      icon,
+      content,
+      footer,
+      top,
+      bottom,
+      onMouseEnter,
+      onMouseLeave,
+      onClose,
+      onClick,
     } = this.props;
     const iconToRender = icon ? getIcon(icon, `${prefixCls}__icon`) : null;
     const cls = classnames(`${prefixCls}__content`, { 'has-icon': iconToRender });
@@ -53,12 +54,7 @@ export class Notification extends React.Component<NotificationProps, {}> {
           {content && <div className={`${prefixCls}__body`}>{content}</div>}
           {footer && <div className={`${prefixCls}__foot`}>{footer}</div>}
         </div>
-        <Icon
-          className={`${prefixCls}__close`}
-          type="wrong"
-          size="sm"
-          onClick={onClose}
-        />
+        <Icon className={`${prefixCls}__close`} type="wrong" size="sm" onClick={onClose} />
       </div>
     );
   }

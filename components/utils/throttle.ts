@@ -1,17 +1,20 @@
-const throttle = (func, delay) => {
+const throttle = (func: Function, delay: number) => {
   let timer: number;
   let startTime = Date.now();
 
-  return (...args) => {
+  return (...args: any[]) => {
     const curTime = Date.now();
     const remaining = delay - (curTime - startTime);
 
     clearTimeout(timer);
     if (remaining <= 0) {
       func.apply(this, args);
-      startTime = Date.now();
+      startTime = curTime;
     } else {
-      timer = setTimeout(func, remaining);
+      timer = window.setTimeout(() => {
+        func.apply(this, args);
+        startTime = Date.now();
+      }, remaining);
     }
   };
 };

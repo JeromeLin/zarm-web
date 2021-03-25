@@ -15,7 +15,11 @@ describe('Badge', () => {
   });
 
   it('sup', () => {
-    const wrapper = render(<Badge><span>foo</span></Badge>);
+    const wrapper = render(
+      <Badge>
+        <span>foo</span>
+      </Badge>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

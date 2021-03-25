@@ -178,9 +178,12 @@
   // Checkbox
   --checkbox-size: 14px;
   --checkbox-radius: var(--radius-sm);
+  --checkbox-background: var(--color-text-inverse);
   --checkbox-border-color: var(--border-color);
+  --checkbox-active-border-color: var(--theme-primary);
+  --checkbox-disabled-background: var(--background-disabled);
   --checkbox-disabled-color: #bcbcbc;
-  --checkbox-color: #616161;
+  --checkbox-arrow-color: var(--color-text-inverse);
 
   // Loading
   --loading-height-sm: 12px;
@@ -202,9 +205,12 @@
   // Radio
   --radio-size: 14px;
   --radio-radius: var(--radius-circle);
+  --radio-background: var(--color-text-inverse);
   --radio-border-color: var(--border-color);
+  --radio-active-border-color: var(--theme-primary);
+  --radio-disabled-background: var(--background-disabled);
   --radio-disabled-color: #bcbcbc;
-  --radio-color: #616161;
+  --radio-arrow-color: var(--color-text-inverse);
 
   // Menu
   --menu-default-bg-color: var(--color-text-inverse);

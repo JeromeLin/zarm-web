@@ -22,20 +22,20 @@ export default class ClickOutside extends React.Component<IProps> {
   private isTouch: boolean;
   private container: HTMLElement;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.isTouch = false;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (!this.props.disabled) {
       Events.on(document, 'click', this.handle);
       Events.on(document, 'touchend', this.handle);
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (!this.props.disabled) {
       Events.off(document, 'click', this.handle);
       Events.off(document, 'touchend', this.handle);
@@ -44,9 +44,9 @@ export default class ClickOutside extends React.Component<IProps> {
 
   getContainer = (node) => {
     this.container = node;
-  }
+  };
 
-  handle = event => {
+  handle = (event) => {
     if (event.type === 'touchend') {
       this.isTouch = true;
     }
@@ -57,11 +57,15 @@ export default class ClickOutside extends React.Component<IProps> {
     const el = this.container;
 
     if (el && !el.contains(event.target)) onClickOutside(event);
-  }
+  };
 
-  render () {
+  render() {
     const { onClickOutside, disabled, children, ...rest } = this.props;
 
-    return <div ref={this.getContainer} {...rest}>{children}</div>;
+    return (
+      <div ref={this.getContainer} {...rest}>
+        {children}
+      </div>
+    );
   }
 }

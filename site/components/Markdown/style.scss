@@ -12,37 +12,30 @@
     }
   }
 
-  .hljs {
-    background-color: transparent;
-  }
-
   .grid-container {
     overflow-x: auto;
     margin: 20px 0;
   }
 
-  // ul {
-  //   margin-left: 0;
-  //   padding-left: 0;
+  > ul {
+    margin-left: 0;
+    padding-left: 0;
 
-  //   > li {
-  //     margin-left: 20px;
-  //     padding-left: 4px;
-  //     list-style-type: circle;
-  //   }
-  // }
+    > li {
+      margin-left: 20px;
+      padding-left: 4px;
+      list-style-type: circle;
+    }
+  }
 
   pre {
     margin: 0;
+    padding: 1em;
     overflow: auto;
     font-size: 14px;
     line-height: 1.5;
     background-color: #f6f8fa;
     border-radius: 3px;
-
-    code {
-      padding: 1em;
-    }
   }
 
   h1,
@@ -56,13 +49,13 @@
     font-size: 28px;
   }
 
-  > h2 {
+  h2 {
     font-size: 24px;
     line-height: 32px;
     margin: 1.6em 0 0.6em;
   }
 
-  > h3 {
+  h3 {
     font-size: 18px;
     margin: 1.6em 0 0.6em;
   }
@@ -74,14 +67,8 @@
     border-left: 4px solid #dfe2e5;
   }
 
-  code {
-    background-color: #f1f1f1;
-    padding: 2px 5px;
-    border-radius: 3px;
-  }
-
   table.grid {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     width: 100%;
     min-width: 600px;
     font-size: 14px;

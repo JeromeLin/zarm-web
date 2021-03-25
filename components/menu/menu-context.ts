@@ -1,4 +1,4 @@
-import createReactContext, { Context } from 'create-react-context';
+import { Context, createContext } from 'react';
 import { MenuMode } from './PropsType';
 import { noop } from '../utils';
 
@@ -22,6 +22,6 @@ export const initialContext: ContextType = {
   toggleOpenKeys: noop,
 };
 
-const MenuContext: Context<ContextType> = createReactContext(initialContext);
+const MenuContext: Context<ContextType> = createContext(initialContext);
 
 export default MenuContext;

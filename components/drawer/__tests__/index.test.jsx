@@ -8,11 +8,7 @@ describe('Drawer', () => {
     const onMaskClick = jest.fn();
     const afterClose = jest.fn();
     const wrapper = mount(
-      <Drawer
-        direction="bottom"
-        onMaskClick={onMaskClick}
-        afterClose={afterClose}
-      >
+      <Drawer direction="bottom" onMaskClick={onMaskClick} afterClose={afterClose}>
         foo
       </Drawer>,
     );
@@ -21,9 +17,7 @@ describe('Drawer', () => {
 
   it('visible change false', () => {
     jest.useFakeTimers();
-    const wrapper = mount(
-      <Drawer visible>foo</Drawer>,
-    );
+    const wrapper = mount(<Drawer visible>foo</Drawer>);
     wrapper.setProps({ visible: false });
     jest.runAllTimers();
     wrapper.unmount();

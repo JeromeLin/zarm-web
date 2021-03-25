@@ -21,15 +21,15 @@ class Tag extends PureComponent<TagProps, {}> {
     const { color, bordered } = this.props;
     return !bordered
       ? {
-        backgroundColor: color,
-        borderColor: color,
-        color: '#fff',
-      }
+          backgroundColor: color,
+          borderColor: color,
+          color: '#fff',
+        }
       : {
-        color,
-        borderColor: Color(color).alpha(0.3),
-        backgroundColor: Color(color).alpha(0.05),
-      };
+          color,
+          borderColor: Color(color).alpha(0.3),
+          backgroundColor: Color(color).alpha(0.05),
+        };
   }
 
   isPresetColor = () => {
@@ -71,7 +71,9 @@ class Tag extends PureComponent<TagProps, {}> {
     const closeIcon = closable && (
       <Icon
         type="wrong"
-        onClick={(e) => { onClose && onClose(e); }}
+        onClick={(e) => {
+          onClose && onClose(e);
+        }}
       />
     );
 

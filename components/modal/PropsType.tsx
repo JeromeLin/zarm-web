@@ -1,5 +1,18 @@
 // tslint:disable-next-line:max-line-length
-export type animationType = 'fade' | 'door' | 'flip' | 'rotate' | 'zoom' | 'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
+export type animationType =
+  | 'fade'
+  | 'door'
+  | 'flip'
+  | 'rotate'
+  | 'zoom'
+  | 'moveUp'
+  | 'moveDown'
+  | 'moveLeft'
+  | 'moveRight'
+  | 'slideUp'
+  | 'slideDown'
+  | 'slideLeft'
+  | 'slideRight';
 
 export interface ModalProps {
   prefixCls?: string;

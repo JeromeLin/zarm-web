@@ -25,9 +25,7 @@ describe('Switch', () => {
   });
 
   it('behaves correctly when receving new value', () => {
-    const wrapper = mount(
-      <Switch defaultChecked={false} />,
-    );
+    const wrapper = mount(<Switch defaultChecked={false} />);
 
     expect(wrapper.find('.zw-switch').hasClass('zw-switch--checked')).toBeFalsy();
     wrapper.find('.zw-switch').simulate('click');
@@ -36,13 +34,9 @@ describe('Switch', () => {
 
   it('behaves correctly when toggling status', () => {
     const onChange = jest.fn();
-    const wrapper = mount(
-      <Switch defaultChecked={false} onChange={onChange} />,
-    );
+    const wrapper = mount(<Switch defaultChecked={false} onChange={onChange} />);
 
-    const wrapperOpen = mount(
-      <Switch defaultChecked={false} onChange={onChange} />,
-    );
+    const wrapperOpen = mount(<Switch defaultChecked={false} onChange={onChange} />);
 
     wrapper.find('.zw-switch').simulate('click');
     expect(onChange).toHaveBeenCalledWith(true);
@@ -52,9 +46,7 @@ describe('Switch', () => {
   });
 
   it('switch with loading status', () => {
-    const wrapper = mount(
-      <Switch defaultChecked />,
-    );
+    const wrapper = mount(<Switch defaultChecked />);
     expect(wrapper.exists('.zw-switch--loading')).toEqual(false);
     wrapper.setProps({ loading: true });
     expect(wrapper.exists('.zw-switch--loading')).toEqual(true);

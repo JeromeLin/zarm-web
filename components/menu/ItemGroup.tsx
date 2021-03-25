@@ -49,7 +49,14 @@ class ItemGroup extends Component<MenuItemGroupProps> {
 
   render() {
     const {
-      prefixCls, title, inlineIndent, level, mode, inlineCollapsed, className, style,
+      prefixCls,
+      title,
+      inlineIndent,
+      level,
+      mode,
+      inlineCollapsed,
+      className,
+      style,
     } = this.props;
 
     const groupTitleStyle: CSSProperties = {};
@@ -60,21 +67,13 @@ class ItemGroup extends Component<MenuItemGroupProps> {
       groupTitleStyle.paddingLeft = FIRST_LEVEL_PADDING - inlineIndent!;
     }
 
-    const cls = classnames(
-      `${prefixCls}-item-group`,
-      { [className!]: !!className },
-    );
+    const cls = classnames(`${prefixCls}-item-group`, { [className!]: !!className });
     return (
       <li className={cls} style={style}>
-        <div
-          style={groupTitleStyle}
-          className={`${cls}__title`}
-        >
+        <div style={groupTitleStyle} className={`${cls}__title`}>
           {title}
         </div>
-        <ul className={`${cls}__list`}>
-          {this.renderChildren()}
-        </ul>
+        <ul className={`${cls}__list`}>{this.renderChildren()}</ul>
       </li>
     );
   }
@@ -83,18 +82,14 @@ class ItemGroup extends Component<MenuItemGroupProps> {
 export default function ItemGroupConsumer(props: MenuItemGroupProps) {
   return (
     <MenuContext.Consumer>
-      {
-        ({
-          mode, inlineCollapsed, inlineIndent,
-        }) => (
-          <ItemGroup
-            {...props}
-            mode={mode}
-            inlineIndent={inlineIndent}
-            inlineCollapsed={inlineCollapsed}
-          />
-        )
-      }
+      {({ mode, inlineCollapsed, inlineIndent }) => (
+        <ItemGroup
+          {...props}
+          mode={mode}
+          inlineIndent={inlineIndent}
+          inlineCollapsed={inlineCollapsed}
+        />
+      )}
     </MenuContext.Consumer>
   );
 }

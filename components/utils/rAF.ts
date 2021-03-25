@@ -6,8 +6,9 @@ let cAF;
 
 for (let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
   rAF = window[`${vendors[x]}RequestAnimationFrame`];
-  cAF = window[`${vendors[x]}CancelAnimationFrame`] ||    // Webkit中此取消方法的名字变了
-        window[`${vendors[x]}CancelRequestAnimationFrame`];
+  cAF =
+    window[`${vendors[x]}CancelAnimationFrame`] || // Webkit中此取消方法的名字变了
+    window[`${vendors[x]}CancelRequestAnimationFrame`];
 }
 
 if (!rAF) {

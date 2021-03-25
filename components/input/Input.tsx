@@ -32,9 +32,23 @@ class Input extends Component<InputProps, any> {
     const { type } = this.props;
     let children: React.ReactNode;
     if (type === 'textarea') {
-      children = <Textarea ref={(el) => { this.input = el; }} {...this.props as TextAreaProps} />;
+      children = (
+        <Textarea
+          ref={(el) => {
+            this.input = el;
+          }}
+          {...(this.props as TextAreaProps)}
+        />
+      );
     } else {
-      children = <InputCore ref={(el) => { this.input = el; }} {...this.props as InputCoreProps} />;
+      children = (
+        <InputCore
+          ref={(el) => {
+            this.input = el;
+          }}
+          {...(this.props as InputCoreProps)}
+        />
+      );
     }
 
     return children;

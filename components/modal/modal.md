@@ -1,9 +1,10 @@
 ## Modal 模态框
+
 在当前页面打开一个模态对话框。
 
 ### 基本用法
 
-Modal组件的基本用法。
+Modal 组件的基本用法。
 
 :::demo 可以通过`Modal.Header`,`Modal.Body`,`Modal.Footer`子组件定义模态框的不同部分。
 
@@ -41,7 +42,7 @@ Modal组件的基本用法。
           <Modal.Header title="我是弹框1" onClose={() => {this.toggleModal('modalVisible')}} />
           <Modal.Body className="test">
           <input name="ad"/>
-            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/> 
+            我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>我是模态框 <br/>
            <Button onClick={() => this.toggleModal2()}>显示Modal2</Button>
           </Modal.Body>
           <Modal.Footer>
@@ -53,7 +54,7 @@ Modal组件的基本用法。
         <Modal visible={modalVisible2} animationType="slideRight">
           <Modal.Header title="我是弹框2" onClose={() => this.toggleModal2()} />
           <Modal.Body className="test">
-            我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
+            我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框2 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/>
             <Button onClick={() => this.toggleModal3()}>显示Modal3</Button>
           </Modal.Body>
           <Modal.Footer>
@@ -65,8 +66,8 @@ Modal组件的基本用法。
          <Modal visible={modalVisible3} animationType="slideRight">
           <Modal.Header title="我是弹框3" onClose={() => this.toggleModal3()} />
           <Modal.Body className="test">
-            我是模态框3 <br/>我是模态框3<br/>我是模态框3<br/>我是模态框3 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/> 
-           
+            我是模态框3 <br/>我是模态框3<br/>我是模态框3<br/>我是模态框3 <br/>我是模态框 2<br/>我是模态框2 <br/>我是模态框2 <br/>
+
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={() => this.toggleModal3()}>取消</Button>
@@ -77,6 +78,7 @@ Modal组件的基本用法。
     )
   }
 ```
+
 :::
 
 ### 不同的动画
@@ -129,6 +131,7 @@ Modal组件的基本用法。
     )
   }
 ```
+
 :::
 
 ### 圆角模态框
@@ -168,31 +171,33 @@ Modal组件的基本用法。
     )
   }
 ```
+
 :::
 
-
 ### Modal Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| visible    | 是否可见  | boolean  |   -            |    false     |
-| width     | 宽度   | number  |   -            |    600     |
-| radius     | 是否圆角   | boolean    | - | false   |
-| animationType     | 动画方式  | string    | zoom,door,flip... | zoom   |
-| animationDuration     | 动画时长(ms)  | number   | - | 300  |
 
+| 参数              | 说明         | 类型    | 可选值            | 默认值 |
+| ----------------- | ------------ | ------- | ----------------- | ------ |
+| visible           | 是否可见     | boolean | -                 | false  |
+| width             | 宽度         | number  | -                 | 600    |
+| radius            | 是否圆角     | boolean | -                 | false  |
+| animationType     | 动画方式     | string  | zoom,door,flip... | zoom   |
+| animationDuration | 动画时长(ms) | number  | -                 | 300    |
 
 ### Modal Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onMaskClick | 点击遮罩触发的事件 | — |
 
+| 事件名称    | 说明               | 回调参数 |
+| ----------- | ------------------ | -------- |
+| onMaskClick | 点击遮罩触发的事件 | —        |
 
 ### Modal.Header Attributes
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| title    | 标题  | string  |   -            |    ''     |
+
+| 参数  | 说明 | 类型   | 可选值 | 默认值 |
+| ----- | ---- | ------ | ------ | ------ |
+| title | 标题 | string | -      | ''     |
 
 ### Modal.Header Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| onClose | 点击关闭图标触发的事件 | — |
+
+| 事件名称 | 说明                   | 回调参数 |
+| -------- | ---------------------- | -------- |
+| onClose  | 点击关闭图标触发的事件 | —        |

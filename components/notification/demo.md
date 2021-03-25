@@ -3,8 +3,8 @@
 全局的通知提醒信息。浮于屏幕角落（默认右上角），5s 后自动消失，不会打断用户操作。
 当鼠标移入移出时会重新计算停留时间。
 
-
 ## 基本用法
+
 最基本的用法。
 
 ```jsx
@@ -16,18 +16,19 @@ ReactDOM.render(
     onClick={() => {
       Notification.open({
         title: 'Notification Title',
-        content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+        content:
+          'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
       });
     }}
   >
     Open
-  </Button>
-, mountNode);
+  </Button>,
+  mountNode,
+);
 ```
 
-
-
 ## 特定场景下的通知提醒框
+
 特定场景下带图标的通知提醒框。
 
 ```jsx
@@ -35,7 +36,8 @@ import { Notification, Button, Icon } from 'zarm-web';
 
 const options = {
   title: 'Notification Title',
-  content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+  content:
+    'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
 };
 
 class Demo extends React.Component {
@@ -58,7 +60,8 @@ class Demo extends React.Component {
   customIcon = () => {
     Notification.open({
       title: 'Notification Title',
-      content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+      content:
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
       icon: <Icon type="question-round-fill" size="sm" />,
     });
   };
@@ -75,7 +78,9 @@ class Demo extends React.Component {
         <br />
         <Button onClick={this.customIcon}>Open a notification with custom icon</Button>
         <br />
-        <Button theme="danger" onClick={this.closeAll}>Close all notifications</Button>
+        <Button theme="danger" onClick={this.closeAll}>
+          Close all notifications
+        </Button>
       </>
     );
   }
@@ -84,9 +89,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 自定义样式
+
 自定义通知提醒框的样式
 
 ```jsx
@@ -98,23 +102,24 @@ ReactDOM.render(
     onClick={() => {
       Notification.open({
         title: 'Notification Title',
-        content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+        content:
+          'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
         className: 'custom-style',
         style: {
           width: 400,
-        }
+        },
       });
     }}
   >
     Open
-  </Button>
-, mountNode);
+  </Button>,
+  mountNode,
+);
 ```
 
-
-
 ## 主动关闭
-自定义通知框的停留时间，默认5s，取消自动关闭只要将该值设为 0 即可，然后主动控制将其关闭。
+
+自定义通知框的停留时间，默认 5s，取消自动关闭只要将该值设为 0 即可，然后主动控制将其关闭。
 
 ```jsx
 import { Notification, Button } from 'zarm-web';
@@ -125,11 +130,12 @@ class Demo extends React.Component {
   show = () => {
     let msgInstance = Notification.info({
       title: 'Notification Title',
-      content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+      content:
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
       stayTime: 0,
       onClose: () => {
         this.setState({ msgInstance: null });
-      }
+      },
     });
     this.setState({ msgInstance });
   };
@@ -155,9 +161,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 增加回调
+
 需要时可增加点击、关闭回调
 
 ```jsx
@@ -181,11 +186,10 @@ ReactDOM.render(
     }}
   >
     Open
-  </Button>
-, mountNode);
+  </Button>,
+  mountNode,
+);
 ```
-
-
 
 ## 自定义底部
 
@@ -196,7 +200,8 @@ class Demo extends React.Component {
   open = () => {
     let instance = Notification.open({
       title: 'Notification Title',
-      content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+      content:
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
       type: 'success',
       stayTime: 0,
       footer: (
@@ -208,21 +213,24 @@ class Demo extends React.Component {
             Ok
           </Button>
         </>
-      )
+      ),
     });
   };
 
   render() {
-    return <Button theme="primary" onClick={this.open}>Open</Button>;
+    return (
+      <Button theme="primary" onClick={this.open}>
+        Open
+      </Button>
+    );
   }
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 弹出位置
+
 设置不同的弹出位置和偏移距离
 
 ```jsx
@@ -233,9 +241,10 @@ class Demo extends React.Component {
     Notification.open({
       ...option,
       title: 'Notification Title',
-      content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+      content:
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
     });
-  };
+  }
 
   render() {
     return (
@@ -245,9 +254,13 @@ class Demo extends React.Component {
         <Button onClick={() => this.show({ position: 'bottomLeft' })}>bottomLeft</Button>
         <Button onClick={() => this.show({ position: 'bottomRight' })}>bottomRight</Button>
         <br />
-        <Button onClick={() => this.show({ top: 400 })}>Open the notification 400px from the top</Button>
+        <Button onClick={() => this.show({ top: 400 })}>
+          Open the notification 400px from the top
+        </Button>
         <br />
-        <Button onClick={() => this.show({ bottom: 100 })}>Open the notification 100px from the bottom</Button>
+        <Button onClick={() => this.show({ bottom: 100 })}>
+          Open the notification 100px from the bottom
+        </Button>
       </>
     );
   }
@@ -256,9 +269,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 更新指定通知提醒框的状态和内容
+
 可以通过唯一的 key 来控制指定的通知提醒框。
 
 ```jsx
@@ -271,7 +283,8 @@ class Demo extends React.Component {
       key,
       stayTime: 0,
       title: 'Notification Title',
-      content: 'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
+      content:
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification. ',
     });
     setTimeout(() => {
       Notification.open({
@@ -289,7 +302,9 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <Button theme="primary" onClick={this.show}>Open</Button>
+        <Button theme="primary" onClick={this.show}>
+          Open
+        </Button>
         <Button onClick={this.close}>Close</Button>
       </>
     );
@@ -299,23 +314,21 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| title | ReactNode | - | 通知标题 |
-| content | ReactNode | - | 展示内容 |
-| stayTime | number | 5000 | 停留时长(ms)。设置 0 则不自动隐藏 |
-| position | string | 'topRight' | 弹出位置。可选项：`topLeft`、`topRight`、`bottomLeft`、`bottomRight` |
-| top | string \| number | - | 脱离堆叠栈，距屏幕顶端位置 |
-| bottom | string \| number | - | 脱离堆叠栈，距屏幕底端位置 |
-| icon | string \| ReactElement | - | 图标。可选项：`success`、`info`、`warning`、`error` |
-| key | string | 自动生成 | 唯一标识，可通过close方法关闭 |
-| footer | ReactNode | - | 自定义底部显示 |
-| onClick | (e?: SyntheticEvent<any>) => void | - | 点击时触发的回调函数 |
-| onClose | (e?: SyntheticEvent<any>) => void | - | 关闭时触发的回调函数 |
+| 属性     | 类型                              | 默认值     | 说明                                                                 |
+| :------- | :-------------------------------- | :--------- | :------------------------------------------------------------------- |
+| title    | ReactNode                         | -          | 通知标题                                                             |
+| content  | ReactNode                         | -          | 展示内容                                                             |
+| stayTime | number                            | 5000       | 停留时长(ms)。设置 0 则不自动隐藏                                    |
+| position | string                            | 'topRight' | 弹出位置。可选项：`topLeft`、`topRight`、`bottomLeft`、`bottomRight` |
+| top      | string \| number                  | -          | 脱离堆叠栈，距屏幕顶端位置                                           |
+| bottom   | string \| number                  | -          | 脱离堆叠栈，距屏幕底端位置                                           |
+| icon     | string \| ReactElement            | -          | 图标。可选项：`success`、`info`、`warning`、`error`                  |
+| key      | string                            | 自动生成   | 唯一标识，可通过 close 方法关闭                                      |
+| footer   | ReactNode                         | -          | 自定义底部显示                                                       |
+| onClick  | (e?: SyntheticEvent<any>) => void | -          | 点击时触发的回调函数                                                 |
+| onClose  | (e?: SyntheticEvent<any>) => void | -          | 关闭时触发的回调函数                                                 |
 
 <h3>静态方法</h3>
 

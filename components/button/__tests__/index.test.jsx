@@ -31,17 +31,33 @@ describe('Button', () => {
       <div>
         <div>
           <Button shape="radius">default</Button>
-          <Button shape="radius" theme="primary">info</Button>
-          <Button shape="radius" theme="success">success</Button>
-          <Button shape="radius" theme="warning">warning</Button>
-          <Button shape="radius" theme="danger">error</Button>
+          <Button shape="radius" theme="primary">
+            info
+          </Button>
+          <Button shape="radius" theme="success">
+            success
+          </Button>
+          <Button shape="radius" theme="warning">
+            warning
+          </Button>
+          <Button shape="radius" theme="danger">
+            error
+          </Button>
         </div>
         <div>
           <Button shape="round">default</Button>
-          <Button shape="round" theme="primary">info</Button>
-          <Button shape="round" theme="success">success</Button>
-          <Button shape="round" theme="warning">warning</Button>
-          <Button shape="round" theme="danger">error</Button>
+          <Button shape="round" theme="primary">
+            info
+          </Button>
+          <Button shape="round" theme="success">
+            success
+          </Button>
+          <Button shape="round" theme="warning">
+            warning
+          </Button>
+          <Button shape="round" theme="danger">
+            error
+          </Button>
         </div>
       </div>,
     );
@@ -51,11 +67,19 @@ describe('Button', () => {
   it('renders Buttons of different size correctly', () => {
     const wrapper = render(
       <div>
-        <Button size="xl" theme="primary">xl尺寸</Button>
-        <Button size="lg" theme="primary">lg尺寸</Button>
+        <Button size="xl" theme="primary">
+          xl尺寸
+        </Button>
+        <Button size="lg" theme="primary">
+          lg尺寸
+        </Button>
         <Button theme="primary">默认尺寸</Button>
-        <Button size="sm" theme="primary">sm尺寸</Button>
-        <Button size="xs" theme="primary">xs尺寸</Button>
+        <Button size="sm" theme="primary">
+          sm尺寸
+        </Button>
+        <Button size="xs" theme="primary">
+          xs尺寸
+        </Button>
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -64,31 +88,31 @@ describe('Button', () => {
   it('renders loading Button correctly', () => {
     const wrapper = render(
       <div>
-        <Button theme="info" loading>加载中</Button>
+        <Button theme="info" loading>
+          加载中
+        </Button>
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders icon Button correctly', () => {
-    const wrapper = shallow(
-      <Button icon="add">加载中</Button>,
-    );
+    const wrapper = shallow(<Button icon="add">加载中</Button>);
     wrapper.find('button').simulate('click');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders anchor Button correctly', () => {
     const wrapper = render(
-      <Button href="https://www.baidu.com" theme="primary" target="_blank">百度一下</Button>,
+      <Button href="https://www.baidu.com" theme="primary" target="_blank">
+        百度一下
+      </Button>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders anchor Button with tag a correctly', () => {
-    const wrapper = shallow(
-      <Button href="https://www.baidu.com">百度一下</Button>,
-    );
+    const wrapper = shallow(<Button href="https://www.baidu.com">百度一下</Button>);
     expect(wrapper.exists('a')).toEqual(true);
   });
 
@@ -103,18 +127,14 @@ describe('Button', () => {
 
   it('triggers onClick callback correctly on nomarl Button', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(
-      <Button onClick={onClick}>加载中</Button>,
-    );
+    const wrapper = shallow(<Button onClick={onClick}>加载中</Button>);
     wrapper.find('button').simulate('click');
     expect(onClick).toHaveBeenCalled();
   });
 
   it('triggers onClick callback correctly on anchor Button', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(
-      <Button href="https://www.baidu.com" onClick={onClick} />,
-    );
+    const wrapper = shallow(<Button href="https://www.baidu.com" onClick={onClick} />);
     wrapper.find('a').simulate('click');
     expect(onClick).toHaveBeenCalled();
   });
@@ -122,10 +142,14 @@ describe('Button', () => {
   it('should not trigger onClick callback on disabled Button', () => {
     const onClick = jest.fn();
     const wrapper = shallow(
-      <Button disabled onClick={onClick}>加载中</Button>,
+      <Button disabled onClick={onClick}>
+        加载中
+      </Button>,
     );
     const wrapper2 = shallow(
-      <Button disabled href="https://www.baidu.com" onClick={onClick}>加载中</Button>,
+      <Button disabled href="https://www.baidu.com" onClick={onClick}>
+        加载中
+      </Button>,
     );
     wrapper.find('button').simulate('click');
     expect(onClick).not.toHaveBeenCalled();

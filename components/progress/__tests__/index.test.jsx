@@ -23,7 +23,11 @@ describe('Progress', () => {
   });
 
   it('renders percent and children correctly', () => {
-    const wrapper = mount(<Progress shape="circle" percent={10}>children</Progress>);
+    const wrapper = mount(
+      <Progress shape="circle" percent={10}>
+        children
+      </Progress>,
+    );
     wrapper.setProps({ percent: 50 });
     expect(wrapper.props().percent).toEqual(50);
     expect(toJson(wrapper)).toMatchSnapshot();

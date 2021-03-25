@@ -3,25 +3,12 @@ import classNames from 'classnames';
 import { InputGroupProps } from './PropsType';
 
 const Group: React.SFC<InputGroupProps> = (props) => {
-  const {
-    prefixCls,
-    className,
-    style,
-    size,
-    shape,
-    compact,
-    children,
-    ...rest
-  } = props;
+  const { prefixCls, className, style, size, shape, compact, children, ...rest } = props;
 
-  const cls = classNames(
-    prefixCls,
-    className,
-    {
-      [`${prefixCls}--${size}`]: size,
-      [`${prefixCls}--compact`]: compact,
-    },
-  );
+  const cls = classNames(prefixCls, className, {
+    [`${prefixCls}--${size}`]: size,
+    [`${prefixCls}--compact`]: compact,
+  });
 
   const items = React.Children.map(children, (element) => {
     if (isValidElement(element)) {
@@ -36,11 +23,7 @@ const Group: React.SFC<InputGroupProps> = (props) => {
   });
 
   return (
-    <div
-      className={cls}
-      style={style}
-      {...rest}
-    >
+    <div className={cls} style={style} {...rest}>
       {items}
     </div>
   );

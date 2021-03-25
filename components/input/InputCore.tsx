@@ -67,8 +67,10 @@ class Input extends Component<InputCoreProps, InputState> {
       inputStyle.paddingLeft = this.prefixNodeRef.current.offsetWidth + sizeMap[size!] * 1.5;
     }
     if (this.suffixNodeRef.current) {
-      inputStyle.paddingRight = this.suffixNodeRef.current.offsetWidth + sizeMap[size!] * 1.5
-        + (clearable ? clearIconWidth : 0);
+      inputStyle.paddingRight =
+        this.suffixNodeRef.current.offsetWidth +
+        sizeMap[size!] * 1.5 +
+        (clearable ? clearIconWidth : 0);
     }
     this.setState({ inputStyle: bordered === 'underline' ? null : inputStyle });
   }
@@ -206,7 +208,7 @@ class Input extends Component<InputCoreProps, InputState> {
 
     return !readOnly ? (
       <input
-        {...others as React.HtmlHTMLAttributes<HTMLInputElement>}
+        {...(others as React.HtmlHTMLAttributes<HTMLInputElement>)}
         ref={this.inputRef}
         className={`${prefixCls}__inner`}
         disabled={disabled}
@@ -216,9 +218,7 @@ class Input extends Component<InputCoreProps, InputState> {
         value={fixControlledValue(value)}
       />
     ) : (
-      <span>
-        {fixControlledValue(value)}
-      </span>
+      <span>{fixControlledValue(value)}</span>
     );
   };
 
@@ -234,15 +234,7 @@ class Input extends Component<InputCoreProps, InputState> {
   };
 
   renderLabeledIconInput = () => {
-    const {
-      prefixCls,
-      style,
-      prefix,
-      suffix,
-      clearable,
-      readOnly,
-      bordered,
-    } = this.props;
+    const { prefixCls, style, prefix, suffix, clearable, readOnly, bordered } = this.props;
     const { value, focused, inputStyle } = this.state;
 
     if (!prefix && !suffix && !clearable && bordered !== 'underline') {
@@ -250,7 +242,9 @@ class Input extends Component<InputCoreProps, InputState> {
     }
 
     const prefixNode = prefix && (
-      <span className={`${prefixCls}__prefix`} ref={this.prefixNodeRef}>{prefix}</span>
+      <span className={`${prefixCls}__prefix`} ref={this.prefixNodeRef}>
+        {prefix}
+      </span>
     );
 
     const suffixNode = (suffix || clearable) && (
@@ -260,7 +254,7 @@ class Input extends Component<InputCoreProps, InputState> {
       </span>
     );
 
-    const underlineNode = (bordered === 'underline' && !readOnly) && (
+    const underlineNode = bordered === 'underline' && !readOnly && (
       <div>
         <div className={`${prefixCls}__line`} />
         <div className={`${prefixCls}__focus-line`} />

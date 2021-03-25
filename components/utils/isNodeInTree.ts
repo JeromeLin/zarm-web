@@ -1,4 +1,3 @@
-
 /* eslint-disable */
 export default function (node: Node, tree: HTMLElement) {
   while (node) {

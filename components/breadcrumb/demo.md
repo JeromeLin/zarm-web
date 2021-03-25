@@ -1,9 +1,9 @@
 # Breadcrumb 面包屑
+
 告知用户当前页面在系统中的位置。
 
-
-
 ## 基本用法
+
 面包屑的基本用法。
 
 ```jsx
@@ -25,13 +25,13 @@ ReactDOM.render(
         <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
       </Breadcrumb>
     </div>
-  </>
-, mountNode);
+  </>,
+  mountNode,
+);
 ```
 
-
-
 ## 自定义分隔符
+
 可以自定义面包屑分隔符。
 
 ```jsx
@@ -42,24 +42,23 @@ ReactDOM.render(
     <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
     <Breadcrumb.Item>二级菜单</Breadcrumb.Item>
     <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
-  </Breadcrumb>
-, mountNode);
+  </Breadcrumb>,
+  mountNode,
+);
 ```
-
-
 
 ## API
 
 <h3>Breadcrumb</h3>
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| separator | ReactNode | '/' | 分隔符 |
+| 属性      | 类型      | 默认值 | 说明   |
+| :-------- | :-------- | :----- | :----- |
+| separator | ReactNode | '/'    | 分隔符 |
 
 <h3>Breadcrumb.Item</h3>
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| separator | ReactNode | '/' | 分隔符 |
-| href | string | - | 链接地址 |
-| onClick | (event: MouseEvent) => void | - | 点击回调事件 |
+| 属性      | 类型                        | 默认值 | 说明         |
+| :-------- | :-------------------------- | :----- | :----------- |
+| separator | ReactNode                   | '/'    | 分隔符       |
+| href      | string                      | -      | 链接地址     |
+| onClick   | (event: MouseEvent) => void | -      | 点击回调事件 |

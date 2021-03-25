@@ -1,4 +1,11 @@
-import { ReactNode, CSSProperties, HTMLAttributes, InputHTMLAttributes, TextareaHTMLAttributes, ChangeEvent } from 'react';
+import {
+  ReactNode,
+  CSSProperties,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  TextareaHTMLAttributes,
+  ChangeEvent,
+} from 'react';
 
 export type InputSize = 'lg' | 'md' | 'sm';
 
@@ -29,8 +36,9 @@ export interface InputCommonProps {
   size?: InputSize;
 }
 
-export interface InputCoreProps extends
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'prefix' | 'onChange'>, InputCommonProps {
+export interface InputCoreProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'prefix' | 'onChange'>,
+    InputCommonProps {
   type?: 'text' | 'number' | 'password';
   icon?: string;
   size?: InputSize;
@@ -45,8 +53,9 @@ export interface InputCoreProps extends
   onChange?: (e?: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface TextAreaProps extends
-  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>, InputCommonProps {
+export interface TextAreaProps
+  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'clearable'>,
+    InputCommonProps {
   type?: 'textarea';
   showLength?: boolean;
   autoHeight?: boolean | InputAutoHeightType;

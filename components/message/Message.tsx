@@ -7,21 +7,12 @@ import { mapToIconType, mapToIconTheme, getStyle } from '../notification/utils';
 
 function getIcon(icon: MessageIcon, className: string) {
   if (icon === 'loading') {
-    return (
-      <Loading className={className} visible size="sm" />
-    );
+    return <Loading className={className} visible size="sm" />;
   }
   const iconType = mapToIconType(icon);
-  return iconType
-    ? (
-      <Icon
-        type={mapToIconType(icon)}
-        className={className}
-        size="sm"
-        theme={mapToIconTheme(icon)}
-      />
-    )
-    : null;
+  return iconType ? (
+    <Icon type={mapToIconType(icon)} className={className} size="sm" theme={mapToIconTheme(icon)} />
+  ) : null;
 }
 
 export default class Message extends React.Component<MessageProps, {}> {
@@ -32,9 +23,16 @@ export default class Message extends React.Component<MessageProps, {}> {
 
   render() {
     const {
-      style, className, prefixCls, icon, content,
-      top, bottom,
-      onMouseEnter, onMouseLeave, onClick,
+      style,
+      className,
+      prefixCls,
+      icon,
+      content,
+      top,
+      bottom,
+      onMouseEnter,
+      onMouseLeave,
+      onClick,
     } = this.props;
     const iconToRender = icon ? getIcon(icon, `${prefixCls}__icon`) : null;
     const cls = classnames(`${prefixCls}__content`, { 'has-icon': iconToRender });

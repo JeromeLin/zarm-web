@@ -7,7 +7,7 @@ import Icon from '../icon';
 import events from '../utils/events';
 import DrawerProps from './PropsType';
 
-Popup.defaultProps.prefixCls = 'zw-popup';
+// Popup.defaultProps.prefixCls = 'zw-popup';
 
 const BUTTONLAYER = 40;
 const DRAWERSIZE = {
@@ -135,7 +135,6 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
     }
   };
 
-
   private calcDrawerWidth = () => {
     const { width, size } = this.state;
 
@@ -168,11 +167,14 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
     }
     layers(Drawers);
 
-    this.setState({
-      layer: totallayer,
-    }, () => {
-      this.noticeBrother(totallayer, Drawers, width);
-    });
+    this.setState(
+      {
+        layer: totallayer,
+      },
+      () => {
+        this.noticeBrother(totallayer, Drawers, width);
+      },
+    );
   };
 
   private noticeBrother = (total: any, drawer, width: any) => {
@@ -212,11 +214,7 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
       className,
       children,
     } = this.props;
-    const {
-      totallayers,
-      width,
-      btnstyle,
-    } = this.state;
+    const { totallayers, width, btnstyle } = this.state;
 
     const cls = classnames(prefixCls, className);
     this.parentDrawer = value;
@@ -234,12 +232,10 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
         >
           <div className={cls} style={{ width }}>
             {closable && (
-            <span className={`${prefixCls}__close`} onClick={onClose}>
-              <span
-                style={{ ...btnstyle }}
-              />
-              <Icon size="sm" type="wrong" />
-            </span>
+              <span className={`${prefixCls}__close`} onClick={onClose}>
+                <span style={{ ...btnstyle }} />
+                <Icon size="sm" type="wrong" />
+              </span>
             )}
             <div className={`${prefixCls}__container`}>
               {title && <div className={`${prefixCls}__title`}>{title}</div>}
@@ -252,9 +248,7 @@ class Drawer extends PureComponent<DrawerProps, DrawerStates> {
   };
 
   render() {
-    return (
-      <DrawerContext.Consumer>{this.renderProvider}</DrawerContext.Consumer>
-    );
+    return <DrawerContext.Consumer>{this.renderProvider}</DrawerContext.Consumer>;
   }
 }
 

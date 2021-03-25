@@ -2,12 +2,12 @@ import { CSSProperties } from 'react';
 
 export enum MenuMode {
   inline = 'inline',
-  vertical = 'vertical'
+  vertical = 'vertical',
 }
 
 export enum MenuTheme {
   light = 'light',
-  dark = 'dark'
+  dark = 'dark',
 }
 
 export interface ChildProps {

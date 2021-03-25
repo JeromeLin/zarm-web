@@ -1,7 +1,5 @@
-
 /* eslint-disable */
 const domUtil = {
-
   // 获取元素的纵坐标（相对于窗口）
   getTop: (e) => {
     let offset = e.offsetTop;
@@ -30,9 +28,7 @@ const domUtil = {
 
     // 解决ie下的兼容问题
     const isIE = navigator.userAgent.indexOf('MSIE') !== -1;
-    const rectTop = isIE && e.tagName === 'HTML' ?
-      -e.scrollTop :
-      rect.top;
+    const rectTop = isIE && e.tagName === 'HTML' ? -e.scrollTop : rect.top;
 
     return {
       left: rect.left,
@@ -47,11 +43,14 @@ const domUtil = {
   // 设置元素行内样式
   setStyle: (e, styles) => {
     function is_numeric(n) {
-      return (n !== '' && !isNaN(parseFloat(n)) && isFinite(n));
+      return n !== '' && !isNaN(parseFloat(n)) && isFinite(n);
     }
     Object.keys(styles).forEach((prop) => {
       let unit = '';
-      if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && is_numeric(styles[prop])) {
+      if (
+        ['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 &&
+        is_numeric(styles[prop])
+      ) {
         unit = 'px';
       }
       e.style[prop] = styles[prop] + unit;
@@ -100,7 +99,9 @@ const domUtil = {
   // 获取元素的offsetParent
   getOffsetParent: (e) => {
     const offsetParent = e.offsetParent;
-    return offsetParent === window.document.body || !offsetParent ? window.document.documentElement : offsetParent;
+    return offsetParent === window.document.body || !offsetParent
+      ? window.document.documentElement
+      : offsetParent;
   },
 
   // 获取指定元素可滚动的父元素
@@ -130,8 +131,9 @@ const domUtil = {
   getSupportedPropertyName: (property: string) => {
     const prefixes = ['', 'ms', 'webkit', 'moz', 'o'];
     for (let i = 0; i < prefixes.length; i++) {
-      const toCheck: string = prefixes[i] ? prefixes[i] +
-        property.charAt(0).toUpperCase() + property.slice(1) : property;
+      const toCheck: string = prefixes[i]
+        ? prefixes[i] + property.charAt(0).toUpperCase() + property.slice(1)
+        : property;
       if (typeof window.document.body.style[toCheck as keyof CSSStyleDeclaration] !== 'undefined') {
         return toCheck;
       }
@@ -141,11 +143,15 @@ const domUtil = {
 
   // 获取元素scrollTop
   getScrollTopValue: (e) => {
-    return e === document.body ? Math.max(document.documentElement.scrollTop, document.body.scrollTop) : e.scrollTop;
+    return e === document.body
+      ? Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+      : e.scrollTop;
   },
 
   getScrollLeftValue: (e) => {
-    return e === document.body ? Math.max(document.documentElement.scrollLeft, document.body.scrollLeft) : e.scrollLeft;
+    return e === document.body
+      ? Math.max(document.documentElement.scrollLeft, document.body.scrollLeft)
+      : e.scrollLeft;
   },
 };
 

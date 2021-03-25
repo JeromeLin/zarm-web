@@ -27,11 +27,7 @@ describe('Message', () => {
         onClick={click}
       />,
     );
-    wrapper
-      .find('div')
-      .at(0)
-      .simulate('mouseenter')
-      .simulate('mouseleave');
+    wrapper.find('div').at(0).simulate('mouseenter').simulate('mouseleave');
     wrapper.find(`.${prefixCls}__content`).simulate('click');
     expect(mouseEnter).toHaveBeenCalledTimes(1);
     expect(mouseLeave).toHaveBeenCalledTimes(1);
@@ -44,9 +40,7 @@ describe('Message', () => {
   });
 
   it('render unknow icon correctly', () => {
-    const wrapper = mount(
-      <Message content={content} icon="unknown-icon" />,
-    );
+    const wrapper = mount(<Message content={content} icon="unknown-icon" />);
     expect(wrapper.find(`.${prefixCls}__icon`)).toHaveLength(0);
   });
 });

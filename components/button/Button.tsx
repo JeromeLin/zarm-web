@@ -21,8 +21,26 @@ class Button extends Component<ButtonProps> {
 
   render() {
     const {
-      prefixCls, htmlType, type, size, block, shape, active, focus, disabled, ghost,
-      loading, className, onClick, children, style, theme, href, target, icon, ...others
+      prefixCls,
+      htmlType,
+      type,
+      size,
+      block,
+      shape,
+      active,
+      focus,
+      disabled,
+      ghost,
+      loading,
+      className,
+      onClick,
+      children,
+      style,
+      theme,
+      href,
+      target,
+      icon,
+      ...others
     } = this.props;
 
     const classes = classnames(prefixCls, className, {
@@ -40,43 +58,39 @@ class Button extends Component<ButtonProps> {
     });
 
     const child = children ? <span>{children}</span> : null;
-    const textContent = loading
-      ? (
-        <>
-          <ActivityIndicator prefixCls="zw-activity-indicator" />
-          <span>{children}</span>
-        </>
-      )
-      : child;
+    const textContent = loading ? (
+      <>
+        <ActivityIndicator prefixCls="zw-activity-indicator" />
+        <span>{children}</span>
+      </>
+    ) : (
+      child
+    );
     const iconNode = icon ? <Icon type={icon} /> : null;
 
-    return (
-      href
-        ? (
-          <a
-            className={classes}
-            href={disabled ? undefined : href}
-            style={style}
-            target={target}
-            {...others}
-            onClick={(e) => (!disabled && !loading) && onClick!(e)}
-          >
-            {textContent}
-          </a>
-        )
-        : (
-          <button
-            type={htmlType}
-            className={classes}
-            style={style}
-            disabled={disabled}
-            onClick={(e) => (!disabled && !loading) && onClick!(e)}
-            {...others}
-          >
-            {iconNode}
-            {textContent}
-          </button>
-        )
+    return href ? (
+      <a
+        className={classes}
+        href={disabled ? undefined : href}
+        style={style}
+        target={target}
+        {...others}
+        onClick={(e) => !disabled && !loading && onClick!(e)}
+      >
+        {textContent}
+      </a>
+    ) : (
+      <button
+        type={htmlType}
+        className={classes}
+        style={style}
+        disabled={disabled}
+        onClick={(e) => !disabled && !loading && onClick!(e)}
+        {...others}
+      >
+        {iconNode}
+        {textContent}
+      </button>
     );
   }
 }

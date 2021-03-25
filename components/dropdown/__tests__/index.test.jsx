@@ -9,9 +9,7 @@ describe('Dropdown', () => {
     const doneChange = jest.fn();
     const wrapper = render(
       <div>
-        <Dropdown
-          onVisibleChange={doneChange}
-        >
+        <Dropdown onVisibleChange={doneChange}>
           <Button>click</Button>
         </Dropdown>
       </div>,
@@ -39,7 +37,9 @@ describe('Dropdown', () => {
           doneChange(e);
         }}
       >
-        <Button className="btn" onClick={onClick}>click</Button>
+        <Button className="btn" onClick={onClick}>
+          click
+        </Button>
       </Dropdown>,
     );
     wrapper.find('button').simulate('click');
@@ -61,7 +61,9 @@ describe('Dropdown', () => {
           doneChange(e);
         }}
       >
-        <Button className="btn" onClick={onClick}>click</Button>
+        <Button className="btn" onClick={onClick}>
+          click
+        </Button>
       </Dropdown>,
     );
     wrapper.find('button').simulate('click');
@@ -69,7 +71,6 @@ describe('Dropdown', () => {
     expect(doneChange).not.toHaveBeenCalled();
     expect(visible).toEqual(false);
   });
-
 
   it('trigger onVisibleChange correctly when props trigger is hover', async () => {
     let visible = false;
@@ -91,7 +92,6 @@ describe('Dropdown', () => {
     expect(visible).toEqual(true);
   });
 
-
   it('not trigger onVisibleChange correctly when props trigger is not hover', async () => {
     let visible = false;
     const doneChange = jest.fn();
@@ -112,7 +112,6 @@ describe('Dropdown', () => {
     expect(visible).toEqual(false);
   });
 
-
   it('trigger onVisibleChange correctly when props trigger is mouseleave', async () => {
     let visible = true;
     const doneChange = jest.fn();
@@ -130,11 +129,10 @@ describe('Dropdown', () => {
     );
     const span = wrapper.find('span').first();
     span.simulate('mouseLeave');
-    await timer(310);   // 实际实现中会有300ms的延迟才消失
+    await timer(310); // 实际实现中会有300ms的延迟才消失
     expect(doneChange).toHaveBeenCalled();
     expect(visible).toEqual(false);
   });
-
 
   it('not trigger onVisibleChange correctly when props trigger is mouseleave and visible is false', async () => {
     let visible = false;
@@ -153,7 +151,7 @@ describe('Dropdown', () => {
     );
     const span = wrapper.find('span').first();
     span.simulate('mouseLeave');
-    await timer(310);   // 实际实现中会有300ms的延迟才消失
+    await timer(310); // 实际实现中会有300ms的延迟才消失
     expect(doneChange).not.toHaveBeenCalled();
     expect(visible).toEqual(false);
   });
@@ -176,11 +174,10 @@ describe('Dropdown', () => {
     );
     const span = wrapper.find('span').first();
     span.simulate('mouseLeave');
-    await timer(100);   // 实际实现中会有300ms的延迟才消失
+    await timer(100); // 实际实现中会有300ms的延迟才消失
     expect(doneChange).not.toHaveBeenCalled();
     expect(visible).toEqual(true);
   });
-
 
   it('renders normal Dropdown correctly when trigger contextmenu', async () => {
     let visible = false;

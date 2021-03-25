@@ -4,7 +4,6 @@ import toJson from 'enzyme-to-json';
 import Popover from '../index';
 import Button from '../../button';
 
-
 describe('Popover', () => {
   it('renders normal Popover correctly', () => {
     const wrapper = mount(

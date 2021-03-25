@@ -25,7 +25,7 @@ class Switch extends Component<PropsType, SwitchState> {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (('checked' in nextProps) && nextProps.checked !== prevState.checked) {
+    if ('checked' in nextProps && nextProps.checked !== prevState.checked) {
       return {
         checked: nextProps.checked,
       };
@@ -46,7 +46,17 @@ class Switch extends Component<PropsType, SwitchState> {
   }
 
   render() {
-    const { size, disabled, className, prefixCls, loading, onChange, checkedText, unCheckedText, ...rest } = this.props;
+    const {
+      size,
+      disabled,
+      className,
+      prefixCls,
+      loading,
+      onChange,
+      checkedText,
+      unCheckedText,
+      ...rest
+    } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -66,7 +76,9 @@ class Switch extends Component<PropsType, SwitchState> {
         {...rest}
       >
         {loading && <ActivityIndicator prefixCls="zw-activity-indicator" />}
-        {(checkedText || unCheckedText) && <span className={`${prefixCls}__text`}>{checked ? checkedText : unCheckedText}</span>}
+        {(checkedText || unCheckedText) && (
+          <span className={`${prefixCls}__text`}>{checked ? checkedText : unCheckedText}</span>
+        )}
       </button>
     );
   }

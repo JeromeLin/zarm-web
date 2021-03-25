@@ -41,8 +41,19 @@ export class MenuItem extends Component<MenuItemProps, any> {
 
   render() {
     const {
-      children, prefixCls, level, inlineIndent, title, mode, icon,
-      className, style, onDoubleClick, selectedKeys, itemKey, inlineCollapsed,
+      children,
+      prefixCls,
+      level,
+      inlineIndent,
+      title,
+      mode,
+      icon,
+      className,
+      style,
+      onDoubleClick,
+      selectedKeys,
+      itemKey,
+      inlineCollapsed,
     } = this.props;
 
     const cls = classnames(`${prefixCls}-item`, className, {
@@ -83,17 +94,13 @@ export class MenuItem extends Component<MenuItemProps, any> {
         onClick={this.handleClick}
         onDoubleClick={onDoubleClick}
       >
-        <Tooltip
-          hasArrow
-          content={title}
-          direction="right"
-        >
+        <Tooltip hasArrow content={title} direction="right">
           <div style={{ height: '100%' }}>
             {icon}
             {children}
           </div>
         </Tooltip>
-      )
+        )
       </li>
     );
   }
@@ -102,22 +109,24 @@ export class MenuItem extends Component<MenuItemProps, any> {
 export default function MenuItemConsumer(props: MenuItemProps) {
   return (
     <MenuContext.Consumer>
-      {
-        ({
-          mode, inlineCollapsed, inlineIndent,
-          selectedKeys, toggleOpenKeys, toggleSelectedKeys,
-        }) => (
-          <MenuItem
-            {...props}
-            mode={mode}
-            inlineIndent={inlineIndent}
-            inlineCollapsed={inlineCollapsed}
-            selectedKeys={selectedKeys}
-            toggleSubMenuOpen={toggleOpenKeys}
-            toggleSelectedKeys={toggleSelectedKeys}
-          />
-        )
-      }
+      {({
+        mode,
+        inlineCollapsed,
+        inlineIndent,
+        selectedKeys,
+        toggleOpenKeys,
+        toggleSelectedKeys,
+      }) => (
+        <MenuItem
+          {...props}
+          mode={mode}
+          inlineIndent={inlineIndent}
+          inlineCollapsed={inlineCollapsed}
+          selectedKeys={selectedKeys}
+          toggleSubMenuOpen={toggleOpenKeys}
+          toggleSelectedKeys={toggleSelectedKeys}
+        />
+      )}
     </MenuContext.Consumer>
   );
 }

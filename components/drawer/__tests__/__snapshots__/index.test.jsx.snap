@@ -12,15 +12,32 @@ exports[`Drawer renders correctly 1`] = `
   size="md"
   visible={false}
 >
-  <Popup
+  <ForwardRef(ForwardedRefComp)
     afterClose={[MockFunction]}
-    destroy={true}
     direction="right"
     key="0"
     mask={true}
     onMaskClick={[Function]}
-    prefixCls="zw-popup"
     visible={false}
-  />
+  >
+    <WarnIfDeprecatedComp
+      afterClose={[MockFunction]}
+      direction="right"
+      forwardedRef={null}
+      mask={true}
+      onMaskClick={[Function]}
+      visible={false}
+    >
+      <Popup
+        afterClose={[MockFunction]}
+        destroy={true}
+        direction="right"
+        mask={true}
+        onMaskClick={[Function]}
+        prefixCls="za-popup"
+        visible={false}
+      />
+    </WarnIfDeprecatedComp>
+  </ForwardRef(ForwardedRefComp)>
 </Drawer>
 `;

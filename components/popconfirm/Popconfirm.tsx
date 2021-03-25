@@ -4,19 +4,17 @@ import Popover from '../popover';
 import Button from '../button';
 import PopconfirmProps from './PropsType';
 import Icon from '../icon';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 interface PopconfirmStates {
   visible: boolean;
 }
 
 class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
-  static defaultProps = {
+  static defaultProps: PopconfirmProps = {
     prefixCls: 'zw-popconfirm',
     trigger: 'click',
     direction: 'top',
     icon: <Icon type="warning-round-fill" theme="warning" />,
-    hasArrow: true,
   };
 
   state: PopconfirmStates = {
@@ -60,10 +58,21 @@ class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
   };
 
   render() {
-    const { prefixCls, className, children, content, cancelText, okText, locale, icon, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      children,
+      content,
+      cancelText,
+      okText,
+      locale,
+      icon,
+      ...others
+    } = this.props;
     const { visible } = this.state;
     const cls = classnames(prefixCls, className);
 
+    console.log(cancelText, locale);
     const popContent: React.ReactNode = (
       <>
         <div className={`${prefixCls}__message`}>
@@ -72,10 +81,10 @@ class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
         </div>
         <div className={`${prefixCls}__buttons`}>
           <Button size="sm" onClick={this.handleCancel}>
-            {cancelText || locale!.cancel}
+            {cancelText || locale!.cancelText}
           </Button>
           <Button size="sm" theme="primary" onClick={this.handleConfirm}>
-            {okText || locale!.confirm}
+            {okText || locale!.okText}
           </Button>
         </div>
       </>
@@ -95,4 +104,4 @@ class Popconfirm extends Component<PopconfirmProps, PopconfirmStates> {
   }
 }
 
-export default LocaleReceiver('Popconfirm')(Popconfirm);
+export default Popconfirm;

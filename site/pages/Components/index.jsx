@@ -20,13 +20,7 @@ const LoadableComponent = (component) => {
   return Loadable.Map({
     loader,
     render: (loaded, props) => {
-      return (
-        <Markdown
-          content={loaded.page.default}
-          component={component}
-          {...props}
-        />
-      );
+      return <Markdown content={loaded.page.default} component={component} {...props} />;
     },
     loading: () => <Loading visible />,
   });
@@ -42,16 +36,18 @@ const Page = () => {
         <SideBar />
         <div className={containerCls}>
           <Switch>
-            {
-              documents.map((doc, i) => (
-                <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
-              ))
-            }
-            {
-              [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
-                <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
-              ))
-            }
+            {documents.map((doc, i) => (
+              <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
+            ))}
+            {[...general, ...form, ...feedback, ...view, ...navigation, ...other].map(
+              (component, i) => (
+                <Route
+                  key={+i}
+                  path={`/components/${component.key}`}
+                  component={LoadableComponent(component)}
+                />
+              ),
+            )}
             <Redirect to="/" />
           </Switch>
         </div>

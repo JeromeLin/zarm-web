@@ -1,5 +1,6 @@
-import { Radio } from 'zarm';
+import { Radio as zarmRadio } from 'zarm';
 
+const Radio = zarmRadio;
 Radio.defaultProps.prefixCls = 'zw-radio';
 Radio.Group.defaultProps.prefixCls = 'zw-radio-group';
 Radio.Group.defaultProps.compact = true;

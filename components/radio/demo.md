@@ -1,16 +1,15 @@
 # Radio 单选框
 
-
 ## 基本用法
+
 ```jsx
 import { Radio } from 'zarm-web';
 
 ReactDOM.render(<Radio>Radio</Radio>, mountNode);
 ```
 
-
-
 ## 禁用状态
+
 ```jsx
 import { useState } from 'react';
 import { Radio, Button } from 'zarm-web';
@@ -22,20 +21,23 @@ const Demo = () => {
     <>
       <Radio disabled={disabled}>禁用的状态</Radio>
       <br />
-      <Radio checked disabled={disabled}>选中并禁用的状态</Radio>
+      <Radio checked disabled={disabled}>
+        选中并禁用的状态
+      </Radio>
       <br />
       <br />
-      <Button theme="primary" onClick={() => setDisabled(!disabled)}>toggleDisabled</Button>
+      <Button theme="primary" onClick={() => setDisabled(!disabled)}>
+        toggleDisabled
+      </Button>
     </>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 组合使用
+
 ```jsx
 import { Radio } from 'zarm-web';
 
@@ -73,67 +75,75 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 按钮样式
-```jsx
 
+```jsx
 import { Radio } from 'zarm-web';
 
 ReactDOM.render(
   <>
     <Radio.Group type="button">
-      <Radio checked value="选项一">选项一</Radio>
+      <Radio checked value="选项一">
+        选项一
+      </Radio>
       <Radio value="选项二">选项二</Radio>
       <Radio value="选项三">选项三</Radio>
     </Radio.Group>
     <br />
     <Radio.Group type="button">
       <Radio value="选项一">选项一</Radio>
-      <Radio disabled value="选项二">选项二</Radio>
+      <Radio disabled value="选项二">
+        选项二
+      </Radio>
       <Radio value="选项三">选项三</Radio>
     </Radio.Group>
     <br />
     <Radio.Group type="button" disabled>
       <Radio value="选项一">选项一</Radio>
       <Radio value="选项二">选项二</Radio>
-      <Radio value="选项三" checked>选项三</Radio>
+      <Radio value="选项三" checked>
+        选项三
+      </Radio>
     </Radio.Group>
-  </>
-, mountNode);
+  </>,
+  mountNode,
+);
 ```
 
-
-
 ## 幽灵按钮
-```jsx
 
+```jsx
 import { Radio } from 'zarm-web';
 
 ReactDOM.render(
   <>
     <Radio.Group ghost type="button">
-      <Radio checked value="选项一">选项一</Radio>
+      <Radio checked value="选项一">
+        选项一
+      </Radio>
       <Radio value="选项二">选项二</Radio>
       <Radio value="选项三">选项三</Radio>
     </Radio.Group>
     <br />
     <Radio.Group ghost type="button">
       <Radio value="选项一">选项一</Radio>
-      <Radio disabled value="选项二">选项二</Radio>
+      <Radio disabled value="选项二">
+        选项二
+      </Radio>
       <Radio value="选项三">选项三</Radio>
     </Radio.Group>
     <br />
     <Radio.Group ghost disabled type="button">
       <Radio value="选项一">选项一</Radio>
       <Radio value="选项二">选项二</Radio>
-      <Radio value="选项三" checked>选项三</Radio>
+      <Radio value="选项三" checked>
+        选项三
+      </Radio>
     </Radio.Group>
-  </>
-, mountNode);
+  </>,
+  mountNode,
+);
 ```
-
-
 
 ## 三种大小
 
@@ -159,33 +169,32 @@ ReactDOM.render(
       <Radio value="选项二">选项二</Radio>
       <Radio value="选项三">选项三</Radio>
     </Radio.Group>
-  </>
-, mountNode);
+  </>,
+  mountNode,
+);
 ```
-
-
 
 ## API
 
 <h3>Radio</h3>
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| value | string \| number | - | 值 |
-| checked | boolean | - | 当前是否选中 |
-| defaultChecked | boolean | - | 初始是否选中 |
-| disabled | boolean | false | 是否禁用 |
-| onChange | (e: ChangeEvent<HTMLInputElement>) => void | - | 值变化时触发的回调函数 |
+| 属性           | 类型                                       | 默认值 | 说明                   |
+| :------------- | :----------------------------------------- | :----- | :--------------------- |
+| value          | string \| number                           | -      | 值                     |
+| checked        | boolean                                    | -      | 当前是否选中           |
+| defaultChecked | boolean                                    | -      | 初始是否选中           |
+| disabled       | boolean                                    | false  | 是否禁用               |
+| onChange       | (e: ChangeEvent<HTMLInputElement>) => void | -      | 值变化时触发的回调函数 |
 
 <h3>Radio.Group</h3>
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| type | string | - | 显示类型，可选值 `button` |
-| value | string \| number | - | 选中值 |
-| defaultValue | string \| number | - | 初始选中值 |
-| disabled | boolean | false | 是否禁用 |
-| block | boolean | false | 子项是否为块级元素 |
-| onChange | (value?: string \| number) => void | - | 值变化时触发的回调函数 |
-| size | string | 'md' | 按钮类型时的大小，可选值为 `lg`、`md`、`sm` |
-| shape | string | 'radius' | 按钮类型时的形状，可选值 `rect`, `radius`, `round` | 
+| 属性         | 类型                               | 默认值   | 说明                                               |
+| :----------- | :--------------------------------- | :------- | :------------------------------------------------- |
+| type         | string                             | -        | 显示类型，可选值 `button`                          |
+| value        | string \| number                   | -        | 选中值                                             |
+| defaultValue | string \| number                   | -        | 初始选中值                                         |
+| disabled     | boolean                            | false    | 是否禁用                                           |
+| block        | boolean                            | false    | 子项是否为块级元素                                 |
+| onChange     | (value?: string \| number) => void | -        | 值变化时触发的回调函数                             |
+| size         | string                             | 'md'     | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`        |
+| shape        | string                             | 'radius' | 按钮类型时的形状，可选值 `rect`, `radius`, `round` |

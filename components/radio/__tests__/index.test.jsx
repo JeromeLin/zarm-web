@@ -5,9 +5,7 @@ import Radio from '../index';
 
 describe('Radio', () => {
   it('renders normal Radio correctly', () => {
-    const wrapper = render(
-      <Radio value="a">选择</Radio>,
-    );
+    const wrapper = render(<Radio value="a">选择</Radio>);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -23,9 +21,7 @@ describe('Radio', () => {
   });
 
   it('renders checked Radio correctly', () => {
-    const wrapper = render(
-      <Radio checked>选择</Radio>,
-    );
+    const wrapper = render(<Radio checked>选择</Radio>);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -85,7 +81,9 @@ describe('Radio', () => {
     const wrapper = render(
       <Radio.Group>
         <Radio value="a">A</Radio>
-        <Radio value="b" checked>B</Radio>
+        <Radio value="b" checked>
+          B
+        </Radio>
         <Radio value="c">C</Radio>
         <Radio value="d">D</Radio>
       </Radio.Group>,
@@ -105,10 +103,7 @@ describe('Radio', () => {
       </Radio.Group>,
     );
 
-    wrapper
-      .find('.zw-radio__input')
-      .first()
-      .simulate('change');
+    wrapper.find('.zw-radio__input').first().simulate('change');
     expect(onChange).toBeCalled();
   });
 });

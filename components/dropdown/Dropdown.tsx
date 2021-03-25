@@ -112,7 +112,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
     if (trigger !== 'hover' || !visible) {
       return;
     }
-    this.hoverTimer = setTimeout(() => {
+    this.hoverTimer = window.setTimeout(() => {
       this.onVisibleChange(false);
     }, 300);
   };
@@ -131,7 +131,10 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
     const visible = getVisible(this.props, this.state);
     if (visible && e.keyCode === 27) {
       e.stopPropagation();
-      if (this.popperContentRef.current && this.popperContentRef.current.contains(e.currentTarget)) {
+      if (
+        this.popperContentRef.current &&
+        this.popperContentRef.current.contains(e.currentTarget)
+      ) {
         const { prevActiveElem } = this;
         if (prevActiveElem && prevActiveElem instanceof HTMLElement) {
           setTimeout(() => {

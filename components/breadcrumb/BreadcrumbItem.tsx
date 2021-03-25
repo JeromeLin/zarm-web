@@ -7,9 +7,11 @@ interface BaseBreadcrumbItemProps {
   onClick?: (event: MouseEvent) => void;
 }
 
-export type AnchorBreadcrumbItemProps = BaseBreadcrumbItemProps & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'onClick'>;
+export type AnchorBreadcrumbItemProps = BaseBreadcrumbItemProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'onClick'>;
 
-export type SpanBreadcrumbItemProps = BaseBreadcrumbItemProps & Omit<HTMLAttributes<HTMLSpanElement>, 'onClick'>;
+export type SpanBreadcrumbItemProps = BaseBreadcrumbItemProps &
+  Omit<HTMLAttributes<HTMLSpanElement>, 'onClick'>;
 
 export type BreadcrumbItemProps = Partial<AnchorBreadcrumbItemProps & SpanBreadcrumbItemProps>;
 
@@ -29,9 +31,16 @@ class BreadcrumbItem extends Component<BreadcrumbItemProps, {}> {
       [`${prefixCls}--link`]: 'href' in this.props,
     });
 
-    const text = 'href' in this.props
-      ? <a className={`${prefixCls}__content`} href={href} {...AnchorRestProps}>{children}</a>
-      : <span className={`${prefixCls}__content`} {...restProps}>{children}</span>;
+    const text =
+      'href' in this.props ? (
+        <a className={`${prefixCls}__content`} href={href} {...AnchorRestProps}>
+          {children}
+        </a>
+      ) : (
+        <span className={`${prefixCls}__content`} {...restProps}>
+          {children}
+        </span>
+      );
 
     return (
       <span className={cls} style={style}>

@@ -1,5 +1,6 @@
 {
-  "root": true,
-  "extends": "stylelint-config-za",
-  "ignoreFiles": ["*.md","*.js","*.jsx","*.ts","*.tsx","*.html"]
+  "extends": "stylelint-config-za/scss",
+  "rules": {
+    "unit-case": null,
+  }
 }

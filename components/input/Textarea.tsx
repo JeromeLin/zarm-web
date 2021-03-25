@@ -94,7 +94,7 @@ class Textarea extends Component<TextAreaProps, any> {
     return (
       <div className={cls} style={style}>
         <textarea
-          {...others as React.TextareaHTMLAttributes<HTMLTextAreaElement>}
+          {...(others as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
           style={textareaStyle}
           maxLength={maxLength}
           disabled={disabled}
@@ -107,8 +107,7 @@ class Textarea extends Component<TextAreaProps, any> {
         </textarea>
         {showLength && (
           <span className={`${prefixCls}__length-wrapper`}>
-            <span className={`${prefixCls}__length-count`}>{(value || '').length}</span>
-            /
+            <span className={`${prefixCls}__length-count`}>{(value || '').length}</span>/
             <span className={`${prefixCls}__length-max-count`}>{maxLength}</span>
           </span>
         )}

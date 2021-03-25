@@ -5,11 +5,7 @@ import Icon from '../icon';
 
 export default class Step extends PureComponent<StepsItemProps & any> {
   renderIconNode = () => {
-    const {
-      current,
-      stepIndex,
-      status,
-    } = this.props;
+    const { current, stepIndex, status } = this.props;
     let iconNode = stepIndex + 1;
     if (current > stepIndex || status === 'finish') {
       iconNode = <Icon type="right" theme="success" size="sm" />;

@@ -1,8 +1,7 @@
 # Popover 气泡卡片
 
-
-
 ## 基本用法
+
 最基本的用法。
 
 ```jsx
@@ -11,13 +10,13 @@ import { Button, Popover } from 'zarm-web';
 ReactDOM.render(
   <Popover content="This is the content of the popover.">
     <Button theme="primary">Hover me</Button>
-  </Popover>
-, mountNode);
+  </Popover>,
+  mountNode,
+);
 ```
 
-
-
 ## 触发方式
+
 鼠标移入、聚集、点击。
 
 ```jsx
@@ -34,13 +33,13 @@ ReactDOM.render(
     <Popover trigger="click" content="This is the content of the popover.">
       <Button>Click me</Button>
     </Popover>
-  </>
-, mountNode);
+  </>,
+  mountNode,
+);
 ```
 
-
-
 ## 箭头指向
+
 设置了 `arrowPointAtCenter` 后，箭头将指向目标元素的中心。
 
 ```jsx
@@ -54,13 +53,13 @@ ReactDOM.render(
     <Popover arrowPointAtCenter direction="topLeft" content="This is the content of the popover.">
       <Button>箭头指向中心</Button>
     </Popover>
-  </>
-, mountNode);
+  </>,
+  mountNode,
+);
 ```
 
-
-
 ## 方向
+
 共有十二个方向可供设置。
 
 ```jsx
@@ -124,13 +123,13 @@ ReactDOM.render(
         <Button>BR</Button>
       </Popover>
     </div>
-  </div>
-, mountNode);
+  </div>,
+  mountNode,
+);
 ```
 
-
-
 ## 卡片内关闭
+
 使用 `visible` 属性控制浮层显示。
 
 ```jsx
@@ -147,29 +146,31 @@ const Demo = () => {
       onVisibleChange={setVisible}
       content={
         <>
-          This is the content of the popover. 
+          This is the content of the popover.
           <br />
-          You can click <Button size="sm" onClick={() => setVisible(false)}>here</Button> to close this popover.
+          You can click{' '}
+          <Button size="sm" onClick={() => setVisible(false)}>
+            here
+          </Button>{' '}
+          to close this popover.
         </>
       }
     >
       <Button theme="primary">Click me</Button>
     </Popover>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| content | ReactNode | - | 显示内容 |
-| direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
-| trigger | string | 'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` 鼠标经过触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发 |
-| arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
-| visible | boolean | false | 是否显示 |
-| onVisibleChange | (visible?: boolean) => void | () => {} | 显示/隐藏 气泡卡片触发的事件 |
+| 属性               | 类型                        | 默认值   | 说明                                                                                                                                                      |
+| :----------------- | :-------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| content            | ReactNode                   | -        | 显示内容                                                                                                                                                  |
+| direction          | string                      | 'top'    | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
+| trigger            | string                      | 'hover'  | 触发方式，可选值为：`click` 点击触发状态、`hover` 鼠标经过触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发                           |
+| arrowPointAtCenter | boolean                     | false    | 箭头是否指向目标元素中心                                                                                                                                  |
+| visible            | boolean                     | false    | 是否显示                                                                                                                                                  |
+| onVisibleChange    | (visible?: boolean) => void | () => {} | 显示/隐藏 气泡卡片触发的事件                                                                                                                              |

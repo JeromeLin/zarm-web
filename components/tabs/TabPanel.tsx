@@ -9,7 +9,6 @@ class Tab extends Component<TabPanelProps, any> {
     prefixCls: 'zw-tabs',
   };
 
-
   static getDerivedStateFromProps(props) {
     if ('selected' in props) {
       return {

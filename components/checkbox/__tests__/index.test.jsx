@@ -6,10 +6,7 @@ import Checkbox from '../index';
 describe('Checkbox', () => {
   it('renders normal Checkbox correctly', () => {
     const wrapper = render(
-      <Checkbox
-        checked
-        value="0"
-      >
+      <Checkbox checked value="0">
         选择0
       </Checkbox>,
     );
@@ -19,11 +16,7 @@ describe('Checkbox', () => {
 
   it('renders disabled Checkbox correctly', () => {
     const wrapper = render(
-      <Checkbox
-        checked
-        disabled
-        value="0"
-      >
+      <Checkbox checked disabled value="0">
         选择0
       </Checkbox>,
     );
@@ -33,10 +26,7 @@ describe('Checkbox', () => {
 
   it('renders indeterminate Checkbox correctly', () => {
     const wrapper = render(
-      <Checkbox
-        indeterminate
-        value="0"
-      >
+      <Checkbox indeterminate value="0">
         选择0
       </Checkbox>,
     );
@@ -72,10 +62,7 @@ describe('Checkbox', () => {
   it('behaves correctly when clicking on Checkbox', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Checkbox
-        onChange={onChange}
-        value="0"
-      >
+      <Checkbox onChange={onChange} value="0">
         选择0
       </Checkbox>,
     );
@@ -88,10 +75,7 @@ describe('Checkbox', () => {
   it('behaves correctly when clicking on Checkbox', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Checkbox
-        onChange={onChange}
-        value="0"
-      >
+      <Checkbox onChange={onChange} value="0">
         选择0
       </Checkbox>,
     );

@@ -30,9 +30,16 @@ module.exports = {
     This source code is licensed under the MIT license found in the
     LICENSE file in the root directory of this source tree.
   `,
-  // setBabelOptions: (options) => {
-  //   options.plugins.push(['import', { libraryName: 'zarm', style: true }, 'zarm']);
-  // },
+  setBabelOptions: (options) => {
+    options.plugins.push([
+      'prismjs',
+      {
+        languages: ['javascript', 'typescript', 'jsx', 'tsx', 'css', 'scss', 'markup', 'bash'],
+        theme: 'default',
+        css: true,
+      },
+    ]);
+  },
   setRules: (rules) => {
     rules.push({
       test: /\.md$/,

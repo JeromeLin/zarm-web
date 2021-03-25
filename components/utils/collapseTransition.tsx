@@ -57,20 +57,30 @@ export default class CollapseTransition extends Component<IProps, any> {
     el.style.display = 'block';
 
     function step(context) {
-      tempHeight = Math.min(el.scrollHeight, tempHeight += el.scrollHeight * percent);
-      tempPaddingTop = Math.min(el.dataset.oldPaddingTop, tempPaddingTop += el.dataset.oldPaddingTop * percent);
-      tempPaddingBottom = Math.min(el.dataset.oldPaddingBottom, tempPaddingBottom += el.dataset.oldPaddingBottom * percent);
+      tempHeight = Math.min(el.scrollHeight, (tempHeight += el.scrollHeight * percent));
+      tempPaddingTop = Math.min(
+        el.dataset.oldPaddingTop,
+        (tempPaddingTop += el.dataset.oldPaddingTop * percent),
+      );
+      tempPaddingBottom = Math.min(
+        el.dataset.oldPaddingBottom,
+        (tempPaddingBottom += el.dataset.oldPaddingBottom * percent),
+      );
       el.style.height = `${tempHeight}px`;
       el.style.paddingTop = tempPaddingTop;
       el.style.paddingBottom = tempPaddingBottom;
       if (tempHeight < el.scrollHeight) {
-        requestAnimationFrame(() => { step(context); });
+        requestAnimationFrame(() => {
+          step(context);
+        });
       } else {
         context.afterEnter();
       }
     }
 
-    requestAnimationFrame(() => { step(this); });
+    requestAnimationFrame(() => {
+      step(this);
+    });
     el.style.overflow = 'hidden';
   }
 
@@ -101,20 +111,24 @@ export default class CollapseTransition extends Component<IProps, any> {
     let tempPaddingBottom = el.dataset.oldPaddingBottom;
 
     function step(context) {
-      tempHeight = Math.max(0, tempHeight -= el.scrollHeight * percent);
-      tempPaddingTop = Math.max(0, tempPaddingTop -= el.dataset.oldPaddingTop * percent);
-      tempPaddingBottom = Math.max(0, tempPaddingBottom -= el.dataset.oldPaddingBottom * percent);
+      tempHeight = Math.max(0, (tempHeight -= el.scrollHeight * percent));
+      tempPaddingTop = Math.max(0, (tempPaddingTop -= el.dataset.oldPaddingTop * percent));
+      tempPaddingBottom = Math.max(0, (tempPaddingBottom -= el.dataset.oldPaddingBottom * percent));
       el.style.height = `${tempHeight}px`;
       el.style.paddingTop = tempPaddingTop;
       el.style.paddingBottom = tempPaddingBottom;
       if (tempHeight !== 0) {
-        requestAnimationFrame(() => { step(context); });
+        requestAnimationFrame(() => {
+          step(context);
+        });
       } else {
         context.afterLeave();
       }
     }
 
-    requestAnimationFrame(() => { step(this); });
+    requestAnimationFrame(() => {
+      step(this);
+    });
   }
 
   afterLeave() {
@@ -132,11 +146,7 @@ export default class CollapseTransition extends Component<IProps, any> {
     const { children } = this.props;
 
     return (
-      <div
-        className="collapse-transition"
-        ref={this.collapseWrap}
-        style={{ overflow: 'hidden' }}
-      >
+      <div className="collapse-transition" ref={this.collapseWrap} style={{ overflow: 'hidden' }}>
         {children}
       </div>
     );

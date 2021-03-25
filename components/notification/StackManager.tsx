@@ -1,7 +1,11 @@
 import React, { ComponentClass, ComponentElement, RefObject } from 'react';
 import ReactDOM from 'react-dom';
 import StackItem from './StackItem';
-import { NotificationPropsBase, NotificationReturnInstance, NotificationPositions } from './PropsType';
+import {
+  NotificationPropsBase,
+  NotificationReturnInstance,
+  NotificationPositions,
+} from './PropsType';
 
 function isAtBottom(position: NotificationPositions) {
   return position.indexOf('bottom') === 0;
@@ -54,7 +58,7 @@ export default class StackManager {
 
   // To display a new StackItem
   open(props: NotificationPropsBase): NotificationReturnInstance {
-    const newKey = props.key || String(this.keySeed += 1);
+    const newKey = props.key || String((this.keySeed += 1));
     const position = getPosition(props.position);
     const newRef = React.createRef<StackItem>();
     const stackItem = (

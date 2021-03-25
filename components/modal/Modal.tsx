@@ -2,7 +2,13 @@ import React, { Component, KeyboardEvent } from 'react';
 import { createPortal, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import { ModalProps, StyleType, ModalBodyProps, ModalHeaderProps, ModalFooterProps } from './PropsType';
+import {
+  ModalProps,
+  StyleType,
+  ModalBodyProps,
+  ModalHeaderProps,
+  ModalFooterProps,
+} from './PropsType';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
@@ -10,8 +16,13 @@ import domUtil from '../utils/dom';
 
 const { getSupportedPropertyName } = domUtil;
 let animationDurationKey = getSupportedPropertyName('animationDuration') || 'animationDuration';
-if (animationDurationKey && animationDurationKey !== 'animationDuration' && !animationDurationKey.startsWith('ms')) {
-  animationDurationKey = animationDurationKey.charAt(0).toUpperCase() + animationDurationKey.slice(1);
+if (
+  animationDurationKey &&
+  animationDurationKey !== 'animationDuration' &&
+  !animationDurationKey.startsWith('ms')
+) {
+  animationDurationKey =
+    animationDurationKey.charAt(0).toUpperCase() + animationDurationKey.slice(1);
 }
 
 function toggleBodyOverflow(show: boolean) {
@@ -49,7 +60,7 @@ class Modal extends Component<ModalProps, StateIF> {
     minWidth: 270,
     isRadius: false,
     isRound: false,
-    onMaskClick() { },
+    onMaskClick() {},
   };
 
   private static instanceList: Modal[] = [];
@@ -336,10 +347,10 @@ class Modal extends Component<ModalProps, StateIF> {
 // eslint-disable-next-line no-redeclare
 declare namespace Modal {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface Props extends ModalProps { }
-  export interface BodyProps extends ModalBodyProps { }
-  export interface HeaderProps extends ModalHeaderProps { }
-  export interface FooterProps extends ModalFooterProps { }
+  export interface Props extends ModalProps {}
+  export interface BodyProps extends ModalBodyProps {}
+  export interface HeaderProps extends ModalHeaderProps {}
+  export interface FooterProps extends ModalFooterProps {}
 }
 
 export default Modal;

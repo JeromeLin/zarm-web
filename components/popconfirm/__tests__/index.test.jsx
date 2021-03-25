@@ -50,11 +50,7 @@ describe('PopConfirm', () => {
   it('check onOk function is call', () => {
     const ok = jest.fn();
     const wrapper = mount(
-      <Popconfirm
-        content="hello"
-        trigger="click"
-        onOk={ok}
-      >
+      <Popconfirm content="hello" trigger="click" onOk={ok}>
         <div id="hello">Hello world!</div>
       </Popconfirm>,
     );
@@ -69,11 +65,7 @@ describe('PopConfirm', () => {
   it('check onCancel function is call', () => {
     const onCancel = jest.fn();
     const wrapper = mount(
-      <Popconfirm
-        content="hello"
-        trigger="click"
-        onCancel={onCancel}
-      >
+      <Popconfirm content="hello" trigger="click" onCancel={onCancel}>
         <div id="hello">Hello world!</div>
       </Popconfirm>,
     );

@@ -7,7 +7,7 @@ import Modal from '../index';
 const { Header, Body, Footer } = Modal;
 
 jest.mock('react-dom', () => ({
-  createPortal: node => node,
+  createPortal: (node) => node,
 }));
 
 describe('Modal', () => {
@@ -24,13 +24,7 @@ describe('Modal', () => {
 
   it('renders customized Modal correctly', () => {
     const wrapper = render(
-      <Modal
-        width={400}
-        radius
-        visible
-        animationType="fade"
-        animationDuration={500}
-      >
+      <Modal width={400} radius visible animationType="fade" animationDuration={500}>
         <Header title="标题" />
         <Body>我是一个模态框</Body>
         <Footer>页脚</Footer>

@@ -2,7 +2,8 @@ import { ReactNode, ButtonHTMLAttributes } from 'react';
 
 export type SwitchSize = 'sm' | 'md';
 
-export default interface SwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'>{
+export default interface SwitchProps
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
   prefixCls?: string;
   size?: SwitchSize;
   checked?: boolean;

@@ -14,14 +14,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
 export const GutterContext = React.createContext({ gutter: [0, 0] });
 
 export default function Row(props: RowProps) {
-  const {
-    prefixCls = 'zw-row',
-    align,
-    justify,
-    className,
-    style,
-    children,
-  } = props;
+  const { prefixCls = 'zw-row', align, justify, className, style, children } = props;
   let { gutter = 0 } = props;
 
   if (!Array.isArray(gutter)) {
@@ -44,9 +37,7 @@ export default function Row(props: RowProps) {
 
   return (
     <div className={clsName} style={innerStyle}>
-      <GutterContext.Provider value={{ gutter }}>
-        {children}
-      </GutterContext.Provider>
+      <GutterContext.Provider value={{ gutter }}>{children}</GutterContext.Provider>
     </div>
   );
 }

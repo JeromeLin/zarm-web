@@ -96,9 +96,7 @@ class Loading extends Component<LoadingProps, LoadingStates> {
 
   renderIndicator = () => {
     const { indicator } = this.props;
-    const ele = (
-      <ActivityIndicator />
-    );
+    const ele = <ActivityIndicator />;
 
     if (React.isValidElement(indicator)) {
       return React.cloneElement(indicator as ReactElement<any>);
@@ -128,7 +126,7 @@ class Loading extends Component<LoadingProps, LoadingStates> {
       const containerCls = classnames(`${prefixCls}__container`);
       return (
         <div className={cls} style={this.getStyle()}>
-          { this.isNestedPattern() && <div className={containerCls}>{children}</div> }
+          {this.isNestedPattern() && <div className={containerCls}>{children}</div>}
           {visible && (
             <div className={`${prefixCls}__spin__wrapper`} style={style}>
               <div className={`${prefixCls}__spin`}>

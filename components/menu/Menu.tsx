@@ -144,14 +144,18 @@ class Menu extends Component<MenuProps, MenuState> {
   }
 
   render() {
-    const {
-      theme, mode, className, style, prefixCls, inlineIndent, inlineCollapsed,
-    } = this.props;
+    const { theme, mode, className, style, prefixCls, inlineIndent, inlineCollapsed } = this.props;
 
     const { openKeys, selectedKeys } = this.state;
-    const cls = classnames(prefixCls, `${prefixCls}--${theme}`, `${prefixCls}--${mode}`, className, {
-      [`${prefixCls}--collapsed`]: !!inlineCollapsed,
-    });
+    const cls = classnames(
+      prefixCls,
+      `${prefixCls}--${theme}`,
+      `${prefixCls}--${mode}`,
+      className,
+      {
+        [`${prefixCls}--collapsed`]: !!inlineCollapsed,
+      },
+    );
 
     const newMenuKeys: ContextType = {
       ...initialContext,
@@ -166,9 +170,7 @@ class Menu extends Component<MenuProps, MenuState> {
 
     return (
       <ul role="menu" className={cls} style={style}>
-        <MenuContext.Provider value={newMenuKeys}>
-          {this.renderChildren()}
-        </MenuContext.Provider>
+        <MenuContext.Provider value={newMenuKeys}>{this.renderChildren()}</MenuContext.Provider>
       </ul>
     );
   }

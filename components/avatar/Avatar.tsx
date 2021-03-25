@@ -21,7 +21,6 @@ class Avatar extends Component<AvatarProps, AvatarStates> {
     childrenScale: 1,
   };
 
-
   componentDidMount() {
     this.setChildrenScale();
   }
@@ -43,29 +42,17 @@ class Avatar extends Component<AvatarProps, AvatarStates> {
     }
     const childrenScale = (avatarWrapperWidth - 8) / avatarChildrenWidth;
     this.setState({
-      childrenScale: (childrenScale < 1)
-        ? childrenScale
-        : 1,
+      childrenScale: childrenScale < 1 ? childrenScale : 1,
     });
   };
 
   render() {
-    const {
-      prefixCls,
-      style,
-      size,
-      shape,
-      src,
-      alt,
-      children,
-      className,
-      ...others
-    } = this.props;
+    const { prefixCls, style, size, shape, src, alt, children, className, ...others } = this.props;
     const { childrenScale } = this.state;
 
-    const hasFontSizeStyle = (style && style.fontSize);
-    const hasImage = (src && src.trim() !== '');
-    const hasString = (typeof children === 'string');
+    const hasFontSizeStyle = style && style.fontSize;
+    const hasImage = src && src.trim() !== '';
+    const hasString = typeof children === 'string';
 
     const cls = classnames(prefixCls, className, `${prefixCls}--${shape}`, {
       [`${prefixCls}--${size}`]: !!size,
@@ -77,10 +64,10 @@ class Avatar extends Component<AvatarProps, AvatarStates> {
     const spanStyle: CSSProperties = hasFontSizeStyle
       ? {}
       : {
-        transform: childrenTransformStr,
-        WebkitTransform: childrenTransformStr,
-        msTransform: childrenTransformStr,
-      };
+          transform: childrenTransformStr,
+          WebkitTransform: childrenTransformStr,
+          msTransform: childrenTransformStr,
+        };
 
     return (
       <span
@@ -92,7 +79,7 @@ class Avatar extends Component<AvatarProps, AvatarStates> {
         }}
       >
         {hasImage && <img src={src} alt={alt} className={clsImage} />}
-        {(!hasImage) && hasString && (
+        {!hasImage && hasString && (
           <span
             className={clsString}
             style={spanStyle}

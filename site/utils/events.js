@@ -1,5 +1,4 @@
 module.exports = {
-
   on: (el, type, callback) => {
     if (el.addEventListener) {
       el.addEventListener(type, callback);
@@ -29,5 +28,4 @@ module.exports = {
       this.on(el, typeArray[i], recursiveFunction);
     }
   },
-
 };

@@ -13,16 +13,7 @@ class CheckableTag extends Component<CheckableTagProps, {}> {
   };
 
   render() {
-    const {
-      prefixCls,
-      size,
-      shape,
-      checked,
-      className,
-      disabled,
-      children,
-      style,
-    } = this.props;
+    const { prefixCls, size, shape, checked, className, disabled, children, style } = this.props;
 
     const classes = classnames(prefixCls, className, `${prefixCls}--checkable`, {
       [`${prefixCls}--${size}`]: size,
@@ -32,7 +23,13 @@ class CheckableTag extends Component<CheckableTagProps, {}> {
     });
 
     return (
-      <div className={classes} style={style} onClick={() => { !disabled && this.onClick(); }}>
+      <div
+        className={classes}
+        style={style}
+        onClick={() => {
+          !disabled && this.onClick();
+        }}
+      >
         {children}
       </div>
     );

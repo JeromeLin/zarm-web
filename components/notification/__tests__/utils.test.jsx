@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  mapToIconType,
-  mapToIconTheme,
-  handleOptions,
-  getStyle,
-} from '../utils';
+import { mapToIconType, mapToIconTheme, handleOptions, getStyle } from '../utils';
 
 describe('NotificationUtils', () => {
   it('map to icon type correctly', () => {
@@ -30,9 +25,7 @@ describe('NotificationUtils', () => {
     expect(handleOptions().content).toBe(undefined);
     expect(handleOptions(content).content).toBe(content);
     expect(handleOptions(reactNode).content).toBe(reactNode);
-    expect(JSON.stringify(handleOptions(options))).toBe(
-      JSON.stringify(options),
-    );
+    expect(JSON.stringify(handleOptions(options))).toBe(JSON.stringify(options));
   });
 
   it('get style correctly', () => {

@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import { Icon, Popup } from 'zarm';
-import { Dropdown, Menu, Radio } from 'zarm-web';
+import { Dropdown, Menu, Radio, ConfigProvider } from 'zarm-web';
 import classnames from 'classnames';
 import MenuComponent from '@site/components/Menu';
 import Events from '@site/utils/events';
 import Context from '@site/utils/context';
-import Locale from '@site/locale';
+import Locales from '@site/locale';
 import { version } from '@/package.json';
 // import docsearch from 'docsearch.js';
 // import 'docsearch.js/dist/cdn/docsearch.min.css';
@@ -30,7 +30,7 @@ const Header = ({ children }) => {
   const location = useLocation();
   const [menu, toggleMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const [lang, setLang] = useState(window.sessionStorage.language || 'zhCN');
+  const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');
   const currentPageKey = location.pathname.split('/')[1] || '/';
 
   const keyupEvent = (event) => {
@@ -50,7 +50,7 @@ const Header = ({ children }) => {
     // { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
   ];
 
-  if (document.location.host.indexOf('gitee') > -1 || lang === 'enUS') {
+  if (document.location.host.indexOf('gitee') > -1 || locale === 'enUS') {
     NAV_ITEMS.pop();
   }
 
@@ -65,23 +65,17 @@ const Header = ({ children }) => {
 
   const menuRender = currentPageKey !== '/' && (
     <div className="header-icon header-icon-menu">
-      {
-        currentPageKey === 'components' && (
-          <>
-            <Icons type="list" onClick={() => toggleMenu(!menu)} />
-            <Popup
-              visible={menu}
-              direction="left"
-              onMaskClick={() => toggleMenu(!menu)}
-            >
-              <div className="header-menu">
-                {/* <div className="header-menu__close"><Icon type="close" /></div> */}
-                <MenuComponent />
-              </div>
-            </Popup>
-          </>
-        )
-      }
+      {currentPageKey === 'components' && (
+        <>
+          <Icons type="list" onClick={() => toggleMenu(!menu)} />
+          <Popup visible={menu} direction="left" onMaskClick={() => toggleMenu(!menu)}>
+            <div className="header-menu">
+              {/* <div className="header-menu__close"><Icon type="close" /></div> */}
+              <MenuComponent />
+            </div>
+          </Popup>
+        </>
+      )}
     </div>
   );
 
@@ -91,18 +85,26 @@ const Header = ({ children }) => {
         visible={dropdown}
         onVisibleChange={setDropdown}
         direction="bottom"
-        content={(
+        content={
           <div className="header-nav">
             <Menu selectedKeys={[currentPageKey]}>
-              {NAV_ITEMS.map((item) => <Menu.Item key={item.key}><a href={item.link}>{item.title}</a></Menu.Item>)}
+              {NAV_ITEMS.map((item) => (
+                <Menu.Item key={item.key}>
+                  <a href={item.link}>{item.title}</a>
+                </Menu.Item>
+              ))}
               <Menu.Item>
-                <a href="https://github.com/ZhongAnTech/zarm" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/ZhongAnTech/zarm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Github
                 </a>
               </Menu.Item>
             </Menu>
           </div>
-        )}
+        }
       >
         <Icons type="more" />
       </Dropdown>
@@ -110,8 +112,8 @@ const Header = ({ children }) => {
   );
 
   return (
-    <IntlProvider locale="zh-CN" messages={Locale[lang]}>
-      <Context.Provider value={{ lang }}>
+    <IntlProvider locale="zh-CN" messages={Locales[locale]}>
+      <Context.Provider value={{ locale }}>
         <header>
           <div className="header-container">
             {menuRender}
@@ -133,23 +135,34 @@ const Header = ({ children }) => {
                 </FormattedMessage>
               </div> */}
               <ul>
-                {NAV_ITEMS.map((item) => <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>)}
+                {NAV_ITEMS.map((item) => (
+                  <li key={item.key}>
+                    <a href={item.link} className={activeClassName([item.key])}>
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
               <div className="lang">
                 <Radio.Group
                   compact
                   type="button"
-                  value={lang}
+                  value={locale}
                   onChange={(value) => {
-                    setLang(value);
-                    window.sessionStorage.language = value;
+                    setLocale(value);
+                    window.localStorage.locale = value;
                   }}
                 >
                   <Radio value="zhCN">中文</Radio>
                   <Radio value="enUS">EN</Radio>
                 </Radio.Group>
               </div>
-              <a className="github" href="https://github.com/JeromeLin/zarm-web" target="_blank" rel="noopener noreferrer">
+              <a
+                className="github"
+                href="https://github.com/JeromeLin/zarm-web"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Icons type="github" />
               </a>
             </nav>

@@ -31,13 +31,13 @@ describe('Avatar', () => {
   it('renders Avatars of different type correctly', () => {
     const wrapper = render(
       <div>
-        <Avatar size="sm" style={{ fontSize: '12px' }}>USER</Avatar>
-        <Avatar size="sm" style={{ color: 'red', backgroundColor: 'rgb(249, 232, 8)' }}>USER</Avatar>
-        <Avatar
-          size="sm"
-          src="site/images/avatar/avatar.png"
-          alt="my avatar"
-        />
+        <Avatar size="sm" style={{ fontSize: '12px' }}>
+          USER
+        </Avatar>
+        <Avatar size="sm" style={{ color: 'red', backgroundColor: 'rgb(249, 232, 8)' }}>
+          USER
+        </Avatar>
+        <Avatar size="sm" src="site/images/avatar/avatar.png" alt="my avatar" />
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -46,22 +46,15 @@ describe('Avatar', () => {
   it('renders Avatars correctly when set src, icon and string', () => {
     const wrapper = render(
       <div>
-        <Avatar
-          size="sm"
-          src="site/images/avatar/avatar.png"
-          alt="my avatar"
-        />
+        <Avatar size="sm" src="site/images/avatar/avatar.png" alt="my avatar" />
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders Avatars correctly that Automatically adjust the character size', () => {
-    const wrapper = mount(
-      <Avatar size="lg">Zhong</Avatar>,
-    );
+    const wrapper = mount(<Avatar size="lg">Zhong</Avatar>);
     expect(wrapper.state().childrenScale).toBe(1);
-
 
     wrapper.setProps({ children: null });
     expect(wrapper.state().childrenScale).toBe(1);

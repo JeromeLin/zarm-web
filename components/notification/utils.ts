@@ -29,13 +29,15 @@ export function mapToIconTheme(type: NotificationIcon) {
   }
 }
 
-export function handleOptions(options: NotificationPropsBase | React.ReactNode): NotificationPropsBase {
+export function handleOptions(
+  options: NotificationPropsBase | React.ReactNode,
+): NotificationPropsBase {
   if (
-    options
-    && Object.prototype.toString.call(options) === '[object Object]'
-    && !React.isValidElement(options)
+    options &&
+    Object.prototype.toString.call(options) === '[object Object]' &&
+    !React.isValidElement(options)
   ) {
-    return { ...options as NotificationPropsBase };
+    return { ...(options as NotificationPropsBase) };
   }
   return { content: options as React.ReactNode };
 }

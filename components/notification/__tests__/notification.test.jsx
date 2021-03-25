@@ -10,9 +10,7 @@ describe('Notification', () => {
 
   it('renders basic Notification correctly', () => {
     const title = 'Test Title';
-    const wrapper = shallow(
-      <Notification title={title} content={content} />,
-    );
+    const wrapper = shallow(<Notification title={title} content={content} />);
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.text().indexOf(title)).not.toBe(-1);
     expect(wrapper.text().indexOf(content)).not.toBe(-1);
@@ -30,11 +28,7 @@ describe('Notification', () => {
         onClick={click}
       />,
     );
-    wrapper
-      .find('div')
-      .at(0)
-      .simulate('mouseenter')
-      .simulate('mouseleave');
+    wrapper.find('div').at(0).simulate('mouseenter').simulate('mouseleave');
     wrapper.find(`.${prefixCls}__content`).simulate('click');
     expect(mouseEnter).toHaveBeenCalledTimes(1);
     expect(mouseLeave).toHaveBeenCalledTimes(1);
@@ -42,29 +36,18 @@ describe('Notification', () => {
   });
 
   it('render custom icon correctly', () => {
-    const wrapper = mount(
-      <Notification content={content} icon={<i>?</i>} />,
-    );
-    expect(
-      wrapper
-        .find(`.${prefixCls}__icon`)
-        .find('i')
-        .text(),
-    ).toBe('?');
+    const wrapper = mount(<Notification content={content} icon={<i>?</i>} />);
+    expect(wrapper.find(`.${prefixCls}__icon`).find('i').text()).toBe('?');
   });
 
   it('render unknow icon correctly', () => {
-    const wrapper = mount(
-      <Notification content={content} icon="unknown-icon" />,
-    );
+    const wrapper = mount(<Notification content={content} icon="unknown-icon" />);
     expect(wrapper.find(`.${prefixCls}__icon`)).toHaveLength(0);
   });
 
   it('render custom footer correctly', () => {
     const text = 'this is a custom footer';
-    const wrapper = mount(
-      <Notification content={content} footer={<div>{text}</div>} />,
-    );
+    const wrapper = mount(<Notification content={content} footer={<div>{text}</div>} />);
     expect(wrapper.find(`.${prefixCls}__foot`).text()).toBe(text);
   });
 });

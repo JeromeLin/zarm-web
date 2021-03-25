@@ -9,10 +9,7 @@ const managerInstance = new StackManager(Message, 'message');
 function showMessage(options: MessageOptions, icon: MessageIcon) {
   const newOptions = handleOptions(options);
   newOptions.icon = icon;
-  if (
-    !newOptions.stayTime
-    && newOptions.stayTime !== 0
-  ) {
+  if (!newOptions.stayTime && newOptions.stayTime !== 0) {
     newOptions.stayTime = newOptions.icon === 'loading' ? 0 : 3000;
   }
   newOptions.position = NotificationPositions.topCenter;

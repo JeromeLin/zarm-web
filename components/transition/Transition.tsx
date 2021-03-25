@@ -57,7 +57,10 @@ export default class Transition extends Component<TransitionProps, any> {
   constructor(props) {
     super(props);
 
-    const { initial: status, next }: { initial: string; next?: string } = this.computeInitialStatus();
+    const {
+      initial: status,
+      next,
+    }: { initial: string; next?: string } = this.computeInitialStatus();
     this.nextStatus = next;
     this.state = { status };
   }
@@ -110,7 +113,8 @@ export default class Transition extends Component<TransitionProps, any> {
     if (visible) {
       return {
         status: status === Transition.UNMOUNTED && Transition.EXITED,
-        next: status !== Transition.ENTERING && status !== Transition.ENTERED && Transition.ENTERING,
+        next:
+          status !== Transition.ENTERING && status !== Transition.ENTERED && Transition.ENTERING,
       };
     }
 
@@ -168,7 +172,11 @@ export default class Transition extends Component<TransitionProps, any> {
   };
 
   computeClasses = (): string => {
-    const { name, children, directional }: { name?: string; children?: any; directional?: boolean } = this.props;
+    const {
+      name,
+      children,
+      directional,
+    }: { name?: string; children?: any; directional?: boolean } = this.props;
     const { animating, status } = this.state;
     const childrenClass = children.props.className;
 

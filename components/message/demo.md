@@ -2,8 +2,8 @@
 
 全局展示操作反馈信息。
 
-
 ## 基本用法
+
 最基本的用法。
 
 ```jsx
@@ -17,13 +17,13 @@ ReactDOM.render(
     }}
   >
     Open
-  </Button>
-, mountNode);
+  </Button>,
+  mountNode,
+);
 ```
 
-
-
 ## 特定场景下的全局提示
+
 特定场景下带图标的全局提示。
 
 ```jsx
@@ -58,7 +58,9 @@ class Demo extends React.Component {
         <Button onClick={this.showError}>Error</Button>
         <Button onClick={this.showLoading}>Loading</Button>
         <br />
-        <Button theme="danger" onClick={this.closeAll}>Close all messages</Button>
+        <Button theme="danger" onClick={this.closeAll}>
+          Close all messages
+        </Button>
       </>
     );
   }
@@ -67,9 +69,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 增加回调
+
 需要时可增加点击、关闭回调
 
 ```jsx
@@ -92,13 +93,13 @@ ReactDOM.render(
     }}
   >
     Open
-  </Button>
-, mountNode);
+  </Button>,
+  mountNode,
+);
 ```
 
-
-
 ## 弹出位置
+
 设置不同的弹出位置
 
 ```jsx
@@ -110,14 +111,16 @@ class Demo extends React.Component {
       ...option,
       content: 'This is the content of the message.',
     });
-  };
+  }
 
   render() {
     return (
       <>
         <Button onClick={() => this.show({ top: 400 })}>Open the message 400px from the top</Button>
         <br />
-        <Button onClick={() => this.show({ bottom: 100 })}>Open the message 100px from the bottom</Button>
+        <Button onClick={() => this.show({ bottom: 100 })}>
+          Open the message 100px from the bottom
+        </Button>
       </>
     );
   }
@@ -126,9 +129,8 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 更新指定消息内容
+
 可以通过唯一的 key 来更新内容。
 
 ```jsx
@@ -166,19 +168,17 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| content | ReactNode | - | 展示内容 |
-| stayTime | number | 5000 | 停留时长(ms)。设置 0 则不自动隐藏 |
-| top | string \| number | - | 脱离堆叠栈，距屏幕顶端位置 |
-| bottom | string \| number | - | 脱离堆叠栈，距屏幕底端位置 |
-| key | string | 自动生成 | 唯一标识，可通过close方法关闭 |
-| onClick | (e?: SyntheticEvent<any>) => void | - | 点击时触发的回调函数 |
-| onClose | (e?: SyntheticEvent<any>) => void | - | 关闭时触发的回调函数 |
+| 属性     | 类型                              | 默认值   | 说明                              |
+| :------- | :-------------------------------- | :------- | :-------------------------------- |
+| content  | ReactNode                         | -        | 展示内容                          |
+| stayTime | number                            | 5000     | 停留时长(ms)。设置 0 则不自动隐藏 |
+| top      | string \| number                  | -        | 脱离堆叠栈，距屏幕顶端位置        |
+| bottom   | string \| number                  | -        | 脱离堆叠栈，距屏幕底端位置        |
+| key      | string                            | 自动生成 | 唯一标识，可通过 close 方法关闭   |
+| onClick  | (e?: SyntheticEvent<any>) => void | -        | 点击时触发的回调函数              |
+| onClose  | (e?: SyntheticEvent<any>) => void | -        | 关闭时触发的回调函数              |
 
 <h3>静态方法</h3>
 

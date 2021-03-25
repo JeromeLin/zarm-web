@@ -42,7 +42,9 @@ describe('Tag', () => {
     const wrapper = render(
       <div className="multi-rows">
         <Tag color="red">normal</Tag>
-        <Tag color="green" bordered={unBorder}>unbordered</Tag>
+        <Tag color="green" bordered={unBorder}>
+          unbordered
+        </Tag>
       </div>,
     );
     expect(wrapper.find('.zw-tag--unborder').length).toEqual(1);
@@ -68,7 +70,11 @@ describe('Tag', () => {
 
   it('behaves correctly when closing tag', () => {
     const onClose = jest.fn();
-    const wrapper = render(<Tag closable onClose={onClose}>可关闭标签</Tag>);
+    const wrapper = render(
+      <Tag closable onClose={onClose}>
+        可关闭标签
+      </Tag>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
     // const wrapper = mount(<Tag closable onClose={onClose}>可关闭标签</Tag>);
     // expect(wrapper.find('.zw-icon').length).toEqual(1);
@@ -101,7 +107,11 @@ describe('Tag', () => {
   it('behaves correctly when click CheckableTag', () => {
     const onChange = jest.fn();
     const checked = true;
-    const wrapper = mount(<Tag.CheckableTag checked={checked} onChange={onChange}>default</Tag.CheckableTag>);
+    const wrapper = mount(
+      <Tag.CheckableTag checked={checked} onChange={onChange}>
+        default
+      </Tag.CheckableTag>,
+    );
 
     expect(wrapper.find('.zw-tag--checked').length).toEqual(1);
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -112,7 +122,11 @@ describe('Tag', () => {
   it('behaves correctly when disabled CheckableTag clicked uncalled onChange', () => {
     const onChange = jest.fn();
     const disabled = true;
-    const wrapper = mount(<Tag.CheckableTag disabled={disabled} onChange={onChange}>default</Tag.CheckableTag>);
+    const wrapper = mount(
+      <Tag.CheckableTag disabled={disabled} onChange={onChange}>
+        default
+      </Tag.CheckableTag>,
+    );
 
     expect(wrapper.find('.zw-tag--checked').length).toEqual(0);
     expect(toJson(wrapper)).toMatchSnapshot();

@@ -37,7 +37,7 @@ export default class StackItem extends React.Component<NotificationStackItemProp
   startTimer = () => {
     const { stayTime } = this.props;
     if (stayTime) {
-      this.timeout = setTimeout(this.close, stayTime);
+      this.timeout = window.setTimeout(this.close, stayTime);
     }
   };
 
@@ -49,13 +49,7 @@ export default class StackItem extends React.Component<NotificationStackItemProp
     const { Component, name, willUnmount, stayTime, onClose, ...rest } = this.props;
     const { visible } = this.state;
     return (
-      <Transition
-        visible={visible}
-        name={name}
-        duration={300}
-        unmountOnHide
-        onHide={willUnmount}
-      >
+      <Transition visible={visible} name={name} duration={300} unmountOnHide onHide={willUnmount}>
         <Component
           {...rest}
           onMouseEnter={this.stopTimer}

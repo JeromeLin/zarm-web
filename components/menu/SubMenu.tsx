@@ -10,7 +10,7 @@ import MenuContext from './menu-context';
 enum SubAnimation {
   UP = 'up',
   DOWN = 'down',
-  None = ''
+  None = '',
 }
 export const FIRST_LEVEL_PADDING = 20;
 export const getMenuPadding = (level = 1, inlineIndent?: number) => {
@@ -119,7 +119,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
         marginBottom = parseFloat(dom.getStyleComputedProperty(next, 'marginBottom'));
       }
 
-      res += (next.offsetHeight + marginTop + marginBottom);
+      res += next.offsetHeight + marginTop + marginBottom;
       return res;
     }, 0);
 
@@ -136,8 +136,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     const keyIndex = openKeys!.indexOf(subMenuKey!);
     const keysLength = openKeys!.length;
     if (keyIndex > -1) {
-      if ((keysLength > 1 && keyIndex < keysLength - 1)
-        || keysLength < lastOpenKeys!.length) {
+      if ((keysLength > 1 && keyIndex < keysLength - 1) || keysLength < lastOpenKeys!.length) {
         // 如果不是最后一级子菜单，或者嵌套的子菜单被收起，当前子菜单高度自适应
         this.sub.style.height = 'auto';
       } else {
@@ -164,7 +163,9 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
     React.Children.forEach(childs, (c) => {
       if (hasSelectedChild) return;
-      if (c.key) { hasKey = true; }
+      if (c.key) {
+        hasKey = true;
+      }
       if (selectedKeys.indexOf(c.key as string) > -1) {
         hasSelectedChild = true;
       } else if (c.props) {
@@ -218,9 +219,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
   };
 
   renderChildren() {
-    const {
-      children, level, subMenuKey, prefixCls,
-    } = this.props;
+    const { children, level, subMenuKey, prefixCls } = this.props;
     const childProps: ChildProps = {
       level: level! + 1,
       prefixCls,
@@ -242,8 +241,16 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 
   render() {
     const {
-      title, level, mode, style, inlineIndent, icon,
-      prefixCls, openKeys, subMenuKey, inlineCollapsed,
+      title,
+      level,
+      mode,
+      style,
+      inlineIndent,
+      icon,
+      prefixCls,
+      openKeys,
+      subMenuKey,
+      inlineCollapsed,
     } = this.props;
     const { collapsedSubVisible, collapsedSubAnimation } = this.state;
 
@@ -260,7 +267,7 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     if (mode === MenuMode.vertical || (inlineCollapsed && level !== 1)) {
       subMenuStyle.paddingLeft = getMenuPadding();
     }
-    const isActive = this.checkIfActive(childs);
+    const isActive = this.checkIfActive(childs!);
     const isOpen = openKeys!.indexOf(subMenuKey!) > -1;
     const cls = classnames(`${prefixCls}-submenu`, {
       [`${prefixCls}-submenu--open`]: isOpen,
@@ -288,37 +295,32 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
     return (
       <li className={cls} style={style}>
         <div
-          ref={(subTitle) => { this.subTitle = subTitle!; }}
+          ref={(subTitle) => {
+            this.subTitle = subTitle!;
+          }}
           onClick={this.toggleSubMenuOpen}
           style={subMenuStyle}
           className={titleCls}
         >
-          {
-            !inlineCollapsed || level! > 1
-              ? (
-                <span>
-                  <span>{icon}</span>
-                  <span>{title}</span>
-                </span>
-              )
-              : (
-                <Tooltip
-                  hasArrow
-                  content={title}
-                  visible={!isOpen}
-                  direction="right"
-                >
-                  <span className={`${prefixCls}-submenu__inline-wrapper`}>
-                    <span className={`${prefixCls}-submenu__inline-wrapper-icon`}>{icon}</span>
-                    <span className={`${prefixCls}-submenu__inline-wrapper-title`}>{title}</span>
-                  </span>
-                </Tooltip>
-              )
-          }
+          {!inlineCollapsed || level! > 1 ? (
+            <span>
+              <span>{icon}</span>
+              <span>{title}</span>
+            </span>
+          ) : (
+            <Tooltip hasArrow content={title} visible={!isOpen} direction="right">
+              <span className={`${prefixCls}-submenu__inline-wrapper`}>
+                <span className={`${prefixCls}-submenu__inline-wrapper-icon`}>{icon}</span>
+                <span className={`${prefixCls}-submenu__inline-wrapper-title`}>{title}</span>
+              </span>
+            </Tooltip>
+          )}
           <i className={`${prefixCls}-submenu__arrow`} />
         </div>
         <ul
-          ref={(sub) => { this.sub = sub!; }}
+          ref={(sub) => {
+            this.sub = sub!;
+          }}
           className={subCls}
           style={subStyle}
           onAnimationEnd={this.onSubAnimationEnd}
@@ -333,22 +335,17 @@ export class SubMenu extends Component<SubMenuProps, SubMenuState> {
 export default function SubMenuConsumer(props: SubMenuProps) {
   return (
     <MenuContext.Consumer>
-      {
-        ({
-          mode, inlineCollapsed, inlineIndent,
-          selectedKeys, openKeys, toggleOpenKeys,
-        }) => (
-          <SubMenu
-            {...props}
-            mode={mode}
-            inlineIndent={inlineIndent}
-            inlineCollapsed={inlineCollapsed}
-            openKeys={openKeys}
-            selectedKeys={selectedKeys}
-            toggleOpenKeys={toggleOpenKeys}
-          />
-        )
-      }
+      {({ mode, inlineCollapsed, inlineIndent, selectedKeys, openKeys, toggleOpenKeys }) => (
+        <SubMenu
+          {...props}
+          mode={mode}
+          inlineIndent={inlineIndent}
+          inlineCollapsed={inlineCollapsed}
+          openKeys={openKeys}
+          selectedKeys={selectedKeys}
+          toggleOpenKeys={toggleOpenKeys}
+        />
+      )}
     </MenuContext.Consumer>
   );
 }

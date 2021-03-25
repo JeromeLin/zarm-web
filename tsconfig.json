@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "zarm-web": ["components/index.tsx"],
+      "zarm-web/es/*": ["components/*"]
+    },
+    "experimentalDecorators": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "react",
@@ -9,21 +15,9 @@
     "target": "es6",
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "types": [
-      "classnames",
-      "react",
-      "react-dom"
-    ]
+    "types": ["classnames", "react", "react-dom", "node", "jest"]
   },
-  "include": [
-    "components/*.tsx",
-    "components/**/*.tsx",
-    "components/utils/types.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es"
-  ],
+  "include": ["components"],
+  "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"],
   "compileOnSave": false
 }
