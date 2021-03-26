@@ -58,8 +58,6 @@ export default (props) => {
   };
 
   // 代码
-  // highlightjs对jsx解析还不完善，自闭合标签会破坏高亮显示，暂未解决。
-  // https://github.com/highlightjs/highlight.js/issues/1646
   renderer.code = (code, language) => {
     const highlightCode =
       Object.keys(Prism.languages).indexOf(language) > -1
@@ -72,14 +70,17 @@ export default (props) => {
   if (!withOutConvertPage.includes(component.key)) {
     components.clear();
     html = marked(
-      content.replace(/##\s?([^]+?)((?=##))/g, (match, p1) => {
-        const id = parseInt(Math.random() * 1e9, 10).toString(36);
-        components.set(
-          id,
-          React.createElement(Demo, { ...props, globalContext, location: useLocation() }, p1),
-        );
-        return `<div id=${id} class="markdown-demo-item"></div>`;
-      }),
+      content.replace(
+        /##\s+(?!自定义 Iconfont 图标|自定义 SVG 图标)+([^]*?)((?=##))/g,
+        (match, p1) => {
+          const id = parseInt(Math.random() * 1e9, 10).toString(36);
+          components.set(
+            id,
+            React.createElement(Demo, { ...props, globalContext, location: useLocation() }, p1),
+          );
+          return `<div id=${id} class="markdown-demo-item"></div>`;
+        },
+      ),
       { renderer },
     )
       .replace('##', '')

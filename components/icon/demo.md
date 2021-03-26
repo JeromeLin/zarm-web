@@ -156,7 +156,7 @@ ReactDOM.render(
 },
 ```
 
-```js
+```jsx
 import { Icon } from 'zarm-web';
 import { ReactComponent as YourSvg } from 'path/to/yourSvg.svg'; // path to your '*.svg' file.
 
