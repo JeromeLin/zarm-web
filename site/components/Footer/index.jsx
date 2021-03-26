@@ -19,7 +19,7 @@ class Footer extends Component {
             </li>
             <li>
               <a
-                href="https://ZhongAnTech.github.io/zarm-vue/#/documents/quick-start"
+                href="https://vue.zarm.design/#/documents/quick-start"
                 rel="noopener noreferrer"
                 target="_blank"
               >
