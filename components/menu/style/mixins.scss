@@ -76,7 +76,7 @@ $ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 @mixin item-collapsed {
   left: 0;
   text-overflow: clip;
-  padding: 0 (var(--menu-collapsed-width) - 16) / 2;
+  padding: 0 calc((var(--menu-collapsed-width) - 16) / 2);
 }
 
 @mixin item-first-level {
